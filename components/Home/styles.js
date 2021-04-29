@@ -22,7 +22,7 @@ export const main = css`
 export const title = css`
   margin: 0;
   line-height: 1.15;
-  font-size: 4rem;
+  font-size: calc(3vw + 3vh);
   text-align: center;
   a {
     color: #0070f3;
@@ -74,6 +74,10 @@ export const card = css`
   transition: color 0.15s ease, border-color 0.15s ease;
   width: 45%;
 
+  @media (max-width: 655px) {
+    width: 85%;
+  }
+
   &:hover,
   &:focus,
   &:active {
@@ -84,12 +88,20 @@ export const card = css`
   h2 {
     margin: 0 0 1rem 0;
     font-size: 1.5rem;
+
+    @media (max-width: 655px) {
+      margin: 0;
+    }
   }
 
   p {
     margin: 0;
     font-size: 1.25rem;
     line-height: 1.5;
+
+    @media (max-width: 655px) {
+      display: none;
+    }
   }
 `
 export const logo = css`
@@ -101,10 +113,17 @@ export const footer = css`
   height: 100px;
   border-top: 1px solid #eaeaea;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   a {
     color: #0070f3;
     padding: 0 .3em;
+  }
+  div {
+    flex-direction: row;
+  }
+  .small {
+    font-size: .75rem;
   }
 `

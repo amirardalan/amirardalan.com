@@ -48,10 +48,14 @@ export default function Home() {
       </main>
 
       <footer className={footer}>
+        <div>
           Copyright &copy;
           {(new Date().getFullYear())}
           {' '}&mdash;{' '} All Rights Reserved
-          {' '}&mdash;{' '} Made with ❤️ using{' '} <a href="https://nextjs.org/">Next.js</a> + <a href="https://emotion.sh/">Emotion</a>
+        </div>
+        <div className="small">
+          Made with ❤️ using <a href="https://nextjs.org/">Next.js</a> + <a href="https://emotion.sh/">Emotion</a>
+        </div>
       </footer>
     </div>
   )
