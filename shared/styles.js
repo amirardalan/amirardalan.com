@@ -17,30 +17,12 @@ export const globalStyles = (
       * {
         box-sizing: border-box;
       }
-      logo {
-        height: 1em;
-        margin-left: 0.5rem;
-      }
-      footer {
-        width: 100%;
-        height: 100px;
-        border-top: 1px solid #eaeaea;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        a {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          flex-grow: 1;
-        }
-      }
     `}
   />
 )
 
 export const basicStyles = css`
-  background-color: white;
+  background-color: black;
   color: cornflowerblue;
   border: 1px solid lightgreen;
   border-right: none;
@@ -59,4 +41,6 @@ export const hoverStyles = css`
     box-shadow: -15px -15px 0 0 aqua, -30px -30px 0 0 cornflowerblue;
   }
 `
+
+
 

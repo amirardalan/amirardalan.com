@@ -92,3 +92,19 @@ export const card = css`
     line-height: 1.5;
   }
 `
+export const logo = css`
+  height: 1em;
+  margin-left: 0.5rem;
+`
+export const footer = css`
+  width: 100%;
+  height: 100px;
+  border-top: 1px solid #eaeaea;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  a {
+    color: #0070f3;
+    padding: 0 .3em;
+  }
+`
