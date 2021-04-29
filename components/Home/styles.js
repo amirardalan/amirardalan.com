@@ -23,9 +23,11 @@ export const title = css`
   margin: 0;
   line-height: 1.15;
   font-size: calc(3vw + 3vh);
-  text-align: center;
+  span {
+    color: DarkSalmon;
+  }
   a {
-    color: #0070f3;
+    color: DarkSalmon;
     text-decoration: none;
 
     &:hover,
@@ -70,7 +72,6 @@ export const card = css`
   color: inherit;
   text-decoration: none;
   border: 1px solid #eaeaea;
-  border-radius: 10px;
   transition: color 0.15s ease, border-color 0.15s ease;
   width: 45%;
 
@@ -81,8 +82,7 @@ export const card = css`
   &:hover,
   &:focus,
   &:active {
-    color: #0070f3;
-    border-color: #0070f3;
+    border-color: DarkSalmon;
   }
 
   h2 {
@@ -117,7 +117,7 @@ export const footer = css`
   justify-content: center;
   align-items: center;
   a {
-    color: #0070f3;
+    color: DarkSalmon;
     padding: 0 .3em;
   }
   div {

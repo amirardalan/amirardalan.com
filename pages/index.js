@@ -17,32 +17,30 @@ export default function Home() {
       <main className={main}>
 
         <h1 className={title}>
-          Hi, I'm <a href="https://twitter.com/amirardalan">@amirardalan</a>!
+          Hi, I'm <span>Amir Ardalan</span> 👋
+          <br/> designer & developer
+          <br/> based in Portland, OR.
         </h1>
-
-        <p className={description}>
-          <code className={code}>Fullstack Engineer</code>
-        </p>
 
         <div className={grid}>
           <a href="/" className={card}>
             <h2>Work &rarr;</h2>
-            <p>Selected code and design works.</p>
+            <p>Selected works.</p>
           </a>
 
           <a href="/" className={card}>
             <h2>Bio &rarr;</h2>
-            <p>The person behind the code!</p>
+            <p>Get to know me.</p>
           </a>
 
           <a href="/" className={card}>
             <h2>Resume &rarr;</h2>
-            <p>I'm currently available for hire.</p>
+            <p>Available for hire.</p>
           </a>
 
           <a href="/" className={card}>
             <h2>Contact &rarr;</h2>
-            <p>Get in touch with me!</p>
+            <p>Get in touch!</p>
           </a>
         </div>
       </main>
@@ -51,7 +49,7 @@ export default function Home() {
         <div>
           Copyright &copy;
           {(new Date().getFullYear())}
-          {' '}&mdash;{' '} All Rights Reserved
+          {' '}&mdash;{' '} Amir Ardalan. All Rights Reserved
         </div>
         <div className="small">
           Made with ❤️ using <a href="https://nextjs.org/">Next.js</a> + <a href="https://emotion.sh/">Emotion</a>
