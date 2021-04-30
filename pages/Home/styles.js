@@ -178,6 +178,7 @@ export const footer = css`
   color: #ccc;
   width: 100%;
   height: 100px;
+  line-height: 2em;
   border-top: 1px solid #eaeaea;
   display: flex;
   flex-direction: column;
@@ -187,8 +188,12 @@ export const footer = css`
   font-weight: 600;
   padding: 1em;
   a {
-    color: DarkSalmon;
+    color: #666;
     padding: 0 .3em;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
   div {
     flex-direction: row;
@@ -196,7 +201,7 @@ export const footer = css`
   .small {
     font-size: .75rem;
     span {
-      color: darksalmon;
+      color: #666;
     }
   }
 `

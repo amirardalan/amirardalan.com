@@ -13,8 +13,7 @@ function Box(props) {
   // Rotate mesh every frame, this is outside of React without overhead
   useFrame(() => (
     mesh.current.rotation.x += 0.01,
-    mesh.current.rotation.y += 0.01,
-    mesh.current.rotation.z += 0.03
+    mesh.current.rotation.y += 0.01
   ))
 
   return (
@@ -27,6 +26,25 @@ function Box(props) {
       onPointerOut={(event) => setHover(false)}>
       <boxGeometry args={[1.5, 1.5, 1.5]} />
       <meshStandardMaterial color={hovered ? 'darksalmon' : 'orange'} />
+    </mesh>
+  )
+}
+
+function Torus(props) {
+
+  const mesh = useRef()
+
+  useFrame(() => (
+    mesh.current.rotation.x += 0.002,
+    mesh.current.rotation.y += 0.002
+  ))
+
+  return (
+    <mesh
+      {...props}
+      ref={mesh}>
+      <torusGeometry args={[8, 4, 20, 100]} />
+      <meshStandardMaterial color='cyan' />
     </mesh>
   )
 }
@@ -68,9 +86,15 @@ export default function Home() {
         <div className={mainRight}>
           <Canvas>
             <ambientLight />
-            <pointLight position={[10, 10, 10]} />
-            <Box position={[-1.2, 0, 0]} />
-            <Box position={[1.2, 0, 0]} />
+            <pointLight position={[-10, 3, 5]} />
+            {/* <Box position={[2, 2, -1]} /> */}
+            <Torus position={[1, 1, 1]} />
+            <Torus position={[3, 2, 4]} />
+            <Torus position={[1, 1.5, 3]} />
+            <mesh visible position={[2, -4, -3]} rotation={[Math.PI / 2, 0, 0]}>
+              <sphereGeometry args={[3, 100, 1, 100]} />
+              <meshStandardMaterial color="hotpink" transparent />
+            </mesh>
           </Canvas>
         </div>
 
