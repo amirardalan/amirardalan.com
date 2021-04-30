@@ -26,6 +26,7 @@ export const mainLeft = css`
   justify-content: space-between;
 
   @media (max-width: 890px) {
+    width: 100%;
     justify-content: start;
     align-self: flex-start;
     margin-right: 0;
@@ -50,7 +51,9 @@ export const mainRight = css`
 `
 
 export const icon = css`
-
+  svg {
+    fill: red !important;
+  }
   @media (max-width: 890px) {
     order: 2;
     justify-content: right;
@@ -170,7 +173,6 @@ export const footer = css`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: calc(.6vw + .6vh);
   padding: 1em;
   a {
     color: DarkSalmon;
@@ -181,5 +183,8 @@ export const footer = css`
   }
   .small {
     font-size: .75rem;
+    span {
+      color: darksalmon;
+    }
   }
 `

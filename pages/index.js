@@ -1,6 +1,31 @@
+import React, { useRef, useState } from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
-import { container, main, mainLeft, mainRight, title, icon, footer } from '../components/Home/styles'
+import { container, main, mainLeft, mainRight, title, icon, footer } from './Home/styles'
+import { Canvas, useFrame } from '@react-three/fiber'
+
+function Box(props) {
+  // This reference will give us direct access to the mesh
+  const mesh = useRef()
+  // Set up state for the hovered and active state
+  const [hovered, setHover] = useState(false)
+  const [active, setActive] = useState(false)
+  // Rotate mesh every frame, this is outside of React without overhead
+  useFrame(() => (mesh.current.rotation.x += 0.01))
+
+  return (
+    <mesh
+      {...props}
+      ref={mesh}
+      scale={active ? 1.5 : 1}
+      onClick={(event) => setActive(!active)}
+      onPointerOver={(event) => setHover(true)}
+      onPointerOut={(event) => setHover(false)}>
+      <boxGeometry args={[1, 2, 3]} />
+      <meshStandardMaterial color={hovered ? 'hotpink' : 'orange'} />
+    </mesh>
+  )
+}
 
 export default function Home() {
   return (
@@ -27,16 +52,22 @@ export default function Home() {
           </div>
 
           <h1 className={title}>
-            Hi, I'm <a href="/">Amir Ardalan</a> 👋,
-            <br/> designer & developer
+            Hi, 👋 I'm <a href="/">Amir Ardalan</a>,
+            <br/> a designer & developer
             <br/> from Portland, OR.
-            <br/> Check out my <a href="/">work</a>,
-            <br/> or download my <a href="/">resume</a>.
+            <br/>
+            <br/> Check out my <a href="/">work</a>.
+            <br/> Download my <a href="/">resume</a>.
           </h1>
         </div>
 
         <div className={mainRight}>
-          
+          <Canvas>
+            <ambientLight />
+            <pointLight position={[10, 10, 10]} />
+            <Box position={[-1.2, 0, 0]} />
+            <Box position={[1.2, 0, 0]} />
+          </Canvas>
         </div>
 
       </main>
@@ -45,10 +76,10 @@ export default function Home() {
         <div>
           Copyright &copy;
           {(new Date().getFullYear())}
-          {' '}&mdash;{' '} Amir Ardalan. All Rights Reserved
+          {' '}-{' '} Amir Ardalan
         </div>
         <div className="small">
-          Made with ❤️ using <a href="https://nextjs.org/">Next.js</a> + <a href="https://emotion.sh/">Emotion</a>
+          Made with <span>&hearts;</span> using <a href="https://nextjs.org/">Next.js</a> + <a href="https://emotion.sh/">Emotion</a> + <a href="https://threejs.org/">Three.js</a>
         </div>
       </footer>
     </div>
