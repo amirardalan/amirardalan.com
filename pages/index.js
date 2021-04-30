@@ -1,6 +1,6 @@
 import Head from 'next/head'
-// import Image from 'next/image'
-import { container, main, title, description, code, grid, card, footer, logo } from '../components/Home/styles'
+import Image from 'next/image'
+import { container, main, mainLeft, mainRight, title, icon, footer } from '../components/Home/styles'
 
 export default function Home() {
   return (
@@ -16,33 +16,29 @@ export default function Home() {
 
       <main className={main}>
 
-        <h1 className={title}>
-          Hi, I'm <span>Amir Ardalan</span> 👋
-          <br/> designer & developer
-          <br/> based in Portland, OR.
-        </h1>
+        <div className={mainLeft}>
+          <div className={icon}>
+              <Image
+                src="/icon.svg"
+                alt=""
+                width={200}
+                height={200}
+              />
+          </div>
 
-        <div className={grid}>
-          <a href="/" className={card}>
-            <h2>Work &rarr;</h2>
-            <p>Selected works.</p>
-          </a>
-
-          <a href="/" className={card}>
-            <h2>Bio &rarr;</h2>
-            <p>Get to know me.</p>
-          </a>
-
-          <a href="/" className={card}>
-            <h2>Resume &rarr;</h2>
-            <p>Available for hire.</p>
-          </a>
-
-          <a href="/" className={card}>
-            <h2>Contact &rarr;</h2>
-            <p>Get in touch!</p>
-          </a>
+          <h1 className={title}>
+            Hi, I'm <a href="/">Amir Ardalan</a> 👋,
+            <br/> designer & developer
+            <br/> from Portland, OR.
+            <br/> Check out my <a href="/">work</a>,
+            <br/> or download my <a href="/">resume</a>.
+          </h1>
         </div>
+
+        <div className={mainRight}>
+          
+        </div>
+
       </main>
 
       <footer className={footer}>

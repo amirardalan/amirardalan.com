@@ -2,27 +2,71 @@ import { css } from '@emotion/css'
 
 export const container = css`
   min-height: 100vh;
-  padding: 0 0.5rem;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
 `
 
 export const main = css`
   padding: 5rem 0;
   flex: 1;
   display: flex;
+  flex-wrap: wrap;
+  width: 90%;
+  justify-content: space-between;
+`
+
+export const mainLeft = css`
+  display: flex;
+  height: 100%;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  align-self: flex-end;
+  justify-content: space-between;
+
+  @media (max-width: 890px) {
+    justify-content: start;
+    align-self: flex-start;
+    margin-right: 0;
+    flex-direction: row;
+    height: auto;
+  }
+`
+
+export const mainRight = css`
+  background-color: #eaeaea;
+  display: flex;
+  height: 100%;
+  width: 50%;
+  flex-direction: column;
+  align-self: flex-end;
+
+  @media (max-width: 890px) {
+    align-self: flex-start;
+    width: 100%;
+    height: 75%;
+  }
+`
+
+export const icon = css`
+
+  @media (max-width: 890px) {
+    order: 2;
+    justify-content: right;
+  }
 `
 
 export const title = css`
   margin: 0;
   line-height: 1.15;
-  font-size: calc(3vw + 3vh);
+  font-size: calc(2vw + 2vh);
+
+  @media (max-width: 890px) {
+    flex: 100%;
+    margin-bottom: 1rem;
+  }
+
   span {
     color: DarkSalmon;
   }
@@ -35,7 +79,19 @@ export const title = css`
     &:active {
       text-decoration: underline;
     }
+  }
+`
 
+export const graphic = css`
+  width: auto;
+  align-self: flex-end;
+  box-shadow: -15px 15px 0px 3px darksalmon;
+  border-left: 4px solid white;
+  flex: 50%;
+
+  @media (max-width: 890px) {
+    flex: 100%;
+    align-self: flex-start;
   }
 `
 
@@ -57,7 +113,7 @@ export const grid = css`
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  max-width: 800px;
+  max-width: 890px;
   margin-top: 3rem;
 
   @media (max-width: 600px) {
@@ -104,11 +160,9 @@ export const card = css`
     }
   }
 `
-export const logo = css`
-  height: 1em;
-  margin-left: 0.5rem;
-`
+
 export const footer = css`
+  color: #ccc;
   width: 100%;
   height: 100px;
   border-top: 1px solid #eaeaea;
@@ -116,6 +170,8 @@ export const footer = css`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-size: calc(.6vw + .6vh);
+  padding: 1em;
   a {
     color: DarkSalmon;
     padding: 0 .3em;
