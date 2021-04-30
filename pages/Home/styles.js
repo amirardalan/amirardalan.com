@@ -16,6 +16,10 @@ export const main = css`
   flex-wrap: wrap;
   width: 90%;
   justify-content: space-between;
+
+  @media (max-width: 890px) {
+    padding: 3rem 0;
+  }
 `
 
 export const mainLeft = css`
@@ -46,7 +50,7 @@ export const mainRight = css`
   @media (max-width: 890px) {
     align-self: flex-start;
     width: 100%;
-    height: 75%;
+    height: 50vh;
   }
 `
 
@@ -57,12 +61,12 @@ export const animation = css`
 `
 
 export const icon = css`
-  svg {
-    fill: red !important;
-  }
   @media (max-width: 890px) {
     order: 2;
     justify-content: right;
+  }
+  @media (max-width: 480px) {
+    width: 3rem;
   }
 `
 
