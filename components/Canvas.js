@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react'
 import ReactDOM from 'react-dom'
 import { Canvas, useFrame } from '@react-three/fiber'
 
-function Box(props) {
+export default function Box(props) {
   // This reference will give us direct access to the mesh
   const mesh = useRef()
   // Set up state for the hovered and active state
@@ -20,9 +20,7 @@ function Box(props) {
       onPointerOver={(event) => setHover(true)}
       onPointerOut={(event) => setHover(false)}>
       <boxGeometry args={[1, 2, 3]} />
-      <meshStandardMaterial color={hovered ? 'hotpink' : 'orange'} />
+      <meshStandardMaterial color={hovered ? 'orange' : 'gray'} />
     </mesh>
   )
 }
-
-export default Box;

@@ -50,6 +50,12 @@ export const mainRight = css`
   }
 `
 
+export const animation = css`
+    canvas {
+      aspect-ratio: auto 490 / 490;
+    }
+`
+
 export const icon = css`
   svg {
     fill: red !important;
@@ -173,6 +179,8 @@ export const footer = css`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-size: .8rem;
+  font-weight: 600;
   padding: 1em;
   a {
     color: DarkSalmon;
