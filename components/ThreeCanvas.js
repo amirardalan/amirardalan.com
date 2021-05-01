@@ -16,6 +16,7 @@ export default function ThreeCanvas() {
     const [hovered, setHover] = useState(false)
     const [active, setActive] = useState(false)
     // Rotate mesh every frame, this is outside of React without overhead
+
     useFrame(() => (
       mesh.current.rotation.x += 0.01,
       mesh.current.rotation.y += 0.01

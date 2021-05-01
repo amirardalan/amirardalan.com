@@ -5,7 +5,7 @@ import { container, main, mainLeft, mainRight, title, logo, footer } from './sty
 import ThreeCanvas from '../components/ThreeCanvas'
 
 
-export default function Home() {
+export default function Bio() {
   return (
     <div className={container}>
 
@@ -26,12 +26,7 @@ export default function Home() {
           </div>
 
           <h1 className={title}>
-            Hi, 👋 I'm <a href="bio">Amir Ardalan</a>,
-            <br/> a designer & developer
-            <br/> from Portland, OR.
-            <br/>
-            <br/> Check out my <a href="work">work</a>.
-            <br/> Download my <a href="/">resume</a>.
+            Bio
           </h1>
         </div>
 

@@ -60,7 +60,9 @@ export const animation = css`
     }
 `
 
-export const icon = css`
+export const logo = css`
+  cursor: pointer;
+  
   @media (max-width: 890px) {
     order: 2;
     justify-content: right;
@@ -108,10 +110,6 @@ export const graphic = css`
   }
 `
 
-export const description = css`
-  text-align: center;
-`
-
 export const code = css`
   background: #fafafa;
   border-radius: 5px;
@@ -119,59 +117,6 @@ export const code = css`
   font-size: 1.1rem;
   font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
     Bitstream Vera Sans Mono, Courier New, monospace;
-`
-
-export const grid = css`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  max-width: 890px;
-  margin-top: 3rem;
-
-  @media (max-width: 600px) {
-    width: 100%;
-    flex-direction: column;
-  }
-`
-export const card = css`
-  margin: 1rem;
-  padding: 1.5rem;
-  text-align: left;
-  color: inherit;
-  text-decoration: none;
-  border: 1px solid #eaeaea;
-  transition: color 0.15s ease, border-color 0.15s ease;
-  width: 45%;
-
-  @media (max-width: 655px) {
-    width: 85%;
-  }
-
-  &:hover,
-  &:focus,
-  &:active {
-    border-color: DarkSalmon;
-  }
-
-  h2 {
-    margin: 0 0 1rem 0;
-    font-size: 1.5rem;
-
-    @media (max-width: 655px) {
-      margin: 0;
-    }
-  }
-
-  p {
-    margin: 0;
-    font-size: 1.25rem;
-    line-height: 1.5;
-
-    @media (max-width: 655px) {
-      display: none;
-    }
-  }
 `
 
 export const footer = css`
