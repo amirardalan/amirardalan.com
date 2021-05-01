@@ -59,6 +59,8 @@ export default function Home() {
           content="Portfolio of Amir Ardalan. Front-End Engineer and UI Designer with 6+
           years professional experience crafting online experiences for top brands." />
         <link rel="icon" href="/favicon.ico" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet" />
       </Head>
 
       <main className={main}>
