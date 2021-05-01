@@ -70,6 +70,22 @@ export default function ThreeCanvas() {
     )
   }
 
+    // Sphere Mesh
+    function Sphere(props) {
+
+      const mesh = useRef()
+  
+      return (
+        <mesh
+          {...props}
+          ref={mesh}
+          castShadow>
+          <sphereGeometry args={[1, 100, 20, 100]} />
+          <meshStandardMaterial color='hotpink' />
+        </mesh>
+      )
+    }
+
   return (
     <Canvas shadowMap shadows colorManagement camera={{ position: [-5, 2, 10], fov: 60 }}>
     <ambientLight intensity={0.3} />
@@ -97,10 +113,8 @@ export default function ThreeCanvas() {
         {/* <meshStandardMaterial attach='material' color={'yellow'} /> */}
         <shadowMaterial attach='material' opacity={0.3} />
       </mesh>
-      // Box Mesh
-      <Box position={[2, 2, -1]} />
-      <Box position={[1, 2, 3]} />
-      <Torus position={[4, 1, 1]} />
+      <Torus position={[2, 1, 1]} />
+      <Sphere position={[1, 1, 1]} />
     </group>
     <OrbitControls />
     </Canvas>
