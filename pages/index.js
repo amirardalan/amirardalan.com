@@ -3,6 +3,10 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { container, main, mainLeft, mainRight, title, icon, footer } from './Home/styles'
 import { Canvas, useFrame } from '@react-three/fiber'
+import { softShadows, MeshWobbleMaterial, OrbitControls } from '@react-three/drei'
+
+// Soft Shadows
+softShadows();
 
 function Box(props) {
   // This reference will give us direct access to the mesh
@@ -20,12 +24,19 @@ function Box(props) {
     <mesh
       {...props}
       ref={mesh}
+      castShadow
       scale={active ? 1.5 : 1}
       onClick={(event) => setActive(!active)}
       onPointerOver={(event) => setHover(true)}
       onPointerOut={(event) => setHover(false)}>
-      <boxGeometry args={[1.5, 1.5, 1.5]} />
+      <boxBufferGeometry attach='geometry' />
       <meshStandardMaterial color={hovered ? 'darksalmon' : 'orange'} />
+      <MeshWobbleMaterial
+        color={hovered ? 'darksalmon' : 'orange'}
+        speed='1'
+        attach='material'
+        factor={0.6}
+      />
     </mesh>
   )
 }
@@ -42,9 +53,16 @@ function Torus(props) {
   return (
     <mesh
       {...props}
-      ref={mesh}>
-      <torusGeometry args={[8, 4, 20, 100]} />
+      ref={mesh}
+      castShadow>
+      <torusGeometry args={[3, 1, 20, 100]} />
       <meshStandardMaterial color='cyan' />
+      <MeshWobbleMaterial
+        color={'cyan'}
+        speed='1'
+        attach='material'
+        factor={0.6}
+      />
     </mesh>
   )
 }
@@ -86,17 +104,38 @@ export default function Home() {
         </div>
 
         <div className={mainRight}>
-          <Canvas>
-            <ambientLight />
-            <pointLight position={[-10, 3, 5]} />
-            {/* <Box position={[2, 2, -1]} /> */}
-            <Torus position={[1, 1, 1]} />
-            <Torus position={[3, 2, 4]} />
-            <Torus position={[1, 1.5, 3]} />
-            <mesh visible position={[2, -4, -3]} rotation={[Math.PI / 2, 0, 0]}>
-              <sphereGeometry args={[3, 100, 1, 100]} />
-              <meshStandardMaterial color="hotpink" transparent />
-            </mesh>
+          <Canvas shadowMap shadows colorManagement camera={{ position: [-5, 2, 10], fov: 60 }}>
+            <ambientLight intensity={0.3} />
+            <directionalLight
+              castShadow
+              position={[0, 10, 0]}
+              intensity={1.5}
+              shadow-mapSize-width={1024}
+              shadow-mapSize-height={1024}
+              shadow-camera-far={50}
+              shadow-camera-left={-10}
+              shadow-camera-right={10}
+              shadow-camera-top={10}
+              shadow-camera-bottom={-10}
+            />
+            <pointLight position={[-10, 0, -20]} />
+            <pointLight position={[0, -10, 0]} />
+            <group>
+              // Floor mesh
+              <mesh
+                receiveShadow
+                rotation={[-Math.PI / 2, 0, 0]}
+                position={[0, -3, 0]}>
+                <planeBufferGeometry attach='geometry' args={[100, 100]} />
+                {/* <meshStandardMaterial attach='material' color={'yellow'} /> */}
+                <shadowMaterial attach='material' opacity={0.3} />
+              </mesh>
+              // Box Mesh
+              <Box position={[2, 2, -1]} />
+              <Box position={[1, 2, 3]} />
+              <Torus position={[4, 1, 1]} />
+            </group>
+            <OrbitControls />
           </Canvas>
         </div>
 
