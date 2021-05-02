@@ -13,15 +13,17 @@ export default function Work() {
         <div className="mainLeft">
           
           <div className="logo">
-          <Image
-              src="/photo.png"
-              alt="Picture Amir Ardalan"
-              width={120}
-              height={120}
-              className="photo"
-            />
             <Link href="/">
-              <a><h1>Amir Ardalan Portfolio</h1></a>
+              <a>
+                <Image
+                  src="/photo.png"
+                  alt="Picture Amir Ardalan"
+                  width={120}
+                  height={120}
+                  className="photo"
+                />
+                <h1>Amir Ardalan Portfolio</h1>
+              </a>
             </Link>
           </div>
 

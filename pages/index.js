@@ -13,15 +13,17 @@ export default function Home() {
         <div className="mainLeft">
           
           <div className="logo">
-          <Image
-              src="/photo.png"
-              alt="Picture Amir Ardalan"
-              width={120}
-              height={120}
-              className="photo"
-            />
             <Link href="/">
-              <a><h1>Amir Ardalan Portfolio</h1></a>
+              <a>
+                <Image
+                  src="/photo.png"
+                  alt="Picture Amir Ardalan"
+                  width={120}
+                  height={120}
+                  className="photo"
+                />
+                <h1>Amir Ardalan Portfolio</h1>
+              </a>
             </Link>
           </div>
 
@@ -47,6 +49,7 @@ export default function Home() {
         </div>
 
         <div className="mainRight">
+          <h4>Click + Drag / Scroll 🔍</h4>
           <ThreeCanvas />
         </div>
 

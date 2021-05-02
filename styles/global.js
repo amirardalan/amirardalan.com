@@ -48,6 +48,11 @@ export const globalStyles = (
         border-bottom: 10px solid black;
         width: fit-content;
       }
+      h4 {
+        font-size: 10px;
+        font-weight: 300;
+        text-transform: uppercase;
+      }
       main {
         padding: 5rem 0;
         flex: 1;
@@ -128,6 +133,10 @@ export const globalStyles = (
         align-self: flex-end;
         animation: fade 2.5s;
         -webkit-animation: fade 2.5s;
+
+        h4 {
+          margin: 1rem;
+        }
 
         @media (max-width: 890px) {
           align-self: flex-start;
