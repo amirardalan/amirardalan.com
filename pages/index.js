@@ -4,7 +4,7 @@ import Footer from '../components/Footer'
 import ThreeCanvas from '../components/ThreeCanvas'
 import Typical from 'react-typical'
 
-export default function Home() {
+function Home() {
   return (
     <div className="container">
 
@@ -61,9 +61,4 @@ export default function Home() {
   )
 }
 
-module.exports = {
-  images: {
-    loader: "imgix",
-    path: "https://noop/"
-  }
-}
+export default Home

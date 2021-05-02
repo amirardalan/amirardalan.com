@@ -2,7 +2,6 @@ import Link from 'next/link'
 import Image from 'next/image'
 import Footer from '../components/Footer'
 import ThreeCanvas from '../components/ThreeCanvas'
-import Typical from 'react-typical'
 
 export default function Bio() {
   return (

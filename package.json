@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "export": "npm run build && next export -o _static"
+    "export": "npm run build && next start && next export -o _static"
   },
   "dependencies": {
     "@emotion/css": "^11.1.3",
