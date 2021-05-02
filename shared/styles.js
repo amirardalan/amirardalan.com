@@ -16,6 +16,12 @@ export const globalStyles = (
       * {
         box-sizing: border-box;
       }
+      @keyframes fade {
+        0% { opacity: 0; }
+        33% { opacity: 0; }
+        66% { opacity: 0; }
+        100% { opacity: 1; }
+      }
       .code {
         background: #fafafa;
         border-radius: 5px;
@@ -34,9 +40,10 @@ export const globalStyles = (
       }
       h1 {
         color: black;
-        font-size: 12px;
+        font-size: 10px;
         font-weight: 300;
         padding-bottom: .5em;
+        margin-bottom: 2em;
         text-transform: uppercase;
         border-bottom: 10px solid black;
         width: fit-content;
@@ -55,6 +62,46 @@ export const globalStyles = (
 
         @media (max-width: 480px) {
           padding: 1rem 0;
+        }
+      }
+      .logo {
+        cursor: pointer;
+        height: fit-content;
+        margin-bottom: 1em;
+        animation: fade 1.5s;
+        -webkit-animation: fade 1.5s;
+        flex-direction: column;
+
+        @media (max-width: 890px) {
+          order: 2;
+          justify-content: space-between;
+          flex-direction: row-reverse;
+          display: flex;
+          img {
+            width: 60px;
+            align-self: flex-end;
+          }
+        }
+      }
+      .title {
+        margin: 0;
+        line-height: 1.15;
+        font-size: calc(2vw + 2vh);
+        font-weight: 700;
+        animation: fade 2s;
+        -webkit-animation: fade 2s;
+
+        @media (max-width: 890px) {
+          flex: 100%;
+          margin-bottom: 1rem;
+        }
+        a {
+          text-decoration: none;
+          &:hover,
+          &:focus,
+          &:active {
+            text-decoration: underline;
+          }
         }
       }
       .mainLeft {
@@ -80,43 +127,13 @@ export const globalStyles = (
         width: 50%;
         flex-direction: column;
         align-self: flex-end;
+        animation: fade 2.5s;
+        -webkit-animation: fade 2.5s;
 
         @media (max-width: 890px) {
           align-self: flex-start;
           width: 100%;
           height: 50vh;
-        }
-      }
-      .logo {
-        cursor: pointer;
-        height: fit-content;
-        margin-bottom: 1em;
-  
-        @media (max-width: 890px) {
-          order: 2;
-          justify-content: right;
-        }
-        @media (max-width: 480px) {
-          width: 3rem;
-        }
-      }
-      .title {
-        margin: 0;
-        line-height: 1.15;
-        font-size: calc(2vw + 2vh);
-        font-weight: 700;
-
-        @media (max-width: 890px) {
-          flex: 100%;
-          margin-bottom: 1rem;
-        }
-        a {
-          text-decoration: none;
-          &:hover,
-          &:focus,
-          &:active {
-            text-decoration: underline;
-          }
         }
       }
       footer {
