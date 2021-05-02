@@ -69,7 +69,7 @@ export const globalStyles = (
           padding: 1rem 0;
         }
       }
-      .logo {
+      .header {
         height: fit-content;
         margin-bottom: 1em;
         animation: fade 1.5s;

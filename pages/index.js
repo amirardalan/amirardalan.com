@@ -1,8 +1,8 @@
-import Link from 'next/link'
-import Image from 'next/image'
+import Header from '../components/Header'
 import Footer from '../components/Footer'
-import ThreeCanvas from '../components/ThreeCanvas'
+import Link from 'next/link'
 import Typical from 'react-typical'
+import ThreeCanvas from '../components/ThreeCanvas'
 
 export default function Home() {
   return (
@@ -12,20 +12,7 @@ export default function Home() {
 
         <div className="mainLeft">
           
-          <div className="logo">
-            <Image
-              src="/photo.png"
-              alt="Picture Amir Ardalan"
-              width={120}
-              height={120}
-              className="photo"
-            />
-            <Link href="/">
-              <a>
-                <h1>Amir Ardalan Portfolio</h1>
-              </a>
-            </Link>
-          </div>
+          <Header />
 
           <h2 className="title">
             Hi, 👋 I'm <Link href="/bio"><a>Amir Ardalan</a></Link>.
