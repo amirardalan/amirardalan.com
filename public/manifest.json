@@ -1,0 +1,38 @@
+{
+  "short_name": "Amir Ardalan Portfolio",
+  "name": "Amir Ardalan: Portfolio",
+  "icons": [
+    {
+      "src": "/icon192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#ffffff",
+  "shortcuts": [
+    {
+      "name": "Amir Ardalan Portfolio",
+      "short_name": "Amir Ardalan Portfolio",
+      "description": "The Portfolio of designer & developer Amir Ardalan",
+      "url": "amirardalan.com",
+      "icons": [{ "src": "icon192.png", "sizes": "192x192" }]
+    }
+  ],
+  "description": "Amir Ardalan Portfolio Thumbnail",
+  "screenshots": [
+    {
+      "src": "thumbnail.jpg",
+      "type": "image/png",
+      "sizes": "540x720"
+    }
+  ]
+}

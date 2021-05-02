@@ -1,56 +1,55 @@
 import Meta from '../components/Meta'
 import Link from 'next/link'
-import Image from 'next/image'
-import { container, main, mainLeft, mainRight, title, logo, footer } from './styles/home'
+import Footer from '../components/Footer'
 import ThreeCanvas from '../components/ThreeCanvas'
-
+import Typical from 'react-typical'
 
 export default function Home() {
   return (
-    <div className={container}>
+    <div className="container">
 
       <Meta />
 
-      <main className={main}>
+      <main>
 
-        <div className={mainLeft}>
-          <div className={logo}>
+        <div className="mainLeft">
+          
+          <div className="logo">
             <Link href="/">
-                <Image
-                  src="/icon.svg"
-                  alt=""
-                  width={200}
-                  height={200}
-                />
+              <a><h1>Amir Ardalan Portfolio</h1></a>
             </Link>
           </div>
 
-          <h1 className={title}>
-            Hi, 👋 I'm <a href="bio">Amir Ardalan</a>,
-            <br/> a designer & developer
-            <br/> from Portland, OR.
-            <br/>
-            <br/> Check out my <a href="work">work</a>.
-            <br/> Download my <a href="/">resume</a>.
-          </h1>
+          <h2 className="title">
+            Hi, 👋 I'm <Link href="/bio"><a>Amir Ardalan</a></Link>.
+            <br/> My passions include:
+            <Typical
+              steps={[
+                "React.js", 1500,
+                "User Interface design", 1500,
+                "Front-end development", 1500,
+                "Web accessibility", 1500,
+                "Ecommerce", 1500,
+                "Playing soccer ⚽", 1500,
+                "...and eating pizza 🍕", 1500,
+              ]}
+              loop={Infinity}
+              className="title"
+            />
+            <br/> Check out my <Link href="/work"><a>work</a></Link>.
+            <br/> Download my <Link href="/"><a>resume</a></Link>.
+          </h2>
+
         </div>
 
-        <div className={mainRight}>
+        <div className="mainRight">
           <ThreeCanvas />
         </div>
 
       </main>
 
-      <footer className={footer}>
-        <div>
-          Copyright &copy;
-          {(new Date().getFullYear())}
-          {' '}-{' '} Amir Ardalan
-        </div>
-        <div className="small">
-          Made with <span>&hearts;</span> using <a href="https://nextjs.org/">Next.js</a> + <a href="https://emotion.sh/">Emotion</a> + <a href="https://threejs.org/">Three.js</a>
-        </div>
-      </footer>
+      <Footer />
+
     </div>
   )
 }

@@ -23,8 +23,8 @@ export default function Meta() {
       <link rel="icon" href="/favicon.ico" />
       <link rel="preconnect" href="https://fonts.gstatic.com" />
       <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet" />
-      <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-      <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+      <link rel="apple-touch-icon" href="/logo192.png" />
+      <link rel="manifest" href="/manifest.json" />
     </Head>
   )
 }
