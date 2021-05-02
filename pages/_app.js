@@ -1,4 +1,4 @@
-import { globalStyles } from '../shared/styles'
+import { globalStyles } from '../styles/global'
 
 function MyApp({ Component, pageProps }) {
 
