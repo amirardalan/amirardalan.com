@@ -87,7 +87,7 @@ export default function ThreeCanvas() {
     }
 
   return (
-    <Canvas shadowMap shadows colorManagement camera={{ position: [-5, 2, 10], fov: 60 }}>
+    <Canvas shadowMap shadows colorManagement camera={{ position: [-4, 2, 10], fov: 60 }}>
     <ambientLight intensity={0.3} />
     <directionalLight
       castShadow
