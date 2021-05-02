@@ -93,7 +93,6 @@ export const globalStyles = (
 
         @media (max-width: 890px) {
           flex: 100%;
-          margin-bottom: 1rem;
         }
         a {
           text-decoration: none;
@@ -134,7 +133,13 @@ export const globalStyles = (
           align-self: flex-start;
           width: 100%;
           height: 50vh;
+          margin-top: 2rem;
         }
+        
+        @media (max-width: 480px) {
+          margin-top: 1rem;
+        }
+
       }
       footer {
         color: #ccc;
