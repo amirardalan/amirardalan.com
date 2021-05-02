@@ -1,4 +1,3 @@
-import Meta from '../components/Meta'
 import Link from 'next/link'
 import Image from 'next/image'
 import Footer from '../components/Footer'
@@ -8,8 +7,6 @@ import Typical from 'react-typical'
 export default function Home() {
   return (
     <div className="container">
-
-      <Meta />
 
       <main>
 
