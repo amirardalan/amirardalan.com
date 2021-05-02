@@ -60,3 +60,10 @@ export default function Home() {
     </div>
   )
 }
+
+module.exports = {
+  images: {
+    loader: "imgix",
+    path: "https://noop/"
+  }
+}
