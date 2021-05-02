@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { softShadows, MeshWobbleMaterial, OrbitControls } from '@react-three/drei'
+import { useMediaQuery } from '../utils/mediaQuery'
 
 // Three.js Canvas
 export default function ThreeCanvas() {
@@ -70,52 +71,58 @@ export default function ThreeCanvas() {
     )
   }
 
-    // Sphere Mesh
-    function Sphere(props) {
+  // Sphere Mesh
+  function Sphere(props) {
 
-      const mesh = useRef()
+    const mesh = useRef()
+
+    return (
+      <mesh
+        {...props}
+        ref={mesh}
+        castShadow>
+        <sphereGeometry args={[1, 100, 20, 100]} />
+        <meshStandardMaterial color='hotpink' />
+      </mesh>
+    )
+  }
   
-      return (
-        <mesh
-          {...props}
-          ref={mesh}
-          castShadow>
-          <sphereGeometry args={[1, 100, 20, 100]} />
-          <meshStandardMaterial color='hotpink' />
-        </mesh>
-      )
-    }
+  // Set the breakpoint for Orbital Controls rendering (disable on mobile)
+  const isBreakpoint = useMediaQuery(1024)
 
   return (
     <Canvas shadowMap shadows colorManagement camera={{ position: [-4, 2, 10], fov: 60 }}>
-    <ambientLight intensity={0.3} />
-    <directionalLight
-      castShadow
-      position={[0, 10, 0]}
-      intensity={1.5}
-      shadow-mapSize-width={1024}
-      shadow-mapSize-height={1024}
-      shadow-camera-far={50}
-      shadow-camera-left={-10}
-      shadow-camera-right={10}
-      shadow-camera-top={10}
-      shadow-camera-bottom={-10}
-    />
-    <pointLight position={[-10, 0, -20]} />
-    <pointLight castShadow position={[0, -10, 0]} />
-    <group>
-      // Floor mesh
-      <mesh
-        receiveShadow
-        rotation={[-Math.PI / 2, 0, 0]}
-        position={[0, -3, 0]}>
-        <planeBufferGeometry attach='geometry' args={[100, 100]} />
-        {/* <meshStandardMaterial attach='material' color={'yellow'} /> */}
-        <shadowMaterial attach='material' opacity={0.3} />
-      </mesh>
-      <Torus position={[2, 1, 1]} />
-      <Sphere position={[1, 1, 1]} />
-    </group>
-    <OrbitControls />
+      // Lighting
+      <ambientLight intensity={0.3} />
+      <directionalLight
+        castShadow
+        position={[0, 10, 0]}
+        intensity={1.5}
+        shadow-mapSize-width={1024}
+        shadow-mapSize-height={1024}
+        shadow-camera-far={50}
+        shadow-camera-left={-10}
+        shadow-camera-right={10}
+        shadow-camera-top={10}
+        shadow-camera-bottom={-10}
+      />
+      <pointLight position={[-10, 0, -20]} />
+      <pointLight castShadow position={[0, -10, 0]} />
+      <group>
+        // Floor mesh
+        <mesh
+          receiveShadow
+          rotation={[-Math.PI / 2, 0, 0]}
+          position={[0, -3, 0]}>
+          <planeBufferGeometry attach='geometry' args={[100, 100]} />
+          {/* <meshStandardMaterial attach='material' color={'yellow'} /> */}
+          <shadowMaterial attach='material' opacity={0.3} />
+        </mesh>
+        // Models
+        <Torus position={[2, 1, 1]} />
+        <Sphere position={[1, 1, 1]} />
+      </group>
+      // Camera Controls
+      {( isBreakpoint ) ? null : <OrbitControls />}
     </Canvas>
   )}

@@ -70,7 +70,6 @@ export const globalStyles = (
         }
       }
       .logo {
-        cursor: pointer;
         height: fit-content;
         margin-bottom: 1em;
         animation: fade 1.5s;
@@ -139,6 +138,11 @@ export const globalStyles = (
           position: absolute;
           left: 20px;
           z-index: 2;
+
+          // Hide when Orbital Controls are disabled
+          @media (max-width: 1024px) {
+            display: none;
+          }
         }
 
         @media (max-width: 890px) {
