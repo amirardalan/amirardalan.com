@@ -4,7 +4,7 @@ import Footer from '../components/Footer'
 import ThreeCanvas from '../components/ThreeCanvas'
 import Typical from 'react-typical'
 
-function Home() {
+export default function Home() {
   return (
     <div className="container">
 
@@ -60,5 +60,3 @@ function Home() {
     </div>
   )
 }
-
-export default Home

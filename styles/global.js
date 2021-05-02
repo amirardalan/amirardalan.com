@@ -125,6 +125,7 @@ export const globalStyles = (
         }
       }
       .mainRight {
+        position: relative;
         background-color: #eaeaea;
         display: flex;
         height: 100%;
@@ -135,7 +136,9 @@ export const globalStyles = (
         -webkit-animation: fade 2.5s;
 
         h4 {
-          margin: 1rem;
+          position: absolute;
+          left: 20px;
+          z-index: 2;
         }
 
         @media (max-width: 890px) {
