@@ -45,8 +45,12 @@ export const globalStyles = (
         padding-bottom: .5em;
         margin-bottom: 2em;
         text-transform: uppercase;
-        border-bottom: 10px solid black;
+        border-bottom: 8px solid black;
         width: fit-content;
+
+        a {
+          color: inherit;
+        }
       }
       h4 {
         font-size: 10px;
