@@ -24,7 +24,9 @@ export default function Home() {
                 "Front-end development", 1500,
                 "Web accessibility", 1500,
                 "Learning 📚", 1500,
-                "...and eating pizza 🍕", 1500,
+                "Playing soccer ⚽", 1500,
+                "Audio engineering 🔊", 1500,
+                "...and eating pizza 🍕", 1500
               ]}
               loop={Infinity}
               className="title"
