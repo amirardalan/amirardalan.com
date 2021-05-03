@@ -113,7 +113,7 @@ export const globalStyles = (
       }
       .mainLeft {
         display: flex;
-        height: 100%;
+        height: 75vh;
         flex-direction: column;
         align-self: flex-end;
         justify-content: space-between;
@@ -131,7 +131,7 @@ export const globalStyles = (
         position: relative;
         background-color: #eaeaea;
         display: flex;
-        height: 100%;
+        height: 75vh;
         width: 50%;
         flex-direction: column;
         align-self: flex-end;

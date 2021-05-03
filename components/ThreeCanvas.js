@@ -1,4 +1,4 @@
-import React, { useRef, Suspense } from 'react'
+import React, { useState, useRef, Suspense } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { softShadows, MeshWobbleMaterial, OrbitControls } from '@react-three/drei'
 import { useMediaQuery } from '../utils/mediaQuery'
@@ -16,7 +16,7 @@ export default function ThreeCanvas() {
   function Torus(props) {
 
     const mesh = useRef()
-    useFrame(() => (
+    if(mesh.current) useFrame((state, delta) => (
       mesh.current.rotation.x += 0.002,
       mesh.current.rotation.y += 0.002
     ))

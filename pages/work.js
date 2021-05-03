@@ -16,9 +16,9 @@ export default function Work() {
           <h2 className="title">
             Work
             <br/>
-            <br/> Go <Link href="/"><a>home</a></Link>.
-            <br/> Check out my <Link href="/bio"><a>bio</a></Link>.
-            <br/> Download my <Link href="/amir-ardalan-resume.pdf"><a>resume</a></Link>.
+            <br/> Go <Link href="/"><a>home</a></Link>
+            <br/> Check out my <Link href="/bio"><a>bio</a></Link>
+            <br/> Download my <Link href="/amir-ardalan-resume.pdf"><a>resume</a></Link>
           </h2>
 
         </div>

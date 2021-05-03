@@ -16,8 +16,8 @@ export default function Bio() {
           <h2 className="title">
             Bio
             <br/>
-            <br/> Go <Link href="/"><a>home</a></Link>.
-            <br/> Check out my <Link href="/work"><a>work</a></Link>.
+            <br/> Go <Link href="/"><a>home</a></Link>
+            <br/> Check out my <Link href="/work"><a>work</a></Link>
             <br/> Download my <Link href="/amir-ardalan-resume.pdf"><a>resume</a></Link>.
           </h2>
 

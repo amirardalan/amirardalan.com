@@ -15,7 +15,7 @@ export default function Home() {
           <Header />
 
           <h2 className="title">
-            Hi, 👋 I'm <Link href="/bio"><a>Amir Ardalan</a></Link>.
+            Hi, 👋 I'm <Link href="/bio"><a>Amir Ardalan</a></Link>
             <br/> My passions include:
             <Typical
               steps={[
@@ -29,8 +29,8 @@ export default function Home() {
               loop={Infinity}
               className="title"
             />
-            <br/> Check out my <Link href="/work"><a>work</a></Link>.
-            <br/> Download my <Link href="/amir-ardalan-resume.pdf"><a>resume</a></Link>.
+            <br/> Check out my <Link href="/work"><a>work</a></Link>
+            <br/> Download my <Link href="/amir-ardalan-resume.pdf"><a>resume</a></Link>
           </h2>
 
         </div>
