@@ -26,7 +26,7 @@ export default function ThreeCanvas() {
         {...props}
         ref={mesh}
         castShadow>
-        <torusGeometry args={[3, 1, 20, 100]} />
+        <torusBufferGeometry args={[3, 1, 20, 100]} />
         <meshStandardMaterial color='cyan' />
         <MeshWobbleMaterial
           color={'cyan'}
@@ -48,7 +48,7 @@ export default function ThreeCanvas() {
         {...props}
         ref={mesh}
         castShadow>
-        <sphereGeometry args={[1, 100, 20, 100]} />
+        <sphereBufferGeometry args={[1, 100, 20, 100]} />
         <meshStandardMaterial color='hotpink' wireframe="true"/>
       </mesh>
     )
