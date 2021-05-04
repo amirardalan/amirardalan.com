@@ -23,10 +23,10 @@ export default function ContentHome() {
   
   return (
     <>
-      Hi, 👋 I'm <Link href="/bio"><a>Amir Ardalan</a></Link>
+      Hi, 👋 I'm <span className="highlight">Amir Ardalan</span>
       <br/> My passions include:
       <TypingAnimation />
-    <br/> Check out my <Link href="/work"><a>work</a></Link>
+    <br/> Check out my <a href="https://github.com/amirardalan" target="_blank" rel="noopener noreferrer">github</a>
     <br/> Download my <Link href="/amir-ardalan-resume.pdf"><a>resume</a></Link>
   </>
   )

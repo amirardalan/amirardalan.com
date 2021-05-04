@@ -30,6 +30,11 @@ export function GlobalStyles () {
             66% { opacity: 0; }
             100% { opacity: 1; }
           }
+          .highlight {
+            background: ${theme.colors.highlightBg};
+            color: ${theme.colors.highlight};
+            padding: 0 .2rem;
+          }
           .code {
             background: #fafafa;
             border-radius: 5px;
@@ -80,8 +85,8 @@ export function GlobalStyles () {
           .header {
             height: fit-content;
             margin-bottom: 1em;
-            animation: fade .8s;
-            -webkit-animation: fade .8s;
+            animation: fade 1s;
+            -webkit-animation: fade 1s;
             flex-direction: column;
     
             @media (max-width: 890px) {
@@ -103,6 +108,9 @@ export function GlobalStyles () {
             position: absolute;
             top: 1.3rem;
             right: 5%;
+            animation: fade 4s;
+            -webkit-animation: fade 4s;
+
             img {
               transform: rotate(-30deg);
             }
@@ -117,8 +125,8 @@ export function GlobalStyles () {
             line-height: 1.15;
             font-size: calc(2vw + 2vh);
             font-weight: 700;
-            animation: fade 1.3s;
-            -webkit-animation: fade 1.3s;
+            animation: fade 2s;
+            -webkit-animation: fade 2s;
     
             @media (max-width: 890px) {
               flex: 100%;
@@ -156,8 +164,8 @@ export function GlobalStyles () {
             width: 50%;
             flex-direction: column;
             align-self: flex-end;
-            animation: fade 2s;
-            -webkit-animation: fade 2s;
+            animation: fade 3s;
+            -webkit-animation: fade 3s;
     
             h4 {
               position: absolute;
