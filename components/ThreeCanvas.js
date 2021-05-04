@@ -1,4 +1,4 @@
-import { React, useRef, Suspense } from 'react'
+import React, { useRef, Suspense } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { softShadows, MeshWobbleMaterial, OrbitControls } from '@react-three/drei'
 import { useMediaQuery } from '../utils/mediaQuery'
