@@ -5,11 +5,13 @@ export const themeLight = {
     link: '#00cec9',
     divider: '#eaeaea',
     footer: '#ccc',
-    footerLink: '#666'
+    footerLink: '#666',
   },
   toggleButton: {
     background: '#111',
-    text: 'Dark Mode'
+    text: 'Light Theme',
+    icon: '/sun.svg',
+    iconAlt: 'Sun Icon',
   }
 }
 
@@ -24,6 +26,8 @@ export const themeDark = {
   },
   toggleButton: {
     background: 'white',
-    text: 'Light Mode'
+    text: 'Dark Theme',
+    icon: '/moon.svg',
+    iconAlt: 'Moon Icon',
   }
 }

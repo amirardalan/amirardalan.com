@@ -11,7 +11,6 @@ export default function Header() {
             alt="Picture Amir Ardalan"
             width={120}
             height={120}
-            className="photo"
           />
         </a>
       </Link>

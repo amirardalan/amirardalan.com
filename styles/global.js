@@ -72,18 +72,14 @@ export function GlobalStyles () {
             justify-content: space-between;
     
             @media (max-width: 890px) {
-              padding: 3rem 0;
-            }
-    
-            @media (max-width: 480px) {
-              padding: 1rem 0;
+              padding: 1.6rem 0;
             }
           }
           .header {
             height: fit-content;
             margin-bottom: 1em;
-            animation: fade 1.5s;
-            -webkit-animation: fade 1.5s;
+            animation: fade .5s;
+            -webkit-animation: fade .5s;
             flex-direction: column;
     
             @media (max-width: 890px) {
@@ -99,19 +95,25 @@ export function GlobalStyles () {
             }
           }
           .toggleButton {
+            display: flex;
+            justify-content: space-between;
+            cursor: pointer;
             position: absolute;
-            top: 1rem;
+            top: 1.3rem;
             right: 5%;
-            height: 30px;
-            width: 100px;
+            span {
+              font-size: 10px;
+              text-transform: uppercase;
+              padding: .7rem 1rem 0 0;
+            }
           }
           .content {
             margin: 0;
             line-height: 1.15;
             font-size: calc(2vw + 2vh);
             font-weight: 700;
-            animation: fade 2s;
-            -webkit-animation: fade 2s;
+            animation: fade 1s;
+            -webkit-animation: fade 1s;
     
             @media (max-width: 890px) {
               flex: 100%;
@@ -149,8 +151,8 @@ export function GlobalStyles () {
             width: 50%;
             flex-direction: column;
             align-self: flex-end;
-            animation: fade 2.5s;
-            -webkit-animation: fade 2.5s;
+            animation: fade 1.5s;
+            -webkit-animation: fade 1.5s;
     
             h4 {
               position: absolute;
