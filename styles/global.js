@@ -66,6 +66,7 @@ export function GlobalStyles () {
             }
           }
           h4 {
+            display: none;
             font-size: 10px;
             font-weight: 300;
             text-transform: uppercase;
