@@ -1,6 +1,4 @@
-import React, { useState } from 'react'
 import Meta from '../components/Meta'
-import Head from 'next/head'
 import { ThemeProvider } from '@emotion/react'
 import { themeLight, themeDark } from '../styles/theme'
 import { GlobalStyles } from '../styles/global'
@@ -10,14 +8,12 @@ import Toggle from '../components/Toggle'
 function MyApp({ Component, pageProps }) {
 
   const [theme, toggleTheme, componentMounted] = useDarkMode();
-
   const themeMode = theme === 'light' ? themeLight : themeDark;
 
   if (!componentMounted) {
     return <div />
   };
   
-
   return (
     <>
       <Meta />

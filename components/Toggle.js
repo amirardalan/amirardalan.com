@@ -15,7 +15,6 @@ const Toggle = ({ toggleTheme }) => {
           alt={theme.toggleButton.iconAlt}
           width={30}
           height={30}
-          className="toggleButton"
         />
       </div>
     </>
