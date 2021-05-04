@@ -1,4 +1,6 @@
 import { css, Global, useTheme } from '@emotion/react'
+import "@fontsource/roboto/400.css"
+import "@fontsource/roboto/700.css"
 
 export function GlobalStyles () {
   const theme = useTheme()
