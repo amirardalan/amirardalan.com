@@ -78,8 +78,8 @@ export function GlobalStyles () {
           .header {
             height: fit-content;
             margin-bottom: 1em;
-            animation: fade .5s;
-            -webkit-animation: fade .5s;
+            animation: fade .8s;
+            -webkit-animation: fade .8s;
             flex-direction: column;
     
             @media (max-width: 890px) {
@@ -101,6 +101,9 @@ export function GlobalStyles () {
             position: absolute;
             top: 1.3rem;
             right: 5%;
+            img {
+              transform: rotate(-30deg);
+            }
             span {
               font-size: 10px;
               text-transform: uppercase;
@@ -112,8 +115,8 @@ export function GlobalStyles () {
             line-height: 1.15;
             font-size: calc(2vw + 2vh);
             font-weight: 700;
-            animation: fade 1s;
-            -webkit-animation: fade 1s;
+            animation: fade 1.3s;
+            -webkit-animation: fade 1.3s;
     
             @media (max-width: 890px) {
               flex: 100%;
@@ -151,8 +154,8 @@ export function GlobalStyles () {
             width: 50%;
             flex-direction: column;
             align-self: flex-end;
-            animation: fade 1.5s;
-            -webkit-animation: fade 1.5s;
+            animation: fade 2s;
+            -webkit-animation: fade 2s;
     
             h4 {
               position: absolute;

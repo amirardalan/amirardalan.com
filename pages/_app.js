@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Meta from '../components/Meta'
+import Head from 'next/head'
 import { ThemeProvider } from '@emotion/react'
 import { themeLight, themeDark } from '../styles/theme'
 import { GlobalStyles } from '../styles/global'
@@ -20,6 +21,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Meta />
+      <Head><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet" /></Head>
       <ThemeProvider theme={ themeMode }>
         <GlobalStyles />
         <Toggle theme={theme} toggleTheme={toggleTheme} />
