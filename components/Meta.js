@@ -21,7 +21,6 @@ export default function Meta() {
       <meta name="twitter:site" content="@amirardalan" />
 
       <link rel="icon" href="/favicon.ico" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" />
       <link rel="apple-touch-icon" href="/logo192.png" />
       <link rel="manifest" href="/manifest.json" />
     </Head>
