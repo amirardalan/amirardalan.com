@@ -59,6 +59,8 @@ export function GlobalStyles () {
             font-weight: 400;
             font-size: 12px;
             color: #999;
+            animation: fade .5s;
+            -webkit-animation: fade .5s;
 
             &:hover {
               color: ${theme.colors.footerLink};
@@ -75,8 +77,8 @@ export function GlobalStyles () {
           }
           .toggleButton {
             cursor: pointer;
-            animation: fade 4s;
-            -webkit-animation: fade 4s;
+            animation: fade 1.5s;
+            -webkit-animation: fade 1.5s;
             display: flex;
 
             &:hover {
@@ -119,8 +121,6 @@ export function GlobalStyles () {
             line-height: 1.15;
             font-size: calc(2vw + 2vh);
             font-weight: 700;
-            animation: fade 2s;
-            -webkit-animation: fade 2s;
     
             @media (max-width: 890px) {
               flex: 100%;
@@ -139,6 +139,8 @@ export function GlobalStyles () {
             flex-direction: column;
             align-self: flex-end;
             justify-content: space-between;
+            animation: fade 2.5s;
+            -webkit-animation: fade 2.5s;
 
             @media (max-width: 890px) {
               width: 100%;
@@ -157,8 +159,8 @@ export function GlobalStyles () {
             width: 50%;
             flex-direction: column;
             align-self: flex-end;
-            animation: fade 3s;
-            -webkit-animation: fade 3s;
+            animation: fade 3.5s;
+            -webkit-animation: fade 3.5s;
     
             h4 {
               position: absolute;
@@ -196,6 +198,9 @@ export function GlobalStyles () {
             font-size: .8rem;
             font-weight: 400;
             padding: 1em;
+            animation: fade 4.5s;
+            -webkit-animation: fade 4.5s;
+
             a {
               color: ${theme.colors.footerLink};
               padding: 0 .3em;
