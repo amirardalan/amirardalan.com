@@ -67,6 +67,16 @@ export function GlobalStyles () {
             90% { opacity: 1; }
             100% { transform: translate3d(0, 100%, 0); }
           }
+          @keyframes slide-left {
+            0% { opacity: 0; transform: translate3d(100%, 0, 0); }
+            90% { opacity: 1; }
+            100% { transform: translate3d(0, 0, 0); }
+          }
+          @keyframes slide-right {
+            0% { opacity: 1; transform: translate3d(0, 0, 0); }
+            90% { opacity: 0; }
+            100% { opacity: 0; transform: translate3d(100%, 0, 0); }
+          }
           @keyframes fade-in {
             0% { opacity: 0; }
             100% { opacity: 1; }
@@ -92,6 +102,7 @@ export function GlobalStyles () {
             height: auto;
             display: flex;
             justify-content: space-between;
+            animation: fade-in 3s forwards;
           }
           .title {
             align-self: center;
@@ -102,15 +113,12 @@ export function GlobalStyles () {
             margin: 0;
             padding: 0;
             cursor: pointer;
-            animation: fade 1.5s;
-            -webkit-animation: fade 1.5s;
             display: flex;
             overflow: hidden;
 
             &:hover {
               span {
-                animation: fade-in .2s forwards;
-                animation: slide-up .5s forwards;
+                animation: slide-left .5s forwards;
               }
             }
             
@@ -122,8 +130,7 @@ export function GlobalStyles () {
               text-transform: uppercase;
               padding: .3rem .5rem 0 0;
               text-align: right;
-              animation: fade-out .2s forwards;
-              animation: slide-down .3s forwards;
+              animation: slide-right .3s forwards;
             }
           }
           .profileImage {
@@ -172,8 +179,7 @@ export function GlobalStyles () {
             flex-direction: column;
             align-self: flex-end;
             justify-content: space-between;
-            animation: fade 2.5s;
-            -webkit-animation: fade 2.5s;
+            animation: slide-up 1s forwards;
 
             @media (max-width: 890px) {
               width: 100%;
@@ -192,8 +198,7 @@ export function GlobalStyles () {
             width: 50%;
             flex-direction: column;
             align-self: flex-end;
-            animation: fade 3.5s;
-            -webkit-animation: fade 3.5s;
+            animation: slide-up 1s forwards;
 
             &:hover {
               .canvasTitle{
@@ -237,8 +242,7 @@ export function GlobalStyles () {
             font-size: .8rem;
             font-weight: 400;
             padding: 1em;
-            animation: fade 4.5s;
-            -webkit-animation: fade 4.5s;
+            animation: fade-in 3s forwards;
 
             a {
               color: ${theme.colors.footerLink};
