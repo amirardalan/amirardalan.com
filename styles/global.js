@@ -28,7 +28,6 @@ export function GlobalStyles () {
             color: ${theme.colors.selectionText};
             background: ${theme.colors.selection};
           }
-
           ::selection {
             color: ${theme.colors.selectionText};
             background: ${theme.colors.selection};
@@ -38,6 +37,24 @@ export function GlobalStyles () {
             33% { opacity: 0; }
             66% { opacity: 0; }
             100% { opacity: 1; }
+          }
+          @keyframes slide-up {
+            0% { opacity: 0; transform: translate3d(0, 100%, 0); }
+            90% { opacity: 1; }
+            100% { transform: translate3d(0, 0, 0); }
+          }
+          @keyframes slide-down {
+            0% { opacity: 0; transform: translate3d(0, 0, 0); }
+            90% { opacity: 1; }
+            100% { transform: translate3d(0, 100%, 0); }
+          }
+          @keyframes fade-in {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+          }
+          @keyframes fade-out {
+            0% { opacity: 1; }
+            100% { opacity: 0; }
           }
           .highlight {
             background: ${theme.colors.highlightBg};
@@ -80,9 +97,13 @@ export function GlobalStyles () {
             animation: fade 1.5s;
             -webkit-animation: fade 1.5s;
             display: flex;
+            overflow: hidden;
 
             &:hover {
-              span { display: block; }
+              span {
+                animation: fade-in .2s forwards;
+                animation: slide-up .5s forwards;
+              }
             }
             
             span {
@@ -91,6 +112,8 @@ export function GlobalStyles () {
               text-transform: uppercase;
               padding: .4rem .5rem 0 0;
               text-align: right;
+              animation: fade-out .2s forwards;
+              animation: slide-down .2s forwards;
             }
           }
           .profileImage {
@@ -147,7 +170,7 @@ export function GlobalStyles () {
               justify-content: start;
               align-self: flex-start;
               margin-right: 0;
-              flex-direction: column-reverse;
+              flex-direction: row;
               height: auto;
             }
           }
