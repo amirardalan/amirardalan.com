@@ -1,66 +1,105 @@
-import React, { useMemo, useRef, Suspense } from 'react'
+import React, { useRef, Suspense } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
-import * as THREE from 'three'
-import { useTheme } from '@emotion/react'
+import { softShadows, MeshWobbleMaterial, OrbitControls } from '@react-three/drei'
+import { useMediaQuery } from '../utils/mediaQuery'
 
 // Three.js Canvas Component
 export default function ThreeCanvas() {
 
-  const theme = useTheme()
+  // Set the breakpoint for Orbital Controls rendering (disable on mobile)
+  const isBreakpoint = useMediaQuery(1024)
 
-  const roundedSquareWave = (t, delta, a, f) => {
-    return ((2 * a) / Math.PI) * Math.atan(Math.sin(2 * Math.PI * t * f) / delta)
-  }
-  
-  function Dots() {
-    const ref = useRef()
-    const { vec, transform, positions, distances } = useMemo(() => {
-      const vec = new THREE.Vector3()
-      const transform = new THREE.Matrix4()
-      const positions = [...Array(10000)].map((_, i) => {
-        const position = new THREE.Vector3()
-        // Place in a grid
-        position.x = (i % 100) - 50
-        position.y = Math.floor(i / 100) - 50
-  
-        // Offset every other column (hexagonal pattern)
-        position.y += (i % 2) * 0.5
-  
-        // Add some noise
-        position.x += Math.random() * 0.3
-        position.y += Math.random() * 0.3
-        return position
-      })
-      const distances = positions.map((pos) => pos.length())
-      return { vec, transform, positions, distances }
-    }, [])
-    useFrame(({ clock }) => {
-      for (let i = 0; i < 10000; ++i) {
-        const t = clock.elapsedTime - distances[i] / 80
-        const wave = roundedSquareWave(t, 0.1, 1, 1 / 4)
-        const scale = 1 + wave * 0.3
-        vec.copy(positions[i]).multiplyScalar(scale)
-        transform.setPosition(vec)
-        ref.current.setMatrixAt(i, transform)
-      }
-      ref.current.instanceMatrix.needsUpdate = true
-    })
+  // Soft Shadows
+  softShadows();
+
+  // Torus Mesh
+  function Torus(props) {
+
+    const mesh = useRef()
+
+    // Ensure mesh is loaded, then rotate it
+    if (mesh.current) useFrame(() => (
+      mesh.current.rotation.x += 0.002,
+      mesh.current.rotation.y += 0.002
+    ))
+
     return (
-      <instancedMesh ref={ref} args={[null, null, 10000]}>
-        <circleBufferGeometry args={[0.15]} />
-        <meshBasicMaterial />
-      </instancedMesh>
+      <mesh
+        {...props}
+        ref={mesh}
+        castShadow>
+        <torusBufferGeometry args={[3, 1, 20, 100]} />
+        <meshStandardMaterial color='cyan' />
+        <MeshWobbleMaterial
+          color={'cyan'}
+          speed='1'
+          attach='material'
+          factor={0.6}
+        />
+      </mesh>
     )
   }
-  
+
+  // Sphere Mesh
+  function Sphere(props) {
+
+    const mesh = useRef()
+
+    return (
+      <mesh
+        {...props}
+        ref={mesh}
+        castShadow>
+        <sphereBufferGeometry args={[1, 100, 20, 100]} />
+        <meshStandardMaterial color='hotpink' wireframe="true"/>
+      </mesh>
+    )
+  }
+
   return (
 
     // The Canvas where meshes will be rendered
+    <Canvas
+      shadowMap
+      shadows
+      colorManagement
 
-    <Canvas orthographic camera={{ zoom: 20 }} colorManagement={false}>
-      <Suspense>
-      <color attach="background" args={[theme.colors.background]} />
-      <Dots />
+      // Camera Config
+      camera={{
+        position: [-4, 2, 5],
+        fov: 60
+      }}>
+      <Suspense fallback={null}>
+
+        <ambientLight intensity={0.3} />
+        <directionalLight
+          castShadow
+          position={[0, 10, 0]}
+          intensity={1.5}
+          shadow-mapSize-width={1024}
+          shadow-mapSize-height={1024}
+          shadow-camera-far={50}
+          shadow-camera-left={-10}
+          shadow-camera-right={10}
+          shadow-camera-top={10}
+          shadow-camera-bottom={-10}
+        />
+        <pointLight position={[-10, 0, -20]} />
+        <pointLight castShadow position={[0, -10, 0]} />
+
+        <group>
+          <mesh
+            receiveShadow
+            rotation={[-Math.PI / 2, 0, 0]}
+            position={[0, -3, 0]}>
+            <planeBufferGeometry attach='geometry' args={[100, 100]} />
+            <shadowMaterial attach='material' opacity={0.3} />
+          </mesh>
+          <Torus position={[2, 1, 1]} />
+          <Sphere position={[1, 1, 1]} />
+        </group>
+
+        {( isBreakpoint ) ? null : <OrbitControls />}
       </Suspense>
     </Canvas>
   )}

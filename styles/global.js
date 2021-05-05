@@ -43,14 +43,6 @@ export function GlobalStyles () {
             font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, 
             Bitstream Vera Sans Mono, Courier New, monospace;
           }
-          .container {
-            min-height: 100vh;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-          }
           h1 {
             color: ${theme.colors.text};
             font-size: 10px;
@@ -65,61 +57,32 @@ export function GlobalStyles () {
               color: inherit;
             }
           }
-          h4 {
-            display: none;
-            font-size: 10px;
-            font-weight: 300;
-            text-transform: uppercase;
-          }
-          main {
-            padding: 5rem 0;
-            flex: 1;
-            display: flex;
-            flex-wrap: wrap;
-            width: 90%;
-            justify-content: space-between;
-    
-            @media (max-width: 890px) {
-              padding: 1.6rem 0;
-            }
-          }
           .header {
-            height: fit-content;
-            margin-bottom: 1em;
-            animation: fade 1s;
-            -webkit-animation: fade 1s;
-            flex-direction: column;
-    
-            @media (max-width: 890px) {
-              order: 2;
-              justify-content: space-between;
-              flex-direction: row-reverse;
-              display: flex;
-              img {
-                display: none !important;
-                width: 60px;
-                align-self: flex-end;
-              }
-            }
+            height: auto;
+            display: flex;
+            justify-content: flex-start;
           }
           .toggleButton {
-            display: flex;
-            justify-content: space-between;
             cursor: pointer;
-            position: absolute;
-            top: 1.3rem;
-            right: 5%;
             animation: fade 4s;
             -webkit-animation: fade 4s;
-
-            img {
-              transform: rotate(-30deg);
-            }
+            display: flex;
+            
             span {
               font-size: 10px;
               text-transform: uppercase;
-              padding: .7rem 1rem 0 0;
+              padding: .7rem 1rem 0 .5rem;
             }
+          }
+          .container {
+            padding: 2% 5% 0 5%;
+          }
+          main {
+            margin: 1rem 0 2rem;
+            flex: 1;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
           }
           .content {
             margin: 0;
@@ -143,7 +106,6 @@ export function GlobalStyles () {
           }
           .mainLeft {
             display: flex;
-            height: 75vh;
             flex-direction: column;
             align-self: flex-end;
             justify-content: space-between;
@@ -170,8 +132,12 @@ export function GlobalStyles () {
     
             h4 {
               position: absolute;
+              bottom: 0;
               left: 20px;
               z-index: 2;
+              font-size: 10px;
+              font-weight: 300;
+              text-transform: uppercase;
     
               // Hide when Orbital Controls are disabled
               @media (max-width: 1024px) {
@@ -182,12 +148,8 @@ export function GlobalStyles () {
             @media (max-width: 890px) {
               align-self: flex-start;
               width: 100%;
-              height: 50vh;
               margin-top: 2rem;
-            }
-            
-            @media (max-width: 480px) {
-              margin-top: 1rem;
+              height: 45vh;
             }
     
           }

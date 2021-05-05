@@ -8,9 +8,9 @@ export default function ContentHome() {
     return <Typical
     steps={[
       "React.js", 1500,
-      "User Interface design", 1500,
-      "Front-end development", 1500,
-      "Web accessibility", 1500,
+      "User Interface design.", 1500,
+      "Front-end development.", 1500,
+      "Web accessibility.", 1500,
       "Learning 📚", 1500,
       "Playing soccer ⚽", 1500,
       "Audio engineering 🔊", 1500,

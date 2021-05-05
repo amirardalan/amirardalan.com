@@ -1,4 +1,6 @@
 import Meta from '../components/Meta'
+import Footer from '../components/Footer'
+import ThreeCanvas from '../components/ThreeCanvas'
 import { ThemeProvider } from '@emotion/react'
 import { themeLight, themeDark } from '../styles/theme'
 import { GlobalStyles } from '../styles/global'
@@ -19,8 +21,25 @@ function MyApp({ Component, pageProps }) {
       <Meta />
       <ThemeProvider theme={ themeMode }>
         <GlobalStyles />
-        <Toggle theme={theme} toggleTheme={toggleTheme} />
-        <Component {...pageProps} />
+          <div className="container">
+            <div className="header">
+              <Toggle theme={theme} toggleTheme={toggleTheme} />
+            </div>
+            <main>
+              <div className="mainLeft"> 
+                <h2 className="content">
+                  <Component {...pageProps} />
+                </h2>
+              </div>
+              <div className="mainRight">
+                <h4>
+                  Infinite Chill
+                </h4>
+                <ThreeCanvas />
+              </div>
+            </main>
+            <Footer />
+          </div>
       </ThemeProvider>
     </>
   )
