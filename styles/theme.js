@@ -7,11 +7,13 @@ export const themeLight = {
     footer: '#ccc',
     footerLink: '#666',
     highlight: 'whitesmoke',
-    highlightBg: '#111'
+    highlightBg: '#111',
+    selection: 'yellow',
+    selectionText: '#111'
   },
   toggleButton: {
     background: '#111',
-    text: 'Lights Out',
+    text: 'Dark Mode',
     icon: '/moon.svg',
     iconAlt: 'Sun Icon'
   }
@@ -26,11 +28,13 @@ export const themeDark = {
     footer: '#666',
     footerLink: '#999',
     highlight: '#222',
-    highlightBg: 'whitesmoke'
+    highlightBg: 'whitesmoke',
+    selection: 'yellow',
+    selectionText: '#111'
   },
   toggleButton: {
     background: 'whitesmoke',
-    text: 'Brighten Things Up',
+    text: 'Light Mode',
     icon: '/sun.svg',
     iconAlt: 'Moon Icon',
   }

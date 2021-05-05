@@ -9,13 +9,13 @@ const Toggle = ({ toggleTheme }) => {
   return (
     <>
       <div className="toggleButton" onClick={toggleTheme}>
+        <span>{theme.toggleButton.text}</span>
         <Image
           src={theme.toggleButton.icon}
           alt={theme.toggleButton.iconAlt}
           width={30}
           height={30}
         />
-        <span>{theme.toggleButton.text}</span>
       </div>
     </>
   )

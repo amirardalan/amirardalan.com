@@ -24,6 +24,15 @@ export function GlobalStyles () {
           * {
             box-sizing: border-box;
           }
+          ::-moz-selection {
+            color: ${theme.colors.selectionText};
+            background: ${theme.colors.selection};
+          }
+
+          ::selection {
+            color: ${theme.colors.selectionText};
+            background: ${theme.colors.selection};
+          }
           @keyframes fade {
             0% { opacity: 0; }
             33% { opacity: 0; }
@@ -44,41 +53,62 @@ export function GlobalStyles () {
             Bitstream Vera Sans Mono, Courier New, monospace;
           }
           h1 {
-            color: ${theme.colors.text};
-            font-size: 10px;
-            font-weight: 300;
-            padding-bottom: .5em;
-            margin-bottom: 2em;
-            text-transform: uppercase;
-            border-bottom: 8px solid ${theme.colors.text};
-            width: fit-content;
-    
-            a {
-              color: inherit;
+            color: ${theme.colors.footer};
+            font-size: inherit;
+            display: inline;
+            font-weight: 400;
+            font-size: 12px;
+            color: #999;
+
+            &:hover {
+              color: ${theme.colors.footerLink};
+              text-decoration: underline;
             }
           }
           .header {
             height: auto;
             display: flex;
-            justify-content: flex-start;
+            justify-content: space-between;
+          }
+          .title {
+            align-self: center;
           }
           .toggleButton {
             cursor: pointer;
             animation: fade 4s;
             -webkit-animation: fade 4s;
             display: flex;
+
+            &:hover {
+              span { display: block; }
+            }
             
             span {
-              font-size: 10px;
+              width: 50px;
+              font-size: 9px;
               text-transform: uppercase;
-              padding: .7rem 1rem 0 .5rem;
+              padding: .4rem .5rem 0 0;
+              text-align: right;
+            }
+          }
+          .profileImage {
+            margin-bottom: 3rem;
+
+            @media (max-width: 890px) {
+              order: 1;
+            }
+
+            @media (max-width: 480px) {
+              margin-bottom: 2rem;
+              height: 60px;
+              width: 60px;
             }
           }
           .container {
             padding: 2% 5% 0 5%;
           }
           main {
-            margin: 1rem 0 2rem;
+            margin: 2rem 0 2rem;
             flex: 1;
             display: flex;
             flex-wrap: wrap;
@@ -109,7 +139,7 @@ export function GlobalStyles () {
             flex-direction: column;
             align-self: flex-end;
             justify-content: space-between;
-    
+
             @media (max-width: 890px) {
               width: 100%;
               justify-content: start;
@@ -164,7 +194,7 @@ export function GlobalStyles () {
             justify-content: center;
             align-items: center;
             font-size: .8rem;
-            font-weight: 600;
+            font-weight: 400;
             padding: 1em;
             a {
               color: ${theme.colors.footerLink};
