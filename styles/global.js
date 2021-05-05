@@ -183,7 +183,7 @@ export function GlobalStyles () {
             flex-direction: column;
             align-self: flex-end;
             justify-content: space-between;
-            animation: slide-up 1s forwards;
+            animation: slide-up .8s forwards;
 
             @media (max-width: 890px) {
               width: 100%;
