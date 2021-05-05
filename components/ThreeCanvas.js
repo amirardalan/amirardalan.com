@@ -1,105 +1,36 @@
-import React, { useRef, Suspense } from 'react'
-import { Canvas, useFrame } from '@react-three/fiber'
-import { softShadows, MeshWobbleMaterial, OrbitControls } from '@react-three/drei'
+import React, { Suspense } from 'react'
+import { Canvas } from '@react-three/fiber'
+import { Stars, Plane, Cloud, OrbitControls } from '@react-three/drei'
+import { Vector3 } from 'three'
 import { useMediaQuery } from '../utils/mediaQuery'
 
 // Three.js Canvas Component
 export default function ThreeCanvas() {
 
-  // Set the breakpoint for Orbital Controls rendering (disable on mobile)
-  const isBreakpoint = useMediaQuery(1024)
-
-  // Soft Shadows
-  softShadows();
-
-  // Torus Mesh
-  function Torus(props) {
-
-    const mesh = useRef()
-
-    // Ensure mesh is loaded, then rotate it
-    if (mesh.current) useFrame(() => (
-      mesh.current.rotation.x += 0.002,
-      mesh.current.rotation.y += 0.002
-    ))
-
-    return (
-      <mesh
-        {...props}
-        ref={mesh}
-        castShadow>
-        <torusBufferGeometry args={[3, 1, 20, 100]} />
-        <meshStandardMaterial color='cyan' />
-        <MeshWobbleMaterial
-          color={'cyan'}
-          speed='1'
-          attach='material'
-          factor={0.6}
-        />
-      </mesh>
-    )
-  }
-
-  // Sphere Mesh
-  function Sphere(props) {
-
-    const mesh = useRef()
-
-    return (
-      <mesh
-        {...props}
-        ref={mesh}
-        castShadow>
-        <sphereBufferGeometry args={[1, 100, 20, 100]} />
-        <meshStandardMaterial color='hotpink' wireframe="true"/>
-      </mesh>
-    )
-  }
+   // Set the breakpoint for Orbital Controls rendering (disable on mobile)
+   const isBreakpoint = useMediaQuery(1024)
 
   return (
+    <>
+      <h4>Through the Clouds</h4>
 
-    // The Canvas where meshes will be rendered
-    <Canvas
-      shadowMap
-      shadows
-      colorManagement
+      <Canvas
+        cameraPosition={new Vector3(0, 0, 10)}>
 
-      // Camera Config
-      camera={{
-        position: [-4, 2, 5],
-        fov: 60
-      }}>
-      <Suspense fallback={null}>
+        <Suspense fallback={null}>
 
-        <ambientLight intensity={0.3} />
-        <directionalLight
-          castShadow
-          position={[0, 10, 0]}
-          intensity={1.5}
-          shadow-mapSize-width={1024}
-          shadow-mapSize-height={1024}
-          shadow-camera-far={50}
-          shadow-camera-left={-10}
-          shadow-camera-right={10}
-          shadow-camera-top={10}
-          shadow-camera-bottom={-10}
-        />
-        <pointLight position={[-10, 0, -20]} />
-        <pointLight castShadow position={[0, -10, 0]} />
+          <Cloud position={[-4, -2, 0]} args={[3, 2,]} />
+          <Cloud position={[-4, 2, 0]} args={[3, 2]} />
+          <Cloud args={[3, 2]} />
+          <Cloud position={[4, -2, 0]} args={[3, 2]} />
+          <Cloud position={[4, 2, 0]} args={[3, 2]} />
 
-        <group>
-          <mesh
-            receiveShadow
-            rotation={[-Math.PI / 2, 0, 0]}
-            position={[0, -3, 0]}>
-            <planeBufferGeometry attach='geometry' args={[100, 100]} />
-            <shadowMaterial attach='material' opacity={0.3} />
-          </mesh>
-          <Torus position={[2, 1, 1]} />
-          <Sphere position={[1, 1, 1]} />
-        </group>
+          <Stars />
 
-        {( isBreakpoint ) ? null : <OrbitControls />}
-      </Suspense>
-    </Canvas>
+        </Suspense>
+
+        {( isBreakpoint ) ? null : <OrbitControls enablePan={false} zoomSpeed={0.5} />}
+
+      </Canvas>
+    </>
   )}

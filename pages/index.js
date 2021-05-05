@@ -13,10 +13,10 @@ export default function Home() {
           "User Interface design.", 1500,
           "Front-end development.", 1500,
           "Web accessibility.", 1500,
+          "Technical Challenges.", 1500,
           "Learning 📚", 1500,
-          "Playing soccer ⚽", 1500,
           "Audio engineering 🔊", 1500,
-          "...and eating pizza 🍕", 1500
+          "...eating pizza 🍕", 1500
         ]}
         loop={Infinity}
         className="content"
@@ -27,7 +27,7 @@ export default function Home() {
   return (
     <>
       Hi, 👋 I'm <span className="highlight">Amir Ardalan</span>
-      <br/> My passions include:
+      <br/> I am passionate about:
       <TypingAnimation />
     <br/> Check out my <a href="https://github.com/amirardalan" target="_blank" rel="noopener noreferrer">github</a>
     <br/> Download my <Link href="/amir-ardalan-resume.pdf"><a>resume</a></Link>
