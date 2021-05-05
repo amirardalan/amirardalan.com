@@ -97,6 +97,8 @@ export function GlobalStyles () {
             align-self: center;
           }
           .toggleButton {
+            background: none;
+            border: none;
             cursor: pointer;
             animation: fade 1.5s;
             -webkit-animation: fade 1.5s;
@@ -111,6 +113,7 @@ export function GlobalStyles () {
             }
             
             span {
+              color: ${theme.colors.text};
               width: 50px;
               font-size: 9px;
               text-transform: uppercase;

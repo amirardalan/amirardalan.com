@@ -14,8 +14,7 @@ export default function ThreeCanvas() {
     <>
       <h4 className="canvasTitle">Click + Drag / Zoom</h4>
 
-      <Canvas
-        cameraPosition={new Vector3(0, 0, 10)}>
+      <Canvas cameraPosition={new Vector3(0, 0, 10)}>
 
         <Suspense fallback={null}>
 

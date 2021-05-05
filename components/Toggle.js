@@ -4,11 +4,13 @@ import { func, string } from 'prop-types';
 import { useTheme } from '@emotion/react'
 
 const Toggle = ({ toggleTheme }) => {
+
   const isLight = theme === 'light'
   const theme = useTheme()
+
   return (
     <>
-      <div className="toggleButton" onClick={toggleTheme}>
+      <button className="toggleButton" tabIndex='2' onClick={toggleTheme}>
         <span>{theme.toggleButton.text}</span>
         <Image
           src={theme.toggleButton.icon}
@@ -16,7 +18,7 @@ const Toggle = ({ toggleTheme }) => {
           width={30}
           height={30}
         />
-      </div>
+      </button>
     </>
   )
 }
