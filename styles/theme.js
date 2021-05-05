@@ -14,8 +14,8 @@ export const themeLight = {
   },
   toggleButton: {
     background: '#111',
-    text: 'Dark Mode',
-    icon: '/moon.svg',
+    text: 'Light Mode',
+    icon: '/sun.svg',
     iconAlt: 'Sun Icon'
   }
 }
@@ -36,8 +36,8 @@ export const themeDark = {
   },
   toggleButton: {
     background: 'whitesmoke',
-    text: 'Light Mode',
-    icon: '/sun.svg',
+    text: 'Dark Mode',
+    icon: '/moon.svg',
     iconAlt: 'Moon Icon',
   }
 }

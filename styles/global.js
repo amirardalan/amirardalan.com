@@ -1,6 +1,6 @@
 import { css, Global, useTheme } from '@emotion/react'
-import "@fontsource/roboto/400.css"
-import "@fontsource/roboto/700.css"
+import "@fontsource/poppins/500.css"
+import "@fontsource/poppins/700.css"
 
 export function GlobalStyles () {
   const theme = useTheme()
@@ -12,7 +12,7 @@ export function GlobalStyles () {
           body {
             background-color: ${theme.colors.background};
             color: ${theme.colors.text};
-            font-family: 'Roboto';
+            font-family: 'Poppins';
             padding: 0;
             margin: 0;
             transition: all 0.25s linear;
@@ -21,19 +21,13 @@ export function GlobalStyles () {
             box-sizing: border-box;
           }
           h1 {
-            color: ${theme.colors.footer};
-            font-size: inherit;
-            display: inline;
-            font-weight: 400;
-            font-size: 12px;
-            color: #999;
+            color: ${theme.colors.text};
+            padding: 0;
+            margin: 0;
+            font-weight: 800;
+            font-size: 14px;
             animation: fade .5s;
             -webkit-animation: fade .5s;
-
-            &:hover {
-              color: ${theme.colors.footerLink};
-              text-decoration: underline;
-            }
           }
           a {
             color: ${theme.colors.link};
@@ -59,17 +53,17 @@ export function GlobalStyles () {
           }
           @keyframes slide-up {
             0% { opacity: 0; transform: translate3d(0, 100%, 0); }
-            90% { opacity: 1; }
+            98% { opacity: 1; }
             100% { transform: translate3d(0, 0, 0); }
           }
           @keyframes slide-down {
             0% { opacity: 0; transform: translate3d(0, 0, 0); }
-            90% { opacity: 1; }
+            98% { opacity: 1; }
             100% { transform: translate3d(0, 100%, 0); }
           }
           @keyframes slide-left {
             0% { opacity: 0; transform: translate3d(100%, 0, 0); }
-            90% { opacity: 1; }
+            98% { opacity: 1; }
             100% { transform: translate3d(0, 0, 0); }
           }
           @keyframes slide-right {
@@ -106,6 +100,9 @@ export function GlobalStyles () {
           }
           .title {
             align-self: center;
+            display: flex;
+            flex-direction: column;
+            line-height: 1rem;
           }
           .toggleButton {
             background: none;
@@ -115,6 +112,12 @@ export function GlobalStyles () {
             cursor: pointer;
             display: flex;
             overflow: hidden;
+            align-self: center;
+
+            img {
+              background: ${theme.colors.background};
+              transition: background-color .25s linear;
+            }
 
             &:hover {
               span {
@@ -150,7 +153,7 @@ export function GlobalStyles () {
             padding: 2% 5% 0 5%;
           }
           main {
-            margin: 2rem 0 2rem;
+            margin: 1.8rem 0 2rem;
             flex: 1;
             display: flex;
             flex-wrap: wrap;
@@ -158,12 +161,13 @@ export function GlobalStyles () {
           }
           .content {
             margin: 0;
-            line-height: 1.15;
-            font-size: calc(2vw + 2vh);
+            line-height: 1.3;
+            font-size: calc(1.8vw + 1.8vh);
             font-weight: 700;
     
             @media (max-width: 890px) {
               flex: 100%;
+              font-size: calc(2.5vw + 2.5vh);
             }
             a {
               text-decoration: none;
@@ -186,7 +190,7 @@ export function GlobalStyles () {
               justify-content: start;
               align-self: flex-start;
               margin-right: 0;
-              flex-direction: row;
+              flex-direction: column-reverse;
               height: auto;
             }
           }
