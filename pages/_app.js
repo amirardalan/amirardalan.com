@@ -47,9 +47,7 @@ function MyApp({ Component, pageProps }) {
                 </h2>
               </div>
               <div className="mainRight">
-                <h4>
-                  Wobbly Donut
-                </h4>
+                <h4>Wobbly Donut</h4>
                 <ThreeCanvas />
               </div>
             </main>
