@@ -99,6 +99,8 @@ export function GlobalStyles () {
           .toggleButton {
             background: none;
             border: none;
+            margin: 0;
+            padding: 0;
             cursor: pointer;
             animation: fade 1.5s;
             -webkit-animation: fade 1.5s;
@@ -115,9 +117,10 @@ export function GlobalStyles () {
             span {
               color: ${theme.colors.text};
               width: 50px;
-              font-size: 9px;
+              font-size: 8px;
+              line-height: .7rem;
               text-transform: uppercase;
-              padding: .4rem .5rem 0 0;
+              padding: .3rem .5rem 0 0;
               text-align: right;
               animation: fade-out .2s forwards;
               animation: slide-down .3s forwards;
