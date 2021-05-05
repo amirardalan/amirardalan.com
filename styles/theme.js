@@ -2,6 +2,7 @@ export const themeLight = {
   colors: {
     background: 'whitesmoke',
     text: '#111',
+    textLight: '#999',
     link: '#00cec9',
     divider: '#eaeaea',
     footer: '#ccc',
@@ -23,6 +24,7 @@ export const themeDark = {
   colors: {
     background: '#111',
     text: 'whitesmoke',
+    textLight: '#999',
     link: 'hotpink',
     divider: '#333',
     footer: '#666',

@@ -1,13 +1,16 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import Meta from '../components/Meta'
-import Footer from '../components/Footer'
-import ThreeCanvas from '../components/ThreeCanvas'
+
 import { ThemeProvider } from '@emotion/react'
 import { themeLight, themeDark } from '../styles/theme'
 import { GlobalStyles } from '../styles/global'
 import { useDarkMode } from '../utils/useDarkMode'
+
+import Meta from '../components/Meta'
 import Toggle from '../components/Toggle'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
+import ThreeCanvas from '../components/ThreeCanvas'
 
 function MyApp({ Component, pageProps }) {
 
@@ -25,11 +28,7 @@ function MyApp({ Component, pageProps }) {
         <GlobalStyles />
           <div className="container">
             <div className="header">
-              <Link href="/">
-                <a className="title">
-                  <h1>Amir Ardalan Portfolio</h1>
-                </a>
-              </Link>
+              <Header />
               <Toggle theme={theme} toggleTheme={toggleTheme} />
             </div>
             <main>

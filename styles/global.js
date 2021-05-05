@@ -17,12 +17,31 @@ export function GlobalStyles () {
             margin: 0;
             transition: all 0.25s linear;
           }
+          * {
+            box-sizing: border-box;
+          }
+          h1 {
+            color: ${theme.colors.footer};
+            font-size: inherit;
+            display: inline;
+            font-weight: 400;
+            font-size: 12px;
+            color: #999;
+            animation: fade .5s;
+            -webkit-animation: fade .5s;
+
+            &:hover {
+              color: ${theme.colors.footerLink};
+              text-decoration: underline;
+            }
+          }
           a {
             color: ${theme.colors.link};
             text-decoration: none;
           }
-          * {
-            box-sizing: border-box;
+          small {
+              font-size: 12px;
+              color: ${theme.colors.textLight};
           }
           ::-moz-selection {
             color: ${theme.colors.selectionText};
@@ -69,21 +88,6 @@ export function GlobalStyles () {
             font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, 
             Bitstream Vera Sans Mono, Courier New, monospace;
           }
-          h1 {
-            color: ${theme.colors.footer};
-            font-size: inherit;
-            display: inline;
-            font-weight: 400;
-            font-size: 12px;
-            color: #999;
-            animation: fade .5s;
-            -webkit-animation: fade .5s;
-
-            &:hover {
-              color: ${theme.colors.footerLink};
-              text-decoration: underline;
-            }
-          }
           .header {
             height: auto;
             display: flex;
@@ -113,7 +117,7 @@ export function GlobalStyles () {
               padding: .4rem .5rem 0 0;
               text-align: right;
               animation: fade-out .2s forwards;
-              animation: slide-down .2s forwards;
+              animation: slide-down .3s forwards;
             }
           }
           .profileImage {
@@ -184,8 +188,14 @@ export function GlobalStyles () {
             align-self: flex-end;
             animation: fade 3.5s;
             -webkit-animation: fade 3.5s;
-    
-            h4 {
+
+            &:hover {
+              .canvasTitle{
+                animation: fade-in .2s forwards;
+              }
+            }
+
+            .canvasTitle {
               position: absolute;
               bottom: 0;
               left: 20px;
@@ -193,6 +203,7 @@ export function GlobalStyles () {
               font-size: 10px;
               font-weight: 300;
               text-transform: uppercase;
+              animation: fade-out .2s forwards;
     
               // Hide when Orbital Controls are disabled
               @media (max-width: 1024px) {
@@ -210,7 +221,6 @@ export function GlobalStyles () {
           }
           footer {
             color: ${theme.colors.footer};
-            width: 100%;
             height: 100px;
             line-height: 2em;
             border-top: 1px solid ${theme.colors.divider};
@@ -227,21 +237,24 @@ export function GlobalStyles () {
             a {
               color: ${theme.colors.footerLink};
               padding: 0 .3em;
-    
               &:hover {
                 text-decoration: underline;
               }
             }
+
             div {
               flex-direction: row;
             }
+
             .small {
               font-size: .75rem;
+
               span {
                 color: ${theme.colors.footerLink};
               }
             }
           }
+
         `}
       />
     </>

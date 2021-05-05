@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react'
 import { Canvas } from '@react-three/fiber'
-import { Stars, Plane, Cloud, OrbitControls } from '@react-three/drei'
+import { Stars, Cloud, OrbitControls } from '@react-three/drei'
 import { Vector3 } from 'three'
 import { useMediaQuery } from '../utils/mediaQuery'
 
@@ -12,7 +12,7 @@ export default function ThreeCanvas() {
 
   return (
     <>
-      <h4>Through the Clouds</h4>
+      <h4 className="canvasTitle">Click + Drag / Zoom</h4>
 
       <Canvas
         cameraPosition={new Vector3(0, 0, 10)}>
