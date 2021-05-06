@@ -1,4 +1,4 @@
-import { ThemeProvider } from '@emotion/react'
+import { ThemeProvider, css } from '@emotion/react'
 import { themeLight, themeDark } from '../styles/theme'
 import { GlobalStyles } from '../styles/global'
 import { useDarkMode } from '../utils/useDarkMode'

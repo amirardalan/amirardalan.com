@@ -7,14 +7,13 @@ import { useMediaQuery } from '../utils/mediaQuery'
 // Three.js Canvas Component
 export default function ThreeCanvas() {
 
-   // Set the breakpoint for Orbital Controls rendering (disable on mobile)
-   const isBreakpoint = useMediaQuery(1024)
-
-   
+  // Set the breakpoint for Orbital Controls rendering (disable on mobile)
+  const isBreakpoint = useMediaQuery(1024)
 
   return (
     <>
-      <h4 className="canvasTitle">Click + Drag / Zoom</h4>
+      <h3 className="canvasTitle">Dream Big.</h3>
+      <h4 className="canvasControls">Click + Drag / Zoom</h4>
 
       <Canvas cameraPosition={new Vector3(0, 0, 10)}>
 
@@ -25,11 +24,11 @@ export default function ThreeCanvas() {
           <Cloud args={[3, 2]} />
           <Cloud position={[4, -2, 0]} args={[3, 2]} />
           <Cloud position={[4, 2, 0]} args={[3, 2]} />
-          <Stars />
+          {/* <Stars /> */}
 
         </Suspense>
 
-        {( isBreakpoint ) ? null : <OrbitControls enablePan={false} zoomSpeed={0.5} autoRotate={true} autoRotateSpeed={0.3} />}
+        {( isBreakpoint ) ? null : <OrbitControls enablePan={false} zoomSpeed={0.5} autoRotate={true} autoRotateSpeed={0.9} />}
 
       </Canvas>
     </>

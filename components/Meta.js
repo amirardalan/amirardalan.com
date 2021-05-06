@@ -3,7 +3,7 @@ import Head from 'next/head'
 export default function Meta() {
   return (
     <Head>
-      <title>Amir Ardalan - Portfolio</title>
+      <title>Amir Ardalan | Portfolio</title>
       <meta charset="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
       <meta name="theme-color" content="#000000" />
