@@ -13,7 +13,6 @@
     "@emotion/react": "^11.1.5",
     "@emotion/styled": "^11.3.0",
     "@fontsource/poppins": "^4.2.2",
-    "@fontsource/roboto": "^4.2.3",
     "@react-three/drei": "^4.3.2",
     "@react-three/fiber": "^6.0.17",
     "drei": "^2.2.21",

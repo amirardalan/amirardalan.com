@@ -10,7 +10,7 @@ import Meta from '../components/Meta'
 import Toggle from '../components/Toggle'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-import ThreeCanvas from '../components/ThreeCanvas'
+
 
 function MyApp({ Component, pageProps }) {
 
@@ -46,7 +46,7 @@ function MyApp({ Component, pageProps }) {
                 </h2>
               </div>
               <div className="mainRight">
-                <ThreeCanvas />
+
               </div>
             </main>
             <Footer />
