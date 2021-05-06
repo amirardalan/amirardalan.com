@@ -33,10 +33,6 @@ export function GlobalStyles () {
             color: ${theme.colors.link};
             text-decoration: none;
           }
-          small {
-              font-size: 12px;
-              color: ${theme.colors.textLight};
-          }
           ::-moz-selection {
             color: ${theme.colors.selectionText};
             background: ${theme.colors.selection};
@@ -99,10 +95,24 @@ export function GlobalStyles () {
             animation: fade-in 3s forwards;
           }
           .title {
+            position: relative;
             align-self: center;
             display: flex;
             flex-direction: column;
-            line-height: 1rem;
+            line-height: .8rem;
+
+            h1 {
+              padding: .3rem 0 0 0;
+            }
+
+            h2 {
+              margin: 0;
+              padding: .2rem 0 0 0;
+              color: ${theme.colors.textLight};
+              font-size: 8px;
+              font-weight: 500;
+              letter-spacing: .01rem;
+            }
           }
           .toggleButton {
             background: none;
@@ -151,6 +161,10 @@ export function GlobalStyles () {
           }
           .container {
             padding: 2% 5% 0 5%;
+
+            @media (max-width: 890px) {
+              padding: 5% 5% 0 5%;
+            }
           }
           main {
             margin: 1.8rem 0 2rem;
@@ -235,17 +249,17 @@ export function GlobalStyles () {
     
           }
           footer {
-            color: ${theme.colors.footer};
-            height: 100px;
-            line-height: 2em;
-            border-top: 1px solid ${theme.colors.divider};
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            padding: 1em;
+            height: 100px;
+            color: ${theme.colors.footer};
             font-size: .8rem;
             font-weight: 400;
-            padding: 1em;
+            line-height: 2em;
+            border-top: 1px solid ${theme.colors.divider};
             animation: fade-in 3s forwards;
 
             a {
@@ -258,14 +272,6 @@ export function GlobalStyles () {
 
             div {
               flex-direction: row;
-            }
-
-            .small {
-              font-size: .75rem;
-
-              span {
-                color: ${theme.colors.footerLink};
-              }
             }
           }
 

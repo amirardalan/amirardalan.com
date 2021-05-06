@@ -1,6 +1,7 @@
 import React from 'react'
-import Typical from 'react-typical'
+import Image from 'next/image'
 import Link from 'next/link'
+import Typical from 'react-typical'
 
 
 export default function Home() {
@@ -26,11 +27,21 @@ export default function Home() {
   
   return (
     <>
-      Hi, 👋 I'm <span className="highlight">Amir Ardalan</span>
-      <br/>I am passionate about:
-      <TypingAnimation />
-      <br/> Check out my <a href="https://github.com/amirardalan" target="_blank" rel="noopener noreferrer">github</a>
-      <br/> Download my <Link href="/amir-ardalan-resume.pdf"><a>resume</a></Link>
+      <div className="profileImage">
+        <Image
+          src="/photo.png"
+          alt="Picture Amir Ardalan"
+          width={100}
+          height={100}
+        />
+      </div>   
+      <div className="content">
+        Hi, 👋 I'm <span className="highlight">Amir Ardalan</span>
+        <br/>I am passionate about:
+        <TypingAnimation />
+        <br/> Check out my <a href="https://github.com/amirardalan" target="_blank" rel="noopener noreferrer">github</a>
+        <br/> Download my <Link href="/amir-ardalan-resume.pdf"><a>resume</a></Link>
+      </div>
     </>
   )
 }
