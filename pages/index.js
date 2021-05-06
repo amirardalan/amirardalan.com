@@ -62,6 +62,10 @@ export default function Home() {
             text-decoration: underline;
           }
         }
+        p {
+          margin: 0;
+          padding: 0;
+        }
       `}>
         Hi, 👋 I'm <span className="highlight">Amir Ardalan</span>
         <br/>I'm passionate about:
