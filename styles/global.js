@@ -98,6 +98,39 @@ export function GlobalStyles () {
           }
         }
 
+        // Three.js Canvas Styles
+        .canvasTitle {
+          position: absolute;
+          display: flex;
+          font-size: calc(4vw + 4vh);
+          padding: 0 2rem;
+          animation: slide-up 1.8s forwards;
+          margin: 0;
+          padding: 0;
+          /* z-index: 1; */
+        }
+
+        .canvasControls {
+          position: absolute;
+          bottom: 0;
+          left: 20px;
+          z-index: 2;
+          color: whitesmoke;
+          font-size: 10px;
+          font-weight: 300;
+          text-transform: uppercase;
+          animation: fade-out .2s forwards;
+
+          .mainRight:hover & {
+            animation: fade-in .2s forwards;
+          }
+
+          // Disable Drei Orbit Controls on mobile
+          @media (max-width: 1024px) {
+            display: none;
+          }
+        }
+
         // Special Text Styles
         ::-moz-selection {
           color: ${theme.colors.selectionText};
@@ -158,39 +191,6 @@ export function GlobalStyles () {
         @keyframes slide-right {
           from { opacity: 1; transform: translate3d(0, 0, 0); }
           to { opacity: 0; transform: translate3d(100%, 0, 0); }
-        }
-
-        // Three.js Canvas Styles
-        .canvasTitle {
-          position: absolute;
-          display: flex;
-          font-size: calc(4vw + 4vh);
-          padding: 0 2rem;
-          animation: slide-up 1.8s forwards;
-          margin: 0;
-          padding: 0;
-          /* z-index: 1; */
-        }
-
-        .canvasControls {
-          position: absolute;
-          bottom: 0;
-          left: 20px;
-          z-index: 2;
-          color: whitesmoke;
-          font-size: 10px;
-          font-weight: 300;
-          text-transform: uppercase;
-          animation: fade-out .2s forwards;
-
-          .mainRight:hover & {
-            animation: fade-in .2s forwards;
-          }
-
-          // Disable Drei Orbit Controls on mobile
-          @media (max-width: 1024px) {
-            display: none;
-          }
         }
 
       `}

@@ -1,6 +1,7 @@
 export const themeLight = {
   colors: {
     background: '#f5f5f5',
+    canvas: '#222',
     text: '#111',
     textLight: '#999',
     link: '#00cec9',
@@ -24,6 +25,7 @@ export const themeLight = {
 export const themeDark = {
   colors: {
     background: '#111',
+    canvas: '#444',
     text: '#f5f5f5',
     textLight: '#999',
     link: '#FF69B4',

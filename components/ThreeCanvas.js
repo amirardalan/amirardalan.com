@@ -1,6 +1,6 @@
 import React, { Suspense, useEffect, useState } from 'react'
 import { Canvas } from '@react-three/fiber'
-import { Loader,  OrbitControls, Cloud } from '@react-three/drei'
+import { Loader,  OrbitControls, Cloud, Stars } from '@react-three/drei'
 import { a, useSpring } from '@react-spring/three'
 import { css } from '@emotion/react'
 import { useMediaQuery } from '../utils/mediaQuery'
@@ -34,16 +34,29 @@ export default function ThreeCanvas() {
     )
   }
 
-  function Dot() {
+  function Scene() {
     const props = useSpring({
       loop: { reverse: true },
-      from: { position: [-1, 0, 0] },
-      to: { position: [1, 0, 0] }
+      from: { position: [0, 0, 1] },
+      to: { position: [0, 0, 3.8] },
+      config: {
+        duration: 5000,
+        decay: 1000
+      }
     })
     return (
       <a.mesh {...props}>
+
         <sphereBufferGeometry args={[1, 32, 32]} />
         <meshBasicMaterial color={'white'} />
+
+        <Cloud position={[-4, -2, 0]} args={[3, 2,]} />
+        <Cloud position={[-4, 2, 0]} args={[3, 2]} />
+        <Cloud args={[3, 2]} />
+        <Cloud position={[4, -2, 0]} args={[3, 2]} />
+        <Cloud position={[4, 2, 0]} args={[3, 2]} />
+        
+        <Stars />
       </a.mesh>
     )
   }
@@ -53,15 +66,10 @@ export default function ThreeCanvas() {
       <CanvasText />
       <Canvas colorManagement={false}>
         <Suspense fallback={null}>
-          <Dot />
-          <Cloud position={[-4, -2, 0]} args={[3, 2,]} />
-          <Cloud position={[-4, 2, 0]} args={[3, 2]} />
-          <Cloud args={[3, 2]} />
-          <Cloud position={[4, -2, 0]} args={[3, 2]} />
-          <Cloud position={[4, 2, 0]} args={[3, 2]} />
+          <Scene />
           <Effects />
         </Suspense>
-        {( isBreakpoint ) ? null : <OrbitControls enablePan={false} zoomSpeed={0.5} autoRotate={false} autoRotateSpeed={0.9} />}
+        {/* {( isBreakpoint ) ? null : <OrbitControls enablePan={false} zoomSpeed={0.5} autoRotate={false} autoRotateSpeed={0.9} />} */}
       </Canvas>
       <Loader />
     </>
