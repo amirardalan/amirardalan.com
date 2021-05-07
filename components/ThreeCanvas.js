@@ -2,9 +2,9 @@ import React, { Suspense, useEffect, useState } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { Loader,  OrbitControls, Cloud, Stars, Sky } from '@react-three/drei'
 import { a, useSpring } from '@react-spring/three'
+import BezierEasing from 'bezier-easing'
 import { css, useTheme } from '@emotion/react'
 import { useMediaQuery } from '../utils/mediaQuery'
-import BezierEasing from 'bezier-easing'
 import { Effects } from '../components/Effects'
 
 // Three.js Canvas Component

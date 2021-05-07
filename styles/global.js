@@ -80,7 +80,6 @@ export function GlobalStyles () {
         .mainRight {
           cursor: crosshair;
           position: relative;
-          background-color: black;
           display: flex;
           height: 75vh;
           width: 50%;
