@@ -12,6 +12,7 @@ export const themeLight = {
     selection: 'yellow',
     selectionText: '#111'
   },
+  logo: '/logoLight.svg',
   toggleButton: {
     background: '#111',
     text: 'Light Mode',
@@ -25,7 +26,7 @@ export const themeDark = {
     background: '#111',
     text: '#f5f5f5',
     textLight: '#999',
-    link: 'hotpink',
+    link: '#FF69B4',
     divider: '#333',
     footer: '#666',
     footerLink: '#999',
@@ -34,6 +35,7 @@ export const themeDark = {
     selection: 'yellow',
     selectionText: '#111'
   },
+  logo: '/logoDark.svg',
   toggleButton: {
     background: '#f5f5f5',
     text: 'Dark Mode',

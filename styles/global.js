@@ -122,38 +122,42 @@ export function GlobalStyles () {
         }
 
         // Animation Styles
+        @keyframes spin {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+        @keyframes spin-reverse {
+          from { transform: rotate(360deg); }
+          to { transform: rotate(0deg); }
+        }
         @keyframes fade-in {
-          0% { opacity: 0; }
-          100% { opacity: 1; }
+          from { opacity: 0; }
+          to { opacity: 1; }
         }
         
         @keyframes fade-out {
-          0% { opacity: 1; }
-          100% { opacity: 0; }
+          from { opacity: 1; }
+          to { opacity: 0; }
         }
 
         @keyframes slide-up {
-          0% { opacity: 0; transform: translate3d(0, 100%, 0); }
-          98% { opacity: 1; }
-          100% { transform: translate3d(0, 0, 0); }
+          from { opacity: 0; transform: translate3d(0, 100%, 0); }
+          to { opacity: 1; transform: translate3d(0, 0, 0); }
         }
 
         @keyframes slide-down {
-          0% { opacity: 0; transform: translate3d(0, 0, 0); }
-          98% { opacity: 1; }
-          100% { transform: translate3d(0, 100%, 0); }
+          from { opacity: 0; transform: translate3d(0, 0, 0); }
+          to { opacity: 1; transform: translate3d(0, 100%, 0); }
         }
 
         @keyframes slide-left {
-          0% { opacity: 0; transform: translate3d(100%, 0, 0); }
-          98% { opacity: 1; }
-          100% { transform: translate3d(0, 0, 0); }
+          from { opacity: 0; transform: translate3d(100%, 0, 0); }
+          to { opacity: 1; transform: translate3d(0, 0, 0); }
         }
 
         @keyframes slide-right {
-          0% { opacity: 1; transform: translate3d(0, 0, 0); }
-          90% { opacity: 0; }
-          100% { opacity: 0; transform: translate3d(100%, 0, 0); }
+          from { opacity: 1; transform: translate3d(0, 0, 0); }
+          to { opacity: 0; transform: translate3d(100%, 0, 0); }
         }
 
         // Three.js Canvas Styles
@@ -162,7 +166,7 @@ export function GlobalStyles () {
             display: flex;
             font-size: calc(4vw + 4vh);
             padding: 0 2rem;
-            animation: slide-up 3s forwards;
+            animation: slide-up 1.8s forwards;
             margin: 0;
             padding: 0;
             /* z-index: 1; */
