@@ -80,7 +80,7 @@ export function GlobalStyles () {
         .mainRight {
           cursor: crosshair;
           position: relative;
-          background-color: ${theme.canvas.bg};
+          background-color: black;
           display: flex;
           height: 75vh;
           width: 50%;
@@ -105,10 +105,10 @@ export function GlobalStyles () {
           display: flex;
           font-size: calc(4vw + 4vh);
           padding: 0 2rem;
-          animation: slide-up 1.8s forwards;
+          animation: ${theme.canvas.textAnim};
           margin: 0;
           padding: 0;
-          /* z-index: 1; */
+          z-index: 1;
         }
 
         .canvasControls {

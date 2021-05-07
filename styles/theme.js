@@ -21,8 +21,13 @@ export const themeLight = {
   },
   canvas: {
     text: 'Day.',
-    bg: '#eaeaea',
-    sphere: '#999'
+    textSmall: 'Powered By Three.js',
+    bg: '#ebfcff',
+    sphere: '#f5f5f5',
+    zoomFrom: -300,
+    zoomTo: 3,
+    textAnim: 'fade-in 3s forwards',
+    stars: 5000
   }
 }
 
@@ -50,7 +55,12 @@ export const themeDark = {
   },
   canvas: {
     text: 'Night.',
-    bg: '#333',
-    sphere: '#999'
+    textSmall: 'Powered By Three.js',
+    bg: '#111',
+    sphere: '#f5f5f5',
+    zoomFrom: 3,
+    zoomTo: -300,
+    textAnim: 'fade-in 3s forwards',
+    stars: 5000
   }
 }

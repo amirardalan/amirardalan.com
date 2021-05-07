@@ -1,16 +1,17 @@
 import React, { Suspense, useEffect, useState } from 'react'
 import { Canvas } from '@react-three/fiber'
-import { Loader,  OrbitControls, Cloud, Stars } from '@react-three/drei'
+import { Loader,  OrbitControls, Cloud, Stars, Sky } from '@react-three/drei'
 import { a, useSpring } from '@react-spring/three'
 import { css, useTheme } from '@emotion/react'
 import { useMediaQuery } from '../utils/mediaQuery'
+import BezierEasing from 'bezier-easing'
 import { Effects } from '../components/Effects'
 
 // Three.js Canvas Component
 export default function ThreeCanvas() {
 
   // Set the breakpoint for Orbital Controls rendering (disable on mobile)
-  const isBreakpoint = useMediaQuery(1024)
+  // const isBreakpoint = useMediaQuery(1024)
 
   const theme = useTheme()
 
@@ -21,7 +22,7 @@ export default function ThreeCanvas() {
     useEffect(() => {
       setTimeout(() => {
         setDisplay('block');
-      }, 1000);
+      }, 500);
     }, [])
 
     return (
@@ -32,27 +33,35 @@ export default function ThreeCanvas() {
           {theme.canvas.text}
         </h3>
         <h4 className="canvasControls">
-          Click + Drag / Zoom
+        {theme.canvas.textSmall}
         </h4>
       </>
     )
   }
 
   function Scene() {
+
+    let easing = BezierEasing(0.25, 0.1, 0.0, 1.0);
+
     const props = useSpring({
       loop: { reverse: false },
-      from: { position: [0, 0, 1] },
-      to: { position: [0, 0, 3.8] },
+      from: { position: [0, 0, theme.canvas.zoomFrom] },
+      to: { position: [0, 0, theme.canvas.zoomTo] },
       config: {
-        duration: 10000,
-        tension: 60
+        duration: 5000,
+        tension: 150,
+        mass: 3,
+        friction: 5,
+        velocity: 1,
+        precision: 0.001,
+        easing: easing
       }
     })
     return (
       <a.mesh {...props}>
 
-        <sphereBufferGeometry args={[1, 32, 32]} />
-        <meshBasicMaterial color={theme.canvas.sphere} opacity={50} />
+        <sphereBufferGeometry args={[1, 100, 100]} />
+        <meshBasicMaterial color={theme.canvas.sphere} opacity={100} />
 
         <Cloud position={[-4, -2, 0]} args={[3, 2,]} />
         <Cloud position={[-4, 2, 0]} args={[3, 2]} />
@@ -60,7 +69,22 @@ export default function ThreeCanvas() {
         <Cloud position={[4, -2, 0]} args={[3, 2]} />
         <Cloud position={[4, 2, 0]} args={[3, 2]} />
         
-        <Stars />
+        <Stars
+          radius={.5} // Radius of the inner sphere (default=100)
+          depth={100} // Depth of area where stars should fit (default=50)
+          count={theme.canvas.stars} // Amount of stars (default=5000)
+          factor={4} // Size factor (default=4)
+          saturation={0} // Saturation 0-1 (default=0)
+          fade // Faded dots (default=false)
+        />
+
+        <Sky
+          distance={500} // Camera distance (default=450000)
+          sunPosition={[0, 1, 0]} // Sun position normal (defaults to inclination and azimuth if not set)
+          inclination={0} // Sun elevation angle from 0 to 1 (default=0)
+          azimuth={0.25} // Sun rotation around the Y axis from 0 to 1 (default=0.25)
+          {...props} // All three-stdlib/objects/Sky props are valid
+        />
       </a.mesh>
     )
   }
@@ -69,12 +93,16 @@ export default function ThreeCanvas() {
     <>
       <CanvasText />
       <Canvas colorManagement={false}>
+      <ambientLight intensity={1} />
+        <pointLight position={[10, 10, 10]} />
+        <directionalLight position={[0, 0, 5]} intensity={1} />
         <Suspense fallback={null}>
           <Scene />
           <Effects />
         </Suspense>
-        {( isBreakpoint ) ? null : <OrbitControls enablePan={false} zoomSpeed={0.5} autoRotate={true} autoRotateSpeed={0.3} />}
+        {/* {( isBreakpoint ) ? null : <OrbitControls enablePan={false} zoomSpeed={0.5} autoRotate={true} autoRotateSpeed={0.3} />} */}
       </Canvas>
       <Loader />
     </>
-  )}
+  )
+}

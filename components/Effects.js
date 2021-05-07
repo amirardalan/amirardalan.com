@@ -2,7 +2,6 @@ import * as THREE from 'three'
 import React, { useMemo, useEffect, useRef } from 'react'
 import { useThree, useFrame, extend } from '@react-three/fiber'
 import { EffectComposer, ShaderPass, SavePass, RenderPass, CopyShader, GlitchPass } from 'three-stdlib'
-
 extend({ EffectComposer, ShaderPass, SavePass, RenderPass, GlitchPass })
 
 // Shader that composites the r,g,b channels of 3 textures, respectively
@@ -60,8 +59,8 @@ export function Effects() {
   return (
     <effectComposer ref={composer} args={[gl]}>
       <renderPass attachArray="passes" scene={scene} camera={camera} />
-      <shaderPass attachArray="passes" ref={blendPass} args={[triColorMix, 'tDiffuse1']} needsSwap={false} />
       <glitchPass attachArray="passes" renderToScreen />
+      <shaderPass attachArray="passes" ref={blendPass} args={[triColorMix, 'tDiffuse1']} needsSwap={false} />
       <savePass attachArray="passes" ref={savePass} needsSwap={true} />
       <shaderPass attachArray="passes" args={[CopyShader]} />
     </effectComposer>
