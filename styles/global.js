@@ -162,38 +162,36 @@ export function GlobalStyles () {
 
         // Three.js Canvas Styles
         .canvasTitle {
-            position: absolute;
-            display: flex;
-            font-size: calc(4vw + 4vh);
-            padding: 0 2rem;
-            animation: slide-up 1.8s forwards;
-            margin: 0;
-            padding: 0;
-            /* z-index: 1; */
+          position: absolute;
+          display: flex;
+          font-size: calc(4vw + 4vh);
+          padding: 0 2rem;
+          animation: slide-up 1.8s forwards;
+          margin: 0;
+          padding: 0;
+          /* z-index: 1; */
+        }
+
+        .canvasControls {
+          position: absolute;
+          bottom: 0;
+          left: 20px;
+          z-index: 2;
+          color: whitesmoke;
+          font-size: 10px;
+          font-weight: 300;
+          text-transform: uppercase;
+          animation: fade-out .2s forwards;
+
+          .mainRight:hover & {
+            animation: fade-in .2s forwards;
           }
 
-          &:hover {
-            .canvasControls{
-              animation: fade-in .2s forwards;
-            }
+          // Disable Drei Orbit Controls on mobile
+          @media (max-width: 1024px) {
+            display: none;
           }
-
-          .canvasControls {
-            position: absolute;
-            bottom: 0;
-            left: 20px;
-            z-index: 2;
-            color: whitesmoke;
-            font-size: 10px;
-            font-weight: 300;
-            text-transform: uppercase;
-            animation: fade-out .2s forwards;
-
-            // Disable Drei Orbit Controls on mobile
-            @media (max-width: 1024px) {
-              display: none;
-            }
-          }
+        }
 
       `}
     />
