@@ -1,7 +1,6 @@
 export const themeLight = {
   colors: {
     background: '#f5f5f5',
-    canvas: '#222',
     text: '#111',
     textLight: '#999',
     link: '#00cec9',
@@ -19,6 +18,11 @@ export const themeLight = {
     text: 'Light Mode',
     icon: '/sun.svg',
     iconAlt: 'Sun Icon'
+  },
+  canvas: {
+    text: 'Day.',
+    bg: '#eaeaea',
+    sphere: '#999'
   }
 }
 
@@ -43,5 +47,10 @@ export const themeDark = {
     text: 'Dark Mode',
     icon: '/moon.svg',
     iconAlt: 'Moon Icon',
+  },
+  canvas: {
+    text: 'Night.',
+    bg: '#333',
+    sphere: '#999'
   }
 }

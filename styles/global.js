@@ -80,7 +80,7 @@ export function GlobalStyles () {
         .mainRight {
           cursor: crosshair;
           position: relative;
-          background-color: ${theme.colors.divider};
+          background-color: ${theme.canvas.bg};
           display: flex;
           height: 75vh;
           width: 50%;
@@ -100,6 +100,7 @@ export function GlobalStyles () {
 
         // Three.js Canvas Styles
         .canvasTitle {
+          color: ${theme.colors.text};
           position: absolute;
           display: flex;
           font-size: calc(4vw + 4vh);
