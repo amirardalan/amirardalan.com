@@ -9,7 +9,6 @@ import Meta from '../components/Meta'
 import Toggle from '../components/Toggle'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-import ThreeCanvas from '../components/ThreeCanvas'
 
 function MyApp({ Component, pageProps }) {
 
@@ -30,21 +29,14 @@ function MyApp({ Component, pageProps }) {
     <ThemeProvider theme={themeMode}>
       <Meta />
       <GlobalStyles />
-        <div className="container">
-          <div className="header">
-            <Header />
-            <Toggle theme={theme} toggleTheme={toggleTheme} />
-          </div>
-          <main>
-            <div className="mainLeft">
-              <Component {...pageProps} />
-            </div>
-            <div className="mainRight">
-              <ThreeCanvas />
-            </div>
-          </main>
-          <Footer />
+      <div className="container">
+        <div className="header">
+          <Header />
+          <Toggle theme={theme} toggleTheme={toggleTheme} />
         </div>
+        <Component {...pageProps} />
+        <Footer />
+      </div>
     </ThemeProvider>
   )
 }

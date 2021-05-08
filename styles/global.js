@@ -30,12 +30,10 @@ export function GlobalStyles () {
         }
 
         a {
-            color: ${theme.colors.link};
-            text-decoration: none;
-            text-decoration: none;
-            &:hover,
-            &:focus,
-            &:active {
+          color: ${theme.colors.link};
+          text-decoration: none;
+          text-decoration: none;
+            &:hover {
               text-decoration: underline;
             }
           }
@@ -47,6 +45,7 @@ export function GlobalStyles () {
 
         // Layout Styles
         .header {
+          margin-bottom: 1.8rem;
           height: auto;
           display: flex;
           justify-content: space-between;
@@ -62,7 +61,6 @@ export function GlobalStyles () {
         }
 
         main {
-          margin: 1.8rem 0 2rem;
           flex: 1;
           display: flex;
           flex-wrap: wrap;

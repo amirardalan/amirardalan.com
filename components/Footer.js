@@ -3,10 +3,32 @@ import { css, useTheme } from '@emotion/react'
 
 export default function Footer() {
 
+  const LinkNextjsGA = () => {
+    ReactGA.event({
+        category: 'Link',
+        action: 'Next.js Link Clicked'
+    })
+  }
+
+  const LinkEmotionGA = () => {
+    ReactGA.event({
+        category: 'Link',
+        action: 'Emotion Link Clicked'
+    })
+  }
+
+  const LinkThreejsGA = () => {
+    ReactGA.event({
+        category: 'Link',
+        action: 'Three.js Link Clicked'
+    })
+  }
+
   const theme = useTheme()
 
   return (
     <footer css={css`
+      margin-top: 2rem;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -39,9 +61,9 @@ export default function Footer() {
         }
       `}>
         Made with <span>&hearts;</span> using: 
-        <Link href="https://nextjs.org/"><a>Next.js</a></Link>+ 
-        <Link href="https://emotion.sh/"><a>Emotion</a></Link>+ 
-        <Link href="https://threejs.org/"><a>Three.js</a></Link>
+        <Link href="https://nextjs.org/" target="_blank" rel="noopener noreferrer" onClick={LinkNextjsGA} aria-label="Next.js">Next.js</Link>+ 
+        <Link href="https://emotion.sh/" target="_blank" rel="noopener noreferrer" onClick={LinkEmotionGA} aria-label="Emotion CSS">Emotion</Link>+ 
+        <Link href="https://threejs.org/" target="_blank" rel="noopener noreferrer" onClick={LinkThreejsGA} aria-label="Three.js">Three.js</Link>
       </div>
     </footer>
   )
