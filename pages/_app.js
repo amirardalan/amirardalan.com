@@ -12,10 +12,13 @@ import Footer from '../components/Footer'
 
 function MyApp({ Component, pageProps }) {
 
+  // Google Analytics
   useEffect(() => {
-    ReactGA.initialize('UA-185835431-1')
+    ReactGA.initialize(process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS)
     ReactGA.pageview(window.location.pathname + window.location.search)
   }, [])
+
+  console.log(process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS)
 
   const [theme, toggleTheme, componentMounted] = useDarkMode();
   const themeMode = theme === 'light' ? themeLight : themeDark;
