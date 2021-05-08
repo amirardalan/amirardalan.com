@@ -27,13 +27,17 @@ export default function ThreeCanvas() {
 
     return (
       <>
-        <h3 className="canvasTitle" css={css`
-          display: ${display};
-        `}>
+        <h3
+          className="canvasTitle"
+          aria-label="${theme.canvas.text}"
+          css={css`
+          display: ${display}; `}>
           {theme.canvas.text}
         </h3>
-        <h4 className="canvasControls">
-        {theme.canvas.textSmall}
+        <h4
+          className="canvasControls"
+          aria-label="${theme.canvas.textSmall}">
+          {theme.canvas.textSmall}
         </h4>
       </>
     )

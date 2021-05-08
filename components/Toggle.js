@@ -5,7 +5,6 @@ import { useTheme, css } from '@emotion/react'
 
 const Toggle = ({ toggleTheme }) => {
 
-  const isLight = theme === 'light'
   const theme = useTheme()
 
   return (
@@ -13,6 +12,7 @@ const Toggle = ({ toggleTheme }) => {
       <button
         tabIndex='2'
         onClick={toggleTheme}
+        aria-label="Toggle Dark Mode"
         css={css`
           background: none;
           border: none;
@@ -23,9 +23,7 @@ const Toggle = ({ toggleTheme }) => {
           overflow: hidden;
           align-self: center;
           &:hover {
-            span {
-              animation: slide-left .5s forwards;
-            }
+            span { animation: slide-left .5s forwards; }
           }
         `}>
 
@@ -37,14 +35,14 @@ const Toggle = ({ toggleTheme }) => {
           text-transform: uppercase;
           padding: .3rem .5rem 0 0;
           text-align: right;
-          animation: slide-right .3s forwards;
-        `}>
+          animation: slide-right .3s forwards; `}>
           {theme.toggleButton.text}
         </span>
 
         <Image
           src={theme.toggleButton.icon}
           alt={theme.toggleButton.iconAlt}
+          aria-label={theme.toggleButton.iconAlt}
           width={30}
           height={30}
           css={css`

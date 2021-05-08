@@ -30,11 +30,20 @@ export function GlobalStyles () {
         }
 
         a {
-          color: ${theme.colors.link};
-          text-decoration: none;
-
-          &:hover { text-decoration: underline; }
-        }
+            color: ${theme.colors.link};
+            text-decoration: none;
+            text-decoration: none;
+            &:hover,
+            &:focus,
+            &:active {
+              text-decoration: underline;
+            }
+          }
+          
+          p {
+            margin: 0;
+            padding: 0;
+          }
 
         // Layout Styles
         .header {

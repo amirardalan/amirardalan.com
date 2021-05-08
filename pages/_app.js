@@ -27,7 +27,7 @@ function MyApp({ Component, pageProps }) {
   };
   
   return (
-    <ThemeProvider theme={ themeMode }>
+    <ThemeProvider theme={themeMode}>
       <Meta />
       <GlobalStyles />
         <div className="container">
