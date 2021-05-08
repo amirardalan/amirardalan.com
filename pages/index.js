@@ -3,21 +3,21 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Typical from 'react-typical'
 import { css } from '@emotion/react'
-import ReactGA from 'react-ga'
+import * as gtag from '../lib/gtag'
 import ThreeCanvas from '../components/ThreeCanvas'
 
 
 export default function Home() {
 
   const LinkGitHubGA = () => {
-    ReactGA.event({
+    gtag.event({
         category: 'Link',
         action: 'GitHub Link Clicked'
     })
   }
 
   const LinkResumeGA = () => {
-    ReactGA.event({
+    gtag.event({
         category: 'Link',
         action: 'Resume Link Clicked'
     })

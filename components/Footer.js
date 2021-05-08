@@ -1,24 +1,25 @@
 import Link from 'next/link'
 import { css, useTheme } from '@emotion/react'
+import * as gtag from '../lib/gtag'
 
 export default function Footer() {
 
   const LinkNextjsGA = () => {
-    ReactGA.event({
+    gtag.event({
         category: 'Link',
         action: 'Next.js Link Clicked'
     })
   }
 
   const LinkEmotionGA = () => {
-    ReactGA.event({
+    gtag.event({
         category: 'Link',
         action: 'Emotion Link Clicked'
     })
   }
 
   const LinkThreejsGA = () => {
-    ReactGA.event({
+    gtag.event({
         category: 'Link',
         action: 'Three.js Link Clicked'
     })

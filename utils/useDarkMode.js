@@ -1,6 +1,6 @@
 // useDarkMode.js
 import { useEffect, useState } from 'react';
-import ReactGA from 'react-ga'
+import * as gtag from '../lib/gtag'
 
 export const useDarkMode = () => {
   const [theme, setTheme] = useState('light');
@@ -11,7 +11,7 @@ export const useDarkMode = () => {
   };
 
   const toggleTheme = () => {
-    ReactGA.event({
+    gtag.event({
       category: 'UI Control',
       action: 'Theme Toggle Clicked'
     })
