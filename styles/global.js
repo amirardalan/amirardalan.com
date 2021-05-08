@@ -88,6 +88,8 @@ export function GlobalStyles () {
           animation: slide-up 1s forwards;
           align-items: center;
           justify-content: center;
+          background-color: ${theme.canvas.bg};
+          transition: background-color 1s linear;
 
           @media (max-width: 890px) {
             align-self: flex-start;
@@ -115,7 +117,7 @@ export function GlobalStyles () {
           bottom: 0;
           left: 20px;
           z-index: 2;
-          color: whitesmoke;
+          color: ${theme.colors.text};
           font-size: 10px;
           font-weight: 300;
           text-transform: uppercase;

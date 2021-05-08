@@ -60,8 +60,8 @@ export default function ThreeCanvas() {
     return (
       <a.mesh {...props}>
 
-        <sphereBufferGeometry args={[1, 100, 100]} />
-        <meshBasicMaterial color={theme.canvas.sphere} opacity={100} />
+        {/* <sphereBufferGeometry args={[1, 100, 100]} /> */}
+        <meshBasicMaterial color={theme.canvas.sphere} opacity={99} />
 
         <Cloud position={[-4, -2, 0]} args={[3, 2,]} />
         <Cloud position={[-4, 2, 0]} args={[3, 2]} />
@@ -93,9 +93,9 @@ export default function ThreeCanvas() {
     <>
       <CanvasText />
       <Canvas colorManagement={false}>
-      <ambientLight intensity={1} />
+      <ambientLight intensity={.5} />
         <pointLight position={[10, 10, 10]} />
-        <directionalLight position={[0, 0, 5]} intensity={1} />
+        <directionalLight position={[0, 0, 5]} intensity={.5} />
         <Suspense fallback={null}>
           <Scene />
           <Effects />

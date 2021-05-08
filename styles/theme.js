@@ -21,20 +21,19 @@ export const themeLight = {
   },
   canvas: {
     text: 'Day.',
-    textSmall: 'Powered By Three.js',
-    bg: '#ebfcff',
+    textSmall: '© Amir Ardalan',
+    bg: '#eaeaea',
     sphere: '#f5f5f5',
     zoomFrom: -300,
-    zoomTo: 3,
+    zoomTo: 1,
     textAnim: 'fade-in 3s forwards',
-    stars: 5000
+    stars: 0
   }
 }
 
 export const themeDark = {
   colors: {
     background: '#111',
-    canvas: '#444',
     text: '#f5f5f5',
     textLight: '#999',
     link: '#FF69B4',
@@ -55,10 +54,10 @@ export const themeDark = {
   },
   canvas: {
     text: 'Night.',
-    textSmall: 'Powered By Three.js',
+    textSmall: '© Amir Ardalan',
     bg: '#111',
     sphere: '#f5f5f5',
-    zoomFrom: 3,
+    zoomFrom: 1,
     zoomTo: -300,
     textAnim: 'fade-in 3s forwards',
     stars: 5000
