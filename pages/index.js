@@ -3,9 +3,24 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Typical from 'react-typical'
 import { css } from '@emotion/react'
+import ReactGA from 'react-ga'
 
 
 export default function Home() {
+
+  const LinkGitHubGA = () => {
+    ReactGA.event({
+        category: 'Link',
+        action: 'GitHub Link Clicked'
+    })
+  }
+
+  const LinkResumeGA = () => {
+    ReactGA.event({
+        category: 'Link',
+        action: 'Resume Link Clicked'
+    })
+  }
 
   const TypingAnimation =  React.memo(()=>{
     return (
@@ -70,8 +85,8 @@ export default function Home() {
         Hi, 👋 I'm <span className="highlight">Amir Ardalan</span>
         <br/>I'm passionate about:
         <TypingAnimation />
-        <br/> Check out my <a href="https://github.com/amirardalan" target="_blank" rel="noopener noreferrer">github</a>
-        <br/> Download my <Link href="/amir-ardalan-resume.pdf"><a>resume</a></Link>
+        <br/> Check out my <a href="https://github.com/amirardalan" target="_blank" rel="noopener noreferrer" onClick={LinkGitHubGA}>github</a>
+        <br/> Download my <Link href="/amir-ardalan-resume.pdf"><a onClick={LinkResumeGA}>resume</a></Link>
       </div>
     </>
   )

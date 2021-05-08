@@ -1,5 +1,6 @@
 // useDarkMode.js
 import { useEffect, useState } from 'react';
+import ReactGA from 'react-ga'
 
 export const useDarkMode = () => {
   const [theme, setTheme] = useState('light');
@@ -10,6 +11,10 @@ export const useDarkMode = () => {
   };
 
   const toggleTheme = () => {
+    ReactGA.event({
+      category: 'UI Control',
+      action: 'Theme Toggle Clicked'
+    })
     if (theme === 'light') {
       setMode('dark')
     } else {
