@@ -5,6 +5,7 @@ import { GlobalStyles } from '../styles/global'
 import { useDarkMode } from '../utils/useDarkMode'
 
 import ReactGA from 'react-ga'
+import getConfig from "next/config";
 import Meta from '../components/Meta'
 import Toggle from '../components/Toggle'
 import Header from '../components/Header'
@@ -14,8 +15,9 @@ import ThreeCanvas from '../components/ThreeCanvas'
 function MyApp({ Component, pageProps }) {
 
   // Google Analytics
+  const { publicRuntimeConfig } = getConfig();
   useEffect(() => {
-    ReactGA.initialize('${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}')
+    ReactGA.initialize('${publicRuntimeConfig.NEXT_PUBLIC_GOOGLE_ANALYTICS}')
     ReactGA.pageview(window.location.pathname + window.location.search)
   }, [])
 
