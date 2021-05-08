@@ -13,8 +13,10 @@ import Footer from '../components/Footer'
 function MyApp({ Component, pageProps }) {
 
   // Google Analytics
+  const analyticsID = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS
+
   useEffect(() => {
-    ReactGA.initialize(process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS)
+    ReactGA.initialize(analyticsID)
     ReactGA.pageview(window.location.pathname + window.location.search)
   }, [])
 
