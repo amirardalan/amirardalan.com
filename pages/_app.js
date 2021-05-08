@@ -19,8 +19,6 @@ function MyApp({ Component, pageProps }) {
     ReactGA.pageview(window.location.pathname + window.location.search)
   }, [])
 
-  console.log(process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS)
-
   const [theme, toggleTheme, componentMounted] = useDarkMode();
   const themeMode = theme === 'light' ? themeLight : themeDark;
 
