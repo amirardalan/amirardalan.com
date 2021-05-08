@@ -17,7 +17,7 @@ function MyApp({ Component, pageProps }) {
   // Google Analytics
   const { publicRuntimeConfig } = getConfig();
   useEffect(() => {
-    ReactGA.initialize('${publicRuntimeConfig.NEXT_PUBLIC_GOOGLE_ANALYTICS}')
+    ReactGA.initialize(publicRuntimeConfig.NEXT_PUBLIC_GOOGLE_ANALYTICS)
     ReactGA.pageview(window.location.pathname + window.location.search)
   }, [])
 
