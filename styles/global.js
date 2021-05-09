@@ -50,6 +50,8 @@ export function GlobalStyles () {
           display: flex;
           justify-content: space-between;
           animation: fade-in 3s forwards;
+          
+          a { text-decoration: none; }
         }
 
         .container {

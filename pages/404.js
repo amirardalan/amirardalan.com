@@ -2,8 +2,16 @@
 import { css, useTheme } from '@emotion/react'
 import Image from 'next/image'
 import Link from 'next/link'
+import * as gtag from '../lib/gtag'
 
 export default function Custom404() {
+
+  const LinkReturnHome = () => {
+    gtag.event({
+        category: 'Link',
+        action: 'GitHub Link Clicked'
+    })
+  }
 
   const theme = useTheme()
 
@@ -36,14 +44,24 @@ export default function Custom404() {
           width={40}
           height={40}
         />
-        <h1>404</h1>
-        <h2>This page could not be found.</h2>
+        <h1 aria-label="404">
+          404
+        </h1>
+        <h2 aria-label="This Page could not be found.">
+          This page could not be found.
+        </h2>
       </div>
       <div css={css`
         margin-top: 1.5rem;
         text-align: center;
       `}>
-        <Link href="/">Return Home</Link>
+        <Link
+          href="/"
+          onClick={LinkReturnHome}
+          aria-label="Return Home"
+        >
+          Return Home
+        </Link>
       </div>
     </div>
   )

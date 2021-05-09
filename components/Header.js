@@ -1,7 +1,6 @@
 import { useTheme, css } from '@emotion/react'
 import styled from '@emotion/styled'
 import Link from 'next/link'
-import Image from 'next/image'
 
 export default function Header() {
 
@@ -63,7 +62,8 @@ export default function Header() {
                 Amir Ardalan
               </h1>
 
-              <h2 css={css`
+              <h2 aria-hidden="true"
+                css={css`
                 margin: 0;
                 padding: .2rem 0 0 0;
                 color: ${theme.colors.textLight};
