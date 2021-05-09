@@ -1,5 +1,6 @@
 // pages/404.js
 import { css, useTheme } from '@emotion/react'
+import ErrorAnimation from '../components/ErrorAnimation'
 import Image from 'next/image'
 import Link from 'next/link'
 import * as gtag from '../lib/gtag'
@@ -17,13 +18,20 @@ export default function Custom404() {
 
   return(
     <div css={css`
+      padding: 4rem 1.5rem;
+      position: relative;
+      display: flex;
+      flex-direction: column;
       background-color: ${theme.page.bg};
-      padding: 6rem 1.5rem;
     `}>
+      <ErrorAnimation />
       <div css={css`
         display: flex;
         justify-content: row;
         justify-content: center;
+        animation: fade-in .5s forwards;
+        animation: slide-up .5s forwards;
+
         h1 {
           border-right: 1px solid #999;
           margin: 0 1rem 0 1rem;
@@ -54,6 +62,8 @@ export default function Custom404() {
       <div css={css`
         margin-top: 1.5rem;
         text-align: center;
+        animation: fade-in 1s forwards;
+        animation: slide-up 1s forwards;
       `}>
         <Link
           href="/"
