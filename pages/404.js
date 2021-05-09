@@ -56,7 +56,7 @@ export default function Custom404() {
           404
         </h1>
         <h2 aria-label="This Page could not be found.">
-          This page could not be found.
+          You seem to be lost in space...
         </h2>
       </div>
       <div css={css`
