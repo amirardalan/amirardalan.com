@@ -1,10 +1,9 @@
-import { css, useTheme } from '@emotion/react'
-import React, { Suspense, useEffect, useState } from 'react'
+import { useTheme } from '@emotion/react'
+import React, { Suspense } from 'react'
 import { Canvas } from '@react-three/fiber'
-import { Loader,  OrbitControls, Cloud, Stars, Detailed, Icosahedron } from '@react-three/drei'
-import { a, useSpring } from '@react-spring/three'
+import { Loader,  OrbitControls, Detailed, Icosahedron } from '@react-three/drei'
+import { useSpring } from '@react-spring/three'
 import BezierEasing from 'bezier-easing'
-import { Effects } from './Effects'
 import CanvasText from '../components/CanvasText'
 
 // Three.js Canvas Component
@@ -33,20 +32,20 @@ export default function CanvasGeometry() {
     return (
       <>
        <Detailed distances={[0, 50, 150]}>
-            <Icosahedron args={[10, 3]}>
-              <meshBasicMaterial attach="material" color={theme.canvas.meshA} wireframe />
-            </Icosahedron>
-            <Icosahedron args={[10, 2]}>
-              <meshBasicMaterial attach="material" color={theme.canvas.meshB} wireframe />
-            </Icosahedron>
-            <Icosahedron args={[10, 1]}>
-              <meshBasicMaterial attach="material" color={theme.canvas.meshC} wireframe />
-            </Icosahedron>
-          </Detailed>
-          <OrbitControls enablePan={false} enableRotate={true} zoomSpeed={0.5} />
-      </>
-    )
-  }
+        <Icosahedron args={[10, 3]}>
+          <meshBasicMaterial attach="material" color={theme.canvas.meshA} wireframe />
+        </Icosahedron>
+        <Icosahedron args={[10, 2]}>
+          <meshBasicMaterial attach="material" color={theme.canvas.meshB} wireframe />
+        </Icosahedron>
+        <Icosahedron args={[10, 1]}>
+          <meshBasicMaterial attach="material" color={theme.canvas.meshC} wireframe />
+        </Icosahedron>
+      </Detailed>
+      <OrbitControls enablePan={false} enableRotate={true} zoomSpeed={0.5} />
+    </>
+  )
+}
 
   return (
     <>

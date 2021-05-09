@@ -4,7 +4,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Typical from 'react-typical'
 import * as gtag from '../lib/gtag'
-import CanvasSpace from '../components/CanvasSpace'
 import CanvasGeometry from '../components/CanvasGeometry'
 
 
