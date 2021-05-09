@@ -1,10 +1,11 @@
-import { css, useTheme } from '@emotion/react'
-import React, { Suspense, useEffect, useState } from 'react'
+import { useTheme } from '@emotion/react'
+import React, { Suspense } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { Loader,  OrbitControls, Cloud, Stars } from '@react-three/drei'
 import { a, useSpring } from '@react-spring/three'
 import BezierEasing from 'bezier-easing'
 import { useMediaQuery } from '../utils/mediaQuery'
+import CanvasText from '../components/CanvasText'
 import { Effects } from './Effects'
 
 // Three.js Canvas Component

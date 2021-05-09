@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Typical from 'react-typical'
 import * as gtag from '../lib/gtag'
 import CanvasGeometry from '../components/CanvasGeometry'
+import CanvasSpace from '../components/CanvasSpace'
 
 
 export default function Home() {
@@ -85,7 +86,7 @@ export default function Home() {
           </div>
         </div>
         <div className="mainRight">
-          <CanvasGeometry />
+          <CanvasSpace />
         </div>
       </main>
     </>

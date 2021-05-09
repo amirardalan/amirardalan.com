@@ -8,7 +8,7 @@ export default class MyDocument extends Document {
       <Html>
         <Head>
           
-          <meta charset="utf-8" />
+          <meta charSet="utf-8" />
           <meta
             name="description"
             content="Portfolio of Amir Ardalan. Front-End Engineer and UI Designer with 6+ years professional experience crafting online experiences for top brands."
