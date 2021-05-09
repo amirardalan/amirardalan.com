@@ -113,7 +113,8 @@ export function GlobalStyles () {
           color: ${theme.colors.text};
           position: absolute;
           display: flex;
-          font-size: calc(4vw + 4vh);
+          font-size: calc(3vw + 3vh);
+          line-height: 7rem;
           padding: 0 2rem;
           animation: ${theme.canvas.textAnim};
           margin: 0;
@@ -126,7 +127,7 @@ export function GlobalStyles () {
           bottom: 0;
           left: 20px;
           z-index: 2;
-          color: ${theme.colors.text};
+          color: ${theme.colors.textLight};
           font-size: 10px;
           font-weight: 300;
           text-transform: uppercase;

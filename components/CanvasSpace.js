@@ -1,47 +1,19 @@
 import { css, useTheme } from '@emotion/react'
 import React, { Suspense, useEffect, useState } from 'react'
 import { Canvas } from '@react-three/fiber'
-import { Loader,  OrbitControls, Cloud, Stars, Sky } from '@react-three/drei'
+import { Loader,  OrbitControls, Cloud, Stars } from '@react-three/drei'
 import { a, useSpring } from '@react-spring/three'
 import BezierEasing from 'bezier-easing'
 import { useMediaQuery } from '../utils/mediaQuery'
-import { Effects } from '../components/Effects'
+import { Effects } from './Effects'
 
 // Three.js Canvas Component
-export default function ThreeCanvas() {
+export default function CanvasSpace() {
 
   // Set the breakpoint for Orbital Controls rendering (disable on mobile)
   // const isBreakpoint = useMediaQuery(1024)
 
   const theme = useTheme()
-
-  // Canvas Text Overlay
-  const CanvasText = function() {
-    const [display, setDisplay] = useState('none');
-
-    useEffect(() => {
-      setTimeout(() => {
-        setDisplay('block');
-      }, 500);
-    }, [])
-
-    return (
-      <>
-        <h3
-          className="canvasTitle"
-          aria-label="${theme.canvas.text}"
-          css={css`
-          display: ${display}; `}>
-          {theme.canvas.text}
-        </h3>
-        <h4
-          className="canvasControls"
-          aria-label="${theme.canvas.textSmall}">
-          {theme.canvas.textSmall}
-        </h4>
-      </>
-    )
-  }
 
   function Scene() {
 
@@ -79,13 +51,6 @@ export default function ThreeCanvas() {
           fade // Faded dots (default=false)
         />
 
-        <Sky
-          distance={500} // Camera distance (default=450000)
-          sunPosition={[0, 1, 0]} // Sun position normal (defaults to inclination and azimuth if not set)
-          inclination={0} // Sun elevation angle from 0 to 1 (default=0)
-          azimuth={0.25} // Sun rotation around the Y axis from 0 to 1 (default=0.25)
-          {...props} // All three-stdlib/objects/Sky props are valid
-        />
       </a.mesh>
     )
   }
