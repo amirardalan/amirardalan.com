@@ -11,7 +11,7 @@ import { Effects } from '../components/Effects'
 export default function ThreeCanvas() {
 
   // Set the breakpoint for Orbital Controls rendering (disable on mobile)
-  const isBreakpoint = useMediaQuery(1024)
+  // const isBreakpoint = useMediaQuery(1024)
 
   const theme = useTheme()
 
