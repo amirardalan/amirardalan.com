@@ -36,12 +36,12 @@ export function GlobalStyles () {
             &:hover {
               text-decoration: underline;
             }
-          }
+        }
           
-          p {
-            margin: 0;
-            padding: 0;
-          }
+        p {
+          margin: 0;
+          padding: 0;
+        }
 
         // Layout Styles
         .header {
@@ -85,7 +85,7 @@ export function GlobalStyles () {
         }
 
         .mainRight {
-          cursor: crosshair;
+          /* cursor: crosshair; */
           position: relative;
           display: flex;
           height: 75vh;

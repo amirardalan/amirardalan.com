@@ -13,6 +13,7 @@ export const themeLight = {
     selectionText: '#111'
   },
   logo: '/logoLight.svg',
+  logoError: '/logoErrorDark.svg',
   toggleButton: {
     background: '#111',
     text: 'Light Mode',
@@ -25,9 +26,12 @@ export const themeLight = {
     bg: '#eaeaea',
     sphere: '#f5f5f5',
     zoomFrom: -300,
-    zoomTo: 1,
+    zoomTo: -5,
     textAnim: 'fade-in 3s forwards',
     stars: 0
+  },
+  page: {
+    bg: '#eaeaea'
   }
 }
 
@@ -46,6 +50,7 @@ export const themeDark = {
     selectionText: '#111'
   },
   logo: '/logoDark.svg',
+  logoError: '/logoErrorLight.svg',
   toggleButton: {
     background: '#f5f5f5',
     text: 'Dark Mode',
@@ -57,9 +62,12 @@ export const themeDark = {
     textSmall: '© Amir Ardalan',
     bg: '#111',
     sphere: '#f5f5f5',
-    zoomFrom: 1,
+    zoomFrom: -5,
     zoomTo: -300,
     textAnim: 'fade-in 3s forwards',
     stars: 5000
+  },
+  page: {
+    bg: '#222'
   }
 }

@@ -11,7 +11,7 @@ import { Effects } from '../components/Effects'
 export default function ThreeCanvas() {
 
   // Set the breakpoint for Orbital Controls rendering (disable on mobile)
-  // const isBreakpoint = useMediaQuery(1024)
+  const isBreakpoint = useMediaQuery(1024)
 
   const theme = useTheme()
 
@@ -63,9 +63,6 @@ export default function ThreeCanvas() {
     })
     return (
       <a.mesh {...props}>
-
-        {/* <sphereBufferGeometry args={[1, 100, 100]} /> */}
-        <meshBasicMaterial color={theme.canvas.sphere} opacity={99} />
 
         <Cloud position={[-4, -2, 0]} args={[3, 2,]} />
         <Cloud position={[-4, 2, 0]} args={[3, 2]} />
