@@ -26,7 +26,7 @@ export const themeLight = {
     bg: '#eaeaea',
     sphere: '#f5f5f5',
     zoomFrom: -300,
-    zoomTo: -5,
+    zoomTo: -3,
     textAnim: 'fade-in 3s forwards',
     stars: 0
   },
@@ -62,7 +62,7 @@ export const themeDark = {
     textSmall: '© Amir Ardalan',
     bg: '#111',
     sphere: '#f5f5f5',
-    zoomFrom: -5,
+    zoomFrom: -3,
     zoomTo: -300,
     textAnim: 'fade-in 3s forwards',
     stars: 5000

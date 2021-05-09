@@ -94,9 +94,9 @@ export default function ThreeCanvas() {
     <>
       <CanvasText />
       <Canvas colorManagement={false}>
-        <ambientLight intensity={.5} />
+        <ambientLight intensity={.2} />
         <pointLight position={[10, 10, 10]} />
-        <directionalLight position={[0, 0, 5]} intensity={.5} />
+        <directionalLight position={[0, 0, 5]} intensity={.2} />
         <Suspense fallback={null}>
           <Scene />
           <Effects />
