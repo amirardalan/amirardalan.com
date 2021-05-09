@@ -1,15 +1,14 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
-
 import { GA_TRACKING_ID } from '../lib/gtag'
 
 export default class MyDocument extends Document {
+
   render() {
     return (
       <Html>
         <Head>
           
           <meta charset="utf-8" />
-          <meta name="theme-color" content="#000000" />
           <meta
             name="description"
             content="Portfolio of Amir Ardalan. Front-End Engineer and UI Designer with 6+ years professional experience crafting online experiences for top brands."
@@ -27,8 +26,8 @@ export default class MyDocument extends Document {
           <link rel="apple-touch-icon" href="/logo192.png" />
           <link rel="manifest" href="/manifest.json" />
 
-                    {/* Global Site Tag (gtag.js) - Google Analytics */}
-                    <script
+          {/* Global Site Tag (gtag.js) - Google Analytics */}
+          <script
             async
             src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
           />

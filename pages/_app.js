@@ -1,12 +1,12 @@
-import { useEffect } from 'react'
-import { useRouter } from "next/router";
-import Head from 'next/head'
-
 import { GlobalStyles } from '../styles/global'
 import { ThemeProvider } from '@emotion/react'
 import { themeLight, themeDark } from '../styles/theme'
 import { useDarkMode } from '../utils/useDarkMode'
 import Toggle from '../components/Toggle'
+
+import { useEffect } from 'react'
+import { useRouter } from "next/router";
+import Head from 'next/head'
 
 import * as gtag from '../lib/gtag'
 import Header from '../components/Header'
@@ -14,6 +14,7 @@ import Footer from '../components/Footer'
 
 function MyApp({ Component, pageProps }) {
 
+  // Google Analytics - Pageview Tracking
   const router = useRouter()
   useEffect(() => {
     const handleRouteChange = (url) => {
@@ -25,9 +26,9 @@ function MyApp({ Component, pageProps }) {
     }
   }, [router.events])
 
+  // Dark Mode Toggle
   const [theme, toggleTheme, componentMounted] = useDarkMode();
   const themeMode = theme === 'light' ? themeLight : themeDark;
-
   if (!componentMounted) {
     return <div />
   };
@@ -36,6 +37,7 @@ function MyApp({ Component, pageProps }) {
     <ThemeProvider theme={themeMode}>
       <Head>
         <title>Amir Ardalan | Portfolio</title>
+        <meta name="theme-color" content={themeMode.colors.background} />
       </Head>
       <GlobalStyles />
       <div className="container">

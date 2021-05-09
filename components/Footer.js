@@ -1,5 +1,5 @@
-import Link from 'next/link'
 import { css, useTheme } from '@emotion/react'
+import Link from 'next/link'
 import * as gtag from '../lib/gtag'
 
 export default function Footer() {
@@ -57,14 +57,33 @@ export default function Footer() {
             text-decoration: underline;
           }
         }
-        div {
-          flex-direction: row;
-        }
+        div { flex-direction: row; }
       `}>
         Made with <span>&hearts;</span> using: 
-        <Link href="https://nextjs.org/" target="_blank" rel="noopener noreferrer" onClick={LinkNextjsGA} aria-label="Next.js">Next.js</Link>+ 
-        <Link href="https://emotion.sh/" target="_blank" rel="noopener noreferrer" onClick={LinkEmotionGA} aria-label="Emotion CSS">Emotion</Link>+ 
-        <Link href="https://threejs.org/" target="_blank" rel="noopener noreferrer" onClick={LinkThreejsGA} aria-label="Three.js">Three.js</Link>
+        <Link
+          href="https://nextjs.org/"
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={LinkNextjsGA}
+          aria-label="Next.js">
+          Next.js
+        </Link>+ 
+        <Link
+          href="https://emotion.sh/"
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={LinkEmotionGA}
+          aria-label="Emotion CSS">
+          Emotion
+        </Link>+ 
+        <Link
+          href="https://threejs.org/"
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={LinkThreejsGA}
+          aria-label="Three.js">
+          Three.js
+        </Link>
       </div>
     </footer>
   )

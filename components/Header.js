@@ -14,7 +14,7 @@ export default function Header() {
 
   const theme = useTheme()
 
-  // Logo Styles
+  // Logo Animation
   const Image = styled.img`
     cursor: pointer;
     animation: spin 1s forwards;

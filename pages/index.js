@@ -1,8 +1,8 @@
+import { css } from '@emotion/react'
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import Typical from 'react-typical'
-import { css } from '@emotion/react'
 import * as gtag from '../lib/gtag'
 import ThreeCanvas from '../components/ThreeCanvas'
 
@@ -29,7 +29,7 @@ export default function Home() {
         steps={[
           "JavaScript", 1500,
           "React.js & Next.js", 1500,
-          "Front-end code", 1500,
+          "Front-end engineering", 1500,
           "User Interface design", 1500,
           "{ CSS }", 1500,
           "Web accessibility", 1500,

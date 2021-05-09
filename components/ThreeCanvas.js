@@ -1,9 +1,9 @@
+import { css, useTheme } from '@emotion/react'
 import React, { Suspense, useEffect, useState } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { Loader,  OrbitControls, Cloud, Stars, Sky } from '@react-three/drei'
 import { a, useSpring } from '@react-spring/three'
 import BezierEasing from 'bezier-easing'
-import { css, useTheme } from '@emotion/react'
 import { useMediaQuery } from '../utils/mediaQuery'
 import { Effects } from '../components/Effects'
 
@@ -97,7 +97,7 @@ export default function ThreeCanvas() {
     <>
       <CanvasText />
       <Canvas colorManagement={false}>
-      <ambientLight intensity={.5} />
+        <ambientLight intensity={.5} />
         <pointLight position={[10, 10, 10]} />
         <directionalLight position={[0, 0, 5]} intensity={.5} />
         <Suspense fallback={null}>
