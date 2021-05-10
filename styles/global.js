@@ -98,7 +98,7 @@ export function GlobalStyles () {
           align-items: center;
           justify-content: center;
           background-color: ${theme.canvas.bg};
-          transition: background-color 1s linear;
+          transition: background-color .5s linear;
 
           @media (max-width: 890px) {
             align-self: flex-start;
