@@ -34,7 +34,7 @@ const triColorMix = {
   `
 }
 
-export function Effects() {
+export function CanvasEffects() {
   const composer = useRef()
   const savePass = useRef()
   const blendPass = useRef()
@@ -59,9 +59,9 @@ export function Effects() {
   return (
     <effectComposer ref={composer} args={[gl]}>
       <renderPass attachArray="passes" scene={scene} camera={camera} />
-      <glitchPass attachArray="passes" renderToScreen />
       <shaderPass attachArray="passes" ref={blendPass} args={[triColorMix, 'tDiffuse1']} needsSwap={false} />
       <savePass attachArray="passes" ref={savePass} needsSwap={true} />
+      <glitchPass attachArray="passes" renderToScreen />
       <shaderPass attachArray="passes" args={[CopyShader]} />
     </effectComposer>
   )

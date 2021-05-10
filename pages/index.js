@@ -3,9 +3,8 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import Typical from 'react-typical'
-import * as gtag from '../lib/gtag'
 import CanvasGeometry from '../components/CanvasGeometry'
-import CanvasSpace from '../components/CanvasSpace'
+import * as gtag from '../lib/gtag'
 
 
 export default function Home() {
@@ -38,7 +37,6 @@ export default function Home() {
           "...eating pizza 🍕", 1500
         ]}
         loop={Infinity}
-        className="content"
       />
     )
   },(props,prevProp)=> true );
@@ -77,7 +75,7 @@ export default function Home() {
                 font-size: calc(2.5vw + 2.5vh);
               }
             `}
-            >
+          >
             Hi, 👋 I'm <span className="highlight">Amir Ardalan</span>
             <br/>I'm passionate about:
             <TypingAnimation />
@@ -86,7 +84,7 @@ export default function Home() {
           </div>
         </div>
         <div className="mainRight">
-          <CanvasSpace />
+          <CanvasGeometry />
         </div>
       </main>
     </>

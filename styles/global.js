@@ -87,7 +87,7 @@ export function GlobalStyles () {
         }
 
         .mainRight {
-          /* cursor: crosshair; */
+          cursor: crosshair;
           position: relative;
           display: flex;
           height: 75vh;

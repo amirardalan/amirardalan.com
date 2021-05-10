@@ -1,18 +1,18 @@
 import { useTheme } from '@emotion/react'
 import React, { Suspense } from 'react'
 import { Canvas } from '@react-three/fiber'
-import { Loader,  OrbitControls, Cloud, Stars } from '@react-three/drei'
+import { Loader, OrbitControls, Cloud, Stars } from '@react-three/drei'
 import { a, useSpring } from '@react-spring/three'
 import BezierEasing from 'bezier-easing'
 import { useMediaQuery } from '../utils/mediaQuery'
 import CanvasText from '../components/CanvasText'
-import { Effects } from './Effects'
+import { Effects } from '../components/CanvasEffects'
 
 // Three.js Canvas Component
 export default function CanvasSpace() {
 
   // Set the breakpoint for Orbital Controls rendering (disable on mobile)
-  // const isBreakpoint = useMediaQuery(1024)
+  const isBreakpoint = useMediaQuery(1024)
 
   const theme = useTheme()
 
@@ -65,9 +65,9 @@ export default function CanvasSpace() {
         <directionalLight position={[0, 0, 5]} intensity={.2} />
         <Suspense fallback={null}>
           <Scene />
-          <Effects />
+          <CanvasEffects />
         </Suspense>
-        {/* {( isBreakpoint ) ? null : <OrbitControls enablePan={false} zoomSpeed={0.5} autoRotate={true} autoRotateSpeed={0.3} />} */}
+        {( isBreakpoint ) ? null : <OrbitControls enablePan={false} autoRotate={false} autoRotateSpeed={0.3} />}
       </Canvas>
       <Loader />
     </>
