@@ -60,8 +60,8 @@ export function CanvasEffects() {
     <effectComposer ref={composer} args={[gl]}>
       <renderPass attachArray="passes" scene={scene} camera={camera} />
       <shaderPass attachArray="passes" ref={blendPass} args={[triColorMix, 'tDiffuse1']} needsSwap={false} />
-      <savePass attachArray="passes" ref={savePass} needsSwap={true} />
       <glitchPass attachArray="passes" renderToScreen />
+      <savePass attachArray="passes" ref={savePass} needsSwap={true} />
       <shaderPass attachArray="passes" args={[CopyShader]} />
     </effectComposer>
   )

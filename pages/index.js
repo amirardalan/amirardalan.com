@@ -3,7 +3,7 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import Typical from 'react-typical'
-import CanvasGeometry from '../components/CanvasGeometry'
+import CanvasLoader from '../components/CanvasLoader'
 import * as gtag from '../lib/gtag'
 
 
@@ -84,7 +84,7 @@ export default function Home() {
           </div>
         </div>
         <div className="mainRight">
-          <CanvasGeometry />
+          <CanvasLoader />
         </div>
       </main>
     </>

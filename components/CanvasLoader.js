@@ -4,7 +4,8 @@ import { Canvas } from '@react-three/fiber'
 import { Loader,  OrbitControls } from '@react-three/drei'
 import { useMediaQuery } from '../utils/useMediaQuery'
 import CanvasText from '../components/CanvasText'
-import CanvasIcosahedron from '../components/CanvasIcosahedron'
+import CanvasScene from '../components/CanvasScene'
+import { CanvasEffects } from '../components/CanvasEffects'
 
 // Three.js Canvas Component
 export default function CanvasGeometry() {
@@ -16,8 +17,9 @@ export default function CanvasGeometry() {
     <>
       <CanvasText />
       <Canvas colorManagement={false}>
-        <Suspense fallback={<Loader />}>
-          <CanvasIcosahedron theme={theme} />
+        <Suspense fallback={null}>
+          <CanvasScene theme={theme} />
+          <CanvasEffects />
         </Suspense>
       { ( isBreakpoint ) ? null : <OrbitControls enablePan={false} enableRotate={true} zoomSpeed={0.5} /> }
       </Canvas>
