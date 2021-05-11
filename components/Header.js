@@ -1,6 +1,9 @@
 import { useTheme, css } from '@emotion/react'
 import styled from '@emotion/styled'
 import Link from 'next/link'
+import LoadingBar from '../components/LoadingBar'
+import { useState, useEffect } from 'react'
+import { useRouter } from "next/router"
 
 export default function Header() {
 
@@ -13,6 +16,26 @@ export default function Header() {
 
   const theme = useTheme()
 
+  const router = useRouter()
+  const [loader, setLoader] = useState(false)
+  
+  useEffect(() => {
+    let routeChangeStart = () => {
+      setLoader(true)
+    }
+    let routeChangeComplete = () => {
+      setLoader(false)
+    }
+    router.events.on('routeChangeStart', routeChangeStart)
+    router.events.on('routeChangeComplete', routeChangeComplete)
+  }, [])
+
+  function UseLoader() {
+    if(setLoader) {
+      return <LoadingBar />
+    } return null
+  }
+
   // Logo Animation
   const Image = styled.img`
     cursor: pointer;
@@ -23,43 +46,50 @@ export default function Header() {
   `
 
   return (
-    <Link
-      href="/"
-      onClick={HeaderLogoGA}
-      aria-label="Amir Ardalan Logo">
+    <>
+    <div css={css`
+    display: flex;
+    flex-direction: column; `}>
 
-      <button
-        tabIndex='1'
-        css={css`
-          text-decoration: none;
-          background: none;
-          border: none;
-          margin: 0;
-          padding: 0;
-        `}>
-        <div css={css`
-          position: relative;
-          align-self: center;
-          display: flex;
-          flex-direction: row;
-          line-height: .8rem;
-          cursor: pointer;
-        `}>
+      <Link
+        href="/"
+        onClick={HeaderLogoGA}
+        aria-label="Amir Ardalan Logo">
 
-          <Image
-            src={theme.logo}
-            alt="Amir Ardalan Logo"
-            width={30}
-            height={30}
-          />
+        <button
+          tabIndex='1'
+          css={css`
+            text-decoration: none;
+            background: none;
+            border: none;
+            margin: 0;
+            padding: 0;
+            display: block;
+          `}>
 
           <div css={css`
-            flex-direction: column;
-            margin-left: .2rem;
-            animation: slide-left 1s forwards;
+            position: relative;
+            align-self: center;
+            display: flex;
+            flex-direction: row;
+            line-height: .8rem;
+            cursor: pointer;
           `}>
-            
-            <h1 css={css`
+
+            <Image
+              src={theme.logo}
+              alt="Amir Ardalan Logo"
+              width={30}
+              height={30}
+            />
+
+            <div css={css`
+              flex-direction: column;
+              margin-left: .2rem;
+              animation: slide-left 1s forwards;
+            `}>
+              
+              <h1 css={css`
                 padding: .2rem 0 0 0;
                 margin: 0;
                 font-weight: 800;
@@ -81,10 +111,15 @@ export default function Header() {
                 45.5051° N, 122.6750° W
               </h2>
 
-          </div>
+            </div>
 
-        </div>
-      </button>
-    </Link>
+          </div>
+        </button>
+      </Link>
+
+      <UseLoader isLoading={false} />
+
+    </div>
+    </>
   )
 }

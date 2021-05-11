@@ -1,15 +1,16 @@
+import { useState, useEffect } from 'react'
+import { useRouter } from "next/router"
+import * as gtag from '../lib/gtag'
+
+import Head from 'next/head'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
+
 import { GlobalStyles } from '../styles/global'
 import { ThemeProvider } from '@emotion/react'
 import { themeLight, themeDark } from '../styles/theme'
 import { useDarkMode } from '../utils/useDarkMode'
 import Toggle from '../components/Toggle'
-
-import { useEffect } from 'react'
-import { useRouter } from "next/router";
-import Head from 'next/head'
-import Header from '../components/Header'
-import Footer from '../components/Footer'
-import * as gtag from '../lib/gtag'
 
 
 function MyApp({ Component, pageProps }) {
@@ -27,11 +28,11 @@ function MyApp({ Component, pageProps }) {
   }, [router.events])
 
   // Dark Mode Toggle
-  const [theme, toggleTheme, componentMounted] = useDarkMode();
-  const themeMode = theme === 'light' ? themeLight : themeDark;
+  const [theme, toggleTheme, componentMounted] = useDarkMode()
+  const themeMode = theme === 'light' ? themeLight : themeDark
   if (!componentMounted) {
     return <div />
-  };
+  }
   
   return (
     <ThemeProvider theme={themeMode}>
