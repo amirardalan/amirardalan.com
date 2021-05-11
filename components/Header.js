@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 import Link from 'next/link'
 import LoadingBar from '../components/LoadingBar'
 import { useState, useEffect } from 'react'
-import { useRouter } from "next/router"
+import { useRouter } from 'next/router'
 
 export default function Header() {
 
@@ -87,8 +87,9 @@ export default function Header() {
               <h1 css={css`
                 padding: .2rem 0 0 0;
                 margin: 0;
+                font-family: 'Poppins';
                 font-weight: 800;
-                font-size: 15px;
+                font-size: 14px;
                 color: ${theme.colors.text};
               `}>
                 Amir Ardalan
