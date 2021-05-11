@@ -18,7 +18,7 @@ export default function CanvasText() {
         className="canvasTitle"
         aria-label="${theme.canvas.text}"
         css={css`
-        display: ${display}; `}>
+          display: ${display}; `}>
         {theme.canvas.text}
       </h3>
       <h4
