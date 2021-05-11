@@ -36,11 +36,12 @@ export default function Footer() {
       align-items: center;
       padding: 1em;
       height: 100px;
+      background-color: ${theme.colors.background};
       color: ${theme.colors.footer};
+      border-top: 1px solid ${theme.colors.divider};
       font-size: .8rem;
       font-weight: 400;
       line-height: 2em;
-      border-top: 1px solid ${theme.colors.divider};
       animation: fade-in 3s forwards;
     `}>
       <div>

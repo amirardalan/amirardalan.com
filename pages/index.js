@@ -29,13 +29,17 @@ export default function Home() {
     return (
       <Typical
         steps={[
-          "Front-end engineering", 1500,
-          "User Interface design", 1500,
-          "JavaScript:", 1500,
+          "Front-end development", 1500,
+          "UI/UX design", 1500,
+          "JavaScript", 1500,
           "JavaScript: React.js", 1500,
           "JavaScript: Next.js", 1500,
           "JavaScript: Three.js", 1500,
           "{ CSS }", 1500,
+          "{ CSS } Emotion", 1500,
+          "{ CSS } Sass & SCSS", 1500,
+          "{ CSS } Animation", 1500,
+          "Code Art 🎨", 1500,
           "Web accessibility", 1500,
           "Technical Learning 📚", 1500,
           "...eating pizza 🍕", 1500
@@ -78,6 +82,7 @@ export default function Home() {
               @media (min-width: 480px) and (max-width: 890px) {
                 font-size: calc(2.5vw + 2.5vh);
               }
+              p { color: #999; }
             `}
           >
             Hi, {theme.helloEmoji} I'm <span className="highlight">Amir Ardalan</span>
