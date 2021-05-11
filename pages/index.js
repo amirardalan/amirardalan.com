@@ -29,8 +29,8 @@ export default function Home() {
     return (
       <Typical
         steps={[
-          "Front-end development", 1500,
-          "UI/UX design", 1500,
+          "Front-end Engineering", 1500,
+          "UI/UX Design", 1500,
           "JavaScript", 1500,
           "JavaScript: React.js", 1500,
           "JavaScript: Next.js", 1500,
@@ -40,8 +40,11 @@ export default function Home() {
           "{ CSS } Sass & SCSS", 1500,
           "{ CSS } Animation", 1500,
           "Code Art 🎨", 1500,
-          "Web accessibility", 1500,
+          "Web Accessibility", 1500,
           "Technical Learning 📚", 1500,
+          "Audio Engineering  🔊", 1500,
+          "Tending Plants 🪴", 1500,
+          "Playing Soccer ⚽", 1500,
           "...eating pizza 🍕", 1500
         ]}
         loop={Infinity}
