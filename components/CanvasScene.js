@@ -41,10 +41,10 @@ export default function CanvasScene(props) {
         <Cloud position={[4, 2, 0]} args={[3, 2]} />
         
         <Stars
-          radius={.5} // Radius of the inner sphere (default=100)
-          depth={100} // Depth of area where stars should fit (default=50)
+          radius={5} // Radius of the inner sphere (default=100)
+          depth={150} // Depth of area where stars should fit (default=50)
           count={props.theme.canvas.stars} // Amount of stars (default=5000)
-          factor={4} // Size factor (default=4)
+          factor={2} // Size factor (default=4)
           saturation={0} // Saturation 0-1 (default=0)
           fade // Faded dots (default=false)
         />
@@ -59,7 +59,7 @@ export default function CanvasScene(props) {
       {/* Lighting */}
       <ambientLight intensity={.2} />
       <pointLight position={[10, 10, 10]} />
-      <directionalLight position={[0, 0, 5]} intensity={.2} />
+      <directionalLight position={[0, 0, 5]} intensity={.6} />
 
       {/* Icosahedron Wireframe Mesh */}
       <mesh

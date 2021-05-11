@@ -29,9 +29,9 @@ export const themeLight = {
     meshB: 'cyan',
     meshC: 'orange',
     zoomFrom: -300,
-    zoomTo: 1,
+    zoomTo: -3,
     textAnim: 'fade-in 3s forwards',
-    stars: 5000,
+    stars: 1000,
     duration: 4000
   },
   page: {
@@ -69,10 +69,10 @@ export const themeDark = {
     meshA: '#21E598',
     meshB: 'hotpink',
     meshC: 'cyan',
-    zoomFrom: 1,
+    zoomFrom: -3,
     zoomTo: -300,
     textAnim: 'fade-in 3s forwards',
-    stars: 5000,
+    stars: 3000,
     duration: 4000
   },
   page: {
