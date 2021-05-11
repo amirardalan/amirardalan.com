@@ -25,6 +25,7 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
 - [three.js](https://github.com/mrdoob/three.js/) - JavaScript 3D library
 - [react-three-fiber](https://github.com/pmndrs/react-three-fiber) - WebGL 3D Canvas Rendering
 - [drei](https://github.com/pmndrs/drei) - Helpers & Abstractions for `react-three-fiber`
+- [next-transpile-modules](https://github.com/martpie/next-transpile-modules) - Transpile modules from `node_modules` for `three` postprocessing effects
 - [@react-spring/three](https://github.com/pmndrs/react-spring/tree/9.0.0/targets/three) - Physics based animation library for `react-three-fiber`
 - [bezier-easing](https://github.com/gre/bezier-easing) - Cubic Bezier Curve easing
 - [react-typical](https://github.com/catalinmiron/react-typical) - React animated typing
