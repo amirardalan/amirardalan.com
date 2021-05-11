@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
-import { Icosahedron, Stars, Cloud } from '@react-three/drei'
+import { Icosahedron, Stars, Cloud, MeshWobbleMaterial } from '@react-three/drei'
 import { a, useSpring } from '@react-spring/three'
 import BezierEasing from 'bezier-easing'
 
@@ -9,20 +9,20 @@ export default function CanvasScene(props) {
   const mesh = useRef()
   
   useFrame(() => (
-    mesh.current.rotation.x += 0.001,
-    mesh.current.rotation.y += 0.001
+    mesh.current.rotation.x += 0.002,
+    mesh.current.rotation.y += 0.002
   ))
 
   function SpaceZoom() {
 
-    let easing = BezierEasing(0.25, 0.1, 0.0, 1.0);
+    let easing = BezierEasing(0.8, 0.1, 0.0, 1.0);
 
     const spring = useSpring({
       loop: { reverse: false },
       from: { position: [0, 0, props.theme.canvas.zoomFrom] },
       to: { position: [0, 0, props.theme.canvas.zoomTo] },
       config: {
-        duration: 5000,
+        duration: props.theme.canvas.duration,
         tension: 150,
         mass: 3,
         friction: 5,
@@ -57,9 +57,9 @@ export default function CanvasScene(props) {
     <>
         
       {/* Lighting */}
-      <ambientLight intensity={.2} />
+      <ambientLight intensity={.5} />
       <pointLight position={[10, 10, 10]} />
-      <directionalLight position={[0, 0, 5]} intensity={.2} />
+      <directionalLight position={[0, 0, 5]} intensity={.4} />
 
       {/* Icosahedron Wireframe Mesh */}
       <mesh
@@ -67,10 +67,13 @@ export default function CanvasScene(props) {
         scale={.2}
         {...props}>
         <Icosahedron args={[10, 3]}>
-          <meshBasicMaterial
-            attach="material"
+          <MeshWobbleMaterial
             color={props.theme.canvas.meshA}
-            wireframe />
+            attach="material"
+            factor={.2} // Strength, 0 disables the effect (default=1)
+            speed={1} // Speed (default=1)
+            wireframe
+          />
         </Icosahedron>
       </mesh>
 

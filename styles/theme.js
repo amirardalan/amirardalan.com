@@ -23,14 +23,15 @@ export const themeLight = {
   canvas: {
     text: 'Design & Code',
     textSmall: '© Amir Ardalan',
-    bg: '#eaeaea',
-    meshA: 'hotpink',
+    bg: '#222',
+    meshA: 'cyan',
     meshB: 'cyan',
     meshC: 'orange',
     zoomFrom: -300,
-    zoomTo: -3,
+    zoomTo: -2,
     textAnim: 'fade-in 3s forwards',
-    stars: 0
+    stars: 5000,
+    duration: 4000
   },
   page: {
     bg: '#eaeaea'
@@ -66,10 +67,11 @@ export const themeDark = {
     meshA: 'orange',
     meshB: 'hotpink',
     meshC: 'cyan',
-    zoomFrom: -3,
+    zoomFrom: -2,
     zoomTo: -300,
     textAnim: 'fade-in 3s forwards',
-    stars: 5000
+    stars: 5000,
+    duration: 4000
   },
   page: {
     bg: '#222'

@@ -98,7 +98,7 @@ export function GlobalStyles () {
           align-items: center;
           justify-content: center;
           background-color: ${theme.canvas.bg};
-          transition: background-color .5s linear;
+          /* transition: background-color .5s linear; */
 
           @media (max-width: 890px) {
             align-self: flex-start;
@@ -120,6 +120,7 @@ export function GlobalStyles () {
           margin: 0;
           padding: 0;
           z-index: 1;
+          transition: color 3s linear;
         }
 
         .canvasControls {
