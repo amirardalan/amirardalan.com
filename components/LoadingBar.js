@@ -1,6 +1,4 @@
-import { useState, useEffect } from 'react'
 import { css, useTheme } from '@emotion/react'
-import { useRouter } from "next/router"
 
 export default function LoadingBar() {
 
@@ -29,7 +27,7 @@ export default function LoadingBar() {
           }
           96% {
             width: 100%;
-            opacity: 1;
+            opacity: .7;
           }
           100% {
             width: 100%;

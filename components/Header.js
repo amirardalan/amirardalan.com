@@ -17,23 +17,18 @@ export default function Header() {
   const theme = useTheme()
 
   const router = useRouter()
-  const [loader, setLoader] = useState(false)
+  const [loader, setLoader] = useState()
   
   useEffect(() => {
-    let routeChangeStart = () => {
-      setLoader(true)
-    }
-    let routeChangeComplete = () => {
-      setLoader(false)
-    }
+    let routeChangeStart = () => setLoader(true)
+    let routeChangeComplete = () => setLoader(false)
     router.events.on('routeChangeStart', routeChangeStart)
     router.events.on('routeChangeComplete', routeChangeComplete)
-  }, [])
+  }, [setLoader])
 
   function UseLoader() {
-    if(setLoader) {
-      return <LoadingBar />
-    } return null
+    if(setLoader)return <LoadingBar />
+      else return null
   }
 
   // Logo Animation
@@ -93,7 +88,7 @@ export default function Header() {
                 padding: .2rem 0 0 0;
                 margin: 0;
                 font-weight: 800;
-                font-size: 14px;
+                font-size: 15px;
                 color: ${theme.colors.text};
               `}>
                 Amir Ardalan
