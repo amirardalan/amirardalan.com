@@ -28,7 +28,15 @@ export default function Header() {
       onClick={HeaderLogoGA}
       aria-label="Amir Ardalan Logo">
 
-      <a tabIndex='1'>
+      <button
+        tabIndex='1'
+        css={css`
+          text-decoration: none;
+          background: none;
+          border: none;
+          margin: 0;
+          padding: 0;
+        `}>
         <div css={css`
           position: relative;
           align-self: center;
@@ -36,7 +44,6 @@ export default function Header() {
           flex-direction: row;
           line-height: .8rem;
           cursor: pointer;
-          a & { text-decoration: none; }
         `}>
 
           <Image
@@ -77,7 +84,7 @@ export default function Header() {
           </div>
 
         </div>
-      </a>
+      </button>
     </Link>
   )
 }

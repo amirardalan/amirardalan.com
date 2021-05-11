@@ -19,7 +19,7 @@ const TypingAnimationMemoized =  React.memo(()=>{
         "Web Accessibility", 1500,
         "Technical Learning 📚", 1500,
         "Audio Engineering  🔊", 1500,
-        "Tending Plants 🪴", 1500,
+        "Tending to Plants 🪴", 1500,
         "Playing Soccer ⚽", 1500,
         "...eating pizza 🍕", 1500
       ]}
