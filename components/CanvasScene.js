@@ -34,7 +34,7 @@ export default function CanvasScene(props) {
     return (
       <a.mesh {...spring}>
 
-        <Cloud position={[-4, -2, 0]} args={[3, 2,]} />
+        <Cloud position={[-4, -2, 0]} args={[3, 2]} />
         <Cloud position={[-4, 2, 0]} args={[3, 2]} />
         <Cloud args={[3, 2]} />
         <Cloud position={[4, -2, 0]} args={[3, 2]} />
@@ -57,9 +57,9 @@ export default function CanvasScene(props) {
     <>
         
       {/* Lighting */}
-      <ambientLight intensity={.5} />
+      <ambientLight intensity={.2} />
       <pointLight position={[10, 10, 10]} />
-      <directionalLight position={[0, 0, 5]} intensity={.4} />
+      <directionalLight position={[0, 0, 5]} intensity={.2} />
 
       {/* Icosahedron Wireframe Mesh */}
       <mesh

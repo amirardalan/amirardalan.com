@@ -1,4 +1,4 @@
-import { css } from '@emotion/react'
+import { css, useTheme } from '@emotion/react'
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -22,6 +22,8 @@ export default function Home() {
         action: 'Resume Link Clicked'
     })
   }
+
+  const theme = useTheme()
 
   const TypingAnimation =  React.memo(()=>{
     return (
@@ -78,7 +80,7 @@ export default function Home() {
               }
             `}
           >
-            Hi, 👋 I'm <span className="highlight">Amir Ardalan</span>
+            Hi, {theme.helloEmoji} I'm <span className="highlight">Amir Ardalan</span>
             <br/>I'm passionate about:
             <TypingAnimation />
             <br/> Check out my <Link href="https://github.com/amirardalan" target="_blank" rel="noopener noreferrer" onClick={LinkGitHubGA} aria-label="GitHub">github</Link>
