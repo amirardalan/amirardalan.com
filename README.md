@@ -2,13 +2,15 @@
 
 ## Project Dependencies
 
-- [emotion](https://github.com/emotion-js/emotion) - CSS in JS / Theming
-- [fontsource](https://github.com/fontsource/fontsource) - Self hosted web fonts
-- [three.js](https://github.com/mrdoob/three.js/) - JavaScript 3D library
+Run `npm install` locally in projecy directory to install the following dependencies:
+
+- [Emotion](https://github.com/emotion-js/emotion) - CSS in JS / Theming
+- [Fontsource](https://github.com/fontsource/fontsource) - Self hosted web fonts
+- [Three.js](https://github.com/mrdoob/three.js/) - JavaScript 3D library
 - [react-three-fiber](https://github.com/pmndrs/react-three-fiber) - WebGL 3D Canvas Rendering
 - [drei](https://github.com/pmndrs/drei) - Helpers & Abstractions for `react-three-fiber`
 - [@react-spring/three](https://github.com/pmndrs/react-spring/tree/9.0.0/targets/three) - Physics based animation library for `react-three-fiber`
-- [bezier-easing](https://github.com/gre/bezier-easing) - Cubic Bezier Curve easing
+- [BezierEasing](https://github.com/gre/bezier-easing) - Cubic Bezier Curve easing
 - [react-typical](https://github.com/catalinmiron/react-typical) - React animated typing
 
 
@@ -27,7 +29,7 @@ Open [http://localhost:3000](http://localhost:3000)
 ## Deployment
 
 Set `npm run export` as the Build Command on server to generate static files for production.
-`Package.json` contains `"export": "npm run build && next export -o _static"`
+☝️ References: `"export": "npm run build && next export -o _static"` located in `Package.json`
 
 ## Custom Configuration
 
