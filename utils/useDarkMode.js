@@ -1,4 +1,3 @@
-// useDarkMode.js
 import { useEffect, useState } from 'react'
 import * as gtag from '../lib/gtag'
 

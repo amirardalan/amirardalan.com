@@ -7,7 +7,7 @@ import CanvasScene from '../components/CanvasScene'
 import { CanvasEffects } from '../components/CanvasEffects'
 
 // Three.js Canvas Component
-const CanvasLoaderMemoized =  React.memo(()=>{
+const CanvasLoaderMemoized =  React.memo(() => {
 
   const theme = useTheme()
 
@@ -24,9 +24,9 @@ const CanvasLoaderMemoized =  React.memo(()=>{
       <Loader />
     </>
   )
-},(props,prevProp)=> true );
+})
 
-export default function TypingAnomaton() {
+export default function CanvasLoader() {
   
   return(
     <CanvasLoaderMemoized />

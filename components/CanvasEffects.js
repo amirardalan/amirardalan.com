@@ -1,8 +1,8 @@
 import * as THREE from 'three'
-import React, { useMemo, useEffect, useRef } from 'react'
+import { useMemo, useEffect, useRef } from 'react'
 import { useThree, useFrame, extend } from '@react-three/fiber'
-import { EffectComposer, ShaderPass, SavePass, RenderPass, CopyShader, GlitchPass, FXAAShader } from 'three-stdlib'
-extend({ EffectComposer, ShaderPass, SavePass, RenderPass, CopyShader, GlitchPass, FXAAShader })
+import { EffectComposer, ShaderPass, SavePass, RenderPass, CopyShader, GlitchPass } from 'three-stdlib'
+extend({ EffectComposer, ShaderPass, SavePass, RenderPass, CopyShader, GlitchPass })
 
 export function CanvasEffects() {
   const composer = useRef()
@@ -28,7 +28,7 @@ export function CanvasEffects() {
       <renderPass attachArray="passes" scene={scene} camera={camera} />
       <savePass attachArray="passes" ref={savePass} needsSwap={true} />
       <shaderPass attachArray="passes" args={[CopyShader]} />
-      <glitchPass attachArray="passes" curF={.5} randX={1} renderToScreen />
+      <glitchPass attachArray="passes" curF={0} randX={0} renderToScreen />
     </effectComposer>
   )
 }

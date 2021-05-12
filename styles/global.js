@@ -9,7 +9,7 @@ export function GlobalStyles () {
     <Global
       styles={css`
 
-        // Base Styles
+        // Base
         html,
         body {
           background-color: ${theme.colors.background};
@@ -43,7 +43,7 @@ export function GlobalStyles () {
           padding: 0;
         }
 
-        // Layout Styles
+        // Layout
         .header {
           margin-bottom: 1.8rem;
           height: auto;
@@ -108,7 +108,7 @@ export function GlobalStyles () {
           }
         }
 
-        // Three.js Canvas Styles
+        // Three.js Canvas
         .canvasTitle {
           color: ${theme.colors.text};
           position: absolute;
@@ -138,14 +138,9 @@ export function GlobalStyles () {
           .mainRight:hover & {
             animation: fade-in .2s forwards;
           }
-
-          // Disable Drei Orbit Controls on mobile
-          @media (max-width: 1024px) {
-            display: none;
-          }
         }
 
-        // Special Text Styles
+        // Special Text
         ::-moz-selection {
           color: ${theme.colors.selectionText};
           background: ${theme.colors.selection};
@@ -168,7 +163,7 @@ export function GlobalStyles () {
           Bitstream Vera Sans Mono, Courier New, monospace;
         }
 
-        // Animation Styles
+        // Animation
         @keyframes spin {
           from { transform: rotate(0deg); }
           to { transform: rotate(360deg); }

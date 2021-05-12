@@ -1,4 +1,3 @@
-// pages/404.js
 import { css, useTheme } from '@emotion/react'
 import ErrorAnimation from '../components/ErrorAnimation'
 import Image from 'next/image'
