@@ -1,6 +1,5 @@
 import { css, useTheme } from '@emotion/react'
 import Image from 'next/image'
-import Link from 'next/link'
 import TypingAnimation from '../components/TypingAnimation'
 import CanvasLoader from '../components/CanvasLoader'
 import * as gtag from '../lib/gtag'
@@ -65,8 +64,26 @@ export default function Home() {
             Hi, {theme.helloEmoji} I'm <span className="highlight">Amir Ardalan</span>
             <br/>I'm passionate about:
             <TypingAnimation />
-            <br/> Check out my <Link href="https://github.com/amirardalan" target="_blank" rel="noopener noreferrer" onClick={LinkGitHubGA} aria-label="GitHub">github</Link>
-            <br/> Download my <Link href="/amir-ardalan-resume.pdf" onClick={LinkResumeGA} aria-label="resume">resume</Link>
+            <br/>
+            Check out my 
+            <a
+              href="https://github.com/amirardalan"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={LinkGitHubGA}
+              aria-label="GitHub">
+              github
+            </a>
+            <br/>
+            Download my 
+            <a
+              href="/amir-ardalan-resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={LinkResumeGA}
+              aria-label="resume">
+              resume
+            </a>
           </div>
         </div>
         <div className="mainRight">
