@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useRouter } from "next/router"
+import { useRouter } from 'next/router'
 import LoadingBar from '../components/LoadingBar'
 import * as gtag from '../lib/gtag'
 
@@ -38,11 +38,11 @@ function MyApp({ Component, pageProps }) {
   }
 
   // Theme Toggle
-  const [theme, toggleTheme, componentMounted] = useDarkMode()
+  const [theme, toggleTheme] = useDarkMode()
   const themeMode = theme === 'light' ? themeLight : themeDark
-  if (!componentMounted) {
-    return <div />
-  }
+  // if (!componentMounted) {
+  //   return <div />
+  // }
   
   return (
     <ThemeProvider theme={themeMode}>

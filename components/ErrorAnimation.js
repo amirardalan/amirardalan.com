@@ -2,103 +2,103 @@ import { css, useTheme } from '@emotion/react'
 
 export default function ErrorAnimation() {
 
-  const theme = useTheme()
+const theme = useTheme()
 
-return (
-  <svg
-    className="astronaut"
-    viewBox="0 0 1167 807"
-    xmlns="http://www.w3.org/2000/svg"
-    css={css`
-      width: 30vw;
-      height: auto;
-      align-self: center;
-      margin-bottom: 2rem;
-      animation: fade-in 1s linear;
-      
-      .arm-left{
-        animation: armSwipe 5s 1s infinite ease-in-out;
-        transform-origin: left top;
-        }
-        @keyframes armSwipe{
-          0%{transform: rotate(-10deg);}
-          50%{transform: rotate(0deg);}
-            100%{transform: rotate(-10deg);}
-        }
-        .arm-right{
-          animation: armRightSwipe 5s 1s infinite ease-in-out;
-          transform-origin: right top;
-        }
-        @keyframes armRightSwipe {
-          0%{transform: rotate(-1deg);}
-          50%{transform: rotate(-5deg);}
-            100%{transform: rotate(-1deg);}
-        }
-        .astronaut{
-          width: 50%;
-          height: auto;
-          overflow: visible;
-          animation: Levitation 5s 1s infinite ease-in-out;
-        }
-        @keyframes Levitation{
-          0%{transform: translateY(100px);}
-          50%{transform: translateY(80px); }
-          100%{transform: translateY(100px);}
-        }
-        .leg-right{
-          animation: LegSwipe 5s 1s infinite ease-out;
-          transform-origin: left bottom;
-        }
-        @keyframes LegSwipe {
-          0%{transform: rotate(8deg);}
-          50%{transform: rotate(5deg);}
-          100%{transform: rotate(8deg);}
-        }
-        .leg-left{
+  return (
+    <svg
+      className="astronaut"
+      viewBox="0 0 1167 807"
+      xmlns="http://www.w3.org/2000/svg"
+      css={css`
+        width: 30vw;
+        height: auto;
+        align-self: center;
+        margin-bottom: 2rem;
+        animation: fade-in 1s linear;
+        
+        .arm-left{
+          animation: armSwipe 5s 1s infinite ease-in-out;
+          transform-origin: left top;
+          }
+          @keyframes armSwipe{
+            0%{transform: rotate(-10deg);}
+            50%{transform: rotate(0deg);}
+              100%{transform: rotate(-10deg);}
+          }
+          .arm-right{
+            animation: armRightSwipe 5s 1s infinite ease-in-out;
+            transform-origin: right top;
+          }
+          @keyframes armRightSwipe {
+            0%{transform: rotate(-1deg);}
+            50%{transform: rotate(-5deg);}
+              100%{transform: rotate(-1deg);}
+          }
+          .astronaut{
+            width: 50%;
+            height: auto;
+            overflow: visible;
+            animation: Levitation 5s 1s infinite ease-in-out;
+          }
+          @keyframes Levitation{
+            0%{transform: translateY(100px);}
+            50%{transform: translateY(80px); }
+            100%{transform: translateY(100px);}
+          }
+          .leg-right{
+            animation: LegSwipe 5s 1s infinite ease-out;
+            transform-origin: left bottom;
+          }
+          @keyframes LegSwipe {
+            0%{transform: rotate(8deg);}
+            50%{transform: rotate(5deg);}
+            100%{transform: rotate(8deg);}
+          }
+          .leg-left{
 
-        }
-        @keyframes LegLeftSwipe {
-          0%{transform: rotate(2deg);}
-          50%{transform: rotate(0deg);}
-          100%{transform: rotate(2deg);}
-        }
-        .reflect{
-          animation: faceOpacity 5s 1s infinite;
-        }
-        @keyframes faceOpacity {
-          0%{opacity: 0.7;}
-          70%{opacity: 1;}
-          100%{opacity: 0.7;}
-        }
-        .eye-right{
-          animation: eyeBlink 5s infinite step-start 0s;
-        }
-        .eye-left{
-          animation: eyeLeftBlink 5s infinite step-start 0s;
+          }
+          @keyframes LegLeftSwipe {
+            0%{transform: rotate(2deg);}
+            50%{transform: rotate(0deg);}
+            100%{transform: rotate(2deg);}
+          }
+          .reflect{
+            animation: faceOpacity 5s 1s infinite;
+          }
+          @keyframes faceOpacity {
+            0%{opacity: 0.7;}
+            70%{opacity: 1;}
+            100%{opacity: 0.7;}
+          }
+          .eye-right{
+            animation: eyeBlink 5s infinite step-start 0s;
+          }
+          .eye-left{
+            animation: eyeLeftBlink 5s infinite step-start 0s;
 
-        }
-        @keyframes eyeBlink {
-          90%{transform: none; animation-timing-function: ease-in;}
-          93%{transform: translateY(135px) scaleY(0);}
-          100%{animation-timing-function: ease-in;}
-        }
-        @keyframes eyeLeftBlink {
-          90%{transform: none; animation-timing-function: ease-in;}
-          93%{transform: translateY(155px) scaleY(0);}
-          100%{animation-timing-function: ease-in;}
-        }
-        .stars{
-          width: 800px;
-          fill: ${theme.colors.text};
-          overflow: visible;
-          animation: starsRotate 155s 1s linear;
-          transform-origin: center;
-        }
-        @keyframes starsRotate {
-          0%{transform: rotate(0deg);}
-          100%{transform: rotate(360deg);}
-        }
-    `}>
+          }
+          @keyframes eyeBlink {
+            90%{transform: none; animation-timing-function: ease-in;}
+            93%{transform: translateY(135px) scaleY(0);}
+            100%{animation-timing-function: ease-in;}
+          }
+          @keyframes eyeLeftBlink {
+            90%{transform: none; animation-timing-function: ease-in;}
+            93%{transform: translateY(155px) scaleY(0);}
+            100%{animation-timing-function: ease-in;}
+          }
+          .stars{
+            width: 800px;
+            fill: ${theme.colors.text};
+            overflow: visible;
+            animation: starsRotate 155s 1s linear;
+            transform-origin: center;
+          }
+          @keyframes starsRotate {
+            0%{transform: rotate(0deg);}
+            100%{transform: rotate(360deg);}
+          }
+      `}>
 
       <defs>
         <linearGradient x1="99.997%" y1="50%" x2=".002%" y2="50%" id="a">

@@ -23,7 +23,6 @@ export default function Header() {
   `
 
   return (
-    <>
     <div css={css`
     display: flex;
     flex-direction: column; `}>
@@ -90,12 +89,9 @@ export default function Header() {
               </h4>
 
             </div>
-
           </div>
         </button>
       </Link>
-
     </div>
-    </>
   )
 }

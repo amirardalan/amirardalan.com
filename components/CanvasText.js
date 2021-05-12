@@ -4,12 +4,12 @@ import React, { useState, useEffect } from 'react'
 export default function CanvasText() {
 
   const theme = useTheme()
-  const [display, setDisplay] = useState('none');
+  const [display, setDisplay] = useState('none')
 
   useEffect(() => {
     setTimeout(() => {
-      setDisplay('block');
-    }, 500);
+      setDisplay('block')
+    }, 500)
   }, [])
 
   return (
@@ -17,8 +17,7 @@ export default function CanvasText() {
       <h2
         className="canvasTitle"
         aria-label="${theme.canvas.text}"
-        css={css`
-          display: ${display}; `}>
+        css={css` display: ${display}; `}>
         {theme.canvas.text}
       </h2>
       <h5

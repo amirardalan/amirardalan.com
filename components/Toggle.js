@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-import { func, string } from 'prop-types';
+import { func, string } from 'prop-types'
 import { useTheme, css } from '@emotion/react'
 
 const Toggle = ({ toggleTheme }) => {
@@ -60,4 +60,4 @@ Toggle.propTypes = {
   toggleTheme: func.isRequired,
 }
 
-export default Toggle;
+export default Toggle

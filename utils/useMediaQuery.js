@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from 'react'
 
 // Device Width MediaQuery
 export const useMediaQuery = (width) => {
-  const [targetReached, setTargetReached] = useState(false);
+  const [targetReached, setTargetReached] = useState(false)
 
   const updateTarget = useCallback((e) => {
     if (e.matches) {
@@ -10,7 +10,7 @@ export const useMediaQuery = (width) => {
     } else {
       setTargetReached(false);
     }
-  }, []);
+  }, [])
 
   useEffect(() => {
     const media = window.matchMedia(`(max-width: ${width}px)`)
@@ -25,4 +25,4 @@ export const useMediaQuery = (width) => {
   }, [])
 
   return targetReached;
-};
+}
