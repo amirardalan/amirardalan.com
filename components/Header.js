@@ -1,9 +1,6 @@
 import { useTheme, css } from '@emotion/react'
 import styled from '@emotion/styled'
 import Link from 'next/link'
-import LoadingBar from '../components/LoadingBar'
-import { useState, useEffect } from 'react'
-import { useRouter } from 'next/router'
 
 export default function Header() {
 
@@ -15,21 +12,6 @@ export default function Header() {
   }
 
   const theme = useTheme()
-
-  const router = useRouter()
-  const [loader, setLoader] = useState()
-  
-  useEffect(() => {
-    let routeChangeStart = () => setLoader(true)
-    let routeChangeComplete = () => setLoader(false)
-    router.events.on('routeChangeStart', routeChangeStart)
-    router.events.on('routeChangeComplete', routeChangeComplete)
-  }, [setLoader])
-
-  function UseLoader() {
-    if(setLoader)return <LoadingBar />
-      else return null
-  }
 
   // Logo Animation
   const Image = styled.img`
@@ -112,8 +94,6 @@ export default function Header() {
           </div>
         </button>
       </Link>
-
-      <UseLoader isLoading={false} />
 
     </div>
     </>

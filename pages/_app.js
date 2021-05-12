@@ -1,5 +1,6 @@
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from "next/router"
+import LoadingBar from '../components/LoadingBar'
 import * as gtag from '../lib/gtag'
 
 import Head from 'next/head'
@@ -15,19 +16,28 @@ import Toggle from '../components/Toggle'
 
 function MyApp({ Component, pageProps }) {
 
-  // Google Analytics - Pageview Tracking
+  // Custom Route Handling
+  // For Google Analytics & Loading Bar
   const router = useRouter()
+  const [loader, setLoader] = useState()
   useEffect(() => {
+    let handleRouteStart = () => setLoader(true)
     const handleRouteChange = (url) => {
       gtag.pageview(url)
+      setLoader(false)
     }
+    router.events.on('routeChangeStart', handleRouteStart)
     router.events.on('routeChangeComplete', handleRouteChange)
     return () => {
       router.events.off('routeChangeComplete', handleRouteChange)
     }
   }, [router.events])
+  function UseLoader() {
+    if(setLoader)return <LoadingBar />
+      else return null
+  }
 
-  // Dark Mode Toggle
+  // Theme Toggle
   const [theme, toggleTheme, componentMounted] = useDarkMode()
   const themeMode = theme === 'light' ? themeLight : themeDark
   if (!componentMounted) {
@@ -36,11 +46,12 @@ function MyApp({ Component, pageProps }) {
   
   return (
     <ThemeProvider theme={themeMode}>
+      <GlobalStyles />
+      <UseLoader isLoading={false} />
       <Head>
         <title>Amir Ardalan | Portfolio</title>
         <meta name="theme-color" content={themeMode.colors.background} />
       </Head>
-      <GlobalStyles />
       <div className="container">
         <div className="header">
           <Header />

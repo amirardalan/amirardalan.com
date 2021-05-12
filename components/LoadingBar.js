@@ -8,7 +8,6 @@ export default function LoadingBar() {
     <div css={css`
       height: 5px;
       width: inherit;
-      margin-top: .5rem;
     `}>
       <div css={css`
         height: inherit;
@@ -18,20 +17,13 @@ export default function LoadingBar() {
 
         @keyframes loading {
           0% {
-            width: 1%;
-            opacity: 1;
+            width: 0%;
           }
           50% {
             width: 50%;
-            opacity: 1;
-          }
-          96% {
-            width: 100%;
-            opacity: .7;
           }
           100% {
             width: 100%;
-            opacity: 0;
           }
         }
       `}>
