@@ -95,7 +95,7 @@ export default function Header() {
                 Amir Ardalan
               </h1>
 
-              <h2 aria-hidden="true"
+              <h4 aria-hidden="true"
                 css={css`
                 margin: 0;
                 padding: .2rem 0 0 0;
@@ -105,7 +105,7 @@ export default function Header() {
                 letter-spacing: .01rem;
               `}>
                 45.5051° N, 122.6750° W
-              </h2>
+              </h4>
 
             </div>
 
