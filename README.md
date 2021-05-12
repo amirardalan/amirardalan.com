@@ -1,8 +1,8 @@
-`aa21` is a simple portfolio  site built with [Next.js](https://nextjs.org/).
+`aa21` is a simple portfolio site built with [Next.js](https://nextjs.org/)
 
 ## Project Dependencies
 
-Run `npm install` locally in projecy directory to install the following dependencies:
+Run `npm install` to install:
 
 - [Emotion](https://github.com/emotion-js/emotion) - CSS in JS / Theming
 - [Fontsource](https://github.com/fontsource/fontsource) - Self hosted web fonts
@@ -29,7 +29,7 @@ Open [http://localhost:3000](http://localhost:3000)
 ## Deployment
 
 Set `npm run export` as the Build Command on server to generate static files for production.
-☝️ References: `"export": "npm run build && next export -o _static"` located in `Package.json`
+- ☝️ References: `"export": "npm run build && next export -o _static"` located in `Package.json`
 
 ## Custom Configuration
 
