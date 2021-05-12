@@ -65,25 +65,19 @@ export default function Home() {
             <br/>I'm passionate about:
             <TypingAnimation />
             <br/>
-            Check out my 
-            <a
+            Check out my <a
               href="https://github.com/amirardalan"
               target="_blank"
               rel="noopener noreferrer"
               onClick={LinkGitHubGA}
-              aria-label="GitHub">
-              github
-            </a>
+              aria-label="GitHub">github</a>
             <br/>
-            Download my 
-            <a
+            Download my <a
               href="/amir-ardalan-resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               onClick={LinkResumeGA}
-              aria-label="resume">
-              resume
-            </a>
+              aria-label="resume">resume</a>
           </div>
         </div>
         <div className="mainRight">
