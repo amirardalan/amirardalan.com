@@ -1,7 +1,7 @@
 import React from 'react'
 import Typical from 'react-typical'
 
-const TypingAnimationMemoized =  React.memo(()=>{
+const TypingAnimationMemoized =  React.memo(()=> {
   return (
     <Typical
       steps={[
@@ -26,7 +26,7 @@ const TypingAnimationMemoized =  React.memo(()=>{
       loop={Infinity}
     />
   )
-},(props,prevProp)=> true );
+},()=> true );
 
 export default function TypingAnomaton() {
   return <TypingAnimationMemoized />
