@@ -57,7 +57,7 @@ export function GlobalStyles () {
         }
 
         .container {
-          padding: 2% 5% 0 5%;
+          padding: 1.6% 5% 0 5%;
 
           @media (max-width: 890px) {
             padding: 5% 5% 0 5%;

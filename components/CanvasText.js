@@ -17,6 +17,9 @@ export default function CanvasText() {
         css={css`
           margin: 0 0 1rem 0;
           padding: 0;
+          @media (max-width: 890px) {
+            display: none;
+          }
         `}>
         {theme.canvas.textSmall}
       </h6>

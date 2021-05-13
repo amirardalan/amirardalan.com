@@ -8,9 +8,9 @@ export default function LoadingTriangle() {
     <div
       className="loader triangle"
       css={css`
-        --path: #333;
+        --path: ${theme.colors.divider};
         --dot: ${theme.colors.link};
-        --duration: 3s;
+        --duration: 1s;
         width: 48px;
         height: 44px;
         position: relative;

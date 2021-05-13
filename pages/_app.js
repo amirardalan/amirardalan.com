@@ -27,11 +27,11 @@ function MyApp({ Component, pageProps }) {
   return (
     <ThemeProvider theme={themeMode}>
       <GlobalStyles />
-      <UseLoader />
       <Head>
         <title>Amir Ardalan | Portfolio</title>
         <meta name="theme-color" content={themeMode.colors.background} />
       </Head>
+      <UseLoader />
       <div className="container">
         <div className="header">
           <Header />
