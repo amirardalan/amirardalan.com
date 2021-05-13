@@ -1,14 +1,14 @@
 import { css, useTheme } from '@emotion/react'
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
-// import LoadingTriangle from '../components/LoadingTriangle'
-// import dynamic from 'next/dynamic'
+import LoadingTriangle from '../components/LoadingTriangle'
+import dynamic from 'next/dynamic'
 import TypingAnimation from '../components/TypingAnimation'
 
-// const CanvasLoader = dynamic(() => import('../components/CanvasLoader'), {
-//   loading: () => <LoadingTriangle />,
-//   ssr: false
-// })
+const CanvasLoader = dynamic(() => import('../components/CanvasLoader'), {
+  loading: () => <LoadingTriangle />,
+  ssr: false
+})
 
 export default function Home() {
 
@@ -95,7 +95,7 @@ export default function Home() {
         </div>
       </div>
       <div className="mainRight">
-        {/* {toggleCanvas ? <CanvasLoader /> : null} */}
+        {toggleCanvas ? <CanvasLoader /> : null}
       </div>
     </main>
   )

@@ -123,7 +123,7 @@ export function GlobalStyles () {
           animation: slide-up 1s forwards;
           align-items: center;
           justify-content: center;
-          background-color: ${theme.canvas.bg};
+          /* background-color: ${theme.canvas.bg}; */
           /* transition: background-color .5s linear; */
 
           @media (max-width: 890px) {

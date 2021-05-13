@@ -23,7 +23,7 @@ export const themeLight = {
   },
   canvas: {
     text: '',
-    textSmall: '© Amir Ardalan',
+    textSmall: 'Rotate & Zoom',
     bg: '#222',
     meshA: '#9C66FF',
     zoomFrom: -300,
@@ -62,7 +62,7 @@ export const themeDark = {
   },
   canvas: {
     text: '',
-    textSmall: '© Amir Ardalan',
+    textSmall: 'Rotate + Zoom',
     bg: '#222',
     meshA: '#21E598',
     zoomFrom: -3,
