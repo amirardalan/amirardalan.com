@@ -33,7 +33,6 @@ export default function Header() {
         aria-label="Amir Ardalan Logo">
 
         <button
-          tabIndex='1'
           css={css`
             text-decoration: none;
             background: none;

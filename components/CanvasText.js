@@ -14,18 +14,18 @@ export default function CanvasText() {
 
   return (
     <>
-      <h3
+      <h5
         className="canvasTitle"
         aria-label="${theme.canvas.text}"
         css={css` display: ${display}; `}>
         {theme.canvas.text}
-      </h3>
-      <h4
+      </h5>
+      <h6
         className="canvasControls"
         aria-label="${theme.canvas.textSmall}"
         css={css` display: ${display}; `}>
         {theme.canvas.textSmall}
-      </h4>
+      </h6>
     </>
   )
 }

@@ -26,6 +26,20 @@ export default function Home() {
     })
   }
 
+  const LinkLinkedIn = () => {
+    gtag.event({
+        category: 'Link',
+        action: 'LinkedIn Link Clicked'
+    })
+  }
+
+  const LinkTwitter = () => {
+    gtag.event({
+        category: 'Link',
+        action: 'Twitter Link Clicked'
+    })
+  }
+
   const [toggleCanvas, setToggleCanvas] = useState(false);
 
   console.log('page rendering')
@@ -72,26 +86,48 @@ export default function Home() {
                 font-size: calc(2.5vw + 2.5vh);
                 min-height: 0vw;
               }
-              p { color: #8D8D8D; }
+              p { color: #888; }
             `}
           >
-            Hi, {theme.helloEmoji} I'm <span className="highlight">Amir Ardalan</span>
+            <h3>
+              Hi, {theme.helloEmoji} I'm <br/>
+              <span className="highlight">Amir Ardalan</span>
+            </h3>
             <br/>I'm passionate about:
             <TypingAnimation />
             <br/>
-            Check out my <a
+            <h4>
+              Check out my <a
               href="https://github.com/amirardalan"
               target="_blank"
               rel="noopener noreferrer"
               onClick={LinkGitHubGA}
-              aria-label="GitHub">github</a>
-            <br/>
+              aria-label="GitHub">GitHub</a>
+            </h4>
+            <h4>
+            Add me on <a
+              href="https://linkedin.com/in/amirardalan"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={LinkLinkedIn}
+              aria-label="resume">LinkedIn</a>
+            </h4>
+            <h4>
+            Follow me on <a
+              href="https://twitter.com/amirardalan"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={LinkTwitter}
+              aria-label="resume">Twitter</a>
+            </h4>
+            <h4>
             Download my <a
               href="/amir-ardalan-resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               onClick={LinkResumeGA}
               aria-label="resume">resume</a>
+            </h4>
           </div>
         </div>
         <div className="mainRight">

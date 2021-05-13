@@ -74,6 +74,16 @@ export function GlobalStyles () {
           justify-content: space-between;
           animation: slide-up .8s forwards;
 
+          h3, h4 {
+            margin: 0;
+            padding: 0;
+          }
+
+          h4 {
+            /* line-height: 1.2rem; */
+            font-size: 18px;
+          }
+
           @media (max-width: 890px) {
             width: 100%;
             justify-content: start;

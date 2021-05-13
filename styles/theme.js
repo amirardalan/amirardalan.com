@@ -2,10 +2,10 @@ export const themeLight = {
   colors: {
     background: '#f5f5f5',
     text: '#111',
-    textLight: '#8D8D8D',
+    textLight: '#888',
     link: '#00B0E3',
-    divider: '#eaeaea',
-    footer: '#ADADAD',
+    divider: '#ddd',
+    footer: '#999',
     footerLink: '#666',
     highlight: '#f5f5f5',
     highlightBg: '#111',

@@ -10,7 +10,6 @@ const Toggle = ({ toggleTheme }) => {
   return (
     <>
       <button
-        tabIndex='2'
         onClick={toggleTheme}
         aria-label="Toggle Dark Mode"
         css={css`
