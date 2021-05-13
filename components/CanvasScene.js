@@ -15,7 +15,7 @@ export default function CanvasScene(props) {
 
   function SpaceZoom() {
 
-    let easing = BezierEasing(0.8, 0.1, 0.0, 1.0);
+    let easing = BezierEasing(0.8, 0.1, 0.0, 1.0)
 
     const spring = useSpring({
       loop: { reverse: false },

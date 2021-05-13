@@ -26,7 +26,7 @@ export const useDarkMode = () => {
       setMode('dark') :
       localTheme ?
         setTheme(localTheme) :
-        setMode('light');
+        setMode('light')
   }, [])
 
   return [theme, toggleTheme]

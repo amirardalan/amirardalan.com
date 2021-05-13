@@ -6,9 +6,9 @@ export const useMediaQuery = (width) => {
 
   const updateTarget = useCallback((e) => {
     if (e.matches) {
-      setTargetReached(true);
+      setTargetReached(true)
     } else {
-      setTargetReached(false);
+      setTargetReached(false)
     }
   }, [])
 
@@ -24,5 +24,5 @@ export const useMediaQuery = (width) => {
     return () => media.removeEventListener('change', e => updateTarget(e))
   }, [])
 
-  return targetReached;
+  return targetReached
 }
