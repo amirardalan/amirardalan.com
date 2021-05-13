@@ -1,23 +1,24 @@
-import { useState, useEffect } from 'react'
-import { useRouter } from 'next/router'
+import "@fontsource/poppins/500.css"
+import "@fontsource/poppins/700.css"
+import { GlobalStyles } from '../styles/global'
 import LoadingBar from '../components/LoadingBar'
-import * as gtag from '../lib/gtag'
 
 import Head from 'next/head'
 import Header from '../components/Header'
-import Footer from '../components/Footer'
-
-import { GlobalStyles } from '../styles/global'
 import { ThemeProvider } from '@emotion/react'
 import { themeLight, themeDark } from '../styles/theme'
 import { useDarkMode } from '../utils/useDarkMode'
 import Toggle from '../components/Toggle'
+import Footer from '../components/Footer'
+
+import { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
+import * as gtag from '../lib/gtag'
 
 
 function MyApp({ Component, pageProps }) {
 
-  // Custom Route Handling
-  // For Google Analytics & Loading Bar
+  // Route handling for Google Analytics & Loading Bar
   const router = useRouter()
   const [loader, setLoader] = useState()
   useEffect(() => {
@@ -40,9 +41,6 @@ function MyApp({ Component, pageProps }) {
   // Theme Toggle
   const [theme, toggleTheme] = useDarkMode()
   const themeMode = theme === 'light' ? themeLight : themeDark
-  // if (!componentMounted) {
-  //   return <div />
-  // }
   
   return (
     <ThemeProvider theme={themeMode}>

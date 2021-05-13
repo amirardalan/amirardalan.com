@@ -1,6 +1,4 @@
 import { css, Global, useTheme } from '@emotion/react'
-import "@fontsource/poppins/500.css"
-import "@fontsource/poppins/700.css"
 
 export function GlobalStyles () {
   const theme = useTheme()
@@ -14,7 +12,7 @@ export function GlobalStyles () {
         body {
           background-color: ${theme.colors.background};
           color: ${theme.colors.text};
-          font-family: 'Poppins';
+          font-family: 'Poppins', Arial, Helvetica, sans-serif;
           padding: 0;
           margin: 0;
           transition: all 0.25s linear;

@@ -68,7 +68,7 @@ export default function Header() {
               <h1 css={css`
                 padding: .2rem 0 0 0;
                 margin: 0;
-                font-family: 'Poppins';
+                font-family: 'Poppins', Arial, Helvetica, sans-serif;
                 font-weight: 800;
                 font-size: 14px;
                 color: ${theme.colors.text};
