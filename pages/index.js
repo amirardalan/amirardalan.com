@@ -1,12 +1,14 @@
+import { useState } from 'react'
 import { css, useTheme } from '@emotion/react'
 import Image from 'next/image'
 import TypingAnimation from '../components/TypingAnimation'
 import * as gtag from '../lib/gtag'
 import dynamic from 'next/dynamic'
+// import CanvasLoader from '../components/CanvasLoader'
 
 const CanvasLoader = dynamic(() => import('../components/CanvasLoader'), {
   loading: () => <Image src="/loading.svg" height="30" width="30" alt="loading" />,
-  ssr: true
+  ssr: false
 })
 
 export default function Home() {
@@ -24,6 +26,8 @@ export default function Home() {
         action: 'Resume Link Clicked'
     })
   }
+
+  const [toggleCanvas, setToggleCanvas] = useState(false);
 
   const theme = useTheme()
   
@@ -85,7 +89,11 @@ export default function Home() {
           </div>
         </div>
         <div className="mainRight">
-          <CanvasLoader />
+          {/* <CanvasLoader /> */}
+          <button onClick={() => setToggleCanvas(!toggleCanvas)}>
+            Toggle Canvas
+          </button>
+          {toggleCanvas ? <CanvasLoader /> : null}
         </div>
       </main>
     </>
