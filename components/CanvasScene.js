@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
-import { Icosahedron, MeshWobbleMaterial, OrbitControls } from '@react-three/drei'
+import { Icosahedron, MeshWobbleMaterial, TrackballControls } from '@react-three/drei'
 
 export default function CanvasScene(props) {
 
@@ -20,7 +20,7 @@ export default function CanvasScene(props) {
         ref={mesh}
         scale={.2}
         {...props}>
-        <Icosahedron args={[20, 3]}>
+        <Icosahedron args={[30, 3]}>
           <MeshWobbleMaterial
             color={props.theme.canvas.meshA}
             attach="material"
@@ -29,7 +29,7 @@ export default function CanvasScene(props) {
             wireframe
           />
         </Icosahedron>
-        <OrbitControls enablePan={false} />
+        <TrackballControls enablePan={false} maxDistance={-600} />
       </mesh>
     </>
   )
