@@ -78,11 +78,12 @@ export function GlobalStyles () {
           justify-content: space-between;
           animation: slide-up .8s forwards;
 
+          h2 { margin-top: 0; }
           h3, h4 {
             margin: 0;
             padding: 0;
           }
-
+          
           h3,
           h3 p {
             font-size: 35px;

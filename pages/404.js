@@ -2,16 +2,8 @@ import { css, useTheme } from '@emotion/react'
 import ErrorAnimation from '../components/ErrorAnimation'
 import Image from 'next/image'
 import Link from 'next/link'
-import * as gtag from '../lib/gtag'
 
 export default function Custom404() {
-
-  const LinkReturnHome = () => {
-    gtag.event({
-        category: 'Link',
-        action: 'GitHub Link Clicked'
-    })
-  }
 
   const theme = useTheme()
 
@@ -66,7 +58,6 @@ export default function Custom404() {
       `}>
         <Link
           href="/"
-          onClick={LinkReturnHome}
           aria-label="Return Home"
         >
           Return Home

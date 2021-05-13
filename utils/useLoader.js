@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
-import * as gtag from '../lib/gtag'
 
 export const useLoader = () => {
     
@@ -8,8 +7,7 @@ export const useLoader = () => {
     const [loader, setLoader] = useState()
     useEffect(() => {
       let handleRouteStart = () => setLoader(true)
-      const handleRouteChange = (url) => {
-        gtag.pageview(url)
+      const handleRouteChange = () => {
         setLoader(false)
       }
       router.events.on('routeChangeStart', handleRouteStart)

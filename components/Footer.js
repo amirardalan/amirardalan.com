@@ -1,29 +1,6 @@
 import { css, useTheme } from '@emotion/react'
-import Link from 'next/link'
-import * as gtag from '../lib/gtag'
 
 export default function Footer() {
-
-  const LinkNextjsGA = () => {
-    gtag.event({
-        category: 'Link',
-        action: 'Next.js Link Clicked'
-    })
-  }
-
-  const LinkEmotionGA = () => {
-    gtag.event({
-        category: 'Link',
-        action: 'Emotion Link Clicked'
-    })
-  }
-
-  const LinkThreejsGA = () => {
-    gtag.event({
-        category: 'Link',
-        action: 'Three.js Link Clicked'
-    })
-  }
 
   const theme = useTheme()
 
@@ -66,7 +43,6 @@ export default function Footer() {
           href="https://nextjs.org/"
           target="_blank"
           rel="noopener noreferrer"
-          onClick={LinkNextjsGA}
           aria-label="Next.js">
           Next.js
         </a>+ 
@@ -74,7 +50,6 @@ export default function Footer() {
           href="https://emotion.sh/docs/introduction"
           target="_blank"
           rel="noopener noreferrer"
-          onClick={LinkEmotionGA}
           aria-label="Emotion CSS">
           Emotion
         </a>+ 
@@ -82,7 +57,6 @@ export default function Footer() {
           href="https://threejs.org/"
           target="_blank"
           rel="noopener noreferrer"
-          onClick={LinkThreejsGA}
           aria-label="Three.js">
           Three.js
         </a>

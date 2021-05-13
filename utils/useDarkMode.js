@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import * as gtag from '../lib/gtag'
 
 export const useDarkMode = () => {
   const [theme, setTheme] = useState('light')
@@ -9,10 +8,6 @@ export const useDarkMode = () => {
   };
 
   const toggleTheme = () => {
-    gtag.event({
-      category: 'UI Control',
-      action: 'Theme Toggle Clicked'
-    })
     if (theme === 'light') {
       setMode('dark')
     } else {

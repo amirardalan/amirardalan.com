@@ -4,7 +4,6 @@ import Image from 'next/image'
 import LoadingTriangle from '../components/LoadingTriangle'
 import dynamic from 'next/dynamic'
 import TypingAnimation from '../components/TypingAnimation'
-import * as gtag from '../lib/gtag'
 
 const CanvasLoader = dynamic(() => import('../components/CanvasLoader'), {
   loading: () => <LoadingTriangle />,
@@ -12,34 +11,6 @@ const CanvasLoader = dynamic(() => import('../components/CanvasLoader'), {
 })
 
 export default function Home() {
-
-  const LinkGitHubGA = () => {
-    gtag.event({
-        category: 'Link',
-        action: 'GitHub Link Clicked'
-    })
-  }
-
-  const LinkResumeGA = () => {
-    gtag.event({
-        category: 'Link',
-        action: 'Resume Link Clicked'
-    })
-  }
-
-  const LinkLinkedIn = () => {
-    gtag.event({
-        category: 'Link',
-        action: 'LinkedIn Link Clicked'
-    })
-  }
-
-  const LinkTwitter = () => {
-    gtag.event({
-        category: 'Link',
-        action: 'Twitter Link Clicked'
-    })
-  }
 
   const theme = useTheme()
   const [toggleCanvas, setToggleCanvas] = useState(false);
@@ -98,7 +69,6 @@ export default function Home() {
             href="https://github.com/amirardalan"
             target="_blank"
             rel="noopener noreferrer"
-            onClick={LinkGitHubGA}
             aria-label="GitHub">GitHub</a>
           </h4>
           <h4>
@@ -106,7 +76,6 @@ export default function Home() {
             href="https://linkedin.com/in/amirardalan"
             target="_blank"
             rel="noopener noreferrer"
-            onClick={LinkLinkedIn}
             aria-label="resume">LinkedIn</a>
           </h4>
           <h4>
@@ -114,7 +83,6 @@ export default function Home() {
             href="https://twitter.com/amirardalan"
             target="_blank"
             rel="noopener noreferrer"
-            onClick={LinkTwitter}
             aria-label="resume">Twitter</a>
           </h4>
           <h4>
@@ -122,7 +90,6 @@ export default function Home() {
             href="/amir-ardalan-resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            onClick={LinkResumeGA}
             aria-label="resume">resume</a>
           </h4>
         </div>

@@ -29,7 +29,6 @@ export default function Header() {
 
       <Link
         href="/"
-        onClick={HeaderLogoGA}
         aria-label="Amir Ardalan Logo">
 
         <button
