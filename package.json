@@ -16,7 +16,6 @@
     "@react-spring/three": "^9.1.2",
     "@react-three/drei": "^4.3.2",
     "@react-three/fiber": "^6.0.17",
-    "@react-three/postprocessing": "^2.0.3",
     "bezier-easing": "^2.1.0",
     "drei": "^2.2.21",
     "next": "10.2.0",

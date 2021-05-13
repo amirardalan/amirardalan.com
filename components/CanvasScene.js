@@ -55,7 +55,7 @@ export default function CanvasScene(props) {
     <>
       <ambientLight intensity={.2} />
       <pointLight position={[10, 10, 10]} />
-      <directionalLight position={[0, 0, 5]} intensity={.6} />
+      <directionalLight position={[0, 0, 5]} intensity={.1} />
       <mesh
         ref={mesh}
         scale={.2}

@@ -22,7 +22,7 @@ export const themeLight = {
     iconAlt: 'Sun Icon'
   },
   canvas: {
-    text: 'Design & Code',
+    text: '',
     textSmall: '© Amir Ardalan',
     bg: '#222',
     meshA: '#9C66FF',
@@ -61,7 +61,7 @@ export const themeDark = {
     iconAlt: 'Moon Icon',
   },
   canvas: {
-    text: 'Design & Code',
+    text: '',
     textSmall: '© Amir Ardalan',
     bg: '#222',
     meshA: '#21E598',

@@ -7,7 +7,7 @@ import TypingAnimation from '../components/TypingAnimation'
 
 const CanvasLoader = dynamic(() => import('../components/CanvasLoader'), {
   loading: () => <LoadingTriangle />,
-  ssr: true
+  ssr: false
 })
 
 export default function Home() {
