@@ -63,12 +63,12 @@ export default function Header() {
               flex-direction: column;
               margin-left: .2rem;
               animation: slide-left 1s forwards;
+              font-family: 'Poppins', Arial, Helvetica, sans-serif;
             `}>
               
               <h1 css={css`
                 padding: .2rem 0 0 0;
                 margin: 0;
-                font-family: 'Poppins', Arial, Helvetica, sans-serif;
                 font-weight: 800;
                 font-size: 14px;
                 color: ${theme.colors.text};
@@ -76,7 +76,7 @@ export default function Header() {
                 Amir Ardalan
               </h1>
 
-              <h4 aria-hidden="true"
+              <h2 aria-hidden="true"
                 css={css`
                 margin: 0;
                 padding: .2rem 0 0 0;
@@ -86,7 +86,7 @@ export default function Header() {
                 letter-spacing: .01rem;
               `}>
                 45.5051° N, 122.6750° W
-              </h4>
+              </h2>
 
             </div>
           </div>

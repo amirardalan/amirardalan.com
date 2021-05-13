@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react'
 import { css, useTheme } from '@emotion/react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
+import dynamic from 'next/dynamic'
 import TypingAnimation from '../components/TypingAnimation'
 import * as gtag from '../lib/gtag'
-import dynamic from 'next/dynamic'
 
 const CanvasLoader = dynamic(() => import('../components/CanvasLoader'), {
   loading: () => <Image src="/loading.svg" height="30" width="30" alt="loading" />,
@@ -28,7 +28,10 @@ export default function Home() {
 
   const [toggleCanvas, setToggleCanvas] = useState(false);
 
+  console.log('page rendering')
+
   useEffect(() => {
+    console.log('page rendered')
     setToggleCanvas(!toggleCanvas)
   }, [])
 
@@ -69,7 +72,7 @@ export default function Home() {
                 font-size: calc(2.5vw + 2.5vh);
                 min-height: 0vw;
               }
-              p { color: #999; }
+              p { color: #8D8D8D; }
             `}
           >
             Hi, {theme.helloEmoji} I'm <span className="highlight">Amir Ardalan</span>

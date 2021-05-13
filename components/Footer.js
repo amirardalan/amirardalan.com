@@ -34,12 +34,13 @@ export default function Footer() {
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      text-align: center;
+      font-size: 12px;
       padding: 1em;
       height: 100px;
       background-color: ${theme.colors.background};
       color: ${theme.colors.footer};
       border-top: 1px solid ${theme.colors.divider};
-      font-size: .8rem;
       font-weight: 400;
       line-height: 2em;
       animation: slide-up .25s forwards;
@@ -51,7 +52,6 @@ export default function Footer() {
         {' '}-{' '} Amir Ardalan
       </div>
       <div css={css`
-        font-size: 10px;
         a {
           color: ${theme.colors.footerLink};
           padding: 0 .3em;
@@ -61,7 +61,7 @@ export default function Footer() {
         }
         div { flex-direction: row; }
       `}>
-        Made with <span>&hearts;</span> using: 
+        Made with <span>&hearts;</span> using: <br/>
         <a
           href="https://nextjs.org/"
           target="_blank"
