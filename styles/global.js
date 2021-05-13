@@ -79,9 +79,12 @@ export function GlobalStyles () {
             padding: 0;
           }
 
+          h3,
+          h3 p { font-size: calc(1.5vw + 1.5vh); }
+
           h4 {
-            /* line-height: 1.2rem; */
             font-size: 18px;
+            color: ${theme.colors.footerLink};
           }
 
           @media (max-width: 890px) {

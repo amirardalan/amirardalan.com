@@ -45,7 +45,6 @@ export default function Home() {
   console.log('page rendering')
 
   useEffect(() => {
-    console.log('page rendered')
     setToggleCanvas(!toggleCanvas)
   }, [])
 
@@ -86,15 +85,16 @@ export default function Home() {
                 font-size: calc(2.5vw + 2.5vh);
                 min-height: 0vw;
               }
-              p { color: #888; }
             `}
           >
-            <h3>
+            <h2>
               Hi, {theme.helloEmoji} I'm <br/>
               <span className="highlight">Amir Ardalan</span>
+            </h2>
+            <h3>
+              I'm passionate about: <br/>
+              <TypingAnimation />
             </h3>
-            <br/>I'm passionate about:
-            <TypingAnimation />
             <br/>
             <h4>
               Check out my <a
