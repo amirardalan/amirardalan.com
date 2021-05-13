@@ -42,7 +42,7 @@ export default function Footer() {
       color: ${theme.colors.footer};
       border-top: 1px solid ${theme.colors.divider};
       font-weight: 400;
-      line-height: 2em;
+      line-height: 1.5em;
       animation: slide-up .25s forwards;
       transition: all 0.25s linear;
     `}>

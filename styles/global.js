@@ -96,7 +96,7 @@ export function GlobalStyles () {
             line-height: 1.3rem;
             font-size: 15px;
             font-weight: 400;
-            color: ${theme.colors.footerLink};
+            color: ${theme.colors.footer};
 
             a { font-weight: 700; }
           }

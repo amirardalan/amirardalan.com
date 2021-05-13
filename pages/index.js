@@ -41,15 +41,12 @@ export default function Home() {
     })
   }
 
+  const theme = useTheme()
   const [toggleCanvas, setToggleCanvas] = useState(false);
-
-  console.log('page rendering')
 
   useEffect(() => {
     setToggleCanvas(!toggleCanvas)
   }, [])
-
-  const theme = useTheme()
   
   return (
     <main>
