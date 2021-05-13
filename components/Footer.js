@@ -62,30 +62,30 @@ export default function Footer() {
         div { flex-direction: row; }
       `}>
         Made with <span>&hearts;</span> using: 
-        <Link
+        <a
           href="https://nextjs.org/"
           target="_blank"
           rel="noopener noreferrer"
           onClick={LinkNextjsGA}
           aria-label="Next.js">
           Next.js
-        </Link>+ 
-        <Link
-          href="https://emotion.sh/"
+        </a>+ 
+        <a
+          href="https://emotion.sh/docs/introduction"
           target="_blank"
           rel="noopener noreferrer"
           onClick={LinkEmotionGA}
           aria-label="Emotion CSS">
           Emotion
-        </Link>+ 
-        <Link
+        </a>+ 
+        <a
           href="https://threejs.org/"
           target="_blank"
           rel="noopener noreferrer"
           onClick={LinkThreejsGA}
           aria-label="Three.js">
           Three.js
-        </Link>
+        </a>
       </div>
     </footer>
   )
