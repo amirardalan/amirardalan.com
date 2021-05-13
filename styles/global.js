@@ -80,11 +80,21 @@ export function GlobalStyles () {
           }
 
           h3,
-          h3 p { font-size: calc(1.5vw + 1.5vh); }
+          h3 p {
+            font-size: 35px;
+
+            @media (max-width: 480px) {
+              font-size: 25px;
+            }
+          }
 
           h4 {
-            font-size: 18px;
+            line-height: 1.3rem;
+            font-size: 15px;
+            font-weight: 400;
             color: ${theme.colors.footerLink};
+
+            a { font-weight: 700; }
           }
 
           @media (max-width: 890px) {
