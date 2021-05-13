@@ -22,7 +22,8 @@ export default function CanvasText() {
       </h2>
       <h5
         className="canvasControls"
-        aria-label="${theme.canvas.textSmall}">
+        aria-label="${theme.canvas.textSmall}"
+        css={css` display: ${display}; `}>
         {theme.canvas.textSmall}
       </h5>
     </>

@@ -1,9 +1,13 @@
 import { css, useTheme } from '@emotion/react'
 import Image from 'next/image'
 import TypingAnimation from '../components/TypingAnimation'
-import CanvasLoader from '../components/CanvasLoader'
 import * as gtag from '../lib/gtag'
+import dynamic from 'next/dynamic'
 
+const CanvasLoader = dynamic(() => import('../components/CanvasLoader'), {
+  loading: () => <Image src="/loading.svg" height="30" width="30" alt="loading" />,
+  ssr: false
+})
 
 export default function Home() {
 
