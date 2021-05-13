@@ -11,29 +11,11 @@ import { useDarkMode } from '../utils/useDarkMode'
 import Toggle from '../components/Toggle'
 import Footer from '../components/Footer'
 
-import { useState, useEffect } from 'react'
-import { useRouter } from 'next/router'
-import * as gtag from '../lib/gtag'
-
 
 function MyApp({ Component, pageProps }) {
 
-  // Route handling for Google Analytics & Loading Bar
-  const router = useRouter()
-  const [loader, setLoader] = useState()
-  useEffect(() => {
-    let handleRouteStart = () => setLoader(true)
-    const handleRouteChange = (url) => {
-      gtag.pageview(url)
-      setLoader(false)
-    }
-    router.events.on('routeChangeStart', handleRouteStart)
-    router.events.on('routeChangeComplete', handleRouteChange)
-    return () => {
-      router.events.off('routeChangeComplete', handleRouteChange)
-    }
-  }, [router.events])
-  function UseLoader() {
+  // Loading Bar
+  function UseLoader(setLoader) {
     if(setLoader)return <LoadingBar />
       else return null
   }
@@ -45,7 +27,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <ThemeProvider theme={themeMode}>
       <GlobalStyles />
-      <UseLoader isLoading={false} />
+      <UseLoader />
       <Head>
         <title>Amir Ardalan | Portfolio</title>
         <meta name="theme-color" content={themeMode.colors.background} />
