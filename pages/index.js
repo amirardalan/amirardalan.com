@@ -6,7 +6,7 @@ import dynamic from 'next/dynamic'
 
 const CanvasLoader = dynamic(() => import('../components/CanvasLoader'), {
   loading: () => <Image src="/loading.svg" height="30" width="30" alt="loading" />,
-  ssr: false
+  ssr: true
 })
 
 export default function Home() {
