@@ -86,10 +86,10 @@ export function GlobalStyles () {
           
           h3,
           h3 p {
-            font-size: 35px;
+            font-size: calc(1.2vw + 1.2vh);
 
-            @media (max-width: 480px) {
-              font-size: 25px;
+            @media (max-width: 890px) {
+              font-size: calc(1.9vw + 1.9vh);
             }
           }
 
