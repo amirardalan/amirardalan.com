@@ -26,6 +26,11 @@ export default function LoadingTriangle() {
           left: 21px;
           transform: translate(-10px, -18px);
           animation: dotTriangle var(--duration) cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
+          @keyframes dotTriangle {
+            33% { transform: translate(0, 0); }
+            66% { transform: translate(10px, -18px); }
+            100% { transform: translate(-10px, -18px); }
+          }
         }
       `}
     >
@@ -48,6 +53,11 @@ export default function LoadingTriangle() {
             stroke-dasharray: 145 76 145 76;
             stroke-dashoffset: 0;
             animation: pathTriangle var(--duration) cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
+            @keyframes pathTriangle {
+              33% { stroke-dashoffset: 74; }
+              66% { stroke-dashoffset: 147; }
+              100% { stroke-dashoffset: 221; }
+            }
           `}
         >
         </polygon>

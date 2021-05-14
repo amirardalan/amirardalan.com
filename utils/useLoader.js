@@ -15,7 +15,7 @@ export const useLoader = () => {
       return () => {
         router.events.off('routeChangeComplete', handleRouteChange)
       }
-    }, [router.events, setLoader])
+    }, [router.events, loader])
 
-  return setLoader
+  return loader
 }

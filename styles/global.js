@@ -228,18 +228,6 @@ export function GlobalStyles () {
           to { opacity: 0; transform: translate3d(100%, 0, 0); }
         }
 
-        @keyframes pathTriangle {
-          33% { stroke-dashoffset: 74; }
-          66% { stroke-dashoffset: 147; }
-          100% { stroke-dashoffset: 221; }
-        }
-        
-        @keyframes dotTriangle {
-          33% { transform: translate(0, 0); }
-          66% { transform: translate(10px, -18px); }
-          100% { transform: translate(-10px, -18px); }
-        }
-
       `}
     />
   )
