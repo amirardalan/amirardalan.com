@@ -22,6 +22,6 @@ const TypingAnimationMemoized =  React.memo(()=> {
   )
 })
 
-export default function TypingAnomaton() {
+export default function TypingAnimaton() {
   return <TypingAnimationMemoized />
 }
