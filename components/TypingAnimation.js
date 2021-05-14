@@ -5,17 +5,16 @@ const TypingAnimationMemoized =  React.memo(()=> {
   return (
     <Typical
       steps={[
-        "Front-end Code ", 1500,
-        "User Interface ", 1500,
+        "Front-end Engineering ", 1500,
+        "User Interface Design ", 1500,
         "JavaScript ", 1500,
-        "React.js ⚛️ ", 1500,
+        "< React /> ⚛️ ", 1500,
         "Next.js ", 1500,
         "Three.js △ ", 1500,
-        "{ CSS } 🎨 ", 1500,
-        "Emotion CSS ", 1500,
-        "Sass/SCSS ", 1500,
+        "{ CSS; Sass; SCSS; } 🎨 ", 1500,
+        "Emotion { CSS in JS; } ", 1500,
         "Web Accessibility ", 1500,
-        "Learning 📚 ", 1500,
+        "Technical Learning 📚 ", 1500,
         "...eating pizza 🍕 ", 1500
       ]}
       loop={Infinity}
