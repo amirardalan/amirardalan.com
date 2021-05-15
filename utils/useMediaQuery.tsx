@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react'
 
 // Device Width MediaQuery
-export const useMediaQuery = (width) => {
+export const useMediaQuery = (width : Number) => {
   const [targetReached, setTargetReached] = useState(false)
 
   const updateTarget = useCallback((e) => {

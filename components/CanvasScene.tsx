@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import { useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
 import { Icosahedron, MeshWobbleMaterial, OrbitControls } from '@react-three/drei'
 import { useMediaQuery } from '../utils/useMediaQuery'

@@ -15,7 +15,7 @@ import Footer from '../components/Footer'
 function MyApp({ Component, pageProps }) {
 
   // Loading Bar
-  function DisplayLoadingBar(loader) {
+  function DisplayLoadingBar(loader:Object) {
     if(loader)return <LoadingBar />
       else return null
   }
