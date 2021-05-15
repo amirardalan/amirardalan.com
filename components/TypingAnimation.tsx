@@ -1,7 +1,7 @@
 import React from 'react'
 import Typical from 'react-typical'
 
-const TypingAnimationMemoized =  React.memo(()=> {
+const TypingAnimation =  React.memo(()=> {
   return (
     <Typical
       steps={[
@@ -22,6 +22,4 @@ const TypingAnimationMemoized =  React.memo(()=> {
   )
 })
 
-export default function TypingAnimaton() {
-  return <TypingAnimationMemoized />
-}
+export default TypingAnimation

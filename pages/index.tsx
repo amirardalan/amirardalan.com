@@ -12,7 +12,7 @@ const CanvasLoader = dynamic(() => import('../components/CanvasLoader'), {
 
 export default function Home() {
 
-  const theme = useTheme()
+  const theme : any = useTheme()
   const [toggleCanvas, setToggleCanvas] = useState(false);
 
   useEffect(() => {

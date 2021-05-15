@@ -5,7 +5,7 @@ import { useMediaQuery } from '../utils/useMediaQuery'
 
 export default function CanvasScene(props) {
 
-  const mesh = useRef()
+  const mesh : any = useRef()
 
   const isBreakpoint = useMediaQuery(1024)
   

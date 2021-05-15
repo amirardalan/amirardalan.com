@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 export const useLoader = () => {
     
     const router = useRouter()
-    const [loader, setLoader] = useState()
+    const [loader, setLoader] = useState(null)
     useEffect(() => {
       let handleRouteStart = () => setLoader(true)
       const handleRouteChange = () => {

@@ -1,11 +1,10 @@
-import React from 'react'
 import Image from 'next/image'
 import { func, string } from 'prop-types'
 import { useTheme, css } from '@emotion/react'
 
 const Toggle = ({ toggleTheme }) => {
 
-  const theme = useTheme()
+  const theme : any = useTheme()
 
   return (
     <>
@@ -52,11 +51,6 @@ const Toggle = ({ toggleTheme }) => {
       </button>
     </>
   )
-}
-
-Toggle.propTypes = {
-  theme: string.isRequired,
-  toggleTheme: func.isRequired,
 }
 
 export default Toggle

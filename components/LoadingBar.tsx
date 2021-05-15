@@ -2,7 +2,7 @@ import { css, useTheme } from '@emotion/react'
 
 export default function LoadingBar() {
 
-  const theme = useTheme()
+  const theme : any = useTheme()
 
   return(
     <div css={css`

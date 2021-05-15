@@ -35,7 +35,7 @@ function MyApp({ Component, pageProps }) {
       <div className="container">
         <div className="header">
           <Header />
-          <Toggle theme={theme} toggleTheme={toggleTheme} />
+          <Toggle toggleTheme={toggleTheme} />
         </div>
         <Component {...pageProps} />
         <Footer />

@@ -2,7 +2,7 @@ import { css, useTheme } from '@emotion/react'
 
 export default function Footer() {
 
-  const theme = useTheme()
+  const theme : any = useTheme()
 
   return (
     <footer css={css`

@@ -2,7 +2,7 @@ import { css, useTheme } from '@emotion/react'
 
 export default function CanvasText() {
 
-  const theme = useTheme()
+  const theme : any = useTheme()
 
   return (
     <>

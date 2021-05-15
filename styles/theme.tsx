@@ -12,7 +12,7 @@ export const themeLight = {
     selection: 'yellow',
     selectionText: '#111'
   },
-  logo: '/logoLight.svg',
+  logo: "/logoLight.svg",
   logoError: '/logoErrorDark.svg',
   helloEmoji: '👋',
   toggleButton: {

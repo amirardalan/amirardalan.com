@@ -6,7 +6,7 @@ import Link from 'next/link'
 
 export default function Custom404() {
 
-  const theme = useTheme()
+  const theme : any = useTheme()
 
   return(
     <>
