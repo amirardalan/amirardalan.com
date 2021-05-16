@@ -11,7 +11,7 @@ export type PostProps = {
   } | null
   content: string
   published: boolean
-};
+}
 
 const Post: React.FC<{ post: PostProps }> = ({ post }) => {
   const authorName = post.author ? post.author.name : "Unknown author"
