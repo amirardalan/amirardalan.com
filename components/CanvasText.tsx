@@ -8,7 +8,10 @@ export default function CanvasText() {
     <>
       <h5
         className="canvasTitle"
-        aria-label="${theme.canvas.text}">
+        aria-label="${theme.canvas.text}"
+        css={{
+          fontSize: '40px'
+        }}>
         {theme.canvas.text}
       </h5>
       <h6
