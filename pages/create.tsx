@@ -10,7 +10,7 @@ const Draft: React.FC = () => {
   const submitData = async (e: React.SyntheticEvent) => {
     e.preventDefault()
     try {
-      const body = { title, content }
+      const body = { title, slug, content }
       await fetch('/api/post', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -34,6 +34,12 @@ const Draft: React.FC = () => {
             placeholder="Title"
             type="text"
             value={title}
+          />
+          <input
+            onChange={(e) => setSlug(e.target.value)}
+            placeholder="Slug"
+            type="text"
+            value={slug}
           />
           <textarea
             cols={50}
