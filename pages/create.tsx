@@ -5,6 +5,7 @@ import Router from 'next/router'
 const Draft: React.FC = () => {
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
+  const [slug, setSlug] = useState('')
 
   const submitData = async (e: React.SyntheticEvent) => {
     e.preventDefault()
@@ -43,13 +44,12 @@ const Draft: React.FC = () => {
           />
           <input disabled={!content || !title} type="submit" value="Create" />
           <a className="back" href="#" onClick={() => Router.push('/blog')}>
-            or Cancel
+            Cancel
           </a>
         </form>
       </div>
       <style jsx>{`
         .page {
-          background: white;
           padding: 3rem;
           display: flex;
           justify-content: center;

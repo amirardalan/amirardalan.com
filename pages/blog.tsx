@@ -1,12 +1,12 @@
 import React from 'react'
 import Link from 'next/link'
 import Login from '../components/Login'
-import { GetStaticProps } from 'next'
+import { GetServerSideProps } from 'next'
 import { useTheme } from '@emotion/react'
 import prisma from '../lib/prisma'
 import Post, { PostProps } from '../components/Post'
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const feed = await prisma.post.findMany({
     where: { published: true },
     include: {

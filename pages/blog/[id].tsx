@@ -57,6 +57,18 @@ const Post: React.FC<PostProps> = (props) => {
 
   return (
     <>
+      <nav css={{
+        display: 'flex',
+        flexDirection: 'row',
+        color: theme.colors.footer,
+        fontSize: '12px'
+      }}>
+        <Link href="/">Home</Link>
+        <span css={{ margin: '0 10px 0 10px' }}>/</span>
+        <Link href="/blog">Blog</Link>
+        <span css={{ margin: '0 10px 0 10px' }}>/</span>
+        <p>{title}</p>
+      </nav>
       <div>
         <h2>{title}</h2>
         <p>By {props?.author?.name || 'Unknown author'}</p>

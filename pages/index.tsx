@@ -65,11 +65,15 @@ export default function Home() {
             <TypingAnimation />
           </h3>
           <br/>
-          Read the <Link
-            href="/blog"
-            aria-label="Blog">
-            Blog
-          </Link>
+          <div css={{
+            marginBottom: '1rem'
+          }}>
+            Read the <Link
+              href="/blog"
+              aria-label="Blog">
+              Blog
+            </Link>
+          </div>
           <h4>
             Check out my <a
             href="https://github.com/amirardalan"

@@ -51,7 +51,6 @@ const Drafts: React.FC<Props> = (props) => {
 
   return (
     <>
-      <Login />
       <nav css={{
         display: 'flex',
         flexDirection: 'row',
@@ -60,8 +59,11 @@ const Drafts: React.FC<Props> = (props) => {
       }}>
         <Link href="/">Home</Link>
         <span css={{ margin: '0 10px 0 10px' }}>/</span>
-        <p>Blog</p>
+        <Link href="/blog">Blog</Link>
+        <span css={{ margin: '0 10px 0 10px' }}>/</span>
+        <p>Drafts</p>
       </nav>
+      <Login />
       <div className="page">
         <h1>My Drafts</h1>
         <main>
@@ -72,20 +74,6 @@ const Drafts: React.FC<Props> = (props) => {
           ))}
         </main>
       </div>
-      <style jsx>{`
-        .post {
-          background: white;
-          transition: box-shadow 0.1s ease-in;
-        }
-
-        .post:hover {
-          box-shadow: 1px 1px 3px #aaa;
-        }
-
-        .post + .post {
-          margin-top: 2rem;
-        }
-      `}</style>
     </>
   )
 }

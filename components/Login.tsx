@@ -2,6 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { signOut, useSession } from 'next-auth/client'
+import { themeLight } from '../styles/theme'
 
 const Login: React.FC = () => {
   const router = useRouter()
@@ -10,105 +11,29 @@ const Login: React.FC = () => {
 
   const [session, loading] = useSession()
 
-  let left = (
-    <div className="left">
-      <Link href="/blog">
-        <a className="bold" data-active={isActive('/blog')}>
-          Feed
-        </a>
-      </Link>
-      <style jsx>{`
-        .bold {
-          font-weight: bold;
-        }
-
-        a {
-          text-decoration: none;
-          color: #000;
-          display: inline-block;
-        }
-
-        .left a[data-active='true'] {
-          color: gray;
-        }
-
-        a + a {
-          margin-left: 1rem;
-        }
-      `}</style>
-    </div>
-  )
-
+  let left = null
   let right = null
 
-  if (loading) {
+  if (!session) {
     left = (
       <div className="left">
-        <Link href="/blog">
-          <a className="bold" data-active={isActive('/blog')}>
-            Feed
-          </a>
+        <Link href="/api/auth/signin">
+          <button css={{
+            padding: '.5rem 2rem',
+            cursor: 'pointer',
+            'a': { textDecoration: 'none' }
+          }}>
+            <a data-active={isActive('/signup')}>Log in</a>
+          </button>
         </Link>
-        <style jsx>{`
-          .bold {
-            font-weight: bold;
-          }
-
-          a {
-            text-decoration: none;
-            color: #000;
-            display: inline-block;
-          }
-
-          .left a[data-active='true'] {
-            color: gray;
-          }
-
-          a + a {
-            margin-left: 1rem;
-          }
-        `}</style>
-      </div>
-    )
-    right = (
-      <div className="right">
-        <p>Validating session ...</p>
-        <style jsx>{`
-          .right {
-            margin-left: auto;
-          }
-        `}</style>
       </div>
     )
   }
 
-  if (!session) {
-    right = (
-      <div className="right">
-        <Link href="/api/auth/signin">
-          <a data-active={isActive('/signup')}>Log in</a>
-        </Link>
-        <style jsx>{`
-          a {
-            text-decoration: none;
-            color: #000;
-            display: inline-block;
-          }
-
-          a + a {
-            margin-left: 1rem;
-          }
-
-          .right {
-            margin-left: auto;
-          }
-
-          .right a {
-            border: 1px solid black;
-            padding: 0.5rem 1rem;
-            border-radius: 3px;
-          }
-        `}</style>
+  if (loading) {
+    left = (
+      <div className="left">
+        <p>Validating session ...</p>
       </div>
     )
   }
@@ -116,52 +41,35 @@ const Login: React.FC = () => {
   if (session) {
     left = (
       <div className="left">
-        <Link href="/blog">
-          <a className="bold" data-active={isActive('/blog')}>
-            Feed
-          </a>
-        </Link>
-        <Link href="/drafts">
-          <a data-active={isActive('/drafts')}>My drafts</a>
-        </Link>
-        <style jsx>{`
-          .bold {
-            font-weight: bold;
-          }
-
-          a {
-            text-decoration: none;
-            color: #000;
-            display: inline-block;
-          }
-
-          .left a[data-active='true'] {
-            color: gray;
-          }
-
-          a + a {
-            margin-left: 1rem;
-          }
-        `}</style>
+        <p css={{
+          fontSize: '12px',
+          color: themeLight.colors.footer
+        }}>
+          {session.user.name} ({session.user.email})
+        </p>
       </div>
     )
     right = (
       <div className="right">
-        <p>
-          {session.user.name} ({session.user.email})
-        </p>
         <Link href="/create">
           <button>
             <a>New post</a>
+          </button>
+        </Link>
+        <Link href="/drafts">
+          <button data-active={isActive('/drafts')}>
+            <a>View drafts</a>
           </button>
         </Link>
         <button onClick={() => signOut()}>
           <a>Log out</a>
         </button>
         <style jsx>{`
+          button {
+            cursor: pointer;
+          }
           a {
             text-decoration: none;
-            color: #000;
             display: inline-block;
           }
 
@@ -200,7 +108,7 @@ const Login: React.FC = () => {
       <style jsx>{`
         nav {
           display: flex;
-          padding: 2rem;
+          padding: 2rem 0;
           align-items: center;
         }
       `}</style>
