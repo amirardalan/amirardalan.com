@@ -1,6 +1,6 @@
-import React from "react"
-import Router from "next/router"
-import ReactMarkdown from "react-markdown"
+import React from 'react'
+import Router from 'next/router'
+import ReactMarkdown from 'react-markdown'
 import { useTheme } from '@emotion/react'
 
 
@@ -16,8 +16,10 @@ export type PostProps = {
 }
 
 const Post: React.FC<{ post: PostProps }> = ({ post }) => {
+  
   const theme : any = useTheme()
   const authorName = post.author ? post.author.name : "Unknown author"
+
   return (
     <div onClick={() => Router.push("/p/[id]", `/p/${post.id}`)}>
       <h2 css={{

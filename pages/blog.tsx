@@ -1,9 +1,10 @@
-import React from "react"
+import React from 'react'
 import Link from 'next/link'
-import { GetStaticProps } from "next"
-import { useTheme } from "@emotion/react"
+import Login from '../components/Login'
+import { GetStaticProps } from 'next'
+import { useTheme } from '@emotion/react'
 import prisma from '../lib/prisma'
-import Post, { PostProps } from "../components/Post"
+import Post, { PostProps } from '../components/Post'
 
 export const getStaticProps: GetStaticProps = async () => {
   const feed = await prisma.post.findMany({
@@ -38,6 +39,7 @@ const Blog: React.FC<Props> = (props) => {
           <span css={{ margin: '0 10px 0 10px' }}>/</span>
           <p>Blog</p>
         </nav>
+        <Login />
         <main css={{
           display: 'flex',
           flexDirection: 'column'
