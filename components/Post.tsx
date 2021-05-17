@@ -22,7 +22,7 @@ const Post: React.FC<{ post: PostProps }> = ({ post }) => {
   const authorName = post.author ? post.author.name : "Unknown author"
 
   return (
-    <div onClick={() => Router.push("/blog/[id]", `/blog/${post.id}`)}>
+    <div onClick={() => Router.push("/blog/[slug]", `/blog/${post.slug}`)}>
       <h2 css={{
         '&:hover': { textDecoration: 'underline' },
         margin: '2rem 0 .5rem 0' }}>

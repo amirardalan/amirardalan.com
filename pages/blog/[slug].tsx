@@ -10,9 +10,9 @@ import { useTheme } from '@emotion/react'
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 
-  const post = await prisma.post.findUnique({
+  const post = await prisma.post.findFirst({
     where: {
-      id: Number(params?.id) || -1,
+      slug: String(params?.slug),
     },
     include: {
       author: {
