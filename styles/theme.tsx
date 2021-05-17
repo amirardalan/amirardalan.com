@@ -1,5 +1,3 @@
-import Link from 'next/link'
-
 export const themeLight = {
   colors: {
     background: '#f5f5f5',
@@ -24,7 +22,7 @@ export const themeLight = {
     iconAlt: 'Sun Icon'
   },
   canvas: {
-    text: <Link href="/blog">Blog</Link>,
+    text: '',
     textSmall: 'Rotate & Zoom',
     bg: '#222',
     meshA: '#9C66FF',
@@ -63,7 +61,7 @@ export const themeDark = {
     iconAlt: 'Moon Icon',
   },
   canvas: {
-    text: <Link href="/blog">Blog</Link>,
+    text: '',
     textSmall: 'Rotate + Zoom',
     bg: '#222',
     meshA: '#21E598',

@@ -1,6 +1,7 @@
 import { css, useTheme } from '@emotion/react'
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import LoadingTriangle from '../components/LoadingTriangle'
 import dynamic from 'next/dynamic'
 import TypingAnimation from '../components/TypingAnimation'
@@ -64,6 +65,11 @@ export default function Home() {
             <TypingAnimation />
           </h3>
           <br/>
+          Read the <Link
+            href="/blog"
+            aria-label="Blog">
+            Blog
+          </Link>
           <h4>
             Check out my <a
             href="https://github.com/amirardalan"
