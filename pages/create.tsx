@@ -71,11 +71,18 @@ const Draft: React.FC = () => {
             value={title}
           />
           <input
+            placeholder="URL Slug"
+            type="text"
+            value={slugUrl}
+            disabled={true}
+          />
+          <input
             ref={slugField}
             onInput={() => setSlug(slugUrl)}
             placeholder={slugUrl}
             type="text"
             value={slugUrl}
+            hidden={true}
           />
           <textarea
             cols={50}
