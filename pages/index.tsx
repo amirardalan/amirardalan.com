@@ -71,25 +71,7 @@ export default function Home() {
             <Link
               href="/blog"
               aria-label="Blog">
-              <button
-                css={{
-                cursor: 'pointer',
-                padding: '1.2rem 1.8rem',
-                backgroundColor: 'transparent',
-                border: '4px solid'+theme.colors.link,
-                color: theme.colors.link,
-                fontSize: '16px',
-                fontWeight: 'bold',
-                boxShadow: '4px 4px 0'+theme.colors.link,
-                transition: 'background-color .2s linear',
-                '&:hover': {
-                  background: theme.colors.link,
-                  border: '4px solid transparent',
-                  color: theme.colors.highlight,
-                  boxShadow: '4px 4px 0'+theme.colors.linkLight,
-                  transition: 'background-color .2s linear'
-                }
-              }}>
+              <button className="buttonCta">
                 Read the Blog
               </button>
             </Link>

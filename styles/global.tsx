@@ -45,6 +45,26 @@ export function GlobalStyles () {
           padding: 0;
         }
 
+        // Buttons
+        .buttonCta {
+          cursor: pointer;
+          padding: 1.2rem 1.8rem;
+          background-color: transparent;
+          border: 4px solid ${theme.colors.link};
+          color: ${theme.colors.link};
+          font-size: 16px;
+          font-weight: bold;
+          box-shadow: 4px 4px 0 ${theme.colors.link};
+          transition: background-color .2s linear;
+          &:hover {
+            background: ${theme.colors.link};
+            border: 4px solid transparent;
+            color: ${theme.colors.highlight};
+            box-shadow: 4px 4px 0 ${theme.colors.linkLight};
+            transition: background-color .2s linear;
+          }
+        }
+
         // Layout
         .header {
           margin-bottom: 1.8rem;
