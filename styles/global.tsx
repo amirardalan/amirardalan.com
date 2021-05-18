@@ -218,7 +218,7 @@ export function GlobalStyles () {
 
         .blog {
           h2 {
-            font-size: calc(1.2vw + 1.2vh);
+            font-size: calc(1.6vw + 1.6vh);
           }
         }
 

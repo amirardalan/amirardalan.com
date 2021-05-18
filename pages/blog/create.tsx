@@ -8,11 +8,12 @@ const Draft: React.FC = () => {
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
   const [slug, setSlug] = useState('')
+  const [teaser, setTeaser] = useState('')
 
   const submitData = async (e: React.SyntheticEvent) => {
     e.preventDefault()
     try {
-      const body = { title, slug, content }
+      const body = { title, slug, teaser, content }
       await fetch('/api/post', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -99,6 +100,12 @@ const Draft: React.FC = () => {
             value={slugUrl}
             hidden={true}
           />
+          <input
+            onChange={(e) => setTeaser(e.target.value)}
+            placeholder="Teaser"
+            type="text"
+            value={teaser}
+          />
           <textarea
             cols={50}
             onChange={(e) => setContent(e.target.value)}
@@ -106,7 +113,7 @@ const Draft: React.FC = () => {
             rows={8}
             value={content}
           />
-          <input className="buttonCompact" disabled={!content || !title || !slug} type="submit" value="Save Draft" />
+          <input className="buttonCompact" disabled={!content || !title || !slug || !teaser} type="submit" value="Save Draft" />
           <a className="buttonCompact" href="#" css={{ padding: '.4rem 0.8rem' }} onClick={() => Router.push('/blog')}>
             Delete
           </a>

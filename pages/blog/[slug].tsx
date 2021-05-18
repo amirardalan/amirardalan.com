@@ -76,13 +76,13 @@ const Post: React.FC<PostProps> = (props) => {
         <p>{title}</p>
       </nav>
       <div>
-        <h2 css={{ margin: '2rem 0 0 0'}}>{title}</h2>
+        <h2 css={{ margin: '1.5rem 0 0 0'}}>{title}</h2>
         <small css={{
           margin: '.5rem 0 1.5rem',
           display: 'block',
           color: theme.colors.footer
         }}>
-          By {props?.author?.name || 'Unknown author'}
+          {props.publishedAt.toString()}
         </small>
         <ReactMarkdown children={props.content} />
 

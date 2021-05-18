@@ -9,13 +9,16 @@ generator client {
 }
 
 model Post {
-  id        Int     @default(autoincrement()) @id
-  title     String
-  slug      String?
-  content   String?
-  published Boolean @default(false)
-  author    User?   @relation(fields: [authorId], references: [id])
-  authorId  Int?
+  id            Int      @default(autoincrement()) @id
+  publishedAt   DateTime @default(now())
+  editedAt      DateTime @updatedAt
+  slug          String?
+  title         String
+  teaser        String?
+  content       String?
+  published     Boolean  @default(false)
+  author        User?    @relation(fields: [authorId], references: [id])
+  authorId      Int?
 }
 
 model User {
