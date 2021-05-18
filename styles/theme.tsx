@@ -1,23 +1,23 @@
 export const themeLight = {
   colors: {
-    background: '#f5f5f5',
-    text: '#111',
+    background: '#e2e2e2',
+    text: '#232227',
     textLight: '#666',
     link: '#7A00CC',
     linkLight: '#a34bdf',
-    divider: '#ddd',
-    footer: '#707070',
+    divider: '#cccccc',
+    footer: '#5e5e5e',
     footerLink: '#7A00CC',
-    highlight: '#f5f5f5',
-    highlightBg: '#111',
+    highlight: '#e2e2e2',
+    highlightBg: '#232227',
     selection: 'yellow',
-    selectionText: '#111'
+    selectionText: '#232227'
   },
   logo: "/logoLight.svg",
   logoError: '/logoErrorDark.svg',
   helloEmoji: '👋',
   toggleButton: {
-    background: '#111',
+    background: '#232227',
     text: 'Light Mode',
     icon: '/sun.svg',
     iconAlt: 'Sun Icon'
@@ -25,7 +25,7 @@ export const themeLight = {
   canvas: {
     text: '',
     textSmall: 'Rotate & Zoom',
-    bg: '#222',
+    bg: '#302f35',
     meshA: '#9C66FF',
     zoomFrom: -300,
     zoomTo: -3,
@@ -40,24 +40,24 @@ export const themeLight = {
 
 export const themeDark = {
   colors: {
-    background: '#111',
-    text: '#f5f5f5',
+    background: '#232227',
+    text: '#e2e2e2',
     textLight: '#8D8D8D',
     link: '#21E598',
     linkLight: '#7bffca',
     divider: '#333',
     footer: '#8D8D8D',
     footerLink: '#21E598',
-    highlight: '#222',
-    highlightBg: '#f5f5f5',
+    highlight: '#302f35',
+    highlightBg: '#e2e2e2',
     selection: 'yellow',
-    selectionText: '#111'
+    selectionText: '#232227'
   },
   logo: '/logoDark.svg',
   logoError: '/logoErrorLight.svg',
   helloEmoji: '✌️',
   toggleButton: {
-    background: '#f5f5f5',
+    background: '#e2e2e2',
     text: 'Dark Mode',
     icon: '/moon.svg',
     iconAlt: 'Moon Icon',
@@ -65,7 +65,7 @@ export const themeDark = {
   canvas: {
     text: '',
     textSmall: 'Rotate + Zoom',
-    bg: '#222',
+    bg: '#302f35',
     meshA: '#21E598',
     zoomFrom: -3,
     zoomTo: -300,
@@ -74,6 +74,6 @@ export const themeDark = {
     duration: 4000
   },
   page: {
-    bg: '#222'
+    bg: '#302f35'
   }
 }

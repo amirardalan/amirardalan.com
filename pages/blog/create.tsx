@@ -106,7 +106,7 @@ const Draft: React.FC = () => {
             rows={8}
             value={content}
           />
-          <input disabled={!content || !title || !slug} type="submit" value="Create Draft" />
+          <input disabled={!content || !title || !slug} type="submit" value="Save Draft" />
           <a className="back" href="#" onClick={() => Router.push('/blog')}>
             Cancel
           </a>
