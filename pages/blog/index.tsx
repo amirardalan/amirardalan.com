@@ -27,34 +27,32 @@ const Blog: React.FC<Props> = (props) => {
   const theme : any = useTheme()
   
   return (
-    <>
-      <div className="blog">
-        <nav css={{
-          display: 'flex',
-          flexDirection: 'row',
-          color: theme.colors.footer,
-          fontSize: '12px'
-        }}>
-          <Link href="/">Home</Link>
-          <span css={{ margin: '0 10px 0 10px' }}>/</span>
-          <p>Blog</p>
-        </nav>
-        <Login />
-        <main css={{
-          display: 'flex',
-          flexDirection: 'column'
-        }}>
-          {props.feed.map((post) => (
-            <div
-              key={post.id}
-              className="post"
-            >
-              <Post post={post} />
-            </div>
-          ))}
-        </main>
-      </div>
-    </>
+    <div className="blog">
+      <nav css={{
+        display: 'flex',
+        flexDirection: 'row',
+        color: theme.colors.footer,
+        fontSize: '12px'
+      }}>
+        <Link href="/">Home</Link>
+        <span css={{ margin: '0 10px 0 10px' }}>/</span>
+        <p>Blog</p>
+      </nav>
+      <Login />
+      <main css={{
+        display: 'flex',
+        flexDirection: 'column'
+      }}>
+        {props.feed.map((post) => (
+          <div
+            key={post.id}
+            className="post"
+          >
+            <Post post={post} />
+          </div>
+        ))}
+      </main>
+    </div>
   )
 }
 
