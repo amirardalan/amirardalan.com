@@ -48,7 +48,7 @@ const Blog: React.FC<Props> = (props) => {
             <div
               key={post.id}
               className="post"
-              css={{ cursor: 'pointer' }}>
+            >
               <Post post={post} />
             </div>
           ))}

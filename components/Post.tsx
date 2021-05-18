@@ -23,15 +23,11 @@ const Post: React.FC<{ post: PostProps }> = ({ post }) => {
   // const authorName = post.author ? post.author.name : "Unknown author"
 
   return (
-    <div onClick={() => Router.push("/blog/[slug]", `/blog/${post.slug}`)}>
-      <h2 css={{
-        '&:hover': { textDecoration: 'underline' },
-        margin: '2rem 0 0 0' }}>
-        {post.title}
-      </h2>
+    <div className="postTeaser" onClick={() => Router.push("/blog/[slug]", `/blog/${post.slug}`)}>
+      <h2>{post.title}</h2>
       <small css={{
         color: theme.colors.footer,
-        margin: '.5rem 0 1.5rem',
+        margin: '.3rem 0 .2rem',
         display: 'block' }}>
         <span>{ post.publishedAt.toLocaleDateString("en-US", { month: 'long' }) }, </span>
         <span>{ post.publishedAt.toLocaleDateString("en-US", { day: 'numeric' }) } </span>

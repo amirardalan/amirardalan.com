@@ -52,9 +52,15 @@ export function GlobalStyles () {
           margin: 0.5rem 0;
           border-radius: 0.25rem;
           border: 0.125rem solid rgba(0, 0, 0, 0.2);
+          background-color: ${theme.colors.disabled};
           background-color: ${theme.colors.divider};
           color: ${theme.colors.text};
           border: 2px solid ${theme.colors.highlight};
+
+          &:disabled {
+            background-color: ${theme.colors.disabled};
+            color: ${theme.colors.footer}
+          }
         }
 
         // Buttons
@@ -86,6 +92,12 @@ export function GlobalStyles () {
           color: ${theme.colors.background};
           font-size: 12px;
           font-weight: bold;
+          &.delete {
+            background-color: #8b8b8b;
+            &:hover {
+              background-color: #f84040;
+            }
+          }
           &:hover {
             background-color: ${theme.colors.footer};
           }
@@ -219,6 +231,22 @@ export function GlobalStyles () {
         .blog {
           h2 {
             font-size: calc(1.6vw + 1.6vh);
+            margin: 0;
+          }
+          .postDraft {
+            margin: 2rem 0;
+            h2 { font-size: calc(1vw + 1vh); }
+            .postTeaser { margin: 0; }
+          }
+          .postTeaser {
+            margin: 1rem 0 2rem;
+            cursor: pointer;
+            &:hover {
+              h2 { text-decoration: underline; }
+            }
+          }
+          .postFull {
+            margin: 2rem 0;
           }
         }
 

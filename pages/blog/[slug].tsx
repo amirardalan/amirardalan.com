@@ -1,6 +1,7 @@
 import React from 'react'
 import Router from 'next/router'
 import Link from 'next/link'
+import Login from '../../components/Login'
 import prisma from '../../lib/prisma'
 import { GetServerSideProps } from 'next'
 import { PostProps } from '../../components/Post'
@@ -75,14 +76,17 @@ const Post: React.FC<PostProps> = (props) => {
         <span css={{ margin: '0 10px 0 10px' }}>/</span>
         <p>{title}</p>
       </nav>
-      <div>
+      <Login />
+      <div className="postFull">
         <h2 css={{ margin: '1.5rem 0 0 0'}}>{title}</h2>
         <small css={{
           margin: '.5rem 0 1.5rem',
           display: 'block',
           color: theme.colors.footer
         }}>
-          {props.publishedAt.toString()}
+          <span>{ props.publishedAt.toLocaleDateString("en-US", { month: 'long' }) }, </span>
+          <span>{ props.publishedAt.toLocaleDateString("en-US", { day: 'numeric' }) } </span>
+          <span>{ props.publishedAt.toLocaleDateString("en-US", { year: 'numeric' }) }</span>
         </small>
         <ReactMarkdown children={props.content} />
 
@@ -94,7 +98,7 @@ const Post: React.FC<PostProps> = (props) => {
             <button className="buttonCompact" onClick={() => editPost(props.id)}>Edit</button>
           )}
           { userHasValidSession && postBelongsToUser && (
-            <button className="buttonCompact" onClick={() => deletePost(props.id)}>Delete</button>
+            <button className="buttonCompact delete" onClick={() => deletePost(props.id)}>Delete</button>
           )}
         </div>
       </div>

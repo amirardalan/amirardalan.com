@@ -50,7 +50,7 @@ const Drafts: React.FC<Props> = (props) => {
   const theme : any = useTheme()
 
   return (
-    <>
+    <div className="blog">
       <nav css={{
         display: 'flex',
         flexDirection: 'row',
@@ -68,13 +68,21 @@ const Drafts: React.FC<Props> = (props) => {
         <h1>Drafts</h1>
         <main>
           {props.drafts.map((post) => (
-            <div key={post.id} className="post" css={{ cursor: 'pointer',}}>
+            <div key={post.id} className="postDraft" css={{
+              cursor: 'pointer',
+              border: '2px solid'+theme.colors.footer,
+              borderRadius: '10px',
+              padding: '1rem',
+              '&:hover': {
+                backgroundColor: theme.colors.divider,
+              }
+            }}>
               <Post post={post} />
             </div>
           ))}
         </main>
       </div>
-    </>
+    </div>
   )
 }
 

@@ -11,7 +11,8 @@ export const themeLight = {
     highlight: '#c9c9c9',
     highlightBg: '#232227',
     selection: 'yellow',
-    selectionText: '#232227'
+    selectionText: '#232227',
+    disabled: '#e2e2e2',
   },
   logo: "/logoLight.svg",
   logoError: '/logoErrorDark.svg',
@@ -51,7 +52,8 @@ export const themeDark = {
     highlight: '#3b3942',
     highlightBg: '#e2e2e2',
     selection: 'yellow',
-    selectionText: '#232227'
+    selectionText: '#232227',
+    disabled: '#232227'
   },
   logo: '/logoDark.svg',
   logoError: '/logoErrorLight.svg',
