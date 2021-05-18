@@ -25,11 +25,13 @@ const Post: React.FC<{ post: PostProps }> = ({ post }) => {
     <div onClick={() => Router.push("/blog/[slug]", `/blog/${post.slug}`)}>
       <h2 css={{
         '&:hover': { textDecoration: 'underline' },
-        margin: '2rem 0 .5rem 0' }}>
+        margin: '2rem 0 0 0' }}>
         {post.title}
       </h2>
       <small css={{
-        color: theme.colors.footer }}>
+        color: theme.colors.footer,
+        margin: '.5rem 0 1.5rem',
+        display: 'block' }}>
         By {authorName}
       </small>
       <ReactMarkdown children={post.content} />

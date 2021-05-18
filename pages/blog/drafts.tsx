@@ -41,7 +41,7 @@ const Drafts: React.FC<Props> = (props) => {
     return (
       <>
         <Login />
-        <h1>My Drafts</h1>
+        <h1>Drafts</h1>
         <div>You need to be authenticated to view this page.</div>
       </>
     )
@@ -61,14 +61,14 @@ const Drafts: React.FC<Props> = (props) => {
         <span css={{ margin: '0 10px 0 10px' }}>/</span>
         <Link href="/blog">Blog</Link>
         <span css={{ margin: '0 10px 0 10px' }}>/</span>
-        <p>View Drafts</p>
+        <p>Drafts</p>
       </nav>
       <Login />
       <div className="page">
-        <h1>My Drafts</h1>
+        <h1>Drafts</h1>
         <main>
           {props.drafts.map((post) => (
-            <div key={post.id} className="post">
+            <div key={post.id} className="post" css={{ cursor: 'pointer',}}>
               <Post post={post} />
             </div>
           ))}

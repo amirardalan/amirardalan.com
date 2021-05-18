@@ -31,6 +31,12 @@ async function publishPost(id: number): Promise<void> {
   })
   await Router.push('/blog')
 }
+async function editPost(id: number): Promise<void> {
+  await fetch(`http://localhost:3000/blog/create/${id}`, {
+    method: 'GET',
+  })
+  await Router.push('/blog/create')
+}
 async function deletePost(id: number): Promise<void> {
   await fetch(`http://localhost:3000/api/post/${id}`, {
     method: 'DELETE',
@@ -56,7 +62,7 @@ const Post: React.FC<PostProps> = (props) => {
 
 
   return (
-    <>
+    <div className="blog">
       <nav css={{
         display: 'flex',
         flexDirection: 'row',
@@ -70,38 +76,29 @@ const Post: React.FC<PostProps> = (props) => {
         <p>{title}</p>
       </nav>
       <div>
-        <h2>{title}</h2>
-        <p>By {props?.author?.name || 'Unknown author'}</p>
+        <h2 css={{ margin: '2rem 0 0 0'}}>{title}</h2>
+        <small css={{
+          margin: '.5rem 0 1.5rem',
+          display: 'block',
+          color: theme.colors.footer
+        }}>
+          By {props?.author?.name || 'Unknown author'}
+        </small>
         <ReactMarkdown children={props.content} />
-        {!props.published && userHasValidSession && postBelongsToUser && (
-          <button onClick={() => publishPost(props.id)}>Publish</button>
-        )}
-        { userHasValidSession && postBelongsToUser && (
-          <button onClick={() => deletePost(props.id)}>Delete</button>
-        )}
+
+        <div css={{marginTop: '2rem' }}>
+          {!props.published && userHasValidSession && postBelongsToUser && (
+            <button className="buttonCompact" onClick={() => publishPost(props.id)}>Publish</button>
+          )}
+          { userHasValidSession && postBelongsToUser && (
+            <button className="buttonCompact" onClick={() => editPost(props.id)}>Edit</button>
+          )}
+          { userHasValidSession && postBelongsToUser && (
+            <button className="buttonCompact" onClick={() => deletePost(props.id)}>Delete</button>
+          )}
+        </div>
       </div>
-      <style jsx>{`
-        .page {
-          background: white;
-          padding: 2rem;
-        }
-
-        .actions {
-          margin-top: 2rem;
-        }
-
-        button {
-          background: #ececec;
-          border: 0;
-          border-radius: 0.125rem;
-          padding: 1rem 2rem;
-        }
-
-        button + button {
-          margin-left: 1rem;
-        }
-      `}</style>
-    </>
+    </div>
   )
 }
 

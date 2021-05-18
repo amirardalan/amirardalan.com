@@ -1,8 +1,8 @@
 import React from 'react'
 import Link from 'next/link'
+import { useTheme } from '@emotion/react'
 import { useRouter } from 'next/router'
 import { signOut, useSession } from 'next-auth/client'
-import { themeLight } from '../styles/theme'
 
 const Login: React.FC = () => {
   const router = useRouter()
@@ -11,24 +11,10 @@ const Login: React.FC = () => {
 
   const [session, loading] = useSession()
 
+  const theme : any = useTheme()
+
   let left = null
   let right = null
-
-  if (!session) {
-    left = (
-      <div className="left">
-        <Link href="/api/auth/signin">
-          <button css={{
-            padding: '.5rem 2rem',
-            cursor: 'pointer',
-            'a': { textDecoration: 'none' }
-          }}>
-            <a data-active={isActive('/signup')}>Log in</a>
-          </button>
-        </Link>
-      </div>
-    )
-  }
 
   if (loading) {
     left = (
@@ -43,75 +29,47 @@ const Login: React.FC = () => {
       <div className="left">
         <p css={{
           fontSize: '12px',
-          color: themeLight.colors.footer
+          color: theme.colors.textLight,
+          margin: '1rem 0'
         }}>
           {session.user.name} ({session.user.email})
         </p>
       </div>
     )
     right = (
-      <div className="right">
+      <div className="right" css={{
+        justifyContent: 'right'
+      }}>
         <Link href="/blog/create">
-          <button>
-            <a>New post</a>
+          <button className="buttonCompact">
+            New post
           </button>
         </Link>
         <Link href="/blog/drafts">
-          <button data-active={isActive('/drafts')}>
-            <a>View drafts</a>
+          <button className="buttonCompact" data-active={isActive('/drafts')}>
+            Drafts
           </button>
         </Link>
-        <button onClick={() => signOut()}>
-          <a>Log out</a>
+        <button className="buttonCompact" onClick={() => signOut()}>
+          Log out
         </button>
-        <style jsx>{`
-          button {
-            cursor: pointer;
-          }
-          a {
-            text-decoration: none;
-            display: inline-block;
-          }
-
-          p {
-            display: inline-block;
-            font-size: 13px;
-            padding-right: 1rem;
-          }
-
-          a + a {
-            margin-left: 1rem;
-          }
-
-          .right {
-            margin-left: auto;
-          }
-
-          .right a {
-            border: 1px solid black;
-            padding: 0.5rem 1rem;
-            border-radius: 3px;
-          }
-
-          button {
-            border: none;
-          }
-        `}</style>
+       
       </div>
     )
   }
 
   return (
-    <nav>
+    <nav css={{
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      '@media (max-width: 500px)': {
+        flexDirection: 'column',
+        marginBottom: '1rem'
+      }
+    }}>
       {left}
       {right}
-      <style jsx>{`
-        nav {
-          display: flex;
-          padding: 2rem 0;
-          align-items: center;
-        }
-      `}</style>
     </nav>
   )
 }

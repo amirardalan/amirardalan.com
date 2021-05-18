@@ -106,45 +106,12 @@ const Draft: React.FC = () => {
             rows={8}
             value={content}
           />
-          <input disabled={!content || !title || !slug} type="submit" value="Save Draft" />
-          <a className="back" href="#" onClick={() => Router.push('/blog')}>
-            Cancel
+          <input className="buttonCompact" disabled={!content || !title || !slug} type="submit" value="Save Draft" />
+          <a className="buttonCompact" href="#" css={{ padding: '.4rem 0.8rem' }} onClick={() => Router.push('/blog')}>
+            Delete
           </a>
         </form>
       </div>
-      <style jsx>{`
-        .page {
-          padding: 3rem;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-
-        input[type='text'],
-        textarea {
-          width: 100%;
-          padding: 0.5rem;
-          margin: 0.5rem 0;
-          border-radius: 0.25rem;
-          border: 0.125rem solid rgba(0, 0, 0, 0.2);
-        }
-
-        input[type='submit'] {
-          cursor: pointer;
-          background: #ececec;
-          border: 0;
-          padding: 1rem 2rem;
-        }
-
-        input[type='submit']:disabled {
-          cursor: default;
-          background: red;
-        }
-
-        .back {
-          margin-left: 1rem;
-        }
-      `}</style>
     </>
   )
 }

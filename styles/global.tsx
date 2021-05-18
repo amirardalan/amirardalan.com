@@ -45,6 +45,18 @@ export function GlobalStyles () {
           padding: 0;
         }
 
+        input[type='text'],
+        textarea {
+          width: 100%;
+          padding: 0.5rem;
+          margin: 0.5rem 0;
+          border-radius: 0.25rem;
+          border: 0.125rem solid rgba(0, 0, 0, 0.2);
+          background-color: ${theme.colors.divider};
+          color: ${theme.colors.text};
+          border: 2px solid ${theme.colors.highlight};
+        }
+
         // Buttons
         .buttonCta {
           cursor: pointer;
@@ -62,6 +74,24 @@ export function GlobalStyles () {
             color: ${theme.colors.highlight};
             box-shadow: 4px 4px 0 ${theme.colors.linkLight};
             transition: background-color .2s linear;
+          }
+        }
+
+        .buttonCompact {
+          background-color: ${theme.colors.text};
+          border: 1px solid ${theme.colors.divider};
+          border-radius: 5px;
+          cursor: pointer;
+          padding: .5rem .8rem;
+          color: ${theme.colors.background};
+          font-size: 12px;
+          font-weight: bold;
+          &:hover {
+            background-color: ${theme.colors.footer};
+          }
+          &:disabled {
+            background-color: ${theme.colors.footer};
+            cursor: default;
           }
         }
 
@@ -186,6 +216,12 @@ export function GlobalStyles () {
           }
         }
 
+        .blog {
+          h2 {
+            font-size: calc(1.2vw + 1.2vh);
+          }
+        }
+
         // Special Text
         ::-moz-selection {
           color: ${theme.colors.selectionText};
@@ -196,8 +232,8 @@ export function GlobalStyles () {
           background: ${theme.colors.selection};
         }
         .highlight {
-          background: ${theme.colors.highlightBg};
-          color: ${theme.colors.highlight};
+          background: ${theme.colors.text};
+          color: ${theme.colors.background};
           padding: 0 .2rem;
         }
         .code {

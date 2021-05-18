@@ -8,7 +8,7 @@ export const themeLight = {
     divider: '#cccccc',
     footer: '#5e5e5e',
     footerLink: '#7A00CC',
-    highlight: '#e2e2e2',
+    highlight: '#c9c9c9',
     highlightBg: '#232227',
     selection: 'yellow',
     selectionText: '#232227'
@@ -42,13 +42,13 @@ export const themeDark = {
   colors: {
     background: '#232227',
     text: '#e2e2e2',
-    textLight: '#8D8D8D',
+    textLight: '#a8a8a8',
     link: '#21E598',
     linkLight: '#7bffca',
-    divider: '#333',
-    footer: '#8D8D8D',
+    divider: '#313036',
+    footer: '#a8a8a8',
     footerLink: '#21E598',
-    highlight: '#302f35',
+    highlight: '#3b3942',
     highlightBg: '#e2e2e2',
     selection: 'yellow',
     selectionText: '#232227'

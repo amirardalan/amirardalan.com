@@ -28,7 +28,7 @@ const Blog: React.FC<Props> = (props) => {
   
   return (
     <>
-      <div className="page">
+      <div className="blog">
         <nav css={{
           display: 'flex',
           flexDirection: 'row',
