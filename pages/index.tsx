@@ -71,7 +71,11 @@ export default function Home() {
             <Link
               href="/blog"
               aria-label="Blog">
-              <button className="buttonCta">
+              <button
+                className="buttonCta"
+                css={{
+                  marginBottom: '1rem',
+                }}>
                 Read the Blog
               </button>
             </Link>
