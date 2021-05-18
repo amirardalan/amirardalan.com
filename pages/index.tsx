@@ -68,10 +68,30 @@ export default function Home() {
           <div css={{
             marginBottom: '1rem'
           }}>
-            Read the <Link
+            <Link
               href="/blog"
               aria-label="Blog">
-              Blog
+              <button
+                css={{
+                cursor: 'pointer',
+                padding: '1.2rem 1.8rem',
+                backgroundColor: 'transparent',
+                border: '4px solid'+theme.colors.link,
+                color: theme.colors.link,
+                fontSize: '16px',
+                fontWeight: 'bold',
+                boxShadow: '4px 4px 0'+theme.colors.link,
+                transition: 'background-color .2s linear',
+                '&:hover': {
+                  background: theme.colors.link,
+                  border: '4px solid transparent',
+                  color: theme.colors.highlight,
+                  boxShadow: '4px 4px 0'+theme.colors.linkLight,
+                  transition: 'background-color .2s linear'
+                }
+              }}>
+                Read the Blog
+              </button>
             </Link>
           </div>
           <h4>
