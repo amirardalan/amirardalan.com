@@ -1,4 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
+import Link from 'next/link'
+import { useTheme } from '@emotion/react'
 import Login from '../../components/Login'
 import Router from 'next/router'
 
@@ -16,13 +18,13 @@ const Draft: React.FC = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
       })
-      await Router.push('/drafts')
+      await Router.push('/blog/drafts')
     } catch (error) {
       console.error(error)
     }
   }
 
-  function generateSlug(str) {
+  function generateSlug(str: string) {
     str = str.replace(/^\s+|\s+$/g, ''); // trim
     str = str.toLowerCase();
   
@@ -55,14 +57,27 @@ const Draft: React.FC = () => {
     }, 100)
   })  
   
+  const theme : any = useTheme()
 
 
   return (
     <>
+      <nav css={{
+        display: 'flex',
+        flexDirection: 'row',
+        color: theme.colors.footer,
+        fontSize: '12px'
+      }}>
+        <Link href="/">Home</Link>
+        <span css={{ margin: '0 10px 0 10px' }}>/</span>
+        <Link href="/">Blog</Link>
+        <span css={{ margin: '0 10px 0 10px' }}>/</span>
+        <p>New Post</p>
+      </nav>
       <Login />
       <div>
         <form onSubmit={submitData}>
-          <h1>New Draft</h1>
+          <h1>New Post (draft)</h1>
           <input
             autoFocus
             onChange={(e) => setTitle(e.target.value)}
@@ -91,7 +106,7 @@ const Draft: React.FC = () => {
             rows={8}
             value={content}
           />
-          <input disabled={!content || !title || !slug} type="submit" value="Create" />
+          <input disabled={!content || !title || !slug} type="submit" value="Create Draft" />
           <a className="back" href="#" onClick={() => Router.push('/blog')}>
             Cancel
           </a>

@@ -61,7 +61,7 @@ const Drafts: React.FC<Props> = (props) => {
         <span css={{ margin: '0 10px 0 10px' }}>/</span>
         <Link href="/blog">Blog</Link>
         <span css={{ margin: '0 10px 0 10px' }}>/</span>
-        <p>Drafts</p>
+        <p>View Drafts</p>
       </nav>
       <Login />
       <div className="page">
