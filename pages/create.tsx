@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Login from '../components/Login'
 import Router from 'next/router'
 
@@ -22,6 +22,41 @@ const Draft: React.FC = () => {
     }
   }
 
+  function generateSlug(str) {
+    str = str.replace(/^\s+|\s+$/g, ''); // trim
+    str = str.toLowerCase();
+  
+    // remove accents, swap ñ for n, etc
+    var from = "àáãäâèéëêìíïîòóöôùúüûñç·/_,:;";
+    var to   = "aaaaaeeeeiiiioooouuuunc------";
+
+    for (var i=0, l=from.length ; i<l ; i++) {
+        str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
+    }
+
+    str = str.replace(/[^a-z0-9 -]/g, '') // remove invalid chars
+        .replace(/\s+/g, '-') // collapse whitespace and replace by -
+        .replace(/-+/g, '-'); // collapse dashes
+
+    return str;
+  }
+
+  let slugUrl = generateSlug(title);
+
+  const slugField = useRef(null)
+
+  useEffect(() => {
+    let interval = setInterval(() => {
+      if (slugField.current) {
+        setSlug(slugField.current.value)
+        //do the same for all autofilled fields
+        clearInterval(interval)
+      }
+    }, 100)
+  })  
+  
+
+
   return (
     <>
       <Login />
@@ -36,10 +71,11 @@ const Draft: React.FC = () => {
             value={title}
           />
           <input
-            onChange={(e) => setSlug(e.target.value)}
-            placeholder="Slug"
+            ref={slugField}
+            onInput={() => setSlug(slugUrl)}
+            placeholder={slugUrl}
             type="text"
-            value={slug}
+            value={slugUrl}
           />
           <textarea
             cols={50}
@@ -48,7 +84,7 @@ const Draft: React.FC = () => {
             rows={8}
             value={content}
           />
-          <input disabled={!content || !title} type="submit" value="Create" />
+          <input disabled={!content || !title || !slug} type="submit" value="Create" />
           <a className="back" href="#" onClick={() => Router.push('/blog')}>
             Cancel
           </a>
@@ -72,9 +108,15 @@ const Draft: React.FC = () => {
         }
 
         input[type='submit'] {
+          cursor: pointer;
           background: #ececec;
           border: 0;
           padding: 1rem 2rem;
+        }
+
+        input[type='submit']:disabled {
+          cursor: default;
+          background: red;
         }
 
         .back {
