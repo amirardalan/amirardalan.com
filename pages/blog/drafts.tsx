@@ -1,10 +1,10 @@
 import React from 'react'
 import { GetServerSideProps } from 'next'
 import Link from 'next/link'
-import Login from '../components/Login'
-import Post, { PostProps } from '../components/Post'
+import Login from '../../components/Login'
+import Post, { PostProps } from '../../components/Post'
 import { useSession, getSession } from 'next-auth/client'
-import prisma from '../lib/prisma'
+import prisma from '../../lib/prisma'
 import { useTheme } from '@emotion/react'
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {

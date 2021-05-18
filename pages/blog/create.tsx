@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import Login from '../components/Login'
+import Login from '../../components/Login'
 import Router from 'next/router'
 
 const Draft: React.FC = () => {

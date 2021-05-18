@@ -51,12 +51,12 @@ const Login: React.FC = () => {
     )
     right = (
       <div className="right">
-        <Link href="/create">
+        <Link href="/blog/create">
           <button>
             <a>New post</a>
           </button>
         </Link>
-        <Link href="/drafts">
+        <Link href="/blog/drafts">
           <button data-active={isActive('/drafts')}>
             <a>View drafts</a>
           </button>
