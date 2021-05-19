@@ -76,34 +76,53 @@ const Post: React.FC<PostProps> = (props) => {
   const time = Math.ceil(words / wpm);
   const readTime = time + ' ' + 'min read'
 
+  // Post Controls Deletion Confirmation
+  const [showConfirmation, setShowConfirmation] = React.useState(false)
+  const confirmOnClick = () => setShowConfirmation(true)
+  const cancelOnClick = () => setShowConfirmation(false)
+  const Confirmation = () => (
+    <div className="controlsConfirm">
+      Are you sure?
+      <div>
+        <span
+          className="confirmLink"
+          onClick={() => deletePost(props.id)}
+        >
+          Yes
+        </span>
+        <span
+          className="confirmLink"
+          onClick={cancelOnClick}
+        >
+          Cancel
+        </span>
+      </div>
+    </div>
+  )
 
   return (
     <div className="blog">
-      <nav css={{
-        display: 'flex',
-        flexDirection: 'row',
-        color: theme.colors.footer,
-        fontSize: '12px'
-      }}>
+
+      <nav className="breadcrumbs">
         <Link href="/">Home</Link>
         <span css={{ margin: '0 10px 0 10px' }}>/</span>
         <Link href="/blog">Blog</Link>
         <span css={{ margin: '0 10px 0 10px' }}>/</span>
         <span>{title}</span>
       </nav>
+
       <Login />
+      
       <div className="postFull">
-        <h2 css={{ margin: '1.5rem 0 0 0'}}>{title}</h2>
-        <small css={{
-          margin: '.5rem 0 1.5rem',
-          display: 'block',
-          color: theme.colors.footer
-        }}>
-          <span>{postDate} • {readTime}</span>
+
+        <h2>{title}</h2>
+        <small className="postDetails">
+          <span>By {props?.author?.name || 'Unknown author'} • {postDate} • {readTime}</span>
         </small>
+
         <ReactMarkdown children={props.content} />
 
-        <div css={{marginTop: '2rem' }}>
+        <div className="controlsPost">
           {!props.published && userHasValidSession && postBelongsToUser && (
             <button className="buttonCompact" onClick={() => publishPost(props.id)}>Publish</button>
           )}
@@ -111,9 +130,13 @@ const Post: React.FC<PostProps> = (props) => {
             <button className="buttonCompact" onClick={() => editPost(props.id)}>Edit</button>
           )}
           { userHasValidSession && postBelongsToUser && (
-            <button className="buttonCompact delete" onClick={() => deletePost(props.id)}>Delete</button>
+            <button className="buttonCompact delete" onClick={confirmOnClick}>Delete</button>
           )}
+
+          { showConfirmation ? <Confirmation /> : null }
+
         </div>
+        
       </div>
     </div>
   )

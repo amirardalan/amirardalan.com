@@ -47,7 +47,7 @@ export function GlobalStyles () {
 
         input[type='text'],
         textarea {
-          width: 100%;
+          width: 65vw;
           padding: 0.5rem;
           margin: 0.5rem 0;
           border-radius: 0.25rem;
@@ -60,6 +60,10 @@ export function GlobalStyles () {
           &:disabled {
             background-color: ${theme.colors.disabled};
             color: ${theme.colors.footer}
+          }
+
+          @media (max-width: 890px) {
+            width: 100vw;
           }
         }
 
@@ -233,12 +237,8 @@ export function GlobalStyles () {
           }
         }
 
+        // Blog Styles
         .blog {
-          max-width: 65vw;
-
-          @media (max-width: 1280px) {
-            max-width: none;
-          }
 
           h2 {
             font-size: 30px;
@@ -251,10 +251,81 @@ export function GlobalStyles () {
             line-height: 1.8rem;
             margin-top: .5rem;
           }
+          small {
+            color: ${theme.colors.footer};
+            display: block;
+          }
+          main {
+            display: flex;
+            flex-direction: column;
+          }
+          .breadcrumbs {
+            display: flex;
+            flex-direction: row;
+            color: ${theme.colors.footer};
+            font-size: 12px;
+          }
+          .postDetails {
+            margin: .5rem 0 1.5rem;
+            display: block;
+            color: ${theme.colors.footer};
+          }
+          .controlsPost {
+            margin-top: 2rem;
+          }
+          .controlsConfirm {
+            margin-top: 1rem;
+            text-transform: uppercase;
+            font-size: 12px;
+            font-weight: bold;
+            color: ${theme.colors.footer};
+            .confirmLink {
+              margin-right: .5rem;
+              cursor: pointer;
+              font-weight: normal;
+              color: ${theme.colors.text};
+              &:hover {
+                color: ${theme.colors.link};
+                &:first-child::after {
+                  color: ${theme.colors.footer}
+                }
+              }
+              &:first-child {
+                &::after {
+                  content: '|';
+                  padding-left: .5rem;
+                  color: ${theme.colors.footer}
+                }
+              }
+            }
+          }
+          .drafts {
+            max-width: 65vw;
+
+            @media (max-width: 890px) {
+              max-width: none;
+            }
+          }
           .postDraft {
-            margin: 2rem 0;
+            display: flex;
+            justify-content: space-between;
+            margin: 1rem 0;
+            background-color: ${theme.colors.divider};
+            /* border-radius: 10px; */
+            padding: 1rem;
+            &:hover {
+              /* background-color: ${theme.colors.divider}; */
+            }
             h2 { font-size: calc(1vw + 1vh); }
             .postTeaser { margin: 0; }
+
+            &::after {
+              content: 'Unpublished';
+              text-transform: uppercase;
+              font-weight: bold;
+              font-size: 12px;
+              align-self: right;
+            }
           }
           .postTeaser {
             margin: 3rem 0 .5rem 0;
@@ -271,6 +342,21 @@ export function GlobalStyles () {
           }
           .postFull {
             margin: 2rem 0;
+          }
+          .postDraft,
+          .postTeaser,
+          .postFull {
+            max-width: 65vw;
+            @media (max-width: 1280px) {
+              max-width: none;
+            }
+          }
+          // Special Delete (non)Button
+          .formSubmit {
+            a {
+              padding: .45rem 0.8rem;
+              &:hover { background-color: #f84040 }
+            }
           }
         }
 

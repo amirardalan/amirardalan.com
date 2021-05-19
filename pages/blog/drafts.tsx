@@ -51,37 +51,31 @@ const Drafts: React.FC<Props> = (props) => {
 
   return (
     <div className="blog">
-      <nav css={{
-        display: 'flex',
-        flexDirection: 'row',
-        color: theme.colors.footer,
-        fontSize: '12px'
-      }}>
+
+      <nav className="breadcrumbs">
         <Link href="/">Home</Link>
         <span css={{ margin: '0 10px 0 10px' }}>/</span>
         <Link href="/blog">Blog</Link>
         <span css={{ margin: '0 10px 0 10px' }}>/</span>
         <span>Drafts</span>
       </nav>
+
       <Login />
-      <div className="page">
+
+      <div className="drafts">
         <h1>Drafts</h1>
         <main>
           {props.drafts.map((post) => (
-            <div key={post.id} className="postDraft" css={{
-              cursor: 'pointer',
-              border: '2px solid'+theme.colors.footer,
-              borderRadius: '10px',
-              padding: '1rem',
-              '&:hover': {
-                backgroundColor: theme.colors.divider,
-              }
-            }}>
+            <div
+              key={post.id}
+              className="postDraft"
+            >
               <Post post={post} />
             </div>
           ))}
         </main>
       </div>
+
     </div>
   )
 }

@@ -1,10 +1,12 @@
-import { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { useTheme } from '@emotion/react'
 import Login from '../../components/Login'
 import Router from 'next/router'
 
 const Draft: React.FC = () => {
+  const theme : any = useTheme()
+
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
   const [slug, setSlug] = useState('')
@@ -25,6 +27,7 @@ const Draft: React.FC = () => {
     }
   }
 
+  // Generate Post Slug URL
   function generateSlug(str: string) {
     str = str.replace(/^\s+|\s+$/g, ''); // trim
     str = str.toLowerCase();
@@ -34,20 +37,21 @@ const Draft: React.FC = () => {
     var to   = "aaaaaeeeeiiiioooouuuunc------";
 
     for (var i=0, l=from.length ; i<l ; i++) {
-        str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
+      str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
     }
 
     str = str.replace(/[^a-z0-9 -]/g, '') // remove invalid chars
-        .replace(/\s+/g, '-') // collapse whitespace and replace by -
-        .replace(/-+/g, '-'); // collapse dashes
+      .replace(/\s+/g, '-') // collapse whitespace and replace by -
+      .replace(/-+/g, '-'); // collapse dashes
 
     return str;
   }
 
-  let slugUrl = generateSlug(title);
+  let slugUrl = generateSlug(title)
 
+  // Make sure slug input is active after autofill
+  // to ensure it submitted by the browser
   const slugField = useRef(null)
-
   useEffect(() => {
     let interval = setInterval(() => {
       if (slugField.current) {
@@ -56,26 +60,46 @@ const Draft: React.FC = () => {
         clearInterval(interval)
       }
     }, 100)
-  })  
-  
-  const theme : any = useTheme()
+  })
+
+  // Post Controls Deletion Confirmation
+  const [showConfirmation, setShowConfirmation] = React.useState(false)
+  const confirmOnClick = () => setShowConfirmation(true)
+  const cancelOnClick = () => setShowConfirmation(false)
+  const Confirmation = () => (
+    <div className="controlsConfirm">
+      Are you sure?
+      <div>
+        <span
+          className="confirmLink"
+          onClick={() => Router.push('/blog')}
+        >
+          Yes
+        </span>
+        <span
+          className="confirmLink"
+          onClick={cancelOnClick}
+        >
+          Cancel
+        </span>
+      </div>
+    </div>
+  )
 
 
   return (
-    <>
-      <nav css={{
-        display: 'flex',
-        flexDirection: 'row',
-        color: theme.colors.footer,
-        fontSize: '12px'
-      }}>
+    <div className="blog">
+
+      <nav className="breadcrumbs">
         <Link href="/">Home</Link>
         <span css={{ margin: '0 10px 0 10px' }}>/</span>
         <Link href="/">Blog</Link>
         <span css={{ margin: '0 10px 0 10px' }}>/</span>
-        <p>New Post</p>
+        <span>New Post</span>
       </nav>
+
       <Login />
+
       <div>
         <form onSubmit={submitData}>
           <h1>New Post (draft)</h1>
@@ -113,13 +137,26 @@ const Draft: React.FC = () => {
             rows={8}
             value={content}
           />
-          <input className="buttonCompact" disabled={!content || !title || !slug || !teaser} type="submit" value="Save Draft" />
-          <a className="buttonCompact" href="#" css={{ padding: '.4rem 0.8rem' }} onClick={() => Router.push('/blog')}>
-            Delete
-          </a>
+
+          <div className="formSubmit">
+            <input
+              className="buttonCompact"
+              disabled={!content || !title || !slug || !teaser}
+              type="submit" value="Save Draft"
+            />
+            <a
+              className="buttonCompact"
+              href="#"
+              onClick={confirmOnClick}>
+              Delete
+            </a>
+            { showConfirmation ? <Confirmation /> : null }
+          </div>
+
         </form>
       </div>
-    </>
+
+    </div>
   )
 }
 
