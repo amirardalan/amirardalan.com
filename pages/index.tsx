@@ -61,7 +61,7 @@ export default function Home() {
             <span className="highlight">Amir Ardalan</span>
           </h2>
           <h3>
-            I'm passionate about: <br/>
+            I'm currently focusing on: <br/>
             <TypingAnimation />
           </h3>
           <br/>

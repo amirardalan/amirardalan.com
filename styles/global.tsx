@@ -233,6 +233,12 @@ export function GlobalStyles () {
             font-size: calc(1.6vw + 1.6vh);
             margin: 0;
           }
+          p {
+            font-family: 'Lora', Georgia, 'Times New Roman', Times, serif;
+            font-size: 17px;
+            line-height: 1.7rem;
+            margin-top: 1rem;
+          }
           .postDraft {
             margin: 2rem 0;
             h2 { font-size: calc(1vw + 1vh); }

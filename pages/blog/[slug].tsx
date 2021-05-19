@@ -61,6 +61,21 @@ const Post: React.FC<PostProps> = (props) => {
     title = `${title} (Draft)`
   }
 
+  // Publish Date Formatter
+  const formatDate = [
+    props.publishedAt.toLocaleDateString("en-US", { month: 'long' }) ,
+    props.publishedAt.toLocaleDateString("en-US", { day: 'numeric' })+',',
+    props.publishedAt.toLocaleDateString("en-US", { year: 'numeric' })
+  ]
+  const postDate = formatDate.join(' ')
+
+  // Read Time Calculator
+  const text = props.content
+  const wpm = 225;
+  const words = text.trim().split(/\s+/).length;
+  const time = Math.ceil(words / wpm);
+  const readTime = time + ' ' + 'min read'
+
 
   return (
     <div className="blog">
@@ -74,7 +89,7 @@ const Post: React.FC<PostProps> = (props) => {
         <span css={{ margin: '0 10px 0 10px' }}>/</span>
         <Link href="/blog">Blog</Link>
         <span css={{ margin: '0 10px 0 10px' }}>/</span>
-        <p>{title}</p>
+        <span>{title}</span>
       </nav>
       <Login />
       <div className="postFull">
@@ -84,9 +99,7 @@ const Post: React.FC<PostProps> = (props) => {
           display: 'block',
           color: theme.colors.footer
         }}>
-          <span>{ props.publishedAt.toLocaleDateString("en-US", { month: 'long' }) }, </span>
-          <span>{ props.publishedAt.toLocaleDateString("en-US", { day: 'numeric' }) } </span>
-          <span>{ props.publishedAt.toLocaleDateString("en-US", { year: 'numeric' }) }</span>
+          <span>{postDate} • {readTime}</span>
         </small>
         <ReactMarkdown children={props.content} />
 

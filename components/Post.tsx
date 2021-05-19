@@ -19,6 +19,9 @@ export type PostProps = {
 
 const Post: React.FC<{ post: PostProps }> = ({ post }) => {
 
+  const theme : any = useTheme()
+
+  // Publish Date Formatter
   const formatDate = [
     post.publishedAt.toLocaleDateString("en-US", { month: 'long' }) ,
     post.publishedAt.toLocaleDateString("en-US", { day: 'numeric' })+',',
@@ -26,17 +29,21 @@ const Post: React.FC<{ post: PostProps }> = ({ post }) => {
   ]
   const postDate = formatDate.join(' ')
 
-  const theme : any = useTheme()
+  // Read Time Calculator
+  const text = post.content
+  const wpm = 225;
+  const words = text.trim().split(/\s+/).length;
+  const time = Math.ceil(words / wpm);
+  const readTime = time + ' ' + 'min read'
 
   return (
     <div className="postTeaser" onClick={() => Router.push("/blog/[slug]", `/blog/${post.slug}`)}>
       <h2>{post.title}</h2>
       <small css={{
         color: theme.colors.footer,
-        margin: '.3rem 0 .2rem',
         display: 'block'
       }}>
-        <span>{postDate}</span>
+        <span>{postDate} • {readTime}</span>
       </small>
       <p>{post.teaser}</p>
     </div>

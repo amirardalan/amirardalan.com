@@ -1,5 +1,6 @@
 import "@fontsource/poppins/500.css"
 import "@fontsource/poppins/700.css"
+import "@fontsource/lora/400.css"
 import { GlobalStyles } from '../styles/global'
 import { ThemeProvider } from '@emotion/react'
 import { themeLight, themeDark } from '../styles/theme'

@@ -36,7 +36,7 @@ const Blog: React.FC<Props> = (props) => {
       }}>
         <Link href="/">Home</Link>
         <span css={{ margin: '0 10px 0 10px' }}>/</span>
-        <p>Blog</p>
+        <span>Blog</span>
       </nav>
       <Login />
       <main css={{

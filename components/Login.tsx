@@ -27,13 +27,14 @@ const Login: React.FC = () => {
   if (session) {
     left = (
       <div className="left">
-        <p css={{
+        <span css={{
+          display: 'block',
           fontSize: '12px',
           color: theme.colors.textLight,
           margin: '1rem 0'
         }}>
           {session.user.name} ({session.user.email})
-        </p>
+        </span>
       </div>
     )
     right = (
