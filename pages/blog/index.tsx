@@ -43,7 +43,7 @@ const Blog: React.FC<Props> = (props) => {
         display: 'flex',
         flexDirection: 'column'
       }}>
-        {props.feed.map((post) => (
+        {props.feed.reverse().map((post) => (
           <div
             key={post.id}
             className="post"

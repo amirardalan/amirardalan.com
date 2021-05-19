@@ -18,9 +18,15 @@ export type PostProps = {
 }
 
 const Post: React.FC<{ post: PostProps }> = ({ post }) => {
-  
+
+  const formatDate = [
+    post.publishedAt.toLocaleDateString("en-US", { month: 'long' }) ,
+    post.publishedAt.toLocaleDateString("en-US", { day: 'numeric' })+',',
+    post.publishedAt.toLocaleDateString("en-US", { year: 'numeric' })
+  ]
+  const postDate = formatDate.join(' ')
+
   const theme : any = useTheme()
-  // const authorName = post.author ? post.author.name : "Unknown author"
 
   return (
     <div className="postTeaser" onClick={() => Router.push("/blog/[slug]", `/blog/${post.slug}`)}>
@@ -28,10 +34,9 @@ const Post: React.FC<{ post: PostProps }> = ({ post }) => {
       <small css={{
         color: theme.colors.footer,
         margin: '.3rem 0 .2rem',
-        display: 'block' }}>
-        <span>{ post.publishedAt.toLocaleDateString("en-US", { month: 'long' }) }, </span>
-        <span>{ post.publishedAt.toLocaleDateString("en-US", { day: 'numeric' }) } </span>
-        <span>{ post.publishedAt.toLocaleDateString("en-US", { year: 'numeric' }) }</span>
+        display: 'block'
+      }}>
+        <span>{postDate}</span>
       </small>
       <p>{post.teaser}</p>
     </div>
