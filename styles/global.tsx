@@ -234,6 +234,12 @@ export function GlobalStyles () {
         }
 
         .blog {
+          max-width: 65vw;
+
+          @media (max-width: 1280px) {
+            max-width: none;
+          }
+
           h2 {
             font-size: 30px;
             margin: 0 0 .2em;
@@ -241,7 +247,7 @@ export function GlobalStyles () {
           }
           p {
             font-family: 'Lora', Georgia, 'Times New Roman', Times, serif;
-            font-size: 17px;
+            font-size: 18px;
             line-height: 1.8rem;
             margin-top: .5rem;
           }
@@ -251,7 +257,11 @@ export function GlobalStyles () {
             .postTeaser { margin: 0; }
           }
           .postTeaser {
-            margin: 3.5rem 0 0 0;
+            margin: 3rem 0 .5rem 0;
+
+            @media (max-width: 480px) {
+              margin: 1rem 0 2rem 0;
+            }
             h2 {
               cursor: pointer;
               &:hover {
