@@ -237,8 +237,8 @@ export function GlobalStyles () {
           p {
             font-family: 'Lora', Georgia, 'Times New Roman', Times, serif;
             font-size: 17px;
-            line-height: 1.7rem;
-            margin-top: 1rem;
+            line-height: 1.8rem;
+            margin-top: .5rem;
           }
           .postDraft {
             margin: 2rem 0;
@@ -246,7 +246,7 @@ export function GlobalStyles () {
             .postTeaser { margin: 0; }
           }
           .postTeaser {
-            margin: 1rem 0 2rem;
+            margin: 3.5rem 0 0 0;
             h2 {
               cursor: pointer;
               &:hover {
