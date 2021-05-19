@@ -1,6 +1,15 @@
 import { getSession } from 'next-auth/client'
 import prisma from '../../../lib/prisma'
 
+
+declare global {
+  namespace NodeJS {
+    interface Global {
+      teaser: any;
+    }
+  }
+}
+
 // POST /api/post
 // Required fields in body: title
 // Optional fields in body: content, slug, teaser
