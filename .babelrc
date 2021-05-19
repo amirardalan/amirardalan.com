@@ -11,6 +11,6 @@
   ],
   "plugins": [
     "@emotion/babel-plugin",
-    "babel-plugin-superjson-next"
+    "superjson-next"
   ]
 }
