@@ -230,8 +230,9 @@ export function GlobalStyles () {
 
         .blog {
           h2 {
-            font-size: calc(1.6vw + 1.6vh);
-            margin: 0;
+            font-size: 30px;
+            margin: 0 0 .2em;
+            line-height: 2rem;
           }
           p {
             font-family: 'Lora', Georgia, 'Times New Roman', Times, serif;
@@ -246,9 +247,11 @@ export function GlobalStyles () {
           }
           .postTeaser {
             margin: 1rem 0 2rem;
-            cursor: pointer;
-            &:hover {
-              h2 { text-decoration: underline; }
+            h2 {
+              cursor: pointer;
+              &:hover {
+                text-decoration: underline;
+              }
             }
           }
           .postFull {

@@ -37,8 +37,8 @@ const Post: React.FC<{ post: PostProps }> = ({ post }) => {
   const readTime = time + ' ' + 'min read'
 
   return (
-    <div className="postTeaser" onClick={() => Router.push("/blog/[slug]", `/blog/${post.slug}`)}>
-      <h2>{post.title}</h2>
+    <div className="postTeaser">
+      <h2 aria-label={post.title} onClick={() => Router.push("/blog/[slug]", `/blog/${post.slug}`)}>{post.title}</h2>
       <small css={{
         color: theme.colors.footer,
         display: 'block'

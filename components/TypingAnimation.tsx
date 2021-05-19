@@ -6,9 +6,8 @@ const TypingAnimation =  React.memo(()=> {
     <Typical
       steps={[
         "Fullstack Engineering ", 1500,
-        "User Interface ", 1500,
-        "JavaScript ", 1500,
-        "TypeScript ", 1500,
+        "User Interface Design ", 1500,
+        "JavaScript & TypeScript ", 1500,
         "< React /> ⚛️ ", 1500,
         "Next.js ", 1500,
         "Prisma ORM ", 1500,
