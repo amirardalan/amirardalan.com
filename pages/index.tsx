@@ -76,38 +76,21 @@ export default function Home() {
                 css={{
                   marginBottom: '1rem',
                 }}>
-                Read the Blog
+                Blog
+              </button>
+            </Link>
+            <Link
+              href="/amir-ardalan-resume.pdf"
+              aria-label="Blog">
+              <button
+                className="buttonCta"
+                css={{
+                  marginBottom: '1rem',
+                }}>
+                Resume
               </button>
             </Link>
           </div>
-          <h4>
-            Check out my <a
-            href="https://github.com/amirardalan"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="GitHub">GitHub</a>
-          </h4>
-          <h4>
-          Add me on <a
-            href="https://linkedin.com/in/amirardalan"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="resume">LinkedIn</a>
-          </h4>
-          <h4>
-          Follow me on <a
-            href="https://twitter.com/amirardalan"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="resume">Twitter</a>
-          </h4>
-          <h4>
-          Download my <a
-            href="/amir-ardalan-resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="resume">resume</a>
-          </h4>
         </div>
       </div>
       <div className="mainRight">

@@ -65,15 +65,20 @@ export function GlobalStyles () {
 
         // Buttons
         .buttonCta {
+          min-width: 128px;
+          margin: 0 1rem 0 0;
           cursor: pointer;
           padding: 1.2rem 1.8rem;
           background-color: transparent;
           border: 4px solid ${theme.colors.link};
           color: ${theme.colors.link};
-          font-size: 16px;
+          font-size: 18px;
           font-weight: bold;
           box-shadow: 4px 4px 0 ${theme.colors.link};
           transition: background-color .2s linear;
+          &::last-child {
+            margin: 0;
+          }
           &:hover {
             background: ${theme.colors.link};
             border: 4px solid transparent;
