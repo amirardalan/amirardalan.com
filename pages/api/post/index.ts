@@ -14,7 +14,7 @@ export default async function handle(req: any, res: any) {
       title: title,
       content: content,
       slug: slug,
-      // teaser: teaser,
+      teaser: teaser,
       author: { connect: { email: session?.user?.email } },
     },
   })
