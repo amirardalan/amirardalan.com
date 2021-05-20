@@ -45,6 +45,77 @@ export function GlobalStyles () {
           padding: 0;
         }
 
+        input[type='text'],
+        textarea {
+          width: 65vw;
+          padding: 0.5rem;
+          margin: 0.5rem 0;
+          border-radius: 0.25rem;
+          border: 0.125rem solid rgba(0, 0, 0, 0.2);
+          background-color: ${theme.colors.disabled};
+          background-color: ${theme.colors.divider};
+          color: ${theme.colors.text};
+          border: 2px solid ${theme.colors.highlight};
+
+          &:disabled {
+            background-color: ${theme.colors.disabled};
+            color: ${theme.colors.footer}
+          }
+
+          @media (max-width: 890px) {
+            width: 100vw;
+          }
+        }
+
+        // Buttons
+        .buttonCta {
+          min-width: 128px;
+          margin: 0 1rem 0 0;
+          cursor: pointer;
+          padding: 1.2rem 1.8rem;
+          background-color: transparent;
+          border: 4px solid ${theme.colors.link};
+          color: ${theme.colors.link};
+          font-size: 18px;
+          font-weight: bold;
+          box-shadow: 4px 4px 0 ${theme.colors.link};
+          transition: background-color .2s linear;
+          &::last-child {
+            margin: 0;
+          }
+          &:hover {
+            background: ${theme.colors.link};
+            border: 4px solid transparent;
+            color: ${theme.colors.highlight};
+            box-shadow: 4px 4px 0 ${theme.colors.linkLight};
+            transition: background-color .2s linear;
+          }
+        }
+
+        .buttonCompact {
+          background-color: ${theme.colors.text};
+          border: 1px solid ${theme.colors.divider};
+          border-radius: 5px;
+          cursor: pointer;
+          padding: .5rem .8rem;
+          color: ${theme.colors.background};
+          font-size: 12px;
+          font-weight: bold;
+          &.delete {
+            background-color: #8b8b8b;
+            &:hover {
+              background-color: #f84040;
+            }
+          }
+          &:hover {
+            background-color: ${theme.colors.footer};
+          }
+          &:disabled {
+            background-color: ${theme.colors.footer};
+            cursor: default;
+          }
+        }
+
         // Layout
         .header {
           margin-bottom: 1.8rem;
@@ -166,6 +237,144 @@ export function GlobalStyles () {
           }
         }
 
+        // Blog Styles
+        .blog {
+
+          h2 {
+            font-size: 30px;
+            margin: 0 0 .2em;
+            line-height: 2rem;
+            width: max-content;
+          }
+          small {
+            color: ${theme.colors.footer};
+            display: block;
+          }
+          main {
+            display: flex;
+            flex-direction: column;
+          }
+          .breadcrumbs {
+            display: flex;
+            flex-direction: row;
+            color: ${theme.colors.footer};
+            font-size: 12px;
+            a::after {
+              content: '/';
+              margin: 0 .5rem;
+              color: ${theme.colors.footer};
+            }
+          }
+          .postDetails {
+            margin: .5rem 0 1.5rem;
+            display: block;
+            color: ${theme.colors.footer};
+          }
+          .controlsPost {
+            margin-top: 2rem;
+          }
+          .controlsConfirm {
+            margin-top: 1rem;
+            text-transform: uppercase;
+            font-size: 12px;
+            font-weight: bold;
+            color: ${theme.colors.footer};
+            .confirmLink {
+              margin-right: .5rem;
+              cursor: pointer;
+              font-weight: normal;
+              color: ${theme.colors.text};
+              &:hover {
+                color: ${theme.colors.link};
+                &:first-of-type::after {
+                  color: ${theme.colors.footer}
+                }
+              }
+              &:first-of-type {
+                &::after {
+                  content: '|';
+                  padding-left: .5rem;
+                  color: ${theme.colors.footer}
+                }
+              }
+            }
+          }
+          .drafts {
+            max-width: 65vw;
+
+            @media (max-width: 890px) {
+              max-width: none;
+            }
+          }
+          .postDraft {
+            display: flex;
+            justify-content: space-between;
+            margin: 1rem 0;
+            background-color: ${theme.colors.divider};
+            /* border-radius: 10px; */
+            padding: 1rem;
+            &:hover {
+              /* background-color: ${theme.colors.divider}; */
+            }
+            h2 { font-size: calc(1vw + 1vh); }
+            .postTeaser { margin: 0; }
+
+            &::after {
+              content: 'Unpublished';
+              text-transform: uppercase;
+              font-weight: bold;
+              font-size: 12px;
+              align-self: right;
+            }
+          }
+          .postTeaser {
+            margin: 3rem 0 .5rem 0;
+
+            @media (max-width: 480px) {
+              margin: 1rem 0 2rem 0;
+            }
+            h2 {
+              cursor: pointer;
+              &:hover {
+                text-decoration: underline;
+              }
+            }
+          }
+          .postFull {
+            margin: 2rem 0;
+            p {
+              margin-top: 2rem;
+            }
+          }
+          .postFull,
+          .post {
+            p, ul, li, a {
+              font-family: 'Lora', Georgia, 'Times New Roman', Times, serif;
+              font-size: 18px;
+              line-height: 1.8rem;
+            }
+            p { margin-bottom: 2rem; }
+            ul, li, a {
+              margin-bottom: 1rem;
+            }
+          }
+          .postDraft,
+          .postTeaser,
+          .postFull {
+            max-width: 65vw;
+            @media (max-width: 1280px) {
+              max-width: none;
+            }
+          }
+          // Special Delete (non)Button
+          .formSubmit {
+            a {
+              padding: .45rem 0.8rem;
+              &:hover { background-color: #f84040 }
+            }
+          }
+        }
+
         // Special Text
         ::-moz-selection {
           color: ${theme.colors.selectionText};
@@ -176,8 +385,8 @@ export function GlobalStyles () {
           background: ${theme.colors.selection};
         }
         .highlight {
-          background: ${theme.colors.highlightBg};
-          color: ${theme.colors.highlight};
+          background: ${theme.colors.text};
+          color: ${theme.colors.background};
           padding: 0 .2rem;
         }
         .code {

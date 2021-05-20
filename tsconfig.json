@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "jsxImportSource": "@emotion/react",
     "target": "es5",
     "lib": [
       "dom",
@@ -19,6 +18,7 @@
     "isolatedModules": true,
     "jsx": "preserve"
   },
+  "jsxImportSource": "@emotion/react",
   "include": [
     "next-env.d.ts",
     "**/*.ts",

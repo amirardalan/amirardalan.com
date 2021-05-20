@@ -19,7 +19,7 @@ export default function Footer() {
       color: ${theme.colors.footer};
       border-top: 1px solid ${theme.colors.divider};
       font-weight: 400;
-      line-height: 1.5em;
+      line-height: 1.8em;
       animation: slide-up .25s forwards;
       transition: all 0.25s linear;
     `}>
@@ -38,27 +38,34 @@ export default function Footer() {
         }
         div { flex-direction: row; }
       `}>
-        Made with <span>&hearts;</span> using: <br/>
+        Made with <span>&hearts;</span> using Next.js + Prisma<br/>
         <a
-          href="https://nextjs.org/"
+          href="https://github.com/amirardalan"
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="Next.js">
-          Next.js
-        </a>+ 
+          aria-label="Github">
+          GitHub
+        </a>/ 
         <a
-          href="https://emotion.sh/docs/introduction"
+          href="https://twitter.com/amirardalan"
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="Emotion CSS">
-          Emotion
-        </a>+ 
+          aria-label="Twitter">
+          Twitter
+        </a>/ 
         <a
-          href="https://threejs.org/"
+          href="https://linkedin.com/in/amirardalan"
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="Three.js">
-          Three.js
+          aria-label="LinkedIn">
+          LinkedIn
+        </a>/ 
+        <a
+          href="/amir-ardalan-resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Resume">
+          Resume
         </a>
       </div>
     </footer>

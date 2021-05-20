@@ -1,7 +1,6 @@
 {
   "presets": [
-    [
-      "next/babel",
+    [ "next/babel",
       {
         "preset-react": {
           "runtime": "automatic",
@@ -10,5 +9,8 @@
       }
     ]
   ],
-  "plugins": ["@emotion/babel-plugin"]
+  "plugins": [
+    "@emotion/babel-plugin",
+    "superjson-next"
+  ]
 }

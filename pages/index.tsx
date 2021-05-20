@@ -1,6 +1,7 @@
 import { css, useTheme } from '@emotion/react'
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import LoadingTriangle from '../components/LoadingTriangle'
 import dynamic from 'next/dynamic'
 import TypingAnimation from '../components/TypingAnimation'
@@ -60,38 +61,36 @@ export default function Home() {
             <span className="highlight">Amir Ardalan</span>
           </h2>
           <h3>
-            I'm passionate about: <br/>
+            I'm currently focusing on: <br/>
             <TypingAnimation />
           </h3>
           <br/>
-          <h4>
-            Check out my <a
-            href="https://github.com/amirardalan"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="GitHub">GitHub</a>
-          </h4>
-          <h4>
-          Add me on <a
-            href="https://linkedin.com/in/amirardalan"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="resume">LinkedIn</a>
-          </h4>
-          <h4>
-          Follow me on <a
-            href="https://twitter.com/amirardalan"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="resume">Twitter</a>
-          </h4>
-          <h4>
-          Download my <a
-            href="/amir-ardalan-resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="resume">resume</a>
-          </h4>
+          <div css={{
+            marginBottom: '1rem'
+          }}>
+            <Link
+              href="/blog"
+              aria-label="Blog">
+              <button
+                className="buttonCta"
+                css={{
+                  marginBottom: '1rem',
+                }}>
+                Blog
+              </button>
+            </Link>
+            <Link
+              href="/amir-ardalan-resume.pdf"
+              aria-label="Blog">
+              <button
+                className="buttonCta"
+                css={{
+                  marginBottom: '1rem',
+                }}>
+                Resume
+              </button>
+            </Link>
+          </div>
         </div>
       </div>
       <div className="mainRight">

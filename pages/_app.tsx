@@ -1,5 +1,7 @@
 import "@fontsource/poppins/500.css"
 import "@fontsource/poppins/700.css"
+import "@fontsource/lora/400.css"
+import "@fontsource/lora/400-italic.css"
 import { GlobalStyles } from '../styles/global'
 import { ThemeProvider } from '@emotion/react'
 import { themeLight, themeDark } from '../styles/theme'
@@ -11,8 +13,10 @@ import Header from '../components/Header'
 import Toggle from '../components/Toggle'
 import Footer from '../components/Footer'
 
+import { Provider } from 'next-auth/client'
+import { AppProps } from 'next/app'
 
-function MyApp({ Component, pageProps }) {
+const MyApp = ({ Component, pageProps }: AppProps) => {
 
   // Loading Bar
   function DisplayLoadingBar(loader:Object) {
@@ -23,24 +27,26 @@ function MyApp({ Component, pageProps }) {
   // Theme Toggle
   const [theme, toggleTheme] = useDarkMode()
   const themeMode = theme === 'light' ? themeLight : themeDark
-  
+
   return (
-    <ThemeProvider theme={themeMode}>
-      <GlobalStyles />
-      <Head>
-        <title>Amir Ardalan | Portfolio</title>
-        <meta name="theme-color" content={themeMode.colors.background} />
-      </Head>
-      <DisplayLoadingBar />
-      <div className="container">
-        <div className="header">
-          <Header />
-          <Toggle toggleTheme={toggleTheme} />
+    <Provider session={pageProps.session}>
+      <ThemeProvider theme={themeMode}>
+        <GlobalStyles />
+        <Head>
+          <title>Amir Ardalan | Portfolio</title>
+          <meta name="theme-color" content={themeMode.colors.background} />
+        </Head>
+        <DisplayLoadingBar />
+        <div className="container">
+          <div className="header">
+            <Header />
+            <Toggle toggleTheme={toggleTheme} />
+          </div>
+          <Component {...pageProps} />
+          <Footer />
         </div>
-        <Component {...pageProps} />
-        <Footer />
-      </div>
-    </ThemeProvider>
+      </ThemeProvider>
+    </Provider>
   )
 }
 
