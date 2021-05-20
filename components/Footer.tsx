@@ -31,6 +31,14 @@ export default function Footer() {
       <div css={css`
         a {
           padding: 0 .3em;
+          &::after {
+            content: '•';
+            padding-left: .5rem;
+            color: ${theme.colors.footer};
+          }
+          &:last-of-type::after {
+            content: '';
+          }
         }
         div { flex-direction: row; }
       `}>
@@ -41,21 +49,21 @@ export default function Footer() {
           rel="noopener noreferrer"
           aria-label="Github">
           GitHub
-        </a>/ 
+        </a>
         <a
           href="https://twitter.com/amirardalan"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Twitter">
           Twitter
-        </a>/ 
+        </a>
         <a
           href="https://linkedin.com/in/amirardalan"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="LinkedIn">
           LinkedIn
-        </a>/ 
+        </a>
         <a
           href="/amir-ardalan-resume.pdf"
           target="_blank"

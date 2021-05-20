@@ -6,6 +6,16 @@
 
       <loc>https://amirardalan.com/</loc>
 
+      <changefreq>monthly</changefreq>
+
+   </url>
+
+   <url>
+
+      <loc>https://amirardalan.com/blog</loc>
+
+      <changefreq>weekly</changefreq>
+
    </url>
 
 </urlset>

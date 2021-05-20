@@ -342,6 +342,10 @@ export function GlobalStyles () {
           }
           .postTeaser {
             margin: 3rem 0 .5rem 0;
+            p {
+              font-family: 'Lora', 'Times New Roman', Times, serif;
+              font-size: 16px;
+            }
 
             @media (max-width: 480px) {
               margin: 1rem 0 2rem 0;

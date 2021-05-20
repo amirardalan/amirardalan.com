@@ -37,12 +37,12 @@ type Props = {
 
 const Drafts: React.FC<Props> = (props) => {
   
-  let drafts = null;
+  let draftsList = null;
 
   const [session, loading] = useSession()
 
   if (loading) {
-    drafts = (
+    draftsList = (
       <div>
         <LoadingTriangle />
       </div>
@@ -50,7 +50,7 @@ const Drafts: React.FC<Props> = (props) => {
   }
 
   if (session && session.user.email == process.env.NEXT_PUBLIC_USER_EMAIL) {
-    drafts = (
+    draftsList = (
       <div className="blog">
 
         <nav className="breadcrumbs">
@@ -64,7 +64,7 @@ const Drafts: React.FC<Props> = (props) => {
         <div className="drafts">
           <h1>Drafts</h1>
           <main>
-            {props.drafts.map((post) => (
+            {props.drafts.reverse().map((post) => (
               <div
                 key={post.id}
                 className="postDraft"
@@ -84,7 +84,7 @@ const Drafts: React.FC<Props> = (props) => {
         <title>Amir Ardalan | Drafts</title>
         <meta name="robots" content="noindex"></meta>
       </Head>
-      {drafts}
+      {draftsList}
     </>
   )
 }
