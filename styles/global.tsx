@@ -252,7 +252,6 @@ export function GlobalStyles () {
 
         // Blog Styles
         .blog {
-
           h2 {
             font-size: 30px;
             margin: 0 0 .5em;
@@ -373,6 +372,19 @@ export function GlobalStyles () {
             }
             p { margin-bottom: 2rem; }
             a { text-decoration: underline }
+            blockquote {
+              margin-left: -1.75rem;
+              font-family: 'Lora', 'Times New Roman', Times, serif;
+              border-left: 5px solid ${theme.colors.footer};
+              color: ${theme.colors.footer};
+              padding-left: 1.5rem;
+              font-style: italic;
+              @media (max-width: 890px) {
+                margin-left: -1.1rem;
+                padding-left: .8rem;
+              }
+              p { font-size: 24px; }
+            }
           }
           .postDraft,
           .postTeaser,

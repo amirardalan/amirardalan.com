@@ -65,9 +65,7 @@ export default function Home() {
             <TypingAnimation />
           </h3>
           <br/>
-          <div css={{
-            marginBottom: '1rem'
-          }}>
+          <div>
             <Link
               href="/blog"
               aria-label="Read the Blog"

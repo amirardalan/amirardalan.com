@@ -16,10 +16,10 @@
     }
   ],
   "start_url": "https://amirardalan.com",
-  "background_color": "#f5f5f5",
+  "background_color": "#e2e2e2",
   "display": "standalone",
   "scope": "/",
-  "theme_color": "#f5f5f5",
+  "theme_color": "#7A00CC",
   "shortcuts": [
     {
       "name": "Amir Ardalan Portfolio",
