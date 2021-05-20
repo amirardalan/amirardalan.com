@@ -19,12 +19,19 @@ const Login: React.FC = () => {
 
   if (session && session.user.email == process.env.NEXT_PUBLIC_USER_EMAIL) {
     left = (
-      <div className="left">
+      <div
+        className="left"
+        css={{
+          display: 'flex'
+        }}>
         <span css={{
-          display: 'block',
+          display: 'flex',
           fontSize: '12px',
+          alignSelf: 'center',
           color: theme.colors.textLight,
-          margin: '1rem 0'
+          '@media(max-width: 890px)': {
+            marginBottom: '.5rem'
+          }
         }}>
           {session.user.name} ({session.user.email})
         </span>
@@ -54,12 +61,12 @@ const Login: React.FC = () => {
 
   return (
     <nav css={{
+      margin: '.5rem 0',
       display: 'flex',
       flexDirection: 'row',
       justifyContent: 'space-between',
       '@media (max-width: 500px)': {
-        flexDirection: 'column',
-        marginBottom: '1rem'
+        flexDirection: 'column'
       }
     }}>
       {left}

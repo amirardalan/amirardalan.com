@@ -62,7 +62,7 @@ export function GlobalStyles () {
           }
 
           @media (max-width: 890px) {
-            width: 100vw;
+            width: 100%;
           }
         }
 
@@ -341,14 +341,10 @@ export function GlobalStyles () {
             }
           }
           .postTeaser {
-            margin: 3rem 0 .5rem 0;
+            margin: 2.5rem 0 .5rem 0;
             p {
               font-family: 'Lora', 'Times New Roman', Times, serif;
               font-size: 16px;
-            }
-
-            @media (max-width: 480px) {
-              margin: 1rem 0 2rem 0;
             }
             h2 {
               cursor: pointer;
@@ -357,11 +353,17 @@ export function GlobalStyles () {
                 color: ${theme.colors.linkLight}
               }
             }
+            @media (max-width: 890px) {
+              margin: 2rem 0 2rem 0;
+            }
           }
           .postFull {
             margin: 3rem 0;
             p {
               margin-top: 2rem;
+            }
+            @media (max-width: 890px) {
+              margin: 2.5rem 0;
             }
           }
           .postFull,
