@@ -34,9 +34,8 @@ export function GlobalStyles () {
         a {
           color: ${theme.colors.link};
           text-decoration: none;
-          text-decoration: none;
             &:hover {
-              text-decoration: underline;
+              color: ${theme.colors.linkLight};
             }
         }
           
@@ -70,7 +69,7 @@ export function GlobalStyles () {
         // Buttons
         .buttonCta {
           min-width: 128px;
-          margin: 0 1rem 0 0;
+          margin: 0 1rem 2rem 0;
           cursor: pointer;
           padding: 1.2rem 1.8rem;
           background-color: transparent;
@@ -89,6 +88,17 @@ export function GlobalStyles () {
             color: ${theme.colors.highlight};
             box-shadow: 4px 4px 0 ${theme.colors.linkLight};
             transition: background-color .2s linear;
+          }
+        }
+
+        .linkCta {
+          display: block;
+          width: max-content;
+          font-size: 16px;
+          cursor: pointer;
+          &::before {
+            content: '👉';
+            padding-right: .2rem;
           }
         }
 
@@ -278,7 +288,7 @@ export function GlobalStyles () {
             text-transform: uppercase;
             font-size: 12px;
             font-weight: bold;
-            color: ${theme.colors.footer};
+            color: #f84040;
             .confirmLink {
               margin-right: .5rem;
               cursor: pointer;
@@ -335,8 +345,9 @@ export function GlobalStyles () {
             }
             h2 {
               cursor: pointer;
+              color: ${theme.colors.link};
               &:hover {
-                text-decoration: underline;
+                color: ${theme.colors.linkLight}
               }
             }
           }
@@ -353,10 +364,11 @@ export function GlobalStyles () {
               font-size: 18px;
               line-height: 1.8rem;
             }
-            p { margin-bottom: 2rem; }
             ul, li, a {
               margin-bottom: 1rem;
             }
+            p { margin-bottom: 2rem; }
+            a { text-decoration: underline }
           }
           .postDraft,
           .postTeaser,

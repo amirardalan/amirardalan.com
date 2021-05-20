@@ -8,7 +8,7 @@ export const themeLight = {
     divider: '#cccccc',
     footer: '#5e5e5e',
     footerLink: '#7A00CC',
-    highlight: '#c9c9c9',
+    highlight: '#e2e2e2',
     highlightBg: '#232227',
     selection: 'yellow',
     selectionText: '#232227',

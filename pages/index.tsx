@@ -76,19 +76,19 @@ export default function Home() {
                 css={{
                   marginBottom: '1rem',
                 }}>
-                Blog
+                Read the Blog
               </button>
             </Link>
             <Link
               href="/amir-ardalan-resume.pdf"
               aria-label="Blog">
-              <button
-                className="buttonCta"
+              <a
+                className="linkCta"
                 css={{
                   marginBottom: '1rem',
                 }}>
-                Resume
-              </button>
+                Download Resume
+              </a>
             </Link>
           </div>
         </div>

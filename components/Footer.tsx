@@ -30,11 +30,7 @@ export default function Footer() {
       </div>
       <div css={css`
         a {
-          color: ${theme.colors.footerLink};
           padding: 0 .3em;
-          &:hover {
-            text-decoration: underline;
-          }
         }
         div { flex-direction: row; }
       `}>
