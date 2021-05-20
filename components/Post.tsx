@@ -37,7 +37,7 @@ const Post: React.FC<{ post: PostProps }> = ({ post }) => {
     <div className="postTeaser">
       <h2 aria-label={post.title} onClick={() => Router.push("/blog/[slug]", `/blog/${post.slug}`)}>{post.title}</h2>
       <small>
-        <span>By {post?.author?.name || 'Unknown author'} • {postDate} • {readTime}</span>
+        <span className="postDetails">By {post?.author?.name || 'Unknown author'} • {postDate} • {readTime}</span>
       </small>
       <p>{post.teaser}</p>
     </div>

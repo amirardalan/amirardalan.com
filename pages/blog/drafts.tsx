@@ -3,10 +3,10 @@ import { GetServerSideProps } from 'next'
 import { useSession, getSession } from 'next-auth/client'
 import Link from 'next/link'
 import Head from 'next/head'
+import LoadingTriangle from '../../components/LoadingTriangle'
 import Login from '../../components/Login'
 import Post, { PostProps } from '../../components/Post'
 import prisma from '../../lib/prisma'
-import LoadingTriangle from '../../components/LoadingTriangle'
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   const session = await getSession({ req })
@@ -37,55 +37,56 @@ type Props = {
 
 const Drafts: React.FC<Props> = (props) => {
   
+  let drafts = null;
+
   const [session, loading] = useSession()
 
   if (loading) {
-    <div>
-      <LoadingTriangle />
-    </div>
+    drafts = (
+      <div>
+        <LoadingTriangle />
+      </div>
+    )
   }
 
   if (session && session.user.email == process.env.NEXT_PUBLIC_USER_EMAIL) {
-    return (
-      <>
-        <Head>
-          <title>Amir Ardalan | Drafts</title>
-          <meta name="robots" content="noindex"></meta>
-        </Head>
-        <div className="blog">
+    drafts = (
+      <div className="blog">
 
-          <nav className="breadcrumbs">
-            <Link href="/">Home</Link>
-            <Link href="/blog">Blog</Link>
-            <span>Drafts</span>
-          </nav>
+        <nav className="breadcrumbs">
+          <Link href="/">Home</Link>
+          <Link href="/blog">Blog</Link>
+          <span>Drafts</span>
+        </nav>
 
-          <Login />
+        <Login />
 
-          <div className="drafts">
-            <h1>Drafts</h1>
-            <main>
-              {props.drafts.map((post) => (
-                <div
-                  key={post.id}
-                  className="postDraft"
-                >
-                  <Post post={post} />
-                </div>
-              ))}
-            </main>
-          </div>
-
+        <div className="drafts">
+          <h1>Drafts</h1>
+          <main>
+            {props.drafts.map((post) => (
+              <div
+                key={post.id}
+                className="postDraft"
+              >
+                <Post post={post} />
+              </div>
+            ))}
+          </main>
         </div>
-      </>
+
+      </div>
     )
-  } else {
-      return (
-        <div>
-          <LoadingTriangle />
-        </div>
-      )
-    }
+  }
+  return (
+    <>
+      <Head>
+        <title>Amir Ardalan | Drafts</title>
+        <meta name="robots" content="noindex"></meta>
+      </Head>
+      {drafts}
+    </>
+  )
 }
 
 export default Drafts

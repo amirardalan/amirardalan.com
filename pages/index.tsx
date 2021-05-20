@@ -70,23 +70,16 @@ export default function Home() {
           }}>
             <Link
               href="/blog"
-              aria-label="Blog">
-              <button
-                className="buttonCta"
-                css={{
-                  marginBottom: '1rem',
-                }}>
+              aria-label="Read the Blog"
+            >
+              <button className="buttonCta">
                 Read the Blog
               </button>
             </Link>
             <Link
               href="/amir-ardalan-resume.pdf"
-              aria-label="Blog">
-              <a
-                className="linkCta"
-                css={{
-                  marginBottom: '1rem',
-                }}>
+              aria-label="Download Resume">
+              <a className="linkCta">
                 Download Resume
               </a>
             </Link>

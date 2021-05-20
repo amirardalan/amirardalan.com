@@ -54,7 +54,7 @@ export function GlobalStyles () {
           background-color: ${theme.colors.disabled};
           background-color: ${theme.colors.divider};
           color: ${theme.colors.text};
-          border: 2px solid ${theme.colors.highlight};
+          border: 2px solid ${theme.colors.divider};
 
           &:disabled {
             background-color: ${theme.colors.disabled};
@@ -75,13 +75,11 @@ export function GlobalStyles () {
           background-color: transparent;
           border: 4px solid ${theme.colors.link};
           color: ${theme.colors.link};
-          font-size: 18px;
+          font-family: 'Poppins', Arial, Helvetica, sans-serif;
+          font-size: 16px;
           font-weight: bold;
           box-shadow: 4px 4px 0 ${theme.colors.link};
           transition: background-color .2s linear;
-          &::last-child {
-            margin: 0;
-          }
           &:hover {
             background: ${theme.colors.link};
             border: 4px solid transparent;
@@ -98,7 +96,7 @@ export function GlobalStyles () {
           cursor: pointer;
           &::before {
             content: '👉';
-            padding-right: .2rem;
+            padding-right: .5rem;
           }
         }
 
@@ -111,6 +109,11 @@ export function GlobalStyles () {
           color: ${theme.colors.background};
           font-size: 12px;
           font-weight: bold;
+          a& {
+            &:hover {
+              color: ${theme.colors.background};
+            }
+          }
           &.delete {
             background-color: #8b8b8b;
             &:hover {
@@ -252,7 +255,7 @@ export function GlobalStyles () {
 
           h2 {
             font-size: 30px;
-            margin: 0 0 .2em;
+            margin: 0 0 .5em;
             line-height: 2rem;
             width: max-content;
           }
@@ -276,9 +279,10 @@ export function GlobalStyles () {
             }
           }
           .postDetails {
-            margin: .5rem 0 1.5rem;
+            margin: .5rem 0 .2rem;
             display: block;
             color: ${theme.colors.footer};
+            font-size: 12px;
           }
           .controlsPost {
             margin-top: 2rem;
@@ -352,7 +356,7 @@ export function GlobalStyles () {
             }
           }
           .postFull {
-            margin: 2rem 0;
+            margin: 3rem 0;
             p {
               margin-top: 2rem;
             }
@@ -385,6 +389,12 @@ export function GlobalStyles () {
               &:hover { background-color: #f84040 }
             }
           }
+        }
+
+        // Flex Utils
+        .center {
+          display: flex;
+          justify-content: center;
         }
 
         // Special Text

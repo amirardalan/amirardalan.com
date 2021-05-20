@@ -39,7 +39,7 @@ const Blog: React.FC<Props> = (props) => {
         <Login />
 
         <main>
-          {props.feed.reverse().map((post) => (
+          {props.feed.map((post) => (
             <div
               key={post.id}
               className="post"

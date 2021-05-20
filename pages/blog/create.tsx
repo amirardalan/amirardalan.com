@@ -2,9 +2,9 @@ import React, { useState, useEffect, useRef } from 'react'
 import Router from 'next/router'
 import Link from 'next/link'
 import Head from 'next/head'
-import Login from '../../components/Login'
-import { signOut, useSession } from 'next-auth/client'
 import LoadingTriangle from '../../components/LoadingTriangle'
+import Login from '../../components/Login'
+import { useSession } from 'next-auth/client'
 
 const Draft: React.FC = () => {
 
@@ -100,7 +100,7 @@ const Draft: React.FC = () => {
 
   if (session && session.user.email == process.env.NEXT_PUBLIC_USER_EMAIL) {
     create = (
-        <div className="blog">
+      <div className="blog">
 
         <nav className="breadcrumbs">
           <Link href="/">Home</Link>
@@ -155,7 +155,7 @@ const Draft: React.FC = () => {
                 type="submit" value="Save Draft"
               />
               <a
-                className="buttonCompact"
+                className="buttonCompact delete"
                 href="#"
                 onClick={confirmOnClick}>
                 Delete
@@ -166,12 +166,6 @@ const Draft: React.FC = () => {
           </form>
         </div>
 
-      </div>
-    )
-  } else {
-    create = (
-      <div>
-        <LoadingTriangle />
       </div>
     )
   }
