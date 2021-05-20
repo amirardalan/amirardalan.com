@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Router from 'next/router'
 import { GetServerSideProps } from 'next'
 import { useSession } from 'next-auth/client'
@@ -49,6 +49,30 @@ async function deletePost(id: number): Promise<void> {
 
 const Post: React.FC<PostProps> = (props) => {
 
+  // Post Controls Deletion Confirmation
+  const [showConfirmation, setShowConfirmation] = useState(false)
+  const confirmOnClick = () => setShowConfirmation(true)
+  const cancelOnClick = () => setShowConfirmation(false)
+  const Confirmation = () => (
+    <div className="controlsConfirm">
+      Are you sure?
+      <div>
+        <span
+          className="confirmLink"
+          onClick={() => deletePost(props.id)}
+        >
+          Yes
+        </span>
+        <span
+          className="confirmLink"
+          onClick={cancelOnClick}
+        >
+          Cancel
+        </span>
+      </div>
+    </div>
+  )
+
   const [session, loading] = useSession()
   if (loading) {
     return <div><LoadingTriangle /></div>
@@ -74,30 +98,6 @@ const Post: React.FC<PostProps> = (props) => {
   const words = text.trim().split(/\s+/).length;
   const time = Math.ceil(words / wpm);
   const readTime = time + ' ' + 'min read'
-
-  // Post Controls Deletion Confirmation
-  const [showConfirmation, setShowConfirmation] = React.useState(false)
-  const confirmOnClick = () => setShowConfirmation(true)
-  const cancelOnClick = () => setShowConfirmation(false)
-  const Confirmation = () => (
-    <div className="controlsConfirm">
-      Are you sure?
-      <div>
-        <span
-          className="confirmLink"
-          onClick={() => deletePost(props.id)}
-        >
-          Yes
-        </span>
-        <span
-          className="confirmLink"
-          onClick={cancelOnClick}
-        >
-          Cancel
-        </span>
-      </div>
-    </div>
-  )
 
   return (
     <>

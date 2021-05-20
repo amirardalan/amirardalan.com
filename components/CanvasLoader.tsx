@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react'
+import React from 'react'
 import { useTheme } from '@emotion/react'
 import { Canvas } from '@react-three/fiber'
 import CanvasText from './CanvasText'
