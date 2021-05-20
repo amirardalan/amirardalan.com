@@ -265,12 +265,14 @@ export function GlobalStyles () {
           main {
             display: flex;
             flex-direction: column;
+            animation: slide-up .8s forwards;
           }
           .breadcrumbs {
             display: flex;
             flex-direction: row;
             color: ${theme.colors.footer};
             font-size: 12px;
+            animation: slide-down .8s forwards;
             a::after {
               content: '/';
               margin: 0 .5rem;
