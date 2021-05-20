@@ -68,16 +68,20 @@ export default function Header() {
                 Amir Ardalan
               </h1>
 
-              <p aria-hidden="true"
+              <p
+                aria-label="Portland, OR, USA"
                 css={{
+                  position: 'relative',
                   margin: '0',
                   padding: '.2rem 0 0 0',
-                  color: theme.colors.textLight,
+                  color: theme.colors.footer,
                   fontSize: '8px',
                   fontWeight: 'normal',
-                  letterSpacing: '.01rem'
+                  letterSpacing: '.08rem',
+                  textAlign: 'left',
+                  textTransform: 'uppercase'
                 }}>
-                45.5051° N, 122.6750° W
+                Portland, OR, USA
               </p>
 
             </div>

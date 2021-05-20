@@ -6,15 +6,7 @@ export default function CanvasText() {
 
   return (
     <>
-      <h5
-        className="canvasTitle"
-        aria-label="${theme.canvas.text}"
-        css={{
-          fontSize: '40px'
-        }}>
-        {theme.canvas.text}
-      </h5>
-      <h6
+      <small
         className="canvasControls"
         aria-label="${theme.canvas.textSmall}"
         css={css`
@@ -25,7 +17,7 @@ export default function CanvasText() {
           }
         `}>
         {theme.canvas.textSmall}
-      </h6>
+      </small>
     </>
   )
 }
