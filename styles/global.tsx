@@ -349,10 +349,13 @@ export function GlobalStyles () {
           .postFull,
           .post {
             p, ul, li, a {
-            font-family: 'Lora', Georgia, 'Times New Roman', Times, serif;
-            font-size: 18px;
-            line-height: 1.8rem;
-            margin-top: .5rem;
+              font-family: 'Lora', Georgia, 'Times New Roman', Times, serif;
+              font-size: 18px;
+              line-height: 1.8rem;
+            }
+            p { margin-bottom: 2rem; }
+            ul, li, a {
+              margin-bottom: 1rem;
             }
           }
           .postDraft,
