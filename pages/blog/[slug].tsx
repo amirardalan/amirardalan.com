@@ -43,7 +43,7 @@ async function deletePost(id: number): Promise<void> {
   await fetch(`http://localhost:3000/api/post/${id}`, {
     method: 'DELETE',
   })
-  Router.push('/blog')
+  Router.push('/blog/drafts')
 }
 
 
