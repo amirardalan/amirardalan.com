@@ -1,13 +1,12 @@
 import React from 'react'
 import Router from 'next/router'
+import { GetServerSideProps } from 'next'
+import { useSession } from 'next-auth/client'
 import Link from 'next/link'
 import Login from '../../components/Login'
 import prisma from '../../lib/prisma'
-import { GetServerSideProps } from 'next'
 import { PostProps } from '../../components/Post'
-import { useSession } from 'next-auth/client'
 import ReactMarkdown from 'react-markdown'
-import { useTheme } from '@emotion/react'
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 
@@ -47,8 +46,6 @@ async function deletePost(id: number): Promise<void> {
 
 
 const Post: React.FC<PostProps> = (props) => {
-
-  const theme : any = useTheme()
 
   const [session, loading] = useSession()
   if (loading) {
@@ -105,9 +102,7 @@ const Post: React.FC<PostProps> = (props) => {
 
       <nav className="breadcrumbs">
         <Link href="/">Home</Link>
-        <span css={{ margin: '0 10px 0 10px' }}>/</span>
         <Link href="/blog">Blog</Link>
-        <span css={{ margin: '0 10px 0 10px' }}>/</span>
         <span>{title}</span>
       </nav>
 

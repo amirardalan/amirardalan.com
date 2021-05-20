@@ -2,7 +2,6 @@ import React from 'react'
 import Link from 'next/link'
 import Login from '../../components/Login'
 import { GetServerSideProps } from 'next'
-import { useTheme } from '@emotion/react'
 import prisma from '../../lib/prisma'
 import Post, { PostProps } from '../../components/Post'
 
@@ -23,15 +22,12 @@ type Props = {
 }
 
 const Blog: React.FC<Props> = (props) => {
-
-  const theme : any = useTheme()
   
   return (
     <div className="blog">
 
       <nav className="breadcrumbs">
         <Link href="/">Home</Link>
-        <span css={{ margin: '0 10px 0 10px' }}>/</span>
         <span>Blog</span>
       </nav>
 
@@ -47,7 +43,7 @@ const Blog: React.FC<Props> = (props) => {
           </div>
         ))}
       </main>
-      
+
     </div>
   )
 }

@@ -1,11 +1,10 @@
 import React from 'react'
 import { GetServerSideProps } from 'next'
+import { useSession, getSession } from 'next-auth/client'
 import Link from 'next/link'
 import Login from '../../components/Login'
 import Post, { PostProps } from '../../components/Post'
-import { useSession, getSession } from 'next-auth/client'
 import prisma from '../../lib/prisma'
-import { useTheme } from '@emotion/react'
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   const session = await getSession({ req })
@@ -47,16 +46,12 @@ const Drafts: React.FC<Props> = (props) => {
     )
   }
 
-  const theme : any = useTheme()
-
   return (
     <div className="blog">
 
       <nav className="breadcrumbs">
         <Link href="/">Home</Link>
-        <span css={{ margin: '0 10px 0 10px' }}>/</span>
         <Link href="/blog">Blog</Link>
-        <span css={{ margin: '0 10px 0 10px' }}>/</span>
         <span>Drafts</span>
       </nav>
 

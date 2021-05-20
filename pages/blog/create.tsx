@@ -1,11 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react'
-import Link from 'next/link'
-import { useTheme } from '@emotion/react'
-import Login from '../../components/Login'
 import Router from 'next/router'
+import Link from 'next/link'
+import Login from '../../components/Login'
 
 const Draft: React.FC = () => {
-  const theme : any = useTheme()
 
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
@@ -92,9 +90,7 @@ const Draft: React.FC = () => {
 
       <nav className="breadcrumbs">
         <Link href="/">Home</Link>
-        <span css={{ margin: '0 10px 0 10px' }}>/</span>
-        <Link href="/">Blog</Link>
-        <span css={{ margin: '0 10px 0 10px' }}>/</span>
+        <Link href="/blog">Blog</Link>
         <span>New Post</span>
       </nav>
 

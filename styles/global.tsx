@@ -244,12 +244,7 @@ export function GlobalStyles () {
             font-size: 30px;
             margin: 0 0 .2em;
             line-height: 2rem;
-          }
-          p {
-            font-family: 'Lora', Georgia, 'Times New Roman', Times, serif;
-            font-size: 18px;
-            line-height: 1.8rem;
-            margin-top: .5rem;
+            width: max-content;
           }
           small {
             color: ${theme.colors.footer};
@@ -264,6 +259,11 @@ export function GlobalStyles () {
             flex-direction: row;
             color: ${theme.colors.footer};
             font-size: 12px;
+            a::after {
+              content: '/';
+              margin: 0 .5rem;
+              color: ${theme.colors.footer};
+            }
           }
           .postDetails {
             margin: .5rem 0 1.5rem;
@@ -286,11 +286,11 @@ export function GlobalStyles () {
               color: ${theme.colors.text};
               &:hover {
                 color: ${theme.colors.link};
-                &:first-child::after {
+                &:first-of-type::after {
                   color: ${theme.colors.footer}
                 }
               }
-              &:first-child {
+              &:first-of-type {
                 &::after {
                   content: '|';
                   padding-left: .5rem;
@@ -342,6 +342,18 @@ export function GlobalStyles () {
           }
           .postFull {
             margin: 2rem 0;
+            p {
+              margin-top: 2rem;
+            }
+          }
+          .postFull,
+          .post {
+            p, ul, li, a {
+            font-family: 'Lora', Georgia, 'Times New Roman', Times, serif;
+            font-size: 18px;
+            line-height: 1.8rem;
+            margin-top: .5rem;
+            }
           }
           .postDraft,
           .postTeaser,

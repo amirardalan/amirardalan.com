@@ -1,6 +1,5 @@
 import React from 'react'
 import Router from 'next/router'
-import { useTheme } from '@emotion/react'
 
 
 export type PostProps = {
@@ -18,8 +17,6 @@ export type PostProps = {
 }
 
 const Post: React.FC<{ post: PostProps }> = ({ post }) => {
-
-  const theme : any = useTheme()
 
   // Publish Date Formatter
   const formatDate = [
