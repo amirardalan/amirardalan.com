@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
+import Head from 'next/head'
 import Login from '../../components/Login'
 import { GetServerSideProps } from 'next'
 import prisma from '../../lib/prisma'
@@ -24,27 +25,32 @@ type Props = {
 const Blog: React.FC<Props> = (props) => {
   
   return (
-    <div className="blog">
+    <>
+      <Head>
+        <title>Amir Ardalan | Blog</title>
+      </Head>
+      <div className="blog">
 
-      <nav className="breadcrumbs">
-        <Link href="/">Home</Link>
-        <span>Blog</span>
-      </nav>
+        <nav className="breadcrumbs">
+          <Link href="/">Home</Link>
+          <span>Blog</span>
+        </nav>
 
-      <Login />
+        <Login />
 
-      <main>
-        {props.feed.reverse().map((post) => (
-          <div
-            key={post.id}
-            className="post"
-          >
-            <Post post={post} />
-          </div>
-        ))}
-      </main>
+        <main>
+          {props.feed.reverse().map((post) => (
+            <div
+              key={post.id}
+              className="post"
+            >
+              <Post post={post} />
+            </div>
+          ))}
+        </main>
 
-    </div>
+      </div>
+    </>
   )
 }
 

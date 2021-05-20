@@ -3,6 +3,8 @@ import Link from 'next/link'
 import { useTheme } from '@emotion/react'
 import { useRouter } from 'next/router'
 import { signOut, useSession } from 'next-auth/client'
+import LoadingTriangle from '../components/LoadingTriangle'
+
 
 const Login: React.FC = () => {
   const router = useRouter()
@@ -19,12 +21,13 @@ const Login: React.FC = () => {
   if (loading) {
     left = (
       <div className="left">
-        <p>Validating session ...</p>
+        <LoadingTriangle />
       </div>
     )
   }
 
-  if (session) {
+
+  if (session && session.user.email == process.env.NEXT_PUBLIC_USER_EMAIL) {
     left = (
       <div className="left">
         <span css={{

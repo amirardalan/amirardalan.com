@@ -1,7 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react'
 import Router from 'next/router'
 import Link from 'next/link'
+import Head from 'next/head'
 import Login from '../../components/Login'
+import { signOut, useSession } from 'next-auth/client'
+import LoadingTriangle from '../../components/LoadingTriangle'
 
 const Draft: React.FC = () => {
 
@@ -84,75 +87,105 @@ const Draft: React.FC = () => {
     </div>
   )
 
+  const [session, loading] = useSession()
+  let create = null
+
+  if (loading) {
+    create = (
+      <div>
+        <LoadingTriangle />
+      </div>
+    )
+  }
+
+  if (session && session.user.email == process.env.NEXT_PUBLIC_USER_EMAIL) {
+    create = (
+        <div className="blog">
+
+        <nav className="breadcrumbs">
+          <Link href="/">Home</Link>
+          <Link href="/blog">Blog</Link>
+          <span>New Post</span>
+        </nav>
+
+        <Login />
+
+        <div>
+          <form onSubmit={submitData}>
+            <h1>New Post (draft)</h1>
+            <input
+              autoFocus
+              onChange={(e) => setTitle(e.target.value)}
+              placeholder="Title"
+              type="text"
+              value={title}
+            />
+            <input
+              placeholder="URL Slug"
+              type="text"
+              value={slugUrl}
+              disabled={true}
+            />
+            <input
+              ref={slugField}
+              onInput={() => setSlug(slugUrl)}
+              placeholder={slugUrl}
+              type="text"
+              value={slugUrl}
+              hidden={true}
+            />
+            <input
+              onChange={(e) => setTeaser(e.target.value)}
+              placeholder="Teaser"
+              type="text"
+              value={teaser}
+            />
+            <textarea
+              cols={50}
+              onChange={(e) => setContent(e.target.value)}
+              placeholder="Content"
+              rows={8}
+              value={content}
+            />
+
+            <div className="formSubmit">
+              <input
+                className="buttonCompact"
+                disabled={!content || !title || !slug || !teaser}
+                type="submit" value="Save Draft"
+              />
+              <a
+                className="buttonCompact"
+                href="#"
+                onClick={confirmOnClick}>
+                Delete
+              </a>
+              { showConfirmation ? <Confirmation /> : null }
+            </div>
+
+          </form>
+        </div>
+
+      </div>
+    )
+  } else {
+    create = (
+      <div>
+        <LoadingTriangle />
+      </div>
+    )
+  }
 
   return (
-    <div className="blog">
-
-      <nav className="breadcrumbs">
-        <Link href="/">Home</Link>
-        <Link href="/blog">Blog</Link>
-        <span>New Post</span>
-      </nav>
-
-      <Login />
-
+    <>
+      <Head>
+        <title>Amir Ardalan | New Post</title>
+        <meta name="robots" content="noindex"></meta>
+      </Head>
       <div>
-        <form onSubmit={submitData}>
-          <h1>New Post (draft)</h1>
-          <input
-            autoFocus
-            onChange={(e) => setTitle(e.target.value)}
-            placeholder="Title"
-            type="text"
-            value={title}
-          />
-          <input
-            placeholder="URL Slug"
-            type="text"
-            value={slugUrl}
-            disabled={true}
-          />
-          <input
-            ref={slugField}
-            onInput={() => setSlug(slugUrl)}
-            placeholder={slugUrl}
-            type="text"
-            value={slugUrl}
-            hidden={true}
-          />
-          <input
-            onChange={(e) => setTeaser(e.target.value)}
-            placeholder="Teaser"
-            type="text"
-            value={teaser}
-          />
-          <textarea
-            cols={50}
-            onChange={(e) => setContent(e.target.value)}
-            placeholder="Content"
-            rows={8}
-            value={content}
-          />
-
-          <div className="formSubmit">
-            <input
-              className="buttonCompact"
-              disabled={!content || !title || !slug || !teaser}
-              type="submit" value="Save Draft"
-            />
-            <a
-              className="buttonCompact"
-              href="#"
-              onClick={confirmOnClick}>
-              Delete
-            </a>
-            { showConfirmation ? <Confirmation /> : null }
-          </div>
-
-        </form>
+        {create}
       </div>
-
-    </div>
+    </>
   )
 }
 

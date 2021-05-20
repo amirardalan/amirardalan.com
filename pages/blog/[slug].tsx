@@ -3,10 +3,12 @@ import Router from 'next/router'
 import { GetServerSideProps } from 'next'
 import { useSession } from 'next-auth/client'
 import Link from 'next/link'
+import Head from 'next/head'
 import Login from '../../components/Login'
 import prisma from '../../lib/prisma'
 import { PostProps } from '../../components/Post'
 import ReactMarkdown from 'react-markdown'
+import LoadingTriangle from '../../components/LoadingTriangle'
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 
@@ -49,7 +51,7 @@ const Post: React.FC<PostProps> = (props) => {
 
   const [session, loading] = useSession()
   if (loading) {
-    return <div>Authenticating ...</div>
+    return <div><LoadingTriangle /></div>
   }
   const userHasValidSession = Boolean(session)
   const postBelongsToUser = session?.user?.email === props.author?.email
@@ -98,42 +100,47 @@ const Post: React.FC<PostProps> = (props) => {
   )
 
   return (
-    <div className="blog">
+    <>
+      <Head>
+        <title>Amir Ardalan | {title}</title>
+      </Head>
+      <div className="blog">
 
-      <nav className="breadcrumbs">
-        <Link href="/">Home</Link>
-        <Link href="/blog">Blog</Link>
-        <span>{title}</span>
-      </nav>
+        <nav className="breadcrumbs">
+          <Link href="/">Home</Link>
+          <Link href="/blog">Blog</Link>
+          <span>{title}</span>
+        </nav>
 
-      <Login />
-      
-      <div className="postFull">
-
-        <h2>{title}</h2>
-        <small className="postDetails">
-          <span>By {props?.author?.name || 'Unknown author'} • {postDate} • {readTime}</span>
-        </small>
-
-        <ReactMarkdown children={props.content} />
-
-        <div className="controlsPost">
-          {!props.published && userHasValidSession && postBelongsToUser && (
-            <button className="buttonCompact" onClick={() => publishPost(props.id)}>Publish</button>
-          )}
-          { userHasValidSession && postBelongsToUser && (
-            <button className="buttonCompact" onClick={() => editPost(props.id)}>Edit</button>
-          )}
-          { userHasValidSession && postBelongsToUser && (
-            <button className="buttonCompact delete" onClick={confirmOnClick}>Delete</button>
-          )}
-
-          { showConfirmation ? <Confirmation /> : null }
-
-        </div>
+        <Login />
         
+        <div className="postFull">
+
+          <h2>{title}</h2>
+          <small className="postDetails">
+            <span>By {props?.author?.name || 'Unknown author'} • {postDate} • {readTime}</span>
+          </small>
+
+          <ReactMarkdown children={props.content} />
+
+          <div className="controlsPost">
+            {!props.published && userHasValidSession && postBelongsToUser && (
+              <button className="buttonCompact" onClick={() => publishPost(props.id)}>Publish</button>
+            )}
+            { userHasValidSession && postBelongsToUser && (
+              <button className="buttonCompact" onClick={() => editPost(props.id)}>Edit</button>
+            )}
+            { userHasValidSession && postBelongsToUser && (
+              <button className="buttonCompact delete" onClick={confirmOnClick}>Delete</button>
+            )}
+
+            { showConfirmation ? <Confirmation /> : null }
+
+          </div>
+          
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 
