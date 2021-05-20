@@ -1,18 +1,8 @@
-`aa21` is a simple portfolio site built with [Next.js](https://nextjs.org/)
+## Amir Ardalan Portfolio
 
-## Project Dependencies
+`aa21` is a personal portfolio & blog is made and maintained by @amirardalan using [Next.js](https://github.com/vercel/next.js/), [Emotion](https://github.com/emotion-js/emotion), [Three.js](https://github.com/mrdoob/three.js/) and [Prisma](https://github.com/prisma/prisma).
 
-Run `npm install` to install:
-
-- [Emotion](https://github.com/emotion-js/emotion) - CSS in JS / Theming
-- [Fontsource](https://github.com/fontsource/fontsource) - Self hosted web fonts
-- [react-three-fiber](https://github.com/pmndrs/react-three-fiber) - WebGL 3D Canvas Rendering
-- [Three.js](https://github.com/mrdoob/three.js) - JavaScript 3D library
-- [drei](https://github.com/pmndrs/drei) - Helpers & Abstractions for `react-three-fiber`
-- [@react-spring/three](https://github.com/pmndrs/react-spring/tree/9.0.0/targets/three) - Physics based animation library for `react-three-fiber`
-- [BezierEasing](https://github.com/gre/bezier-easing) - Cubic Bezier Curve easing
-- [react-typical](https://github.com/catalinmiron/react-typical) - React animated typing
-
+See `package.json` for full list of dependencies.
 
 ## Local Development
 
@@ -25,3 +15,17 @@ yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000)
+
+## Prisma ORM
+
+Run Prisma Studio:
+
+```bash
+npx prisma studio
+```
+
+Push new tables to db from `schema.prisma`:
+
+```bash
+npx prisma db push --preview-feature
+```

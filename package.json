@@ -19,7 +19,6 @@
     "@react-three/drei": "^4.3.3",
     "@react-three/fiber": "^6.1.5",
     "@types/three": "^0.128.0",
-    "bezier-easing": "^2.1.0",
     "drei": "^2.2.21",
     "next": "10.2.0",
     "next-auth": "^3.23.0",
