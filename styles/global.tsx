@@ -272,7 +272,6 @@ export function GlobalStyles () {
             flex-direction: row;
             color: ${theme.colors.footer};
             font-size: 12px;
-            animation: slide-down .8s forwards;
             a::after {
               content: '/';
               margin: 0 .5rem;
