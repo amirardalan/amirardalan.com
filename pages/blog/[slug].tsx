@@ -107,22 +107,26 @@ const Post = (props: any) => {
   const readTime = time + ' ' + 'min read'
 
   // Next, Prev Post Navigation
+  const published : Boolean = props.post.published
   const total : number = props.feed.length
   const current : any = props.post.id
   const arr : Array<any> = props.feed
-  const first = (arr[0].id == current) ? true : false
-  const last = (arr[total - 1].id == current) ? true : false
+  const first = (arr[0].id == current && published) ? true : false
+  const last = (arr[total - 1].id == current && published) ? true : false
   const index = arr.findIndex(x => x.id === current)
-  const prevTitle = (!first) ? arr[index - 1].title : null
-  const nextTitle = (!last) ? arr[index + 1].title : null
+  const prevTitle = (!first && published) ? arr[index - 1].title : null
+  const nextTitle = (!last && published) ? arr[index + 1].title : null
+  const prevLink = (!first && published) ? `/blog/${encodeURIComponent(arr[index - 1].slug)}` : '#'
+  const nextLink = (!last && published) ? `/blog/${encodeURIComponent(arr[index + 1].slug)}` : '#'
 
-
-  const PrevLink = () => (
-    <Link href={`/blog/${encodeURIComponent(arr[index - 1].slug)}`}><a>← {prevTitle}</a></Link>
+  const RenderPrevLink = () => (
+    <Link href={prevLink}><a>← {prevTitle}</a></Link>
   )
-
-  const NextLink = () => (
-    <Link href={`/blog/${encodeURIComponent(arr[index + 1].slug)}`}><a>{nextTitle} →</a></Link>
+  const RenderNextLink = () => (
+    <Link href={nextLink}><a>{nextTitle} →</a></Link>
+  )
+  const RenderDraftBreadcrumb = () => (
+    <Link href="/blog/drafts"><a>Drafts</a></Link>
   )
 
   return (
@@ -134,6 +138,7 @@ const Post = (props: any) => {
 
         <nav className="breadcrumbs">
           <Link href="/blog">Blog</Link>
+          { !published ? <RenderDraftBreadcrumb /> : null}
           <span>{title}</span>
         </nav>
 
@@ -174,10 +179,10 @@ const Post = (props: any) => {
           }
         }}>
           <div className="prevLink" aria-label={prevTitle}>
-            { !first ? <PrevLink /> : null }
+            { !first && published ? <RenderPrevLink /> : null }
           </div>
           <div className="nextLink" aria-label={nextTitle}>
-            { !last ? <NextLink /> : null }
+            { !last && published ? <RenderNextLink /> : null }
           </div>
         </div>
       </div>
