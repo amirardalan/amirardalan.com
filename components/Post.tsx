@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Router from 'next/router'
 
 
 export type PostProps = {
+  post: object
+  nav: object
   id: number
   slug: string
   publishedAt: Date

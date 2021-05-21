@@ -265,7 +265,6 @@ export function GlobalStyles () {
           main {
             display: flex;
             flex-direction: column;
-            animation: slide-up .8s forwards;
           }
           .breadcrumbs {
             display: flex;

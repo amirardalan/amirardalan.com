@@ -11,27 +11,41 @@ import ReactMarkdown from 'react-markdown'
 import LoadingTriangle from '../../components/LoadingTriangle'
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-
-  const post = await prisma.post.findFirst({
-    where: {
-      slug: String(params?.slug),
-    },
-    include: {
-      author: {
-        select: { name: true, email: true },
+  const [post, nav] = await prisma.$transaction([
+    prisma.post.findFirst({
+      where: {
+        slug: String(params?.slug),
       },
-    },
-  })
-  return {
-    props: post,
-  }
+      include: {
+        author: {
+          select: { name: true },
+        },
+      },
+    }),
+    prisma.post.findMany({
+      where: { published: true },
+      include: {
+        author: {
+          select: { name: true },
+        },
+      },
+    })
+  ])
+  return { props: { post, nav }}
 }
+
 
 async function publishPost(id: number): Promise<void> {
   await fetch(`http://localhost:3000/api/publish/${id}`, {
     method: 'PUT',
   })
   await Router.push('/blog')
+}
+async function unPublishPost(id: number): Promise<void> {
+  await fetch(`http://localhost:3000/api/unpublish/${id}`, {
+    method: 'PUT',
+  })
+  await Router.push('/blog/drafts')
 }
 async function editPost(id: number): Promise<void> {
   await fetch(`http://localhost:3000/blog/create/${id}`, {
@@ -47,7 +61,9 @@ async function deletePost(id: number): Promise<void> {
 }
 
 
-const Post: React.FC<PostProps> = (props) => {
+const Post = (props: any) => {
+
+  console.log(typeof props.post)
 
   // Post Controls Deletion Confirmation
   const [showConfirmation, setShowConfirmation] = useState(false)
@@ -59,7 +75,7 @@ const Post: React.FC<PostProps> = (props) => {
       <div>
         <span
           className="confirmLink"
-          onClick={() => deletePost(props.id)}
+          onClick={() => deletePost(props.post.id)}
         >
           Yes
         </span>
@@ -78,22 +94,21 @@ const Post: React.FC<PostProps> = (props) => {
     return <div><LoadingTriangle /></div>
   }
   const userHasValidSession = Boolean(session)
-  const postBelongsToUser = session?.user?.email === props.author?.email
-  let title = props.title
-  if (!props.published) {
+  let title = props.post.title
+  if (!props.post.published) {
     title = `${title} (Draft)`
   }
 
   // Publish Date Formatter
   const formatDate = [
-    props.publishedAt.toLocaleDateString("en-US", { month: 'long' }) ,
-    props.publishedAt.toLocaleDateString("en-US", { day: 'numeric' })+',',
-    props.publishedAt.toLocaleDateString("en-US", { year: 'numeric' })
+    props.post.publishedAt.toLocaleDateString("en-US", { month: 'long' }) ,
+    props.post.publishedAt.toLocaleDateString("en-US", { day: 'numeric' })+',',
+    props.post.publishedAt.toLocaleDateString("en-US", { year: 'numeric' })
   ]
   const postDate = formatDate.join(' ')
 
   // Read Time Calculator
-  const text = props.content
+  const text = props.post.content
   const wpm = 225;
   const words = text.trim().split(/\s+/).length;
   const time = Math.ceil(words / wpm);
@@ -118,19 +133,22 @@ const Post: React.FC<PostProps> = (props) => {
 
           <h2>{title}</h2>
           <small className="postDetails">
-            <span>By {props?.author?.name || 'Unknown author'} • {postDate} • {readTime}</span>
+            <span>By {props?.post?.author?.name || 'Unknown author'} • {postDate} • {readTime}</span>
           </small>
 
-          <ReactMarkdown children={props.content} />
+          <ReactMarkdown children={props.post.content} />
 
           <div className="controlsPost">
-            {!props.published && userHasValidSession && postBelongsToUser && (
-              <button className="buttonCompact" onClick={() => publishPost(props.id)}>Publish</button>
+            { !props.post.published && userHasValidSession && (
+              <button className="buttonCompact" onClick={() => publishPost(props.post.id)}>Publish</button>
             )}
-            { userHasValidSession && postBelongsToUser && (
-              <button className="buttonCompact" onClick={() => editPost(props.id)}>Edit</button>
+            { props.post.published && userHasValidSession && (
+              <button className="buttonCompact" onClick={() => unPublishPost(props.post.id)}>Un-Publish</button>
             )}
-            { userHasValidSession && postBelongsToUser && (
+            { userHasValidSession && (
+              <button className="buttonCompact" onClick={() => editPost(props.post.id)}>Edit</button>
+            )}
+            { userHasValidSession && (
               <button className="buttonCompact delete" onClick={confirmOnClick}>Delete</button>
             )}
 
@@ -138,6 +156,9 @@ const Post: React.FC<PostProps> = (props) => {
 
           </div>
           
+          <div>
+              <div>next/prev</div>
+          </div>
         </div>
       </div>
     </>
