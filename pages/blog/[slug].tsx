@@ -118,11 +118,11 @@ const Post = (props: any) => {
 
 
   const PrevLink = () => (
-    <Link href={`/blog/${encodeURIComponent(arr[index - 1].slug)}`}><a className="prevLink">← {prevTitle}</a></Link>
+    <Link href={`/blog/${encodeURIComponent(arr[index - 1].slug)}`}><a>← {prevTitle}</a></Link>
   )
 
   const NextLink = () => (
-    <Link href={`/blog/${encodeURIComponent(arr[index + 1].slug)}`}><a className="nextLink">{nextTitle} →</a></Link>
+    <Link href={`/blog/${encodeURIComponent(arr[index + 1].slug)}`}><a>{nextTitle} →</a></Link>
   )
 
   return (
@@ -174,9 +174,12 @@ const Post = (props: any) => {
               flexDirection: 'column',
             }
           }}>
-
-            { !first ? <PrevLink /> : null }
-            { !last ? <NextLink /> : null }
+            <div className="prevLink" aria-label={prevTitle}>
+              { !first ? <PrevLink /> : null }
+            </div>
+            <div className="nextLink" aria-label={nextTitle}>
+              { !last ? <NextLink /> : null }
+            </div>
 
           </div>
         </div>
