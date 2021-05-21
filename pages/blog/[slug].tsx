@@ -10,7 +10,7 @@ import ReactMarkdown from 'react-markdown'
 import LoadingTriangle from '../../components/LoadingTriangle'
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-  const [post, nav] = await prisma.$transaction([
+  const [post, feed] = await prisma.$transaction([
     prisma.post.findFirst({
       where: {
         slug: String(params?.slug),
@@ -23,14 +23,9 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
     }),
     prisma.post.findMany({
       where: { published: true },
-      include: {
-        author: {
-          select: { name: true },
-        },
-      },
     })
   ])
-  return { props: { post, nav } }
+  return { props: { post, feed } }
 }
 
 
@@ -61,8 +56,6 @@ async function deletePost(id: number): Promise<void> {
 
 
 const Post = (props: any) => {
-
-  console.log(typeof props.post)
 
   // Post Controls Deletion Confirmation
   const [showConfirmation, setShowConfirmation] = useState(false)
@@ -113,6 +106,22 @@ const Post = (props: any) => {
   const time = Math.ceil(words / wpm);
   const readTime = time + ' ' + 'min read'
 
+  // Next, Prev Post Navigation
+  const totalPosts : number = props.feed.length
+  const currentPost = props.post.id
+  const arr = props.feed
+
+  if ( arr[0].id == currentPost ) {
+    console.log('first post');
+  }
+
+  if ( arr[totalPosts - 1].id == currentPost ) {
+    console.log('last post');
+  }
+
+
+
+
   return (
     <>
       <Head>
@@ -158,12 +167,13 @@ const Post = (props: any) => {
           <div css={{
             display: 'flex',
             justifyContent: 'space-between',
-            '@media(max-width: 890px)': {
+            '@media(max-width: 600px)': {
               flexDirection: 'column',
             }
           }}>
-            <Link href="#"><a>← Prev Post</a></Link>
-            <Link href="#"><a>Next Post →</a></Link>
+
+            <Link href="#"><a>← {props.feed.title}</a></Link>
+            <Link href="#"><a>{props.feed.title} →</a></Link>
           </div>
         </div>
       </div>
