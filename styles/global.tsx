@@ -348,15 +348,14 @@ export function GlobalStyles () {
             display: flex;
             justify-content: space-between;
             margin: 1rem 0;
-            background-color: ${theme.colors.divider};
-            border-radius: 15px;
-            padding: 1rem;
+            border: 1px solid ${theme.colors.divider};
+            padding: 1.8rem;
             h2 { font-size: calc(1vw + 1vh); }
             .postTeaser { margin: 0; }
 
             &::after {
-              content: 'Unpublished';
-              text-transform: uppercase;
+              content: 'unpublished';
+              color: ${theme.colors.footer};
               font-weight: bold;
               font-size: 12px;
               align-self: right;
@@ -376,7 +375,7 @@ export function GlobalStyles () {
             }
           }
           .postFull {
-            margin: 2rem 0;
+            margin: 3rem 0;
             p {
               margin-top: 2rem;
             }
@@ -385,8 +384,14 @@ export function GlobalStyles () {
             }
           }
           .postFull {
-            p, ul, li, a {
+            p, ul, li, a, blockquote {
               font-family: 'Lora', Georgia, 'Times New Roman', Times, serif;
+            }
+            h3 {
+              font-size: 28px;
+              font-weight: bold;
+            }
+            p, ul, li, a {
               font-size: 18px;
               line-height: 1.8rem;
             }
@@ -399,7 +404,6 @@ export function GlobalStyles () {
             }
             blockquote {
               margin-left: -1.75rem;
-              font-family: 'Lora', 'Times New Roman', Times, serif;
               border-left: 5px solid ${theme.colors.footer};
               color: ${theme.colors.footer};
               padding-left: 1.5rem;
