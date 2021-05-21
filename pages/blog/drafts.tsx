@@ -54,7 +54,6 @@ const Drafts: React.FC<Props> = (props) => {
       <div className="blog">
 
         <nav className="breadcrumbs">
-          <Link href="/">Home</Link>
           <Link href="/blog">Blog</Link>
           <span>Drafts</span>
         </nav>

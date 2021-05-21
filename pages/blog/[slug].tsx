@@ -133,7 +133,6 @@ const Post = (props: any) => {
       <div className="blog">
 
         <nav className="breadcrumbs">
-          <Link href="/">Home</Link>
           <Link href="/blog">Blog</Link>
           <span>{title}</span>
         </nav>
@@ -166,21 +165,19 @@ const Post = (props: any) => {
             { showConfirmation ? <Confirmation /> : null }
 
           </div>
-          
-          <div css={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            '@media(max-width: 600px)': {
-              flexDirection: 'column',
-            }
-          }}>
-            <div className="prevLink" aria-label={prevTitle}>
-              { !first ? <PrevLink /> : null }
-            </div>
-            <div className="nextLink" aria-label={nextTitle}>
-              { !last ? <NextLink /> : null }
-            </div>
-
+        </div>
+        <div css={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          '@media(max-width: 600px)': {
+            flexDirection: 'column',
+          }
+        }}>
+          <div className="prevLink" aria-label={prevTitle}>
+            { !first ? <PrevLink /> : null }
+          </div>
+          <div className="nextLink" aria-label={nextTitle}>
+            { !last ? <NextLink /> : null }
           </div>
         </div>
       </div>

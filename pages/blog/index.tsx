@@ -1,4 +1,4 @@
-import React, { createContext } from 'react'
+import React from 'react'
 import Link from 'next/link'
 import Head from 'next/head'
 import Login from '../../components/Login'
@@ -33,7 +33,6 @@ const Blog: React.FC<Props> = (props) => {
       <div className="blog">
 
         <nav className="breadcrumbs">
-          <Link href="/">Home</Link>
           <span>Blog</span>
         </nav>
 

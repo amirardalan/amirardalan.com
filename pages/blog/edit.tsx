@@ -88,10 +88,10 @@ const Edit: React.FC = () => {
   )
 
   const [session, loading] = useSession()
-  let create = null
+  let edit = null
 
   if (loading) {
-    create = (
+    edit = (
       <div>
         <LoadingTriangle />
       </div>
@@ -99,11 +99,10 @@ const Edit: React.FC = () => {
   }
 
   if (session && session.user.email == process.env.NEXT_PUBLIC_USER_EMAIL) {
-    create = (
+    edit = (
       <div className="blog">
 
         <nav className="breadcrumbs">
-          <Link href="/">Home</Link>
           <Link href="/blog">Blog</Link>
           <span>Edit Post</span>
         </nav>
@@ -177,7 +176,7 @@ const Edit: React.FC = () => {
         <meta name="robots" content="noindex"></meta>
       </Head>
       <div>
-        {create}
+        {edit}
       </div>
     </>
   )

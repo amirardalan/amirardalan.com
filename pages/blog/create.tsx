@@ -103,7 +103,6 @@ const Draft: React.FC = () => {
       <div className="blog">
 
         <nav className="breadcrumbs">
-          <Link href="/">Home</Link>
           <Link href="/blog">Blog</Link>
           <span>New Post</span>
         </nav>

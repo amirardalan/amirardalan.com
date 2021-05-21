@@ -252,25 +252,13 @@ export function GlobalStyles () {
         }
 
         // Blog Styles
-        .blog {
-          h2 {
-            display: inline-block;
-            font-size: 30px;
-            margin: 0;
-          }
-          small {
-            color: ${theme.colors.footer};
-            display: block;
-          }
-          main {
-            display: flex;
-            flex-direction: column;
-          }
-          .breadcrumbs {
+
+        .breadcrumbs {
             display: flex;
             flex-direction: row;
             color: ${theme.colors.footer};
             font-size: 12px;
+            /* font-weight: bold; */
             a {
               text-decoration: none;
               &::after {
@@ -286,6 +274,26 @@ export function GlobalStyles () {
                 text-overflow: ellipsis;
               }
             }
+          }
+
+        .blog {
+          margin: 0 20%;
+          h2 {
+            display: inline-block;
+            font-size: 30px;
+            margin: 0;
+          }
+          p {
+            font-family: 'Lora', 'Times New Roman', Times, serif;
+            font-size: 18px;
+          }
+          small {
+            color: ${theme.colors.footer};
+            display: block;
+          }
+          main {
+            display: flex;
+            flex-direction: column;
           }
           .postDetails {
             margin: .5rem 0 .2rem;
@@ -349,11 +357,6 @@ export function GlobalStyles () {
           }
           .postTeaser {
             margin: 2.5rem 0 .5rem 0;
-            p {
-              font-family: 'Lora', 'Times New Roman', Times, serif;
-              font-size: 16px;
-              margin-bottom: 0;
-            }
             h2 {
               cursor: pointer;
               text-decoration: underline;
@@ -409,7 +412,6 @@ export function GlobalStyles () {
           .postDraft,
           .postTeaser,
           .postFull {
-            max-width: 65vw;
             @media (max-width: 1280px) {
               max-width: none;
             }
@@ -432,10 +434,28 @@ export function GlobalStyles () {
           justify-content: flex-end;
         }
 
+        .prevLink,
+        .nextLink {
+          font-family: 'Lora', Georgia, 'Times New Roman', Times, serif;
+          font-size: 18px;
+          @media(max-width: 600px) {
+            justify-content: flex-start;
+          }
+        }
+
         // Flex Utils
         .center {
           display: flex;
           justify-content: center;
+        }
+
+        // Markdown Code
+        code, code p {
+          border-radius: 5px;
+          padding: .5rem;
+          font-size: 15px;
+          background-color: ${theme.colors.text};
+          color: ${theme.colors.background};
         }
 
         // Special Text
