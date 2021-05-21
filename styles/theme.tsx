@@ -2,7 +2,7 @@ export const themeLight = {
   colors: {
     background: '#e2e2e2',
     text: '#232227',
-    textLight: '#666',
+    textLight: '#949494',
     link: '#7A00CC',
     linkLight: '#a34bdf',
     divider: '#cccccc',
@@ -43,7 +43,7 @@ export const themeDark = {
   colors: {
     background: '#232227',
     text: '#e2e2e2',
-    textLight: '#a8a8a8',
+    textLight: '#c2c1c1',
     link: '#21E598',
     linkLight: '#7bffca',
     divider: '#313036',

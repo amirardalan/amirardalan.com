@@ -6,7 +6,6 @@ import Link from 'next/link'
 import Head from 'next/head'
 import Login from '../../components/Login'
 import prisma from '../../lib/prisma'
-import { PostProps } from '../../components/Post'
 import ReactMarkdown from 'react-markdown'
 import LoadingTriangle from '../../components/LoadingTriangle'
 
@@ -31,7 +30,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
       },
     })
   ])
-  return { props: { post, nav }}
+  return { props: { post, nav } }
 }
 
 
@@ -51,7 +50,7 @@ async function editPost(id: number): Promise<void> {
   await fetch(`http://localhost:3000/blog/create/${id}`, {
     method: 'GET',
   })
-  await Router.push('/blog/create')
+  await Router.push(`/blog/edit?pid=${id}`)
 }
 async function deletePost(id: number): Promise<void> {
   await fetch(`http://localhost:3000/api/post/${id}`, {
@@ -156,8 +155,15 @@ const Post = (props: any) => {
 
           </div>
           
-          <div>
-              <div>next/prev</div>
+          <div css={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            '@media(max-width: 890px)': {
+              flexDirection: 'column',
+            }
+          }}>
+            <Link href="#"><a>← Prev Post</a></Link>
+            <Link href="#"><a>Next Post →</a></Link>
           </div>
         </div>
       </div>

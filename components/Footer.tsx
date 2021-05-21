@@ -30,6 +30,7 @@ export default function Footer() {
       </div>
       <div css={css`
         a {
+          text-decoration: none;
           padding: 0 .3em;
           &::after {
             content: '•';
