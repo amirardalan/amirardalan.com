@@ -288,6 +288,7 @@ export function GlobalStyles () {
           }
           h2 {
             display: inline-block;
+            line-height: 2.5rem;
             font-size: 35px;
             margin: 0;
           }
@@ -371,7 +372,7 @@ export function GlobalStyles () {
               }
             }
             @media (max-width: 890px) {
-              margin: 2rem 0 2rem 0;
+              margin: 2rem 0 .5rem 0;
             }
           }
           .postFull {
@@ -410,8 +411,8 @@ export function GlobalStyles () {
               font-style: italic;
               & blockquote {
                 border-left: 5px solid ${theme.colors.textLight};
-                padding-left: 3rem;
-                margin-left: 1rem;
+                padding-left: 1rem;
+                margin-left: 0;
               }
               @media (max-width: 890px) {
                 margin-left: -1.1rem;
