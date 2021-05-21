@@ -92,7 +92,7 @@ const Edit: React.FC = () => {
 
   if (loading) {
     edit = (
-      <div>
+      <div className="center">
         <LoadingTriangle />
       </div>
     )

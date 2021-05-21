@@ -83,7 +83,7 @@ const Post = (props: any) => {
 
   const [session, loading] = useSession()
   if (loading) {
-    return <div><LoadingTriangle /></div>
+    return <div className="center"><LoadingTriangle /></div>
   }
   const userHasValidSession = Boolean(session)
   let title = props.post.title

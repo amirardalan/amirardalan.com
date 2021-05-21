@@ -43,7 +43,7 @@ const Drafts: React.FC<Props> = (props) => {
 
   if (loading) {
     draftsList = (
-      <div>
+      <div className="center">
         <LoadingTriangle />
       </div>
     )

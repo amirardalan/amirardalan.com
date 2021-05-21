@@ -92,7 +92,7 @@ const Draft: React.FC = () => {
 
   if (loading) {
     create = (
-      <div>
+      <div className="center">
         <LoadingTriangle />
       </div>
     )

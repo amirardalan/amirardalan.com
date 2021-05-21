@@ -46,7 +46,7 @@ export function GlobalStyles () {
 
         input[type='text'],
         textarea {
-          width: 65vw;
+          width: 100%;
           padding: 0.5rem;
           margin: 0.5rem 0;
           border-radius: 0.25rem;
@@ -96,7 +96,8 @@ export function GlobalStyles () {
           cursor: pointer;
           text-decoration: none;
           &::before {
-            content: '👉';
+            content: '📄';
+            box-shadow: #8b8b8b;
             padding-right: .5rem;
           }
         }
@@ -117,6 +118,7 @@ export function GlobalStyles () {
           }
           &.delete {
             background-color: #8b8b8b;
+            text-decoration: none;
             &:hover {
               background-color: #f84040;
             }
@@ -208,8 +210,6 @@ export function GlobalStyles () {
           animation: slide-up 1s forwards;
           align-items: center;
           justify-content: center;
-          /* background-color: ${theme.canvas.bg}; */
-          /* transition: background-color .5s linear; */
 
           @media (max-width: 890px) {
             align-self: flex-start;
@@ -252,35 +252,43 @@ export function GlobalStyles () {
         }
 
         // Blog Styles
-
         .breadcrumbs {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          color: ${theme.colors.footer};
+          font-size: 12px;
+          &::before {
             display: flex;
-            flex-direction: row;
-            color: ${theme.colors.footer};
-            font-size: 12px;
-            /* font-weight: bold; */
-            a {
-              text-decoration: none;
-              &::after {
-                content: '/';
-                margin: 0 .5rem;
-                color: ${theme.colors.footer};
-              }
-            }
-            @media (max-width: 480px) {
-              span {
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-              }
+            content: '📔';
+            font-size: 20px;
+            padding-right: .5rem;
+          }
+          a { text-decoration: none;
+            &::after {
+              content: '/';
+              margin: 0 .5rem;
+              color: ${theme.colors.footer};
             }
           }
-
+          @media (max-width: 480px) {
+            span {
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+            }
+          }
+        }
         .blog {
-          margin: 0 20%;
+          width: 768px;
+          margin: 0 auto;
+
+          @media (max-width: 768px) {
+            width: 98%;
+          }
           h2 {
             display: inline-block;
-            font-size: 30px;
+            font-size: 35px;
             margin: 0;
           }
           p {
@@ -331,7 +339,6 @@ export function GlobalStyles () {
             }
           }
           .drafts {
-            max-width: 65vw;
 
             @media (max-width: 890px) {
               max-width: none;
@@ -342,7 +349,7 @@ export function GlobalStyles () {
             justify-content: space-between;
             margin: 1rem 0;
             background-color: ${theme.colors.divider};
-            /* border-radius: 10px; */
+            border-radius: 15px;
             padding: 1rem;
             h2 { font-size: calc(1vw + 1vh); }
             .postTeaser { margin: 0; }
@@ -369,7 +376,7 @@ export function GlobalStyles () {
             }
           }
           .postFull {
-            margin: 3rem 0;
+            margin: 2rem 0;
             p {
               margin-top: 2rem;
             }
@@ -419,7 +426,7 @@ export function GlobalStyles () {
           // Special Delete (non)Button
           .formSubmit {
             a {
-              padding: .45rem 0.8rem;
+              padding: .44rem 0.8rem;
               &:hover { background-color: #f84040 }
             }
           }
