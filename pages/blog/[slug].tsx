@@ -107,20 +107,23 @@ const Post = (props: any) => {
   const readTime = time + ' ' + 'min read'
 
   // Next, Prev Post Navigation
-  const totalPosts : number = props.feed.length
-  const currentPost = props.post.id
-  const arr = props.feed
-
-  if ( arr[0].id == currentPost ) {
-    console.log('first post');
-  }
-
-  if ( arr[totalPosts - 1].id == currentPost ) {
-    console.log('last post');
-  }
+  const total : number = props.feed.length
+  const current : any = props.post.id
+  const arr : Array<any> = props.feed
+  const first = (arr[0].id == current) ? true : false
+  const last = (arr[total - 1].id == current) ? true : false
+  const index = arr.findIndex(x => x.id === current)
+  const prevTitle = (!first) ? arr[index - 1].title : null
+  const nextTitle = (!last) ? arr[index + 1].title : null
 
 
+  const PrevLink = () => (
+    <Link href={`/blog/${encodeURIComponent(arr[index - 1].slug)}`}><a className="prevLink">← {prevTitle}</a></Link>
+  )
 
+  const NextLink = () => (
+    <Link href={`/blog/${encodeURIComponent(arr[index + 1].slug)}`}><a className="nextLink">{nextTitle} →</a></Link>
+  )
 
   return (
     <>
@@ -172,8 +175,9 @@ const Post = (props: any) => {
             }
           }}>
 
-            <Link href="#"><a>← {props.feed.title}</a></Link>
-            <Link href="#"><a>{props.feed.title} →</a></Link>
+            { !first ? <PrevLink /> : null }
+            { !last ? <NextLink /> : null }
+
           </div>
         </div>
       </div>

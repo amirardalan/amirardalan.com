@@ -421,6 +421,12 @@ export function GlobalStyles () {
               &:hover { background-color: #f84040 }
             }
           }
+          .prevLink {
+            justify-content: flex-start;
+          }
+          .nextLink {
+            justify-content: flex-end;
+          }
         }
 
         // Flex Utils
