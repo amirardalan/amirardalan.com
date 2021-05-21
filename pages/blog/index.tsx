@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { createContext } from 'react'
 import Link from 'next/link'
 import Head from 'next/head'
 import Login from '../../components/Login'
 import { GetServerSideProps } from 'next'
 import prisma from '../../lib/prisma'
 import Post, { PostProps } from '../../components/Post'
+
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const feed = await prisma.post.findMany({
@@ -44,7 +45,7 @@ const Blog: React.FC<Props> = (props) => {
               key={post.id}
               className="post"
             >
-              <Post post={post} />
+                <Post post={post} />
             </div>
           ))}
         </main>

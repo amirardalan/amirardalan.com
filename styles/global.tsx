@@ -33,9 +33,9 @@ export function GlobalStyles () {
 
         a {
           color: ${theme.colors.link};
-          text-decoration: none;
+          text-decoration: underline;
             &:hover {
-              color: ${theme.colors.linkLight};
+              text-decoration: none;
             }
         }
           
@@ -94,6 +94,7 @@ export function GlobalStyles () {
           width: max-content;
           font-size: 16px;
           cursor: pointer;
+          text-decoration: none;
           &::before {
             content: '👉';
             padding-right: .5rem;
@@ -253,10 +254,9 @@ export function GlobalStyles () {
         // Blog Styles
         .blog {
           h2 {
+            display: inline-block;
             font-size: 30px;
-            margin: 0 0 .5em;
-            line-height: 2rem;
-            width: max-content;
+            margin: 0;
           }
           small {
             color: ${theme.colors.footer};
@@ -265,17 +265,26 @@ export function GlobalStyles () {
           main {
             display: flex;
             flex-direction: column;
-            animation: slide-up .8s forwards;
           }
           .breadcrumbs {
             display: flex;
             flex-direction: row;
             color: ${theme.colors.footer};
             font-size: 12px;
-            a::after {
-              content: '/';
-              margin: 0 .5rem;
-              color: ${theme.colors.footer};
+            a {
+              text-decoration: none;
+              &::after {
+                content: '/';
+                margin: 0 .5rem;
+                color: ${theme.colors.footer};
+              }
+            }
+            @media (max-width: 480px) {
+              span {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+              }
             }
           }
           .postDetails {
@@ -285,7 +294,7 @@ export function GlobalStyles () {
             font-size: 12px;
           }
           .controlsPost {
-            margin-top: 2rem;
+            margin: 2rem 0;
           }
           .controlsConfirm {
             margin-top: 1rem;
@@ -327,9 +336,6 @@ export function GlobalStyles () {
             background-color: ${theme.colors.divider};
             /* border-radius: 10px; */
             padding: 1rem;
-            &:hover {
-              /* background-color: ${theme.colors.divider}; */
-            }
             h2 { font-size: calc(1vw + 1vh); }
             .postTeaser { margin: 0; }
 
@@ -346,12 +352,13 @@ export function GlobalStyles () {
             p {
               font-family: 'Lora', 'Times New Roman', Times, serif;
               font-size: 16px;
+              margin-bottom: 0;
             }
             h2 {
               cursor: pointer;
-              color: ${theme.colors.link};
+              text-decoration: underline;
               &:hover {
-                color: ${theme.colors.linkLight}
+                text-decoration: none;
               }
             }
             @media (max-width: 890px) {
@@ -367,8 +374,7 @@ export function GlobalStyles () {
               margin: 2.5rem 0;
             }
           }
-          .postFull,
-          .post {
+          .postFull {
             p, ul, li, a {
               font-family: 'Lora', Georgia, 'Times New Roman', Times, serif;
               font-size: 18px;
@@ -378,7 +384,9 @@ export function GlobalStyles () {
               margin-bottom: 1rem;
             }
             p { margin-bottom: 2rem; }
-            a { text-decoration: underline }
+            a { text-decoration: underline;
+              &:hover { text-decoration: none; }
+            }
             blockquote {
               margin-left: -1.75rem;
               font-family: 'Lora', 'Times New Roman', Times, serif;
@@ -386,6 +394,11 @@ export function GlobalStyles () {
               color: ${theme.colors.footer};
               padding-left: 1.5rem;
               font-style: italic;
+              & blockquote {
+                border-left: 5px solid ${theme.colors.textLight};
+                padding-left: 3rem;
+                margin-left: 1rem;
+              }
               @media (max-width: 890px) {
                 margin-left: -1.1rem;
                 padding-left: .8rem;
@@ -408,6 +421,15 @@ export function GlobalStyles () {
               &:hover { background-color: #f84040 }
             }
           }
+        }
+
+        .prevLink {
+          display: flex;
+          justify-content: flex-start;
+        }
+        .nextLink {
+          display: flex;
+          justify-content: flex-end;
         }
 
         // Flex Utils

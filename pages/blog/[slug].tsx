@@ -6,26 +6,28 @@ import Link from 'next/link'
 import Head from 'next/head'
 import Login from '../../components/Login'
 import prisma from '../../lib/prisma'
-import { PostProps } from '../../components/Post'
 import ReactMarkdown from 'react-markdown'
 import LoadingTriangle from '../../components/LoadingTriangle'
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-
-  const post = await prisma.post.findFirst({
-    where: {
-      slug: String(params?.slug),
-    },
-    include: {
-      author: {
-        select: { name: true, email: true },
+  const [post, feed] = await prisma.$transaction([
+    prisma.post.findFirst({
+      where: {
+        slug: String(params?.slug),
       },
-    },
-  })
-  return {
-    props: post,
-  }
+      include: {
+        author: {
+          select: { name: true },
+        },
+      },
+    }),
+    prisma.post.findMany({
+      where: { published: true },
+    })
+  ])
+  return { props: { post, feed } }
 }
+
 
 async function publishPost(id: number): Promise<void> {
   await fetch(`http://localhost:3000/api/publish/${id}`, {
@@ -33,11 +35,17 @@ async function publishPost(id: number): Promise<void> {
   })
   await Router.push('/blog')
 }
+async function unPublishPost(id: number): Promise<void> {
+  await fetch(`http://localhost:3000/api/unpublish/${id}`, {
+    method: 'PUT',
+  })
+  await Router.push('/blog/drafts')
+}
 async function editPost(id: number): Promise<void> {
   await fetch(`http://localhost:3000/blog/create/${id}`, {
     method: 'GET',
   })
-  await Router.push('/blog/create')
+  await Router.push(`/blog/edit?pid=${id}`)
 }
 async function deletePost(id: number): Promise<void> {
   await fetch(`http://localhost:3000/api/post/${id}`, {
@@ -47,7 +55,7 @@ async function deletePost(id: number): Promise<void> {
 }
 
 
-const Post: React.FC<PostProps> = (props) => {
+const Post = (props: any) => {
 
   // Post Controls Deletion Confirmation
   const [showConfirmation, setShowConfirmation] = useState(false)
@@ -59,7 +67,7 @@ const Post: React.FC<PostProps> = (props) => {
       <div>
         <span
           className="confirmLink"
-          onClick={() => deletePost(props.id)}
+          onClick={() => deletePost(props.post.id)}
         >
           Yes
         </span>
@@ -78,26 +86,44 @@ const Post: React.FC<PostProps> = (props) => {
     return <div><LoadingTriangle /></div>
   }
   const userHasValidSession = Boolean(session)
-  const postBelongsToUser = session?.user?.email === props.author?.email
-  let title = props.title
-  if (!props.published) {
+  let title = props.post.title
+  if (!props.post.published) {
     title = `${title} (Draft)`
   }
 
   // Publish Date Formatter
   const formatDate = [
-    props.publishedAt.toLocaleDateString("en-US", { month: 'long' }) ,
-    props.publishedAt.toLocaleDateString("en-US", { day: 'numeric' })+',',
-    props.publishedAt.toLocaleDateString("en-US", { year: 'numeric' })
+    props.post.publishedAt.toLocaleDateString("en-US", { month: 'long' }) ,
+    props.post.publishedAt.toLocaleDateString("en-US", { day: 'numeric' })+',',
+    props.post.publishedAt.toLocaleDateString("en-US", { year: 'numeric' })
   ]
   const postDate = formatDate.join(' ')
 
   // Read Time Calculator
-  const text = props.content
+  const text = props.post.content
   const wpm = 225;
   const words = text.trim().split(/\s+/).length;
   const time = Math.ceil(words / wpm);
   const readTime = time + ' ' + 'min read'
+
+  // Next, Prev Post Navigation
+  const total : number = props.feed.length
+  const current : any = props.post.id
+  const arr : Array<any> = props.feed
+  const first = (arr[0].id == current) ? true : false
+  const last = (arr[total - 1].id == current) ? true : false
+  const index = arr.findIndex(x => x.id === current)
+  const prevTitle = (!first) ? arr[index - 1].title : null
+  const nextTitle = (!last) ? arr[index + 1].title : null
+
+
+  const PrevLink = () => (
+    <Link href={`/blog/${encodeURIComponent(arr[index - 1].slug)}`}><a>← {prevTitle}</a></Link>
+  )
+
+  const NextLink = () => (
+    <Link href={`/blog/${encodeURIComponent(arr[index + 1].slug)}`}><a>{nextTitle} →</a></Link>
+  )
 
   return (
     <>
@@ -118,19 +144,22 @@ const Post: React.FC<PostProps> = (props) => {
 
           <h2>{title}</h2>
           <small className="postDetails">
-            <span>By {props?.author?.name || 'Unknown author'} • {postDate} • {readTime}</span>
+            <span>By {props?.post?.author?.name || 'Unknown author'} • {postDate} • {readTime}</span>
           </small>
 
-          <ReactMarkdown children={props.content} />
+          <ReactMarkdown children={props.post.content} />
 
           <div className="controlsPost">
-            {!props.published && userHasValidSession && postBelongsToUser && (
-              <button className="buttonCompact" onClick={() => publishPost(props.id)}>Publish</button>
+            { !props.post.published && userHasValidSession && (
+              <button className="buttonCompact" onClick={() => publishPost(props.post.id)}>Publish</button>
             )}
-            { userHasValidSession && postBelongsToUser && (
-              <button className="buttonCompact" onClick={() => editPost(props.id)}>Edit</button>
+            { props.post.published && userHasValidSession && (
+              <button className="buttonCompact" onClick={() => unPublishPost(props.post.id)}>Un-Publish</button>
             )}
-            { userHasValidSession && postBelongsToUser && (
+            { userHasValidSession && (
+              <button className="buttonCompact" onClick={() => editPost(props.post.id)}>Edit</button>
+            )}
+            { userHasValidSession && (
               <button className="buttonCompact delete" onClick={confirmOnClick}>Delete</button>
             )}
 
@@ -138,6 +167,21 @@ const Post: React.FC<PostProps> = (props) => {
 
           </div>
           
+          <div css={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            '@media(max-width: 600px)': {
+              flexDirection: 'column',
+            }
+          }}>
+            <div className="prevLink" aria-label={prevTitle}>
+              { !first ? <PrevLink /> : null }
+            </div>
+            <div className="nextLink" aria-label={nextTitle}>
+              { !last ? <NextLink /> : null }
+            </div>
+
+          </div>
         </div>
       </div>
     </>
