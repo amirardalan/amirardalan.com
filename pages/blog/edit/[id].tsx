@@ -2,11 +2,24 @@ import React, { useState, useEffect, useRef } from 'react'
 import Router from 'next/router'
 import Link from 'next/link'
 import Head from 'next/head'
-import LoadingTriangle from '../../components/LoadingTriangle'
-import Login from '../../components/Login'
+import { GetServerSideProps } from 'next'
+import prisma from '../../../lib/prisma'
 import { useSession } from 'next-auth/client'
+import LoadingTriangle from '../../../components/LoadingTriangle'
+import Login from '../../../components/Login'
 
-const Edit: React.FC = () => {
+export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+  const editPost = await prisma.post.findUnique({
+    where: {
+      id: Number(params?.id) || -1,
+    },
+  })
+  return { props: { editPost } }
+}
+
+const Edit = (props: any) => {
+
+  console.log(props.editPost)
 
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
