@@ -279,18 +279,13 @@ export function GlobalStyles () {
         }
 
         .blog {
-          width: 768px;
+          max-width: 768px;
           margin: 0 auto;
-
-          @media (max-width: 768px) {
-            width: 98%;
+          
+          @media (max-width: 480px) {
+            padding: 0 1%;
           }
 
-          .post {
-            h2 {
-              margin-top: 2.5rem;
-            }
-          }
           h2 {
             display: inline-block;
             line-height: 2.5rem;
@@ -312,15 +307,21 @@ export function GlobalStyles () {
           }
         }
 
+        .post {
+          margin-top: 2rem;
+        }
+
         .postDetails {
           margin: .5rem 0 .2rem;
           display: block;
           font-size: 13px;
           font-weight: lighter;
         }
+
         .controlsPost {
           margin: 2rem 0;
         }
+        
         .controlsConfirm {
           margin-top: 1rem;
           text-transform: uppercase;
@@ -347,16 +348,10 @@ export function GlobalStyles () {
             }
           }
         }
-        
-        .drafts {
-          @media (max-width: 890px) {
-            max-width: none;
-          }
-        }
+
         .postDraft {
           display: flex;
           justify-content: space-between;
-          margin: 1rem 0;
           border: 1px solid ${theme.colors.divider};
           padding: 1.8rem;
           &::after {
@@ -366,7 +361,6 @@ export function GlobalStyles () {
             font-size: 12px;
             align-self: right;
           }
-
           @media (max-width: 480px) {
             &::after { content: '' }
             h2 {
@@ -375,19 +369,17 @@ export function GlobalStyles () {
             }
           }
         }
+
         .postTeaser {
-          width: 100%;
           h2 {
             cursor: pointer;
             text-decoration: underline;
             &:hover { text-decoration: none; }
           }
         }
+
         .postFull {
           p { margin-top: 2rem; }
-          @media (max-width: 890px) {
-            margin: 2.5rem 0;
-          }
           p, ul, li, a, blockquote {
             font-family: 'Lora', Georgia, 'Times New Roman', Times, serif;
           }
@@ -422,13 +414,7 @@ export function GlobalStyles () {
             p { font-size: 24px; }
           }
         }
-        .postDraft,
-        .postTeaser,
-        .postFull {
-          @media (max-width: 1280px) {
-            max-width: none;
-          }
-        }
+
         // Special Delete (non)Button
         .formSubmit {
           a { padding: .44rem 0.8rem; }
