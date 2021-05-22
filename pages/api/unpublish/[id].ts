@@ -1,6 +1,6 @@
 import prisma from '../../../lib/prisma'
 
-// PUT /api/publish/:id
+// PUT /api/unpublish/:id
 export default async function handle(req, res) {
   const postId = req.query.id
   const post = await prisma.post.update({
