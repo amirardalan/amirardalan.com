@@ -23,7 +23,7 @@ export default function CanvasScene(props) {
         ref={mesh}
         scale={.2}
         {...props}>
-        <Icosahedron args={[30, 7]}>
+        <Icosahedron args={[30, 6]}>
           <MeshWobbleMaterial
             color={props.theme.canvas.meshA}
             attach="material"

@@ -65,6 +65,9 @@ export function GlobalStyles () {
 
         // Buttons
         .buttonCta {
+          flex-direction: row;
+          display: flex;
+          align-items: center;
           min-width: 128px;
           margin: 0 1rem 2rem 0;
           cursor: pointer;
@@ -74,9 +77,16 @@ export function GlobalStyles () {
           color: ${theme.colors.link};
           font-family: 'Poppins', Arial, Helvetica, sans-serif;
           font-size: 16px;
-          font-weight: normal;
+          font-weight: bold;
           box-shadow: 4px 4px 0 ${theme.colors.link};
+          letter-spacing: .02rem;
           transition: background-color .2s linear;
+          &::before {
+            display: flex;
+            content: '📋';
+            font-size: 20px;
+            padding-right: .5rem;
+          }
           &:hover {
             background: ${theme.colors.link};
             border: 4px solid transparent;
@@ -149,7 +159,10 @@ export function GlobalStyles () {
           justify-content: space-between;
           animation: slide-up .8s forwards;
 
-          h2 { margin-top: 0; }
+          h2 {
+            margin-top: 0;
+            font-weight: bolder;
+          }
           h3, h4 {
             margin: 0;
             padding: 0;
@@ -245,7 +258,7 @@ export function GlobalStyles () {
           font-weight: lighter;
           &::before {
             display: flex;
-            content: '📔';
+            content: '📋';
             font-size: 20px;
             padding-right: .5rem;
           }
@@ -275,7 +288,8 @@ export function GlobalStyles () {
             /* color: ${theme.colors.link}; */
             display: inline-block;
             line-height: 2.5rem;
-            font-size: 35px;
+            font-size: 30px;
+            font-weight: 900;
             margin: 0;
           }
           p {
