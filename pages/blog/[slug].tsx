@@ -9,6 +9,7 @@ import prisma from '../../lib/prisma'
 import ReactMarkdown from 'react-markdown'
 import LoadingTriangle from '../../components/LoadingTriangle'
 
+// Request post data from DB
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const [post, feed] = await prisma.$transaction([
     prisma.post.findFirst({
@@ -31,30 +32,44 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 
 const Post = (props: any) => {
 
+  // Check if user has valid session
+  const [session, loading] = useSession()
+  if (loading) {
+    return <div className="center"><LoadingTriangle /></div>
+  }
+  const userHasValidSession = Boolean(session)
+
+  // Check if post is published
   const isPublished : Boolean = (props.post.published) ? true : false
 
+  // Publish post via API route
   async function publishPost(id: number): Promise<void> {
     await fetch(`http://localhost:3000/api/publish/${id}`, {
       method: 'PUT',
     })
     await Router.push('/blog')
   }
+  // Unpublish post via API route
   async function unPublishPost(id: number): Promise<void> {
     await fetch(`http://localhost:3000/api/unpublish/${id}`, {
       method: 'PUT',
     })
     await Router.push('/blog/drafts')
   }
+  // Edit post via API route
   async function editPost(id: number): Promise<void> {
     await fetch(`http://localhost:3000/blog/edit/${id}`, {
       method: 'GET',
     })
     await Router.push(`/blog/edit/${id}`)
   }
+  // Delete post via API route
   async function deletePost(id: number): Promise<void> {
     await fetch(`http://localhost:3000/api/post/${id}`, {
       method: 'DELETE',
     })
+    // If deleted post was a draft, return to drafts,
+    // otherwise, redirect to blog landing
     if (isPublished) {
       Router.push('/blog')
     } else {
@@ -62,7 +77,54 @@ const Post = (props: any) => {
     }
   }
 
-  // Post Controls Deletion Confirmation
+  // Check if draft and render breadrcrumb
+  const RenderBreadcrumb = () => (
+    <Link href="/blog/drafts"><a>Drafts</a></Link>
+  )
+
+  // Check if draft and set title
+  let title = props.post.title
+  if (!isPublished) {
+    title = `${title} (Draft)`
+  }
+
+  // Format Publish Date
+  const formatDate = [
+    props.post.publishedAt.toLocaleDateString("en-US", { month: 'long' }) ,
+    props.post.publishedAt.toLocaleDateString("en-US", { day: 'numeric' })+',',
+    props.post.publishedAt.toLocaleDateString("en-US", { year: 'numeric' })
+  ]
+  const postDate = formatDate.join(' ')
+
+  // Calculate estimated read time
+  const text = props.post.content
+  const wpm = 225;
+  const words = text.trim().split(/\s+/).length;
+  const time = Math.ceil(words / wpm);
+  const readTime = time + ' ' + 'min read'
+
+  // Get current post data
+  const total : number = props.feed.length
+  const current : any = props.post.id
+  const arr : Array<any> = (props.feed) ? props.feed : null
+
+  // Error Handling
+  const first = (arr[0].id == current && isPublished) ? true : false
+  const last = (arr[total - 1].id == current && isPublished) ? true : false
+  const only = (first && last)
+  const errHandlePrev = (isPublished && !first && !only)
+  const errHandleNext= (isPublished && !last && !only)
+
+  // Generate next/prev post navigation and conditionally render the links
+  const index = arr.findIndex(x => x.id === current)
+  const prevTitle = (errHandlePrev) ? arr[index - 1].title : null
+  const nextTitle = (errHandleNext) ? arr[index + 1].title : null
+  const prevLink = (errHandlePrev) ? `/blog/${encodeURIComponent(arr[index - 1].slug)}` : '#'
+  const nextLink = (errHandleNext) ? `/blog/${encodeURIComponent(arr[index + 1].slug)}` : '#'
+  const RenderPrevLink = () => ( <Link href={prevLink} aria-label={prevTitle}><a>← {prevTitle}</a></Link> )
+  const RenderNextLink = () => ( <Link href={nextLink} aria-label={nextTitle}><a>{nextTitle} →</a></Link> )
+
+  // Handle state and rendering for post deletion confirmation
   const [showConfirmation, setShowConfirmation] = useState(false)
   const confirmOnClick = () => setShowConfirmation(true)
   const cancelOnClick = () => setShowConfirmation(false)
@@ -72,7 +134,7 @@ const Post = (props: any) => {
       <div>
         <span
           className="confirmLink"
-          onClick={() => deletePost(props.post.id)}
+          onClick={() => deletePost(current)}
         >
           Yes
         </span>
@@ -86,60 +148,6 @@ const Post = (props: any) => {
     </div>
   )
 
-  const [session, loading] = useSession()
-  if (loading) {
-    return <div className="center"><LoadingTriangle /></div>
-  }
-  const userHasValidSession = Boolean(session)
-  let title = props.post.title
-  if (!isPublished) {
-    title = `${title} (Draft)`
-  }
-
-  // Publish Date Formatter
-  const formatDate = [
-    props.post.publishedAt.toLocaleDateString("en-US", { month: 'long' }) ,
-    props.post.publishedAt.toLocaleDateString("en-US", { day: 'numeric' })+',',
-    props.post.publishedAt.toLocaleDateString("en-US", { year: 'numeric' })
-  ]
-  const postDate = formatDate.join(' ')
-
-  // Read Time Calculator
-  const text = props.post.content
-  const wpm = 225;
-  const words = text.trim().split(/\s+/).length;
-  const time = Math.ceil(words / wpm);
-  const readTime = time + ' ' + 'min read'
-
-  // Post Navigation Data
-  const total : number = props.feed.length
-  const current : any = props.post.id
-  const arr : Array<any> = (props.feed) ? props.feed : null
-
-  // Error Handling - Post must meet these conditions for Nav to render
-  const first = (arr[0].id == current && isPublished) ? true : false
-  const last = (arr[total - 1].id == current && isPublished) ? true : false
-  const only = (first && last)
-  const errHandlePrev = (isPublished && !first && !only)
-  const errHandleNext= (isPublished && !last && !only)
-
-  // Generate Next/Prev Navigation
-  const index = arr.findIndex(x => x.id === current)
-  const prevTitle = (errHandlePrev) ? arr[index - 1].title : null
-  const nextTitle = (errHandleNext) ? arr[index + 1].title : null
-  const prevLink = (errHandlePrev) ? `/blog/${encodeURIComponent(arr[index - 1].slug)}` : '#'
-  const nextLink = (errHandleNext) ? `/blog/${encodeURIComponent(arr[index + 1].slug)}` : '#'
-
-  const RenderPrevLink = () => (
-    <Link href={prevLink} aria-label={prevTitle}><a>← {prevTitle}</a></Link>
-  )
-  const RenderNextLink = () => (
-    <Link href={nextLink} aria-label={nextTitle}><a>{nextTitle} →</a></Link>
-  )
-  const RenderBreadcrumb = () => (
-    <Link href="/blog/drafts"><a>Drafts</a></Link>
-  )
-
   return (
     <>
       <Head>
@@ -149,7 +157,7 @@ const Post = (props: any) => {
 
         <nav className="breadcrumbs">
           <Link href="/blog">Blog</Link>
-          { !isPublished? <RenderBreadcrumb /> : null}
+          { !isPublished ? <RenderBreadcrumb /> : null}
           <span>{title}</span>
         </nav>
 
@@ -187,7 +195,7 @@ const Post = (props: any) => {
             { errHandlePrev ? <RenderPrevLink /> : null }
           </div>
           <div className="nextLink">
-            { errHandleNext && !last && !only ? <RenderNextLink /> : null }
+            { errHandleNext ? <RenderNextLink /> : null }
           </div>
         </div>
       </div>
