@@ -77,7 +77,7 @@ export function GlobalStyles () {
           border: 4px solid ${theme.colors.link};
           color: ${theme.colors.link};
           font-family: 'Poppins', Arial, Helvetica, sans-serif;
-          font-size: 15px;
+          font-size: 14px;
           font-weight: bold;
           box-shadow: 4px 4px 0 ${theme.colors.link};
           letter-spacing: .02rem;

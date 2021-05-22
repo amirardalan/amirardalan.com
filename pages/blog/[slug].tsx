@@ -79,7 +79,7 @@ const Post = (props: any) => {
     }
   }
 
-  // Check if draft and render breadrcrumb
+  // Check if draft and render breadcrumb
   const RenderBreadcrumb = () => (
     <Link href="/blog/drafts"><a>Drafts</a></Link>
   )
