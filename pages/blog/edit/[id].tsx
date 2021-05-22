@@ -1,79 +1,74 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState } from 'react'
 import Router from 'next/router'
 import Link from 'next/link'
 import Head from 'next/head'
-import LoadingTriangle from '../../components/LoadingTriangle'
-import Login from '../../components/Login'
+import { GetServerSideProps } from 'next'
+import prisma from '../../../lib/prisma'
 import { useSession } from 'next-auth/client'
+import LoadingTriangle from '../../../components/LoadingTriangle'
+import Login from '../../../components/Login'
 
-const Edit: React.FC = () => {
+export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+  const editPost = await prisma.post.findUnique({
+    where: {
+      id: Number(params?.id) || -1,
+    },
+  })
+  return { props: { editPost } }
+}
 
-  const [title, setTitle] = useState('')
-  const [content, setContent] = useState('')
-  const [slug, setSlug] = useState('')
-  const [teaser, setTeaser] = useState('')
+const Edit = (props: any) => {
+
+  const id = props.editPost.id
+  const editTitle = props.editPost.title
+  const editContent = props.editPost.content
+  const editSlug = props.editPost.slug
+  const editTeaser = props.editPost.teaser
+
+  const [title, setTitle] = useState(editTitle)
+  const [content, setContent] = useState(editContent)
+  const [slug, setSlug] = useState(editSlug)
+  const [teaser, setTeaser] = useState(editTeaser)
 
   const submitData = async (e: React.SyntheticEvent) => {
     e.preventDefault()
     try {
-      const body = { title, slug, teaser, content }
-      await fetch('/api/post', {
-        method: 'POST',
+      const body = { id, title, slug, teaser, content }
+      await fetch('/api/update', {
+        method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
       })
-      await Router.push('/blog')
+      if (props.editPost.published) {
+        await Router.push('/blog')
+      } else {
+        await Router.push('/blog/drafts')
+      }
     } catch (error) {
       console.error(error)
     }
   }
 
-  // Generate Post Slug URL
-  function generateSlug(str: string) {
-    str = str.replace(/^\s+|\s+$/g, ''); // trim
-    str = str.toLowerCase();
-  
-    // remove accents, swap ñ for n, etc
-    var from = "àáãäâèéëêìíïîòóöôùúüûñç·/_,:;";
-    var to   = "aaaaaeeeeiiiioooouuuunc------";
+  console.log(props.editPost.published)
 
-    for (var i=0, l=from.length ; i<l ; i++) {
-      str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
-    }
-
-    str = str.replace(/[^a-z0-9 -]/g, '') // remove invalid chars
-      .replace(/\s+/g, '-') // collapse whitespace and replace by -
-      .replace(/-+/g, '-'); // collapse dashes
-
-    return str;
+  async function deletePost(id: number): Promise<void> {
+    await fetch(`http://localhost:3000/api/post/${id}`, {
+      method: 'DELETE',
+    })
+    Router.push('/blog/drafts')
   }
 
-  let slugUrl = generateSlug(title)
-
-  // Make sure slug input is active after autofill
-  // to ensure it submitted by the browser
-  const slugField = useRef(null)
-  useEffect(() => {
-    let interval = setInterval(() => {
-      if (slugField.current) {
-        setSlug(slugField.current.value)
-        //do the same for all autofilled fields
-        clearInterval(interval)
-      }
-    }, 100)
-  })
-
   // Post Controls Deletion Confirmation
-  const [showConfirmation, setShowConfirmation] = React.useState(false)
+  const [showConfirmation, setShowConfirmation] = useState(false)
   const confirmOnClick = () => setShowConfirmation(true)
   const cancelOnClick = () => setShowConfirmation(false)
-  const Confirmation = () => (
+  const RenderDeleteConfirmation = () => (
     <div className="controlsConfirm">
       Are you sure?
       <div>
         <span
           className="confirmLink"
-          onClick={() => Router.push('/blog')}
+          onClick={() => deletePost(props.post.id)}
         >
           Yes
         </span>
@@ -120,18 +115,10 @@ const Edit: React.FC = () => {
               value={title}
             />
             <input
+              onChange={(e) => setSlug(e.target.value)}
               placeholder="URL Slug"
               type="text"
-              value={slugUrl}
-              disabled={true}
-            />
-            <input
-              ref={slugField}
-              onInput={() => setSlug(slugUrl)}
-              placeholder={slugUrl}
-              type="text"
-              value={slugUrl}
-              hidden={true}
+              value={slug}
             />
             <input
               onChange={(e) => setTeaser(e.target.value)}
@@ -153,13 +140,9 @@ const Edit: React.FC = () => {
                 disabled={!content || !title || !slug || !teaser}
                 type="submit" value="Update"
               />
-              <a
-                className="buttonCompact delete"
-                href="#"
-                onClick={confirmOnClick}>
-                Delete
-              </a>
-              { showConfirmation ? <Confirmation /> : null }
+              <a className="buttonCompact" onClick={() => Router.push("/blog/[slug]", `/blog/${props.editPost.slug}`)}>Cancel</a>
+              <a className="buttonCompact delete" onClick={confirmOnClick}>Delete</a>
+              { showConfirmation ? <RenderDeleteConfirmation /> : null }
             </div>
 
           </form>
@@ -172,7 +155,7 @@ const Edit: React.FC = () => {
   return (
     <>
       <Head>
-        <title>Amir Ardalan | New Post</title>
+        <title>Amir Ardalan | Edit Post</title>
         <meta name="robots" content="noindex"></meta>
       </Head>
       <div>

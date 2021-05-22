@@ -42,10 +42,10 @@ async function unPublishPost(id: number): Promise<void> {
   await Router.push('/blog/drafts')
 }
 async function editPost(id: number): Promise<void> {
-  await fetch(`http://localhost:3000/blog/create/${id}`, {
+  await fetch(`http://localhost:3000/blog/edit/${id}`, {
     method: 'GET',
   })
-  await Router.push(`/blog/edit?pid=${id}`)
+  await Router.push(`/blog/edit/${id}`)
 }
 async function deletePost(id: number): Promise<void> {
   await fetch(`http://localhost:3000/api/post/${id}`, {
