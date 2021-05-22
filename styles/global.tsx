@@ -430,9 +430,8 @@ export function GlobalStyles () {
           }
           // Special Delete (non)Button
           .formSubmit {
-            a {
-              padding: .44rem 0.8rem;
-              &:hover { background-color: #f84040 }
+            a { padding: .44rem 0.8rem; }
+            a.delete { &:hover { background-color: #f84040 }
             }
           }
         }
@@ -475,9 +474,19 @@ export function GlobalStyles () {
         }
 
         // Markdown Code
-        code, code p {
+        pre,
+        code {
+          background-color: ${theme.colors.text};
+          color: ${theme.colors.background};
           border-radius: 5px;
-          padding: .5rem;
+        }
+        pre {
+          overflow: scroll;
+          line-height: 2rem;
+          padding: 1rem;
+        }
+        code, code p {
+          padding: .2rem;
           font-size: 15px;
           background-color: ${theme.colors.text};
           color: ${theme.colors.background};
