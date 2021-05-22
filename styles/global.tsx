@@ -33,10 +33,7 @@ export function GlobalStyles () {
 
         a {
           color: ${theme.colors.link};
-          text-decoration: underline;
-            &:hover {
-              text-decoration: none;
-            }
+          text-decoration: none;
         }
           
         p {
@@ -77,7 +74,7 @@ export function GlobalStyles () {
           color: ${theme.colors.link};
           font-family: 'Poppins', Arial, Helvetica, sans-serif;
           font-size: 16px;
-          font-weight: bold;
+          font-weight: normal;
           box-shadow: 4px 4px 0 ${theme.colors.link};
           transition: background-color .2s linear;
           &:hover {
@@ -86,19 +83,6 @@ export function GlobalStyles () {
             color: ${theme.colors.highlight};
             box-shadow: 4px 4px 0 ${theme.colors.linkLight};
             transition: background-color .2s linear;
-          }
-        }
-
-        .linkCta {
-          display: block;
-          width: max-content;
-          font-size: 16px;
-          cursor: pointer;
-          text-decoration: none;
-          &::before {
-            content: '📄';
-            box-shadow: #8b8b8b;
-            padding-right: .5rem;
           }
         }
 
@@ -240,9 +224,9 @@ export function GlobalStyles () {
           bottom: 0;
           left: 20px;
           z-index: 2;
-          color: ${theme.colors.textLight};
+          color: ${theme.colors.text};
           font-size: 10px;
-          font-weight: 300;
+          font-weight: normal;
           text-transform: uppercase;
           animation: fade-out .2s forwards;
 
@@ -257,7 +241,8 @@ export function GlobalStyles () {
           flex-direction: row;
           align-items: center;
           color: ${theme.colors.footer};
-          font-size: 12px;
+          font-size: 13px;
+          font-weight: lighter;
           &::before {
             display: flex;
             content: '📔';
@@ -287,6 +272,7 @@ export function GlobalStyles () {
             width: 98%;
           }
           h2 {
+            /* color: ${theme.colors.link}; */
             display: inline-block;
             line-height: 2.5rem;
             font-size: 35px;
@@ -307,8 +293,8 @@ export function GlobalStyles () {
           .postDetails {
             margin: .5rem 0 .2rem;
             display: block;
-            color: ${theme.colors.footer};
-            font-size: 12px;
+            font-size: 13px;
+            font-weight: lighter;
           }
           .controlsPost {
             margin: 2rem 0;
@@ -437,6 +423,20 @@ export function GlobalStyles () {
           }
         }
 
+        // Next Prev Controls
+        .nextPrevControls {
+          display: flex;
+          justify-content: space-between;
+          a {
+            text-decoration: underline;
+            &:hover {
+              text-decoration: none;
+            }
+          }
+          @media(max-width: 600px) {
+            flexDirection: column;
+          }
+        }
         .prevLink {
           display: flex;
           justify-content: flex-start;
@@ -445,7 +445,6 @@ export function GlobalStyles () {
           display: flex;
           justify-content: flex-end;
         }
-
         .prevLink,
         .nextLink {
           font-family: 'Lora', Georgia, 'Times New Roman', Times, serif;
@@ -483,14 +482,6 @@ export function GlobalStyles () {
           background: ${theme.colors.text};
           color: ${theme.colors.background};
           padding: 0 .2rem;
-        }
-        .code {
-          background: #fafafa;
-          border-radius: 5px;
-          padding: 0.75rem;
-          font-size: 1.1rem;
-          font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, 
-          Bitstream Vera Sans Mono, Courier New, monospace;
         }
 
         // Animation

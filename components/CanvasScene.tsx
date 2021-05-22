@@ -7,7 +7,7 @@ export default function CanvasScene(props) {
 
   const mesh : any = useRef()
 
-  const isBreakpoint = useMediaQuery(1024)
+  const isBreakpoint = useMediaQuery(890)
   
   useFrame(() => (
     mesh.current.rotation.x += 0.002,
@@ -17,13 +17,13 @@ export default function CanvasScene(props) {
   return (
     <>
       <ambientLight intensity={.2} />
-      <pointLight position={[10, 10, 10]} />
-      <directionalLight position={[0, 0, 5]} intensity={.1} />
+      <pointLight position={[0, 0, 30]} />
+      <directionalLight position={[0, 2, 0]} intensity={.1} />
       <mesh
         ref={mesh}
         scale={.2}
         {...props}>
-        <Icosahedron args={[30, 3]}>
+        <Icosahedron args={[30, 7]}>
           <MeshWobbleMaterial
             color={props.theme.canvas.meshA}
             attach="material"

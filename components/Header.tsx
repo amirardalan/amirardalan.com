@@ -73,7 +73,7 @@ export default function Header() {
                 css={{
                   position: 'relative',
                   margin: '0',
-                  padding: '.2rem 0 0 0',
+                  padding: '.1rem 0 0 0',
                   color: theme.colors.footer,
                   fontSize: '8px',
                   fontWeight: 'normal',

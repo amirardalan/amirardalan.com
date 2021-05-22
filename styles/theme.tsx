@@ -1,7 +1,7 @@
 export const themeLight = {
   colors: {
     background: '#e2e2e2',
-    text: '#232227',
+    text: '#292735',
     textLight: '#949494',
     link: '#7A00CC',
     linkLight: '#a34bdf',
@@ -9,16 +9,16 @@ export const themeLight = {
     footer: '#5e5e5e',
     footerLink: '#7A00CC',
     highlight: '#e2e2e2',
-    highlightBg: '#232227',
+    highlightBg: '#292735',
     selection: 'yellow',
-    selectionText: '#232227',
+    selectionText: '#292735',
     disabled: '#e2e2e2',
   },
   logo: "/logoLight.svg",
   logoError: '/logoErrorDark.svg',
   helloEmoji: '👋',
   toggleButton: {
-    background: '#232227',
+    background: '#292735',
     text: 'Light Mode',
     icon: '/sun.svg',
     iconAlt: 'Sun Icon'
@@ -26,8 +26,8 @@ export const themeLight = {
   canvas: {
     text: '',
     textSmall: 'Rotate & Zoom',
-    bg: '#302f35',
-    meshA: '#9C66FF',
+    bg: '#292735',
+    meshA: '#9c26eb',
     zoomFrom: -300,
     zoomTo: -3,
     textAnim: 'fade-in 3s forwards',
@@ -41,19 +41,19 @@ export const themeLight = {
 
 export const themeDark = {
   colors: {
-    background: '#232227',
+    background: '#292735',
     text: '#e2e2e2',
     textLight: '#c2c1c1',
-    link: '#21E598',
-    linkLight: '#7bffca',
-    divider: '#313036',
+    link: '#21c8e5',
+    linkLight: '#62e8ff',
+    divider: '#323042',
     footer: '#a8a8a8',
-    footerLink: '#21E598',
-    highlight: '#3b3942',
+    footerLink: '#21c8e5',
+    highlight: '#323042',
     highlightBg: '#e2e2e2',
     selection: 'yellow',
-    selectionText: '#232227',
-    disabled: '#232227'
+    selectionText: '#292735',
+    disabled: '#292735'
   },
   logo: '/logoDark.svg',
   logoError: '/logoErrorLight.svg',
@@ -67,8 +67,8 @@ export const themeDark = {
   canvas: {
     text: '',
     textSmall: 'Rotate + Zoom',
-    bg: '#302f35',
-    meshA: '#21E598',
+    bg: '#292735',
+    meshA: '#21c8e5',
     zoomFrom: -3,
     zoomTo: -300,
     textAnim: 'fade-in 3s forwards',
@@ -76,6 +76,6 @@ export const themeDark = {
     duration: 4000
   },
   page: {
-    bg: '#302f35'
+    bg: '#292735'
   }
 }

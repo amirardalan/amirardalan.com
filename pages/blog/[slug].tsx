@@ -61,7 +61,7 @@ const Post = (props: any) => {
   const [showConfirmation, setShowConfirmation] = useState(false)
   const confirmOnClick = () => setShowConfirmation(true)
   const cancelOnClick = () => setShowConfirmation(false)
-  const Confirmation = () => (
+  const RenderDeleteConfirmation = () => (
     <div className="controlsConfirm">
       Are you sure?
       <div>
@@ -167,17 +167,11 @@ const Post = (props: any) => {
               <button className="buttonCompact delete" onClick={confirmOnClick}>Delete</button>
             )}
 
-            { showConfirmation ? <Confirmation /> : null }
+            { showConfirmation ? <RenderDeleteConfirmation /> : null }
 
           </div>
         </div>
-        <div css={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          '@media(max-width: 600px)': {
-            flexDirection: 'column',
-          }
-        }}>
+        <div className="nextPrevControls">
           <div className="prevLink" aria-label={prevTitle}>
             { !first && published ? <RenderPrevLink /> : null }
           </div>

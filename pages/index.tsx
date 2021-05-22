@@ -74,13 +74,6 @@ export default function Home() {
                 Read the Blog
               </button>
             </Link>
-            <Link
-              href="/amir-ardalan-resume.pdf"
-              aria-label="Download Resume">
-              <a className="linkCta">
-                Download Resume
-              </a>
-            </Link>
           </div>
         </div>
       </div>
