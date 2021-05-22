@@ -70,25 +70,18 @@ export function GlobalStyles () {
           flex-direction: row;
           display: flex;
           align-items: center;
-          min-width: 128px;
           margin: 0 1rem 2rem 0;
           cursor: pointer;
-          padding: 1.2rem 1.8rem;
+          padding: 1rem 1.4rem;
           background-color: transparent;
           border: 4px solid ${theme.colors.link};
           color: ${theme.colors.link};
           font-family: 'Poppins', Arial, Helvetica, sans-serif;
-          font-size: 16px;
+          font-size: 15px;
           font-weight: bold;
           box-shadow: 4px 4px 0 ${theme.colors.link};
           letter-spacing: .02rem;
           transition: background-color .2s linear;
-          &::before {
-            display: flex;
-            content: '📋';
-            font-size: 20px;
-            padding-right: .5rem;
-          }
           &:hover {
             background: ${theme.colors.link};
             border: 4px solid transparent;
@@ -162,7 +155,7 @@ export function GlobalStyles () {
           animation: slide-up .8s forwards;
 
           h2 {
-            margin-top: 0;
+            margin: 0 0 1rem;
             font-weight: bolder;
           }
           h3, h4 {
@@ -218,10 +211,15 @@ export function GlobalStyles () {
           }
         }
 
+        .cta {
+          display: flex;
+          flex-direction: row;
+        }
+
         .latestPost {
+          line-height: 1.8rem;
           p, a {
             font-family: 'Lora', 'Times New Roman', Times, serif;
-            font-size: 16px;
           }
           a{
             font-size: 18px;
@@ -233,14 +231,13 @@ export function GlobalStyles () {
           }
           p {
             color: ${theme.colors.footer};
-            &.teaser {
-              font-style: italic;
-            }
+            font-size: 15px;
           }
-          h5 {
+          h4 {
             margin: 0;
             font-size: 20px;
             font-weight: lighter;
+            color: ${theme.colors.text};
           }
         }
 
@@ -287,6 +284,7 @@ export function GlobalStyles () {
           &::before {
             display: flex;
             content: '📋';
+            color: ${theme.colors.link};
             font-size: 20px;
             padding-right: .5rem;
           }

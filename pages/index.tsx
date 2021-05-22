@@ -86,7 +86,7 @@ export default function Home(props: any) {
             <TypingAnimation />
           </h3>
           <br/>
-          <div>
+          <div className="cta">
             <Link
               href="/blog"
               aria-label="Read the Blog"
@@ -95,19 +95,27 @@ export default function Home(props: any) {
                 Read the Blog
               </button>
             </Link>
-            <div className="latestPost">
-              <h5 aria-label="Latest Post">
-                Latest Post:
-              </h5>
-              <Link
-                href={`/blog/${encodeURIComponent(latestPost.slug)}`}
-                aria-label={latestPost.title}>
-                <a>{latestPost.title} →</a>
-              </Link>
-              <p className="teaser">
-                {latestPost.teaser}
-              </p>
-            </div>
+            <Link
+              href="/amir-ardalan-resume.pdf"
+              aria-label="Download Resume"
+            >
+              <button className="buttonCta">
+                ⤓ Resume
+              </button>
+            </Link>
+          </div>
+          <div className="latestPost">
+            <h4 aria-label="Latest Post">
+              Latest Post:
+            </h4>
+            <Link
+              href={`/blog/${encodeURIComponent(latestPost.slug)}`}
+              aria-label={latestPost.title}>
+              <a>{latestPost.title} →</a>
+            </Link>
+            <p className="teaser">
+              {latestPost.teaser}
+            </p>
           </div>
         </div>
       </div>
