@@ -1,17 +1,38 @@
 import { css, useTheme } from '@emotion/react'
 import { useState, useEffect } from 'react'
+import prisma from '../lib/prisma'
+import { GetServerSideProps } from 'next'
+import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import Link from 'next/link'
 import LoadingTriangle from '../components/LoadingTriangle'
-import dynamic from 'next/dynamic'
 import TypingAnimation from '../components/TypingAnimation'
 
 const CanvasLoader = dynamic(() => import('../components/CanvasLoader'), {
   loading: () => <LoadingTriangle />,
-  ssr: false
+  ssr: true
 })
 
-export default function Home() {
+// Get latest blog post
+export const getServerSideProps: GetServerSideProps = async () => {
+  const latestPost = await prisma.post.findMany({
+    where: { published: true },
+    orderBy: {
+      publishedAt: 'desc',
+    },
+    take: 1,
+    select: {
+      title: true,
+      teaser: true,
+      slug: true,
+    },
+  })
+  return { props: { latestPost } }
+}
+
+export default function Home(props: any) {
+
+  const latestPost = props.latestPost[0]
 
   const theme : any = useTheme()
   const [toggleCanvas, setToggleCanvas] = useState(false);
@@ -74,6 +95,19 @@ export default function Home() {
                 Read the Blog
               </button>
             </Link>
+            <div className="latestPost">
+              <h5 aria-label="Latest Post">
+                Latest Post:
+              </h5>
+              <Link
+                href={`/blog/${encodeURIComponent(latestPost.slug)}`}
+                aria-label={latestPost.title}>
+                <a>{latestPost.title} →</a>
+              </Link>
+              <p className="teaser">
+                {latestPost.teaser}
+              </p>
+            </div>
           </div>
         </div>
       </div>

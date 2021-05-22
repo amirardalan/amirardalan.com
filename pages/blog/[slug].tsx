@@ -19,10 +19,15 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
         author: {
           select: { name: true },
         },
-      },
+      }
     }),
     prisma.post.findMany({
       where: { published: true },
+      select: {
+        id: true,
+        title: true,
+        slug: true,
+      },
     })
   ])
   return { props: { post, feed } }

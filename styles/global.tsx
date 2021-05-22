@@ -218,6 +218,32 @@ export function GlobalStyles () {
           }
         }
 
+        .latestPost {
+          p, a {
+            font-family: 'Lora', 'Times New Roman', Times, serif;
+            font-size: 16px;
+          }
+          a{
+            font-size: 18px;
+            color: ${theme.colors.text};
+            text-decoration: underline;
+            &:hover {
+              text-decoration: none;
+            }
+          }
+          p {
+            color: ${theme.colors.footer};
+            &.teaser {
+              font-style: italic;
+            }
+          }
+          h5 {
+            margin: 0;
+            font-size: 20px;
+            font-weight: lighter;
+          }
+        }
+
         // Three.js Canvas
         .canvasTitle {
           color: ${theme.colors.text};
@@ -345,10 +371,11 @@ export function GlobalStyles () {
             font-weight: bold;
             color: ${theme.colors.text};
             &.delete {
-              color: #ff6262;
+              color: ${theme.colors.text};
+              &:hover { color:#ff6262 }
             }
             &.close {
-              font-size: 30px;
+              font-size: 20px;
                 &:hover {
                 color: ${theme.colors.footer}
               }
