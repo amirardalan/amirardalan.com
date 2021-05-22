@@ -29,33 +29,36 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 }
 
 
-async function publishPost(id: number): Promise<void> {
-  await fetch(`http://localhost:3000/api/publish/${id}`, {
-    method: 'PUT',
-  })
-  await Router.push('/blog')
-}
-async function unPublishPost(id: number): Promise<void> {
-  await fetch(`http://localhost:3000/api/unpublish/${id}`, {
-    method: 'PUT',
-  })
-  await Router.push('/blog/drafts')
-}
-async function editPost(id: number): Promise<void> {
-  await fetch(`http://localhost:3000/blog/edit/${id}`, {
-    method: 'GET',
-  })
-  await Router.push(`/blog/edit/${id}`)
-}
-async function deletePost(id: number): Promise<void> {
-  await fetch(`http://localhost:3000/api/post/${id}`, {
-    method: 'DELETE',
-  })
-  Router.push('/blog/drafts')
-}
-
-
 const Post = (props: any) => {
+
+  async function publishPost(id: number): Promise<void> {
+    await fetch(`http://localhost:3000/api/publish/${id}`, {
+      method: 'PUT',
+    })
+    await Router.push('/blog')
+  }
+  async function unPublishPost(id: number): Promise<void> {
+    await fetch(`http://localhost:3000/api/unpublish/${id}`, {
+      method: 'PUT',
+    })
+    await Router.push('/blog/drafts')
+  }
+  async function editPost(id: number): Promise<void> {
+    await fetch(`http://localhost:3000/blog/edit/${id}`, {
+      method: 'GET',
+    })
+    await Router.push(`/blog/edit/${id}`)
+  }
+  async function deletePost(id: number): Promise<void> {
+    await fetch(`http://localhost:3000/api/post/${id}`, {
+      method: 'DELETE',
+    })
+    if (props.post.published) {
+      Router.push('/blog')
+    } else {
+      Router.push('/blog/drafts')
+    }
+  }
 
   // Post Controls Deletion Confirmation
   const [showConfirmation, setShowConfirmation] = useState(false)
@@ -106,18 +109,25 @@ const Post = (props: any) => {
   const time = Math.ceil(words / wpm);
   const readTime = time + ' ' + 'min read'
 
-  // Next, Prev Post Navigation
-  const published : Boolean = props.post.published
+  // Post Navigation Data
   const total : number = props.feed.length
   const current : any = props.post.id
-  const arr : Array<any> = props.feed
+  const arr : Array<any> = (props.feed) ? props.feed : null
+
+  // Error Handling - Post must meet these conditions for Nav to render
+  const published : Boolean = (props.post.published) ? props.post.published : false
   const first = (arr[0].id == current && published) ? true : false
   const last = (arr[total - 1].id == current && published) ? true : false
+  const only = (first && last)
+  const errHandlePrev = (published && !first && !only)
+  const errHandleNext= (published && !last && !only)
+
+  // Generate Next/Prev Navigation
   const index = arr.findIndex(x => x.id === current)
-  const prevTitle = (!first && published) ? arr[index - 1].title : null
-  const nextTitle = (!last && published) ? arr[index + 1].title : null
-  const prevLink = (!first && published) ? `/blog/${encodeURIComponent(arr[index - 1].slug)}` : '#'
-  const nextLink = (!last && published) ? `/blog/${encodeURIComponent(arr[index + 1].slug)}` : '#'
+  const prevTitle = (errHandlePrev) ? arr[index - 1].title : null
+  const nextTitle = (errHandleNext) ? arr[index + 1].title : null
+  const prevLink = (errHandlePrev) ? `/blog/${encodeURIComponent(arr[index - 1].slug)}` : '#'
+  const nextLink = (errHandleNext) ? `/blog/${encodeURIComponent(arr[index + 1].slug)}` : '#'
 
   const RenderPrevLink = () => (
     <Link href={prevLink}><a>← {prevTitle}</a></Link>
@@ -144,7 +154,7 @@ const Post = (props: any) => {
 
         <Login />
         
-        <div className="postFull">
+        <div className="post postFull">
 
           <h2>{title}</h2>
           <small className="postDetails">
@@ -173,10 +183,10 @@ const Post = (props: any) => {
         </div>
         <div className="nextPrevControls">
           <div className="prevLink" aria-label={prevTitle}>
-            { !first && published ? <RenderPrevLink /> : null }
+            { errHandlePrev ? <RenderPrevLink /> : null }
           </div>
           <div className="nextLink" aria-label={nextTitle}>
-            { !last && published ? <RenderNextLink /> : null }
+            { errHandleNext && !last && !only ? <RenderNextLink /> : null }
           </div>
         </div>
       </div>

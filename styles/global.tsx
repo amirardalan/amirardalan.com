@@ -277,6 +277,7 @@ export function GlobalStyles () {
             }
           }
         }
+
         .blog {
           width: 768px;
           margin: 0 auto;
@@ -284,8 +285,13 @@ export function GlobalStyles () {
           @media (max-width: 768px) {
             width: 98%;
           }
+
+          .post {
+            h2 {
+              margin-top: 2.5rem;
+            }
+          }
           h2 {
-            /* color: ${theme.colors.link}; */
             display: inline-block;
             line-height: 2.5rem;
             font-size: 30px;
@@ -304,135 +310,129 @@ export function GlobalStyles () {
             display: flex;
             flex-direction: column;
           }
-          .postDetails {
-            margin: .5rem 0 .2rem;
-            display: block;
-            font-size: 13px;
-            font-weight: lighter;
+        }
+
+        .postDetails {
+          margin: .5rem 0 .2rem;
+          display: block;
+          font-size: 13px;
+          font-weight: lighter;
+        }
+        .controlsPost {
+          margin: 2rem 0;
+        }
+        .controlsConfirm {
+          margin-top: 1rem;
+          text-transform: uppercase;
+          font-size: 12px;
+          font-weight: bold;
+          color: #f84040;
+          .confirmLink {
+            margin-right: .5rem;
+            cursor: pointer;
+            font-weight: normal;
+            color: ${theme.colors.text};
+            &:hover {
+              color: ${theme.colors.link};
+              &:first-of-type::after {
+                color: ${theme.colors.footer}
+              }
+            }
+            &:first-of-type {
+              &::after {
+                content: '|';
+                padding-left: .5rem;
+                color: ${theme.colors.footer}
+              }
+            }
           }
-          .controlsPost {
-            margin: 2rem 0;
+        }
+        
+        .drafts {
+          @media (max-width: 890px) {
+            max-width: none;
           }
-          .controlsConfirm {
-            margin-top: 1rem;
-            text-transform: uppercase;
-            font-size: 12px;
+        }
+        .postDraft {
+          display: flex;
+          justify-content: space-between;
+          margin: 1rem 0;
+          border: 1px solid ${theme.colors.divider};
+          padding: 1.8rem;
+          &::after {
+            content: 'unpublished';
+            color: ${theme.colors.footer};
             font-weight: bold;
-            color: #f84040;
-            .confirmLink {
-              margin-right: .5rem;
-              cursor: pointer;
-              font-weight: normal;
-              color: ${theme.colors.text};
-              &:hover {
-                color: ${theme.colors.link};
-                &:first-of-type::after {
-                  color: ${theme.colors.footer}
-                }
-              }
-              &:first-of-type {
-                &::after {
-                  content: '|';
-                  padding-left: .5rem;
-                  color: ${theme.colors.footer}
-                }
-              }
-            }
+            font-size: 12px;
+            align-self: right;
           }
-          .drafts {
 
-            @media (max-width: 890px) {
-              max-width: none;
-            }
-          }
-          .postDraft {
-            display: flex;
-            justify-content: space-between;
-            margin: 1rem 0;
-            border: 1px solid ${theme.colors.divider};
-            padding: 1.8rem;
-            h2 { font-size: calc(1vw + 1vh); }
-            .postTeaser { margin: 0; }
-
-            &::after {
-              content: 'unpublished';
-              color: ${theme.colors.footer};
-              font-weight: bold;
-              font-size: 12px;
-              align-self: right;
-            }
-          }
-          .postTeaser {
-            margin: 2.5rem 0 .5rem 0;
+          @media (max-width: 480px) {
+            &::after { content: '' }
             h2 {
-              cursor: pointer;
-              text-decoration: underline;
-              &:hover {
-                text-decoration: none;
-              }
+              line-height: 1.5rem;
+              font-size: 20px;
+            }
+          }
+        }
+        .postTeaser {
+          width: 100%;
+          h2 {
+            cursor: pointer;
+            text-decoration: underline;
+            &:hover { text-decoration: none; }
+          }
+        }
+        .postFull {
+          p { margin-top: 2rem; }
+          @media (max-width: 890px) {
+            margin: 2.5rem 0;
+          }
+          p, ul, li, a, blockquote {
+            font-family: 'Lora', Georgia, 'Times New Roman', Times, serif;
+          }
+          h3 {
+            font-size: 28px;
+            font-weight: bold;
+          }
+          p, ul, li, a {
+            font-size: 18px;
+            line-height: 1.8rem;
+          }
+          ul, li, a { margin-bottom: 1rem; }
+          p { margin-bottom: 2rem; }
+          a { text-decoration: underline;
+            &:hover { text-decoration: none; }
+          }
+          blockquote {
+            margin-left: -1.75rem;
+            border-left: 5px solid ${theme.colors.footer};
+            color: ${theme.colors.footer};
+            padding-left: 1.5rem;
+            font-style: italic;
+            & blockquote {
+              border-left: 5px solid ${theme.colors.textLight};
+              padding-left: 1rem;
+              margin-left: 0;
             }
             @media (max-width: 890px) {
-              margin: 2rem 0 .5rem 0;
+              margin-left: -1.1rem;
+              padding-left: .8rem;
             }
+            p { font-size: 24px; }
           }
-          .postFull {
-            margin: 3rem 0;
-            p {
-              margin-top: 2rem;
-            }
-            @media (max-width: 890px) {
-              margin: 2.5rem 0;
-            }
+        }
+        .postDraft,
+        .postTeaser,
+        .postFull {
+          @media (max-width: 1280px) {
+            max-width: none;
           }
-          .postFull {
-            p, ul, li, a, blockquote {
-              font-family: 'Lora', Georgia, 'Times New Roman', Times, serif;
-            }
-            h3 {
-              font-size: 28px;
-              font-weight: bold;
-            }
-            p, ul, li, a {
-              font-size: 18px;
-              line-height: 1.8rem;
-            }
-            ul, li, a {
-              margin-bottom: 1rem;
-            }
-            p { margin-bottom: 2rem; }
-            a { text-decoration: underline;
-              &:hover { text-decoration: none; }
-            }
-            blockquote {
-              margin-left: -1.75rem;
-              border-left: 5px solid ${theme.colors.footer};
-              color: ${theme.colors.footer};
-              padding-left: 1.5rem;
-              font-style: italic;
-              & blockquote {
-                border-left: 5px solid ${theme.colors.textLight};
-                padding-left: 1rem;
-                margin-left: 0;
-              }
-              @media (max-width: 890px) {
-                margin-left: -1.1rem;
-                padding-left: .8rem;
-              }
-              p { font-size: 24px; }
-            }
-          }
-          .postDraft,
-          .postTeaser,
-          .postFull {
-            @media (max-width: 1280px) {
-              max-width: none;
-            }
-          }
-          // Special Delete (non)Button
-          .formSubmit {
-            a { padding: .44rem 0.8rem; }
-            a.delete { &:hover { background-color: #f84040 }
-            }
+        }
+        // Special Delete (non)Button
+        .formSubmit {
+          a { padding: .44rem 0.8rem; }
+          a.delete { &:hover { background-color: #f84040 }
           }
         }
 

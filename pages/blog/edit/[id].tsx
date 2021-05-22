@@ -39,23 +39,21 @@ const Edit = (props: any) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
       })
-      if (props.editPost.published) {
-        await Router.push('/blog')
-      } else {
-        await Router.push('/blog/drafts')
-      }
+      await Router.push(`/blog/${slug}`)
     } catch (error) {
       console.error(error)
     }
   }
 
-  console.log(props.editPost.published)
-
   async function deletePost(id: number): Promise<void> {
     await fetch(`http://localhost:3000/api/post/${id}`, {
       method: 'DELETE',
     })
-    Router.push('/blog/drafts')
+    if (props.editPost.published) {
+      Router.push('/blog/drafts')
+    } else {
+      Router.push('/blog')
+    }
   }
 
   // Post Controls Deletion Confirmation
@@ -140,7 +138,7 @@ const Edit = (props: any) => {
                 disabled={!content || !title || !slug || !teaser}
                 type="submit" value="Update"
               />
-              <a className="buttonCompact" onClick={() => Router.push("/blog/[slug]", `/blog/${props.editPost.slug}`)}>Cancel</a>
+              <a className="buttonCompact" onClick={() => Router.push("/blog/[slug]", `/blog/${slug}`)}>Cancel</a>
               <a className="buttonCompact delete" onClick={confirmOnClick}>Delete</a>
               { showConfirmation ? <RenderDeleteConfirmation /> : null }
             </div>
