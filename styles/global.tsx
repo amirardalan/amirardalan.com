@@ -52,6 +52,8 @@ export function GlobalStyles () {
           background-color: ${theme.colors.divider};
           color: ${theme.colors.text};
           border: 2px solid ${theme.colors.divider};
+          font-size: 16px;
+          font-family: Menlo, Monaco, 'Courier New', monospace;
 
           &:disabled {
             background-color: ${theme.colors.disabled};
@@ -292,6 +294,9 @@ export function GlobalStyles () {
             font-size: 30px;
             font-weight: 900;
             margin: 0;
+            cursor: pointer;
+            text-decoration: underline;
+            &:hover { text-decoration: none; }
           }
           p {
             font-family: 'Lora', 'Times New Roman', Times, serif;
@@ -316,6 +321,10 @@ export function GlobalStyles () {
           display: block;
           font-size: 13px;
           font-weight: lighter;
+
+          @media (max-width: 480px) {
+            font-size: 10px;
+          }
         }
 
         .controlsPost {
@@ -354,6 +363,7 @@ export function GlobalStyles () {
           justify-content: space-between;
           border: 1px solid ${theme.colors.divider};
           padding: 1.8rem;
+          margin: 1rem 0 .5rem;
           &::after {
             content: 'unpublished';
             color: ${theme.colors.footer};
@@ -368,17 +378,16 @@ export function GlobalStyles () {
               font-size: 20px;
             }
           }
-        }
-
-        .postTeaser {
-          h2 {
-            cursor: pointer;
-            text-decoration: underline;
-            &:hover { text-decoration: none; }
+          .postTeaser {
+            margin: 0 .5rem;
           }
         }
 
         .postFull {
+          h2 {
+            text-decoration: none;
+            cursor: default;
+          }
           p { margin-top: 2rem; }
           p, ul, li, a, blockquote {
             font-family: 'Lora', Georgia, 'Times New Roman', Times, serif;
@@ -462,6 +471,7 @@ export function GlobalStyles () {
         // Markdown Code
         pre,
         code {
+          font-family: Menlo, Monaco, 'Courier New', monospace;
           background-color: ${theme.colors.text};
           color: ${theme.colors.background};
           border-radius: 5px;

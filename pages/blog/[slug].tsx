@@ -31,6 +31,8 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 
 const Post = (props: any) => {
 
+  const isPublished : Boolean = (props.post.published) ? true : false
+
   async function publishPost(id: number): Promise<void> {
     await fetch(`http://localhost:3000/api/publish/${id}`, {
       method: 'PUT',
@@ -53,7 +55,7 @@ const Post = (props: any) => {
     await fetch(`http://localhost:3000/api/post/${id}`, {
       method: 'DELETE',
     })
-    if (props.post.published) {
+    if (isPublished) {
       Router.push('/blog')
     } else {
       Router.push('/blog/drafts')
@@ -90,7 +92,7 @@ const Post = (props: any) => {
   }
   const userHasValidSession = Boolean(session)
   let title = props.post.title
-  if (!props.post.published) {
+  if (!isPublished) {
     title = `${title} (Draft)`
   }
 
@@ -115,12 +117,11 @@ const Post = (props: any) => {
   const arr : Array<any> = (props.feed) ? props.feed : null
 
   // Error Handling - Post must meet these conditions for Nav to render
-  const published : Boolean = (props.post.published) ? props.post.published : false
-  const first = (arr[0].id == current && published) ? true : false
-  const last = (arr[total - 1].id == current && published) ? true : false
+  const first = (arr[0].id == current && isPublished) ? true : false
+  const last = (arr[total - 1].id == current && isPublished) ? true : false
   const only = (first && last)
-  const errHandlePrev = (published && !first && !only)
-  const errHandleNext= (published && !last && !only)
+  const errHandlePrev = (isPublished && !first && !only)
+  const errHandleNext= (isPublished && !last && !only)
 
   // Generate Next/Prev Navigation
   const index = arr.findIndex(x => x.id === current)
@@ -130,12 +131,12 @@ const Post = (props: any) => {
   const nextLink = (errHandleNext) ? `/blog/${encodeURIComponent(arr[index + 1].slug)}` : '#'
 
   const RenderPrevLink = () => (
-    <Link href={prevLink}><a>← {prevTitle}</a></Link>
+    <Link href={prevLink} aria-label={prevTitle}><a>← {prevTitle}</a></Link>
   )
   const RenderNextLink = () => (
-    <Link href={nextLink}><a>{nextTitle} →</a></Link>
+    <Link href={nextLink} aria-label={nextTitle}><a>{nextTitle} →</a></Link>
   )
-  const RenderDraftBreadcrumb = () => (
+  const RenderBreadcrumb = () => (
     <Link href="/blog/drafts"><a>Drafts</a></Link>
   )
 
@@ -148,7 +149,7 @@ const Post = (props: any) => {
 
         <nav className="breadcrumbs">
           <Link href="/blog">Blog</Link>
-          { !published ? <RenderDraftBreadcrumb /> : null}
+          { !isPublished? <RenderBreadcrumb /> : null}
           <span>{title}</span>
         </nav>
 
@@ -164,10 +165,10 @@ const Post = (props: any) => {
           <ReactMarkdown children={props.post.content} />
 
           <div className="controlsPost">
-            { !props.post.published && userHasValidSession && (
+            { !isPublished && userHasValidSession && (
               <button className="buttonCompact" onClick={() => publishPost(props.post.id)}>Publish</button>
             )}
-            { props.post.published && userHasValidSession && (
+            { isPublished && userHasValidSession && (
               <button className="buttonCompact" onClick={() => unPublishPost(props.post.id)}>Un-Publish</button>
             )}
             { userHasValidSession && (
@@ -182,10 +183,10 @@ const Post = (props: any) => {
           </div>
         </div>
         <div className="nextPrevControls">
-          <div className="prevLink" aria-label={prevTitle}>
+          <div className="prevLink">
             { errHandlePrev ? <RenderPrevLink /> : null }
           </div>
-          <div className="nextLink" aria-label={nextTitle}>
+          <div className="nextLink">
             { errHandleNext && !last && !only ? <RenderNextLink /> : null }
           </div>
         </div>

@@ -46,7 +46,7 @@ export const themeDark = {
     textLight: '#c2c1c1',
     link: '#21c8e5',
     linkLight: '#62e8ff',
-    divider: '#323042',
+    divider: '#383549',
     footer: '#a8a8a8',
     footerLink: '#21c8e5',
     highlight: '#323042',
