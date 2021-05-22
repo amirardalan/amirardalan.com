@@ -116,7 +116,7 @@ export function GlobalStyles () {
             background-color: #8b8b8b;
             text-decoration: none;
             &:hover {
-              background-color: #f84040;
+              background-color: #ff6262;
             }
           }
           &:hover {
@@ -321,10 +321,6 @@ export function GlobalStyles () {
           display: block;
           font-size: 13px;
           font-weight: lighter;
-
-          @media (max-width: 480px) {
-            font-size: 10px;
-          }
         }
 
         .controlsPost {
@@ -332,26 +328,28 @@ export function GlobalStyles () {
         }
         
         .controlsConfirm {
-          margin-top: 1rem;
-          text-transform: uppercase;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          margin: .5rem 0;
           font-size: 12px;
-          font-weight: bold;
-          color: #f84040;
+          font-weight: lighter;
+          text-transform: uppercase;
+          .confirmSelect {
+            margin-left: .5rem;
+          }
           .confirmLink {
+            text-transform: none;
             margin-right: .5rem;
             cursor: pointer;
-            font-weight: normal;
+            font-weight: bold;
             color: ${theme.colors.text};
-            &:hover {
-              color: ${theme.colors.link};
-              &:first-of-type::after {
-                color: ${theme.colors.footer}
-              }
+            &.delete {
+              color: #ff6262;
             }
-            &:first-of-type {
-              &::after {
-                content: '|';
-                padding-left: .5rem;
+            &.close {
+              font-size: 30px;
+                &:hover {
                 color: ${theme.colors.footer}
               }
             }
@@ -427,7 +425,7 @@ export function GlobalStyles () {
         // Special Delete (non)Button
         .formSubmit {
           a { padding: .44rem 0.8rem; }
-          a.delete { &:hover { background-color: #f84040 }
+          a.delete { &:hover { background-color: #ff6262 }
           }
         }
 

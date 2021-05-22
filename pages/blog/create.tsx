@@ -63,40 +63,8 @@ const Draft: React.FC = () => {
     }, 100)
   })
 
-  // Post Controls Deletion Confirmation
-  const [showConfirmation, setShowConfirmation] = React.useState(false)
-  const confirmOnClick = () => setShowConfirmation(true)
-  const cancelOnClick = () => setShowConfirmation(false)
-  const Confirmation = () => (
-    <div className="controlsConfirm">
-      Are you sure?
-      <div>
-        <span
-          className="confirmLink"
-          onClick={() => Router.push('/blog')}
-        >
-          Yes
-        </span>
-        <span
-          className="confirmLink"
-          onClick={cancelOnClick}
-        >
-          Cancel
-        </span>
-      </div>
-    </div>
-  )
-
-  const [session, loading] = useSession()
+  const [session] = useSession()
   let create = null
-
-  if (loading) {
-    create = (
-      <div className="center">
-        <LoadingTriangle />
-      </div>
-    )
-  }
 
   if (session && session.user.email == process.env.NEXT_PUBLIC_USER_EMAIL) {
     create = (
@@ -154,12 +122,11 @@ const Draft: React.FC = () => {
                 type="submit" value="Save Draft"
               />
               <a
-                className="buttonCompact delete"
-                href="#"
-                onClick={confirmOnClick}>
-                Delete
+                className="buttonCompact"
+                onClick={() => Router.push("/blog/drafts")}
+              >
+                Cancel
               </a>
-              { showConfirmation ? <Confirmation /> : null }
             </div>
 
           </form>

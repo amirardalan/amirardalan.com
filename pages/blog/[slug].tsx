@@ -7,7 +7,6 @@ import Head from 'next/head'
 import Login from '../../components/Login'
 import prisma from '../../lib/prisma'
 import ReactMarkdown from 'react-markdown'
-import LoadingTriangle from '../../components/LoadingTriangle'
 
 // Request post data from DB
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
@@ -33,10 +32,8 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 const Post = (props: any) => {
 
   // Check if user has valid session
-  const [session, loading] = useSession()
-  if (loading) {
-    return <div className="center"><LoadingTriangle /></div>
-  }
+  const [session] = useSession()
+
   const userHasValidSession = Boolean(session)
 
   // Check if post is published
@@ -130,19 +127,19 @@ const Post = (props: any) => {
   const cancelOnClick = () => setShowConfirmation(false)
   const RenderDeleteConfirmation = () => (
     <div className="controlsConfirm">
-      Are you sure?
-      <div>
+      <span
+        className="confirmLink close"
+        onClick={cancelOnClick}
+      >
+        ×
+      </span>
+        Confirm:
+      <div className="confirmSelect">
         <span
-          className="confirmLink"
+          className="confirmLink delete"
           onClick={() => deletePost(current)}
         >
-          Yes
-        </span>
-        <span
-          className="confirmLink"
-          onClick={cancelOnClick}
-        >
-          Cancel
+          Yes, Delete
         </span>
       </div>
     </div>

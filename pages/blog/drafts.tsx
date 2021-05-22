@@ -3,7 +3,6 @@ import { GetServerSideProps } from 'next'
 import { useSession, getSession } from 'next-auth/client'
 import Link from 'next/link'
 import Head from 'next/head'
-import LoadingTriangle from '../../components/LoadingTriangle'
 import Login from '../../components/Login'
 import Post, { PostProps } from '../../components/Post'
 import prisma from '../../lib/prisma'
@@ -39,15 +38,7 @@ const Drafts: React.FC<Props> = (props) => {
   
   let draftsList = null;
 
-  const [session, loading] = useSession()
-
-  if (loading) {
-    draftsList = (
-      <div className="center">
-        <LoadingTriangle />
-      </div>
-    )
-  }
+  const [session] = useSession()
 
   if (session && session.user.email == process.env.NEXT_PUBLIC_USER_EMAIL) {
     draftsList = (
