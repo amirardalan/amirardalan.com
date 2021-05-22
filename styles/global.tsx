@@ -52,7 +52,7 @@ export function GlobalStyles () {
           background-color: ${theme.colors.divider};
           color: ${theme.colors.text};
           border: 2px solid ${theme.colors.divider};
-          font-size: 16px;
+          font-size: 15px;
           font-family: Menlo, Monaco, 'Courier New', monospace;
 
           &:disabled {
