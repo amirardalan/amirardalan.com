@@ -20,7 +20,7 @@ const Login: React.FC = () => {
   if (session && session.user.email == process.env.NEXT_PUBLIC_USER_EMAIL) {
     left = (
       <div
-        className="left"
+        className="left loginUser"
         css={{
           display: 'flex'
         }}>
@@ -30,11 +30,18 @@ const Login: React.FC = () => {
           alignSelf: 'center',
           color: theme.colors.textLight,
           fontFamily: "Menlo, Monaco, 'Courier New', monospace",
+          'a': {
+            marginLeft: '.5rem',
+            cursor: 'pointer',
+            '&:hover': {
+              textDecoration: 'underline'
+            }
+          },
           '@media(max-width: 890px)': {
             marginBottom: '.5rem'
           }
         }}>
-          {session.user.name} ({session.user.email})
+          {session.user.name} ({session.user.email}) • <a onClick={() => signOut()}> Sign Out</a>
         </span>
       </div>
     )
@@ -52,10 +59,6 @@ const Login: React.FC = () => {
             Drafts
           </button>
         </Link>
-        <button className="buttonCompact" onClick={() => signOut()}>
-          Log out
-        </button>
-       
       </div>
     )
   }
