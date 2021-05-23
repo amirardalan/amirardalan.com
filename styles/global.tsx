@@ -52,7 +52,7 @@ export function GlobalStyles () {
           background-color: ${theme.colors.divider};
           color: ${theme.colors.text};
           border: 2px solid ${theme.colors.divider};
-          font-size: 15px;
+          font-size: 16px;
           font-family: Menlo, Monaco, 'Courier New', monospace;
 
           &:disabled {
@@ -100,9 +100,19 @@ export function GlobalStyles () {
           text-transform: uppercase;
           font-weight: bold;
           min-width: 75px;
-          a& {
+          a & {
             &:hover {
               color: ${theme.colors.background};
+            }
+          }
+          .create & {
+            &.createBtn {
+              background-color: #8b8b8b;
+            }
+          }
+          .drafts & {
+            &.draftsBtn {
+              background-color: #8b8b8b;
             }
           }
           &.delete {

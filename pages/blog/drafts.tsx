@@ -37,7 +37,7 @@ const Drafts: React.FC<Props> = (props) => {
 
   if (session && session.user.email == process.env.NEXT_PUBLIC_USER_EMAIL) {
     draftsList = (
-      <div className="blog">
+      <div className="blog drafts">
 
         <nav className="breadcrumbs">
           <Link href="/blog">Blog</Link>
@@ -47,7 +47,6 @@ const Drafts: React.FC<Props> = (props) => {
         <Login />
 
         <div className="drafts">
-          <h3 className="sessionHeading">Drafts</h3>
           <main>
             {props.drafts.reverse().map((post) => (
               <div

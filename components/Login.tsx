@@ -54,12 +54,12 @@ const Login: React.FC = () => {
         justifyContent: 'right'
       }}>
         <Link href="/blog/create">
-          <button className="buttonCompact" aria-label="New Post">
+          <button className="buttonCompact createBtn" aria-label="New Post">
             Create
           </button>
         </Link>
         <Link href="/blog/drafts" aria-label="Drafts">
-          <button className="buttonCompact" data-active={isActive('/drafts')}>
+          <button className="buttonCompact draftsBtn" data-active={isActive('/drafts')}>
             Drafts
           </button>
         </Link>

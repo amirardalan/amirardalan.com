@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import Router, { useRouter } from 'next/router'
+import Router from 'next/router'
 import Link from 'next/link'
 import Head from 'next/head'
 import Login from '../../components/Login'
@@ -66,11 +66,9 @@ const Draft: React.FC = () => {
   let create = null
 
   if (session && session.user.email == process.env.NEXT_PUBLIC_USER_EMAIL) {
-      const router = useRouter()
 
-  console.log(router.query.id)
     create = (
-      <div className="blog">
+      <div className="blog create">
 
         <nav className="breadcrumbs">
           <Link href="/blog">Blog</Link>
@@ -81,7 +79,6 @@ const Draft: React.FC = () => {
 
         <div>
           <form onSubmit={submitData}>
-            <h3 className="sessionHeading">Create (draft)</h3>
             <input
               autoFocus
               onChange={(e) => setTitle(e.target.value)}
@@ -118,11 +115,12 @@ const Draft: React.FC = () => {
             />
 
             <div className="formSubmit">
-              <input
+              <button
                 className="buttonCompact"
                 disabled={!content || !title || !slug || !teaser}
-                type="submit" value="Save"
-              />
+                type="submit">
+                Save
+              </button>
               <a
                 className="buttonCompact"
                 onClick={() => Router.push("/blog/drafts")}
