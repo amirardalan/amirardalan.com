@@ -56,25 +56,25 @@ const Edit = (props: any) => {
     }
   }
 
-  // Post Controls Deletion Confirmation
+  // Handle state and rendering for post deletion confirmation
   const [showConfirmation, setShowConfirmation] = useState(false)
   const confirmOnClick = () => setShowConfirmation(true)
   const cancelOnClick = () => setShowConfirmation(false)
   const RenderDeleteConfirmation = () => (
     <div className="controlsConfirm">
-      Are you sure?
-      <div>
+      <span
+        className="confirmLink close"
+        onClick={cancelOnClick}
+      >
+        ×
+      </span>
+        Confirm:
+      <div className="confirmSelect">
         <span
-          className="confirmLink"
-          onClick={() => deletePost(props.post.id)}
+          className="confirmLink delete"
+          onClick={() => deletePost(id)}
         >
-          Yes
-        </span>
-        <span
-          className="confirmLink"
-          onClick={cancelOnClick}
-        >
-          Cancel
+          Yes, Delete
         </span>
       </div>
     </div>

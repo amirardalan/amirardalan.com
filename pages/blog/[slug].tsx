@@ -46,28 +46,28 @@ const Post = (props: any) => {
 
   // Publish post via API route
   async function publishPost(id: number): Promise<void> {
-    await fetch(`http://localhost:3000/api/publish/${id}`, {
+    await fetch(`/api/publish/${id}`, {
       method: 'PUT',
     })
     await Router.push('/blog')
   }
   // Unpublish post via API route
   async function unPublishPost(id: number): Promise<void> {
-    await fetch(`http://localhost:3000/api/unpublish/${id}`, {
+    await fetch(`/api/unpublish/${id}`, {
       method: 'PUT',
     })
     await Router.push('/blog/drafts')
   }
   // Edit post via API route
   async function editPost(id: number): Promise<void> {
-    await fetch(`http://localhost:3000/blog/edit/${id}`, {
+    await fetch(`/blog/edit/${id}`, {
       method: 'PUT',
     })
     await Router.push(`/blog/edit/${id}`)
   }
   // Delete post via API route
   async function deletePost(id: number): Promise<void> {
-    await fetch(`http://localhost:3000/api/post/${id}`, {
+    await fetch(`/api/post/${id}`, {
       method: 'DELETE',
     })
     // If deleted post was a draft, return to drafts,
