@@ -31,6 +31,7 @@ const Edit = (props: any) => {
   const [teaser, setTeaser] = useState(editTeaser)
 
   const submitData = async (e: React.SyntheticEvent) => {
+
     e.preventDefault()
     try {
       const body = { id, title, slug, teaser, content }
@@ -104,7 +105,7 @@ const Edit = (props: any) => {
 
         <div>
           <form onSubmit={submitData}>
-            <h1>Edit Post</h1>
+            <h3 className="sessionHeading">Edit Post</h3>
             <input
               autoFocus
               onChange={(e) => setTitle(e.target.value)}
@@ -138,7 +139,7 @@ const Edit = (props: any) => {
                 disabled={!content || !title || !slug || !teaser}
                 type="submit" value="Update"
               />
-              <a className="buttonCompact" onClick={() => Router.push("/blog/[slug]", `/blog/${slug}`)}>Cancel</a>
+              <a className="buttonCompact" onClick={() => Router.push(`/blog/${editSlug}`)}>Cancel</a>
               <a className="buttonCompact delete" onClick={confirmOnClick}>Delete</a>
               { showConfirmation ? <RenderDeleteConfirmation /> : null }
             </div>

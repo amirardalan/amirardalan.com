@@ -301,6 +301,12 @@ export function GlobalStyles () {
           }
         }
 
+        h3.sessionHeading {
+          font-size: 40px;
+          margin: 0;
+          padding: 0;
+        }
+
         .blog {
           max-width: 768px;
           margin: 0 auto;

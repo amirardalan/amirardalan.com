@@ -47,7 +47,7 @@ const Drafts: React.FC<Props> = (props) => {
         <Login />
 
         <div className="drafts">
-          <h1>Drafts</h1>
+          <h3 className="sessionHeading">Drafts</h3>
           <main>
             {props.drafts.reverse().map((post) => (
               <div
