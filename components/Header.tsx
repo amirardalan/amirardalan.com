@@ -69,18 +69,20 @@ export default function Header() {
               </h1>
 
               <p
-                aria-label="Portland, OR, USA"
+                aria-label="Portland, Oregon"
                 css={{
                   position: 'relative',
                   margin: '0',
+                  padding: '0 0 0 .1rem',
                   color: theme.colors.footer,
-                  fontSize: '10px',
+                  fontFamily: "Menlo, Monaco, 'Courier New', monospace",
+                  fontSize: '8px',
                   fontWeight: 'normal',
-                  letterSpacing: '.03rem',
+                  letterSpacing: '.11rem',
                   textAlign: 'left',
                   textTransform: 'uppercase'
                 }}>
-                Portland, OR, USA
+                Portland,Oregon
               </p>
 
             </div>

@@ -9,11 +9,6 @@ import Post, { PostProps } from '../../components/Post'
 export const getServerSideProps: GetServerSideProps = async () => {
   const feed = await prisma.post.findMany({
     where: { published: true },
-    include: {
-      author: {
-        select: { name: true },
-      },
-    },
   })
   return { props: { feed } }
 }

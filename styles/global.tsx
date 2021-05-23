@@ -173,12 +173,11 @@ export function GlobalStyles () {
           }
 
           h4 {
+            font-family: Menlo, Monaco, 'Courier New', monospace;
             line-height: 1.3rem;
-            font-size: 15px;
-            font-weight: 400;
+            font-size: 12px;
             color: ${theme.colors.footer};
 
-            a { font-weight: 700; }
           }
 
           @media (max-width: 890px) {
@@ -218,6 +217,10 @@ export function GlobalStyles () {
 
         .latestPost {
           line-height: 1.8rem;
+          font-weight: normal;
+          h4 {
+            font-weight: normal;
+          }
           p, a {
             font-family: 'Lora', 'Times New Roman', Times, serif;
           }
@@ -232,12 +235,6 @@ export function GlobalStyles () {
           p {
             color: ${theme.colors.footer};
             font-size: 15px;
-          }
-          h4 {
-            margin: 0;
-            font-size: 20px;
-            font-weight: lighter;
-            color: ${theme.colors.text};
           }
         }
 
@@ -280,7 +277,7 @@ export function GlobalStyles () {
           align-items: center;
           color: ${theme.colors.footer};
           font-size: 13px;
-          font-weight: lighter;
+          font-family: Menlo, Monaco, 'Courier New', monospace;
           &::before {
             display: flex;
             content: '📋';
@@ -315,7 +312,7 @@ export function GlobalStyles () {
           h2 {
             display: inline-block;
             line-height: 2.5rem;
-            font-size: 30px;
+            font-size: 38px;
             font-weight: 900;
             margin: 0;
             cursor: pointer;
@@ -344,7 +341,7 @@ export function GlobalStyles () {
           margin: .5rem 0 .2rem;
           display: block;
           font-size: 13px;
-          font-weight: lighter;
+          font-family: Menlo, Monaco, 'Courier New', monospace;
         }
 
         .controlsPost {
@@ -397,13 +394,17 @@ export function GlobalStyles () {
           @media (max-width: 480px) {
             &::after { content: '' }
             h2 {
-              line-height: 1.5rem;
+              line-height: 2.1rem;
               font-size: 20px;
             }
           }
           .postTeaser {
             margin: 0 .5rem;
           }
+        }
+
+        .postTeaser {
+          h2 { font-size: 30px; }
         }
 
         .postFull {
@@ -416,6 +417,8 @@ export function GlobalStyles () {
             font-family: 'Lora', Georgia, 'Times New Roman', Times, serif;
           }
           h3 {
+            margin: 3.5rem 0 0;
+            padding: 0;
             font-size: 28px;
             font-weight: bold;
           }

@@ -70,7 +70,7 @@ export default function Home(props: any) {
             line-height: 1.3;
             font-size: calc(1.6vw + 1.6vh);
             min-height: 0vw;
-            font-weight: 700;
+            font-weight: bolder;
             @media (min-width: 480px) and (max-width: 890px) {
               font-size: calc(2.5vw + 2.5vh);
               min-height: 0vw;

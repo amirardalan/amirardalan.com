@@ -6,7 +6,6 @@ import Header from '../components/Header'
 import Toggle from '../components/Toggle'
 import Footer from '../components/Footer'
 
-import "@fontsource/poppins/200.css"
 import "@fontsource/poppins/700.css"
 import "@fontsource/poppins/900.css"
 import "@fontsource/lora/500.css"

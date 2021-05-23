@@ -29,6 +29,7 @@ const Login: React.FC = () => {
           fontSize: '12px',
           alignSelf: 'center',
           color: theme.colors.textLight,
+          fontFamily: "Menlo, Monaco, 'Courier New', monospace",
           '@media(max-width: 890px)': {
             marginBottom: '.5rem'
           }

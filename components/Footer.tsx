@@ -6,6 +6,7 @@ export default function Footer() {
 
   return (
     <footer css={css`
+      font-family: Menlo, Monaco, 'Courier New', monospace;
       margin-top: 2rem;
       display: flex;
       flex-direction: column;
@@ -18,7 +19,6 @@ export default function Footer() {
       background-color: ${theme.colors.background};
       color: ${theme.colors.footer};
       border-top: 1px solid ${theme.colors.divider};
-      font-weight: lighter;
       line-height: 1.8em;
       animation: slide-up .25s forwards;
       transition: all 0.25s linear;
