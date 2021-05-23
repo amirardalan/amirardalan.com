@@ -61,7 +61,7 @@ const Post = (props: any) => {
   // Edit post via API route
   async function editPost(id: number): Promise<void> {
     await fetch(`http://localhost:3000/blog/edit/${id}`, {
-      method: 'GET',
+      method: 'PUT',
     })
     await Router.push(`/blog/edit/${id}`)
   }
