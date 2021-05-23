@@ -48,7 +48,6 @@ export function GlobalStyles () {
           margin: 0.5rem 0;
           border-radius: 0.25rem;
           border: 0.125rem solid rgba(0, 0, 0, 0.2);
-          background-color: ${theme.colors.disabled};
           background-color: ${theme.colors.divider};
           color: ${theme.colors.text};
           border: 2px solid ${theme.colors.divider};
@@ -56,7 +55,7 @@ export function GlobalStyles () {
           font-family: Menlo, Monaco, 'Courier New', monospace;
 
           &:disabled {
-            background-color: ${theme.colors.disabled};
+            background-color: ${theme.colors.disabledInput};
             color: ${theme.colors.footer}
           }
 
@@ -100,11 +99,7 @@ export function GlobalStyles () {
           text-transform: uppercase;
           font-weight: bold;
           min-width: 75px;
-          a & {
-            &:hover {
-              color: ${theme.colors.background};
-            }
-          }
+  
           .create & {
             &.createBtn {
               background-color: #8b8b8b;
@@ -126,7 +121,7 @@ export function GlobalStyles () {
             background-color: ${theme.colors.footer};
           }
           &:disabled {
-            background-color: ${theme.colors.footer};
+            background-color: ${theme.colors.disabledBtn};
             cursor: default;
           }
         }
