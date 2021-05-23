@@ -136,7 +136,7 @@ const Edit = (props: any) => {
               <input
                 className="buttonCompact"
                 disabled={ !content || !title || !slug || !teaser }
-                type="submit" value="Update"
+                type="submit" value="Save"
               />
               <a className="buttonCompact" onClick={() => Router.push(`/blog/${editSlug}`)}>Cancel</a>
               <a className="buttonCompact delete" onClick={confirmOnClick}>Delete</a>

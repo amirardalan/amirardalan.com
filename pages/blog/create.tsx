@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
-import Router from 'next/router'
+import Router, { useRouter } from 'next/router'
 import Link from 'next/link'
 import Head from 'next/head'
-import LoadingTriangle from '../../components/LoadingTriangle'
 import Login from '../../components/Login'
 import { useSession } from 'next-auth/client'
 
@@ -67,19 +66,22 @@ const Draft: React.FC = () => {
   let create = null
 
   if (session && session.user.email == process.env.NEXT_PUBLIC_USER_EMAIL) {
+      const router = useRouter()
+
+  console.log(router.query.id)
     create = (
       <div className="blog">
 
         <nav className="breadcrumbs">
           <Link href="/blog">Blog</Link>
-          <span>New Post</span>
+          <span>Create</span>
         </nav>
 
         <Login />
 
         <div>
           <form onSubmit={submitData}>
-            <h3 className="sessionHeading">New Post</h3>
+            <h3 className="sessionHeading">Create (draft)</h3>
             <input
               autoFocus
               onChange={(e) => setTitle(e.target.value)}
@@ -119,7 +121,7 @@ const Draft: React.FC = () => {
               <input
                 className="buttonCompact"
                 disabled={!content || !title || !slug || !teaser}
-                type="submit" value="Save Draft"
+                type="submit" value="Save"
               />
               <a
                 className="buttonCompact"

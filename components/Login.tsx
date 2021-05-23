@@ -55,7 +55,7 @@ const Login: React.FC = () => {
       }}>
         <Link href="/blog/create">
           <button className="buttonCompact" aria-label="New Post">
-            New post
+            Create
           </button>
         </Link>
         <Link href="/blog/drafts" aria-label="Drafts">

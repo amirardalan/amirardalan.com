@@ -67,40 +67,39 @@ export function GlobalStyles () {
 
         // Buttons
         .buttonCta {
+          min-width: 128px;
           flex-direction: row;
           display: flex;
+          justify-content: center;
           align-items: center;
           margin: 0 1rem 2rem 0;
           cursor: pointer;
-          padding: 1rem 1.4rem;
-          background-color: transparent;
-          border: 4px solid ${theme.colors.link};
-          color: ${theme.colors.link};
-          font-family: 'Poppins', Arial, Helvetica, sans-serif;
+          padding: .5rem 1.4rem;
+          background: ${theme.colors.text};
+          border: 4px solid transparent;
+          border-radius: 5px;
+          color: ${theme.colors.background};
+          font-family: Menlo, Monaco, 'Courier New', monospace;
           font-size: 14px;
-          font-weight: bold;
-          box-shadow: 4px 4px 0 ${theme.colors.link};
-          letter-spacing: .02rem;
-          transition: background-color .2s linear;
           &:hover {
-            background: ${theme.colors.link};
-            border: 4px solid transparent;
-            color: ${theme.colors.highlight};
-            box-shadow: 4px 4px 0 ${theme.colors.linkLight};
-            transition: background-color .2s linear;
+            background-color: ${theme.colors.divider};
+            color: ${theme.colors.text};
           }
         }
 
         input.buttonCompact,
         .buttonCompact {
+          font-family: Menlo, Monaco, 'Courier New', monospace;
           background-color: ${theme.colors.text};
           border: 1px solid ${theme.colors.divider};
           border-radius: 5px;
           cursor: pointer;
-          padding: .5rem .8rem;
+          padding: .45rem 0;
           color: ${theme.colors.background};
           font-size: 12px;
+          text-transform: uppercase;
           font-weight: bold;
+          min-width: 75px;
           a& {
             &:hover {
               color: ${theme.colors.background};
@@ -219,6 +218,8 @@ export function GlobalStyles () {
         .latestPost {
           line-height: 1.8rem;
           font-weight: normal;
+          border-left: 7px solid ${theme.colors.divider};
+          padding-left: 1.2rem;
           h4 {
             font-weight: normal;
           }
@@ -367,9 +368,6 @@ export function GlobalStyles () {
           font-size: 12px;
           font-weight: lighter;
           text-transform: uppercase;
-          .confirmSelect {
-            /* margin-left: .5rem; */
-          }
           .confirmLink {
             text-transform: none;
             margin-right: .5rem;
@@ -377,8 +375,7 @@ export function GlobalStyles () {
             font-weight: bold;
             color: ${theme.colors.text};
             &.delete {
-              color: ${theme.colors.text};
-              &:hover { color:#ff6262 }
+              color: #ff6262;
             }
             &.close {
               font-size: 25px;

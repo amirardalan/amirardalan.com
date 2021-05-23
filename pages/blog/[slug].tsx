@@ -173,7 +173,7 @@ const Post = (props: any) => {
               <button className="buttonCompact" onClick={() => publishPost(props.post.id)}>Publish</button>
             )}
             { isPublished && userHasValidSession && (
-              <button className="buttonCompact" onClick={() => unPublishPost(props.post.id)}>Un-Publish</button>
+              <button className="buttonCompact" onClick={() => unPublishPost(props.post.id)}>Unpublish</button>
             )}
             { userHasValidSession && (
               <button className="buttonCompact" onClick={() => editPost(props.post.id)}>Edit</button>

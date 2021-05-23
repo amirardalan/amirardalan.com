@@ -89,18 +89,10 @@ export default function Home(props: any) {
           <div className="cta">
             <Link
               href="/blog"
-              aria-label="Read the Blog"
+              aria-label="Blog"
             >
               <button className="buttonCta">
-                Read the Blog
-              </button>
-            </Link>
-            <Link
-              href="/amir-ardalan-resume.pdf"
-              aria-label="Download Resume"
-            >
-              <button className="buttonCta">
-                ⤓ Resume
+                Weblog
               </button>
             </Link>
           </div>
