@@ -104,7 +104,6 @@ const Edit = (props: any) => {
 
         <div>
           <form onSubmit={submitData}>
-            <h3 className="sessionHeading">Edit Post</h3>
             <input
               autoFocus
               onChange={(e) => setTitle(e.target.value)}

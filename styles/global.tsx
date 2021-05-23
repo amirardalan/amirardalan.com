@@ -403,9 +403,10 @@ export function GlobalStyles () {
           padding: 1.8rem;
           margin: 1rem 0 .5rem;
           &::after {
-            content: 'unpublished';
+            font-family: Menlo, Monaco, 'Courier New', monospace;
+            font-style: italic;
+            content: 'draft';
             color: ${theme.colors.footer};
-            font-weight: bold;
             font-size: 12px;
             align-self: right;
           }
