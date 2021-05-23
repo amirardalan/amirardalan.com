@@ -91,6 +91,7 @@ export function GlobalStyles () {
           }
         }
 
+        input.buttonCompact,
         .buttonCompact {
           background-color: ${theme.colors.text};
           border: 1px solid ${theme.colors.divider};
@@ -353,6 +354,10 @@ export function GlobalStyles () {
         .controlsPost {
           margin: 2rem 0;
         }
+
+        .formSubmit {
+          margin-top: 1rem;
+        }
         
         .controlsConfirm {
           display: flex;
@@ -363,7 +368,7 @@ export function GlobalStyles () {
           font-weight: lighter;
           text-transform: uppercase;
           .confirmSelect {
-            margin-left: .5rem;
+            /* margin-left: .5rem; */
           }
           .confirmLink {
             text-transform: none;
@@ -376,7 +381,7 @@ export function GlobalStyles () {
               &:hover { color:#ff6262 }
             }
             &.close {
-              font-size: 20px;
+              font-size: 25px;
                 &:hover {
                 color: ${theme.colors.footer}
               }
@@ -398,6 +403,7 @@ export function GlobalStyles () {
             align-self: right;
           }
           @media (max-width: 480px) {
+            padding: 1rem;
             &::after { content: '' }
             h2 {
               line-height: 2.1rem;
@@ -459,8 +465,7 @@ export function GlobalStyles () {
         // Special Delete (non)Button
         .formSubmit {
           a { padding: .44rem 0.8rem; }
-          a.delete { &:hover { background-color: #ff6262 }
-          }
+          a.delete { &:hover { background-color: #ff6262 }}
         }
 
         // Next Prev Controls

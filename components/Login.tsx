@@ -26,7 +26,7 @@ const Login: React.FC = () => {
         }}>
         <span css={{
           display: 'flex',
-          fontSize: '12px',
+          fontSize: '11px',
           alignSelf: 'center',
           color: theme.colors.textLight,
           fontFamily: "Menlo, Monaco, 'Courier New', monospace",
@@ -41,7 +41,11 @@ const Login: React.FC = () => {
             marginBottom: '.5rem'
           }
         }}>
-          {session.user.name} ({session.user.email}) • <a onClick={() => signOut()}> Sign Out</a>
+          {session.user.name}
+          ({session.user.email}) •
+          <a onClick={() => signOut()} aria-label="Sign Out">
+            Sign Out
+          </a>
         </span>
       </div>
     )
@@ -50,11 +54,11 @@ const Login: React.FC = () => {
         justifyContent: 'right'
       }}>
         <Link href="/blog/create">
-          <button className="buttonCompact">
+          <button className="buttonCompact" aria-label="New Post">
             New post
           </button>
         </Link>
-        <Link href="/blog/drafts">
+        <Link href="/blog/drafts" aria-label="Drafts">
           <button className="buttonCompact" data-active={isActive('/drafts')}>
             Drafts
           </button>
@@ -65,7 +69,7 @@ const Login: React.FC = () => {
 
   return (
     <nav css={{
-      margin: '.5rem 0',
+      margin: '1.5rem 0',
       display: 'flex',
       flexDirection: 'row',
       justifyContent: 'space-between',

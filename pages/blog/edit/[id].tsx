@@ -69,7 +69,6 @@ const Edit = (props: any) => {
       >
         ×
       </span>
-        Confirm:
       <div className="confirmSelect">
         <span
           className="confirmLink delete"
@@ -136,7 +135,7 @@ const Edit = (props: any) => {
             <div className="formSubmit">
               <input
                 className="buttonCompact"
-                disabled={!content || !title || !slug || !teaser}
+                disabled={ !content || !title || !slug || !teaser }
                 type="submit" value="Update"
               />
               <a className="buttonCompact" onClick={() => Router.push(`/blog/${editSlug}`)}>Cancel</a>

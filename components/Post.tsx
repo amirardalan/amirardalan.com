@@ -37,9 +37,17 @@ const Post: React.FC<{ post: PostProps }> = ({ post }) => {
 
   return (
     <div className="blog postTeaser">
-      <h2 aria-label={post.title} onClick={() => Router.push("/blog/[slug]", `/blog/${post.slug}`)}>{post.title}</h2>
+      <h2
+        onClick={() => Router.push("/blog/[slug]", `/blog/${post.slug}`)}
+        aria-label={post.title}>
+        {post.title}
+      </h2>
       <small>
-        <span className="postDetails">{postDate} • {readTime}</span>
+        <span
+          className="postDetails"
+          aria-label={`${postDate} • ${readTime}`}>
+          {postDate} • {readTime}
+        </span>
       </small>
       <p>{post.teaser}</p>
     </div>

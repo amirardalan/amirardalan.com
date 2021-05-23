@@ -133,7 +133,6 @@ const Post = (props: any) => {
       >
         ×
       </span>
-        Confirm:
       <div className="confirmSelect">
         <span
           className="confirmLink delete"
