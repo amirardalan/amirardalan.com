@@ -46,7 +46,7 @@ const Edit = (props: any) => {
   }
 
   async function deletePost(id: number): Promise<void> {
-    await fetch(`http://localhost:3000/api/post/${id}`, {
+    await fetch(`/api/post/${id}`, {
       method: 'DELETE',
     })
     if (props.editPost.published) {
