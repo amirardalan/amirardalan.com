@@ -6,7 +6,6 @@ export default function Footer() {
 
   return (
     <footer css={css`
-      font-family: Menlo, Monaco, 'Courier New', monospace;
       margin-top: 2rem;
       display: flex;
       flex-direction: column;

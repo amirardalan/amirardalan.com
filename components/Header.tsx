@@ -75,7 +75,7 @@ export default function Header() {
                   margin: '0',
                   padding: '0 0 0 .1rem',
                   color: theme.colors.footer,
-                  fontFamily: "Menlo, Monaco, 'Courier New', monospace",
+                  fontFamily: "'Fira Code', Menlo, Monaco, 'Courier New', monospace",
                   fontSize: '8px',
                   fontWeight: 'normal',
                   letterSpacing: '.11rem',

@@ -10,7 +10,6 @@ export default function CanvasText() {
         className="canvasControls"
         aria-label="${theme.canvas.textSmall}"
         css={css`
-          font-family: Menlo, Monaco, 'Courier New', monospace;
           color: ${theme.colors.footer};
           margin: 0 0 1rem 0;
           padding: 0;

@@ -13,8 +13,8 @@ export function GlobalStyles () {
           margin: 0;
           padding: 0;
           background-color: ${theme.colors.background};
+          font-family: 'Fira Code', Menlo, Monaco, 'Courier New', monospace;
           color: ${theme.colors.text};
-          font-family: 'Poppins', Arial, Helvetica, sans-serif;
           transition: all 0.25s linear;
         }
 
@@ -41,6 +41,10 @@ export function GlobalStyles () {
           padding: 0;
         }
 
+        button, a {
+          font-family: 'Fira Code', Menlo, Monaco, 'Courier New', monospace;
+        }
+
         input[type='text'],
         textarea {
           width: 100%;
@@ -50,7 +54,6 @@ export function GlobalStyles () {
           border: 2px solid ${theme.colors.divider};
           border-radius: 0.25rem;
           color: ${theme.colors.text};
-          font-family: 'Fira Code', Menlo, Monaco, 'Courier New', monospace;
           font-size: 16px;
 
           &:disabled {
@@ -76,7 +79,6 @@ export function GlobalStyles () {
           border: 4px solid transparent;
           border-radius: 5px;
           color: ${theme.colors.background};
-          font-family: 'Fira Code', Menlo, Monaco, 'Courier New', monospace;
           font-size: 14px;
           cursor: pointer;
           &:hover {
@@ -96,7 +98,6 @@ export function GlobalStyles () {
           border: 1px solid ${theme.colors.divider};
           border-radius: 5px;
           color: ${theme.colors.background};
-          font-family: 'Fira Code', Menlo, Monaco, 'Courier New', monospace;
           font-size: 12px;
           text-transform: uppercase;
           text-align: center;
@@ -163,6 +164,9 @@ export function GlobalStyles () {
           justify-content: space-between;
           animation: slide-up .8s forwards;
 
+          h2, h3, p {
+            font-family: 'Poppins', Arial, Arial, Helvetica, sans-serif;
+          }
           h2 {
             margin: 0 0 1rem;
             font-weight: bolder;
@@ -183,7 +187,6 @@ export function GlobalStyles () {
 
           h4 {
             color: ${theme.colors.footer};
-            font-family: 'Fira Code', Menlo, Monaco, 'Courier New', monospace;
             font-size: 12px;
             line-height: 1.3rem;
 
@@ -287,7 +290,6 @@ export function GlobalStyles () {
           align-items: center;
           color: ${theme.colors.footer};
           font-size: 13px;
-          font-family: 'Fira Code', Menlo, Monaco, 'Courier New', monospace;
           &::before {
             padding-right: .5rem;
             display: flex;
@@ -311,12 +313,6 @@ export function GlobalStyles () {
           }
         }
 
-        h3.sessionHeading {
-          margin: 0;
-          padding: 0;
-          font-size: 40px;
-        }
-
         .blog {
           max-width: 768px;
           margin: 0 auto;
@@ -324,7 +320,9 @@ export function GlobalStyles () {
           @media (max-width: 480px) {
             padding: 0 1%;
           }
-
+          h2, h3, h4 {
+            font-family: 'Poppins', Arial, Arial, Helvetica, sans-serif;
+          }
           h2 {
             margin: 0;
             display: inline-block;
@@ -356,7 +354,6 @@ export function GlobalStyles () {
         .postDetails {
           margin: .5rem 0 .2rem;
           display: block;
-          font-family: 'Fira Code', Menlo, Monaco, 'Courier New', monospace;
           font-size: 13px;
         }
 
@@ -379,7 +376,6 @@ export function GlobalStyles () {
           .confirmLink {
             margin-right: .5rem;
             color: ${theme.colors.text};
-            font-family: 'Fira Code', Menlo, Monaco, 'Courier New', monospace;
             font-size: 12px;
             font-weight: bold;
             text-transform: none;
@@ -407,7 +403,6 @@ export function GlobalStyles () {
             content: 'Draft';
             align-self: right;
             color: ${theme.colors.footer};
-            font-family: 'Fira Code', Menlo, Monaco, 'Courier New', monospace;
             font-size: 12px;
             font-style: italic;
           }
@@ -514,7 +509,6 @@ export function GlobalStyles () {
           background-color: ${theme.colors.text};
           border-radius: 5px;
           color: ${theme.colors.background};
-          font-family: 'Fira Code', Menlo, Monaco, 'Courier New', monospace;
         }
         pre {
           padding: 1rem;
