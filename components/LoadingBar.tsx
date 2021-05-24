@@ -6,10 +6,11 @@ export default function LoadingBar() {
 
   return(
     <div css={css`
+      z-index: 3;
       width: 100vw;
-      height: 5px;
-      position: absolute;
+      position: fixed;
       top: 0;
+      height: 5px;
     `}>
       <div css={css`
         height: inherit;
