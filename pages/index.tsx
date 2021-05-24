@@ -113,11 +113,11 @@ export default function Home(props: any) {
                 Words
               </button>
             </Link>
-            {/* <Link href="/bio" aria-label="Bio">
+            <Link href="/bio" aria-label="Bio">
               <button className="buttonCta">
                 Bio
               </button>
-            </Link> */}
+            </Link>
           </div>
           { showLatestPost ? <ShowLatestPost /> : null }
         </div>
