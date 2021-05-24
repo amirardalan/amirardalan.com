@@ -8,7 +8,7 @@ import { useSession } from 'next-auth/client'
 import LoadingTriangle from '../../../components/LoadingTriangle'
 import SignedIn from '../../../components/SignedIn'
 
-export const getStaticProps: GetServerSideProps = async ({ params }) => {
+export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const editPost = await prisma.post.findUnique({
     where: {
       id: Number(params?.id) || -1,
