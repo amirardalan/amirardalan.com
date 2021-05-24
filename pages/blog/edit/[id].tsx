@@ -2,13 +2,13 @@ import React, { useState } from 'react'
 import Router from 'next/router'
 import Link from 'next/link'
 import Head from 'next/head'
-import { GetStaticProps } from 'next'
+import { GetServerSideProps } from 'next'
 import prisma from '../../../lib/prisma'
 import { useSession } from 'next-auth/client'
 import LoadingTriangle from '../../../components/LoadingTriangle'
 import SignedIn from '../../../components/SignedIn'
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getStaticProps: GetServerSideProps = async ({ params }) => {
   const editPost = await prisma.post.findUnique({
     where: {
       id: Number(params?.id) || -1,
