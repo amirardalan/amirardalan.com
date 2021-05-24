@@ -63,7 +63,7 @@ export default function Home(props: any) {
   }, [])
   
   return (
-    <main>
+    <main className="home">
       <div className="mainLeft">
         <div css={{
           marginBottom: '3rem',

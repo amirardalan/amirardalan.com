@@ -50,7 +50,7 @@ const Blog: React.FC<Props> = (props: any) => {
               key={post.id}
               className="post"
             >
-                <Post post={post} />
+              <Post post={post} />
             </div>
           ))}
         </div>

@@ -1,3 +1,8 @@
+import "@fontsource/poppins/700.css"
+import "@fontsource/poppins/900.css"
+import "@fontsource/lora/500.css"
+import "@fontsource/lora/500-italic.css"
+import "@fontsource/fira-code/400.css"
 import { css, Global, useTheme } from '@emotion/react'
 
 export function GlobalStyles () {
@@ -141,8 +146,22 @@ export function GlobalStyles () {
           display: flex;
           justify-content: space-between;
           animation: fade-in 3s forwards;
-          
           a { text-decoration: none; }
+          .headerRight {
+            display: flex;
+            flex-direction: row;
+          }
+        }
+
+        .nav {
+          position: relative;
+          &.active {
+            &::before {
+              position: absolute;
+              content: '>';
+              left: -10px;
+            }
+          }
         }
 
         .container {
@@ -321,7 +340,7 @@ export function GlobalStyles () {
           margin: 0 auto;
           
           @media (max-width: 480px) {
-            padding: 0 1%;
+            margin: 0 1%;
           }
           h2, h3, h4 {
             font-family: 'Poppins', Arial, Arial, Helvetica, sans-serif;
