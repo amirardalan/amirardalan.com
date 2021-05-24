@@ -1,6 +1,17 @@
 import React from 'react'
 import Typical from 'react-typical'
 
+// Code Art
+console.log(`
+  █████   ███    ███ ██ ██████  
+  ██   ██ ████  ████ ██ ██   ██ 
+  ███████ ██ ████ ██ ██ ██████  
+  ██   ██ ██  ██  ██ ██ ██   ██ 
+  ██   ██ ██      ██ ██ ██   ██ 
+  -----------------------------
+  Design & Code by Amir Ardalan
+`)
+
 const TypingAnimation =  React.memo(()=> {
   return (
     <Typical

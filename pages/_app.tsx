@@ -10,6 +10,7 @@ import "@fontsource/poppins/700.css"
 import "@fontsource/poppins/900.css"
 import "@fontsource/lora/500.css"
 import "@fontsource/lora/500-italic.css"
+import "@fontsource/fira-code/400.css"
 import { GlobalStyles } from '../styles/global'
 import { ThemeProvider } from '@emotion/react'
 import { themeLight, themeDark } from '../styles/theme'
@@ -38,17 +39,6 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   // Theme Toggle
   const [theme, toggleTheme] = useDarkMode()
   const themeMode = theme === 'light' ? themeLight : themeDark
-
-  // Console Art
-  console.log(`
-  █████   ███    ███ ██ ██████  
-  ██   ██ ████  ████ ██ ██   ██ 
-  ███████ ██ ████ ██ ██ ██████  
-  ██   ██ ██  ██  ██ ██ ██   ██ 
-  ██   ██ ██      ██ ██ ██   ██ 
-  -----------------------------
-  Design & Code by Amir Ardalan
-  `)
 
   return (
     <Provider session={pageProps.session}>

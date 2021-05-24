@@ -50,7 +50,7 @@ export function GlobalStyles () {
           border: 2px solid ${theme.colors.divider};
           border-radius: 0.25rem;
           color: ${theme.colors.text};
-          font-family: Menlo, Monaco, 'Courier New', monospace;
+          font-family: 'Fira Code', Menlo, Monaco, 'Courier New', monospace;
           font-size: 16px;
 
           &:disabled {
@@ -76,7 +76,7 @@ export function GlobalStyles () {
           border: 4px solid transparent;
           border-radius: 5px;
           color: ${theme.colors.background};
-          font-family: Menlo, Monaco, 'Courier New', monospace;
+          font-family: 'Fira Code', Menlo, Monaco, 'Courier New', monospace;
           font-size: 14px;
           cursor: pointer;
           &:hover {
@@ -96,7 +96,7 @@ export function GlobalStyles () {
           border: 1px solid ${theme.colors.divider};
           border-radius: 5px;
           color: ${theme.colors.background};
-          font-family: Menlo, Monaco, 'Courier New', monospace;
+          font-family: 'Fira Code', Menlo, Monaco, 'Courier New', monospace;
           font-size: 12px;
           text-transform: uppercase;
           text-align: center;
@@ -183,7 +183,7 @@ export function GlobalStyles () {
 
           h4 {
             color: ${theme.colors.footer};
-            font-family: Menlo, Monaco, 'Courier New', monospace;
+            font-family: 'Fira Code', Menlo, Monaco, 'Courier New', monospace;
             font-size: 12px;
             line-height: 1.3rem;
 
@@ -287,7 +287,7 @@ export function GlobalStyles () {
           align-items: center;
           color: ${theme.colors.footer};
           font-size: 13px;
-          font-family: Menlo, Monaco, 'Courier New', monospace;
+          font-family: 'Fira Code', Menlo, Monaco, 'Courier New', monospace;
           &::before {
             padding-right: .5rem;
             display: flex;
@@ -356,7 +356,7 @@ export function GlobalStyles () {
         .postDetails {
           margin: .5rem 0 .2rem;
           display: block;
-          font-family: Menlo, Monaco, 'Courier New', monospace;
+          font-family: 'Fira Code', Menlo, Monaco, 'Courier New', monospace;
           font-size: 13px;
         }
 
@@ -379,7 +379,7 @@ export function GlobalStyles () {
           .confirmLink {
             margin-right: .5rem;
             color: ${theme.colors.text};
-            font-family: Menlo, Monaco, 'Courier New', monospace;
+            font-family: 'Fira Code', Menlo, Monaco, 'Courier New', monospace;
             font-size: 12px;
             font-weight: bold;
             text-transform: none;
@@ -407,7 +407,7 @@ export function GlobalStyles () {
             content: 'Draft';
             align-self: right;
             color: ${theme.colors.footer};
-            font-family: Menlo, Monaco, 'Courier New', monospace;
+            font-family: 'Fira Code', Menlo, Monaco, 'Courier New', monospace;
             font-size: 12px;
             font-style: italic;
           }
@@ -514,7 +514,7 @@ export function GlobalStyles () {
           background-color: ${theme.colors.text};
           border-radius: 5px;
           color: ${theme.colors.background};
-          font-family: Menlo, Monaco, 'Courier New', monospace;
+          font-family: 'Fira Code', Menlo, Monaco, 'Courier New', monospace;
         }
         pre {
           padding: 1rem;
