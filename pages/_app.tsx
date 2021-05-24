@@ -1,7 +1,7 @@
 import React from 'react'
 import Router from 'next/router'
 import Head from 'next/head'
-import LoadingTriangle from '../components/LoadingTriangle'
+import LoadingBar from '../components/LoadingBar'
 import Header from '../components/Header'
 import Toggle from '../components/Toggle'
 import Footer from '../components/Footer'
@@ -47,17 +47,13 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
           <title>Amir Ardalan | Portfolio</title>
           <meta name="theme-color" content={themeMode.colors.background} />
         </Head>
+        { loading ? <LoadingBar /> : null }
         <div className="container">
           <div className="header">
             <Header />
             <Toggle toggleTheme={toggleTheme} />
           </div>
-          { loading ?
-            <div className="center">
-              <LoadingTriangle />
-            </div> :
-            <Component {...pageProps} />
-          }
+          <Component {...pageProps} />
           <Footer />
         </div>
       </ThemeProvider>
