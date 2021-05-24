@@ -10,30 +10,31 @@ const Toggle = ({ toggleTheme }) => {
       <button
         onClick={toggleTheme}
         aria-label="Toggle Dark Mode"
-        css={css`
-          background: none;
-          border: none;
-          margin: 0;
-          padding: 0;
-          cursor: pointer;
-          display: flex;
-          overflow: hidden;
-          align-self: center;
-          &:hover {
-            span { animation: slide-left .5s forwards; }
+        css={{
+          margin: 0,
+          padding: 0,
+          display: 'flex',
+          alignSelf: 'center',
+          overflow: 'hidden',
+          background: 'none',
+          border: 'none',
+          cursor: 'pointer',
+          '&:hover': {
+            span: { animation: 'slide-left .5s forwards' }
           }
-        `}>
+        }}>
 
-        <span css={css`
-          color: ${theme.colors.text};
-          width: 50px;
-          font-family: 'Fira Code', Menlo, Monaco, 'Courier New', monospace;
-          font-size: 9px;
-          line-height: .7rem;
-          text-transform: uppercase;
-          padding: .3rem .5rem 0 0;
-          text-align: right;
-          animation: slide-right .3s forwards; `}>
+        <span css={{
+          color: theme.colors.text,
+          width: '50px',
+          fontFamily: '"Fira Code", Menlo, Monaco, "Courier New", monospace',
+          fontSize: '9px',
+          lineHeight: '.7rem',
+          textTransform: 'uppercase',
+          padding: '.3rem .5rem 0 0',
+          textAlign: 'right',
+          animation: 'slide-right .3s forwards',
+        }}>
           {theme.toggleButton.text}
         </span>
 
@@ -43,10 +44,10 @@ const Toggle = ({ toggleTheme }) => {
           aria-label={theme.toggleButton.iconAlt}
           width={30}
           height={30}
-          css={css`
-            background: ${theme.colors.background};
-            transition: background-color .25s linear;
-          `}
+          css={{
+            background: theme.colors.background,
+            transition: 'background-color .25s linear',
+          }}
         />
       </button>
     </>

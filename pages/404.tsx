@@ -14,34 +14,33 @@ export default function Custom404() {
         <title>Page Not Found | Amir Ardalan</title>
       </Head>
 
-      <div css={css`
-        padding: 4rem 1.5rem;
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        background-color: ${theme.page.bg};
-      `}>
+      <div css={{
+        padding: '4rem 1.5rem',
+        position: 'relative',
+        display: 'flex',
+        flexDirection: 'column',
+        backgroundColor: theme.page.bg,
+      }}>
         <ErrorAnimation />
-        <div css={css`
-          display: flex;
-          justify-content: row;
-          justify-content: center;
-          animation: fade-in .5s forwards;
-          animation: slide-up .5s forwards;
+        <div css={{
+          display: 'flex',
+          justifyContent: 'center',
+          animation: 'slide-up .5s forwards',
 
-          h1 {
-            border-right: 1px solid #999;
-            margin: 0 1rem 0 1rem;
-            padding-right: 1rem;
-          }
-          h2 {
-            font-size: 12px;
-            font-weight: 400;
-          }
-          h1, h2 {
-            align-self: center;
-          }
-        `}>
+          h2: {
+            margin: '0 1rem 0 1rem',
+            paddingRight: '1rem',
+            alignSelf: 'center',
+            borderRight: '1px solid' + theme.colors.footer,
+            fontFamily: "'Poppins', Arial, Helvetica, sans-serif",
+            fontSize: '40px',
+          },
+          h3: {
+            alignSelf: 'center',
+            fontSize: '12px',
+            fontWeight: 'normal',
+          },
+        }}>
           <Image
             src={theme.logoError}
             alt="Error"
@@ -49,19 +48,18 @@ export default function Custom404() {
             width={40}
             height={40}
           />
-          <h1 aria-label="404">
+          <h2 aria-label="404">
             404
-          </h1>
-          <h2 aria-label="This Page could not be found.">
-            You seem to be lost in space...
           </h2>
+          <h3 aria-label="This Page could not be found.">
+            You seem to be lost in space...
+          </h3>
         </div>
-        <div css={css`
-          margin-top: 1.5rem;
-          text-align: center;
-          animation: fade-in 1s forwards;
-          animation: slide-up 1s forwards;
-        `}>
+        <div css={{
+          marginTop: '1.5rem',
+          textAlign: 'center',
+          animation: 'slide-up 1s forwards',
+        }}>
           <Link
             href="/"
             aria-label="Return Home"

@@ -65,17 +65,17 @@ export default function Home(props: any) {
   return (
     <main>
       <div className="mainLeft">
-        <div css={css`
-          margin-bottom: 3rem;
-          @media (max-width: 890px) {
-            order: 1;
+        <div css={{
+          marginBottom: '3rem',
+          '@media (max-width: 890px)': {
+            order: 1,
+          },
+          '@media (max-width: 480px)': {
+            marginBottom: '2rem',
+            height: '60px',
+            width: '60px',
           }
-          @media (max-width: 480px) {
-            margin-bottom: 2rem;
-            height: 60px;
-            width: 60px;
-          }
-        `}>
+        }}>
           <Image
             src="/photo.png"
             alt="Amir Ardalan"
@@ -83,20 +83,20 @@ export default function Home(props: any) {
             width={100}
             height={100}
           />
-        </div>   
+        </div>
         <div
           aria-label="Hi, I'm Amir Ardalan"
-          css={css`
-            margin: 0;
-            line-height: 1.3;
-            font-size: calc(1.6vw + 1.6vh);
-            min-height: 0vw;
-            font-weight: bolder;
-            @media (min-width: 480px) and (max-width: 890px) {
-              font-size: calc(2.5vw + 2.5vh);
-              min-height: 0vw;
+          css={{
+            margin: 0,
+            lineHeight: 1.3,
+            fontSize: 'calc(1.6vw + 1.6vh)',
+            minHeight: '0vw',
+            fontWeight: 'bolder',
+            '@media (min-width: 480px) and (max-width: 890px)': {
+              fontSize: 'calc(2.5vw + 2.5vh)',
+              minHeight: '0vw',
             }
-          `}
+          }}
         >
           <h2>
             Hi, {theme.helloEmoji} I'm <br/>
@@ -108,14 +108,16 @@ export default function Home(props: any) {
           </h3>
           <br/>
           <div className="cta">
-            <Link
-              href="/blog"
-              aria-label="Blog"
-            >
+            <Link href="/blog" aria-label="Blog">
               <button className="buttonCta">
-                Weblog
+                Words
               </button>
             </Link>
+            {/* <Link href="/bio" aria-label="Bio">
+              <button className="buttonCta">
+                Bio
+              </button>
+            </Link> */}
           </div>
           { showLatestPost ? <ShowLatestPost /> : null }
         </div>
