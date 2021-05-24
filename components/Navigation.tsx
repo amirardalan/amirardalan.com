@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useTheme, css } from '@emotion/react'
 import Link from './Link'
 
@@ -16,11 +17,38 @@ export default function Navigation() {
       '&:hover': {
         color: theme.colors.footer,
       }
+    },
+    '@media(max-width: 600px)': {
+      display: 'none',
     }
   })
 
-  return (
-    <div css={mainNav}>
+  const mobileNav = css({
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    marginRight: '1.5rem',
+    cursor: 'pointer',
+    '.mobileNavWrapper': {
+      backgroundColor: theme.colors.divider,
+      height: '100vh',
+      width: '100vw',
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+    },
+    '@media(min-width: 600px)': {
+      display: 'none',
+    }
+  })
+
+  // Set state for mobile nav
+  const [toggleMobileNav, setToggleMobileNav] = useState(false)
+  const ShowNavItems = () => (
+    <div className="mobileNavWrapper">
       <Link href="/" activeClassName="active" aria-label="Home">
         <a className="nav">Home</a>
       </Link>
@@ -31,5 +59,20 @@ export default function Navigation() {
         <a className="nav">Blog</a>
       </Link>
     </div>
+  )
+
+  return (
+    <>
+      <div css={mainNav}>
+        <ShowNavItems />
+      </div>
+      <div
+        css={mobileNav}
+        onClick={() => setToggleMobileNav(!toggleMobileNav)}
+      >
+        <span>[ Menu ]</span>
+          { toggleMobileNav ? <ShowNavItems /> : null }
+      </div>
+    </>
   )
 }

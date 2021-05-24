@@ -141,6 +141,7 @@ export function GlobalStyles () {
 
         // Layout
         .header {
+          z-index: 10;
           height: auto;
           margin-bottom: 1.8rem;
           display: flex;
@@ -150,6 +151,7 @@ export function GlobalStyles () {
           .headerRight {
             display: flex;
             flex-direction: row;
+            align-items: center;
           }
         }
 
@@ -160,6 +162,7 @@ export function GlobalStyles () {
               position: absolute;
               content: '>';
               left: -10px;
+              animation: slide-left .5s forwards;
             }
           }
         }
@@ -443,6 +446,7 @@ export function GlobalStyles () {
 
         .postTeaser {
           h2 { font-size: 30px; }
+          animation: slide-up .5s forwards;
         }
 
         .postFull {
