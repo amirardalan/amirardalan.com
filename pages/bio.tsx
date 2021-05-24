@@ -8,7 +8,6 @@ export default function Bio() {
     display: 'flex',
     justifyContent: 'center',
     padding: '3rem',
-    color: 'hotpink',
     backgroundColor: theme.colors.divider,
     animation: 'slide-up .5s forwards'
   })

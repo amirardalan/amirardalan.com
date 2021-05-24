@@ -9,9 +9,9 @@ export default function Navigation() {
   const mainNav = css({
     display: 'flex',
     alignItems: 'center',
-    marginRight: '1rem',
+    marginRight: '1.5rem',
     a: {
-      margin: '0 1rem',
+      margin: '0 1.5rem',
       color: theme.colors.text,
       '&:hover': {
         color: theme.colors.footer,
