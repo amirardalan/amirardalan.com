@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Head from 'next/head'
 import SignedIn from '../../components/SignedIn'
 import { GetServerSideProps } from 'next'
@@ -7,17 +7,28 @@ import Post, { PostProps } from '../../components/Post'
 
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const feed = await prisma.post.findMany({
-    where: { published: true },
-  })
-  return { props: { feed } }
+  try {
+    const feed = await prisma.post.findMany({
+      where: { published: true },
+    })
+    return { props: { feed } }
+  } catch {
+    return { props: { feed: [] } }
+  }
 }
 
 type Props = {
   feed: PostProps[]
 }
 
-const Blog: React.FC<Props> = (props) => {
+const Blog: React.FC<Props> = (props: any) => {
+
+  // Post Feed Error Handling
+  const feed = props.feed
+  const showFeedError = (feed.length === 0) ? true : false
+  const FeedNotFound = () => (
+    <span>Database Error: Posts Could not be loaded. :(</span>
+  )
   
   return (
     <>
@@ -33,7 +44,8 @@ const Blog: React.FC<Props> = (props) => {
         <SignedIn />
 
         <div>
-          {props.feed.reverse().map((post) => (
+          { showFeedError ? <FeedNotFound /> : null }
+          {feed.reverse().map((post) => (
             <div
               key={post.id}
               className="post"

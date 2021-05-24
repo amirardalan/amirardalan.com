@@ -10,29 +10,50 @@ import TypingAnimation from '../components/TypingAnimation'
 
 const CanvasLoader = dynamic(() => import('../components/CanvasLoader'), {
   loading: () => <LoadingTriangle />,
-  ssr: true
+  ssr: false
 })
 
 // Get latest blog post
 export const getServerSideProps: GetServerSideProps = async () => {
-  const latestPost = await prisma.post.findMany({
-    where: { published: true },
-    orderBy: {
-      publishedAt: 'desc',
-    },
-    take: 1,
-    select: {
-      title: true,
-      teaser: true,
-      slug: true,
-    },
-  })
-  return { props: { latestPost } }
+  try {
+    const latestPost = await prisma.post.findMany({
+      where: { published: true },
+      orderBy: {
+        publishedAt: 'desc',
+      },
+      take: 1,
+      select: {
+        title: true,
+        teaser: true,
+        slug: true,
+      },
+    })
+    return { props: { latestPost } }
+  } catch {
+    return { props: {} }
+  }
 }
 
 export default function Home(props: any) {
 
-  const latestPost = props.latestPost[0]
+  // Latest Post Error Handling
+  const latestPost = (!props.latestPost) ? {} : props.latestPost[0]
+  const showLatestPost = (props.latestPost) ? true : false
+  const ShowLatestPost = () => (
+    <div className="latestPost">
+      <h4 aria-label="Latest Post">
+        Latest Post:
+      </h4>
+      <Link
+        href={`/blog/${encodeURIComponent(latestPost.slug)}`}
+        aria-label={latestPost.title}>
+        <a>{latestPost.title} →</a>
+      </Link>
+      <p className="teaser">
+        {latestPost.teaser}
+      </p>
+    </div>
+  )
 
   const theme : any = useTheme()
   const [toggleCanvas, setToggleCanvas] = useState(false);
@@ -96,19 +117,7 @@ export default function Home(props: any) {
               </button>
             </Link>
           </div>
-          <div className="latestPost">
-            <h4 aria-label="Latest Post">
-              Latest Post:
-            </h4>
-            <Link
-              href={`/blog/${encodeURIComponent(latestPost.slug)}`}
-              aria-label={latestPost.title}>
-              <a>{latestPost.title} →</a>
-            </Link>
-            <p className="teaser">
-              {latestPost.teaser}
-            </p>
-          </div>
+          { showLatestPost ? <ShowLatestPost /> : null }
         </div>
       </div>
       <div className="mainRight">
