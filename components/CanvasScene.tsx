@@ -21,8 +21,7 @@ export default function CanvasScene(props) {
       <directionalLight position={[0, 2, 0]} intensity={.1} />
       <mesh
         ref={mesh}
-        scale={.2}
-        {...props}>
+        scale={.2}>
         <Icosahedron args={[30, 6]}>
           <MeshWobbleMaterial
             color={props.theme.canvas.meshA}

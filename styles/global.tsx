@@ -41,7 +41,10 @@ export function GlobalStyles () {
           padding: 0;
         }
 
-        button, a {
+        button,
+        a,
+        input,
+        textarea {
           font-family: 'Fira Code', Menlo, Monaco, 'Courier New', monospace;
         }
 
