@@ -1,12 +1,12 @@
 import React from 'react'
 import Head from 'next/head'
-import Login from '../../components/Login'
-import { GetServerSideProps } from 'next'
+import SignedIn from '../../components/SignedIn'
+import { GetStaticProps } from 'next'
 import prisma from '../../lib/prisma'
 import Post, { PostProps } from '../../components/Post'
 
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const feed = await prisma.post.findMany({
     where: { published: true },
   })
@@ -30,7 +30,7 @@ const Blog: React.FC<Props> = (props) => {
           <span>Blog</span>
         </nav>
 
-        <Login />
+        <SignedIn />
 
         <div>
           {props.feed.reverse().map((post) => (

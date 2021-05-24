@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import Router from 'next/router'
 import Link from 'next/link'
 import Head from 'next/head'
-import Login from '../../components/Login'
+import SignedIn from '../../components/SignedIn'
 import { useSession } from 'next-auth/client'
 
 const Draft: React.FC = () => {
@@ -75,7 +75,7 @@ const Draft: React.FC = () => {
           <span>Create</span>
         </nav>
 
-        <Login />
+        <SignedIn />
 
         <div>
           <form onSubmit={submitData}>

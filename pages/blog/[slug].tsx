@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
 import Router from 'next/router'
-import { GetServerSideProps } from 'next'
+import { GetStaticProps } from 'next'
 import { useSession } from 'next-auth/client'
 import Link from 'next/link'
 import Head from 'next/head'
-import Login from '../../components/Login'
+import SignedIn from '../../components/SignedIn'
 import prisma from '../../lib/prisma'
 import ReactMarkdown from 'react-markdown'
 
 // Request post data from DB
-export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   const [post, feed] = await prisma.$transaction([
     prisma.post.findFirst({
       where: {
@@ -152,7 +152,7 @@ const Post = (props: any) => {
           <span>{title}</span>
         </nav>
 
-        <Login />
+        <SignedIn />
         
         <div className="post postFull">
 

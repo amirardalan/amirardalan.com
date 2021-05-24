@@ -1,7 +1,7 @@
 import { css, useTheme } from '@emotion/react'
 import { useState, useEffect } from 'react'
 import prisma from '../lib/prisma'
-import { GetServerSideProps } from 'next'
+import { GetStaticProps } from 'next'
 import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -14,7 +14,7 @@ const CanvasLoader = dynamic(() => import('../components/CanvasLoader'), {
 })
 
 // Get latest blog post
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const latestPost = await prisma.post.findMany({
     where: { published: true },
     orderBy: {

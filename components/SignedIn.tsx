@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 import { signOut, useSession } from 'next-auth/client'
 
 
-const Login: React.FC = () => {
+const SignedIn: React.FC = () => {
   const router = useRouter()
   const isActive: (pathname: string) => boolean = (pathname) =>
     router.pathname === pathname
@@ -82,4 +82,4 @@ const Login: React.FC = () => {
   )
 }
 
-export default Login
+export default SignedIn

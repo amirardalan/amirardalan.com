@@ -3,7 +3,7 @@ import { GetServerSideProps } from 'next'
 import { useSession, getSession } from 'next-auth/client'
 import Link from 'next/link'
 import Head from 'next/head'
-import Login from '../../components/Login'
+import SignedIn from '../../components/SignedIn'
 import Post, { PostProps } from '../../components/Post'
 import prisma from '../../lib/prisma'
 
@@ -44,7 +44,7 @@ const Drafts: React.FC<Props> = (props) => {
           <span>Drafts</span>
         </nav>
 
-        <Login />
+        <SignedIn />
 
         <div className="drafts">
           <main>
