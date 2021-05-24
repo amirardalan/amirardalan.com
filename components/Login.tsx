@@ -41,8 +41,7 @@ const Login: React.FC = () => {
             marginBottom: '.5rem'
           }
         }}>
-          {session.user.name}
-          ({session.user.email}) •
+          {session.user.name} ({session.user.email}) •
           <a onClick={() => signOut()} aria-label="Sign Out">
             Sign Out
           </a>

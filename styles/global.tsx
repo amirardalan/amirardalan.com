@@ -10,11 +10,11 @@ export function GlobalStyles () {
         // Base
         html,
         body {
+          margin: 0;
+          padding: 0;
           background-color: ${theme.colors.background};
           color: ${theme.colors.text};
           font-family: 'Poppins', Arial, Helvetica, sans-serif;
-          padding: 0;
-          margin: 0;
           transition: all 0.25s linear;
         }
 
@@ -27,8 +27,8 @@ export function GlobalStyles () {
         }
         
         h1 {
-          padding: 0;
           margin: 0;
+          padding: 0;
         }
 
         a {
@@ -44,15 +44,14 @@ export function GlobalStyles () {
         input[type='text'],
         textarea {
           width: 100%;
-          padding: 0.5rem;
           margin: 0.5rem 0;
-          border-radius: 0.25rem;
-          border: 0.125rem solid rgba(0, 0, 0, 0.2);
+          padding: 0.5rem;
           background-color: ${theme.colors.divider};
-          color: ${theme.colors.text};
           border: 2px solid ${theme.colors.divider};
-          font-size: 16px;
+          border-radius: 0.25rem;
+          color: ${theme.colors.text};
           font-family: Menlo, Monaco, 'Courier New', monospace;
+          font-size: 16px;
 
           &:disabled {
             background-color: ${theme.colors.disabledInput};
@@ -67,19 +66,19 @@ export function GlobalStyles () {
         // Buttons
         .buttonCta {
           min-width: 128px;
-          flex-direction: row;
+          margin: 0 1rem 2rem 0;
+          padding: .5rem 1.4rem;
           display: flex;
+          flex-direction: row;
           justify-content: center;
           align-items: center;
-          margin: 0 1rem 2rem 0;
-          cursor: pointer;
-          padding: .5rem 1.4rem;
           background: ${theme.colors.text};
           border: 4px solid transparent;
           border-radius: 5px;
           color: ${theme.colors.background};
           font-family: Menlo, Monaco, 'Courier New', monospace;
           font-size: 14px;
+          cursor: pointer;
           &:hover {
             background-color: ${theme.colors.divider};
             color: ${theme.colors.text};
@@ -88,18 +87,28 @@ export function GlobalStyles () {
 
         input.buttonCompact,
         .buttonCompact {
-          font-family: Menlo, Monaco, 'Courier New', monospace;
+          min-width: 75px;
+          margin: 0 .25rem 0 0;
+          padding: .45rem 0;
           background-color: ${theme.colors.text};
           border: 1px solid ${theme.colors.divider};
           border-radius: 5px;
-          cursor: pointer;
-          padding: .45rem 0;
           color: ${theme.colors.background};
+          font-family: Menlo, Monaco, 'Courier New', monospace;
           font-size: 12px;
           text-transform: uppercase;
           font-weight: bold;
-          min-width: 75px;
-  
+          cursor: pointer;
+          &:hover {
+            background-color: ${theme.colors.footer};
+          }
+          &:disabled {
+            background-color: ${theme.colors.disabledBtn};
+            cursor: default;
+          }
+          &:last-child {
+            margin: 0;
+          }
           .create & {
             &.createBtn {
               background-color: #8b8b8b;
@@ -117,19 +126,12 @@ export function GlobalStyles () {
               background-color: #ff6262;
             }
           }
-          &:hover {
-            background-color: ${theme.colors.footer};
-          }
-          &:disabled {
-            background-color: ${theme.colors.disabledBtn};
-            cursor: default;
-          }
         }
 
         // Layout
         .header {
-          margin-bottom: 1.8rem;
           height: auto;
+          margin-bottom: 1.8rem;
           display: flex;
           justify-content: space-between;
           animation: fade-in 3s forwards;
@@ -178,40 +180,40 @@ export function GlobalStyles () {
           }
 
           h4 {
-            font-family: Menlo, Monaco, 'Courier New', monospace;
-            line-height: 1.3rem;
-            font-size: 12px;
             color: ${theme.colors.footer};
+            font-family: Menlo, Monaco, 'Courier New', monospace;
+            font-size: 12px;
+            line-height: 1.3rem;
 
           }
 
           @media (max-width: 890px) {
             width: 100%;
-            justify-content: start;
-            align-self: flex-start;
+            height: auto;
             margin-right: 0;
             flex-direction: column-reverse;
-            height: auto;
+            justify-content: start;
+            align-self: flex-start;
           }
         }
 
         .mainRight {
-          cursor: crosshair;
+          width: 50%;
+          height: 75vh;
           position: relative;
           display: flex;
-          height: 75vh;
-          width: 50%;
           flex-direction: column;
-          align-self: flex-end;
-          animation: slide-up 1s forwards;
-          align-items: center;
           justify-content: center;
+          align-items: center;
+          align-self: flex-end;
+          cursor: crosshair;
+          animation: slide-up 1s forwards;
 
           @media (max-width: 890px) {
-            align-self: flex-start;
             width: 100%;
-            margin-top: 2rem;
             height: 45vh;
+            margin-top: 2rem;
+            align-self: flex-start;
           }
         }
 
@@ -221,10 +223,10 @@ export function GlobalStyles () {
         }
 
         .latestPost {
-          line-height: 1.8rem;
-          font-weight: normal;
-          border-left: 7px solid ${theme.colors.divider};
           padding-left: 1.2rem;
+          border-left: 7px solid ${theme.colors.divider};
+          font-weight: normal;
+          line-height: 1.8rem;
           h4 {
             font-weight: normal;
           }
@@ -232,8 +234,8 @@ export function GlobalStyles () {
             font-family: 'Lora', 'Times New Roman', Times, serif;
           }
           a{
-            font-size: 18px;
             color: ${theme.colors.text};
+            font-size: 18px;
             text-decoration: underline;
             &:hover {
               text-decoration: none;
@@ -247,25 +249,24 @@ export function GlobalStyles () {
 
         // Three.js Canvas
         .canvasTitle {
-          color: ${theme.colors.text};
+          z-index: 1;
+          margin: 0;
+          padding: 0 2rem;
+          min-height: 0vw;
           position: absolute;
           display: flex;
+          color: ${theme.colors.text};
           font-size: calc(2.8vw + 2.8vh);
-          min-height: 0vw;
           line-height: 7rem;
-          padding: 0 2rem;
           animation: ${theme.canvas.textAnim};
-          margin: 0;
-          padding: 0;
-          z-index: 1;
           transition: color 3s linear;
         }
 
         .canvasControls {
+          z-index: 2;
           position: absolute;
           bottom: 0;
           left: 20px;
-          z-index: 2;
           color: ${theme.colors.text};
           font-size: 10px;
           font-weight: normal;
@@ -286,11 +287,11 @@ export function GlobalStyles () {
           font-size: 13px;
           font-family: Menlo, Monaco, 'Courier New', monospace;
           &::before {
+            padding-right: .5rem;
             display: flex;
             content: '📋';
             color: ${theme.colors.link};
             font-size: 20px;
-            padding-right: .5rem;
           }
           a { text-decoration: none;
             &::after {
@@ -301,17 +302,17 @@ export function GlobalStyles () {
           }
           @media (max-width: 480px) {
             span {
-              white-space: nowrap;
               overflow: hidden;
+              white-space: nowrap;
               text-overflow: ellipsis;
             }
           }
         }
 
         h3.sessionHeading {
-          font-size: 40px;
           margin: 0;
           padding: 0;
+          font-size: 40px;
         }
 
         .blog {
@@ -323,11 +324,11 @@ export function GlobalStyles () {
           }
 
           h2 {
+            margin: 0;
             display: inline-block;
             line-height: 2.5rem;
             font-size: 38px;
             font-weight: 900;
-            margin: 0;
             cursor: pointer;
             text-decoration: underline;
             &:hover { text-decoration: none; }
@@ -337,8 +338,8 @@ export function GlobalStyles () {
             font-size: 18px;
           }
           small {
-            color: ${theme.colors.footer};
             display: block;
+            color: ${theme.colors.footer};
           }
           main {
             display: flex;
@@ -353,8 +354,8 @@ export function GlobalStyles () {
         .postDetails {
           margin: .5rem 0 .2rem;
           display: block;
-          font-size: 13px;
           font-family: Menlo, Monaco, 'Courier New', monospace;
+          font-size: 13px;
         }
 
         .controlsPost {
@@ -366,19 +367,19 @@ export function GlobalStyles () {
         }
         
         .controlsConfirm {
+          margin: .5rem 0;
           display: flex;
           flex-direction: row;
           align-items: center;
-          margin: .5rem 0;
           font-size: 12px;
           font-weight: lighter;
           text-transform: uppercase;
           .confirmLink {
-            text-transform: none;
             margin-right: .5rem;
-            cursor: pointer;
-            font-weight: bold;
             color: ${theme.colors.text};
+            font-weight: bold;
+            text-transform: none;
+            cursor: pointer;
             &.delete {
               color: #ff6262;
             }
@@ -392,18 +393,18 @@ export function GlobalStyles () {
         }
 
         .postDraft {
+          margin: 1rem 0 .5rem;
+          padding: 1.8rem;
           display: flex;
           justify-content: space-between;
           border: 1px solid ${theme.colors.divider};
-          padding: 1.8rem;
-          margin: 1rem 0 .5rem;
           &::after {
-            font-family: Menlo, Monaco, 'Courier New', monospace;
-            font-style: italic;
-            content: 'draft';
-            color: ${theme.colors.footer};
-            font-size: 12px;
+            content: 'Draft';
             align-self: right;
+            color: ${theme.colors.footer};
+            font-family: Menlo, Monaco, 'Courier New', monospace;
+            font-size: 12px;
+            font-style: italic;
           }
           @media (max-width: 480px) {
             padding: 1rem;
@@ -448,14 +449,14 @@ export function GlobalStyles () {
           }
           blockquote {
             margin-left: -1.75rem;
+            padding-left: 1.5rem;
             border-left: 5px solid ${theme.colors.footer};
             color: ${theme.colors.footer};
-            padding-left: 1.5rem;
             font-style: italic;
             & blockquote {
-              border-left: 5px solid ${theme.colors.textLight};
-              padding-left: 1rem;
               margin-left: 0;
+              padding-left: 1rem;
+              border-left: 5px solid ${theme.colors.textLight};
             }
             @media (max-width: 890px) {
               margin-left: -1.1rem;
@@ -511,36 +512,36 @@ export function GlobalStyles () {
         // Markdown Code
         pre,
         code {
-          font-family: Menlo, Monaco, 'Courier New', monospace;
           background-color: ${theme.colors.text};
-          color: ${theme.colors.background};
           border-radius: 5px;
+          color: ${theme.colors.background};
+          font-family: Menlo, Monaco, 'Courier New', monospace;
         }
         pre {
+          padding: 1rem;
           overflow: scroll;
           line-height: 2rem;
-          padding: 1rem;
         }
         code, code p {
           padding: .2rem;
-          font-size: 15px;
           background-color: ${theme.colors.text};
           color: ${theme.colors.background};
+          font-size: 15px;
         }
 
         // Special Text
         ::-moz-selection {
-          color: ${theme.colors.selectionText};
           background: ${theme.colors.selection};
+          color: ${theme.colors.selectionText};
         }
         ::selection {
-          color: ${theme.colors.selectionText};
           background: ${theme.colors.selection};
+          color: ${theme.colors.selectionText};
         }
         .highlight {
+          padding: 0 .2rem;
           background: ${theme.colors.text};
           color: ${theme.colors.background};
-          padding: 0 .2rem;
         }
 
         // Animation

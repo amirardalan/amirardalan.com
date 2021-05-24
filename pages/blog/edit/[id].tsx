@@ -132,11 +132,12 @@ const Edit = (props: any) => {
             />
 
             <div className="formSubmit">
-              <input
+              <button
                 className="buttonCompact"
                 disabled={ !content || !title || !slug || !teaser }
-                type="submit" value="Save"
-              />
+                type="submit">
+                Save
+              </button>
               <a className="buttonCompact" onClick={() => Router.push(`/blog/${editSlug}`)}>Cancel</a>
               <a className="buttonCompact delete" onClick={confirmOnClick}>Delete</a>
               { showConfirmation ? <RenderDeleteConfirmation /> : null }
