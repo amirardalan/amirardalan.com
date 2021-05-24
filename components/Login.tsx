@@ -42,7 +42,7 @@ const Login: React.FC = () => {
           }
         }}>
           {session.user.name} ({session.user.email}) •
-          <a onClick={() => signOut()} aria-label="Sign Out">
+          <a onClick={() => signOut({ callbackUrl: process.env.NEXT_PUBLIC_CALLBACK_URL })} aria-label="Sign Out">
             Sign Out
           </a>
         </span>
