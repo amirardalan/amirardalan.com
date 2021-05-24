@@ -63,18 +63,13 @@ const Edit = (props: any) => {
   const cancelOnClick = () => setShowConfirmation(false)
   const RenderDeleteConfirmation = () => (
     <div className="controlsConfirm">
-      <span
-        className="confirmLink close"
-        onClick={cancelOnClick}
-      >
-        ×
-      </span>
       <div className="confirmSelect">
-        <span
-          className="confirmLink delete"
-          onClick={() => deletePost(id)}
-        >
-          Yes, Delete
+        <span className="confirmLink delete" onClick={() => deletePost(id)}>
+          Confirm Delete
+        </span>
+        <span>•</span>
+        <span className="confirmLink close" onClick={cancelOnClick}>
+          Cancel
         </span>
       </div>
     </div>

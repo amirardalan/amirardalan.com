@@ -80,16 +80,18 @@ export function GlobalStyles () {
           font-size: 14px;
           cursor: pointer;
           &:hover {
-            background-color: ${theme.colors.divider};
-            color: ${theme.colors.text};
+            background-color: ${theme.colors.footer};
+            color: ${theme.colors.background};
           }
         }
 
+        a.buttonCompact,
         input.buttonCompact,
         .buttonCompact {
-          min-width: 75px;
+          min-width: 80px;
           margin: 0 .25rem 0 0;
           padding: .45rem 0;
+          display: inline-block;
           background-color: ${theme.colors.text};
           border: 1px solid ${theme.colors.divider};
           border-radius: 5px;
@@ -97,7 +99,7 @@ export function GlobalStyles () {
           font-family: Menlo, Monaco, 'Courier New', monospace;
           font-size: 12px;
           text-transform: uppercase;
-          font-weight: bold;
+          text-align: center;
           cursor: pointer;
           &:hover {
             background-color: ${theme.colors.footer};
@@ -367,7 +369,7 @@ export function GlobalStyles () {
         }
         
         .controlsConfirm {
-          margin: .5rem 0;
+          margin: 1rem 0 0 0;
           display: flex;
           flex-direction: row;
           align-items: center;
@@ -377,6 +379,8 @@ export function GlobalStyles () {
           .confirmLink {
             margin-right: .5rem;
             color: ${theme.colors.text};
+            font-family: Menlo, Monaco, 'Courier New', monospace;
+            font-size: 12px;
             font-weight: bold;
             text-transform: none;
             cursor: pointer;
@@ -384,10 +388,11 @@ export function GlobalStyles () {
               color: #ff6262;
             }
             &.close {
-              font-size: 25px;
-                &:hover {
-                color: ${theme.colors.footer}
-              }
+              margin-left: .5rem;
+            }
+            &.delete:hover,
+            &.close:hover {
+              text-decoration: underline;
             }
           }
         }
@@ -464,12 +469,6 @@ export function GlobalStyles () {
             }
             p { font-size: 24px; }
           }
-        }
-
-        // Special Delete (non)Button
-        .formSubmit {
-          a { padding: .44rem 0.8rem; }
-          a.delete { &:hover { background-color: #ff6262 }}
         }
 
         // Next Prev Controls
