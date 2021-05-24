@@ -39,6 +39,17 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   const [theme, toggleTheme] = useDarkMode()
   const themeMode = theme === 'light' ? themeLight : themeDark
 
+  // Console Art
+  console.log(`
+  █████   ███    ███ ██ ██████  
+  ██   ██ ████  ████ ██ ██   ██ 
+  ███████ ██ ████ ██ ██ ██████  
+  ██   ██ ██  ██  ██ ██ ██   ██ 
+  ██   ██ ██      ██ ██ ██   ██ 
+  -----------------------------
+  Design & Code by Amir Ardalan
+  `)
+
   return (
     <Provider session={pageProps.session}>
       <ThemeProvider theme={themeMode}>
