@@ -27,7 +27,7 @@ export default function Logo() {
           fontWeight: 'bold',
           fontSize: '14px',
           color: theme.colors.text,
-          lineHeight: '1.2rem'
+          lineHeight: '1rem'
         }}>
           Amir Ardalan
         </h1>
@@ -42,6 +42,7 @@ export default function Logo() {
             fontSize: '8px',
             fontWeight: 'normal',
             letterSpacing: '.11rem',
+            paddingLeft: '.09rem',
             textAlign: 'left',
             textTransform: 'uppercase'
           }}>

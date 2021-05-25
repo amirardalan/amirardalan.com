@@ -47,7 +47,7 @@ export default function Navigation() {
     marginRight: '5%',
     marginLeft: 30,
     zIndex: 6,
-    width: '30px',
+    width: '38px',
     height: '22px',
     background: 'transparent',
     border: 'none',
@@ -107,7 +107,7 @@ export default function Navigation() {
     },
     '@media(max-width: 600px)': {
       flexDirection: 'column',
-      alignItems: 'center',
+      alignItems: 'self-start',
       fontSize: 'calc(3vw + 3vh)',
       lineHeight: '4rem',
       fontWeight: 'bold',
@@ -137,7 +137,7 @@ export default function Navigation() {
           display: 'block',
           marginBottom: '.5rem',
           textAlign: 'center',
-          animation: 'slide-up .5s',
+          animation: 'slide-up .8s ease',
         }
       }}>
         <SocialLinks />

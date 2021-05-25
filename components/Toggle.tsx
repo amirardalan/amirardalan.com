@@ -18,9 +18,9 @@ const Toggle = ({ toggleTheme }) => {
         aria-label="Toggle Dark Mode"
         css={{
           zIndex: 6,
-          width: 50,
+          width: 55,
           padding: '.1rem .1rem',
-          background: '#191720',
+          background: theme.toggleButton.background,
           position: 'relative',
           border: '1px solid' + theme.colors.divider,
           borderRadius: 15,
@@ -30,22 +30,22 @@ const Toggle = ({ toggleTheme }) => {
             zIndex: -1,
             content: `'${theme.toggleButton.icon}'`,
             position: 'absolute',
-            top: 12,
+            top: 14,
             lineHeight: 0,
             left: toggleThemControl ? 22 : 0,
             right: toggleThemControl ? 0 : 22,
-            fontSize: '18px',
+            fontSize: '17px',
           }
       }}>
         <span>
           <div css={{
             background: '#e2e2e2',
-            height: 20,
-            width: 20,
+            height: 25,
+            width: 25,
             position: 'relative',
             marginLeft: toggleThemControl ? 0 : 25,
             marginRight: toggleThemControl ? 25 : 0,
-            borderRadius: 10,
+            borderRadius: 15,
             boxShadow: '0 0 5px' + theme.colors.linkLight,
             transition: '.2s linear',
           }} />

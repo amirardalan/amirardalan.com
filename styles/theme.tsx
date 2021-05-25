@@ -27,7 +27,7 @@ export const themeLight = {
   canvas: {
     text: '',
     textSmall: 'Rotate & Zoom',
-    bg: '#292735',
+    bg: '#383549',
     meshA: '#9c26eb',
     zoomFrom: -300,
     zoomTo: -3,
@@ -61,7 +61,7 @@ export const themeDark = {
   logoError: '/logoErrorLight.svg',
   helloEmoji: '✌️',
   toggleButton: {
-    background: '#e2e2e2',
+    background: '#1e1c25',
     text: 'Dark',
     icon: '🌙',
     iconAlt: 'Moon Icon',
