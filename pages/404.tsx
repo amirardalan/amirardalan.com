@@ -32,7 +32,7 @@ export default function Custom404() {
             paddingRight: '1rem',
             alignSelf: 'center',
             borderRight: '1px solid' + theme.colors.footer,
-            fontFamily: "'Poppins', Arial, Helvetica, sans-serif",
+            fontFamily: theme.fonts.fontSecondary,
             fontSize: '40px',
           },
           h3: {

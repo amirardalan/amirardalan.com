@@ -17,7 +17,7 @@ export default function Bio() {
   return (
     <div className="bio">
       <h2 css={{ 
-        fontFamily: '"Poppins", Arial, Helvetica, sans-serif',
+        fontFamily: theme.fonts.fontSecondary,
         fontSize: 40,
         fontWeight: 900,
         marginBottom: 15,
@@ -25,7 +25,7 @@ export default function Bio() {
         Bio
       </h2>
       <p css={{
-        fontFamily: "'Lora', Georgia, 'Times New Roman', serif",
+        fontFamily: theme.fonts.fontTertiary,
         fontSize: 18,
         marginBottom: '2rem',
       }}>

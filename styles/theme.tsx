@@ -1,83 +1,84 @@
+const light= '#e2e2e2'
+const lightAccent = '#cccccc'
+const dark= '#2d2a35'
+const darkAccent = '#363341'
+const darker = '#1e1c25'
+const primary = '#7A00CC'
+const secondary = '#21c8e5'
+const grayLight = '#a8a8a8'
+const grayDark = '#5e5e5e'
+const selection = '#ffff00'
+const buttonDisabled = '#8b8b8b'
+const warning = '#ec4949;'
+
+const fontPrimary = "'Fira Code', Menlo, Monaco, 'Courier New', monospace"
+const fontSecondary = "'Poppins', Helvetica, Arial, sans-serif"
+const fontTertiary = "'Lora', 'Times New Roman', Times, serif"
+
 export const themeLight = {
+  fonts: {
+    fontPrimary: fontPrimary,
+    fontSecondary: fontSecondary,
+    fontTertiary: fontTertiary,
+  },
   colors: {
-    background: '#e2e2e2',
-    text: '#272c3b',
-    textLight: '#949494',
-    link: '#9c00cc',
-    linkLight: '#a34bdf',
-    divider: '#cccccc',
-    footer: '#5e5e5e',
-    footerLink: '#7A00CC',
-    highlight: '#e2e2e2',
-    highlightBg: '#272c3b',
-    selection: 'yellow',
-    selectionText: '#272c3b',
-    disabledInput: '#e2e2e2',
-    disabledBtn: '#8b8b8b',
+    background: light,
+    text: dark,
+    link: primary,
+    divider: lightAccent,
+    footer: grayDark,
+    footerLink: primary,
+    highlight: light,
+    highlightBg: dark,
+    selection: selection,
+    selectionText: dark,
+    disabledInput: light,
+    disabledBtn: buttonDisabled,
+    warning: warning,
   },
   logo: "/logoLight.svg",
   logoError: '/logoErrorDark.svg',
   helloEmoji: '👋',
   toggleButton: {
-    background: '#272c3b',
-    text: 'Light',
+    background: dark,
     icon: '☀️',
-    iconAlt: 'Sun Icon'
   },
   canvas: {
-    text: '',
     textSmall: 'Rotate & Zoom',
-    bg: '#383549',
-    meshA: '#9c26eb',
-    zoomFrom: -300,
-    zoomTo: -3,
     textAnim: 'fade-in 3s forwards',
-    stars: 1000,
-    duration: 4000
+    meshA: primary,
   },
-  page: {
-    bg: '#eaeaea'
-  }
 }
 
 export const themeDark = {
+  fonts: {
+    fontPrimary: fontPrimary,
+    fontSecondary: fontSecondary,
+    fontTertiary: fontTertiary,
+  },
   colors: {
-    background: '#272c3b',
-    text: '#e2e2e2',
-    textLight: '#c2c1c1',
-    link: '#21c8e5',
-    linkLight: '#62e8ff',
-    divider: '#333849',
-    footer: '#a8a8a8',
-    footerLink: '#21c8e5',
-    highlight: '#333849',
-    highlightBg: '#e2e2e2',
-    selection: 'yellow',
-    selectionText: '#272c3b',
-    disabledInput: '#272c3b',
-    disabledBtn: '#8b8b8b',
+    background: dark,
+    text: light,
+    link: secondary,
+    divider: darkAccent,
+    footer: grayLight,
+    footerLink: secondary,
+    selection: selection,
+    selectionText: dark,
+    disabledInput: dark,
+    disabledBtn: buttonDisabled,
+    warning: warning,
   },
   logo: '/logoDark.svg',
   logoError: '/logoErrorLight.svg',
   helloEmoji: '✌️',
   toggleButton: {
-    background: '#1e1c25',
-    text: 'Dark',
+    background: darker,
     icon: '🌙',
-    iconAlt: 'Moon Icon',
   },
   canvas: {
-    text: '',
     textSmall: 'Rotate + Zoom',
-    bg: '#272c3b',
-    meshA: '#21c8e5',
-    zoomFrom: -3,
-    zoomTo: -300,
     textAnim: 'fade-in 3s forwards',
-    stars: 3000,
-    duration: 4000
-  },
-  page: {
-    bg: '#272c3b'
+    meshA: secondary,
   }
 }

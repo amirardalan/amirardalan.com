@@ -20,7 +20,7 @@ export default function Navigation() {
         color: theme.colors.footer,
       }
     },
-    '@media(max-width: 600px)': {
+    '@media(max-width: 768px)': {
       display: 'none',
     }
   })
@@ -37,8 +37,14 @@ export default function Navigation() {
     background: theme.colors.background,
     top: '-2rem',
     left: '-6%',
-    '@media(min-width: 601px)': {
+    '@media(min-width: 769px)': {
       display: 'none',
+    },
+    '@media (max-width: 768px) and (max-height: 768px)': {
+      flexDirection: 'row-reverse',
+      justifyContent: 'space-evenly',
+      paddingTop: 0,
+      justifyItems: 'center'
     }
   })
 
@@ -95,22 +101,20 @@ export default function Navigation() {
         left: '50%',
       },
     },
-    '@media(min-width: 600px)': {
+    '@media(min-width: 768px)': {
       display: 'none',
     },
   })
 
   const navItems = css({
     display: 'flex',
-    a: {
-      color: theme.colors.text,
-    },
-    '@media(max-width: 600px)': {
+    a: { color: theme.colors.text, },
+    
+    '@media(max-width: 768px)': {
       flexDirection: 'column',
       alignItems: 'self-start',
       fontSize: 'calc(3vw + 3vh)',
       lineHeight: '4rem',
-      fontWeight: 'bold',
     }
   })
 
@@ -118,7 +122,7 @@ export default function Navigation() {
   const [toggleDisableScrolling, setToggleDisableScrolling] = useState(false)
   const disableScroll = () => {
     setToggleDisableScrolling(!toggleDisableScrolling)
-    toggleDisableScrolling ? document.body.style.overflow = 'scroll': document.body.style.overflow = 'hidden'
+    toggleDisableScrolling ? document.body.style.overflow = 'scroll' : document.body.style.overflow = 'hidden'
   }
   // Disable Scrolling when mobile menu is active
   const [toggleMobileNav, setToggleMobileNav] = useState(false)
@@ -155,7 +159,7 @@ export default function Navigation() {
               alignItems: 'center',
               justifyContent: 'space-between',
               animation: 'slide-up 1s forwards',
-              fontFamily: "'Poppins', Arial, Helvetica, sans-serif"
+              fontFamily: theme.fonts.fontSecondary,
             }}>
               <Logo />
             </li>
@@ -168,17 +172,17 @@ export default function Navigation() {
   const ShowNavItems = () => (
     <nav css={navItems}>
       <Link href="/" activeClassName="active" exact="false" as="">
-        <a className="nav" onClick={toggleMenu} aria-label="Home">
+        <a className="nav" onClick={toggleMobileNav ? toggleMenu : null} aria-label="Home">
           Home
         </a>
       </Link>
       <Link href="/bio" activeClassName="active" exact="" as="">
-        <a className="nav" onClick={toggleMenu} aria-label="Bio">
+        <a className="nav" onClick={toggleMobileNav ? toggleMenu : null} aria-label="Bio">
           Bio
         </a>
       </Link>
       <Link href="/blog" activeClassName="active" exact="" as="">
-        <a className="nav" onClick={toggleMenu} aria-label="Blog">
+        <a className="nav" onClick={toggleMobileNav ? toggleMenu : null} aria-label="Blog">
           Blog
         </a>
       </Link>

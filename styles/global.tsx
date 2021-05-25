@@ -21,10 +21,6 @@ export function GlobalStyles () {
           vertical-align: baseline;
         }
 
-        body {
-          line-height: 1;
-        }
-
         article,aside,details,figcaption,figure, footer,header,hgroup,menu,nav,section{ 
           display: block;
         }
@@ -56,7 +52,6 @@ export function GlobalStyles () {
           text-decoration: none;
         }
 
-        /* change colors to suit your needs */
         mark {
           background-color: ${theme.colors.divider};
           color: ${theme.colors.text};
@@ -95,7 +90,7 @@ export function GlobalStyles () {
         html,
         body {
           background-color: ${theme.colors.background};
-          font-family: 'Fira Code', Menlo, Monaco, 'Courier New', monospace;
+          font-family: ${theme.fonts.fontPrimary};
           color: ${theme.colors.text};
           transition: all 0.25s linear;
         }
@@ -135,7 +130,7 @@ export function GlobalStyles () {
         button,
         button:active,
         button:visited {
-          @media (max-width: 600px) {
+          @media (max-width: 768px) {
             outline: none;
           }
         }
@@ -143,7 +138,7 @@ export function GlobalStyles () {
         button,
         input,
         textarea {
-          font-family: 'Fira Code', Menlo, Monaco, 'Courier New', monospace;
+          font-family: ${theme.fonts.fontPrimary}
         }
 
         a {
@@ -209,6 +204,7 @@ export function GlobalStyles () {
           font-size: 12px;
           text-transform: uppercase;
           text-align: center;
+          text-decoration: none;
           cursor: pointer;
           &:hover {
             background-color: ${theme.colors.footer};
@@ -222,19 +218,19 @@ export function GlobalStyles () {
           }
           .create & {
             &.createBtn {
-              background-color: #8b8b8b;
+              background-color: ${theme.colors.disabledBtn};
             }
           }
           .drafts & {
             &.draftsBtn {
-              background-color: #8b8b8b;
+              background-color: ${theme.colors.disabledBtn};
             }
           }
           &.delete {
-            background-color: #8b8b8b;
+            background-color: ${theme.colors.disabledBtn};
             text-decoration: none;
             &:hover {
-              background-color: #ff6262;
+              background-color: ${theme.colors.warning};
             }
           }
         }
@@ -254,7 +250,7 @@ export function GlobalStyles () {
             flex-direction: row;
             align-items: center;
 
-            @media (max-width: 600px) {
+            @media (max-width: 768px) {
               flex-direction: row-reverse;
             }
           }
@@ -270,7 +266,7 @@ export function GlobalStyles () {
               left: -10px;
             }
           }
-          @media (max-width: 600px) {
+          @media (max-width: 768px) {
             &.active {
               &::before {
                 position: absolute;
@@ -320,7 +316,7 @@ export function GlobalStyles () {
           animation: slide-up .8s forwards;
 
           h2, h3, p {
-            font-family: 'Poppins', Arial, Arial, Helvetica, sans-serif;
+            font-family: ${theme.fonts.fontSecondary};
           }
           h2 {
             font-size: calc(2.7vw + 2.7vh);
@@ -392,7 +388,7 @@ export function GlobalStyles () {
             font-weight: normal;
           }
           p, a {
-            font-family: 'Lora', 'Times New Roman', Times, serif;
+            font-family: ${theme.fonts.fontTertiary}
           }
           a{
             color: ${theme.colors.text};
@@ -475,7 +471,7 @@ export function GlobalStyles () {
             margin: 0 1%;
           }
           h2, h3, h4 {
-            font-family: 'Poppins', Arial, Arial, Helvetica, sans-serif;
+            font-family: ${theme.fonts.fontSecondary};
           }
           h2 {
             margin: 0;
@@ -488,7 +484,7 @@ export function GlobalStyles () {
             &:hover { text-decoration: none; }
           }
           p {
-            font-family: 'Lora', 'Times New Roman', Times, serif;
+            font-family: ${theme.fonts.fontTertiary};
             font-size: 18px;
           }
           small {
@@ -585,7 +581,7 @@ export function GlobalStyles () {
           }
           p { margin-top: 2rem; }
           p, ul, li, a, blockquote {
-            font-family: 'Lora', Georgia, 'Times New Roman', Times, serif;
+            font-family: ${theme.fonts.fontTertiary}
           }
           h3 {
             margin: 3.5rem 0 0;
@@ -608,6 +604,7 @@ export function GlobalStyles () {
             border-left: 5px solid ${theme.colors.footer};
             color: ${theme.colors.footer};
             font-style: italic;
+            font-weight: 400;
             & blockquote {
               margin-left: 0;
               padding-left: 1rem;
@@ -631,7 +628,7 @@ export function GlobalStyles () {
               text-decoration: none;
             }
           }
-          @media(max-width: 600px) {
+          @media(max-width: 768px) {
             flexDirection: column;
           }
         }
@@ -645,9 +642,9 @@ export function GlobalStyles () {
         }
         .prevLink,
         .nextLink {
-          font-family: 'Lora', Georgia, 'Times New Roman', Times, serif;
+          font-family: ${theme.fonts.fontTertiary};
           font-size: 18px;
-          @media(max-width: 600px) {
+          @media(max-width: 768px) {
             justify-content: flex-start;
           }
         }

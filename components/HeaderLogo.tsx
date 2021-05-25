@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { themeDark } from '../styles/theme'
 import Logo from './Logo'
 
 export default function Header() {
@@ -15,7 +16,7 @@ export default function Header() {
           flexDirection: 'row',
           alignItems: 'center',
           animation: 'slide-up 1s forwards',
-          fontFamily: "'Poppins', Arial, Helvetica, sans-serif",
+          fontFamily: themeDark.fonts.fontSecondary,
           background: 'transparent',
           border: 'none',
           cursor: 'pointer',
