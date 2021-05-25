@@ -1,17 +1,17 @@
 export const themeLight = {
   colors: {
     background: '#e2e2e2',
-    text: '#292735',
+    text: '#272c3b',
     textLight: '#949494',
-    link: '#7A00CC',
+    link: '#9c00cc',
     linkLight: '#a34bdf',
     divider: '#cccccc',
     footer: '#5e5e5e',
     footerLink: '#7A00CC',
     highlight: '#e2e2e2',
-    highlightBg: '#292735',
+    highlightBg: '#272c3b',
     selection: 'yellow',
-    selectionText: '#292735',
+    selectionText: '#272c3b',
     disabledInput: '#e2e2e2',
     disabledBtn: '#8b8b8b',
   },
@@ -19,7 +19,7 @@ export const themeLight = {
   logoError: '/logoErrorDark.svg',
   helloEmoji: '👋',
   toggleButton: {
-    background: '#292735',
+    background: '#272c3b',
     text: 'Light',
     icon: '☀️',
     iconAlt: 'Sun Icon'
@@ -42,19 +42,19 @@ export const themeLight = {
 
 export const themeDark = {
   colors: {
-    background: '#292735',
+    background: '#272c3b',
     text: '#e2e2e2',
     textLight: '#c2c1c1',
     link: '#21c8e5',
     linkLight: '#62e8ff',
-    divider: '#383549',
+    divider: '#333849',
     footer: '#a8a8a8',
     footerLink: '#21c8e5',
-    highlight: '#323042',
+    highlight: '#333849',
     highlightBg: '#e2e2e2',
     selection: 'yellow',
-    selectionText: '#292735',
-    disabledInput: '#292735',
+    selectionText: '#272c3b',
+    disabledInput: '#272c3b',
     disabledBtn: '#8b8b8b',
   },
   logo: '/logoDark.svg',
@@ -69,7 +69,7 @@ export const themeDark = {
   canvas: {
     text: '',
     textSmall: 'Rotate + Zoom',
-    bg: '#292735',
+    bg: '#272c3b',
     meshA: '#21c8e5',
     zoomFrom: -3,
     zoomTo: -300,
@@ -78,6 +78,6 @@ export const themeDark = {
     duration: 4000
   },
   page: {
-    bg: '#292735'
+    bg: '#272c3b'
   }
 }

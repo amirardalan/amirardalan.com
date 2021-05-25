@@ -11,8 +11,6 @@ const Toggle = ({ toggleTheme }) => {
     toggleTheme()
   }
 
-  const togglePosition = (toggleThemeControl) ? '&::before' : '&::after'
-
   return (
     <>
       <button

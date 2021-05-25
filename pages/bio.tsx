@@ -29,8 +29,9 @@ export default function Bio() {
         fontSize: 18,
         marginBottom: '2rem',
       }}>
-        Hello, I'm Amir Ardalan, a developer and designer from Portland, Oregon. This page is still in development,
-        For now, you can read a bit about <Link href="/blog/2021-a-dev-odyssey">my journey</Link> as a developer.
+        Hello, I'm Amir Ardalan, a developer and designer from Portland, Oregon. 
+        This page is still in development, For now, you can read a bit 
+        about <Link href="/blog/2021-a-dev-odyssey">my journey</Link> as a developer.
       </p>
       <main css={{
         display: 'grid',

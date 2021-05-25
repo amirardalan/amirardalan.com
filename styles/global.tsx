@@ -286,6 +286,7 @@ export function GlobalStyles () {
             }
             }
             &:hover {
+              color: ${theme.colors.footer};
               &::before {
                 position: absolute;
                 content: '';
