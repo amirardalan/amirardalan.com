@@ -41,9 +41,8 @@ export default function Navigation() {
     },
     '@media (max-width: 768px) and (max-height: 600px)': {
       flexDirection: 'row-reverse',
-      justifyContent: 'space-evenly',
-      paddingTop: 0,
-      justifyItems: 'center'
+      justifyContent: 'space-between',
+      alignItems: 'flex-start',
     }
   })
 
@@ -114,6 +113,10 @@ export default function Navigation() {
       alignItems: 'self-start',
       fontSize: 'calc(3vw + 3vh)',
       lineHeight: '4rem',
+    },
+    '@media (max-width: 768px) and (max-height: 600px)': {
+      padding: '2rem',
+      width: '80%',
     }
   })
 
