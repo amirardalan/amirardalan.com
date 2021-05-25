@@ -17,7 +17,7 @@ export default function Navigation() {
       margin: '0 1.5rem',
       color: theme.colors.text,
       '&:hover': {
-        color: theme.colors.footer,
+        color: theme.colors.grayscale,
       }
     },
     '@media(max-width: 768px)': {

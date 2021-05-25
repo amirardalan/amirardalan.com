@@ -9,7 +9,7 @@ export default function Bio() {
     display: 'flex',
     justifyContent: 'center',
     padding: '3rem',
-    backgroundColor: theme.colors.divider,
+    backgroundColor: theme.page.bg,
     animation: 'slide-up .5s forwards'
   })
 

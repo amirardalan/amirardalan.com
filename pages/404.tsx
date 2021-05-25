@@ -31,7 +31,7 @@ export default function Custom404() {
             margin: '0 1rem 0 1rem',
             paddingRight: '1rem',
             alignSelf: 'center',
-            borderRight: '1px solid' + theme.colors.footer,
+            borderRight: '1px solid' + theme.colors.grayscale,
             fontFamily: theme.fonts.fontSecondary,
             fontSize: '40px',
           },

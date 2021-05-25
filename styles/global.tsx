@@ -47,13 +47,13 @@ export function GlobalStyles () {
         }
 
         ins {
-          background-color: ${theme.colors.divider};
+          background-color: ${theme.colors.accent};
           color: ${theme.colors.text};
           text-decoration: none;
         }
 
         mark {
-          background-color: ${theme.colors.divider};
+          background-color: ${theme.colors.accent};
           color: ${theme.colors.text};
           font-style: italic;
           font-weight: bold;
@@ -77,7 +77,7 @@ export function GlobalStyles () {
           display: block;
           height: 1px;
           border: 0;   
-          border-top: 1px solid ${theme.colors.divider};
+          border-top: 1px solid ${theme.colors.accent};
           margin: 1em 0;
           padding: 0;
         }
@@ -153,15 +153,15 @@ export function GlobalStyles () {
           width: 100%;
           margin: 0.5rem 0;
           padding: 0.5rem;
-          background-color: ${theme.colors.divider};
-          border: 2px solid ${theme.colors.divider};
+          background-color: ${theme.colors.accent};
+          border: 2px solid ${theme.colors.accent};
           border-radius: 0.25rem;
           color: ${theme.colors.text};
           font-size: 16px;
 
           &:disabled {
             background-color: ${theme.colors.disabledInput};
-            color: ${theme.colors.footer}
+            color: ${theme.colors.grayscale}
           }
 
           @media (max-width: 890px) {
@@ -185,7 +185,7 @@ export function GlobalStyles () {
           font-size: 14px;
           cursor: pointer;
           &:hover {
-            background-color: ${theme.colors.footer};
+            background-color: ${theme.colors.grayscale};
             color: ${theme.colors.background};
           }
         }
@@ -198,7 +198,7 @@ export function GlobalStyles () {
           padding: .45rem 0;
           display: inline-block;
           background-color: ${theme.colors.text};
-          border: 1px solid ${theme.colors.divider};
+          border: 1px solid ${theme.colors.accent};
           border-radius: 5px;
           color: ${theme.colors.background};
           font-size: 12px;
@@ -207,7 +207,7 @@ export function GlobalStyles () {
           text-decoration: none;
           cursor: pointer;
           &:hover {
-            background-color: ${theme.colors.footer};
+            background-color: ${theme.colors.grayscale};
           }
           &:disabled {
             background-color: ${theme.colors.disabledBtn};
@@ -282,7 +282,7 @@ export function GlobalStyles () {
             }
             }
             &:hover {
-              color: ${theme.colors.footer};
+              color: ${theme.colors.grayscale};
               &::before {
                 position: absolute;
                 content: '';
@@ -338,7 +338,7 @@ export function GlobalStyles () {
           }
 
           h4 {
-            color: ${theme.colors.footer};
+            color: ${theme.colors.grayscale};
             font-size: 12px;
             line-height: 1.3rem;
 
@@ -381,7 +381,7 @@ export function GlobalStyles () {
 
         .latestPost {
           padding-left: 1.2rem;
-          border-left: 7px solid ${theme.colors.divider};
+          border-left: 7px solid ${theme.colors.accent};
           font-weight: normal;
           line-height: 1.8rem;
           h4 {
@@ -399,7 +399,7 @@ export function GlobalStyles () {
             }
           }
           p {
-            color: ${theme.colors.footer};
+            color: ${theme.colors.grayscale};
             font-size: 15px;
           }
         }
@@ -438,7 +438,7 @@ export function GlobalStyles () {
           display: flex;
           flex-direction: row;
           align-items: center;
-          color: ${theme.colors.footer};
+          color: ${theme.colors.grayscale};
           font-size: 13px;
           &::before {
             padding-right: .5rem;
@@ -451,7 +451,7 @@ export function GlobalStyles () {
             &::after {
               content: '/';
               margin: 0 .5rem;
-              color: ${theme.colors.footer};
+              color: ${theme.colors.grayscale};
             }
           }
           @media (max-width: 480px) {
@@ -489,7 +489,7 @@ export function GlobalStyles () {
           }
           small {
             display: block;
-            color: ${theme.colors.footer};
+            color: ${theme.colors.grayscale};
           }
           main {
             display: flex;
@@ -548,11 +548,11 @@ export function GlobalStyles () {
           padding: 1.8rem;
           display: flex;
           justify-content: space-between;
-          border: 1px solid ${theme.colors.divider};
+          border: 1px solid ${theme.colors.accent};
           &::after {
             content: 'Draft';
             align-self: right;
-            color: ${theme.colors.footer};
+            color: ${theme.colors.grayscale};
             font-size: 12px;
             font-style: italic;
           }
@@ -601,14 +601,14 @@ export function GlobalStyles () {
           blockquote {
             margin-left: -1.75rem;
             padding-left: 1.5rem;
-            border-left: 5px solid ${theme.colors.footer};
-            color: ${theme.colors.footer};
+            border-left: 5px solid ${theme.colors.accent};
+            color: ${theme.colors.grayscale};
             font-style: italic;
             font-weight: 400;
             & blockquote {
               margin-left: 0;
               padding-left: 1rem;
-              border-left: 5px solid ${theme.colors.textLight};
+              border-left: 5px solid ${theme.colors.accent};
             }
             @media (max-width: 890px) {
               margin-left: -1.1rem;

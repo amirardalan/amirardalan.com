@@ -1,5 +1,6 @@
 const light= '#e2e2e2'
 const lightAccent = '#cccccc'
+const lighter = '#eaeaea'
 const dark= '#2d2a35'
 const darkAccent = '#363341'
 const darker = '#1e1c25'
@@ -25,8 +26,8 @@ export const themeLight = {
     background: light,
     text: dark,
     link: primary,
-    divider: lightAccent,
-    footer: grayDark,
+    accent: lightAccent,
+    grayscale: grayDark,
     footerLink: primary,
     highlight: light,
     highlightBg: dark,
@@ -48,6 +49,9 @@ export const themeLight = {
     textAnim: 'fade-in 3s forwards',
     meshA: primary,
   },
+  page: {
+    bg: lighter,
+  }
 }
 
 export const themeDark = {
@@ -60,8 +64,8 @@ export const themeDark = {
     background: dark,
     text: light,
     link: secondary,
-    divider: darkAccent,
-    footer: grayLight,
+    accent: darkAccent,
+    grayscale: grayLight,
     footerLink: secondary,
     selection: selection,
     selectionText: dark,
@@ -80,5 +84,8 @@ export const themeDark = {
     textSmall: 'Rotate + Zoom',
     textAnim: 'fade-in 3s forwards',
     meshA: secondary,
+  },
+  page: {
+    bg: darkAccent,
   }
 }

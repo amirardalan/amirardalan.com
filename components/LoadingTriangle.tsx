@@ -8,7 +8,7 @@ export default function LoadingTriangle() {
     <div
       className="loader triangle"
       css={{
-        '--path': theme.colors.divider,
+        '--path': theme.colors.accent,
         '--dot': theme.colors.link,
         '--duration': '1s',
         width: '48px',

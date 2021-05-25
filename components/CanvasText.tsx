@@ -10,7 +10,7 @@ export default function CanvasText() {
         className="canvasControls"
         aria-label="${theme.canvas.textSmall}"
         css={{
-          color: theme.colors.footer,
+          color: theme.colors.grayscale,
           margin: '0 0 1rem 0',
           padding: '0',
           '@media(max-width: 890px)': {

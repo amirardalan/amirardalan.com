@@ -18,8 +18,8 @@ export default function Footer() {
       padding: '1em',
       height: '100px',
       backgroundColor: theme.colors.background,
-      color: theme.colors.footer,
-      borderTop: '1px solid' + theme.colors.divider,
+      color: theme.colors.grayscale,
+      borderTop: '1px solid' + theme.colors.accent,
       lineHeight: '1.8em',
       animation: 'slide-up .25s forwards',
       transition: 'all 0.25s linear',
@@ -36,7 +36,7 @@ export default function Footer() {
           '&::after': {
             content: '"•"',
             paddingLeft: '.5rem',
-            color: theme.colors.footer,
+            color: theme.colors.grayscale,
           },
           '&:last-of-type::after': {
             content: '""',

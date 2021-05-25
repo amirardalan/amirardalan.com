@@ -37,7 +37,7 @@ export default function Logo() {
           css={{
             position: 'relative',
             margin: '0',
-            color: theme.colors.footer,
+            color: theme.colors.grayscale,
             fontFamily: "'Fira Code', Menlo, Monaco, 'Courier New', monospace",
             fontSize: '8px',
             fontWeight: 'normal',

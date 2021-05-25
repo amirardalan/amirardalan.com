@@ -24,7 +24,7 @@ const Toggle = ({ toggleTheme }) => {
           padding: '0 .1rem 0 .1rem',
           background: theme.toggleButton.background,
           position: 'relative',
-          border: '1px solid' + theme.colors.divider,
+          border: '1px solid' + theme.colors.accent,
           borderRadius: 25,
           color: theme.colors.text,
           cursor: 'pointer',
