@@ -42,10 +42,10 @@ const Toggle = ({ toggleTheme }) => {
           aria-label={theme.toggleButton.iconAlt}
           width={30}
           height={30}
-          css={{
-            background: theme.colors.background,
-            transition: 'background-color .25s linear',
-          }}
+          // css={{
+          //   background: theme.colors.background,
+          //   transition: 'background-color .25s linear',
+          // }}
         />
       </button>
     </>

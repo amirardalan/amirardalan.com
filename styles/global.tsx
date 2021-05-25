@@ -146,11 +146,17 @@ export function GlobalStyles () {
           display: flex;
           justify-content: space-between;
           animation: fade-in 3s forwards;
+          position: relative;
+          z-index: 5;
           a { text-decoration: none; }
           .headerRight {
             display: flex;
             flex-direction: row;
             align-items: center;
+
+            @media (max-width: 600px) {
+              flex-direction: row-reverse;
+            }
           }
         }
 
@@ -164,10 +170,21 @@ export function GlobalStyles () {
               left: -10px;
             }
           }
+          @media (max-width: 600px) {
+            &.active,
+            &:hover {
+              &::before {
+                position: absolute;
+                content: '>';
+                left: -30px;
+              }
+            }
+          }
         }
 
         .container {
           padding: 2rem 5% 0 5%;
+          position: relative;
 
           @media (max-width: 890px) {
             padding: 5% 5% 0 5%;
