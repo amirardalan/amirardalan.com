@@ -22,8 +22,8 @@ const Toggle = ({ toggleTheme }) => {
         css={{
           zIndex: 6,
           width: 'auto',
-          height: 29,
-          padding: '0 .1rem',
+          height: 30,
+          padding: '0 .1rem 0 .1rem',
           background: theme.toggleButton.background,
           position: 'relative',
           border: '1px solid' + theme.colors.divider,
@@ -36,22 +36,22 @@ const Toggle = ({ toggleTheme }) => {
             
             alignSelf: 'baseline',
             content: `'${theme.toggleButton.icon}'`,
-            marginLeft: toggleThemeControl ? 0 : 2,
+            marginLeft: toggleThemeControl ? 0 : 3.5,
             position: 'absolute',
-            lineHeight: '1.56rem',
-            left: toggleThemeControl ? 27 : 0,
-            fontSize: '20px',
+            lineHeight: '1.57rem',
+            left: toggleThemeControl ? 28.5 : 0,
+            fontSize: '21px',
             fontFamily: 'apple color emoji, segoe ui emoji, noto color emoji, android emoji, emojisymbols, emojione mozilla, twemoji mozilla, segoe ui symbol',
           }
       }}>
         <div>
           <div css={{
             background: '#e2e2e2',
-            height: 25,
-            width: 25,
+            height: 26,
+            width: 26,
             position: 'relative',
-            marginLeft: toggleThemeControl ? 0 : 25,
-            marginRight: toggleThemeControl ? 25 : 0,
+            marginLeft: toggleThemeControl ? 0 : 27,
+            marginRight: toggleThemeControl ? 27 : 0,
             borderRadius: 25,
             boxShadow: '0 0 5px' + theme.colors.linkLight,
             transition: '.2s linear',

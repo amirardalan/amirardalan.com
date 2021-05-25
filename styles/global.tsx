@@ -271,11 +271,24 @@ export function GlobalStyles () {
             }
           }
           @media (max-width: 600px) {
-            &.active,
-            &:hover {
+            &.active {
               &::before {
                 position: absolute;
                 content: '>';
+                left: -30px;
+              }
+              &:hover {
+              &::before {
+                position: absolute;
+                content: '>';
+                left: -30px;
+              }
+            }
+            }
+            &:hover {
+              &::before {
+                position: absolute;
+                content: '';
                 left: -30px;
               }
             }
@@ -718,21 +731,14 @@ export function GlobalStyles () {
         }
 
 
-        // Chrome Hacks
+        // Chrome + Firefox Hacks - :(
         @media screen and (-webkit-min-device-pixel-ratio:0)
           and (min-resolution:.001dpcm) {
           .crossBrowserAlignment::before{
             font-size: 22px !important;
+            line-height: 1.7rem !important;
           }
         }
-
-        // Firefox Hacks
-        @-moz-document url-prefix() { 
-            .crossBrowserAlignment::before {
-              line-height: 1.6rem !important;
-            }
-          }
-
       `}
     />
   )
