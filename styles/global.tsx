@@ -1,3 +1,8 @@
+import "@fontsource/poppins/700.css"
+import "@fontsource/poppins/900.css"
+import "@fontsource/lora/500.css"
+import "@fontsource/lora/500-italic.css"
+import "@fontsource/fira-code/400.css"
 import { css, Global, useTheme } from '@emotion/react'
 
 export function GlobalStyles () {
@@ -7,18 +12,92 @@ export function GlobalStyles () {
     <Global
       styles={css`
 
+        // Reset
+        html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote,  pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
+          margin: 0;
+          padding: 0;
+          border: 0;
+          font-size: 100%;
+          vertical-align: baseline;
+        }
+
+        article,aside,details,figcaption,figure, footer,header,hgroup,menu,nav,section{ 
+          display: block;
+        }
+
+        nav ul {
+          list-style: none;
+        }
+
+        blockquote, q {
+          quotes: none;
+        }
+
+        blockquote:before, blockquote:after, q:before, q:after {
+          content: '';
+          content: none;
+        }
+
+        a {
+          margin: 0;
+          padding: 0;
+          font-size: 100%;
+          vertical-align: baseline;
+          background: transparent;
+        }
+
+        ins {
+          background-color: ${theme.colors.accent};
+          color: ${theme.colors.text};
+          text-decoration: none;
+        }
+
+        mark {
+          background-color: ${theme.colors.accent};
+          color: ${theme.colors.text};
+          font-style: italic;
+          font-weight: bold;
+        }
+
+        del {
+          text-decoration: line-through;
+        }
+
+        abbr[title], dfn[title] {
+          border-bottom: 1px dotted;
+          cursor: help;
+        }
+
+        table {
+          border-collapse: collapse;
+          border-spacing: 0;
+        }
+
+        hr {
+          display: block;
+          height: 1px;
+          border: 0;   
+          border-top: 1px solid ${theme.colors.accent};
+          margin: 1em 0;
+          padding: 0;
+        }
+
+        input, select {
+          vertical-align: middle;
+        }
+
         // Base
         html,
         body {
-          margin: 0;
-          padding: 0;
           background-color: ${theme.colors.background};
-          font-family: 'Fira Code', Menlo, Monaco, 'Courier New', monospace;
+          font-family: ${theme.fonts.fontPrimary};
           color: ${theme.colors.text};
           transition: all 0.25s linear;
         }
 
         * {
+          margin:0;
+          padding:0;
           box-sizing: border-box;
           &:before,
           &:after {
@@ -39,13 +118,26 @@ export function GlobalStyles () {
         p {
           margin: 0;
           padding: 0;
+          line-height: 1.8rem;
+        }
+
+        ul, li {
+          list-style: none;
+          margin: 0;
+          padding: 0;
         }
 
         button,
-        a,
         input,
         textarea {
-          font-family: 'Fira Code', Menlo, Monaco, 'Courier New', monospace;
+          font-family: ${theme.fonts.fontPrimary}
+        }
+
+        a {
+          text-decoration: underline;
+          &:hover {
+            text-decoration: none;
+          }
         }
 
         input[type='text'],
@@ -53,15 +145,15 @@ export function GlobalStyles () {
           width: 100%;
           margin: 0.5rem 0;
           padding: 0.5rem;
-          background-color: ${theme.colors.divider};
-          border: 2px solid ${theme.colors.divider};
+          background-color: ${theme.colors.accent};
+          border: 2px solid ${theme.colors.accent};
           border-radius: 0.25rem;
           color: ${theme.colors.text};
           font-size: 16px;
 
           &:disabled {
             background-color: ${theme.colors.disabledInput};
-            color: ${theme.colors.footer}
+            color: ${theme.colors.grayscale}
           }
 
           @media (max-width: 890px) {
@@ -85,7 +177,7 @@ export function GlobalStyles () {
           font-size: 14px;
           cursor: pointer;
           &:hover {
-            background-color: ${theme.colors.footer};
+            background-color: ${theme.colors.grayscale};
             color: ${theme.colors.background};
           }
         }
@@ -98,15 +190,16 @@ export function GlobalStyles () {
           padding: .45rem 0;
           display: inline-block;
           background-color: ${theme.colors.text};
-          border: 1px solid ${theme.colors.divider};
+          border: 1px solid ${theme.colors.accent};
           border-radius: 5px;
           color: ${theme.colors.background};
           font-size: 12px;
           text-transform: uppercase;
           text-align: center;
+          text-decoration: none;
           cursor: pointer;
           &:hover {
-            background-color: ${theme.colors.footer};
+            background-color: ${theme.colors.grayscale};
           }
           &:disabled {
             background-color: ${theme.colors.disabledBtn};
@@ -117,19 +210,19 @@ export function GlobalStyles () {
           }
           .create & {
             &.createBtn {
-              background-color: #8b8b8b;
+              background-color: ${theme.colors.disabledBtn};
             }
           }
           .drafts & {
             &.draftsBtn {
-              background-color: #8b8b8b;
+              background-color: ${theme.colors.disabledBtn};
             }
           }
           &.delete {
-            background-color: #8b8b8b;
+            background-color: ${theme.colors.disabledBtn};
             text-decoration: none;
             &:hover {
-              background-color: #ff6262;
+              background-color: ${theme.colors.warning};
             }
           }
         }
@@ -141,12 +234,59 @@ export function GlobalStyles () {
           display: flex;
           justify-content: space-between;
           animation: fade-in 3s forwards;
-          
+          position: relative;
+          z-index: 5;
           a { text-decoration: none; }
+          .headerRight {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+
+            @media (max-width: 768px) {
+              flex-direction: row-reverse;
+            }
+          }
+        }
+
+        .nav {
+          position: relative;
+          &.active,
+          &:hover {
+            &::before {
+              position: absolute;
+              content: '>';
+              left: -10px;
+            }
+          }
+          @media (max-width: 768px) {
+            &.active {
+              &::before {
+                position: absolute;
+                content: '>';
+                left: -30px;
+              }
+              &:hover {
+              &::before {
+                position: absolute;
+                content: '>';
+                left: -30px;
+              }
+            }
+            }
+            &:hover {
+              color: ${theme.colors.grayscale};
+              &::before {
+                position: absolute;
+                content: '';
+                left: -30px;
+              }
+            }
+          }
         }
 
         .container {
-          padding: 1.6% 5% 0 5%;
+          padding: 2rem 5% 0 5%;
+          position: relative;
 
           @media (max-width: 890px) {
             padding: 5% 5% 0 5%;
@@ -168,9 +308,10 @@ export function GlobalStyles () {
           animation: slide-up .8s forwards;
 
           h2, h3, p {
-            font-family: 'Poppins', Arial, Arial, Helvetica, sans-serif;
+            font-family: ${theme.fonts.fontSecondary};
           }
           h2 {
+            font-size: calc(2.7vw + 2.7vh);
             margin: 0 0 1rem;
             font-weight: bolder;
           }
@@ -181,15 +322,15 @@ export function GlobalStyles () {
           
           h3,
           h3 p {
-            font-size: calc(1.2vw + 1.2vh);
+            font-size: calc(1.3vw + 1.3vh);
 
             @media (max-width: 890px) {
-              font-size: calc(1.9vw + 1.9vh);
+              font-size: calc(1.5vw + 1.5vh);
             }
           }
 
           h4 {
-            color: ${theme.colors.footer};
+            color: ${theme.colors.grayscale};
             font-size: 12px;
             line-height: 1.3rem;
 
@@ -232,14 +373,14 @@ export function GlobalStyles () {
 
         .latestPost {
           padding-left: 1.2rem;
-          border-left: 7px solid ${theme.colors.divider};
+          border-left: 7px solid ${theme.colors.accent};
           font-weight: normal;
           line-height: 1.8rem;
           h4 {
             font-weight: normal;
           }
           p, a {
-            font-family: 'Lora', 'Times New Roman', Times, serif;
+            font-family: ${theme.fonts.fontTertiary}
           }
           a{
             color: ${theme.colors.text};
@@ -250,14 +391,13 @@ export function GlobalStyles () {
             }
           }
           p {
-            color: ${theme.colors.footer};
+            color: ${theme.colors.grayscale};
             font-size: 15px;
           }
         }
 
         // Three.js Canvas
         .canvasTitle {
-          z-index: 1;
           margin: 0;
           padding: 0 2rem;
           min-height: 0vw;
@@ -271,7 +411,6 @@ export function GlobalStyles () {
         }
 
         .canvasControls {
-          z-index: 2;
           position: absolute;
           bottom: 0;
           left: 20px;
@@ -291,7 +430,7 @@ export function GlobalStyles () {
           display: flex;
           flex-direction: row;
           align-items: center;
-          color: ${theme.colors.footer};
+          color: ${theme.colors.grayscale};
           font-size: 13px;
           &::before {
             padding-right: .5rem;
@@ -304,7 +443,7 @@ export function GlobalStyles () {
             &::after {
               content: '/';
               margin: 0 .5rem;
-              color: ${theme.colors.footer};
+              color: ${theme.colors.grayscale};
             }
           }
           @media (max-width: 480px) {
@@ -321,10 +460,10 @@ export function GlobalStyles () {
           margin: 0 auto;
           
           @media (max-width: 480px) {
-            padding: 0 1%;
+            margin: 0 1%;
           }
           h2, h3, h4 {
-            font-family: 'Poppins', Arial, Arial, Helvetica, sans-serif;
+            font-family: ${theme.fonts.fontSecondary};
           }
           h2 {
             margin: 0;
@@ -337,12 +476,12 @@ export function GlobalStyles () {
             &:hover { text-decoration: none; }
           }
           p {
-            font-family: 'Lora', 'Times New Roman', Times, serif;
+            font-family: ${theme.fonts.fontTertiary};
             font-size: 18px;
           }
           small {
             display: block;
-            color: ${theme.colors.footer};
+            color: ${theme.colors.grayscale};
           }
           main {
             display: flex;
@@ -401,11 +540,11 @@ export function GlobalStyles () {
           padding: 1.8rem;
           display: flex;
           justify-content: space-between;
-          border: 1px solid ${theme.colors.divider};
+          border: 1px solid ${theme.colors.accent};
           &::after {
             content: 'Draft';
             align-self: right;
-            color: ${theme.colors.footer};
+            color: ${theme.colors.grayscale};
             font-size: 12px;
             font-style: italic;
           }
@@ -424,6 +563,7 @@ export function GlobalStyles () {
 
         .postTeaser {
           h2 { font-size: 30px; }
+          animation: slide-up .5s forwards;
         }
 
         .postFull {
@@ -433,7 +573,7 @@ export function GlobalStyles () {
           }
           p { margin-top: 2rem; }
           p, ul, li, a, blockquote {
-            font-family: 'Lora', Georgia, 'Times New Roman', Times, serif;
+            font-family: ${theme.fonts.fontTertiary}
           }
           h3 {
             margin: 3.5rem 0 0;
@@ -453,13 +593,14 @@ export function GlobalStyles () {
           blockquote {
             margin-left: -1.75rem;
             padding-left: 1.5rem;
-            border-left: 5px solid ${theme.colors.footer};
-            color: ${theme.colors.footer};
+            border-left: 5px solid ${theme.colors.accent};
+            color: ${theme.colors.grayscale};
             font-style: italic;
+            font-weight: 400;
             & blockquote {
               margin-left: 0;
               padding-left: 1rem;
-              border-left: 5px solid ${theme.colors.textLight};
+              border-left: 5px solid ${theme.colors.accent};
             }
             @media (max-width: 890px) {
               margin-left: -1.1rem;
@@ -479,7 +620,7 @@ export function GlobalStyles () {
               text-decoration: none;
             }
           }
-          @media(max-width: 600px) {
+          @media(max-width: 768px) {
             flexDirection: column;
           }
         }
@@ -493,9 +634,9 @@ export function GlobalStyles () {
         }
         .prevLink,
         .nextLink {
-          font-family: 'Lora', Georgia, 'Times New Roman', Times, serif;
+          font-family: ${theme.fonts.fontTertiary};
           font-size: 18px;
-          @media(max-width: 600px) {
+          @media(max-width: 768px) {
             justify-content: flex-start;
           }
         }
@@ -579,6 +720,15 @@ export function GlobalStyles () {
           to { opacity: 0; transform: translate3d(100%, 0, 0); }
         }
 
+
+        // Chrome + Firefox Hacks - :(
+        @media screen and (-webkit-min-device-pixel-ratio:0)
+          and (min-resolution:.001dpcm) {
+          .crossBrowserAlignment::before{
+            font-size: 22px !important;
+            line-height: 1.7rem !important;
+          }
+        }
       `}
     />
   )

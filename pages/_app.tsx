@@ -1,20 +1,16 @@
-import "@fontsource/poppins/700.css"
-import "@fontsource/poppins/900.css"
-import "@fontsource/lora/500.css"
-import "@fontsource/lora/500-italic.css"
-import "@fontsource/fira-code/400.css"
-import { GlobalStyles } from '../styles/global'
-import { ThemeProvider } from '@emotion/react'
-import { themeLight, themeDark } from '../styles/theme'
-import { useDarkMode } from '../utils/useDarkMode'
-
 import React from 'react'
 import Router from 'next/router'
 import Head from 'next/head'
 import LoadingBar from '../components/LoadingBar'
-import Header from '../components/Header'
+import HeaderLogo from '../components/HeaderLogo'
+import Navigation  from '../components/Navigation'
 import Toggle from '../components/Toggle'
 import Footer from '../components/Footer'
+
+import { GlobalStyles } from '../styles/global'
+import { ThemeProvider } from '@emotion/react'
+import { themeLight, themeDark } from '../styles/theme'
+import { useDarkMode } from '../utils/useDarkMode'
 
 import { Provider } from 'next-auth/client'
 import { AppProps } from 'next/app'
@@ -51,8 +47,11 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         { loading ? <LoadingBar /> : null }
         <div className="container">
           <div className="header">
-            <Header />
-            <Toggle toggleTheme={toggleTheme} />
+            <HeaderLogo />
+            <div className="headerRight">
+              <Navigation />
+              <Toggle toggleTheme={toggleTheme} />
+            </div>
           </div>
           <Component {...pageProps} />
           <Footer />

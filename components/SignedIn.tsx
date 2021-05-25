@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { useTheme } from '@emotion/react'
 import { useRouter } from 'next/router'
 import { signOut, useSession } from 'next-auth/client'
+import { Font } from 'three'
 
 
 const SignedIn: React.FC = () => {
@@ -29,7 +30,7 @@ const SignedIn: React.FC = () => {
           fontSize: '11px',
           alignSelf: 'center',
           color: theme.colors.textLight,
-          fontFamily: "Menlo, Monaco, 'Courier New', monospace",
+          fontFamily: theme.fonts.fontPrimary,
           'a': {
             marginLeft: '.5rem',
             cursor: 'pointer',

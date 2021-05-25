@@ -45,9 +45,10 @@ export default function Home(props: any) {
         Latest Post:
       </h4>
       <Link
-        href={`/blog/${encodeURIComponent(latestPost.slug)}`}
-        aria-label={latestPost.title}>
-        <a>{latestPost.title} →</a>
+        href={`/blog/${encodeURIComponent(latestPost.slug)}`}>
+        <a aria-label={latestPost.title} tabIndex={-1}>
+          {latestPost.title} →
+        </a>
       </Link>
       <p className="teaser">
         {latestPost.teaser}
@@ -63,7 +64,7 @@ export default function Home(props: any) {
   }, [])
   
   return (
-    <main>
+    <main className="home">
       <div className="mainLeft">
         <div css={{
           marginBottom: '3rem',
@@ -113,11 +114,11 @@ export default function Home(props: any) {
                 Words
               </button>
             </Link>
-            {/* <Link href="/bio" aria-label="Bio">
+            <Link href="/bio" aria-label="Bio">
               <button className="buttonCta">
                 Bio
               </button>
-            </Link> */}
+            </Link>
           </div>
           { showLatestPost ? <ShowLatestPost /> : null }
         </div>
