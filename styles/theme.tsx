@@ -20,7 +20,7 @@ export const themeLight = {
   helloEmoji: '👋',
   toggleButton: {
     background: '#292735',
-    text: 'Light',
+    text: '☀️ Light Mode',
     icon: '/sun.svg',
     iconAlt: 'Sun Icon'
   },
@@ -62,7 +62,7 @@ export const themeDark = {
   helloEmoji: '✌️',
   toggleButton: {
     background: '#e2e2e2',
-    text: 'Dark',
+    text: '🌙 Dark Mode',
     icon: '/moon.svg',
     iconAlt: 'Moon Icon',
   },

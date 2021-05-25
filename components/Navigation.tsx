@@ -34,7 +34,7 @@ export default function Navigation() {
     position: 'absolute',
     height: '101vh',
     width: '100vw',
-    background: theme.colors.divider,
+    background: theme.colors.background,
     top: '-2rem',
     left: '-6%',
     '@media(min-width: 601px)': {
