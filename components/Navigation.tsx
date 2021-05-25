@@ -49,13 +49,13 @@ export default function Navigation() {
   const [toggleMobileNav, setToggleMobileNav] = useState(false)
   const ShowNavItems = () => (
     <div className="mobileNavWrapper">
-      <Link href="/" activeClassName="active" aria-label="Home">
+      <Link href="/" activeClassName="active" exact="false" as="">
         <a className="nav">Home</a>
       </Link>
-      <Link href="/bio" activeClassName="active" aria-label="Bio">
+      <Link href="/bio" activeClassName="active" exact="" as="">
         <a className="nav">Bio</a>
       </Link>
-      <Link href="/blog" activeClassName="active" aria-label="Blog">
+      <Link href="/blog" activeClassName="active" exact="" as="">
         <a className="nav">Blog</a>
       </Link>
     </div>
@@ -70,8 +70,8 @@ export default function Navigation() {
         css={mobileNav}
         onClick={() => setToggleMobileNav(!toggleMobileNav)}
       >
-        <span>[ Menu ]</span>
-          { toggleMobileNav ? <ShowNavItems /> : null }
+        <div>[ Menu ]</div>
+        { toggleMobileNav ? <ShowNavItems /> : null }
       </div>
     </>
   )

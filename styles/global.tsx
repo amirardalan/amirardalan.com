@@ -141,7 +141,6 @@ export function GlobalStyles () {
 
         // Layout
         .header {
-          z-index: 10;
           height: auto;
           margin-bottom: 1.8rem;
           display: flex;
@@ -157,12 +156,12 @@ export function GlobalStyles () {
 
         .nav {
           position: relative;
-          &.active {
+          &.active,
+          &:hover {
             &::before {
               position: absolute;
               content: '>';
               left: -10px;
-              animation: slide-left .5s forwards;
             }
           }
         }
@@ -279,7 +278,6 @@ export function GlobalStyles () {
 
         // Three.js Canvas
         .canvasTitle {
-          z-index: 1;
           margin: 0;
           padding: 0 2rem;
           min-height: 0vw;
@@ -293,7 +291,6 @@ export function GlobalStyles () {
         }
 
         .canvasControls {
-          z-index: 2;
           position: absolute;
           bottom: 0;
           left: 20px;
