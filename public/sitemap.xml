@@ -6,7 +6,7 @@
 
       <loc>https://amirardalan.com/</loc>
 
-      <changefreq>monthly</changefreq>
+      <changefreq>weekly</changefreq>
 
    </url>
 
@@ -14,7 +14,15 @@
 
       <loc>https://amirardalan.com/blog</loc>
 
-      <changefreq>weekly</changefreq>
+      <changefreq>daily</changefreq>
+
+   </url>
+
+   <url>
+
+      <loc>https://amirardalan.com/bio</loc>
+
+      <changefreq>monthly</changefreq>
 
    </url>
 
