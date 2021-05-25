@@ -5,51 +5,58 @@ const Toggle = ({ toggleTheme }) => {
 
   const theme : any = useTheme()
   
-  const [toggleThemControl, setToggleThemeControl] = useState(false)
+  const [toggleThemeControl, setToggleThemeControl] = useState(false)
   const themeControlToggled = () => {
-    setToggleThemeControl(!toggleThemControl),
+    setToggleThemeControl(!toggleThemeControl),
     toggleTheme()
   }
+
+  const togglePosition = (toggleThemeControl) ? '&::before' : '&::after'
 
   return (
     <>
       <button
         onClick={themeControlToggled}
         aria-label="Toggle Dark Mode"
+        className="crossBrowserAlignment"
         css={{
           zIndex: 6,
-          width: 55,
-          padding: '.1rem .1rem',
+          width: 'auto',
+          height: 29,
+          padding: '0 .1rem',
           background: theme.toggleButton.background,
           position: 'relative',
           border: '1px solid' + theme.colors.divider,
-          borderRadius: 15,
+          borderRadius: 25,
           color: theme.colors.text,
           cursor: 'pointer',
-          '&::after': {
+          '&::before': {
             zIndex: -1,
+            display: 'flex',
+            
+            alignSelf: 'baseline',
             content: `'${theme.toggleButton.icon}'`,
+            marginLeft: toggleThemeControl ? 0 : 2,
             position: 'absolute',
-            top: 14,
-            lineHeight: 0,
-            left: toggleThemControl ? 22 : 0,
-            right: toggleThemControl ? 0 : 22,
-            fontSize: '17px',
+            lineHeight: '1.56rem',
+            left: toggleThemeControl ? 27 : 0,
+            fontSize: '20px',
+            fontFamily: 'apple color emoji, segoe ui emoji, noto color emoji, android emoji, emojisymbols, emojione mozilla, twemoji mozilla, segoe ui symbol',
           }
       }}>
-        <span>
+        <div>
           <div css={{
             background: '#e2e2e2',
             height: 25,
             width: 25,
             position: 'relative',
-            marginLeft: toggleThemControl ? 0 : 25,
-            marginRight: toggleThemControl ? 25 : 0,
-            borderRadius: 15,
+            marginLeft: toggleThemeControl ? 0 : 25,
+            marginRight: toggleThemeControl ? 25 : 0,
+            borderRadius: 25,
             boxShadow: '0 0 5px' + theme.colors.linkLight,
             transition: '.2s linear',
           }} />
-        </span>
+        </div>
       </button>
     </>
   )

@@ -12,11 +12,88 @@ export function GlobalStyles () {
     <Global
       styles={css`
 
+        // Reset
+        html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote,  pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
+          margin: 0;
+          padding: 0;
+          border: 0;
+          font-size: 100%;
+          vertical-align: baseline;
+        }
+
+        body {
+          line-height: 1;
+        }
+
+        article,aside,details,figcaption,figure, footer,header,hgroup,menu,nav,section{ 
+          display: block;
+        }
+
+        nav ul {
+          list-style: none;
+        }
+
+        blockquote, q {
+          quotes: none;
+        }
+
+        blockquote:before, blockquote:after, q:before, q:after {
+          content: '';
+          content: none;
+        }
+
+        a {
+          margin: 0;
+          padding: 0;
+          font-size: 100%;
+          vertical-align: baseline;
+          background: transparent;
+        }
+
+        ins {
+          background-color: ${theme.colors.divider};
+          color: ${theme.colors.text};
+          text-decoration: none;
+        }
+
+        /* change colors to suit your needs */
+        mark {
+          background-color: ${theme.colors.divider};
+          color: ${theme.colors.text};
+          font-style: italic;
+          font-weight: bold;
+        }
+
+        del {
+          text-decoration: line-through;
+        }
+
+        abbr[title], dfn[title] {
+          border-bottom: 1px dotted;
+          cursor: help;
+        }
+
+        table {
+          border-collapse: collapse;
+          border-spacing: 0;
+        }
+
+        hr {
+          display: block;
+          height: 1px;
+          border: 0;   
+          border-top: 1px solid ${theme.colors.divider};
+          margin: 1em 0;
+          padding: 0;
+        }
+
+        input, select {
+          vertical-align: middle;
+        }
+
         // Base
         html,
         body {
-          margin: 0;
-          padding: 0;
           background-color: ${theme.colors.background};
           font-family: 'Fira Code', Menlo, Monaco, 'Courier New', monospace;
           color: ${theme.colors.text};
@@ -24,6 +101,8 @@ export function GlobalStyles () {
         }
 
         * {
+          margin:0;
+          padding:0;
           box-sizing: border-box;
           &:before,
           &:after {
@@ -44,12 +123,21 @@ export function GlobalStyles () {
         p {
           margin: 0;
           padding: 0;
+          line-height: 1.8rem;
         }
 
         ul, li {
           list-style: none;
           margin: 0;
           padding: 0;
+        }
+
+        button,
+        button:active,
+        button:visited {
+          @media (max-width: 600px) {
+            outline: none;
+          }
         }
 
         button,
@@ -221,6 +309,7 @@ export function GlobalStyles () {
             font-family: 'Poppins', Arial, Arial, Helvetica, sans-serif;
           }
           h2 {
+            font-size: calc(2.7vw + 2.7vh);
             margin: 0 0 1rem;
             font-weight: bolder;
           }
@@ -231,10 +320,10 @@ export function GlobalStyles () {
           
           h3,
           h3 p {
-            font-size: calc(1.2vw + 1.2vh);
+            font-size: calc(1.3vw + 1.3vh);
 
             @media (max-width: 890px) {
-              font-size: calc(1.9vw + 1.9vh);
+              font-size: calc(1.5vw + 1.5vh);
             }
           }
 
@@ -627,6 +716,22 @@ export function GlobalStyles () {
           from { opacity: 1; transform: translate3d(0, 0, 0); }
           to { opacity: 0; transform: translate3d(100%, 0, 0); }
         }
+
+
+        // Chrome Hacks
+        @media screen and (-webkit-min-device-pixel-ratio:0)
+          and (min-resolution:.001dpcm) {
+          .crossBrowserAlignment::before{
+            font-size: 22px !important;
+          }
+        }
+
+        // Firefox Hacks
+        @-moz-document url-prefix() { 
+            .crossBrowserAlignment::before {
+              line-height: 1.6rem !important;
+            }
+          }
 
       `}
     />

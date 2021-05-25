@@ -32,7 +32,7 @@ export default function Logo() {
           Amir Ardalan
         </h1>
 
-        <p
+        <div
           aria-label="Portland, Oregon"
           css={{
             position: 'relative',
@@ -47,7 +47,7 @@ export default function Logo() {
             textTransform: 'uppercase'
           }}>
           Portland,Oregon
-        </p>
+        </div>
       </div>
     </>
   )
