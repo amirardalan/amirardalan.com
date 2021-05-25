@@ -2,7 +2,7 @@ import React from 'react'
 import Router from 'next/router'
 import Head from 'next/head'
 import LoadingBar from '../components/LoadingBar'
-import Logo from '../components/Logo'
+import HeaderLogo from '../components/HeaderLogo'
 import Navigation  from '../components/Navigation'
 import Toggle from '../components/Toggle'
 import Footer from '../components/Footer'
@@ -47,7 +47,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         { loading ? <LoadingBar /> : null }
         <div className="container">
           <div className="header">
-            <Logo/>
+            <HeaderLogo />
             <div className="headerRight">
               <Navigation />
               <Toggle toggleTheme={toggleTheme} />
