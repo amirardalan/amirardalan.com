@@ -110,8 +110,17 @@ export default function Navigation() {
   })
 
   // Set state for mobile nav
+  const [toggleDisableScrolling, setToggleDisableScrolling] = useState(false)
+  const disableScroll = () => {
+    setToggleDisableScrolling(!toggleDisableScrolling)
+    toggleDisableScrolling ? document.body.style.overflow = 'scroll': document.body.style.overflow = 'hidden'
+  }
+
+
   const [toggleMobileNav, setToggleMobileNav] = useState(false)
-  const toggleMenu = () => setToggleMobileNav(!toggleMobileNav)
+  const toggleMenu = () => {setToggleMobileNav(!toggleMobileNav), disableScroll()}
+    
+
   const ShowNavItems = () => (
     <div css={navItems}>
       <Link href="/" activeClassName="active" exact="false" as="">
