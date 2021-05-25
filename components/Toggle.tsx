@@ -51,7 +51,7 @@ const Toggle = ({ toggleTheme }) => {
             marginLeft: toggleThemeControl ? 0 : 27,
             marginRight: toggleThemeControl ? 27 : 0,
             borderRadius: 25,
-            boxShadow: '0 0 5px' + theme.colors.linkLight,
+            boxShadow: '0 0 5px' + theme.colors.accentColor,
             transition: '.2s linear',
           }} />
         </div>

@@ -23,6 +23,7 @@ export const themeLight = {
     fontTertiary: fontTertiary,
   },
   colors: {
+    accentColor: primary,
     background: light,
     text: dark,
     link: primary,
@@ -61,6 +62,7 @@ export const themeDark = {
     fontTertiary: fontTertiary,
   },
   colors: {
+    accentColor: secondary,
     background: dark,
     text: light,
     link: secondary,
