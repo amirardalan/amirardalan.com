@@ -128,7 +128,7 @@ export default function Navigation() {
     <div css={mobileNavWrapper}>
       <ShowNavItems />
       <div css={{
-        margin: '5rem 0',
+        margin: '3rem 0',
         fontSize: '12px',
         a: {
           display: 'block',
@@ -146,9 +146,11 @@ export default function Navigation() {
         }}>
           <ul>
             <li css={{
+              height: 80,
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
+              justifyContent: 'space-between',
               animation: 'slide-up 1s forwards',
               fontFamily: "'Poppins', Arial, Helvetica, sans-serif"
             }}>
