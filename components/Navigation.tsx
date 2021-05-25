@@ -200,7 +200,8 @@ export default function Navigation() {
       <button
         css={mobileNavMenu}
         onClick={toggleMenu}
-        className={toggleMobileNav ? 'open' : 'closed'}>
+        className={toggleMobileNav ? 'open' : 'closed'}
+        aria-label="Navigation Menu">
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>

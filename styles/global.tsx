@@ -128,14 +128,6 @@ export function GlobalStyles () {
         }
 
         button,
-        button:active,
-        button:visited {
-          @media (max-width: 768px) {
-            outline: none;
-          }
-        }
-
-        button,
         input,
         textarea {
           font-family: ${theme.fonts.fontPrimary}
