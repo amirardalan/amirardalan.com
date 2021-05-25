@@ -29,8 +29,7 @@ export default function Navigation() {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'flex-start',
-    paddingTop: '33%',
+    justifyContent: 'center',
     position: 'absolute',
     height: '101vh',
     width: '100vw',
@@ -40,7 +39,7 @@ export default function Navigation() {
     '@media(min-width: 769px)': {
       display: 'none',
     },
-    '@media (max-width: 768px) and (max-height: 768px)': {
+    '@media (max-width: 768px) and (max-height: 600px)': {
       flexDirection: 'row-reverse',
       justifyContent: 'space-evenly',
       paddingTop: 0,
