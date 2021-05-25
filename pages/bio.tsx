@@ -1,4 +1,5 @@
 import { useTheme, css } from '@emotion/react'
+import Link from 'next/link'
 
 export default function Bio() {
 
@@ -28,7 +29,8 @@ export default function Bio() {
         fontSize: 18,
         marginBottom: '2rem',
       }}>
-        Hello, I'm Amir Ardalan, a developer and designer from Portland, Oregon.
+        Hello, I'm Amir Ardalan, a developer and designer from Portland, Oregon. This page is still in development,
+        For now, you can read a bit about <Link href="/blog/2021-a-dev-odyssey">my journey</Link> as a developer.
       </p>
       <main css={{
         display: 'grid',
@@ -42,12 +44,12 @@ export default function Bio() {
           gridTemplateColumns: 'repeat(1, 1fr)',
         }
       }}>
-        <div css={grid}>One</div>
-        <div css={grid}>Two</div>
-        <div css={grid}>Three</div>
-        <div css={grid}>Four</div>
-        <div css={grid}>Five</div>
-        <div css={grid}>Six</div>
+        <div css={grid}>This</div>
+        <div css={grid}>page</div>
+        <div css={grid}>is</div>
+        <div css={grid}>coming</div>
+        <div css={grid}>soon</div>
+        <div css={grid}>...</div>
       </main>
     </div>
   )

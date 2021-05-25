@@ -53,10 +53,16 @@ export function GlobalStyles () {
         }
 
         button,
-        a,
         input,
         textarea {
           font-family: 'Fira Code', Menlo, Monaco, 'Courier New', monospace;
+        }
+
+        a {
+          text-decoration: underline;
+          &:hover {
+            text-decoration: none;
+          }
         }
 
         input[type='text'],
