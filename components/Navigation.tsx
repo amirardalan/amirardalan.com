@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useTheme, css } from '@emotion/react'
 import Link from './Link'
+import SocialLinks from './SocialLinks'
 
 
 export default function Navigation() {
@@ -27,7 +28,8 @@ export default function Navigation() {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
+    paddingTop: '33%',
     position: 'absolute',
     height: '100vh',
     width: '100vw',
@@ -45,8 +47,8 @@ export default function Navigation() {
     marginRight: '5%',
     marginLeft: 30,
     zIndex: 6,
-    width: '45px',
-    height: '30px',
+    width: '30px',
+    height: '22px',
     transform: 'rotate(0deg)',
     transition: '.5s ease-in-out',
     cursor: 'pointer',
@@ -64,18 +66,18 @@ export default function Navigation() {
         top: 0,
       },
       '&:nth-of-type(2)': {
-        top: 13,
+        top: 10,
       },
       '&:nth-of-type(3)': {
-        top: 13,
+        top: 10,
       },
       '&:nth-of-type(4)': {
-        top: 26,
+        top: 20,
       },
     },
     '&.open': {
       'span:nth-of-type(1)': {
-        top: 13,
+        top: 10,
         width: 0,
         left: '50%',
       },
@@ -100,7 +102,7 @@ export default function Navigation() {
     display: 'flex',
     '@media(max-width: 600px)': {
       flexDirection: 'column',
-      alignItems: 'center',
+      alignItems: 'self-start',
       fontSize: 'calc(3vw + 3vh)',
       lineHeight: '4rem',
       fontWeight: 900,
@@ -113,20 +115,22 @@ export default function Navigation() {
   const ShowNavItems = () => (
     <div css={navItems}>
       <Link href="/" activeClassName="active" exact="false" as="">
-        <a className="nav" onClick={toggleMenu}>Home</a>
+        <a className="nav" onClick={toggleMenu} aria-label="Home">
+          Home
+        </a>
       </Link>
       <Link href="/bio" activeClassName="active" exact="" as="">
-        <a className="nav" onClick={toggleMenu}>Bio</a>
+        <a className="nav" onClick={toggleMenu} aria-label="Bio">
+          Bio
+        </a>
       </Link>
       <Link href="/blog" activeClassName="active" exact="" as="">
-        <a className="nav" onClick={toggleMenu}>Blog</a>
+        <a className="nav" onClick={toggleMenu} aria-label="Blog">
+          Blog
+        </a>
       </Link>
     </div>
   )
-
-  // // Mobile Menu Animation
-  // const [toggleMenuAnimation, setToggleMenuAnimation] = useState(false)
-  // const toggleAnimation = () => setToggleMenuAnimation(!toggleMenuAnimation)
 
   return (
     <>
@@ -147,6 +151,29 @@ export default function Navigation() {
       { toggleMobileNav ?
         <div css={mobileNavWrapper}>
           <ShowNavItems />
+          <div css={{
+            margin: '5rem 0',
+            fontSize: '12px',
+            a: {
+              display: 'block',
+              marginBottom: '.5rem',
+              textAlign: 'center',
+            }
+          }}>
+            <SocialLinks />
+            <div css={{
+              position: 'relative',
+              textAlign: 'center',
+              paddingTop: '1rem',
+            }}>
+              <ul>
+                <li css={{ marginBottom: '1rem' }}>•</li>
+                <li>Copyright</li>
+                <li>&copy;{(new Date().getFullYear())}</li>
+                <li>@amirardalan</li>
+              </ul>
+            </div>
+          </div>
         </div>
       : null }
 

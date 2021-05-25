@@ -6,7 +6,7 @@ export default function LoadingBar() {
 
   return(
     <div css={{
-      zIndex: 3,
+      zIndex: 10,
       width: '100vw',
       position: 'fixed',
       top: 0,
