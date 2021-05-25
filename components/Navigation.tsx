@@ -122,7 +122,10 @@ export default function Navigation() {
   }
   // Disable Scrolling when mobile menu is active
   const [toggleMobileNav, setToggleMobileNav] = useState(false)
-  const toggleMenu = () => {setToggleMobileNav(!toggleMobileNav), disableScroll()}
+  const toggleMenu = () => {
+    setToggleMobileNav(!toggleMobileNav),
+    disableScroll()
+  }
 
   const MobileMenu = () => (
     <div css={mobileNavWrapper}>
@@ -163,7 +166,7 @@ export default function Navigation() {
   )
 
   const ShowNavItems = () => (
-    <div css={navItems}>
+    <nav css={navItems}>
       <Link href="/" activeClassName="active" exact="false" as="">
         <a className="nav" onClick={toggleMenu} aria-label="Home">
           Home
@@ -179,7 +182,7 @@ export default function Navigation() {
           Blog
         </a>
       </Link>
-    </div>
+    </nav>
   )
 
   return (
