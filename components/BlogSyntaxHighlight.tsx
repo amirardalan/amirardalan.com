@@ -12,7 +12,6 @@ const BlogSyntaxHighlight = {
         PreTag="div"
         className="codeStyle"
         showLineNumbers={true}
-        // children={String(children).replace(/\n$/, '')}
         {...props}
       />
     ) : (
@@ -21,4 +20,4 @@ const BlogSyntaxHighlight = {
   }
 }
 
-export default BlogSyntaxHighlight
+export default BlogSyntaxHighlight as any

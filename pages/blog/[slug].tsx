@@ -152,7 +152,7 @@ const Post = (props: any) => {
             <span>{postDate} • {readTime}</span>
           </small>
 
-          <ReactMarkdown<any> components={BlogSyntaxHighlight} children={props.post.content} />
+          <ReactMarkdown components={BlogSyntaxHighlight} children={props.post.content} />
 
           <div className="controlsPost">
             { userHasValidSession && (
