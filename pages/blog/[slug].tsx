@@ -28,50 +28,39 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   return { props: { post, feed } }
 }
 
-
 const Post = (props: any) => {
 
   // Check if user has valid session
   const [session] = useSession()
-
   const userHasValidSession = Boolean(session)
 
   // Check if post is published
+  // Generate a label for Publish/Unpublish button
+  // Set the redirect for after Publish/Unpublish
   const isPublished : Boolean = (props.post.published) ? true : false
+  const publishLabel = isPublished ? 'Unpublish' : 'Publish'
+  const publishRoute = isPublished ? '/blog/drafts' : '/blog/'
 
-  // Publish post via API route
-  async function publishPost(id: number): Promise<void> {
-    await fetch(`/api/publish/${id}`, {
+  // Publish/Unpublish post
+  async function publishPost(id: number, published: boolean): Promise<void> {
+    await fetch(`/api/publish/${id}?published=${published}`, {
       method: 'PUT',
     })
-    await Router.push('/blog')
+    await Router.push(publishRoute)
   }
-  // Unpublish post via API route
-  async function unPublishPost(id: number): Promise<void> {
-    await fetch(`/api/unpublish/${id}`, {
-      method: 'PUT',
-    })
-    await Router.push('/blog/drafts')
-  }
-  // Edit post via API route
+  // Edit post
   async function editPost(id: number): Promise<void> {
     await fetch(`/blog/edit/${id}`, {
       method: 'PUT',
     })
     await Router.push(`/blog/edit/${id}`)
   }
-  // Delete post via API route
+  // Delete post
   async function deletePost(id: number): Promise<void> {
     await fetch(`/api/post/${id}`, {
       method: 'DELETE',
     })
-    // If deleted post was a draft, return to drafts,
-    // otherwise, redirect to blog landing
-    if (isPublished) {
-      Router.push('/blog')
-    } else {
-      Router.push('/blog/drafts')
-    }
+    Router.push(publishRoute)
   }
 
   // Check if draft and render breadcrumb
@@ -102,7 +91,7 @@ const Post = (props: any) => {
 
   // Get current post data
   const total : number = props.feed.length
-  const current : any = props.post.id
+  const current : number = props.post.id
   const arr : Array<any> = (props.feed) ? props.feed : null
 
   // Error Handling
@@ -114,10 +103,10 @@ const Post = (props: any) => {
 
   // Generate next/prev post navigation and conditionally render the links
   const index = arr.findIndex(x => x.id === current)
-  const prevTitle = (errHandlePrev) ? arr[index - 1].title : null
-  const nextTitle = (errHandleNext) ? arr[index + 1].title : null
-  const prevLink = (errHandlePrev) ? `/blog/${encodeURIComponent(arr[index - 1].slug)}` : '#'
-  const nextLink = (errHandleNext) ? `/blog/${encodeURIComponent(arr[index + 1].slug)}` : '#'
+  const prevTitle = errHandlePrev ? arr[index - 1].title : null
+  const nextTitle = errHandleNext ? arr[index + 1].title : null
+  const prevLink = errHandlePrev ? `/blog/${encodeURIComponent(arr[index - 1].slug)}` : '#'
+  const nextLink = errHandleNext ? `/blog/${encodeURIComponent(arr[index + 1].slug)}` : '#'
   const RenderPrevLink = () => ( <Link href={prevLink} aria-label={prevTitle}><a>← {prevTitle}</a></Link> )
   const RenderNextLink = () => ( <Link href={nextLink} aria-label={nextTitle}><a>{nextTitle} →</a></Link> )
 
@@ -164,23 +153,33 @@ const Post = (props: any) => {
           <ReactMarkdown children={props.post.content} />
 
           <div className="controlsPost">
-            { !isPublished && userHasValidSession && (
-              <button className="buttonCompact" onClick={() => publishPost(props.post.id)}>Publish</button>
-            )}
-            { isPublished && userHasValidSession && (
-              <button className="buttonCompact" onClick={() => unPublishPost(props.post.id)}>Unpublish</button>
+            { userHasValidSession && (
+              <button
+                className="buttonCompact"
+                onClick={() => publishPost(props.post.id, props.post.published)}>
+                {publishLabel}
+              </button>
             )}
             { userHasValidSession && (
-              <button className="buttonCompact" onClick={() => editPost(props.post.id)}>Edit</button>
+              <button
+                className="buttonCompact"
+                onClick={() => editPost(props.post.id)}>
+                Edit
+              </button>
             )}
             { userHasValidSession && (
-              <button className="buttonCompact delete" onClick={confirmOnClick}>Delete</button>
+              <button
+                className="buttonCompact delete"
+                onClick={confirmOnClick}>
+                Delete
+              </button>
             )}
 
             { showConfirmation ? <RenderDeleteConfirmation /> : null }
 
           </div>
         </div>
+
         <div className="nextPrevControls">
           <div className="prevLink">
             { errHandlePrev ? <RenderPrevLink /> : null }
@@ -189,6 +188,7 @@ const Post = (props: any) => {
             { errHandleNext ? <RenderNextLink /> : null }
           </div>
         </div>
+        
       </div>
     </>
   )
