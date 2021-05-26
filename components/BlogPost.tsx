@@ -42,13 +42,13 @@ const Post: React.FC<{ post: PostProps }> = ({ post }) => {
         aria-label={post.title}>
         {post.title}
       </h2>
-      <small>
-        <span
-          className="postDetails"
-          aria-label={`${postDate} • ${readTime}`}>
-          {postDate} • {readTime}
-        </span>
-      </small>
+      <div
+        className="postDetails"
+        aria-label={`${postDate} • ${readTime}`}>
+          <div className="postDetails">
+            By {post?.author?.name || 'Unknown author'} • {postDate} • {readTime}
+          </div>
+        </div>
       <p>{post.teaser}</p>
     </div>
   )

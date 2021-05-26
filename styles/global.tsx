@@ -474,10 +474,6 @@ export function GlobalStyles () {
             font-family: ${theme.fonts.tertiary};
             font-size: 18px;
           }
-          small {
-            display: block;
-            color: ${theme.colors.grayscale};
-          }
           main {
             display: flex;
             flex-direction: column;
@@ -489,9 +485,13 @@ export function GlobalStyles () {
         }
 
         .postDetails {
-          margin: .5rem 0 .2rem;
-          display: block;
+          margin: .6rem 0 .2rem;
+          color: ${theme.colors.grayscale};
           font-size: 13px;
+
+          @media (max-width: 480px) {
+            font-size: 12px;
+          }
         }
 
         .controlsPost {

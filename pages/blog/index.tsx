@@ -1,15 +1,20 @@
 import React from 'react'
 import Head from 'next/head'
 import BlogAdmin from '../../components/BlogAdmin'
-import { GetServerSideProps } from 'next'
+import { GetStaticProps } from 'next'
 import prisma from '../../lib/prisma'
 import BlogPost, { PostProps } from '../../components/BlogPost'
 
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   try {
     const feed = await prisma.post.findMany({
       where: { published: true },
+      include: {
+        author: {
+          select: { name: true },
+        },
+      },
     })
     return { props: { feed } }
   } catch {

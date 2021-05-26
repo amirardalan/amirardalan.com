@@ -17,6 +17,11 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
       where: {
         slug: String(params?.slug),
       },
+      include: {
+        author: {
+          select: { name: true },
+        },
+      },
     }),
     prisma.post.findMany({
       where: { published: true },
@@ -148,9 +153,9 @@ const Post = (props: any) => {
         <div className="post postFull">
 
           <h2>{title}</h2>
-          <small className="postDetails">
-            <span>{postDate} • {readTime}</span>
-          </small>
+          <div className="postDetails">
+            By {props?.post?.author?.name || 'Unknown author'} • {postDate} • {readTime}
+          </div>
 
           <ReactMarkdown components={BlogSyntaxHighlight} children={props.post.content} />
 
