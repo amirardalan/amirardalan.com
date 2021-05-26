@@ -234,7 +234,6 @@ export function GlobalStyles () {
           margin-bottom: 1.8rem;
           display: flex;
           justify-content: space-between;
-          animation: fadeIn 3s forwards;
           position: relative;
           z-index: 5;
           a { text-decoration: none; }
