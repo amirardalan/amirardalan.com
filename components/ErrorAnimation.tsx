@@ -14,7 +14,7 @@ const theme : any = useTheme()
         height: auto;
         align-self: center;
         margin-bottom: 2rem;
-        animation: fade-in 1s linear;
+        animation: fadeIn 1s linear;
         
         .arm-left{
           animation: armSwipe 5s 1s infinite ease-in-out;

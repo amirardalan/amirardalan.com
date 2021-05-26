@@ -92,6 +92,7 @@ export function GlobalStyles () {
           background-color: ${theme.colors.background};
           font-family: ${theme.fonts.primary};
           color: ${theme.colors.text};
+          -webkit-text-size-adjust: 100%;
           transition: all 0.25s linear;
         }
 
@@ -233,7 +234,7 @@ export function GlobalStyles () {
           margin-bottom: 1.8rem;
           display: flex;
           justify-content: space-between;
-          animation: fade-in 3s forwards;
+          animation: fadeIn 3s forwards;
           position: relative;
           z-index: 5;
           a { text-decoration: none; }
@@ -304,13 +305,19 @@ export function GlobalStyles () {
           flex-direction: column;
           align-self: flex-end;
           justify-content: space-between;
-          animation: slide-up .8s forwards;
+          animation: slideUp .8s forwards;
 
           h2 {
             font-family: ${theme.fonts.secondary};
             font-size: calc(2.8vw + 2.8vh);
             margin: 0 0 1rem;
             font-weight: bolder;
+          }
+
+          .highlight {
+            padding: 0 .2rem;
+            background: ${theme.colors.text};
+            color: ${theme.colors.background};
           }
           
           h3,
@@ -351,7 +358,7 @@ export function GlobalStyles () {
           align-items: center;
           align-self: flex-end;
           cursor: crosshair;
-          animation: slide-up 1s forwards;
+          animation: slideUp 1s forwards;
 
           @media (max-width: 890px) {
             width: 100%;
@@ -384,6 +391,9 @@ export function GlobalStyles () {
             &:hover {
               text-decoration: none;
             }
+            @media(max-width: 480px) {
+              font-size: 16px;
+            }
           }
           p {
             color: ${theme.colors.grayscale};
@@ -413,10 +423,10 @@ export function GlobalStyles () {
           font-size: 10px;
           font-weight: normal;
           text-transform: uppercase;
-          animation: fade-out .2s forwards;
+          animation: fadeOut .2s forwards;
 
           .mainRight:hover & {
-            animation: fade-in .2s forwards;
+            animation: fadeIn .2s forwards;
           }
         }
 
@@ -676,60 +686,25 @@ export function GlobalStyles () {
           background: ${theme.colors.selection};
           color: ${theme.colors.selectionText};
         }
-        .highlight {
-          padding: 0 .2rem;
-          background: ${theme.colors.text};
-          color: ${theme.colors.background};
-        }
 
         // Animation
         @keyframes spin {
           from { transform: rotate(0deg); }
           to { transform: rotate(360deg); }
         }
-        @keyframes spin-reverse {
-          from { transform: rotate(360deg); }
-          to { transform: rotate(0deg); }
-        }
-        @keyframes fade-in {
+        @keyframes fadeIn {
           from { opacity: 0; }
           to { opacity: 1; }
         }
-        
-        @keyframes fade-out {
+        @keyframes fadeOut {
           from { opacity: 1; }
           to { opacity: 0; }
         }
-
-        @keyframes slide-up {
+        @keyframes slideUp {
           from { opacity: 0; transform: translate3d(0, 100%, 0); }
           to { opacity: 1; transform: translate3d(0, 0, 0); }
         }
-
-        @keyframes slide-down {
-          from { opacity: 0; transform: translate3d(0, 0, 0); }
-          to { opacity: 1; transform: translate3d(0, 100%, 0); }
-        }
-
-        @keyframes slide-left {
-          from { opacity: 0; transform: translate3d(100%, 0, 0); }
-          to { opacity: 1; transform: translate3d(0, 0, 0); }
-        }
-
-        @keyframes slide-right {
-          from { opacity: 1; transform: translate3d(0, 0, 0); }
-          to { opacity: 0; transform: translate3d(100%, 0, 0); }
-        }
-
-
-        // Chrome + Firefox Hacks - :(
-        @media screen and (-webkit-min-device-pixel-ratio:0)
-          and (min-resolution:.001dpcm) {
-          .crossBrowserAlignment::before{
-            font-size: 22px !important;
-            line-height: 1.7rem !important;
-          }
-        }
+        
       `}
     />
   )

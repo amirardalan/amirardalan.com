@@ -20,7 +20,6 @@
     "@react-three/drei": "^4.3.3",
     "@react-three/fiber": "^6.1.5",
     "@types/three": "^0.128.0",
-    "drei": "^2.2.21",
     "next": "^10.2.3",
     "next-auth": "^3.23.0",
     "react": "17.0.2",

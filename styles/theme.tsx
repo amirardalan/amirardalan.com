@@ -46,11 +46,11 @@ export const themeLight = {
   helloEmoji: '👋',
   toggleButton: {
     background: dark,
-    icon: '☀️',
+    switch: lighter,
   },
   canvas: {
     textSmall: 'Rotate & Zoom',
-    textAnim: 'fade-in 3s forwards',
+    textAnim: 'fadeIn 3s forwards',
     meshA: primary,
   },
   page: {
@@ -83,12 +83,12 @@ export const themeDark = {
   logoError: '/logoErrorLight.svg',
   helloEmoji: '✌️',
   toggleButton: {
-    background: darker,
-    icon: '🌙',
+    background: lightAccent,
+    switch: darker,
   },
   canvas: {
     textSmall: 'Rotate + Zoom',
-    textAnim: 'fade-in 3s forwards',
+    textAnim: 'fadeIn 3s forwards',
     meshA: secondary,
   },
   page: {

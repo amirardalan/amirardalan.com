@@ -51,7 +51,7 @@ export default function Navigation() {
     marginRight: '5%',
     marginLeft: 30,
     zIndex: 6,
-    width: 38,
+    width: 41,
     height: 22,
     background: 'transparent',
     border: 'none',
@@ -110,7 +110,7 @@ export default function Navigation() {
     
     '@media(max-width: 768px)': {
       flexDirection: 'column',
-      alignItems: 'flex-start',
+      alignItems: 'center',
       fontSize: 'calc(3vw + 3vh)',
       lineHeight: '4rem',
     },
@@ -143,7 +143,7 @@ export default function Navigation() {
           display: 'block',
           marginBottom: '.5rem',
           textAlign: 'center',
-          animation: 'slide-up .8s ease',
+          animation: 'slideUp .8s ease',
         }
       }}>
         <SocialLinks />
@@ -151,7 +151,7 @@ export default function Navigation() {
           position: 'relative',
           textAlign: 'center',
           paddingTop: '1rem',
-          animation: 'slide-up .5s',
+          animation: 'slideUp .5s',
         }}>
           <ul>
             <li css={{
@@ -160,7 +160,7 @@ export default function Navigation() {
               flexDirection: 'column',
               alignItems: 'center',
               justifyContent: 'space-between',
-              animation: 'slide-up 1s forwards',
+              animation: 'slideUp 1s forwards',
               fontFamily: theme.fonts.secondary,
             }}>
               <Logo />

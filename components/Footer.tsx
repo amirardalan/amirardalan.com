@@ -21,7 +21,7 @@ export default function Footer() {
       color: theme.colors.grayscale,
       borderTop: '1px solid' + theme.colors.accent,
       lineHeight: '1.8em',
-      animation: 'slide-up .25s forwards',
+      animation: 'slideUp .25s forwards',
       transition: 'all 0.25s linear',
     }}>
       <div>

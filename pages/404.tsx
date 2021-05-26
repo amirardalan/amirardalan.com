@@ -25,7 +25,7 @@ export default function Custom404() {
         <div css={{
           display: 'flex',
           justifyContent: 'center',
-          animation: 'slide-up .5s forwards',
+          animation: 'slideUp .5s forwards',
 
           h2: {
             margin: '0 1rem 0 1rem',
@@ -58,7 +58,7 @@ export default function Custom404() {
         <div css={{
           marginTop: '1.5rem',
           textAlign: 'center',
-          animation: 'slide-up 1s forwards',
+          animation: 'slideUp 1s forwards',
         }}>
           <Link
             href="/"

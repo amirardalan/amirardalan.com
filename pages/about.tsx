@@ -10,7 +10,7 @@ export default function About() {
     justifyContent: 'center',
     padding: '3rem',
     backgroundColor: theme.page.bg,
-    animation: 'slide-up .5s forwards'
+    animation: 'slideUp .5s forwards'
   })
 
 
