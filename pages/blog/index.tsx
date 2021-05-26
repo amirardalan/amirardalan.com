@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Head from 'next/head'
-import SignedIn from '../../components/SignedIn'
+import BlogAdmin from '../../components/BlogAdmin'
 import { GetServerSideProps } from 'next'
 import prisma from '../../lib/prisma'
-import Post, { PostProps } from '../../components/Post'
+import BlogPost, { PostProps } from '../../components/BlogPost'
 
 
 export const getServerSideProps: GetServerSideProps = async () => {
@@ -41,7 +41,7 @@ const Blog: React.FC<Props> = (props: any) => {
           <span>Blog</span>
         </nav>
 
-        <SignedIn />
+        <BlogAdmin />
 
         <div>
           { showFeedError ? <FeedNotFound /> : null }
@@ -50,7 +50,7 @@ const Blog: React.FC<Props> = (props: any) => {
               key={post.id}
               className="post"
             >
-              <Post post={post} />
+              <BlogPost post={post} />
             </div>
           ))}
         </div>

@@ -21,9 +21,9 @@ const fontTertiary = "'Lora', 'Times New Roman', Times, serif"
 // Light Theme
 export const themeLight = {
   fonts: {
-    fontPrimary: fontPrimary,
-    fontSecondary: fontSecondary,
-    fontTertiary: fontTertiary,
+    primary: fontPrimary,
+    secondary: fontSecondary,
+    tertiary: fontTertiary,
   },
   colors: {
     accentColor: primary,
@@ -61,9 +61,9 @@ export const themeLight = {
 // Dark Theme
 export const themeDark = {
   fonts: {
-    fontPrimary: fontPrimary,
-    fontSecondary: fontSecondary,
-    fontTertiary: fontTertiary,
+    primary: fontPrimary,
+    secondary: fontSecondary,
+    tertiary: fontTertiary,
   },
   colors: {
     accentColor: secondary,

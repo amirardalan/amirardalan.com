@@ -6,7 +6,7 @@ import { GetServerSideProps } from 'next'
 import prisma from '../../../lib/prisma'
 import { useSession } from 'next-auth/client'
 import LoadingTriangle from '../../../components/LoadingTriangle'
-import SignedIn from '../../../components/SignedIn'
+import BlogAdmin from '../../../components/BlogAdmin'
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const editPost = await prisma.post.findUnique({
@@ -95,7 +95,7 @@ const Edit = (props: any) => {
           <span>Edit Post</span>
         </nav>
 
-        <SignedIn />
+        <BlogAdmin />
 
         <div>
           <form onSubmit={submitData}>

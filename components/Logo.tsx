@@ -38,7 +38,7 @@ export default function Logo() {
             position: 'relative',
             margin: '0',
             color: theme.colors.grayscale,
-            fontFamily: "'Fira Code', Menlo, Monaco, 'Courier New', monospace",
+            fontFamily: theme.fonts.primary,
             fontSize: '8px',
             fontWeight: 'normal',
             letterSpacing: '.11rem',

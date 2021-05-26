@@ -3,10 +3,9 @@ import Link from 'next/link'
 import { useTheme } from '@emotion/react'
 import { useRouter } from 'next/router'
 import { signOut, useSession } from 'next-auth/client'
-import { Font } from 'three'
 
 
-const SignedIn: React.FC = () => {
+const BlogAdmin: React.FC = () => {
   const router = useRouter()
   const isActive: (pathname: string) => boolean = (pathname) =>
     router.pathname === pathname
@@ -30,7 +29,7 @@ const SignedIn: React.FC = () => {
           fontSize: '11px',
           alignSelf: 'center',
           color: theme.colors.textLight,
-          fontFamily: theme.fonts.fontPrimary,
+          fontFamily: theme.fonts.primary,
           'a': {
             marginLeft: '.5rem',
             cursor: 'pointer',
@@ -43,7 +42,16 @@ const SignedIn: React.FC = () => {
           }
         }}>
           {session.user.name} ({session.user.email}) •
-          <a onClick={() => signOut({ callbackUrl: `${process.env.NEXT_PUBLIC_CALLBACK_URL}` })} aria-label="Sign Out">
+          <a
+            onClick={() => signOut({ callbackUrl: `${process.env.NEXT_PUBLIC_CALLBACK_URL}` })}
+            aria-label="Sign Out"
+            tabIndex={0}
+            css={{
+              textDecoration: 'none',
+              '&:hover': {
+                color: theme.colors.grayscale
+              }
+            }}>
             Sign Out
           </a>
         </span>
@@ -83,4 +91,4 @@ const SignedIn: React.FC = () => {
   )
 }
 
-export default SignedIn
+export default BlogAdmin

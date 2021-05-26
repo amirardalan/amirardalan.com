@@ -4,7 +4,7 @@ import { GetServerSideProps } from 'next'
 import { useSession } from 'next-auth/client'
 import Link from 'next/link'
 import Head from 'next/head'
-import SignedIn from '../../components/SignedIn'
+import BlogAdmin from '../../components/BlogAdmin'
 import prisma from '../../lib/prisma'
 import ReactMarkdown from 'react-markdown'
 
@@ -141,7 +141,7 @@ const Post = (props: any) => {
           <span>{title}</span>
         </nav>
 
-        <SignedIn />
+        <BlogAdmin />
         
         <div className="post postFull">
 

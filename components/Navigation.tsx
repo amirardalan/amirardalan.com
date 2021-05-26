@@ -42,7 +42,7 @@ export default function Navigation() {
     '@media (max-width: 768px) and (max-height: 600px)': {
       flexDirection: 'row-reverse',
       justifyContent: 'space-between',
-      alignItems: 'flex-start',
+      paddingLeft: '2rem',
     }
   })
 
@@ -110,13 +110,13 @@ export default function Navigation() {
     
     '@media(max-width: 768px)': {
       flexDirection: 'column',
-      alignItems: 'self-start',
+      alignItems: 'flex-start',
       fontSize: 'calc(3vw + 3vh)',
       lineHeight: '4rem',
     },
     '@media (max-width: 768px) and (max-height: 600px)': {
-      padding: '2rem',
-      width: '80%',
+      width: '21vw',
+      alignItems: 'self-start',
     }
   })
 
@@ -161,7 +161,7 @@ export default function Navigation() {
               alignItems: 'center',
               justifyContent: 'space-between',
               animation: 'slide-up 1s forwards',
-              fontFamily: theme.fonts.fontSecondary,
+              fontFamily: theme.fonts.secondary,
             }}>
               <Logo />
             </li>

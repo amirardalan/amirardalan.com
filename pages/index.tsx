@@ -47,7 +47,7 @@ export default function Home(props: any) {
       </h4>
       <Link
         href={`/blog/${encodeURIComponent(latestPost.slug)}`}>
-        <a aria-label={latestPost.title} tabIndex={-1}>
+        <a aria-label={latestPost.title} tabIndex={0}>
           {latestPost.title} →
         </a>
       </Link>

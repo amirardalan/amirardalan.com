@@ -3,8 +3,8 @@ import { GetServerSideProps } from 'next'
 import { useSession, getSession } from 'next-auth/client'
 import Link from 'next/link'
 import Head from 'next/head'
-import SignedIn from '../../components/SignedIn'
-import Post, { PostProps } from '../../components/Post'
+import BlogAdmin from '../../components/BlogAdmin'
+import BlogPost, { PostProps } from '../../components/BlogPost'
 import prisma from '../../lib/prisma'
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
@@ -44,7 +44,7 @@ const Drafts: React.FC<Props> = (props) => {
           <span>Drafts</span>
         </nav>
 
-        <SignedIn />
+        <BlogAdmin />
 
         <div className="drafts">
           <main>
@@ -53,7 +53,7 @@ const Drafts: React.FC<Props> = (props) => {
                 key={post.id}
                 className="postDraft"
               >
-                <Post post={post} />
+                <BlogPost post={post} />
               </div>
             ))}
           </main>

@@ -16,7 +16,7 @@ export default function Header() {
           flexDirection: 'row',
           alignItems: 'center',
           animation: 'slide-up 1s forwards',
-          fontFamily: themeDark.fonts.fontSecondary,
+          fontFamily: themeDark.fonts.secondary,
           background: 'transparent',
           border: 'none',
           cursor: 'pointer',

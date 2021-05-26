@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import HeaderLogo from '../components/HeaderLogo'
+import Header from '../components/Header'
 import Navigation  from '../components/Navigation'
 import Toggle from '../components/Toggle'
 import Footer from '../components/Footer'
@@ -35,7 +35,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         { loading ? <LoadingBar /> : null }
         <div className="container">
           <div className="header">
-            <HeaderLogo />
+            <Header />
             <div className="headerRight">
               <Navigation />
               <Toggle toggleTheme={toggleTheme} />

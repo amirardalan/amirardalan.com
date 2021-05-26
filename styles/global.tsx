@@ -77,8 +77,8 @@ export function GlobalStyles () {
           display: block;
           height: 1px;
           border: 0;   
-          border-top: 1px solid ${theme.colors.accent};
-          margin: 1em 0;
+          border-top: 1px solid ${theme.colors.grayscale};
+          margin: 3em 0;
           padding: 0;
         }
 
@@ -90,7 +90,7 @@ export function GlobalStyles () {
         html,
         body {
           background-color: ${theme.colors.background};
-          font-family: ${theme.fonts.fontPrimary};
+          font-family: ${theme.fonts.primary};
           color: ${theme.colors.text};
           transition: all 0.25s linear;
         }
@@ -130,7 +130,7 @@ export function GlobalStyles () {
         button,
         input,
         textarea {
-          font-family: ${theme.fonts.fontPrimary}
+          font-family: ${theme.fonts.primary}
         }
 
         a {
@@ -250,8 +250,7 @@ export function GlobalStyles () {
 
         .nav {
           position: relative;
-          &.active,
-          &:hover {
+          &.active {
             &::before {
               position: absolute;
               content: '>';
@@ -308,7 +307,7 @@ export function GlobalStyles () {
           animation: slide-up .8s forwards;
 
           h2 {
-            font-family: ${theme.fonts.fontSecondary};
+            font-family: ${theme.fonts.secondary};
             font-size: calc(2.8vw + 2.8vh);
             margin: 0 0 1rem;
             font-weight: bolder;
@@ -320,7 +319,7 @@ export function GlobalStyles () {
             color: ${theme.colors.grayscale};
 
             @media (max-width: 890px) {
-              font-size: calc(1.5vw + 1.5vh);
+              font-size: calc(1.2vw + 1.2vh);
             }
           }
 
@@ -375,7 +374,7 @@ export function GlobalStyles () {
             font-weight: normal;
           }
           p, a {
-            font-family: ${theme.fonts.fontTertiary}
+            font-family: ${theme.fonts.tertiary}
           }
           a{
             color: ${theme.colors.text};
@@ -458,7 +457,7 @@ export function GlobalStyles () {
             margin: 0 1%;
           }
           h2, h3, h4 {
-            font-family: ${theme.fonts.fontSecondary};
+            font-family: ${theme.fonts.secondary};
           }
           h2 {
             margin: 0;
@@ -471,7 +470,7 @@ export function GlobalStyles () {
             &:hover { text-decoration: none; }
           }
           p {
-            font-family: ${theme.fonts.fontTertiary};
+            font-family: ${theme.fonts.tertiary};
             font-size: 18px;
           }
           small {
@@ -535,6 +534,7 @@ export function GlobalStyles () {
           padding: 1.8rem;
           display: flex;
           justify-content: space-between;
+          /* background: ${theme.colors.accent}; */
           border: 1px solid ${theme.colors.accent};
           &::after {
             content: 'Draft';
@@ -558,7 +558,6 @@ export function GlobalStyles () {
 
         .postTeaser {
           h2 { font-size: 30px; }
-          animation: slide-up .5s forwards;
         }
 
         .postFull {
@@ -568,7 +567,7 @@ export function GlobalStyles () {
           }
           p { margin-top: 2rem; }
           p, ul, li, a, blockquote {
-            font-family: ${theme.fonts.fontTertiary}
+            font-family: ${theme.fonts.tertiary}
           }
           h3 {
             margin: 3.5rem 0 0;
@@ -629,7 +628,7 @@ export function GlobalStyles () {
         }
         .prevLink,
         .nextLink {
-          font-family: ${theme.fonts.fontTertiary};
+          font-family: ${theme.fonts.tertiary};
           font-size: 18px;
           @media(max-width: 768px) {
             justify-content: flex-start;
