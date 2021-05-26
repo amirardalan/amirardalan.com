@@ -1,7 +1,4 @@
-import React from 'react'
-import Router from 'next/router'
 import Head from 'next/head'
-import LoadingBar from '../components/LoadingBar'
 import HeaderLogo from '../components/HeaderLogo'
 import Navigation  from '../components/Navigation'
 import Toggle from '../components/Toggle'
@@ -15,26 +12,17 @@ import { useDarkMode } from '../utils/useDarkMode'
 import { Provider } from 'next-auth/client'
 import { AppProps } from 'next/app'
 
+import LoadingBar from '../components/LoadingBar'
+import { useLoadingBar } from '../utils/useLoadingBar'
+
 const MyApp = ({ Component, pageProps }: AppProps) => {
 
-  // Show loading indicator on router events
-  const [loading, setLoading] = React.useState(false);
-  React.useEffect(() => {
-    const start = () => { setLoading(true) }
-    const end = () => { setLoading(false) }
-    Router.events.on("routeChangeStart", start)
-    Router.events.on("routeChangeComplete", end)
-    Router.events.on("routeChangeError", end)
-    return () => {
-      Router.events.off("routeChangeStart", start)
-      Router.events.off("routeChangeComplete", end)
-      Router.events.off("routeChangeError", end)
-    }
-  }, [])
-
-  // Theme Toggle
+  // Toggle Dark Mode
   const [theme, toggleTheme] = useDarkMode()
   const themeMode = theme === 'light' ? themeLight : themeDark
+
+  // Show Loading Bar
+  const loading = useLoadingBar()
 
   return (
     <Provider session={pageProps.session}>
