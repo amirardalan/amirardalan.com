@@ -21,7 +21,7 @@ export function GlobalStyles () {
           vertical-align: baseline;
         }
 
-        article,aside,details,figcaption,figure, footer,header,hgroup,menu,nav,section{ 
+        article,aside,details,figcaption,figure, footer,header,hgroup,menu,nav,section { 
           display: block;
         }
 
@@ -307,22 +307,17 @@ export function GlobalStyles () {
           justify-content: space-between;
           animation: slide-up .8s forwards;
 
-          h2, h3, p {
-            font-family: ${theme.fonts.fontSecondary};
-          }
           h2 {
-            font-size: calc(2.7vw + 2.7vh);
+            font-family: ${theme.fonts.fontSecondary};
+            font-size: calc(2.8vw + 2.8vh);
             margin: 0 0 1rem;
             font-weight: bolder;
-          }
-          h3, h4 {
-            margin: 0;
-            padding: 0;
           }
           
           h3,
           h3 p {
-            font-size: calc(1.3vw + 1.3vh);
+            font-size: calc(1vw + 1vh);
+            color: ${theme.colors.grayscale};
 
             @media (max-width: 890px) {
               font-size: calc(1.5vw + 1.5vh);

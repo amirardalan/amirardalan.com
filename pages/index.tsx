@@ -1,4 +1,4 @@
-import { css, useTheme } from '@emotion/react'
+import { useTheme } from '@emotion/react'
 import { useState, useEffect } from 'react'
 import prisma from '../lib/prisma'
 import { GetServerSideProps } from 'next'
@@ -29,7 +29,8 @@ export const getServerSideProps: GetServerSideProps = async () => {
       },
     })
     return { props: { latestPost } }
-  } catch {
+  }
+  catch {
     return { props: {} }
   }
 }

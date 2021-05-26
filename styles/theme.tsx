@@ -1,8 +1,9 @@
+// Colors
 const light= '#e2e2e2'
 const lightAccent = '#cccccc'
 const lighter = '#eaeaea'
 const dark= '#2d2a35'
-const darkAccent = '#363341'
+const darkAccent = '#3a3746'
 const darker = '#1e1c25'
 const primary = '#7A00CC'
 const secondary = '#21c8e5'
@@ -12,10 +13,12 @@ const selection = '#ffff00'
 const buttonDisabled = '#8b8b8b'
 const warning = '#ec4949;'
 
+// Typography
 const fontPrimary = "'Fira Code', Menlo, Monaco, 'Courier New', monospace"
 const fontSecondary = "'Poppins', Helvetica, Arial, sans-serif"
 const fontTertiary = "'Lora', 'Times New Roman', Times, serif"
 
+// Light Theme
 export const themeLight = {
   fonts: {
     fontPrimary: fontPrimary,
@@ -55,6 +58,7 @@ export const themeLight = {
   }
 }
 
+// Dark Theme
 export const themeDark = {
   fonts: {
     fontPrimary: fontPrimary,
