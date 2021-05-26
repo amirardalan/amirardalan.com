@@ -315,7 +315,8 @@ export function GlobalStyles () {
           
           h3,
           h3 p {
-            font-size: calc(1vw + 1vh);
+            font-size: calc(.9vw + .9vh);
+            font-weight: normal;
             color: ${theme.colors.grayscale};
 
             @media (max-width: 890px) {

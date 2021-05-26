@@ -20,4 +20,4 @@ const BlogSyntaxHighlight = {
   }
 }
 
-export default BlogSyntaxHighlight as any
+export default BlogSyntaxHighlight as object

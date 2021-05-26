@@ -115,9 +115,9 @@ export default function Home(props: any) {
                 Words
               </button>
             </Link>
-            <Link href="/bio" aria-label="Bio">
+            <Link href="/about" aria-label="About">
               <button className="buttonCta">
-                Bio
+                About
               </button>
             </Link>
           </div>

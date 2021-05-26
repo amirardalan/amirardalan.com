@@ -178,14 +178,14 @@ export default function Navigation() {
           Home
         </a>
       </Link>
-      <Link href="/bio" activeClassName="active" exact="" as="">
-        <a className="nav" onClick={toggleMobileNav ? toggleMenu : null} aria-label="Bio">
-          Bio
-        </a>
-      </Link>
       <Link href="/blog" activeClassName="active" exact="" as="">
         <a className="nav" onClick={toggleMobileNav ? toggleMenu : null} aria-label="Blog">
           Blog
+        </a>
+      </Link>
+      <Link href="/about" activeClassName="active" exact="" as="">
+        <a className="nav" onClick={toggleMobileNav ? toggleMenu : null} aria-label="About">
+          About
         </a>
       </Link>
     </nav>

@@ -1,7 +1,7 @@
 import { useTheme, css } from '@emotion/react'
 import Link from 'next/link'
 
-export default function Bio() {
+export default function About() {
 
   const theme : any = useTheme()
 
@@ -15,21 +15,22 @@ export default function Bio() {
 
 
   return (
-    <div className="bio">
+    <div className="about">
       <h2 css={{ 
         fontFamily: theme.fonts.secondary,
         fontSize: 40,
         fontWeight: 900,
         marginBottom: 15,
       }}>
-        Bio
+        About
       </h2>
       <p css={{
         fontFamily: theme.fonts.tertiary,
         fontSize: 18,
         marginBottom: '2rem',
       }}>
-        Hello, I'm Amir Ardalan, a developer and designer from Portland, Oregon. 
+        Hello, I'm Amir Ardalan, a developer and designer from Portland, Oregon. I love React.js and Next.js. 
+        I'll be showcasing my personal projects on this portfolio site as well as writing about code and life.
         This page is still in development, For now, you can read a bit 
         about <Link href="/blog/2021-a-dev-odyssey">my journey</Link> as a developer.
       </p>
