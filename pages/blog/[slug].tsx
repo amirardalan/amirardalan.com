@@ -7,6 +7,8 @@ import Head from 'next/head'
 import BlogAdmin from '../../components/BlogAdmin'
 import prisma from '../../lib/prisma'
 import ReactMarkdown from 'react-markdown'
+import BlogSyntaxHighlight from "../../components/BlogSyntaxHighlight"
+
 
 // Request post data from DB
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
@@ -150,7 +152,7 @@ const Post = (props: any) => {
             <span>{postDate} • {readTime}</span>
           </small>
 
-          <ReactMarkdown children={props.post.content} />
+          <ReactMarkdown<any> components={BlogSyntaxHighlight} children={props.post.content} />
 
           <div className="controlsPost">
             { userHasValidSession && (

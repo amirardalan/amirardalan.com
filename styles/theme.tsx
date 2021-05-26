@@ -2,7 +2,7 @@
 const light= '#e2e2e2'
 const lightAccent = '#cccccc'
 const lighter = '#eaeaea'
-const dark= '#2d2a35'
+const dark= '#2a2734'
 const darkAccent = '#3a3746'
 const darker = '#1e1c25'
 const primary = '#7A00CC'
@@ -55,7 +55,7 @@ export const themeLight = {
   },
   page: {
     bg: lighter,
-  }
+  },
 }
 
 // Dark Theme

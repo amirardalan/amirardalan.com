@@ -644,20 +644,26 @@ export function GlobalStyles () {
         // Markdown Code
         pre,
         code {
-          background-color: ${theme.colors.text};
+          background-color: #2a2734;
           border-radius: 5px;
           color: ${theme.colors.background};
         }
         pre {
+          border: 1px solid ${theme.colors.accent};
           padding: 1rem;
           overflow: scroll;
           line-height: 2rem;
         }
         code, code p {
-          padding: .2rem;
+          padding: 0.2rem;
           background-color: ${theme.colors.text};
           color: ${theme.colors.background};
           font-size: 15px;
+        }
+        .codeStyle {
+          code {
+            padding: 0;
+          }
         }
 
         // Special Text
