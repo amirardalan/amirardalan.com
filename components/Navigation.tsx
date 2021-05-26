@@ -51,8 +51,8 @@ export default function Navigation() {
     marginRight: '5%',
     marginLeft: 30,
     zIndex: 6,
-    width: '38px',
-    height: '22px',
+    width: 38,
+    height: 22,
     background: 'transparent',
     border: 'none',
     transform: 'rotate(0deg)',
@@ -61,7 +61,7 @@ export default function Navigation() {
     'span': {
       display: 'block',
       position: 'absolute',
-      height: '2px',
+      height: 2,
       width: '100%',
       background: theme.colors.text,
       opacity: 1,
@@ -138,7 +138,7 @@ export default function Navigation() {
       <ShowNavItems />
       <div css={{
         margin: '3rem 0',
-        fontSize: '12px',
+        fontSize: 12,
         a: {
           display: 'block',
           marginBottom: '.5rem',
