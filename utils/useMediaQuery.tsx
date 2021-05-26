@@ -1,3 +1,7 @@
+// Example Usage:
+// const isBreakpoint = useMediaQuery(890)
+// { ( isBreakpoint ) ? null : <SomeComponent /> }
+
 import { useState, useEffect, useCallback } from 'react'
 
 // Device Width MediaQuery
