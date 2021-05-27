@@ -5,8 +5,8 @@ const lighter = '#eaeaea'
 const dark= '#2a2734'
 const darkAccent = '#3a3746'
 const darker = '#1e1c25'
-const primary = '#7A00CC'
-const secondary = '#21c8e5'
+const primary = '#6400C2'
+const secondary = '#3bd4cd'
 const grayLight = '#a8a8a8'
 const grayDark = '#5e5e5e'
 const selection = '#ffff00'
@@ -45,8 +45,8 @@ export const themeLight = {
   logoError: '/logoErrorDark.svg',
   helloEmoji: '👋',
   toggleButton: {
-    background: dark,
-    switch: lighter,
+    background: lightAccent,
+    switch: darker,
   },
   canvas: {
     textSmall: 'Rotate & Zoom',
@@ -83,8 +83,8 @@ export const themeDark = {
   logoError: '/logoErrorLight.svg',
   helloEmoji: '✌️',
   toggleButton: {
-    background: lightAccent,
-    switch: darker,
+    background: darker,
+    switch: lighter,
   },
   canvas: {
     textSmall: 'Rotate + Zoom',

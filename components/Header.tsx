@@ -15,11 +15,11 @@ export default function Header() {
           display: 'flex',
           flexDirection: 'row',
           alignItems: 'center',
-          animation: 'slideUp 1s forwards',
-          fontFamily: themeDark.fonts.secondary,
           background: 'transparent',
           border: 'none',
+          fontFamily: themeDark.fonts.secondary,
           cursor: 'pointer',
+          animation: 'slideUp 1s forwards',
         }}>
           <Logo/> 
         </button>
