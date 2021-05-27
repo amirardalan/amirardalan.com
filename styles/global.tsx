@@ -93,7 +93,7 @@ export function GlobalStyles () {
           font-family: ${theme.fonts.primary};
           color: ${theme.colors.text};
           -webkit-text-size-adjust: 100%;
-          transition: all 0.25s linear;
+          transition: all 0.15s linear;
         }
 
         * {
@@ -668,7 +668,6 @@ export function GlobalStyles () {
           background-color: ${theme.colors.accent};
           color: ${theme.colors.text};
           font-size: 15px;
-          white-space: nowrap;
         }
         .codeStyle {
           code {

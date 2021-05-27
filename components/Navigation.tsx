@@ -66,7 +66,6 @@ export default function Navigation() {
       opacity: 1,
       left: 0,
       transform: 'rotate(0deg)',
-      transition: '.25s ease-in-out',
       '&:nth-of-type(1)': {
         top: 0,
       },
@@ -114,8 +113,8 @@ export default function Navigation() {
       lineHeight: '4rem',
     },
     '@media (max-width: 768px) and (max-height: 600px)': {
-      paddingRight: '2rem',
-      alignItems: 'self-end',
+      paddingRight: '2.5rem',
+      alignItems: 'flex-end',
     }
   })
 
