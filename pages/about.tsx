@@ -9,7 +9,7 @@ export default function About() {
   const centerImage = css({
     display: 'flex',
     justifyContent: 'center',
-    margin: '6rem 0 4rem 0',
+    margin: '6rem 0',
   })
 
   const copy = css({
@@ -80,15 +80,15 @@ export default function About() {
       </h3>
       <div css={copy}>
         <p>
-          Hello, I'm Amir Ardalan, a developer and designer with over 10 years experience, based in Portland, Oregon. 
-          I especially love React.js, Next.js., TypeScript, Prisma, and PostgreSQL.
-          Read a bit 
-          about <Link href="/blog/2021-a-dev-odyssey">my journey</Link> as a developer.
+          Hello! I'm Amir Ardalan, a Portland, Oregon based developer and designer with over 10 years experience
+          designing and building excellent products. I have extensive industry experience including; freelance, 
+          startup, enterprise, agency, and ecommerce. <Link href="/blog/2021-a-dev-odyssey">Read about my journey</Link> as 
+          a developer or <Link href="/amir-ardalan-resume.pdf">download my resume</Link>.
         </p>
         <p>
-          I'm currently seeking opportunities to join a team that is as passionate about building
-          great products as I am. I have extensive industry experience including; freelance, startup, enterprise,
-          agency, and ecommerce. <Link href="/amir-ardalan-resume.pdf">Download my resume</Link>.
+          I'm currently seeking interesting opportunities to work with a great team who are passionate
+          about building the web. I have extensive industry experience including; freelance, startup, enterprise,
+          agency, and ecommerce. Lately my stack of choice is: Next.js., TypeScript, Prisma, PostgreSQL, and Emotion. 🎉
         </p>
       </div>
       <main css={{
@@ -105,7 +105,7 @@ export default function About() {
       }}>
         <div css={grid}>
           <ul>
-            <h4 css={h4}>Details:</h4>
+            <h4 css={h4}>Bio:</h4>
             <li>
               <Image
                 src="/photo.png"
@@ -115,7 +115,7 @@ export default function About() {
                 height={100}
               />
             </li>
-            <li>Designer + Developer</li>
+            <li>Designer + Developer.</li>
             <li>Creative and thorough.</li>
             <li>I ❤️ collaborating.</li>
             <li>
@@ -149,7 +149,7 @@ export default function About() {
         <div css={grid}>
           <ul>
             <h4 css={h4}>Availability:</h4>
-            <li>✅ Currently Seeking opportunities</li>
+            <li>✅ Currently Available</li>
             <li>Remote or Portland, OR</li>
           </ul>
         </div>
@@ -207,8 +207,8 @@ export default function About() {
       <div css={centerImage}>
         <Image
           src={theme.logo}
-          height={100}
-          width={100}
+          height={75}
+          width={75}
           alt="Logo"
         />
       </div>
