@@ -80,15 +80,14 @@ export default function About() {
       </h3>
       <div css={copy}>
         <p>
-          Hello! I'm Amir Ardalan, a Portland, Oregon based developer and designer with over 10 years experience
-          designing and building excellent products. I have extensive industry experience including; freelance, 
-          startup, enterprise, agency, and ecommerce. <Link href="/blog/2021-a-dev-odyssey">Read about my journey</Link> as 
-          a developer or <Link href="/amir-ardalan-resume.pdf">download my resume</Link>.
+          Hello – I'm Amir Ardalan, a Portland, Oregon based developer and designer with over 10 years experience.
+          I help bridge the gap between humans and technology through visual design, user interface engineering, and written 
+          communication. <Link href="/blog/2021-a-dev-odyssey">Read about my journey</Link> as a developer.
         </p>
         <p>
-          I'm currently seeking interesting opportunities to work with a great team who are passionate
-          about building the web. I have extensive industry experience including; freelance, startup, enterprise,
-          agency, and ecommerce. Lately my stack of choice is: Next.js., TypeScript, Prisma, PostgreSQL, and Emotion. 🎉
+          I'm passionate about JavaScript, Front-end, User Interface and React (to name a few), and I have extensive 
+          industry experience including; freelance, startup, enterprise, agency, and ecommerce. My current stack of 
+          choice is: Next.js., TypeScript, Prisma, PostgreSQL, and Emotion!
         </p>
       </div>
       <main css={{
