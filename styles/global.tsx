@@ -661,14 +661,14 @@ export function GlobalStyles () {
         pre {
           border: 1px solid ${theme.colors.accent};
           padding: 1rem;
-          overflow: scroll;
           line-height: 2rem;
         }
         code, code p {
           padding: 0.2rem;
-          background-color: ${theme.colors.text};
-          color: ${theme.colors.background};
+          background-color: ${theme.colors.accent};
+          color: ${theme.colors.text};
           font-size: 15px;
+          white-space: nowrap;
         }
         .codeStyle {
           code {
