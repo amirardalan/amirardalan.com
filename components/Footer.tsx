@@ -22,7 +22,7 @@ export default function Footer() {
       borderTop: '1px solid' + theme.colors.accent,
       lineHeight: '1.8em',
       animation: 'slideUp .25s forwards',
-      transition: 'all 0.25s linear',
+      transition: 'all 0.15s linear',
     }}>
       <div>
         Copyright &copy;
