@@ -31,7 +31,7 @@ export default function Navigation() {
     alignItems: 'center',
     justifyContent: 'center',
     position: 'absolute',
-    height: '101vh',
+    height: '102vh',
     width: '100vw',
     background: theme.colors.background,
     top: '-2rem',
@@ -114,8 +114,9 @@ export default function Navigation() {
       lineHeight: '4rem',
     },
     '@media (max-width: 768px) and (max-height: 600px)': {
-      width: '21vw',
-      alignItems: 'self-start',
+      // width: '80vw',
+      paddingRight: '2rem',
+      alignItems: 'self-end',
     }
   })
 
