@@ -18,7 +18,7 @@ export default function About() {
     <div className="about">
       <h2 css={{ 
         fontFamily: theme.fonts.secondary,
-        fontSize: 40,
+        fontSize: 38,
         fontWeight: 900,
         marginBottom: 15,
       }}>

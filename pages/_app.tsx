@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Header from '../components/Header'
 import Navigation  from '../components/Navigation'
-import Toggle from '../components/Toggle'
+import ThemeToggle from '../components/ThemeToggle'
 import Footer from '../components/Footer'
 
 import { GlobalStyles } from '../styles/global'
@@ -38,7 +38,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
             <Header />
             <div className="headerRight">
               <Navigation />
-              <Toggle toggleTheme={toggleTheme} />
+              <ThemeToggle toggleTheme={toggleTheme} />
             </div>
           </div>
           <Component {...pageProps} />
