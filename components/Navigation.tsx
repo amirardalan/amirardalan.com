@@ -114,7 +114,6 @@ export default function Navigation() {
       lineHeight: '4rem',
     },
     '@media (max-width: 768px) and (max-height: 600px)': {
-      // width: '80vw',
       paddingRight: '2rem',
       alignItems: 'self-end',
     }
