@@ -1,5 +1,5 @@
 import { useTheme } from '@emotion/react'
-import SocialLinks from './SocialLinks'
+import Link from 'next/link'
 
 export default function Footer() {
 
@@ -45,7 +45,15 @@ export default function Footer() {
         'div': { flexDirection: 'row'}
       }}>
         Made with <span>&hearts;</span> using Next.js + Prisma<br/>
-        <SocialLinks />
+        <Link href="/" aria-label="Home">
+          Home
+        </Link>
+        <Link href="/blog" aria-label="Blog">
+          Blog
+        </Link>
+        <Link href="/about" aria-label="About">
+          About
+        </Link>
       </div>
     </footer>
   )
