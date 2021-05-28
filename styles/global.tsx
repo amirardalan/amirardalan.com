@@ -641,6 +641,7 @@ export function GlobalStyles () {
         .prevLink {
           display: flex;
           justify-content: flex-start;
+          margin-right: 1rem;
         }
         .nextLink {
           display: flex;
@@ -668,10 +669,16 @@ export function GlobalStyles () {
           border-radius: 5px;
           color: ${theme.colors.background};
         }
+        code {
+          word-wrap: break-word;
+        }
         pre {
           border: 1px solid ${theme.colors.accent};
           padding: 1rem;
           line-height: 2rem;
+          code {
+            word-wrap: normal;
+          }
         }
         code, code p {
           padding: 0.2rem;
