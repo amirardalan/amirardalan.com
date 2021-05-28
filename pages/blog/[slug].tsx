@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Router from 'next/router'
-import { GetServerSideProps } from 'next'
+import { GetStaticProps } from 'next'
 import { useSession } from 'next-auth/client'
 import Link from 'next/link'
 import Head from 'next/head'
@@ -9,9 +9,17 @@ import prisma from '../../lib/prisma'
 import ReactMarkdown from 'react-markdown'
 import BlogSyntaxHighlight from "../../components/BlogSyntaxHighlight"
 
+// Generate Static Paths for all posts
+export async function getStaticPaths() {
+  const feed = await prisma.post.findMany()
+  const paths = feed.map((post) => ({
+    params: { slug: post.slug }
+  }))
+  return { paths, fallback: false }
+}
 
 // Request post data from DB
-export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   const [post, feed] = await prisma.$transaction([
     prisma.post.findFirst({
       where: {
@@ -72,7 +80,9 @@ const Post = (props: any) => {
 
   // Check if draft and render breadcrumb
   const RenderBreadcrumb = () => (
-    <Link href="/blog/drafts"><a>Drafts</a></Link>
+    <Link href="/blog/drafts">
+      <a>Drafts</a>
+    </Link>
   )
 
   // Check if draft and set title

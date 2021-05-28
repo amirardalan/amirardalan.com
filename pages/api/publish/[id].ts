@@ -10,4 +10,5 @@ export default async function handle(req: any, res: any) {
     data: { published: Boolean(isPublished) },
   })
   res.json(post)
+  fetch(process.env.DEPLOY_HOOK)
 }

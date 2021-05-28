@@ -612,6 +612,16 @@ export function GlobalStyles () {
             }
             p { font-size: 24px; }
           }
+          ul li {
+            list-style: outside;
+            margin-left: 2.5rem;
+            padding-left: .5rem;
+          }
+          ol li {
+            list-style: number;
+            margin-left: 2.5rem;
+            padding-left: .5rem;   
+          }
         }
 
         // Next Prev Controls
@@ -672,6 +682,14 @@ export function GlobalStyles () {
         .codeStyle {
           code {
             padding: 0;
+          }
+        }
+        /* span.linenumber { display: none !important; } */
+        .language-bash {
+          .codeStyle & {
+            pre & {
+              span.linenumber { display: none !important; }
+            }
           }
         }
 
