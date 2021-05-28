@@ -1,7 +1,7 @@
 import prisma from '../../../lib/prisma'
 
 
-// PATCH /api/update
+// POST /api/update
 // Required fields in body: title
 // Optional fields in body: content, slug, teaser
 export default async function handle(req: any, res: any) {

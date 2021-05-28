@@ -36,7 +36,7 @@ const Edit = (props: any) => {
     try {
       const body = { id, title, slug, teaser, content }
       await fetch('/api/update', {
-        method: 'PATCH',
+        method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
       })
