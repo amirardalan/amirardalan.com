@@ -3,7 +3,7 @@ import { useFrame } from '@react-three/fiber'
 import { Icosahedron, MeshWobbleMaterial, OrbitControls } from '@react-three/drei'
 import { useMediaQuery } from '../utils/useMediaQuery'
 
-export default function CanvasScene(props) {
+export default function CanvasScene(props: any) {
 
   const mesh : any = useRef()
 

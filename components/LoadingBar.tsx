@@ -4,7 +4,7 @@ export default function LoadingBar() {
 
   const theme : any = useTheme()
 
-  return(
+  return (
     <div css={{
       zIndex: 10,
       width: '100vw',
@@ -16,7 +16,7 @@ export default function LoadingBar() {
         height: 'inherit',
         width: 0,
         backgroundColor: theme.colors.link,
-        animation: 'loading 1s',
+        animation: 'loading 3s',
         '@keyframes loading': {
           '0%': {
             width: '0%'
