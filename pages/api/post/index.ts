@@ -19,4 +19,5 @@ export default async function handle(req: any, res: any) {
     },
   })
   res.json(result)
+  fetch(process.env.DEPLOY_HOOK)
 }

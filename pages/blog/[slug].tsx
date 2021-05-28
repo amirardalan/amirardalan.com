@@ -9,11 +9,9 @@ import prisma from '../../lib/prisma'
 import ReactMarkdown from 'react-markdown'
 import BlogSyntaxHighlight from "../../components/BlogSyntaxHighlight"
 
-// Generate Static Paths
+// Generate Static Paths for all posts
 export async function getStaticPaths() {
-  const feed = await prisma.post.findMany({
-    where: { published: true }
-  })
+  const feed = await prisma.post.findMany()
   const paths = feed.map((post) => ({
     params: { slug: post.slug }
   }))
@@ -82,7 +80,9 @@ const Post = (props: any) => {
 
   // Check if draft and render breadcrumb
   const RenderBreadcrumb = () => (
-    <Link href="/blog/drafts"><a>Drafts</a></Link>
+    <Link href="/blog/drafts">
+      <a>Drafts</a>
+    </Link>
   )
 
   // Check if draft and set title
