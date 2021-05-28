@@ -25,15 +25,24 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   }
 }
 
+
 type Props = {
   drafts: PostProps[]
 }
 
 const Drafts: React.FC<Props> = (props) => {
+
   
   let draftsList = null;
-
+  
   const [session] = useSession()
+
+  // Sort post by ID
+  function compare( a:any, b:any) {
+    if ( a.id < b.id ) return -1
+    if ( a.id > b.id ) return 1
+    return 0;
+  }
 
   if (session && session.user.email == process.env.NEXT_PUBLIC_USER_EMAIL) {
     draftsList = (
@@ -48,7 +57,7 @@ const Drafts: React.FC<Props> = (props) => {
 
         <div className="drafts">
           <main>
-            {props.drafts.reverse().map((post) => (
+            {props.drafts.sort(compare).reverse().map((post) => (
               <div
                 key={post.id}
                 className="postDraft"

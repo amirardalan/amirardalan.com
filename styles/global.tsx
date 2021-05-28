@@ -490,7 +490,7 @@ export function GlobalStyles () {
         }
 
         .post {
-          margin-top: 2rem;
+          margin-top: 3rem;
         }
 
         .postDetails {

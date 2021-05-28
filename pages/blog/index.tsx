@@ -34,6 +34,13 @@ const Blog: React.FC<Props> = (props: any) => {
   const FeedNotFound = () => (
     <span>Database Error: Posts Could not be loaded. :(</span>
   )
+
+  // Sort post by ID
+  function compare( a:any, b:any) {
+    if ( a.id < b.id ) return -1
+    if ( a.id > b.id ) return 1
+    return 0;
+  }
   
   return (
     <>
@@ -50,7 +57,7 @@ const Blog: React.FC<Props> = (props: any) => {
 
         <div>
           { showFeedError ? <FeedNotFound /> : null }
-          {feed.reverse().map((post) => (
+          {feed.sort(compare).reverse().map((post: any) => (
             <div
               key={post.id}
               className="post"
