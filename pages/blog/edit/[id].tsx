@@ -148,7 +148,7 @@ const Edit = (props: any) => {
   return (
     <>
       <Head>
-        <title>Amir Ardalan | Edit Post</title>
+        <title>Edit | Amir Ardalan</title>
         <meta name="robots" content="noindex"></meta>
       </Head>
       <div>

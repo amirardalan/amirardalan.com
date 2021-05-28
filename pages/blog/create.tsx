@@ -139,7 +139,7 @@ const Draft: React.FC = () => {
   return (
     <>
       <Head>
-        <title>Amir Ardalan | New Post</title>
+        <title>Create – Amir Ardalan</title>
         <meta name="robots" content="noindex"></meta>
       </Head>
       <div>

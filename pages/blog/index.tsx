@@ -45,7 +45,7 @@ const Blog: React.FC<Props> = (props: any) => {
   return (
     <>
       <Head>
-        <title>Amir Ardalan | Blog</title>
+        <title>Blog – Amir Ardalan</title>
       </Head>
       <div className="blog">
 

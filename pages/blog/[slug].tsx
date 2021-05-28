@@ -148,7 +148,7 @@ const Post = (props: any) => {
   return (
     <>
       <Head>
-        <title>Amir Ardalan | {title}</title>
+        <title>{title} – Amir Ardalan</title>
       </Head>
       <div className="blog">
 

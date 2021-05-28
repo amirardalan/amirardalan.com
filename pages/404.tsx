@@ -11,7 +11,7 @@ export default function Custom404() {
   return(
     <>
       <Head>
-        <title>Page Not Found | Amir Ardalan</title>
+        <title>Page Not Found – Amir Ardalan</title>
       </Head>
 
       <div css={{

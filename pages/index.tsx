@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import prisma from '../lib/prisma'
 import { GetStaticProps } from 'next'
 import dynamic from 'next/dynamic'
+import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import LoadingTriangle from '../components/LoadingTriangle'
@@ -65,68 +66,73 @@ export default function Home(props: any) {
   }, [])
   
   return (
-    <main className="home">
-      <div className="mainLeft">
-        <div css={{
-          marginBottom: '3rem',
-          '@media (max-width: 890px)': {
-            order: 1,
-          },
-          '@media (max-width: 480px)': {
-            marginBottom: '2rem',
-            height: '60px',
-            width: '60px',
-          }
-        }}>
-          <Image
-            src="/photo.png"
-            alt="Amir Ardalan"
-            aria-label="Amir Ardalan"
-            width={100}
-            height={100}
-          />
-        </div>
-        <div
-          aria-label="Hi, I'm Amir Ardalan"
-          css={{
-            margin: 0,
-            lineHeight: 1.3,
-            fontSize: 'calc(1.6vw + 1.6vh)',
-            minHeight: '0vw',
-            fontWeight: 'bolder',
-            '@media (min-width: 480px) and (max-width: 890px)': {
-              fontSize: 'calc(2.5vw + 2.5vh)',
-              minHeight: '0vw',
+    <>
+    <Head>
+      <title>Amir Ardalan – Portfolio</title>
+    </Head>
+      <main className="home">
+        <div className="mainLeft">
+          <div css={{
+            marginBottom: '3rem',
+            '@media (max-width: 890px)': {
+              order: 1,
+            },
+            '@media (max-width: 480px)': {
+              marginBottom: '2rem',
+              height: '60px',
+              width: '60px',
             }
-          }}
-        >
-          <h2>
-            Hi, {theme.helloEmoji} I'm <br/>
-            <span className="highlight">Amir Ardalan</span>
-          </h2>
-          <h3>
-            I'm currently focusing on: <br/>
-            <TypingAnimation />
-          </h3>
-          <br/>
-          <div className="cta">
-            <Link href="/blog" aria-label="Blog">
-              <button className="buttonCta">
-                Words
-              </button>
-            </Link>
-            <Link href="/about" aria-label="About">
-              <button className="buttonCta">
-                About
-              </button>
-            </Link>
+          }}>
+            <Image
+              src="/photo.png"
+              alt="Amir Ardalan"
+              aria-label="Amir Ardalan"
+              width={100}
+              height={100}
+            />
           </div>
-          { showLatestPost ? <ShowLatestPost /> : null }
+          <div
+            aria-label="Hi, I'm Amir Ardalan"
+            css={{
+              margin: 0,
+              lineHeight: 1.3,
+              fontSize: 'calc(1.6vw + 1.6vh)',
+              minHeight: '0vw',
+              fontWeight: 'bolder',
+              '@media (min-width: 480px) and (max-width: 890px)': {
+                fontSize: 'calc(2.5vw + 2.5vh)',
+                minHeight: '0vw',
+              }
+            }}
+          >
+            <h2>
+              Hi, {theme.helloEmoji} I'm <br/>
+              <span className="highlight">Amir Ardalan</span>
+            </h2>
+            <h3>
+              I'm currently focusing on: <br/>
+              <TypingAnimation />
+            </h3>
+            <br/>
+            <div className="cta">
+              <Link href="/blog" aria-label="Blog">
+                <button className="buttonCta">
+                  Words
+                </button>
+              </Link>
+              <Link href="/about" aria-label="About">
+                <button className="buttonCta">
+                  About
+                </button>
+              </Link>
+            </div>
+            { showLatestPost ? <ShowLatestPost /> : null }
+          </div>
         </div>
-      </div>
-      <div className="mainRight">
-        {toggleCanvas ? <CanvasLoader /> : null}
-      </div>
-    </main>
+        <div className="mainRight">
+          {toggleCanvas ? <CanvasLoader /> : null}
+        </div>
+      </main>
+    </>
   )
 }

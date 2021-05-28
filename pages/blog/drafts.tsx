@@ -74,7 +74,7 @@ const Drafts: React.FC<Props> = (props) => {
   return (
     <>
       <Head>
-        <title>Amir Ardalan | Drafts</title>
+        <title>Drafts – Amir Ardalan</title>
         <meta name="robots" content="noindex"></meta>
       </Head>
       {draftsList}
