@@ -176,7 +176,6 @@ export default function About() {
                   height={48}
                   width={48}
                   alt="GitHub"
-                  aria-label="GitHub"
                 />
               </a>
             </li>
@@ -191,7 +190,6 @@ export default function About() {
                   height={48}
                   width={48}
                   alt="Twitter"
-                  aria-label="Twitter"
                 />
               </a>
             </li>
@@ -206,7 +204,6 @@ export default function About() {
                   height={48}
                   width={48}
                   alt="LinkedIn"
-                  aria-label="LinkedIn"
                 />
               </a>
             </li>

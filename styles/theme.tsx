@@ -57,9 +57,9 @@ export const themeLight = {
     bg: lighter,
   },
   social: {
-    github: '/icon-github-dark.svg',
-    twitter: '/icon-twitter-dark.svg',
-    linkedin: '/icon-linkedin-dark.svg',
+    github: '/iconGithubDark.svg',
+    twitter: '/iconTwitterDark.svg',
+    linkedin: '/iconLinkedinDark.svg',
   }
 }
 
@@ -100,8 +100,8 @@ export const themeDark = {
     bg: darkAccent,
   },
   social: {
-    github: '/icon-github-light.svg',
-    twitter: '/icon-twitter-light.svg',
-    linkedin: '/icon-linkedin-light.svg',
+    github: '/iconGithubLight.svg',
+    twitter: '/iconTwitterLight.svg',
+    linkedin: '/iconLinkedinLight.svg',
   }
 }
