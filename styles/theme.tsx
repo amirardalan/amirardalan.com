@@ -56,6 +56,11 @@ export const themeLight = {
   page: {
     bg: lighter,
   },
+  social: {
+    github: '/icon-github-dark.svg',
+    twitter: '/icon-twitter-dark.svg',
+    linkedin: '/icon-linkedin-dark.svg',
+  }
 }
 
 // Dark Theme
@@ -93,5 +98,10 @@ export const themeDark = {
   },
   page: {
     bg: darkAccent,
+  },
+  social: {
+    github: '/icon-github-light.svg',
+    twitter: '/icon-twitter-light.svg',
+    linkedin: '/icon-linkedin-light.svg',
   }
 }

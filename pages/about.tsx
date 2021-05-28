@@ -33,6 +33,7 @@ export default function About() {
 
   const grid = css({
     display: 'flex',
+    flexDirection: 'column',
     justifyContent: 'center',
     padding: '3rem',
     backgroundColor: theme.page.bg,
@@ -44,7 +45,7 @@ export default function About() {
         fontSize: 14,
         textAlign: 'center',
       }
-    },
+    }
   })
 
   const h4 = css({
@@ -54,6 +55,15 @@ export default function About() {
     fontSize: 25,
     textAlign: 'center',
     borderBottom: '2px solid'+ theme.colors.accentColor
+  })
+
+  const socialIcons = css({
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    li: {
+      flexDirection: 'row',
+    }
   })
 
 
@@ -153,15 +163,21 @@ export default function About() {
           </ul>
         </div>
         <div css={grid}>
-          <ul>
-            <h4 css={h4}>Social:</h4>
+        <h4 css={h4}>Social:</h4>
+          <ul css={socialIcons}>
             <li>
               <a
                 href="https://github.com/amirardalan"
                 target="_blank"
                 rel="noreferrer noopener"
                 aria-label="GitHub">
-                GitHub
+                <Image
+                  src={theme.social.github}
+                  height={48}
+                  width={48}
+                  alt="GitHub"
+                  aria-label="GitHub"
+                />
               </a>
             </li>
             <li>
@@ -170,7 +186,13 @@ export default function About() {
                 target="_blank"
                 rel="noreferrer noopener"
                 aria-label="Twitter">
-                Twitter
+                <Image
+                  src={theme.social.twitter}
+                  height={48}
+                  width={48}
+                  alt="Twitter"
+                  aria-label="Twitter"
+                />
               </a>
             </li>
             <li>
@@ -179,7 +201,13 @@ export default function About() {
                 target="_blank"
                 rel="noreferrer noopener"
                 aria-label="LinkedIn">
-                LinkedIn
+                <Image
+                  src={theme.social.linkedin}
+                  height={48}
+                  width={48}
+                  alt="LinkedIn"
+                  aria-label="LinkedIn"
+                />
               </a>
             </li>
           </ul>
