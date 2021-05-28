@@ -20,12 +20,12 @@ export default function About() {
     fontFamily: theme.fonts.tertiary,
     fontSize: 16,
     p: {
-      padding: '3%',
+      padding: '3% 4%',
     },
     '@media(max-width: 1024px)': {
       flexDirection: 'column',
       p: {
-        padding: '1.5rem',
+        padding: '2rem',
       },
 
     }
@@ -33,7 +33,6 @@ export default function About() {
 
   const grid = css({
     display: 'flex',
-    flexDirection: 'column',
     justifyContent: 'center',
     padding: '3rem',
     backgroundColor: theme.page.bg,
@@ -57,10 +56,15 @@ export default function About() {
     borderBottom: '2px solid'+ theme.colors.accentColor
   })
 
+  const socialIconsWrapper = css({
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+  })
+
   const socialIcons = css({
     display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-around',
+    justifyContent: 'space-evenly',
     li: {
       flexDirection: 'row',
     }
@@ -90,14 +94,14 @@ export default function About() {
       </h3>
       <div css={copy}>
         <p>
-          Hello – I'm Amir Ardalan, a Portland, Oregon based developer and designer with over 10 years experience.
-          I help bridge the gap between humans and technology through visual design, user interface engineering, and written 
-          communication. <Link href="/blog/2021-a-dev-odyssey">Read about my journey</Link> as a developer.
+          Hello, I'm Amir! I am a Portland, OR based developer and designer with over 10 years experience. I aim to bridge the gap between 
+          humans and technology through interface design and engineering. <Link href="/blog/2021-a-dev-odyssey">Read about my journey</Link> as 
+          a developer.
         </p>
         <p>
-          I'm passionate about JavaScript, Front-end, User Interface and React (to name a few), and I have extensive 
-          industry experience including; freelance, startup, enterprise, agency, and ecommerce. My current stack of 
-          choice is: Next.js., TypeScript, Prisma, PostgreSQL, and Emotion!
+          I'm passionate about JavaScript, Front-end, User Interface and React. My current stack of 
+          choice is: Next.js., TypeScript, Prisma, PostgreSQL, and Emotion. 🎉 <Link href="/blog">I enjoy writing</Link> about these topics and
+          more on my blog.
         </p>
       </div>
       <main css={{
@@ -152,6 +156,7 @@ export default function About() {
             <li>KEEN Footwear</li>
             <li>Chrome Industries</li>
             <li>Hanna Andersson</li>
+            <li>Salesforce Commerce Cloud</li>
             <li>Freelance</li>
           </ul>
         </div>
@@ -163,51 +168,53 @@ export default function About() {
           </ul>
         </div>
         <div css={grid}>
-        <h4 css={h4}>Social:</h4>
-          <ul css={socialIcons}>
-            <li>
-              <a
-                href="https://github.com/amirardalan"
-                target="_blank"
-                rel="noreferrer noopener"
-                aria-label="GitHub">
-                <Image
-                  src={theme.social.github}
-                  height={48}
-                  width={48}
-                  alt="GitHub"
-                />
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://twitter.com/amirardalan"
-                target="_blank"
-                rel="noreferrer noopener"
-                aria-label="Twitter">
-                <Image
-                  src={theme.social.twitter}
-                  height={48}
-                  width={48}
-                  alt="Twitter"
-                />
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://linkedin.com/in/amirardalan"
-                target="_blank"
-                rel="noreferrer noopener"
-                aria-label="LinkedIn">
-                <Image
-                  src={theme.social.linkedin}
-                  height={48}
-                  width={48}
-                  alt="LinkedIn"
-                />
-              </a>
-            </li>
-          </ul>
+          <div css={socialIconsWrapper}>
+            <h4 css={h4}>Social:</h4>
+            <ul css={socialIcons}>
+              <li>
+                <a
+                  href="https://github.com/amirardalan"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  aria-label="GitHub">
+                  <Image
+                    src={theme.social.github}
+                    height={48}
+                    width={48}
+                    alt="GitHub"
+                  />
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://twitter.com/amirardalan"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  aria-label="Twitter">
+                  <Image
+                    src={theme.social.twitter}
+                    height={48}
+                    width={48}
+                    alt="Twitter"
+                  />
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://linkedin.com/in/amirardalan"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  aria-label="LinkedIn">
+                  <Image
+                    src={theme.social.linkedin}
+                    height={48}
+                    width={48}
+                    alt="LinkedIn"
+                  />
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
         <div css={grid}>
           <ul>
