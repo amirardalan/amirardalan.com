@@ -1,4 +1,4 @@
-export default async (req, res) => {
+export default async (req: any, res: any) => {
   // Check the secret and next parameters
   // This secret should only be known to this API route and the CMS
   if (req.query.secret !== `${process.env.NEXT_PUBLIC_PREVIEW_TOKEN}` || !req.query.slug) {
