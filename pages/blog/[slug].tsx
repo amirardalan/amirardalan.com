@@ -11,10 +11,15 @@ import BlogSyntaxHighlight from '../../components/BlogSyntaxHighlight'
 
 // Generate Static Paths for all posts
 export const getStaticPaths: GetStaticPaths = async () => {
-  const feed = await prisma.post.findMany()
+  const feed = await prisma.post.findMany({
+    where: { published: true },
+  })
   const paths = feed.map((post) => ({
     params: { slug: post.slug }
   }))
+
+  console.log(paths)
+
   return { paths, fallback: 'blocking' }
 }
 
