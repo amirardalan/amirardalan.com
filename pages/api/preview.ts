@@ -11,5 +11,5 @@ export default async (req, res) => {
 
   // Redirect to the path from the fetched post
   // res.redirect(`${process.env.NEXT_PUBLIC_URL}/blog/${slug}`)
-  res.redirect(`${process.env.VERCEL_URL}/blog/${slug}`)
+  res.redirect(`${process.env.NEXT_PUBLIC_SITE_URL}/blog/${slug}`)
 }
