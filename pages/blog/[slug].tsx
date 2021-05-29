@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Router from 'next/router'
-import { GetStaticProps } from 'next'
+import { GetStaticProps, GetStaticPaths } from 'next'
 import { useSession } from 'next-auth/client'
 import Link from 'next/link'
 import Head from 'next/head'
@@ -10,12 +10,12 @@ import ReactMarkdown from 'react-markdown'
 import BlogSyntaxHighlight from '../../components/BlogSyntaxHighlight'
 
 // Generate Static Paths for all posts
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async () => {
   const feed = await prisma.post.findMany()
   const paths = feed.map((post) => ({
     params: { slug: post.slug }
   }))
-  return { paths, fallback: false }
+  return { paths, fallback: 'blocking' }
 }
 
 // Request post data from DB
@@ -54,7 +54,7 @@ const Post = (props: any) => {
   // Generate a label for Publish/Unpublish button
   const publishLabel = isPublished ? 'Unpublish' : 'Publish'
   // Set the redirect for after Publish/Unpublish
-  const publishRoute = isPublished ? '/blog/drafts' : '/blog/'
+  const publishRoute = isPublished ? '/blog' : '/blog/drafts'
 
   // Publish/Unpublish post
   async function publishPost(id: number, published: boolean): Promise<void> {

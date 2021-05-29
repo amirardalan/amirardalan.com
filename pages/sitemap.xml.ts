@@ -27,7 +27,7 @@ const excludedRoutes: Array<string> = [
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   const basePath: string = process.cwd()
   const routes_manifest: object = ReadManifestFile(basePath)
-  const host: string = 'https://amirardalan.com'
+  const host: string = `https://${process.env.VERCEL_URL}`
 
   let routes: Array<Url> = GetPathsFromManifest(routes_manifest, host)
   const pagesPath = path.join(basePath + '/.next/server/pages/')
