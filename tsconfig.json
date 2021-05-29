@@ -19,14 +19,12 @@
     "jsx": "preserve"
   },
   "jsxImportSource": "@emotion/react",
+  "exclude": [
+    "node_modules"
+  ],
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx",
-    "pages/_document.js"
-  ],
-  "exclude": [
-    "node_modules"
+    "**/*.tsx"
   ]
 }
-

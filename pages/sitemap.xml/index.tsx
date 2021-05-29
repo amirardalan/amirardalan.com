@@ -13,7 +13,7 @@ type Url = {
 const excludedRoutes: Array<string> = [
   '/404',
   '/sitemap.xml',
-  '/blog/[slug]',
+  // '/blog/[slug]',
   '/blog/edit',
   '/blog/create',
   '/blog/drafts',
