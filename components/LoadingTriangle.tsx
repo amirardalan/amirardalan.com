@@ -10,7 +10,7 @@ export default function LoadingTriangle() {
       css={{
         '--path': theme.colors.accent,
         '--dot': theme.colors.link,
-        '--duration': '1s',
+        '--duration': '2s',
         width: '48px',
         height: '44px',
         position: 'relative',
