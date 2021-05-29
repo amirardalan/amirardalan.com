@@ -109,7 +109,15 @@ const Post = (props: any) => {
   // Get current post data
   const total : number = props.feed.length
   const current : number = props.post.id
-  const arr : Array<any> = (props.feed) ? props.feed : null
+  
+  // Sort the Posts by ID
+  function compare( a:any, b:any) {
+    if ( a.id < b.id ) return -1
+    if ( a.id > b.id ) return 1
+    return 0;
+  }
+  const arr : Array<any> = props.feed ? props.feed : null
+  const arrSorted = arr.sort(compare)
 
   // Error Handling
   const first = (arr[0].id == current && isPublished) ? true : false
@@ -119,7 +127,7 @@ const Post = (props: any) => {
   const errHandleNext= (isPublished && !last && !only)
 
   // Generate next/prev post navigation and conditionally render the links
-  const index = arr.findIndex(x => x.id === current)
+  const index = arrSorted.findIndex(x => x.id === current)
   const prevTitle = errHandlePrev ? arr[index - 1].title : null
   const nextTitle = errHandleNext ? arr[index + 1].title : null
   const prevLink = errHandlePrev ? `/blog/${encodeURIComponent(arr[index - 1].slug)}` : '#'
