@@ -30,7 +30,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   const host: string = 'https://amirardalan.com'
 
   let routes: Array<Url> = GetPathsFromManifest(routes_manifest, host)
-  const pagesPath = path.join(basePath + '/.next/serverless/pages')
+  const pagesPath = path.join(basePath + '/.next/serverless/pages/')
   routes = routes.concat(GetPathsFromBuildFolder(pagesPath, [], host, pagesPath))
 
   routes = routes.filter((el) => !excludedRoutes.includes(el.route))
@@ -85,8 +85,6 @@ const GetPathsFromBuildFolder = (dir: string, urlList: Array<Url>, host: string,
       }
     }
   })
-
-  console.log(urlList)
 
   return urlList
 }

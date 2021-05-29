@@ -15,7 +15,6 @@ export async function getStaticPaths() {
   const paths = feed.map((post) => ({
     params: { slug: post.slug }
   }))
-  console.log(paths)
   return { paths, fallback: false }
 }
 
