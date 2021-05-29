@@ -40,7 +40,7 @@ const Edit = (props: any) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
       })
-      await Router.push(`/blog/${slug}`)
+      await Router.push(`${process.env.NEXT_PUBLIC_SITE_URL}/api/preview?secret=${process.env.NEXT_PUBLIC_PREVIEW_TOKEN}&slug=${slug}`)
     } catch (error) {
       console.error(error)
     }
