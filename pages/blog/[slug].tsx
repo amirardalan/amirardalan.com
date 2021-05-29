@@ -7,7 +7,7 @@ import Head from 'next/head'
 import BlogAdmin from '../../components/BlogAdmin'
 import prisma from '../../lib/prisma'
 import ReactMarkdown from 'react-markdown'
-import BlogSyntaxHighlight from "../../components/BlogSyntaxHighlight"
+import BlogSyntaxHighlight from '../../components/BlogSyntaxHighlight'
 
 // Generate Static Paths for all posts
 export async function getStaticPaths() {
@@ -50,10 +50,10 @@ const Post = (props: any) => {
   const userHasValidSession = Boolean(session)
 
   // Check if post is published
-  // Generate a label for Publish/Unpublish button
-  // Set the redirect for after Publish/Unpublish
   const isPublished : Boolean = (props.post.published) ? true : false
+  // Generate a label for Publish/Unpublish button
   const publishLabel = isPublished ? 'Unpublish' : 'Publish'
+  // Set the redirect for after Publish/Unpublish
   const publishRoute = isPublished ? '/blog/drafts' : '/blog/'
 
   // Publish/Unpublish post
@@ -78,14 +78,12 @@ const Post = (props: any) => {
     Router.push(publishRoute)
   }
 
-  // Check if draft and render breadcrumb
+  // Check if draft and render breadcrumb and append title
   const RenderBreadcrumb = () => (
     <Link href="/blog/drafts">
       <a>Drafts</a>
     </Link>
   )
-
-  // Check if draft and set title
   let title = props.post.title
   if (!isPublished) {
     title = `${title} (Draft)`
@@ -98,13 +96,6 @@ const Post = (props: any) => {
     props.post.publishedAt.toLocaleDateString("en-US", { year: 'numeric' })
   ]
   const postDate = formatDate.join(' ')
-
-  // Calculate estimated read time
-  const text = props.post.content
-  const wpm = 225;
-  const words = text.trim().split(/\s+/).length;
-  const time = Math.ceil(words / wpm);
-  const readTime = time + ' ' + 'min read'
 
   // Get current post data
   const total : number = props.feed.length
@@ -152,6 +143,13 @@ const Post = (props: any) => {
       </div>
     </div>
   )
+
+  // Calculate estimated read time
+  const text = props.post.content
+  const wpm = 225;
+  const words = text.trim().split(/\s+/).length;
+  const time = Math.ceil(words / wpm);
+  const readTime = time + ' ' + 'min read'
 
   return (
     <>
