@@ -9,10 +9,10 @@ export default class MyDocument extends Document {
           <meta httpEquiv="content-type" content="text/html; charset=utf-8" />
           <meta
             name="description"
-            content="Portfolio of Amir Ardalan. Front-End Engineer and UI Designer with 6+ years professional experience crafting online experiences for top brands."
+            content="Front-End Developer &amp; UI Designer in Portland, OR"
           />
-          <meta property="og:title" content="Amir Ardalan | Portfolio" />
-          <meta property="og:description" content="Portfolio of Front-End Engineer and UI Designer Amir Ardalan" />
+          <meta property="og:title" content="Amir Ardalan – Developer, Designer, Writer" />
+          <meta property="og:description" content="Front-End Developer &amp; UI Designer in Portland, OR" />
           <meta property="og:url" content="https://amirardalan.com" />
           <meta property="og:site_name" content="Amir Ardalan" />
           <meta property="og:image" content="https://amirardalan.com/thumbnail.jpg" />

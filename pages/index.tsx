@@ -68,7 +68,7 @@ export default function Home(props: any) {
   return (
     <>
     <Head>
-      <title>Amir Ardalan – Portfolio</title>
+      <title>Amir Ardalan – Developer, Designer, Writer</title>
     </Head>
       <main className="home">
         <div className="mainLeft">
@@ -117,7 +117,7 @@ export default function Home(props: any) {
             <div className="cta">
               <Link href="/blog" aria-label="Blog">
                 <button className="buttonCta">
-                  Words
+                  Blog
                 </button>
               </Link>
               <Link href="/about" aria-label="About">
