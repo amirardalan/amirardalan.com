@@ -20,6 +20,7 @@ const excludedRoutes: Array<string> = [
   '/api/auth/[...nextauth]',
   '/api/post',
   '/api/post/[id]',
+  '/api/preview',
   '/api/publish/[id]',
   '/api/update',
 ]
