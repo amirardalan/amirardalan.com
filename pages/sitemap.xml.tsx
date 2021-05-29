@@ -30,7 +30,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   const host: string = 'https://amirardalan.com'
 
   let routes: Array<Url> = GetPathsFromManifest(routes_manifest, host)
-  const pagesPath = path.join(basePath + '/.next/serverless/pages/')
+  const pagesPath = path.join(basePath + '/.next/server/pages/')
   routes = routes.concat(GetPathsFromBuildFolder(pagesPath, [], host, pagesPath))
 
   routes = routes.filter((el) => !excludedRoutes.includes(el.route))
@@ -43,7 +43,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
 }
 
 const ReadManifestFile = (basePath: string): object => {
-  const routes_manifest_path = path.join(basePath + '/.next/serverless/pages-manifest.json')
+  const routes_manifest_path = path.join(basePath + '/.next/server/pages-manifest.json')
 
   // Read from the file
   if (fs.existsSync(routes_manifest_path)) {
