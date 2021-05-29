@@ -2,7 +2,6 @@ import { GetServerSideProps } from 'next'
 import fs from 'fs'
 import path from 'path'
 
-
 export default function Sitemap() {}
 
 type Url = {
@@ -13,8 +12,7 @@ type Url = {
 
 const excludedRoutes: Array<string> = [
   '/404',
-  '/sitemap',
-  '/blog',
+  '/sitemap.xml',
   '/blog/[slug]',
   '/blog/edit',
   '/blog/create',
@@ -24,12 +22,12 @@ const excludedRoutes: Array<string> = [
   '/api/post/[id]',
   '/api/publish/[id]',
   '/api/update',
-]
+];
 
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   const basePath: string = process.cwd()
   const routes_manifest: object = ReadManifestFile(basePath)
-  const host: string = "https://amirardalan.com"
+  const host: string = 'https://amirardalan.com'
 
   let routes: Array<Url> = GetPathsFromManifest(routes_manifest, host)
   const pagesPath = path.join(basePath + '/.next/server/pages/')
@@ -42,7 +40,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   res.write(sitemap)
   res.end()
   return { props: {} }
-}
+};
 
 const ReadManifestFile = (basePath: string): object => {
   const routes_manifest_path = path.join(basePath + '/.next/server/pages-manifest.json')
@@ -51,8 +49,8 @@ const ReadManifestFile = (basePath: string): object => {
   if (fs.existsSync(routes_manifest_path)) {
     const raw_json = fs.readFileSync(routes_manifest_path)
     return JSON.parse(raw_json.toString())
-  } else return null;
-}
+  } else return null
+};
 
 const GetPathsFromManifest = (manifest: any, host: string): Array<Url> => {
   let routes: Array<string> = []
@@ -64,16 +62,16 @@ const GetPathsFromManifest = (manifest: any, host: string): Array<Url> => {
     }
   }
 
-  let sitemapUrls: Array<Url> = []
+  let sitemapUrls: Array<Url> = [];
   routes.forEach((route) => {
     sitemapUrls.push({ host: host, route: route })
   })
 
   return sitemapUrls
-}
+};
 
 const GetPathsFromBuildFolder = (dir: string, urlList: Array<Url>, host: string, basePath: string): Array<Url> => {
-  const dirContent: string[] = fs.readdirSync(dir)
+  const dirContent: string[] = fs.readdirSync(dir);
   urlList = urlList || []
 
   dirContent.forEach((dirItem) => {
