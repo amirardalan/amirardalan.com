@@ -8,7 +8,7 @@ type Url = {
   host: string
   route: string
   date?: Date
-};
+}
 
 const excludedRoutes: Array<string> = [
   '/404',
@@ -22,12 +22,12 @@ const excludedRoutes: Array<string> = [
   '/api/post/[id]',
   '/api/publish/[id]',
   '/api/update',
-];
+]
 
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   const basePath: string = process.cwd()
   const routes_manifest: object = ReadManifestFile(basePath)
-  const host: string = `${process.env.VERCEL_URL}`
+  const host: string = 'https://amirardalan.com'
 
   let routes: Array<Url> = GetPathsFromManifest(routes_manifest, host)
   const pagesPath = path.join(basePath + '/.next/server/pages/')
@@ -40,7 +40,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   res.write(sitemap)
   res.end()
   return { props: {} }
-};
+}
 
 const ReadManifestFile = (basePath: string): object => {
   const routes_manifest_path = path.join(basePath + '/.next/server/pages-manifest.json')
@@ -50,7 +50,7 @@ const ReadManifestFile = (basePath: string): object => {
     const raw_json = fs.readFileSync(routes_manifest_path)
     return JSON.parse(raw_json.toString())
   } else return null
-};
+}
 
 const GetPathsFromManifest = (manifest: any, host: string): Array<Url> => {
   let routes: Array<string> = []
@@ -62,16 +62,16 @@ const GetPathsFromManifest = (manifest: any, host: string): Array<Url> => {
     }
   }
 
-  let sitemapUrls: Array<Url> = [];
+  let sitemapUrls: Array<Url> = []
   routes.forEach((route) => {
     sitemapUrls.push({ host: host, route: route })
   })
 
   return sitemapUrls
-};
+}
 
 const GetPathsFromBuildFolder = (dir: string, urlList: Array<Url>, host: string, basePath: string): Array<Url> => {
-  const dirContent: string[] = fs.readdirSync(dir);
+  const dirContent: string[] = fs.readdirSync(dir)
   urlList = urlList || []
 
   dirContent.forEach((dirItem) => {
@@ -86,7 +86,7 @@ const GetPathsFromBuildFolder = (dir: string, urlList: Array<Url>, host: string,
     }
   })
 
-  return urlList;
+  return urlList
 }
 
 const GetUrlElement = ({ host, route, date }: Url): string => {
