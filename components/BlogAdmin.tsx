@@ -43,7 +43,7 @@ const BlogAdmin: React.FC = () => {
         }}>
           {session.user.name} ({session.user.email}) •
           <a
-            onClick={() => signOut({ callbackUrl: `${process.env.NEXT_PUBLIC_CALLBACK_URL}` })}
+            onClick={() => signOut({ callbackUrl: `${process.env.NEXT_PUBLIC_SITE_URL}/blog` })}
             aria-label="Sign Out"
             tabIndex={0}
             css={{
