@@ -20,7 +20,7 @@ const BlogAdmin: React.FC =  React.memo(()=> {
     const [isDeploying, setIsDeploying] = useState(null)
     // Deploy New Build
     async function deployNewBuild(): Promise<void> {
-      await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/deploy?secret=${process.env.NEXT_PUBLIC_DEPLOY_TOKEN}`, {
+      await fetch(`/api/deploy?secret=${process.env.NEXT_PUBLIC_DEPLOY_TOKEN}`, {
         method: 'PUT',
       })
       setIsDeploying(true)
