@@ -18,16 +18,18 @@ const BlogAdmin: React.FC =  React.memo(()=> {
     let right = null
 
     const [isDeploying, setIsDeploying] = useState(null)
+    // Deploy New Build
+    async function deployNewBuild(): Promise<void> {
+      await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/deploy?secret=${process.env.NEXT_PUBLIC_DEPLOY_TOKEN}`, {
+        method: 'PUT',
+      })
+      setIsDeploying(true)
+      setTimeout(() => {
+        setIsDeploying(false)
+      }, 78000)
+    }
   
     if (session && session.user.email == process.env.NEXT_PUBLIC_USER_EMAIL) {
-
-      const deployNewBuild = async () => {
-        await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/deploy?secret=${process.env.NEXT_PUBLIC_DEPLOY_TOKEN}`)
-        setIsDeploying(true)
-        setTimeout(() => {
-          setIsDeploying(false)
-        }, 78000)
-      }
 
       left = (
         <div
