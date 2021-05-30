@@ -19,11 +19,14 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 
 const Edit = (props: any) => {
 
+  const isPublished = props.editPost.published ? true : false
   const id = props.editPost.id
   const editTitle = props.editPost.title
+  const editPageTitle = isPublished ? editTitle : editTitle+' (draft)'
   const editContent = props.editPost.content
   const editSlug = props.editPost.slug
   const editTeaser = props.editPost.teaser
+
 
   const [title, setTitle] = useState(editTitle)
   const [content, setContent] = useState(editContent)
@@ -41,7 +44,7 @@ const Edit = (props: any) => {
         body: JSON.stringify(body),
       })
       // Enable Preview Mode by setting the cookies
-      if (process.env.SITE_ENVIRONMENT === 'Production') {
+      if (process.env.NEXT_PUBLIC_SITE_ENVIRONMENT === 'Production') {
         await Router.push(
           `${process.env.NEXT_PUBLIC_SITE_URL}/api/preview?secret=${process.env.NEXT_PUBLIC_PREVIEW_TOKEN}&slug=${slug}`
         )
@@ -55,6 +58,8 @@ const Edit = (props: any) => {
       console.error(error)
     }
   }
+
+  console.log(process.env.NEXT_PUBLIC_SITE_ENVIRONMENT)
 
   async function deletePost(id: number): Promise<void> {
     await fetch(`/api/post/${id}`, {
@@ -102,7 +107,7 @@ const Edit = (props: any) => {
 
         <nav className="breadcrumbs">
           <Link href="/blog">Blog</Link>
-          <span>Edit Post</span>
+          <span>Edit {editPageTitle}</span>
         </nav>
 
         <BlogAdmin />
@@ -158,7 +163,7 @@ const Edit = (props: any) => {
   return (
     <>
       <Head>
-        <title>Edit | Amir Ardalan</title>
+        <title>Edit {isPublished ? 'Post |' : 'Draft: '} {editPageTitle}</title>
         <meta name="robots" content="noindex"></meta>
       </Head>
       <div>

@@ -1,7 +1,7 @@
 import React from 'react'
 import Typical from 'react-typical'
 
-if (process.env.SITE_ENVIRONMENT === 'Production') {
+if (process.env.NEXT_PUBLIC_SITE_ENVIRONMENT === 'Production') {
   console.log(`
     █████   ███    ███ ██ ██████  
     ██   ██ ████  ████ ██ ██   ██ 

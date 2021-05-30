@@ -23,7 +23,7 @@ const Draft: React.FC = () => {
       })
 
       // Enable Preview Mode by setting the cookies
-      if (process.env.SITE_ENVIRONMENT === 'Production') {
+      if (process.env.NEXT_PUBLIC_SITE_ENVIRONMENT === 'Production') {
         await Router.push(
           `${process.env.NEXT_PUBLIC_SITE_URL}/api/preview?secret=${process.env.NEXT_PUBLIC_PREVIEW_TOKEN}&slug=${slug}`
         )
