@@ -53,18 +53,18 @@ const Post = (props: any) => {
   const userHasValidSession = Boolean(session)
 
   // Check if post is published
-  const isPublished : Boolean = (props.post.published) ? true : false
+  const isPublished : Boolean = props.post.published ? true : false
   // Generate a label for Publish/Unpublish button
   const publishLabel = isPublished ? 'Unpublish' : 'Publish'
-  // Set the redirect for after Publish/Unpublish
-  const publishRoute = isPublished ? '/blog' : '/blog/drafts'
+  // Set the redirect for after Publish/Unpublish and Delete
+  const redirect = isPublished ? '/blog/drafts' : '/blog'
 
   // Publish/Unpublish post
   async function publishPost(id: number, published: boolean): Promise<void> {
     await fetch(`/api/publish/${id}?published=${published}`, {
       method: 'PUT',
     })
-    await Router.push(publishRoute)
+    await Router.push(redirect)
   }
   // Edit post
   async function editPost(id: number): Promise<void> {
@@ -78,7 +78,7 @@ const Post = (props: any) => {
     await fetch(`/api/post/${id}`, {
       method: 'DELETE',
     })
-    Router.push(publishRoute)
+    Router.push(redirect)
   }
 
   // Check if draft and render breadcrumb and append title
@@ -154,10 +154,13 @@ const Post = (props: any) => {
   const time = Math.ceil(words / wpm);
   const readTime = time + ' ' + 'min read'
 
+  const disallowRobots = ( <meta name="robots" content="noindex"></meta> )
+
   return (
     <>
       <Head>
         <title>{title} – Amir Ardalan</title>
+        {isPublished ? null : disallowRobots }
       </Head>
       <div className="blog">
 

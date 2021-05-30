@@ -8,7 +8,9 @@ export default async function handle(req: any, res: any) {
       where: { id: Number(postId) },
     })
     res.json(post)
-    fetch(process.env.DEPLOY_HOOK)
+    if (process.env.SITE_ENVIRONMENT === 'Production') {
+      fetch(process.env.DEPLOY_HOOK)
+    }
   } else {
     throw new Error(
       `The HTTP ${req.method} method is not supported at this route.`

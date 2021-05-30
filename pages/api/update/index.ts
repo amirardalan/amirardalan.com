@@ -19,5 +19,7 @@ export default async function handle(req: any, res: any) {
     },
   })
   res.json(result)
-  fetch(process.env.DEPLOY_HOOK)
+  if (process.env.SITE_ENVIRONMENT === 'Production') {
+    fetch(process.env.DEPLOY_HOOK)
+  }
 }

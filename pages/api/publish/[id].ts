@@ -10,5 +10,7 @@ export default async function handle(req: any, res: any) {
     data: { published: Boolean(isPublished) },
   })
   res.json(post)
-  fetch(process.env.DEPLOY_HOOK)
+  if (process.env.SITE_ENVIRONMENT === 'Production') {
+    fetch(process.env.DEPLOY_HOOK)
+  }
 }

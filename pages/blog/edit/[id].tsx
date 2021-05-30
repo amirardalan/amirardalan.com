@@ -19,6 +19,8 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 
 const Edit = (props: any) => {
 
+  console.log(props.editPost.published)
+
   const id = props.editPost.id
   const editTitle = props.editPost.title
   const editContent = props.editPost.content
@@ -40,7 +42,17 @@ const Edit = (props: any) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
       })
-      await Router.push(`${process.env.NEXT_PUBLIC_SITE_URL}/api/preview?secret=${process.env.NEXT_PUBLIC_PREVIEW_TOKEN}&slug=${slug}`)
+      // Enable Preview Mode by setting the cookies
+      if (process.env.SITE_ENVIRONMENT === 'Production') {
+        await Router.push(
+          `${process.env.NEXT_PUBLIC_SITE_URL}/api/preview?secret=${process.env.NEXT_PUBLIC_PREVIEW_TOKEN}&slug=${slug}`
+        )
+      } else {
+        await Router.push(
+          `/blog/${slug}`
+        )
+      }
+
     } catch (error) {
       console.error(error)
     }
@@ -51,9 +63,9 @@ const Edit = (props: any) => {
       method: 'DELETE',
     })
     if (props.editPost.published) {
-      Router.push('/blog/drafts')
-    } else {
       Router.push('/blog')
+    } else {
+      Router.push('/blog/drafts')
     }
   }
 
@@ -131,7 +143,7 @@ const Edit = (props: any) => {
                 className="buttonCompact"
                 disabled={ !content || !title || !slug || !teaser }
                 type="submit">
-                Save
+                Update
               </button>
               <a className="buttonCompact" onClick={() => Router.push(`/blog/${editSlug}`)}>Cancel</a>
               <a className="buttonCompact delete" onClick={confirmOnClick}>Delete</a>

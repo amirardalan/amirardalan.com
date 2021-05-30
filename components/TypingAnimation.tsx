@@ -1,16 +1,17 @@
 import React from 'react'
 import Typical from 'react-typical'
 
-// Console Tag
-console.log(`
-  █████   ███    ███ ██ ██████  
-  ██   ██ ████  ████ ██ ██   ██ 
-  ███████ ██ ████ ██ ██ ██████  
-  ██   ██ ██  ██  ██ ██ ██   ██ 
-  ██   ██ ██      ██ ██ ██   ██ 
-  -----------------------------
-  Design & Code by Amir Ardalan
-`)
+if (process.env.SITE_ENVIRONMENT === 'Production') {
+  console.log(`
+    █████   ███    ███ ██ ██████  
+    ██   ██ ████  ████ ██ ██   ██ 
+    ███████ ██ ████ ██ ██ ██████  
+    ██   ██ ██  ██  ██ ██ ██   ██ 
+    ██   ██ ██      ██ ██ ██   ██ 
+    -----------------------------
+    Design & Code by Amir Ardalan
+  `)
+}
 
 const TypingAnimation =  React.memo(()=> {
   return (
