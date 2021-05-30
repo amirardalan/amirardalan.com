@@ -5,6 +5,17 @@ export default async (req: any, res: any) => {
     return res.status(401).json({ message: 'Invalid token' })
   }
 
-  res.end()
-  fetch(process.env.DEPLOY_HOOK)
+  const buildHookUrl = process.env.DEPLOY_HOOK
+
+  await fetch(buildHookUrl, {
+    method: 'POST',
+    mode: 'cors',
+    cache: 'no-cache',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+  })
+  
+  console.log(res)
+  res.json()
 }

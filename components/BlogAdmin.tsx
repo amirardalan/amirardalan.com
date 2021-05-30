@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import Link from 'next/link'
 import { useTheme } from '@emotion/react'
 import { useRouter } from 'next/router'
@@ -17,16 +17,20 @@ const BlogAdmin: React.FC =  React.memo(()=> {
     let left = null
     let right = null
 
-    const [isDeploying, setIsDeploying] = useState(null)
+
     // Deploy New Build
-    async function deployNewBuild(): Promise<void> {
-      await fetch(`/api/deploy?secret=${process.env.NEXT_PUBLIC_DEPLOY_TOKEN}`, {
-        method: 'PUT',
-      })
+    const [isDeploying, setIsDeploying] = useState(false)
+    const showDeployLoader: Function = () => {
       setIsDeploying(true)
+      console.log('deploy in progress')
       setTimeout(() => {
         setIsDeploying(false)
       }, 84000)
+    }
+    
+    async function deployNewBuild(): Promise<void> {
+      await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/deploy?secret=${process.env.NEXT_PUBLIC_DEPLOY_TOKEN}`)
+      .then(showDeployLoader())
     }
   
     if (session && session.user.email == process.env.NEXT_PUBLIC_USER_EMAIL) {

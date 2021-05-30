@@ -9,13 +9,16 @@ import { ThemeProvider } from '@emotion/react'
 import { themeLight, themeDark } from '../styles/theme'
 import { useDarkMode } from '../utils/useDarkMode'
 
+import { useLoadingBar } from '../utils/useLoadingBar'
+import LoadingBar from '../components/LoadingBar'
+import LoadingTriangle from '../components/LoadingTriangle'
+
 import { Provider } from 'next-auth/client'
 import { AppProps } from 'next/app'
-
-import LoadingBar from '../components/LoadingBar'
-import { useLoadingBar } from '../utils/useLoadingBar'
-
-import BlogAdmin from "../components/BlogAdmin"
+import dynamic from 'next/dynamic'
+const BlogAdmin = dynamic(() => import('../components/BlogAdmin'), {
+  loading: () => <LoadingTriangle />
+})
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
 
