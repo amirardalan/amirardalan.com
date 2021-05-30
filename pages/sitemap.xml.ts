@@ -12,18 +12,19 @@ type Url = {
 
 const excludedRoutes: Array<string> = [
   '/404',
-  '/sitemap.xml',
-  '/blog/[slug]',
-  '/blog/edit',
-  '/blog/create',
-  '/blog/drafts',
   '/api/auth/[...nextauth]',
+  '/api/deploy',
   '/api/post',
   '/api/post/[id]',
   '/api/preview',
   '/api/preview/exit-preview',
   '/api/publish/[id]',
   '/api/update',
+  '/blog/[slug]',
+  '/blog/create',
+  '/blog/drafts',
+  '/blog/edit',
+  '/sitemap.xml',
 ]
 
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
