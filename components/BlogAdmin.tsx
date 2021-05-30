@@ -28,8 +28,10 @@ const BlogAdmin: React.FC =  React.memo(()=> {
       }, 84000)
     }
     
+    const deployRequestUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/api/deploy?secret=${process.env.NEXT_PUBLIC_DEPLOY_TOKEN}`
+    console.log(deployRequestUrl)
     async function deployNewBuild(): Promise<void> {
-      await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/deploy?secret=${process.env.NEXT_PUBLIC_DEPLOY_TOKEN}`)
+      await fetch(deployRequestUrl)
       .then(showDeployLoader())
     }
   
