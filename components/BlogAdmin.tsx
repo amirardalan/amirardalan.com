@@ -13,21 +13,22 @@ const BlogAdmin: React.FC =  React.memo(()=> {
   
     const [session] = useSession()
     const theme : any = useTheme()
-
-    const [isDeploying, setIsDeploying] = useState(false)
-
-    const deployNewBuild = async () => {
-      await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/deploy?secret=${process.env.NEXT_PUBLIC_DEPLOY_TOKEN}`)
-      setIsDeploying(true)
-      setTimeout(() => {
-        setIsDeploying(false)
-      }, 78000)
-    }
   
     let left = null
     let right = null
+
+    const [isDeploying, setIsDeploying] = useState(null)
   
     if (session && session.user.email == process.env.NEXT_PUBLIC_USER_EMAIL) {
+
+      const deployNewBuild = async () => {
+        await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/deploy?secret=${process.env.NEXT_PUBLIC_DEPLOY_TOKEN}`)
+        setIsDeploying(true)
+        setTimeout(() => {
+          setIsDeploying(false)
+        }, 78000)
+      }
+
       left = (
         <div
           className="left loginUser"
@@ -56,12 +57,7 @@ const BlogAdmin: React.FC =  React.memo(()=> {
               onClick={() => signOut({ callbackUrl: `${process.env.NEXT_PUBLIC_SITE_URL}/blog` })}
               aria-label="Sign Out"
               tabIndex={0}
-              css={{
-                textDecoration: 'none',
-                '&:hover': {
-                  color: theme.colors.grayscale
-                }
-              }}>
+              css={{ textDecoration: 'none' }}>
               Sign Out
             </a>
           </span>
@@ -81,7 +77,11 @@ const BlogAdmin: React.FC =  React.memo(()=> {
   
             { isDeploying ? <LoadingSpinner /> : null }
   
-            <button onClick={ isDeploying ? null : deployNewBuild} className={isDeploying ? 'buttonCompact deploy disabled' : 'buttonCompact deploy'} aria-label="Drafts">
+            <button
+              onClick={ !isDeploying ? deployNewBuild : null }
+              className={ isDeploying ? 'buttonCompact deploy disabled' : 'buttonCompact deploy' }
+              aria-label="Deploy"
+            >
               Deploy
             </button>
           </div>
