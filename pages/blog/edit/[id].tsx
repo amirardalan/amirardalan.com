@@ -6,7 +6,7 @@ import { GetServerSideProps } from 'next'
 import prisma from '../../../lib/prisma'
 import { useSession } from 'next-auth/client'
 import LoadingTriangle from '../../../components/LoadingTriangle'
-import BlogAdmin from '../../../components/BlogAdmin'
+import BlogLayout from '../../../components/BlogLayout'
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const editPost = await prisma.post.findUnique({
@@ -47,7 +47,6 @@ const Edit = (props: any) => {
       await Router.push(
         `${process.env.NEXT_PUBLIC_SITE_URL}/api/preview?secret=${process.env.NEXT_PUBLIC_PREVIEW_TOKEN}&slug=${slug}`
       )
-
     } catch (error) {
       console.error(error)
     }
@@ -72,7 +71,7 @@ const Edit = (props: any) => {
     <div className="controlsConfirm">
       <div className="confirmSelect">
         <span className="confirmLink delete" onClick={() => deletePost(id)}>
-          Confirm Delete
+          Confirm
         </span>
         <span>•</span>
         <span className="confirmLink close" onClick={cancelOnClick}>
@@ -101,8 +100,6 @@ const Edit = (props: any) => {
           <Link href="/blog">Blog</Link>
           <span>Edit {editPageTitle}</span>
         </nav>
-
-        <BlogAdmin />
 
         <div>
           <form onSubmit={submitData}>
@@ -153,7 +150,7 @@ const Edit = (props: any) => {
   }
 
   return (
-    <>
+    <BlogLayout>
       <Head>
         <title>Edit {isPublished ? 'Post |' : 'Draft: '} {editPageTitle}</title>
         <meta name="robots" content="noindex"></meta>
@@ -161,7 +158,7 @@ const Edit = (props: any) => {
       <div>
         {edit}
       </div>
-    </>
+    </BlogLayout>
   )
 }
 

@@ -15,6 +15,8 @@ import { AppProps } from 'next/app'
 import LoadingBar from '../components/LoadingBar'
 import { useLoadingBar } from '../utils/useLoadingBar'
 
+import BlogAdmin from "../components/BlogAdmin"
+
 const MyApp = ({ Component, pageProps }: AppProps) => {
 
   // Toggle Dark Mode
@@ -41,6 +43,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
               <ToggleTheme toggleTheme={toggleTheme} />
             </div>
           </div>
+          <BlogAdmin />
           <Component {...pageProps} />
           <Footer />
         </div>

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import Router from 'next/router'
 import Link from 'next/link'
 import Head from 'next/head'
-import BlogAdmin from '../../components/BlogAdmin'
+import BlogLayout from '../../components/BlogLayout'
 import { useSession } from 'next-auth/client'
 
 const Draft: React.FC = () => {
@@ -21,12 +21,10 @@ const Draft: React.FC = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
       })
-
       // Enable Preview Mode by setting the cookies
       await Router.push(
         `${process.env.NEXT_PUBLIC_SITE_URL}/api/preview?secret=${process.env.NEXT_PUBLIC_PREVIEW_TOKEN}&slug=${slug}`
       )
-      
     } catch (error) {
       console.error(error)
     }
@@ -79,8 +77,6 @@ const Draft: React.FC = () => {
           <Link href="/blog">Blog</Link>
           <span>Create</span>
         </nav>
-
-        <BlogAdmin />
 
         <div>
           <form onSubmit={submitData}>
@@ -142,7 +138,7 @@ const Draft: React.FC = () => {
   }
 
   return (
-    <>
+    <BlogLayout>
       <Head>
         <title>Create – Amir Ardalan</title>
         <meta name="robots" content="noindex"></meta>
@@ -150,7 +146,7 @@ const Draft: React.FC = () => {
       <div>
         {create}
       </div>
-    </>
+    </BlogLayout>
   )
 }
 

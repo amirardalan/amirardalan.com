@@ -4,7 +4,7 @@ import { GetStaticProps, GetStaticPaths } from 'next'
 import { useSession } from 'next-auth/client'
 import Link from 'next/link'
 import Head from 'next/head'
-import BlogAdmin from '../../components/BlogAdmin'
+import BlogLayout from '../../components/BlogLayout'
 import prisma from '../../lib/prisma'
 import ReactMarkdown from 'react-markdown'
 import BlogSyntaxHighlight from '../../components/BlogSyntaxHighlight'
@@ -137,7 +137,7 @@ const Post = (props: any) => {
     <div className="controlsConfirm">
       <div className="confirmSelect">
         <span className="confirmLink delete" onClick={() => deletePost(current)}>
-          Confirm Delete
+          Confirm
         </span>
         <span>•</span>
         <span className="confirmLink close" onClick={cancelOnClick}>
@@ -157,7 +157,7 @@ const Post = (props: any) => {
   const disallowRobots = ( <meta name="robots" content="noindex"></meta> )
 
   return (
-    <>
+    <BlogLayout>
       <Head>
         <title>{title} – Amir Ardalan</title>
         {isPublished ? null : disallowRobots }
@@ -169,8 +169,6 @@ const Post = (props: any) => {
           { !isPublished ? <RenderBreadcrumb /> : null}
           <span>{title}</span>
         </nav>
-
-        <BlogAdmin />
         
         <div className="post postFull">
 
@@ -219,7 +217,7 @@ const Post = (props: any) => {
         </div>
         
       </div>
-    </>
+      </BlogLayout>
   )
 }
 

@@ -177,37 +177,28 @@ export function GlobalStyles () {
           color: ${theme.colors.background};
           font-size: 14px;
           cursor: pointer;
-          &:hover {
-            background-color: ${theme.colors.grayscale};
-            color: ${theme.colors.background};
-          }
         }
 
         a.buttonCompact,
         input.buttonCompact,
         .buttonCompact {
           min-width: 80px;
-          margin: 0 .25rem 0 0;
-          padding: .45rem 0;
+          margin-right: .25rem;
+          padding: .45rem 1rem;
           display: inline-block;
           background-color: ${theme.colors.text};
           border: 1px solid ${theme.colors.accent};
           border-radius: 5px;
           color: ${theme.colors.background};
           font-size: 12px;
+          font-weight: bold;
           text-transform: uppercase;
           text-align: center;
           text-decoration: none;
           cursor: pointer;
-          &:hover {
-            background-color: ${theme.colors.grayscale};
-          }
           &:disabled {
             background-color: ${theme.colors.disabledBtn};
             cursor: default;
-          }
-          &:last-child {
-            margin: 0;
           }
           .create & {
             &.createBtn {
@@ -220,11 +211,16 @@ export function GlobalStyles () {
             }
           }
           &.delete {
-            background-color: ${theme.colors.disabledBtn};
+            background-color: ${theme.colors.warning};
             text-decoration: none;
-            &:hover {
-              background-color: ${theme.colors.warning};
-            }
+            color: #e2e2e2;
+          }
+          &.deploy {
+            background-color: ${theme.colors.accentColor};
+            &.disabled { cursor: wait; }
+          }
+          &.disabled {
+            background-color: ${theme.colors.disabledBtn};
           }
         }
 
@@ -273,7 +269,6 @@ export function GlobalStyles () {
             }
             }
             &:hover {
-              color: ${theme.colors.grayscale};
               &::before {
                 position: absolute;
                 content: '';
@@ -727,7 +722,24 @@ export function GlobalStyles () {
           from { opacity: 0; transform: translate3d(0, 100%, 0); }
           to { opacity: 1; transform: translate3d(0, 0, 0); }
         }
-        
+        @keyframes rotate {
+          100% { transform: rotate(360deg) }
+        }
+        @keyframes dash {
+          0% {
+            stroke-dasharray: 1, 150;
+            stroke-dashoffset: 0;
+          }
+          50% {
+            stroke-dasharray: 90, 150;
+            stroke-dashoffset: -35;
+          }
+          100% {
+            stroke-dasharray: 90, 150;
+            stroke-dashoffset: -124;
+          }
+        }
+
       `}
     />
   )

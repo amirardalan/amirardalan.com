@@ -1,6 +1,6 @@
 import React from 'react'
 import Head from 'next/head'
-import BlogAdmin from '../../components/BlogAdmin'
+import BlogLayout from '../../components/BlogLayout'
 import { GetStaticProps } from 'next'
 import prisma from '../../lib/prisma'
 import BlogPost, { PostProps } from '../../components/BlogPost'
@@ -43,7 +43,7 @@ const Blog: React.FC<Props> = (props: any) => {
   }
   
   return (
-    <>
+    <BlogLayout>
       <Head>
         <title>Blog – Amir Ardalan</title>
       </Head>
@@ -52,8 +52,6 @@ const Blog: React.FC<Props> = (props: any) => {
         <nav className="breadcrumbs">
           <span>Blog</span>
         </nav>
-
-        <BlogAdmin />
 
         <div>
           { showFeedError ? <FeedNotFound /> : null }
@@ -68,7 +66,7 @@ const Blog: React.FC<Props> = (props: any) => {
         </div>
 
       </div>
-    </>
+    </BlogLayout>
   )
 }
 

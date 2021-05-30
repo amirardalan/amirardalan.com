@@ -3,7 +3,7 @@ import { GetServerSideProps } from 'next'
 import { useSession, getSession } from 'next-auth/client'
 import Link from 'next/link'
 import Head from 'next/head'
-import BlogAdmin from '../../components/BlogAdmin'
+import BlogLayout from '../../components/BlogLayout'
 import BlogPost, { PostProps } from '../../components/BlogPost'
 import prisma from '../../lib/prisma'
 
@@ -53,8 +53,6 @@ const Drafts: React.FC<Props> = (props) => {
           <span>Drafts</span>
         </nav>
 
-        <BlogAdmin />
-
         <div className="drafts">
           <main>
             {props.drafts.sort(compare).reverse().map((post) => (
@@ -72,13 +70,13 @@ const Drafts: React.FC<Props> = (props) => {
     )
   }
   return (
-    <>
+    <BlogLayout>
       <Head>
         <title>Drafts – Amir Ardalan</title>
         <meta name="robots" content="noindex"></meta>
       </Head>
       {draftsList}
-    </>
+    </BlogLayout>
   )
 }
 
