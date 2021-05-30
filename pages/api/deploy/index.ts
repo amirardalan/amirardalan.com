@@ -1,6 +1,6 @@
 // DEPLOY /api/deploy
 
-const deployUrl = process.env.DEPLOY_HOOK
+const deployUrl = process.env.NEXT_PUBLIC_DEPLOY_HOOK
 
 export default async (req: any, res: any) => {
 
@@ -8,6 +8,7 @@ export default async (req: any, res: any) => {
     return res.status(401).json({ message: 'Invalid token' })
   }
 
-  fetch(deployUrl)
+  fetch (deployUrl)
+
   return res.json()
 }
