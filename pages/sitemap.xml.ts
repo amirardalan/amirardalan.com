@@ -21,6 +21,7 @@ const excludedRoutes: Array<string> = [
   '/api/post',
   '/api/post/[id]',
   '/api/preview',
+  '/preview/exit-preview',
   '/api/publish/[id]',
   '/api/update',
 ]
