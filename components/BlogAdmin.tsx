@@ -26,7 +26,7 @@ const BlogAdmin: React.FC =  React.memo(()=> {
       setIsDeploying(true)
       setTimeout(() => {
         setIsDeploying(false)
-      }, 78000)
+      }, 84000)
     }
   
     if (session && session.user.email == process.env.NEXT_PUBLIC_USER_EMAIL) {
