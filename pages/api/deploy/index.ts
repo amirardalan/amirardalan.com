@@ -6,7 +6,6 @@ export default async (req: any, res: any) => {
     return res.status(401).json({ message: 'Invalid token' })
   }
 
-  fetch(process.env.DEPLOY_HOOK)
-  console.log(process.env.DEPLOY_HOOK)
+  fetch("https://api.vercel.com/v1/integrations/deploy/prj_NfIWVqIhuOYXs9otAnkaVIe8Z3pl/qdTsNi6eoV")
   return res.json()
 }
