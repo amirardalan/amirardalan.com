@@ -19,8 +19,6 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 
 const Edit = (props: any) => {
 
-  console.log(props.editPost.published)
-
   const id = props.editPost.id
   const editTitle = props.editPost.title
   const editContent = props.editPost.content
