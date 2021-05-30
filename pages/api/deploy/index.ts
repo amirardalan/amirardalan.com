@@ -7,5 +7,6 @@ export default async (req: any, res: any) => {
   }
 
   fetch(process.env.DEPLOY_HOOK)
+  console.log(process.env.DEPLOY_HOOK)
   return res.json()
 }
