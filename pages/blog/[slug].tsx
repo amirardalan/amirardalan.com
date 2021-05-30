@@ -60,8 +60,8 @@ const Post = (props: any) => {
   const redirect = isPublished ? '/blog/drafts' : '/blog'
 
   // Publish/Unpublish post
-  async function publishPost(id: number, published: boolean): Promise<void> {
-    await fetch(`/api/publish/${id}?published=${published}`, {
+  async function publishPost(slug: String, published: boolean): Promise<void> {
+    await fetch(`/api/publish/${slug}?published=${published}`, {
       method: 'PUT',
     })
     await Router.push(redirect)
