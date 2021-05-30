@@ -21,15 +21,15 @@ const BlogAdmin: React.FC =  React.memo(()=> {
     // Deploy New Build
     const [isDeploying, setIsDeploying] = useState(false)
     const showDeployLoader: Function = () => {
+      fetch (process.env.NEXT_PUBLIC_DEPLOY_HOOK)
       setIsDeploying(true)
       setTimeout(() => {
         setIsDeploying(false)
       }, 84000)
     }
-    const deployRequestUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/api/deploy?secret=${process.env.NEXT_PUBLIC_DEPLOY_TOKEN}`
+
     async function deployNewBuild(): Promise<any> {
-      await fetch (process.env.NEXT_PUBLIC_DEPLOY_HOOK)
-      await fetch(deployRequestUrl)
+      await fetch(`/api/deploy?secret=${process.env.NEXT_PUBLIC_DEPLOY_TOKEN}`)
       .then(showDeployLoader())
     }
   
