@@ -1,17 +1,15 @@
 import React from 'react'
 import Typical from 'react-typical'
 
-if (process.env.NEXT_PUBLIC_SITE_ENVIRONMENT === 'Production') {
-  console.log(`
-    █████   ███    ███ ██ ██████  
-    ██   ██ ████  ████ ██ ██   ██ 
-    ███████ ██ ████ ██ ██ ██████  
-    ██   ██ ██  ██  ██ ██ ██   ██ 
-    ██   ██ ██      ██ ██ ██   ██ 
-    -----------------------------
-    Design & Code by Amir Ardalan
-  `)
-}
+console.log(`
+█████   ███    ███ ██ ██████  
+██   ██ ████  ████ ██ ██   ██ 
+███████ ██ ████ ██ ██ ██████  
+██   ██ ██  ██  ██ ██ ██   ██ 
+██   ██ ██      ██ ██ ██   ██ 
+-----------------------------
+Design & Code by Amir Ardalan
+`)
 
 const TypingAnimation =  React.memo(()=> {
   return (

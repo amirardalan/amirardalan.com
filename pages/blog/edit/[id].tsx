@@ -59,8 +59,6 @@ const Edit = (props: any) => {
     }
   }
 
-  console.log(process.env.NEXT_PUBLIC_SITE_ENVIRONMENT)
-
   async function deletePost(id: number): Promise<void> {
     await fetch(`/api/post/${id}`, {
       method: 'DELETE',
