@@ -1,12 +1,19 @@
 // DEPLOY /api/deploy
+import axios from "axios"
 
-const deployUrl = process.env.NEXT_PUBLIC_DEPLOY_HOOK
-
-export default async (req: any, res: any) => {
+export default async (req, res) => {
+  const url = `${process.env.DEPLOY_HOOK}`
 
   if (req.query.secret !== `${process.env.NEXT_PUBLIC_DEPLOY_TOKEN}`) {
     return res.status(401).json({ message: 'Invalid token' })
   }
 
-  return res.json()
+  await axios
+    .get(url)
+    .then(({ data }) => {
+      res.status(200).json({ data })
+    })
+    .catch(({ err }) => {
+      res.status(400).json({ err })
+    })
 }

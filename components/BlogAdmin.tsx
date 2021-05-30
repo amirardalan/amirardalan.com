@@ -21,7 +21,6 @@ const BlogAdmin: React.FC =  React.memo(()=> {
     // Deploy New Build
     const [isDeploying, setIsDeploying] = useState(false)
     const showDeployLoader: Function = () => {
-      fetch (process.env.NEXT_PUBLIC_DEPLOY_HOOK)
       setIsDeploying(true)
       setTimeout(() => {
         setIsDeploying(false)
