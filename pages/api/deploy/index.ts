@@ -8,7 +8,5 @@ export default async (req: any, res: any) => {
     return res.status(401).json({ message: 'Invalid token' })
   }
 
-  fetch (deployUrl)
-
   return res.json()
 }

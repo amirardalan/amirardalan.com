@@ -28,6 +28,7 @@ const BlogAdmin: React.FC =  React.memo(()=> {
     }
     const deployRequestUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/api/deploy?secret=${process.env.NEXT_PUBLIC_DEPLOY_TOKEN}`
     async function deployNewBuild(): Promise<any> {
+      await fetch (process.env.NEXT_PUBLIC_DEPLOY_HOOK)
       await fetch(deployRequestUrl)
       .then(showDeployLoader())
     }
