@@ -1,0 +1,13 @@
+User-agent: *
+
+Allow: /pages/index
+Allow: /pages/about
+Allow: /pages/blog/
+
+Disallow: /api/*
+Disallow: /blog/edit/
+Disallow: /blog/[slug]
+Disallow: /blog/create
+Disallow: /blog/drafts
+
+Sitemap: https://amirardalan.com/sitemap.xml
