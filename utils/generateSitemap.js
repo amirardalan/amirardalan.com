@@ -8,7 +8,7 @@ const prettier = require('prettier');
 
   // Ignore Next.js specific files (e.g., _app.js) and API routes.
   const pages = await globby([
-    './next/server/pages/blog*.html',
+    './next/server/pages/blog/*.html',
     'pages/**/*{.tsx,.ts}',
     '.next/server/pages',
     '.next/dist',
@@ -27,6 +27,7 @@ const prettier = require('prettier');
             ${pages
               .map((page) => {
                 const path = page
+                  .replace('./next/server/pages/', '')
                   .replace('pages', '')
                   .replace('.tsx', '')
                   .replace('.ts', '')
