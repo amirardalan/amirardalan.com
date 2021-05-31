@@ -9,7 +9,8 @@ const prettier = require('prettier');
   // Ignore Next.js specific files (e.g., _app.js) and API routes.
   const pages = await globby([
     'pages/**/*{.tsx,.ts}',
-    '.next/server/pages/blog/*{.html}',
+    '.next/server/pages/**/*{.html}',
+    '.next/server/dist/**/*{.html}',
     '!pages/_*.tsx',
     '!pages/api',
 		'!pages/404.tsx',
