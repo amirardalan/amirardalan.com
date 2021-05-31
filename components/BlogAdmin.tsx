@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 import { useTheme } from '@emotion/react'
+import axios from "axios"
 import { useRouter } from 'next/router'
 import { signOut, useSession } from 'next-auth/client'
 import LoadingSpinner from './LoadingSpinner'
@@ -27,15 +28,17 @@ const BlogAdmin: React.FC =  React.memo(()=> {
       }, 84000)
     }
 
-    async function deployNewBuild(): Promise<any> {
-      // Initiate new production build
-      await fetch(`/api/deploy?secret=${process.env.NEXT_PUBLIC_DEPLOY_TOKEN}`)
-      .then(showDeployLoader())
-      // Exit Preview mode
-      await fetch(`/api/preview/exit-preview?secret=${process.env.NEXT_PUBLIC_PREVIEW_TOKEN}`)
-      // Redirect to the blog
-      router.push('/blog')
 
+    async function deployNewBuild(): Promise<any> {
+      axios.get(`/api/deploy?secret=${process.env.NEXT_PUBLIC_DEPLOY_TOKEN}`).then(response => {
+        console.log(response.data.data.job)
+        showDeployLoader()
+        axios.get(`/api/preview/exit-preview?secret=${process.env.NEXT_PUBLIC_PREVIEW_TOKEN}`)
+        router.push('/blog')
+      })
+      .catch(err => {
+        console.log(err)
+      })
     }
   
     if (session && session.user.email == process.env.NEXT_PUBLIC_USER_EMAIL) {
