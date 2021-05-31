@@ -609,13 +609,19 @@ export function GlobalStyles () {
           }
           ul li {
             list-style: outside;
-            margin-left: 2.5rem;
+            margin-left: 2rem;
             padding-left: .5rem;
+            
+            @media (max-width: 480px) {
+              margin-left: 1.5rem;
+            }
           }
-          ol li {
-            list-style: number;
-            margin-left: 2.5rem;
-            padding-left: .5rem;   
+          ol {
+            li {
+              list-style-type: decimal;
+              margin-left: 2rem;
+              padding-left: .5rem;
+            }
           }
         }
 
