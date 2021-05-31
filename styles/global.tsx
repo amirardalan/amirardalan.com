@@ -344,7 +344,7 @@ export function GlobalStyles () {
 
         .mainRight {
           width: 50%;
-          height: 75vh;
+          height: 72vh;
           position: relative;
           display: flex;
           flex-direction: column;
