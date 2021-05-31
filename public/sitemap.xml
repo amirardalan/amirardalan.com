@@ -1,14 +1,134 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://localhost:3000/about</loc>
+    <loc>undefined/about</loc>
   </url>
 
   <url>
-    <loc>http://localhost:3000</loc>
+    <loc>undefined</loc>
   </url>
 
   <url>
-    <loc>http://localhost:3000/blog</loc>
+    <loc>undefined/blog</loc>
+  </url>
+
+  <url>
+    <loc>undefined.next/server//404</loc>
+  </url>
+
+  <url>
+    <loc>undefined.next/server//500</loc>
+  </url>
+
+  <url>
+    <loc>undefined.next/server//_app</loc>
+  </url>
+
+  <url>
+    <loc>undefined.next/server//_document</loc>
+  </url>
+
+  <url>
+    <loc>undefined.next/server//_error</loc>
+  </url>
+
+  <url>
+    <loc>undefined.next/server//about</loc>
+  </url>
+
+  <url>
+    <loc>undefined.next/server//blog</loc>
+  </url>
+
+  <url>
+    <loc>undefined.next/server//blog</loc>
+  </url>
+
+  <url>
+    <loc>undefined.next/server//blogon</loc>
+  </url>
+
+  <url>
+    <loc>undefined.next/server/</loc>
+  </url>
+
+  <url>
+    <loc>undefined.next/server/</loc>
+  </url>
+
+  <url>
+    <loc>undefined.next/server/on</loc>
+  </url>
+
+  <url>
+    <loc>undefined.next/server//api/deploy</loc>
+  </url>
+
+  <url>
+    <loc>undefined.next/server//api/post</loc>
+  </url>
+
+  <url>
+    <loc>undefined.next/server//api/preview</loc>
+  </url>
+
+  <url>
+    <loc>undefined.next/server//api/update</loc>
+  </url>
+
+  <url>
+    <loc>undefined.next/server//blog/2021-a-dev-odyssey</loc>
+  </url>
+
+  <url>
+    <loc>undefined.next/server//blog/2021-a-dev-odysseyon</loc>
+  </url>
+
+  <url>
+    <loc>undefined.next/server//blog/[slug]</loc>
+  </url>
+
+  <url>
+    <loc>undefined.next/server//blog/create</loc>
+  </url>
+
+  <url>
+    <loc>undefined.next/server//blog/drafts</loc>
+  </url>
+
+  <url>
+    <loc>undefined.next/server//blog/monitoring-postgresql</loc>
+  </url>
+
+  <url>
+    <loc>undefined.next/server//blog/monitoring-postgresqlon</loc>
+  </url>
+
+  <url>
+    <loc>undefined.next/server//blog/syntax-highlight-code-in-markdown</loc>
+  </url>
+
+  <url>
+    <loc>undefined.next/server//blog/syntax-highlight-code-in-markdownon</loc>
+  </url>
+
+  <url>
+    <loc>undefined.next/server//api/auth/[...nextauth]</loc>
+  </url>
+
+  <url>
+    <loc>undefined.next/server//api/post/[id]</loc>
+  </url>
+
+  <url>
+    <loc>undefined.next/server//api/preview/exit-preview</loc>
+  </url>
+
+  <url>
+    <loc>undefined.next/server//api/publish/[id]</loc>
+  </url>
+
+  <url>
+    <loc>undefined.next/server//blog/edit/[id]</loc>
   </url>
 </urlset>
