@@ -1,10 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://localhost:3000/about</loc>
+    <loc>undefined/blog/2021-a-dev-odyssey</loc>
   </url>
 
   <url>
-    <loc>http://localhost:3000</loc>
+    <loc>undefined/blog/monitoring-postgresql</loc>
+  </url>
+
+  <url>
+    <loc>undefined/blog/syntax-highlight-code-in-markdown</loc>
+  </url>
+
+  <url>
+    <loc>undefined/about</loc>
+  </url>
+
+  <url>
+    <loc>undefined</loc>
+  </url>
+
+  <url>
+    <loc>undefined/blog</loc>
   </url>
 </urlset>

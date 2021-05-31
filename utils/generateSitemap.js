@@ -8,8 +8,9 @@ const prettier = require('prettier');
   const pages = await globby([
     '.next/server/pages/blog/**/*.json',
     'pages/**/*{.tsx,.ts}',
+    '!pages/blog/',
+    'pages/blog/index.tsx',
     '!pages/api',
-		'!pages/blog',
     '!pages/_*.tsx',
     '!pages/404.tsx',
   ]);
