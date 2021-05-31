@@ -126,8 +126,10 @@ const Post = (props: any) => {
   const nextTitle = errHandleNext ? arr[index + 1].title : null
   const prevLink = errHandlePrev ? `/blog/${encodeURIComponent(arr[index - 1].slug)}` : '#'
   const nextLink = errHandleNext ? `/blog/${encodeURIComponent(arr[index + 1].slug)}` : '#'
-  const RenderPrevLink = () => ( <Link href={prevLink} aria-label={prevTitle}><a>← {prevTitle}</a></Link> )
-  const RenderNextLink = () => ( <Link href={nextLink} aria-label={nextTitle}><a>{nextTitle} →</a></Link> )
+  const RenderPrevLink = () => 
+    <Link href={prevLink} aria-label={prevTitle}><a>← {prevTitle}</a></Link>
+  const RenderNextLink = () => 
+    <Link href={nextLink} aria-label={nextTitle}><a>{nextTitle} →</a></Link>
 
   // Handle state and rendering for post deletion confirmation
   const [showConfirmation, setShowConfirmation] = useState(false)

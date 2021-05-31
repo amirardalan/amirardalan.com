@@ -641,20 +641,17 @@ export function GlobalStyles () {
         }
         .prevLink {
           display: flex;
-          justify-content: flex-start;
+          text-align: left;
           margin-right: 1rem;
         }
         .nextLink {
           display: flex;
-          justify-content: flex-end;
+          text-align: right;
         }
         .prevLink,
         .nextLink {
           font-family: ${theme.fonts.tertiary};
           font-size: 18px;
-          @media(max-width: 768px) {
-            justify-content: flex-start;
-          }
         }
 
         // Flex Utils
