@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
-import { Global, useTheme } from '@emotion/react'
+import { Global, css, useTheme } from '@emotion/react'
 import axios from "axios"
 import { useRouter } from 'next/router'
 import { signOut, useSession } from 'next-auth/client'
@@ -40,6 +40,7 @@ const BlogAdmin: React.FC =  React.memo(()=> {
         console.log(err)
       })
     }
+
   
     if (session && session.user.email == process.env.NEXT_PUBLIC_USER_EMAIL) {
 
@@ -48,7 +49,7 @@ const BlogAdmin: React.FC =  React.memo(()=> {
           className="left loginUser"
           css={{
             display: 'flex',
-            '@media(max-width: 600px)': {
+            '@media(max-width: 500px)': {
               justifyContent: 'flex-end',
               margin: '0 .5rem .5rem 0',
             }
@@ -67,10 +68,7 @@ const BlogAdmin: React.FC =  React.memo(()=> {
                 '&:hover': {
                   textDecoration: 'underline'
                 }
-              },
-              '@media(max-width: 890px)': {
-                marginBottom: '.5rem'
-              },
+              }
             }}
           >
             Welcome, {session.user.name.split(" ")[0]}! •
@@ -123,6 +121,21 @@ const BlogAdmin: React.FC =  React.memo(()=> {
         </div>
       )
     }
+
+    const adminPanel = session ? css({
+      backgroundColor: theme.colors.accent,
+      border: '1px dotted' + theme.colors.grayscale,
+      margin: '1.5rem 0',
+      padding: '.5rem .5rem .5rem 1rem',
+      borderRadius: '10px',
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      '@media (max-width: 500px)': {
+        flexDirection: 'column',
+      }
+    }) : null
+
   
     return (
       <>
@@ -171,15 +184,9 @@ const BlogAdmin: React.FC =  React.memo(()=> {
             }
           }
         }}/>
-        <nav css={{
-          margin: '1.5rem 0',
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          '@media (max-width: 500px)': {
-            flexDirection: 'column'
-          }
-        }}>
+        <nav
+          css={adminPanel}
+        >
           {left}
           {right}
         </nav>

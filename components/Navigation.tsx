@@ -57,7 +57,7 @@ export default function Navigation() {
     border: 'none',
     transform: 'rotate(0deg)',
     cursor: 'pointer',
-    'span': {
+    span: {
       display: 'block',
       position: 'absolute',
       height: 2,
@@ -77,7 +77,7 @@ export default function Navigation() {
       },
       '&:nth-of-type(4)': {
         top: 20,
-      },
+      }
     },
     '&.open': {
       'span:nth-of-type(1)': {
