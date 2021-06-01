@@ -235,6 +235,11 @@ export default function Home(props: any) {
           alignSelf: 'flex-end',
           cursor: 'crosshair',
           animation: 'slideUp 1s forwards',
+          '&:hover': {
+            '.canvasControls': {
+              animation: 'fadeIn .2s forwards'
+            } 
+          },
 
           '@media (max-width: 890px)': {
             width: '100%',

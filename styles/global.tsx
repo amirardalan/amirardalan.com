@@ -237,8 +237,8 @@ export function GlobalStyles () {
           to: { opacity: 1 }
         },
         '@keyframes fadeOut': {
-          from :{ opacity: 1 },
-          to: { opacity: 0, }
+          from: { opacity: 1 },
+          to: { opacity: 0 }
         },
         '@keyframes slideUp': {
           from: {
