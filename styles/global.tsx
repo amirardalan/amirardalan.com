@@ -3,7 +3,7 @@ import "@fontsource/poppins/900.css"
 import "@fontsource/lora/500.css"
 import "@fontsource/lora/500-italic.css"
 import "@fontsource/fira-code/400.css"
-import { css, Global, useTheme } from '@emotion/react'
+import { Global, useTheme } from '@emotion/react'
 
 export function GlobalStyles () {
   const theme : any = useTheme()
