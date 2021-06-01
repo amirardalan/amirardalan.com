@@ -211,6 +211,12 @@ export function GlobalStyles () {
           }
         },
 
+        // Utils
+        '.center': {
+          display: 'flex',
+          justifyContent: 'center',
+        },
+
         // Special Text
         '::-moz-selection': {
           background: theme.colors.selection,

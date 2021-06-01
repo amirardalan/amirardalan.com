@@ -235,12 +235,6 @@ export default function BlogLayout(props) {
             fontSize: 18,
           },
 
-          // Flex Utils
-          '.center': {
-            display: 'flex',
-            justifyContent: 'center',
-          },
-
           // Markdown Code
           'pre, code': {
             backgroundColor: '#2a2734',
