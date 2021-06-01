@@ -56,6 +56,7 @@ export default function Navigation() {
     background: 'transparent',
     border: 'none',
     transform: 'rotate(0deg)',
+    transition: '.5s ease-in-out',
     cursor: 'pointer',
     span: {
       display: 'block',
@@ -66,6 +67,7 @@ export default function Navigation() {
       opacity: 1,
       left: 0,
       transform: 'rotate(0deg)',
+      transition: '.25s ease-in-out',
       '&:nth-of-type(1)': {
         top: 0,
       },
