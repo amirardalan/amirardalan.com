@@ -110,11 +110,16 @@ export default function Home(props: any) {
     justifyContent: 'center',
     alignItems: 'center',
     background: theme.colors.text,
-    border: '4px solid transparent',
+    border: '1px solid transparent',
     borderRadius: 5,
     color: theme.colors.background,
     fontSize: 14,
     cursor: 'pointer',
+    '&:hover': {
+      background: theme.colors.background,
+      border: '1px solid' + theme.colors.text,
+      color: theme.colors.text
+    }
   })
   
   return (
