@@ -218,7 +218,7 @@ export default function BlogLayout(props) {
               }
             },
             '@media(max-width: 768px)': {
-              flexDirection: 'column',
+              flexDirection: 'row',
             }
           },
           '.prevLink': {
