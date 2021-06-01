@@ -18,6 +18,20 @@ const BlogAdmin: React.FC =  React.memo(()=> {
     let left = null
     let right = null
 
+    const adminPanel = css({
+      backgroundColor: theme.colors.accent,
+      border: '1px dotted' + theme.colors.grayscale,
+      margin: '1.5rem 0',
+      padding: '.5rem .5rem .5rem 1rem',
+      borderRadius: '10px',
+      display: session ? 'flex' : 'none',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      '@media (max-width: 500px)': {
+        flexDirection: 'column',
+      }
+    })
+
 
     // Deploy New Build
     const [isDeploying, setIsDeploying] = useState(false)
@@ -46,7 +60,7 @@ const BlogAdmin: React.FC =  React.memo(()=> {
 
       left = (
         <div
-          className="left loginUser"
+          className="left"
           css={{
             display: 'flex',
             '@media(max-width: 500px)': {
@@ -89,6 +103,7 @@ const BlogAdmin: React.FC =  React.memo(()=> {
             display: 'flex',
             justifyContent: 'right',
             flexDirection: 'row',
+            alignSelf: 'flex-end',
           }}
         >
           <div
@@ -102,7 +117,7 @@ const BlogAdmin: React.FC =  React.memo(()=> {
   
             <button
               onClick={ !isDeploying ? deployNewBuild : null }
-              className={ isDeploying ? 'buttonCompact deploy disabled' : 'buttonCompact deploy' }
+              className={ (isDeploying) ? 'buttonCompact deploy disabled' : 'buttonCompact deploy' }
               aria-label="Deploy"
             >
               Deploy
@@ -121,20 +136,6 @@ const BlogAdmin: React.FC =  React.memo(()=> {
         </div>
       )
     }
-
-    const adminPanel = session ? css({
-      backgroundColor: theme.colors.accent,
-      border: '1px dotted' + theme.colors.grayscale,
-      margin: '1.5rem 0',
-      padding: '.5rem .5rem .5rem 1rem',
-      borderRadius: '10px',
-      display: 'flex',
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      '@media (max-width: 500px)': {
-        flexDirection: 'column',
-      }
-    }) : null
 
   
     return (
