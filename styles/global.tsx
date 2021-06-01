@@ -81,7 +81,7 @@ export function GlobalStyles () {
             backgroundColor: theme.colors.background,
             fontFamily: theme.fonts.primary,
             color: theme.colors.text,
-            '-webkit-text-size-adjust': '100%',
+            WebkitTextSizeAdjust: '100%',
             transition: 'all 0.15s linear',
           },
           '*': {
