@@ -5,7 +5,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { useTheme } from '@emotion/react'
+import { css, useTheme } from '@emotion/react'
 import TypingAnimation from '../components/TypingAnimation'
 
 import prisma from '../lib/prisma'
@@ -44,8 +44,41 @@ export default function Home(props: any) {
   const latestPost = (!props.latestPost) ? {} : props.latestPost[0]
   const showLatestPost = (props.latestPost) ? true : false
   const ShowLatestPost = () => (
-    <div className="latestPost">
-      <h4 aria-label="Latest Post">
+    <div css={{
+      paddingLeft: '1.2rem',
+      borderLeft: '7px solid' + theme.colors.accent,
+      fontWeight: 'normal',
+      lineHeight: '1.8rem',
+      h4: {
+        fontWeight: 'normal',
+      },
+      'p, a': {
+        fontFamily: theme.fonts.tertiary,
+      },
+      a: {
+        color: theme.colors.text,
+        fontSize: 18,
+        textDecoration: 'underline',
+        '&:hover': {
+          textDecoration: 'none',
+        },
+        '@media(max-width: 480px)': {
+          fontSize: 16,
+        }
+      },
+      p: {
+        color: theme.colors.grayscale,
+        fontSize: 15,
+      },
+    }}>
+      <h4
+        css={{
+          color: theme.colors.grayscale,
+          fontSize: 12,
+          lineHeight: '1.3rem',
+        }}
+        aria-label="Latest Post"
+      >
         Latest Post:
       </h4>
       <Link
@@ -66,14 +99,52 @@ export default function Home(props: any) {
   useEffect(() => {
     setToggleCanvas(!toggleCanvas)
   }, [])
+
+  // CTA Button Styles
+  const cta = css({
+    minWidth: 128,
+    margin: '0 1rem 2rem 0',
+    padding: '.5rem 1.4rem',
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    background: theme.colors.text,
+    border: '4px solid transparent',
+    borderRadius: 5,
+    color: theme.colors.background,
+    fontSize: 14,
+    cursor: 'pointer',
+  })
   
   return (
     <>
     <Head>
       <title>Amir Ardalan – Developer, Designer, Writer</title>
     </Head>
-      <main className="home">
-        <div className="mainLeft">
+      <main
+        className="home"
+        css={{
+          flex: 1,
+          display: 'flex',
+          flexWrap: 'wrap',
+          justifyContent: 'space-between',
+        }}>
+        <div css={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignSelf: 'flex-end',
+          justifyContent: 'space-between',
+          animation: 'slideUp .8s forwards',
+          '@media (max-width: 890px)': {
+            width: '100%',
+            height: 'auto',
+            marginRight: 0,
+            flexDirection: 'column-reverse',
+            justifyContent: 'start',
+            alignSelf: 'flex-start',
+          }
+        }}>
           <div css={{
             marginBottom: '3rem',
             '@media (max-width: 890px)': {
@@ -107,23 +178,45 @@ export default function Home(props: any) {
               }
             }}
           >
-            <h2>
+            <h2 css={{
+              fontFamily: theme.fonts.secondary,
+              fontSize: 'calc(2.8vw + 2.8vh)',
+              margin: '0 0 1rem',
+              fontWeight: 'bolder',
+            }}>
               Hi, {theme.helloEmoji} I'm <br/>
-              <span className="highlight">Amir Ardalan</span>
+              <span css={{
+                padding: '0 .2rem',
+                background: theme.colors.text,
+                color: theme.colors.background,
+              }}>
+                Amir Ardalan
+              </span>
             </h2>
-            <h3>
+            <h3 css={{
+              fontSize: 'calc(.9vw + .9vh)',
+              fontWeight: 'normal',
+              color: theme.colors.grayscale,
+  
+              '@media (max-width: 890px)': {
+                fontSize: 'calc(1.2vw + 1.2vh)',
+              } 
+            }}>
               I'm currently focusing on: <br/>
               <TypingAnimation />
             </h3>
             <br/>
-            <div className="cta">
+            <div css={{
+              display: 'flex',
+              flexDirection: 'row',
+            }}>
               <Link href="/blog" aria-label="Blog">
-                <button className="buttonCta">
+                <button css={cta}>
                   Blog
                 </button>
               </Link>
               <Link href="/about" aria-label="About">
-                <button className="buttonCta">
+                <button css={cta}>
                   About
                 </button>
               </Link>
@@ -131,7 +224,25 @@ export default function Home(props: any) {
             { showLatestPost ? <ShowLatestPost /> : null }
           </div>
         </div>
-        <div className="mainRight">
+        <div css={{
+          width: '50%',
+          height: '72vh',
+          position: 'relative',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+          alignSelf: 'flex-end',
+          cursor: 'crosshair',
+          animation: 'slideUp 1s forwards',
+
+          '@media (max-width: 890px)': {
+            width: '100%',
+            height: '45vh',
+            marginTop: '2rem',
+            alignSelf: 'flex-start',
+          }
+        }}>
           {toggleCanvas ? <CanvasLoader /> : null}
         </div>
       </main>
