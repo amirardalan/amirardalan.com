@@ -1,4 +1,4 @@
-import { Global, css, useTheme } from '@emotion/react'
+import { Global, useTheme } from '@emotion/react'
 
 export default function BlogLayout(props) {
 

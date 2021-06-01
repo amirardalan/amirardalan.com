@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
-import { Global, css, useTheme } from '@emotion/react'
+import { Global, useTheme } from '@emotion/react'
 import axios from "axios"
 import { useRouter } from 'next/router'
 import { signOut, useSession } from 'next-auth/client'
