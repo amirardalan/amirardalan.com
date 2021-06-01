@@ -38,51 +38,6 @@ export default function BlogLayout(props) {
             }
           }
 
-          a.buttonCompact,
-          input.buttonCompact,
-          .buttonCompact {
-            min-width: 80px;
-            margin-right: .25rem;
-            padding: .45rem 1rem;
-            display: inline-block;
-            background-color: ${theme.colors.text};
-            border: 1px solid ${theme.colors.accent};
-            border-radius: 5px;
-            color: ${theme.colors.background};
-            font-size: 12px;
-            font-weight: bold;
-            text-transform: uppercase;
-            text-align: center;
-            text-decoration: none;
-            cursor: pointer;
-            &:disabled {
-              background-color: ${theme.colors.disabledBtn};
-              cursor: default;
-            }
-            .create & {
-              &.createBtn {
-                background-color: ${theme.colors.disabledBtn};
-              }
-            }
-            .drafts & {
-              &.draftsBtn {
-                background-color: ${theme.colors.disabledBtn};
-              }
-            }
-            &.delete {
-              background-color: ${theme.colors.warning};
-              text-decoration: none;
-              color: #e2e2e2;
-            }
-            &.deploy {
-              background-color: ${theme.colors.accentColor};
-              &.disabled { cursor: wait; }
-            }
-            &.disabled {
-              background-color: ${theme.colors.disabledBtn};
-            }
-          }
-
           .blog {
             max-width: 768px;
             margin: 0 auto;
