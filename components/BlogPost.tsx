@@ -1,5 +1,5 @@
 import React from 'react'
-import Router from 'next/router'
+import Link from 'next/link'
 
 
 export type PostProps = {
@@ -37,10 +37,13 @@ const Post: React.FC<{ post: PostProps }> = ({ post }) => {
 
   return (
     <div className="blog postTeaser">
-      <h2
-        onClick={() => Router.push("/blog/[slug]", `/blog/${post.slug}`)}
-        aria-label={post.title}>
-        {post.title}
+      <h2>
+        <Link
+          href={`/blog/${post.slug}`}
+          aria-label={post.title}
+        >
+          {post.title}
+        </Link>
       </h2>
       <div
         className="postDetails"

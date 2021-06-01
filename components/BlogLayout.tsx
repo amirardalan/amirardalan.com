@@ -138,7 +138,12 @@ export default function BlogLayout(props) {
             }
           },
           '.postTeaser': {
-            h2: { fontSize: 30 }
+            h2: {
+              fontSize: 30,
+              a: {
+                color: theme.colors.text,
+              }
+            }
           },
 
           '.postFull': {

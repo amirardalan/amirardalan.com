@@ -22,14 +22,14 @@
   "theme_color": "#7A00CC",
   "shortcuts": [
     {
-      "name": "Amir Ardalan Portfolio",
+      "name": "Amir Ardalan Blog",
       "short_name": "Amir",
-      "description": "Portfolio of designer & developer Amir Ardalan",
+      "description": "Front-End Developer & UI Designer in Portland, OR",
       "url": "https://amirardalan.com",
       "icons": [{ "src": "/icon192.png", "sizes": "192x192" }]
     }
   ],
-  "description": "Amir Ardalan Portfolio Thumbnail",
+  "description": "Amir Ardalan Thumbnail",
   "screenshots": [
     {
       "src": "/thumbnail.jpg",

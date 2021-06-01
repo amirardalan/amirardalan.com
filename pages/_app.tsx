@@ -34,7 +34,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       <ThemeProvider theme={themeMode}>
         <GlobalStyles />
         <Head>
-          <title>Amir Ardalan | Portfolio</title>
+          <title>Amir Ardalan – Developer, Designer, Writer</title>
           <meta name="theme-color" content={themeMode.colors.background} />
         </Head>
         { loading ? <LoadingBar /> : null }
