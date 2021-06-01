@@ -26,7 +26,7 @@ export default function About() {
     '@media(max-width: 1024px)': {
       flexDirection: 'column',
       p: {
-        padding: '2rem',
+        padding: '1.5rem 0',
       },
 
     }

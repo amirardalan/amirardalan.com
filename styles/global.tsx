@@ -132,7 +132,7 @@ export function GlobalStyles () {
           margin: '0.5rem 0',
           padding: '0.5rem',
           backgroundColor: theme.colors.accent,
-          border: '2px solid theme.colors.accent',
+          border: '2px solid' + theme.colors.accent,
           borderRadius: '0.25rem',
           color: theme.colors.text,
           fontSize: 16,

@@ -47,26 +47,33 @@ const BlogAdmin: React.FC =  React.memo(()=> {
         <div
           className="left loginUser"
           css={{
-            display: 'flex'
-          }}>
-          <span css={{
             display: 'flex',
-            fontSize: '11px',
-            alignSelf: 'center',
-            color: theme.colors.textLight,
-            fontFamily: theme.fonts.primary,
-            'a': {
-              marginLeft: '.5rem',
-              cursor: 'pointer',
-              '&:hover': {
-                textDecoration: 'underline'
-              }
-            },
-            '@media(max-width: 890px)': {
-              marginBottom: '.5rem'
+            '@media(max-width: 600px)': {
+              justifyContent: 'flex-end',
+              margin: '0 .5rem .5rem 0',
             }
-          }}>
-            {session.user.name} ({session.user.email}) •
+          }}
+        >
+          <span
+            css={{
+              display: 'flex',
+              fontSize: '11px',
+              alignSelf: 'center',
+              color: theme.colors.textLight,
+              fontFamily: theme.fonts.primary,
+              'a': {
+                marginLeft: '.5rem',
+                cursor: 'pointer',
+                '&:hover': {
+                  textDecoration: 'underline'
+                }
+              },
+              '@media(max-width: 890px)': {
+                marginBottom: '.5rem'
+              },
+            }}
+          >
+            Welcome, {session.user.name.split(" ")[0]}! •
             <a
               onClick={() => signOut({ callbackUrl: `${process.env.NEXT_PUBLIC_SITE_URL}/blog` })}
               aria-label="Sign Out"
@@ -78,16 +85,20 @@ const BlogAdmin: React.FC =  React.memo(()=> {
         </div>
       )
       right = (
-        <div className="right" css={{
-          display: 'flex',
-          justifyContent: 'right',
-          flexDirection: 'row',
-  
-        }}>
-          <div css={{
+        <div
+          className="right"
+          css={{
             display: 'flex',
-            flexAlign: 'row',
-          }}>
+            justifyContent: 'right',
+            flexDirection: 'row',
+          }}
+        >
+          <div
+            css={{
+              display: 'flex',
+              flexAlign: 'row',
+            }}
+          >
   
             { isDeploying ? <LoadingSpinner /> : null }
   
