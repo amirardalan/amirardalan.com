@@ -115,53 +115,51 @@ const BlogAdmin: React.FC =  React.memo(()=> {
   
     return (
       <>
-        <Global styles={css`
+        <Global styles={{
           // Buttons
-          a.buttonCompact,
-          input.buttonCompact,
-          .buttonCompact {
-            min-width: 80px;
-            margin-right: .25rem;
-            padding: .45rem 1rem;
-            display: inline-block;
-            background-color: ${theme.colors.text};
-            border: 1px solid ${theme.colors.accent};
-            border-radius: 5px;
-            color: ${theme.colors.background};
-            font-size: 12px;
-            font-weight: bold;
-            text-transform: uppercase;
-            text-align: center;
-            text-decoration: none;
-            cursor: pointer;
-            &:disabled {
-              background-color: ${theme.colors.disabledBtn};
-              cursor: default;
-            }
-            .create & {
-              &.createBtn {
-                background-color: ${theme.colors.disabledBtn};
+          'a.buttonCompact, input.buttonCompact, .buttonCompact': {
+            minWidth: 80,
+            marginRight: '.25rem',
+            padding: '.45rem 1rem',
+            display: 'inline-block',
+            backgroundColor: theme.colors.text,
+            border: '1px solid' + theme.colors.accent,
+            borderRadius: 5,
+            color: theme.colors.background,
+            fontSize: 12,
+            fontWeight: 'bold',
+            textTransform: 'uppercase',
+            textAlign: 'center',
+            textDecoration: 'none',
+            cursor: 'pointer',
+            '&:disabled': {
+              backgroundColor: theme.colors.disabledBtn,
+              cursor: 'default',
+            },
+            '.create &': {
+              '&.createBtn': {
+                backgroundColor: theme.colors.disabledBtn,
               }
-            }
-            .drafts & {
-              &.draftsBtn {
-                background-color: ${theme.colors.disabledBtn};
+            },
+            '.drafts &': {
+              '&.draftsBtn': {
+                backgroundColor: theme.colors.disabledBtn,
               }
-            }
-            &.delete {
-              background-color: ${theme.colors.warning};
-              text-decoration: none;
-              color: #e2e2e2;
-            }
-            &.deploy {
-              background-color: ${theme.colors.accentColor};
-              &.disabled { cursor: wait; }
-            }
-            &.disabled {
-              background-color: ${theme.colors.disabledBtn};
+            },
+            '&.delete': {
+              backgroundColor: theme.colors.warning,
+              textDecoration: 'none',
+              color: '#e2e2e2',
+            },
+            '&.deploy': {
+              backgroundColor: theme.colors.accentColor,
+              '&.disabled': { cursor: 'wait' }
+            },
+            '&.disabled': {
+              backgroundColor: theme.colors.disabledBtn,
             }
           }
-        `}/>
+        }}/>
         <nav css={{
           margin: '1.5rem 0',
           display: 'flex',
