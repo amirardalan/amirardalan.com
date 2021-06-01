@@ -54,9 +54,6 @@ export default function Footer() {
         <Link href="/about" aria-label="About">
           About
         </Link>
-        <Link href="/sitemap.xml" aria-label="Sitemap">
-          Sitemap
-        </Link>
       </div>
     </footer>
   )
