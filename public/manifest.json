@@ -24,7 +24,7 @@
     {
       "name": "Amir Ardalan Blog",
       "short_name": "Amir",
-      "description": "Front-End Developer & UI Designer in Portland, OR",
+      "description": "Front-end developer, UI designer &amp; TypeScript enthusiast based in Portland, OR",
       "url": "https://amirardalan.com",
       "icons": [{ "src": "/icon192.png", "sizes": "192x192" }]
     }
