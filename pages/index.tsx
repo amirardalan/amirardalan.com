@@ -1,4 +1,3 @@
-// Core
 import { useState, useEffect } from 'react'
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
@@ -11,7 +10,7 @@ import TypingAnimation from '../components/TypingAnimation'
 import prisma from '../lib/prisma'
 import LoadingTriangle from '../components/LoadingTriangle'
 import dynamic from 'next/dynamic'
-const CanvasLoader = dynamic(() => import('../components/CanvasLoader'), {
+const CanvasScene = dynamic(() => import('../components/CanvasScene'), {
   loading: () => <LoadingTriangle />
 })
 
@@ -123,9 +122,9 @@ export default function Home(props: any) {
   
   return (
     <>
-    <Head>
-      <title>Amir Ardalan – Developer, Designer, Writer</title>
-    </Head>
+      <Head>
+        <title>Amir Ardalan – Developer, Designer, Writer</title>
+      </Head>
       <main
         className="home"
         css={{
@@ -252,7 +251,7 @@ export default function Home(props: any) {
             alignSelf: 'flex-start',
           }
         }}>
-          {toggleCanvas ? <CanvasLoader /> : null}
+          {toggleCanvas ? <CanvasScene /> : null}
         </div>
       </main>
     </>

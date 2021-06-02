@@ -50,8 +50,7 @@ export const themeLight = {
   },
   canvas: {
     textSmall: 'Rotate & Zoom',
-    textAnim: 'fadeIn 3s forwards',
-    meshA: primary,
+    mesh: primary,
   },
   page: {
     bg: lighter,
@@ -93,8 +92,7 @@ export const themeDark = {
   },
   canvas: {
     textSmall: 'Rotate + Zoom',
-    textAnim: 'fadeIn 3s forwards',
-    meshA: secondary,
+    mesh: secondary,
   },
   page: {
     bg: darkAccent,
