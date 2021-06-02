@@ -6,6 +6,11 @@ module.exports = {
         destination: '/blog',
         permanent: true,
       },
+      {
+        source: '/bio',
+        destination: '/about',
+        permanent: true,
+      },
     ]
   },
   webpack: (config, { isServer }) => {
