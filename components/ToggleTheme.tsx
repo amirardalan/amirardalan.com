@@ -15,7 +15,6 @@ const Toggle = ({ toggleTheme }) => {
     <button
       onClick={themeControlToggled}
       aria-label="Toggle Dark Mode"
-      className="crossBrowserAlignment"
       css={{
         zIndex: 6,
         width: 50,
