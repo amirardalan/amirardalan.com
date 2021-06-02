@@ -1,10 +1,12 @@
+import { useLoadingBar } from '../utils/useLoadingBar'
 import { useTheme } from '@emotion/react'
 
 export default function LoadingBar() {
 
   const theme : any = useTheme()
+  const isLoading = useLoadingBar()
 
-  return (
+  const RenderLoadingBar = () => (
     <div css={{
       zIndex: 10,
       width: '100vw',
@@ -31,5 +33,11 @@ export default function LoadingBar() {
       }}>
       </div>
     </div>
+  )
+
+  return (
+    <>
+      { isLoading ? <RenderLoadingBar/> : null }
+    </>
   )
 } 

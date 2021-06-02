@@ -1,15 +1,12 @@
 import Head from 'next/head'
 import Header from '../components/Header'
-import Navigation  from '../components/Navigation'
-import ToggleTheme from '../components/ToggleTheme'
 import Footer from '../components/Footer'
 
 import { GlobalStyles } from '../styles/global'
 import { ThemeProvider } from '@emotion/react'
-import { themeLight, themeDark } from '../styles/theme'
 import { useDarkMode } from '../utils/useDarkMode'
+import { themeLight, themeDark } from '../styles/theme'
 
-import { useLoadingBar } from '../utils/useLoadingBar'
 import LoadingBar from '../components/LoadingBar'
 import LoadingTriangle from '../components/LoadingTriangle'
 
@@ -21,14 +18,10 @@ const BlogAdmin = dynamic(() => import('../components/BlogAdmin'), {
   loading: () => <LoadingTriangle />
 })
 
-const MyApp = ({ Component, pageProps }: AppProps) => {
+const MyApp = ({Component, pageProps }: AppProps) => {
 
-  // Toggle Dark Mode
   const [theme, toggleTheme] = useDarkMode()
-  const themeMode = theme === 'light' ? themeLight : themeDark
-
-  // Show Loading Bar
-  const loading = useLoadingBar()
+  const themeMode = (theme === 'light') ? themeLight : themeDark
 
   return (
     <Provider session={pageProps.session}>
@@ -38,15 +31,9 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
           <title>Amir Ardalan – Developer, Designer, Writer</title>
           <meta name="theme-color" content={themeMode.colors.background} />
         </Head>
-        { loading ? <LoadingBar /> : null }
+        <LoadingBar />
         <div className="container">
-          <div className="header">
-            <Header />
-            <div className="headerRight">
-              <Navigation />
-              <ToggleTheme toggleTheme={toggleTheme} />
-            </div>
-          </div>
+          <Header toggleTheme={toggleTheme} />
           <BlogAdmin />
           <Component {...pageProps} />
           <Footer />
