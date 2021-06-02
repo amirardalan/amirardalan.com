@@ -1,18 +1,18 @@
 // Core
 import { useState, useEffect } from 'react'
 import { GetStaticProps } from 'next'
-import { css, useTheme } from '@emotion/react'
-import TypingAnimation from '../components/TypingAnimation'
-
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
+
+import { css, useTheme } from '@emotion/react'
+import TypingAnimation from '../components/TypingAnimation'
 
 import prisma from '../lib/prisma'
 import LoadingTriangle from '../components/LoadingTriangle'
 import dynamic from 'next/dynamic'
 const CanvasLoader = dynamic(() => import('../components/CanvasLoader'), {
-  loading: () => <LoadingTriangle />,
+  loading: () => <LoadingTriangle />
 })
 
 // Get latest blog post

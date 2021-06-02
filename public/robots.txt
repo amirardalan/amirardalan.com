@@ -1,11 +1,11 @@
 User-agent: *
 
-Allow: /pages/index
-Allow: /pages/about
-Allow: /pages/blog/
+Allow: /
+Allow: /about
+Allow: /blog
 
 Disallow: /api/*
-Disallow: /blog/edit/
+Disallow: /blog/edit/*
 Disallow: /blog/[slug]
 Disallow: /blog/create
 Disallow: /blog/drafts
