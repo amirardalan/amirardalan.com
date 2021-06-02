@@ -1,23 +1,24 @@
+import { GlobalStyles } from '../styles/global'
+import { ThemeProvider } from '@emotion/react'
+import { themeLight, themeDark } from '../styles/theme'
+import { useDarkMode } from '../utils/useDarkMode'
+import { useLoadingBar } from '../utils/useLoadingBar'
+import LoadingBar from '../components/LoadingBar'
+import LoadingTriangle from '../components/LoadingTriangle'
+
 import Head from 'next/head'
 import Header from '../components/Header'
 import Navigation  from '../components/Navigation'
 import ToggleTheme from '../components/ToggleTheme'
 import Footer from '../components/Footer'
 
-import { GlobalStyles } from '../styles/global'
-import { ThemeProvider } from '@emotion/react'
-import { themeLight, themeDark } from '../styles/theme'
-import { useDarkMode } from '../utils/useDarkMode'
-
-import { useLoadingBar } from '../utils/useLoadingBar'
-import LoadingBar from '../components/LoadingBar'
-import LoadingTriangle from '../components/LoadingTriangle'
-
 import { Provider } from 'next-auth/client'
 import { AppProps } from 'next/app'
 import dynamic from 'next/dynamic'
+
 const BlogAdmin = dynamic(() => import('../components/BlogAdmin'), {
-  loading: () => <LoadingTriangle />
+  loading: () => <LoadingTriangle />,
+  ssr: false
 })
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
