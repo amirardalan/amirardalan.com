@@ -60,6 +60,9 @@ export default function CanvasScene() {
       </small>
       <Canvas css={{
         animation: 'fadeIn 2s forwards',
+        '@media(max-width: 890px)': {
+          animation: 'slideUp .1s forwards'
+        }
       }}>
         <ambientLight intensity={.2} />
         <pointLight position={[0, 0, 30]} />
