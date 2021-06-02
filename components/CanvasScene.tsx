@@ -58,7 +58,9 @@ export default function CanvasScene() {
       >
         {theme.canvas.textSmall}
       </small>
-      <Canvas>
+      <Canvas css={{
+        animation: 'fadeIn 2s forwards',
+      }}>
         <ambientLight intensity={.2} />
         <pointLight position={[0, 0, 30]} />
         <directionalLight position={[0, 2, 0]} intensity={.1} />

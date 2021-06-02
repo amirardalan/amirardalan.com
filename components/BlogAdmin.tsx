@@ -13,6 +13,8 @@ const BlogAdmin: React.FC =  React.memo(()=> {
       router.pathname === pathname
   
     const [session] = useSession()
+    const isLoggedIn = session && session.user.email == process.env.NEXT_PUBLIC_USER_EMAIL
+
     const theme : any = useTheme()
   
     let left = null
@@ -27,11 +29,11 @@ const BlogAdmin: React.FC =  React.memo(()=> {
       display: session ? 'flex' : 'none',
       flexDirection: 'row',
       justifyContent: 'space-between',
+      animation: 'fadeIn .5s forwards',
       '@media (max-width: 500px)': {
         flexDirection: 'column',
       }
     })
-
 
     // Deploy New Build
     const [isDeploying, setIsDeploying] = useState(false)
@@ -41,7 +43,6 @@ const BlogAdmin: React.FC =  React.memo(()=> {
         setIsDeploying(false)
       }, 84000)
     }
-
 
     async function deployNewBuild(): Promise<any> {
       axios.get(`/api/deploy?secret=${process.env.NEXT_PUBLIC_DEPLOY_TOKEN}`).then(response => {
@@ -56,8 +57,7 @@ const BlogAdmin: React.FC =  React.memo(()=> {
     }
 
   
-    if (session && session.user.email == process.env.NEXT_PUBLIC_USER_EMAIL) {
-
+    if (isLoggedIn) {
       left = (
         <div
           className="left"
@@ -185,9 +185,7 @@ const BlogAdmin: React.FC =  React.memo(()=> {
             }
           }
         }}/>
-        <nav
-          css={adminPanel}
-        >
+        <nav css={adminPanel}>
           {left}
           {right}
         </nav>

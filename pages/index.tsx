@@ -237,7 +237,7 @@ export default function Home(props: any) {
           alignItems: 'center',
           alignSelf: 'flex-end',
           cursor: 'crosshair',
-          animation: 'slideUp 1s forwards',
+          animation: 'fadeIn .5s forwards',
           '&:hover': {
             '.canvasControls': {
               animation: 'fadeIn .2s forwards'
