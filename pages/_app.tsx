@@ -18,7 +18,6 @@ import dynamic from 'next/dynamic'
 
 const BlogAdmin = dynamic(() => import('../components/BlogAdmin'), {
   loading: () => <LoadingTriangle />,
-  ssr: false
 })
 
 const MyApp = ({ Component, pageProps }: AppProps) => {

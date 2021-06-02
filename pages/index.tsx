@@ -13,7 +13,6 @@ import LoadingTriangle from '../components/LoadingTriangle'
 import dynamic from 'next/dynamic'
 const CanvasLoader = dynamic(() => import('../components/CanvasLoader'), {
   loading: () => <LoadingTriangle />,
-  ssr: false
 })
 
 // Get latest blog post
