@@ -92,6 +92,7 @@ export default function Home(props: any) {
       }
     },
     h3: {
+      marginBottom: '3rem',
       fontSize: 'calc(.9vw + .9vh)',
       fontWeight: 'normal',
       color: theme.colors.grayscale,
@@ -178,7 +179,6 @@ export default function Home(props: any) {
                   <TypingAnimation />
                 </div>
               </h3>
-              <br/>
               <div css={styleButtonContainer}>
                 <Link href="/blog" aria-label="Blog">
                   <button css={styleCtaButton}>
