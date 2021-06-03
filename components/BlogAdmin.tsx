@@ -21,32 +21,33 @@ const BlogAdmin: React.FC =  React.memo(()=> {
 
   // Styles
   const styleAnimationWrapper = css ({
+    display: session ? 'block' : 'none',
     overflow: 'hidden',
     margin: '1.5rem 0',
     padding: '.5rem',
   })
   const styleAdminPanel = css({
+    display: 'flex',
     padding: '.5rem .5rem .5rem 1rem',
     backgroundColor: theme.colors.accent,
     border: '1px dotted' + theme.colors.grayscale,
-    borderRadius: '10px',
-    display: session ? 'flex' : 'none',
+    borderRadius: 10,
     flexDirection: 'row',
     justifyContent: 'space-between',
     animation: 'slideDown .5s forwards',
-    '@media (max-width: 500px)': {
+    '@media (max-width: 600px)': {
       flexDirection: 'column',
     }
   })
   const styleAdminPanelLeft = css({
     display: 'flex',
-    '@media(max-width: 500px)': {
+    '@media(max-width: 600px)': {
       justifyContent: 'flex-end',
       margin: '0 .5rem .5rem 0',
     },
     span: {
       display: 'flex',
-      fontSize: '11px',
+      fontSize: 11,
       alignSelf: 'center',
       color: theme.colors.textLight,
       fontFamily: theme.fonts.primary,

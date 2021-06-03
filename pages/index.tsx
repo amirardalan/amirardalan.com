@@ -46,7 +46,8 @@ export default function Home(props: any) {
   })
 
   const styleCtaButton = css({
-    minWidth: 128,
+    minWidth: 160,
+    minHeight: 50,
     margin: '0 1rem 2rem 0',
     padding: '.5rem 1.4rem',
     display: 'flex',
@@ -55,9 +56,9 @@ export default function Home(props: any) {
     alignItems: 'center',
     background: theme.colors.text,
     border: '1px solid transparent',
-    borderRadius: 5,
+    borderRadius: 10,
     color: theme.colors.background,
-    fontSize: 14,
+    fontSize: 15,
     cursor: 'pointer',
     '&:hover': {
       background: theme.colors.background,
@@ -100,8 +101,8 @@ export default function Home(props: any) {
     },
     '@media (max-width: 480px)': {
       marginBottom: '2rem',
-      height: '60px',
-      width: '60px',
+      height: 60,
+      width: 60,
     }
   })
 
@@ -116,6 +117,9 @@ export default function Home(props: any) {
       fontSize: 'calc(2.8vw + 2.8vh)',
       margin: '0 0 1rem',
       fontWeight: 'bolder',
+      '@media (max-width: 890px)': {
+        fontSize: 'calc(3.5vw + 3.5vh)',
+      }
     },
     h3: {
       fontSize: 'calc(.9vw + .9vh)',
@@ -126,7 +130,8 @@ export default function Home(props: any) {
       } 
     },
     '.highlightText': {
-      padding: '0 .2rem',
+      width: 'max-content',
+      padding: '0 .5rem',
       background: theme.colors.text,
       color: theme.colors.background,
     },
