@@ -3,7 +3,7 @@ module.exports = {
     return [
       {
         source: '/api/auth',
-        destination: '/blog',
+        destination: '/',
         permanent: true,
       },
       {

@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { css, useTheme } from '@emotion/react'
 import TypingAnimation from '../components/TypingAnimation'
 import LatestPost from '../components/LatestPost'
+import { useSession } from 'next-auth/client'
 
 import dynamic from 'next/dynamic'
 import LoadingTriangle from '../components/LoadingTriangle'
@@ -12,6 +13,8 @@ import { GetStaticProps } from 'next'
 import prisma from '../lib/prisma'
 
 export default function Home(props: any) {
+
+  const [session] = useSession()
 
   const theme : any = useTheme()
   const styleButtonContainer = css({
@@ -112,7 +115,7 @@ export default function Home(props: any) {
     }
   })
   const styleMainRight = css({
-    height: '72vh',
+    height: session ? '67vh' : '75vh',
     position: 'relative',
     display: 'flex',
     flexDirection: 'column',
