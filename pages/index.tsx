@@ -151,6 +151,22 @@ export default function Home(props: any) {
     alignItems: 'center',
     cursor: 'crosshair',
     animation: 'fadeIn .5s forwards',
+    '.canvasControls': {
+      zIndex: 3,
+      margin: '0 0 1rem 0',
+      padding: '0',
+      position: 'absolute',
+      bottom: 0,
+      left: 20,
+      color: theme.colors.grayscale,
+      fontSize: 10,
+      fontWeight: 'normal',
+      textTransform: 'uppercase',
+      animation: 'fadeOut .2s forwards',
+      '@media(max-width: 890px)': {
+        display: 'none',
+      }
+    },
     '&:hover': {
       '.canvasControls': {
         animation: 'fadeIn .2s forwards'
