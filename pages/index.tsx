@@ -15,7 +15,6 @@ import prisma from '../lib/prisma'
 export default function Home(props: any) {
 
   const [session] = useSession()
-  console.log(session)
 
   const theme : any = useTheme()
   const styleButtonContainer = css({
