@@ -44,7 +44,6 @@ export default function Home(props: any) {
       fontSize: 15,
     },
   })
-
   const styleCtaButton = css({
     minWidth: 160,
     minHeight: 50,
@@ -66,19 +65,16 @@ export default function Home(props: any) {
       color: theme.colors.text
     }
   })
-
   const styleMain = css({
     flex: 1,
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'space-between',
   })
-  
   const styleAnimationWrapper = css ({
     overflow: 'hidden',
     alignSelf: 'flex-end',
   })
-
   const styleMainLeft = css({
     display: 'flex',
     flexDirection: 'column',
@@ -93,7 +89,6 @@ export default function Home(props: any) {
       alignSelf: 'flex-start',
     }
   })
-
   const styleLogo = css({
     marginBottom: '3rem',
     '@media (max-width: 890px)': {
@@ -105,7 +100,6 @@ export default function Home(props: any) {
       width: 60,
     }
   })
-
   const styleTypingAnimation = css({
     margin: 0,
     lineHeight: 1.3,
@@ -140,12 +134,10 @@ export default function Home(props: any) {
       minHeight: '0vw',
     }
   })
-
   const styleButtonContainer = css({
     display: 'flex',
     flexDirection: 'row',
   })
-
   const styleMainRight = css({
     width: '48vw',
     height: '72vh',

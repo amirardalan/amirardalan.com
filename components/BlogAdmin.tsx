@@ -24,10 +24,10 @@ const BlogAdmin: React.FC =  React.memo(()=> {
     display: session ? 'block' : 'none',
     overflow: 'hidden',
     margin: '1.5rem 0',
-    padding: '.5rem',
   })
   const styleAdminPanel = css({
     display: 'flex',
+    marginBottom: '.1rem',
     padding: '.5rem .5rem .5rem 1rem',
     backgroundColor: theme.colors.accent,
     border: '1px dotted' + theme.colors.grayscale,
@@ -78,7 +78,7 @@ const BlogAdmin: React.FC =  React.memo(()=> {
     setIsDeploying(true)
     setTimeout(() => {
       setIsDeploying(false)
-    }, 84000)
+    }, 85000)
   }
   async function deployNewBuild(): Promise<any> {
     axios.get(`/api/deploy?secret=${process.env.NEXT_PUBLIC_DEPLOY_TOKEN}`).then(response => {
