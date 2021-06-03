@@ -108,7 +108,7 @@ export default function Home(props: any) {
     fontWeight: 'bolder',
     h2: {
       fontFamily: theme.fonts.secondary,
-      fontSize: 'calc(2.8vw + 2.8vh)',
+      fontSize: 'calc(2.7vw + 2.7vh)',
       margin: '0 0 1rem',
       fontWeight: 'bolder',
       '@media (max-width: 890px)': {
