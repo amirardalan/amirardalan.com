@@ -99,14 +99,14 @@ export default function About() {
         </h3>
         <div css={copy}>
           <p>
-            Hello, I'm Amir! I am a Portland, OR based developer and designer with over 10 years experience. I aim to bridge the gap between 
-            humans and technology through interface design and engineering. <Link href="/blog/2021-a-dev-odyssey">Read about my journey</Link> as 
-            a developer.
+            Hey, I'm Amir, a Portland, OR based developer and designer with over 10 years of experience. I aim to bridge the gap between 
+            humans and technology through UI design and fullstack engineering. Read about my <Link href="/blog/2021-a-dev-odyssey"> journey 
+            as a developer</Link>.
           </p>
           <p>
             I'm passionate about JavaScript, Front-end, User Interface and React. My current stack of 
-            choice is: Next.js., TypeScript, Prisma, PostgreSQL, and Emotion. 🎉 <Link href="/blog">I enjoy writing</Link> about these topics and
-            more on my blog.
+            choice is: Next.js., TypeScript, Prisma, PostgreSQL, and Emotion. 🎉 I enjoy writing about 
+            these topics and more on <Link href="/blog">my blog</Link>.
           </p>
         </div>
         <main css={{
@@ -133,23 +133,26 @@ export default function About() {
                   height={100}
                 />
               </li>
-              <li>Designer + Developer.</li>
-              <li>Creative and thorough.</li>
-              <li>I ❤️ collaborating.</li>
+              <li><strong>Developer, Designer, Writer.</strong></li>
               <li>
-                <Link href="/amir-ardalan-resume.pdf">Resume</Link>
+                <em>
+                  I produce fast, maintainable code and purpose-driven user interfaces for the web.
+                </em>
+              </li>
+              <li>
+                <Link href="/amir-ardalan-resume.pdf">Download Resume</Link>
               </li>
             </ul>
           </div>
           <div css={grid}>
             <ul>
               <h4 css={h4}>Skills:</h4>
-              <li>Front-end Engineering</li>
+              <li>Fullstack Engineering</li>
               <li>User Interface Design</li>
               <li>JavaScript / TypeScript</li>
               <li>React.js / Next.js</li>
               <li>CSS in JS / SCSS</li>
-              <li>Prisma + PostgreSQL</li>
+              <li>Prisma ORM + PostgreSQL</li>
               <li>Testing &amp; documentation</li>
             </ul>
           </div>
