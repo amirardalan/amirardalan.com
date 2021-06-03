@@ -1,6 +1,7 @@
 import React from 'react'
 import Typical from 'react-typical'
 
+// Console Tag
 console.log(`
 █████   ███    ███ ██ ██████  
 ██   ██ ████  ████ ██ ██   ██ 

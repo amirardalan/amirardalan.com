@@ -43,7 +43,7 @@ export default function Navigation() {
       paddingLeft: '2rem',
     }
   })
-  const styleMobileNavMenu = css({
+  const styleMobileNavButton = css({
     alignItems: 'center',
     marginLeft: 30,
     zIndex: 6,
@@ -193,7 +193,7 @@ export default function Navigation() {
         <ShowNavItems />
       </div>
       <button
-        css={styleMobileNavMenu}
+        css={styleMobileNavButton}
         onClick={toggleMenu}
         className={toggleMobileNav ? 'open' : 'closed'}
         aria-label="Navigation Menu">

@@ -1,43 +1,45 @@
 import { useLoadingBar } from '../utils/useLoadingBar'
-import { useTheme } from '@emotion/react'
+import { useTheme, css } from '@emotion/react'
 
 export default function LoadingBar() {
 
-  const theme : any = useTheme()
   const isLoading = useLoadingBar()
 
+  const theme : any = useTheme()
+  const styleLoadingBarWrapper = css({
+    zIndex: 10,
+    width: '100vw',
+    position: 'fixed',
+    top: 0,
+    height: '5px'
+  })
+  const styleLoadingBarProgress = css({
+    height: 'inherit',
+    width: 0,
+    backgroundColor: theme.colors.link,
+    animation: 'loading 3s',
+    '@keyframes loading': {
+      '0%': {
+        width: '0%'
+      },
+      '50%': {
+        width: '50%',
+      },
+      '100%': {
+        width: '100%'
+      }
+    }
+  })
+
   const RenderLoadingBar = () => (
-    <div css={{
-      zIndex: 10,
-      width: '100vw',
-      position: 'fixed',
-      top: 0,
-      height: '5px'
-    }}>
-      <div css={{
-        height: 'inherit',
-        width: 0,
-        backgroundColor: theme.colors.link,
-        animation: 'loading 3s',
-        '@keyframes loading': {
-          '0%': {
-            width: '0%'
-          },
-          '50%': {
-            width: '50%',
-          },
-          '100%': {
-            width: '100%'
-          }
-        }
-      }}>
-      </div>
+    <div css={styleLoadingBarWrapper}>
+      <div css={styleLoadingBarProgress} />
     </div>
   )
 
   return (
     <>
-      { isLoading ? <RenderLoadingBar/> : null }
+      { isLoading ? <RenderLoadingBar /> : null }
     </>
   )
 } 

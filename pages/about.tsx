@@ -6,14 +6,60 @@ import Image from 'next/image'
 export default function About() {
 
   const theme : any = useTheme()
-
+  const stylePageHeading = css({
+    fontFamily: theme.fonts.secondary,
+    fontSize: 'calc(3.2vw + 3.2vh)',
+    fontWeight: 900,
+    textAlign: 'center',
+  })
+  const stylePageHeadingSub = css({
+    marginBottom: '1.5rem',
+    color: theme.colors.grayscale,
+    fontFamily: theme.fonts.tertiary,
+    fontSize: 'calc(1vw + 1vh)',
+    fontWeight: 'normal',
+    fontStyle: 'italic',
+    textAlign: 'center',
+  })
+  const styleGridWrapper = css({
+    display: 'grid',
+    gridTemplateColumns: 'repeat(3, 1fr)',
+    gap: 20,
+    gridAutoRows: 'minmax(100px, auto)',
+    '@media(max-width: 890px)': {
+      gridTemplateColumns: 'repeat(2, 1fr)',
+    },
+    '@media(max-width: 480px)': {
+      gridTemplateColumns: 'repeat(1, 1fr)',
+    },
+    '.grid': {
+      display: 'flex',
+      justifyContent: 'center',
+      padding: '3rem',
+      backgroundColor: theme.page.bg,
+      animation: 'slideUp .5s forwards',
+      'ul li': {
+        marginBottom: '.5rem',
+        color: theme.colors.grayscale,
+        fontSize: 14,
+        textAlign: 'center',
+      }
+    },
+    h4: {
+      marginBottom: '1.5rem',
+      paddingBottom: '1rem',
+      fontFamily: theme.fonts.secondary,
+      fontSize: 25,
+      textAlign: 'center',
+      borderBottom: '2px solid'+ theme.colors.accentColor
+    }
+  })
   const centerImage = css({
     display: 'flex',
     justifyContent: 'center',
     margin: '6rem 0',
   })
-
-  const copy = css({
+  const styleCopy = css({
     marginBottom: '2rem',
     display: 'flex',
     flexDirection: 'row',
@@ -28,41 +74,13 @@ export default function About() {
       p: {
         padding: '1.5rem 0',
       },
-
     }
   })
-
-  const grid = css({
-    display: 'flex',
-    justifyContent: 'center',
-    padding: '3rem',
-    backgroundColor: theme.page.bg,
-    animation: 'slideUp .5s forwards',
-    ul: {
-      li: {
-        marginBottom: '.5rem',
-        color: theme.colors.grayscale,
-        fontSize: 14,
-        textAlign: 'center',
-      }
-    }
-  })
-
-  const h4 = css({
-    marginBottom: '1.5rem',
-    paddingBottom: '1rem',
-    fontFamily: theme.fonts.secondary,
-    fontSize: 25,
-    textAlign: 'center',
-    borderBottom: '2px solid'+ theme.colors.accentColor
-  })
-
   const socialIconsWrapper = css({
     width: '100%',
     display: 'flex',
     flexDirection: 'column',
   })
-
   const socialIcons = css({
     display: 'flex',
     justifyContent: 'space-evenly',
@@ -71,33 +89,19 @@ export default function About() {
     }
   })
 
-
   return (
     <>
       <Head>
         <title>About – Amir Ardalan</title>
       </Head>
       <div className="about">
-        <h2 css={{ 
-          fontFamily: theme.fonts.secondary,
-          fontSize: 'calc(3.2vw + 3.2vh)',
-          fontWeight: 900,
-          textAlign: 'center',
-        }}>
+        <h2 css={stylePageHeading}>
           Design &amp; Code.
         </h2>
-        
-        <h3 css={{
-          marginBottom: '1.5rem',
-          color: theme.colors.grayscale,
-          fontFamily: theme.fonts.tertiary,
-          fontSize: 'calc(1vw + 1vh)',
-          fontWeight: 'normal',
-          fontStyle: 'italic',
-          textAlign: 'center',
-        }}>– from Portland, OR –
+        <h3 css={stylePageHeadingSub}>
+          – from Portland, OR –
         </h3>
-        <div css={copy}>
+        <div css={styleCopy}>
           <p>
             Hey, I'm Amir, a Portland, OR based developer and designer with over 10 years of experience. I aim to bridge the gap between 
             humans and technology through UI design and fullstack engineering. Read about my <Link href="/blog/2021-a-dev-odyssey"> journey 
@@ -109,21 +113,10 @@ export default function About() {
             these topics and more on <Link href="/blog">my blog</Link>.
           </p>
         </div>
-        <main css={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
-          gap: 20,
-          gridAutoRows: 'minmax(100px, auto)',
-          '@media(max-width: 890px)': {
-            gridTemplateColumns: 'repeat(2, 1fr)',
-          },
-          '@media(max-width: 480px)': {
-            gridTemplateColumns: 'repeat(1, 1fr)',
-          }
-        }}>
-          <div css={grid}>
+        <main css={styleGridWrapper}>
+          <div className="grid">
             <ul>
-              <h4 css={h4}>Bio:</h4>
+              <h4>Bio:</h4>
               <li>
                 <Image
                   src="/photo.png"
@@ -144,9 +137,9 @@ export default function About() {
               </li>
             </ul>
           </div>
-          <div css={grid}>
+          <div className="grid">
             <ul>
-              <h4 css={h4}>Skills:</h4>
+              <h4>Skills:</h4>
               <li>Fullstack Engineering</li>
               <li>User Interface Design</li>
               <li>JavaScript / TypeScript</li>
@@ -156,9 +149,9 @@ export default function About() {
               <li>Testing &amp; documentation</li>
             </ul>
           </div>
-          <div css={grid}>
+          <div className="grid">
             <ul>
-              <h4 css={h4}>Experience:</h4>
+              <h4>Experience:</h4>
               <li>10+ years</li>
               <li>Columbia Sportswear</li>
               <li>KEEN Footwear</li>
@@ -168,16 +161,16 @@ export default function About() {
               <li>Freelance</li>
             </ul>
           </div>
-          <div css={grid}>
+          <div className="grid">
             <ul>
-              <h4 css={h4}>Availability:</h4>
+              <h4>Availability:</h4>
               <li>✅ Currently Available</li>
               <li>Remote or Portland, OR</li>
             </ul>
           </div>
-          <div css={grid}>
+          <div className="grid">
             <div css={socialIconsWrapper}>
-              <h4 css={h4}>Social:</h4>
+              <h4>Social:</h4>
               <ul css={socialIcons}>
                 <li>
                   <a
@@ -224,9 +217,9 @@ export default function About() {
               </ul>
             </div>
           </div>
-          <div css={grid}>
+          <div className="grid">
             <ul>
-              <h4 css={h4}>Contact</h4>
+              <h4>Contact</h4>
               <li>hi@amirardalan.com</li>
               <li>- or - </li>
               <li>

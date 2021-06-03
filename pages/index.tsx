@@ -12,6 +12,10 @@ import LoadingTriangle from '../components/LoadingTriangle'
 import { GetStaticProps } from 'next'
 import prisma from '../lib/prisma'
 
+const CanvasLoader = dynamic(() => import('../components/CanvasLoader'), {
+  loading: () => <LoadingTriangle />
+})
+
 export default function Home(props: any) {
 
   const [session] = useSession()
@@ -150,7 +154,6 @@ export default function Home(props: any) {
     }
   })
 
-  // Render Homepage
   return (
     <>
       <Head>
@@ -207,13 +210,6 @@ export default function Home(props: any) {
   )
 }
 
-// Dynamically load Three.js Canvas
-const CanvasLoader = dynamic(() => import('../components/CanvasLoader'), {
-  loading: () => <LoadingTriangle />,
-  ssr: false
-})
-
-// Get latest blog post
 export const getStaticProps: GetStaticProps = async () => {
   try {
     const latestPost = await prisma.post.findMany({
