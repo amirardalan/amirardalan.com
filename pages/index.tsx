@@ -1,53 +1,28 @@
-import { GetStaticProps } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 
 import { css, useTheme } from '@emotion/react'
 import TypingAnimation from '../components/TypingAnimation'
+import LatestPost from '../components/LatestPost'
 
-import LoadingTriangle from '../components/LoadingTriangle'
 import dynamic from 'next/dynamic'
+import LoadingTriangle from '../components/LoadingTriangle'
+import { GetStaticProps } from 'next'
 import prisma from '../lib/prisma'
 
 export default function Home(props: any) {
-  const theme : any = useTheme()
 
-  // Home Styles
-  const styleLatestPost = css({
-    paddingLeft: '1.2rem',
-    borderLeft: '7px solid' + theme.colors.accent,
-    fontWeight: 'normal',
-    lineHeight: '1.8rem',
-    h4: {
-      color: theme.colors.grayscale,
-      fontSize: 12,
-      fontWeight: 'normal',
-      lineHeight: '1.3rem',
-    },
-    'p, a': {
-      fontFamily: theme.fonts.tertiary,
-    },
-    a: {
-      color: theme.colors.text,
-      fontSize: 18,
-      textDecoration: 'underline',
-      '&:hover': {
-        textDecoration: 'none',
-      },
-      '@media(max-width: 480px)': {
-        fontSize: 16,
-      }
-    },
-    p: {
-      color: theme.colors.grayscale,
-      fontSize: 15,
-    },
+  const theme : any = useTheme()
+  const styleButtonContainer = css({
+    marginBottom: '2rem',
+    display: 'flex',
+    flexDirection: 'row',
   })
   const styleCtaButton = css({
-    minWidth: 160,
+    minWidth: 150,
     minHeight: 50,
-    margin: '0 1rem 2rem 0',
+    marginRight: '1rem',
     padding: '.5rem 1.4rem',
     display: 'flex',
     flexDirection: 'row',
@@ -55,7 +30,7 @@ export default function Home(props: any) {
     alignItems: 'center',
     background: theme.colors.text,
     border: '1px solid transparent',
-    borderRadius: 10,
+    borderRadius: 8,
     color: theme.colors.background,
     fontSize: 15,
     cursor: 'pointer',
@@ -66,12 +41,15 @@ export default function Home(props: any) {
     }
   })
   const styleMain = css({
-    flex: 1,
     display: 'flex',
-    flexWrap: 'wrap',
+    flexDirection: 'row',
     justifyContent: 'space-between',
+    '@media (max-width: 890px)': {
+      flexDirection: 'column',
+    }
   })
   const styleAnimationWrapper = css ({
+    width: '100%',
     overflow: 'hidden',
     alignSelf: 'flex-end',
   })
@@ -81,7 +59,6 @@ export default function Home(props: any) {
     justifyContent: 'space-between',
     animation: 'slideUp .8s forwards',
     '@media (max-width: 890px)': {
-      width: '100%',
       height: 'auto',
       marginRight: 0,
       flexDirection: 'column-reverse',
@@ -89,7 +66,7 @@ export default function Home(props: any) {
       alignSelf: 'flex-start',
     }
   })
-  const styleLogo = css({
+  const stylePhoto = css({
     marginBottom: '3rem',
     '@media (max-width: 890px)': {
       order: 1,
@@ -100,19 +77,18 @@ export default function Home(props: any) {
       width: 60,
     }
   })
-  const styleTypingAnimation = css({
+  const styleMainLeftContent = css({
     margin: 0,
     lineHeight: 1.3,
-    fontSize: 'calc(1.6vw + 1.6vh)',
     minHeight: '0vw',
     fontWeight: 'bolder',
     h2: {
       fontFamily: theme.fonts.secondary,
-      fontSize: 'calc(2.7vw + 2.7vh)',
+      fontSize: 'calc(2.9vw + 2.9vh)',
       margin: '0 0 1rem',
       fontWeight: 'bolder',
       '@media (max-width: 890px)': {
-        fontSize: 'calc(3.5vw + 3.5vh)',
+        fontSize: 'calc(3.4vw + 3.4vh)',
       }
     },
     h3: {
@@ -134,12 +110,7 @@ export default function Home(props: any) {
       minHeight: '0vw',
     }
   })
-  const styleButtonContainer = css({
-    display: 'flex',
-    flexDirection: 'row',
-  })
   const styleMainRight = css({
-    width: '48vw',
     height: '72vh',
     position: 'relative',
     display: 'flex',
@@ -170,32 +141,13 @@ export default function Home(props: any) {
       } 
     },
     '@media (max-width: 890px)': {
-      width: '100vw',
       height: '45vh',
       marginTop: '2rem',
       alignSelf: 'flex-start',
     }
   })
 
-  // Latest Post Error Handling
-  const latestPost = (!props.latestPost) ? {} : props.latestPost[0]
-  const showLatestPost = (props.latestPost) ? true : false
-  const ShowLatestPost = () => (
-    <div css={styleLatestPost}>
-      <h4 aria-label="Latest Post">
-        Latest Post:
-      </h4>
-      <Link href={`/blog/${encodeURIComponent(latestPost.slug)}`}>
-        <a aria-label={latestPost.title} tabIndex={0}>
-          {latestPost.title} →
-        </a>
-      </Link>
-      <p>
-        {latestPost.teaser}
-      </p>
-    </div>
-  )
-
+  // Render Homepage
   return (
     <>
       <Head>
@@ -204,7 +156,7 @@ export default function Home(props: any) {
       <main css={styleMain}>
         <div css={styleAnimationWrapper}>
           <div css={styleMainLeft}>
-            <div css={styleLogo}>
+            <div css={stylePhoto}>
               <Image
                 src="/photo.png"
                 alt="Amir Ardalan"
@@ -213,10 +165,7 @@ export default function Home(props: any) {
                 height={100}
               />
             </div>
-            <div
-              aria-label="Hi, I'm Amir Ardalan"
-              css={styleTypingAnimation}
-            >
+            <div css={styleMainLeftContent}>
               <h2>
                 Hi, {theme.helloEmoji} I'm
                 <div className="highlightText">
@@ -242,7 +191,7 @@ export default function Home(props: any) {
                   </button>
                 </Link>
               </div>
-              { showLatestPost ? <ShowLatestPost /> : null }
+              <LatestPost latestPost={props.latestPost} />
             </div>
           </div>
         </div>
@@ -256,6 +205,7 @@ export default function Home(props: any) {
   )
 }
 
+// Dynamically load Three.js Canvas
 const CanvasLoader = dynamic(() => import('../components/CanvasLoader'), {
   loading: () => <LoadingTriangle />,
   ssr: false

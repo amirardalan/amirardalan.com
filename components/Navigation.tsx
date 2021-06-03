@@ -8,8 +8,7 @@ import Logo from './Logo'
 export default function Navigation() {
 
   const theme : any = useTheme()
-
-  const mainNav = css({
+  const styleMainNav = css({
     display: 'flex',
     alignItems: 'center',
     marginRight: '1.5rem',
@@ -24,8 +23,7 @@ export default function Navigation() {
       display: 'none',
     }
   })
-
-  const mobileNavWrapper = css ({
+  const styleMobileNavWrapper = css ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -45,8 +43,7 @@ export default function Navigation() {
       paddingLeft: '2rem',
     }
   })
-
-  const mobileNavMenu = css({
+  const styleMobileNavMenu = css({
     alignItems: 'center',
     marginLeft: 30,
     zIndex: 6,
@@ -102,8 +99,7 @@ export default function Navigation() {
       display: 'none',
     },
   })
-
-  const navItems = css({
+  const styleNavItems = css({
     display: 'flex',
     a: { color: theme.colors.text, },
     
@@ -118,60 +114,60 @@ export default function Navigation() {
       alignItems: 'flex-end',
     }
   })
+  const styleMobileNavSecondary = css({
+    margin: '3rem 0',
+    fontSize: 12,
+    a: {
+      display: 'block',
+      marginBottom: '.5rem',
+      textAlign: 'center',
+      animation: 'slideUp .8s ease',
+    },
+    ul: {
+      position: 'relative',
+      textAlign: 'center',
+      paddingTop: '1rem',
+      animation: 'slideUp .5s',
+      li: {
+        height: 80,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        animation: 'slideUp 1s forwards',
+        fontFamily: theme.fonts.secondary,
+      }
+    },
+  })
 
-  // Set state for mobile nav
+  // Mobile Menu
   const [toggleDisableScrolling, setToggleDisableScrolling] = useState(false)
   const disableScroll = () => {
     setToggleDisableScrolling(!toggleDisableScrolling)
     toggleDisableScrolling ? document.body.style.overflow = 'scroll' : document.body.style.overflow = 'hidden'
   }
-  // Disable Scrolling when mobile menu is active
   const [toggleMobileNav, setToggleMobileNav] = useState(false)
   const toggleMenu = () => {
     setToggleMobileNav(!toggleMobileNav),
     disableScroll()
   }
-
   const MobileMenu = () => (
-    <div css={mobileNavWrapper}>
+    <div css={styleMobileNavWrapper}>
       <ShowNavItems />
-      <div css={{
-        margin: '3rem 0',
-        fontSize: 12,
-        a: {
-          display: 'block',
-          marginBottom: '.5rem',
-          textAlign: 'center',
-          animation: 'slideUp .8s ease',
-        }
-      }}>
+      <div css={styleMobileNavSecondary}>
         <SocialLinks />
-        <div css={{
-          position: 'relative',
-          textAlign: 'center',
-          paddingTop: '1rem',
-          animation: 'slideUp .5s',
-        }}>
           <ul>
-            <li css={{
-              height: 80,
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              animation: 'slideUp 1s forwards',
-              fontFamily: theme.fonts.secondary,
-            }}>
+            <li>
               <Logo />
             </li>
           </ul>
-        </div>
       </div>
     </div>
   )
 
+  // Desktop + Mobile Nav Items
   const ShowNavItems = () => (
-    <nav css={navItems}>
+    <nav css={styleNavItems}>
       <Link href="/" activeClassName="active" exact="false" as="">
         <a className="nav" onClick={toggleMobileNav ? toggleMenu : null} aria-label="Home">
           Home
@@ -190,14 +186,14 @@ export default function Navigation() {
     </nav>
   )
 
+  // Render the Nav
   return (
     <>
-      <div css={mainNav}>
+      <div css={styleMainNav}>
         <ShowNavItems />
       </div>
-
       <button
-        css={mobileNavMenu}
+        css={styleMobileNavMenu}
         onClick={toggleMenu}
         className={toggleMobileNav ? 'open' : 'closed'}
         aria-label="Navigation Menu">
@@ -206,9 +202,7 @@ export default function Navigation() {
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
       </button>
-
       { toggleMobileNav ? <MobileMenu /> : null }
-
     </>
   )
 }

@@ -23,15 +23,16 @@ const BlogAdmin: React.FC =  React.memo(()=> {
   const styleAnimationWrapper = css ({
     display: session ? 'block' : 'none',
     overflow: 'hidden',
-    margin: '1.5rem 0',
+    margin: '1.5rem .1rem',
   })
   const styleAdminPanel = css({
+    width: 'auto',
     display: 'flex',
     marginBottom: '.1rem',
     padding: '.5rem .2rem .5rem 1rem',
     backgroundColor: theme.colors.accent,
     border: '1px dotted' + theme.colors.grayscale,
-    borderRadius: 10,
+    borderRadius: 8,
     flexDirection: 'row',
     justifyContent: 'space-between',
     animation: 'slideDown .5s forwards',
@@ -145,7 +146,7 @@ const BlogAdmin: React.FC =  React.memo(()=> {
           display: 'inline-block',
           backgroundColor: theme.colors.text,
           border: '1px solid' + theme.colors.accent,
-          borderRadius: 5,
+          borderRadius: 8,
           color: theme.colors.background,
           fontSize: 12,
           fontWeight: 'bold',

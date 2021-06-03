@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useTheme } from '@emotion/react'
 
 const Toggle = ({ toggleTheme }) => {
-
+  
   const theme : any = useTheme()
   
   const [toggleThemeControl, setToggleThemeControl] = useState(false)

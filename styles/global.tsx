@@ -6,9 +6,10 @@ import "@fontsource/fira-code/400.css"
 import { Global, useTheme } from '@emotion/react'
 
 export function GlobalStyles () {
+  
   const theme : any = useTheme()
+
   return (
-    
     <Global
       styles={{
           // Reset
@@ -19,50 +20,40 @@ export function GlobalStyles () {
             fontSize: '100%',
             verticalAlign: 'baseline',
           },
-
           'article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section': { 
             display: 'block'
           },
-
           'nav ul': {
             listStyle: 'none'
           },
-
           'blockquote, q': {
             quotes: 'none'
           },
-
           'blockquote:before, blockquote:after, q:before, q:after': {
             content: '" "',
           },
-
           ins: {
             backgroundColor: theme.colors.accent,
             color: theme.colors.text,
             textDecoration: 'none',
           },
-
           mark: {
             backgroundColor: theme.colors.accent,
             color: theme.colors.text,
             fontStyle: 'italic',
             fontWeight: 'bold',
           },
-
           del: {
             textDecoration: 'line-through',
           },
-
           'abbr[title], dfn[title]': {
             borderBottom: '1px dotted',
             cursor: 'help',
           },
-
           table: {
             borderCollapse: 'collapse',
             borderSpacing: 0,
           },
-
           hr: {
             display: 'block',
             height: 1,
@@ -71,11 +62,9 @@ export function GlobalStyles () {
             margin: '3em 0',
             padding: 0,
           },
-
           'input, select': {
             verticalAlign: 'middle',
           },
-
           // Base
           'html, body': {
             backgroundColor: theme.colors.background,
@@ -92,12 +81,10 @@ export function GlobalStyles () {
               boxSizing: 'border-box',
           }
         },
-        
         h1: {
           margin: 0,
           padding: 0,
         },
-
         a: {
           margin: 0,
           padding: 0,
@@ -110,23 +97,19 @@ export function GlobalStyles () {
             textDecoration: 'none'
           }
         },
-          
         p: {
           margin: 0,
           padding: 0,
           lineHeight: '1.8rem',
         },
-
         'ul, li': {
           listStyle: 'none',
           margin: 0,
           padding: 0,
         },
-
         'button, input, textarea': {
           fontFamily: theme.fonts.primary
         },
-
         'input[type="text"], textarea': {
           width: '100%',
           margin: '0.5rem 0',
@@ -136,17 +119,14 @@ export function GlobalStyles () {
           borderRadius: '0.25rem',
           color: theme.colors.text,
           fontSize: 16,
-
           '&:disabled': {
             backgroundColor: theme.colors.disabledInput,
             color: theme.colors.grayscale,
           },
-
           '@media (max-width: 890px)': {
             width: '100%'
           }
         },
-
         // Header + Nav
         '.header': {
           height: 'auto',
@@ -160,13 +140,11 @@ export function GlobalStyles () {
             display: 'flex',
             flexDirection: 'row',
             alignItems: 'center',
-
             '@media (max-width: 768px)': {
               flexDirection: 'row-reverse'
             }
           }
         },
-
         '.nav': {
           position: 'relative',
           '&.active': {
@@ -200,7 +178,6 @@ export function GlobalStyles () {
             },
           }
         },
-
         // Layout
         '.container': {
           padding: '2rem 5% 0 5%',
@@ -210,13 +187,11 @@ export function GlobalStyles () {
             padding: '5% 5% 0 5%',
           }
         },
-
         // Utils
         '.center': {
           display: 'flex',
           justifyContent: 'center',
         },
-
         // Special Text
         '::-moz-selection': {
           background: theme.colors.selection,
@@ -226,7 +201,6 @@ export function GlobalStyles () {
           background: theme.colors.selection,
           color: theme.colors.selectionText,
         },
-
         // Animation
         '@keyframes spin': {
           from: { transform: 'rotate(0deg)' },
