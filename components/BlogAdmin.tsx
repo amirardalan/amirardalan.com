@@ -35,7 +35,7 @@ const BlogAdmin: React.FC =  React.memo(()=> {
     borderRadius: 8,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    animation: 'slideDown .5s forwards',
+    animation: 'fadeIn.5s forwards',
     '@media (max-width: 600px)': {
       flexDirection: 'column',
     }
@@ -171,7 +171,6 @@ const BlogAdmin: React.FC =  React.memo(()=> {
           '&.delete': {
             backgroundColor: theme.colors.warning,
             textDecoration: 'none',
-            color: '#e2e2e2',
           },
           '&.deploy': {
             backgroundColor: theme.colors.accentColor,

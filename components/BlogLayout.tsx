@@ -242,7 +242,7 @@ export default function BlogLayout(props) {
 
           // Markdown Code
           'pre, code': {
-            backgroundColor: '#2a2734',
+            backgroundColor: '#2e3440',
             borderRadius: 5,
             color: theme.colors.background,
           },

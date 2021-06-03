@@ -36,7 +36,7 @@ export default function About() {
       display: 'flex',
       justifyContent: 'center',
       padding: '3rem',
-      backgroundColor: theme.page.bg,
+      backgroundColor: theme.colors.accent,
       animation: 'slideUp .5s forwards',
       'ul li': {
         marginBottom: '.5rem',
@@ -103,7 +103,7 @@ export default function About() {
         </h3>
         <div css={styleCopy}>
           <p>
-            Hey, I'm Amir, a Portland, OR based developer and designer with over 10 years of experience. I aim to bridge the gap between 
+            Hey, I'm Amir! A Portland, OR based developer and designer with 10+ years experience. I aim to bridge the gap between 
             humans and technology through UI design and fullstack engineering. Read about my <Link href="/blog/2021-a-dev-odyssey"> journey 
             as a developer</Link>.
           </p>

@@ -118,7 +118,7 @@ export default function Home(props: any) {
     }
   })
   const styleMainRight = css({
-    height: session ? '67vh' : '75vh',
+    height: session ? '66.7vh' : '75vh',
     position: 'relative',
     display: 'flex',
     flexDirection: 'column',
