@@ -15,6 +15,7 @@ import prisma from '../lib/prisma'
 export default function Home(props: any) {
 
   const [session] = useSession()
+  console.log(session)
 
   const theme : any = useTheme()
   const styleButtonContainer = css({
@@ -70,12 +71,11 @@ export default function Home(props: any) {
     }
   })
   const stylePhoto = css({
-    marginBottom: '3rem',
+    marginBottom: '1.5rem',
     '@media (max-width: 890px)': {
       order: 1,
     },
     '@media (max-width: 480px)': {
-      marginBottom: '2rem',
       height: 60,
       width: 60,
     }
