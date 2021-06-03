@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react'
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
@@ -10,8 +9,9 @@ import TypingAnimation from '../components/TypingAnimation'
 import prisma from '../lib/prisma'
 import LoadingTriangle from '../components/LoadingTriangle'
 import dynamic from 'next/dynamic'
-const CanvasScene = dynamic(() => import('../components/CanvasScene'), {
-  loading: () => <LoadingTriangle />
+const CanvasLoader = dynamic(() => import('../components/CanvasLoader'), {
+  loading: () => <LoadingTriangle />,
+  ssr: false
 })
 
 // Get latest blog post
@@ -92,11 +92,7 @@ export default function Home(props: any) {
   )
 
   const theme : any = useTheme()
-  const [toggleCanvas, setToggleCanvas] = useState(false)
 
-  useEffect(() => {
-    setToggleCanvas(!toggleCanvas)
-  }, [])
 
   // CTA Button Styles
   const cta = css({
@@ -251,7 +247,7 @@ export default function Home(props: any) {
             alignSelf: 'flex-start',
           }
         }}>
-          {toggleCanvas ? <CanvasScene /> : null}
+          <CanvasLoader />
         </div>
       </main>
     </>
