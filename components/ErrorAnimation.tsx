@@ -1,4 +1,4 @@
-import { css, useTheme } from '@emotion/react'
+import { useTheme } from '@emotion/react'
 
 export default function ErrorAnimation() {
 
@@ -9,96 +9,93 @@ const theme : any = useTheme()
       className="astronaut"
       viewBox="0 0 1167 807"
       xmlns="http://www.w3.org/2000/svg"
-      css={css`
-        width: 30vw;
-        height: auto;
-        align-self: center;
-        margin-bottom: 2rem;
-        animation: fadeIn 1s linear;
+      css={{
+        width: '30vw',
+        height: 'auto',
+        alignSelf: 'center',
+        marginBottom: '2rem',
+        animation: 'fadeIn 1s linear',
         
-        .arm-left{
-          animation: armSwipe 5s 1s infinite ease-in-out;
-          transform-origin: left top;
+        '.armLeft': {
+          animation: 'armSwipe 5s 1s infinite ease-in-out',
+          transformorigin: 'left top',
+          },
+          '@keyframes armSwipe': {
+            '0%': { transform: 'rotate(-10deg)' },
+            '50%': { transform: 'rotate(0deg)' },
+              '100%': { transform: 'rotate(-10deg)' },
+          },
+          '.armRight': {
+            animation: 'armRightSwipe 5s 1s infinite ease-in-out',
+            transformOrigin: 'right top',
+          },
+          '@keyframes armRightSwipe': {
+            '0%': { transform: 'rotate(-1deg)' },
+            '50%': { transform: 'rotate(-5deg)' },
+            '100%': { transform: 'rotate(-1deg)' },
+          },
+          '.astronaut': {
+            width: '50%',
+            height: 'auto',
+            overflow: 'visible',
+            animation: 'Levitation 5s 1s infinite ease-in-out',
+          },
+          '@keyframes Levitation': {
+            '0%': { transform: 'translateY(100px)' },
+            '50%': { transform: 'translateY(80px)' },
+            '100%': { transform: 'translateY(100px)' },
+          },
+          '.legRight': {
+            animation: 'LegSwipe 5s 1s infinite ease-out',
+            transformOrigin: 'left bottom'
+          },
+          '@keyframes LegSwipe': {
+            '0%': { transform: 'rotate(8deg)' },
+            '50%': { transform: 'rotate(5deg)' },
+            '100%': { transform: 'rotate(8deg)' },
+          },
+          '.legleft': {},
+          '@keyframes LegLeftSwipe': {
+            '0%': { transform: 'rotate(2deg)' },
+            '50%': { transform: 'rotate(0deg)' },
+            '100%': { transform: 'rotate(2deg)' },
+          },
+          '.reflect': {
+            animation: 'faceOpacity 5s 1s infinite'
+          },
+          '@keyframes faceOpacity': {
+            '0%': { opacity: 0.7 },
+            '70%': { opacity: 1 },
+            '100%': { opacity: 0.7 },
+          },
+          '.eyeRight': {
+            animation: 'eyeBlink 5s infinite step-start 0s'
+          },
+          '.eyeLeft': {
+            animation: 'eyeLeftBlink 5s infinite step-start 0s'
+          },
+          '@keyframes eyeBlink': {
+            '90%': { transform: 'none', animationTimingFunction: 'ease-in' },
+            '93%': { transform: 'translateY(135px) scaleY(0)' },
+            '100%': { animationTimingFunction: 'ease-in' }
+          },
+          '@keyframes eyeLeftBlink': {
+            '90%': { transform: 'none', animationTimingFunction: 'ease-in' },
+            '93%': { transform: 'translateY(155px) scaleY(0)' },
+            '100%': { animationTimingFunction: 'ease-in' },
+          },
+          '.stars': {
+            width: 800,
+            fill: theme.colors.text,
+            overflow: 'visible',
+            animation: 'starsRotate 155s 1s linear',
+            transformOrigin: 'center'
+          },
+          '@keyframes starsRotate': {
+            '0%': { transform: 'rotate(0deg)' },
+            '100%': { transform: 'rotate(360deg)' }
           }
-          @keyframes armSwipe{
-            0%{transform: rotate(-10deg);}
-            50%{transform: rotate(0deg);}
-              100%{transform: rotate(-10deg);}
-          }
-          .arm-right{
-            animation: armRightSwipe 5s 1s infinite ease-in-out;
-            transform-origin: right top;
-          }
-          @keyframes armRightSwipe {
-            0%{transform: rotate(-1deg);}
-            50%{transform: rotate(-5deg);}
-              100%{transform: rotate(-1deg);}
-          }
-          .astronaut{
-            width: 50%;
-            height: auto;
-            overflow: visible;
-            animation: Levitation 5s 1s infinite ease-in-out;
-          }
-          @keyframes Levitation{
-            0%{transform: translateY(100px);}
-            50%{transform: translateY(80px); }
-            100%{transform: translateY(100px);}
-          }
-          .leg-right{
-            animation: LegSwipe 5s 1s infinite ease-out;
-            transform-origin: left bottom;
-          }
-          @keyframes LegSwipe {
-            0%{transform: rotate(8deg);}
-            50%{transform: rotate(5deg);}
-            100%{transform: rotate(8deg);}
-          }
-          .leg-left{
-
-          }
-          @keyframes LegLeftSwipe {
-            0%{transform: rotate(2deg);}
-            50%{transform: rotate(0deg);}
-            100%{transform: rotate(2deg);}
-          }
-          .reflect{
-            animation: faceOpacity 5s 1s infinite;
-          }
-          @keyframes faceOpacity {
-            0%{opacity: 0.7;}
-            70%{opacity: 1;}
-            100%{opacity: 0.7;}
-          }
-          .eye-right{
-            animation: eyeBlink 5s infinite step-start 0s;
-          }
-          .eye-left{
-            animation: eyeLeftBlink 5s infinite step-start 0s;
-
-          }
-          @keyframes eyeBlink {
-            90%{transform: none; animation-timing-function: ease-in;}
-            93%{transform: translateY(135px) scaleY(0);}
-            100%{animation-timing-function: ease-in;}
-          }
-          @keyframes eyeLeftBlink {
-            90%{transform: none; animation-timing-function: ease-in;}
-            93%{transform: translateY(155px) scaleY(0);}
-            100%{animation-timing-function: ease-in;}
-          }
-          .stars{
-            width: 800px;
-            fill: ${theme.colors.text};
-            overflow: visible;
-            animation: starsRotate 155s 1s linear;
-            transform-origin: center;
-          }
-          @keyframes starsRotate {
-            0%{transform: rotate(0deg);}
-            100%{transform: rotate(360deg);}
-          }
-      `}>
+      }}>
 
       <defs>
         <linearGradient x1="99.997%" y1="50%" x2=".002%" y2="50%" id="a">
@@ -117,7 +114,7 @@ const theme : any = useTheme()
 
       <g fill="none" fillRule="evenodd">
 
-        <g className="leg-right">
+        <g className="legRight">
           <path d="M858.4 321.1L767 371.5l-86.5 47.7c-8.4 4.6-17.5 6.8-26.4 6.8-19.3 0-38.1-10.2-48.1-28.4-14.6-26.5-5-59.9 21.5-74.5L657 307l52.3-28.8 61.2-33.8L748 128.2c-5.8-29.7 13.6-58.5 43.4-64.3 13.3-2.6 26.5-.1 37.5 6.1 13.5 7.6 23.6 20.9 26.8 37.3l30.2 155.4c4.4 23.3-6.6 46.9-27.5 58.4z" fill="#DADAE5"/>
           <path d="M858.4 321.1L767 371.5c-23.2-7.8-55.3-19.1-75-26.6-14.7-5.6-28.9-22.1-35.1-37.9l29.1-16c60.8 5.1 89.7 40.9 89.7 40.9s48.3-27.8 68.3-38.3c20-10.5 15-18 12.5-28.9-1.2-5.3-8.8-46.3-16.5-87.6 17.8-7.6 24.4-18.7 25.2-20.1l20.5 105.7c4.6 23.3-6.4 46.9-27.3 58.4z" fill="#AAAAC1"/>
           <path d="M873.8 78.6L852.6 86l12.8 70.8s0 .1-.1.2l-9.6-49.7c-3.2-16.4-13.4-29.6-26.8-37.3-9.3 4-6.7 8.8-5.3 16.5.8 4.6 8.7 47.8 16.6 90.5-6.8 2.9-15.2 5.3-25.5 6.5-39.4 4.6-56.9-5.4-56.9-5.4l-22-119.4L878 19.5l30.7-8.5s16.4 47.9-34.9 67.6z" fill="#AAAAC1"/>
@@ -135,7 +132,7 @@ const theme : any = useTheme()
           <path d="M481.8 433.3c-9.1-38.2-30.8-71.6-60.5-95.4l23.6-9.7c28.3 10.8 70 51.3 80.2 87.3l-43.3 17.8z" fill="#DADAE5"/>
         </g>
 
-        <g className="leg-left" transform="translate(783 64)">
+        <g className="legleft" transform="translate(783 64)">
           <path d="M.4 303.7s0 .1 0 0l17.2-5.2 94.1-28.6L171 116.8S191.8 79 240.2 93c5.3 1.5 9.8 3.3 13.8 5.3 32.5 16.4 24.4 46.1 24.4 46.1s-66 184.4-71.5 197.3c-5.5 12.9-14.3 24.6-46.5 35.1-20.8 6.8-142.2 43.3-142.2 43.3L.4 303.7z" fill="#FFF"/>
           <path d="M382.7 67.2s-11.3 51-66 41.2l-22.2-4.7-25.9 67.9s-15 9.2-41.1 2.6c-5.2-1.3-10.7-3.2-16.7-6-36.4-16.6-46.4-34.4-46.4-34.4l43.4-114.7 132.4 36.4 42.5 11.7z" fill="#DADAE5"/>
           <path d="M10.6 365s141.6-34.1 146.7-35.7c7.3-2.3 14.7-3.7 21-26 5.5-19.5 53.1-149.2 68-192.3 32.5 16.4 32.1 33.5 32.1 33.5s-66 184.4-71.5 197.3c-5.5 12.9-14.3 24.6-46.5 35.1L19.1 420c-15.9-11.7-20.6-33.3-11-50.5l2.5-4.5" fill="#DADAE5"/>
@@ -144,7 +141,7 @@ const theme : any = useTheme()
           <path d="M12.3 328.4c-1.2 1.5-3.6.8-3.8-1.1-.6-5.3-2.4-14.2-8-23.5l17.1-5.2c1.8 6 3.6 18.3-5.3 29.8z" fill="#DADAE5"/>
         </g>
 
-        <g className="arm-left">
+        <g className="armLeft">
           <path d="M584.9 697.3c-4.4 13.3-15.1 23.6-28.6 27.5L422.4 763l-33.3 9.5c-3.9 1.1-7.8 1.6-11.7 1.6-12.2 0-23.8-5.4-31.8-14.4-.3-.3-.5-.6-.8-.9-3-3.6-5.4-7.7-7.1-12.2-.4-1.1-.8-2.1-1.1-3.2-2.7-9.6-1.9-19.4 1.6-27.9 4.8-11.5 14.6-20.8 27.5-24.5l16-4.6 85.5-24.4h.2l5.6-1.6-.1-.1-60.8-79.3-.1-.1c-14.1-18.5 3.6-26.6 22.2-40.8l36.7-19.8 101 129.7 6.4 8.2c8.5 11.1 11 25.8 6.6 39.1z" fill="#FFF"/>
           <path d="M345.4 718.6l-7.2-3.2-14.3-6.3c-7.1-3.1-17-1.3-23.7.8-2.8.9-5 1.8-6.2 2.3-11.5 5.6-18 15.6-18 27.4 0 8.1 6.6 14.7 14.7 14.7 1 0 2-.1 3-.3 6.7-1.4 11.7-7.3 11.7-14.4 1.2-1.3 5.7-2.5 8.7-2.8l19.5 8.6c1.4.6 2.8 1 4.1 1.1 3 .4 6-.2 8.6-1.6.5-.2 1-.5 1.4-.8 1.5-1 2.8-2.3 3.9-3.9.5-.7.9-1.5 1.3-2.3.5-1.1.8-2.2 1-3.3 1.2-6.4-2.2-13.1-8.5-16z" fill="#AAAAC1"/>
           <path d="M422.4 763c-.1.2-.2.2-.2.2l-28.8 8.3c-20.6 5.8-22.3 13.4-22.3 20.2 0 7.1.3 10.9-9.3 13.9-3.2 1-6 1.3-9 1.3-4.5 0-9.2-1.9-16-6.3-15.1-9.8-28.1-22.5-32.9-27.3-5.1-5.1-9.2-10.3-10.3-19.4-.2-1.6-.3-3.3-.3-5.2 0-5.2.2-6.7.2-15.9 0-8 .9-16.6 6.6-23 3.2-3.5 7.8-6.4 14.6-8.2 14-3.6 33.4-8.2 66.9-15.4.3-.1.6-.1.9-.2 0 0 34.4 2.3 44.2 29.4.3.8.6 1.7.8 2.6 8 27.5-3.4 42.9-5.1 45z" fill="#DADAE5"/>
@@ -153,7 +150,7 @@ const theme : any = useTheme()
           <path d="M486.3 490.3l-74.1 90.6c0 .1 60.8 79.4 60.8 79.4l13-4c9.8-3 13.5-15 6.9-22.9l-11.1-15.8c-11-15.7-27-40.1-13.2-56.5 3.2-3.8 7.5-6.4 12.1-7.8 9.1-2.8 16.6-.1 22 7.1 0 0 6.7-19.1 6.7-40 0-21.1-23.1-30.1-23.1-30.1z" fill="#DADAE5"/>
         </g>
 
-        <g className="arm-right">
+        <g className="armRight">
           <path d="M32.3 563.9c7.4 5.3 16 7.8 24.4 7.8 4.4 0 8.8-.7 13-2 8.5-2.7 16.1-8.1 21.7-15.9l57.9-81.9 71.9 23.3 63.8 20.6c22.3 7.2 46.2-5 53.4-27.3 7.2-22.3-5-46.2-27.3-53.4l-165.3-53.5c-17.7-5.7-37 .7-47.7 15.9l-76 107.3c-13.5 19.1-8.9 45.5 10.2 59.1z" fill="#DADAE5"/>
           <path d="M154.2 436.3L255 467.1s-14 11.8-33.9 28l-71.9-23.3-27.2 38.7c0-2.2-.6-17.8-15.6-32.4 9.5-12.6 19.4-25.7 26.1-34.7 5-6.7 13.7-9.5 21.7-7.1z" fill="#AAAAC1"/>
           <path d="M.8 547.2v12.7c0 15.5 6.5 25.1 17.9 25.1h56c3.7 0 6.8-.7 8.2-1.1 8.1-2.1 14.7-10.3 14.7-21.4 0-2.5-.4-4-.3-7.9.1-6.6-.5-7.5 5.5-16.9.1-.2.3-.4.4-.7 0 0 1.6-2.2 3.8-5.2l15.1-21.3c0-2.2-.6-17.8-15.6-32.4-2.5-2.4-5.4-4.9-8.9-7.2-25.4-17.3-55.1 4-55.1 4-21.6 27.3-20.3 25.5-28.9 37.3C2.1 528 .8 535.1.8 547.2z" fill="#AAAAC1"/>
@@ -174,12 +171,12 @@ const theme : any = useTheme()
           <path d="M76.7 81.9c28.1 2.1 79.2-4.2 106-7.9 3.1-.4 5.8-.4 8.3 0 26.6 4.3 25.2 51.2 43.7 51.2 34 0 16.7-36.1 16.4-38.2-9.2-61-49.7-70.2-100.7-69.8-1.2 0-31.2-19.5-55.3-15.9-1.5.2-3.1.5-4.5 1C74.3 7 58.6 31.1 54 47.5c-4.2 15.1 2 32.8 22.7 34.4z" fill="#1A0029"/>
           <path d="M76.7 81.9c28.1 2.1 79.2-4.2 106-7.9 3.1-.4 5.8-.4 8.3 0-3-12.9-13.1-22-22.7-25.5s-26.4-11.1-28.8-23.3C136.2 8.3 121.8.8 95.2 1.3c-1.5.2-3.1.5-4.5 1-16.3 4.7-32 28.8-36.6 45.2-4.3 15.1 1.9 32.8 22.6 34.4z" fill="#3F3249"/>
 
-          <g className="eye-left">
+          <g className="eyeLeft">
             <path d="M140.1 156.8c0 3.2-2.4 5.9-5.5 6.4-.3.1-.7.1-1.1.1-3.6 0-6.5-2.9-6.5-6.5 0-2.4 1.3-4.4 3.1-5.6 1-.6 2.1-.9 3.4-.9 3.7-.1 6.6 2.9 6.6 6.5z" fill="#1A0029"/>
             <path d="M137.8 157.6c0 2.4-1.3 4.4-3.2 5.6-.3.1-.7.1-1.1.1-3.6 0-6.5-2.9-6.5-6.5 0-2.4 1.3-4.4 3.1-5.6.3-.1.7-.1 1.1-.1 3.7 0 6.6 2.9 6.6 6.5z" fill="#422C4F"/>
           </g>
 
-          <g className="eye-right">
+          <g className="eyeRight">
             <path d="M67.6 136.1c0 3.6-2.9 6.5-6.5 6.5h-.5c-3.4-.2-6-3.1-6-6.5 0-2.7 1.6-5 3.9-6 .8-.4 1.7-.5 2.6-.5 3.6 0 6.5 2.9 6.5 6.5z" fill="#1A0029"/>
             <path d="M64.5 136.6c0 2.7-1.6 5-3.9 6-3.4-.2-6-3.1-6-6.5 0-2.7 1.6-5 3.9-6 3.4.3 6 3.1 6 6.5z" fill="#422C4F"/>
           </g>
