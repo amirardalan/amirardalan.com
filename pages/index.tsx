@@ -23,8 +23,8 @@ export default function Home(props: any) {
     flexDirection: 'row',
   })
   const styleCtaButton = css({
-    minWidth: 150,
-    minHeight: 50,
+    minWidth: 135,
+    minHeight: 45,
     marginRight: '1rem',
     padding: '.5rem 1.4rem',
     display: 'flex',
