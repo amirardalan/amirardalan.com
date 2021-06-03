@@ -48,7 +48,6 @@ export default function Navigation() {
 
   const mobileNavMenu = css({
     alignItems: 'center',
-    marginRight: '5%',
     marginLeft: 30,
     zIndex: 6,
     width: 41,

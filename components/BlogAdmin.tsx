@@ -28,7 +28,7 @@ const BlogAdmin: React.FC =  React.memo(()=> {
   const styleAdminPanel = css({
     display: 'flex',
     marginBottom: '.1rem',
-    padding: '.5rem .5rem .5rem 1rem',
+    padding: '.5rem .2rem .5rem 1rem',
     backgroundColor: theme.colors.accent,
     border: '1px dotted' + theme.colors.grayscale,
     borderRadius: 10,
