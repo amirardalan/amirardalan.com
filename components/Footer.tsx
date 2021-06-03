@@ -17,7 +17,6 @@ export default function Footer() {
       fontSize: '12px',
       padding: '1em',
       height: '100px',
-      backgroundColor: theme.colors.background,
       color: theme.colors.grayscale,
       borderTop: '1px solid' + theme.colors.accent,
       lineHeight: '1.8em',

@@ -1,50 +1,13 @@
 import React, { useState } from 'react'
-import Router from 'next/router'
-import { GetStaticProps, GetStaticPaths } from 'next'
 import { useSession } from 'next-auth/client'
+import Router from 'next/router'
 import Link from 'next/link'
 import Head from 'next/head'
 import BlogLayout from '../../components/BlogLayout'
-import prisma from '../../lib/prisma'
 import ReactMarkdown from 'react-markdown'
 import BlogSyntaxHighlight from '../../components/BlogSyntaxHighlight'
-
-// Generate Static Paths for all posts
-export const getStaticPaths: GetStaticPaths = async () => {
-  const feed = await prisma.post.findMany({
-    where: { published: true },
-  })
-  const paths = feed.map((post) => ({
-    params: { slug: post.slug }
-  }))
-
-  return { paths, fallback: 'blocking' }
-}
-
-// Request post data from DB
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const [post, feed] = await prisma.$transaction([
-    prisma.post.findFirst({
-      where: {
-        slug: String(params?.slug),
-      },
-      include: {
-        author: {
-          select: { name: true },
-        },
-      },
-    }),
-    prisma.post.findMany({
-      where: { published: true },
-      select: {
-        id: true,
-        title: true,
-        slug: true,
-      },
-    })
-  ])
-  return { props: { post, feed } }
-}
+import { GetStaticProps, GetStaticPaths } from 'next'
+import prisma from '../../lib/prisma'
 
 const Post = (props: any) => {
 
@@ -224,3 +187,40 @@ const Post = (props: any) => {
 }
 
 export default Post
+
+// Generate Static Paths for all posts
+export const getStaticPaths: GetStaticPaths = async () => {
+  const feed = await prisma.post.findMany({
+    where: { published: true },
+  })
+  const paths = feed.map((post) => ({
+    params: { slug: post.slug }
+  }))
+
+  return { paths, fallback: 'blocking' }
+}
+
+// Request post data from DB
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const [post, feed] = await prisma.$transaction([
+    prisma.post.findFirst({
+      where: {
+        slug: String(params?.slug),
+      },
+      include: {
+        author: {
+          select: { name: true },
+        },
+      },
+    }),
+    prisma.post.findMany({
+      where: { published: true },
+      select: {
+        id: true,
+        title: true,
+        slug: true,
+      },
+    })
+  ])
+  return { props: { post, feed } }
+}
