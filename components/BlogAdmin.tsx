@@ -149,6 +149,7 @@ const BlogAdmin: React.FC =  React.memo(()=> {
           borderRadius: 8,
           color: theme.colors.background,
           fontSize: 12,
+          fontFamily: theme.fonts.primary,
           fontWeight: 'bold',
           textTransform: 'uppercase',
           textAlign: 'center',
@@ -170,6 +171,7 @@ const BlogAdmin: React.FC =  React.memo(()=> {
           },
           '&.delete': {
             backgroundColor: theme.colors.warning,
+            color: '#fff',
             textDecoration: 'none',
           },
           '&.deploy': {

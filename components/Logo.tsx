@@ -6,6 +6,10 @@ export default function Logo() {
   const theme : any = useTheme()
   const Image = styled.img`
     animation: spin 1s forwards;
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
   `
   const styleTitle = css({
     margin: '0',

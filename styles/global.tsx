@@ -110,79 +110,10 @@ export function GlobalStyles () {
         'button, input, textarea': {
           fontFamily: theme.fonts.primary
         },
-        'input[type="text"], textarea': {
-          width: '100%',
-          margin: '0.5rem 0',
-          padding: '0.5rem',
-          backgroundColor: theme.colors.accent,
-          border: '2px solid' + theme.colors.accent,
-          borderRadius: '0.25rem',
-          color: theme.colors.text,
-          fontSize: 16,
-          '&:disabled': {
-            backgroundColor: theme.colors.disabledInput,
-            color: theme.colors.grayscale,
-          },
-          '@media (max-width: 890px)': {
-            width: '100%'
-          }
-        },
-        // Header + Nav
-        '.header': {
-          height: 'auto',
-          marginBottom: '1.8rem',
-          display: 'flex',
-          justifyContent: 'space-between',
-          position: 'relative',
-          zIndex: 5,
-          a:  { textDecoration: 'none' },
-          '.headerRight': {
-            display: 'flex',
-            flexDirection: 'row',
-            alignItems: 'center',
-            '@media (max-width: 768px)': {
-              flexDirection: 'row-reverse'
-            }
-          }
-        },
-        '.nav': {
-          position: 'relative',
-          '&.active': {
-            '&::before': {
-              position: 'absolute',
-              content: '">"',
-              left: -10,
-            }
-          },
-          '@media (max-width: 768px)': {
-            '&.active': {
-              '&::before': {
-                position: 'absolute',
-                content: '">"',
-                left: -30,
-              },
-              '&:hover': {
-                '&::before': {
-                  position: 'absolute',
-                  content: '">"',
-                  left: -30,
-                }
-              }
-            },
-            '&:hover': {
-              '&::before': {
-                position: 'absolute',
-                content: '" "',
-                left: -30,
-              }
-            },
-          }
-        },
         // Layout
         '.container': {
           padding: '2rem 5% 0 5%',
           position: 'relative',
-
           '@media (max-width: 890px)': {
             padding: '5% 5% 0 5%',
           }
@@ -202,10 +133,6 @@ export function GlobalStyles () {
           color: theme.colors.selectionText,
         },
         // Animation
-        '@keyframes spin': {
-          from: { transform: 'rotate(0deg)' },
-          to: { transform: 'rotate(360deg)' },
-        },
         '@keyframes fadeIn': {
           from: { opacity: 0 },
           to: { opacity: 1 }
@@ -233,9 +160,6 @@ export function GlobalStyles () {
             opacity: 1,
             transform: 'translate3d(0, 0, 0)',
           }
-        },
-        '@keyframes rotate': {
-          '100%': { transform: 'rotate(360deg)' }
         },
         '@keyframes dash': {
           '0%': {

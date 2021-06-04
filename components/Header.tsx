@@ -6,8 +6,25 @@ import { useTheme, css } from '@emotion/react'
 
 
 const Header = ({toggleTheme}) => {
+  
   const theme: any = useTheme()
-
+  const styleHeader = css({
+    height: 'auto',
+    marginBottom: '1.8rem',
+    display: 'flex',
+    justifyContent: 'space-between',
+    position: 'relative',
+    zIndex: 5,
+    a:  { textDecoration: 'none' },
+    '.headerRight': {
+      display: 'flex',
+      flexDirection: 'row',
+      alignItems: 'center',
+      '@media (max-width: 768px)': {
+        flexDirection: 'row-reverse'
+      }
+    }
+  })
   const styleLogoButton = css({
     margin: 0,
     padding: 0,
@@ -22,7 +39,7 @@ const Header = ({toggleTheme}) => {
   })
 
   return (
-    <div className="header">
+    <div css={styleHeader}>
       <Link
         href="/"
         aria-label="Amir Ardalan Logo"

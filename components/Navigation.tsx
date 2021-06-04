@@ -100,9 +100,39 @@ export default function Navigation() {
     },
   })
   const styleNavItems = css({
+    position: 'relative',
     display: 'flex',
     a: { color: theme.colors.text, },
-    
+    '&.active': {
+      '&::before': {
+        position: 'absolute',
+        content: '">"',
+        left: -10,
+      }
+    },
+    '@media (max-width: 768px)': {
+      '&.active': {
+        '&::before': {
+          position: 'absolute',
+          content: '">"',
+          left: -30,
+        },
+        '&:hover': {
+          '&::before': {
+            position: 'absolute',
+            content: '">"',
+            left: -30,
+          }
+        }
+      },
+      '&:hover': {
+        '&::before': {
+          position: 'absolute',
+          content: '" "',
+          left: -30,
+        }
+      },
+    },
     '@media(max-width: 768px)': {
       flexDirection: 'column',
       alignItems: 'center',

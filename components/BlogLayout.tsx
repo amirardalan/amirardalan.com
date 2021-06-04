@@ -9,6 +9,9 @@ export default function BlogLayout(props) {
       <Global
         styles={{
           '.breadcrumbs': {
+            position: 'sticky',
+            top: 0,
+            backgroundColor: theme.colors.background,
             display: 'flex',
             flexDirection: 'row',
             alignItems: 'center',
@@ -99,7 +102,7 @@ export default function BlogLayout(props) {
               color: theme.colors.text,
               fontSize: 12,
               fontWeight: 'bold',
-              textTransform: 'none',
+              textTransform: 'uppercase',
               cursor: 'pointer',
               '&.delete': {
                 color: '#ec4949'
@@ -145,7 +148,23 @@ export default function BlogLayout(props) {
               }
             }
           },
-
+          'input[type="text"], textarea': {
+            width: '100%',
+            margin: '0.5rem 0',
+            padding: '0.5rem',
+            backgroundColor: theme.colors.accent,
+            border: '2px solid' + theme.colors.accent,
+            borderRadius: '0.25rem',
+            color: theme.colors.text,
+            fontSize: 16,
+            '&:disabled': {
+              backgroundColor: theme.colors.disabledInput,
+              color: theme.colors.grayscale,
+            },
+            '@media (max-width: 890px)': {
+              width: '100%'
+            }
+          },
           '.postFull': {
             h2: {
               textDecoration: 'none',
