@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import LoadingBar from '../components/LoadingBar'
@@ -22,10 +21,6 @@ const MyApp = ({Component, pageProps }: AppProps) => {
     <Provider session={pageProps.session}>
       <ThemeProvider theme={themeMode}>
         <GlobalStyles />
-        <Head>
-          <title>Amir Ardalan – Developer, Designer, Writer</title>
-          <meta name="theme-color" content={themeMode.colors.background} />
-        </Head>
         <LoadingBar />
         <div className="container">
           <Header toggleTheme={toggleTheme} />
