@@ -11,7 +11,7 @@ Built and maintained by [@amirardalan](https://github.com/amirardalan)
 Run the development server:
 
 ```bash
-npm run dev
+yarn run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000)
@@ -19,7 +19,7 @@ Open [http://localhost:3000](http://localhost:3000)
 Optionally, create a local copy of a production build. (useful for setting and testing `sitemapGenerator.js` configuration):
 
 ```bash
-npm run build
+yarn run build
 ```
 
 ## Prisma ORM
@@ -29,11 +29,11 @@ Middleware that connects Next.js to a database.
 Run Prisma Studio:
 
 ```bash
-npx prisma studio
+yarn prisma studio
 ```
 
 Push new tables to db from `schema.prisma`:
 
 ```bash
-npx prisma db push --preview-feature
+yarn prisma db push --preview-feature
 ```
