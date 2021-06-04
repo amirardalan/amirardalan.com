@@ -30,8 +30,10 @@ const Toggle = ({ toggleTheme }) => {
     marginLeft: toggleThemeControl ? .4 : 24,
     marginRight: toggleThemeControl ? 24 : .4,
     borderRadius: 25,
-    boxShadow: '0 0 4px' + theme.colors.accentColor,
     transition: '.2s linear',
+    '&:active': {
+      boxShadow: '0 0 8px' + theme.colors.accentColor,
+    }
   })
 
   return (
