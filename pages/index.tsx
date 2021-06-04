@@ -172,7 +172,7 @@ export default function Home(props: any) {
                   Amir Ardalan
                 </div>
               </h2>
-              <h3>
+              <h3 aria-hidden="true" >
                 I'm currently focusing on:
                 <div>
                   <TypingAnimation />
