@@ -1,9 +1,9 @@
+import { Global, useTheme } from '@emotion/react'
 import "@fontsource/poppins/700.css"
 import "@fontsource/poppins/900.css"
 import "@fontsource/lora/500.css"
 import "@fontsource/lora/500-italic.css"
 import "@fontsource/fira-code/400.css"
-import { Global, useTheme } from '@emotion/react'
 
 export function GlobalStyles () {
   
