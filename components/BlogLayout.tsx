@@ -9,8 +9,6 @@ export default function BlogLayout(props) {
       <Global
         styles={{
           '.breadcrumbs': {
-            position: 'sticky',
-            top: 0,
             backgroundColor: theme.colors.background,
             display: 'flex',
             flexDirection: 'row',
@@ -266,6 +264,7 @@ export default function BlogLayout(props) {
             color: theme.colors.background,
           },
           code: {
+            fontFamily: theme.fonts.primary,
             wordWrap: 'break-word',
           },
           pre: {

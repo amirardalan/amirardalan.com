@@ -12,68 +12,68 @@ export function GlobalStyles () {
   return (
     <Global
       styles={{
-          // Reset
-          'html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video': {
-            margin: 0,
-            padding: 0,
-            border: 0,
-            fontSize: '100%',
-            verticalAlign: 'baseline',
-          },
-          'article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section': { 
-            display: 'block'
-          },
-          'nav ul': {
-            listStyle: 'none'
-          },
-          'blockquote, q': {
-            quotes: 'none'
-          },
-          'blockquote:before, blockquote:after, q:before, q:after': {
-            content: '" "',
-          },
-          ins: {
-            backgroundColor: theme.colors.accent,
-            color: theme.colors.text,
-            textDecoration: 'none',
-          },
-          mark: {
-            backgroundColor: theme.colors.accent,
-            color: theme.colors.text,
-            fontStyle: 'italic',
-            fontWeight: 'bold',
-          },
-          del: {
-            textDecoration: 'line-through',
-          },
-          'abbr[title], dfn[title]': {
-            borderBottom: '1px dotted',
-            cursor: 'help',
-          },
-          table: {
-            borderCollapse: 'collapse',
-            borderSpacing: 0,
-          },
-          hr: {
-            display: 'block',
-            height: 1,
-            border: 0,  
-            borderTop: '1px solid' + theme.colors.grayscale,
-            margin: '3em 0',
-            padding: 0,
-          },
-          'input, select': {
-            verticalAlign: 'middle',
-          },
-          // Base
-          'html, body': {
-            backgroundColor: theme.colors.background,
-            fontFamily: theme.fonts.primary,
-            color: theme.colors.text,
-            WebkitTextSizeAdjust: '100%',
-            transition: 'all 0.15s linear',
-          },
-          '*': {
+        // Reset
+        'html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video': {
+          margin: 0,
+          padding: 0,
+          border: 0,
+          fontSize: '100%',
+          verticalAlign: 'baseline',
+        },
+        'article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section': { 
+          display: 'block'
+        },
+        'nav ul': {
+          listStyle: 'none'
+        },
+        'blockquote, q': {
+          quotes: 'none'
+        },
+        'blockquote:before, blockquote:after, q:before, q:after': {
+          content: '" "',
+        },
+        ins: {
+          backgroundColor: theme.colors.accent,
+          color: theme.colors.text,
+          textDecoration: 'none',
+        },
+        mark: {
+          backgroundColor: theme.colors.accent,
+          color: theme.colors.text,
+          fontStyle: 'italic',
+          fontWeight: 'bold',
+        },
+        del: {
+          textDecoration: 'line-through',
+        },
+        'abbr[title], dfn[title]': {
+          borderBottom: '1px dotted',
+          cursor: 'help',
+        },
+        table: {
+          borderCollapse: 'collapse',
+          borderSpacing: 0,
+        },
+        hr: {
+          display: 'block',
+          height: 1,
+          border: 0,  
+          borderTop: '1px solid' + theme.colors.grayscale,
+          margin: '3em 0',
+          padding: 0,
+        },
+        'input, select': {
+          verticalAlign: 'middle',
+        },
+        // Base
+        'html, body': {
+          backgroundColor: theme.colors.background,
+          fontFamily: theme.fonts.primary,
+          color: theme.colors.text,
+          WebkitTextSizeAdjust: '100%',
+          transition: 'all 0.15s linear',
+        },
+        '*': {
           margin: 0,
           padding: 0,
           boxSizing: 'border-box',
