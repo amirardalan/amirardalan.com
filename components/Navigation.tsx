@@ -102,35 +102,38 @@ export default function Navigation() {
   const styleNavItems = css({
     position: 'relative',
     display: 'flex',
-    a: { color: theme.colors.text, },
-    '&.active': {
-      '&::before': {
-        position: 'absolute',
-        content: '">"',
-        left: -10,
-      }
-    },
-    '@media (max-width: 768px)': {
+    a: {
+      position: 'relative',
+      color: theme.colors.text,
       '&.active': {
         '&::before': {
           position: 'absolute',
           content: '">"',
-          left: -30,
-        },
-        '&:hover': {
+          left: -10,
+        }
+      },
+      '@media (max-width: 768px)': {
+        '&.active': {
           '&::before': {
             position: 'absolute',
             content: '">"',
             left: -30,
+          },
+          '&:hover': {
+            '&::before': {
+              position: 'absolute',
+              content: '">"',
+              left: -30,
+            }
           }
-        }
-      },
-      '&:hover': {
-        '&::before': {
-          position: 'absolute',
-          content: '" "',
-          left: -30,
-        }
+        },
+        '&:hover': {
+          '&::before': {
+            position: 'absolute',
+            content: '" "',
+            left: -30,
+          }
+        },
       },
     },
     '@media(max-width: 768px)': {
@@ -142,7 +145,7 @@ export default function Navigation() {
     '@media (max-width: 768px) and (max-height: 600px)': {
       paddingRight: '2.5rem',
       alignItems: 'flex-end',
-    }
+    },
   })
   const styleMobileNavSecondary = css({
     margin: '3rem 0',
@@ -199,17 +202,17 @@ export default function Navigation() {
   const ShowNavItems = () => (
     <nav css={styleNavItems}>
       <Link href="/" activeClassName="active" exact="false" as="">
-        <a className="nav" onClick={toggleMobileNav ? toggleMenu : null} aria-label="Home">
+        <a onClick={toggleMobileNav ? toggleMenu : null} aria-label="Home">
           Home
         </a>
       </Link>
       <Link href="/blog" activeClassName="active" exact="" as="">
-        <a className="nav" onClick={toggleMobileNav ? toggleMenu : null} aria-label="Blog">
+        <a onClick={toggleMobileNav ? toggleMenu : null} aria-label="Blog">
           Blog
         </a>
       </Link>
       <Link href="/about" activeClassName="active" exact="" as="">
-        <a className="nav" onClick={toggleMobileNav ? toggleMenu : null} aria-label="About">
+        <a onClick={toggleMobileNav ? toggleMenu : null} aria-label="About">
           About
         </a>
       </Link>

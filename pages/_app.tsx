@@ -1,4 +1,3 @@
-import { AppProps } from 'next/app'
 import Head from 'next/head'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
@@ -9,8 +8,10 @@ import { GlobalStyles } from '../styles/global'
 import { useDarkMode } from '../utils/useDarkMode'
 import { themeLight, themeDark } from '../styles/theme'
 
+import { AppProps } from 'next/app'
 import { Provider } from 'next-auth/client'
 import dynamic from 'next/dynamic'
+const BlogAdmin = dynamic(() => import('../components/BlogAdmin'))
 
 const MyApp = ({Component, pageProps }: AppProps) => {
 
@@ -38,5 +39,3 @@ const MyApp = ({Component, pageProps }: AppProps) => {
 }
 
 export default MyApp
-
-const BlogAdmin = dynamic(() => import('../components/BlogAdmin'))
