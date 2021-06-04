@@ -1,16 +1,16 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import Avatar from '../components/Avatar'
+import Avatar from '@/components/Avatar'
 
 import { css, useTheme } from '@emotion/react'
-import TypingAnimation from '../components/TypingAnimation'
-import LatestPost from '../components/LatestPost'
+import TypingAnimation from '@/components/TypingAnimation'
+import LatestPost from '@/components/LatestPost'
 import { useSession } from 'next-auth/client'
 
 import dynamic from 'next/dynamic'
-import LoadingTriangle from '../components/LoadingTriangle'
+import LoadingTriangle from '@/components/LoadingTriangle'
 import { GetStaticProps } from 'next'
-import prisma from '../lib/prisma'
+import prisma from '@/lib/prisma'
 
 const CanvasLoader = dynamic(() => import('../components/CanvasLoader'), {
   loading: () => <LoadingTriangle />

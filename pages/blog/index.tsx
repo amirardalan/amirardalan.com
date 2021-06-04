@@ -1,9 +1,9 @@
 import React from 'react'
 import Head from 'next/head'
-import BlogLayout from '../../components/BlogLayout'
+import BlogLayout from '@/components/BlogLayout'
 import { GetStaticProps } from 'next'
-import prisma from '../../lib/prisma'
-import BlogPost, { PostProps } from '../../components/BlogPost'
+import prisma from '@/lib/prisma'
+import BlogPost, { PostProps } from '@/components/BlogPost'
 
 
 export const getStaticProps: GetStaticProps = async () => {

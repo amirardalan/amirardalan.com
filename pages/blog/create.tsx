@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import Router from 'next/router'
 import Link from 'next/link'
 import Head from 'next/head'
-import BlogLayout from '../../components/BlogLayout'
+import BlogLayout from '@/components/BlogLayout'
 import { useSession } from 'next-auth/client'
 
 const Draft: React.FC = () => {

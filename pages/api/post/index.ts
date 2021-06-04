@@ -1,5 +1,5 @@
 import { getSession } from 'next-auth/client'
-import prisma from '../../../lib/prisma'
+import prisma from '@/lib/prisma'
 
 
 // POST /api/post

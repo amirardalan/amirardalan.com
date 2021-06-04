@@ -3,10 +3,10 @@ import Router from 'next/router'
 import Link from 'next/link'
 import Head from 'next/head'
 import { GetServerSideProps } from 'next'
-import prisma from '../../../lib/prisma'
+import prisma from '@/lib/prisma'
 import { useSession } from 'next-auth/client'
-import LoadingTriangle from '../../../components/LoadingTriangle'
-import BlogLayout from '../../../components/BlogLayout'
+import LoadingTriangle from '@/components/LoadingTriangle'
+import BlogLayout from '@/components/BlogLayout'
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const editPost = await prisma.post.findUnique({

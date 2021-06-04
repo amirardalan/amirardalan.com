@@ -3,11 +3,11 @@ import { useSession } from 'next-auth/client'
 import Router from 'next/router'
 import Link from 'next/link'
 import Head from 'next/head'
-import BlogLayout from '../../components/BlogLayout'
+import BlogLayout from '@/components/BlogLayout'
 import ReactMarkdown from 'react-markdown'
-import BlogSyntaxHighlight from '../../components/BlogSyntaxHighlight'
+import BlogSyntaxHighlight from '@/components/BlogSyntaxHighlight'
 import { GetStaticProps, GetStaticPaths } from 'next'
-import prisma from '../../lib/prisma'
+import prisma from '@/lib/prisma'
 
 const Post = (props: any) => {
 

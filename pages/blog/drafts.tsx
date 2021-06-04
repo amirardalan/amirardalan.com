@@ -3,9 +3,9 @@ import { GetServerSideProps } from 'next'
 import { useSession, getSession } from 'next-auth/client'
 import Link from 'next/link'
 import Head from 'next/head'
-import BlogLayout from '../../components/BlogLayout'
-import BlogPost, { PostProps } from '../../components/BlogPost'
-import prisma from '../../lib/prisma'
+import BlogLayout from '@/components/BlogLayout'
+import BlogPost, { PostProps } from '@/components/BlogPost'
+import prisma from '@/lib/prisma'
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   const session = await getSession({ req })

@@ -2,7 +2,7 @@ import { useTheme, css } from '@emotion/react'
 import Head from 'next/head'
 import Link from 'next/link'
 import Image from 'next/image'
-import Avatar from '../components/Avatar'
+import Avatar from '@/components/Avatar'
 
 export default function About() {
 
