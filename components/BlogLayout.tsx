@@ -176,10 +176,11 @@ export default function BlogLayout(props) {
               fontFamily: theme.fonts.tertiary,
             },
             h3: {
-              margin: '3.5rem 0 0',
+              margin: '3.5rem 0 1rem',
               padding: 0,
               fontSize: 28,
               fontWeight: 'bold',
+              lineHeight: '2rem'
             },
             'p, ul, li, a': {
               fontSize: 18,
