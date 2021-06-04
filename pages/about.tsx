@@ -30,20 +30,26 @@ export default function About() {
     '@media(max-width: 890px)': {
       gridTemplateColumns: 'repeat(2, 1fr)',
     },
-    '@media(max-width: 480px)': {
+    '@media(max-width: 600px)': {
       gridTemplateColumns: 'repeat(1, 1fr)',
     },
     '.grid': {
       display: 'flex',
       justifyContent: 'center',
-      padding: '3rem',
+      padding: '5rem',
       backgroundColor: theme.colors.accent,
       animation: 'slideUp .5s forwards',
+      '@media (max-width: 1200px)': {
+        padding: '2rem',
+      },
       'ul li': {
         marginBottom: '.5rem',
         color: theme.colors.grayscale,
         fontSize: 14,
         textAlign: 'center',
+        strong: {
+          color: theme.colors.text
+        }
       }
     },
     h4: {
@@ -124,7 +130,8 @@ export default function About() {
               <li><strong>Developer, Designer, Writer.</strong></li>
               <li>
                 <em>
-                  I produce fast, maintainable code and purpose-driven user interfaces for the web.
+                  I ❤️ clean, maintainable code
+                  and purpose-built user interfaces.
                 </em>
               </li>
               <li>
