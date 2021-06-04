@@ -258,8 +258,8 @@ export default function BlogLayout(props) {
           },
           'code, code p': {
             padding: '0.2rem',
-            backgroundColor: theme.colors.accent,
-            color: theme.colors.text,
+            backgroundColor: '#2e3440',
+            color: '#fff',
             fontSize: 15,
           },
           '.codeStyle': {
