@@ -2,6 +2,7 @@ import { useTheme, css } from '@emotion/react'
 import Head from 'next/head'
 import Link from 'next/link'
 import Image from 'next/image'
+import Avatar from '../components/Avatar'
 
 export default function About() {
 
@@ -118,13 +119,7 @@ export default function About() {
             <ul>
               <h4>Bio:</h4>
               <li>
-                <Image
-                  src="/photo.png"
-                  alt="Amir Ardalan"
-                  aria-label="Amir Ardalan"
-                  width={100}
-                  height={100}
-                />
+                <Avatar />
               </li>
               <li><strong>Developer, Designer, Writer.</strong></li>
               <li>

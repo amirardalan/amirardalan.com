@@ -44,8 +44,8 @@ export const themeLight = {
     code: code,
     codeText: light,
   },
-  logo: "/logoLight.svg",
-  logoError: '/logoErrorDark.svg',
+  logo: "/static/logo/logo-light.svg",
+  logoError: '/static/icons/error-light.svg',
   helloEmoji: '👋',
   toggleButton: {
     background: lightAccent,
@@ -59,9 +59,9 @@ export const themeLight = {
     bg: lighter,
   },
   social: {
-    github: '/icon-github-dark.svg',
-    twitter: '/icon-twitter-dark.svg',
-    linkedin: '/icon-linkedin-dark.svg',
+    github: '/static/icons/github-light.svg',
+    twitter: '/static/icons/twitter-light.svg',
+    linkedin: '/static/icons/linkedin-light.svg',
   }
 }
 
@@ -88,8 +88,8 @@ export const themeDark = {
     code: code,
     codeText: light,
   },
-  logo: '/logoDark.svg',
-  logoError: '/logoErrorLight.svg',
+  logo: '/static/logo/logo-dark.svg',
+  logoError: '/static/icons/error-dark.svg',
   helloEmoji: '✌️',
   toggleButton: {
     background: darker,
@@ -103,8 +103,8 @@ export const themeDark = {
     bg: darkAccent,
   },
   social: {
-    github: '/icon-github-light.svg',
-    twitter: '/icon-twitter-light.svg',
-    linkedin: '/icon-linkedin-light.svg',
+    github: '/static/icons/github-dark.svg',
+    twitter: '/static/icons/twitter-dark.svg',
+    linkedin: '/static/icons/linkedin-dark.svg',
   }
 }

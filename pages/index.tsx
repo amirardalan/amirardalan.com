@@ -1,6 +1,6 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import Link from 'next/link'
+import Avatar from '../components/Avatar'
 
 import { css, useTheme } from '@emotion/react'
 import TypingAnimation from '../components/TypingAnimation'
@@ -163,13 +163,7 @@ export default function Home(props: any) {
         <div css={styleAnimationWrapper}>
           <div css={styleMainLeft}>
             <div css={stylePhoto}>
-              <Image
-                src="/photo.png"
-                alt="Amir Ardalan"
-                aria-label="Amir Ardalan"
-                width={100}
-                height={100}
-              />
+              <Avatar />
             </div>
             <div css={styleMainLeftContent}>
               <h2>

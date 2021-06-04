@@ -3,13 +3,13 @@
   "name": "Amir Ardalan – Developer, Designer, Writer",
   "icons": [
     {
-      "src": "/icon192.png",
+      "src": "/touch-192.png",
       "type": "image/png",
       "sizes": "192x192",
       "purpose": "any maskable"
     },
     {
-      "src": "/icon512.png",
+      "src": "/touch-512.png",
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "any maskable"
