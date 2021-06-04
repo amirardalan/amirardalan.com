@@ -9,7 +9,6 @@ export default function BlogLayout(props) {
       <Global
         styles={{
           '.breadcrumbs': {
-            backgroundColor: theme.colors.background,
             display: 'flex',
             flexDirection: 'row',
             alignItems: 'center',
@@ -260,7 +259,7 @@ export default function BlogLayout(props) {
 
           // Markdown Code
           'pre, code': {
-            backgroundColor: '#2e3440',
+            backgroundColor: theme.colors.code,
             borderRadius: 5,
             color: theme.colors.background,
           },
@@ -277,8 +276,8 @@ export default function BlogLayout(props) {
           },
           'code, code p': {
             padding: '0.2rem',
-            backgroundColor: '#2e3440',
-            color: '#fff',
+            backgroundColor: theme.colors.code,
+            color: theme.colors.codeText,
             fontSize: 15,
           },
           '.codeStyle': {

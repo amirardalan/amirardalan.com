@@ -1,16 +1,18 @@
+import { GlobalStyles } from '../styles/global'
+import { ThemeProvider } from '@emotion/react'
+import { useDarkMode } from '../utils/useDarkMode'
+import { themeLight, themeDark } from '../styles/theme'
+
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import LoadingBar from '../components/LoadingBar'
 
-import { ThemeProvider } from '@emotion/react'
-import { GlobalStyles } from '../styles/global'
-import { useDarkMode } from '../utils/useDarkMode'
-import { themeLight, themeDark } from '../styles/theme'
-
 import { AppProps } from 'next/app'
 import { Provider } from 'next-auth/client'
+
 import dynamic from 'next/dynamic'
 const BlogAdmin = dynamic(() => import('../components/BlogAdmin'))
+
 
 const MyApp = ({Component, pageProps }: AppProps) => {
 

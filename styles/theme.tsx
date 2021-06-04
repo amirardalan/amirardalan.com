@@ -11,7 +11,8 @@ const grayLight = '#727a83'
 const grayDark = '#444a4e'
 const selection = '#ffff00'
 const buttonDisabled = '#8b8b8b'
-const warning = '#ec4949;'
+const warning = '#ec4949'
+const code = '#2e3440'
 
 // Typography
 const fontPrimary = "'Fira Code', Menlo, Monaco, 'Courier New', monospace"
@@ -40,6 +41,8 @@ export const themeLight = {
     disabledInput: light,
     disabledBtn: buttonDisabled,
     warning: warning,
+    code: code,
+    codeText: light,
   },
   logo: "/logoLight.svg",
   logoError: '/logoErrorDark.svg',
@@ -82,6 +85,8 @@ export const themeDark = {
     disabledInput: dark,
     disabledBtn: buttonDisabled,
     warning: warning,
+    code: code,
+    codeText: light,
   },
   logo: '/logoDark.svg',
   logoError: '/logoErrorLight.svg',
