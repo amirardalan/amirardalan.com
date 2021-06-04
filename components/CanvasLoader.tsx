@@ -12,7 +12,10 @@ const CanvasLoader =  React.memo(() => {
       <small className="canvasControls">
         {theme.canvas.textSmall}
       </small>
-      <Canvas css={{ animation: 'slideUp 1s forwards' }}>
+      <Canvas
+        css={{ animation: 'slideUp 1s forwards' }}
+        gl={{ antialias: true }}
+      >
         <CanvasScene theme={theme} />
       </Canvas>
     </>
