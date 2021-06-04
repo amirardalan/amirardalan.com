@@ -12,6 +12,7 @@ export default function Custom404() {
     <>
       <Head>
         <title>Page Not Found – Amir Ardalan</title>
+        <meta name="robots" content="noindex"></meta>
       </Head>
 
       <div css={{
