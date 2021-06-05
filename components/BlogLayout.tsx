@@ -260,6 +260,9 @@ export default function BlogLayout(props) {
           '.codeStyle': {
             borderRadius: 5,
           },
+          '.codeStyle, .codeStyle code': {
+            backgroundColor: theme.colors.accent + '!important',
+          },
           'pre, code, code span': {
             fontFamily: theme.fonts.primary,
           },
@@ -275,7 +278,7 @@ export default function BlogLayout(props) {
             }
           },
           'pre code': {
-            '&::before, &::after': { content: 'none' }
+            '&::before, &::after': { content: 'none' },
           },
           '.language-bash span.linenumber': {
             display: 'none !important'

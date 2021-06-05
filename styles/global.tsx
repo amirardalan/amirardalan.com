@@ -112,7 +112,7 @@ export function GlobalStyles () {
         },
         // Layout
         '.container': {
-          padding: '1.5rem 5% 0 5%',
+          padding: '0 5% 0 5%',
           position: 'relative',
           '@media (max-width: 768px)': {
             padding: '2% 5% 0 5%',

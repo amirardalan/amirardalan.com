@@ -3,22 +3,25 @@ import Link from 'next/link'
 import Navigation  from '../components/Navigation'
 import ToggleTheme from '../components/ToggleTheme'
 import { useTheme, css } from '@emotion/react'
+import dynamic from 'next/dynamic'
+const BlogAdmin = dynamic(() => import('../components/BlogAdmin'))
 
 
 const Header = ({toggleTheme}) => {
   
   const theme: any = useTheme()
-  const styleHeader = css({
+  const styleHeaderWrapper = css({
+    zIndex: 5,
     position: 'sticky',
     top: 0,
     backgroundColor: theme.colors.background,
-    padding: '1rem 0',
+  })
+  const styleHeader = css({
+    paddingBottom: '1rem',
+    paddingTop: '1rem',
     height: 'auto',
-    marginBottom: '1.8rem',
     display: 'flex',
     justifyContent: 'space-between',
-    // position: 'relative',
-    zIndex: 5,
     a:  { textDecoration: 'none' },
     '.headerRight': {
       display: 'flex',
@@ -43,19 +46,22 @@ const Header = ({toggleTheme}) => {
   })
 
   return (
-    <div css={styleHeader}>
-      <Link
-        href="/"
-        aria-label="Amir Ardalan Logo"
-      >
-        <button css={styleLogoButton}>
-          <Logo/> 
-        </button>
-      </Link>
-      <div className="headerRight">
-        <Navigation />
-        <ToggleTheme toggleTheme={toggleTheme} />
+    <div css={styleHeaderWrapper}>
+      <div css={styleHeader}>
+        <Link
+          href="/"
+          aria-label="Amir Ardalan Logo"
+        >
+          <button css={styleLogoButton}>
+            <Logo/> 
+          </button>
+        </Link>
+        <div className="headerRight">
+          <Navigation />
+          <ToggleTheme toggleTheme={toggleTheme} />
+        </div>
       </div>
+      <BlogAdmin />
     </div>
   )
 

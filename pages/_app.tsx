@@ -10,9 +10,6 @@ import LoadingBar from '@/components/LoadingBar'
 import { AppProps } from 'next/app'
 import { Provider } from 'next-auth/client'
 
-import dynamic from 'next/dynamic'
-const BlogAdmin = dynamic(() => import('../components/BlogAdmin'))
-
 
 const MyApp = ({Component, pageProps }: AppProps) => {
 
@@ -26,7 +23,6 @@ const MyApp = ({Component, pageProps }: AppProps) => {
         <LoadingBar />
         <div className="container">
           <Header toggleTheme={toggleTheme} />
-          <BlogAdmin />
           <Component {...pageProps} />
           <Footer />
         </div>

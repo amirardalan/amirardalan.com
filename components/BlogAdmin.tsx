@@ -23,12 +23,12 @@ const BlogAdmin: React.FC =  React.memo(()=> {
   const styleAnimationWrapper = css ({
     display: session ? 'block' : 'none',
     overflow: 'hidden',
-    margin: '1.5rem .1rem',
+    paddingBottom: '.5rem',
   })
   const styleAdminPanel = css({
     width: 'auto',
     display: 'flex',
-    marginBottom: '.1rem',
+    // marginBottom: '.1rem',
     padding: '.5rem .2rem .5rem 1rem',
     backgroundColor: theme.colors.accent,
     border: '1px dotted' + theme.colors.grayscale,
