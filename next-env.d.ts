@@ -4,4 +4,3 @@
 /// <reference types="@emotion/react/types/css-prop" />
 
 // Declarations
-declare module 'react-typical';

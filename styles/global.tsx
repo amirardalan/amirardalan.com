@@ -67,6 +67,7 @@ export function GlobalStyles () {
         },
         // Base
         'html, body': {
+          scrollBehavior: 'smooth',
           backgroundColor: theme.colors.background,
           fontFamily: theme.fonts.primary,
           color: theme.colors.text,

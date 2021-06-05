@@ -167,19 +167,38 @@ export default function BlogLayout(props) {
               textDecoration: 'none',
               cursor: 'default',
             },
-            p: {
-              marginTop: '2rem',
-              marginBottom: '2rem',
-            },
-            'p, ul, li, a, blockquote': {
-              fontFamily: theme.fonts.tertiary,
-            },
             h3: {
               margin: '3.5rem 0 1rem',
               padding: 0,
               fontSize: 28,
               fontWeight: 'bold',
               lineHeight: '2rem'
+            },
+            'h1, h2, h3, h3, h4, h5, h6': {
+              position: 'relative',
+              a: {
+                position: 'absolute',
+                display: 'block',
+                height: '100%',
+                width: '100%',
+                '&:hover': {
+                  '&::before': {
+                    content: '"#"',
+                    color: theme.colors.accentColor,
+                    position: 'absolute',
+                    textAlign: 'center',
+                    left: -28,
+                    fontSize: 28
+                  }
+                }
+              }
+            },
+            p: {
+              marginTop: '2rem',
+              marginBottom: '2rem',
+            },
+            'p, ul, li, a, blockquote': {
+              fontFamily: theme.fonts.tertiary,
             },
             'p, ul, li, a': {
               fontSize: 18,

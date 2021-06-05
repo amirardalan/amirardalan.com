@@ -3,9 +3,14 @@ import { useSession } from 'next-auth/client'
 import Router from 'next/router'
 import Link from 'next/link'
 import Head from 'next/head'
+
 import BlogLayout from '@/components/BlogLayout'
 import ReactMarkdown from 'react-markdown'
+import gfm from 'remark-gfm'
+import rehypeSlug from 'rehype-slug'
+import link from 'rehype-autolink-headings'
 import BlogSyntaxHighlight from '@/components/BlogSyntaxHighlight'
+
 import { GetStaticProps, GetStaticPaths } from 'next'
 import prisma from '@/lib/prisma'
 
@@ -142,7 +147,11 @@ const Post = (props: any) => {
             By {props?.post?.author?.name || 'Unknown author'} • {postDate} • {readTime}
           </div>
 
-          <ReactMarkdown components={BlogSyntaxHighlight} children={props.post.content} />
+          <ReactMarkdown
+            rehypePlugins={[ [gfm], [rehypeSlug], [link] ]}
+            components={BlogSyntaxHighlight}
+            children={props.post.content}
+          />
 
           <div className="controlsPost">
             { userHasValidSession && (
