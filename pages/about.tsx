@@ -14,7 +14,7 @@ export default function About() {
     textAlign: 'center',
   })
   const stylePageHeadingSub = css({
-    marginBottom: '1.5rem',
+    marginBottom: '2.5rem',
     color: theme.colors.grayscale,
     fontFamily: theme.fonts.tertiary,
     fontSize: 'calc(1vw + 1vh)',
@@ -108,18 +108,6 @@ export default function About() {
         <h3 css={stylePageHeadingSub}>
           – from Portland, OR –
         </h3>
-        <div css={styleCopy}>
-          <p>
-            Hey, I'm Amir! A Portland, OR based developer and designer with 10+ years experience. I aim to bridge the gap between 
-            humans and technology through UI design and fullstack engineering. Read about my <Link href="/blog/2021-a-dev-odyssey"> journey 
-            as a developer</Link>.
-          </p>
-          <p>
-            I'm passionate about JavaScript, Front-end, User Interface and React. My current stack of 
-            choice is: Next.js., TypeScript, Prisma, PostgreSQL, and Emotion. 🎉 I enjoy writing about 
-            these topics and more on <Link href="/blog">my blog</Link>.
-          </p>
-        </div>
         <main css={styleGridWrapper}>
           <div className="grid">
             <ul>
@@ -136,6 +124,9 @@ export default function About() {
               </li>
               <li>
                 <Link href="/amir-ardalan-resume.pdf">Download Resume</Link>
+              </li>
+              <li>
+                <Link href="/blog/2021-a-dev-odyssey">My journey</Link>
               </li>
             </ul>
           </div>
