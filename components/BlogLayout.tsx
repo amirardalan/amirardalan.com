@@ -256,12 +256,14 @@ export default function BlogLayout(props) {
             fontFamily: theme.fonts.tertiary,
             fontSize: 18,
           },
-          // // Markdown Code
+          // Markdown Code
           '.codeStyle': {
+            overflow: 'scroll',
             borderRadius: 5,
-          },
-          '.codeStyle, .codeStyle code': {
-            backgroundColor: theme.colors.accent + '!important',
+            backgroundColor: theme.syntaxHighlight.background + '!important',
+            'code': {
+              backgroundColor: 'transparent' + '!important',
+            },
           },
           'pre, code, code span': {
             fontFamily: theme.fonts.primary,

@@ -1,10 +1,10 @@
 // Colors
 const light= '#ffffff'
 const lightAccent = '#eeeeee'
-const lighter = '#e2e2e2'
+const lighter = '#f7f7f7'
 const dark= '#000'
 const darkAccent = '#14171a'
-const darker = '#222'
+const darker = '#343042'
 const primary = '#571AFF'
 const secondary = '#3dffc5'
 const grayLight = '#b0bccc'
@@ -64,7 +64,8 @@ export const themeLight = {
     linkedin: '/static/icons/linkedin-light.svg',
   },
   syntaxHighlight: {
-    theme: 'syntaxLight'
+    theme: 'syntaxLight',
+    background: lightAccent,
   }
 }
 
@@ -111,6 +112,7 @@ export const themeDark = {
     linkedin: '/static/icons/linkedin-dark.svg',
   },
   syntaxHighlight: {
-    theme: 'syntaxDark'
+    theme: 'syntaxDark',
+    background: darkAccent
   }
 }

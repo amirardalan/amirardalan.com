@@ -29,7 +29,7 @@ export default function Navigation() {
     alignItems: 'center',
     justifyContent: 'center',
     position: 'absolute',
-    height: '102vh',
+    height: '105vh',
     width: '100vw',
     background: theme.colors.background,
     top: '-2rem',

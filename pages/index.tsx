@@ -5,7 +5,6 @@ import Avatar from '@/components/Avatar'
 import { css, useTheme } from '@emotion/react'
 import TypingAnimation from '@/components/TypingAnimation'
 import LatestPost from '@/components/LatestPost'
-import { useSession } from 'next-auth/client'
 
 import dynamic from 'next/dynamic'
 import LoadingTriangle from '@/components/LoadingTriangle'
@@ -17,8 +16,6 @@ const CanvasLoader = dynamic(() => import('../components/CanvasLoader'), {
 })
 
 export default function Home(props: any) {
-
-  const [session] = useSession()
 
   const theme : any = useTheme()
   const styleButtonContainer = css({
@@ -118,7 +115,7 @@ export default function Home(props: any) {
     }
   })
   const styleMainRight = css({
-    height: session ? '66.7vh' : '75vh',
+    height: '75vh',
     position: 'relative',
     display: 'flex',
     flexDirection: 'column',

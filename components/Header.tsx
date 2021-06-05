@@ -14,9 +14,11 @@ const Header = ({toggleTheme}) => {
     zIndex: 5,
     position: 'sticky',
     top: 0,
+    marginBottom: '.5rem',
     backgroundColor: theme.colors.background,
   })
   const styleHeader = css({
+    overflow: 'hidden',
     paddingBottom: '1rem',
     paddingTop: '1rem',
     height: 'auto',
