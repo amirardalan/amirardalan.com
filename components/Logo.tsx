@@ -6,6 +6,7 @@ export default function Logo() {
   const theme : any = useTheme()
   const Image = styled.img`
     animation: spin 1s forwards;
+    margin-right: .2rem;
     @keyframes spin {
       from { transform: rotate(0deg); }
       to { transform: rotate(360deg); }
@@ -36,8 +37,8 @@ export default function Logo() {
       <Image
         src={theme.logo}
         alt="Amir Ardalan Logo"
-        width={30}
-        height={30}
+        width={22}
+        height={22}
       />
 
       <div css={{

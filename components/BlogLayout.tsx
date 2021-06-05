@@ -176,20 +176,24 @@ export default function BlogLayout(props) {
             },
             'h1, h2, h3, h3, h4, h5, h6': {
               scrollMarginTop: '4rem',
+              scrollSnapMarginTop: '4rem !important',
               position: 'relative',
               a: {
-                position: 'absolute',
-                display: 'block',
-                height: '100%',
-                width: '100%',
-                '&:hover': {
-                  '&::before': {
-                    content: '"#"',
-                    color: theme.colors.accentColor,
-                    position: 'absolute',
-                    textAlign: 'center',
-                    left: -28,
-                    fontSize: 28
+                '@media (min-width: 481px)': {
+                  position: 'absolute',
+                  display: 'block',
+                  height: '100%',
+                  width: '100%',
+                  '&:hover': {
+                    '&::before': {
+                      content: '"#"',
+                      color: theme.colors.grayAccent,
+                      position: 'absolute',
+                      textAlign: 'center',
+                      top: 2,
+                      left: -22,
+                      fontSize: 22
+                    }
                   }
                 }
               }

@@ -9,6 +9,8 @@ const primary = '#571AFF'
 const secondary = '#3dffc5'
 const grayLight = '#b0bccc'
 const grayDark = '#444a4e'
+const grayAccentLight = '#b8c1c7'
+const grayAccentDark = '#3e4449'
 const selection = '#ffff00'
 const buttonDisabled = '#8b8b8b'
 const warning = '#ec4949'
@@ -33,6 +35,7 @@ export const themeLight = {
     link: primary,
     accent: lightAccent,
     grayscale: grayDark,
+    grayAccent: grayAccentLight,
     footerLink: primary,
     highlight: light,
     highlightBg: dark,
@@ -83,6 +86,7 @@ export const themeDark = {
     link: secondary,
     accent: darkAccent,
     grayscale: grayLight,
+    grayAccent: grayAccentDark,
     footerLink: secondary,
     selection: selection,
     selectionText: dark,

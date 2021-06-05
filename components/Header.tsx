@@ -14,9 +14,11 @@ const Header = ({toggleTheme}) => {
     zIndex: 5,
     position: 'sticky',
     top: 0,
-    marginTop: '.5rem',
-    marginBottom: '.5rem',
+    padding: '0 2.5rem',
     backgroundColor: theme.colors.background,
+    '@media(max-width: 600px)': {
+      padding: '0 1.5rem',
+    }
   })
   const styleHeader = css({
     overflow: 'hidden',
@@ -45,7 +47,7 @@ const Header = ({toggleTheme}) => {
     border: 'none',
     fontFamily: theme.fonts.secondary,
     cursor: 'pointer',
-    animation: 'slideUp 1s forwards',
+    animation: 'fadeIn 1s forwards',
   })
 
   return (
@@ -56,7 +58,7 @@ const Header = ({toggleTheme}) => {
           aria-label="Amir Ardalan Logo"
         >
           <button css={styleLogoButton}>
-            <Logo/> 
+            <Logo /> 
           </button>
         </Link>
         <div className="headerRight">

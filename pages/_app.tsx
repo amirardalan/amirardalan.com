@@ -21,8 +21,8 @@ const MyApp = ({Component, pageProps }: AppProps) => {
       <ThemeProvider theme={themeMode}>
         <GlobalStyles />
         <LoadingBar />
+        <Header toggleTheme={toggleTheme} />
         <div className="container">
-          <Header toggleTheme={toggleTheme} />
           <Component {...pageProps} />
           <Footer />
         </div>

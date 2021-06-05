@@ -113,8 +113,11 @@ export function GlobalStyles () {
         },
         // Layout
         '.container': {
-          padding: '0 5% 0 5%',
+          padding: '0 2.5rem',
           position: 'relative',
+          '@media (max-width: 600px)': {
+            padding: '0 1.5rem',
+          }
         },
         // Utils
         '.center': {
