@@ -72,12 +72,6 @@ export function GlobalStyles () {
           color: theme.colors.text,
           WebkitTextSizeAdjust: '100%',
         },
-        html: {
-          scrollBehavior: 'smooth',
-        },
-        'html.normal-scroll': {
-          scrollBehavior: 'unset',
-        },
         '*': {
           margin: 0,
           padding: 0,
