@@ -114,9 +114,6 @@ export function GlobalStyles () {
         '.container': {
           padding: '0 5% 0 5%',
           position: 'relative',
-          '@media (max-width: 768px)': {
-            padding: '2% 5% 0 5%',
-          }
         },
         // Utils
         '.center': {

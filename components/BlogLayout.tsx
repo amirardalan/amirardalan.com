@@ -263,6 +263,7 @@ export default function BlogLayout(props) {
             backgroundColor: theme.syntaxHighlight.background + '!important',
             'code': {
               backgroundColor: 'transparent' + '!important',
+              transform: 'translateZ(0)'
             },
           },
           'pre, code, code span': {

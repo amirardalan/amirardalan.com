@@ -15,7 +15,7 @@ const SyntaxTheme = () => {
 const BlogSyntaxHighlight = {
   code({setTheme, node, inline, className,...props}) {
     const match = /language-(\w+)/.exec(className || '')
-    return !inline && match ? (
+    return match ? (
       <SyntaxHighlighter
         style={SyntaxTheme()}
         language={match[1]}
