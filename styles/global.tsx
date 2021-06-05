@@ -67,12 +67,16 @@ export function GlobalStyles () {
         },
         // Base
         'html, body': {
-          scrollBehavior: 'smooth',
           backgroundColor: theme.colors.background,
           fontFamily: theme.fonts.primary,
           color: theme.colors.text,
           WebkitTextSizeAdjust: '100%',
-          // transition: 'all 0.15s linear',
+        },
+        html: {
+          scrollBehavior: 'smooth',
+        },
+        'html.normal-scroll': {
+          scrollBehavior: 'unset',
         },
         '*': {
           margin: 0,

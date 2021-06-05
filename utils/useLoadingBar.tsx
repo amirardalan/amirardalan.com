@@ -9,8 +9,14 @@ export const useLoadingBar = () => {
   useEffect(() => {
     const start = () => { setLoading(true) }
     const end = () => { setLoading(false) }
-    Router.events.on("routeChangeStart", start)
-    Router.events.on("routeChangeComplete", end)
+    Router.events.on('routeChangeStart', () => {
+      start
+      document.documentElement.classList.add('normal-scroll')
+    })
+    Router.events.on('routeChangeComplete', () => {
+      end
+      document.documentElement.classList.remove('normal-scroll')
+    })
     Router.events.on("routeChangeError", end)
     return () => {
       Router.events.off("routeChangeStart", start)

@@ -221,7 +221,7 @@ export default function BlogLayout(props) {
             blockquote: {
               marginLeft: '-1.75rem',
               paddingLeft: '1.5rem',
-              borderLeft: '5px solid' + theme.colors.accent,
+              borderLeft: '5px solid' + theme.colors.grayAccent,
               color: theme.colors.grayscale,
               fontStyle: 'italic',
               fontWeight: 'normal',
@@ -234,22 +234,50 @@ export default function BlogLayout(props) {
                 marginLeft: '-1.1rem',
                 paddingLeft: '.8rem',
               },
-              p: { fontSize: 24 },
             },
             'ul li': {
               listStyle: 'outside',
               marginLeft: '2rem',
               paddingLeft: '.5rem',
-              
               '@media (max-width: 480px)': {
                 marginLeft: '1.5rem',
               }
+            },
+            'ul.contains-task-list': {
+              li: {
+                '&:first-of-type':{
+                  fontFamily: theme.fonts.secondary,
+                },
+                listStyle: 'none',
+                margin: 0,
+                padding: 0,
+              },
             },
             ol: {
               li: {
                 listStyleType: 'decimal',
                 marginLeft: '2rem',
                 paddingLeft: '.5rem',
+              }
+            }
+          },
+          table: {
+            width: '100%',
+            thead: {
+              fontFamily: theme.fonts.secondary,
+              tr: {
+                th: {
+                  border: '1px solid' + theme.colors.grayAccent,
+                  padding: '.5rem',
+                }
+              }
+            },
+            tbody: {
+              tr: {
+                td: {
+                  border: '1px solid' + theme.colors.grayAccent,
+                  padding: '.5rem',    
+                }
               }
             }
           },
