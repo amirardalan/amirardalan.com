@@ -256,7 +256,7 @@ export default function BlogLayout(props) {
             fontFamily: theme.fonts.tertiary,
             fontSize: 18,
           },
-          // Markdown Code
+          // Markdown Code -- and overriding various react-syntact-hilighter styles
           '.codeStyle': {
             overflow: 'scroll',
             borderRadius: 5,

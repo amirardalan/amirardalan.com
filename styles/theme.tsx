@@ -65,7 +65,7 @@ export const themeLight = {
   },
   syntaxHighlight: {
     theme: 'syntaxLight',
-    background: lightAccent,
+    background: lighter,
   }
 }
 
