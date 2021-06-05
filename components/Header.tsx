@@ -14,6 +14,7 @@ const Header = ({toggleTheme}) => {
     zIndex: 5,
     position: 'sticky',
     top: 0,
+    marginTop: '.5rem',
     marginBottom: '.5rem',
     backgroundColor: theme.colors.background,
   })
