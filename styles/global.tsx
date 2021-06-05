@@ -71,7 +71,7 @@ export function GlobalStyles () {
           fontFamily: theme.fonts.primary,
           color: theme.colors.text,
           WebkitTextSizeAdjust: '100%',
-          transition: 'all 0.15s linear',
+          // transition: 'all 0.15s linear',
         },
         '*': {
           margin: 0,
@@ -112,10 +112,10 @@ export function GlobalStyles () {
         },
         // Layout
         '.container': {
-          padding: '2rem 5% 0 5%',
+          padding: '1.5rem 5% 0 5%',
           position: 'relative',
-          '@media (max-width: 890px)': {
-            padding: '5% 5% 0 5%',
+          '@media (max-width: 768px)': {
+            padding: '2% 5% 0 5%',
           }
         },
         // Utils

@@ -7,7 +7,7 @@ const darkAccent = '#161616'
 const darker = '#222'
 const primary = '#6e00b8'
 const secondary = '#3D98FF'
-const grayLight = '#727a83'
+const grayLight = '#b0bccc'
 const grayDark = '#444a4e'
 const selection = '#ffff00'
 const buttonDisabled = '#8b8b8b'
@@ -62,6 +62,9 @@ export const themeLight = {
     github: '/static/icons/github-light.svg',
     twitter: '/static/icons/twitter-light.svg',
     linkedin: '/static/icons/linkedin-light.svg',
+  },
+  syntaxHighlight: {
+    theme: 'syntaxLight'
   }
 }
 
@@ -106,5 +109,8 @@ export const themeDark = {
     github: '/static/icons/github-dark.svg',
     twitter: '/static/icons/twitter-dark.svg',
     linkedin: '/static/icons/linkedin-dark.svg',
+  },
+  syntaxHighlight: {
+    theme: 'syntaxDark'
   }
 }

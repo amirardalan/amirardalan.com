@@ -9,11 +9,15 @@ const Header = ({toggleTheme}) => {
   
   const theme: any = useTheme()
   const styleHeader = css({
+    position: 'sticky',
+    top: 0,
+    backgroundColor: theme.colors.background,
+    padding: '1rem 0',
     height: 'auto',
     marginBottom: '1.8rem',
     display: 'flex',
     justifyContent: 'space-between',
-    position: 'relative',
+    // position: 'relative',
     zIndex: 5,
     a:  { textDecoration: 'none' },
     '.headerRight': {

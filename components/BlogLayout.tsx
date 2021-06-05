@@ -256,42 +256,30 @@ export default function BlogLayout(props) {
             fontFamily: theme.fonts.tertiary,
             fontSize: 18,
           },
-
-          // Markdown Code
-          'pre, code': {
-            backgroundColor: theme.colors.code,
+          // // Markdown Code
+          '.codeStyle': {
             borderRadius: 5,
-            color: theme.colors.background,
+          },
+          'pre, code, code span': {
+            fontFamily: theme.fonts.primary,
           },
           code: {
-            fontFamily: theme.fonts.primary,
             wordWrap: 'break-word',
-          },
-          pre: {
-            padding: '1rem',
-            lineHeight: '2rem',
-            code: {
-              wordWrap: 'normal',
+            fontSize: 16,
+            color: theme.colors.grayscale,
+            backgroundColor: theme.colors.accent,
+            borderRadius: 5,
+            '&::before, &::after': {
+              content: '"`"',
+              color: theme.colors.accentColor
             }
           },
-          'code, code p': {
-            padding: '0.2rem',
-            backgroundColor: theme.colors.code,
-            color: theme.colors.codeText,
-            fontSize: 15,
+          'pre code': {
+            '&::before, &::after': { content: 'none' }
           },
-          '.codeStyle': {
-            code: {
-              padding: 0,
-            }
+          '.language-bash span.linenumber': {
+            display: 'none !important'
           },
-          '.languageBash': {
-            '.codeStyle &': {
-              'pre &': {
-                'span.linenumber': { display: 'none !important', }
-              }
-            }
-          }
         }}
       />
       <div className="layout">
