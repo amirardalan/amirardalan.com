@@ -202,21 +202,6 @@
   resolved "https://registry.yarnpkg.com/@emotion/weak-memoize/-/weak-memoize-0.2.5.tgz#8eed982e2ee6f7f4e44c253e12962980791efd46"
   integrity sha512-6U71C2Wp7r5XtFtQzYrW5iKFT67OixrSxjI4MptCHzdSVlgabczzqLe0ZSgnub/5Kp4hSbpDB1tMytZY9pwxxA==
 
-"@fontsource/fira-code@^4.3.0":
-  version "4.4.2"
-  resolved "https://registry.yarnpkg.com/@fontsource/fira-code/-/fira-code-4.4.2.tgz#c04377d9117735f3ae964450e180b2c4670031e5"
-  integrity sha512-1fabc9+G1+FXQlR8FEmvxwXl+IDYyNslW9WzlRa4sqfvsFyObNwwBYYoChs2J4X9OXjbtx9gOb9WaHtCb6bxdg==
-
-"@fontsource/lora@^4.3.0":
-  version "4.4.2"
-  resolved "https://registry.yarnpkg.com/@fontsource/lora/-/lora-4.4.2.tgz#4a2ab56178a75b1dfb90dfce71971c800fb35df1"
-  integrity sha512-yNS4hnK/aq7Y4Kj7cC7G5l5P623gH84cDQPlkXC//MygEm8ft5lLsFq8mN3j1ocVPMMx9grtqF8NNH2Q+kVPKw==
-
-"@fontsource/poppins@^4.2.2":
-  version "4.4.2"
-  resolved "https://registry.yarnpkg.com/@fontsource/poppins/-/poppins-4.4.2.tgz#4fc2cacf19e4388402f6a0271e39b1dfed867f73"
-  integrity sha512-0Y+lmZTq3Hq87KoPJzzzRpCXqb8yBc0Peh41cg75B+bxTscvSgVnUKLBZQjpRVururT+rPhNswdfYWMuzF7t8A==
-
 "@hapi/accept@5.0.2":
   version "5.0.2"
   resolved "https://registry.yarnpkg.com/@hapi/accept/-/accept-5.0.2.tgz#ab7043b037e68b722f93f376afb05e85c0699523"

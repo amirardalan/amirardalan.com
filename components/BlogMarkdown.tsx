@@ -58,16 +58,13 @@ export default function BlogMarkdown({ props }) {
             content: '"`"',
             color: theme.colors.accentColor
           },
-          span: {
-            '&:last-of-type': {
-              display: 'none !important'
-            }
-          }
         },
         'pre code': {
           '&::before, &::after': { content: 'none' },
         },
-
+        '.language-bash span.linenumber': {
+          display: 'none !important'
+        },
       }} />
 
       <ReactMarkdown

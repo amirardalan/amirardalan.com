@@ -1,15 +1,53 @@
 import { Global, useTheme } from '@emotion/react'
-import "@fontsource/poppins/700.css"
-import "@fontsource/poppins/900.css"
-import "@fontsource/lora/500.css"
-import "@fontsource/lora/500-italic.css"
-import "@fontsource/fira-code/400.css"
 
 export function GlobalStyles () {
   
   const theme : any = useTheme()
 
   return (
+    <>
+      <Global styles={{
+        '@font-face': {
+          fontFamily: 'Poppins',
+          fontStyle: 'normal',
+          fontWeight: 900,
+          src: 'url("/fonts/poppins-latin-900.woff2") format("woff2")'
+        },
+      }}/>
+      <Global styles={{
+        '@font-face': {
+          fontFamily: 'Poppins',
+          fontStyle: 'normal',
+          fontWeight: 700,
+          src: 'url("/fonts/poppins-latin-700.woff2") format("woff2")'
+        },
+      }}/>
+      <Global styles={{
+        '@font-face': {
+          fontFamily: 'Fira Code',
+          fontStyle: 'normal',
+          fontWeight: 400,
+          src: 'url("/fonts/fira-code-latin-400.woff2") format("woff2")'
+        },
+      }}/>
+      <Global styles={{
+        '@font-face': {
+          fontFamily: 'Lora',
+          fontStyle: 'normal',
+          fontWeight: 500,
+          src: 'url("/fonts/lora-latin-500.woff2") format("woff2")',
+        },
+      }}/>
+      <Global styles={{
+        '@font-face': {
+          fontFamily: 'Lora',
+          fontStyle: 'italic',
+          fontWeight: 500,
+          src: 'url("/fonts/lora-latin-500-italic.woff2") format("woff2")'
+        },
+      }}/>
+
+
     <Global
       styles={{
         // Reset
@@ -179,6 +217,7 @@ export function GlobalStyles () {
         }
       }}
     />
+    </>
   )
 }
 
