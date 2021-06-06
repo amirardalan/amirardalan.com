@@ -11,6 +11,7 @@ export function GlobalStyles () {
           fontFamily: 'Poppins',
           fontStyle: 'normal',
           fontWeight: 900,
+          fontDisplay: 'swap',
           src: 'url("/fonts/poppins-latin-900.woff2") format("woff2")'
         },
       }}/>
@@ -19,6 +20,7 @@ export function GlobalStyles () {
           fontFamily: 'Poppins',
           fontStyle: 'normal',
           fontWeight: 700,
+          fontDisplay: 'swap',
           src: 'url("/fonts/poppins-latin-700.woff2") format("woff2")'
         },
       }}/>
@@ -27,6 +29,7 @@ export function GlobalStyles () {
           fontFamily: 'Fira Code',
           fontStyle: 'normal',
           fontWeight: 400,
+          fontDisplay: 'swap',
           src: 'url("/fonts/fira-code-latin-400.woff2") format("woff2")'
         },
       }}/>
@@ -35,6 +38,7 @@ export function GlobalStyles () {
           fontFamily: 'Lora',
           fontStyle: 'normal',
           fontWeight: 500,
+          fontDisplay: 'swap',
           src: 'url("/fonts/lora-latin-500.woff2") format("woff2")',
         },
       }}/>
@@ -43,6 +47,7 @@ export function GlobalStyles () {
           fontFamily: 'Lora',
           fontStyle: 'italic',
           fontWeight: 500,
+          fontDisplay: 'swap',
           src: 'url("/fonts/lora-latin-500-italic.woff2") format("woff2")'
         },
       }}/>
