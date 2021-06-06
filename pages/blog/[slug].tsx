@@ -1,23 +1,20 @@
 import React, { useState } from 'react'
-import { renderToString } from 'react-dom/server'
 import { useSession } from 'next-auth/client'
-import Router from 'next/router'
-import Link from 'next/link'
-import Head from 'next/head'
 
 import BlogLayout from '@/components/BlogLayout'
-import sortBlogPosts from '@/utils/sortBlogPosts'
+import Head from 'next/head'
+import Router from 'next/router'
+import Link from 'next/link'
+
+import { renderToString } from 'react-dom/server'
+import BlogNextPrev from '@/components/BlogNextPrev'
 import ReadTime from '@/components/ReadTime'
 import FormatDate from '@/components/FormatDate'
-
-import ReactMarkdown from 'react-markdown'
-import BlogSyntaxHighlight from '@/components/BlogSyntaxHighlight'
-import gfm from 'remark-gfm'
-import rehypeSlug from 'rehype-slug'
-import link from 'rehype-autolink-headings'
+import BlogMarkdown from '@/components/BlogMarkdown'
 
 import { GetStaticProps, GetStaticPaths } from 'next'
 import prisma from '@/lib/prisma'
+
 
 // Generate static paths based on published post slugs
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -27,7 +24,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const paths = feed.map((post) => ({
     params: { slug: post.slug }
   }))
-
   return { paths, fallback: 'blocking' }
 }
 
@@ -94,32 +90,6 @@ const Post = (props: any) => {
     title = `${title} (Draft)`
   }
 
-  // Get current post data
-  const total : number = props.feed.length
-  const current : number = props.post.id
-
-  // Sort Posts based on @/utils/sortBlogPosts
-  const arr : Array<any> = props.feed ? props.feed : null
-  const arrSorted = arr.sort(sortBlogPosts)
-
-  // Error Handling
-  const first = (arr[0].id == current && isPublished) ? true : false
-  const last = (arr[total - 1].id == current && isPublished) ? true : false
-  const only = (first && last)
-  const errHandlePrev = (isPublished && !first && !only)
-  const errHandleNext= (isPublished && !last && !only)
-
-  // Generate next/prev post navigation and conditionally render the links
-  const index = arrSorted.findIndex(x => x.id === current)
-  const prevTitle = errHandlePrev ? arr[index - 1].title : null
-  const nextTitle = errHandleNext ? arr[index + 1].title : null
-  const prevLink = errHandlePrev ? `/blog/${encodeURIComponent(arr[index - 1].slug)}` : '#'
-  const nextLink = errHandleNext ? `/blog/${encodeURIComponent(arr[index + 1].slug)}` : '#'
-  const ShowPrevLink = () => 
-    <Link href={prevLink} aria-label={prevTitle}><a>← {prevTitle}</a></Link>
-  const ShowNextLink = () => 
-    <Link href={nextLink} aria-label={nextTitle}><a>{nextTitle} →</a></Link>
-
   // Handle state and rendering for post deletion confirmation
   const [showDeletionConfirmation, setShowDeletionConfirmation] = useState(false)
   const confirmOnClick = () => setShowDeletionConfirmation(true)
@@ -127,7 +97,7 @@ const Post = (props: any) => {
   const DeletionConfirmation = () => (
     <div className="controlsConfirm">
       <div className="confirmSelect">
-        <span className="confirmLink delete" onClick={() => deletePost(current)}>
+        <span className="confirmLink delete" onClick={() => deletePost(props.post.id)}>
           Confirm
         </span>
         <span>•</span>
@@ -163,55 +133,44 @@ const Post = (props: any) => {
           <h2 aria-label={`${title}`}>
             {title}
           </h2>
-          <div
-            className="postDetails"
-            aria-label={`${postDate} • ${postReadTime}`}
-          >
+          <div className="postDetails" aria-label={`${postDate} • ${postReadTime}`}>
             By {props?.post?.author?.name || 'Unknown author'} • {postDate} • {postReadTime}
           </div>
 
-          <ReactMarkdown
-            rehypePlugins={[ [gfm], [rehypeSlug], [link] ]}
-            components={BlogSyntaxHighlight}
-            children={props.post.content}
-          />
+          <BlogMarkdown props={props} />
 
-          <div className="controlsPost">
-            { userHasValidSession && (
+          { userHasValidSession && (
+            <div className="controlsPost">
+
               <button
                 className="buttonCompact"
                 onClick={() => publishPost(props.post.id, props.post.published)}>
                 {publishLabel}
               </button>
-            )}
-            { userHasValidSession && (
               <button
                 className="buttonCompact"
                 onClick={() => editPost(props.post.id)}>
                 Edit
               </button>
-            )}
-            { userHasValidSession && (
               <button
                 className="buttonCompact delete"
                 onClick={confirmOnClick}>
                 Delete
               </button>
-            )}
 
-            { showDeletionConfirmation ? <DeletionConfirmation /> : null }
+              { showDeletionConfirmation
+              ? <DeletionConfirmation />
+              : null }
 
-          </div>
+            </div>
+          )}
+
         </div>
 
-        <div className="nextPrevControls">
-          <div className="prevLink">
-            { errHandlePrev ? <ShowPrevLink /> : null }
-          </div>
-          <div className="nextLink">
-            { errHandleNext ? <ShowNextLink /> : null }
-          </div>
-        </div>
+        <BlogNextPrev
+          props={props}
+          isPublished={isPublished}
+        />
         
       </div>
       </BlogLayout>
