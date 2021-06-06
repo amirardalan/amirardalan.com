@@ -145,6 +145,9 @@ export default function Home(props: any) {
         animation: 'fadeIn .2s forwards'
       } 
     },
+    '@media (max-width: 1024px)': {
+      marginTop: 0,
+    },
     '@media (max-width: 890px)': {
       height: '45vh',
       marginTop: '2rem',
