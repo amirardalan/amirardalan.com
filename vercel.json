@@ -1,23 +1,53 @@
 {
+  "github": {
+    "enabled": true,
+    "silent": true
+  },
   "headers": [
     {
-      "source": [
-        "/fonts/fira-code-latin-400.woff2",
-        "/fonts/lora-latin-500-italic.woff2",
-        "/fonts/lora-latin-500.woff2",
-        "/fonts/poppins-latin-700.woff2",
-        "/fonts/poppins-latin-900.woff2"
-      ],
-      "headers": [
+      "source": "/fonts/fira-code-latin-400.woff2",
+      "headers" : [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/fonts/lora-latin-500-italic.woff2",
+      "headers" : [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/fonts/lora-latin-500.woff2",
+      "headers" : [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/fonts/poppins-latin-700.woff2",
+      "headers" : [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/fonts/poppins-latin-900.woff2",
+      "headers" : [
         {
           "key": "Cache-Control",
           "value": "public, max-age=31536000, immutable"
         }
       ]
     }
-  ],
-  "github": {
-    "enabled": true,
-    "silent": true
-  }
+  ]
 }
