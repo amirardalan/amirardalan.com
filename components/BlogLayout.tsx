@@ -315,37 +315,6 @@ export default function BlogLayout(props: any) {
             fontFamily: theme.fonts.tertiary,
             fontSize: 18,
           },
-          // Markdown Code -- and overriding various react-syntact-hilighter styles
-          '.codeStyle': {
-            overflow: 'scroll',
-            borderRadius: 5,
-            backgroundColor: theme.syntaxHighlight.background + '!important',
-            'code': {
-              backgroundColor: 'transparent' + '!important',
-              transform: 'translateZ(0)'
-            },
-          },
-          'pre, code, code span': {
-            fontFamily: theme.fonts.primary,
-          },
-          code: {
-            wordWrap: 'break-word',
-            fontFamily: theme.fonts.primary,
-            fontSize: 16,
-            color: theme.colors.grayscale,
-            backgroundColor: theme.colors.accent,
-            borderRadius: 5,
-            '&::before, &::after': {
-              content: '"`"',
-              color: theme.colors.accentColor
-            }
-          },
-          'pre code': {
-            '&::before, &::after': { content: 'none' },
-          },
-          '.language-bash span.linenumber': {
-            display: 'none !important'
-          },
         }}
       />
       {props.children}

@@ -1,11 +1,11 @@
 import { useTheme } from '@emotion/react'
 import { materialOceanic, materialLight } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import ReactMarkdown from 'react-markdown'
-import { PrismAsyncLight as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 import gfm from 'remark-gfm'
 import rehypeSlug from 'rehype-slug'
 import link from 'rehype-autolink-headings'
-
+import { Global } from '@emotion/react'
 
 export default function BlogMarkdown({ props }) {
 
@@ -32,13 +32,52 @@ export default function BlogMarkdown({ props }) {
     }
   }
 
-  // Render ReactMarkdown and Rehype plugins
   return (
-    <ReactMarkdown
-      children={props.post.content}
-      components={BlogSyntaxHighlight}
-      remarkPlugins={[ [gfm] ]}
-      rehypePlugins={[ [rehypeSlug], [link] ]}
-    />
+    <>
+      <Global styles={{
+        '.codeStyle, pre, code, code span': {
+          fontFamily: theme.fonts.primary,
+          fontStyle: 'normal !important'
+        },
+        '.codeStyle': {
+          overflow: 'scroll',
+          borderRadius: 5,
+          backgroundColor: theme.syntaxHighlight.background + '!important',
+          'code': {
+            backgroundColor: 'transparent' + '!important',
+            transform: 'translateZ(0)'
+          },
+        },
+        code: {
+          wordWrap: 'break-word',
+          fontSize: 16,
+          color: theme.colors.grayscale,
+          backgroundColor: theme.colors.accent,
+          borderRadius: 5,
+          '&::before, &::after': {
+            content: '"`"',
+            color: theme.colors.accentColor
+          },
+          span: {
+            '&:last-of-type': {
+              display: 'none !important'
+            }
+          }
+        },
+        'pre code': {
+          '&::before, &::after': { content: 'none' },
+        },
+        '.language-bash span.linenumber': {
+          display: 'none !important'
+        },
+      }} />
+
+      <ReactMarkdown
+        children={props.post.content}
+        components={BlogSyntaxHighlight}
+        remarkPlugins={[ [gfm] ]}
+        rehypePlugins={[ [rehypeSlug], [link] ]}
+      />
+    </>
   )
 }
