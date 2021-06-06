@@ -40,7 +40,7 @@ const Drafts: React.FC<Props> = (props) => {
 
   if (session && session.user.email == process.env.NEXT_PUBLIC_USER_EMAIL) {
     draftsList = (
-      <div className="blog drafts">
+      <div className="blog admin drafts">
 
         <nav className="breadcrumbs">
           <Link href="/blog">Blog</Link>

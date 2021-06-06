@@ -64,10 +64,10 @@ const Edit = (props: any) => {
   }
 
   // Handle state and rendering for post deletion confirmation
-  const [showConfirmation, setShowConfirmation] = useState(false)
-  const confirmOnClick = () => setShowConfirmation(true)
-  const cancelOnClick = () => setShowConfirmation(false)
-  const RenderDeleteConfirmation = () => (
+  const [showDeletionConfirmation, setShowDeletionConfirmation] = useState(false)
+  const confirmOnClick = () => setShowDeletionConfirmation(true)
+  const cancelOnClick = () => setShowDeletionConfirmation(false)
+  const DeletionConfirmation = () => (
     <div className="controlsConfirm">
       <div className="confirmSelect">
         <span className="confirmLink delete" onClick={() => deletePost(id)}>
@@ -94,7 +94,7 @@ const Edit = (props: any) => {
 
   if (session && session.user.email == process.env.NEXT_PUBLIC_USER_EMAIL) {
     edit = (
-      <div className="blog">
+      <div className="blog admin edit">
 
         <nav className="breadcrumbs">
           <Link href="/blog">Blog</Link>
@@ -139,7 +139,7 @@ const Edit = (props: any) => {
               </button>
               <a className="buttonCompact" onClick={() => Router.push(`/blog/${editSlug}`)}>Cancel</a>
               <a className="buttonCompact delete" onClick={confirmOnClick}>Delete</a>
-              { showConfirmation ? <RenderDeleteConfirmation /> : null }
+              { showDeletionConfirmation ? <DeletionConfirmation /> : null }
             </div>
 
           </form>

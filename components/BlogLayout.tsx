@@ -40,10 +40,6 @@ export default function BlogLayout(props: any) {
           '.blog': {
             maxWidth: 768,
             margin: '0 auto',
-            
-            '@media (max-width: 480px)': {
-              margin: '0 1%',
-            },
             'h2, h3, h4': {
               fontFamily: theme.fonts.secondary,
             },
@@ -64,6 +60,11 @@ export default function BlogLayout(props: any) {
             main: {
               display: 'flex',
               flexDirection: 'column',
+            },
+            '&.admin': {
+              form: {
+                marginTop: '1rem'
+              }
             }
           },
           '.post': {
@@ -231,7 +232,7 @@ export default function BlogLayout(props: any) {
                 borderLeft: '5px solid' + theme.colors.accent,
               },
               '@media (max-width: 890px)': {
-                marginLeft: '-1.1rem',
+                marginLeft: '-.8rem',
                 paddingLeft: '.8rem',
               },
             },
@@ -340,9 +341,7 @@ export default function BlogLayout(props: any) {
           },
         }}
       />
-      <div className="layout">
-        {props.children}
-      </div>
+      {props.children}
     </>
   )
 

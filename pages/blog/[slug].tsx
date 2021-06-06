@@ -84,7 +84,7 @@ const Post = (props: any) => {
     Router.push(redirect)
   }
 
-  const RenderBreadcrumb = () => (
+  const ShowBreadcrumb = () => (
     <Link href="/blog/drafts">
       <a>Drafts</a>
     </Link>
@@ -115,16 +115,16 @@ const Post = (props: any) => {
   const nextTitle = errHandleNext ? arr[index + 1].title : null
   const prevLink = errHandlePrev ? `/blog/${encodeURIComponent(arr[index - 1].slug)}` : '#'
   const nextLink = errHandleNext ? `/blog/${encodeURIComponent(arr[index + 1].slug)}` : '#'
-  const RenderPrevLink = () => 
+  const ShowPrevLink = () => 
     <Link href={prevLink} aria-label={prevTitle}><a>← {prevTitle}</a></Link>
-  const RenderNextLink = () => 
+  const ShowNextLink = () => 
     <Link href={nextLink} aria-label={nextTitle}><a>{nextTitle} →</a></Link>
 
   // Handle state and rendering for post deletion confirmation
-  const [showConfirmation, setShowConfirmation] = useState(false)
-  const confirmOnClick = () => setShowConfirmation(true)
-  const cancelOnClick = () => setShowConfirmation(false)
-  const RenderDeleteConfirmation = () => (
+  const [showDeletionConfirmation, setShowDeletionConfirmation] = useState(false)
+  const confirmOnClick = () => setShowDeletionConfirmation(true)
+  const cancelOnClick = () => setShowDeletionConfirmation(false)
+  const DeletionConfirmation = () => (
     <div className="controlsConfirm">
       <div className="confirmSelect">
         <span className="confirmLink delete" onClick={() => deletePost(current)}>
@@ -154,7 +154,7 @@ const Post = (props: any) => {
 
         <nav className="breadcrumbs">
           <Link href="/blog">Blog</Link>
-          { !isPublished ? <RenderBreadcrumb /> : null}
+          { !isPublished ? <ShowBreadcrumb /> : null}
           <span>{title}</span>
         </nav>
         
@@ -199,17 +199,17 @@ const Post = (props: any) => {
               </button>
             )}
 
-            { showConfirmation ? <RenderDeleteConfirmation /> : null }
+            { showDeletionConfirmation ? <DeletionConfirmation /> : null }
 
           </div>
         </div>
 
         <div className="nextPrevControls">
           <div className="prevLink">
-            { errHandlePrev ? <RenderPrevLink /> : null }
+            { errHandlePrev ? <ShowPrevLink /> : null }
           </div>
           <div className="nextLink">
-            { errHandleNext ? <RenderNextLink /> : null }
+            { errHandleNext ? <ShowNextLink /> : null }
           </div>
         </div>
         

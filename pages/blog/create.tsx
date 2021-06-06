@@ -71,7 +71,7 @@ const Draft: React.FC = () => {
   if (session && session.user.email == process.env.NEXT_PUBLIC_USER_EMAIL) {
 
     create = (
-      <div className="blog create">
+      <div className="blog admin create">
 
         <nav className="breadcrumbs">
           <Link href="/blog">Blog</Link>
