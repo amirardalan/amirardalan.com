@@ -4,17 +4,18 @@ import styled from '@emotion/styled'
 export default function Logo() {
 
   const theme : any = useTheme()
-  const Image = styled.img`
-    animation: spin 1s forwards;
-    margin-right: .2rem;
-    text-indent: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-    @keyframes spin {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
+  const Image = styled.img({
+    animation: 'spin 1s forwards',
+    marginRight: '.2rem',
+    textIndent: '100%',
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+    '@keyframes spin': {
+      from: { transform: 'rotate(0deg)' },
+      to: { transform: 'rotate(360deg)' }
     }
-  `
+  })
+
   const styleTitle = css({
     margin: '0',
     fontWeight: 'bold',

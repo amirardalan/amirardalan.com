@@ -330,6 +330,7 @@ export default function BlogLayout(props: any) {
           },
           code: {
             wordWrap: 'break-word',
+            fontFamily: theme.fonts.primary,
             fontSize: 16,
             color: theme.colors.grayscale,
             backgroundColor: theme.colors.accent,
