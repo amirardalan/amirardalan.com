@@ -51,7 +51,6 @@ const Header = ({toggleTheme}) => {
     border: 'none',
     fontFamily: theme.fonts.secondary,
     cursor: 'pointer',
-    animation: 'fadeIn 1s forwards',
   })
 
   return (
