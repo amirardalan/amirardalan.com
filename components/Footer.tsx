@@ -18,7 +18,6 @@ export default function Footer() {
     borderTop: '1px solid' + theme.colors.accent,
     lineHeight: '1.8em',
     animation: 'slideUp .25s forwards',
-    transition: 'all 0.15s linear',
   })
   const styleFooterCopy = css({
     'a': {
