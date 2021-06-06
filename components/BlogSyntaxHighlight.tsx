@@ -21,7 +21,7 @@ const BlogSyntaxHighlight = {
         language={match[1]}
         PreTag="div"
         className="codeStyle"
-        showLineNumbers={true}
+        showLineNumbers={false}
         {...props}
       />
     ) : (
