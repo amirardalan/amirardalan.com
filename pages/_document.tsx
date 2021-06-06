@@ -21,7 +21,7 @@ export default class MyDocument extends Document {
           <meta name="twitter:site" content="@amirardalan" />
 
           <link rel="icon" href="/favicon.png" />
-          <link rel="apple-touch-icon" href="/icon192.png" />
+          <link rel="apple-touch-icon" href="/touch-192.png" />
           <link rel="manifest" href="/manifest.json" />
 
         </Head>
