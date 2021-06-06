@@ -111,8 +111,11 @@ export function GlobalStyles () {
         },
         // Layout
         '.container': {
-          padding: '0 2.5rem',
+          padding: '0 4rem',
           position: 'relative',
+          '@media(max-width: 1024px)': {
+            padding: '0 2.5rem',
+          },
           '@media (max-width: 600px)': {
             padding: '0 1.5rem',
           }
