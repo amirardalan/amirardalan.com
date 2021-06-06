@@ -3,10 +3,10 @@
     {
       "source": [
         "/fonts/fira-code-latin-400.woff2",
-        "fonts/lora-latin-500-italic.woff2",
-        "fonts/lora-latin-500.woff2",
-        "fonts/poppins-latin-700.woff2",
-        "fonts/poppins-latin-900.woff2"
+        "/fonts/lora-latin-500-italic.woff2",
+        "/fonts/lora-latin-500.woff2",
+        "/fonts/poppins-latin-700.woff2",
+        "/fonts/poppins-latin-900.woff2"
       ],
       "headers": [
         {
