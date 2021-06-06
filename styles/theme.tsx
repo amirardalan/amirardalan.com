@@ -47,7 +47,7 @@ export const themeLight = {
     code: code,
     codeText: light,
   },
-  logo: "/static/logo/logo-light.svg",
+  logo: "/logo/logo-light.svg",
   logoError: '/static/icons/error-light.svg',
   helloEmoji: '👋',
   toggleButton: {
@@ -96,7 +96,7 @@ export const themeDark = {
     code: code,
     codeText: light,
   },
-  logo: '/static/logo/logo-dark.svg',
+  logo: '/logo/logo-dark.svg',
   logoError: '/static/icons/error-dark.svg',
   helloEmoji: '✌️',
   toggleButton: {
