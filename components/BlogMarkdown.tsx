@@ -1,7 +1,7 @@
 import { useTheme } from '@emotion/react'
 import { materialOceanic, materialLight } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import ReactMarkdown from 'react-markdown'
-import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import gfm from 'remark-gfm'
 import rehypeSlug from 'rehype-slug'
 import link from 'rehype-autolink-headings'
@@ -67,9 +67,7 @@ export default function BlogMarkdown({ props }) {
         'pre code': {
           '&::before, &::after': { content: 'none' },
         },
-        '.language-bash span.linenumber': {
-          display: 'none !important'
-        },
+
       }} />
 
       <ReactMarkdown
