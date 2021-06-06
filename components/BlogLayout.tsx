@@ -62,9 +62,15 @@ export default function BlogLayout(props: any) {
               flexDirection: 'column',
             },
             '&.admin': {
+              '.breadcrumbs': {
+                marginTop: '1rem',
+              },
+              '.drafts': {
+                marginTop: '1rem',
+              },
               form: {
                 marginTop: '1rem'
-              }
+              },
             }
           },
           '.post': {

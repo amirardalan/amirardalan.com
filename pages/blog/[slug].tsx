@@ -150,7 +150,7 @@ const Post = (props: any) => {
         <title>{title} – Amir Ardalan</title>
         {isPublished ? null : disallowRobots }
       </Head>
-      <div className="blog">
+      <div className={isPublished ? 'blog' : 'blog admin'}>
 
         <nav className="breadcrumbs">
           <Link href="/blog">Blog</Link>
