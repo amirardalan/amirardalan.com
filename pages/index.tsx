@@ -1,8 +1,9 @@
+import { css, useTheme } from '@emotion/react'
+
 import Head from 'next/head'
 import Link from 'next/link'
 import Avatar from '@/components/Avatar'
 
-import { css, useTheme } from '@emotion/react'
 import TypingAnimation from '@/components/TypingAnimation'
 import LatestPost from '@/components/LatestPost'
 
@@ -15,8 +16,31 @@ const CanvasLoader = dynamic(() => import('../components/CanvasLoader'), {
   loading: () => <LoadingTriangle />
 })
 
+// Get all published posts along with author, publish date, title, teaser and slug
+export const getStaticProps: GetStaticProps = async () => {
+  try {
+    const latestPost = await prisma.post.findMany({
+      where: { published: true },
+      orderBy: {
+        publishedAt: 'desc',
+      },
+      take: 1,
+      select: {
+        title: true,
+        teaser: true,
+        slug: true,
+      },
+    })
+    return { props: { latestPost } }
+  }
+  catch {
+    return { props: {} }
+  }
+}
+
 export default function Home(props: any) {
 
+  // Styles
   const theme : any = useTheme()
   const styleButtonContainer = css({
     marginBottom: '2rem',
@@ -203,25 +227,4 @@ export default function Home(props: any) {
       </main>
     </>
   )
-}
-
-export const getStaticProps: GetStaticProps = async () => {
-  try {
-    const latestPost = await prisma.post.findMany({
-      where: { published: true },
-      orderBy: {
-        publishedAt: 'desc',
-      },
-      take: 1,
-      select: {
-        title: true,
-        teaser: true,
-        slug: true,
-      },
-    })
-    return { props: { latestPost } }
-  }
-  catch {
-    return { props: {} }
-  }
 }

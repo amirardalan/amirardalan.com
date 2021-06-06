@@ -1,12 +1,11 @@
-import { useState } from 'react'
 import { useTheme, css } from '@emotion/react'
-import Link from './Link'
-import SocialLinks from './SocialLinks'
-import Logo from './Logo'
-
+import { useState } from 'react'
+import Link from '@/components/Link'
+import Logo from '@/components/Logo'
+import SocialLinks from '@/components/SocialLinks'
 
 export default function Navigation() {
-
+  
   const theme : any = useTheme()
   const styleMainNav = css({
     display: 'flex',

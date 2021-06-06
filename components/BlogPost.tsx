@@ -1,5 +1,8 @@
 import React from 'react'
+import { renderToString } from 'react-dom/server'
 import Link from 'next/link'
+import FormatDate from '@/components/FormatDate'
+import ReadTime from '@/components/ReadTime'
 
 
 export type PostProps = {
@@ -20,20 +23,8 @@ export type PostProps = {
 
 const Post: React.FC<{ post: PostProps }> = ({ post }) => {
 
-  // Publish Date Formatter
-  const formatDate = [
-    post.publishedAt.toLocaleDateString("en-US", { month: 'long' }) ,
-    post.publishedAt.toLocaleDateString("en-US", { day: 'numeric' })+',',
-    post.publishedAt.toLocaleDateString("en-US", { year: 'numeric' })
-  ]
-  const postDate = formatDate.join(' ')
-
-  // Read Time Calculator
-  const text = post.content
-  const wpm = 225;
-  const words = text.trim().split(/\s+/).length;
-  const time = Math.ceil(words / wpm);
-  const readTime = time + ' ' + 'min read'
+  const postDate = renderToString(<FormatDate date={post.publishedAt} />)
+  const postReadTime = renderToString(<ReadTime content={post.content} />)
 
   return (
     <div className="blog postTeaser">
@@ -47,9 +38,9 @@ const Post: React.FC<{ post: PostProps }> = ({ post }) => {
       </h2>
       <div
         className="postDetails"
-        aria-label={`${postDate} • ${readTime}`}>
+        aria-label={`${postDate} • ${postReadTime}`}>
           <div className="postDetails">
-            By {post?.author?.name || 'Unknown author'} • {postDate} • {readTime}
+            By {post?.author?.name || 'Unknown author'} • {postDate} • {postReadTime}
           </div>
         </div>
       <p>{post.teaser}</p>

@@ -1,13 +1,12 @@
 import React, { useState } from 'react'
-import Link from 'next/link'
 import { Global, css, useTheme } from '@emotion/react'
-import axios from "axios"
-import { useRouter } from 'next/router'
 import { signOut, useSession } from 'next-auth/client'
+import { useRouter } from 'next/router'
+import Link from 'next/link'
+import axios from "axios"
 import LoadingSpinner from './LoadingSpinner'
 
 const BlogAdmin: React.FC =  React.memo(()=> {
-  const theme : any = useTheme()
 
   const router = useRouter()
   const isActive: (pathname: string) => boolean = (pathname) =>
@@ -20,6 +19,7 @@ const BlogAdmin: React.FC =  React.memo(()=> {
   let adminPanelRight = null
 
   // Styles
+  const theme : any = useTheme()
   const styleAnimationWrapper = css ({
     display: session ? 'block' : 'none',
     overflow: 'hidden',

@@ -1,47 +1,82 @@
 import React, { useState } from 'react'
+import { renderToString } from 'react-dom/server'
 import { useSession } from 'next-auth/client'
 import Router from 'next/router'
 import Link from 'next/link'
 import Head from 'next/head'
 
 import BlogLayout from '@/components/BlogLayout'
+import sortBlogPosts from '@/utils/sortBlogPosts'
+import ReadTime from '@/components/ReadTime'
+import FormatDate from '@/components/FormatDate'
+
 import ReactMarkdown from 'react-markdown'
+import BlogSyntaxHighlight from '@/components/BlogSyntaxHighlight'
 import gfm from 'remark-gfm'
 import rehypeSlug from 'rehype-slug'
 import link from 'rehype-autolink-headings'
-import BlogSyntaxHighlight from '@/components/BlogSyntaxHighlight'
 
 import { GetStaticProps, GetStaticPaths } from 'next'
 import prisma from '@/lib/prisma'
 
+// Generate static paths based on published post slugs
+export const getStaticPaths: GetStaticPaths = async () => {
+  const feed = await prisma.post.findMany({
+    where: { published: true },
+  })
+  const paths = feed.map((post) => ({
+    params: { slug: post.slug }
+  }))
+
+  return { paths, fallback: 'blocking' }
+}
+
+// Request post data from database
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const [post, feed] = await prisma.$transaction([
+    prisma.post.findFirst({
+      where: {
+        slug: String(params?.slug),
+      },
+      include: {
+        author: {
+          select: { name: true },
+        },
+      },
+    }),
+    prisma.post.findMany({
+      where: { published: true },
+      select: {
+        id: true,
+        title: true,
+        slug: true,
+      },
+    })
+  ])
+  return { props: { post, feed } }
+}
+
 const Post = (props: any) => {
 
-  // Check if user has valid session
   const [session] = useSession()
   const userHasValidSession = Boolean(session)
 
-  // Check if post is published
   const isPublished : Boolean = props.post.published ? true : false
-  // Generate a label for Publish/Unpublish button
   const publishLabel = isPublished ? 'Unpublish' : 'Publish'
-  // Set the redirect for after Publish/Unpublish and Delete
   const redirect = isPublished ? '/blog/drafts' : '/blog'
 
-  // Publish/Unpublish post
   async function publishPost(slug: String, published: boolean): Promise<void> {
     await fetch(`/api/publish/${slug}?published=${published}`, {
       method: 'PUT',
     })
     await Router.push(redirect)
   }
-  // Edit post
   async function editPost(id: number): Promise<void> {
     await fetch(`/blog/edit/${id}`, {
       method: 'PUT',
     })
     await Router.push(`/blog/edit/${id}`)
   }
-  // Delete post
   async function deletePost(id: number): Promise<void> {
     await fetch(`/api/post/${id}`, {
       method: 'DELETE',
@@ -49,7 +84,6 @@ const Post = (props: any) => {
     Router.push(redirect)
   }
 
-  // Check if draft and render breadcrumb and append title
   const RenderBreadcrumb = () => (
     <Link href="/blog/drafts">
       <a>Drafts</a>
@@ -60,26 +94,13 @@ const Post = (props: any) => {
     title = `${title} (Draft)`
   }
 
-  // Format Publish Date
-  const formatDate = [
-    props.post.publishedAt.toLocaleDateString("en-US", { month: 'long' }) ,
-    props.post.publishedAt.toLocaleDateString("en-US", { day: 'numeric' })+',',
-    props.post.publishedAt.toLocaleDateString("en-US", { year: 'numeric' })
-  ]
-  const postDate = formatDate.join(' ')
-
   // Get current post data
   const total : number = props.feed.length
   const current : number = props.post.id
-  
-  // Sort the Posts by ID
-  function compare( a:any, b:any) {
-    if ( a.id < b.id ) return -1
-    if ( a.id > b.id ) return 1
-    return 0;
-  }
+
+  // Sort Posts based on @/utils/sortBlogPosts
   const arr : Array<any> = props.feed ? props.feed : null
-  const arrSorted = arr.sort(compare)
+  const arrSorted = arr.sort(sortBlogPosts)
 
   // Error Handling
   const first = (arr[0].id == current && isPublished) ? true : false
@@ -117,13 +138,10 @@ const Post = (props: any) => {
     </div>
   )
 
-  // Calculate estimated read time
-  const text = props.post.content
-  const wpm = 225;
-  const words = text.trim().split(/\s+/).length;
-  const time = Math.ceil(words / wpm);
-  const readTime = time + ' ' + 'min read'
+  const postDate = renderToString(<FormatDate date={props.post.publishedAt} />)
+  const postReadTime = renderToString(<ReadTime content={props.post.content} />)
 
+  // Exclude unpublished drafts from search engine crawlers
   const disallowRobots = ( <meta name="robots" content="noindex"></meta> )
 
   return (
@@ -142,9 +160,14 @@ const Post = (props: any) => {
         
         <div className="post postFull">
 
-          <h2>{title}</h2>
-          <div className="postDetails">
-            By {props?.post?.author?.name || 'Unknown author'} • {postDate} • {readTime}
+          <h2 aria-label={`${title}`}>
+            {title}
+          </h2>
+          <div
+            className="postDetails"
+            aria-label={`${postDate} • ${postReadTime}`}
+          >
+            By {props?.post?.author?.name || 'Unknown author'} • {postDate} • {postReadTime}
           </div>
 
           <ReactMarkdown
@@ -196,40 +219,3 @@ const Post = (props: any) => {
 }
 
 export default Post
-
-// Generate Static Paths for all posts
-export const getStaticPaths: GetStaticPaths = async () => {
-  const feed = await prisma.post.findMany({
-    where: { published: true },
-  })
-  const paths = feed.map((post) => ({
-    params: { slug: post.slug }
-  }))
-
-  return { paths, fallback: 'blocking' }
-}
-
-// Request post data from DB
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const [post, feed] = await prisma.$transaction([
-    prisma.post.findFirst({
-      where: {
-        slug: String(params?.slug),
-      },
-      include: {
-        author: {
-          select: { name: true },
-        },
-      },
-    }),
-    prisma.post.findMany({
-      where: { published: true },
-      select: {
-        id: true,
-        title: true,
-        slug: true,
-      },
-    })
-  ])
-  return { props: { post, feed } }
-}

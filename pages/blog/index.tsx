@@ -1,6 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
 import BlogLayout from '@/components/BlogLayout'
+import sortBlogPosts from '@/utils/sortBlogPosts'
 import { GetStaticProps } from 'next'
 import prisma from '@/lib/prisma'
 import BlogPost, { PostProps } from '@/components/BlogPost'
@@ -34,13 +35,6 @@ const Blog: React.FC<Props> = (props: any) => {
   const FeedNotFound = () => (
     <span>Database Error: Posts Could not be loaded. :(</span>
   )
-
-  // Sort post by ID
-  function compare( a:any, b:any) {
-    if ( a.id < b.id ) return -1
-    if ( a.id > b.id ) return 1
-    return 0;
-  }
   
   return (
     <BlogLayout>
@@ -55,7 +49,7 @@ const Blog: React.FC<Props> = (props: any) => {
 
         <div>
           { showFeedError ? <FeedNotFound /> : null }
-          {feed.sort(compare).reverse().map((post: any) => (
+          {feed.sort(sortBlogPosts).reverse().map((post: any) => (
             <div
               key={post.id}
               className="post"

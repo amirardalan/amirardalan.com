@@ -1,6 +1,6 @@
 import { Global, useTheme } from '@emotion/react'
 
-export default function BlogLayout(props) {
+export default function BlogLayout(props: any) {
 
   const theme : any = useTheme()
 

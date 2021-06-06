@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Head from 'next/head'
 import BlogLayout from '@/components/BlogLayout'
 import BlogPost, { PostProps } from '@/components/BlogPost'
+import sortBlogPosts from '@/utils/sortBlogPosts'
 import prisma from '@/lib/prisma'
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
@@ -37,13 +38,6 @@ const Drafts: React.FC<Props> = (props) => {
   
   const [session] = useSession()
 
-  // Sort post by ID
-  function compare( a:any, b:any) {
-    if ( a.id < b.id ) return -1
-    if ( a.id > b.id ) return 1
-    return 0;
-  }
-
   if (session && session.user.email == process.env.NEXT_PUBLIC_USER_EMAIL) {
     draftsList = (
       <div className="blog drafts">
@@ -55,7 +49,7 @@ const Drafts: React.FC<Props> = (props) => {
 
         <div className="drafts">
           <main>
-            {props.drafts.sort(compare).reverse().map((post) => (
+            {props.drafts.sort(sortBlogPosts).reverse().map((post) => (
               <div
                 key={post.id}
                 className="postDraft"

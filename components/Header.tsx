@@ -1,10 +1,10 @@
-import Logo from './Logo'
-import Link from 'next/link'
-import Navigation  from '../components/Navigation'
-import ToggleTheme from '../components/ToggleTheme'
 import { useTheme, css } from '@emotion/react'
+import Link from 'next/link'
+import Navigation  from '@/components/Navigation'
+import ToggleTheme from '@/components/ToggleTheme'
+import Logo from '@/components/Logo'
 import dynamic from 'next/dynamic'
-const BlogAdmin = dynamic(() => import('../components/BlogAdmin'))
+const BlogAdmin = dynamic(() => import('@/components/BlogAdmin'))
 
 
 const Header = ({toggleTheme}) => {
