@@ -10,7 +10,7 @@ export default function LatestPost(props: any) {
     borderLeft: '7px solid' + theme.colors.accent,
     fontWeight: 'normal',
     lineHeight: '1.8rem',
-    h4: {
+    h3: {
       color: theme.colors.grayscale,
       fontSize: 12,
       fontWeight: 'normal',
@@ -19,7 +19,7 @@ export default function LatestPost(props: any) {
     'p, a': {
       fontFamily: theme.fonts.tertiary,
     },
-    a: {
+    'h4 a': {
       color: theme.colors.text,
       fontSize: 18,
       textDecoration: 'underline',
@@ -41,13 +41,15 @@ export default function LatestPost(props: any) {
   const showLatestPost = (props.latestPost) ? true : false
   const ShowLatestPost = () => (
     <div css={styleLatestPost}>
-      <h4 aria-label="Latest Post">
+      <h3 aria-label="Latest Post">
         Latest Post:
-      </h4>
+      </h3>
       <Link href={`/blog/${encodeURIComponent(latestPost.slug)}`}>
-        <a aria-label={latestPost.title} tabIndex={0}>
-          {latestPost.title} →
-        </a>
+        <h4>
+          <a aria-label={latestPost.title} tabIndex={0}>
+            {latestPost.title} →
+          </a>
+        </h4>
       </Link>
       <p>
         {latestPost.teaser}

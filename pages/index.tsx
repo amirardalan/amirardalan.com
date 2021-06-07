@@ -118,7 +118,7 @@ export default function Home(props: any) {
         fontSize: 'calc(3.4vw + 3.4vh)',
       }
     },
-    h3: {
+    '.typedText': {
       marginBottom: '3rem',
       fontSize: 'calc(.9vw + .9vh)',
       fontWeight: 'normal',
@@ -197,12 +197,12 @@ export default function Home(props: any) {
                   Amir Ardalan
                 </div>
               </h2>
-              <h3 aria-hidden="true" >
+              <div className="typedText" aria-hidden="true" >
                 I'm currently focusing on:
                 <div>
                   <TypingAnimation />
                 </div>
-              </h3>
+              </div>
               <div css={styleButtonContainer}>
                 <Link href="/blog" aria-label="Blog">
                   <button css={styleCtaButton}>
