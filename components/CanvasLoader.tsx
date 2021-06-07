@@ -10,8 +10,7 @@ const CanvasLoader =  React.memo(() => {
   return (
     <>
       <small className="canvasControls">
-        Credit:
-        <a
+        Credit: <a
           href="https://github.com/Mozzius/terrain-fiber"
           target="_blank"
           rel="noopener noreferrer"
