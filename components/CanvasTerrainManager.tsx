@@ -6,12 +6,13 @@ import { Global } from '@emotion/react'
 const CanvasTerrainManager = ({ theme }) => {
   const [seed, setSeed] = useState(Date.now())
 
-  const { resolution, height, levels, scale, } = useControls({
+  const { resolution, height, levels, scale, rotate } = useControls({
     'Generate Terrain': button(() => setSeed(Date.now())),
     resolution: { value: 256, min: 10, max: 500, step: 1 },
     height: { value: .15, min: 0, max: .3 },
     levels: { value: 3, min: 1, max: 5, step: 1 },
     scale: { value: 3, min: 1, max: 5, step: 1 },
+    rotate: { value: true }
   })
 
   return (
@@ -23,6 +24,7 @@ const CanvasTerrainManager = ({ theme }) => {
         height={height}
         levels={levels}
         scale={scale}
+        rotate={rotate}
       />
       <Global styles={{
         // Leva Controls Override
@@ -82,6 +84,9 @@ const CanvasTerrainManager = ({ theme }) => {
             },
             '+ div': {
               display: 'none'
+            },
+            svg: {
+              background: theme.colors.accentColor
             }
           },
           '.levadtm57': {
@@ -95,6 +100,12 @@ const CanvasTerrainManager = ({ theme }) => {
             background: theme.colors.grayAccent,
             color: theme.colors.text
           },
+          '.leva5nscf': {
+            color: theme.colors.grayscale
+          },
+          '.levadnk60 label': {
+            background: theme.colors.grayAccent
+          }
         }
       }} />
     </>
