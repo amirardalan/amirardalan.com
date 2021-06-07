@@ -69,7 +69,7 @@ const Terrain = ({
 
   return (
     <mesh ref={mesh}>
-      <planeGeometry
+      <planeBufferGeometry
         args={[undefined, undefined, size - 1, size - 1]}
         ref={ref}
       />
