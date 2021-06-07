@@ -20,9 +20,10 @@ export default function LatestPost(props: any) {
       fontFamily: theme.fonts.tertiary,
     },
     'h4 a': {
-      color: theme.colors.text,
       fontSize: 18,
+      fontWeight: 'normal',
       textDecoration: 'underline',
+      cursor: 'pointer',
       '&:hover': {
         textDecoration: 'none',
       },
@@ -44,13 +45,13 @@ export default function LatestPost(props: any) {
       <h3 aria-label="Latest Post">
         Latest Post:
       </h3>
-      <Link href={`/blog/${encodeURIComponent(latestPost.slug)}`}>
-        <h4>
+      <h4>
+        <Link href={`/blog/${encodeURIComponent(latestPost.slug)}`}>
           <a aria-label={latestPost.title} tabIndex={0}>
             {latestPost.title} →
           </a>
-        </h4>
-      </Link>
+        </Link>
+      </h4>
       <p>
         {latestPost.teaser}
       </p>

@@ -14,9 +14,6 @@ export default function Navigation() {
     a: {
       margin: '0 1.5rem',
       color: theme.colors.text,
-      '&:hover': {
-        color: theme.colors.grayscale,
-      }
     },
     '@media(max-width: 768px)': {
       display: 'none',
@@ -106,6 +103,7 @@ export default function Navigation() {
       color: theme.colors.text,
       '&.active': {
         '&::before': {
+          color: theme.colors.accentColor,
           position: 'absolute',
           content: '">"',
           left: -10,
@@ -152,6 +150,7 @@ export default function Navigation() {
     a: {
       display: 'block',
       marginBottom: '.5rem',
+      color: theme.colors.grayscale,
       textAlign: 'center',
       animation: 'slideUp .8s ease',
     },

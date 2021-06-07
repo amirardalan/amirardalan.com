@@ -40,7 +40,7 @@ export default function Footer() {
         Copyright &copy; {(new Date().getFullYear()) + ' – '} Amir Ardalan
       </div>
       <div css={styleFooterCopy}>
-        Made with <span>&hearts;</span> using Next.js + Prisma<br/>
+        Made with <span>&hearts;</span> Next.js + Prisma + Three.js<br/>
         <Link href="/" aria-label="Home">
           Home
         </Link>
