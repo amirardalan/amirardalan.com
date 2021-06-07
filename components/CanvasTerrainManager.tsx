@@ -38,6 +38,31 @@ const CanvasTerrainManager = ({ theme }) => {
             background: theme.colors.accentColor,
             letterSpacing: '.2rem',
             textTransform: 'uppercase',
+            color: theme.colors.background,
+          },
+          '.levam9bkr.levaebmh1': {
+            '&:hover': {
+              color: 'unset'
+            }
+          },
+          label: {
+            '&:hover': {
+              color: theme.colors.text
+            },
+            '+ div': {
+              display: 'none'
+            }
+          },
+          '.levadtm57': {
+            background: theme.colors.accentColor,
+            boxShadow: 'none',
+          },
+          '.leva0sm9i, .levakncnr': {
+            background: theme.colors.grayAccent + '!important'
+          },
+          '.levahlc9c': {
+            background: theme.colors.grayAccent,
+            color: theme.colors.text
           },
         }
       }} />
