@@ -23,7 +23,13 @@ const CanvasTerrainManager = ({ theme }) => {
           textTransform: 'uppercase',
           'div:first-of-type': {
             backgroundColor: theme.colors.accent,
-            boxShadow: 'none'
+            boxShadow: 'none',
+          },
+          '.levawz9l9wdj1o--fill-false': {
+            height: 'max-content',
+            top: 'unset',
+            bottom: 'calc(6vw + 6vh)',
+            right: 'calc(3.5vw + 3.5vh)',
           },
           '.levaussed, .levarv4c7': {
             background: theme.colors.accent,
@@ -64,6 +70,9 @@ const CanvasTerrainManager = ({ theme }) => {
             background: theme.colors.grayAccent,
             color: theme.colors.text
           },
+          // '@media(max-width: 890px)': {
+          //   display: 'none',
+          // }
         }
       }} />
       <CanvasTerrain
