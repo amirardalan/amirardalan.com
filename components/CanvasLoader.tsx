@@ -16,7 +16,7 @@ const CanvasLoader =  React.memo(() => {
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Credit: https://github.com/Mozzius/terrain-fiber">
-            @Mozzius
+          @Mozzius
         </a>
       </small>
       <Canvas
