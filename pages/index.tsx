@@ -139,6 +139,7 @@ export default function Home(props: any) {
     }
   })
   const styleMainRight = css({
+    background: theme.canvas.background,
     marginTop: '2rem',
     height: '72vh',
     position: 'relative',
@@ -148,24 +149,27 @@ export default function Home(props: any) {
     alignItems: 'center',
     cursor: 'crosshair',
     animation: 'fadeIn .5s forwards',
-    '.canvasControls': {
+    '.canvasInfo': {
       zIndex: 3,
       margin: '0 0 1rem 0',
       padding: '0',
       position: 'absolute',
       bottom: 0,
       left: 20,
-      color: theme.colors.grayscale,
+      color: theme.colors.background,
       fontSize: 10,
       fontWeight: 'normal',
       textTransform: 'uppercase',
       animation: 'fadeOut .2s forwards',
+      a: {
+        color: theme.colors.background,
+      },
       '@media(max-width: 890px)': {
         display: 'none',
       }
     },
     '&:hover': {
-      '.canvasControls': {
+      '.canvasInfo': {
         animation: 'fadeIn .2s forwards'
       } 
     },

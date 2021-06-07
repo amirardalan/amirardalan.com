@@ -56,6 +56,7 @@ export const themeLight = {
   canvas: {
     textSmall: ' ',
     mesh: primary,
+    background: 'linear-gradient(to bottom, #010A10 30%,#59230B 80%,#2F1107 100%)'
   },
   page: {
     bg: lighter,
@@ -107,6 +108,7 @@ export const themeDark = {
   canvas: {
     textSmall: ' ',
     mesh: secondary,
+    background: 'linear-gradient(to bottom, #757abf 0%,#8583be 60%,#eab0d1 100%)'
   },
   page: {
     bg: darkAccent,
