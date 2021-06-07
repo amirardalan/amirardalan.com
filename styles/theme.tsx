@@ -70,9 +70,6 @@ export const themeLight = {
     theme: 'syntaxLight',
     background: lighter,
   },
-  leva: {
-    background: 'red',
-  }
 }
 
 // Dark Theme
@@ -122,7 +119,4 @@ export const themeDark = {
     theme: 'syntaxDark',
     background: darkAccent
   },
-  leva: {
-    background: 'red',
-  }
 }
