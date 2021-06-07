@@ -1,13 +1,10 @@
 import { useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
-import { Icosahedron, MeshWobbleMaterial, OrbitControls } from '@react-three/drei'
-import { useMediaQuery } from '../utils/useMediaQuery'
+import { Icosahedron, MeshWobbleMaterial } from '@react-three/drei'
 
 export default function CanvasScene(props: any) {
 
   const mesh : any = useRef()
-
-  const isBreakpoint = useMediaQuery(890)
   
   useFrame(() => (
     mesh.current.rotation.x += 0.002,
@@ -31,7 +28,6 @@ export default function CanvasScene(props: any) {
             wireframe
           />
         </Icosahedron>
-        { ( isBreakpoint ) ? null : <OrbitControls enablePan={false} maxDistance={15} /> }
       </mesh>
     </>
   )

@@ -1,22 +1,25 @@
 import React from 'react'
 import { useTheme } from '@emotion/react'
 import { Canvas } from '@react-three/fiber'
-import CanvasScene from './CanvasScene'
+import CanvasTerrainManager from '@/components/CanvasTerrainManager'
+import CanvasIcosohedron from '@/components/CanvasIcosahedron'
+import { OrbitControls} from '@react-three/drei'
+import { useMediaQuery } from '../utils/useMediaQuery'
 
 const CanvasLoader =  React.memo(() => {
   
   const theme: any = useTheme()
+  const isBreakpoint = useMediaQuery(890)
 
   return (
     <>
-      <small className="canvasControls">
-        {theme.canvas.textSmall}
-      </small>
       <Canvas
-        css={{ animation: 'slideUp 1s forwards' }}
-        gl={{ antialias: true }}
+        onCreated={({ camera }) => camera.lookAt(0, 0, 0)}
+        camera={{ position: [0.75, 0.75, 0.75] }}
       >
-        <CanvasScene theme={theme} />
+        { ( isBreakpoint ) ? null : <OrbitControls enablePan={false} maxDistance={15} /> }
+        <CanvasTerrainManager theme={theme} />
+        <ambientLight />
       </Canvas>
     </>
   )
