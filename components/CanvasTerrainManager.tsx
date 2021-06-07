@@ -34,13 +34,17 @@ const CanvasTerrainManager = ({ theme }) => {
           
           // Hide on Tablet/Mobile
           '@media(max-width: 890px)': {
-            display: 'none',
+            display: 'none'
           },
 
           'div:first-of-type': {
             backgroundColor: theme.colors.accent,
             boxShadow: 'none',
             animation: 'fadeIn 1s forwards',
+          },
+          '.levavqh1g > .levam9bkr:first-of-type, .levavqh1guk05a--isRoot-true > div:first-of-type': {
+            marginTop: 0,
+            paddingTop: 0,
           },
           '.levawz9l9wdj1o--fill-false': {
             height: 'max-content',
@@ -62,7 +66,7 @@ const CanvasTerrainManager = ({ theme }) => {
             background: theme.colors.accent,
             svg: {
               fill: theme.colors.accentColor
-            }
+            },
           },
           '.levabjb2y': {
             borderRadius: 0 + '!important',
@@ -104,7 +108,10 @@ const CanvasTerrainManager = ({ theme }) => {
             color: theme.colors.grayscale
           },
           '.levadnk60 label': {
-            background: theme.colors.grayAccent
+            background: theme.colors.grayAccent,
+            svg: {
+              stroke: theme.colors.background,
+            }
           }
         }
       }} />

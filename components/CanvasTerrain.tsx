@@ -3,7 +3,7 @@ import { useFrame } from '@react-three/fiber'
 import SimplexNoise from 'simplex-noise'
 import { BufferAttribute } from 'three'
 
-const generateTerrain = (simplex, size, height, levels, scale, offset, rotate) => {
+const generateTerrain = (simplex, size, height, levels, scale, offset) => {
   const noise = (level, x, z) =>
     simplex.noise2D(
       offset.x * scale + scale * level * x,
@@ -49,7 +49,9 @@ const Terrain = ({
   const mesh : any = useRef()
   
   useFrame(() => (
-    rotate === true ? mesh.current.rotation.y += 0.002 : null
+    rotate === true
+    ? mesh.current.rotation.y += 0.002
+    : null
   ))
 
   useLayoutEffect(() => {
@@ -57,7 +59,7 @@ const Terrain = ({
     node?.setAttribute(
       'position',
       new BufferAttribute(
-        generateTerrain(simplex, size, height, levels, scale, offset, rotate),
+        generateTerrain(simplex, size, height, levels, scale, offset),
         3
       )
     );
