@@ -20,7 +20,7 @@ const TypingAnimation = () => {
       strings: [
         'Fullstack Engineering^1500',
         'User Interface Design^1500',
-        'JavaScript^1500 &amp; Typescript^1500',
+        'JavaScript^1500 &amp; TypeScript^1500',
         'React.js ⚛️^1500',
         'Next.js^1500',
         'Three.js △^1500',
