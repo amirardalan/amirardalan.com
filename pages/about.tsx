@@ -66,23 +66,6 @@ export default function About() {
     justifyContent: 'center',
     margin: '6rem 0',
   })
-  const styleCopy = css({
-    marginBottom: '2rem',
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-evenly',
-    fontFamily: theme.fonts.tertiary,
-    fontSize: 16,
-    p: {
-      padding: '3% 4%',
-    },
-    '@media(max-width: 1024px)': {
-      flexDirection: 'column',
-      p: {
-        padding: '1.5rem 0',
-      },
-    }
-  })
   const socialIconsWrapper = css({
     width: '100%',
     display: 'flex',
@@ -118,15 +101,22 @@ export default function About() {
               <li><strong>Developer, Designer, Writer.</strong></li>
               <li>
                 <em>
-                  I ❤️ clean, maintainable code
-                  and purpose-built user interfaces.
+                  I craft experiences for the web with clean, accessible code, and purpose-built user interfaces.
                 </em>
               </li>
               <li>
-                <Link href="/amir-ardalan-resume.pdf">Download Resume</Link>
+                <Link
+                  href="/amir-ardalan-resume.pdf"
+                  aria-label="Resume (.pdf)">
+                  Resume(.pdf)
+                </Link>
               </li>
               <li>
-                <Link href="/blog/2021-a-dev-odyssey">My journey</Link>
+                <Link
+                  href="/blog/2021-a-dev-odyssey"
+                  aria-label="My Journey">
+                  My Journey
+                </Link>
               </li>
             </ul>
           </div>

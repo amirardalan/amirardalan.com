@@ -37,10 +37,10 @@ export default function Footer() {
   return (
     <footer css={styleFooter}>
       <div>
-        Copyright &copy; {(new Date().getFullYear()) + ' – '} Amir Ardalan
+        Copyright &copy; {(new Date().getFullYear()) + ' – '} Amir Ardalan &hearts;
       </div>
       <div css={styleFooterCopy}>
-        Made with <span>&hearts;</span> Next.js + Prisma + Three.js<br/>
+        Next.js + Prisma + Three.js<br/>
         <Link href="/" aria-label="Home">
           Home
         </Link>

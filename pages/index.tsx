@@ -2,7 +2,6 @@ import { css, useTheme } from '@emotion/react'
 
 import Head from 'next/head'
 import Link from 'next/link'
-import Avatar from '@/components/Avatar'
 
 import TypingAnimation from '@/components/TypingAnimation'
 import LatestPost from '@/components/LatestPost'
@@ -88,20 +87,10 @@ export default function Home(props: any) {
     animation: 'slideUp .8s forwards',
     '@media (max-width: 890px)': {
       height: 'auto',
-      marginRight: 0,
+      margin: '2rem 0 0 0',
       flexDirection: 'column-reverse',
       justifyContent: 'start',
       alignSelf: 'flex-start',
-    }
-  })
-  const stylePhoto = css({
-    marginBottom: '1.5rem',
-    '@media (max-width: 890px)': {
-      order: 1,
-    },
-    '@media (max-width: 480px)': {
-      height: 60,
-      width: 60,
     }
   })
   const styleMainLeftContent = css({
@@ -191,9 +180,6 @@ export default function Home(props: any) {
       <main css={styleMain}>
         <div css={styleAnimationWrapper}>
           <div css={styleMainLeft}>
-            <div css={stylePhoto}>
-              <Avatar />
-            </div>
             <div css={styleMainLeftContent}>
               <h2>
                 Hi, {theme.helloEmoji} I'm

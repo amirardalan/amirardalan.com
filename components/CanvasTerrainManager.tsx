@@ -43,8 +43,13 @@ const CanvasTerrainManager = ({ theme }) => {
           '.levawz9l9wdj1o--fill-false': {
             height: 'max-content',
             top: 'unset',
-            bottom: 'calc(6vw + 6vh)',
-            right: 'calc(3.5vw + 3.5vh)',
+            bottom: '17%',
+            right: '5.5rem',
+
+            '@media(max-width: 1024px)': {
+              bottom: '25%',
+              right: '5rem'
+            },
 
             '@media(max-width: 600px)': {
               bottom: '.5rem',
