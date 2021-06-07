@@ -38,7 +38,7 @@ const Terrain = ({
   seed,
   size,
   height,
-  levels = 8,
+  levels = 5,
   scale = 1,
   offset = { x: 0, z: 0 }
 }) => {

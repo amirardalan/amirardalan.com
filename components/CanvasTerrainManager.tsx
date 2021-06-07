@@ -8,10 +8,10 @@ const CanvasTerrainManager = ({ theme }) => {
 
   const { resolution, height, levels, scale, } = useControls({
     'Generate Terrain': button(() => setSeed(Date.now())),
-    resolution: { value: 80, min: 10, max: 500, step: 1 },
+    resolution: { value: 256, min: 10, max: 500, step: 1 },
     height: { value: .15, min: 0, max: .3 },
-    levels: { value: 4, min: 1, max: 5, step: 1 },
-    scale: { value: 2, min: 1, max: 5, step: 1 },
+    levels: { value: 3, min: 1, max: 5, step: 1 },
+    scale: { value: 3, min: 1, max: 5, step: 1 },
   })
 
   return (
