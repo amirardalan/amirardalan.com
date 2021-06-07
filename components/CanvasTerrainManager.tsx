@@ -38,6 +38,7 @@ const CanvasTerrainManager = ({ theme }) => {
           'div:first-of-type': {
             backgroundColor: theme.colors.accent,
             boxShadow: 'none',
+            animation: 'fadeIn 1s forwards',
           },
           '.levawz9l9wdj1o--fill-false': {
             height: 'max-content',
