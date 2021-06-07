@@ -20,6 +20,8 @@ const CanvasLoader =  React.memo(() => {
         </a>
       </small>
       <Canvas
+        css={{ animation: 'slideUp 1s forwards' }}
+        gl={{ antialias: true }}
         onCreated={({ camera }) => camera.lookAt(0, 0, 0)}
         camera={{ position: [0.35, 0.35, 0.35] }}
       >
