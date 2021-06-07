@@ -2,7 +2,6 @@ import React from 'react'
 import { useTheme } from '@emotion/react'
 import { Canvas } from '@react-three/fiber'
 import CanvasTerrainManager from '@/components/CanvasTerrainManager'
-import Link from 'next/link'
 
 const CanvasLoader =  React.memo(() => {
   
@@ -11,7 +10,14 @@ const CanvasLoader =  React.memo(() => {
   return (
     <>
       <small className="canvasControls">
-        Credit: <Link href="https://github.com/Mozzius/terrain-fiber">@Mozzius</Link>
+        Credit:
+        <a
+          href="https://github.com/Mozzius/terrain-fiber"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Credit: https://github.com/Mozzius/terrain-fiber">
+            @Mozzius
+        </a>
       </small>
       <Canvas
         onCreated={({ camera }) => camera.lookAt(0, 0, 0)}
