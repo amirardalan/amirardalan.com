@@ -1,5 +1,5 @@
-import { useControls } from 'leva'
 import { useLayoutEffect, useMemo, useRef } from 'react'
+import { useFrame } from '@react-three/fiber'
 import SimplexNoise from 'simplex-noise'
 import { BufferAttribute } from 'three'
 
@@ -45,6 +45,12 @@ const Terrain = ({
   const simplex = useMemo(() => new SimplexNoise(seed), [seed])
   const ref = useRef()
 
+  const mesh : any = useRef()
+  
+  useFrame(() => (
+    mesh.current.rotation.y += 0.002
+  ))
+
   useLayoutEffect(() => {
     const node = ref.current as any
     node?.setAttribute(
@@ -59,7 +65,7 @@ const Terrain = ({
   }, [size, height, levels, scale, offset, simplex])
 
   return (
-    <mesh>
+    <mesh ref={mesh}>
       <planeGeometry
         args={[undefined, undefined, size - 1, size - 1]}
         ref={ref}
