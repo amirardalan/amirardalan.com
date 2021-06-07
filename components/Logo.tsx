@@ -7,9 +7,7 @@ export default function Logo() {
   const Image = styled.img({
     animation: 'spin 1s forwards',
     marginRight: '.2rem',
-    textIndent: '100%',
-    whiteSpace: 'nowrap',
-    overflow: 'hidden',
+    fontSize: 0,
     '@keyframes spin': {
       from: { transform: 'rotate(0deg)' },
       to: { transform: 'rotate(360deg)' }
