@@ -54,7 +54,7 @@ export const themeLight = {
     switch: darker,
   },
   canvas: {
-    textSmall: 'Rotate & Zoom',
+    textSmall: ' ',
     mesh: primary,
   },
   page: {
@@ -105,7 +105,7 @@ export const themeDark = {
     switch: lighter,
   },
   canvas: {
-    textSmall: 'Rotate + Zoom',
+    textSmall: ' ',
     mesh: secondary,
   },
   page: {
