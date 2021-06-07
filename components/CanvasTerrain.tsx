@@ -49,8 +49,8 @@ const Terrain = ({
   const mesh : any = useRef()
   
   useFrame(() => (
-    rotate === true
-    ? mesh.current.rotation.y += 0.002
+    rotate?
+    mesh.current.rotation.y += 0.002
     : null
   ))
 
@@ -62,7 +62,7 @@ const Terrain = ({
         generateTerrain(simplex, size, height, levels, scale, offset),
         3
       )
-    );
+    )
     node.elementsNeedUpdate = true
     node?.computeVertexNormals()
   }, [size, height, levels, scale, offset, simplex])
