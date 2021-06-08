@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useTheme, css } from '@emotion/react'
 
-const Toggle = ({ toggleTheme }) => {
+const ToggleTheme = ({ toggleTheme }) => {
 
   const [toggleThemeControl, setToggleThemeControl] = useState(false)
   const themeControlToggled = () => {
@@ -48,4 +48,4 @@ const Toggle = ({ toggleTheme }) => {
   )
 }
 
-export default Toggle
+export default ToggleTheme

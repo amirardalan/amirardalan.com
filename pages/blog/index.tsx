@@ -37,7 +37,7 @@ const Blog: React.FC<Props> = (props: any) => {
   )
   
   return (
-    <BlogLayout>
+    <BlogLayout toggleTheme={props.toggleTheme}>
       <Head>
         <title>Blog – Amir Ardalan</title>
       </Head>

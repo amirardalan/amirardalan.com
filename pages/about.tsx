@@ -1,10 +1,12 @@
 import { useTheme, css } from '@emotion/react'
+import Layout from '@/components/Layout'
+
 import Head from 'next/head'
 import Link from 'next/link'
 import Image from 'next/image'
 import Avatar from '@/components/Avatar'
 
-export default function About() {
+export default function About(props: any) {
 
   const theme : any = useTheme()
   const stylePageHeading = css({
@@ -80,7 +82,7 @@ export default function About() {
   })
 
   return (
-    <>
+    <Layout toggleTheme={props.toggleTheme}>
       <Head>
         <title>About – Amir Ardalan</title>
       </Head>
@@ -228,6 +230,6 @@ export default function About() {
           />
         </div>
       </div>
-    </>
+    </Layout>
   )
 }

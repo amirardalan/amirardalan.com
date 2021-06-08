@@ -1,4 +1,5 @@
 import { Global, useTheme } from '@emotion/react'
+import Layout from '@/components/Layout'
 
 export default function BlogLayout(props: any) {
 
@@ -317,7 +318,9 @@ export default function BlogLayout(props: any) {
           },
         }}
       />
-      {props.children}
+      <Layout toggleTheme={props.toggleTheme}>
+        {props.children}
+      </Layout>
     </>
   )
 
