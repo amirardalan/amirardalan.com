@@ -1,20 +1,23 @@
-import { useTheme, css } from '@emotion/react'
+import { css } from '@emotion/react'
 import Link from 'next/link'
 import Navigation  from '@/components/Navigation'
 import ToggleTheme from '@/components/ToggleTheme'
-import Logo from '@/components/Logo'
 import dynamic from 'next/dynamic'
-const BlogAdmin = dynamic(() => import('@/components/BlogAdmin'))
+const BlogAdmin = dynamic(() => import('@/components/BlogAdmin'), {
+  ssr: false
+})
+const Logo = dynamic(() => import('@/components/Logo'), {
+  ssr: false
+})
 
 
-const Header = ({toggleTheme}) => {
+const Header = () => {
   
-  const theme: any = useTheme()
   const styleHeaderWrapper = css({
     paddingTop: '2rem',
     position: 'sticky',
     top: '-2rem',
-    backgroundColor: theme.colors.background,
+    backgroundColor: 'var(--color-bg)',
     zIndex: 5,
     '@media(max-width: 1024px)': {
       paddingTop: 0,
@@ -46,7 +49,7 @@ const Header = ({toggleTheme}) => {
     alignItems: 'center',
     background: 'transparent',
     border: 'none',
-    fontFamily: theme.fonts.secondary,
+    fontFamily: 'var(--font-secondary)',
     cursor: 'pointer',
   })
 
@@ -63,7 +66,7 @@ const Header = ({toggleTheme}) => {
         </Link>
         <div className="headerRight">
           <Navigation />
-          <ToggleTheme toggleTheme={toggleTheme} />
+          <ToggleTheme />
         </div>
       </div>
       <BlogAdmin />

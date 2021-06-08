@@ -1,28 +1,17 @@
 import React from 'react'
-import { useDarkMode } from '@/utils/useDarkMode'
-import { themeLight, themeDark } from '@/styles/theme'
-import { ThemeProvider } from '@emotion/react'
 import { GlobalStyles } from '@/styles/global'
-
 import { AppProps } from 'next/app'
 import { Provider } from 'next-auth/client'
 
-const App = ({Component, pageProps }: AppProps) => {
 
-  const [theme, toggleTheme] = useDarkMode()
-  const themeMode: any
-  = theme === 'light'
-  ? themeLight
-  : themeDark
+const App = ({ Component, pageProps }: AppProps) => {
 
   return (
     <React.StrictMode>
       <Provider session={pageProps.session}>
-        <ThemeProvider theme={themeMode}>
-          <GlobalStyles />
-          <Component {...pageProps} toggleTheme={toggleTheme} />
-        </ThemeProvider>
-      </Provider>
+        <GlobalStyles />
+          <Component {...pageProps} />
+        </Provider>
     </React.StrictMode>
   )
 }

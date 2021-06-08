@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Global, css, useTheme } from '@emotion/react'
+import { Global, css } from '@emotion/react'
 import { signOut, useSession } from 'next-auth/client'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
@@ -19,7 +19,6 @@ const BlogAdmin: React.FC =  React.memo(()=> {
   let adminPanelRight = null
 
   // Styles
-  const theme : any = useTheme()
   const styleAnimationWrapper = css ({
     display: session ? 'block' : 'none',
     overflow: 'hidden',
@@ -29,8 +28,8 @@ const BlogAdmin: React.FC =  React.memo(()=> {
     width: 'auto',
     display: 'flex',
     padding: '.5rem .2rem .5rem 1rem',
-    backgroundColor: theme.colors.accent,
-    border: '1px dotted' + theme.colors.grayscale,
+    backgroundColor: 'var(--color-accent)',
+    border: '1px dotted var(--color-gray)',
     borderRadius: 8,
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -49,8 +48,8 @@ const BlogAdmin: React.FC =  React.memo(()=> {
       display: 'flex',
       fontSize: 11,
       alignSelf: 'center',
-      color: theme.colors.textLight,
-      fontFamily: theme.fonts.primary,
+      color: 'var(--color-text)',
+      fontFamily: 'var(--font-primary)',
       'a': {
         marginLeft: '.5rem',
         textDecoration: 'none',
@@ -143,42 +142,42 @@ const BlogAdmin: React.FC =  React.memo(()=> {
           marginRight: '.25rem',
           padding: '.45rem 1rem',
           display: 'inline-block',
-          backgroundColor: theme.colors.text,
-          border: '1px solid' + theme.colors.accent,
+          backgroundColor: 'var(--color-text)',
+          border: '1px solid var(--color-accent)',
           borderRadius: 8,
-          color: theme.colors.background,
+          color: 'var(--color-bg)',
           fontSize: 12,
-          fontFamily: theme.fonts.primary,
+          fontFamily: 'var(--font-primary)',
           fontWeight: 'bold',
           textTransform: 'uppercase',
           textAlign: 'center',
           textDecoration: 'none',
           cursor: 'pointer',
           '&:disabled': {
-            backgroundColor: theme.colors.disabledBtn,
+            backgroundColor: 'var(--button-disabled)',
             cursor: 'default',
           },
           '.create &': {
             '&.createBtn': {
-              backgroundColor: theme.colors.disabledBtn,
+              backgroundColor: 'var(--button-disabled)',
             }
           },
           '.drafts &': {
             '&.draftsBtn': {
-              backgroundColor: theme.colors.disabledBtn,
+              backgroundColor: 'var(--button-disabled)',
             }
           },
           '&.delete': {
-            backgroundColor: theme.colors.warning,
+            backgroundColor: 'var(--color-warning)',
             color: '#fff',
             textDecoration: 'none',
           },
           '&.deploy': {
-            backgroundColor: theme.colors.accentColor,
+            backgroundColor: 'var(--color-accent-color)',
             '&.disabled': { cursor: 'wait' }
           },
           '&.disabled': {
-            backgroundColor: theme.colors.disabledBtn,
+            backgroundColor: 'var(--button-disabled)',
           }
         }
       }}/>

@@ -1,9 +1,8 @@
-import { useTheme, css } from '@emotion/react'
+import { css } from '@emotion/react'
 import Link from 'next/link'
 
 export default function Footer() {
 
-  const theme : any = useTheme()
   const styleFooter = css({
     marginTop: '2rem',
     display: 'flex',
@@ -14,8 +13,8 @@ export default function Footer() {
     fontSize: '12px',
     padding: '1em',
     height: '100px',
-    color: theme.colors.grayscale,
-    borderTop: '1px solid' + theme.colors.accent,
+    color: 'var(--color-gray)',
+    borderTop: '1px solid var(--color-accent)',
     lineHeight: '1.8em',
   })
   const styleFooterCopy = css({
@@ -25,7 +24,7 @@ export default function Footer() {
       '&::after': {
         content: '"•"',
         paddingLeft: '.5rem',
-        color: theme.colors.grayscale,
+        color: 'var(--color-gray)',
       },
       '&:last-of-type::after': {
         content: '""',

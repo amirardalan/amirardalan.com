@@ -1,4 +1,3 @@
-import { useTheme } from '@emotion/react'
 import { materialOceanic, materialLight } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import ReactMarkdown from 'react-markdown'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
@@ -9,12 +8,10 @@ import { Global } from '@emotion/react'
 
 export default function BlogMarkdown({ props }) {
 
-  const theme: any = useTheme()
-
   // Syntax Highlighter Object for Markdown
   const BlogSyntaxHighlight: object = {
     code({node, inline, className,...props}) {
-      const syntaxTheme = theme.syntaxHighlight.theme
+      const syntaxTheme = document.body.style.getPropertyValue('--var-syntax-highlight-theme')
       const setSyntaxTheme = syntaxTheme === 'syntaxDark' ? materialOceanic : materialLight
       const match = /language-(\w+)/.exec(className || '')
       return match ? (
@@ -36,13 +33,13 @@ export default function BlogMarkdown({ props }) {
     <>
       <Global styles={{
         '.codeStyle, pre, code, code span': {
-          fontFamily: theme.fonts.primary,
+          fontFamily: 'var(--font-primary)',
           fontStyle: 'normal !important'
         },
         '.codeStyle': {
           overflow: 'scroll',
           borderRadius: 5,
-          backgroundColor: theme.syntaxHighlight.background + '!important',
+          backgroundColor: 'var(--syntax-highlight-bg)' + '!important',
           'code': {
             backgroundColor: 'transparent' + '!important',
             transform: 'translateZ(0)'
@@ -51,12 +48,12 @@ export default function BlogMarkdown({ props }) {
         code: {
           wordWrap: 'break-word',
           fontSize: 16,
-          color: theme.colors.grayscale,
-          backgroundColor: theme.colors.accent,
+          color: 'var(--color-gray)',
+          backgroundColor: 'var(--color-accent)',
           borderRadius: 5,
           '&::before, &::after': {
             content: '"`"',
-            color: theme.colors.accentColor
+            color: 'var(--color-accent-color)'
           },
         },
         'pre code': {

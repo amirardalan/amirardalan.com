@@ -1,10 +1,98 @@
-import { Global, useTheme } from '@emotion/react'
+import { Global } from '@emotion/react'
 
 export function GlobalStyles () {
-  const theme : any = useTheme()
+  
+  // Colors
+  const light= '#ffffff'
+  const lightAccent = '#eeeeee'
+  const lighter = '#f7f7f7'
+  const dark= '#000'
+  const darkAccent = '#14171a'
+  const darker = '#343042'
+  const primary = '#571AFF'
+  const secondary = '#3dffc5'
+  const grayLight = '#b0bccc'
+  const grayDark = '#697075'
+  const grayAccentLight = '#b8c1c7'
+  const grayAccentDark = '#3e4449'
+  const select = '#ffff00'
+  const buttonDisabled = '#8b8b8b'
+  const warning = '#ec4949'
+  const code = '#2e3440'
+
+  // Typography
+  const fontPrimary = "'Fira Code', Menlo, Monaco, 'Courier New', monospace"
+  const fontSecondary = "'Poppins', Helvetica, Arial, sans-serif"
+  const fontTertiary = "'Lora', 'Times New Roman', Times, serif"
 
   return (
     <>
+      <Global styles={{
+        'body, body[data-theme="light"]': {
+          '--font-primary': fontPrimary,
+          '--font-secondary': fontSecondary,
+          '--font-tertiary': fontTertiary,
+          '--color-accent': lightAccent,
+          '--color-accent-color': primary,
+          '--color-bg': light,
+          '--color-text': dark,
+          '--color-link': primary,
+          '--color-gray': grayDark,
+          '--color-gray-accent': grayAccentLight,
+          '--color-select': select,
+          '--color-select-text': dark,
+          '--color-input-disabled': light,
+          '--color-button-disabled': buttonDisabled,
+          '--color-warning': warning,
+          '--color-code': code,
+          '--logo': '/logo/logo-light.svg',
+          '--logo-error': '/static/icons/error-light.svg',
+          '--emoji-hello': '👋',
+          '--button-toggle-bg': lightAccent,
+          '--button-toggle-switch': darker,
+          '--canvas-mesh': primary,
+          '--canvas-bg': 'linear-gradient(to bottom, #010A10 30%,#59230B 80%,#2F1107 100%)',
+          '--page-bg': lighter,
+          '--social-github': '/static/icons/github-light.svg',
+          '--social-twitter': '/static/icons/twitter-light.svg',
+          '--social-linkedin': '/static/icons/linkedin-light.svg',
+          '--syntax-highlight-theme': 'syntaxLight',
+          '--syntax-highlight-bg': lighter,
+          myVar: '👋',
+        },
+        
+        'body[data-theme="dark"]': {
+          '--font-primary': fontPrimary,
+          '--font-secondary': fontSecondary,
+          '--font-tertiary': fontTertiary,
+          '--color-accent': darkAccent,
+          '--color-accent-color': secondary,
+          '--color-bg': dark,
+          '--color-text': light,
+          '--color-link': secondary,
+          '--color-gray': grayLight,
+          '--color-gray-accent': grayAccentDark,
+          '--color-select': select,
+          '--color-select-text': dark,
+          '--color-input-disabled': dark,
+          '--color-button-disabled': buttonDisabled,
+          '--color-warning': warning,
+          '--color-code': code,
+          '--logo': '/logo/logo-dark.svg',
+          '--logo-error': '/static/icons/error-dark.svg',
+          '--emoji-hello': '👋',
+          '--button-toggle-bg': darker,
+          '--button-toggle-switch': lighter,
+          '--canvas-mesh': secondary,
+          '--canvas-bg': 'linear-gradient(to bottom, #757abf 0%,#8583be 60%,#eab0d1 100%)',
+          '--page-bg': darkAccent,
+          '--social-github': '/static/icons/github-dark.svg',
+          '--social-twitter': '/static/icons/twitter-dark.svg',
+          '--social-linkedin': '/static/icons/linkedin-dark.svg',
+          '--syntax-highlight-theme': 'syntaxDark',
+          '--syntax-highlight-bg': darkAccent,
+        }
+      }} />
       <Global styles={{
         // @font: Poppins 900
         '@font-face': {
@@ -77,13 +165,13 @@ export function GlobalStyles () {
           content: '" "',
         },
         ins: {
-          backgroundColor: theme.colors.accent,
-          color: theme.colors.text,
+          backgroundColor: 'var(--color-accent)',
+          color: 'var(--color-text)',
           textDecoration: 'none',
         },
         mark: {
-          backgroundColor: theme.colors.accent,
-          color: theme.colors.text,
+          backgroundColor: 'var(--color-accent)',
+          color: 'var(--color-text)',
           fontStyle: 'italic',
           fontWeight: 'bold',
         },
@@ -102,7 +190,7 @@ export function GlobalStyles () {
           display: 'block',
           height: 1,
           border: 0,  
-          borderTop: '1px solid' + theme.colors.grayscale,
+          borderTop: '1px solid var(--color-gray)',
           margin: '3em 0',
           padding: 0,
         },
@@ -113,9 +201,9 @@ export function GlobalStyles () {
       <Global styles={{
         // Base
         'html, body': {
-          backgroundColor: theme.colors.background,
-          fontFamily: theme.fonts.primary,
-          color: theme.colors.text,
+          backgroundColor: 'var(--color-bg)',
+          fontFamily: 'var(--font-primary)',
+          color: 'var(--color-text)',
           WebkitTextSizeAdjust: '100%',
         },
         '*': {
@@ -130,13 +218,17 @@ export function GlobalStyles () {
           margin: 0,
           padding: 0,
         },
+        h2: {
+          fontFamily: 'var(--font-secondary)',
+          fontWeight: 900
+        },
         a: {
           margin: 0,
           padding: 0,
           fontSize: '100%',
           verticalAlign: 'baseline',
           background: 'transparent',
-          color: theme.colors.link,
+          color: 'var(--color-link)',
           textDecoration: 'underline',
           '&:hover': {
             textDecoration: 'none'
@@ -153,7 +245,7 @@ export function GlobalStyles () {
           padding: 0,
         },
         'button, input, textarea': {
-          fontFamily: theme.fonts.primary
+          fontFamily: 'var(--font-primary)'
         },
         '#leva__root': {
           display: 'none'
@@ -182,12 +274,12 @@ export function GlobalStyles () {
       <Global styles={{
         // Special Text
         '::-moz-selection': {
-          background: theme.colors.selection,
-          color: theme.colors.selectionText,
+          background: 'var(--color-select)',
+          color: 'var(--color-select-text)',
         },
         '::selection': {
-          background: theme.colors.selection,
-          color: theme.colors.selectionText,
+          background: 'var(--color-select)',
+          color: 'var(--color-select-text)',
         },
       }} />
       <Global styles={{

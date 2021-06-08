@@ -1,9 +1,8 @@
-import { useTheme, css } from '@emotion/react'
+import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 
 export default function Logo() {
 
-  const theme : any = useTheme()
   const Image = styled.img({
     animation: 'spin 1s forwards',
     marginRight: '.2rem',
@@ -18,14 +17,14 @@ export default function Logo() {
     margin: '0',
     fontWeight: 'bold',
     fontSize: '14px',
-    color: theme.colors.text,
+    color: 'var(--color-text)',
     lineHeight: '1rem'
   })
   const styleTitleSub = css({
     position: 'relative',
     margin: '0',
-    color: theme.colors.grayscale,
-    fontFamily: theme.fonts.primary,
+    color: 'var(--color-gray)',
+    fontFamily: 'var(--font-primary)',
     fontSize: '8px',
     fontWeight: 'normal',
     letterSpacing: '.11rem',
@@ -34,16 +33,20 @@ export default function Logo() {
     textTransform: 'uppercase'
   })
 
+  getComputedStyle(document.body).getPropertyValue('--color-font-general');
+
+
   return (
     <>
       <Image
-        src={theme.logo}
+        src='${`--var(--logo)`}'
         alt="Amir Ardalan Logo"
         width={22}
         height={22}
       />
 
       <div css={{
+        background: '--var(--logo)',
         flexDirection: 'column',
       }}>
         <h1 css={styleTitle}>

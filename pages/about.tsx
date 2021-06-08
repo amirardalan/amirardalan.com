@@ -1,4 +1,4 @@
-import { useTheme, css } from '@emotion/react'
+import { css } from '@emotion/react'
 import Layout from '@/components/Container'
 
 import Head from 'next/head'
@@ -8,17 +8,16 @@ import Avatar from '@/components/Avatar'
 
 export default function About(props: any) {
 
-  const theme : any = useTheme()
   const stylePageHeading = css({
-    fontFamily: theme.fonts.secondary,
+    fontFamily: '--var(font-secondary)',
     fontSize: 'calc(3.2vw + 3.2vh)',
     fontWeight: 900,
     textAlign: 'center',
   })
   const stylePageHeadingSub = css({
     marginBottom: '2.5rem',
-    color: theme.colors.grayscale,
-    fontFamily: theme.fonts.tertiary,
+    color: 'var(--color-gray)',
+    fontFamily: 'var(--font-tertiary)',
     fontSize: 'calc(1vw + 1vh)',
     fontWeight: 'normal',
     fontStyle: 'italic',
@@ -39,28 +38,28 @@ export default function About(props: any) {
       display: 'flex',
       justifyContent: 'center',
       padding: '5rem',
-      backgroundColor: theme.colors.accent,
+      backgroundColor: 'var(--color-accent)',
       animation: 'slideUp .5s forwards',
       '@media (max-width: 1200px)': {
         padding: '2rem',
       },
       'ul li': {
         marginBottom: '.5rem',
-        color: theme.colors.grayscale,
+        color: 'var(--color-gray)',
         fontSize: 14,
         textAlign: 'center',
         strong: {
-          color: theme.colors.text
+          color: 'var(--color-text)'
         }
       }
     },
     h4: {
       marginBottom: '1.5rem',
       paddingBottom: '1rem',
-      fontFamily: theme.fonts.secondary,
+      fontFamily: '--var(font-secondary)',
       fontSize: 25,
       textAlign: 'center',
-      borderBottom: '2px solid'+ theme.colors.accentColor
+      borderBottom: '2px solid'+ 'var(--color-accent-color)'
     }
   })
   const centerImage = css({
@@ -82,7 +81,7 @@ export default function About(props: any) {
   })
 
   return (
-    <Layout toggleTheme={props.toggleTheme}>
+    <Layout>
       <Head>
         <title>About – Amir Ardalan</title>
       </Head>
@@ -164,7 +163,7 @@ export default function About(props: any) {
                     rel="noreferrer noopener"
                     aria-label="GitHub">
                     <Image
-                      src={theme.social.github}
+                      src={null}
                       height={48}
                       width={48}
                       alt="GitHub"
@@ -178,7 +177,7 @@ export default function About(props: any) {
                     rel="noreferrer noopener"
                     aria-label="Twitter">
                     <Image
-                      src={theme.social.twitter}
+                      src={null}
                       height={48}
                       width={48}
                       alt="Twitter"
@@ -192,7 +191,7 @@ export default function About(props: any) {
                     rel="noreferrer noopener"
                     aria-label="LinkedIn">
                     <Image
-                      src={theme.social.linkedin}
+                      src={null}
                       height={48}
                       width={48}
                       alt="LinkedIn"

@@ -1,11 +1,10 @@
 import { useLoadingBar } from '../utils/useLoadingBar'
-import { useTheme, css } from '@emotion/react'
+import { css } from '@emotion/react'
 
 export default function LoadingBar() {
 
   const isLoading = useLoadingBar()
 
-  const theme : any = useTheme()
   const styleLoadingBarWrapper = css({
     zIndex: 10,
     width: '100vw',
@@ -16,7 +15,7 @@ export default function LoadingBar() {
   const styleLoadingBarProgress = css({
     height: 'inherit',
     width: 0,
-    backgroundColor: theme.colors.link,
+    backgroundColor: 'var(--color-link)',
     animation: 'loading 3s',
     '@keyframes loading': {
       '0%': {

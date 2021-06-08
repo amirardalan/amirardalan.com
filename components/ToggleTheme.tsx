@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import { useTheme, css } from '@emotion/react'
+import { css } from '@emotion/react'
 
-const ToggleTheme = ({ toggleTheme }) => {
+const ToggleTheme: any = ({ toggleTheme }) => {
 
   const [toggleThemeControl, setToggleThemeControl] = useState(false)
   const themeControlToggled = () => {
@@ -9,21 +9,20 @@ const ToggleTheme = ({ toggleTheme }) => {
     toggleTheme()
   }
   
-  const theme : any = useTheme()
   const styleToggleSwitchControl = css({
     zIndex: 6,
     width: 50,
     height: 25,
     padding: '0 .1rem 0 .1rem',
-    background: theme.toggleButton.background,
+    background: 'var(--button-toggle-bg)',
     position: 'relative',
     border: 'none',
     borderRadius: 25,
-    color: theme.colors.text,
+    color: 'var(--color-text)',
     cursor: 'pointer',
   })
   const styleToggleSwitch = css({
-    background: theme.toggleButton.switch,
+    background: 'var(--button-toggle-switch)',
     height: 23,
     width: 23,
     position: 'relative',
@@ -32,7 +31,7 @@ const ToggleTheme = ({ toggleTheme }) => {
     borderRadius: 25,
     transition: '.2s linear',
     '&:active': {
-      boxShadow: '0 0 8px' + theme.colors.accentColor,
+      boxShadow: '0 0 8px var(--color-accent-color)',
     }
   })
 

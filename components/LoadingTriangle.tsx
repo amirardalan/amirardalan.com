@@ -1,15 +1,11 @@
-import { useTheme } from '@emotion/react'
-
 export default function LoadingTriangle() {
-
-  const theme : any = useTheme()
 
   return(
     <div
       className="loader triangle"
       css={{
-        '--path': theme.colors.accent,
-        '--dot': theme.colors.link,
+        '--path': 'var(--color-accent)',
+        '--dot': 'var(--color-link)',
         '--duration': '2s',
         width: '48px',
         height: '44px',

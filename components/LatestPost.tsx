@@ -1,23 +1,22 @@
 import Link from 'next/link'
-import { useTheme, css } from '@emotion/react'
+import { css } from '@emotion/react'
 
 export default function LatestPost(props: any) {
 
   // Latest Post Styles
-  const theme : any = useTheme()
   const styleLatestPost = css({
     paddingLeft: '1.2rem',
-    borderLeft: '7px solid' + theme.colors.accent,
+    borderLeft: '7px solid var(--color-accent)',
     fontWeight: 'normal',
     lineHeight: '1.8rem',
     h3: {
-      color: theme.colors.grayscale,
+      color: 'var(--color-gray)',
       fontSize: 12,
       fontWeight: 'normal',
       lineHeight: '1.3rem',
     },
     'p, a': {
-      fontFamily: theme.fonts.tertiary,
+      fontFamily: 'var(--font-tertiary)',
     },
     'h4 a': {
       fontSize: 18,
@@ -32,7 +31,7 @@ export default function LatestPost(props: any) {
       }
     },
     p: {
-      color: theme.colors.grayscale,
+      color: 'var(--color-gray)',
       fontSize: 15,
     },
   })
