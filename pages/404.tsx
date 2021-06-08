@@ -1,15 +1,13 @@
-import { useTheme } from '@emotion/react'
 import ErrorAnimation from '@/components/ErrorAnimation'
 import Head from 'next/head'
+import Container from '@/components/Container'
 import Image from 'next/image'
 import Link from 'next/link'
 
 export default function Custom404() {
 
-  const theme : any = useTheme()
-
   return(
-    <>
+    <Container>
       <Head>
         <title>Page Not Found – Amir Ardalan</title>
         <meta name="robots" content="noindex"></meta>
@@ -20,7 +18,7 @@ export default function Custom404() {
         position: 'relative',
         display: 'flex',
         flexDirection: 'column',
-        backgroundColor: theme.page.bg,
+        backgroundColor: 'var(--page-bg)',
       }}>
         <ErrorAnimation />
         <div css={{
@@ -43,7 +41,7 @@ export default function Custom404() {
           },
         }}>
           <Image
-            src={theme.logoError}
+            src='/icons/error-light.svg'
             alt="Error"
             aria-label="Error"
             width={40}
@@ -69,6 +67,6 @@ export default function Custom404() {
           </Link>
         </div>
       </div>
-    </>
+    </Container>
   )
 }
