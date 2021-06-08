@@ -156,6 +156,9 @@ export function GlobalStyles () {
         'button, input, textarea': {
           fontFamily: theme.fonts.primary
         },
+        '#leva__root': {
+          display: 'none'
+        }
       }} />
       <Global styles={{
         // Layout

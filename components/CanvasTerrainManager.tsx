@@ -29,6 +29,7 @@ const CanvasTerrainManager = ({ theme }) => {
       <Global styles={{
         // Leva Controls Override
         '#leva__root': {
+          display: 'block',
           fontFamily: theme.fonts.primary,
           textTransform: 'uppercase',
           
