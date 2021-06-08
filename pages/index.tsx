@@ -1,5 +1,5 @@
 import { css, useTheme } from '@emotion/react'
-import Layout from '@/components/Layout'
+import Container from '@/components/Container'
 
 import Head from 'next/head'
 import Link from 'next/link'
@@ -174,7 +174,7 @@ export default function Home(props: any) {
   })
 
   return (
-    <Layout toggleTheme={props.toggleTheme}>
+    <Container toggleTheme={props.toggleTheme}>
       <Head>
         <title>Amir Ardalan – Developer, Designer, Writer</title>
       </Head>
@@ -216,6 +216,6 @@ export default function Home(props: any) {
           </div>
         </div>
       </main>
-    </Layout>
+    </Container>
   )
 }

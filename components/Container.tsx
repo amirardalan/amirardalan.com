@@ -9,7 +9,7 @@ export default function Layout(props: any) {
       <LoadingBar />
       <div className="container">
         <Header toggleTheme={props.toggleTheme} />
-        {props.children}
+          {props.children}
         <Footer />
       </div>
     </>

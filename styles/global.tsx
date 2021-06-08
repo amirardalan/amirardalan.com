@@ -1,7 +1,6 @@
 import { Global, useTheme } from '@emotion/react'
 
 export function GlobalStyles () {
-  
   const theme : any = useTheme()
 
   return (

@@ -1,12 +1,15 @@
 import { Global, useTheme } from '@emotion/react'
-import Layout from '@/components/Layout'
+import Container from '@/components/Container'
 
 export default function BlogLayout(props: any) {
-
-  const theme : any = useTheme()
+  const theme: any = useTheme()
 
   return (
     <>
+      <Container toggleTheme={props.toggleTheme}>
+        {props.children}
+      </Container>
+      
       <Global
         styles={{
           '.breadcrumbs': {
@@ -318,9 +321,6 @@ export default function BlogLayout(props: any) {
           },
         }}
       />
-      <Layout toggleTheme={props.toggleTheme}>
-        {props.children}
-      </Layout>
     </>
   )
 

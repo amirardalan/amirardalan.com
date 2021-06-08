@@ -11,18 +11,15 @@ const Header = ({toggleTheme}) => {
   
   const theme: any = useTheme()
   const styleHeaderWrapper = css({
-    padding: '2rem 4rem 0 4rem',
+    paddingTop: '2rem',
     position: 'sticky',
     top: '-2rem',
     backgroundColor: theme.colors.background,
     zIndex: 5,
     '@media(max-width: 1024px)': {
+      paddingTop: 0,
       top: 0,
-      padding: '0 2.5rem',
     },
-    '@media(max-width: 600px)': {
-      padding: '0 1.5rem',
-    }
   })
   const styleHeader = css({
     overflow: 'hidden',

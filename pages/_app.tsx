@@ -7,10 +7,13 @@ import { GlobalStyles } from '@/styles/global'
 import { AppProps } from 'next/app'
 import { Provider } from 'next-auth/client'
 
-const MyApp = ({Component, pageProps }: AppProps) => {
+const App = ({Component, pageProps }: AppProps) => {
 
   const [theme, toggleTheme] = useDarkMode()
-  const themeMode: any = theme === 'light' ? themeLight : themeDark
+  const themeMode: any
+  = theme === 'light'
+  ? themeLight
+  : themeDark
 
   return (
     <React.StrictMode>
@@ -24,4 +27,4 @@ const MyApp = ({Component, pageProps }: AppProps) => {
   )
 }
 
-export default MyApp
+export default App

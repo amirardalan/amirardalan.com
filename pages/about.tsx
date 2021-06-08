@@ -1,5 +1,5 @@
 import { useTheme, css } from '@emotion/react'
-import Layout from '@/components/Layout'
+import Layout from '@/components/Container'
 
 import Head from 'next/head'
 import Link from 'next/link'
