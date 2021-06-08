@@ -133,7 +133,7 @@ export default function Home(props: any) {
     }
   })
   const styleMainRight = css({
-    background: 'var(--color-bg)',
+    background: 'var(--canvas-bg)',
     marginTop: '2rem',
     height: '72vh',
     position: 'relative',

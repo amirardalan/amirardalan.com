@@ -37,7 +37,7 @@ export default function Logo() {
   return (
     <>
       <Image
-        src="/logo/logo-light.svg"
+        src="${`var(--logo)`}"
         alt="Amir Ardalan Logo"
         width={22}
         height={22}

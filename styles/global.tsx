@@ -58,7 +58,7 @@ export function GlobalStyles () {
           '--social-linkedin': '/static/icons/linkedin-light.svg',
           '--syntax-highlight-theme': 'syntaxLight',
           '--syntax-highlight-bg': lighter,
-          myVar: '👋',
+          '--myVar': '👋',
         },
         
         'body[data-theme="dark"]': {
