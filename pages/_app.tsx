@@ -10,8 +10,8 @@ const App = ({ Component, pageProps }: AppProps) => {
     <React.StrictMode>
       <Provider session={pageProps.session}>
         <GlobalStyles />
-          <Component {...pageProps} />
-        </Provider>
+        <Component {...pageProps} />
+      </Provider>
     </React.StrictMode>
   )
 }

@@ -42,8 +42,7 @@ export const getStaticProps: GetStaticProps = async () => {
 export default function Home(props: any) {
 
   const EmojiHello = styled.span(
-    { content: '"var(--emoji-hello)"' },
-    props => ({ color: props.color })
+    { content: '"${`var(--emoji-hello)`}"' },
   )
 
   // Styles

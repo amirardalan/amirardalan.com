@@ -16,7 +16,7 @@ const ThemeToggle = () => {
   }
   useEffect(() => {
     document.body.dataset.theme = activeTheme;
-    window.localStorage.setItem("theme", activeTheme)
+    window.localStorage.setItem('theme', activeTheme)
   }, [activeTheme])
 
 
@@ -37,8 +37,8 @@ const ThemeToggle = () => {
     height: 23,
     width: 23,
     position: 'relative',
-    marginLeft: toggleThemeControl ? .4 : 24,
-    marginRight: toggleThemeControl ? 24 : .4,
+    marginLeft: activeTheme === 'dark' ? .4 : 24,
+    marginRight: activeTheme === 'light' ? 24 : .4,
     borderRadius: 25,
     transition: '.2s linear',
     '&:active': {
