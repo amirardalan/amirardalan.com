@@ -40,6 +40,9 @@ export default function About(props: any) {
       padding: '5rem',
       backgroundColor: 'var(--color-accent)',
       animation: 'slideUp .5s forwards',
+      h4: {
+        fontFamily: 'var(--font-secondary)'
+      },
       '@media (max-width: 1200px)': {
         padding: '2rem',
       },
