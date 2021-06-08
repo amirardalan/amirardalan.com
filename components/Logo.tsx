@@ -33,20 +33,17 @@ export default function Logo() {
     textTransform: 'uppercase'
   })
 
-  getComputedStyle(document.body).getPropertyValue('--color-font-general');
-
 
   return (
     <>
       <Image
-        src='${`--var(--logo)`}'
+        src={`var(--logo)`}
         alt="Amir Ardalan Logo"
         width={22}
         height={22}
       />
 
       <div css={{
-        background: '--var(--logo)',
         flexDirection: 'column',
       }}>
         <h1 css={styleTitle}>

@@ -44,7 +44,7 @@ export default function BlogLayout(props: any) {
             maxWidth: 768,
             margin: '0 auto',
             'h2, h3, h4': {
-              fontFamily: '--var(font-secondary)',
+              fontFamily: 'var(font-secondary)',
             },
             h2: {
               margin: 0,
@@ -256,7 +256,7 @@ export default function BlogLayout(props: any) {
             'ul.contains-task-list': {
               li: {
                 '&:first-of-type':{
-                  fontFamily: '--var(font-secondary)',
+                  fontFamily: 'var(font-secondary)',
                 },
                 listStyle: 'none',
                 margin: 0,
@@ -274,7 +274,7 @@ export default function BlogLayout(props: any) {
           table: {
             width: '100%',
             thead: {
-              fontFamily: '--var(font-secondary)',
+              fontFamily: 'var(font-secondary)',
               tr: {
                 th: {
                   border: '1px solid var(--color-gray-accent)',

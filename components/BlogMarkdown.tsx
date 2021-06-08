@@ -11,7 +11,7 @@ export default function BlogMarkdown({ props }) {
   // Syntax Highlighter Object for Markdown
   const BlogSyntaxHighlight: object = {
     code({node, inline, className,...props}) {
-      const syntaxTheme = document.body.style.getPropertyValue('--var-syntax-highlight-theme')
+      const syntaxTheme = document.body.style.getPropertyValue('var-syntax-highlight-theme')
       const setSyntaxTheme = syntaxTheme === 'syntaxDark' ? materialOceanic : materialLight
       const match = /language-(\w+)/.exec(className || '')
       return match ? (

@@ -1,12 +1,12 @@
 import { css } from '@emotion/react'
 import Link from 'next/link'
 import Navigation  from '@/components/Navigation'
-import ToggleTheme from '@/components/ToggleTheme'
+import Logo from '@/components/Logo'
 import dynamic from 'next/dynamic'
-const BlogAdmin = dynamic(() => import('@/components/BlogAdmin'), {
+const ThemeToggle = dynamic(() => import('@/components/ThemeToggle'), {
   ssr: false
 })
-const Logo = dynamic(() => import('@/components/Logo'), {
+const BlogAdmin = dynamic(() => import('@/components/BlogAdmin'), {
   ssr: false
 })
 
@@ -66,7 +66,7 @@ const Header = () => {
         </Link>
         <div className="headerRight">
           <Navigation />
-          <ToggleTheme />
+          <ThemeToggle />
         </div>
       </div>
       <BlogAdmin />

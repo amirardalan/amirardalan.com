@@ -1,4 +1,5 @@
-import GlobalStyles,{ css } from '@emotion/react'
+import { css } from '@emotion/react'
+import styled from '@emotion/styled'
 import Container from '@/components/Container'
 
 import Head from 'next/head'
@@ -39,6 +40,11 @@ export const getStaticProps: GetStaticProps = async () => {
 }
 
 export default function Home(props: any) {
+
+  const EmojiHello = styled.span(
+    { content: '"var(--emoji-hello)"' },
+    props => ({ color: props.color })
+  )
 
   // Styles
   const styleButtonContainer = css({
@@ -182,7 +188,7 @@ export default function Home(props: any) {
           <div css={styleMainLeft}>
             <div css={styleMainLeftContent}>
               <h2>
-                Hi, {GlobalStyles.myVar} I'm
+                Hi, <EmojiHello color="lightgreen" /> I'm
                 <div className="highlightText">
                   Amir Ardalan
                 </div>

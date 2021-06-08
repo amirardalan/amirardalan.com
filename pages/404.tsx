@@ -33,7 +33,7 @@ export default function Custom404() {
             paddingRight: '1rem',
             alignSelf: 'center',
             borderRight: '1px solid var(--color-gray)',
-            fontFamily: '--var(font-secondary)',
+            fontFamily: 'var(font-secondary)',
             fontSize: '40px',
           },
           h3: {

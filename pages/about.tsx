@@ -9,7 +9,7 @@ import Avatar from '@/components/Avatar'
 export default function About(props: any) {
 
   const stylePageHeading = css({
-    fontFamily: '--var(font-secondary)',
+    fontFamily: 'var(font-secondary)',
     fontSize: 'calc(3.2vw + 3.2vh)',
     fontWeight: 900,
     textAlign: 'center',
@@ -56,7 +56,7 @@ export default function About(props: any) {
     h4: {
       marginBottom: '1.5rem',
       paddingBottom: '1rem',
-      fontFamily: '--var(font-secondary)',
+      fontFamily: 'var(font-secondary)',
       fontSize: 25,
       textAlign: 'center',
       borderBottom: '2px solid'+ 'var(--color-accent-color)'
@@ -163,7 +163,7 @@ export default function About(props: any) {
                     rel="noreferrer noopener"
                     aria-label="GitHub">
                     <Image
-                      src={null}
+                      src={'/icons/github-light'}
                       height={48}
                       width={48}
                       alt="GitHub"
@@ -177,7 +177,7 @@ export default function About(props: any) {
                     rel="noreferrer noopener"
                     aria-label="Twitter">
                     <Image
-                      src={null}
+                      src={'/icons/twitter-light'}
                       height={48}
                       width={48}
                       alt="Twitter"
@@ -191,7 +191,7 @@ export default function About(props: any) {
                     rel="noreferrer noopener"
                     aria-label="LinkedIn">
                     <Image
-                      src={null}
+                      src={'/icons/linkedin-light'}
                       height={48}
                       width={48}
                       alt="LinkedIn"
@@ -222,7 +222,7 @@ export default function About(props: any) {
         </main>
         <div css={centerImage}>
           <Image
-            src={theme.logo}
+            src={'/logo/logo-light.svg'}
             height={75}
             width={75}
             alt="Logo"
