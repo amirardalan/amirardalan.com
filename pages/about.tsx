@@ -166,7 +166,7 @@ export default function About(props: any) {
                     rel="noreferrer noopener"
                     aria-label="GitHub">
                     <Image
-                      src='/static/icons/icon-github.svg'
+                      src='/static/icons/github.svg'
                       height={48}
                       width={48}
                       alt="GitHub"
@@ -180,7 +180,7 @@ export default function About(props: any) {
                     rel="noreferrer noopener"
                     aria-label="Twitter">
                     <Image
-                      src='/static/icons/icon-twitter.svg'
+                      src='/static/icons/twitter.svg'
                       height={48}
                       width={48}
                       alt="Twitter"
@@ -194,7 +194,7 @@ export default function About(props: any) {
                     rel="noreferrer noopener"
                     aria-label="LinkedIn">
                     <Image
-                      src='/static/icons/icon-linkedin.svg'
+                      src='/static/icons/linkedin.svg'
                       height={48}
                       width={48}
                       alt="LinkedIn"
