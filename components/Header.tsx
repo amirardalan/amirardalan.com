@@ -23,10 +23,10 @@ const Header = () => {
       padding: '0 2.5rem',
       top: 0,
     },
-    '@media(min-width: 600px and max-width: 890px)': {
+    '@media(max-width: 890px)': {
       padding: '0 2rem',
     },
-    '@media(max-width: 480px)': {
+    '@media(max-width: 600px)': {
       padding: '0 1.5rem',
     }
   })
