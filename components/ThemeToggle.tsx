@@ -1,5 +1,3 @@
-// components/ThemeToggle.js
-
 import { useState, useEffect } from "react"
 import { css } from '@emotion/react'
 
@@ -18,7 +16,6 @@ const ThemeToggle = () => {
     document.body.dataset.theme = activeTheme
     window.localStorage.setItem('theme', activeTheme)
   }, [activeTheme])
-
 
   const styleToggleSwitchControl = css({
     zIndex: 6,
