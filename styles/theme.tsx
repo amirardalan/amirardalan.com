@@ -48,7 +48,7 @@
     },
   }
 
-  let activeTheme = 'dark'
+  let activeTheme = 'light'
 
   const theme = activeTheme === 'dark'
     ? dark

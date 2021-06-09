@@ -7,9 +7,9 @@ export default function Layout(props: any) {
   return (
     <>
       <LoadingBar />
+      <Header />
       <div className="container">
-        <Header />
-          {props.children}
+        {props.children}
         <Footer />
       </div>
     </>

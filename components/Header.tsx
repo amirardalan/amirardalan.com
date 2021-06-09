@@ -14,15 +14,21 @@ const BlogAdmin = dynamic(() => import('@/components/BlogAdmin'), {
 const Header = () => {
   
   const styleHeaderWrapper = css({
-    paddingTop: '2rem',
+    padding: '2rem 4rem',
     position: 'sticky',
     top: '-2rem',
     backgroundColor: 'var(--color-bg)',
     zIndex: 5,
     '@media(max-width: 1024px)': {
-      paddingTop: 0,
+      padding: '0 2.5rem',
       top: 0,
     },
+    '@media(min-width: 600px and max-width: 890px)': {
+      padding: '0 2rem',
+    },
+    '@media(max-width: 480px)': {
+      padding: '0 1.5rem',
+    }
   })
   const styleHeader = css({
     overflow: 'hidden',
