@@ -5,6 +5,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import Image from 'next/image'
 import Avatar from '@/components/Avatar'
+import theme from '@/styles/theme'
 
 export default function About(props: any) {
 
@@ -166,7 +167,7 @@ export default function About(props: any) {
                     rel="noreferrer noopener"
                     aria-label="GitHub">
                     <Image
-                      src={'/icons/github-light'}
+                      src={theme.icon.github}
                       height={48}
                       width={48}
                       alt="GitHub"
@@ -180,7 +181,7 @@ export default function About(props: any) {
                     rel="noreferrer noopener"
                     aria-label="Twitter">
                     <Image
-                      src={'/icons/twitter-light'}
+                      src={theme.icon.twitter}
                       height={48}
                       width={48}
                       alt="Twitter"
@@ -194,7 +195,7 @@ export default function About(props: any) {
                     rel="noreferrer noopener"
                     aria-label="LinkedIn">
                     <Image
-                      src={'/icons/linkedin-light'}
+                      src={theme.icon.linkedin}
                       height={48}
                       width={48}
                       alt="LinkedIn"
@@ -225,7 +226,7 @@ export default function About(props: any) {
         </main>
         <div css={centerImage}>
           <Image
-            src={'/logo/logo-light.svg'}
+            src={theme.logo}
             height={75}
             width={75}
             alt="Logo"

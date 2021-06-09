@@ -1,7 +1,8 @@
-import { useLayoutEffect, useEffect, useState, useMemo, useRef } from 'react'
+import { useLayoutEffect, useMemo, useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
 import SimplexNoise from 'simplex-noise'
 import { BufferAttribute } from 'three'
+import theme from '@/styles/theme'
 
 
 const generateTerrain = (simplex, size, height, levels, scale, offset) => {
@@ -67,8 +68,6 @@ const Terrain = ({
     node?.computeVertexNormals()
   }, [size, height, levels, scale, offset, simplex])
 
-  // const meshColor = `red`
-
   return (
     <mesh ref={mesh}>
       <planeBufferGeometry
@@ -76,7 +75,7 @@ const Terrain = ({
         ref={ref}
       />
       <meshBasicMaterial
-        // color={}
+        color={theme.canvas.mesh}
         wireframe
       />
     </mesh>

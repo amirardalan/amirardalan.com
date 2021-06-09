@@ -1,44 +1,50 @@
   // Light Theme
   const light = {
-    icon: {
-      github: '/static/icons/github-light.svg',
-      twitter: '/static/icons/github-light.svg',
-      linkedin: '/static/icons/github-light.svg',
+    // @/components/Logo
+    logo: '/logo/logo-light.svg',
+    // @/components/BlogMarkdown
+    code: {
+      syntax: 'light',
     },
-    logo: {
-      app: '/logo/logo-light.svg',
-      err: '/static/icons/error-light.svg',
-    },
-    emoji: {
-      hello: '👋',
-    },
+    // @/components/CanvasTerrain
     canvas: {
       mesh: '#571AFF'
     },
-    code: {
-      theme: 'light',
+    // pages/index
+    emoji: {
+      hello: '👋',
+    },
+    // pages/about
+    icon: {
+      github: '/static/icons/github-light.svg',
+      twitter: '/static/icons/twitter-light.svg',
+      linkedin: '/static/icons/linkedin-light.svg',
+      error: '/static/icons/error-light.svg',
     },
   }
 
   // Dark Theme
   const dark = {
-    icon: {
-      github: '/static/icons/github-dark.svg',
-      twitter: '/static/icons/github-dark.svg',
-      linkedin: '/static/icons/github-dark.svg',
+    // @/components/Logo
+    logo: '/logo/logo-dark.svg',
+    // @/components/BlogMarkdown
+    code: {
+      syntax: 'dark',
     },
-    logo: {
-      app: '/logo/logo-dark.svg',
-      err: '/static/icons/error-dark.svg',
-    },
-    emoji: {
-      hello: '✌️',
-    },
+    // @/components/CanvasTerrain
     canvas: {
       mesh: '#3dffc5'
     },
-    code: {
-      theme: 'dark',
+    // pages/index
+    emoji: {
+      hello: '✌️',
+    },
+    // pages/about
+    icon: {
+      github: '/static/icons/github-dark.svg',
+      twitter: '/static/icons/twitter-dark.svg',
+      linkedin: '/static/icons/linkedin-dark.svg',
+      error: '/static/icons/error-dark.svg',
     },
   }
 

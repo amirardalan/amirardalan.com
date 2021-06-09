@@ -1,8 +1,9 @@
-import ErrorAnimation from '@/components/ErrorAnimation'
+import theme from '@/styles/theme'
 import Head from 'next/head'
-import Container from '@/components/Container'
 import Image from 'next/image'
 import Link from 'next/link'
+import Container from '@/components/Container'
+import ErrorAnimation from '@/components/ErrorAnimation'
 
 export default function Custom404() {
 
@@ -41,7 +42,7 @@ export default function Custom404() {
           },
         }}>
           <Image
-            src='/icons/error-light.svg'
+            src={theme.icon.error}
             alt="Error"
             aria-label="Error"
             width={40}

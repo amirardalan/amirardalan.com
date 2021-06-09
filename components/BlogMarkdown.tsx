@@ -1,3 +1,4 @@
+import theme from '@/styles/theme'
 import { materialOceanic, materialLight } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import ReactMarkdown from 'react-markdown'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
@@ -11,7 +12,7 @@ export default function BlogMarkdown({ props }) {
   // Syntax Highlighter Object for Markdown
   const BlogSyntaxHighlight: object = {
     code({node, inline, className,...props}) {
-      const syntaxTheme: any = 'light'
+      const syntaxTheme: any = theme.code.syntax
       const setSyntaxTheme = syntaxTheme === 'light' ? materialLight : materialOceanic
       const match = /language-(\w+)/.exec(className || '')
       return match ? (
