@@ -39,11 +39,13 @@ const Header = () => {
     justifyContent: 'space-between',
     a:  { textDecoration: 'none' },
     '.headerRight': {
+      minWidth: '342.8px',
       display: 'flex',
       flexDirection: 'row',
       alignItems: 'center',
       '@media (max-width: 768px)': {
-        flexDirection: 'row-reverse'
+        flexDirection: 'row-reverse',
+        minWidth: 'unset',
       }
     }
   })
