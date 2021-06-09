@@ -38,6 +38,7 @@ const CanvasTerrainManager = () => {
           },
 
           'div:first-of-type': {
+            fontFamily: 'var(--font-primary)',
             backgroundColor: 'var(--color-accent)',
             boxShadow: 'none',
             animation: 'fadeIn 1s forwards',

@@ -2,7 +2,6 @@ import { useLayoutEffect, useMemo, useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
 import SimplexNoise from 'simplex-noise'
 import { BufferAttribute } from 'three'
-import theme from '@/styles/theme'
 
 
 const generateTerrain = (simplex, size, height, levels, scale, offset) => {
@@ -51,7 +50,7 @@ const Terrain = ({
   
   useFrame(() => (
     rotate?
-    mesh.current.rotation.y += 0.002
+    mesh.current.rotation.y += 0.001
     : null
   ))
 
@@ -75,7 +74,7 @@ const Terrain = ({
         ref={ref}
       />
       <meshBasicMaterial
-        color={theme.dark.canvas}
+        color="#571AFF"
         wireframe
       />
     </mesh>

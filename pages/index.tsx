@@ -1,6 +1,4 @@
-import { useEffect, useState } from 'react'
 import { css } from '@emotion/react'
-import theme from '@/styles/theme'
 import Container from '@/components/Container'
 
 import Head from 'next/head'
