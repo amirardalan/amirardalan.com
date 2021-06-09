@@ -33,7 +33,7 @@
     },
     // @/components/CanvasTerrain
     canvas: {
-      mesh: '#3dffc5'
+      mesh: '#571AFF'
     },
     // pages/index
     emoji: {

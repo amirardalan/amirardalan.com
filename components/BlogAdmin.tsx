@@ -87,7 +87,7 @@ const BlogAdmin: React.FC =  React.memo(()=> {
       router.push('/blog')
     })
     .catch(err => {
-      console.log(err)
+      console.error(err)
     })
   }
 

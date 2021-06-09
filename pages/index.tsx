@@ -41,8 +41,6 @@ export const getStaticProps: GetStaticProps = async () => {
 
 export default function Home(props: any) {
 
-  console.log(theme.emoji.hello)
-
   // Styles
   const styleButtonContainer = css({
     marginBottom: '2rem',
