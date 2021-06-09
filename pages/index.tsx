@@ -1,6 +1,5 @@
 import { css } from '@emotion/react'
 import theme from '@/styles/theme'
-import styled from '@emotion/styled'
 import Container from '@/components/Container'
 
 import Head from 'next/head'
@@ -17,8 +16,6 @@ import prisma from '@/lib/prisma'
 const CanvasLoader = dynamic(() => import('@/components/CanvasLoader'), {
   loading: () => <LoadingTriangle />
 })
-
-
 
 // Get all published posts along with author, publish date, title, teaser and slug
 export const getStaticProps: GetStaticProps = async () => {
@@ -45,10 +42,6 @@ export const getStaticProps: GetStaticProps = async () => {
 export default function Home(props: any) {
 
   console.log(theme.emoji.hello)
-
-  const EmojiHello = styled.span(
-    { content: '"${`var(--emoji-hello)`}"' },
-  )
 
   // Styles
   const styleButtonContainer = css({

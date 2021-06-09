@@ -12,6 +12,9 @@
     emoji: {
       hello: '👋',
     },
+    canvas: {
+      mesh: '#571AFF'
+    },
     code: {
       theme: 'light',
     },
@@ -30,6 +33,9 @@
     },
     emoji: {
       hello: '✌️',
+    },
+    canvas: {
+      mesh: '#3dffc5'
     },
     code: {
       theme: 'dark',

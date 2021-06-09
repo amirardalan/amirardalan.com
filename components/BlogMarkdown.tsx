@@ -11,8 +11,8 @@ export default function BlogMarkdown({ props }) {
   // Syntax Highlighter Object for Markdown
   const BlogSyntaxHighlight: object = {
     code({node, inline, className,...props}) {
-      const syntaxTheme: any = materialOceanic
-      const setSyntaxTheme = syntaxTheme === 'light' ? materialOceanic : materialLight
+      const syntaxTheme: any = 'light'
+      const setSyntaxTheme = syntaxTheme === 'light' ? materialLight : materialOceanic
       const match = /language-(\w+)/.exec(className || '')
       return match ? (
         <SyntaxHighlighter
