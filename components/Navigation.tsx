@@ -1,4 +1,4 @@
-import { useTheme, css } from '@emotion/react'
+import { css } from '@emotion/react'
 import { useState } from 'react'
 import Link from '@/components/Link'
 import Logo from '@/components/Logo'
@@ -6,14 +6,13 @@ import SocialLinks from '@/components/SocialLinks'
 
 export default function Navigation() {
   
-  const theme : any = useTheme()
   const styleMainNav = css({
     display: 'flex',
     alignItems: 'center',
     marginRight: '1.5rem',
     a: {
       margin: '0 1.5rem',
-      color: theme.colors.text,
+      color: 'var(--color-text)',
     },
     '@media(max-width: 768px)': {
       display: 'none',
@@ -27,7 +26,7 @@ export default function Navigation() {
     position: 'absolute',
     height: '105vh',
     width: '100vw',
-    background: theme.colors.background,
+    background: 'var(--color-bg)',
     top: 0,
     left: 0,
     '@media(min-width: 769px)': {
@@ -48,14 +47,13 @@ export default function Navigation() {
     background: 'transparent',
     border: 'none',
     transform: 'rotate(0deg)',
-    transition: '.5s ease-in-out',
     cursor: 'pointer',
     span: {
       display: 'block',
       position: 'absolute',
       height: 2,
       width: '100%',
-      background: theme.colors.text,
+      background: 'var(--color-text)',
       opacity: 1,
       left: 0,
       transform: 'rotate(0deg)',
@@ -100,10 +98,10 @@ export default function Navigation() {
     display: 'flex',
     a: {
       position: 'relative',
-      color: theme.colors.text,
+      color: 'var(--color-text)',
       '&.active': {
         '&::before': {
-          color: theme.colors.accentColor,
+          color: 'var(--color-accent-color)',
           position: 'absolute',
           content: '">"',
           left: -10,
@@ -150,7 +148,7 @@ export default function Navigation() {
     a: {
       display: 'block',
       marginBottom: '.5rem',
-      color: theme.colors.grayscale,
+      color: 'var(--color-gray)',
       textAlign: 'center',
       animation: 'slideUp .8s ease',
     },
@@ -166,7 +164,7 @@ export default function Navigation() {
         alignItems: 'center',
         justifyContent: 'space-between',
         animation: 'slideUp 1s forwards',
-        fontFamily: theme.fonts.secondary,
+        fontFamily: 'var(--font-secondary)',
       }
     },
   })

@@ -3,6 +3,7 @@ import { useFrame } from '@react-three/fiber'
 import SimplexNoise from 'simplex-noise'
 import { BufferAttribute } from 'three'
 
+
 const generateTerrain = (simplex, size, height, levels, scale, offset) => {
   const noise = (level, x, z) =>
     simplex.noise2D(
@@ -34,7 +35,6 @@ const generateTerrain = (simplex, size, height, levels, scale, offset) => {
 }
 
 const Terrain = ({
-  theme,
   seed,
   size,
   height,
@@ -50,7 +50,7 @@ const Terrain = ({
   
   useFrame(() => (
     rotate?
-    mesh.current.rotation.y += 0.002
+    mesh.current.rotation.y += 0.001
     : null
   ))
 
@@ -74,7 +74,7 @@ const Terrain = ({
         ref={ref}
       />
       <meshBasicMaterial
-        color={theme.canvas.mesh}
+        color="#571AFF"
         wireframe
       />
     </mesh>

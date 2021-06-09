@@ -1,8 +1,29 @@
-import { Global, useTheme } from '@emotion/react'
+import { Global } from '@emotion/react'
+
+// Typography
+const fontPrimary = "'Fira Code', Menlo, Monaco, 'Courier New', monospace"
+const fontSecondary = "'Poppins', Helvetica, Arial, sans-serif"
+const fontTertiary = "'Lora', 'Times New Roman', Times, serif"
+
+// Colors
+const light= '#ffffff'
+const lightAccent = '#eeeeee'
+const lighter = '#f7f7f7'
+const dark= '#000'
+const darkAccent = '#14171a'
+const darker = '#343042'
+const primary = '#571AFF'
+const secondary = '#3dffc5'
+const grayLight = '#b0bccc'
+const grayDark = '#697075'
+const grayAccentLight = '#b8c1c7'
+const grayAccentDark = '#3e4449'
+const select = '#ffff00'
+const buttonDisabled = '#8b8b8b'
+const warning = '#ec4949'
+const code = '#2e3440'
 
 export function GlobalStyles () {
-  
-  const theme : any = useTheme()
 
   return (
     <>
@@ -57,6 +78,51 @@ export function GlobalStyles () {
         },
       }}/>
       <Global styles={{
+        'body[data-theme="light"], body[data-theme="dark"]': {
+          '--font-primary': fontPrimary,
+          '--font-secondary': fontSecondary,
+          '--font-tertiary': fontTertiary,
+          '--color-select': select,
+          '--color-warning': warning,
+          '--color-button-disabled': buttonDisabled,
+        },
+        'body, body[data-theme="light"]': {
+          '--color-accent': lightAccent,
+          '--color-accent-color': primary,
+          '--color-bg': light,
+          '--color-text': dark,
+          '--color-link': primary,
+          '--color-gray': grayDark,
+          '--color-gray-accent': grayAccentLight,
+          '--color-select-text': dark,
+          '--color-input-disabled': light,
+          '--color-code': code,
+          '--button-toggle-bg': lightAccent,
+          '--button-toggle-switch': darker,
+          '--canvas-bg': 'linear-gradient(to bottom, #010A10 30%,#59230B 80%,#2F1107 100%)',
+          '--page-bg': lighter,
+          '--syntax-highlight-bg': lighter,
+        },
+        
+        'body[data-theme="dark"]': {
+          '--color-accent': darkAccent,
+          '--color-accent-color': secondary,
+          '--color-bg': dark,
+          '--color-text': light,
+          '--color-link': secondary,
+          '--color-gray': grayLight,
+          '--color-gray-accent': grayAccentDark,
+          '--color-select-text': dark,
+          '--color-input-disabled': dark,
+          '--color-code': code,
+          '--button-toggle-bg': darker,
+          '--button-toggle-switch': lighter,
+          '--canvas-bg': 'linear-gradient(to bottom, #757abf 0%,#8583be 60%,#eab0d1 100%)',
+          '--page-bg': darkAccent,
+          '--syntax-highlight-bg': darkAccent,
+        }
+      }} />
+      <Global styles={{
         // Reset
         'html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video': {
           margin: 0,
@@ -78,13 +144,13 @@ export function GlobalStyles () {
           content: '" "',
         },
         ins: {
-          backgroundColor: theme.colors.accent,
-          color: theme.colors.text,
+          backgroundColor: 'var(--color-accent)',
+          color: 'var(--color-text)',
           textDecoration: 'none',
         },
         mark: {
-          backgroundColor: theme.colors.accent,
-          color: theme.colors.text,
+          backgroundColor: 'var(--color-accent)',
+          color: 'var(--color-text)',
           fontStyle: 'italic',
           fontWeight: 'bold',
         },
@@ -103,7 +169,7 @@ export function GlobalStyles () {
           display: 'block',
           height: 1,
           border: 0,  
-          borderTop: '1px solid' + theme.colors.grayscale,
+          borderTop: '1px solid var(--color-gray)',
           margin: '3em 0',
           padding: 0,
         },
@@ -114,9 +180,9 @@ export function GlobalStyles () {
       <Global styles={{
         // Base
         'html, body': {
-          backgroundColor: theme.colors.background,
-          fontFamily: theme.fonts.primary,
-          color: theme.colors.text,
+          backgroundColor: 'var(--color-bg)',
+          fontFamily: 'var(--font-primary)',
+          color: 'var(--color-text)',
           WebkitTextSizeAdjust: '100%',
         },
         '*': {
@@ -131,13 +197,17 @@ export function GlobalStyles () {
           margin: 0,
           padding: 0,
         },
+        'h2, h3': {
+          fontFamily: 'var(--font-secondary)',
+          fontWeight: 900
+        },
         a: {
           margin: 0,
           padding: 0,
           fontSize: '100%',
           verticalAlign: 'baseline',
           background: 'transparent',
-          color: theme.colors.link,
+          color: 'var(--color-link)',
           textDecoration: 'underline',
           '&:hover': {
             textDecoration: 'none'
@@ -154,7 +224,7 @@ export function GlobalStyles () {
           padding: 0,
         },
         'button, input, textarea': {
-          fontFamily: theme.fonts.primary
+          fontFamily: 'var(--font-primary)'
         },
         '#leva__root': {
           display: 'none'
@@ -183,12 +253,12 @@ export function GlobalStyles () {
       <Global styles={{
         // Special Text
         '::-moz-selection': {
-          background: theme.colors.selection,
-          color: theme.colors.selectionText,
+          background: 'var(--color-select)',
+          color: 'var(--color-select-text)',
         },
         '::selection': {
-          background: theme.colors.selection,
-          color: theme.colors.selectionText,
+          background: 'var(--color-select)',
+          color: 'var(--color-select-text)',
         },
       }} />
       <Global styles={{

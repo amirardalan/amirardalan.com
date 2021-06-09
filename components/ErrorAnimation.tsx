@@ -86,7 +86,7 @@ const theme : any = useTheme()
           },
           '.stars': {
             width: 800,
-            fill: theme.colors.text,
+            fill: 'var(--color-text)',
             overflow: 'visible',
             animation: 'starsRotate 155s 1s linear',
             transformOrigin: 'center'

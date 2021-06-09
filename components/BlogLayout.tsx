@@ -1,24 +1,27 @@
-import { Global, useTheme } from '@emotion/react'
+import { Global } from '@emotion/react'
+import Container from '@/components/Container'
 
 export default function BlogLayout(props: any) {
 
-  const theme : any = useTheme()
-
   return (
     <>
+      <Container>
+        {props.children}
+      </Container>
+      
       <Global
         styles={{
           '.breadcrumbs': {
             display: 'flex',
             flexDirection: 'row',
             alignItems: 'center',
-            color: theme.colors.grayscale,
+            color: 'var(--color-gray)',
             fontSize: 13,
             '&::before': {
               paddingRight: '.5rem',
               display: 'flex',
               content: '"📋"',
-              color: theme.colors.link,
+              color: 'var(--color-link)',
               fontSize: 20,
             },
             a: {
@@ -26,7 +29,7 @@ export default function BlogLayout(props: any) {
               '&::after': {
                 content: '"/"',
                 margin: '0 .5rem',
-                color: theme.colors.grayscale,
+                color: 'var(--color-gray)',
               }
             },
             '@media (max-width: 480px)': {
@@ -41,7 +44,7 @@ export default function BlogLayout(props: any) {
             maxWidth: 768,
             margin: '0 auto',
             'h2, h3, h4': {
-              fontFamily: theme.fonts.secondary,
+              fontFamily: 'var(font-secondary)',
             },
             h2: {
               margin: 0,
@@ -54,7 +57,7 @@ export default function BlogLayout(props: any) {
               '&:hover': { textDecoration: 'none' }
             },
             p: {
-              fontFamily: theme.fonts.tertiary,
+              fontFamily: 'var(--font-tertiary)',
               fontSize: 18,
             },
             main: {
@@ -78,7 +81,7 @@ export default function BlogLayout(props: any) {
           },
           '.postDetails': {
             margin: '.6rem 0 .2rem',
-            color: theme.colors.grayscale,
+            color: 'var(--color-gray)',
             fontSize: 13,
 
             '@media (max-width: 480px)': {
@@ -103,7 +106,7 @@ export default function BlogLayout(props: any) {
             textTransform: 'uppercase',
             '.confirmLink': {
               marginRight: '.5rem',
-              color: theme.colors.text,
+              color: 'var(--color-text)',
               fontSize: 12,
               fontWeight: 'bold',
               textTransform: 'uppercase',
@@ -124,11 +127,11 @@ export default function BlogLayout(props: any) {
             padding: '1.8rem',
             display: 'flex',
             justifyContent: 'space-between',
-            border: '1px solid' + theme.colors.accent,
+            border: '1px solid var(--color-accent)',
             '&::after': {
               content: '"Draft"',
               alignSelf: 'right',
-              color: theme.colors.grayscale,
+              color: 'var(--color-gray)',
               fontSize: 12,
               fontStyle: 'italic',
             },
@@ -148,7 +151,7 @@ export default function BlogLayout(props: any) {
             h2: {
               fontSize: 30,
               a: {
-                color: theme.colors.text,
+                color: 'var(--color-text)',
               }
             }
           },
@@ -156,14 +159,14 @@ export default function BlogLayout(props: any) {
             width: '100%',
             margin: '0.5rem 0',
             padding: '0.5rem',
-            backgroundColor: theme.colors.accent,
-            border: '2px solid' + theme.colors.accent,
+            backgroundColor: 'var(--color-accent)',
+            border: '2px solid var(--color-accent)',
             borderRadius: '0.25rem',
-            color: theme.colors.text,
+            color: 'var(--color-text)',
             fontSize: 16,
             '&:disabled': {
-              backgroundColor: theme.colors.disabledInput,
-              color: theme.colors.grayscale,
+              backgroundColor: 'var(--color-input-disabled)',
+              color: 'var(--color-gray)',
             },
             '@media (max-width: 890px)': {
               width: '100%'
@@ -194,7 +197,7 @@ export default function BlogLayout(props: any) {
                   '&:hover': {
                     '&::before': {
                       content: '"#"',
-                      color: theme.colors.grayAccent,
+                      color: 'var(--color-gray-accent)',
                       position: 'absolute',
                       textAlign: 'center',
                       top: 2,
@@ -210,7 +213,7 @@ export default function BlogLayout(props: any) {
               marginBottom: '2rem',
             },
             'p, ul, li, a, blockquote': {
-              fontFamily: theme.fonts.tertiary,
+              fontFamily: 'var(--font-tertiary)',
             },
             'p, ul, li, a': {
               fontSize: 18,
@@ -228,14 +231,14 @@ export default function BlogLayout(props: any) {
             blockquote: {
               marginLeft: '-1.75rem',
               paddingLeft: '1.5rem',
-              borderLeft: '5px solid' + theme.colors.grayAccent,
-              color: theme.colors.grayscale,
+              borderLeft: '5px solid var(--color-gray-accent)',
+              color: 'var(--color-gray)',
               fontStyle: 'italic',
               fontWeight: 'normal',
               '& blockquote': {
                 marginLeft: 0,
                 paddingLeft: '1rem',
-                borderLeft: '5px solid' + theme.colors.accent,
+                borderLeft: '5px solid var(--color-accent)',
               },
               '@media (max-width: 890px)': {
                 marginLeft: '-.8rem',
@@ -253,7 +256,7 @@ export default function BlogLayout(props: any) {
             'ul.contains-task-list': {
               li: {
                 '&:first-of-type':{
-                  fontFamily: theme.fonts.secondary,
+                  fontFamily: 'var(font-secondary)',
                 },
                 listStyle: 'none',
                 margin: 0,
@@ -271,10 +274,10 @@ export default function BlogLayout(props: any) {
           table: {
             width: '100%',
             thead: {
-              fontFamily: theme.fonts.secondary,
+              fontFamily: 'var(font-secondary)',
               tr: {
                 th: {
-                  border: '1px solid' + theme.colors.grayAccent,
+                  border: '1px solid var(--color-gray-accent)',
                   padding: '.5rem',
                 }
               }
@@ -282,7 +285,7 @@ export default function BlogLayout(props: any) {
             tbody: {
               tr: {
                 td: {
-                  border: '1px solid' + theme.colors.grayAccent,
+                  border: '1px solid var(--color-gray-accent)',
                   padding: '.5rem',    
                 }
               }
@@ -312,12 +315,11 @@ export default function BlogLayout(props: any) {
             textAlign: 'right',
           },
           '.prevLink, .nextLink': {
-            fontFamily: theme.fonts.tertiary,
+            fontFamily: 'var(--font-tertiary)',
             fontSize: 18,
           },
         }}
       />
-      {props.children}
     </>
   )
 

@@ -34,6 +34,7 @@ export default class MyDocument extends Document {
             type="font/woff2"
             crossOrigin="anonymous"
           />
+
           <meta httpEquiv="content-type" content="text/html; charset=utf-8" />
           <meta
             name="description"
@@ -54,6 +55,21 @@ export default class MyDocument extends Document {
 
         </Head>
         <body>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+              function getUserPreference() {
+                if(window.localStorage.getItem('theme')) {
+                  return window.localStorage.getItem('theme')
+                }
+                return window.matchMedia('(prefers-color-scheme: dark)').matches
+                ? 'dark'
+                : 'light'
+              }
+              document.body.dataset.theme = getUserPreference();
+            `,
+            }}
+          />
           <Main />
           <NextScript />
         </body>

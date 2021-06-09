@@ -1,24 +1,27 @@
-import { useTheme, css } from '@emotion/react'
+import { css } from '@emotion/react'
 import Link from 'next/link'
 import Navigation  from '@/components/Navigation'
-import ToggleTheme from '@/components/ToggleTheme'
 import Logo from '@/components/Logo'
 import dynamic from 'next/dynamic'
-const BlogAdmin = dynamic(() => import('@/components/BlogAdmin'))
+const ThemeToggle = dynamic(() => import('@/components/ThemeToggle'), {
+  ssr: false
+})
+const BlogAdmin = dynamic(() => import('@/components/BlogAdmin'), {
+  ssr: false
+})
 
 
-const Header = ({toggleTheme}) => {
+const Header = () => {
   
-  const theme: any = useTheme()
   const styleHeaderWrapper = css({
-    padding: '2rem 4rem 0 4rem',
+    padding: '2rem 4rem 0',
     position: 'sticky',
     top: '-2rem',
-    backgroundColor: theme.colors.background,
+    backgroundColor: 'var(--color-bg)',
     zIndex: 5,
     '@media(max-width: 1024px)': {
-      top: 0,
       padding: '0 2.5rem',
+      top: 0,
     },
     '@media(max-width: 600px)': {
       padding: '0 1.5rem',
@@ -33,11 +36,13 @@ const Header = ({toggleTheme}) => {
     justifyContent: 'space-between',
     a:  { textDecoration: 'none' },
     '.headerRight': {
+      minWidth: '342.8px',
       display: 'flex',
       flexDirection: 'row',
       alignItems: 'center',
       '@media (max-width: 768px)': {
-        flexDirection: 'row-reverse'
+        flexDirection: 'row-reverse',
+        minWidth: 'unset',
       }
     }
   })
@@ -49,7 +54,7 @@ const Header = ({toggleTheme}) => {
     alignItems: 'center',
     background: 'transparent',
     border: 'none',
-    fontFamily: theme.fonts.secondary,
+    fontFamily: 'var(--font-secondary)',
     cursor: 'pointer',
   })
 
@@ -66,7 +71,7 @@ const Header = ({toggleTheme}) => {
         </Link>
         <div className="headerRight">
           <Navigation />
-          <ToggleTheme toggleTheme={toggleTheme} />
+          <ThemeToggle />
         </div>
       </div>
       <BlogAdmin />

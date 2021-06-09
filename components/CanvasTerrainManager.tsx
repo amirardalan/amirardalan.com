@@ -3,7 +3,7 @@ import { button, useControls } from 'leva'
 import CanvasTerrain from '@/components/CanvasTerrain'
 import { Global } from '@emotion/react'
 
-const CanvasTerrainManager = ({ theme }) => {
+const CanvasTerrainManager = () => {
   const [seed, setSeed] = useState(Date.now())
 
   const { resolution, height, levels, scale, rotate } = useControls({
@@ -18,7 +18,6 @@ const CanvasTerrainManager = ({ theme }) => {
   return (
     <>
       <CanvasTerrain
-        theme={theme}
         seed={seed}
         size={resolution}
         height={height}
@@ -30,7 +29,7 @@ const CanvasTerrainManager = ({ theme }) => {
         // Leva Controls Override
         '#leva__root': {
           display: 'block',
-          fontFamily: theme.fonts.primary,
+          fontFamily: 'var(--font-primary)',
           textTransform: 'uppercase',
           
           // Hide on Tablet/Mobile
@@ -39,7 +38,8 @@ const CanvasTerrainManager = ({ theme }) => {
           },
 
           'div:first-of-type': {
-            backgroundColor: theme.colors.accent,
+            fontFamily: 'var(--font-primary)',
+            backgroundColor: 'var(--color-accent)',
             boxShadow: 'none',
             animation: 'fadeIn 1s forwards',
           },
@@ -64,19 +64,19 @@ const CanvasTerrainManager = ({ theme }) => {
             }
           },
           '.levaussed, .levarv4c7': {
-            background: theme.colors.accent,
+            background: 'var(--color-accent)',
             svg: {
-              fill: theme.colors.accentColor
+              fill: 'var(--color-accent-color)'
             },
           },
           '.levabjb2y': {
             borderRadius: 0 + '!important',
           },
           button: {
-            background: theme.colors.accentColor,
+            background: 'var(--color-accent-color)',
             letterSpacing: '.2rem',
             textTransform: 'uppercase',
-            color: theme.colors.background,
+            color: 'var(--color-bg)',
           },
           '.levam9bkr.levaebmh1': {
             '&:hover': {
@@ -85,33 +85,33 @@ const CanvasTerrainManager = ({ theme }) => {
           },
           label: {
             '&:hover': {
-              color: theme.colors.text
+              color: 'var(--color-text)'
             },
             '+ div': {
               display: 'none'
             },
             svg: {
-              background: theme.colors.accentColor
+              background: 'var(--color-accent-color)'
             }
           },
           '.levadtm57': {
-            background: theme.colors.accentColor,
+            background: 'var(--color-accent-color)',
             boxShadow: 'none',
           },
           '.leva0sm9i, .levakncnr': {
-            background: theme.colors.grayAccent + '!important'
+            background: 'var(--color-gray-accent) !important'
           },
           '.levahlc9c': {
-            background: theme.colors.grayAccent,
-            color: theme.colors.text
+            background: 'var(--color-gray-accent)',
+            color: 'var(--color-text)'
           },
           '.leva5nscf': {
-            color: theme.colors.grayscale
+            color: 'var(--color-gray)'
           },
           '.levadnk60 label': {
-            background: theme.colors.grayAccent,
+            background: 'var(--color-gray-accent)',
             svg: {
-              stroke: theme.colors.background,
+              stroke: 'var(--color-bg)',
             }
           }
         }

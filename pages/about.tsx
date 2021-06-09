@@ -1,22 +1,23 @@
-import { useTheme, css } from '@emotion/react'
+import { css } from '@emotion/react'
+import Layout from '@/components/Container'
+
 import Head from 'next/head'
 import Link from 'next/link'
 import Image from 'next/image'
 import Avatar from '@/components/Avatar'
 
-export default function About() {
+export default function About(props: any) {
 
-  const theme : any = useTheme()
   const stylePageHeading = css({
-    fontFamily: theme.fonts.secondary,
+    fontFamily: 'var(font-secondary)',
     fontSize: 'calc(3.2vw + 3.2vh)',
     fontWeight: 900,
     textAlign: 'center',
   })
   const stylePageHeadingSub = css({
     marginBottom: '2.5rem',
-    color: theme.colors.grayscale,
-    fontFamily: theme.fonts.tertiary,
+    color: 'var(--color-gray)',
+    fontFamily: 'var(--font-tertiary)',
     fontSize: 'calc(1vw + 1vh)',
     fontWeight: 'normal',
     fontStyle: 'italic',
@@ -37,28 +38,31 @@ export default function About() {
       display: 'flex',
       justifyContent: 'center',
       padding: '5rem',
-      backgroundColor: theme.colors.accent,
+      backgroundColor: 'var(--color-accent)',
       animation: 'slideUp .5s forwards',
+      h4: {
+        fontFamily: 'var(--font-secondary)'
+      },
       '@media (max-width: 1200px)': {
         padding: '2rem',
       },
       'ul li': {
         marginBottom: '.5rem',
-        color: theme.colors.grayscale,
+        color: 'var(--color-gray)',
         fontSize: 14,
         textAlign: 'center',
         strong: {
-          color: theme.colors.text
+          color: 'var(--color-text)'
         }
       }
     },
     h4: {
       marginBottom: '1.5rem',
       paddingBottom: '1rem',
-      fontFamily: theme.fonts.secondary,
+      fontFamily: 'var(font-secondary)',
       fontSize: 25,
       textAlign: 'center',
-      borderBottom: '2px solid'+ theme.colors.accentColor
+      borderBottom: '2px solid var(--color-accent-color)'
     }
   })
   const centerImage = css({
@@ -80,7 +84,7 @@ export default function About() {
   })
 
   return (
-    <>
+    <Layout>
       <Head>
         <title>About – Amir Ardalan</title>
       </Head>
@@ -162,7 +166,7 @@ export default function About() {
                     rel="noreferrer noopener"
                     aria-label="GitHub">
                     <Image
-                      src={theme.social.github}
+                      src='/static/icons/github.svg'
                       height={48}
                       width={48}
                       alt="GitHub"
@@ -176,7 +180,7 @@ export default function About() {
                     rel="noreferrer noopener"
                     aria-label="Twitter">
                     <Image
-                      src={theme.social.twitter}
+                      src='/static/icons/twitter.svg'
                       height={48}
                       width={48}
                       alt="Twitter"
@@ -190,7 +194,7 @@ export default function About() {
                     rel="noreferrer noopener"
                     aria-label="LinkedIn">
                     <Image
-                      src={theme.social.linkedin}
+                      src='/static/icons/linkedin.svg'
                       height={48}
                       width={48}
                       alt="LinkedIn"
@@ -221,13 +225,13 @@ export default function About() {
         </main>
         <div css={centerImage}>
           <Image
-            src={theme.logo}
+            src='/logo/logo-dark.svg'
             height={75}
             width={75}
             alt="Logo"
           />
         </div>
       </div>
-    </>
+    </Layout>
   )
 }

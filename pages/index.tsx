@@ -1,4 +1,5 @@
-import { css, useTheme } from '@emotion/react'
+import { css } from '@emotion/react'
+import Container from '@/components/Container'
 
 import Head from 'next/head'
 import Link from 'next/link'
@@ -11,7 +12,7 @@ import LoadingTriangle from '@/components/LoadingTriangle'
 import { GetStaticProps } from 'next'
 import prisma from '@/lib/prisma'
 
-const CanvasLoader = dynamic(() => import('../components/CanvasLoader'), {
+const CanvasLoader = dynamic(() => import('@/components/CanvasLoader'), {
   loading: () => <LoadingTriangle />
 })
 
@@ -40,7 +41,6 @@ export const getStaticProps: GetStaticProps = async () => {
 export default function Home(props: any) {
 
   // Styles
-  const theme : any = useTheme()
   const styleButtonContainer = css({
     marginBottom: '2rem',
     display: 'flex',
@@ -55,16 +55,16 @@ export default function Home(props: any) {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    background: theme.colors.text,
+    background: 'var(--color-text)',
     border: '1px solid transparent',
     borderRadius: 8,
-    color: theme.colors.background,
+    color: 'var(--color-bg)',
     fontSize: 15,
     cursor: 'pointer',
     '&:hover': {
-      background: theme.colors.background,
-      border: '1px solid' + theme.colors.text,
-      color: theme.colors.text
+      background: 'var(--color-bg)',
+      border: '1px solid var(--color-text)',
+      color: 'var(--color-text)'
     }
   })
   const styleMain = css({
@@ -99,7 +99,7 @@ export default function Home(props: any) {
     minHeight: '0vw',
     fontWeight: 'bolder',
     h2: {
-      fontFamily: theme.fonts.secondary,
+      fontFamily: 'var(--font-secondary)',
       fontSize: 'calc(2.9vw + 2.9vh)',
       margin: '0 0 1rem',
       fontWeight: 'bolder',
@@ -111,7 +111,7 @@ export default function Home(props: any) {
       marginBottom: '3rem',
       fontSize: 'calc(.9vw + .9vh)',
       fontWeight: 'normal',
-      color: theme.colors.grayscale,
+      color: 'var(--color-gray)',
       '@media (max-width: 890px)': {
         fontSize: 'calc(1.2vw + 1.2vh)',
       } 
@@ -119,8 +119,8 @@ export default function Home(props: any) {
     '.highlightText': {
       width: 'max-content',
       padding: '0 .5rem',
-      background: theme.colors.text,
-      color: theme.colors.background,
+      background: 'var(--color-text)',
+      color: 'var(--color-bg)',
     },
     '@media (min-width: 480px) and (max-width: 890px)': {
       fontSize: 'calc(2.5vw + 2.5vh)',
@@ -128,8 +128,8 @@ export default function Home(props: any) {
     }
   })
   const styleMainRight = css({
-    background: theme.canvas.background,
     marginTop: '2rem',
+    background: 'var(--canvas-bg)',
     height: '72vh',
     position: 'relative',
     display: 'flex',
@@ -145,13 +145,13 @@ export default function Home(props: any) {
       position: 'absolute',
       bottom: 0,
       left: 20,
-      color: theme.colors.background,
+      color: 'var(--color-bg)',
       fontSize: 10,
       fontWeight: 'normal',
       textTransform: 'uppercase',
       animation: 'fadeOut .2s forwards',
       a: {
-        color: theme.colors.background,
+        color: 'var(--color-bg)',
       },
       '@media(max-width: 890px)': {
         display: 'none',
@@ -173,7 +173,7 @@ export default function Home(props: any) {
   })
 
   return (
-    <>
+    <Container>
       <Head>
         <title>Amir Ardalan – Developer, Designer, Writer</title>
       </Head>
@@ -182,7 +182,7 @@ export default function Home(props: any) {
           <div css={styleMainLeft}>
             <div css={styleMainLeftContent}>
               <h2>
-                Hi, {theme.helloEmoji} I'm
+                Hi, ✌️ I'm
                 <div className="highlightText">
                   Amir Ardalan
                 </div>
@@ -215,6 +215,6 @@ export default function Home(props: any) {
           </div>
         </div>
       </main>
-    </>
+    </Container>
   )
 }
