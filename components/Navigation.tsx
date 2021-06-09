@@ -47,7 +47,6 @@ export default function Navigation() {
     background: 'transparent',
     border: 'none',
     transform: 'rotate(0deg)',
-    transition: '.5s ease-in-out',
     cursor: 'pointer',
     span: {
       display: 'block',
