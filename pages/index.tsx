@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { css } from '@emotion/react'
 import theme from '@/styles/theme'
 import Container from '@/components/Container'
@@ -172,8 +173,6 @@ export default function Home(props: any) {
     }
   })
 
-
-
   return (
     <Container>
       <Head>
@@ -184,7 +183,7 @@ export default function Home(props: any) {
           <div css={styleMainLeft}>
             <div css={styleMainLeftContent}>
               <h2>
-                Hi, {theme.emoji} I'm
+                Hi, ✌️ I'm
                 <div className="highlightText">
                   Amir Ardalan
                 </div>

@@ -75,7 +75,7 @@ const Terrain = ({
         ref={ref}
       />
       <meshBasicMaterial
-        color={theme.canvas}
+        color={theme.dark.canvas}
         wireframe
       />
     </mesh>

@@ -1,5 +1,4 @@
 import { css } from '@emotion/react'
-import theme from '@/styles/theme'
 import styled from '@emotion/styled'
 
 export default function Logo() {
@@ -38,7 +37,7 @@ export default function Logo() {
   return (
     <>
       <Image
-        src={theme.logo}
+        src='/logo/logo-dark.svg'
         alt="Amir Ardalan Logo"
         width={22}
         height={22}

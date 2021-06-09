@@ -5,7 +5,6 @@ import Head from 'next/head'
 import Link from 'next/link'
 import Image from 'next/image'
 import Avatar from '@/components/Avatar'
-import theme from '@/styles/theme'
 
 export default function About(props: any) {
 
@@ -63,7 +62,7 @@ export default function About(props: any) {
       fontFamily: 'var(font-secondary)',
       fontSize: 25,
       textAlign: 'center',
-      borderBottom: '2px solid'+ 'var(--color-accent-color)'
+      borderBottom: '2px solid var(--color-accent-color)'
     }
   })
   const centerImage = css({
@@ -167,7 +166,7 @@ export default function About(props: any) {
                     rel="noreferrer noopener"
                     aria-label="GitHub">
                     <Image
-                      src={theme.icon.github}
+                      src='/static/icons/icon-github.svg'
                       height={48}
                       width={48}
                       alt="GitHub"
@@ -181,7 +180,7 @@ export default function About(props: any) {
                     rel="noreferrer noopener"
                     aria-label="Twitter">
                     <Image
-                      src={theme.icon.twitter}
+                      src='/static/icons/icon-twitter.svg'
                       height={48}
                       width={48}
                       alt="Twitter"
@@ -195,7 +194,7 @@ export default function About(props: any) {
                     rel="noreferrer noopener"
                     aria-label="LinkedIn">
                     <Image
-                      src={theme.icon.linkedin}
+                      src='/static/icons/icon-linkedin.svg'
                       height={48}
                       width={48}
                       alt="LinkedIn"
@@ -226,7 +225,7 @@ export default function About(props: any) {
         </main>
         <div css={centerImage}>
           <Image
-            src={theme.logo}
+            src='/logo/logo-dark.svg'
             height={75}
             width={75}
             alt="Logo"

@@ -42,7 +42,7 @@ export default function Custom404() {
           },
         }}>
           <Image
-            src={theme.icon.error}
+            src='/icons/error-dark.svg'
             alt="Error"
             aria-label="Error"
             width={40}
