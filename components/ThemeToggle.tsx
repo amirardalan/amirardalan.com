@@ -15,7 +15,7 @@ const ThemeToggle = () => {
     setToggleThemeControl(!toggleThemeControl)
   }
   useEffect(() => {
-    document.body.dataset.theme = activeTheme;
+    document.body.dataset.theme = activeTheme
     window.localStorage.setItem('theme', activeTheme)
   }, [activeTheme])
 

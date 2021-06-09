@@ -1,98 +1,32 @@
 import { Global } from '@emotion/react'
 
-export function GlobalStyles () {
-  
-  // Colors
-  const light= '#ffffff'
-  const lightAccent = '#eeeeee'
-  const lighter = '#f7f7f7'
-  const dark= '#000'
-  const darkAccent = '#14171a'
-  const darker = '#343042'
-  const primary = '#571AFF'
-  const secondary = '#3dffc5'
-  const grayLight = '#b0bccc'
-  const grayDark = '#697075'
-  const grayAccentLight = '#b8c1c7'
-  const grayAccentDark = '#3e4449'
-  const select = '#ffff00'
-  const buttonDisabled = '#8b8b8b'
-  const warning = '#ec4949'
-  const code = '#2e3440'
+// Typography
+const fontPrimary = "'Fira Code', Menlo, Monaco, 'Courier New', monospace"
+const fontSecondary = "'Poppins', Helvetica, Arial, sans-serif"
+const fontTertiary = "'Lora', 'Times New Roman', Times, serif"
 
-  // Typography
-  const fontPrimary = "'Fira Code', Menlo, Monaco, 'Courier New', monospace"
-  const fontSecondary = "'Poppins', Helvetica, Arial, sans-serif"
-  const fontTertiary = "'Lora', 'Times New Roman', Times, serif"
+// Colors
+const light= '#ffffff'
+const lightAccent = '#eeeeee'
+const lighter = '#f7f7f7'
+const dark= '#000'
+const darkAccent = '#14171a'
+const darker = '#343042'
+const primary = '#571AFF'
+const secondary = '#3dffc5'
+const grayLight = '#b0bccc'
+const grayDark = '#697075'
+const grayAccentLight = '#b8c1c7'
+const grayAccentDark = '#3e4449'
+const select = '#ffff00'
+const buttonDisabled = '#8b8b8b'
+const warning = '#ec4949'
+const code = '#2e3440'
+
+export function GlobalStyles () {
 
   return (
     <>
-      <Global styles={{
-        'body, body[data-theme="light"]': {
-          '--font-primary': fontPrimary,
-          '--font-secondary': fontSecondary,
-          '--font-tertiary': fontTertiary,
-          '--color-accent': lightAccent,
-          '--color-accent-color': primary,
-          '--color-bg': light,
-          '--color-text': dark,
-          '--color-link': primary,
-          '--color-gray': grayDark,
-          '--color-gray-accent': grayAccentLight,
-          '--color-select': select,
-          '--color-select-text': dark,
-          '--color-input-disabled': light,
-          '--color-button-disabled': buttonDisabled,
-          '--color-warning': warning,
-          '--color-code': code,
-          '--logo': '/logo/logo-light.svg',
-          '--logo-error': '/static/icons/error-light.svg',
-          '--emoji-hello': '👋',
-          '--button-toggle-bg': lightAccent,
-          '--button-toggle-switch': darker,
-          '--canvas-mesh': primary,
-          '--canvas-bg': 'linear-gradient(to bottom, #010A10 30%,#59230B 80%,#2F1107 100%)',
-          '--page-bg': lighter,
-          '--social-github': '/static/icons/github-light.svg',
-          '--social-twitter': '/static/icons/twitter-light.svg',
-          '--social-linkedin': '/static/icons/linkedin-light.svg',
-          '--syntax-highlight-theme': 'syntaxLight',
-          '--syntax-highlight-bg': lighter,
-          '--myVar': '👋',
-        },
-        
-        'body[data-theme="dark"]': {
-          '--font-primary': fontPrimary,
-          '--font-secondary': fontSecondary,
-          '--font-tertiary': fontTertiary,
-          '--color-accent': darkAccent,
-          '--color-accent-color': secondary,
-          '--color-bg': dark,
-          '--color-text': light,
-          '--color-link': secondary,
-          '--color-gray': grayLight,
-          '--color-gray-accent': grayAccentDark,
-          '--color-select': select,
-          '--color-select-text': dark,
-          '--color-input-disabled': dark,
-          '--color-button-disabled': buttonDisabled,
-          '--color-warning': warning,
-          '--color-code': code,
-          '--logo': '/logo/logo-dark.svg',
-          '--logo-error': '/static/icons/error-dark.svg',
-          '--emoji-hello': '👋',
-          '--button-toggle-bg': darker,
-          '--button-toggle-switch': lighter,
-          '--canvas-mesh': secondary,
-          '--canvas-bg': 'linear-gradient(to bottom, #757abf 0%,#8583be 60%,#eab0d1 100%)',
-          '--page-bg': darkAccent,
-          '--social-github': '/static/icons/github-dark.svg',
-          '--social-twitter': '/static/icons/twitter-dark.svg',
-          '--social-linkedin': '/static/icons/linkedin-dark.svg',
-          '--syntax-highlight-theme': 'syntaxDark',
-          '--syntax-highlight-bg': darkAccent,
-        }
-      }} />
       <Global styles={{
         // @font: Poppins 900
         '@font-face': {
@@ -143,6 +77,53 @@ export function GlobalStyles () {
           src: 'url("/fonts/lora-latin-500-italic.woff2") format("woff2")'
         },
       }}/>
+      <Global styles={{
+        'body[data-theme="light"], body[data-theme="dark"]': {
+          '--font-primary': fontPrimary,
+          '--font-secondary': fontSecondary,
+          '--font-tertiary': fontTertiary,
+          '--color-select': select,
+          '--color-warning': warning,
+          '--color-button-disabled': buttonDisabled,
+        },
+        'body, body[data-theme="light"]': {
+          '--color-accent': lightAccent,
+          '--color-accent-color': primary,
+          '--color-bg': light,
+          '--color-text': dark,
+          '--color-link': primary,
+          '--color-gray': grayDark,
+          '--color-gray-accent': grayAccentLight,
+          '--color-select-text': dark,
+          '--color-input-disabled': light,
+          '--color-code': code,
+          '--button-toggle-bg': lightAccent,
+          '--button-toggle-switch': darker,
+          '--canvas-mesh': primary,
+          '--canvas-bg': 'linear-gradient(to bottom, #010A10 30%,#59230B 80%,#2F1107 100%)',
+          '--page-bg': lighter,
+          '--syntax-highlight-bg': lighter,
+        },
+        
+        'body[data-theme="dark"]': {
+          '--color-accent': darkAccent,
+          '--color-accent-color': secondary,
+          '--color-bg': dark,
+          '--color-text': light,
+          '--color-link': secondary,
+          '--color-gray': grayLight,
+          '--color-gray-accent': grayAccentDark,
+          '--color-select-text': dark,
+          '--color-input-disabled': dark,
+          '--color-code': code,
+          '--button-toggle-bg': darker,
+          '--button-toggle-switch': lighter,
+          '--canvas-mesh': secondary,
+          '--canvas-bg': 'linear-gradient(to bottom, #757abf 0%,#8583be 60%,#eab0d1 100%)',
+          '--page-bg': darkAccent,
+          '--syntax-highlight-bg': darkAccent,
+        }
+      }} />
       <Global styles={{
         // Reset
         'html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video': {

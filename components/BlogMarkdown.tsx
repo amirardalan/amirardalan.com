@@ -1,6 +1,6 @@
 import { materialOceanic, materialLight } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import ReactMarkdown from 'react-markdown'
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import gfm from 'remark-gfm'
 import rehypeSlug from 'rehype-slug'
 import link from 'rehype-autolink-headings'
@@ -11,8 +11,8 @@ export default function BlogMarkdown({ props }) {
   // Syntax Highlighter Object for Markdown
   const BlogSyntaxHighlight: object = {
     code({node, inline, className,...props}) {
-      const syntaxTheme = materialOceanic
-      const setSyntaxTheme = syntaxTheme === 'syntaxDark' ? materialOceanic : materialLight
+      const syntaxTheme: any = materialOceanic
+      const setSyntaxTheme = syntaxTheme === 'light' ? materialOceanic : materialLight
       const match = /language-(\w+)/.exec(className || '')
       return match ? (
         <SyntaxHighlighter
