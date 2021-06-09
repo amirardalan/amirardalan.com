@@ -12,7 +12,7 @@ export default function BlogMarkdown({ props }) {
   // Syntax Highlighter Object for Markdown
   const BlogSyntaxHighlight: object = {
     code({node, inline, className,...props}) {
-      const syntaxTheme: any = theme.code.syntax
+      const syntaxTheme: any = theme.code
       const setSyntaxTheme = syntaxTheme === 'light' ? materialLight : materialOceanic
       const match = /language-(\w+)/.exec(className || '')
       return match ? (

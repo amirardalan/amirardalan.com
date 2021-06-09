@@ -184,7 +184,7 @@ export default function Home(props: any) {
           <div css={styleMainLeft}>
             <div css={styleMainLeftContent}>
               <h2>
-                Hi, {theme.emoji.hello} I'm
+                Hi, {theme.emoji} I'm
                 <div className="highlightText">
                   Amir Ardalan
                 </div>
