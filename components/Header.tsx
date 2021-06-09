@@ -14,7 +14,7 @@ const BlogAdmin = dynamic(() => import('@/components/BlogAdmin'), {
 const Header = () => {
   
   const styleHeaderWrapper = css({
-    padding: '2rem 4rem',
+    padding: '2rem 4rem 0',
     position: 'sticky',
     top: '-2rem',
     backgroundColor: 'var(--color-bg)',
@@ -22,9 +22,6 @@ const Header = () => {
     '@media(max-width: 1024px)': {
       padding: '0 2.5rem',
       top: 0,
-    },
-    '@media(max-width: 890px)': {
-      padding: '0 2rem',
     },
     '@media(max-width: 600px)': {
       padding: '0 1.5rem',
