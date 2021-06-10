@@ -1,13 +1,7 @@
 import { useState } from 'react'
 import { button, useControls } from 'leva'
+import CanvasTerrain from '@/components/CanvasTerrain'
 import { Global } from '@emotion/react'
-
-import LoadingTriangle from '@/components/LoadingTriangle'
-import dynamic from 'next/dynamic'
-const CanvasTerrain = dynamic(
-  () => import('@/components/CanvasTerrain'),
-  { loading: () => <LoadingTriangle /> }
-)
 
 const CanvasTerrainControls = () => {
   const [seed, setSeed] = useState(Date.now())
