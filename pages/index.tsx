@@ -4,8 +4,8 @@ import LatestPost from '@/components/LatestPost'
 import Head from 'next/head'
 import Link from 'next/link'
 
-import LoadingTriangle from '@/components/LoadingTriangle'
 import dynamic from 'next/dynamic'
+import LoadingTriangle from '@/components/LoadingTriangle'
 const TypingAnimation  = dynamic(() => import('@/components/TypingAnimation'), {
   loading: () => <span className="typingAnimation">_</span>,
   ssr: false
@@ -18,7 +18,7 @@ const CanvasLoader = dynamic(() => import('@/components/CanvasLoader'), {
 import { GetStaticProps } from 'next'
 import prisma from '@/lib/prisma'
 
-// Get all published posts along with author, publish date, title, teaser and slug
+// Get Latest Post title, teaser, and slug
 export const getStaticProps: GetStaticProps = async () => {
   try {
     const latestPost = await prisma.post.findMany({
@@ -44,32 +44,6 @@ export const getStaticProps: GetStaticProps = async () => {
 export default function Home(props: any) {
 
   // Styles
-  const styleButtonContainer = css({
-    marginBottom: '2rem',
-    display: 'flex',
-    flexDirection: 'row',
-  })
-  const styleCtaButton = css({
-    minWidth: 135,
-    minHeight: 45,
-    marginRight: '1rem',
-    padding: '.5rem 1.4rem',
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    background: 'var(--color-text)',
-    border: '1px solid transparent',
-    borderRadius: 8,
-    color: 'var(--color-bg)',
-    fontSize: 15,
-    cursor: 'pointer',
-    '&:hover': {
-      background: 'var(--color-bg)',
-      border: '1px solid var(--color-text)',
-      color: 'var(--color-text)'
-    }
-  })
   const styleMain = css({
     display: 'flex',
     flexDirection: 'row',
@@ -130,6 +104,32 @@ export default function Home(props: any) {
       minHeight: '0vw',
     }
   })
+  const styleButtonContainer = css({
+    marginBottom: '2rem',
+    display: 'flex',
+    flexDirection: 'row',
+  })
+  const styleCtaButton = css({
+    minWidth: 135,
+    minHeight: 45,
+    marginRight: '1rem',
+    padding: '.5rem 1.4rem',
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    background: 'var(--color-text)',
+    border: '1px solid transparent',
+    borderRadius: 8,
+    color: 'var(--color-bg)',
+    fontSize: 15,
+    cursor: 'pointer',
+    '&:hover': {
+      background: 'var(--color-bg)',
+      border: '1px solid var(--color-text)',
+      color: 'var(--color-text)'
+    }
+  })
   const styleMainRight = css({
     marginTop: '2rem',
     background: 'var(--canvas-bg)',
@@ -141,29 +141,10 @@ export default function Home(props: any) {
     alignItems: 'center',
     cursor: 'crosshair',
     animation: 'fadeIn .5s forwards',
-    '.canvasInfo': {
-      zIndex: 3,
-      margin: '0 0 1rem 0',
-      padding: '0',
-      position: 'absolute',
-      bottom: 0,
-      left: 20,
-      color: 'var(--color-bg)',
-      fontSize: 10,
-      fontWeight: 'normal',
-      textTransform: 'uppercase',
-      animation: 'fadeOut .2s forwards',
-      a: {
-        color: 'var(--color-bg)',
-      },
-      '@media(max-width: 890px)': {
-        display: 'none',
-      }
-    },
     '&:hover': {
       '.canvasInfo': {
         animation: 'fadeIn .2s forwards'
-      } 
+      }
     },
     '@media (max-width: 1024px)': {
       marginTop: 0,

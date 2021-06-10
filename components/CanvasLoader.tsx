@@ -1,12 +1,36 @@
 import React from 'react'
+import { css } from '@emotion/react'
 import { Canvas } from '@react-three/fiber'
 import CanvasTerrainControls from '@/components/CanvasTerrainControls'
 
 const CanvasLoader =  React.memo(() => {
 
+  const styleCanvasInfo = css({
+    zIndex: 3,
+    margin: '0 0 1rem 0',
+    padding: '0',
+    position: 'absolute',
+    bottom: 0,
+    left: 20,
+    color: 'var(--color-bg)',
+    fontSize: 10,
+    fontWeight: 'normal',
+    textTransform: 'uppercase',
+    animation: 'fadeOut .2s forwards',
+    a: {
+      color: 'var(--color-bg)',
+    },
+    '@media(max-width: 890px)': {
+      display: 'none',
+    }
+  })
+
   return (
     <>
-      <small className="canvasInfo">
+      <small
+        css={styleCanvasInfo}
+        className="canvasInfo"
+      >
         <a
           href="https://github.com/Mozzius/terrain-fiber"
           target="_blank"
