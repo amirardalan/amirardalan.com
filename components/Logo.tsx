@@ -1,20 +1,19 @@
 import { css } from '@emotion/react'
-import styled from '@emotion/styled'
+import Image from 'next/image'
 
 export default function Logo() {
 
-  const Image = styled.img({
+  const styleLogo = css({
+    display: 'block',
     animation: 'spin 1s forwards',
-    marginRight: '.2rem',
     fontSize: 0,
     '@keyframes spin': {
       from: { transform: 'rotate(0deg)' },
       to: { transform: 'rotate(360deg)' }
     }
   })
-
   const styleTitle = css({
-    margin: '0',
+    margin: '0 0 0 .2rem',
     fontWeight: 'bold',
     fontSize: '14px',
     color: 'var(--color-text)',
@@ -22,7 +21,7 @@ export default function Logo() {
   })
   const styleTitleSub = css({
     position: 'relative',
-    margin: '0',
+    margin: '0 0 0 .2rem',
     color: 'var(--color-gray)',
     fontFamily: 'var(--font-primary)',
     fontSize: '8px',
@@ -41,6 +40,7 @@ export default function Logo() {
         alt="Amir Ardalan Logo"
         width={22}
         height={22}
+        css={styleLogo}
       />
       <div css={{
         flexDirection: 'column',
