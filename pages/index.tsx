@@ -1,13 +1,14 @@
 import { css } from '@emotion/react'
-import TypingAnimation from '@/components/TypingAnimation'
 import Container from '@/components/Container'
+import LatestPost from '@/components/LatestPost'
 import Head from 'next/head'
 import Link from 'next/link'
 
-import LatestPost from '@/components/LatestPost'
-
 import LoadingTriangle from '@/components/LoadingTriangle'
 import dynamic from 'next/dynamic'
+const TypingAnimation  = dynamic(() => import('@/components/TypingAnimation'), {
+  loading: () => <span className="typingAnimation">_</span>
+})
 const CanvasLoader = dynamic(() => import('@/components/CanvasLoader'), {
   loading: () => <LoadingTriangle />,
   ssr: false
