@@ -115,7 +115,7 @@ const Post = (props: any) => {
   const disallowRobots = ( <meta name="robots" content="noindex"></meta> )
 
   return (
-    <BlogLayout>
+    <BlogLayout toggleTheme={props.toggleTheme}>
       <Head>
         <title>{title} – Amir Ardalan</title>
         {isPublished ? null : disallowRobots }

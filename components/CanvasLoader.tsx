@@ -1,9 +1,10 @@
 import React from 'react'
-import { css } from '@emotion/react'
+import { css, useTheme } from '@emotion/react'
 import { Canvas } from '@react-three/fiber'
 import CanvasTerrainControls from '@/components/CanvasTerrainControls'
 
-const CanvasLoader =  React.memo(() => {
+const CanvasLoader =  React.memo((props: any) => {
+  const theme: any = useTheme()
 
   const styleCanvasInfo = css({
     zIndex: 3,
@@ -46,7 +47,7 @@ const CanvasLoader =  React.memo(() => {
         camera={{ position: [0.35, 0.35, 0.35] }}
       >
 
-        <CanvasTerrainControls />
+        <CanvasTerrainControls theme={theme} />
         <ambientLight />
       </Canvas>
     </>

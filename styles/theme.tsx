@@ -14,7 +14,7 @@ export const themeLight = {
 export const themeDark = {
   logo: '/logo/logo-dark.svg',
   code: 'dark',
-  canvas: '#571AFF',
+  canvas: '#3dffc5',
   emoji: '✌️',
   icon: {
     github: '/static/icons/github-dark.svg',

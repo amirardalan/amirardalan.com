@@ -35,6 +35,7 @@ const generateTerrain = (simplex, size, height, levels, scale, offset) => {
 }
 
 const Terrain = ({
+  theme,
   seed,
   size,
   height,
@@ -74,7 +75,7 @@ const Terrain = ({
         ref={ref}
       />
       <meshBasicMaterial
-        color="#571AFF"
+        color={theme.canvas}
         wireframe
       />
     </mesh>

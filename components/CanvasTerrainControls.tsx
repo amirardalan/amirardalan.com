@@ -3,7 +3,7 @@ import { button, useControls } from 'leva'
 import CanvasTerrain from '@/components/CanvasTerrain'
 import { Global } from '@emotion/react'
 
-const CanvasTerrainControls = () => {
+const CanvasTerrainControls = ({ theme }) => {
   const [seed, setSeed] = useState(Date.now())
 
   const { resolution, height, levels, scale, rotate } = useControls({
@@ -18,6 +18,7 @@ const CanvasTerrainControls = () => {
   return (
     <>
       <CanvasTerrain
+        theme={theme}
         seed={seed}
         size={resolution}
         height={height}

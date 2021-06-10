@@ -1,4 +1,4 @@
-import { css } from '@emotion/react'
+import { css, useTheme } from '@emotion/react'
 import Container from '@/components/Container'
 
 import Head from 'next/head'
@@ -6,7 +6,8 @@ import Link from 'next/link'
 import Image from 'next/image'
 import Avatar from '@/components/Avatar'
 
-export default function About() {
+export default function About(props: any) {
+  const theme: any = useTheme()
 
   const stylePageHeading = css({
     fontFamily: 'var(font-secondary)',
@@ -88,7 +89,7 @@ export default function About() {
   })
 
   return (
-    <Container>
+    <Container toggleTheme={props.toggleTheme}>
       <Head>
         <title>About – Amir Ardalan</title>
       </Head>
@@ -231,7 +232,7 @@ export default function About() {
         </main>
         <div css={centerImage}>
           <Image
-            src='/logo/logo-dark.svg'
+            src={theme.logo}
             height={75}
             width={75}
             alt="Logo"

@@ -1,4 +1,4 @@
-import { css } from '@emotion/react'
+import { css, useTheme } from '@emotion/react'
 import Container from '@/components/Container'
 import LatestPost from '@/components/LatestPost'
 import Head from 'next/head'
@@ -17,6 +17,7 @@ const CanvasLoader = dynamic(() => import('@/components/CanvasLoader'), {
 
 import { GetStaticProps } from 'next'
 import prisma from '@/lib/prisma'
+import { theme } from 'leva/dist/declarations/src/styles'
 
 // Get Latest Post title, teaser, and slug
 export const getStaticProps: GetStaticProps = async () => {
@@ -42,6 +43,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
 
 export default function Home(props: any) {
+  const theme: any = useTheme()
 
   // Styles
   const styleMain = css({
@@ -166,7 +168,7 @@ export default function Home(props: any) {
           <div css={styleMainLeft}>
             <div css={styleMainLeftContent}>
               <h2>
-                Hi, ✌️ I'm
+                Hi, {theme.emoji} I'm
                 <div className="highlightText">
                   Amir Ardalan
                 </div>
@@ -195,7 +197,7 @@ export default function Home(props: any) {
         </div>
         <div css={styleAnimationWrapper}>
           <div css={styleMainRight}>
-            <CanvasLoader />
+            <CanvasLoader toggleTheme={props.toggleTheme} />
           </div>
         </div>
       </main>

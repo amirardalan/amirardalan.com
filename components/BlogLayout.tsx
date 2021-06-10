@@ -5,7 +5,7 @@ export default function BlogLayout(props: any) {
 
   return (
     <>
-      <Container>
+      <Container toggleTheme={props.toggleTheme}>
         {props.children}
       </Container>
       
