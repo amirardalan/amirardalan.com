@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { Suspense } from 'react'
+import LoadingTriangle from '@/components/LoadingTriangle'
 import { Canvas } from '@react-three/fiber'
 import CanvasTerrainControls from '@/components/CanvasTerrainControls'
 
@@ -15,16 +16,18 @@ const CanvasLoader =  React.memo(() => {
           @Mozzius
         </a>
       </small>
-      <Canvas
-        css={{ animation: 'slideUp 1s forwards' }}
-        gl={{ antialias: true }}
-        onCreated={({ camera }) => camera.lookAt(0, 0, 0)}
-        camera={{ position: [0.35, 0.35, 0.35] }}
-      >
+      <Suspense fallback={<LoadingTriangle />}>
+        <Canvas
+          css={{ animation: 'slideUp 1s forwards' }}
+          gl={{ antialias: true }}
+          onCreated={({ camera }) => camera.lookAt(0, 0, 0)}
+          camera={{ position: [0.35, 0.35, 0.35] }}
+        >
 
-        <CanvasTerrainControls />
-        <ambientLight />
-      </Canvas>
+          <CanvasTerrainControls />
+          <ambientLight />
+        </Canvas>
+      </Suspense>
     </>
   )
 })
