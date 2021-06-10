@@ -80,7 +80,7 @@ export default function BlogLayout(props: any) {
             marginTop: '3rem',
           },
           '.postDetails': {
-            margin: '.6rem 0 .2rem',
+            margin: '.5rem 0 .2rem',
             color: 'var(--color-gray)',
             fontSize: 13,
 

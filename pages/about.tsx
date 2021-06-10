@@ -109,7 +109,7 @@ export default function About() {
               <li><strong>Developer, Designer, Writer.</strong></li>
               <li>
                 <em>
-                  I produce fast, maintainable code, design purpose-built user interfaces, and write about these topics and more to share with the community.
+                  I produce fast, maintainable code, design purpose-built user interfaces, and write about web development.
                 </em>
               </li>
               <li>
@@ -118,13 +118,15 @@ export default function About() {
                   aria-label="Resume (.pdf)">
                   Resume(.pdf)
                 </Link>
-              </li>
-              <li>
+                {' • '}
                 <Link
                   href="/blog/2021-a-dev-odyssey"
                   aria-label="My Journey">
                   My Journey
                 </Link>
+              </li>
+              <li>
+
               </li>
             </ul>
           </div>

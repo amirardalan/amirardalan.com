@@ -5,7 +5,12 @@ import Link from 'next/link'
 
 import TypingAnimation from '@/components/TypingAnimation'
 import LatestPost from '@/components/LatestPost'
-import CanvasLoader from '@/components/CanvasLoader'
+import LoadingTriangle from '@/components/LoadingTriangle'
+
+import dynamic from 'next/dynamic'
+const CanvasLoader = dynamic(() => import('@/components/CanvasLoader'), {
+  loading: () => <LoadingTriangle />,
+})
 
 import { GetStaticProps } from 'next'
 import prisma from '@/lib/prisma'
