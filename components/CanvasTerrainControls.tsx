@@ -31,6 +31,7 @@ const CanvasTerrainControls = () => {
           display: 'block',
           fontFamily: 'var(--font-primary)',
           textTransform: 'uppercase',
+          '--leva-colors-accent2': 'var(--color-select)',
           
           // Hide on Tablet/Mobile
           '@media(max-width: 890px)': {
@@ -62,6 +63,9 @@ const CanvasTerrainControls = () => {
               bottom: '.5rem',
               right: '.5rem',
             }
+          },
+          '.levaolirc': {
+            boxShadow: 'none',
           },
           '.levaussed, .levarv4c7': {
             background: 'var(--color-accent)',

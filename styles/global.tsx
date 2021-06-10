@@ -252,10 +252,6 @@ export function GlobalStyles () {
       }} />
       <Global styles={{
         // Special Text
-        '::-moz-selection': {
-          background: 'var(--color-select)',
-          color: 'var(--color-select-text)',
-        },
         '::selection': {
           background: 'var(--color-select)',
           color: 'var(--color-select-text)',

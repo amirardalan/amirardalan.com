@@ -37,9 +37,9 @@ export default function BlogMarkdown({ props }) {
         '.codeStyle': {
           overflow: 'scroll',
           borderRadius: 5,
-          backgroundColor: 'var(--syntax-highlight-bg)' + '!important',
+          backgroundColor: 'var(--syntax-highlight-bg) !important',
           'code': {
-            backgroundColor: 'transparent' + '!important',
+            backgroundColor: 'transparent !important',
             transform: 'translateZ(0)'
           },
         },

@@ -26,7 +26,6 @@ const Header = () => {
     }
   })
   const styleHeader = css({
-    overflow: 'hidden',
     paddingBottom: '1rem',
     paddingTop: '1rem',
     height: 'auto',
