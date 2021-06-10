@@ -7,7 +7,8 @@ import Link from 'next/link'
 import LoadingTriangle from '@/components/LoadingTriangle'
 import dynamic from 'next/dynamic'
 const TypingAnimation  = dynamic(() => import('@/components/TypingAnimation'), {
-  loading: () => <span className="typingAnimation">_</span>
+  loading: () => <span className="typingAnimation">_</span>,
+  ssr: false
 })
 const CanvasLoader = dynamic(() => import('@/components/CanvasLoader'), {
   loading: () => <LoadingTriangle />,
