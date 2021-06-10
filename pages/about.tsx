@@ -6,7 +6,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import Avatar from '@/components/Avatar'
 
-export default function About(props: any) {
+export default function About() {
 
   const stylePageHeading = css({
     fontFamily: 'var(font-secondary)',
@@ -53,6 +53,10 @@ export default function About(props: any) {
         textAlign: 'center',
         strong: {
           color: 'var(--color-text)'
+        },
+        em: {
+          display: 'inline-block',
+          maxWidth: 450,
         }
       }
     },
@@ -105,7 +109,7 @@ export default function About(props: any) {
               <li><strong>Developer, Designer, Writer.</strong></li>
               <li>
                 <em>
-                  I craft experiences for the web with clean, accessible code, and purpose-built user interfaces.
+                  I produce fast, maintainable code, design purpose-built user interfaces, and write about these topics and more to share with the community.
                 </em>
               </li>
               <li>
