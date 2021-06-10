@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import BlogLayout from '@/components/BlogLayout'
 import BlogMarkdown from '@/components/BlogMarkdown'
 import { renderToString } from 'react-dom/server'
-import BlogNextPrev from '@/components/BlogNextPrev'
+import BlogNavigation from '@/components/BlogNavigation'
 import ReadTime from '@/components/ReadTime'
 import FormatDate from '@/components/FormatDate'
 
@@ -167,7 +167,7 @@ const Post = (props: any) => {
 
         </div>
 
-        <BlogNextPrev
+        <BlogNavigation
           props={props}
           isPublished={isPublished}
         />

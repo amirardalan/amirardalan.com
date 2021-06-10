@@ -42,14 +42,12 @@ export default function Logo() {
         width={22}
         height={22}
       />
-
       <div css={{
         flexDirection: 'column',
       }}>
         <h1 css={styleTitle}>
           Amir Ardalan
         </h1>
-
         <div
           aria-label="Portland, Oregon"
           css={styleTitleSub}>

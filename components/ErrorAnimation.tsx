@@ -1,8 +1,4 @@
-import { useTheme } from '@emotion/react'
-
 export default function ErrorAnimation() {
-
-const theme : any = useTheme()
 
   return (
     <svg

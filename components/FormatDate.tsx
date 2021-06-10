@@ -1,4 +1,4 @@
-// Format "date" to a readable format: (January 1, 2021)
+// Format Date - (eg: January 1, 2021)
 const FormatDate: React.FC<{ date: Date }> = ({ date }) => {
   const formatDate = [
     date.toLocaleDateString("en-US", { month: 'long' }) ,

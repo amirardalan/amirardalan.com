@@ -1,7 +1,7 @@
 import sortBlogPosts from '@/utils/sortBlogPosts'
 import Link from 'next/link'
 
-export default function BlogNextPrev({ props, isPublished }) {
+export default function BlogNavigation({ props, isPublished }) {
 
   const total : number = props.feed.length
   const current : number = props.post.id

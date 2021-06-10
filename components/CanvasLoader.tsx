@@ -1,6 +1,6 @@
 import React from 'react'
 import { Canvas } from '@react-three/fiber'
-import CanvasTerrainManager from '@/components/CanvasTerrainManager'
+import CanvasTerrainControls from '@/components/CanvasTerrainControls'
 
 const CanvasLoader =  React.memo(() => {
 
@@ -11,7 +11,7 @@ const CanvasLoader =  React.memo(() => {
           href="https://github.com/Mozzius/terrain-fiber"
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="Credit: https://github.com/Mozzius/terrain-fiber">
+          aria-label="Credit: @Mozzius https://github.com/Mozzius/terrain-fiber">
           @Mozzius
         </a>
       </small>
@@ -22,7 +22,7 @@ const CanvasLoader =  React.memo(() => {
         camera={{ position: [0.35, 0.35, 0.35] }}
       >
 
-        <CanvasTerrainManager />
+        <CanvasTerrainControls />
         <ambientLight />
       </Canvas>
     </>
