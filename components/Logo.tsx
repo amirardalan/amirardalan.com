@@ -1,5 +1,5 @@
 import { css, useTheme } from '@emotion/react'
-import Image from 'next/image'
+
 
 export default function Logo() {
   const theme : any = useTheme()
@@ -36,7 +36,7 @@ export default function Logo() {
 
   return (
     <>
-      <Image
+      <img
         src={theme.logo}
         alt="Amir Ardalan Logo"
         width={22}
