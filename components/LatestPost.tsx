@@ -10,7 +10,9 @@ export default function LatestPost(props: any) {
     fontWeight: 'normal',
     lineHeight: '1.8rem',
     h3: {
+      marginBottom: '.3rem',
       color: 'var(--color-gray)',
+      fontFamily: 'var(--font-primary)',
       fontSize: 12,
       fontWeight: 'normal',
       lineHeight: '1.3rem',
