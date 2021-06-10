@@ -7,7 +7,7 @@ export default function Container(props: any) {
   return (
     <>
       <LoadingBar />
-      <Header />
+      <Header toggleTheme={props.toggleTheme} />
       <div className="container">
         {props.children}
         <Footer />

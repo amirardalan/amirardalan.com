@@ -157,7 +157,7 @@ export default function Home(props: any) {
   })
 
   return (
-    <Container>
+    <Container toggleTheme={props.toggleTheme}>
       <Head>
         <title>Amir Ardalan – Developer, Designer, Writer</title>
       </Head>

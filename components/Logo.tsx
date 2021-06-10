@@ -1,7 +1,8 @@
-import { css } from '@emotion/react'
+import { css, useTheme } from '@emotion/react'
 import Image from 'next/image'
 
 export default function Logo() {
+  const theme : any = useTheme()
 
   const styleLogo = css({
     display: 'block',
@@ -36,7 +37,7 @@ export default function Logo() {
   return (
     <>
       <Image
-        src='/logo/logo-dark.svg'
+        src={theme.logo}
         alt="Amir Ardalan Logo"
         width={22}
         height={22}

@@ -10,7 +10,7 @@ const ThemeToggle = dynamic(() => import('@/components/ThemeToggle'), {
 })
 
 
-const Header = () => {
+const Header = ({ toggleTheme }) => {
   
   const styleHeaderWrapper = css({
     padding: '2rem 4rem 0',
@@ -69,7 +69,7 @@ const Header = () => {
         </Link>
         <div className="headerRight">
           <Navigation />
-          <ThemeToggle />
+          <ThemeToggle toggleTheme={toggleTheme} />
         </div>
       </div>
       <BlogAdmin />
