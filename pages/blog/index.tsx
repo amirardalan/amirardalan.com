@@ -1,10 +1,11 @@
 import React from 'react'
-import Head from 'next/head'
 import BlogLayout from '@/components/BlogLayout'
 import sortBlogPosts from '@/utils/sortBlogPosts'
+import Head from 'next/head'
+
+import BlogPost, { PostProps } from '@/components/BlogPost'
 import { GetStaticProps } from 'next'
 import prisma from '@/lib/prisma'
-import BlogPost, { PostProps } from '@/components/BlogPost'
 
 
 export const getStaticProps: GetStaticProps = async () => {

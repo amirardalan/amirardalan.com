@@ -1,5 +1,5 @@
 import { css } from '@emotion/react'
-import Layout from '@/components/Container'
+import Container from '@/components/Container'
 
 import Head from 'next/head'
 import Link from 'next/link'
@@ -88,7 +88,7 @@ export default function About() {
   })
 
   return (
-    <Layout>
+    <Container>
       <Head>
         <title>About – Amir Ardalan</title>
       </Head>
@@ -238,6 +238,6 @@ export default function About() {
           />
         </div>
       </div>
-    </Layout>
+    </Container>
   )
 }

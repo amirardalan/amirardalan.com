@@ -2,7 +2,7 @@ import LoadingBar from '@/components/LoadingBar'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 
-export default function Layout(props: any) {
+export default function Container(props: any) {
 
   return (
     <>
