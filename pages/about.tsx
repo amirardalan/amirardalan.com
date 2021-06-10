@@ -110,7 +110,7 @@ export default function About(props: any) {
               <li><strong>Developer, Designer, Writer.</strong></li>
               <li>
                 <em>
-                  I produce fast, maintainable code, design purpose-built user interfaces, and write about web development.
+                  I write code, design user interfaces, and blog about web development.
                 </em>
               </li>
               <li>
@@ -119,15 +119,13 @@ export default function About(props: any) {
                   aria-label="Resume (.pdf)">
                   Resume(.pdf)
                 </Link>
-                {' • '}
+              </li>
+              <li>
                 <Link
                   href="/blog/2021-a-dev-odyssey"
                   aria-label="My Journey">
                   My Journey
                 </Link>
-              </li>
-              <li>
-
               </li>
             </ul>
           </div>
@@ -173,7 +171,7 @@ export default function About(props: any) {
                     rel="noreferrer noopener"
                     aria-label="GitHub">
                     <Image
-                      src='/static/icons/github.svg'
+                      src={theme.icon.github}
                       height={48}
                       width={48}
                       alt="GitHub"
@@ -187,7 +185,7 @@ export default function About(props: any) {
                     rel="noreferrer noopener"
                     aria-label="Twitter">
                     <Image
-                      src='/static/icons/twitter.svg'
+                      src={theme.icon.twitter}
                       height={48}
                       width={48}
                       alt="Twitter"
@@ -201,7 +199,7 @@ export default function About(props: any) {
                     rel="noreferrer noopener"
                     aria-label="LinkedIn">
                     <Image
-                      src='/static/icons/linkedin.svg'
+                      src={theme.icon.linkedin}
                       height={48}
                       width={48}
                       alt="LinkedIn"

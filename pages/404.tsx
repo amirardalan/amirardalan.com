@@ -1,13 +1,15 @@
+import { useTheme } from '@emotion/react'
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import Container from '@/components/Container'
 import ErrorAnimation from '@/components/ErrorAnimation'
 
-export default function Custom404() {
+export default function Custom404({toggleTheme}) {
+  const theme: any = useTheme()
 
   return(
-    <Container>
+    <Container toggleTheme={toggleTheme}>
       <Head>
         <title>Page Not Found – Amir Ardalan</title>
         <meta name="robots" content="noindex"></meta>
@@ -31,17 +33,17 @@ export default function Custom404() {
             paddingRight: '1rem',
             alignSelf: 'center',
             borderRight: '1px solid var(--color-gray)',
-            fontFamily: 'var(font-secondary)',
             fontSize: '40px',
           },
           h3: {
             alignSelf: 'center',
+            fontFamily: 'var(--font-primary)',
             fontSize: '12px',
             fontWeight: 'normal',
           },
         }}>
           <Image
-            src='/icons/error-dark.svg'
+            src={theme.icon.error}
             alt="Error"
             aria-label="Error"
             width={40}
