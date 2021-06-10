@@ -34,7 +34,13 @@ export default class MyDocument extends Document {
             type="font/woff2"
             crossOrigin="anonymous"
           />
-
+          <link
+            rel="preload"
+            href="/fonts/lora-latin-500-italic.woff2"
+            as="font"
+            type="font/woff2"
+            crossOrigin="anonymous"
+          />
           <meta httpEquiv="content-type" content="text/html; charset=utf-8" />
           <meta
             name="description"
