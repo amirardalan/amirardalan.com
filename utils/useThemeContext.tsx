@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 export const useThemeContext= () => {
   const [theme, setTheme] = useState(null)
@@ -13,6 +13,15 @@ export const useThemeContext= () => {
       setMode('light')
     }
   }
+
+  useEffect(() => {
+    const localTheme = window.localStorage.getItem('theme')
+    window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches && !localTheme ?
+      setMode('dark') :
+      localTheme ?
+        setTheme(localTheme) :
+        setMode('light')
+  }, [])
 
   return [theme, toggleTheme]
 }
