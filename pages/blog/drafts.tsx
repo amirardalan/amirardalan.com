@@ -31,7 +31,7 @@ type Props = {
   drafts: PostProps[]
 }
 
-const Drafts: React.FC<Props> = (props) => {
+const Drafts: React.FC<Props> = (props: any) => {
 
   
   let draftsList = null;
@@ -64,7 +64,7 @@ const Drafts: React.FC<Props> = (props) => {
     )
   }
   return (
-    <BlogLayout>
+    <BlogLayout toggleTheme={props.toggleTheme}>
       <Head>
         <title>Drafts – Amir Ardalan</title>
         <meta name="robots" content="noindex"></meta>

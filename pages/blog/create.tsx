@@ -5,7 +5,7 @@ import Head from 'next/head'
 import BlogLayout from '@/components/BlogLayout'
 import { useSession } from 'next-auth/client'
 
-const Draft: React.FC = () => {
+const Draft: React.FC = (props: any) => {
 
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
@@ -138,7 +138,7 @@ const Draft: React.FC = () => {
   }
 
   return (
-    <BlogLayout>
+    <BlogLayout toggleTheme={props.toggleTheme}>
       <Head>
         <title>Create – Amir Ardalan</title>
         <meta name="robots" content="noindex"></meta>
