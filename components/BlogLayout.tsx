@@ -182,7 +182,11 @@ export default function BlogLayout(props: any) {
               padding: 0,
               fontSize: 28,
               fontWeight: 'bold',
-              lineHeight: '2rem'
+              lineHeight: '2rem',
+              '& code': {
+                fontFamily: 'var(--font-secondary)',
+                fontSize: 28,
+              }
             },
             'h1, h2, h3, h3, h4, h5, h6': {
               scrollMarginTop: '4rem',
