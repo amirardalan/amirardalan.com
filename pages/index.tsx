@@ -17,7 +17,6 @@ const CanvasLoader = dynamic(() => import('@/components/CanvasLoader'), {
 
 import { GetStaticProps } from 'next'
 import prisma from '@/lib/prisma'
-import { theme } from 'leva/dist/declarations/src/styles'
 
 // Get Latest Post title, teaser, and slug
 export const getStaticProps: GetStaticProps = async () => {
