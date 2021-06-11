@@ -99,8 +99,11 @@ export default function BlogMarkdown({ props }) {
           },
         },
         'pre code': {
-          overflow: 'auto',
           '&::before, &::after': { content: 'none' },
+          '@media(max-width: 768px)': {
+            minWidth: '100%',
+            float: 'left',
+          }
         },
         'span.linenumber': {
           display: 'none !important'
