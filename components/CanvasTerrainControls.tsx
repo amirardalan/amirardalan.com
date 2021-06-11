@@ -104,17 +104,17 @@ const CanvasTerrainControls = ({ theme }) => {
             boxShadow: 'none',
           },
           '.leva0sm9i, .levakncnr': {
-            background: 'var(--color-gray-accent) !important'
+            background: 'var(--color-accent-gray) !important'
           },
           '.levahlc9c': {
-            background: 'var(--color-gray-accent)',
+            background: 'var(--color-accent-gray)',
             color: 'var(--color-text)'
           },
           '.leva5nscf': {
             color: 'var(--color-gray)'
           },
           '.levadnk60 label': {
-            background: 'var(--color-gray-accent)',
+            background: 'var(--color-accent-gray)',
             svg: {
               stroke: 'var(--color-bg)',
             }

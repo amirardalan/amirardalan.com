@@ -64,6 +64,9 @@ export default function BlogLayout(props: any) {
               display: 'flex',
               flexDirection: 'column',
             },
+            '&.postTeaser': {
+              marginBottom: '2.5rem',
+            },
             '&.admin': {
               '.breadcrumbs': {
                 marginTop: '1rem',
@@ -196,7 +199,7 @@ export default function BlogLayout(props: any) {
                 '&:hover': {
                   '&::before': {
                     content: '"#"',
-                    color: 'var(--color-gray-accent)',
+                    color: 'var(--color-accent-gray)',
                     position: 'absolute',
                     textAlign: 'center',
                     top: 2,
@@ -235,7 +238,7 @@ export default function BlogLayout(props: any) {
             blockquote: {
               marginLeft: '-1.75rem',
               paddingLeft: '1.5rem',
-              borderLeft: '5px solid var(--color-gray-accent)',
+              borderLeft: '5px solid var(--color-accent-gray)',
               color: 'var(--color-gray)',
               fontStyle: 'italic',
               fontWeight: 'normal',
@@ -253,6 +256,14 @@ export default function BlogLayout(props: any) {
               listStyle: 'outside',
               marginLeft: '2rem',
               paddingLeft: '.5rem',
+              '&.task-list-item': {
+                fontFamily: 'var(--font-primary)',
+                fontSize: 15,
+                fontWeight: 'bold',
+              },
+              'input[type="checkbox"]': {
+                marginTop: '-.1rem',
+              },
               '@media (max-width: 480px)': {
                 marginLeft: '1.5rem',
               }
@@ -301,10 +312,11 @@ export default function BlogLayout(props: any) {
           table: {
             width: '100%',
             thead: {
-              fontFamily: 'var(font-secondary)',
+              fontFamily: 'var(--font-secondary)',
               tr: {
                 th: {
-                  border: '1px solid var(--color-gray-accent)',
+                  border: '1px solid var(--color-accent-gray)',
+                  backgroundColor: 'var(--color-accent)',
                   padding: '.5rem',
                 }
               }
@@ -312,7 +324,7 @@ export default function BlogLayout(props: any) {
             tbody: {
               tr: {
                 td: {
-                  border: '1px solid var(--color-gray-accent)',
+                  border: '1px solid var(--color-accent-gray)',
                   padding: '.5rem',    
                 }
               }
