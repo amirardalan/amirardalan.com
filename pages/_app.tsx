@@ -6,6 +6,11 @@ import { themeLight, themeDark } from '@/styles/theme'
 import { AppProps } from 'next/app'
 import { Provider } from 'next-auth/client'
 
+import dynamic from 'next/dynamic'
+const BlogAdmin = dynamic(() => import('@/components/BlogAdmin'),{
+  ssr: false
+})
+
 
 const App = ({ Component, pageProps }: AppProps) => {
 
@@ -18,6 +23,7 @@ const App = ({ Component, pageProps }: AppProps) => {
       <Provider session={pageProps.session}>
         <GlobalStyles />
         <ThemeProvider theme={themeMode}>
+          <BlogAdmin />
           <Component {...pageProps} toggleTheme={toggleTheme} />
         </ThemeProvider>
       </Provider>

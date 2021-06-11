@@ -27,14 +27,17 @@ const BlogAdmin: React.FC =  React.memo(()=> {
   const styleAdminPanel = css({
     width: 'auto',
     display: 'flex',
-    padding: '.5rem .2rem .5rem 1rem',
+    padding: '.5rem 4rem',
     backgroundColor: 'var(--color-accent)',
-    border: '1px dotted var(--color-gray)',
-    borderRadius: 8,
+    borderBottom: '1px dotted var(--color-gray)',
     flexDirection: 'row',
     justifyContent: 'space-between',
+    '@media (max-width: 1024px)': {
+      padding: '.5rem 2.5rem'
+    },
     '@media (max-width: 600px)': {
       flexDirection: 'column',
+      padding: '.5rem 2.5rem'
     }
   })
   const styleAdminPanelLeft = css({

@@ -4,7 +4,6 @@ import Link from 'next/link'
 import Logo from '@/components/Logo'
 
 import dynamic from 'next/dynamic'
-const BlogAdmin = dynamic(() => import('@/components/BlogAdmin'))
 const ThemeToggle = dynamic(() => import('@/components/ThemeToggle'), {
   ssr: false
 })
@@ -72,7 +71,6 @@ const Header = (props: any) => {
           <ThemeToggle toggleTheme={props.toggleTheme} />
         </div>
       </div>
-      <BlogAdmin />
     </div>
   )
 
