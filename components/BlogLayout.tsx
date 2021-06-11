@@ -77,7 +77,7 @@ export default function BlogLayout(props: any) {
             }
           },
           '.post': {
-            marginTop: '3rem',
+            marginTop: '2rem',
           },
           '.postDetails': {
             margin: '.5rem 0 .2rem',
