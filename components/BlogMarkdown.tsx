@@ -23,16 +23,15 @@ export default function BlogMarkdown({ props }) {
       const match = /language-(\w+)/.exec(className || '')
 
       // Highlight lines declared in code block: ```lang {2,4-6}
-      const RE = /{([\d,-]+)}/
-      const metadata = node.data.meta.replace(/\s/g, '')
-      const strlineNumbers = RE.test(metadata)
-        ? RE.exec(metadata)[1]
-        : '0'
-      const highlightLines = rangeParser(strlineNumbers)
-      const highlight = highlightLines
-
       const applyHighlights: Object = (applyHighlights: number) => {
-        let data: string = highlight.includes(applyHighlights)
+        const RE = /{([\d,-]+)}/
+        const metadata = node.data.meta.replace(/\s/g, '')
+        const strlineNumbers = RE.test(metadata)
+          ? RE.exec(metadata)[1]
+          : '0'
+        const highlightLines = rangeParser(strlineNumbers)
+        const highlight = highlightLines
+        const data: string = highlight.includes(applyHighlights)
           ? 'highlight'
           : null
         return { data }
@@ -98,6 +97,7 @@ export default function BlogMarkdown({ props }) {
           },
         },
         'pre code': {
+          overflow: 'auto',
           '&::before, &::after': { content: 'none' },
         },
         'span.linenumber': {
@@ -106,8 +106,8 @@ export default function BlogMarkdown({ props }) {
         '[data="highlight"]': {
           background: 'var(--code-highlight)',
           borderLeft: '3px solid var(--color-accent-color)',
-          marginLeft: '-1rem',
-          paddingLeft: '.8rem',
+          margin: '0 -1rem',
+          padding: '0 .8rem',
         }
       }} />
     </>
