@@ -268,12 +268,35 @@ export default function BlogLayout(props: any) {
               },
             },
             ol: {
+              counterReset: 'counter',
               li: {
-                listStyleType: 'decimal',
+                counterIncrement: 'counter',
                 marginLeft: '2rem',
                 paddingLeft: '.5rem',
+                position: 'relative',
+                '&::before': {
+                  content: "counter(counter)",
+                  width: '1.5rem',
+                  height: '1.5rem',
+                  position: 'absolute',
+                  top: '.2rem',
+                  left: '-2rem',
+                  background: 'var(--color-accent-color)',
+                  borderRadius: '50%',
+                  color: 'var(--color-bg)',
+                  fontFamily: 'var(--font-primary)',
+                  fontSize: '.8rem',
+                  fontWeight: 'bold',
+                  lineHeight: '1.6rem',
+                  textAlign: 'center',
+                }
               }
             }
+          },
+          li: {
+            '&::marker': {
+              color: 'var(--color-accent-color)',
+            },
           },
           table: {
             width: '100%',
