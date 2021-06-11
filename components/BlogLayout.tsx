@@ -179,7 +179,6 @@ export default function BlogLayout(props: any) {
             },
             h3: {
               scrollMarginTop: '4rem',
-              '-webkit-overflow-scrolling': 'touch !important',
               margin: '3.5rem 0 1rem',
               padding: 0,
               fontSize: 28,
