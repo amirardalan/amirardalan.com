@@ -287,7 +287,7 @@ export default function BlogLayout(props: any) {
                   fontFamily: 'var(--font-primary)',
                   fontSize: '.8rem',
                   fontWeight: 'bold',
-                  lineHeight: '1.6rem',
+                  lineHeight: '1.5rem',
                   textAlign: 'center',
                 }
               }
