@@ -20,31 +20,35 @@ export default function BlogMarkdown({ props }) {
     code({node, inline, className,...props}) {
 
       const match = /language-(\w+)/.exec(className || '')
+      const RE = /{([\d,-]+)}/
       const metadata = node.data.meta
-      const metastring = node.data.meta.replace(/[{}]/g, "")
+      const strlineNumbers : any = RE.exec(metadata)[1]
+      const lineNumbers : any = rangeParser(strlineNumbers)
 
-      const calculateLinesToHighlight : any = (metastring : any) => {
-        const RE = /{([\d,-]+)}/
-        console.log(RE.test(metastring))
-        if (RE.test(metastring)) {
-          const strlineNumbers : any = RE.exec(metastring)[1]
-          const lineNumbers : any = rangeParser(strlineNumbers)
-          return (index : number) => (lineNumbers.includes(index + 1))
-        } else {
-          return () => false
-        }
+      const highlightLine: any = (lineNumbers) => {
+        console.log(lineNumbers)
       }
-      // const shouldHighlightLine: any = calculateLinesToHighlight(metastring)
-      // if (shouldHighlightLine(index)) { lineProps.className = `${lineProps.className} highlight-line` }
+
+      const ADDED = [1, 2];
+      const REMOVED = [6];
+
       return match ? (
         <SyntaxHighlighter
           style={setSyntaxTheme}
           language={match[1]}
           PreTag="div"
           className="codeStyle"
-          showLineNumbers={false}
+          showLineNumbers={true}
           wrapLines={true}
-          lineProps={calculateLinesToHighlight}
+          lineProps={lineNumber => {
+            let style: any = { display: 'block' };
+            if (ADDED.includes(lineNumber)) {
+              style.backgroundColor = '#dbffdb';
+            } else if (REMOVED.includes(lineNumber)) {
+              style.backgroundColor = '#ffecec';
+            }
+            return { style };
+          }}
           {...props}
         />
       ) : (
@@ -75,6 +79,10 @@ export default function BlogMarkdown({ props }) {
             backgroundColor: 'transparent !important',
             transform: 'translateZ(0)'
           },
+          '.hi': {
+            display: 'block',
+            backgroundColor: 'green'
+          }
         },
         code: {
           wordWrap: 'break-word',
