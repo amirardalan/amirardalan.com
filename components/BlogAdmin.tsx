@@ -9,20 +9,37 @@ import LoadingSpinner from './LoadingSpinner'
 const BlogAdmin: React.FC =  React.memo(()=> {
 
   const router = useRouter()
-  const isActive: (pathname: string) => boolean = (pathname) =>
-    router.pathname === pathname
-  
+  const isActive: (pathname: string) => boolean = (pathname) => router.pathname === pathname
   const [session] = useSession()
   const isLoggedIn = session && session.user.email == process.env.NEXT_PUBLIC_USER_EMAIL
 
   let adminPanelLeft = null
   let adminPanelRight = null
 
+  // Deploy New Build
+  const [isDeploying, setIsDeploying] = useState(false)
+  const showDeployLoader: Function = () => {
+    setIsDeploying(true)
+    setTimeout(() => {
+      setIsDeploying(false)
+    }, 85000)
+  }
+  async function deployNewBuild(): Promise<any> {
+    axios.get(`/api/deploy?secret=${process.env.NEXT_PUBLIC_DEPLOY_TOKEN}`).then(response => {
+      console.log(response.data.data.job)
+      showDeployLoader()
+      axios.get(`/api/preview/exit-preview?secret=${process.env.NEXT_PUBLIC_PREVIEW_TOKEN}`)
+      router.push('/blog')
+    })
+    .catch(err => {
+      console.error(err)
+    })
+  }
+
   // Styles
   const styleAnimationWrapper = css ({
     display: session ? 'block' : 'none',
     overflow: 'hidden',
-    paddingBottom: '.5rem',
   })
   const styleAdminPanel = css({
     width: 'auto',
@@ -32,13 +49,26 @@ const BlogAdmin: React.FC =  React.memo(()=> {
     borderBottom: '1px dotted var(--color-gray)',
     flexDirection: 'row',
     justifyContent: 'space-between',
+    animation: 'adminPanelSlideDown 1s',
     '@media (max-width: 1024px)': {
       padding: '.5rem 2.5rem'
     },
     '@media (max-width: 600px)': {
       flexDirection: 'column',
       padding: '.5rem 2.5rem'
-    }
+    },
+    '@keyframes adminPanelSlideDown': {
+      from: {
+        opacity: 0,
+        transform: 'translate3d(0, -100%, 0)',
+        height: 0,
+      },
+      to: {
+        opacity: 1,
+        transform: 'translate3d(0, 0, 0)',
+        height: 50
+      }
+    },
   })
   const styleAdminPanelLeft = css({
     display: 'flex',
@@ -72,26 +102,6 @@ const BlogAdmin: React.FC =  React.memo(()=> {
       flexAlign: 'row',
     }
   })
-
-  // Deploy New Build
-  const [isDeploying, setIsDeploying] = useState(false)
-  const showDeployLoader: Function = () => {
-    setIsDeploying(true)
-    setTimeout(() => {
-      setIsDeploying(false)
-    }, 85000)
-  }
-  async function deployNewBuild(): Promise<any> {
-    axios.get(`/api/deploy?secret=${process.env.NEXT_PUBLIC_DEPLOY_TOKEN}`).then(response => {
-      console.log(response.data.data.job)
-      showDeployLoader()
-      axios.get(`/api/preview/exit-preview?secret=${process.env.NEXT_PUBLIC_PREVIEW_TOKEN}`)
-      router.push('/blog')
-    })
-    .catch(err => {
-      console.error(err)
-    })
-  }
 
   // Render Admin panel for authenticated users
   if (isLoggedIn) {
@@ -137,9 +147,16 @@ const BlogAdmin: React.FC =  React.memo(()=> {
 
   return (
     <>
+      <div css={styleAnimationWrapper}>
+        <nav css={styleAdminPanel}>
+          {adminPanelLeft}
+          {adminPanelRight}
+        </nav>
+      </div>
+
       <Global styles={{
         // Buttons
-        'a.buttonCompact, input.buttonCompact, .buttonCompact': {
+        '.buttonCompact': {
           minWidth: 80,
           marginRight: '.25rem',
           padding: '.45rem 1rem',
@@ -183,12 +200,6 @@ const BlogAdmin: React.FC =  React.memo(()=> {
           }
         }
       }}/>
-      <div css={styleAnimationWrapper}>
-        <nav css={styleAdminPanel}>
-          {adminPanelLeft}
-          {adminPanelRight}
-        </nav>
-      </div>
     </>
   )
 })
