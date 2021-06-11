@@ -2,6 +2,7 @@ import { css } from '@emotion/react'
 import sortBlogPosts from '@/utils/sortBlogPosts'
 import Link from 'next/link'
 
+
 export default function BlogNavigation({ props, isPublished }) {
 
   const total : number = props?.feed?.length
@@ -36,30 +37,23 @@ export default function BlogNavigation({ props, isPublished }) {
     display: 'flex',
     justifyContent: 'space-between',
     fontFamily: 'var(--font-tertiary)',
-    fontSize: 16,
-    a: {
-      textDecoration: 'underline',
-      '&:hover': {
-        textDecoration: 'none',
-      },
-      '&:first-of-type': {
-        textAlign: 'left',
-        paddingRight: '1rem',
-      },
-      '&:last-of-type': {
-        textAlign: 'right',
-        paddingLeft: '1rem',
-      },
-    },
     '@media(max-width: 768px)': {
       flexDirection: 'row',
     },
   })
+  const stylePrevLink = css({
+    paddingRight: '1rem',
+    textAlign: 'left',
+  })
+  const styleNextLink = css ({
+    paddingLeft: '1rem',
+    textAlign: 'right',
+  })
 
   return (
     <div css={styleBlogNavigation}>
-       { prevPost ? <ShowPrevLink /> : null }
-       { nextPost ? <ShowNextLink /> : null }
+       { prevPost ? <ShowPrevLink css={stylePrevLink} /> : null }
+       { nextPost ? <ShowNextLink css={styleNextLink} /> : null }
     </div>
   )
 }
