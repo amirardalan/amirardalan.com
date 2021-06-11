@@ -22,7 +22,7 @@ const select = '#ffff00'
 const buttonDisabled = '#8b8b8b'
 const warning = '#ec4949'
 const codeHighlightDark = '#2e3440'
-const codeHighlightLight = "#dddddd"
+const codeHighlightLight = "#e3e6eb"
 
 export function GlobalStyles () {
 

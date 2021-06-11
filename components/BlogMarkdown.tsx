@@ -31,6 +31,13 @@ export default function BlogMarkdown({ props }) {
       const highlightLines = rangeParser(strlineNumbers)
       const highlight = highlightLines
 
+      const applyHighlights: Object = (applyHighlights: number) => {
+        let data: string = highlight.includes(applyHighlights)
+          ? 'highlight'
+          : null
+        return { data }
+      }
+
       return match ? (
         <SyntaxHighlighter
           style={setSyntaxTheme}
@@ -40,17 +47,7 @@ export default function BlogMarkdown({ props }) {
           showLineNumbers={true}
           wrapLines={true}
           useInlineStyles={true}
-          lineProps={lineNumber => {
-            let style: any = { display: 'block' }
-            style.marginLeft = '-.8rem'
-            style.paddingLeft = '.8rem'
-            if (highlight.includes(lineNumber)) {
-              style.backgroundColor = 'var(--code-highlight)'
-              style.borderLeft = '3px solid var(--color-accent-color)'
-              style.marginLeft = '-1rem'
-            }
-            return { style }
-          }}
+          lineProps={applyHighlights}
           {...props}
         />
       ) : (
@@ -79,7 +76,10 @@ export default function BlogMarkdown({ props }) {
           backgroundColor: 'var(--syntax-highlight-bg) !important',
           'code': {
             backgroundColor: 'transparent !important',
-            transform: 'translateZ(0)'
+            transform: 'translateZ(0)',
+            '& > span': {
+              display: 'block'
+            }
           },
           '.hi': {
             display: 'block',
@@ -103,6 +103,12 @@ export default function BlogMarkdown({ props }) {
         'span.linenumber': {
           display: 'none !important'
         },
+        '[data="highlight"]': {
+          background: 'var(--code-highlight)',
+          borderLeft: '3px solid var(--color-accent-color)',
+          marginLeft: '-1rem',
+          paddingLeft: '.8rem',
+        }
       }} />
     </>
   )
