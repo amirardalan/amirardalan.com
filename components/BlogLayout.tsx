@@ -178,6 +178,8 @@ export default function BlogLayout(props: any) {
               cursor: 'default',
             },
             h3: {
+              scrollMarginTop: '4rem',
+              '-webkit-overflow-scrolling': 'touch !important',
               margin: '3.5rem 0 1rem',
               padding: 0,
               fontSize: 28,
@@ -202,12 +204,13 @@ export default function BlogLayout(props: any) {
                     left: -22,
                     fontSize: 22
                   }
-                }
+                },
+              },
+              '@media(hover: none)': {
+                a: { display: 'none' }
               },
             },
             'h1, h2, h3, h3, h4, h5, h6': {
-              scrollMarginTop: '4rem',
-              scrollSnapMarginTop: '4rem !important',
               position: 'relative',
             },
             p: {
