@@ -19,18 +19,17 @@ export default function BlogMarkdown({ props }) {
   const BlogSyntaxHighlight: object = {
     code({node, inline, className,...props}) {
 
+      // Set code language declared in code block: ```lang
       const match = /language-(\w+)/.exec(className || '')
+
+      // Highlight lines declared in code block: ```lang {2,4-6}
       const RE = /{([\d,-]+)}/
-      const metadata = node.data.meta
-      const strlineNumbers : any = RE.exec(metadata)[1]
-      const lineNumbers : any = rangeParser(strlineNumbers)
-
-      const highlightLine: any = (lineNumbers) => {
-        console.log(lineNumbers)
-      }
-
-      const ADDED = [1, 2];
-      const REMOVED = [6];
+      const metadata = node.data.meta.replace(/\s/g, '')
+      const strlineNumbers = RE.test(metadata)
+        ? RE.exec(metadata)[1]
+        : '0'
+      const highlightLines = rangeParser(strlineNumbers)
+      const highlight = highlightLines
 
       return match ? (
         <SyntaxHighlighter
@@ -42,10 +41,8 @@ export default function BlogMarkdown({ props }) {
           wrapLines={true}
           lineProps={lineNumber => {
             let style: any = { display: 'block' };
-            if (ADDED.includes(lineNumber)) {
+            if (highlight.includes(lineNumber)) {
               style.backgroundColor = '#dbffdb';
-            } else if (REMOVED.includes(lineNumber)) {
-              style.backgroundColor = '#ffecec';
             }
             return { style };
           }}
