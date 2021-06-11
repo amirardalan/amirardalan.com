@@ -49,7 +49,7 @@ const BlogAdmin: React.FC =  React.memo(()=> {
     borderBottom: '1px dotted var(--color-gray)',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    animation: 'adminPanelSlideDown 1s',
+    animation: 'adminPanelSlideDown .2s',
     '@media (max-width: 1024px)': {
       padding: '.5rem 2.5rem'
     },
