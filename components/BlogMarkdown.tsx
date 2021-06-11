@@ -39,12 +39,17 @@ export default function BlogMarkdown({ props }) {
           className="codeStyle"
           showLineNumbers={true}
           wrapLines={true}
+          useInlineStyles={true}
           lineProps={lineNumber => {
-            let style: any = { display: 'block' };
+            let style: any = { display: 'block' }
+            style.marginLeft = '-.8rem'
+            style.paddingLeft = '.8rem'
             if (highlight.includes(lineNumber)) {
-              style.backgroundColor = '#dbffdb';
+              style.backgroundColor = 'var(--code-highlight)'
+              style.borderLeft = '3px solid var(--color-accent-color)'
+              style.marginLeft = '-1rem'
             }
-            return { style };
+            return { style }
           }}
           {...props}
         />
@@ -95,7 +100,7 @@ export default function BlogMarkdown({ props }) {
         'pre code': {
           '&::before, &::after': { content: 'none' },
         },
-        '.language-bash span.linenumber': {
+        'span.linenumber': {
           display: 'none !important'
         },
       }} />
