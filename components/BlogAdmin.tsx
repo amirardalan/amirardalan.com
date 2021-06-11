@@ -33,7 +33,6 @@ const BlogAdmin: React.FC =  React.memo(()=> {
     borderRadius: 8,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    animation: 'fadeIn.5s forwards',
     '@media (max-width: 600px)': {
       flexDirection: 'column',
     }
