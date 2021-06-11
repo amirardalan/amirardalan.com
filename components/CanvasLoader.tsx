@@ -46,7 +46,6 @@ const CanvasLoader =  React.memo((props: any) => {
         onCreated={({ camera }) => camera.lookAt(0, 0, 0)}
         camera={{ position: [0.35, 0.35, 0.35] }}
       >
-
         <CanvasTerrainControls theme={theme} />
         <ambientLight />
       </Canvas>
