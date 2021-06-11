@@ -86,10 +86,6 @@ export default function BlogMarkdown({ props }) {
               display: 'block'
             }
           },
-          '.hi': {
-            display: 'block',
-            backgroundColor: 'green'
-          }
         },
         code: {
           wordWrap: 'break-word',
