@@ -295,33 +295,6 @@ export default function BlogLayout(props: any) {
               }
             }
           },
-          // Next Prev Controls
-          '.nextPrevControls': {
-            display: 'flex',
-            justifyContent: 'space-between',
-            a: {
-              textDecoration: 'underline',
-              '&:hover': {
-                textDecoration: 'none',
-              }
-            },
-            '@media(max-width: 768px)': {
-              flexDirection: 'row',
-            }
-          },
-          '.prevLink': {
-            display: 'flex',
-            textAlign: 'left',
-            marginRight: '1rem',
-          },
-          '.nextLink': {
-            display: 'flex',
-            textAlign: 'right',
-          },
-          '.prevLink, .nextLink': {
-            fontFamily: 'var(--font-tertiary)',
-            fontSize: 18,
-          },
         }}
       />
     </>

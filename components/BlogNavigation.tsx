@@ -1,3 +1,4 @@
+import { css } from '@emotion/react'
 import sortBlogPosts from '@/utils/sortBlogPosts'
 import Link from 'next/link'
 
@@ -29,14 +30,35 @@ export default function BlogNavigation({ props, isPublished }) {
   const ShowNextLink = () => 
     <Link href={nextLink} aria-label={nextTitle}><a>{nextTitle} →</a></Link>
 
+  const styleBlogNavigation = css({
+    marginTop: '4rem',
+    display: 'flex',
+    justifyContent: 'space-between',
+    fontFamily: 'var(--font-tertiary)',
+    fontSize: 18,
+    a: {
+      textDecoration: 'underline',
+      '&:first-of-type': {
+        textAlign: 'left',
+        paddingRight: '1rem',
+      },
+      '&:last-of-type': {
+        textAlign: 'right',
+        paddingLeft: '1rem',
+      },
+      '&:hover': {
+        textDecoration: 'none',
+      },
+    },
+    '@media(max-width: 768px)': {
+      flexDirection: 'row',
+    },
+  })
+
   return (
-    <div className="nextPrevControls">
-    <div className="prevLink">
-      { errHandlePrev ? <ShowPrevLink /> : null }
+    <div css={styleBlogNavigation}>
+       { errHandlePrev ? <ShowPrevLink /> : null }
+       { errHandleNext ? <ShowNextLink /> : null }
     </div>
-    <div className="nextLink">
-      { errHandleNext ? <ShowNextLink /> : null }
-    </div>
-  </div>
   )
 }
