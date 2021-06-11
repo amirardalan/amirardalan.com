@@ -153,17 +153,17 @@ const BlogAdmin: React.FC =  React.memo(()=> {
           textDecoration: 'none',
           cursor: 'pointer',
           '&:disabled': {
-            backgroundColor: 'var(--button-disabled)',
+            backgroundColor: 'var(--color-button-disabled)',
             cursor: 'default',
           },
           '.create &': {
             '&.createBtn': {
-              backgroundColor: 'var(--button-disabled)',
+              backgroundColor: 'var(--color-button-disabled)',
             }
           },
           '.drafts &': {
             '&.draftsBtn': {
-              backgroundColor: 'var(--button-disabled)',
+              backgroundColor: 'var(--color-button-disabled)',
             }
           },
           '&.delete': {
@@ -176,7 +176,7 @@ const BlogAdmin: React.FC =  React.memo(()=> {
             '&.disabled': { cursor: 'wait' }
           },
           '&.disabled': {
-            backgroundColor: 'var(--button-disabled)',
+            backgroundColor: 'var(--color-button-disabled)',
           }
         }
       }}/>
