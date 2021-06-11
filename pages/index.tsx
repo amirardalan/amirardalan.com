@@ -162,7 +162,12 @@ export default function Home(props: any) {
     <Container toggleTheme={props.toggleTheme}>
       <Head>
         <title>Amir Ardalan – Developer, Designer, Writer</title>
+        <meta
+          name="description"
+          content="Front-end developer, UI designer &amp; TypeScript enthusiast based in Portland, OR"
+        />
       </Head>
+      
       <main css={styleMain}>
         <div css={styleAnimationWrapper}>
           <div css={styleMainLeft}>
