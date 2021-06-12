@@ -41,8 +41,10 @@ export default function BlogNavigation({ feed, post, isPublished }) {
     display: 'flex',
     justifyContent: 'space-between',
     fontFamily: 'var(--font-tertiary)',
+    fontSize: 18,
     '@media(max-width: 768px)': {
       flexDirection: 'row',
+      fontSize: 16,
     },
   })
   const stylePrevLink = css({
