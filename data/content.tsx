@@ -1,7 +1,7 @@
 export const home = {
   meta: {
     title: 'Amir Ardalan – Developer, Designer, Writer',
-    description: 'Front-end developer, UI designer &amp; TypeScript enthusiast based in Portland, OR'
+    description: 'Front-end developer, UI designer & TypeScript enthusiast based in Portland, OR'
   },
   title: 'Amir Ardalan',
   typed: {
@@ -9,7 +9,7 @@ export const home = {
     items: [
       'Fullstack Engineering^1500',
       'User Interface Design^1500',
-      'JavaScript^1500 &amp; TypeScript^1500',
+      'JavaScript^1500 & TypeScript^1500',
       'React.js ⚛️^1500',
       'Next.js^1500',
       'Three.js △^1500',
@@ -75,7 +75,7 @@ export const about = {
     twitter: 'Twitter',
     linkedin: 'LinkedIn',
   },
-  title: 'Design &amp; Code.',
+  title: 'Design & Code.',
   subtitle: '– from Portland, OR –',
   link: {
     resume: {
