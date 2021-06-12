@@ -132,7 +132,6 @@ export default function About({ data, toggleTheme }) {
         <main css={styleGridWrapper}>
           <div className="grid">
             <ul>
-              <h4>{data.bio.heading}</h4>
               <li>
                 <Avatar />
               </li>
