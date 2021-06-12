@@ -296,10 +296,15 @@ export default function BlogLayout(props: any) {
                   borderRadius: '50%',
                   color: 'var(--color-bg)',
                   fontFamily: 'var(--font-primary)',
-                  fontSize: '.8rem',
+                  fontSize: '1rem',
                   fontWeight: 'bold',
                   lineHeight: '1.5rem',
                   textAlign: 'center',
+                  '@media not all and (min-resolution:.001dpcm)': { 
+                    '@supports (-webkit-appearance:none)': {
+                      paddingLeft: '.1rem',
+                    }
+                  }
                 }
               }
             }

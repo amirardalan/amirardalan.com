@@ -205,6 +205,7 @@ export function GlobalStyles () {
           fontWeight: 900
         },
         a: {
+          cursor: 'pointer',
           margin: 0,
           padding: 0,
           fontSize: '100%',
