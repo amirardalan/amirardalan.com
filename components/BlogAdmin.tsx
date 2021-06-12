@@ -55,7 +55,7 @@ const BlogAdmin: React.FC =  React.memo(()=> {
     },
     '@media (max-width: 600px)': {
       flexDirection: 'column',
-      padding: '.5rem 2.5rem'
+      padding: '.5rem 1rem'
     },
     '@keyframes adminPanelSlideDown': {
       from: {
@@ -158,7 +158,7 @@ const BlogAdmin: React.FC =  React.memo(()=> {
         // Buttons
         '.buttonCompact': {
           minWidth: 80,
-          marginRight: '.25rem',
+          marginLeft: '.25rem',
           padding: '.45rem 1rem',
           display: 'inline-block',
           backgroundColor: 'var(--color-text)',
@@ -172,6 +172,9 @@ const BlogAdmin: React.FC =  React.memo(()=> {
           textAlign: 'center',
           textDecoration: 'none',
           cursor: 'pointer',
+          '&:first-of-type': {
+            marginLeft: 0,
+          },
           '&:disabled': {
             backgroundColor: 'var(--color-button-disabled)',
             cursor: 'default',
@@ -193,6 +196,7 @@ const BlogAdmin: React.FC =  React.memo(()=> {
           },
           '&.deploy': {
             backgroundColor: 'var(--color-accent-color)',
+            marginRight: '.25rem',
             '&.disabled': { cursor: 'wait' }
           },
           '&.disabled': {
