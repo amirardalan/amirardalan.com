@@ -2,6 +2,7 @@ import { css, useTheme } from '@emotion/react'
 import { home } from '@/data/content'
 import Container from '@/components/Container'
 import LatestPost from '@/components/LatestPost'
+import TopTracks from '@/components/TopTracks'
 import Head from 'next/head'
 import Link from 'next/link'
 
@@ -167,7 +168,6 @@ export default function Home({ data, latestPost, toggleTheme }) {
           content={data.meta.description}
         />
       </Head>
-      
       <main css={styleMain}>
         <div css={styleAnimationWrapper}>
           <div css={styleMainLeft}>
@@ -184,6 +184,7 @@ export default function Home({ data, latestPost, toggleTheme }) {
                   <TypingAnimation data={data.typed} />
                 </div>
               </div>
+              <TopTracks />
               <div css={styleButtonContainer}>
                 <Link href={data.cta.blog.path} aria-label={data.cta.blog.title}>
                   <button css={styleCtaButton}>
