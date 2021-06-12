@@ -130,4 +130,11 @@ export const about = {
   social: {
     title: 'Social:',
   },
+  contact: {
+    title: 'Contact:',
+    items: [
+      'hi@amirardalan.com',
+      '- or -'
+    ],
+  },
 }

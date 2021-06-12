@@ -164,7 +164,7 @@ export default function About({ data, toggleTheme }) {
           </div>
           <div className="grid">
             <ul>
-              <h4>{data.avaialability.title}</h4>
+              <h4>{data.availability.title}</h4>
               {generateListItems(data.availability.items)}
             </ul>
           </div>
