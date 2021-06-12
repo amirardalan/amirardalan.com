@@ -42,7 +42,7 @@ const Blog: React.FC<Props> = ({data, feed, toggleTheme}) => {
   return (
     <BlogLayout toggleTheme={toggleTheme}>
       <Head>
-        <title>{data.title}</title>
+        <title>{data.meta.title}</title>
       </Head>
       <div className="blog">
 

@@ -5,13 +5,22 @@ import Link from 'next/link'
 import Container from '@/components/Container'
 import ErrorAnimation from '@/components/ErrorAnimation'
 
-export default function Custom404({toggleTheme}) {
+import { error } from '@/data/content'
+export const getStaticProps = async () => {
+  return {
+    props: {
+      data: error,
+    },
+  }
+}
+
+export default function Custom404({ data, toggleTheme }) {
   const theme: any = useTheme()
 
   return(
     <Container toggleTheme={toggleTheme}>
       <Head>
-        <title>Page Not Found – Amir Ardalan</title>
+        <title>{data.meta.title}</title>
         <meta name="robots" content="noindex"></meta>
       </Head>
 
@@ -44,16 +53,16 @@ export default function Custom404({toggleTheme}) {
         }}>
           <Image
             src={theme.icon.error}
-            alt="Error"
-            aria-label="Error"
+            alt={data.img.meta}
+            aria-label={data.img.meta}
             width={40}
             height={40}
           />
-          <h2 aria-label="404">
-            404
+          <h2 aria-label={data.title}>
+            {data.title}
           </h2>
-          <h3 aria-label="This Page could not be found.">
-            You seem to be lost in space...
+          <h3 aria-label={data.text}>
+            {data.text}
           </h3>
         </div>
         <div css={{
@@ -62,10 +71,10 @@ export default function Custom404({toggleTheme}) {
           animation: 'slideUp 1s forwards',
         }}>
           <Link
-            href="/"
-            aria-label="Return Home"
+            href={data.link.path}
+            aria-label={data.link.title}
           >
-            Return Home
+            {data.link.title}
           </Link>
         </div>
       </div>

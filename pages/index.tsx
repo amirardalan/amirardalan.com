@@ -161,7 +161,7 @@ export default function Home({ data, latestPost, toggleTheme }) {
   return (
     <Container toggleTheme={toggleTheme}>
       <Head>
-        <title>{data.title}</title>
+        <title>{data.meta.title}</title>
         <meta
           name="description"
           content={data.meta.description}

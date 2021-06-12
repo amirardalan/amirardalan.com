@@ -151,3 +151,18 @@ export const about = {
     ],
   },
 }
+
+export const error = {
+  meta: {
+    title: 'Page Not Found – Amir Ardalan'
+  },
+  title: '404',
+  img: {
+    meta: 'Error'
+  },
+  text: 'You seem to be lost in space...',
+  link: {
+    path: '/',
+    title: 'Return Home'
+  },
+}
