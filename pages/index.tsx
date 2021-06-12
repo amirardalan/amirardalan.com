@@ -42,7 +42,7 @@ export const getStaticProps: GetStaticProps = async () => {
 }
 
 
-export default function Home({data, latestPost, toggleTheme}) {
+export default function Home({ data, latestPost, toggleTheme }) {
   const theme: any = useTheme()
 
   // Styles
@@ -185,18 +185,18 @@ export default function Home({data, latestPost, toggleTheme}) {
                 </div>
               </div>
               <div css={styleButtonContainer}>
-                <Link href="/blog" aria-label="Blog">
+                <Link href={data.cta.about.path} aria-label={data.cta.about.title}>
                   <button css={styleCtaButton}>
-                    Blog
+                    {data.cta.about.title}
                   </button>
                 </Link>
-                <Link href="/about" aria-label="About">
+                <Link href={data.cta.about.path} aria-label={data.cta.about.title}>
                   <button css={styleCtaButton}>
-                    About
+                  {data.cta.about.title}
                   </button>
                 </Link>
               </div>
-              <LatestPost latestPost={latestPost} />
+              <LatestPost data={data} latestPost={latestPost} />
             </div>
           </div>
         </div>

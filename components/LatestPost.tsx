@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { css } from '@emotion/react'
 
-export default function LatestPost(props: any) {
+export default function LatestPost({ latestPost, data }) {
 
   // Latest Post Styles
   const styleLatestPost = css({
@@ -39,29 +39,26 @@ export default function LatestPost(props: any) {
   })
   
   // Latest Post UI
-  const latestPost = (!props.latestPost) ? {} : props.latestPost[0]
-  const showLatestPost = (props.latestPost) ? true : false
-  const ShowLatestPost = () => (
+  const renderLatestPost = !latestPost ? {} : latestPost[0]
+  const ShowLatestPost = ({ data }) => (
     <div css={styleLatestPost}>
-      <h3 aria-label="Latest Post">
-        Latest Post:
+      <h3 aria-label={data.latestPost.title}>
+        {data.latestPost.title}
       </h3>
       <h4>
-        <Link href={`/blog/${encodeURIComponent(latestPost.slug)}`}>
-          <a aria-label={latestPost.title} tabIndex={0}>
-            {latestPost.title} →
+        <Link href={`/blog/${encodeURIComponent(renderLatestPost?.slug)}`}>
+          <a aria-label={renderLatestPost?.title} tabIndex={0}>
+            {renderLatestPost?.title} →
           </a>
         </Link>
       </h4>
       <p>
-        {latestPost.teaser}
+        {renderLatestPost?.teaser}
       </p>
     </div>
   )
 
   return (
-    <>
-      { showLatestPost ? <ShowLatestPost /> : null }
-    </>
+    <>{ latestPost ? <ShowLatestPost data={data} /> : null }</>
   )
 }

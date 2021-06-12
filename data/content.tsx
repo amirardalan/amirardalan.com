@@ -21,6 +21,19 @@ export const home = {
       'Technical Learning 📚^1500',
       '...eating pizza 🍕^1500',
     ]
+  },
+  cta: {
+    blog: {
+      path: '/blog',
+      title: 'Blog',
+    },
+    about: {
+      path: '/about',
+      title: 'About',
+    },
+  },
+  latestPost: {
+    title: 'Latest Post:'
   }
 }
 
