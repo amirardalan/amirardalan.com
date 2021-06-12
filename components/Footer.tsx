@@ -1,4 +1,6 @@
 import { css } from '@emotion/react'
+import { footer } from '@/data/content'
+import { nav } from '@/data/navigation'
 import Link from 'next/link'
 
 export default function Footer() {
@@ -36,19 +38,17 @@ export default function Footer() {
   return (
     <footer css={styleFooter}>
       <div>
-        Copyright &copy; {(new Date().getFullYear()) + ' – '} Amir Ardalan &hearts;
+        {footer.copyright.text} {(new Date().getFullYear()) + ' – '} {footer.copyright.name}
       </div>
       <div css={styleFooterCopy}>
-        Next.js + Prisma + Three.js<br/>
-        <Link href="/" aria-label="Home">
-          Home
-        </Link>
-        <Link href="/blog" aria-label="Blog">
-          Blog
-        </Link>
-        <Link href="/about" aria-label="About">
-          About
-        </Link>
+        {footer.poweredby}<br/>
+        {nav.map((item: any, index: number) => {
+          return (
+            <Link href={item.path} aria-label={item.title} key={index}>
+              {item.title}
+            </Link>
+          )}
+        )}
       </div>
     </footer>
   )

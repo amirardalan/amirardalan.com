@@ -3,6 +3,7 @@ import { useState } from 'react'
 import Link from '@/components/Link'
 import Logo from '@/components/Logo'
 import SocialLinks from '@/components/SocialLinks'
+import { nav } from '@/data/navigation'
 
 export default function Navigation() {
   
@@ -182,7 +183,7 @@ export default function Navigation() {
   }
   const MobileMenu = () => (
     <div css={styleMobileNavWrapper}>
-      <ShowNavItems />
+      <NavItems />
       <div css={styleMobileNavSecondary}>
         <SocialLinks />
           <ul>
@@ -194,24 +195,18 @@ export default function Navigation() {
     </div>
   )
 
-  // Desktop + Mobile Nav Items
-  const ShowNavItems = () => (
+  // Generate Nav Items
+  const NavItems = () => (
     <nav css={styleNavItems}>
-      <Link href="/" activeClassName="active" exact="false" as="">
-        <a onClick={toggleMobileNav ? toggleMenu : null} aria-label="Home">
-          Home
-        </a>
-      </Link>
-      <Link href="/blog" activeClassName="active" exact="" as="">
-        <a onClick={toggleMobileNav ? toggleMenu : null} aria-label="Blog">
-          Blog
-        </a>
-      </Link>
-      <Link href="/about" activeClassName="active" exact="" as="">
-        <a onClick={toggleMobileNav ? toggleMenu : null} aria-label="About">
-          About
-        </a>
-      </Link>
+      {nav.map((item: any, index: number) => {
+        return (
+          <Link href={item.path} activeClassName="active" exact="false" as="" key={index}>
+            <a onClick={toggleMobileNav ? toggleMenu : null} aria-label={item.title}>
+              {item.title}
+            </a>
+          </Link>
+        )}
+      )}
     </nav>
   )
 
@@ -219,7 +214,7 @@ export default function Navigation() {
   return (
     <>
       <div css={styleMainNav}>
-        <ShowNavItems />
+        <NavItems />
       </div>
       <button
         css={styleMobileNavButton}

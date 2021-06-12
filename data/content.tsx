@@ -1,3 +1,11 @@
+export const footer = {
+  copyright: {
+    text: 'Copyright ©',
+    name: 'Amir Ardalan ♥',
+  },
+  poweredby: 'Next.js + Prisma + Three.js',
+}
+
 export const home = {
   meta: {
     title: 'Amir Ardalan – Developer, Designer, Writer',

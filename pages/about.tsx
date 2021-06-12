@@ -7,7 +7,8 @@ import Image from 'next/image'
 import Avatar from '@/components/Avatar'
 
 import { about } from '@/data/content'
-export const getStaticProps = async () => {
+import { GetStaticProps } from 'next'
+export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       data: about,
