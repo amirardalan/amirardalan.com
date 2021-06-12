@@ -81,11 +81,11 @@ export const about = {
   link: {
     resume: {
       path: '/amir-ardalan-resume.pdf',
-      title: 'Resume(.pdf)',
+      title: 'Download Resume(.pdf)',
     },
     journey: {
       path: '/blog/2021-a-dev-odyssey',
-      title: 'My Journey',
+      title: 'Read about my journey',
     },
     github: {
       url: 'https://github.com/amirardalan',
@@ -108,7 +108,7 @@ export const about = {
   bio: {
     heading: 'Bio:',
     subheading: 'Developer, Designer, Writer.',
-    content: 'I write code, design user interfaces, and blog about web development.',
+    content: `I write code, design user interfaces, and blog about web development. I'm passionate about the art and science of interfacing humans with technology.`,
   },
   skills: {
     title: 'Skills:',

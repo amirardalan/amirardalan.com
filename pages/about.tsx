@@ -63,11 +63,18 @@ export default function About({ data, toggleTheme }) {
         fontSize: 14,
         textAlign: 'center',
         strong: {
-          color: 'var(--color-text)'
+          color: 'var(--color-text)',
+          fontFamily: 'var(--font-secondary)',
+          fontSize: 16,
         },
         em: {
+          marginBottom: '1rem',
           display: 'inline-block',
+          fontFamily: 'var(--font-tertiary)',
           maxWidth: 450,
+        },
+        a: {
+          fontFamily: 'var(--font-tertiary)',
         }
       }
     },
@@ -221,7 +228,7 @@ export default function About({ data, toggleTheme }) {
           <div className="grid">
             <ul>
               <h4>{data.contact.title}</h4>
-              {generateListItems(data.availability.items)}
+              {generateListItems(data.contact.items)}
               <li>
                 <a
                   href={data.link.twitter.dm.url}
