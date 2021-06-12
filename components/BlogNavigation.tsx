@@ -27,9 +27,13 @@ export default function BlogNavigation({ feed, post, isPublished }) {
   const nextLink = nextPost ? `/blog/${encodeURIComponent(arr[index + 1].slug)}` : '#'
 
   const ShowPrevLink = () => 
-    <Link href={prevLink} aria-label={prevTitle}><a>← {prevTitle}</a></Link>
+    <Link href={prevLink} aria-label={prevTitle}>
+      <a css={stylePrevLink}>← {prevTitle}</a>
+    </Link>
   const ShowNextLink = () => 
-    <Link href={nextLink} aria-label={nextTitle}><a>{nextTitle} →</a></Link>
+    <Link href={nextLink} aria-label={nextTitle}>
+      <a css={styleNextLink}>{nextTitle} →</a>
+    </Link>
 
   // Style next/prev Links
   const styleBlogNavigation = css({
@@ -52,8 +56,8 @@ export default function BlogNavigation({ feed, post, isPublished }) {
 
   return (
     <div css={styleBlogNavigation}>
-       { prevPost ? <ShowPrevLink css={stylePrevLink} /> : null }
-       { nextPost ? <ShowNextLink css={styleNextLink} /> : null }
+       { prevPost ? <ShowPrevLink /> : null }
+       { nextPost ? <ShowNextLink /> : null }
     </div>
   )
 }
