@@ -1,8 +1,8 @@
 export const breadcrumb = {
   blog: 'Blog',
+  create: 'Create',
   drafts: 'Drafts',
   edit: 'Edit',
-  create: 'Create',
   path: '/blog',
 }
 
@@ -58,7 +58,7 @@ export const blog = {
     title: 'Blog – Amir Ardalan',
   },
   error: {
-    database: 'Database Error: Posts Could not be loaded. :('
+    database: '⚠️ Database Error: Posts Could not be loaded.'
   },
 }
 
