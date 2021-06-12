@@ -4,6 +4,7 @@ import sortBlogPosts from '@/utils/sortBlogPosts'
 import Head from 'next/head'
 
 import BlogPost, { PostProps } from '@/components/BlogPost'
+import { blog } from '@/data/content'
 import { GetStaticProps } from 'next'
 import prisma from '@/lib/prisma'
 
@@ -18,34 +19,35 @@ export const getStaticProps: GetStaticProps = async () => {
         },
       },
     })
-    return { props: { feed } }
+    return { props: { feed, data: blog } }
   } catch {
     return { props: { feed: [] } }
   }
 }
 
 type Props = {
+  data: any
   feed: PostProps[]
+  toggleTheme: Function
 }
 
-const Blog: React.FC<Props> = (props: any) => {
+const Blog: React.FC<Props> = ({data, feed, toggleTheme}) => {
 
   // Post Feed Error Handling
-  const feed = props.feed
   const showFeedError = (feed.length === 0) ? true : false
   const FeedNotFound = () => (
-    <span>Database Error: Posts Could not be loaded. :(</span>
+    <span>{data.error.database}</span>
   )
   
   return (
-    <BlogLayout toggleTheme={props.toggleTheme}>
+    <BlogLayout toggleTheme={toggleTheme}>
       <Head>
-        <title>Blog – Amir Ardalan</title>
+        <title>{data.title}</title>
       </Head>
       <div className="blog">
 
         <nav className="breadcrumbs">
-          <span>Blog</span>
+          <span>{data.breadcrumb}</span>
         </nav>
 
         <div>

@@ -8,7 +8,7 @@ import rehypeSlug from 'rehype-slug'
 import link from 'rehype-autolink-headings'
 import { Global } from '@emotion/react'
 
-export default function BlogMarkdown({ props }) {
+export default function BlogMarkdown({ post }) {
 
   const theme: any = useTheme()
   const setSyntaxTheme = theme.code === 'light' 
@@ -64,7 +64,7 @@ export default function BlogMarkdown({ props }) {
   return (
     <>
       <ReactMarkdown
-        children={props.post.content}
+        children={post.content}
         components={BlogSyntaxHighlight}
         remarkPlugins={[ [gfm] ]}
         rehypePlugins={[ [rehypeSlug], [link] ]}

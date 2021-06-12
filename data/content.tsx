@@ -25,7 +25,34 @@ export const home = {
 }
 
 export const blog = {
+  meta: {
+    title: 'Blog – Amir Ardalan',
+  },
+  error: {
+    database: 'Database Error: Posts Could not be loaded. :('
+  },
+  breadcrumb: 'Blog',
+}
 
+export const blogPost = {
+  meta: {
+    title: ' – Amir Ardalan'
+  },
+  title: {
+    draft: '(Draft)'
+  },
+  breadcrumb: {
+    blog: 'Blog',
+    drafts: 'Drafts'
+  },
+  controls: {
+    publish: 'Publish',
+    unpublish: 'Unpublish',
+    edit: 'Edit',
+    delete: 'Delete',
+    confirm: 'Confirm',
+    cancel: 'Cancel',
+  }
 }
 
 export const about = {

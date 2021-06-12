@@ -12,6 +12,7 @@ import Router from 'next/router'
 import Link from 'next/link'
 import Head from 'next/head'
 
+import { blogPost } from '@/data/content'
 import { GetStaticProps, GetStaticPaths } from 'next'
 import prisma from '@/lib/prisma'
 
@@ -49,16 +50,16 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       },
     })
   ])
-  return { props: { post, feed } }
+  return { props: { post, feed, data: blogPost } }
 }
 
-const Post = (props: any) => {
+const Post = ({post, feed, data, toggleTheme}) => {
 
   const [session] = useSession()
   const userHasValidSession = Boolean(session)
 
-  const isPublished : Boolean = props.post.published ? true : false
-  const publishLabel = isPublished ? 'Unpublish' : 'Publish'
+  const isPublished : Boolean = post.published ? true : false
+  const publishLabel = isPublished ? `${data.controls.unpublish}` : `${data.controls.publish}`
   const redirect = isPublished ? '/blog/drafts' : '/blog'
 
   async function publishPost(slug: String, published: boolean): Promise<void> {
@@ -82,12 +83,12 @@ const Post = (props: any) => {
 
   const ShowBreadcrumb = () => (
     <Link href="/blog/drafts">
-      <a>Drafts</a>
+      <a>{data.breadcrumb.drafts}</a>
     </Link>
   )
-  let title = props.post.title
+  let title = post.title
   if (!isPublished) {
-    title = `${title} (Draft)`
+    title = `${title} ${data.title.draft}`
   }
 
   // Handle state and rendering for post deletion confirmation
@@ -97,33 +98,33 @@ const Post = (props: any) => {
   const DeletionConfirmation = () => (
     <div className="controlsConfirm">
       <div className="confirmSelect">
-        <span className="confirmLink delete" onClick={() => deletePost(props.post.id)}>
-          Confirm
+        <span className="confirmLink delete" onClick={() => deletePost(post.id)}>
+          {data.controls.confirm}
         </span>
         <span>•</span>
         <span className="confirmLink close" onClick={cancelOnClick}>
-          Cancel
+          {data.controls.cancel}
         </span>
       </div>
     </div>
   )
 
-  const postDate = renderToString(<FormatDate date={props.post.publishedAt} />)
-  const postReadTime = renderToString(<ReadTime content={props.post.content} />)
+  const postDate = renderToString(<FormatDate date={post.publishedAt} />)
+  const postReadTime = renderToString(<ReadTime content={post.content} />)
 
   // Exclude unpublished drafts from search engine crawlers
   const disallowRobots = ( <meta name="robots" content="noindex"></meta> )
 
   return (
-    <BlogLayout toggleTheme={props.toggleTheme}>
+    <BlogLayout toggleTheme={toggleTheme}>
       <Head>
-        <title>{title} – Amir Ardalan</title>
+        <title>{title}{data.meta.title}</title>
         {isPublished ? null : disallowRobots }
       </Head>
       <div className={isPublished ? 'blog' : 'blog admin'}>
 
         <nav className="breadcrumbs">
-          <Link href="/blog">Blog</Link>
+          <Link href="/blog">{data.breadcrumb.blog}</Link>
           { !isPublished ? <ShowBreadcrumb /> : null}
           <span>{title}</span>
         </nav>
@@ -134,28 +135,28 @@ const Post = (props: any) => {
             {title}
           </h2>
           <div className="postDetails" aria-label={`${postDate} • ${postReadTime}`}>
-            By {props?.post?.author?.name || 'Unknown author'} • {postDate} • {postReadTime}
+            By {post?.author?.name || 'Unknown author'} • {postDate} • {postReadTime}
           </div>
 
-          <BlogMarkdown props={props} />
+          <BlogMarkdown post={post} />
 
           { userHasValidSession && (
             <div className="controlsPost">
 
               <button
                 className="buttonCompact"
-                onClick={() => publishPost(props.post.id, props.post.published)}>
+                onClick={() => publishPost(post.id, post.published)}>
                 {publishLabel}
               </button>
               <button
                 className="buttonCompact"
-                onClick={() => editPost(props.post.id)}>
-                Edit
+                onClick={() => editPost(post.id)}>
+                {data.controls.edit}
               </button>
               <button
                 className="buttonCompact delete"
                 onClick={confirmOnClick}>
-                Delete
+                {data.controls.delete}
               </button>
 
               { showDeletionConfirmation
@@ -168,7 +169,8 @@ const Post = (props: any) => {
         </div>
 
         <BlogNavigation
-          props={props}
+          feed={feed}
+          post={post}
           isPublished={isPublished}
         />
         
