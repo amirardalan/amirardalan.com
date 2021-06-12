@@ -58,7 +58,7 @@ const Post = ({post, feed, data, toggleTheme}) => {
   const [session] = useSession()
   const userHasValidSession = Boolean(session)
 
-  const isPublished : Boolean = post.published ? true : false
+  const isPublished : Boolean = post.published
   const publishLabel = isPublished ? `${admin.controls.unpublish}` : `${admin.controls.publish}`
   const redirect = isPublished ? '/blog/drafts' : '/blog'
 
@@ -81,11 +81,6 @@ const Post = ({post, feed, data, toggleTheme}) => {
     Router.push(redirect)
   }
 
-  const ShowBreadcrumb = () => (
-    <Link href="/blog/drafts">
-      <a>{breadcrumb.drafts}</a>
-    </Link>
-  )
   let title = post.title
   if (!isPublished) {
     title = `${title} ${data.title.draft}`
@@ -124,8 +119,12 @@ const Post = ({post, feed, data, toggleTheme}) => {
       <div className={isPublished ? 'blog' : 'blog admin'}>
 
         <nav className="breadcrumbs">
-          <Link href={breadcrumb.path}>{breadcrumb.blog}</Link>
-          { !isPublished ? <ShowBreadcrumb /> : null}
+          <Link href="/blog">{breadcrumb.blog}</Link>
+          { !isPublished
+          ? <Link href="/blog/drafts">
+              <a>{breadcrumb.drafts}</a>
+            </Link>
+          : null }
           <span>{title}</span>
         </nav>
         

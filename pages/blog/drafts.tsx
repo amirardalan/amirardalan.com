@@ -48,7 +48,7 @@ const Drafts: React.FC<Props>  = ({ drafts, toggleTheme }) => {
       <div className="blog admin drafts">
 
         <nav className="breadcrumbs">
-          <Link href={breadcrumb.path}>{breadcrumb.blog}</Link>
+          <Link href="/blog">{breadcrumb.blog}</Link>
           <span>{breadcrumb.drafts}</span>
         </nav>
 

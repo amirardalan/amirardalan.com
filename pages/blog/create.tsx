@@ -76,7 +76,7 @@ const Draft: React.FC<{toggleTheme: Function}> = ({ toggleTheme }) => {
       <div className="blog admin create">
 
         <nav className="breadcrumbs">
-          <Link href={breadcrumb.path}>{breadcrumb.blog}</Link>
+          <Link href="/blog">{breadcrumb.blog}</Link>
           <span>{breadcrumb.create}</span>
         </nav>
 

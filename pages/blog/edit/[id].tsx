@@ -98,8 +98,8 @@ const Edit = ({editPost, toggleTheme}) => {
       <div className="blog admin edit">
 
         <nav className="breadcrumbs">
-          <Link href={breadcrumb.path}>{breadcrumb.blog}</Link>
-          <span>{breadcrumb.edit} {editPageTitle}</span>
+          <Link href="/blog">{breadcrumb.blog}</Link>
+          <span>{breadcrumb.edit} – {editPageTitle}</span>
         </nav>
 
         <div>

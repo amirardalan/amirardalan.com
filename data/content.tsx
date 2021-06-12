@@ -3,7 +3,6 @@ export const breadcrumb = {
   create: 'Create',
   drafts: 'Drafts',
   edit: 'Edit',
-  path: '/blog',
 }
 
 export const footer = {
