@@ -97,6 +97,18 @@ export default function About({ data, toggleTheme }) {
     }
   })
 
+  const generateListItems = (items: Array<string>) => {
+    return items.map((items, i) => {
+      return (
+        <>
+          <li key={i}>
+            {items}
+          </li>
+        </>
+      )
+    })
+  }
+
   return (
     <Container toggleTheme={toggleTheme}>
       <Head>
@@ -140,38 +152,25 @@ export default function About({ data, toggleTheme }) {
           </div>
           <div className="grid">
             <ul>
-              <h4>Skills:</h4>
-              <li>Fullstack Engineering</li>
-              <li>User Interface Design</li>
-              <li>JavaScript / TypeScript</li>
-              <li>React.js / Next.js</li>
-              <li>CSS in JS / SCSS</li>
-              <li>Prisma ORM + PostgreSQL</li>
-              <li>Testing &amp; documentation</li>
+              <h4>{data.skills.title}</h4>
+              {generateListItems(data.skills.items)}
             </ul>
           </div>
           <div className="grid">
             <ul>
-              <h4>Experience:</h4>
-              <li>10+ years</li>
-              <li>Columbia Sportswear</li>
-              <li>KEEN Footwear</li>
-              <li>Chrome Industries</li>
-              <li>Hanna Andersson</li>
-              <li>Salesforce Commerce Cloud</li>
-              <li>Freelance</li>
+              <h4>{data.experience.title}</h4>
+              {generateListItems(data.experience.items)}
             </ul>
           </div>
           <div className="grid">
             <ul>
-              <h4>Availability:</h4>
-              <li>✅ Currently Available</li>
-              <li>Remote or Portland, OR</li>
+              <h4>{data.avaialability.title}</h4>
+              {generateListItems(data.availability.items)}
             </ul>
           </div>
           <div className="grid">
             <div css={socialIconsWrapper}>
-              <h4>Social:</h4>
+              <h4>{data.social.title}</h4>
               <ul css={socialIcons}>
                 <li>
                   <a
@@ -220,9 +219,8 @@ export default function About({ data, toggleTheme }) {
           </div>
           <div className="grid">
             <ul>
-              <h4>Contact</h4>
-              <li>hi@amirardalan.com</li>
-              <li>- or - </li>
+              <h4>{data.contact.title}</h4>
+              {generateListItems(data.availability.items)}
               <li>
                 <a
                   href={data.link.twitter.dm.url}

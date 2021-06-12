@@ -83,7 +83,8 @@ export const about = {
       dm: {
         url: 'https://twitter.com/messages/compose?recipient_id=23831468',
         title: 'DM @amirardalan',
-      }
+        handle: '@amirardalan'
+      },
     },
     linkedin: {
       url: 'https://linkedin.com/in/amirardalan',
@@ -91,8 +92,42 @@ export const about = {
     },
   },
   bio: {
-    heading: 'Bio',
+    heading: 'Bio:',
     subheading: 'Developer, Designer, Writer.',
     content: 'I write code, design user interfaces, and blog about web development.',
-  }
+  },
+  skills: {
+    title: 'Skills:',
+    items: [
+      'Fullstack Engineering',
+      'User Interface Design',
+      'JavaScript / TypeScript',
+      'React.js / Next.js',
+      'CSS in JS / SCSS',
+      'Prisma ORM + PostgreSQL',
+      'Testing & documentation',
+    ],
+  },
+  experience: {
+    title: 'Experience:',
+    items: [
+      '10+ years',
+      'Columbia Sportswear',
+      'KEEN Footwear',
+      'Chrome Industries',
+      'Hanna Andersson',
+      'Salesforce Commerce Cloud',
+      'Freelance',
+    ],
+  },
+  availability: {
+    title: 'Availability:',
+    items: [
+      '✅ Currently Available',
+      'Remote or Portland, OR',
+    ]
+  },
+  social: {
+    title: 'Social:',
+  },
 }
