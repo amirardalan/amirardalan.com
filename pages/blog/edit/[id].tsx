@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { admin, breadcrumb } from '@/data/content'
 import Router from 'next/router'
 import Link from 'next/link'
 import Head from 'next/head'
@@ -17,15 +18,15 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   return { props: { editPost } }
 }
 
-const Edit = (props: any) => {
+const Edit = ({editPost, toggleTheme}) => {
 
-  const isPublished = props.editPost.published ? true : false
-  const id = props.editPost.id
-  const editTitle = props.editPost.title
+  const isPublished = editPost.published
+  const id = editPost.id
+  const editTitle = editPost.title
   const editPageTitle = isPublished ? editTitle : editTitle+' (draft)'
-  const editContent = props.editPost.content
-  const editSlug = props.editPost.slug
-  const editTeaser = props.editPost.teaser
+  const editContent = editPost.content
+  const editSlug = editPost.slug
+  const editTeaser = editPost.teaser
 
 
   const [title, setTitle] = useState(editTitle)
@@ -56,7 +57,7 @@ const Edit = (props: any) => {
     await fetch(`/api/post/${id}`, {
       method: 'DELETE',
     })
-    if (props.editPost.published) {
+    if (editPost.published) {
       Router.push('/blog')
     } else {
       Router.push('/blog/drafts')
@@ -71,11 +72,11 @@ const Edit = (props: any) => {
     <div className="controlsConfirm">
       <div className="confirmSelect">
         <span className="confirmLink delete" onClick={() => deletePost(id)}>
-          Confirm
+          {admin.controls.confirm}
         </span>
         <span>•</span>
         <span className="confirmLink close" onClick={cancelOnClick}>
-          Cancel
+          {admin.controls.cancel}
         </span>
       </div>
     </div>
@@ -97,8 +98,8 @@ const Edit = (props: any) => {
       <div className="blog admin edit">
 
         <nav className="breadcrumbs">
-          <Link href="/blog">Blog</Link>
-          <span>Edit {editPageTitle}</span>
+          <Link href={breadcrumb.path}>{breadcrumb.blog}</Link>
+          <span>{breadcrumb.edit} {editPageTitle}</span>
         </nav>
 
         <div>
@@ -106,26 +107,26 @@ const Edit = (props: any) => {
             <input
               autoFocus
               onChange={(e) => setTitle(e.target.value)}
-              placeholder="Title"
+              placeholder={admin.input.placeholder.title}
               type="text"
               value={title}
             />
             <input
               onChange={(e) => setSlug(e.target.value)}
-              placeholder="URL Slug"
+              placeholder={admin.input.placeholder.slug}
               type="text"
               value={slug}
             />
             <input
               onChange={(e) => setTeaser(e.target.value)}
-              placeholder="Teaser"
+              placeholder={admin.input.placeholder.teaser}
               type="text"
               value={teaser}
             />
             <textarea
               cols={50}
               onChange={(e) => setContent(e.target.value)}
-              placeholder="Content"
+              placeholder={admin.input.placeholder.content}
               rows={8}
               value={content}
             />
@@ -135,10 +136,14 @@ const Edit = (props: any) => {
                 className="buttonCompact"
                 disabled={ !content || !title || !slug || !teaser }
                 type="submit">
-                Update
+                {admin.controls.update}
               </button>
-              <a className="buttonCompact" onClick={() => Router.push(`/blog/${editSlug}`)}>Cancel</a>
-              <a className="buttonCompact delete" onClick={confirmOnClick}>Delete</a>
+              <a className="buttonCompact" onClick={() => Router.push(`/blog/${editSlug}`)}>
+                {admin.controls.cancel}
+              </a>
+              <a className="buttonCompact delete" onClick={confirmOnClick}>
+                {admin.controls.delete}
+              </a>
               { showDeletionConfirmation ? <DeletionConfirmation /> : null }
             </div>
 
@@ -150,9 +155,9 @@ const Edit = (props: any) => {
   }
 
   return (
-    <BlogLayout>
+    <BlogLayout toggleTheme={toggleTheme}>
       <Head>
-        <title>Edit {isPublished ? 'Post |' : 'Draft: '} {editPageTitle}</title>
+        <title>{admin.edit.meta.title} {isPublished ? 'Post |' : 'Draft: '} {editPageTitle}</title>
         <meta name="robots" content="noindex"></meta>
       </Head>
       <div>

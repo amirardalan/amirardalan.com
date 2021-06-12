@@ -1,3 +1,11 @@
+export const breadcrumb = {
+  blog: 'Blog',
+  drafts: 'Drafts',
+  edit: 'Edit',
+  create: 'Create',
+  path: '/blog',
+}
+
 export const footer = {
   copyright: {
     text: 'Copyright ©',
@@ -52,7 +60,6 @@ export const blog = {
   error: {
     database: 'Database Error: Posts Could not be loaded. :('
   },
-  breadcrumb: 'Blog',
 }
 
 export const blogPost = {
@@ -62,18 +69,6 @@ export const blogPost = {
   title: {
     draft: '(Draft)'
   },
-  breadcrumb: {
-    blog: 'Blog',
-    drafts: 'Drafts'
-  },
-  controls: {
-    publish: 'Publish',
-    unpublish: 'Unpublish',
-    edit: 'Edit',
-    delete: 'Delete',
-    confirm: 'Confirm',
-    cancel: 'Cancel',
-  }
 }
 
 export const about = {
@@ -173,4 +168,42 @@ export const error = {
     path: '/',
     title: 'Return Home'
   },
+}
+
+// Admin
+
+export const admin = {
+  controls: {
+    publish: 'Publish',
+    unpublish: 'Unpublish',
+    edit: 'Edit',
+    delete: 'Delete',
+    confirm: 'Confirm',
+    cancel: 'Cancel',
+    update: 'Update',
+    save: 'Save',
+  },
+  input: {
+    placeholder: {
+      title: 'Title',
+      slug: 'URL/Slug',
+      teaser: 'Teaser',
+      content: 'Content'
+    }
+  },
+  edit: {
+    meta: {
+      title: 'Edit'
+    }
+  },
+  create: {
+    meta: {
+      title: 'Create – Amir Ardalan'
+    }
+  },
+  drafts: {
+    meta: {
+      title: 'Drafts - Amir Ardalan'
+    }
+  }
 }

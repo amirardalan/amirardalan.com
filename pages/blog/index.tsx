@@ -4,7 +4,7 @@ import sortBlogPosts from '@/utils/sortBlogPosts'
 import Head from 'next/head'
 
 import BlogPost, { PostProps } from '@/components/BlogPost'
-import { blog } from '@/data/content'
+import { breadcrumb, blog } from '@/data/content'
 import { GetStaticProps } from 'next'
 import prisma from '@/lib/prisma'
 
@@ -47,7 +47,7 @@ const Blog: React.FC<Props> = ({data, feed, toggleTheme}) => {
       <div className="blog">
 
         <nav className="breadcrumbs">
-          <span>{data.breadcrumb}</span>
+          <span>{breadcrumb.blog}</span>
         </nav>
 
         <div>

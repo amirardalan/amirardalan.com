@@ -12,7 +12,7 @@ import Router from 'next/router'
 import Link from 'next/link'
 import Head from 'next/head'
 
-import { blogPost } from '@/data/content'
+import { blogPost, breadcrumb, admin } from '@/data/content'
 import { GetStaticProps, GetStaticPaths } from 'next'
 import prisma from '@/lib/prisma'
 
@@ -59,7 +59,7 @@ const Post = ({post, feed, data, toggleTheme}) => {
   const userHasValidSession = Boolean(session)
 
   const isPublished : Boolean = post.published ? true : false
-  const publishLabel = isPublished ? `${data.controls.unpublish}` : `${data.controls.publish}`
+  const publishLabel = isPublished ? `${admin.controls.unpublish}` : `${admin.controls.publish}`
   const redirect = isPublished ? '/blog/drafts' : '/blog'
 
   async function publishPost(slug: String, published: boolean): Promise<void> {
@@ -83,7 +83,7 @@ const Post = ({post, feed, data, toggleTheme}) => {
 
   const ShowBreadcrumb = () => (
     <Link href="/blog/drafts">
-      <a>{data.breadcrumb.drafts}</a>
+      <a>{breadcrumb.drafts}</a>
     </Link>
   )
   let title = post.title
@@ -99,11 +99,11 @@ const Post = ({post, feed, data, toggleTheme}) => {
     <div className="controlsConfirm">
       <div className="confirmSelect">
         <span className="confirmLink delete" onClick={() => deletePost(post.id)}>
-          {data.controls.confirm}
+          {admin.controls.confirm}
         </span>
         <span>•</span>
         <span className="confirmLink close" onClick={cancelOnClick}>
-          {data.controls.cancel}
+          {admin.controls.cancel}
         </span>
       </div>
     </div>
@@ -124,7 +124,7 @@ const Post = ({post, feed, data, toggleTheme}) => {
       <div className={isPublished ? 'blog' : 'blog admin'}>
 
         <nav className="breadcrumbs">
-          <Link href="/blog">{data.breadcrumb.blog}</Link>
+          <Link href={breadcrumb.path}>{breadcrumb.blog}</Link>
           { !isPublished ? <ShowBreadcrumb /> : null}
           <span>{title}</span>
         </nav>
@@ -151,12 +151,12 @@ const Post = ({post, feed, data, toggleTheme}) => {
               <button
                 className="buttonCompact"
                 onClick={() => editPost(post.id)}>
-                {data.controls.edit}
+                {admin.controls.edit}
               </button>
               <button
                 className="buttonCompact delete"
                 onClick={confirmOnClick}>
-                {data.controls.delete}
+                {admin.controls.delete}
               </button>
 
               { showDeletionConfirmation

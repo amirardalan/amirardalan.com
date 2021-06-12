@@ -3,9 +3,11 @@ import Router from 'next/router'
 import Link from 'next/link'
 import Head from 'next/head'
 import BlogLayout from '@/components/BlogLayout'
+import { admin, breadcrumb } from '@/data/content'
 import { useSession } from 'next-auth/client'
 
-const Draft: React.FC = (props: any) => {
+const Draft: React.FC<{toggleTheme: Function}> = ({ toggleTheme }) => {
+
 
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
@@ -32,22 +34,22 @@ const Draft: React.FC = (props: any) => {
 
   // Generate Post Slug URL
   function generateSlug(str: string) {
-    str = str.replace(/^\s+|\s+$/g, ''); // trim
-    str = str.toLowerCase();
+    str = str.replace(/^\s+|\s+$/g, '') // trim
+    str = str.toLowerCase()
   
     // remove accents, swap ñ for n, etc
-    var from = "àáãäâèéëêìíïîòóöôùúüûñç·/_,:;";
-    var to   = "aaaaaeeeeiiiioooouuuunc------";
+    var from = "àáãäâèéëêìíïîòóöôùúüûñç·/_,:;"
+    var to   = "aaaaaeeeeiiiioooouuuunc------"
 
     for (var i=0, l=from.length ; i<l ; i++) {
-      str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
+      str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i))
     }
 
     str = str.replace(/[^a-z0-9 -]/g, '') // remove invalid chars
       .replace(/\s+/g, '-') // collapse whitespace and replace by -
-      .replace(/-+/g, '-'); // collapse dashes
+      .replace(/-+/g, '-') // collapse dashes
 
-    return str;
+    return str
   }
 
   let slugUrl = generateSlug(title)
@@ -74,8 +76,8 @@ const Draft: React.FC = (props: any) => {
       <div className="blog admin create">
 
         <nav className="breadcrumbs">
-          <Link href="/blog">Blog</Link>
-          <span>Create</span>
+          <Link href={breadcrumb.path}>{breadcrumb.blog}</Link>
+          <span>{breadcrumb.create}</span>
         </nav>
 
         <div>
@@ -83,12 +85,12 @@ const Draft: React.FC = (props: any) => {
             <input
               autoFocus
               onChange={(e) => setTitle(e.target.value)}
-              placeholder="Title"
+              placeholder={admin.input.placeholder.title}
               type="text"
               value={title}
             />
             <input
-              placeholder="URL Slug"
+              placeholder={admin.input.placeholder.slug}
               type="text"
               value={slugUrl}
               disabled={true}
@@ -103,7 +105,7 @@ const Draft: React.FC = (props: any) => {
             />
             <input
               onChange={(e) => setTeaser(e.target.value)}
-              placeholder="Teaser"
+              placeholder={admin.input.placeholder.teaser}
               type="text"
               value={teaser}
             />
@@ -120,13 +122,13 @@ const Draft: React.FC = (props: any) => {
                 className="buttonCompact"
                 disabled={!content || !title || !slug || !teaser}
                 type="submit">
-                Save
+                {admin.controls.save}
               </button>
               <a
                 className="buttonCompact"
                 onClick={() => Router.push("/blog/drafts")}
               >
-                Cancel
+                {admin.controls.cancel}
               </a>
             </div>
 
@@ -138,9 +140,9 @@ const Draft: React.FC = (props: any) => {
   }
 
   return (
-    <BlogLayout toggleTheme={props.toggleTheme}>
+    <BlogLayout toggleTheme={toggleTheme}>
       <Head>
-        <title>Create – Amir Ardalan</title>
+        <title>{admin.create.meta.title}</title>
         <meta name="robots" content="noindex"></meta>
       </Head>
       <div>
