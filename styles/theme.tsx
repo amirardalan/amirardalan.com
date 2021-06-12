@@ -4,10 +4,10 @@ export const themeLight = {
   canvas: '#571AFF',
   emoji: '👋',
   icon: {
-    github: '/static/icons/github-light.svg',
-    twitter: '/static/icons/twitter-light.svg',
-    linkedin: '/static/icons/linkedin-light.svg',
-    error: '/static/icons/error-light.svg',
+    github: '/icons/github-light.svg',
+    twitter: '/icons/twitter-light.svg',
+    linkedin: '/icons/linkedin-light.svg',
+    error: '/icons/error-light.svg',
   }
 }
 
@@ -17,9 +17,9 @@ export const themeDark = {
   canvas: '#3dffc5',
   emoji: '✌️',
   icon: {
-    github: '/static/icons/github-dark.svg',
-    twitter: '/static/icons/twitter-dark.svg',
-    linkedin: '/static/icons/linkedin-dark.svg',
-    error: '/static/icons/error-dark.svg',
+    github: '/icons/github-dark.svg',
+    twitter: '/icons/twitter-dark.svg',
+    linkedin: '/icons/linkedin-dark.svg',
+    error: '/icons/error-dark.svg',
   }
 }

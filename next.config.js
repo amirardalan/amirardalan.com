@@ -19,5 +19,8 @@ module.exports = {
       require('./scripts/generateSitemap.js')
     }
     return config
-  }
+  },
+  images: {
+    domains: ['github.com'],
+  },
 }

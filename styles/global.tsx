@@ -23,6 +23,8 @@ const buttonDisabled = '#8b8b8b'
 const warning = '#ec4949'
 const codeHighlightDark = '#2e3440'
 const codeHighlightLight = "#e3e6eb"
+const sunrise = 'linear-gradient(to bottom, #757abf 0%,#8583be 60%,#eab0d1 100%)'
+const sunset = 'linear-gradient(to bottom, #010A10 30%,#59230B 80%,#2F1107 100%)'
 
 export function GlobalStyles () {
 
@@ -99,7 +101,7 @@ export function GlobalStyles () {
           '--color-input-disabled': light,
           '--button-toggle-bg': lightAccent,
           '--button-toggle-switch': darker,
-          '--canvas-bg': 'linear-gradient(to bottom, #010A10 30%,#59230B 80%,#2F1107 100%)',
+          '--canvas-bg': sunset,
           '--page-bg': lighter,
           '--code-highlight': codeHighlightLight,
           '--syntax-highlight-bg': lighter,
@@ -117,7 +119,7 @@ export function GlobalStyles () {
           '--color-input-disabled': dark,
           '--button-toggle-bg': darker,
           '--button-toggle-switch': lighter,
-          '--canvas-bg': 'linear-gradient(to bottom, #757abf 0%,#8583be 60%,#eab0d1 100%)',
+          '--canvas-bg': sunrise,
           '--page-bg': darkAccent,
           '--code-highlight': codeHighlightDark,
           '--syntax-highlight-bg': darkAccent,
@@ -252,7 +254,7 @@ export function GlobalStyles () {
         },
       }} />
       <Global styles={{
-        // Special Text
+        // Text Highlighting
         '::selection': {
           background: 'var(--color-select)',
           color: 'var(--color-select-text)',
