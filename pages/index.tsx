@@ -185,14 +185,14 @@ export default function Home({ data, latestPost, toggleTheme }) {
                 </div>
               </div>
               <div css={styleButtonContainer}>
-                <Link href={data.cta.about.path} aria-label={data.cta.about.title}>
+                <Link href={data.cta.blog.path} aria-label={data.cta.blog.title}>
                   <button css={styleCtaButton}>
-                    {data.cta.about.title}
+                    {data.cta.blog.title}
                   </button>
                 </Link>
                 <Link href={data.cta.about.path} aria-label={data.cta.about.title}>
                   <button css={styleCtaButton}>
-                  {data.cta.about.title}
+                    {data.cta.about.title}
                   </button>
                 </Link>
               </div>

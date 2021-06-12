@@ -70,6 +70,7 @@ export default function BlogMarkdown({ post }) {
         rehypePlugins={[ [rehypeSlug], [link] ]}
       />
       <Global styles={{
+        // react-syntax-highlighter styles
         '.codeStyle, pre, code, code span': {
           fontFamily: 'var(--font-primary)',
           fontStyle: 'normal !important'
