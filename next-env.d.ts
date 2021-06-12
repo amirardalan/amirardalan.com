@@ -4,3 +4,4 @@
 /// <reference types="@emotion/react/types/css-prop" />
 
 // Declarations
+module '@/data/content'

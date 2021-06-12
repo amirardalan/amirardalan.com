@@ -1,4 +1,5 @@
 import { css, useTheme } from '@emotion/react'
+import { home } from '@/data/content'
 import Container from '@/components/Container'
 import LatestPost from '@/components/LatestPost'
 import Head from 'next/head'
@@ -33,7 +34,7 @@ export const getStaticProps: GetStaticProps = async () => {
         slug: true,
       },
     })
-    return { props: { latestPost } }
+    return { props: { latestPost, data: home } }
   }
   catch {
     return { props: {} }
@@ -41,7 +42,7 @@ export const getStaticProps: GetStaticProps = async () => {
 }
 
 
-export default function Home(props: any) {
+export default function Home({data, latestPost, toggleTheme}) {
   const theme: any = useTheme()
 
   // Styles
@@ -158,12 +159,12 @@ export default function Home(props: any) {
   })
 
   return (
-    <Container toggleTheme={props.toggleTheme}>
+    <Container toggleTheme={toggleTheme}>
       <Head>
-        <title>Amir Ardalan – Developer, Designer, Writer</title>
+        <title>{data.title}</title>
         <meta
           name="description"
-          content="Front-end developer, UI designer &amp; TypeScript enthusiast based in Portland, OR"
+          content={data.meta.description}
         />
       </Head>
       
@@ -174,13 +175,13 @@ export default function Home(props: any) {
               <h2>
                 Hi, {theme.emoji} I'm
                 <div className="highlightText">
-                  Amir Ardalan
+                  {data.title}
                 </div>
               </h2>
               <div className="typedText" aria-hidden="true" >
-                I'm currently focusing on:
+                {data.typed.heading}
                 <div>
-                  <TypingAnimation />
+                  <TypingAnimation data={data.typed} />
                 </div>
               </div>
               <div css={styleButtonContainer}>
@@ -195,13 +196,13 @@ export default function Home(props: any) {
                   </button>
                 </Link>
               </div>
-              <LatestPost latestPost={props.latestPost} />
+              <LatestPost latestPost={latestPost} />
             </div>
           </div>
         </div>
         <div css={styleAnimationWrapper}>
           <div css={styleMainRight}>
-            <CanvasLoader toggleTheme={props.toggleTheme} />
+            <CanvasLoader toggleTheme={toggleTheme} />
           </div>
         </div>
       </main>

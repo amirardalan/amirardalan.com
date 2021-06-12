@@ -19,6 +19,7 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
+      "@/data/*": ["data/*"],
       "@/components/*": ["components/*"],
       "@/lib/*": ["lib/*"],
       "@/prisma/*": ["prisma/*"],
