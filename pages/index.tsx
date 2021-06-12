@@ -173,7 +173,7 @@ export default function Home({data, latestPost, toggleTheme}) {
           <div css={styleMainLeft}>
             <div css={styleMainLeftContent}>
               <h2>
-                Hi, {theme.emoji} I'm
+                {theme.intro}
                 <div className="highlightText">
                   {data.title}
                 </div>

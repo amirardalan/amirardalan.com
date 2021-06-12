@@ -3,7 +3,7 @@ export const home = {
     title: 'Amir Ardalan – Developer, Designer, Writer',
     description: 'Front-end developer, UI designer &amp; TypeScript enthusiast based in Portland, OR'
   },
-  title: `Amir Ardalan`,
+  title: 'Amir Ardalan',
   typed: {
     heading: `I'm currently focusing on:`,
     items: [

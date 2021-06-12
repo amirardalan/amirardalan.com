@@ -2,7 +2,7 @@ export const themeLight = {
   logo: '/logo/logo-light.svg',
   code: 'light',
   canvas: '#571AFF',
-  emoji: '👋',
+  intro: `Hi, 👋 I'm`,
   icon: {
     github: '/icons/github-light.svg',
     twitter: '/icons/twitter-light.svg',
@@ -15,7 +15,7 @@ export const themeDark = {
   logo: '/logo/logo-dark.svg',
   code: 'dark',
   canvas: '#3dffc5',
-  emoji: '✌️',
+  intro: `Hi, ✌️ I'm`,
   icon: {
     github: '/icons/github-dark.svg',
     twitter: '/icons/twitter-dark.svg',
