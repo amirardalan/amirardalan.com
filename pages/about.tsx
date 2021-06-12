@@ -6,7 +6,16 @@ import Link from 'next/link'
 import Image from 'next/image'
 import Avatar from '@/components/Avatar'
 
-export default function About(props: any) {
+import { about } from '@/data/content'
+export const getStaticProps = async () => {
+  return {
+    props: {
+      data: about,
+    },
+  }
+}
+
+export default function About({ data, toggleTheme }) {
   const theme: any = useTheme()
 
   const stylePageHeading = css({
@@ -89,42 +98,42 @@ export default function About(props: any) {
   })
 
   return (
-    <Container toggleTheme={props.toggleTheme}>
+    <Container toggleTheme={toggleTheme}>
       <Head>
-        <title>About – Amir Ardalan</title>
+        <title>{data.meta.title}</title>
       </Head>
       <div className="about">
         <h2 css={stylePageHeading}>
-          Design &amp; Code.
+          {data.title}
         </h2>
         <h3 css={stylePageHeadingSub}>
-          – from Portland, OR –
+          {data.subtitle}
         </h3>
         <main css={styleGridWrapper}>
           <div className="grid">
             <ul>
-              <h4>Bio:</h4>
+              <h4>{data.bio.heading}</h4>
               <li>
                 <Avatar />
               </li>
-              <li><strong>Developer, Designer, Writer.</strong></li>
+              <li><strong>{data.bio.subheading}</strong></li>
               <li>
                 <em>
-                  I write code, design user interfaces, and blog about web development.
+                  {data.bio.content}
                 </em>
               </li>
               <li>
                 <Link
-                  href="/amir-ardalan-resume.pdf"
-                  aria-label="Resume (.pdf)">
-                  Resume(.pdf)
+                  href={data.link.resume.path}
+                  aria-label={data.link.resume.title}>
+                  {data.link.resume.title}
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/blog/2021-a-dev-odyssey"
-                  aria-label="My Journey">
-                  My Journey
+                  href={data.link.journey.path}
+                  aria-label={data.link.journey.title}>
+                  {data.link.journey.title}
                 </Link>
               </li>
             </ul>
@@ -166,43 +175,43 @@ export default function About(props: any) {
               <ul css={socialIcons}>
                 <li>
                   <a
-                    href="https://github.com/amirardalan"
+                    href={data.link.github.url}
                     target="_blank"
                     rel="noreferrer noopener"
-                    aria-label="GitHub">
+                    aria-label={data.meta.github.title}>
                     <Image
                       src={theme.icon.github}
                       height={48}
                       width={48}
-                      alt="GitHub"
+                      alt={data.meta.github.title}
                     />
                   </a>
                 </li>
                 <li>
                   <a
-                    href="https://twitter.com/amirardalan"
+                    href={data.link.twitter.url}
                     target="_blank"
                     rel="noreferrer noopener"
-                    aria-label="Twitter">
+                    aria-label={data.meta.twitter.title}>
                     <Image
                       src={theme.icon.twitter}
                       height={48}
                       width={48}
-                      alt="Twitter"
+                      alt={data.meta.twitter.title}
                     />
                   </a>
                 </li>
                 <li>
                   <a
-                    href="https://linkedin.com/in/amirardalan"
+                    href={data.link.linkedin.url}
                     target="_blank"
                     rel="noreferrer noopener"
-                    aria-label="LinkedIn">
+                    aria-label={data.meta.linkedin.title}>
                     <Image
                       src={theme.icon.linkedin}
                       height={48}
                       width={48}
-                      alt="LinkedIn"
+                      alt={data.meta.linkedin.title}
                     />
                   </a>
                 </li>
@@ -216,13 +225,13 @@ export default function About(props: any) {
               <li>- or - </li>
               <li>
                 <a
-                  href="https://twitter.com/messages/compose?recipient_id=23831468"
+                  href={data.link.twitter.dm.url}
                   className="twitter-dm-button"
-                  data-screen-name="@amirardalan"
-                  aria-label="DM @amirardalan on Twitter"
+                  data-screen-name={data.link.twitter.dm.handle}
+                  aria-label={data.link.twitter.dm.title}
                   target="_blank"
                   rel="noreferrer noopener">
-                  DM @amirardalan
+                  {data.link.twitter.dm.title}
                 </a>
             </li>
             </ul>

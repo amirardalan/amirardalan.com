@@ -56,5 +56,43 @@ export const blogPost = {
 }
 
 export const about = {
-  
+  meta: {
+    title: 'About – Amir Ardalan',
+    github: 'GitHub',
+    twitter: 'Twitter',
+    linkedin: 'LinkedIn',
+  },
+  title: 'Design &amp; Code.',
+  subtitle: '– from Portland, OR –',
+  link: {
+    resume: {
+      path: '/amir-ardalan-resume.pdf',
+      title: 'Resume(.pdf)',
+    },
+    journey: {
+      path: '/blog/2021-a-dev-odyssey',
+      title: 'My Journey',
+    },
+    github: {
+      url: 'https://github.com/amirardalan',
+      title: 'GitHub',
+    },
+    twitter: {
+      url: 'https://twitter.com/amirardalan',
+      title: 'Twitter',
+      dm: {
+        url: 'https://twitter.com/messages/compose?recipient_id=23831468',
+        title: 'DM @amirardalan',
+      }
+    },
+    linkedin: {
+      url: 'https://linkedin.com/in/amirardalan',
+      title: 'LinkedIn',
+    },
+  },
+  bio: {
+    heading: 'Bio',
+    subheading: 'Developer, Designer, Writer.',
+    content: 'I write code, design user interfaces, and blog about web development.',
+  }
 }
