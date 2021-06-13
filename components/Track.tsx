@@ -1,6 +1,14 @@
+import Image from 'next/image'
+
 export default function Track(track: any) {
   return (
     <div>
+      <Image
+        src={track.image}
+        height="60"
+        width="60"
+        alt={track.title}
+      />
       <p>
         {track.ranking}
       </p>

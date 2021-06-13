@@ -1,5 +1,6 @@
 import { css, useTheme } from '@emotion/react'
 import Container from '@/components/Container'
+import NowPlaying from '@/components/NowPlaying'
 import TopTracks from '@/components/TopTracks'
 
 import Head from 'next/head'
@@ -17,6 +18,8 @@ export default function Spotify({toggleTheme}) {
         <h2 className="pageHeading">
           Amir's Spotify
         </h2>
+        <NowPlaying />
+        ---------------
         <TopTracks />
       </div>
     </Container>
