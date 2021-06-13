@@ -19,7 +19,7 @@ export default function Track(track: any) {
       },
       '@media(max-width: 600px)': {
         gridTemplateColumns: 'repeat(1, 1fr)',
-        gridAutoRows: 'minmax(20px, auto)',
+        gridAutoRows: 'minmax(0, auto)',
       },
     }
   })

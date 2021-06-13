@@ -38,6 +38,7 @@ export default function NowPlaying() {
       textDecoration: 'none',
     },
     '@media(max-width: 480px)': {
+      background: 'linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.5518867924528301) 100%)',
       height: 300
     },
   })
@@ -54,15 +55,15 @@ export default function NowPlaying() {
     p: {
       fontSize: 'calc(1vw + 1vh)',
     },
-    '.trackText': {
-      marginBottom: '1rem',
-    },
     '@media(max-width: 480px)': {
       marginTop: '1rem',
       lineHeight: '.8rem',
       flexDirection: 'column',
       alignItems: 'center',
       textAlign: 'center',
+      '.trackText': {
+        marginBottom: '1rem',
+      },
     },
   })
   const styleNowPlayingBackground = css({
@@ -93,7 +94,7 @@ export default function NowPlaying() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  {data.title} {' - '}
+                  {data.title}
                 </a>
                 <p>
                   {data?.artist ?? 'Spotify'}
