@@ -14,36 +14,52 @@ export const footer = {
     {
       path: 'https://nextjs.org/',
       title: 'Next.js',
+      target: '_blank',
+      rel: 'noopener noreferrer'
     },
     {
       path: 'https://vercel.com/',
       title: 'Vercel',
+      target: '_blank',
+      rel: 'noopener noreferrer'
     },
     {
       path: 'https://www.prisma.io/',
       title: 'Prisma',
+      target: '_blank',
+      rel: 'noopener noreferrer'
     },
     {
       path: 'https://threejs.org/',
       title: 'Three.js',
+      target: '_blank',
+      rel: 'noopener noreferrer'
     }
   ],
   social: [
     {
       path: 'https://github.com/amirardalan',
       title: 'GitHub',
+      target: '_blank',
+      rel: 'noopener noreferrer'
     },
     {
       path: 'https://twitter.com/amirardalan',
       title: 'Twitter',
+      target: '_blank',
+      rel: 'noopener noreferrer'
     },
     {
       path: 'https://linkedin.com/in/amirardalan',
       title: 'LinkedIn',
+      target: '_blank',
+      rel: 'noopener noreferrer'
     },
     {
       path: '/amir-ardalan-resume.pdf',
       title: 'Resume',
+      target: '_blank',
+      rel: 'noopener noreferrer'
     },
   ]
 }

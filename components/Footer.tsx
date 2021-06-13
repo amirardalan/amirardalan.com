@@ -76,16 +76,19 @@ export default function Footer() {
     flexDirection: 'column',
   })
 
-  const generateNavCol = (items: Array<any>) => {
+  const generateFooterLinks = (items: Array<any>) => {
     return items.map((items, i) => {
       return (
         <li>
-          <Link
+          <a
             key={i}
             href={items.path}
-            aria-label={items.title}>
+            aria-label={items.title}
+            target={items.target}
+            rel={items.rel}>
             {items.title}
-          </Link>
+            
+          </a>
         </li>
       )
     })
@@ -97,7 +100,7 @@ export default function Footer() {
         <ul css={styleCopyright}>
           <h5 className="shortBorder">hi@amirardalan.com</h5>
           <li>{footer.copyright.text} {(new Date().getFullYear())}</li>
-          <li>{footer.copyright.name} ♥</li>
+          <li>{footer.copyright.name} 👨‍💻</li>
         </ul>
       </div>
       <div css={styleFooterNav} className="grid">
@@ -106,8 +109,14 @@ export default function Footer() {
           {nav.map((item: any, index: number) => {
             return (
               <li>
-                <Link href={item.path} aria-label={item.title} key={index}>
-                  <a className={item.cName}>
+                <Link
+                  href={item.path}
+                  aria-label={item.title}
+                  key={index}
+                >
+                  <a
+                    className={item.cName}
+                  >
                   {item.title}
                   </a>
                 </Link>
@@ -119,13 +128,13 @@ export default function Footer() {
       <div className="grid">
         <h5>Connect</h5>
         <ul>
-          {generateNavCol(footer.social)}
+          {generateFooterLinks(footer.social)}
         </ul>
       </div>
       <div className="grid">
         <h5>Powered By</h5>
         <ul>
-          {generateNavCol(footer.poweredby)}
+          {generateFooterLinks(footer.poweredby)}
         </ul>
       </div>
     </footer>
