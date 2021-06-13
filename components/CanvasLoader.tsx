@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { css, useTheme } from '@emotion/react'
 import { Canvas } from '@react-three/fiber'
 import CanvasTerrainControls from '@/components/CanvasTerrainControls'
 
-const CanvasLoader =  React.memo((props: any) => {
+const CanvasLoader =  React.memo(() => {
   const theme: any = useTheme()
 
   const styleCanvasInfo = css({
@@ -25,6 +25,27 @@ const CanvasLoader =  React.memo((props: any) => {
       display: 'none',
     }
   })
+  const styleCanvasControls = css({
+    zIndex: 3,
+    margin: '0 0 1rem 0',
+    padding: '0',
+    position: 'absolute',
+    bottom: 0,
+    right: 20,
+    color: 'var(--color-bg)',
+    fontSize: 10,
+    fontWeight: 'normal',
+    textTransform: 'uppercase',
+    a: {
+      color: 'var(--color-bg)',
+    },
+    '@media(max-width: 890px)': {
+      display: 'none',
+    }
+  })
+
+  const [terrainControls, toggleTerrainControls] = useState(null)
+  const terrainControlsOnClick = () => toggleTerrainControls(!terrainControls)
 
   return (
     <>
@@ -40,13 +61,18 @@ const CanvasLoader =  React.memo((props: any) => {
           @Mozzius
         </a>
       </small>
+      <div css={styleCanvasControls}>
+        <a onClick={terrainControlsOnClick}>
+          {terrainControls ? 'Hide Terrain Tools' : 'Show Terrain Tools'}
+        </a>
+      </div>
       <Canvas
         css={{ animation: 'slideUp 1s forwards' }}
         gl={{ antialias: true }}
         onCreated={({ camera }) => camera.lookAt(0, 0, 0)}
         camera={{ position: [0.35, 0.35, 0.35] }}
       >
-        <CanvasTerrainControls theme={theme} />
+        <CanvasTerrainControls theme={theme} terrainControls={terrainControls} />
         <ambientLight />
       </Canvas>
     </>

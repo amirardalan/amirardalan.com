@@ -3,7 +3,7 @@ import { button, useControls } from 'leva'
 import CanvasTerrain from '@/components/CanvasTerrain'
 import { Global } from '@emotion/react'
 
-const CanvasTerrainControls = ({ theme }) => {
+const CanvasTerrainControls = ({ theme, terrainControls }) => {
   const [seed, setSeed] = useState(Date.now())
 
   const { resolution, height, levels, scale, rotate } = useControls({
@@ -29,7 +29,7 @@ const CanvasTerrainControls = ({ theme }) => {
       <Global styles={{
         // Leva Controls Override
         '#leva__root': {
-          display: 'block',
+          display: terrainControls ? 'block' : 'none',
           fontFamily: 'var(--font-primary)',
           textTransform: 'uppercase',
           '--leva-colors-accent2': 'var(--color-select)',
@@ -117,7 +117,10 @@ const CanvasTerrainControls = ({ theme }) => {
             svg: {
               stroke: 'var(--color-bg)',
             }
-          }
+          },
+          '.levat4eko': {
+            color: 'var(--color-text)',
+          },
         }
       }} />
     </>
