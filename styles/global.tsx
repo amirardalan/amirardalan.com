@@ -253,7 +253,6 @@ export function GlobalStyles () {
           },
           '@media (max-width: 600px)': {
             padding: '0 1.5rem',
-            lineHeight: '2.5rem',
           }
         }
       }} />

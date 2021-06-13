@@ -26,20 +26,24 @@ export default function BlogNavigation({ feed, post, isPublished }) {
   const prevLink = prevPost ? `/blog/${encodeURIComponent(arr[index - 1].slug)}` : '#'
   const nextLink = nextPost ? `/blog/${encodeURIComponent(arr[index + 1].slug)}` : '#'
 
-  const ShowPrevLink = () => 
-    <Link href={prevLink} aria-label={prevTitle}>
-      <a css={stylePrevLink}>← {prevTitle}</a>
-    </Link>
-  const ShowNextLink = () => 
-    <Link href={nextLink} aria-label={nextTitle}>
-      <a css={styleNextLink}>{nextTitle} →</a>
-    </Link>
+  const ShowPrevLink = () =>
+    <div css={stylePrevLink}>
+      <Link href={prevLink} aria-label={prevTitle}>
+        <a>← {prevTitle}</a>
+      </Link>
+    </div>
+  const ShowNextLink = () =>
+    <div css={styleNextLink}>
+      <Link href={nextLink} css={styleNextLink} aria-label={nextTitle}>
+        <a>{nextTitle} →</a>
+      </Link>
+    </div>
 
   // Style next/prev Links
   const styleBlogNavigation = css({
     marginTop: '4rem',
     display: 'flex',
-    justifyContent: 'space-between',
+    justifyContent: first ? 'flex-end' : 'space-between',
     fontFamily: 'var(--font-tertiary)',
     fontSize: 18,
     '@media(max-width: 768px)': {
