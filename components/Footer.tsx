@@ -30,6 +30,11 @@ export default function Footer() {
       },
       '&:last-of-type::after': {
         content: '""',
+      },
+      '&.spotify': {
+        marginLeft: '.4rem',
+        background: 'var(--icon-spotify) no-repeat',
+        backgroundSize: '100%',
       }
     },
     'div': { flexDirection: 'row'}
@@ -45,7 +50,9 @@ export default function Footer() {
         {nav.map((item: any, index: number) => {
           return (
             <Link href={item.path} aria-label={item.title} key={index}>
+              <a className={item.cName}>
               {item.title}
+              </a>
             </Link>
           )}
         )}

@@ -4,6 +4,7 @@ import Link from '@/components/Link'
 import Logo from '@/components/Logo'
 import SocialLinks from '@/components/SocialLinks'
 import { nav } from '@/data/navigation'
+import { useThemeContext } from '@/utils/useThemeContext'
 
 export default function Navigation() {
   
@@ -142,6 +143,17 @@ export default function Navigation() {
       paddingRight: '2.5rem',
       alignItems: 'flex-end',
     },
+    'a.spotify': {
+      backgroundImage: 'var(--icon-spotify)',
+      height: 20,
+      width: 20,
+      '@media(max-width: 768px)': {
+        marginTop: '1rem',
+        '&::before': {
+          top: '-1.4rem'
+        }
+      }
+    },
   })
   const styleMobileNavSecondary = css({
     margin: '3rem 0',
@@ -201,7 +213,7 @@ export default function Navigation() {
       {nav.map((item: any, index: number) => {
         return (
           <Link href={item.path} activeClassName="active" exact={item.exact} as="" key={index}>
-            <a onClick={toggleMobileNav ? toggleMenu : null} aria-label={item.title}>
+            <a onClick={toggleMobileNav ? toggleMenu : null} className={item.cName} aria-label={item.title}>
               {item.title}
             </a>
           </Link>

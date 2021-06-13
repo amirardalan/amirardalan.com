@@ -79,14 +79,6 @@ export const about = {
   title: 'Design & Code.',
   subtitle: '– from Portland, OR –',
   link: {
-    resume: {
-      path: '/amir-ardalan-resume.pdf',
-      title: 'Download Resume(.pdf)',
-    },
-    journey: {
-      path: '/blog/2021-a-dev-odyssey',
-      title: 'Read about my journey',
-    },
     github: {
       url: 'https://github.com/amirardalan',
       title: 'GitHub',
@@ -109,6 +101,20 @@ export const about = {
     heading: 'Bio:',
     subheading: 'Developer, Designer, Writer.',
     content: `I write code, design user interfaces, and blog about web development. I'm passionate about the art and science of interfacing humans with technology.`,
+    items: [  
+      {
+        path: '/amir-ardalan-resume.pdf',
+        title: 'Resume (pdf)',
+      },
+      {
+        path: '/blog/2021-a-dev-odyssey',
+        title: 'Dev Journey',
+      },
+      {
+        path: '/spotify',
+        title: `Spotify Dashboard`,
+      },
+    ],
   },
   skills: {
     title: 'Skills:',

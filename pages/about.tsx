@@ -19,12 +19,6 @@ export const getStaticProps: GetStaticProps = async () => {
 export default function About({ data, toggleTheme }) {
   const theme: any = useTheme()
 
-  const stylePageHeading = css({
-    fontFamily: 'var(font-secondary)',
-    fontSize: 'calc(3.2vw + 3.2vh)',
-    fontWeight: 900,
-    textAlign: 'center',
-  })
   const stylePageHeadingSub = css({
     marginBottom: '2.5rem',
     color: 'var(--color-gray)',
@@ -48,7 +42,7 @@ export default function About({ data, toggleTheme }) {
     '.grid': {
       display: 'flex',
       justifyContent: 'center',
-      padding: '5rem',
+      padding: '3rem',
       backgroundColor: 'var(--color-accent)',
       animation: 'slideUp .5s forwards',
       h4: {
@@ -72,9 +66,10 @@ export default function About({ data, toggleTheme }) {
           display: 'inline-block',
           fontFamily: 'var(--font-tertiary)',
           maxWidth: 450,
+          lineHeight: '1.2rem',
         },
         a: {
-          fontFamily: 'var(--font-tertiary)',
+          textTransform: 'uppercase',
         }
       }
     },
@@ -108,14 +103,28 @@ export default function About({ data, toggleTheme }) {
   const generateListItems = (items: Array<string>) => {
     return items.map((items, i) => {
       return (
-        <>
-          <li key={i}>
-            {items}
-          </li>
-        </>
+        <li key={i}>
+          {items}
+        </li>
       )
     })
   }
+
+  const generateBioLinks = (items: Array<any>) => {
+    return items.map((items, i) => {
+      return (
+        <li>
+          <Link
+            key={i}
+            href={items.path}
+            aria-label={items.title}>
+            {items.title}
+          </Link>
+        </li>
+      )
+    })
+  }
+
 
   return (
     <Container toggleTheme={toggleTheme}>
@@ -123,7 +132,7 @@ export default function About({ data, toggleTheme }) {
         <title>{data.meta.title}</title>
       </Head>
       <div className="about">
-        <h2 css={stylePageHeading}>
+        <h2 className="pageHeading">
           {data.title}
         </h2>
         <h3 css={stylePageHeadingSub}>
@@ -141,20 +150,7 @@ export default function About({ data, toggleTheme }) {
                   {data.bio.content}
                 </em>
               </li>
-              <li>
-                <Link
-                  href={data.link.resume.path}
-                  aria-label={data.link.resume.title}>
-                  {data.link.resume.title}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={data.link.journey.path}
-                  aria-label={data.link.journey.title}>
-                  {data.link.journey.title}
-                </Link>
-              </li>
+              {generateBioLinks(data.bio.items)}
             </ul>
           </div>
           <div className="grid">

@@ -18,7 +18,6 @@ const grayLight = '#b0bccc'
 const grayDark = '#697075'
 const grayAccentLight = '#b8c1c7'
 const grayAccentDark = '#3e4449'
-const select = '#ffff00'
 const buttonDisabled = '#8b8b8b'
 const warning = '#ec4949'
 const codeHighlightDark = '#2e3440'
@@ -101,6 +100,7 @@ export function GlobalStyles () {
           '--color-input-disabled': light,
           '--button-toggle-bg': lightAccent,
           '--button-toggle-switch': darker,
+          '--icon-spotify': 'url(/icons/spotify-light.svg)',
           '--canvas-bg': sunset,
           '--page-bg': lighter,
           '--code-highlight': codeHighlightLight,
@@ -118,6 +118,7 @@ export function GlobalStyles () {
           '--color-select': secondary,
           '--color-select-text': dark,
           '--color-input-disabled': dark,
+          '--icon-spotify': 'url(/icons/spotify-dark.svg)',
           '--button-toggle-bg': darker,
           '--button-toggle-switch': lighter,
           '--canvas-bg': sunrise,
@@ -238,13 +239,21 @@ export function GlobalStyles () {
       <Global styles={{
         // Layout
         '.container': {
+          marginTop: '2rem',
           padding: '0 4rem',
           position: 'relative',
+          '.pageHeading': {
+            fontFamily: 'var(font-secondary)',
+            fontSize: 'calc(3.2vw + 3.2vh)',
+            fontWeight: 900,
+            textAlign: 'center',
+          },
           '@media(max-width: 1024px)': {
             padding: '0 2.5rem',
           },
           '@media (max-width: 600px)': {
             padding: '0 1.5rem',
+            lineHeight: '2.5rem',
           }
         }
       }} />
