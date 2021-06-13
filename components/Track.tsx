@@ -13,12 +13,13 @@ export default function Track(track: any) {
       gap: 20,
       gridAutoRows: 'minmax(100px, auto)',
       borderBottom: '1px solid var(--color-accent-gray)',
+      fontSize: 'calc(1.2vw + 1.2vh)',
       '@media(max-width: 890px)': {
         gridTemplateColumns: 'repeat(2, 1fr)',
         gridAutoRows: 'minmax(60px, auto)',
       },
       '@media(max-width: 600px)': {
-        gridTemplateColumns: 'repeat(1, 1fr)',
+        gridTemplateColumns: 'repeat(2, 1fr)',
         gridAutoRows: 'minmax(0, auto)',
       },
     }

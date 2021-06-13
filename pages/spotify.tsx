@@ -30,7 +30,6 @@ export default function Spotify({toggleTheme}) {
         >
           Amir's Spotify
         </h2>
-        <h3>Now Playing:</h3>
         <NowPlaying />
         <h3>Top Tracks:</h3>
         <TopTracks />

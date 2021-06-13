@@ -55,6 +55,9 @@ export default function NowPlaying() {
     p: {
       fontSize: 'calc(1vw + 1vh)',
     },
+    'a, p': {
+      lineHeight: '1.5rem',
+    },
     '@media(max-width: 480px)': {
       marginTop: '1rem',
       lineHeight: '.8rem',
@@ -81,42 +84,64 @@ export default function NowPlaying() {
 
 
   return (
-    <div css={styleNowPlayingContainer}>
-      <div css={styleNowPlaying}>
-        <div css={styleNowPlayingBackground}></div>
-        <div css={styleNowPlayingInner}>
-        {data?.songUrl ? (
-          <>
+    <>
+      {data?.songUrl ? (
+      <h3>Now Playing:</h3>)
+      : (<h3>Currently Offline</h3>)}
+      <div css={styleNowPlayingContainer}>
+        <div css={styleNowPlaying}>
+          <div css={styleNowPlayingBackground}></div>
+          <div css={styleNowPlayingInner}>
+          {data?.songUrl ? (
+            <>
+              <div css={styleNowPlayingTrack}>
+                <span className="trackText">
+                  <a
+                    href={data.songUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {data.title}
+                  </a>
+                  <p>
+                    {data.artist}
+                  </p>
+                </span>
+                <span>
+                  <Image
+                    src={data?.albumImageUrl}
+                    height='135'
+                    width='135'
+                    alt={data.title}
+                  />
+                </span>
+              </div>
+            </>
+          ) : (
             <div css={styleNowPlayingTrack}>
-              <span className="trackText">
-                <a
-                  href={data.songUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {data.title}
-                </a>
-                <p>
-                  {data?.artist ?? 'Spotify'}
-                </p>
-              </span>
-              <span>
-                <Image
-                  src={data?.albumImageUrl}
-                  height='135'
-                  width='135'
-                  alt={data.title}
-                />
-              </span>
+            <span className="trackText">
+              <a
+                href='/'
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                _____
+              </a>
+              <p>
+                _____
+              </p>
+            </span>
+            <div css={{
+              height: 135,
+              width: 135,
+              backgroundColor: '#14171a',
+            }}>
             </div>
-          </>
-        ) : (
-          <p>
-            Not Playing
-          </p>
-        )}
+          </div>
+          )}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }
