@@ -60,18 +60,10 @@ export default function Navigation() {
       left: 0,
       transform: 'rotate(0deg)',
       transition: '.25s ease-in-out',
-      '&:nth-of-type(1)': {
-        top: 0,
-      },
-      '&:nth-of-type(2)': {
-        top: 10,
-      },
-      '&:nth-of-type(3)': {
-        top: 10,
-      },
-      '&:nth-of-type(4)': {
-        top: 20,
-      }
+      '&:nth-of-type(1)': { top: 0, },
+      '&:nth-of-type(2)': { top: 10, },
+      '&:nth-of-type(3)': { top: 10, },
+      '&:nth-of-type(4)': { top: 20, }
     },
     '&.open': {
       'span:nth-of-type(1)': {
@@ -122,13 +114,6 @@ export default function Navigation() {
               content: '">"',
               left: -30,
             }
-          }
-        },
-        '&:hover': {
-          '&::before': {
-            position: 'absolute',
-            content: '" "',
-            left: -30,
           }
         },
       },

@@ -17,8 +17,23 @@ export default function NowPlaying() {
     height: 200,
     width: '100%',
     overflow: 'hidden',
+    '.nowPlayingStatus': {
+      zIndex: 5,
+      position: 'absolute',
+      top: '1.5rem',
+      left: '2rem',
+      color: '#b8c1c7',
+      fontSize: 14,
+    },
     '@media(max-width: 480px)': {
-      height: 300
+      height: 300,
+      '.nowPlayingStatus': {
+        margin: '0 auto',
+        left: '-50%',
+        right: '-50%',
+        textAlign: 'center',
+        fontSize: 10,
+      },
     },
   })
   const styleNowPlayingInner = css({
@@ -95,14 +110,18 @@ export default function NowPlaying() {
 
   return (
     <>
-      {data?.songUrl ? (
-      <h3>Now Playing:</h3>)
-      : (
-      <h3>Currently Offline</h3>
-      )}
       <div css={styleNowPlayingContainer}>
         <div css={styleNowPlaying}>
           <div css={styleNowPlayingBackground}></div>
+          <div className="nowPlayingStatus">
+            {data?.songUrl ? (
+            <p>
+              Now Playing:
+            </p>)
+            : (
+            <p>Currently Offline</p>
+            )}
+          </div>
           <div css={styleNowPlayingInner}>
           {data?.songUrl ? (
             <>

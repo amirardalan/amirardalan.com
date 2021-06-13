@@ -9,7 +9,7 @@ export default function Track(track: any) {
     '.grid': {
       padding: '2rem',
       display: 'grid',
-      gridTemplateColumns: 'repeat(4, 1fr)',
+      gridTemplateColumns: '10% 30% 30% 30%',
       gap: 20,
       gridAutoRows: 'minmax(100px, auto)',
       borderBottom: '1px solid var(--color-accent-gray)',
@@ -32,10 +32,6 @@ export default function Track(track: any) {
         gridTemplateColumns: 'repeat(2, 1fr)',
         gridAutoRows: 'minmax(60px, auto)',
       },
-      '@media(max-width: 600px)': {
-        gridTemplateColumns: 'repeat(2, 1fr)',
-        gridAutoRows: 'minmax(0, auto)',
-      },
     }
   })
 
@@ -54,12 +50,18 @@ export default function Track(track: any) {
         </div>
 
         <div className="image">
-          <Image
-            src={track.image}
-            height="100"
-            width="100"
-            alt={track.title}
-          />
+          <a
+            href={track.songUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Image
+              src={track.image}
+              height="100"
+              width="100"
+              alt={track.title}
+            />
+          </a>
         </div>
 
         <div className="title">
