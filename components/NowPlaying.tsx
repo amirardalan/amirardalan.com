@@ -18,7 +18,7 @@ export default function NowPlaying() {
     width: '100%',
     overflow: 'hidden',
     '.nowPlayingStatus': {
-      zIndex: 5,
+      zIndex: 2,
       position: 'absolute',
       top: '1.5rem',
       left: '2rem',
