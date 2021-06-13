@@ -14,6 +14,12 @@ export default function Track(track: any) {
       gridAutoRows: 'minmax(100px, auto)',
       borderBottom: '1px solid var(--color-accent-gray)',
       fontSize: 'calc(1.2vw + 1.2vh)',
+      a: {
+        color: 'var(--color-text)',
+      },
+      '.artist': {
+        fontFamily: 'var(--font-primary)',
+      },
       '@media(max-width: 890px)': {
         gridTemplateColumns: 'repeat(2, 1fr)',
         gridAutoRows: 'minmax(60px, auto)',

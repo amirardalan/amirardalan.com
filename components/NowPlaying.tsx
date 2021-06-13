@@ -49,14 +49,14 @@ export default function NowPlaying() {
     flexDirection: 'row',
     alignItems: 'flex-end',
     a: {
-      fontSize: 'calc(1.2vw + 1.2vh)',
+      fontSize: 'calc(1.9vw + 1.9vh)',
       fontFamily: 'var(--font-secondary)',
     },
     p: {
-      fontSize: 'calc(1vw + 1vh)',
+      fontSize: 'calc(.9vw + .9vh)',
     },
     'a, p': {
-      lineHeight: '1.5rem',
+      lineHeight: '2rem',
     },
     '@media(max-width: 480px)': {
       marginTop: '1rem',
