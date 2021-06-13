@@ -12,7 +12,7 @@ export default function Track(track: any) {
       gridTemplateColumns: '10% 30% 30% 30%',
       gap: 20,
       gridAutoRows: 'minmax(100px, auto)',
-      borderBottom: '1px solid var(--color-accent-gray)',
+      borderBottom: '1px solid var(--color-accent)',
       fontSize: 'calc(1.2vw + 1.2vh)',
       '-webkit-marquee-increment': '0vw',
       div: {

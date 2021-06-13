@@ -8,10 +8,10 @@ export default function Container(props: any) {
     <>
       <LoadingBar />
       <Header toggleTheme={props.toggleTheme} />
-        <div className="container">
+      <div className="container">
         {props.children}
-        <Footer />
       </div>
+      <Footer />
     </>
   )
 }

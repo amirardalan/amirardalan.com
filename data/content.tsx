@@ -8,9 +8,44 @@ export const breadcrumb = {
 export const footer = {
   copyright: {
     text: 'Copyright ©',
-    name: 'Amir Ardalan ♥',
+    name: 'Amir Ardalan',
   },
-  poweredby: 'Next.js + Prisma + Three.js',
+  poweredby: [
+    {
+      path: 'https://nextjs.org/',
+      title: 'Next.js',
+    },
+    {
+      path: 'https://vercel.com/',
+      title: 'Vercel',
+    },
+    {
+      path: 'https://www.prisma.io/',
+      title: 'Prisma',
+    },
+    {
+      path: 'https://threejs.org/',
+      title: 'Three.js',
+    }
+  ],
+  social: [
+    {
+      path: 'https://github.com/amirardalan',
+      title: 'GitHub',
+    },
+    {
+      path: 'https://twitter.com/amirardalan',
+      title: 'Twitter',
+    },
+    {
+      path: 'https://linkedin.com/in/amirardalan',
+      title: 'LinkedIn',
+    },
+    {
+      path: '/amir-ardalan-resume.pdf',
+      title: 'Resume',
+    },
+  ]
 }
 
 export const home = {

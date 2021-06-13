@@ -22,6 +22,14 @@ export default function Spotify({toggleTheme}) {
         <title>Spotify Dashboard | Amir Ardalan</title>
       </Head>
       <div className="spotify" css={styleSpotifyContainer}>
+        <h2
+          className="pageHeading"
+          css={{
+            marginBottom: '2rem',
+          }}
+        >
+          Spotify Dashboard
+        </h2>
         <NowPlaying />
         <h3>Top Tracks:</h3>
         <TopTracks />
