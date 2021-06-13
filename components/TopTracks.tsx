@@ -5,8 +5,6 @@ import Track from '@/components/Track'
 export default function TopTracks() {
   const { data } = useSWR('/api/spotify/top-tracks', fetcher)
 
-  console.log(data)
-
   if (!data) {
     return null
   }
