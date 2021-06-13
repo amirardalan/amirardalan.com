@@ -97,8 +97,7 @@ export default function Footer() {
         <ul css={styleCopyright}>
           <h5 className="shortBorder">hi@amirardalan.com</h5>
           <li>{footer.copyright.text} {(new Date().getFullYear())}</li>
-          <li>{footer.copyright.name}</li>
-          <li>* 〰 *</li>
+          <li>{footer.copyright.name} ♥</li>
         </ul>
       </div>
       <div css={styleFooterNav} className="grid">

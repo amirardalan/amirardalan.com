@@ -29,8 +29,9 @@ export default function Track(track: any) {
         fontFamily: 'var(--font-primary)',
       },
       '@media(max-width: 890px)': {
+        padding: '1rem',
         gridTemplateColumns: 'repeat(2, 1fr)',
-        gridAutoRows: 'minmax(60px, auto)',
+        gridAutoRows: 'minmax(0, auto)',
       },
     }
   })
