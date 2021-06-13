@@ -79,19 +79,24 @@ export default function Home({ data, latestPost, toggleTheme }) {
     h2: {
       fontFamily: 'var(--font-secondary)',
       fontSize: 'calc(2.9vw + 2.9vh)',
+      '-webkit-marquee-increment': '0vw',
       margin: '0 0 1rem',
       fontWeight: 'bolder',
       '@media (max-width: 890px)': {
         fontSize: 'calc(3.4vw + 3.4vh)',
+        '-webkit-marquee-increment': '0vw',
       }
     },
     '.typedText': {
       marginBottom: '3rem',
       fontSize: 'calc(.9vw + .9vh)',
+      '-webkit-marquee-increment': '0vw',
       fontWeight: 'normal',
       color: 'var(--color-gray)',
       '@media (max-width: 890px)': {
         fontSize: 'calc(1.2vw + 1.2vh)',
+        '-webkit-marquee-increment': '0vw',
+        '-webkit-marquee-increment': '0vw',
       } 
     },
     '.highlightText': {
@@ -102,6 +107,7 @@ export default function Home({ data, latestPost, toggleTheme }) {
     },
     '@media (min-width: 480px) and (max-width: 890px)': {
       fontSize: 'calc(2.5vw + 2.5vh)',
+      '-webkit-marquee-increment': '0vw',
       minHeight: '0vw',
     }
   })

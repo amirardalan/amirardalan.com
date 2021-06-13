@@ -14,6 +14,7 @@ export default function Track(track: any) {
       gridAutoRows: 'minmax(100px, auto)',
       borderBottom: '1px solid var(--color-accent-gray)',
       fontSize: 'calc(1.2vw + 1.2vh)',
+      '-webkit-marquee-increment': '0vw',
       div: {
         display: 'flex',
         alignSelf: 'center',
@@ -46,6 +47,7 @@ export default function Track(track: any) {
           className="rank"
           css={{
             fontSize: 'calc(3.5vw + 3.5vh)',
+            '-webkit-marquee-increment': '0vw',
             color: 'var(--color-accent-gray)',
           }}>
           {track.ranking}

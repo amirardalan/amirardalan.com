@@ -50,6 +50,7 @@ export default function NowPlaying() {
     alignItems: 'flex-end',
     a: {
       fontSize: 'calc(1.5vw + 1.5vh)',
+      '-webkit-marquee-increment': '0vw',
       fontFamily: 'var(--font-secondary)',
     },
     p: {

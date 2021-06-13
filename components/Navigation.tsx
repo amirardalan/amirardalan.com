@@ -137,6 +137,7 @@ export default function Navigation() {
       flexDirection: 'column',
       alignItems: 'center',
       fontSize: 'calc(3vw + 3vh)',
+      '-webkit-marquee-increment': '0vw',
       lineHeight: '4rem',
     },
     '@media (max-width: 768px) and (max-height: 600px)': {
