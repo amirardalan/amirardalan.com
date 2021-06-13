@@ -2,6 +2,7 @@ import { css } from '@emotion/react'
 import useSWR from 'swr'
 import fetcher from '@/lib/fetcher'
 import Image from 'next/image'
+import Equalizer from '@/components/Equalizer'
 
 export default function NowPlaying() {
   const { data } = useSWR('/api/spotify/now-playing', fetcher)
@@ -75,13 +76,13 @@ export default function NowPlaying() {
       lineHeight: '2rem',
     },
     '@media(max-width: 480px)': {
-      marginTop: '1rem',
+      marginTop: '2rem',
       lineHeight: '.8rem',
-      flexDirection: 'column',
+      flexDirection: 'column-reverse',
       alignItems: 'center',
       textAlign: 'center',
       '.trackText': {
-        marginBottom: '1rem',
+        marginTop: '1rem',
       },
       'a, p': {
         lineHeight: '1.5rem',
@@ -116,7 +117,7 @@ export default function NowPlaying() {
           <div className="nowPlayingStatus">
             {data?.songUrl ? (
             <p>
-              Now Playing:
+              <Equalizer /> Now Playing:
             </p>)
             : (
             <p>Currently Offline</p>
