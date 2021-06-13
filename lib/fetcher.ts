@@ -1,5 +1,5 @@
 export default async function Fetcher(...args: any) {
-  const res = await fetch(void 0,...args)
+  const res = await fetch(...args)
 
   return res.json()
 }

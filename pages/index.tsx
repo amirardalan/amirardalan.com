@@ -2,7 +2,6 @@ import { css, useTheme } from '@emotion/react'
 import { home } from '@/data/content'
 import Container from '@/components/Container'
 import LatestPost from '@/components/LatestPost'
-import TopTracks from '@/components/TopTracks'
 import Head from 'next/head'
 import Link from 'next/link'
 
@@ -38,7 +37,7 @@ export const getStaticProps: GetStaticProps = async () => {
     return { props: { latestPost, data: home } }
   }
   catch {
-    return { props: {} }
+    return { props: { data: home } }
   }
 }
 
@@ -184,7 +183,6 @@ export default function Home({ data, latestPost, toggleTheme }) {
                   <TypingAnimation data={data.typed} />
                 </div>
               </div>
-              <TopTracks />
               <div css={styleButtonContainer}>
                 <Link href={data.cta.blog.path} aria-label={data.cta.blog.title}>
                   <button css={styleCtaButton}>
