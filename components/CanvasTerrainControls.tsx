@@ -43,7 +43,6 @@ const CanvasTerrainControls = ({ theme, terrainControls }) => {
             fontFamily: 'var(--font-primary)',
             backgroundColor: 'var(--color-accent)',
             boxShadow: 'none',
-            animation: 'fadeIn 1s forwards',
           },
           '.levavqh1g > .levam9bkr:first-of-type, .levavqh1guk05a--isRoot-true > div:first-of-type': {
             marginTop: 0,
