@@ -2,7 +2,6 @@ import { css, useTheme } from '@emotion/react'
 import Container from '@/components/Container'
 import NowPlaying from '@/components/NowPlaying'
 import TopTracks from '@/components/TopTracks'
-
 import Head from 'next/head'
 
 
@@ -13,13 +12,14 @@ export default function Spotify({toggleTheme}) {
     h3: {
       marginBottom: '1rem',
       fontSize: 30,
-      color: 'var(--color-accent-gray)',
       fontWeight: 'bold',
     }
   })
   const styleNowPlayingContainer = css({
     marginBottom: '2rem',
-    padding: '.5rem 2rem',
+    padding: '2rem',
+    display: 'flex',
+    flexDirection: 'row',
     background: 'var(--color-accent)',
   })
   const styleTopTracksContainer = css({
@@ -33,10 +33,12 @@ export default function Spotify({toggleTheme}) {
       gridAutoRows: 'minmax(120px, auto)',
       borderBottom: '1px solid var(--color-accent-gray)',
       '@media(max-width: 890px)': {
-        gridTemplateColumns: 'repeat(3, 1fr)',
+        gridTemplateColumns: 'repeat(2, 1fr)',
+        gridAutoRows: 'minmax(60px, auto)',
       },
       '@media(max-width: 600px)': {
         gridTemplateColumns: 'repeat(1, 1fr)',
+        gridAutoRows: 'minmax(20px, auto)',
       },
       '.grid': {
         display: 'flex',
@@ -54,7 +56,7 @@ export default function Spotify({toggleTheme}) {
   return (
     <Container toggleTheme={toggleTheme}>
       <Head>
-        <title>Spotify</title>
+        <title>Spotify | Amir Ardalan</title>
       </Head>
       <div className="spotify" css={styleSpotifyContainer}>
         <h2

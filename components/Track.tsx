@@ -4,14 +4,16 @@ export default function Track(track: any) {
   return (
     <div className="grid">
 
-      <div css={{
+      <div
+      className="rank"
+      css={{
         fontSize: 'calc(3.5vw + 3.5vh)',
-        color: 'var(--color-accent-gray)'
+        color: 'var(--color-accent-gray)',
       }}>
         {track.ranking}
       </div>
 
-      <div>
+      <div className="image">
         <Image
           src={track.image}
           height="120"
@@ -20,7 +22,7 @@ export default function Track(track: any) {
         />
       </div>
 
-      <div>
+      <div className="title">
         <a
           href={track.songUrl}
           target="_blank"
@@ -30,7 +32,7 @@ export default function Track(track: any) {
         </a>
       </div>
 
-      <div>
+      <div className="artist">
         {track.artist}
       </div>
 
