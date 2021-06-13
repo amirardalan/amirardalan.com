@@ -33,7 +33,7 @@ const Header = (props: any) => {
     justifyContent: 'space-between',
     a:  { textDecoration: 'none' },
     '.headerRight': {
-      minWidth: '342.8px',
+      minWidth: '410.8px', // Prevent layout shift
       display: 'flex',
       flexDirection: 'row',
       alignItems: 'center',

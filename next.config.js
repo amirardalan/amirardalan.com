@@ -14,13 +14,16 @@ module.exports = {
       },
     ]
   },
+  images: {
+    domains: [
+      'i.scdn.co', // Spotify Album Art
+      'github.com' // GiHub Avatar
+    ]
+  },
   webpack: (config, { isServer }) => {
     if (isServer) {
       require('./scripts/generateSitemap.js')
     }
     return config
-  },
-  images: {
-    domains: ['github.com'],
   },
 }
