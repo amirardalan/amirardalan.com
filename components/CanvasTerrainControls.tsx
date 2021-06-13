@@ -51,8 +51,7 @@ const CanvasTerrainControls = ({ theme }) => {
           },
           '.levawz9l9wdj1o--fill-false': {
             height: 'max-content',
-            top: 'unset',
-            bottom: '17%',
+            top: 150,
             right: '5.5rem',
 
             '@media(max-width: 1024px)': {
