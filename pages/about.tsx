@@ -68,7 +68,7 @@ export default function About({ data, toggleTheme }) {
           maxWidth: 450,
         },
         a: {
-          fontFamily: 'var(--font-tertiary)',
+          textTransform: 'uppercase',
         }
       }
     },
