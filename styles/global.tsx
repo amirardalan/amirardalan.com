@@ -86,6 +86,7 @@ export function GlobalStyles () {
           '--font-tertiary': fontTertiary,
           '--color-warning': warning,
           '--color-button-disabled': buttonDisabled,
+          '--color-select': grayAccentLight,
         },
         'body, body[data-theme="light"]': {
           '--color-accent': lightAccent,
@@ -95,7 +96,6 @@ export function GlobalStyles () {
           '--color-bg': light,
           '--color-text': darkAccent,
           '--color-link': primary,
-          '--color-select': primary,
           '--color-select-text': light,
           '--color-input-disabled': light,
           '--button-toggle-bg': lightAccent,
@@ -116,7 +116,6 @@ export function GlobalStyles () {
           '--color-bg': dark,
           '--color-text': lightAccent,
           '--color-link': secondary,
-          '--color-select': secondary,
           '--color-select-text': dark,
           '--color-input-disabled': dark,
           '--icon-spotify': 'url(/icons/spotify-dark.svg)',

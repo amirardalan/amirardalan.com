@@ -32,7 +32,7 @@ const CanvasTerrainControls = ({ theme, terrainControls }) => {
           display: terrainControls ? 'block' : 'none',
           fontFamily: 'var(--font-primary)',
           textTransform: 'uppercase',
-          '--leva-colors-accent2': 'var(--color-select)',
+          '--leva-colors-accent2': 'var(--color-accent-color)',
           
           // Hide on Tablet/Mobile
           '@media(max-width: 890px)': {
