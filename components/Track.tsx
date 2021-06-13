@@ -2,16 +2,24 @@ import Image from 'next/image'
 
 export default function Track(track: any) {
   return (
-    <div>
-      <Image
-        src={track.image}
-        height="60"
-        width="60"
-        alt={track.title}
-      />
-      <p>
+    <div className="grid">
+
+      <div css={{
+        fontSize: 'calc(3.5vw + 3.5vh)',
+        color: 'var(--color-accent-gray)'
+      }}>
         {track.ranking}
-      </p>
+      </div>
+
+      <div>
+        <Image
+          src={track.image}
+          height="120"
+          width="120"
+          alt={track.title}
+        />
+      </div>
+
       <div>
         <a
           href={track.songUrl}
@@ -20,10 +28,12 @@ export default function Track(track: any) {
         >
           {track.title}
         </a>
-        <p>
-          {track.artist}
-        </p>
       </div>
+
+      <div>
+        {track.artist}
+      </div>
+
     </div>
   )
 }
