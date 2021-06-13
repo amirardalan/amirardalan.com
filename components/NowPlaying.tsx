@@ -27,7 +27,7 @@ export default function NowPlaying() {
       fontSize: 14,
     },
     '@media(max-width: 480px)': {
-      height: 300,
+      height: 350,
       '.nowPlayingStatus': {
         margin: '0 auto',
         left: '-50%',
@@ -38,10 +38,11 @@ export default function NowPlaying() {
     },
   })
   const styleNowPlayingInner = css({
+    display: 'flex',
     padding: '2rem',
     height: 200,
     width: '100%',
-    alignItems: 'flex-start',
+    alignItems: 'center',
     position: 'absolute',
     top: 0,
     left: 0,
@@ -54,8 +55,7 @@ export default function NowPlaying() {
       textDecoration: 'none',
     },
     '@media(max-width: 480px)': {
-      background: 'linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.5518867924528301) 100%)',
-      height: 300
+      height: 350
     },
   })
   const styleNowPlayingTrack = css({
@@ -73,10 +73,10 @@ export default function NowPlaying() {
       fontSize: 16,
     },
     'a, p': {
-      lineHeight: '2rem',
+      lineHeight: '1.5rem',
     },
     '@media(max-width: 480px)': {
-      marginTop: '2rem',
+      marginTop: '1.5rem',
       lineHeight: '.8rem',
       flexDirection: 'column-reverse',
       alignItems: 'center',
@@ -84,14 +84,15 @@ export default function NowPlaying() {
       '.trackText': {
         marginTop: '1rem',
       },
-      'a, p': {
-        lineHeight: '1.5rem',
-      },
       a: {
         fontSize: 20,
+        lineHeight: '1.5rem',
+        marginBottom: '.6rem',
+        display: 'block',
       },
       p: {
         fontSize: 12,
+        lineHeight: '.9rem'
       },
     },
   })
@@ -104,7 +105,7 @@ export default function NowPlaying() {
     backgroundPositionY: '50%',
     backgroundRepeat: 'no-repeat',
     '@media(max-width: 480px)': {
-      height: 300
+      height: 350
     },
   })
 
