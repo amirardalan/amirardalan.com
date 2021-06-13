@@ -96,7 +96,6 @@ export default function Home({ data, latestPost, toggleTheme }) {
       '@media (max-width: 890px)': {
         fontSize: 'calc(1.2vw + 1.2vh)',
         '-webkit-marquee-increment': '0vw',
-        '-webkit-marquee-increment': '0vw',
       } 
     },
     '.highlightText': {
