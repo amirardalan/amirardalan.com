@@ -9,8 +9,8 @@ export default function Spotify({toggleTheme}) {
 
   const styleSpotifyContainer = css({
     h3: {
-      marginBottom: '1rem',
-      fontSize: 30,
+      margin: '1rem 0',
+      fontSize: 20,
       fontWeight: 'bold',
       color: 'var(--color-accent-gray)',
     }
@@ -22,12 +22,7 @@ export default function Spotify({toggleTheme}) {
         <title>Spotify | Amir Ardalan</title>
       </Head>
       <div className="spotify" css={styleSpotifyContainer}>
-        <h2
-          className="pageHeading"
-          css={{
-            marginBottom: '2rem',
-          }}
-        >
+        <h2 className="pageHeading">
           Amir's Spotify
         </h2>
         <NowPlaying />

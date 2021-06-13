@@ -7,7 +7,7 @@ export default function NowPlaying() {
   const { data } = useSWR('/api/spotify/now-playing', fetcher)
 
   const styleNowPlayingContainer = css({
-    marginBottom: '2rem',
+    marginBottom: '2.5rem',
     display: 'flex',
     background: 'var(--color-accent)',
   })
@@ -49,11 +49,11 @@ export default function NowPlaying() {
     flexDirection: 'row',
     alignItems: 'flex-end',
     a: {
-      fontSize: 'calc(1.9vw + 1.9vh)',
+      fontSize: 'calc(1.5vw + 1.5vh)',
       fontFamily: 'var(--font-secondary)',
     },
     p: {
-      fontSize: 'calc(.9vw + .9vh)',
+      fontSize: 16,
     },
     'a, p': {
       lineHeight: '2rem',
@@ -66,6 +66,15 @@ export default function NowPlaying() {
       textAlign: 'center',
       '.trackText': {
         marginBottom: '1rem',
+      },
+      'a, p': {
+        lineHeight: '1.5rem',
+      },
+      a: {
+        fontSize: 20,
+      },
+      p: {
+        fontSize: 12,
       },
     },
   })
@@ -87,7 +96,9 @@ export default function NowPlaying() {
     <>
       {data?.songUrl ? (
       <h3>Now Playing:</h3>)
-      : (<h3>Currently Offline</h3>)}
+      : (
+      <h3>Currently Offline</h3>
+      )}
       <div css={styleNowPlayingContainer}>
         <div css={styleNowPlaying}>
           <div css={styleNowPlayingBackground}></div>
@@ -101,7 +112,7 @@ export default function NowPlaying() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    {data.title}
+                  {data.title}
                   </a>
                   <p>
                     {data.artist}

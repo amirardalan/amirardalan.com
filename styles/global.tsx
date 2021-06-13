@@ -239,6 +239,7 @@ export function GlobalStyles () {
       <Global styles={{
         // Layout
         '.container': {
+          marginTop: '2rem',
           padding: '0 4rem',
           position: 'relative',
           '.pageHeading': {
@@ -252,6 +253,7 @@ export function GlobalStyles () {
           },
           '@media (max-width: 600px)': {
             padding: '0 1.5rem',
+            lineHeight: '2.5rem',
           }
         }
       }} />

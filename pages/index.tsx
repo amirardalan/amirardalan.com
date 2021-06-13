@@ -66,7 +66,6 @@ export default function Home({ data, latestPost, toggleTheme }) {
     animation: 'slideUp .8s forwards',
     '@media (max-width: 890px)': {
       height: 'auto',
-      margin: '2rem 0 0 0',
       flexDirection: 'column-reverse',
       justifyContent: 'start',
       alignSelf: 'flex-start',
@@ -133,7 +132,6 @@ export default function Home({ data, latestPost, toggleTheme }) {
     }
   })
   const styleMainRight = css({
-    marginTop: '2rem',
     background: 'var(--canvas-bg)',
     height: '72vh',
     position: 'relative',

@@ -42,7 +42,7 @@ export default function About({ data, toggleTheme }) {
     '.grid': {
       display: 'flex',
       justifyContent: 'center',
-      padding: '5rem',
+      padding: '3rem',
       backgroundColor: 'var(--color-accent)',
       animation: 'slideUp .5s forwards',
       h4: {
@@ -66,6 +66,7 @@ export default function About({ data, toggleTheme }) {
           display: 'inline-block',
           fontFamily: 'var(--font-tertiary)',
           maxWidth: 450,
+          lineHeight: '1.2rem',
         },
         a: {
           textTransform: 'uppercase',

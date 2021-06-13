@@ -14,8 +14,15 @@ export default function Track(track: any) {
       gridAutoRows: 'minmax(100px, auto)',
       borderBottom: '1px solid var(--color-accent-gray)',
       fontSize: 'calc(1.2vw + 1.2vh)',
+      div: {
+        display: 'flex',
+        alignSelf: 'center',
+      },
       a: {
         color: 'var(--color-text)',
+      },
+      'a, p': {
+        lineHeight: '1.2rem',
       },
       '.artist': {
         fontFamily: 'var(--font-primary)',
@@ -64,7 +71,7 @@ export default function Track(track: any) {
         </div>
 
         <div className="artist">
-          {track.artist}
+          <p>{track.artist}</p>
         </div>
 
       </div>
