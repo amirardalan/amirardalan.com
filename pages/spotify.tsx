@@ -13,9 +13,12 @@ export default function Spotify({toggleTheme}) {
       <Head>
         <title>Spotify</title>
       </Head>
-      <main>
+      <div className="spotify">
+        <h2 className="pageHeading">
+          Amir's Spotify
+        </h2>
         <TopTracks />
-      </main>
+      </div>
     </Container>
   )
 }

@@ -241,6 +241,12 @@ export function GlobalStyles () {
         '.container': {
           padding: '0 4rem',
           position: 'relative',
+          '.pageHeading': {
+            fontFamily: 'var(font-secondary)',
+            fontSize: 'calc(3.2vw + 3.2vh)',
+            fontWeight: 900,
+            textAlign: 'center',
+          },
           '@media(max-width: 1024px)': {
             padding: '0 2.5rem',
           },
