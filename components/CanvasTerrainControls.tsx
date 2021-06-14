@@ -52,12 +52,12 @@ const CanvasTerrainControls = ({ theme, terrainControls }) => {
             position: 'absolute',
             height: 'max-content',
             top: 'unset',
-            bottom: 175,
-            right: '5.4rem',
+            bottom: 150,
+            right: '5rem',
 
             '@media(max-width: 1024px)': {
-              bottom: '25%',
-              right: '5rem'
+              bottom: 182,
+              right: '3.6rem'
             },
 
             '@media(max-width: 600px)': {

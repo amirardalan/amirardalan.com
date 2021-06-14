@@ -31,7 +31,7 @@ const CanvasLoader =  React.memo(() => {
     padding: '0',
     position: 'absolute',
     bottom: 0,
-    right: 20,
+    left: 20,
     color: 'var(--color-bg)',
     fontSize: 10,
     fontWeight: 'normal',
@@ -44,7 +44,7 @@ const CanvasLoader =  React.memo(() => {
     }
   })
 
-  const [terrainControls, toggleTerrainControls] = useState(null)
+  const [terrainControls, toggleTerrainControls] = useState(true)
   const terrainControlsOnClick = () => toggleTerrainControls(!terrainControls)
 
   return (
@@ -53,19 +53,10 @@ const CanvasLoader =  React.memo(() => {
         css={styleCanvasInfo}
         className="canvasInfo"
       >
-        <a
-          href="https://github.com/Mozzius/terrain-fiber"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Credit: @Mozzius https://github.com/Mozzius/terrain-fiber">
-          @Mozzius
+                <a onClick={terrainControlsOnClick}>
+          {terrainControls ? 'Hide Controls' : 'Show Controls'}
         </a>
       </small>
-      <div css={styleCanvasControls}>
-        <a onClick={terrainControlsOnClick}>
-          {terrainControls ? 'Hide Terrain Tools' : 'Show Terrain Tools'}
-        </a>
-      </div>
       <Canvas
         css={{ animation: 'slideUp 1s forwards' }}
         gl={{ antialias: true }}
