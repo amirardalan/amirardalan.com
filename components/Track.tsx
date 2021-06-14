@@ -7,10 +7,10 @@ export default function Track(track: any) {
     fontFamily: 'var(--font-secondary)',
     fontWeight: 'bold',
     '.grid': {
-      padding: '2rem',
+      padding: '2% 0',
       display: 'grid',
-      gridTemplateColumns: '10% 30% 30% 30%',
       gap: 20,
+      gridTemplateColumns: '10% 20% 30% 30%',
       gridAutoRows: 'minmax(100px, auto)',
       borderBottom: '1px solid var(--color-accent)',
       fontSize: 'calc(1.2vw + 1.2vh)',
@@ -19,19 +19,30 @@ export default function Track(track: any) {
         display: 'flex',
         alignSelf: 'center',
       },
-      a: {
+      '.rank': {
+        fontSize: 'calc(3vw + 3vh)',
+        '-webkit-marquee-increment': '0vw',
+        color: 'var(--color-accent-gray)',
+      },
+      '.title': {
         color: 'var(--color-text)',
       },
-      'a, p': {
-        lineHeight: '1.2rem',
+      '.title a, .artist p': {
+        lineHeight: '1.8rem',
       },
       '.artist': {
         fontFamily: 'var(--font-primary)',
+        fontWeight: 'normal',
       },
-      '@media(max-width: 890px)': {
-        padding: '1rem',
-        gridTemplateColumns: 'repeat(2, 1fr)',
+      '@media(max-width: 600px)': {
+        gridTemplateColumns: '8% 40% 40%',
         gridAutoRows: 'minmax(0, auto)',
+        '.image': {
+          display: 'none'
+        },
+        '.title a, .artist p': {
+          lineHeight: '1.2rem',
+        },
       },
     }
   })
@@ -39,17 +50,9 @@ export default function Track(track: any) {
   return (
     <div css={styleTopTracksContainer}>
       <div className="grid">
-
-        <div
-          className="rank"
-          css={{
-            fontSize: 'calc(3.5vw + 3.5vh)',
-            '-webkit-marquee-increment': '0vw',
-            color: 'var(--color-accent-gray)',
-          }}>
+        <div className="rank">
           {track.ranking}
         </div>
-
         <div className="image">
           <a
             href={track.songUrl}
@@ -64,7 +67,9 @@ export default function Track(track: any) {
             />
           </a>
         </div>
-
+        <div className="artist">
+          <p>{track.artist}</p>
+        </div>
         <div className="title">
           <a
             href={track.songUrl}
@@ -74,11 +79,6 @@ export default function Track(track: any) {
             {track.title}
           </a>
         </div>
-
-        <div className="artist">
-          <p>{track.artist}</p>
-        </div>
-
       </div>
     </div>
   )
