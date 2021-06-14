@@ -143,7 +143,16 @@ export default function Footer() {
       <div className="grid">
         <ul>
           <h5>✉ Contact</h5>
-          <li className="email">hi@amirardalan.com</li>
+          <li className="email">
+            <a
+              href="mailto:hi@amirardalan.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="email hi@amirardalan.com"
+            >
+              hi@amirardalan.com
+            </a>
+          </li>
         </ul>
       </div>
       <div css={styleCopyright}>
