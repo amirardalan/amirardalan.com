@@ -12,6 +12,7 @@ export default function Spotify({toggleTheme}) {
       margin: '3.5rem 0 0 0',
       fontSize: 28,
       fontWeight: 'bold',
+      color: 'var(--color-accent-gray)',
     }
   })
 

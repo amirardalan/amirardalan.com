@@ -30,6 +30,7 @@ export default function NowPlaying() {
       height: 350,
       '.nowPlayingStatus': {
         margin: '0 auto',
+        top: '2rem',
         left: '-50%',
         right: '-50%',
         textAlign: 'center',
@@ -55,7 +56,8 @@ export default function NowPlaying() {
       textDecoration: 'none',
     },
     '@media(max-width: 480px)': {
-      height: 350
+      height: 350,
+      background: 'linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.5518867924528301) 200%)',
     },
   })
   const styleNowPlayingTrack = css({
@@ -82,7 +84,7 @@ export default function NowPlaying() {
       alignItems: 'center',
       textAlign: 'center',
       '.trackText': {
-        marginTop: '1rem',
+        margin: '1rem 0',
       },
       a: {
         fontSize: 20,

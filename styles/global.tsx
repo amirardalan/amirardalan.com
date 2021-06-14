@@ -252,6 +252,9 @@ export function GlobalStyles () {
           },
           '@media(max-width: 1024px)': {
             padding: '0 2.5rem',
+            '.pageHeading': {
+              lineHeight: '2.5rem',
+            }
           },
           '@media (max-width: 600px)': {
             padding: '0 1.5rem',

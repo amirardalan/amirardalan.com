@@ -20,7 +20,7 @@ export default function About({ data, toggleTheme }) {
   const theme: any = useTheme()
 
   const stylePageHeadingSub = css({
-    marginBottom: '2.5rem',
+    margin: '0 0 2.5rem 0',
     color: 'var(--color-gray)',
     fontFamily: 'var(--font-tertiary)',
     fontSize: 'calc(1vw + 1vh)',
@@ -28,6 +28,9 @@ export default function About({ data, toggleTheme }) {
     fontWeight: 'normal',
     fontStyle: 'italic',
     textAlign: 'center',
+    '@media(max-width: 1024px)': {
+      margin: '1rem 0 2.5rem 0',
+    }
   })
   const styleGridWrapper = css({
     display: 'grid',
