@@ -1,7 +1,9 @@
 // DEPLOY /api/deploy
+import { NextApiRequest, NextApiResponse } from 'next'
 import axios from "axios"
 
-export default async (req, res) => {
+
+export default async (req: NextApiRequest, res: NextApiResponse) => {
   const url = `${process.env.DEPLOY_HOOK}`
 
   if (req.query.secret !== `${process.env.NEXT_PUBLIC_DEPLOY_TOKEN}`) {

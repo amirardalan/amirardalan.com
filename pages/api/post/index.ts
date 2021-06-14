@@ -1,3 +1,4 @@
+import { NextApiRequest, NextApiResponse } from 'next'
 import { getSession } from 'next-auth/client'
 import prisma from '@/lib/prisma'
 
@@ -5,7 +6,7 @@ import prisma from '@/lib/prisma'
 // POST /api/post
 // Required fields in body: title
 // Optional fields in body: content, slug, teaser
-export default async function handle(req: any, res: any) {
+export default async function handle(req: NextApiRequest, res: NextApiResponse) {
   const { title, content, slug, teaser } = req.body
 
   const session = await getSession({ req })

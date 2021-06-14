@@ -15,8 +15,9 @@ const CanvasTerrainControls = ({ theme, terrainControls }) => {
     rotate: { value: true },
   })
 
+
   // useEffect(() => {
-  //   var levaDomNodeRendered = document.getElementById('leva__root')
+  //   const levaDomNodeRendered = document.getElementById('leva__root')
   //   if (levaDomNodeRendered) {
   //     document.getElementById('leva').appendChild(document.getElementById('leva__root'))
   //   }
