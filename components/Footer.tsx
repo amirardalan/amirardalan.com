@@ -89,7 +89,7 @@ export default function Footer() {
             aria-label={items.title}
             target={items.target}
             rel={items.rel}
-            className={items?.style}
+            className={items?.cName}
           >
             {items.title}
           </a>

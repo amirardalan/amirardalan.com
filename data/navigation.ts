@@ -9,7 +9,7 @@ export const nav = [
     title: 'Blog',
     path: '/blog',
     exact: '',
-    cname: 'blog'
+    cName: 'blog'
   },
   {
     title: 'About',

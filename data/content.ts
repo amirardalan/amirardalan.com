@@ -70,14 +70,14 @@ export const footer = {
       title: 'hi@amirardalan.com',
       target: '_blank',
       rel: 'noopener no referrer',
-      style: 'small'
+      cName: 'small'
     },
     {
       path: 'https://twitter.com/messages/compose?recipient_id=23831468',
       title: 'Twitter DM',
       target: '_blank',
       rel: 'noopener noreferrer',
-      style: 'small'
+      cName: 'small'
     },
   ],
   copyright: {
