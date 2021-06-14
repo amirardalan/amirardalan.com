@@ -18,7 +18,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   return { props: { editPost } }
 }
 
-const Edit = ({editPost, toggleTheme}) => {
+const Edit = ({ editPost }) => {
 
   const isPublished = editPost.published
   const id = editPost.id
@@ -155,7 +155,7 @@ const Edit = ({editPost, toggleTheme}) => {
   }
 
   return (
-    <BlogLayout toggleTheme={toggleTheme}>
+    <BlogLayout>
       <Head>
         <title>{admin.edit.meta.title} {isPublished ? 'Post |' : 'Draft: '} {editPageTitle}</title>
         <meta name="robots" content="noindex"></meta>

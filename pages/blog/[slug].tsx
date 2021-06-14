@@ -53,7 +53,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   return { props: { post, feed, data: blogPost } }
 }
 
-const Post = ({post, feed, data, toggleTheme}) => {
+const Post = ({ post, feed, data }) => {
 
   const [session] = useSession()
   const userHasValidSession = Boolean(session)
@@ -111,7 +111,7 @@ const Post = ({post, feed, data, toggleTheme}) => {
   const disallowRobots = ( <meta name="robots" content="noindex"></meta> )
 
   return (
-    <BlogLayout toggleTheme={toggleTheme}>
+    <BlogLayout>
       <Head>
         <title>{title}{data.meta.title}</title>
         {isPublished ? null : disallowRobots }

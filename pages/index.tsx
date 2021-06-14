@@ -41,7 +41,7 @@ export const getStaticProps: GetStaticProps = async () => {
 }
 
 
-export default function Home({ data, latestPost, toggleTheme }) {
+export default function Home({ data, latestPost }) {
   const theme: any = useTheme()
 
   // Styles
@@ -181,7 +181,7 @@ export default function Home({ data, latestPost, toggleTheme }) {
           </div>
         </div>
         <div css={styleAnimationWrapper}>
-          <div css={styleMainRight} id="canvas">
+          <div css={styleMainRight} id="leva">
             <CanvasLoader />
           </div>
         </div>

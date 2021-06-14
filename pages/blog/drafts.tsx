@@ -38,7 +38,7 @@ type Props = {
   toggleTheme: Function
 }
 
-const Drafts: React.FC<Props>  = ({ drafts, toggleTheme }) => {
+const Drafts: React.FC<Props>  = ({ drafts }) => {
   
   let draftsList = null;
   const [session] = useSession()
@@ -69,7 +69,7 @@ const Drafts: React.FC<Props>  = ({ drafts, toggleTheme }) => {
     )
   }
   return (
-    <BlogLayout toggleTheme={toggleTheme}>
+    <BlogLayout>
       <Head>
         <title>{admin.drafts.meta.title}</title>
         <meta name="robots" content="noindex"></meta>

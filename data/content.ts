@@ -1,8 +1,174 @@
-export const breadcrumb = {
-  blog: 'Blog',
-  create: 'Create',
-  drafts: 'Drafts',
-  edit: 'Edit',
+export const home = {
+  meta: {
+    title: 'Amir Ardalan – Developer, Designer, Writer',
+    description: 'Front-end developer, UI designer & TypeScript enthusiast based in Portland, OR'
+  },
+  title: 'Amir Ardalan',
+  typed: {
+    heading: `I'm currently focusing on:`,
+    items: [
+      `Next.js / React^1500`,
+      `TypeScript / JavaScript^1500`,
+      `Emotion CSS in JS^1500`,
+      `Three.js / R3F^1500`,
+      `Prisma ORM^1500`,
+      `PostgreSQL^1500`,
+      `Fullstack Engineering^1500`,
+      `UI Design^1500`,
+      `Web Accessibility^1500`,
+      `Writing^1500`,
+      `Technical Learning^1500`,
+      `...eating pizza 🍕^1500`,
+    ]
+  },
+  cta: {
+    blog: {
+      path: '/blog',
+      title: 'Blog',
+    },
+    about: {
+      path: '/about',
+      title: 'About',
+    },
+  },
+  latestPost: {
+    title: 'Latest Post:'
+  }
+}
+
+export const blog = {
+  meta: {
+    title: 'Blog – Amir Ardalan',
+  },
+  error: {
+    database: '⚠️ Database Error: Posts Could not be loaded.'
+  },
+}
+
+export const blogPost = {
+  meta: {
+    title: ' – Amir Ardalan'
+  },
+  title: {
+    draft: '(Draft)'
+  },
+}
+
+export const about = {
+  meta: {
+    title: 'About – Amir Ardalan',
+    github: 'GitHub',
+    twitter: 'Twitter',
+    linkedin: 'LinkedIn',
+  },
+  heading: 'About Me',
+  twitterDm: {
+    path: 'https://twitter.com/messages/compose?recipient_id=23831468',
+    title: 'Twitter DM',
+    handle: '@amirardalan'
+  },
+  social: {
+    title: 'Social',
+    items: [
+      {
+        path: 'https://github.com/amirardalan',
+        title: 'GitHub',
+        cName: 'iconGithub'
+      },
+      {
+        path: 'https://twitter.com/amirardalan',
+        title: 'Twitter',
+        cName: 'iconTwitter'
+      },
+      {
+        path: 'https://linkedin.com/in/amirardalan',
+        title: 'LinkedIn',
+        cName: 'iconLinkedin'
+      },
+    ]
+  },
+  bio: {
+    heading: 'Bio:',
+    subheading: 'Developer, Designer, Writer.',
+    content: `I write code, design user interfaces, and blog about web development. I'm passionate about the art and science of interfacing humans with technology.`,
+    items: [  
+      {
+        path: '/amir-ardalan-resume.pdf',
+        title: 'Resume',
+      },
+      {
+        path: '/blog/2021-a-dev-odyssey',
+        title: 'Journey',
+      },
+    ],
+  },
+  skills: {
+    title: 'Skills:',
+    items: [
+      'Fullstack Engineering',
+      'User Interface Design',
+      'JavaScript / TypeScript',
+      'React.js / Next.js',
+      'CSS in JS / SCSS',
+      'Prisma ORM + PostgreSQL',
+      'Testing & documentation',
+    ],
+  },
+  experience: {
+    title: 'Experience:',
+    items: [
+      '10+ years',
+      'Columbia Sportswear',
+      'KEEN Footwear',
+      'Chrome Industries',
+      'Hanna Andersson',
+      'Salesforce Commerce Cloud',
+      'Freelance',
+    ],
+  },
+  availability: {
+    title: 'Availability:',
+    items: [
+      '✅ Currently Available',
+      'Remote or Portland, OR',
+    ]
+  },
+  contact: {
+    title: 'Contact:',
+    items: [
+      'hi@amirardalan.com',
+      '- or -'
+    ],
+  },
+}
+
+export const spotify = {
+  meta: {
+    title: 'Spotify Dashboard | Amir Ardalan'
+  },
+  headings: {
+    main: 'Spotify Dashboard',
+    toptracks: 'Top Tracks:',
+  },
+  status: {
+    online: 'Now playing:',
+    offline: 'Offline'
+  }
+}
+
+export const error = {
+  meta: {
+    title: 'Page Not Found – Amir Ardalan'
+  },
+  title: '404',
+  img: {
+    meta: 'Error'
+  },
+  text: 'You seem to be lost in space...',
+  link: {
+    path: '/',
+    title: 'Return Home'
+  },
 }
 
 export const footer = {
@@ -86,175 +252,11 @@ export const footer = {
   },
 }
 
-export const home = {
-  meta: {
-    title: 'Amir Ardalan – Developer, Designer, Writer',
-    description: 'Front-end developer, UI designer & TypeScript enthusiast based in Portland, OR'
-  },
-  title: 'Amir Ardalan',
-  typed: {
-    heading: `I'm currently focusing on:`,
-    items: [
-      `Next.js / React^1500`,
-      `TypeScript / JavaScript^1500`,
-      `Emotion CSS in JS^1500`,
-      `Three.js / R3F^1500`,
-      `Prisma ORM^1500`,
-      `PostgreSQL^1500`,
-      `Fullstack Engineering^1500`,
-      `UI Design^1500`,
-      `Web Accessibility^1500`,
-      `Writing^1500`,
-      `Technical Learning^1500`,
-      `...eating pizza 🍕^1500`,
-    ]
-  },
-  cta: {
-    blog: {
-      path: '/blog',
-      title: 'Blog',
-    },
-    about: {
-      path: '/about',
-      title: 'About',
-    },
-  },
-  latestPost: {
-    title: 'Latest Post:'
-  }
-}
-
-export const blog = {
-  meta: {
-    title: 'Blog – Amir Ardalan',
-  },
-  error: {
-    database: '⚠️ Database Error: Posts Could not be loaded.'
-  },
-}
-
-export const blogPost = {
-  meta: {
-    title: ' – Amir Ardalan'
-  },
-  title: {
-    draft: '(Draft)'
-  },
-}
-
-export const about = {
-  meta: {
-    title: 'About – Amir Ardalan',
-    github: 'GitHub',
-    twitter: 'Twitter',
-    linkedin: 'LinkedIn',
-  },
-  title: 'Design & Code.',
-  subtitle: '– from Portland, OR –',
-  link: {
-    github: {
-      url: 'https://github.com/amirardalan',
-      title: 'GitHub',
-    },
-    twitter: {
-      url: 'https://twitter.com/amirardalan',
-      title: 'Twitter',
-      dm: {
-        url: 'https://twitter.com/messages/compose?recipient_id=23831468',
-        title: 'Twitter DM',
-        handle: '@amirardalan'
-      },
-    },
-    linkedin: {
-      url: 'https://linkedin.com/in/amirardalan',
-      title: 'LinkedIn',
-    },
-  },
-  bio: {
-    heading: 'Bio:',
-    subheading: 'Developer, Designer, Writer.',
-    content: `I write code, design user interfaces, and blog about web development. I'm passionate about the art and science of interfacing humans with technology.`,
-    items: [  
-      {
-        path: '/amir-ardalan-resume.pdf',
-        title: 'Resume',
-      },
-      {
-        path: '/blog/2021-a-dev-odyssey',
-        title: 'Journey',
-      },
-    ],
-  },
-  skills: {
-    title: 'Skills:',
-    items: [
-      'Fullstack Engineering',
-      'User Interface Design',
-      'JavaScript / TypeScript',
-      'React.js / Next.js',
-      'CSS in JS / SCSS',
-      'Prisma ORM + PostgreSQL',
-      'Testing & documentation',
-    ],
-  },
-  experience: {
-    title: 'Experience:',
-    items: [
-      '10+ years',
-      'Columbia Sportswear',
-      'KEEN Footwear',
-      'Chrome Industries',
-      'Hanna Andersson',
-      'Salesforce Commerce Cloud',
-      'Freelance',
-    ],
-  },
-  availability: {
-    title: 'Availability:',
-    items: [
-      '✅ Currently Available',
-      'Remote or Portland, OR',
-    ]
-  },
-  social: {
-    title: 'Social:',
-  },
-  contact: {
-    title: 'Contact:',
-    items: [
-      'hi@amirardalan.com',
-      '- or -'
-    ],
-  },
-}
-
-export const spotify = {
-  meta: {
-    title: 'Spotify Dashboard | Amir Ardalan'
-  },
-  headings: {
-    main: 'Spotify Dashboard',
-    toptracks: 'Top Tracks:',
-  },
-  status: {
-    online: 'Now playing:',
-    offline: 'Offline'
-  }
-}
-
-export const error = {
-  meta: {
-    title: 'Page Not Found – Amir Ardalan'
-  },
-  title: '404',
-  img: {
-    meta: 'Error'
-  },
-  text: 'You seem to be lost in space...',
-  link: {
-    path: '/',
-    title: 'Return Home'
-  },
+export const breadcrumb = {
+  blog: 'Blog',
+  create: 'Create',
+  drafts: 'Drafts',
+  edit: 'Edit',
 }
 
 // Admin

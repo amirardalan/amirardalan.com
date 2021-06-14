@@ -15,22 +15,9 @@ export const getStaticProps: GetStaticProps = async () => {
   }
 }
 
-export default function About({ data, toggleTheme }) {
+export default function About({ data }) {
   const theme: any = useTheme()
 
-  const stylePageHeadingSub = css({
-    margin: '0 0 2.5rem 0',
-    color: 'var(--color-gray)',
-    fontFamily: 'var(--font-tertiary)',
-    fontSize: 'calc(1vw + 1vh)',
-    WebkitMarqueeIncrement: '0vw',
-    fontWeight: 'normal',
-    fontStyle: 'italic',
-    textAlign: 'center',
-    '@media(max-width: 1024px)': {
-      margin: '1rem 0 2.5rem 0',
-    }
-  })
   const styleGridWrapper = css({
     display: 'grid',
     gridTemplateColumns: 'repeat(3, 1fr)',
@@ -83,6 +70,20 @@ export default function About({ data, toggleTheme }) {
       fontSize: 25,
       textAlign: 'center',
       borderBottom: '2px solid var(--color-accent-color)'
+    },
+    '.iconGithub, .iconTwitter, .iconLinkedin': {
+      height: 48,
+      width: 48,
+      display: 'inline-block'
+    },
+    '.iconGithub': {
+      backgroundImage: 'var(--icon-github)',
+    },
+    '.iconTwitter': {
+      backgroundImage: 'var(--icon-twitter)',
+    },
+    '.iconLinkedin': {
+      backgroundImage: 'var(--icon-linkedin)',
     }
   })
   const styleCtaWrapper = css({
@@ -137,6 +138,23 @@ export default function About({ data, toggleTheme }) {
     })
   }
 
+  const generateSocialIcons = (items: Array<any>) => {
+    return items.map((items, i) => {
+      return (
+        <li key={i}>
+          <a
+            href={items.path}
+            target="_blank"
+            rel="noreferrer noopener"
+            aria-label={items.title}
+            className={items.cName}
+          >
+          </a>
+        </li>
+      )
+    })
+  }
+
 
   return (
     <div className="container">
@@ -145,11 +163,8 @@ export default function About({ data, toggleTheme }) {
       </Head>
       <div className="about">
         <h2 className="pageHeading">
-          {data.title}
+          {data.heading}
         </h2>
-        <h3 css={stylePageHeadingSub}>
-          {data.subtitle}
-        </h3>
         <main css={styleGridWrapper}>
           <div className="grid">
             <ul>
@@ -189,48 +204,7 @@ export default function About({ data, toggleTheme }) {
             <div css={socialIconsWrapper}>
               <h4>{data.social.title}</h4>
               <ul css={socialIcons}>
-                <li>
-                  <a
-                    href={data.link.github.url}
-                    target="_blank"
-                    rel="noreferrer noopener"
-                    aria-label={data.meta.github.title}>
-                    <Image
-                      src={theme.icon.github}
-                      height={48}
-                      width={48}
-                      alt={data.meta.github.title}
-                    />
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href={data.link.twitter.url}
-                    target="_blank"
-                    rel="noreferrer noopener"
-                    aria-label={data.meta.twitter.title}>
-                    <Image
-                      src={theme.icon.twitter}
-                      height={48}
-                      width={48}
-                      alt={data.meta.twitter.title}
-                    />
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href={data.link.linkedin.url}
-                    target="_blank"
-                    rel="noreferrer noopener"
-                    aria-label={data.meta.linkedin.title}>
-                    <Image
-                      src={theme.icon.linkedin}
-                      height={48}
-                      width={48}
-                      alt={data.meta.linkedin.title}
-                    />
-                  </a>
-                </li>
+                {generateSocialIcons(data.social.items)}
               </ul>
             </div>
           </div>
@@ -240,15 +214,15 @@ export default function About({ data, toggleTheme }) {
               {generateListItems(data.contact.items)}
               <li css={styleCtaWrapper}>
                 <a
-                  href={data.link.twitter.dm.url}
+                  href={data.twitterDm.path}
                   target="_blank"
                   rel="noreferrer noopener"
                 >
                 <button
                   className="ctaButton"
-                  data-screen-name={data.link.twitter.dm.handle}
-                  aria-label={data.link.twitter.dm.title}>
-                  {data.link.twitter.dm.title}
+                  data-screen-name={data.twitterDm.handle}
+                  aria-label={data.twitterDm.title}>
+                  {data.twitterDm.title}
                 </button>
                 </a>
             </li>

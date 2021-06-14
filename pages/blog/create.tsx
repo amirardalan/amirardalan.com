@@ -6,7 +6,7 @@ import BlogLayout from '@/components/BlogLayout'
 import { admin, breadcrumb } from '@/data/content'
 import { useSession } from 'next-auth/client'
 
-const Draft: React.FC<{toggleTheme: Function}> = ({ toggleTheme }) => {
+const Draft: React.FC<{toggleTheme: Function}> = () => {
 
 
   const [title, setTitle] = useState('')
@@ -140,7 +140,7 @@ const Draft: React.FC<{toggleTheme: Function}> = ({ toggleTheme }) => {
   }
 
   return (
-    <BlogLayout toggleTheme={toggleTheme}>
+    <BlogLayout>
       <Head>
         <title>{admin.create.meta.title}</title>
         <meta name="robots" content="noindex"></meta>

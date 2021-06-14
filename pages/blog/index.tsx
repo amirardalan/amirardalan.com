@@ -31,7 +31,7 @@ type Props = {
   toggleTheme: Function
 }
 
-const Blog: React.FC<Props> = ({ data, feed, toggleTheme }) => {
+const Blog: React.FC<Props> = ({ data, feed }) => {
 
   // Post Feed Error Handling
   const showFeedError = feed.length <= 0
@@ -40,7 +40,7 @@ const Blog: React.FC<Props> = ({ data, feed, toggleTheme }) => {
   )
   
   return (
-    <BlogLayout toggleTheme={toggleTheme}>
+    <BlogLayout>
       <Head>
         <title>{data.meta.title}</title>
       </Head>

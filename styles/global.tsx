@@ -100,6 +100,9 @@ export function GlobalStyles () {
           '--color-input-disabled': light,
           '--button-toggle-bg': lightAccent,
           '--button-toggle-switch': darker,
+          '--icon-github': 'url(/icons/github-light.svg)',
+          '--icon-twitter': 'url(/icons/twitter-light.svg)',
+          '--icon-linkedin': 'url(/icons/linkedin-light.svg)',
           '--icon-spotify': 'url(/icons/spotify-light.svg)',
           '--icon-spotify-footer': 'url(/icons/spotify-dark.svg)',
           '--canvas-bg': sunset,
@@ -118,6 +121,9 @@ export function GlobalStyles () {
           '--color-link': secondary,
           '--color-select-text': dark,
           '--color-input-disabled': dark,
+          '--icon-github': 'url(/icons/github-dark.svg)',
+          '--icon-twitter': 'url(/icons/twitter-dark.svg)',
+          '--icon-linkedin': 'url(/icons/linkedin-dark.svg)',
           '--icon-spotify': 'url(/icons/spotify-dark.svg)',
           '--icon-spotify-footer': 'url(/icons/spotify-light.svg)',
           '--button-toggle-bg': darker,
@@ -242,6 +248,7 @@ export function GlobalStyles () {
           padding: '0 4rem',
           position: 'relative',
           '.pageHeading': {
+            marginBottom: '4rem',
             fontFamily: 'var(font-secondary)',
             fontSize: 'calc(3.2vw + 3.2vh)',
             WebkitMarqueeIncrement: '0vw',
@@ -251,7 +258,8 @@ export function GlobalStyles () {
           '@media(max-width: 1024px)': {
             padding: '0 2.5rem',
             '.pageHeading': {
-              lineHeight: '2.5rem',
+              marginBottom: '2.5rem',
+              lineHeight: '3rem',
             }
           },
           '@media (max-width: 600px)': {

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { button, useControls } from 'leva'
 import CanvasTerrain from '@/components/CanvasTerrain'
 import { Global } from '@emotion/react'
@@ -12,9 +12,8 @@ const CanvasTerrainControls = ({ theme, terrainControls }) => {
     height: { value: .15, min: 0, max: .3 },
     levels: { value: 3, min: 1, max: 5, step: 1 },
     scale: { value: 3, min: 1, max: 5, step: 1 },
-    rotate: { value: true }
+    rotate: { value: true },
   })
-
 
   return (
     <>
@@ -53,8 +52,8 @@ const CanvasTerrainControls = ({ theme, terrainControls }) => {
             position: 'absolute',
             height: 'max-content',
             top: 'unset',
-            bottom: '16vh',
-            right: '5vw',
+            bottom: '9rem',
+            right: '4.5rem',
           },
           '.levaolirc': {
             boxShadow: 'none',
