@@ -44,8 +44,9 @@ export default function BlogNavigation({ feed, post, isPublished }) {
     marginTop: '4rem',
     display: 'flex',
     justifyContent: first ? 'flex-end' : 'space-between',
-    fontFamily: 'var(--font-tertiary)',
+    fontFamily: 'var(--font-secondary)',
     fontSize: 18,
+    lineHeight: '1.3rem',
     '@media(max-width: 768px)': {
       flexDirection: 'row',
       fontSize: 16,
