@@ -13,7 +13,7 @@ export const getStaticProps = async () => {
   }
 }
 
-export default function Custom404({ data, toggleTheme }) {
+export default function Custom404({ data }) {
   const theme: any = useTheme()
 
   return(

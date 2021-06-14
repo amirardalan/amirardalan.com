@@ -35,7 +35,6 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
 
 type Props = {
   drafts: Array<any>
-  toggleTheme: Function
 }
 
 const Drafts: React.FC<Props>  = ({ drafts }) => {

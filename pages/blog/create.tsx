@@ -6,7 +6,7 @@ import BlogLayout from '@/components/BlogLayout'
 import { admin, breadcrumb } from '@/data/content'
 import { useSession } from 'next-auth/client'
 
-const Draft: React.FC<{toggleTheme: Function}> = () => {
+const Draft: React.FC = () => {
 
 
   const [title, setTitle] = useState('')

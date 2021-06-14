@@ -28,7 +28,6 @@ export const getStaticProps: GetStaticProps = async () => {
 type Props = {
   data: any
   feed: PostProps[]
-  toggleTheme: Function
 }
 
 const Blog: React.FC<Props> = ({ data, feed }) => {
