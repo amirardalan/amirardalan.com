@@ -15,11 +15,6 @@ const CanvasTerrainControls = ({ theme, terrainControls }) => {
     rotate: { value: true }
   })
 
-  // Move Leva Controls inside the Canvas
-  useEffect(() => {
-    document.getElementById('canvas')
-    .appendChild(document.getElementById('leva__root'))
-  }, [])
 
   return (
     <>
@@ -58,8 +53,8 @@ const CanvasTerrainControls = ({ theme, terrainControls }) => {
             position: 'absolute',
             height: 'max-content',
             top: 'unset',
-            bottom: '1rem',
-            right: '1rem',
+            bottom: '16vh',
+            right: '5vw',
           },
           '.levaolirc': {
             boxShadow: 'none',

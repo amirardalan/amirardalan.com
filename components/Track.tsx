@@ -14,14 +14,14 @@ export default function Track(track: any) {
       gridAutoRows: 'minmax(100px, auto)',
       borderBottom: '1px solid var(--color-accent)',
       fontSize: 'calc(1.2vw + 1.2vh)',
-      '-webkit-marquee-increment': '0vw',
+      WebkitMarqueeIncrement: '0vw',
       div: {
         display: 'flex',
         alignSelf: 'center',
       },
       '.rank': {
         fontSize: 'calc(3vw + 3vh)',
-        '-webkit-marquee-increment': '0vw',
+        WebkitMarqueeIncrement: '0vw',
         color: 'var(--color-accent-gray)',
       },
       '.title': {

@@ -23,7 +23,7 @@ export default function About({ data, toggleTheme }) {
     color: 'var(--color-gray)',
     fontFamily: 'var(--font-tertiary)',
     fontSize: 'calc(1vw + 1vh)',
-    '-webkit-marquee-increment': '0vw',
+    WebkitMarqueeIncrement: '0vw',
     fontWeight: 'normal',
     fontStyle: 'italic',
     textAlign: 'center',

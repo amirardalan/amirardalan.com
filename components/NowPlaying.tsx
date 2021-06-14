@@ -77,7 +77,7 @@ export default function NowPlaying() {
       },
       a: {
         fontSize: 'calc(1.5vw + 1.5vh)',
-        '-webkit-marquee-increment': '0vw',
+        WebkitMarqueeIncrement: '0vw',
         fontFamily: 'var(--font-secondary)',
       },
       p: {

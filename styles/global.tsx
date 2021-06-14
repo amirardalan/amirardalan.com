@@ -244,7 +244,7 @@ export function GlobalStyles () {
           '.pageHeading': {
             fontFamily: 'var(font-secondary)',
             fontSize: 'calc(3.2vw + 3.2vh)',
-            '-webkit-marquee-increment': '0vw',
+            WebkitMarqueeIncrement: '0vw',
             fontWeight: 900,
             textAlign: 'center',
           },

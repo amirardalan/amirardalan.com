@@ -18,6 +18,7 @@ const BlogAdmin = dynamic(() => import('@/components/BlogAdmin'),{
 
 const App = ({ Component, pageProps }: AppProps) => {
 
+
   // Theme Context for non-CSS
   const [theme, toggleTheme] = useThemeContext()
   const themeMode = theme === 'light' ? themeLight : themeDark
