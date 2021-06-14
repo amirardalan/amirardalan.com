@@ -133,9 +133,12 @@ export default function Navigation() {
       height: 20,
       width: 20,
       '@media(max-width: 768px)': {
-        marginTop: '1rem',
+        backgroundSize: '100%',
+        height: 40,
+        width: 40,
+        marginTop: '.75rem',
         '&::before': {
-          top: '-1.4rem'
+          top: '-.75rem'
         }
       }
     },
