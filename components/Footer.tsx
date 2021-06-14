@@ -17,13 +17,16 @@ export default function Footer() {
       gridTemplateColumns: 'repeat(1, 1fr)',
     },
     marginTop: '6rem',
+    padding: '6rem 4rem 2rem 4rem',
     flexDirection: 'column',
     fontFamily: 'var(--font-secondary)',
     fontSize: 20,
-    padding: '3em',
     color: 'var(--color-bg)',
     backgroundColor: 'var(--color-accent-color)',
     lineHeight: '1.8em',
+    '.grid': {
+      marginBottom: '2rem',
+    },
     'a': {
       textDecoration: 'none',
       color: 'var(--color-bg)',
@@ -50,26 +53,33 @@ export default function Footer() {
       borderBottom: '2px solid var(--color-bg)',
       textTransform: 'uppercase',
       fontSize: 10,
-      '&.shortBorder': {
-        width: 'max-content',
-      },
       '@media(max-width: 600px)': {
         width: '100%',
       }
     },
+    '.email': {
+      fontSize: 14,
+      '@media(max-width: 1024px)': {
+        fontSize: 10,
+      },
+      '@media(max-width: 480px)': {
+        fontSize: 14,
+      },
+    },
     '@media(max-width: 1024px)': {
-      padding: '2rem 2.5rem',
+      marginTop: '4rem',
+      padding: '4rem 2.5rem',
     },
     '@media (max-width: 600px)': {
       padding: '2rem 1.5rem',
     },
-    '.grid': {
-      marginBottom: '1rem',
-    },
   })
   const styleCopyright = css({
-    fontSize: 14,
+    fontSize: 12,
     lineHeight: '1.2rem',
+    display: 'flex',
+    fontFamly: 'var(--font-primary) !important',
+    alignSelf: 'end',
   })
   const styleFooterNav= css({
     display: 'flex',
@@ -96,13 +106,6 @@ export default function Footer() {
 
   return (
     <footer css={styleFooter}>
-      <div className="grid">
-        <ul css={styleCopyright}>
-          <h5 className="shortBorder">hi@amirardalan.com</h5>
-          <li>{footer.copyright.text} {(new Date().getFullYear())}</li>
-          <li>{footer.copyright.name} 👨‍💻</li>
-        </ul>
-      </div>
       <div css={styleFooterNav} className="grid">
         <h5>Explore</h5>
         <ul>
@@ -136,6 +139,17 @@ export default function Footer() {
         <ul>
           {generateFooterLinks(footer.poweredby)}
         </ul>
+      </div>
+      <div className="grid">
+        <ul>
+          <h5>✉ Contact</h5>
+          <li className="email">hi@amirardalan.com</li>
+        </ul>
+      </div>
+      <div css={styleCopyright}>
+        <div>
+          {footer.copyright.text} {(new Date().getFullYear())} – {footer.copyright.name} ♥
+        </div>
       </div>
     </footer>
   )
