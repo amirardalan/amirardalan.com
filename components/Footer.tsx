@@ -30,12 +30,6 @@ export default function Footer() {
     'a': {
       textDecoration: 'none',
       color: 'var(--color-bg)',
-      '&:hover': {
-        textDecoration: 'underline',
-      },
-      '&:last-of-type::after': {
-        content: '""',
-      },
       '&.spotify': {
         display: 'flex',
         height: 20,
@@ -57,7 +51,7 @@ export default function Footer() {
         width: '100%',
       }
     },
-    '.email': {
+    '.small': {
       fontSize: 14,
       '@media(max-width: 1024px)': {
         fontSize: 10,
@@ -78,7 +72,6 @@ export default function Footer() {
     fontSize: 12,
     lineHeight: '1.2rem',
     display: 'flex',
-    fontFamly: 'var(--font-primary) !important',
     alignSelf: 'end',
   })
   const styleFooterNav= css({
@@ -95,9 +88,10 @@ export default function Footer() {
             href={items.path}
             aria-label={items.title}
             target={items.target}
-            rel={items.rel}>
+            rel={items.rel}
+            className={items?.style}
+          >
             {items.title}
-            
           </a>
         </li>
       )
@@ -107,7 +101,7 @@ export default function Footer() {
   return (
     <footer css={styleFooter}>
       <div css={styleFooterNav} className="grid">
-        <h5>Explore</h5>
+        <h5>{footer.headings.nav}</h5>
         <ul>
           {nav.map((item: any, index: number) => {
             return (
@@ -129,35 +123,26 @@ export default function Footer() {
         </ul>
       </div>
       <div className="grid">
-        <h5>Connect</h5>
+        <h5>{footer.headings.social}</h5>
         <ul>
           {generateFooterLinks(footer.social)}
         </ul>
       </div>
       <div className="grid">
-        <h5>Powered By</h5>
+        <h5>{footer.headings.poweredby}</h5>
         <ul>
           {generateFooterLinks(footer.poweredby)}
         </ul>
       </div>
       <div className="grid">
         <ul>
-          <h5>✉ Contact</h5>
-          <li className="email">
-            <a
-              href="mailto:hi@amirardalan.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="email hi@amirardalan.com"
-            >
-              hi@amirardalan.com
-            </a>
-          </li>
+          <h5>{footer.headings.contact}</h5>
+          {generateFooterLinks(footer.contact)}
         </ul>
       </div>
       <div css={styleCopyright}>
         <div>
-          {footer.copyright.text} {(new Date().getFullYear())} – {footer.copyright.name} ♥
+          {footer.copyright.text} {(new Date().getFullYear())} – {footer.copyright.name}
         </div>
       </div>
     </footer>

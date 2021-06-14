@@ -6,9 +6,11 @@ export const breadcrumb = {
 }
 
 export const footer = {
-  copyright: {
-    text: 'Copyright ©',
-    name: 'Amir Ardalan',
+  headings: {
+    nav: 'Explore',
+    social: 'Connect',
+    poweredby: 'Powered By',
+    contact: 'Contact',
   },
   poweredby: [
     {
@@ -61,7 +63,27 @@ export const footer = {
       target: '_blank',
       rel: 'noopener noreferrer'
     },
-  ]
+  ],
+  contact: [
+    {
+      path: 'mailto:hi@amirardalan.com',
+      title: 'hi@amirardalan.com',
+      target: '_blank',
+      rel: 'noopener no referrer',
+      style: 'small'
+    },
+    {
+      path: 'https://twitter.com/messages/compose?recipient_id=23831468',
+      title: 'Twitter DM',
+      target: '_blank',
+      rel: 'noopener noreferrer',
+      style: 'small'
+    },
+  ],
+  copyright: {
+    text: 'Copyright ©',
+    name: 'Amir Ardalan',
+  },
 }
 
 export const home = {

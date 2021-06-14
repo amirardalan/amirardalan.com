@@ -67,9 +67,6 @@ export default function Track(track: any) {
             />
           </a>
         </div>
-        <div className="artist">
-          <p>{track.artist}</p>
-        </div>
         <div className="title">
           <a
             href={track.songUrl}
@@ -78,6 +75,9 @@ export default function Track(track: any) {
           >
             {track.title}
           </a>
+        </div>
+        <div className="artist">
+          <p>{track.artist}</p>
         </div>
       </div>
     </div>
