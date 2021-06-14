@@ -13,32 +13,15 @@ const CanvasLoader =  React.memo(() => {
     position: 'absolute',
     bottom: 0,
     left: 20,
+    background: 'transparent',
+    border: 'none',
     color: 'var(--color-bg)',
     fontSize: 10,
     fontWeight: 'normal',
     textTransform: 'uppercase',
+    textAlign: 'left',
+    cursor: 'pointer',
     animation: 'fadeOut .2s forwards',
-    a: {
-      color: 'var(--color-bg)',
-    },
-    '@media(max-width: 890px)': {
-      display: 'none',
-    }
-  })
-  const styleCanvasControls = css({
-    zIndex: 3,
-    margin: '0 0 1rem 0',
-    padding: '0',
-    position: 'absolute',
-    bottom: 0,
-    left: 20,
-    color: 'var(--color-bg)',
-    fontSize: 10,
-    fontWeight: 'normal',
-    textTransform: 'uppercase',
-    a: {
-      color: 'var(--color-bg)',
-    },
     '@media(max-width: 890px)': {
       display: 'none',
     }
@@ -49,14 +32,13 @@ const CanvasLoader =  React.memo(() => {
 
   return (
     <>
-      <small
+      <button
+        onClick={terrainControlsOnClick}
         css={styleCanvasInfo}
         className="canvasInfo"
       >
-                <a onClick={terrainControlsOnClick}>
-          {terrainControls ? 'Hide Controls' : 'Show Controls'}
-        </a>
-      </small>
+        {terrainControls ? 'Hide Controls' : 'Show Controls'}
+      </button>
       <Canvas
         css={{ animation: 'slideUp 1s forwards' }}
         gl={{ antialias: true }}
