@@ -31,10 +31,10 @@ type Props = {
   toggleTheme: Function
 }
 
-const Blog: React.FC<Props> = ({data, feed, toggleTheme}) => {
+const Blog: React.FC<Props> = ({ data, feed, toggleTheme }) => {
 
   // Post Feed Error Handling
-  const showFeedError = (feed.length === 0) ? true : false
+  const showFeedError = feed.length <= 0
   const FeedNotFound = () => (
     <span>{data.error.database}</span>
   )
@@ -52,7 +52,7 @@ const Blog: React.FC<Props> = ({data, feed, toggleTheme}) => {
 
         <div>
           { showFeedError ? <FeedNotFound /> : null }
-          {feed.sort(sortBlogPosts).reverse().map((post: any) => (
+          {feed.sort(sortBlogPosts).reverse().map((post) => (
             <div
               key={post.id}
               className="post"
