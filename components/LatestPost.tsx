@@ -8,7 +8,7 @@ export default function LatestPost({ latestPost, data }) {
     paddingLeft: '1.2rem',
     borderLeft: '7px solid var(--color-accent)',
     fontWeight: 'normal',
-    lineHeight: '1.8rem',
+    lineHeight: '1.4rem',
     h3: {
       marginBottom: '.3rem',
       color: 'var(--color-gray)',
@@ -17,17 +17,14 @@ export default function LatestPost({ latestPost, data }) {
       fontWeight: 'normal',
       lineHeight: '1.3rem',
     },
-    'p, a': {
-      fontFamily: 'var(--font-tertiary)',
+    'a': {
+      fontFamily: 'var(--font-secondary)',
     },
     'h4 a': {
       fontSize: 18,
       fontWeight: 'normal',
       textDecoration: 'underline',
       cursor: 'pointer',
-      '&:hover': {
-        textDecoration: 'none',
-      },
       '@media(max-width: 480px)': {
         fontSize: 16,
       }

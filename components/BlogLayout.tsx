@@ -1,13 +1,10 @@
 import { Global } from '@emotion/react'
-import Container from '@/components/Container'
 
 export default function BlogLayout(props: any) {
 
   return (
-    <>
-      <Container toggleTheme={props.toggleTheme}>
-        {props.children}
-      </Container>
+    <div className="container">
+      {props.children}
       
       <Global
         styles={{
@@ -337,7 +334,7 @@ export default function BlogLayout(props: any) {
           },
         }}
       />
-    </>
+    </div>
   )
 
 }

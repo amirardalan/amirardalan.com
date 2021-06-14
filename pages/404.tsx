@@ -2,7 +2,6 @@ import { useTheme } from '@emotion/react'
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
-import Container from '@/components/Container'
 import ErrorAnimation from '@/components/ErrorAnimation'
 
 import { error } from '@/data/content'
@@ -18,7 +17,7 @@ export default function Custom404({ data, toggleTheme }) {
   const theme: any = useTheme()
 
   return(
-    <Container toggleTheme={toggleTheme}>
+    <div className="container">
       <Head>
         <title>{data.meta.title}</title>
         <meta name="robots" content="noindex"></meta>
@@ -78,6 +77,6 @@ export default function Custom404({ data, toggleTheme }) {
           </Link>
         </div>
       </div>
-    </Container>
+    </div>
   )
 }

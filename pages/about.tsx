@@ -1,5 +1,4 @@
 import { css, useTheme } from '@emotion/react'
-import Container from '@/components/Container'
 
 import Head from 'next/head'
 import Link from 'next/link'
@@ -140,7 +139,7 @@ export default function About({ data, toggleTheme }) {
 
 
   return (
-    <Container toggleTheme={toggleTheme}>
+    <div className="container">
       <Head>
         <title>{data.meta.title}</title>
       </Head>
@@ -265,6 +264,6 @@ export default function About({ data, toggleTheme }) {
           />
         </div>
       </div>
-    </Container>
+    </div>
   )
 }

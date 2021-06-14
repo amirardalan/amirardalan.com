@@ -106,13 +106,6 @@ export default function Navigation() {
             content: '">"',
             left: -30,
           },
-          '&:hover': {
-            '&::before': {
-              position: 'absolute',
-              content: '">"',
-              left: -30,
-            }
-          }
         },
       },
     },

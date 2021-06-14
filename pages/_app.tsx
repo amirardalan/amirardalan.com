@@ -3,6 +3,11 @@ import { GlobalStyles } from '@/styles/global'
 import { ThemeProvider } from '@emotion/react'
 import { useThemeContext } from '@/utils/useThemeContext'
 import { themeLight, themeDark } from '@/styles/theme'
+
+import LoadingBar from '@/components/LoadingBar'
+import Header from '@/components/Header'
+import Footer from '@/components/Footer'
+
 import { AppProps } from 'next/app'
 import { Provider } from 'next-auth/client'
 
@@ -10,7 +15,6 @@ import dynamic from 'next/dynamic'
 const BlogAdmin = dynamic(() => import('@/components/BlogAdmin'),{
   ssr: false
 })
-
 
 const App = ({ Component, pageProps }: AppProps) => {
 
@@ -24,7 +28,10 @@ const App = ({ Component, pageProps }: AppProps) => {
         <GlobalStyles />
         <ThemeProvider theme={themeMode}>
           <BlogAdmin />
-          <Component {...pageProps} toggleTheme={toggleTheme} />
+          <LoadingBar />
+          <Header toggleTheme={toggleTheme} />
+          <Component {...pageProps} />
+          <Footer />
         </ThemeProvider>
       </Provider>
     </React.StrictMode>

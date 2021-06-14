@@ -216,9 +216,7 @@ export function GlobalStyles () {
           background: 'transparent',
           color: 'var(--color-link)',
           textDecoration: 'underline',
-          '&:hover': {
-            textDecoration: 'none'
-          }
+
         },
         p: {
           margin: 0,
