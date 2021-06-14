@@ -139,7 +139,7 @@ export const about = {
       title: 'Twitter',
       dm: {
         url: 'https://twitter.com/messages/compose?recipient_id=23831468',
-        title: 'DM @amirardalan',
+        title: 'Twitter DM',
         handle: '@amirardalan'
       },
     },
@@ -155,15 +155,11 @@ export const about = {
     items: [  
       {
         path: '/amir-ardalan-resume.pdf',
-        title: 'Resume (pdf)',
+        title: 'Resume',
       },
       {
         path: '/blog/2021-a-dev-odyssey',
-        title: 'Dev Journey',
-      },
-      {
-        path: '/spotify',
-        title: `Spotify Dashboard`,
+        title: 'Journey',
       },
     ],
   },

@@ -115,27 +115,6 @@ export default function Home({ data, latestPost, toggleTheme }) {
     display: 'flex',
     flexDirection: 'row',
   })
-  const styleCtaButton = css({
-    minWidth: 135,
-    minHeight: 45,
-    marginRight: '1rem',
-    padding: '.5rem 1.4rem',
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    background: 'var(--color-text)',
-    border: '1px solid transparent',
-    borderRadius: 8,
-    color: 'var(--color-bg)',
-    fontSize: 15,
-    cursor: 'pointer',
-    '&:hover': {
-      background: 'var(--color-bg)',
-      border: '1px solid var(--color-text)',
-      color: 'var(--color-text)'
-    }
-  })
   const styleMainRight = css({
     background: 'var(--canvas-bg)',
     height: '72vh',
@@ -188,12 +167,12 @@ export default function Home({ data, latestPost, toggleTheme }) {
               </div>
               <div css={styleButtonContainer}>
                 <Link href={data.cta.blog.path} aria-label={data.cta.blog.title}>
-                  <button css={styleCtaButton}>
+                  <button className="ctaButton">
                     {data.cta.blog.title}
                   </button>
                 </Link>
                 <Link href={data.cta.about.path} aria-label={data.cta.about.title}>
-                  <button css={styleCtaButton}>
+                  <button className="ctaButton">
                     {data.cta.about.title}
                   </button>
                 </Link>

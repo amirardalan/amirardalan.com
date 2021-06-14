@@ -73,8 +73,8 @@ export default function About({ data, toggleTheme }) {
           lineHeight: '1.2rem',
         },
         a: {
-          textTransform: 'uppercase',
-        }
+          textDecoration: 'none'
+        },
       }
     },
     h4: {
@@ -84,6 +84,15 @@ export default function About({ data, toggleTheme }) {
       fontSize: 25,
       textAlign: 'center',
       borderBottom: '2px solid var(--color-accent-color)'
+    }
+  })
+  const styleCtaWrapper = css({
+    display: 'flex',
+    justifyContent: 'center',
+    button: {
+      display: 'flex',
+      alignSelf: 'center',
+      minWidth: 'unset',
     }
   })
   const centerImage = css({
@@ -117,14 +126,14 @@ export default function About({ data, toggleTheme }) {
   const generateBioLinks = (items: Array<any>) => {
     return items.map((items, i) => {
       return (
-        <li>
-          <Link
-            key={i}
-            href={items.path}
-            aria-label={items.title}>
+        <Link
+          key={i}
+          href={items.path}
+          aria-label={items.title}>
+          <button className="ctaButton">
             {items.title}
-          </Link>
-        </li>
+          </button>
+        </Link>
       )
     })
   }
@@ -154,7 +163,9 @@ export default function About({ data, toggleTheme }) {
                   {data.bio.content}
                 </em>
               </li>
-              {generateBioLinks(data.bio.items)}
+              <li css={styleCtaWrapper}>
+                {generateBioLinks(data.bio.items)}
+              </li>
             </ul>
           </div>
           <div className="grid">
@@ -228,15 +239,18 @@ export default function About({ data, toggleTheme }) {
             <ul>
               <h4>{data.contact.title}</h4>
               {generateListItems(data.contact.items)}
-              <li>
+              <li css={styleCtaWrapper}>
                 <a
                   href={data.link.twitter.dm.url}
-                  className="twitter-dm-button"
-                  data-screen-name={data.link.twitter.dm.handle}
-                  aria-label={data.link.twitter.dm.title}
                   target="_blank"
-                  rel="noreferrer noopener">
+                  rel="noreferrer noopener"
+                >
+                <button
+                  className="ctaButton"
+                  data-screen-name={data.link.twitter.dm.handle}
+                  aria-label={data.link.twitter.dm.title}>
                   {data.link.twitter.dm.title}
+                </button>
                 </a>
             </li>
             </ul>

@@ -262,6 +262,40 @@ export function GlobalStyles () {
         }
       }} />
       <Global styles={{
+        // CTA Buttons
+        '.ctaButton': {
+          minWidth: 135,
+          minHeight: 45,
+          marginRight: '1rem',
+          padding: '.5rem 1.4rem',
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'center',
+          alignItems: 'center',
+          background: 'var(--color-text)',
+          border: '1px solid transparent',
+          borderRadius: 8,
+          color: 'var(--color-bg)',
+          fontSize: 15,
+          cursor: 'pointer',
+          '&:first-of-type': {
+            marginRight: '1rem',
+            marginLeft: 0,
+          },
+          '&:last-of-type': {
+            marginRight: 0,
+          },
+          '&:only-of-type': {
+            margin: 0,
+          },
+          '&:hover': {
+            background: 'var(--color-accent-color)',
+            border: '1px solid var(--color-accent-color)',
+            color: 'var(--color-bg)'
+          }
+        }
+      }} />
+      <Global styles={{
         // Utils
         '.center': {
           display: 'flex',
