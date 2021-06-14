@@ -1,4 +1,5 @@
 import { css } from '@emotion/react'
+import { spotify } from '@/data/content'
 import Container from '@/components/Container'
 import NowPlaying from '@/components/NowPlaying'
 import TopTracks from '@/components/TopTracks'
@@ -19,19 +20,19 @@ export default function Spotify({toggleTheme}) {
   return (
     <Container toggleTheme={toggleTheme}>
       <Head>
-        <title>Spotify Dashboard | Amir Ardalan</title>
+        <title>{spotify.meta.title}</title>
       </Head>
       <div className="spotify" css={styleSpotifyContainer}>
         <h2
           className="pageHeading"
-          css={{
-            marginBottom: '2rem',
-          }}
+          css={{ marginBottom: '2rem',}}
         >
-          Spotify Dashboard
+          {spotify.headings.main}
         </h2>
         <NowPlaying />
-        <h3>Top Tracks:</h3>
+        <h3>
+          {spotify.headings.toptracks}
+        </h3>
         <TopTracks />
       </div>
     </Container>

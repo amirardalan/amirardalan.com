@@ -29,6 +29,7 @@ export default function Track(track: any) {
       },
       '.title a, .artist p': {
         lineHeight: '1.8rem',
+        textDecoration: 'none',
       },
       '.artist': {
         fontFamily: 'var(--font-primary)',

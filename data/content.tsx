@@ -228,6 +228,20 @@ export const about = {
   },
 }
 
+export const spotify = {
+  meta: {
+    title: 'Spotify Dashboard | Amir Ardalan'
+  },
+  headings: {
+    main: 'Spotify Dashboard',
+    toptracks: 'Top Tracks:',
+  },
+  status: {
+    online: 'Now playing:',
+    offline: 'Currently Offline'
+  }
+}
+
 export const error = {
   meta: {
     title: 'Page Not Found – Amir Ardalan'
@@ -244,7 +258,6 @@ export const error = {
 }
 
 // Admin
-
 export const admin = {
   controls: {
     publish: 'Publish',

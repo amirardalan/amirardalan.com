@@ -3,16 +3,18 @@ import useSWR from 'swr'
 import fetcher from '@/lib/fetcher'
 import Image from 'next/image'
 import Equalizer from '@/components/Equalizer'
+import { spotify } from '@/data/content'
 
 export default function NowPlaying() {
   const { data } = useSWR('/api/spotify/now-playing', fetcher)
+  const isOnline = data?.songUrl
 
+  // Stlyes
   const styleNowPlayingContainer = css({
     marginBottom: '2.5rem',
     display: 'flex',
     background: 'var(--color-accent)',
   })
-
   const styleNowPlaying = css({
     position: 'relative',
     height: 200,
@@ -21,10 +23,11 @@ export default function NowPlaying() {
     '.nowPlayingStatus': {
       zIndex: 2,
       position: 'absolute',
-      top: '1.5rem',
+      top: '2rem',
       left: '2rem',
-      color: '#b8c1c7',
-      fontSize: 14,
+      color: '#eee',
+      fontSize: 12,
+      textTransform: 'uppercase',
     },
     '@media(max-width: 480px)': {
       height: 350,
@@ -66,16 +69,20 @@ export default function NowPlaying() {
     justifyContent: 'space-between',
     flexDirection: 'row',
     alignItems: 'flex-end',
-    a: {
-      fontSize: 'calc(1.5vw + 1.5vh)',
-      '-webkit-marquee-increment': '0vw',
-      fontFamily: 'var(--font-secondary)',
-    },
-    p: {
-      fontSize: 16,
-    },
-    'a, p': {
-      lineHeight: '1.5rem',
+    '.trackText': {
+      'a, p': {
+        lineHeight: '1.5rem',
+        color: isOnline ? '#eee' : 'var(--color-accent-gray)',
+        letterSpacing: isOnline ? null : '-6px'
+      },
+      a: {
+        fontSize: 'calc(1.5vw + 1.5vh)',
+        '-webkit-marquee-increment': '0vw',
+        fontFamily: 'var(--font-secondary)',
+      },
+      p: {
+        fontSize: 16,
+      },
     },
     '@media(max-width: 480px)': {
       marginTop: '1.5rem',
@@ -110,6 +117,11 @@ export default function NowPlaying() {
       height: 350
     },
   })
+  const styleImageOffline = css({
+    height: 135,
+    width: 135,
+    backgroundColor: '#14171a',
+  })
 
 
   return (
@@ -118,16 +130,18 @@ export default function NowPlaying() {
         <div css={styleNowPlaying}>
           <div css={styleNowPlayingBackground}></div>
           <div className="nowPlayingStatus">
-            {data?.songUrl ? (
+            {isOnline ? (
             <p>
-              <Equalizer /> Now Playing:
+              <Equalizer /> {spotify.status.online}
             </p>)
             : (
-            <p>Currently Offline</p>
+            <p>
+              {spotify.status.offline}
+            </p>
             )}
           </div>
           <div css={styleNowPlayingInner}>
-          {data?.songUrl ? (
+          {isOnline ? (
             <>
               <div css={styleNowPlayingTrack}>
                 <span className="trackText">
@@ -145,8 +159,8 @@ export default function NowPlaying() {
                 <span>
                   <Image
                     src={data?.albumImageUrl}
-                    height='135'
-                    width='135'
+                    height="135"
+                    width="135"
                     alt={data.title}
                   />
                 </span>
@@ -156,7 +170,7 @@ export default function NowPlaying() {
             <div css={styleNowPlayingTrack}>
             <span className="trackText">
               <a
-                href='/'
+                href="/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -166,12 +180,7 @@ export default function NowPlaying() {
                 _____
               </p>
             </span>
-            <div css={{
-              height: 135,
-              width: 135,
-              backgroundColor: '#14171a',
-            }}>
-            </div>
+            <div css={styleImageOffline} />
           </div>
           )}
           </div>
