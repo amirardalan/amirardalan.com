@@ -38,7 +38,6 @@ const CanvasTerrainControls = ({ theme, terrainControls }) => {
           '@media(max-width: 890px)': {
             display: 'none'
           },
-
           'div:first-of-type': {
             fontFamily: 'var(--font-primary)',
             backgroundColor: 'var(--color-accent)',
@@ -49,9 +48,12 @@ const CanvasTerrainControls = ({ theme, terrainControls }) => {
             paddingTop: 0,
           },
           '.levawz9l9wdj1o--fill-false': {
+            zIndex: 2,
+            position: 'absolute',
             height: 'max-content',
-            top: 150,
-            right: '5.5rem',
+            top: 'unset',
+            bottom: 175,
+            right: '5.4rem',
 
             '@media(max-width: 1024px)': {
               bottom: '25%',
