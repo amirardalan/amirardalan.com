@@ -13,7 +13,7 @@ export default function NowPlaying() {
   const styleNowPlayingContainer = css({
     marginBottom: '2.5rem',
     display: 'flex',
-    background: 'var(--color-accent)',
+    background: '#8b8b8b',
   })
   const styleNowPlaying = css({
     position: 'relative',
@@ -72,7 +72,7 @@ export default function NowPlaying() {
     '.trackText': {
       'a, p': {
         lineHeight: '1.5rem',
-        color: isOnline ? '#eee' : 'var(--color-accent-gray)',
+        color: isOnline ? '#eee' : '#3e4449',
         letterSpacing: isOnline ? null : '-6px'
       },
       a: {
@@ -109,15 +109,19 @@ export default function NowPlaying() {
     height: 200,
     width: '100%',
     backgroundImage: `url(${data?.albumImageUrl})`,
-    backgroundSize: 'cover',
-    backgroundPositionX: '50%',
-    backgroundPositionY: '50%',
+    backgroundSize: '110%',
+    backgroundPositionX: 'center',
+    backgroundPositionY: 'center',
     backgroundRepeat: 'no-repeat',
     '@media(max-width: 480px)': {
       height: 350
     },
   })
   const styleImageOffline = css({
+    backgroundImage: 'url(icons/spotify-offline.svg)',
+    backgroundSize: '60%',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center',
     height: 135,
     width: 135,
     backgroundColor: '#14171a',

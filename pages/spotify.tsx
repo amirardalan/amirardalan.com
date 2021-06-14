@@ -10,10 +10,10 @@ export default function Spotify({toggleTheme}) {
 
   const styleSpotifyContainer = css({
     h3: {
-      margin: '3.5rem 0 0 0',
+      margin: '4rem 0 2rem 0',
       fontSize: 28,
       fontWeight: 'bold',
-      color: 'var(--color-accent-gray)',
+      // color: 'var(--color-accent-gray)',
     }
   })
 
@@ -25,7 +25,7 @@ export default function Spotify({toggleTheme}) {
       <div className="spotify" css={styleSpotifyContainer}>
         <h2
           className="pageHeading"
-          css={{ marginBottom: '2rem',}}
+          css={{ marginBottom: '4rem',}}
         >
           {spotify.headings.main}
         </h2>
