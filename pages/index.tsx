@@ -181,7 +181,7 @@ export default function Home({ data, latestPost, toggleTheme }) {
           </div>
         </div>
         <div css={styleAnimationWrapper}>
-          <div css={styleMainRight}>
+          <div css={styleMainRight} id="canvas">
             <CanvasLoader />
           </div>
         </div>
