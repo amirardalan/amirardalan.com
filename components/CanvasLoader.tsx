@@ -1,18 +1,20 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Global, css, useTheme } from '@emotion/react'
 import { Canvas } from '@react-three/fiber'
+import { Leva } from 'leva'
 import CanvasTerrainControls from '@/components/CanvasTerrainControls'
 
-import { Leva, button, useControls } from 'leva'
 
 const CanvasLoader =  React.memo(() => {
   const theme: any = useTheme()
-
   const styleLevaContainer = css({
     width: 'max-content',
     position: 'absolute',
     bottom: 5,
-    right: 5
+    right: 5,
+    '@media(max-width: 890px)': {
+      display: 'none'
+    },
   })
 
   return (
@@ -27,7 +29,7 @@ const CanvasLoader =  React.memo(() => {
         <ambientLight />
       </Canvas>
       <div css={styleLevaContainer}>
-        <Leva collapsed={true} fill={true} />
+        <Leva collapsed={false} fill={true} flat={true} />
       </div>
       <Global styles={{
         // Leva Controls Override
@@ -35,11 +37,6 @@ const CanvasLoader =  React.memo(() => {
           fontFamily: 'var(--font-primary)',
           textTransform: 'uppercase',
           '--leva-colors-accent2': 'var(--color-accent-color)',
-          
-          // Hide on Tablet/Mobile
-          '@media(max-width: 890px)': {
-            display: 'none'
-          },
           'div:first-of-type': {
             fontFamily: 'var(--font-primary)',
             backgroundColor: 'var(--color-accent)',

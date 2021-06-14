@@ -181,7 +181,7 @@ export default function Home({ data, latestPost }) {
           </div>
         </div>
         <div css={styleAnimationWrapper}>
-          <div css={styleMainRight} id="leva">
+          <div css={styleMainRight}>
             <CanvasLoader />
           </div>
         </div>

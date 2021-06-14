@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import { Leva, button, useControls } from 'leva'
+import { button, useControls } from 'leva'
 import CanvasTerrain from '@/components/CanvasTerrain'
-import { Global } from '@emotion/react'
+
 
 const CanvasTerrainControls = ({ theme }) => {
   const [seed, setSeed] = useState(Date.now())
@@ -15,19 +15,16 @@ const CanvasTerrainControls = ({ theme }) => {
     rotate: { value: true },
   })
 
-
   return (
-    <>
-      <CanvasTerrain
-        theme={theme}
-        seed={seed}
-        size={resolution}
-        height={height}
-        levels={levels}
-        scale={scale}
-        rotate={rotate}
-      />
-    </>
+    <CanvasTerrain
+      theme={theme}
+      seed={seed}
+      size={resolution}
+      height={height}
+      levels={levels}
+      scale={scale}
+      rotate={rotate}
+    />
   )
 }
 
