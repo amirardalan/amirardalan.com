@@ -2,9 +2,7 @@ import { css } from '@emotion/react'
 import { useState } from 'react'
 import Link from '@/components/Link'
 import Logo from '@/components/Logo'
-import SocialLinks from '@/components/SocialLinks'
 import { nav } from '@/data/navigation'
-import { useThemeContext } from '@/utils/useThemeContext'
 
 export default function Navigation() {
   
@@ -128,6 +126,7 @@ export default function Navigation() {
     '@media (max-width: 768px) and (max-height: 600px)': {
       paddingRight: '2.5rem',
       alignItems: 'flex-end',
+      lineHeight: '3rem',
     },
     'a.spotify': {
       backgroundImage: 'var(--icon-spotify)',
@@ -144,27 +143,22 @@ export default function Navigation() {
   const styleMobileNavSecondary = css({
     margin: '3rem 0',
     fontSize: 12,
+    height: 80,
+    display: 'flex',
+    flexDirection: 'column-reverse',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    fontFamily: 'var(--font-secondary)',
+    position: 'relative',
+    textAlign: 'center',
+    paddingTop: '1rem',
+    animation: 'slideUp .5s',
     a: {
       display: 'block',
       marginBottom: '.5rem',
       color: 'var(--color-gray)',
       textAlign: 'center',
       animation: 'slideUp .8s ease',
-    },
-    ul: {
-      position: 'relative',
-      textAlign: 'center',
-      paddingTop: '1rem',
-      animation: 'slideUp .5s',
-      li: {
-        height: 80,
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        animation: 'slideUp 1s forwards',
-        fontFamily: 'var(--font-secondary)',
-      }
     },
   })
 
@@ -183,12 +177,7 @@ export default function Navigation() {
     <div css={styleMobileNavWrapper}>
       <NavItems />
       <div css={styleMobileNavSecondary}>
-        <SocialLinks />
-          <ul>
-            <li>
-              <Logo />
-            </li>
-          </ul>
+        <Logo />
       </div>
     </div>
   )
