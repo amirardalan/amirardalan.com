@@ -9,7 +9,7 @@ export default function Footer() {
 
   const styleFooterWrapper = css({
     marginTop: '6rem',
-    padding: '3rem 4rem 2rem 4rem',
+    padding: '4rem 4rem 2rem 4rem',
     backgroundColor: 'var(--color-accent-color)',
     '@media(max-width: 1024px)': {
       padding: '4rem 2.5rem',
