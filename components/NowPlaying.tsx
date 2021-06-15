@@ -124,15 +124,8 @@ export default function NowPlaying() {
   })
   const styleNowPlayingBackground = css({
     height: 200,
-    width: '100%',
-    backgroundImage: `url(${data?.albumImageUrl})`,
-    backgroundSize: '110%',
-    backgroundPositionX: 'center',
-    backgroundPositionY: 'center',
-    backgroundRepeat: 'no-repeat',
     '@media(max-width: 480px)': {
       height: 350,
-      backgroundPositionY: -20,
     },
   })
   const styleImageOffline = css({
@@ -150,7 +143,14 @@ export default function NowPlaying() {
     <>
       <div css={styleNowPlayingContainer}>
         <div css={styleNowPlaying}>
-          <div css={styleNowPlayingBackground}></div>
+          <div css={styleNowPlayingBackground}>
+          {isOnline ? (
+            <Image
+              src={data?.albumImageUrl}
+              layout="fill"
+              objectFit="cover"
+            /> ) : null }
+          </div>
           <div className="nowPlayingStatus">
             {isOnline ? (
             <p>
