@@ -294,6 +294,13 @@ export function GlobalStyles () {
           '&:only-of-type': {
             margin: 0,
           },
+          'span.download': {
+            display: 'flex',
+            marginLeft: '.5rem',
+          },
+          'span.none': {
+            display: 'none',
+          },
           '&:hover': {
             background: 'var(--color-accent-color)',
             border: '1px solid var(--color-accent-color)',

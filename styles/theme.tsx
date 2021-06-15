@@ -9,6 +9,7 @@ export const themeLight = {
     twitter: '/icons/twitter-light.svg',
     linkedin: '/icons/linkedin-light.svg',
     spotify: '/icons/spotify-dark.svg',
+    download: '/icons/download-light.svg',
     error: '/icons/error-light.svg',
   }
 }
@@ -24,6 +25,7 @@ export const themeDark = {
     twitter: '/icons/twitter-dark.svg',
     linkedin: '/icons/linkedin-dark.svg',
     spotify: '/icons/spotify-light.svg',
+    download: '/icons/download-dark.svg',
     error: '/icons/error-dark.svg',
   }
 }

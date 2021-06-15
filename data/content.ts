@@ -95,10 +95,12 @@ export const about = {
       {
         path: '/amir-ardalan-resume.pdf',
         title: 'Resume',
+        icon: 'download'
       },
       {
         path: '/blog/2021-a-dev-odyssey',
         title: 'Journey',
+        icon: 'none'
       },
     ],
   },

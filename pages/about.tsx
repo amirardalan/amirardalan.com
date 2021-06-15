@@ -1,4 +1,4 @@
-import { css } from '@emotion/react'
+import { css, useTheme } from '@emotion/react'
 
 import Head from 'next/head'
 import Link from 'next/link'
@@ -15,6 +15,8 @@ export const getStaticProps: GetStaticProps = async () => {
 }
 
 export default function About({ data }) {
+
+  const theme: any = useTheme()
 
   const styleGridWrapper = css({
     display: 'grid',
@@ -38,6 +40,9 @@ export default function About({ data }) {
       },
       '@media (max-width: 1200px)': {
         padding: '2rem',
+      },
+      '@media (max-width: 480px)': {
+        padding: '1rem',
       },
       'ul li': {
         marginBottom: '.5rem',
@@ -86,21 +91,27 @@ export default function About({ data }) {
   })
   const styleCtaWrapper = css({
     display: 'flex',
+    flexDirection: 'column',
     justifyContent: 'center',
-    button: {
+    '.ctaButton': {
+      marginRight: 0,
+      marginBottom: '1rem',
       display: 'flex',
       alignSelf: 'center',
-      minWidth: 'unset',
-    }
+      width: '100%',
+      maxWidth: 300,
+    },
   })
-  const socialIconsWrapper = css({
+  const styleSocialIconsWrapper = css({
     width: '100%',
+    maxWidth: 300,
     display: 'flex',
     flexDirection: 'column',
   })
-  const socialIcons = css({
+  const styleSocialIcons = css({
     display: 'flex',
     justifyContent: 'space-evenly',
+    alignItems: 'center',
     li: {
       flexDirection: 'row',
     }
@@ -125,6 +136,14 @@ export default function About({ data }) {
           aria-label={items.title}>
           <button className="ctaButton">
             {items.title}
+            <span className={items.icon}>
+              <img
+                src={theme.icon.download}
+                height="25"
+                width="25"
+                alt="Download Resume"
+              />
+            </span>
           </button>
         </Link>
       )
@@ -194,9 +213,9 @@ export default function About({ data }) {
             </ul>
           </div>
           <div className="grid">
-            <div css={socialIconsWrapper}>
+            <div css={styleSocialIconsWrapper}>
               <h4>{data.social.title}</h4>
-              <ul css={socialIcons}>
+              <ul css={styleSocialIcons}>
                 {generateSocialIcons(data.social.items)}
               </ul>
             </div>
