@@ -80,7 +80,7 @@ export function GlobalStyles () {
         },
       }}/>
       <Global styles={{
-        'body[data-theme="light"], body[data-theme="dark"]': {
+        'body, body[data-theme="light"], body[data-theme="dark"]': {
           '--font-primary': fontPrimary,
           '--font-secondary': fontSecondary,
           '--font-tertiary': fontTertiary,
