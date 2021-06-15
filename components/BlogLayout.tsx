@@ -62,7 +62,7 @@ export default function BlogLayout(props: any) {
               flexDirection: 'column',
             },
             '&.postTeaser': {
-              marginBottom: '2.5rem',
+              marginBottom: '3rem',
             },
             '&.admin': {
               '.breadcrumbs': {
@@ -148,10 +148,25 @@ export default function BlogLayout(props: any) {
             }
           },
           '.postTeaser': {
+            position: 'relative',
             h2: {
               fontSize: 30,
+              textDecoration: 'none',
               a: {
                 color: 'var(--color-text)',
+                textDecoration: 'none',
+                border: 'none'
+              },
+            },
+            '&:hover': {
+              '&::before': {
+                content: '"|"',
+                position: 'absolute',
+                fontFamily: 'var(--font-secondary)',
+                fontWeight: 'black',
+                fontSize: 30,
+                left: -20,
+                color: 'var(--color-accent-color)'
               }
             }
           },
