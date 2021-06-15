@@ -102,6 +102,7 @@ export default function NowPlaying() {
       fontFamily: 'var(--font-secondary)',
     },
     '.artist': {
+      marginBottom: 2,
       lineHeight: 1,
       fontSize: 'calc(.8vw + .8vh)',
       WebkitMarqueeIncrement: '0vw',
@@ -181,8 +182,8 @@ export default function NowPlaying() {
                 <span>
                   <Image
                     src={data?.albumImageUrl}
-                    height="135"
-                    width="135"
+                    height="150"
+                    width="150"
                     alt={data.title}
                   />
                 </span>
