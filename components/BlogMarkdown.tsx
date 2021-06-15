@@ -83,6 +83,8 @@ export default function BlogMarkdown({ post }) {
           'code': {
             backgroundColor: 'transparent !important',
             transform: 'translateZ(0)',
+            minWidth: '100%',
+            float: 'left',
             '& > span': {
               display: 'block'
             }
@@ -101,10 +103,6 @@ export default function BlogMarkdown({ post }) {
         },
         'pre code': {
           '&::before, &::after': { content: 'none' },
-          '@media(max-width: 768px)': {
-            minWidth: '100%',
-            float: 'left',
-          }
         },
         'span.linenumber': {
           display: 'none !important'
