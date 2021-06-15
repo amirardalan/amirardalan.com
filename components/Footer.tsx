@@ -23,10 +23,10 @@ export default function Footer() {
   })
   const styleFooter = css({
     display: 'grid',
-    gridTemplateColumns: '25% 25% 25% 25%',
-    gap: 10,
+    gridTemplateColumns: 'repeat(4, 1fr)',
+    gap: '3rem',
     gridAutoRows: 'minmax(100px, auto)',
-    '@media(max-width: 600px)': {
+    '@media(max-width: 890px)': {
       gridTemplateColumns: 'repeat(2, 1fr)',
     },
     '@media(max-width: 480px)': {
@@ -38,8 +38,10 @@ export default function Footer() {
     color: 'var(--color-bg)',
     lineHeight: '1.8em',
     '.grid': {
-      marginBottom: '2rem',
-      paddingRight: '.2rem'
+      marginBottom: '1rem',
+      '@media(max-width: 480px)': {
+        marginBottom: 0,
+      },
     },
     'a': {
       textDecoration: 'none',
@@ -54,7 +56,7 @@ export default function Footer() {
       }
     },
     h5: {
-      width: '90%',
+      // width: '90%',
       marginBottom: '1rem',
       paddingBottom: '1rem',
       lineHeight: '1rem',
@@ -72,11 +74,7 @@ export default function Footer() {
   })
   const styleFooterLogo = css({
     display: 'flex',
-    justifyContent: 'center',
-    padding: '3rem 0',
-    '@media(max-width: 1024px)': {
-      padding: '1rem 0 3rem'
-    }
+    padding: '4rem 0 2rem 0',
   })
   const styleCopyright = css({
     fontFamily: 'var(--font-secondary)',
