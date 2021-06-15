@@ -9,14 +9,14 @@ export default function Footer() {
 
   const styleFooterWrapper = css({
     marginTop: '6rem',
-    padding: '4rem 4rem 2rem 4rem',
+    padding: '4rem 4rem 1rem 4rem',
     backgroundColor: 'var(--color-accent-color)',
     '@media(max-width: 1024px)': {
       marginTop: '4rem',
-      padding: '4rem 2.5rem',
+      padding: '3.5rem 2.5rem 1rem 2.5rem',
     },
     '@media(max-width: 480px)': {
-      padding: '4rem 1.5rem .5rem 1.5rem',
+      padding: '3rem 1.5rem 1rem 1.5rem',
     }
   })
   const styleFooter = css({
