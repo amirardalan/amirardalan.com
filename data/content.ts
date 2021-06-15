@@ -152,7 +152,7 @@ export const spotify = {
   },
   status: {
     online: 'Now playing:',
-    offline: 'Offline'
+    offline: 'Currently Offline'
   }
 }
 

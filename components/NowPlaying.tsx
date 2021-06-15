@@ -52,16 +52,7 @@ export default function NowPlaying() {
     left: 0,
     color: '#eee',
     background: 'linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.5518867924528301) 100%)',
-    'a, p': {
-      margin: 0,
-      padding: 0,
-      color: '#eee',
-      textDecoration: 'none',
-    },
     '@media(max-width: 480px)': {
-      'a, p': {
-        lineHeight: '1.5rem',
-      },
       height: 350,
       background: 'linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.5518867924528301) 200%)',
     },
@@ -72,50 +63,60 @@ export default function NowPlaying() {
     justifyContent: 'space-between',
     flexDirection: 'row',
     alignItems: 'flex-end',
-    '.trackText': {
-      'a, p': {
-        lineHeight: '1.8rem',
-        color: isOnline ? '#eee' : '#3e4449',
-        letterSpacing: isOnline ? null : '-6px'
-      },
-      a: {
-        fontSize: 'calc(1.5vw + 1.5vh)',
-        WebkitMarqueeIncrement: '0vw',
-        fontFamily: 'var(--font-secondary)',
-      },
-      p: {
-        fontSize: 'calc(.8vw + .8vh)',
-        WebkitMarqueeIncrement: '0vw',
-      },
-    },
     '@media(max-width: 480px)': {
       marginTop: '1.5rem',
       lineHeight: '.8rem',
       flexDirection: 'column-reverse',
       alignItems: 'center',
       textAlign: 'center',
-      '.trackText': {
-        lineHeight: '1.5rem',
-        margin: '1rem 0',
-        a: {
-          marginBottom: '.2rem',
-        },
-        p: {
-          fontSize: 12,
-          lineHeight: '1rem'
-        },
-      },
-      a: {
+    }
+  })
+  const styleTrackText = css({
+    display: 'flex',
+    flexDirection: 'column',
+  
+    '.title, .artist': {
+      margin: 0,
+      padding: 0,
+      color: '#eee',
+      textDecoration: 'none',
+    },
+    '.loadingTitle, .loadingArtist': {
+      display: 'block',
+      height: 10,
+      backgroundColor: '#3e4449',
+    },
+    '.loadingTitle': {
+      width: 175,
+      marginBottom: 5,
+    },
+    '.loadingArtist': {
+      width: 95,
+      marginBottom: 5,
+    },
+    '.title': {
+      fontSize: 'calc(1.5vw + 1.5vh)',
+      WebkitMarqueeIncrement: '0vw',
+      fontFamily: 'var(--font-secondary)',
+    },
+    '.artist': {
+      fontSize: 'calc(.8vw + .8vh)',
+      WebkitMarqueeIncrement: '0vw',
+    },
+    '@media(max-width: 480px)': {
+      lineHeight: '1.5rem',
+      margin: '1rem 0',
+      alignItems: 'center',
+      '.title': {
         fontSize: 20,
-        lineHeight: '1.5rem',
         marginBottom: '.6rem',
         display: 'block',
       },
-      p: {
+      '.artist': {
         fontSize: 12,
         lineHeight: '.9rem'
       },
-    },
+    }
   })
   const styleNowPlayingBackground = css({
     height: 200,
@@ -160,15 +161,16 @@ export default function NowPlaying() {
           {isOnline ? (
             <>
               <div css={styleNowPlayingTrack}>
-                <span className="trackText">
+                <span css={styleTrackText}>
                   <a
                     href={data.songUrl}
                     target="_blank"
                     rel="noopener noreferrer"
+                    className="title"
                   >
                   {data.title}
                   </a>
-                  <p>
+                  <p className="artist">
                     {data.artist}
                   </p>
                 </span>
@@ -184,17 +186,9 @@ export default function NowPlaying() {
             </>
           ) : (
             <div css={styleNowPlayingTrack}>
-            <span className="trackText">
-              <a
-                href="/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                _____
-              </a>
-              <p>
-                _____
-              </p>
+            <span css={styleTrackText}>
+              <span className="loadingTitle"></span>
+              <span className="loadingArtist"></span>
             </span>
             <div css={styleImageOffline} />
           </div>
