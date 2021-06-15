@@ -248,7 +248,7 @@ export function GlobalStyles () {
           padding: '0 4rem',
           position: 'relative',
           '.pageHeading': {
-            marginBottom: '4rem',
+            marginBottom: '3rem',
             fontFamily: 'var(font-secondary)',
             fontSize: 'calc(3.2vw + 3.2vh)',
             WebkitMarqueeIncrement: '0vw',

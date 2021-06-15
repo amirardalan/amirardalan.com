@@ -1,15 +1,16 @@
 import { css } from '@emotion/react'
+import { spotify } from '@/data/content'
 import useSWR from 'swr'
 import fetcher from '@/lib/fetcher'
 import Image from 'next/image'
 import Equalizer from '@/components/Equalizer'
-import { spotify } from '@/data/content'
+
 
 export default function NowPlaying() {
+
   const { data } = useSWR('/api/spotify/now-playing', fetcher)
   const isOnline = data?.songUrl
 
-  // Stlyes
   const styleNowPlayingContainer = css({
     marginBottom: '2.5rem',
     display: 'flex',
