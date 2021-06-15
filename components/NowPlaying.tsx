@@ -59,6 +59,9 @@ export default function NowPlaying() {
       textDecoration: 'none',
     },
     '@media(max-width: 480px)': {
+      'a, p': {
+        lineHeight: '1.5rem',
+      },
       height: 350,
       background: 'linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.5518867924528301) 200%)',
     },
@@ -71,7 +74,7 @@ export default function NowPlaying() {
     alignItems: 'flex-end',
     '.trackText': {
       'a, p': {
-        lineHeight: '1.5rem',
+        lineHeight: '1.8rem',
         color: isOnline ? '#eee' : '#3e4449',
         letterSpacing: isOnline ? null : '-6px'
       },
@@ -81,7 +84,8 @@ export default function NowPlaying() {
         fontFamily: 'var(--font-secondary)',
       },
       p: {
-        fontSize: 16,
+        fontSize: 'calc(.8vw + .8vh)',
+        WebkitMarqueeIncrement: '0vw',
       },
     },
     '@media(max-width: 480px)': {
@@ -91,7 +95,15 @@ export default function NowPlaying() {
       alignItems: 'center',
       textAlign: 'center',
       '.trackText': {
+        lineHeight: '1.5rem',
         margin: '1rem 0',
+        a: {
+          marginBottom: '.2rem',
+        },
+        p: {
+          fontSize: 12,
+          lineHeight: '1rem'
+        },
       },
       a: {
         fontSize: 20,
