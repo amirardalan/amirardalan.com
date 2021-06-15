@@ -151,8 +151,8 @@ export default function Footer() {
             </ul>
           </div>
           <div className="grid">
+            <h5>{footer.headings.contact}</h5>
             <ul>
-              <h5>{footer.headings.contact}</h5>
               {generateFooterLinks(footer.contact)}
             </ul>
           </div>
