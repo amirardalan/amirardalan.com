@@ -1,8 +1,7 @@
-import { css, useTheme } from '@emotion/react'
+import { css } from '@emotion/react'
 
 import Head from 'next/head'
 import Link from 'next/link'
-import Image from 'next/image'
 import Avatar from '@/components/Avatar'
 
 import { about } from '@/data/content'
@@ -16,7 +15,6 @@ export const getStaticProps: GetStaticProps = async () => {
 }
 
 export default function About({ data }) {
-  const theme: any = useTheme()
 
   const styleGridWrapper = css({
     display: 'grid',
@@ -95,11 +93,6 @@ export default function About({ data }) {
       minWidth: 'unset',
     }
   })
-  const centerImage = css({
-    display: 'flex',
-    justifyContent: 'center',
-    margin: '6rem 0',
-  })
   const socialIconsWrapper = css({
     width: '100%',
     display: 'flex',
@@ -157,7 +150,7 @@ export default function About({ data }) {
 
 
   return (
-    <div className="container">
+    <div className="container about">
       <Head>
         <title>{data.meta.title}</title>
       </Head>
@@ -229,14 +222,6 @@ export default function About({ data }) {
             </ul>
           </div>
         </main>
-        <div css={centerImage}>
-          <Image
-            src={theme.logo}
-            height={75}
-            width={75}
-            alt="Logo"
-          />
-        </div>
       </div>
     </div>
   )

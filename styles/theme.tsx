@@ -1,5 +1,6 @@
 export const themeLight = {
   logo: '/logo/logo-light.svg',
+  logoFooter: '/logo/logo-footer-light.svg',
   code: 'light',
   canvas: '#571AFF',
   intro: `Hi, 👋 I'm`,
@@ -13,6 +14,7 @@ export const themeLight = {
 
 export const themeDark = {
   logo: '/logo/logo-dark.svg',
+  logoFooter: '/logo/logo-footer-dark.svg',
   code: 'dark',
   canvas: '#3dffc5',
   intro: `Hi, ✌️ I'm`,

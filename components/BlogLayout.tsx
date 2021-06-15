@@ -3,7 +3,7 @@ import { Global } from '@emotion/react'
 export default function BlogLayout(props: any) {
 
   return (
-    <div className="container">
+    <div className="container blog">
       {props.children}
       
       <Global

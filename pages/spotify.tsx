@@ -16,7 +16,7 @@ export default function Spotify() {
   })
 
   return (
-    <div className="container">
+    <div className="container spotify">
       <Head>
         <title>{spotify.meta.title}</title>
       </Head>

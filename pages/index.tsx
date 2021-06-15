@@ -140,7 +140,7 @@ export default function Home({ data, latestPost }) {
   })
 
   return (
-    <div className="container">
+    <div className="container home">
       <Head>
         <title>{data.meta.title}</title>
         <meta

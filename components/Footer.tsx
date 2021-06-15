@@ -1,10 +1,23 @@
-import { css } from '@emotion/react'
+import { css, useTheme } from '@emotion/react'
 import { footer } from '@/data/content'
 import { nav } from '@/data/navigation'
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function Footer() {
+  const theme: any = useTheme()
 
+  const styleFooterWrapper = css({
+    marginTop: '6rem',
+    padding: '3rem 4rem 2rem 4rem',
+    backgroundColor: 'var(--color-accent-color)',
+    '@media(max-width: 1024px)': {
+      padding: '4rem 2.5rem',
+    },
+    '@media(max-width: 480px)': {
+      padding: '4rem 1.5rem',
+    }
+  })
   const styleFooter = css({
     display: 'grid',
     gridTemplateColumns: '25% 25% 25% 25%',
@@ -16,13 +29,10 @@ export default function Footer() {
     '@media(max-width: 480px)': {
       gridTemplateColumns: 'repeat(1, 1fr)',
     },
-    marginTop: '6rem',
-    padding: '6rem 4rem 2rem 4rem',
     flexDirection: 'column',
     fontFamily: 'var(--font-secondary)',
     fontSize: 20,
     color: 'var(--color-bg)',
-    backgroundColor: 'var(--color-accent-color)',
     lineHeight: '1.8em',
     '.grid': {
       marginBottom: '2rem',
@@ -60,16 +70,19 @@ export default function Footer() {
         fontSize: 14,
       },
     },
+  })
+  const styleFooterLogo = css({
+    display: 'flex',
+    justifyContent: 'center',
+    padding: '3rem 0',
     '@media(max-width: 1024px)': {
-      marginTop: '4rem',
-      padding: '4rem 2.5rem',
-    },
-    '@media (max-width: 600px)': {
-      padding: '2rem 1.5rem',
-    },
+      padding: '1rem 0 3rem'
+    }
   })
   const styleCopyright = css({
+    fontFamily: 'var(--font-secondary)',
     fontSize: 12,
+    color: 'var(--color-bg)',
     lineHeight: '1.2rem',
     display: 'flex',
     alignSelf: 'end',
@@ -99,52 +112,64 @@ export default function Footer() {
   }
 
   return (
-    <footer css={styleFooter}>
-      <div css={styleFooterNav} className="grid">
-        <h5>{footer.headings.nav}</h5>
-        <ul>
-          {nav.map((item: any, index: number) => {
-            return (
-              <li>
-                <Link
-                  href={item.path}
-                  aria-label={item.title}
-                  key={index}
-                >
-                  <a
-                    className={item.cName}
-                  >
-                  {item.title}
-                  </a>
-                </Link>
-              </li>
-            )}
-          )}
-        </ul>
-      </div>
-      <div className="grid">
-        <h5>{footer.headings.social}</h5>
-        <ul>
-          {generateFooterLinks(footer.social)}
-        </ul>
-      </div>
-      <div className="grid">
-        <h5>{footer.headings.poweredby}</h5>
-        <ul>
-          {generateFooterLinks(footer.poweredby)}
-        </ul>
-      </div>
-      <div className="grid">
-        <ul>
-          <h5>{footer.headings.contact}</h5>
-          {generateFooterLinks(footer.contact)}
-        </ul>
-      </div>
-      <div css={styleCopyright}>
-        <div>
-          {footer.copyright.text} {(new Date().getFullYear())} – {footer.copyright.name}
+    <>
+      <footer css={styleFooterWrapper}>
+        <div css={styleFooter}>
+          <div css={styleFooterNav} className="grid">
+            <h5>{footer.headings.nav}</h5>
+            <ul>
+              {nav.map((item: any, index: number) => {
+                return (
+                  <li>
+                    <Link
+                      href={item.path}
+                      aria-label={item.title}
+                      key={index}
+                    >
+                      <a
+                        className={item.cName}
+                      >
+                      {item.title}
+                      </a>
+                    </Link>
+                  </li>
+                )}
+              )}
+            </ul>
+          </div>
+          <div className="grid">
+            <h5>{footer.headings.social}</h5>
+            <ul>
+              {generateFooterLinks(footer.social)}
+            </ul>
+          </div>
+          <div className="grid">
+            <h5>{footer.headings.poweredby}</h5>
+            <ul>
+              {generateFooterLinks(footer.poweredby)}
+            </ul>
+          </div>
+          <div className="grid">
+            <ul>
+              <h5>{footer.headings.contact}</h5>
+              {generateFooterLinks(footer.contact)}
+            </ul>
+          </div>
         </div>
-      </div>
-    </footer>
+        <div css={styleFooterLogo}>
+          <Image
+            src={theme.logoFooter}
+            height={75}
+            width={75}
+            alt="Logo"
+          />
+        </div>
+        <div css={styleCopyright}>
+          <div>
+            {footer.copyright.text} {(new Date().getFullYear())} – {footer.copyright.name}
+          </div>
+        </div>
+      </footer>
+    </>
   )
 }
