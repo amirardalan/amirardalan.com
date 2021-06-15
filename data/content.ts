@@ -95,12 +95,16 @@ export const about = {
       {
         path: '/amir-ardalan-resume.pdf',
         title: 'Resume',
-        icon: 'download'
+        icon: 'download',
+        rel: 'noopener noreferrer',
+        target: '_blank'
       },
       {
         path: '/blog/2021-a-dev-odyssey',
         title: 'Journey',
-        icon: 'none'
+        icon: 'none',
+        rel: '',
+        target: '_self'
       },
     ],
   },
@@ -184,55 +188,39 @@ export const footer = {
     {
       path: 'https://nextjs.org/',
       title: 'Next.js',
-      target: '_blank',
-      rel: 'noopener noreferrer'
     },
     {
       path: 'https://www.prisma.io/',
       title: 'Prisma',
-      target: '_blank',
-      rel: 'noopener noreferrer'
     },
     {
       path: 'https://threejs.org/',
       title: 'Three.js',
-      target: '_blank',
-      rel: 'noopener noreferrer'
     }
   ],
   social: [
     {
       path: 'https://github.com/amirardalan',
       title: 'GitHub',
-      target: '_blank',
-      rel: 'noopener noreferrer'
     },
     {
       path: 'https://twitter.com/amirardalan',
       title: 'Twitter',
-      target: '_blank',
-      rel: 'noopener noreferrer'
     },
     {
       path: 'https://linkedin.com/in/amirardalan',
       title: 'LinkedIn',
-      target: '_blank',
-      rel: 'noopener noreferrer'
     },
   ],
   contact: [
     {
       path: 'mailto:hi@amirardalan.com',
       title: 'hi@amirardalan.com',
-      target: '_blank',
-      rel: 'noopener no referrer',
       cName: 'small'
     },
     {
       path: 'https://twitter.com/messages/compose?recipient_id=23831468',
       title: 'Twitter DM',
-      target: '_blank',
-      rel: 'noopener noreferrer',
       cName: 'small'
     },
   ],

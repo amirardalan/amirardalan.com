@@ -130,10 +130,13 @@ export default function About({ data }) {
   const generateBioLinks = (items: Array<any>) => {
     return items.map((items, i) => {
       return (
-        <Link
+        <a
           key={i}
           href={items.path}
-          aria-label={items.title}>
+          aria-label={items.title}
+          target={items.target}
+          rel={items.rel}
+          >
           <button className="ctaButton">
             {items.title}
             <span className={items.icon}>
@@ -145,7 +148,7 @@ export default function About({ data }) {
               />
             </span>
           </button>
-        </Link>
+        </a>
       )
     })
   }

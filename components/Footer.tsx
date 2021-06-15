@@ -97,8 +97,8 @@ export default function Footer() {
             key={i}
             href={items.path}
             aria-label={items.title}
-            target={items.target}
-            rel={items.rel}
+            target='_blank'
+            rel='noopener noreferrer'
             className={items?.cName}
           >
             {items.title}
