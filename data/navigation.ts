@@ -3,7 +3,7 @@ export const nav = [
     title: 'Home',
     path: '/',
     exact: 'false',
-    cName: 'home'
+    cName: 'home',
   },
   {
     title: 'Blog',
@@ -18,7 +18,7 @@ export const nav = [
     cName: 'about'
   },
   {
-    title: '',
+    title: 'Spotify Dashboard',
     path: '/spotify',
     exact: '',
     cName: 'spotify'
