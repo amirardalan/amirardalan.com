@@ -12,6 +12,7 @@ export default function Footer() {
     padding: '4rem 4rem 2rem 4rem',
     backgroundColor: 'var(--color-accent-color)',
     '@media(max-width: 1024px)': {
+      marginTop: '4rem',
       padding: '4rem 2.5rem',
     },
     '@media(max-width: 480px)': {
@@ -81,7 +82,7 @@ export default function Footer() {
   })
   const styleCopyright = css({
     fontFamily: 'var(--font-secondary)',
-    fontSize: 12,
+    fontSize: 10,
     color: 'var(--color-bg)',
     lineHeight: '1.2rem',
     display: 'flex',
