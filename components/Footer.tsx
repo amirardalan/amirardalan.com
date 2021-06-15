@@ -113,7 +113,9 @@ export default function Footer() {
       <footer css={styleFooterWrapper}>
         <div css={styleFooter}>
           <div className="grid">
-            <NowPlayingCompact />
+            <ul>
+              <NowPlayingCompact />
+            </ul>
           </div>
           <div css={styleFooterNav} className="grid">
             <h5>{footer.headings.nav}</h5>
