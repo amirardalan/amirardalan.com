@@ -73,7 +73,7 @@ export default function Equalizer() {
   })
   
   return (
-    <div css={equalizer}>
+    <div css={equalizer} className="equalizer">
       <span className="eq1"></span>
       <span className="eq2"></span>
       <span className="eq3"></span>

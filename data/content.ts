@@ -186,12 +186,6 @@ export const footer = {
       rel: 'noopener noreferrer'
     },
     {
-      path: 'https://vercel.com/',
-      title: 'Vercel',
-      target: '_blank',
-      rel: 'noopener noreferrer'
-    },
-    {
       path: 'https://www.prisma.io/',
       title: 'Prisma',
       target: '_blank',
@@ -220,12 +214,6 @@ export const footer = {
     {
       path: 'https://linkedin.com/in/amirardalan',
       title: 'LinkedIn',
-      target: '_blank',
-      rel: 'noopener noreferrer'
-    },
-    {
-      path: '/amir-ardalan-resume.pdf',
-      title: 'Resume',
       target: '_blank',
       rel: 'noopener noreferrer'
     },

@@ -4,6 +4,8 @@ import { nav } from '@/data/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
 
+import NowPlayingCompact from '@/components/NowPlayingCompact'
+
 export default function Footer() {
   const theme: any = useTheme()
 
@@ -32,17 +34,18 @@ export default function Footer() {
     },
     flexDirection: 'column',
     fontFamily: 'var(--font-secondary)',
-    fontSize: 20,
+    fontSize: 16,
     color: 'var(--color-bg)',
     lineHeight: '1.8em',
     '.grid': {
       marginBottom: '2rem',
+      paddingRight: '.2rem'
     },
     'a': {
       textDecoration: 'none',
       color: 'var(--color-bg)',
       '&.spotify': {
-        display: 'flex',
+        display: 'none',
         height: 20,
         width: 20,
         marginTop: '.5rem',
@@ -62,15 +65,13 @@ export default function Footer() {
         width: '100%',
       }
     },
-    '.small': {
-      fontSize: 14,
-      '@media(max-width: 1024px)': {
-        fontSize: 10,
-      },
-      '@media(max-width: 480px)': {
-        fontSize: 14,
-      },
+    '.equalizer span': {
+      backgroundColor: 'var(--color-bg)'
     },
+    '.nowPlaying': {
+      paddingTop: '.2rem',
+      lineHeight: '1.3rem',
+    }
   })
   const styleFooterLogo = css({
     display: 'flex',
@@ -116,6 +117,9 @@ export default function Footer() {
     <>
       <footer css={styleFooterWrapper}>
         <div css={styleFooter}>
+          <div className="grid">
+            <NowPlayingCompact />
+          </div>
           <div css={styleFooterNav} className="grid">
             <h5>{footer.headings.nav}</h5>
             <ul>
@@ -148,12 +152,6 @@ export default function Footer() {
             <h5>{footer.headings.poweredby}</h5>
             <ul>
               {generateFooterLinks(footer.poweredby)}
-            </ul>
-          </div>
-          <div className="grid">
-            <h5>{footer.headings.contact}</h5>
-            <ul>
-              {generateFooterLinks(footer.contact)}
             </ul>
           </div>
         </div>

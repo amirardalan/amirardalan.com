@@ -25,7 +25,7 @@ export default function Spotify() {
           {spotify.headings.main}
         </h2>
         <NowPlaying />
-        <h3>
+        <h3 id="top-tracks">
           {spotify.headings.toptracks}
         </h3>
         <TopTracks />

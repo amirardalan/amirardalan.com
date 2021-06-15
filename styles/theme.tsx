@@ -8,6 +8,7 @@ export const themeLight = {
     github: '/icons/github-light.svg',
     twitter: '/icons/twitter-light.svg',
     linkedin: '/icons/linkedin-light.svg',
+    spotify: '/icons/spotify-dark.svg',
     error: '/icons/error-light.svg',
   }
 }
@@ -22,6 +23,7 @@ export const themeDark = {
     github: '/icons/github-dark.svg',
     twitter: '/icons/twitter-dark.svg',
     linkedin: '/icons/linkedin-dark.svg',
+    spotify: '/icons/spotify-light.svg',
     error: '/icons/error-dark.svg',
   }
 }
