@@ -15,7 +15,7 @@ export default function Footer() {
       padding: '4rem 2.5rem',
     },
     '@media(max-width: 480px)': {
-      padding: '4rem 1.5rem',
+      padding: '4rem 1.5rem .5rem 1.5rem',
     }
   })
   const styleFooter = css({
