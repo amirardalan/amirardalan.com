@@ -65,9 +65,6 @@ export default function Footer() {
         width: '100%',
       }
     },
-    '.equalizer span': {
-      backgroundColor: 'var(--color-bg)'
-    },
     '.nowPlaying': {
       paddingTop: '.2rem',
       lineHeight: '1.3rem',
