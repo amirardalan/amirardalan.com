@@ -95,11 +95,14 @@ export default function NowPlaying() {
       marginBottom: 5,
     },
     '.title': {
+      marginBottom: 5,
+      lineHeight: 1,
       fontSize: 'calc(1.5vw + 1.5vh)',
       WebkitMarqueeIncrement: '0vw',
       fontFamily: 'var(--font-secondary)',
     },
     '.artist': {
+      lineHeight: 1,
       fontSize: 'calc(.8vw + .8vh)',
       WebkitMarqueeIncrement: '0vw',
     },
@@ -127,7 +130,8 @@ export default function NowPlaying() {
     backgroundPositionY: 'center',
     backgroundRepeat: 'no-repeat',
     '@media(max-width: 480px)': {
-      height: 350
+      height: 350,
+      backgroundPositionY: -20,
     },
   })
   const styleImageOffline = css({
