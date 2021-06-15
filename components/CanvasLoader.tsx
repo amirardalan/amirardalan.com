@@ -43,8 +43,11 @@ const CanvasLoader =  React.memo(() => {
             boxShadow: 'none',
           },
           '.levavqh1g > .levam9bkr:first-of-type, .levavqh1guk05a--isRoot-true > div:first-of-type': {
-            marginTop: 0,
+            marginTop: 5,
             paddingTop: 0,
+          },
+          '.levarv4c77egp0--drag-true:hover > svg': {
+            fill: 'var(--color-accent-color)'
           },
           '.levawz9l9wdj1o--fill-false': {
             zIndex: 2,
@@ -54,29 +57,29 @@ const CanvasLoader =  React.memo(() => {
             bottom: '1rem',
             right: '1rem',
           },
-          '.levaolirc': {
+          '.levam9bkr .levaolirc': {
+            letterSpacing: '.1rem',
+            textTransform: 'uppercase',
+            color: 'var(--color-bg)',
+            border: 'none',
             boxShadow: 'none',
+            '&:hover': {
+              border: 'none',
+              background: 'var(--color-accent-color)',
+            }
           },
-          '.levaussed, .levarv4c7': {
+          'i.levaussed, .levarv4c7': {
             background: 'var(--color-accent)',
             svg: {
               fill: 'var(--color-accent-color)'
             },
-          },
-          '.levabjb2y': {
-            borderRadius: 0 + '!important',
-          },
-          button: {
-            background: 'var(--color-accent-color)',
-            letterSpacing: '.2rem',
-            textTransform: 'uppercase',
-            color: 'var(--color-bg)',
           },
           '.levam9bkr.levaebmh1': {
             '&:hover': {
               color: 'unset'
             }
           },
+
           label: {
             '&:hover': {
               color: 'var(--color-text)'
@@ -91,6 +94,9 @@ const CanvasLoader =  React.memo(() => {
           '.levadtm57': {
             background: 'var(--color-accent-color)',
             boxShadow: 'none',
+            '&:hover': {
+              background: 'var(--color-accent-color)',
+            }
           },
           '.leva0sm9i, .levakncnr': {
             background: 'var(--color-accent-gray) !important'
@@ -108,9 +114,15 @@ const CanvasLoader =  React.memo(() => {
               stroke: 'var(--color-bg)',
             }
           },
-          '.levat4eko': {
+          '.levat4eko, .levat4eko::placeholder': {
             color: 'var(--color-text)',
           },
+          '.leva2jitm': {
+            background: 'var(--color-accent-gray)',
+            input: {
+              color: 'var(--color-text)'
+            }
+          }
         }
       }} />
     </>
