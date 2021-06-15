@@ -53,11 +53,6 @@ export default function Home({ data, latestPost }) {
       flexDirection: 'column',
     }
   })
-  const styleAnimationWrapper = css ({
-    width: '100%',
-    overflow: 'hidden',
-    alignSelf: 'flex-end',
-  })
   const styleMainLeft = css({
     display: 'flex',
     flexDirection: 'column',
@@ -149,7 +144,7 @@ export default function Home({ data, latestPost }) {
         />
       </Head>
       <main css={styleMain}>
-        <div css={styleAnimationWrapper}>
+        <div className="animationWrapper">
           <div css={styleMainLeft}>
             <div css={styleMainLeftContent}>
               <h2>
@@ -180,7 +175,7 @@ export default function Home({ data, latestPost }) {
             </div>
           </div>
         </div>
-        <div css={styleAnimationWrapper}>
+        <div className="animationWrapper">
           <div css={styleMainRight}>
             <CanvasLoader />
           </div>

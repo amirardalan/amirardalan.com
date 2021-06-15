@@ -317,6 +317,11 @@ export function GlobalStyles () {
       }} />
       <Global styles={{
         // Animation
+        '.animationWrapper':{
+          width: '100%',
+          overflow: 'hidden',
+          alignSelf: 'flex-end',
+        },
         '@keyframes fadeIn': {
           from: { opacity: 0 },
           to: { opacity: 1 }

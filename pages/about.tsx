@@ -154,7 +154,7 @@ export default function About({ data }) {
       <Head>
         <title>{data.meta.title}</title>
       </Head>
-      <div className="about">
+      <div className="animationWrapper">
         <h2 className="pageHeading">
           {data.heading}
         </h2>
