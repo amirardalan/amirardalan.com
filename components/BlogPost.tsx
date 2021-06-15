@@ -40,7 +40,7 @@ const Post: React.FC<{ post: PostProps }> = ({ post }) => {
         className="postDetails"
         aria-label={`${postDate} • ${postReadTime}`}>
           <div className="postDetails">
-            By {post?.author?.name || 'Unknown author'} • {postDate} • {postReadTime}
+            {postDate} • {postReadTime}
           </div>
         </div>
       <p>{post.teaser}</p>

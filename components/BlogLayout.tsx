@@ -163,7 +163,7 @@ export default function BlogLayout(props: any) {
                 content: '"|"',
                 position: 'absolute',
                 fontFamily: 'var(--font-secondary)',
-                fontWeight: 'black',
+                fontWeight: 900,
                 fontSize: 30,
                 left: -20,
                 color: 'var(--color-accent-color)'
