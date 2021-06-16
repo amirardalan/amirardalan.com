@@ -44,10 +44,10 @@ export default class MyDocument extends Document {
           <meta httpEquiv="content-type" content="text/html; charset=utf-8" />
           <meta
             name="description"
-            content="Front-end developer, UI designer &amp; TypeScript enthusiast based in Portland, OR"
+            content="Front-end developer, UI designer &amp; React enthusiast based in Portland, OR"
           />
           <meta property="og:title" content="Amir Ardalan – Developer, Designer, Writer" />
-          <meta property="og:description" content="Front-end developer, UI designer &amp; TypeScript enthusiast based in Portland, OR" />
+          <meta property="og:description" content="Front-end developer, UI designer &amp; React enthusiast based in Portland, OR" />
           <meta property="og:url" content="https://amirardalan.com" />
           <meta property="og:site_name" content="Amir Ardalan" />
           <meta property="og:image" content="https://amirardalan.com/thumbnail.jpg" />

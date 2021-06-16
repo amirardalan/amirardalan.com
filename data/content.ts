@@ -1,7 +1,7 @@
 export const home = {
   meta: {
     title: 'Amir Ardalan – Developer, Designer, Writer',
-    description: 'Front-end developer, UI designer & TypeScript enthusiast based in Portland, OR'
+    description: 'Front-end developer, UI designer & React enthusiast based in Portland, OR'
   },
   title: 'Amir Ardalan',
   typed: {
