@@ -190,13 +190,13 @@ export const footer = {
       title: 'Next.js',
     },
     {
+      path: 'https://emotion.sh/',
+      title: 'Emotion',
+    },
+    {
       path: 'https://www.prisma.io/',
       title: 'Prisma',
     },
-    {
-      path: 'https://threejs.org/',
-      title: 'Three.js',
-    }
   ],
   social: [
     {
