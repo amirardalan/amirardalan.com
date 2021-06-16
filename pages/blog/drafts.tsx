@@ -7,6 +7,8 @@ import BlogLayout from '@/components/BlogLayout'
 import { admin, breadcrumb } from '@/data/content'
 import BlogPost from '@/components/BlogPost'
 import sortBlogPosts from '@/utils/sortBlogPosts'
+import AuthError from '@/components/AuthError'
+
 import prisma from '@/lib/prisma'
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
@@ -44,36 +46,41 @@ const Drafts: React.FC<Props>  = ({ drafts }) => {
 
   if (session && session.user.email == process.env.NEXT_PUBLIC_USER_EMAIL) {
     draftsList = (
-      <div className="blog admin drafts">
+    <>
+      <nav className="breadcrumbs">
+        <Link href="/blog">{breadcrumb.blog}</Link>
+        <span>{breadcrumb.drafts}</span>
+      </nav>
 
-        <nav className="breadcrumbs">
-          <Link href="/blog">{breadcrumb.blog}</Link>
-          <span>{breadcrumb.drafts}</span>
-        </nav>
-
-        <div className="drafts">
-          <main>
-            {drafts.sort(sortBlogPosts).reverse().map((post) => (
-              <div
-                key={post.id}
-                className="postDraft"
-              >
-                <BlogPost post={post} />
-              </div>
-            ))}
-          </main>
-        </div>
-
+      <div className="drafts">
+        <main>
+          {drafts.sort(sortBlogPosts).reverse().map((post) => (
+            <div
+              key={post.id}
+              className="postDraft"
+            >
+              <BlogPost post={post} />
+            </div>
+          ))}
+        </main>
       </div>
+    </>
+    )
+  } else {
+    draftsList = (
+      <AuthError />
     )
   }
+
   return (
     <BlogLayout>
       <Head>
         <title>{admin.drafts.meta.title}</title>
         <meta name="robots" content="noindex"></meta>
       </Head>
-      {draftsList}
+      <div className="blog admin drafts">
+        {draftsList}
+      </div>
     </BlogLayout>
   )
 }

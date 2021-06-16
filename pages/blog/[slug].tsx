@@ -11,6 +11,7 @@ import Router from 'next/router'
 import Link from 'next/link'
 import Head from 'next/head'
 import Avatar from '@/components/Avatar'
+import AuthError from '@/components/AuthError'
 
 import { blogPost, breadcrumb, admin } from '@/data/content'
 import { GetStaticProps, GetStaticPaths } from 'next'
@@ -57,6 +58,14 @@ const Post = ({ post, feed, data }) => {
 
   const [session] = useSession()
   const userHasValidSession = Boolean(session)
+
+  if (!userHasValidSession) {
+    return (
+      <div className="container">
+        <AuthError />
+      </div>
+    )
+  }
 
   // Check if Published
   const isPublished : Boolean = post.published
