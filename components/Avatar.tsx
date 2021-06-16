@@ -12,7 +12,7 @@ export default function Photo({ height, width }) {
       aria-label="Amir Ardalan"
       width={width}
       height={height}
-      css={{ clipPath: `circle(${clip}px at center)`}}
+      css={{clipPath:`circle(${clip}px at center)`}}
     />
   )
 }

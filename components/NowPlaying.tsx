@@ -150,6 +150,7 @@ export default function NowPlaying() {
               src={data?.albumImageUrl}
               layout="fill"
               objectFit="cover"
+              objectPosition="0 33.3%"
             /> ) : null }
           </div>
           <div className="nowPlayingStatus">
