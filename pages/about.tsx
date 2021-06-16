@@ -94,8 +94,14 @@ export default function About({ data }) {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
+    width: '100%',
     '.ctaButton': {
       margin: '0 .5rem .5rem',
+      width: 'auto',
+      maxWidth: 250,
+      '@media(max-width: 1400px)': {
+        width: '100%',
+      },
     },
   })
   const styleSocialIconsWrapper = css({
@@ -132,8 +138,8 @@ export default function About({ data }) {
           aria-label={items.title}
           target={items.target}
           rel={items.rel}
+          className="ctaButton"
           >
-          <button className="ctaButton">
             {items.title}
             <span className={items.icon}>
               <img
@@ -143,7 +149,6 @@ export default function About({ data }) {
                 alt="Download Resume"
               />
             </span>
-          </button>
         </a>
       )
     })
@@ -228,13 +233,10 @@ export default function About({ data }) {
                   href={data.twitterDm.path}
                   target="_blank"
                   rel="noreferrer noopener"
-                >
-                <button
                   className="ctaButton"
                   data-screen-name={data.twitterDm.handle}
                   aria-label={data.twitterDm.title}>
                   {data.twitterDm.title}
-                </button>
                 </a>
             </li>
             </ul>
