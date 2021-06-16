@@ -8,6 +8,7 @@ import prisma from '@/lib/prisma'
 import { useSession } from 'next-auth/client'
 import LoadingTriangle from '@/components/LoadingTriangle'
 import BlogLayout from '@/components/BlogLayout'
+import AuthError from '@/components/AuthError'
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const editPost = await prisma.post.findUnique({
@@ -19,6 +20,19 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 }
 
 const Edit = ({ editPost }) => {
+
+  const [session, loading] = useSession()
+  let edit = null
+  const userHasValidSession = Boolean(session)
+
+  if (!userHasValidSession) {
+    return (
+      <div className="container">
+        <AuthError />
+      </div>
+    )
+  }
+
 
   const isPublished = editPost.published
   const id = editPost.id
@@ -81,9 +95,6 @@ const Edit = ({ editPost }) => {
       </div>
     </div>
   )
-
-  const [session, loading] = useSession()
-  let edit = null
 
   if (loading) {
     edit = (

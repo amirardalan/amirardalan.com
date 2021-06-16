@@ -5,6 +5,7 @@ import Head from 'next/head'
 import BlogLayout from '@/components/BlogLayout'
 import { admin, breadcrumb } from '@/data/content'
 import { useSession } from 'next-auth/client'
+import AuthError from '@/components/AuthError'
 
 const Draft: React.FC = () => {
 
@@ -136,6 +137,10 @@ const Draft: React.FC = () => {
         </div>
 
       </div>
+    )
+  } else {
+    create = (
+      <AuthError />
     )
   }
 

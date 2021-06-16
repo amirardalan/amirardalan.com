@@ -244,6 +244,7 @@ export function GlobalStyles () {
       <Global styles={{
         // Layout
         '.container': {
+          minHeight: '50vh',
           marginTop: '2rem',
           padding: '0 4rem',
           position: 'relative',

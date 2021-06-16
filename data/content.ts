@@ -41,7 +41,8 @@ export const blog = {
     title: 'Blog – Amir Ardalan',
   },
   error: {
-    database: '⚠️ Database Error: Posts Could not be loaded.'
+    database: '⚠️ Database Error: Posts Could not be loaded.',
+    auth: '⚠️ Authentication Error: Must be logged in to view this page',
   },
 }
 
