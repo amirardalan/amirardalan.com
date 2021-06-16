@@ -126,7 +126,7 @@ const Draft: React.FC = () => {
               </button>
               <a
                 className="buttonCompact"
-                onClick={() => Router.push("/blog/drafts")}
+                onClick={() => Router.push("/blog")}
               >
                 {admin.controls.cancel}
               </a>
