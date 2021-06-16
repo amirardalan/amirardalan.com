@@ -1,7 +1,6 @@
 import { css, useTheme } from '@emotion/react'
 
 import Head from 'next/head'
-import Link from 'next/link'
 import Avatar from '@/components/Avatar'
 
 import { about } from '@/data/content'
@@ -91,15 +90,12 @@ export default function About({ data }) {
   })
   const styleCtaWrapper = css({
     display: 'flex',
-    flexDirection: 'column',
+    flexWrap: 'wrap',
+    flexDirection: 'row',
     justifyContent: 'center',
+    alignItems: 'center',
     '.ctaButton': {
-      marginRight: 0,
-      marginBottom: '1rem',
-      display: 'flex',
-      alignSelf: 'center',
-      width: '100%',
-      maxWidth: 300,
+      margin: '0 .5rem .5rem',
     },
   })
   const styleSocialIconsWrapper = css({
