@@ -17,7 +17,7 @@ export default function BlogMarkdown({ post }) {
 
   // Syntax Highlighter Object for Markdown
   const BlogSyntaxHighlight: object = {
-    code({node, inline, className,...props}) {
+    code({ node, inline, className,...props }) {
 
       // Set code language declared in code block: ```lang
       const match = /language-(\w+)/.exec(className || '')
@@ -25,7 +25,7 @@ export default function BlogMarkdown({ post }) {
       const hasMeta = node?.data?.meta
 
       // Highlight lines declared in code block: ```lang {2,4-6}
-      const applyHighlights: any = (applyHighlights: any) => {
+      const applyHighlights: object = (applyHighlights: number) => {
         if (hasMeta) {
           const RE = /{([\d,-]+)}/
           const metadata = node.data.meta?.replace(/\s/g, '')
