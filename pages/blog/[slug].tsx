@@ -2,15 +2,15 @@ import React, { useState } from 'react'
 
 import BlogLayout from '@/components/BlogLayout'
 import BlogMarkdown from '@/components/BlogMarkdown'
-import { renderToString } from 'react-dom/server'
 import BlogNavigation from '@/components/BlogNavigation'
-import ReadTime from '@/components/ReadTime'
-import FormatDate from '@/components/FormatDate'
+import calculateReadTime from '@/utils/calculateReadTime'
+import formatDate from '@/utils/formatDate'
 
 import { useSession } from 'next-auth/client'
 import Router from 'next/router'
 import Link from 'next/link'
 import Head from 'next/head'
+import Avatar from '@/components/Avatar'
 
 import { blogPost, breadcrumb, admin } from '@/data/content'
 import { GetStaticProps, GetStaticPaths } from 'next'
@@ -58,9 +58,22 @@ const Post = ({ post, feed, data }) => {
   const [session] = useSession()
   const userHasValidSession = Boolean(session)
 
+  // Check if Published
   const isPublished : Boolean = post.published
   const publishLabel = isPublished ? `${admin.controls.unpublish}` : `${admin.controls.publish}`
   const redirect = isPublished ? '/blog/drafts' : '/blog'
+
+  // Get the post date and format it
+  const isEdited = post.editedAt.toJSON().slice(0, 10) > post.publishedAt.toJSON().slice(0, 10)
+  const publishDate = formatDate(post.publishedAt)
+  const editDate = formatDate(post.editedAt)
+
+
+  // Calculate Read Time
+  const postReadTime = calculateReadTime(post.content)
+
+  // Exclude unpublished drafts from search engine crawlers
+  const disallowRobots = ( <meta name="robots" content="noindex"></meta> )
 
   async function publishPost(slug: String, published: boolean): Promise<void> {
     await fetch(`/api/publish/${slug}?published=${published}`, {
@@ -104,12 +117,6 @@ const Post = ({ post, feed, data }) => {
     </div>
   )
 
-  const postDate = renderToString(<FormatDate date={post.publishedAt} />)
-  const postReadTime = renderToString(<ReadTime content={post.content} />)
-
-  // Exclude unpublished drafts from search engine crawlers
-  const disallowRobots = ( <meta name="robots" content="noindex"></meta> )
-
   return (
     <BlogLayout>
       <Head>
@@ -133,8 +140,14 @@ const Post = ({ post, feed, data }) => {
           <h2 aria-label={`${title}`}>
             {title}
           </h2>
-          <div className="postDetails" aria-label={`${postDate} • ${postReadTime}`}>
-            By {post?.author?.name || 'Unknown author'} • {postDate} • {postReadTime}
+          <div className="postDetails" aria-label={`${publishDate} • ${postReadTime}`}>
+            <div className="author">
+              <span className="avatar">
+                <Avatar height="15" width="15" />
+              </span>
+              {post?.author?.name || 'Unknown author'}
+            </div>
+            {isEdited ? `Updated: ${editDate}`: publishDate } • {postReadTime}
           </div>
 
           <BlogMarkdown post={post} />

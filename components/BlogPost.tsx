@@ -1,8 +1,7 @@
 import React from 'react'
-import { renderToString } from 'react-dom/server'
 import Link from 'next/link'
-import FormatDate from '@/components/FormatDate'
-import ReadTime from '@/components/ReadTime'
+import formatDate from '@/utils/formatDate'
+import calculateReadTime from '@/utils/calculateReadTime'
 
 
 export type PostProps = {
@@ -23,8 +22,8 @@ export type PostProps = {
 
 const Post: React.FC<{ post: PostProps }> = ({ post }) => {
 
-  const postDate = renderToString(<FormatDate date={post.publishedAt} />)
-  const postReadTime = renderToString(<ReadTime content={post.content} />)
+  const publishDate = formatDate(post.publishedAt)
+  const postReadTime = calculateReadTime(post.content)
 
   return (
     <div className="blog postTeaser">
@@ -38,9 +37,9 @@ const Post: React.FC<{ post: PostProps }> = ({ post }) => {
       </h2>
       <div
         className="postDetails"
-        aria-label={`${postDate} • ${postReadTime}`}>
+        aria-label={`${publishDate} • ${postReadTime}`}>
           <div className="postDetails">
-            {postDate} • {postReadTime}
+            {publishDate} • {postReadTime}
           </div>
         </div>
       <p>{post.teaser}</p>

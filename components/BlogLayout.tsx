@@ -80,10 +80,22 @@ export default function BlogLayout(props: any) {
             marginTop: '2rem',
           },
           '.postDetails': {
-            margin: '.5rem 0 .2rem',
+            display: 'flex',
+            flexDirection: 'column',
             color: 'var(--color-gray)',
             fontSize: 13,
-
+            lineHeight: '1.2rem',
+            '.author': {
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center',
+            },
+            '.avatar': {
+              display: 'flex',
+              marginRight: '.4rem',
+              paddingBottom: '.1rem',
+              alignSelf: 'center',
+            },
             '@media (max-width: 480px)': {
               fontSize: 12,
             }
@@ -189,6 +201,7 @@ export default function BlogLayout(props: any) {
           },
           '.postFull': {
             h2: {
+              margin: '0 0 1rem',
               textDecoration: 'none',
               cursor: 'default',
             },

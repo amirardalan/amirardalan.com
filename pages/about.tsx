@@ -185,7 +185,7 @@ export default function About({ data }) {
           <div className="grid">
             <ul>
               <li>
-                <Avatar />
+                <Avatar height="100" width="100" />
               </li>
               <li><strong>{data.bio.subheading}</strong></li>
               <li>

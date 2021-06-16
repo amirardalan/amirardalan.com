@@ -1,16 +1,18 @@
 import Image from 'next/image'
 
 
-export default function Photo() {
+export default function Photo({height, width}) {
+
+  const clip = width / 2
 
   return (
     <Image
       src="https://github.com/amirardalan.png"
       alt="Amir Ardalan"
       aria-label="Amir Ardalan"
-      width={100}
-      height={100}
-      css={{ clipPath: 'circle(50px at center)' }}
+      width={width}
+      height={height}
+      css={{ clipPath: `circle(${clip}px at center)`}}
     />
   )
 }
