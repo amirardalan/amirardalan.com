@@ -9,7 +9,7 @@ export default function BlogNavigation({ feed, post, isPublished }) {
   const current : number = post?.id
 
   // Sort Posts based on @/utils/sortBlogPosts
-  const arr : Array<any> = feed ? feed : null
+  const arr = feed ? feed : null
   const arrSorted = arr.sort(sortBlogPosts)
     
   // Error Handling

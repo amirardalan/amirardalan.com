@@ -4,7 +4,7 @@ import { css } from '@emotion/react'
 
 const ThemeToggle = ({ toggleTheme }) => {
 
-  const [activeTheme, setActiveTheme]: any = useState(document.body.dataset.theme)
+  const [activeTheme, setActiveTheme] = useState(document.body.dataset.theme)
   const inactiveTheme = activeTheme === "light" ? "dark" : "light"
   const [toggleThemeControl, setToggleThemeControl] = useState(false)
 

@@ -1,6 +1,7 @@
 import { Global } from '@emotion/react'
+import React from 'react'
 
-export default function BlogLayout(props: any) {
+const BlogLayout: React.FC<{ props: JSX.Element }> = (props) => {
 
   return (
     <div className="container">
@@ -367,5 +368,6 @@ export default function BlogLayout(props: any) {
       />
     </div>
   )
-
 }
+
+export default BlogLayout

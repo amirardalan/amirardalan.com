@@ -24,7 +24,7 @@ const BlogAdmin: React.FC =  React.memo(()=> {
       setIsDeploying(false)
     }, 85000)
   }
-  async function deployNewBuild(): Promise<any> {
+  async function deployNewBuild(): Promise<void> {
     axios.get(`/api/deploy?secret=${process.env.NEXT_PUBLIC_DEPLOY_TOKEN}`).then(response => {
       console.log(response.data.data.job)
       showDeployLoader()

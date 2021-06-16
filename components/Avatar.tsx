@@ -1,7 +1,7 @@
 import Image from 'next/image'
 
 
-export default function Photo({height, width}) {
+export default function Photo({ height, width }) {
 
   const clip = width / 2
 
