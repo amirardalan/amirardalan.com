@@ -59,14 +59,6 @@ const Post = ({ post, feed, data }) => {
   const [session] = useSession()
   const userHasValidSession = Boolean(session)
 
-  if (!userHasValidSession) {
-    return (
-      <div className="container">
-        <AuthError />
-      </div>
-    )
-  }
-
   // Check if Published
   const isPublished : Boolean = post.published
   const publishLabel = isPublished ? `${admin.controls.unpublish}` : `${admin.controls.publish}`
