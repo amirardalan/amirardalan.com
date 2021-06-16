@@ -140,7 +140,7 @@ const Post = ({ post, feed, data }) => {
           <h2 aria-label={`${title}`}>
             {title}
           </h2>
-          <div className="postDetails" aria-label={`${publishDate} • ${postReadTime}`}>
+          <div className="postDetails" aria-label={`${editDate} • ${postReadTime}`}>
             <div className="author">
               <span className="avatar">
                 <Avatar height="15" width="15" />

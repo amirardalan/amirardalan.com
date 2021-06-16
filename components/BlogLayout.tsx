@@ -162,7 +162,9 @@ export default function BlogLayout(props: any) {
           '.postTeaser': {
             position: 'relative',
             h2: {
+              marginBottom: '.4rem',
               fontSize: 30,
+              lineHeight: '2rem',
               textDecoration: 'none',
               a: {
                 color: 'var(--color-text)',

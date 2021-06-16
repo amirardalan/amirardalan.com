@@ -41,7 +41,9 @@ const Blog: React.FC<Props> = ({ data, feed }) => {
       <div className="blog">
 
         <nav className="breadcrumbs">
-          <span>{breadcrumb.blog}</span>
+          <span aria-label={breadcrumb.blog}>
+            {breadcrumb.blog}
+          </span>
         </nav>
 
         <div>
