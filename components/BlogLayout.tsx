@@ -179,6 +179,7 @@ export default function BlogLayout(props: any) {
                 fontFamily: 'var(--font-secondary)',
                 fontWeight: 900,
                 fontSize: 30,
+                lineHeight: '2rem',
                 left: -20,
                 color: 'var(--color-accent-color)'
               }
