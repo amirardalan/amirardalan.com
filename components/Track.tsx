@@ -3,8 +3,6 @@ import Image from 'next/image'
 
 export default function Track(track: any) {
 
-  console.log(typeof track)
-
   const styleTopTracksContainer = css({
     fontFamily: 'var(--font-secondary)',
     fontWeight: 'bold',
