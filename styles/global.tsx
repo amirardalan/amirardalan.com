@@ -106,6 +106,7 @@ export function GlobalStyles () {
           '--icon-spotify': 'url(/icons/spotify-light.svg)',
           '--icon-spotify-footer': 'url(/icons/spotify-dark.svg)',
           '--icon-external-link': 'url(/icons/external-link-dark.svg)',
+          '--icon-download': 'url(/icons/download-light.svg)',
           '--canvas-bg': sunset,
           '--page-bg': lighter,
           '--code-highlight': codeHighlightLight,
@@ -130,6 +131,7 @@ export function GlobalStyles () {
           '--icon-external-link-thin': 'url(/icons/external-link-thin-light.svg)',
           '--icon-external-link': 'url(/icons/external-link-light.svg)',
           '--icon-external-link-footer': 'url(/icons/external-link-light.svg)',
+          '--icon-download': 'url(/icons/download-dark.svg)',
           '--button-toggle-bg': darker,
           '--button-toggle-switch': lighter,
           '--canvas-bg': sunrise,
@@ -305,10 +307,6 @@ export function GlobalStyles () {
           '&:only-of-type': {
             margin: 0,
           },
-          'span.download': {
-            display: 'flex',
-            marginLeft: '.5rem',
-          },
           'span.none': {
             display: 'none',
           },
@@ -325,13 +323,23 @@ export function GlobalStyles () {
             },
           },
           '&.externalLink:after': {
+            content: '""',
             background: 'var(--icon-external-link) no-repeat',
             backgroundSize: '100%',
-            height: 17,
+            height: 16,
             width: 16,
             alignSelf: 'center',
-            marginLeft: '.7rem',
+            marginLeft: '.5rem',
             marginBottom: '.2rem'
+          },
+          '&.download:after': {
+            content: '""',
+            background: 'var(--icon-download) no-repeat',
+            backgroundSize: '100%',
+            height: 20,
+            width: 20,
+            alignSelf: 'center',
+            marginLeft: '.3rem',
           },
           '@media(max-width: 1024px)': {
             '&:hover': {

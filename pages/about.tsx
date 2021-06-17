@@ -168,14 +168,6 @@ export default function About({ data }) {
           data-screen-name={items?.screenname}
           >
             {items.title}
-            <span className={items.icon}>
-              <img
-                src={theme.icon.download}
-                height="20"
-                width="20"
-                alt="Download Resume"
-              />
-            </span>
         </a>
       )
     })

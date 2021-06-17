@@ -91,15 +91,13 @@ export const about = {
       {
         path: '/amir-ardalan-resume.pdf',
         title: 'Resume',
-        icon: 'download',
         rel: 'noopener noreferrer',
         target: '_blank',
-        cName: 'ctaButton',
+        cName: 'ctaButton download',
       },
       {
         path: '/blog/2021-a-dev-odyssey',
         title: 'Journey',
-        icon: 'none',
         rel: '',
         target: '_self',
         cName: 'ctaButton',
@@ -148,7 +146,6 @@ export const about = {
         title: 'Twitter DM',
         rel: 'noopener noreferrer',
         target: '_blank',
-        icon: 'none',
         handle: '@amirardalan',
         cName: 'ctaButton externalLink'
       },
