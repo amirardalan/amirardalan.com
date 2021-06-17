@@ -57,8 +57,8 @@ export default function Footer() {
       '&.externalLink:after': {
         background: 'var(--icon-external-link) no-repeat',
         backgroundSize: '100%',
-        height: 14,
-        width: 14,
+        height: 13,
+        width: 13,
 
       },
     },
