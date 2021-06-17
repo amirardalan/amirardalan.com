@@ -49,6 +49,7 @@ export default function Footer() {
     },
     'a': {
       display: 'flex',
+      width: 'max-content',
       alignItems: 'baseline',
       textDecoration: 'none',
       color: 'var(--color-bg)',
