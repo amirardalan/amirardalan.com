@@ -63,11 +63,6 @@ export const about = {
     linkedin: 'LinkedIn',
   },
   heading: 'About Me',
-  twitterDm: {
-    path: 'https://twitter.com/messages/compose?recipient_id=23831468',
-    title: 'Twitter DM',
-    handle: '@amirardalan'
-  },
   social: {
     title: 'Social',
     items: [
@@ -98,7 +93,7 @@ export const about = {
         title: 'Resume',
         icon: 'download',
         rel: 'noopener noreferrer',
-        target: '_blank'
+        target: '_blank',
       },
       {
         path: '/blog/2021-a-dev-odyssey',
@@ -142,9 +137,16 @@ export const about = {
   },
   contact: {
     title: 'Contact:',
+    email: 'hi@amirardalan.com',
     items: [
-      'hi@amirardalan.com',
-      '- or -'
+      {
+        path: 'https://twitter.com/messages/compose?recipient_id=23831468',
+        title: 'Twitter DM',
+        rel: 'noopener noreferrer',
+        target: '_blank',
+        icon: 'none',
+        handle: '@amirardalan',
+      },
     ],
   },
 }

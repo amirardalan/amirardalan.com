@@ -1,4 +1,5 @@
 import { css, useTheme } from '@emotion/react'
+import { useState } from 'react'
 
 import Head from 'next/head'
 import Avatar from '@/components/Avatar'
@@ -16,6 +17,11 @@ export const getStaticProps: GetStaticProps = async () => {
 export default function About({ data }) {
 
   const theme: any = useTheme()
+
+  const [showEmail, setShowEmail] = useState(false)
+  const showEmailOnclick = () => {
+    setShowEmail(true)
+  }
 
   const styleGridWrapper = css({
     display: 'grid',
@@ -118,6 +124,15 @@ export default function About({ data }) {
       flexDirection: 'row',
     }
   })
+  const styleShowEmail = css({
+    cursor: showEmail ? 'default' : 'pointer',
+    width: '100%',
+    maxWidth: 290,
+    margin: '1rem .5rem',
+    border: '1px solid var(--color-accent-gray)',
+    padding: '.5rem 2rem',
+    borderRadius: 8
+  })
 
   const generateListItems = (items: Array<string>) => {
     return items.map((items, i) => {
@@ -129,7 +144,7 @@ export default function About({ data }) {
     })
   }
 
-  const generateBioLinks = (items: Array<any>) => {
+  const generateCtaButtons = (items: Array<any>) => {
     return items.map((items, i) => {
       return (
         <a
@@ -139,6 +154,7 @@ export default function About({ data }) {
           target={items.target}
           rel={items.rel}
           className="ctaButton"
+          data-screen-name={items?.screenname}
           >
             {items.title}
             <span className={items.icon}>
@@ -171,7 +187,6 @@ export default function About({ data }) {
     })
   }
 
-
   return (
     <div className="container about">
       <Head>
@@ -194,7 +209,7 @@ export default function About({ data }) {
                 </em>
               </li>
               <li css={styleCtaWrapper}>
-                {generateBioLinks(data.bio.items)}
+                {generateCtaButtons(data.bio.items)}
               </li>
             </ul>
           </div>
@@ -227,17 +242,11 @@ export default function About({ data }) {
           <div className="grid">
             <ul>
               <h4>{data.contact.title}</h4>
-              {generateListItems(data.contact.items)}
               <li css={styleCtaWrapper}>
-                <a
-                  href={data.twitterDm.path}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  className="ctaButton"
-                  data-screen-name={data.twitterDm.handle}
-                  aria-label={data.twitterDm.title}>
-                  {data.twitterDm.title}
-                </a>
+              {generateCtaButtons(data.contact.items)}
+              <div onClick={showEmailOnclick} className="ctaButton">
+                {showEmail ? data.contact.email : 'Show Email'}
+              </div>
             </li>
             </ul>
           </div>
