@@ -34,8 +34,8 @@ export default function NowPlaying() {
       height: 350,
       '.nowPlayingStatus': {
         margin: '0 auto',
-        // top: 'unset',
-        // bottom: '1rem',
+        top: 'unset',
+        bottom: '1rem',
         left: '-50%',
         right: '-50%',
         textAlign: 'center',
@@ -127,6 +127,8 @@ export default function NowPlaying() {
     }
   })
   const styleNowPlayingBackground = css({
+    filter: 'blur(4px)',
+    transform: 'scale(1.03)',
     height: 200,
     '@media(max-width: 480px)': {
       height: 350,
