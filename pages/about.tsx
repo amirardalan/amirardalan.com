@@ -265,7 +265,7 @@ export default function About({ data }) {
                     ? data.contact.email
                     : 'Show Email'}
                 >
-                  {showEmail ? data.contact.email : 'Show Email'}
+                  {showEmail ? data.contact.email : data.contact.showEmail}
                 </span>
               </li>
               <li>

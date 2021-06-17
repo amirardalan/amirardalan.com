@@ -138,6 +138,7 @@ export const about = {
   contact: {
     title: 'Contact:',
     email: 'hi@amirardalan.com',
+    showEmail: 'Show Email',
     copiedToClipboard: 'Copied to clipboard ✓',
     items: [
       {
