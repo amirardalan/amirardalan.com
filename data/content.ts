@@ -138,6 +138,7 @@ export const about = {
   contact: {
     title: 'Contact:',
     email: 'hi@amirardalan.com',
+    copiedToClipboard: 'Copied to clipboard ✓',
     items: [
       {
         path: 'https://twitter.com/messages/compose?recipient_id=23831468',

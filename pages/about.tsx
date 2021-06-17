@@ -22,6 +22,15 @@ export default function About({ data }) {
   const showEmailOnclick = () => {
     setShowEmail(true)
   }
+  const [copiedToClipBoard, setCopiedToClipBoard] = useState(false)
+
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(data.contact.email)
+    setCopiedToClipBoard(true)
+    setTimeout(() => {
+      setCopiedToClipBoard(false)
+    }, 10000)
+  }
 
   const styleGridWrapper = css({
     display: 'grid',
@@ -108,9 +117,13 @@ export default function About({ data }) {
       maxWidth: 280,
       margin: '0 .5rem .5rem',
       '&.disabled': {
+        cursor: 'pointer',
         background: 'transparent',
         color: 'var(--color-text)',
-        border: '1px solid var(--color-accent-gray)'
+        border: '1px solid var(--color-accent-gray)',
+        '&:active': {
+          border: '1px solid var(--color-accent-color)'
+        }
       },
       '@media(max-width: 1400px)': {
         width: '100%',
@@ -240,11 +253,26 @@ export default function About({ data }) {
             <ul>
               <h4>{data.contact.title}</h4>
               <li css={styleCtaWrapper}>
-              {generateCtaButtons(data.contact.items)}
-              <span onClick={showEmailOnclick} className={showEmail ? 'ctaButton disabled' : 'ctaButton'}>
-                {showEmail ? data.contact.email : 'Show Email'}
-              </span>
-            </li>
+                {generateCtaButtons(data.contact.items)}
+                <span
+                  onClick={showEmail
+                    ? copyToClipboard
+                    : showEmailOnclick}
+                  className={showEmail
+                    ? 'ctaButton disabled'
+                    : 'ctaButton'}
+                  aria-label={showEmail
+                    ? data.contact.email
+                    : 'Show Email'}
+                >
+                  {showEmail ? data.contact.email : 'Show Email'}
+                </span>
+              </li>
+              <li>
+              {copiedToClipBoard
+                ? <div>{data.contact.copiedToClipboard}</div>
+                : <div css={{color: 'var(--color-accent)'}}>–</div>}
+              </li>
             </ul>
           </div>
         </main>
