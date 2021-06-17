@@ -164,15 +164,15 @@ export default function About({ data }) {
           aria-label={items.title}
           target={items.target}
           rel={items.rel}
-          className="ctaButton"
+          className={items.cName}
           data-screen-name={items?.screenname}
           >
             {items.title}
             <span className={items.icon}>
               <img
                 src={theme.icon.download}
-                height="25"
-                width="25"
+                height="20"
+                width="20"
                 alt="Download Resume"
               />
             </span>

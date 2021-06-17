@@ -94,13 +94,15 @@ export const about = {
         icon: 'download',
         rel: 'noopener noreferrer',
         target: '_blank',
+        cName: 'ctaButton',
       },
       {
         path: '/blog/2021-a-dev-odyssey',
         title: 'Journey',
         icon: 'none',
         rel: '',
-        target: '_self'
+        target: '_self',
+        cName: 'ctaButton',
       },
     ],
   },
@@ -148,6 +150,7 @@ export const about = {
         target: '_blank',
         icon: 'none',
         handle: '@amirardalan',
+        cName: 'ctaButton externalLink'
       },
     ],
   },
@@ -193,40 +196,34 @@ export const footer = {
     {
       path: 'https://nextjs.org/',
       title: 'Next.js',
+      cName: 'externalLink'
     },
     {
       path: 'https://www.prisma.io/',
       title: 'Prisma',
+      cName: 'externalLink'
     },
     {
       path: 'https://swr.vercel.app/',
       title: 'SWR',
+      cName: 'externalLink'
     },
   ],
   social: [
     {
       path: 'https://github.com/amirardalan',
       title: 'GitHub',
+      cName: 'externalLink'
     },
     {
       path: 'https://twitter.com/amirardalan',
       title: 'Twitter',
+      cName: 'externalLink'
     },
     {
       path: 'https://linkedin.com/in/amirardalan',
       title: 'LinkedIn',
-    },
-  ],
-  contact: [
-    {
-      path: 'mailto:hi@amirardalan.com',
-      title: 'hi@amirardalan.com',
-      cName: 'small'
-    },
-    {
-      path: 'https://twitter.com/messages/compose?recipient_id=23831468',
-      title: 'Twitter DM',
-      cName: 'small'
+      cName: 'externalLink'
     },
   ],
   copyright: {

@@ -44,11 +44,16 @@ export default function Footer() {
         lineHeight: '3rem',
       },
     },
+    'a.spotify': {
+      display: 'none',
+    },
     'a': {
+      display: 'flex',
+      alignItems: 'baseline',
       textDecoration: 'none',
       color: 'var(--color-bg)',
-      '&.spotify': {
-        display: 'none',
+      '&.externalLink:after': {
+        background: 'var(--icon-external-link-footer) no-repeat',
       },
     },
     h5: {

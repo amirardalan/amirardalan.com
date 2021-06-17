@@ -105,6 +105,9 @@ export function GlobalStyles () {
           '--icon-linkedin': 'url(/icons/linkedin-light.svg)',
           '--icon-spotify': 'url(/icons/spotify-light.svg)',
           '--icon-spotify-footer': 'url(/icons/spotify-dark.svg)',
+          '--icon-external-link-thin': 'url(/icons/external-link-thin-dark.svg)',
+          '--icon-external-link': 'url(/icons/external-link-light.svg)',
+          '--icon-external-link-footer': 'url(/icons/external-link-dark.svg)',
           '--canvas-bg': sunset,
           '--page-bg': lighter,
           '--code-highlight': codeHighlightLight,
@@ -126,6 +129,9 @@ export function GlobalStyles () {
           '--icon-linkedin': 'url(/icons/linkedin-dark.svg)',
           '--icon-spotify': 'url(/icons/spotify-dark.svg)',
           '--icon-spotify-footer': 'url(/icons/spotify-light.svg)',
+          '--icon-external-link-thin': 'url(/icons/external-link-thin-light.svg)',
+          '--icon-external-link': 'url(/icons/external-link-dark.svg)',
+          '--icon-external-link-footer': 'url(/icons/external-link-light.svg)',
           '--button-toggle-bg': darker,
           '--button-toggle-switch': lighter,
           '--canvas-bg': sunrise,
@@ -222,7 +228,13 @@ export function GlobalStyles () {
           background: 'transparent',
           color: 'var(--color-link)',
           textDecoration: 'underline',
-
+          '&.externalLink:after': {
+            marginLeft: '.3rem',
+            content: '""',
+            background: 'var(--icon-external-link) no-repeat',
+            height: 12,
+            width: 12,
+          },
         },
         p: {
           margin: 0,
@@ -313,6 +325,15 @@ export function GlobalStyles () {
               background: 'var(--color-button-disabled)',
               border: '1px solid var(--color-button-disabled)',
             },
+          },
+          '&.externalLink:after': {
+            background: 'var(--icon-external-link-thin) no-repeat',
+            backgroundSize: '100%',
+            height: 17,
+            width: 16,
+            alignSelf: 'center',
+            marginLeft: '.7rem',
+            marginBottom: '.2rem'
           },
           '@media(max-width: 1024px)': {
             '&:hover': {
