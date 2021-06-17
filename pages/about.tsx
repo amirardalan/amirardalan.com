@@ -49,6 +49,9 @@ export default function About({ data }) {
       '@media (max-width: 480px)': {
         padding: '1rem',
       },
+      ul: {
+        width: '100%',
+      },
       'ul li': {
         marginBottom: '.5rem',
         color: 'var(--color-gray)',
@@ -77,7 +80,7 @@ export default function About({ data }) {
       fontFamily: 'var(font-secondary)',
       fontSize: 25,
       textAlign: 'center',
-      borderBottom: '2px solid var(--color-accent-color)'
+      borderBottom: '2px solid var(--color-accent-color)',
     },
     '.iconGithub, .iconTwitter, .iconLinkedin': {
       height: 48,
@@ -96,15 +99,19 @@ export default function About({ data }) {
   })
   const styleCtaWrapper = css({
     display: 'flex',
-    flexWrap: 'wrap',
     flexDirection: 'row',
+    flexWrap: 'wrap',
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
     '.ctaButton': {
+      maxWidth: 280,
       margin: '0 .5rem .5rem',
-      width: 'auto',
-      maxWidth: 250,
+      '&.disabled': {
+        background: 'transparent',
+        color: 'var(--color-text)',
+        border: '1px solid var(--color-accent-gray)'
+      },
       '@media(max-width: 1400px)': {
         width: '100%',
       },
@@ -112,7 +119,6 @@ export default function About({ data }) {
   })
   const styleSocialIconsWrapper = css({
     width: '100%',
-    maxWidth: 300,
     display: 'flex',
     flexDirection: 'column',
   })
@@ -123,15 +129,6 @@ export default function About({ data }) {
     li: {
       flexDirection: 'row',
     }
-  })
-  const styleShowEmail = css({
-    cursor: showEmail ? 'default' : 'pointer',
-    width: '100%',
-    maxWidth: 290,
-    margin: '1rem .5rem',
-    border: '1px solid var(--color-accent-gray)',
-    padding: '.5rem 2rem',
-    borderRadius: 8
   })
 
   const generateListItems = (items: Array<string>) => {
@@ -244,9 +241,9 @@ export default function About({ data }) {
               <h4>{data.contact.title}</h4>
               <li css={styleCtaWrapper}>
               {generateCtaButtons(data.contact.items)}
-              <div onClick={showEmailOnclick} className="ctaButton">
+              <span onClick={showEmailOnclick} className={showEmail ? 'ctaButton disabled' : 'ctaButton'}>
                 {showEmail ? data.contact.email : 'Show Email'}
-              </div>
+              </span>
             </li>
             </ul>
           </div>

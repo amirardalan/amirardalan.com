@@ -302,10 +302,18 @@ export function GlobalStyles () {
           'span.none': {
             display: 'none',
           },
+          '&.disabled': {
+            background: 'var(--color-button-disabled)'
+          },
           '&:hover': {
             background: 'var(--color-accent-color)',
             border: '1px solid var(--color-accent-color)',
-            color: 'var(--color-bg)'
+            color: 'var(--color-bg)',
+            '&.disabled': {
+              cursor: 'default',
+              background: 'var(--color-button-disabled)',
+              border: '1px solid var(--color-button-disabled)',
+            },
           }
         }
       }} />
