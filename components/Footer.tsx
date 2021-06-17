@@ -107,61 +107,53 @@ export default function Footer() {
   }
 
   return (
-    <>
-      <footer css={styleFooterWrapper}>
-        <div css={styleFooter}>
-          <div className="grid">
-            <NowPlayingCompact />
-          </div>
-          <div css={styleFooterNav} className="grid">
-            <h5>{footer.headings.nav}</h5>
-            <ul>
-              {nav.map((item: any, index: number) => {
-                return (
-                  <li>
-                    <Link
-                      href={item.path}
-                      aria-label={item.title}
-                      key={index}
-                    >
-                      <a
-                        className={item.cName}
-                      >
+    <footer css={styleFooterWrapper}>
+      <div css={styleFooter}>
+        <div className="grid">
+          <NowPlayingCompact />
+        </div>
+        <div css={styleFooterNav} className="grid">
+          <h5>{footer.headings.nav}</h5>
+          <ul>
+            {nav.map((item: any, i: number) => {
+              return (
+                <li key={i}>
+                  <Link href={item.path} aria-label={item.title}>
+                    <a className={item.cName}>
                       {item.title}
-                      </a>
-                    </Link>
-                  </li>
-                )}
+                    </a>
+                  </Link>
+                </li>
               )}
-            </ul>
-          </div>
-          <div className="grid">
-            <h5>{footer.headings.social}</h5>
-            <ul>
-              {generateFooterLinks(footer.social)}
-            </ul>
-          </div>
-          <div className="grid">
-            <h5>{footer.headings.poweredby}</h5>
-            <ul>
-              {generateFooterLinks(footer.poweredby)}
-            </ul>
-          </div>
+            )}
+          </ul>
         </div>
-        <div css={styleFooterLogo}>
-          <Image
-            src={theme.logoFooter}
-            height={75}
-            width={75}
-            alt="Logo"
-          />
+        <div className="grid">
+          <h5>{footer.headings.social}</h5>
+          <ul>
+            {generateFooterLinks(footer.social)}
+          </ul>
         </div>
-        <div css={styleCopyright}>
-          <div>
-            {footer.copyright.text} {(new Date().getFullYear())} – {footer.copyright.name}
-          </div>
+        <div className="grid">
+          <h5>{footer.headings.poweredby}</h5>
+          <ul>
+            {generateFooterLinks(footer.poweredby)}
+          </ul>
         </div>
-      </footer>
-    </>
+      </div>
+      <div css={styleFooterLogo}>
+        <Image
+          src={theme.logoFooter}
+          height={75}
+          width={75}
+          alt="Logo"
+        />
+      </div>
+      <div css={styleCopyright}>
+        <div>
+          {footer.copyright.text} {(new Date().getFullYear())} – {footer.copyright.name}
+        </div>
+      </div>
+    </footer>
   )
 }
