@@ -308,12 +308,21 @@ export function GlobalStyles () {
           '&:hover': {
             background: 'var(--color-accent-color)',
             border: '1px solid var(--color-accent-color)',
-            color: 'var(--color-bg)',
             '&.disabled': {
               cursor: 'default',
               background: 'var(--color-button-disabled)',
               border: '1px solid var(--color-button-disabled)',
             },
+          },
+          '@media(max-width: 1024px)': {
+            '&:hover': {
+              background: 'var(--color-text)',
+              border: '1px solid transparent',
+            },
+            '&:active': {
+              background: 'var(--color-accent-color)',
+              border: '1px solid var(--color-accent-color)',
+            }
           }
         }
       }} />
