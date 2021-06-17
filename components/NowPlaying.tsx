@@ -55,7 +55,7 @@ export default function NowPlaying() {
     background: 'linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.5518867924528301) 100%)',
     '@media(max-width: 480px)': {
       height: 350,
-      background: 'linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.5518867924528301) 200%)',
+      background: 'linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.5518867924528301) 75%)',
     },
   })
   const styleNowPlayingTrack = css({
@@ -150,7 +150,6 @@ export default function NowPlaying() {
               src={data?.albumImageUrl}
               layout="fill"
               objectFit="cover"
-              objectPosition="0 33.3%"
             /> ) : null }
           </div>
           <div className="nowPlayingStatus">
