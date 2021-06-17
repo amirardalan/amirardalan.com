@@ -193,12 +193,12 @@ export const footer = {
       title: 'Next.js',
     },
     {
-      path: 'https://emotion.sh/',
-      title: 'Emotion',
-    },
-    {
       path: 'https://www.prisma.io/',
       title: 'Prisma',
+    },
+    {
+      path: 'https://swr.vercel.app/',
+      title: 'SWR',
     },
   ],
   social: [
