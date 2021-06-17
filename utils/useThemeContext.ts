@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
 
+
+// Theme context for theme-specific non-CSS
 export const useThemeContext= () => {
   const [theme, setTheme] = useState(null)
   const setMode = (mode : string) => {

@@ -1,11 +1,7 @@
 import { useState, useEffect, useCallback } from 'react'
 
-// Device Width MediaQuery
 
-// Usage:
-// const isBreakpoint = useMediaQuery(890)
-// { ( isBreakpoint ) ? null : <SomeComponent /> }
-
+// Usage: const isBreakpoint = useMediaQuery(890)
 export const useMediaQuery = (width : Number) => {
   const [targetReached, setTargetReached] = useState(false)
 

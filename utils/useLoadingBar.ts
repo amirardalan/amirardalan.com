@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
 import Router from 'next/router'
 
-export const useLoadingBar = () => {
 
-  // Show loading indicator on router events
+// Show loading indicator on router events
+export const useLoadingBar = () => {
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
