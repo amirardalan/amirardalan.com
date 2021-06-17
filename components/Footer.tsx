@@ -53,7 +53,8 @@ export default function Footer() {
       textDecoration: 'none',
       color: 'var(--color-bg)',
       '&.externalLink:after': {
-        background: 'var(--icon-external-link-footer) no-repeat',
+        background: 'var(--icon-external-link) no-repeat',
+        backgroundSize: '100%'
       },
     },
     h5: {
