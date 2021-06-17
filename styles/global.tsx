@@ -326,7 +326,7 @@ export function GlobalStyles () {
             content: '""',
             background: 'var(--icon-external-link) no-repeat',
             backgroundSize: '100%',
-            height: 16,
+            height: 17,
             width: 16,
             alignSelf: 'center',
             marginLeft: '.5rem',

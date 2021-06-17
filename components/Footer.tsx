@@ -49,13 +49,17 @@ export default function Footer() {
     },
     'a': {
       display: 'flex',
-      width: 'max-content',
+      flexWrap: 'wrap',
+      width: 'fit-content',
       alignItems: 'baseline',
       textDecoration: 'none',
       color: 'var(--color-bg)',
       '&.externalLink:after': {
         background: 'var(--icon-external-link) no-repeat',
-        backgroundSize: '100%'
+        backgroundSize: '100%',
+        height: 14,
+        width: 14,
+
       },
     },
     h5: {
