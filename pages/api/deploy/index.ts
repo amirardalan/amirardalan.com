@@ -1,6 +1,5 @@
 // DEPLOY /api/deploy
 import { NextApiRequest, NextApiResponse } from 'next'
-import axios from "axios"
 
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
@@ -10,12 +9,11 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     return res.status(401).json({ message: 'Invalid token' })
   }
 
-  await axios
-    .get(url)
-    .then(({ data }) => {
-      res.status(200).json({ data })
+  await fetch(url)
+    .then((data) => {
+      res.status(200).json(data)
     })
-    .catch(({ err }) => {
-      res.status(400).json({ err })
+    .catch((err) => {
+      res.status(400).json(err)
     })
 }

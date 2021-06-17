@@ -90,9 +90,9 @@ export default function Footer() {
   const generateFooterLinks = (items: Array<any>) => {
     return items.map((items, i) => {
       return (
-        <li>
+        <li key={i}>
           <a
-            key={i}
+            key={items.title}
             href={items.path}
             aria-label={items.title}
             target='_blank'

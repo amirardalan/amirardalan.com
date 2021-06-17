@@ -3,7 +3,6 @@ import { Global, css } from '@emotion/react'
 import { signOut, useSession } from 'next-auth/client'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
-import axios from "axios"
 import LoadingSpinner from './LoadingSpinner'
 
 const BlogAdmin: React.FC =  React.memo(()=> {
@@ -25,10 +24,9 @@ const BlogAdmin: React.FC =  React.memo(()=> {
     }, 85000)
   }
   async function deployNewBuild(): Promise<void> {
-    axios.get(`/api/deploy?secret=${process.env.NEXT_PUBLIC_DEPLOY_TOKEN}`).then(response => {
-      console.log(response.data.data.job)
+    fetch(`/api/deploy?secret=${process.env.NEXT_PUBLIC_DEPLOY_TOKEN}`).then(response => {
       showDeployLoader()
-      axios.get(`/api/preview/exit-preview?secret=${process.env.NEXT_PUBLIC_PREVIEW_TOKEN}`)
+      fetch(`/api/preview/exit-preview?secret=${process.env.NEXT_PUBLIC_PREVIEW_TOKEN}`)
       router.push('/blog')
     })
     .catch(err => {

@@ -14,7 +14,6 @@
     "@prisma/client": "^2.23.0",
     "@react-three/fiber": "^6.1.5",
     "@types/three": "^0.128.0",
-    "axios": "^0.21.1",
     "globby": "^11.0.3",
     "leva": "^0.9.10",
     "next": "^11.0.0",
