@@ -41,6 +41,7 @@ export default function Footer() {
       marginBottom: '1rem',
       '@media(max-width: 480px)': {
         marginBottom: 0,
+        lineHeight: '3rem',
       },
     },
     'a': {
@@ -70,7 +71,7 @@ export default function Footer() {
     '.nowPlaying': {
       paddingTop: '.2rem',
       lineHeight: '1.3rem',
-    }
+    },
   })
   const styleFooterLogo = css({
     display: 'flex',

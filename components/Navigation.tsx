@@ -120,6 +120,9 @@ export default function Navigation() {
       paddingRight: '2.5rem',
       alignItems: 'flex-end',
       lineHeight: '3rem',
+      'a.spotify': {
+        marginTop: '.5rem',
+      }
     },
     'a.spotify': {
       backgroundImage: 'var(--icon-spotify)',
@@ -129,7 +132,7 @@ export default function Navigation() {
         backgroundSize: '100%',
         height: 40,
         width: 40,
-        marginTop: '.75rem',
+        marginTop: '1rem',
         '&::before': {
           top: '-.75rem'
         }
