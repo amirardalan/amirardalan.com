@@ -137,10 +137,11 @@ export default function About({ data }) {
   })
   const styleSocialIcons = css({
     display: 'flex',
-    justifyContent: 'space-evenly',
+    justifyContent: 'center',
     alignItems: 'center',
     li: {
       flexDirection: 'row',
+      margin: '0 1rem'
     }
   })
 
