@@ -144,7 +144,7 @@ const Post = ({ post, feed, data }) => {
           <div className="postDetails" aria-label={`${editDate} • ${postReadTime}`}>
             <div className="author">
               <span className="avatar">
-                <Avatar height="15" width="15" />
+                <Avatar height="18" width="18" />
               </span>
               {post?.author?.name || 'Unknown author'}
             </div>
