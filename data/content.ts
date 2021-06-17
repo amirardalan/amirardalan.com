@@ -162,7 +162,7 @@ export const spotify = {
     toptracks: 'Top Tracks',
   },
   status: {
-    online: 'Now playing:',
+    online: 'Now playing',
     offline: 'Currently Offline'
   }
 }

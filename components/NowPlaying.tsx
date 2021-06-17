@@ -24,8 +24,8 @@ export default function NowPlaying() {
     '.nowPlayingStatus': {
       zIndex: 2,
       position: 'absolute',
-      top: '2rem',
-      left: '2rem',
+      top: '1.5rem',
+      left: '1.5rem',
       color: '#eee',
       fontSize: 12,
       textTransform: 'uppercase',
@@ -34,7 +34,8 @@ export default function NowPlaying() {
       height: 350,
       '.nowPlayingStatus': {
         margin: '0 auto',
-        top: '2rem',
+        // top: 'unset',
+        // bottom: '1rem',
         left: '-50%',
         right: '-50%',
         textAlign: 'center',
@@ -44,7 +45,7 @@ export default function NowPlaying() {
   })
   const styleNowPlayingInner = css({
     display: 'flex',
-    padding: '2rem',
+    padding: '1.5rem',
     height: 200,
     width: '100%',
     alignItems: 'center',
@@ -55,7 +56,7 @@ export default function NowPlaying() {
     background: 'linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.5518867924528301) 100%)',
     '@media(max-width: 480px)': {
       height: 350,
-      background: 'linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.5518867924528301) 75%)',
+      background: 'linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.5518867924528301) 85%)',
     },
   })
   const styleNowPlayingTrack = css({
@@ -65,7 +66,7 @@ export default function NowPlaying() {
     flexDirection: 'row',
     alignItems: 'flex-end',
     '@media(max-width: 480px)': {
-      marginTop: '1.5rem',
+      marginTop: '1.8rem',
       lineHeight: '.8rem',
       flexDirection: 'column-reverse',
       alignItems: 'center',
@@ -75,6 +76,7 @@ export default function NowPlaying() {
   const styleTrackText = css({
     display: 'flex',
     flexDirection: 'column',
+    paddingRight: '.5rem',
   
     '.title, .artist': {
       margin: 0,
@@ -109,6 +111,7 @@ export default function NowPlaying() {
       WebkitMarqueeIncrement: '0vw',
     },
     '@media(max-width: 480px)': {
+      paddingRight: 'unset',
       lineHeight: '1.5rem',
       margin: '1rem 0',
       alignItems: 'center',
@@ -141,67 +144,66 @@ export default function NowPlaying() {
 
 
   return (
-    <>
-      <div css={styleNowPlayingContainer}>
-        <div css={styleNowPlaying}>
-          <div css={styleNowPlayingBackground}>
+
+    <div css={styleNowPlayingContainer}>
+      <div css={styleNowPlaying}>
+        <div css={styleNowPlayingBackground}>
+        {isOnline ? (
+          <Image
+            src={data?.albumImageUrl}
+            layout="fill"
+            objectFit="cover"
+          /> ) : null }
+        </div>
+        <div className="nowPlayingStatus">
           {isOnline ? (
-            <Image
-              src={data?.albumImageUrl}
-              layout="fill"
-              objectFit="cover"
-            /> ) : null }
-          </div>
-          <div className="nowPlayingStatus">
-            {isOnline ? (
-            <p>
-              <Equalizer /> {spotify.status.online}
-            </p>)
-            : (
-            <p>
-              {spotify.status.offline}
-            </p>
-            )}
-          </div>
-          <div css={styleNowPlayingInner}>
-          {isOnline ? (
-            <>
-              <div css={styleNowPlayingTrack}>
-                <span css={styleTrackText}>
-                  <a
-                    href={data.songUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="title"
-                  >
-                  {data.title}
-                  </a>
-                  <p className="artist">
-                    {data.artist}
-                  </p>
-                </span>
-                <span>
-                  <Image
-                    src={data?.albumImageUrl}
-                    height="150"
-                    width="150"
-                    alt={data.title}
-                  />
-                </span>
-              </div>
-            </>
-          ) : (
-            <div css={styleNowPlayingTrack}>
-            <span css={styleTrackText}>
-              <span className="loadingTitle"></span>
-              <span className="loadingArtist"></span>
-            </span>
-            <div css={styleImageOffline} />
-          </div>
+          <span>
+            <Equalizer /> {spotify.status.online}
+          </span>)
+          : (
+          <span>
+            {spotify.status.offline}
+          </span>
           )}
-          </div>
+        </div>
+        <div css={styleNowPlayingInner}>
+        {isOnline ? (
+          <>
+            <div css={styleNowPlayingTrack}>
+              <span css={styleTrackText}>
+                <a
+                  href={data.songUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="title"
+                >
+                {data.title}
+                </a>
+                <p className="artist">
+                  {data.artist}
+                </p>
+              </span>
+              <span css={{lineHeight: 0}}>
+                <Image
+                  src={data?.albumImageUrl}
+                  height="150"
+                  width="150"
+                  alt={data.title}
+                />
+              </span>
+            </div>
+          </>
+        ) : (
+          <div css={styleNowPlayingTrack}>
+          <span css={styleTrackText}>
+            <span className="loadingTitle"></span>
+            <span className="loadingArtist"></span>
+          </span>
+          <div css={styleImageOffline} />
+        </div>
+        )}
         </div>
       </div>
-    </>
+    </div>
   )
 }
