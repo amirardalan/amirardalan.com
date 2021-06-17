@@ -319,10 +319,6 @@ export function GlobalStyles () {
               background: 'var(--color-text)',
               border: '1px solid transparent',
             },
-            '&:active': {
-              background: 'var(--color-accent-color)',
-              border: '1px solid var(--color-accent-color)',
-            }
           }
         }
       }} />
