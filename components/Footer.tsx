@@ -36,10 +36,10 @@ export default function Footer() {
     fontFamily: 'var(--font-secondary)',
     fontSize: 16,
     color: 'var(--color-bg)',
-    lineHeight: '1.8em',
+    lineHeight: '2.2em',
     '.grid': {
       marginBottom: '1rem',
-      '@media(max-width: 480px)': {
+      '@media(max-width: 890px)': {
         marginBottom: 0,
         lineHeight: '3rem',
       },
@@ -49,15 +49,9 @@ export default function Footer() {
       color: 'var(--color-bg)',
       '&.spotify': {
         display: 'none',
-        height: 20,
-        width: 20,
-        marginTop: '.5rem',
-        background: 'var(--icon-spotify-footer) no-repeat',
-        backgroundSize: 20,
-      }
+      },
     },
     h5: {
-      // width: '90%',
       marginBottom: '1rem',
       paddingBottom: '1rem',
       lineHeight: '1rem',
@@ -69,8 +63,11 @@ export default function Footer() {
       }
     },
     '.nowPlaying': {
-      paddingTop: '.2rem',
+      paddingTop: '.4rem',
       lineHeight: '1.3rem',
+      '@media(max-width: 890px)': {
+        paddingTop: '.8rem',
+      }
     },
   })
   const styleFooterLogo = css({
