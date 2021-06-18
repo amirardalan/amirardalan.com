@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import { css } from '@emotion/react'
 import Typed from 'typed.js'
 
 // Console Tag
@@ -14,35 +13,6 @@ Design & Code by Amir Ardalan
 `)
 
 const TypingAnimation = ({ data }) => {
-
-  const styleTypedText = css({
-    marginBottom: '3rem',
-    fontSize: 'calc(.9vw + .9vh)',
-    WebkitMarqueeIncrement: '0vw',
-    fontWeight: 'normal',
-    color: 'var(--color-gray)',
-    '@media (max-width: 890px)': {
-      fontSize: 'calc(1.2vw + 1.2vh)',
-      WebkitMarqueeIncrement: '0vw',
-    } 
-  })
-  const styleCodeComment = css({
-    color: 'var(--color-accent-gray)',
-    fontStyle: 'italic',
-    '&:before': {
-      content: '"  "',
-      whiteSpace: 'pre',
-      color: 'var(--color-gray)',
-    }
-  })
-  const styleCodeBody = css({
-    color: 'var(--color-text)',
-    '&:before': {
-      content: '"  return "',
-      whiteSpace: 'pre',
-      color: 'var(--color-gray)',
-    }
-  })
     
   useEffect(() => {
 
@@ -65,20 +35,7 @@ const TypingAnimation = ({ data }) => {
 
   }, [])
 
-    return (
-      <div css={styleTypedText} aria-hidden="true">
-        <div>
-          {data.heading}
-        </div>
-        <div css={styleCodeComment}>
-          {data.line2}
-        </div>
-        <div css={styleCodeBody}>
-          <span className='typingAnimation'></span>
-        </div>
-        {data.end}
-      </div>
-    )
+    return <span className='typingAnimation'></span>
 }
 
 export default TypingAnimation

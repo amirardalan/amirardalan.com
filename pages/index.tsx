@@ -93,6 +93,34 @@ export default function Home({ data, latestPost }) {
       minHeight: '0vw',
     }
   })
+  const styleTypedText = css({
+    marginBottom: '3rem',
+    fontSize: 'calc(.9vw + .9vh)',
+    WebkitMarqueeIncrement: '0vw',
+    fontWeight: 'normal',
+    color: 'var(--color-gray)',
+    '@media (max-width: 890px)': {
+      fontSize: 'calc(1.2vw + 1.2vh)',
+      WebkitMarqueeIncrement: '0vw',
+    } 
+  })
+  const styleCodeComment = css({
+    color: 'var(--color-accent-gray)',
+    fontStyle: 'italic',
+    '&:before': {
+      content: '"  "',
+      whiteSpace: 'pre',
+      color: 'var(--color-gray)',
+    }
+  })
+  const styleCodeBody = css({
+    color: 'var(--color-text)',
+    '&:before': {
+      content: '"  return "',
+      whiteSpace: 'pre',
+      color: 'var(--color-gray)',
+    }
+  })
   const styleButtonContainer = css({
     marginBottom: '1rem',
     display: 'flex',
@@ -142,7 +170,18 @@ export default function Home({ data, latestPost }) {
                   {data.title}
                 </div>
               </h2>
-                <TypingAnimation data={data.typed} />
+              <div css={styleTypedText} aria-hidden="true">
+                <div>
+                  {data.typed.heading}
+                </div>
+                <div css={styleCodeComment}>
+                  {data.typed.line2}
+                </div>
+                <div css={styleCodeBody}>
+                  <TypingAnimation data={data.typed} />
+                </div>
+                {data.typed.end}
+              </div>
               <div css={styleButtonContainer}>
                 {generateCtaButtons(home.items)}
               </div>
