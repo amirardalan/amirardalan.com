@@ -111,7 +111,7 @@ export default function About({ data }) {
   const styleCtaWrapper = css({
     display: 'flex',
     flexDirection: 'row',
-    '@media(max-width: 768px)': {
+    '@media(max-width: 350px)': {
       flexDirection: 'column',
     }
   })
