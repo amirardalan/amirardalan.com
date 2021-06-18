@@ -67,7 +67,7 @@ export const about = {
   },
   heading: 'About Me',
   social: {
-    title: 'Social',
+    title: 'Social:',
     items: [
       {
         path: 'https://github.com/amirardalan',
@@ -155,7 +155,7 @@ export const about = {
   contact: {
     title: 'Contact:',
     email: 'hi@amirardalan.com',
-    showEmail: 'Show Email',
+    showEmail: 'Show Email Address',
     copiedToClipboard: 'Copied to clipboard ✓',
     items: [
       {
