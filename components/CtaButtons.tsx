@@ -50,6 +50,9 @@ export const generateCtaButtons = (items: Array<any>) => {
             fontWeight: 400,
             textDecoration: 'none',
             cursor: 'pointer',
+            '&:first-of-type': {
+              marginLeft: 0,
+            },
             '&:only-of-type': {
               margin: 0,
             },
@@ -80,6 +83,7 @@ export const generateCtaButtons = (items: Array<any>) => {
             '@media(max-width: 1440px)': {
               '.grid &': {
                 width: '100%',
+                margin: '0 0 1rem 0',
               },
             },
             '@media(max-width: 1024px)': {

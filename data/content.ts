@@ -161,7 +161,7 @@ export const about = {
     items: [
       {
         path: 'https://twitter.com/messages/compose?recipient_id=23831468',
-        title: 'Twitter DM',
+        title: 'Twitter',
         rel: 'noopener noreferrer',
         target: '_blank',
         handle: '@amirardalan',
