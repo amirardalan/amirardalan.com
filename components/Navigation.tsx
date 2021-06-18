@@ -1,10 +1,13 @@
-import { css } from '@emotion/react'
+import { css, useTheme } from '@emotion/react'
 import { useState } from 'react'
 import Link from '@/components/Link'
 import Logo from '@/components/Logo'
 import { nav } from '@/data/navigation'
+import Image from 'next/image'
 
 export default function Navigation() {
+  const theme: any = useTheme()
+  const isDarkTheme = theme.active === 'dark'
   
   const styleMainNav = css({
     display: 'flex',
@@ -99,6 +102,16 @@ export default function Navigation() {
           left: -10,
         }
       },
+      '.navIcon': {
+        height: 20,
+        width: 20,
+        lineHeight: 0,
+        '@media(max-width: 768px)': {
+          marginTop: '.6rem',
+          height: 45,
+          width: 45,
+        }
+      },
       '@media (max-width: 768px)': {
         '&.active': {
           '&::before': {
@@ -122,20 +135,6 @@ export default function Navigation() {
       lineHeight: '3rem',
       'a.spotifyNav': {
         marginTop: '.5rem',
-      }
-    },
-    'a.spotifyNav': {
-      backgroundImage: 'var(--icon-spotify)',
-      height: 20,
-      width: 20,
-      '@media(max-width: 768px)': {
-        backgroundSize: '100%',
-        height: 40,
-        width: 40,
-        marginTop: '1rem',
-        '&::before': {
-          top: '-.75rem'
-        }
       }
     },
   })
@@ -184,11 +183,23 @@ export default function Navigation() {
   // Generate Nav Items
   const NavItems = () => (
     <nav css={styleNavItems}>
-      {nav.map((item: any, index: number) => {
+      {nav.map((items: any, index: number) => {
         return (
-          <Link href={item.path} activeClassName="active" exact={item.exact} as="" key={index}>
-            <a onClick={toggleMobileNav ? toggleMenu : null} className={item.cName} aria-label={item.aria}>
-              {item.title}
+          <Link href={items.path} activeClassName="active" exact={items.exact} as="" key={index}>
+            <a onClick={toggleMobileNav ? toggleMenu : null} className={items.cName} aria-label={items.aria}>
+              {items.icon
+                ?
+                  <div className="navIcon">
+                    <Image
+                      src={isDarkTheme
+                        ? items.icon.dark
+                        : items.icon.light}
+                      height="100%"
+                      width="100%"
+                      alt={items.title}
+                    />
+                  </div>
+                : items.title}
             </a>
           </Link>
         )}
