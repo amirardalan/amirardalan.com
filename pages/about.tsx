@@ -40,7 +40,7 @@ export default function About({ data }) {
     gridTemplateColumns: 'repeat(3, 1fr)',
     gap: 20,
     gridAutoRows: 'minmax(100px, auto)',
-    '@media(max-width: 890px)': {
+    '@media(max-width: 1200px)': {
       gridTemplateColumns: 'repeat(2, 1fr)',
     },
     '@media(max-width: 600px)': {
@@ -77,6 +77,7 @@ export default function About({ data }) {
           marginBottom: '1rem',
           display: 'inline-block',
           fontFamily: 'var(--font-tertiary)',
+          fontSize: 15,
           maxWidth: 450,
           lineHeight: '1.2rem',
         },
@@ -110,7 +111,9 @@ export default function About({ data }) {
   const styleCtaWrapper = css({
     display: 'flex',
     flexDirection: 'row',
-    flexWrap: 'wrap',
+    '@media(max-width: 768px)': {
+      flexDirection: 'column',
+    }
   })
   const styleSocialIconsWrapper = css({
     width: '100%',

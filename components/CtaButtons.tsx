@@ -36,7 +36,7 @@ export const generateCtaButtons = (items: Array<any>) => {
           '.ctaButton': {
             minWidth: 128,
             minHeight: 45,
-            marginRight: '1rem',
+            marginRight: '.8rem',
             marginBottom: '1rem',
             padding: '.5rem 1rem',
             display: 'flex',
@@ -47,7 +47,7 @@ export const generateCtaButtons = (items: Array<any>) => {
             border: '1px solid transparent',
             borderRadius: 8,
             color: 'var(--color-bg)',
-            fontSize: 15,
+            fontSize: 16,
             fontWeight: 400,
             textDecoration: 'none',
             cursor: 'pointer',
@@ -89,6 +89,10 @@ export const generateCtaButtons = (items: Array<any>) => {
                 background: 'var(--color-text)',
                 border: '1px solid transparent',
               },
+            },
+            '@media(max-width: 768px)': {
+              marginRight: 0,
+              maxWidth: 'unset',
             },
             '@media(max-width: 480px)': {
               maxWidth: 'unset',
