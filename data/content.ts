@@ -1,3 +1,24 @@
+const icon = {
+  light :{
+    github: '/icons/github-light.svg',
+    twitter: '/icons/twitter-light.svg',
+    linkedin: '/icons/linkedin-light.svg',
+    spotify: '/icons/spotify-light.svg',
+    download: '/icons/download-light.svg',
+    external: '/icons/external-link-light.svg',
+    error: '/icons/error-light.svg',
+  },
+  dark: {
+    github: '/icons/github-dark.svg',
+    twitter: '/icons/twitter-dark.svg',
+    linkedin: '/icons/linkedin-dark.svg',
+    spotify: '/icons/spotify-dark.svg',
+    download: '/icons/download-dark.svg',
+    external: '/icons/external-link-dark.svg',
+    error: '/icons/error-dark.svg',
+  }
+}
+
 export const home = {
   meta: {
     title: 'Amir Ardalan – Developer, Designer, Writer',
@@ -69,17 +90,29 @@ export const about = {
       {
         path: 'https://github.com/amirardalan',
         title: 'GitHub',
-        cName: 'iconGithub'
+        cName: 'iconGithub icon',
+        icon: {
+          light: icon.light.github,
+          dark: icon.dark.github
+        },
       },
       {
         path: 'https://twitter.com/amirardalan',
         title: 'Twitter',
-        cName: 'iconTwitter'
+        cName: 'iconTwitter icon',
+        icon: {
+          light: icon.light.twitter,
+          dark: icon.dark.twitter
+        },
       },
       {
         path: 'https://linkedin.com/in/amirardalan',
         title: 'LinkedIn',
-        cName: 'iconLinkedin'
+        cName: 'iconLinkedin icon',
+        icon: {
+          light: icon.light.linkedin,
+          dark: icon.dark.linkedin
+        },
       },
     ]
   },
@@ -93,14 +126,16 @@ export const about = {
         title: 'Resume',
         rel: 'noopener noreferrer',
         target: '_blank',
-        cName: 'ctaButton download',
+        icon: {
+          light: icon.light.download,
+          dark: icon.dark.download,
+        },
       },
       {
         path: '/blog/2021-a-dev-odyssey',
         title: 'Journey',
         rel: '',
         target: '_self',
-        cName: 'ctaButton',
       },
     ],
   },
@@ -147,7 +182,10 @@ export const about = {
         rel: 'noopener noreferrer',
         target: '_blank',
         handle: '@amirardalan',
-        cName: 'ctaButton externalLink'
+        icon: {
+          light: icon.light.external,
+          dark: icon.dark.external
+        },
       },
     ],
   },
@@ -193,34 +231,52 @@ export const footer = {
     {
       path: 'https://nextjs.org/',
       title: 'Next.js',
-      cName: 'externalLink'
+      icon: {
+        light: icon.light.external,
+        dark: icon.dark.external
+      },
     },
     {
       path: 'https://www.prisma.io/',
       title: 'Prisma',
-      cName: 'externalLink'
+      icon: {
+        light: icon.light.external,
+        dark: icon.dark.external
+      },
     },
     {
       path: 'https://swr.vercel.app/',
       title: 'SWR',
-      cName: 'externalLink'
+      icon: {
+        light: icon.light.external,
+        dark: icon.dark.external
+      },
     },
   ],
   social: [
     {
       path: 'https://github.com/amirardalan',
       title: 'GitHub',
-      cName: 'externalLink'
+      icon: {
+        light: icon.light.external,
+        dark: icon.dark.external
+      },
     },
     {
       path: 'https://twitter.com/amirardalan',
       title: 'Twitter',
-      cName: 'externalLink'
+      icon: {
+        light: icon.light.external,
+        dark: icon.dark.external
+      },
     },
     {
       path: 'https://linkedin.com/in/amirardalan',
       title: 'LinkedIn',
-      cName: 'externalLink'
+      icon: {
+        light: icon.light.external,
+        dark: icon.dark.external
+      },
     },
   ],
   copyright: {

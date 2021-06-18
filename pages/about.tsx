@@ -1,6 +1,7 @@
 import { css, useTheme } from '@emotion/react'
 import { useState } from 'react'
 
+import Image from 'next/image'
 import Head from 'next/head'
 import Avatar from '@/components/Avatar'
 
@@ -17,6 +18,7 @@ export const getStaticProps: GetStaticProps = async () => {
 export default function About({ data }) {
 
   const theme: any = useTheme()
+  const isDarkTheme = theme.active === 'dark'
 
   const [showEmail, setShowEmail] = useState(false)
   const showEmailOnclick = () => {
@@ -161,13 +163,26 @@ export default function About({ data }) {
         <a
           key={i}
           href={items.path}
+          className="ctaButton"
           aria-label={items.title}
           target={items.target}
           rel={items.rel}
-          className={items.cName}
           data-screen-name={items?.screenname}
           >
             {items.title}
+            {items.icon ?
+            <span className="icon">
+              <Image
+                src={isDarkTheme
+                  ? items.icon?.dark
+                  : items.icon?.light}
+                height="18"
+                width="18"
+                alt={items.title}
+                aria-label={items.title}
+              />
+            </span>
+            : null}
         </a>
       )
     })
@@ -182,8 +197,16 @@ export default function About({ data }) {
             target="_blank"
             rel="noreferrer noopener"
             aria-label={items.title}
-            className={items.cName}
           >
+            <Image
+              src={isDarkTheme
+                ? items.icon.dark
+                : items.icon.light}
+              height="48"
+              width="48"
+              alt={items.title}
+              aria-label={items.title}
+            />
           </a>
         </li>
       )

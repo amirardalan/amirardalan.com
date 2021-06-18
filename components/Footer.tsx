@@ -8,6 +8,7 @@ import NowPlayingCompact from '@/components/NowPlayingCompact'
 
 export default function Footer() {
   const theme: any = useTheme()
+  const isDarkTheme = theme.active === 'dark'
 
   const styleFooterWrapper = css({
     marginTop: '6rem',
@@ -51,15 +52,12 @@ export default function Footer() {
       display: 'flex',
       flexWrap: 'wrap',
       width: 'fit-content',
-      alignItems: 'baseline',
+      alignItems: 'center',
       textDecoration: 'none',
       color: 'var(--color-bg)',
-      '&.externalLink:after': {
-        background: 'var(--icon-external-link) no-repeat',
-        backgroundSize: '100%',
-        height: 13,
-        width: 13,
-
+      '.icon': {
+        marginLeft: '.2rem',
+        lineHeight: 0,
       },
     },
     h5: {
@@ -111,6 +109,17 @@ export default function Footer() {
             className={items?.cName}
           >
             {items.title}
+            <span className="icon">
+              <Image
+                src={isDarkTheme
+                  ? items.icon?.dark
+                  : items.icon?.light}
+                height="18"
+                width="18"
+                alt={items.title}
+                aria-label={items.title}
+              />
+            </span>
           </a>
         </li>
       )

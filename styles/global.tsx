@@ -249,6 +249,9 @@ export function GlobalStyles () {
         'button, input, textarea': {
           fontFamily: 'var(--font-primary)'
         },
+        '.icon': {
+          WebkitTransformStyle: 'preserve-3d',
+        },
         '#leva__root': {
           display: 'none'
         }
@@ -322,24 +325,9 @@ export function GlobalStyles () {
               border: '1px solid var(--color-button-disabled)',
             },
           },
-          '&.externalLink:after': {
-            content: '""',
-            background: 'var(--icon-external-link) no-repeat',
-            backgroundSize: '100%',
-            height: 17,
-            width: 16,
-            alignSelf: 'center',
-            marginLeft: '.5rem',
-            marginBottom: '.2rem'
-          },
-          '&.download:after': {
-            content: '""',
-            background: 'var(--icon-download) no-repeat',
-            backgroundSize: '100%',
-            height: 20,
-            width: 20,
-            alignSelf: 'center',
-            marginLeft: '.3rem',
+          '.icon': {
+            marginLeft: '.4rem',
+            lineHeight: 0,
           },
           '@media(max-width: 1024px)': {
             '&:hover': {
