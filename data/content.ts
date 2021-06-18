@@ -8,7 +8,7 @@ export const home = {
   title: 'Amir Ardalan',
   typed: {
     heading: `interests => {`,
-    line2: `// TODO: Learn more`,
+    line2: `// TODO: learn more`,
     items: [
       `'Next.js / React'^1500`,
       `'TypeScript / JavaScript'^1500`,

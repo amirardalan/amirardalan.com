@@ -26,6 +26,23 @@ const TypingAnimation = ({ data }) => {
       WebkitMarqueeIncrement: '0vw',
     } 
   })
+  const styleCodeComment = css({
+    color: 'var(--color-accent-gray)',
+    fontStyle: 'italic',
+    '&:before': {
+      content: '"  "',
+      whiteSpace: 'pre',
+      color: 'var(--color-gray)',
+    }
+  })
+  const styleCodeBody = css({
+    color: 'var(--color-text)',
+    '&:before': {
+      content: '"  return "',
+      whiteSpace: 'pre',
+      color: 'var(--color-gray)',
+    }
+  })
     
   useEffect(() => {
 
@@ -53,24 +70,10 @@ const TypingAnimation = ({ data }) => {
         <div>
           {data.heading}
         </div>
-        <div css={{
-          color: 'var(--color-accent-gray)',
-          '&:before': {
-            content: '"  "',
-            whiteSpace: 'pre',
-            color: 'var(--color-gray)',
-          }
-        }}>
+        <div css={styleCodeComment}>
           {data.line2}
         </div>
-        <div css={{
-          color: 'var(--color-text)',
-          '&:before': {
-            content: '"  return "',
-            whiteSpace: 'pre',
-            color: 'var(--color-gray)',
-          }
-        }}>
+        <div css={styleCodeBody}>
           <span className='typingAnimation'></span>
         </div>
         {data.end}
