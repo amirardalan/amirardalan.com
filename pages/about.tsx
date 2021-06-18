@@ -5,6 +5,8 @@ import Image from 'next/image'
 import Head from 'next/head'
 import Avatar from '@/components/Avatar'
 
+import { generateCtaButtons } from '@/components/CtaButtons'
+
 import { about } from '@/data/content'
 import { GetStaticProps } from 'next'
 export const getStaticProps: GetStaticProps = async () => {
@@ -153,37 +155,6 @@ export default function About({ data }) {
         <li key={i}>
           {items}
         </li>
-      )
-    })
-  }
-
-  const generateCtaButtons = (items: Array<any>) => {
-    return items.map((items, i) => {
-      return (
-        <a
-          key={i}
-          href={items.path}
-          className="ctaButton"
-          aria-label={items.title}
-          target={items.target}
-          rel={items.rel}
-          data-screen-name={items?.screenname}
-          >
-            {items.title}
-            {items.icon ?
-            <span className="icon">
-              <Image
-                src={isDarkTheme
-                  ? items.icon?.dark
-                  : items.icon?.light}
-                height="18"
-                width="18"
-                alt={items.title}
-                aria-label={items.title}
-              />
-            </span>
-            : null}
-        </a>
       )
     })
   }
