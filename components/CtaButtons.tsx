@@ -36,8 +36,9 @@ export const generateCtaButtons = (items: Array<any>) => {
           '.ctaButton': {
             minWidth: 128,
             minHeight: 45,
-            margin: '0 .5rem 1rem',
-            padding: '.5rem 1.4rem',
+            marginRight: '.5rem',
+            marginBottom: '1rem',
+            padding: '.5rem 1rem',
             display: 'flex',
             flexDirection: 'row',
             justifyContent: 'center',
@@ -52,6 +53,9 @@ export const generateCtaButtons = (items: Array<any>) => {
             cursor: 'pointer',
             '&:first-of-type': {
               marginLeft: 0,
+            },
+            '&:last-of-type': {
+              marginRight: 0,
             },
             '&:only-of-type': {
               margin: 0,
@@ -80,18 +84,16 @@ export const generateCtaButtons = (items: Array<any>) => {
               marginLeft: '.4rem',
               lineHeight: 0,
             },
-            '@media(max-width: 1440px)': {
-              '.grid &': {
-                width: '100%',
-                margin: '0 0 1rem 0',
-              },
-            },
             '@media(max-width: 1024px)': {
               '&:hover': {
                 background: 'var(--color-text)',
                 border: '1px solid transparent',
               },
             },
+            '@media(max-width: 360px)': {
+              marginRight: 0,
+              width: '100%',
+            }
           }
         }}/>
       </>

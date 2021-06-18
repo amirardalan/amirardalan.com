@@ -40,7 +40,7 @@ export default function About({ data }) {
     gridTemplateColumns: 'repeat(3, 1fr)',
     gap: 20,
     gridAutoRows: 'minmax(100px, auto)',
-    '@media(max-width: 890px)': {
+    '@media(max-width: 1200px)': {
       gridTemplateColumns: 'repeat(2, 1fr)',
     },
     '@media(max-width: 600px)': {
@@ -56,10 +56,10 @@ export default function About({ data }) {
         fontFamily: 'var(--font-secondary)'
       },
       '@media (max-width: 1200px)': {
-        padding: '2rem',
+        padding: '1.5rem',
       },
       '@media (max-width: 480px)': {
-        padding: '1rem',
+        padding: '1.5rem',
       },
       ul: {
         width: '100%',
@@ -68,7 +68,6 @@ export default function About({ data }) {
         marginBottom: '.5rem',
         color: 'var(--color-gray)',
         fontSize: 14,
-        textAlign: 'center',
         strong: {
           color: 'var(--color-text)',
           fontFamily: 'var(--font-secondary)',
@@ -78,8 +77,9 @@ export default function About({ data }) {
           marginBottom: '1rem',
           display: 'inline-block',
           fontFamily: 'var(--font-tertiary)',
+          fontSize: 16,
           maxWidth: 450,
-          lineHeight: '1.2rem',
+          lineHeight: '1.5rem',
         },
         a: {
           textDecoration: 'none'
@@ -91,7 +91,6 @@ export default function About({ data }) {
       paddingBottom: '1rem',
       fontFamily: 'var(font-secondary)',
       fontSize: 25,
-      textAlign: 'center',
       borderBottom: '2px solid var(--color-accent-color)',
     },
     '.iconGithub, .iconTwitter, .iconLinkedin': {
@@ -111,11 +110,11 @@ export default function About({ data }) {
   })
   const styleCtaWrapper = css({
     display: 'flex',
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '100%',
+    flexDirection: 'column',
+    flexFlow: 'row wrap',
+    '@media(max-width: 350px)': {
+      flexDirection: 'column',
+    }
   })
   const styleSocialIconsWrapper = css({
     width: '100%',
@@ -124,11 +123,12 @@ export default function About({ data }) {
   })
   const styleSocialIcons = css({
     display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
     li: {
       flexDirection: 'row',
-      margin: '0 1rem'
+      marginRight: '1rem',
+      '&:last-of-type': {
+        marginRight: 0,
+      }
     }
   })
 
@@ -223,7 +223,6 @@ export default function About({ data }) {
             <ul>
               <h4>{data.contact.title}</h4>
               <li css={styleCtaWrapper}>
-                {generateCtaButtons(data.contact.items)}
                 <a
                   onClick={showEmail
                     ? copyToClipboard
