@@ -100,8 +100,8 @@ export const about = {
   },
   bio: {
     heading: 'Bio:',
-    subheading: 'Developer, Designer, Writer.',
-    content: `I write code, design user interfaces, and blog about web development. I'm passionate about the art and science of interfacing humans with technology.`,
+    subheading: 'Amir Ardalan',
+    content: `Developer, Designer, Writer.`,
     items: [  
       {
         path: '/amir-ardalan-resume.pdf',

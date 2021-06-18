@@ -90,7 +90,8 @@ export const generateCtaButtons = (items: Array<any>) => {
                 border: '1px solid transparent',
               },
             },
-            '@media(max-width: 350px)': {
+            '@media(max-width: 360px)': {
+              marginRight: 0,
               width: '100%',
             }
           }

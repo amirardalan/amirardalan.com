@@ -77,9 +77,9 @@ export default function About({ data }) {
           marginBottom: '1rem',
           display: 'inline-block',
           fontFamily: 'var(--font-tertiary)',
-          fontSize: 15,
+          fontSize: 16,
           maxWidth: 450,
-          lineHeight: '1.2rem',
+          lineHeight: '1.5rem',
         },
         a: {
           textDecoration: 'none'
@@ -110,7 +110,8 @@ export default function About({ data }) {
   })
   const styleCtaWrapper = css({
     display: 'flex',
-    flexDirection: 'row',
+    flexDirection: 'column',
+    flexFlow: 'row wrap',
     '@media(max-width: 350px)': {
       flexDirection: 'column',
     }
