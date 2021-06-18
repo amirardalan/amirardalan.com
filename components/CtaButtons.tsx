@@ -1,4 +1,4 @@
-import { useTheme } from '@emotion/react'
+import { Global, useTheme } from '@emotion/react'
 import Image from 'next/image'
 
 export const generateCtaButtons = (items: Array<any>) => {
@@ -7,14 +7,15 @@ export const generateCtaButtons = (items: Array<any>) => {
 
   return items.map((items, i) => {
     return (
-      <a
-        key={i}
-        href={items.path}
-        className="ctaButton"
-        aria-label={items.title}
-        target={items?.target}
-        rel={items?.rel}
-        data-screen-name={items?.screenname}
+      <>
+        <a
+          key={i}
+          href={items.path}
+          className="ctaButton"
+          aria-label={items.title}
+          target={items?.target}
+          rel={items?.rel}
+          data-screen-name={items?.screenname}
         >
           {items.title}
           {items.icon ?
@@ -30,7 +31,66 @@ export const generateCtaButtons = (items: Array<any>) => {
             />
           </span>
           : null}
-      </a>
+        </a>
+        <Global styles={{
+          '.ctaButton': {
+            minWidth: 128,
+            minHeight: 45,
+            margin: '0 .5rem 1rem',
+            padding: '.5rem 1.4rem',
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'center',
+            alignItems: 'center',
+            background: 'var(--color-text)',
+            border: '1px solid transparent',
+            borderRadius: 8,
+            color: 'var(--color-bg)',
+            fontSize: 15,
+            fontWeight: 400,
+            textDecoration: 'none',
+            cursor: 'pointer',
+            '&:only-of-type': {
+              margin: 0,
+            },
+            'span.none': {
+              display: 'none',
+            },
+            '&:hover': {
+              background: 'var(--color-accent-color)',
+              border: '1px solid var(--color-accent-color)',
+            },
+            '&.disabled': {
+              cursor: 'pointer',
+              background: 'transparent',
+              color: 'var(--color-text)',
+              border: '1px solid var(--color-accent-gray)',
+              '&:hover': {
+                background: 'transparent',
+                border: '1px solid var(--color-accent-gray)'
+              },
+              '&:active': {
+                border: '1px solid var(--color-accent-color)'
+              },
+            },
+            '.icon': {
+              marginLeft: '.4rem',
+              lineHeight: 0,
+            },
+            '@media(max-width: 1440px)': {
+              '.grid &': {
+                width: '100%',
+              },
+            },
+            '@media(max-width: 1024px)': {
+              '&:hover': {
+                background: 'var(--color-text)',
+                border: '1px solid transparent',
+              },
+            },
+          }
+        }}/>
+      </>
     )
   })
 }

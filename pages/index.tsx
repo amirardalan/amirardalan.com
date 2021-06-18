@@ -93,7 +93,7 @@ export default function Home({ data, latestPost }) {
       } 
     },
     '.highlightText': {
-      width: 'fit-content',
+      width: 'max-content',
       padding: '0 .5rem',
       background: 'var(--color-text)',
       color: 'var(--color-bg)',

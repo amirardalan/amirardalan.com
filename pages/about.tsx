@@ -4,7 +4,6 @@ import { useState } from 'react'
 import Image from 'next/image'
 import Head from 'next/head'
 import Avatar from '@/components/Avatar'
-
 import { generateCtaButtons } from '@/components/CtaButtons'
 
 import { about } from '@/data/content'
@@ -117,22 +116,6 @@ export default function About({ data }) {
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
-    '.ctaButton': {
-      maxWidth: 280,
-      margin: '0 .5rem .5rem',
-      '&.disabled': {
-        cursor: 'pointer',
-        background: 'transparent',
-        color: 'var(--color-text)',
-        border: '1px solid var(--color-accent-gray)',
-        '&:active': {
-          border: '1px solid var(--color-accent-color)'
-        }
-      },
-      '@media(max-width: 1400px)': {
-        width: '100%',
-      },
-    },
   })
   const styleSocialIconsWrapper = css({
     width: '100%',
@@ -241,7 +224,7 @@ export default function About({ data }) {
               <h4>{data.contact.title}</h4>
               <li css={styleCtaWrapper}>
                 {generateCtaButtons(data.contact.items)}
-                <span
+                <a
                   onClick={showEmail
                     ? copyToClipboard
                     : showEmailOnclick}
@@ -253,7 +236,7 @@ export default function About({ data }) {
                     : 'Show Email'}
                 >
                   {showEmail ? data.contact.email : data.contact.showEmail}
-                </span>
+                </a>
               </li>
               <li>
               {copiedToClipBoard
