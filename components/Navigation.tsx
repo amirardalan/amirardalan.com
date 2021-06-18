@@ -102,16 +102,6 @@ export default function Navigation() {
           left: -10,
         }
       },
-      '.navIcon': {
-        height: 20,
-        width: 20,
-        lineHeight: 0,
-        '@media(max-width: 768px)': {
-          marginTop: '.6rem',
-          height: 45,
-          width: 45,
-        }
-      },
       '@media (max-width: 768px)': {
         '&.active': {
           '&::before': {
@@ -121,6 +111,16 @@ export default function Navigation() {
           },
         },
       },
+    },
+    '.navIcon': {
+      height: 20,
+      width: 20,
+      lineHeight: 0,
+      '@media(max-width: 768px)': {
+        marginTop: '.8rem',
+        height: 40,
+        width: 40,
+      }
     },
     '@media(max-width: 768px)': {
       flexDirection: 'column',
@@ -133,9 +133,6 @@ export default function Navigation() {
       paddingRight: '2.5rem',
       alignItems: 'flex-end',
       lineHeight: '3rem',
-      'a.spotifyNav': {
-        marginTop: '.5rem',
-      }
     },
   })
   const styleMobileNavSecondary = css({
