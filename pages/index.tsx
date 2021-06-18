@@ -81,17 +81,6 @@ export default function Home({ data, latestPost }) {
         WebkitMarqueeIncrement: '0vw',
       }
     },
-    '.typedText': {
-      marginBottom: '3rem',
-      fontSize: 'calc(.9vw + .9vh)',
-      WebkitMarqueeIncrement: '0vw',
-      fontWeight: 'normal',
-      color: 'var(--color-gray)',
-      '@media (max-width: 890px)': {
-        fontSize: 'calc(1.2vw + 1.2vh)',
-        WebkitMarqueeIncrement: '0vw',
-      } 
-    },
     '.highlightText': {
       width: 'max-content',
       padding: '0 .5rem',
@@ -105,7 +94,7 @@ export default function Home({ data, latestPost }) {
     }
   })
   const styleButtonContainer = css({
-    marginBottom: '2rem',
+    marginBottom: '1rem',
     display: 'flex',
     flexDirection: 'row',
   })
@@ -153,32 +142,7 @@ export default function Home({ data, latestPost }) {
                   {data.title}
                 </div>
               </h2>
-              <div className="typedText" aria-hidden="true" >
-                <div>
-                  {data.typed.heading}
-                </div>
-                <div css={{
-                  color: 'var(--color-accent-gray)',
-                  '&:before': {
-                    content: '"  "',
-                    whiteSpace: 'pre',
-                    color: 'var(--color-gray)',
-                  }
-                }}>
-                  {data.typed.line2}
-                </div>
-                <div css={{
-                  color: 'var(--color-text)',
-                  '&:before': {
-                    content: '"  return "',
-                    whiteSpace: 'pre',
-                    color: 'var(--color-gray)',
-                  }
-                }}>
-                  <TypingAnimation data={data.typed} />
-                </div>
-                {data.typed.end}
-              </div>
+                <TypingAnimation data={data.typed} />
               <div css={styleButtonContainer}>
                 {generateCtaButtons(home.items)}
               </div>

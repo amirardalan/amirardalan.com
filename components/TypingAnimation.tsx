@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import { css } from '@emotion/react'
 import Typed from 'typed.js'
 
 // Console Tag
@@ -13,6 +14,18 @@ Design & Code by Amir Ardalan
 `)
 
 const TypingAnimation = ({ data }) => {
+
+  const styleTypedText = css({
+    marginBottom: '3rem',
+    fontSize: 'calc(.9vw + .9vh)',
+    WebkitMarqueeIncrement: '0vw',
+    fontWeight: 'normal',
+    color: 'var(--color-gray)',
+    '@media (max-width: 890px)': {
+      fontSize: 'calc(1.2vw + 1.2vh)',
+      WebkitMarqueeIncrement: '0vw',
+    } 
+  })
     
   useEffect(() => {
 
@@ -36,7 +49,32 @@ const TypingAnimation = ({ data }) => {
   }, [])
 
     return (
-      <span className='typingAnimation'></span>
+      <div css={styleTypedText} aria-hidden="true">
+        <div>
+          {data.heading}
+        </div>
+        <div css={{
+          color: 'var(--color-accent-gray)',
+          '&:before': {
+            content: '"  "',
+            whiteSpace: 'pre',
+            color: 'var(--color-gray)',
+          }
+        }}>
+          {data.line2}
+        </div>
+        <div css={{
+          color: 'var(--color-text)',
+          '&:before': {
+            content: '"  return "',
+            whiteSpace: 'pre',
+            color: 'var(--color-gray)',
+          }
+        }}>
+          <span className='typingAnimation'></span>
+        </div>
+        {data.end}
+      </div>
     )
 }
 
