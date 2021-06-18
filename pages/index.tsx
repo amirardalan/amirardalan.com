@@ -154,10 +154,30 @@ export default function Home({ data, latestPost }) {
                 </div>
               </h2>
               <div className="typedText" aria-hidden="true" >
-                {data.typed.heading}
                 <div>
+                  {data.typed.heading}
+                </div>
+                <div css={{
+                  color: 'var(--color-accent-gray)',
+                  '&:before': {
+                    content: '"  "',
+                    whiteSpace: 'pre',
+                    color: 'var(--color-gray)',
+                  }
+                }}>
+                  {data.typed.line2}
+                </div>
+                <div css={{
+                  color: 'var(--color-text)',
+                  '&:before': {
+                    content: '"  return "',
+                    whiteSpace: 'pre',
+                    color: 'var(--color-gray)',
+                  }
+                }}>
                   <TypingAnimation data={data.typed} />
                 </div>
+                {data.typed.end}
               </div>
               <div css={styleButtonContainer}>
                 {generateCtaButtons(home.items)}

@@ -7,21 +7,23 @@ export const home = {
   },
   title: 'Amir Ardalan',
   typed: {
-    heading: `I'm currently focusing on:`,
+    heading: `interests => {`,
+    line2: `// TODO: Learn more`,
     items: [
-      `Next.js / React^1500`,
-      `TypeScript / JavaScript^1500`,
-      `Emotion CSS in JS^1500`,
-      `Three.js / R3F^1500`,
-      `Prisma ORM^1500`,
-      `PostgreSQL^1500`,
-      `Fullstack Engineering^1500`,
-      `UI Design^1500`,
-      `Web Accessibility^1500`,
-      `Writing^1500`,
-      `Technical Learning^1500`,
-      `...eating pizza 🍕^1500`,
-    ]
+      `'Next.js / React'^1500`,
+      `'TypeScript / JavaScript'^1500`,
+      `'Emotion CSS in JS'^1500`,
+      `'Three.js / R3F'^1500`,
+      `'Prisma ORM'^1500`,
+      `'PostgreSQL'^1500`,
+      `'Fullstack Development'^1500`,
+      `'UI Design'^1500`,
+      `'Web Accessibility'^1500`,
+      `'Writing'^1500`,
+      `'Technical Learning'^1500`,
+      `'...eating pizza 🍕'^1500`,
+    ],
+    end: '}'
   },
   items: [
     {
