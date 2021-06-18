@@ -1,23 +1,4 @@
-const icon = {
-  light :{
-    github: '/icons/github-light.svg',
-    twitter: '/icons/twitter-light.svg',
-    linkedin: '/icons/linkedin-light.svg',
-    spotify: '/icons/spotify-light.svg',
-    download: '/icons/download-light.svg',
-    external: '/icons/external-link-light.svg',
-    error: '/icons/error-light.svg',
-  },
-  dark: {
-    github: '/icons/github-dark.svg',
-    twitter: '/icons/twitter-dark.svg',
-    linkedin: '/icons/linkedin-dark.svg',
-    spotify: '/icons/spotify-dark.svg',
-    download: '/icons/download-dark.svg',
-    external: '/icons/external-link-dark.svg',
-    error: '/icons/error-dark.svg',
-  }
-}
+import { themeLight, themeDark } from "@/styles/theme"
 
 export const home = {
   meta: {
@@ -92,8 +73,8 @@ export const about = {
         title: 'GitHub',
         cName: 'iconGithub icon',
         icon: {
-          light: icon.light.github,
-          dark: icon.dark.github
+          light: themeLight.icons.github,
+          dark: themeDark.icons.github
         },
       },
       {
@@ -101,8 +82,8 @@ export const about = {
         title: 'Twitter',
         cName: 'iconTwitter icon',
         icon: {
-          light: icon.light.twitter,
-          dark: icon.dark.twitter
+          light: themeLight.icons.twitter,
+          dark: themeDark.icons.twitter
         },
       },
       {
@@ -110,8 +91,8 @@ export const about = {
         title: 'LinkedIn',
         cName: 'iconLinkedin icon',
         icon: {
-          light: icon.light.linkedin,
-          dark: icon.dark.linkedin
+          light: themeLight.icons.linkedin,
+          dark: themeDark.icons.linkedin
         },
       },
     ]
@@ -127,8 +108,8 @@ export const about = {
         rel: 'noopener noreferrer',
         target: '_blank',
         icon: {
-          light: icon.light.download,
-          dark: icon.dark.download,
+          light: themeLight.icons.download,
+          dark: themeDark.icons.download,
         },
       },
       {
@@ -183,8 +164,8 @@ export const about = {
         target: '_blank',
         handle: '@amirardalan',
         icon: {
-          light: icon.light.external,
-          dark: icon.dark.external
+          light: themeLight.icons.external,
+          dark: themeDark.icons.external
         },
       },
     ],
@@ -202,6 +183,10 @@ export const spotify = {
   status: {
     online: 'Now playing',
     offline: 'Currently Offline'
+  },
+  icon: {
+    light: themeDark.icons.spotify,
+    dark: themeLight.icons.spotify
   }
 }
 
@@ -232,24 +217,24 @@ export const footer = {
       path: 'https://nextjs.org/',
       title: 'Next.js',
       icon: {
-        light: icon.light.external,
-        dark: icon.dark.external
+        light: themeLight.icons.external,
+        dark: themeDark.icons.external
       },
     },
     {
       path: 'https://www.prisma.io/',
       title: 'Prisma',
       icon: {
-        light: icon.light.external,
-        dark: icon.dark.external
+        light: themeLight.icons.external,
+        dark: themeDark.icons.external
       },
     },
     {
       path: 'https://swr.vercel.app/',
       title: 'SWR',
       icon: {
-        light: icon.light.external,
-        dark: icon.dark.external
+        light: themeLight.icons.external,
+        dark: themeDark.icons.external
       },
     },
   ],
@@ -258,24 +243,24 @@ export const footer = {
       path: 'https://github.com/amirardalan',
       title: 'GitHub',
       icon: {
-        light: icon.light.external,
-        dark: icon.dark.external
+        light: themeLight.icons.external,
+        dark: themeDark.icons.external
       },
     },
     {
       path: 'https://twitter.com/amirardalan',
       title: 'Twitter',
       icon: {
-        light: icon.light.external,
-        dark: icon.dark.external
+        light: themeLight.icons.external,
+        dark: themeDark.icons.external
       },
     },
     {
       path: 'https://linkedin.com/in/amirardalan',
       title: 'LinkedIn',
       icon: {
-        light: icon.light.external,
-        dark: icon.dark.external
+        light: themeLight.icons.external,
+        dark: themeDark.icons.external
       },
     },
   ],

@@ -5,10 +5,15 @@ export const themeLight = {
   code: 'light',
   canvas: '#571AFF',
   intro: `Hi, 👋 I'm`,
-  icon: {
-    spotify: '/icons/spotify-dark.svg',
+  icons: {
+    github: '/icons/github-light.svg',
+    twitter: '/icons/twitter-light.svg',
+    linkedin: '/icons/linkedin-light.svg',
+    spotify: '/icons/spotify-light.svg',
+    download: '/icons/download-light.svg',
+    external: '/icons/external-link-light.svg',
     error: '/icons/error-light.svg',
-  }
+  },
 }
 
 export const themeDark = {
@@ -18,8 +23,13 @@ export const themeDark = {
   code: 'dark',
   canvas: '#3dffc5',
   intro: `Hi, ✌️ I'm`,
-  icon: {
-    spotify: '/icons/spotify-light.svg',
+  icons: {
+    github: '/icons/github-dark.svg',
+    twitter: '/icons/twitter-dark.svg',
+    linkedin: '/icons/linkedin-dark.svg',
+    spotify: '/icons/spotify-dark.svg',
+    download: '/icons/download-dark.svg',
+    external: '/icons/external-link-dark.svg',
     error: '/icons/error-dark.svg',
   }
 }

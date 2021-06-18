@@ -51,7 +51,7 @@ export default function Custom404({ data }) {
           },
         }}>
           <Image
-            src={theme.icon.error}
+            src={theme.icons.error}
             alt={data.img.meta}
             aria-label={data.img.meta}
             width={40}

@@ -10,13 +10,17 @@ export default function NowPlaying() {
 
   const { data } = useSWR('/api/spotify/now-playing', fetcher)
   const isOnline = data?.songUrl
+
   const theme: any = useTheme()
+  const isDarkTheme = theme.active === 'dark'
 
   return (
     <>
       <h5 css={{ display: 'flex' }}>
         <Image
-          src={theme.icon.spotify}
+          src={isDarkTheme
+            ? spotify.icon?.dark
+            : spotify.icon?.light}
           height="15"
           width="15"
           alt="Spotify"
