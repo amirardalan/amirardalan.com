@@ -38,7 +38,7 @@ const Blog: React.FC<Props> = ({ data, feed }) => {
       <Head>
         <title>{data.meta.title}</title>
       </Head>
-      <div className="blogWrapper">
+      <div className="blog">
 
         <nav className="breadcrumbs">
           <span aria-label={breadcrumb.blog}>
