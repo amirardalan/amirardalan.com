@@ -2,7 +2,7 @@ import { css, useTheme } from '@emotion/react'
 import { home } from '@/data/content'
 import LatestPost from '@/components/LatestPost'
 import Head from 'next/head'
-import Link from 'next/link'
+import { generateCtaButtons } from '@/components/CtaButtons'
 
 import dynamic from 'next/dynamic'
 import LoadingTriangle from '@/components/LoadingTriangle'
@@ -160,16 +160,7 @@ export default function Home({ data, latestPost }) {
                 </div>
               </div>
               <div css={styleButtonContainer}>
-                <Link href={data.cta.blog.path} aria-label={data.cta.blog.title}>
-                  <button className="ctaButton">
-                    {data.cta.blog.title}
-                  </button>
-                </Link>
-                <Link href={data.cta.about.path} aria-label={data.cta.about.title}>
-                  <button className="ctaButton">
-                    {data.cta.about.title}
-                  </button>
-                </Link>
+                {generateCtaButtons(home.items)}
               </div>
               <LatestPost data={data} latestPost={latestPost} />
             </div>

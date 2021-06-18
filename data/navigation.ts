@@ -3,28 +3,28 @@ export const nav = [
     title: 'Home',
     path: '/',
     exact: 'false',
-    cName: 'home',
+    cName: 'homeNav',
     aria: 'Home'
   },
   {
     title: 'Blog',
     path: '/blog',
     exact: '',
-    cName: 'blog',
+    cName: 'blogNav',
     aria: 'Blog'
   },
   {
     title: 'About',
     path: '/about',
     exact: '',
-    cName: 'about',
+    cName: 'aboutNav',
     aria: 'About'
   },
   {
     title: '',
     path: '/spotify',
     exact: '',
-    cName: 'spotify',
+    cName: 'spotifyNav',
     aria: 'Spotify Dashboard'
   },
 ]

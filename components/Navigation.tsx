@@ -120,11 +120,11 @@ export default function Navigation() {
       paddingRight: '2.5rem',
       alignItems: 'flex-end',
       lineHeight: '3rem',
-      'a.spotify': {
+      'a.spotifyNav': {
         marginTop: '.5rem',
       }
     },
-    'a.spotify': {
+    'a.spotifyNav': {
       backgroundImage: 'var(--icon-spotify)',
       height: 20,
       width: 20,

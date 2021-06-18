@@ -23,16 +23,18 @@ export const home = {
       `...eating pizza 🍕^1500`,
     ]
   },
-  cta: {
-    blog: {
+  items: [
+    {
       path: '/blog',
       title: 'Blog',
+      target: '_self',
     },
-    about: {
+    {
       path: '/about',
       title: 'About',
+      target: '_self',
     },
-  },
+  ],
   latestPost: {
     title: 'Latest Post:'
   }

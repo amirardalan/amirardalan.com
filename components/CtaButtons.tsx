@@ -12,8 +12,8 @@ export const generateCtaButtons = (items: Array<any>) => {
         href={items.path}
         className="ctaButton"
         aria-label={items.title}
-        target={items.target}
-        rel={items.rel}
+        target={items?.target}
+        rel={items?.rel}
         data-screen-name={items?.screenname}
         >
           {items.title}
@@ -25,8 +25,8 @@ export const generateCtaButtons = (items: Array<any>) => {
                 : items.icon?.light}
               height="18"
               width="18"
-              alt={items.title}
-              aria-label={items.title}
+              alt={items?.title}
+              aria-label={items?.title}
             />
           </span>
           : null}

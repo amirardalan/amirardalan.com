@@ -299,6 +299,8 @@ export function GlobalStyles () {
           borderRadius: 8,
           color: 'var(--color-bg)',
           fontSize: 15,
+          fontWeight: 400,
+          textDecoration: 'none',
           cursor: 'pointer',
           '&:first-of-type': {
             marginRight: '1rem',
