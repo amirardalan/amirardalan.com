@@ -65,6 +65,8 @@ export default function BlogMarkdown({ post }) {
         <code className={className} {...props} />
       )
     },
+    // Convert Markdown image to Next/Image component and enable additional attributes
+    // example: ![Test](/images/blog/blog-image.png)<!--rehype:height=432&width=768&priority=priority-->
     p: paragraph => {
       const { node } = paragraph
       if (node.children[0].tagName === "img") {
@@ -92,7 +94,7 @@ export default function BlogMarkdown({ post }) {
         remarkPlugins={[
           [gfm],
           [remarkParse],
-          [remark2rehype, { allowDangerousHtml: true }]
+          [remark2rehype]
         ]}
         rehypePlugins={[
           [rehypeSlug],
