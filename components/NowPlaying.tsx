@@ -155,6 +155,7 @@ export default function NowPlaying() {
             src={data?.albumImageUrl}
             layout="fill"
             objectFit="cover"
+            priority
           /> ) : null }
         </div>
         <div className="nowPlayingStatus">
@@ -191,6 +192,7 @@ export default function NowPlaying() {
                   height="150"
                   width="150"
                   alt={data.title}
+                  priority
                 />
               </span>
             </div>

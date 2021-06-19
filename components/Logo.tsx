@@ -1,4 +1,5 @@
 import { css, useTheme } from '@emotion/react'
+import Image from 'next/image'
 
 
 export default function Logo() {
@@ -36,12 +37,13 @@ export default function Logo() {
 
   return (
     <>
-      <img
+      <Image
         src={theme.logo}
         alt="Amir Ardalan Logo"
         width={22}
         height={22}
         css={styleLogo}
+        priority
       />
       <div css={{
         flexDirection: 'column',
