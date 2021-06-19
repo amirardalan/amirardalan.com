@@ -46,6 +46,12 @@ const CanvasLoader =  React.memo(() => {
             marginTop: 5,
             paddingTop: 0,
           },
+          '.levarv4c7': {
+            display: 'none'
+          },
+          '.levaf42yt': {
+            cursor: 'default',
+          },
           '.levarv4c77egp0--drag-true:hover > svg': {
             fill: 'var(--color-accent-color)'
           },
