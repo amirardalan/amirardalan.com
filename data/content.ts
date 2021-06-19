@@ -100,8 +100,8 @@ export const about = {
   },
   bio: {
     heading: 'Bio:',
-    subheading: 'Amir Ardalan',
-    content: `Developer, Designer, Writer.`,
+    subheading: 'Developer, Designer, Writer.',
+    content: `I craft solutions to interface humans with technology utilizing deep knowledge in the areas of User Interface design and Fullstack application development.`,
     items: [  
       {
         path: '/amir-ardalan-resume.pdf',
@@ -124,12 +124,14 @@ export const about = {
   skills: {
     title: 'Skills:',
     items: [
-      'Fullstack Engineering',
-      'User Interface Design',
-      'JavaScript / TypeScript',
-      'React.js / Next.js',
-      'CSS in JS / SCSS',
-      'Prisma ORM + PostgreSQL',
+      'Fullstack development',
+      'React – Next.js',
+      'JavaScript – TypeScript',
+      'CSS – Emotion/SCSS',
+      'UI Design – Adobe XD',
+      'RESTful APIs – Prisma ORM',
+      'Relational databases – PostgreSQL',
+      'Cross-browser/device consistency',
       'Testing & documentation',
     ],
   },
@@ -137,19 +139,21 @@ export const about = {
     title: 'Experience:',
     items: [
       '10+ years',
+      'Front-end development',
+      'Freelance',
+      'Ecommerce',
+      'Salesforce Commerce Cloud',
       'Columbia Sportswear',
       'KEEN Footwear',
       'Chrome Industries',
       'Hanna Andersson',
-      'Salesforce Commerce Cloud',
-      'Freelance',
     ],
   },
   availability: {
     title: 'Availability:',
     items: [
       '✅ Currently Available',
-      'Remote or Portland, OR',
+      'Remote or in Portland, OR',
     ]
   },
   contact: {

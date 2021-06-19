@@ -123,9 +123,9 @@ export default function About({ data }) {
   })
   const styleSocialIcons = css({
     display: 'flex',
-    li: {
-      flexDirection: 'row',
-      marginRight: '1rem',
+    flexDirection: 'row',
+    a: {
+      marginRight: '1.5rem',
       '&:last-of-type': {
         marginRight: 0,
       }
@@ -145,24 +145,22 @@ export default function About({ data }) {
   const generateSocialIcons = (items: Array<any>) => {
     return items.map((items, i) => {
       return (
-        <li key={i}>
-          <a
-            href={items.path}
-            target="_blank"
-            rel="noreferrer noopener"
+        <a key={i}
+          href={items.path}
+          target="_blank"
+          rel="noreferrer noopener"
+          aria-label={items.title}
+        >
+          <Image
+            src={isDarkTheme
+              ? items.icon.dark
+              : items.icon.light}
+            height="48"
+            width="48"
+            alt={items.title}
             aria-label={items.title}
-          >
-            <Image
-              src={isDarkTheme
-                ? items.icon.dark
-                : items.icon.light}
-              height="48"
-              width="48"
-              alt={items.title}
-              aria-label={items.title}
-            />
-          </a>
-        </li>
+          />
+        </a>
       )
     })
   }
@@ -195,33 +193,45 @@ export default function About({ data }) {
           </div>
           <div className="grid">
             <ul>
-              <h4>{data.skills.title}</h4>
+              <li>
+                <h4>{data.skills.title}</h4>
+              </li>
               {generateListItems(data.skills.items)}
             </ul>
           </div>
           <div className="grid">
             <ul>
-              <h4>{data.experience.title}</h4>
+              <li>
+                <h4>{data.experience.title}</h4>
+              </li>
               {generateListItems(data.experience.items)}
             </ul>
           </div>
           <div className="grid">
             <ul>
-              <h4>{data.availability.title}</h4>
+              <li>
+                <h4>{data.availability.title}</h4>
+              </li>
               {generateListItems(data.availability.items)}
             </ul>
           </div>
           <div className="grid">
             <div css={styleSocialIconsWrapper}>
-              <h4>{data.social.title}</h4>
-              <ul css={styleSocialIcons}>
-                {generateSocialIcons(data.social.items)}
+              <ul>
+                <li>
+                  <h4>{data.social.title}</h4>
+                </li>
+                <li css={styleSocialIcons}>
+                  {generateSocialIcons(data.social.items)}
+                </li>
               </ul>
             </div>
           </div>
           <div className="grid">
             <ul>
-              <h4>{data.contact.title}</h4>
+              <li>
+                <h4>{data.contact.title}</h4>
+              </li>
               <li css={styleCtaWrapper}>
                 <a
                   onClick={showEmail
