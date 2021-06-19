@@ -1,4 +1,6 @@
-import { useTheme } from '@emotion/react'
+import { useTheme, Global } from '@emotion/react'
+import Image from 'next/image'
+
 import { materialLight, materialOceanic } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import ReactMarkdown from 'react-markdown'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
@@ -6,7 +8,6 @@ import rangeParser from 'parse-numeric-range'
 import gfm from 'remark-gfm'
 import rehypeSlug from 'rehype-slug'
 import link from 'rehype-autolink-headings'
-import { Global } from '@emotion/react'
 
 export default function BlogMarkdown({ post }) {
 
@@ -16,7 +17,7 @@ export default function BlogMarkdown({ post }) {
     : materialOceanic
 
   // Syntax Highlighter Object for Markdown
-  const BlogSyntaxHighlight: object = {
+  const markdownComponents: object = {
     code({ node, inline, className,...props }) {
 
       // Set code language declared in code block: ```lang
@@ -58,16 +59,30 @@ export default function BlogMarkdown({ post }) {
       ) : (
         <code className={className} {...props} />
       )
-    }
+    },
+    img: image => {
+      return <Image src={image.src} alt={image.alt} height="432" width="768" />
+    },
+    p: paragraph => {
+      const { node } = paragraph
+      if (node.children[0].tagName === "img") {
+        const image = node.children[0]
+        return <Image src={image.properties.src} alt={image.properties.alt} height="432" width="768" />
+      }
+      return <p>{paragraph.children}</p>
+    },
   }
 
   return (
     <>
       <ReactMarkdown
         children={post.content}
-        components={BlogSyntaxHighlight}
+        components={markdownComponents}
         remarkPlugins={[ [gfm] ]}
-        rehypePlugins={[ [rehypeSlug], [link] ]}
+        rehypePlugins={[
+          [rehypeSlug],
+          [link],
+        ]}
       />
       <Global styles={{
         // react-syntax-highlighter styles
