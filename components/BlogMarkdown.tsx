@@ -66,7 +66,9 @@ export default function BlogMarkdown({ post }) {
       )
     },
     // Convert Markdown image to Next/Image component and enable additional attributes
-    // example: ![Test](/images/blog/blog-image.png)<!--rehype:height=432&width=768&priority=priority-->
+    // examples:
+    //![Alt](/images/blog/blog-image.png)<!--rehype:height=432&width=768&priority=true-->
+    // [github](https://github.com)<!--rehype:rel=noopener noreferrer&target=_blank-->
     p: paragraph => {
       const { node } = paragraph
       if (node.children[0].tagName === "img") {
@@ -76,8 +78,8 @@ export default function BlogMarkdown({ post }) {
             src={image.properties.src}
             height={image.properties.height}
             width={image.properties.width}
-            className={image.properties.priority ? 'banner' : null}
             alt={image.properties.alt}
+            className={image.properties.priority ? 'banner' : null}
             priority={image.properties.priority}
           />
         )
