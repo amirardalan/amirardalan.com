@@ -96,13 +96,13 @@ export default function BlogMarkdown({ post }) {
         remarkPlugins={[
           [gfm],
           [remarkParse],
-          [remark2rehype]
+          [remark2rehype, { allowDangerousHtml: true }]
         ]}
         rehypePlugins={[
           [rehypeSlug],
           [link],
           [stringify],
-          [rehypeRaw],
+          // [rehypeRaw],
           [rehypeAttrs, { properties: 'attr' }],
         ]}
       />
