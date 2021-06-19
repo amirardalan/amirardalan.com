@@ -11,7 +11,6 @@ import Router from 'next/router'
 import Link from 'next/link'
 import Head from 'next/head'
 import Avatar from '@/components/Avatar'
-import AuthError from '@/components/AuthError'
 
 import { blogPost, breadcrumb, admin } from '@/data/content'
 import { GetStaticProps, GetStaticPaths } from 'next'
