@@ -101,7 +101,7 @@ export const about = {
   bio: {
     heading: 'Bio:',
     subheading: 'Developer, Designer, Writer.',
-    content: `I bridge the gap between humans and technology utilizing deep knowledge in fullstack development and user interface design.`,
+    content: `I bridge the gap between humans and technology using deep knowledge in fullstack development and user interface design.`,
     items: [  
       {
         path: '/amir-ardalan-resume.pdf',

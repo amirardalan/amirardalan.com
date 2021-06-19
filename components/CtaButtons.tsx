@@ -36,8 +36,8 @@ export const generateCtaButtons = (items: Array<any>) => {
           '.ctaButton': {
             minWidth: 128,
             minHeight: 45,
-            marginRight: '.5rem',
-            marginBottom: '1rem',
+            marginRight: '.8rem',
+            marginBottom: '.8rem',
             padding: '.5rem 1rem',
             display: 'flex',
             flexDirection: 'row',

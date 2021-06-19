@@ -51,6 +51,7 @@ export default function About({ data }) {
       justifyContent: 'center',
       padding: '3rem',
       backgroundColor: 'var(--color-accent)',
+      lineHeight: '1.8rem',
       animation: 'slideUp .5s forwards',
       h4: {
         fontFamily: 'var(--font-secondary)'
@@ -65,7 +66,6 @@ export default function About({ data }) {
         width: '100%',
       },
       'ul li': {
-        marginBottom: '.5rem',
         color: 'var(--color-gray)',
         fontSize: 14,
         strong: {
@@ -79,7 +79,6 @@ export default function About({ data }) {
           fontFamily: 'var(--font-tertiary)',
           fontSize: 16,
           maxWidth: 450,
-          lineHeight: '1.5rem',
         },
         a: {
           textDecoration: 'none'
@@ -114,6 +113,14 @@ export default function About({ data }) {
     flexFlow: 'row wrap',
     '@media(max-width: 350px)': {
       flexDirection: 'column',
+    }
+  })
+  const styleBioItems = css({
+    li: {
+      marginBottom: '1rem',
+      '&:last-of-type': {
+        marginBottom: 0,
+      }
     }
   })
   const styleSocialIconsWrapper = css({
@@ -176,7 +183,7 @@ export default function About({ data }) {
         </h2>
         <main css={styleGridWrapper}>
           <div className="grid">
-            <ul>
+            <ul css={styleBioItems}>
               <li>
                 <Avatar height="100" width="100" />
               </li>
