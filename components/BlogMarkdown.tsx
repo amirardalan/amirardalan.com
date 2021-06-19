@@ -6,8 +6,13 @@ import ReactMarkdown from 'react-markdown'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import rangeParser from 'parse-numeric-range'
 import gfm from 'remark-gfm'
+import remarkParse from 'remark-parse'
+import remark2rehype from 'remark-rehype'
 import rehypeSlug from 'rehype-slug'
 import link from 'rehype-autolink-headings'
+import stringify from 'rehype-stringify'
+import rehypeRaw from 'rehype-raw'
+import rehypeAttrs from 'rehype-attr'
 
 export default function BlogMarkdown({ post }) {
 
@@ -60,14 +65,20 @@ export default function BlogMarkdown({ post }) {
         <code className={className} {...props} />
       )
     },
-    img: image => {
-      return <Image src={image.src} alt={image.alt} height="432" width="768" />
-    },
     p: paragraph => {
       const { node } = paragraph
       if (node.children[0].tagName === "img") {
         const image = node.children[0]
-        return <Image src={image.properties.src} alt={image.properties.alt} height="432" width="768" />
+        return (
+          <Image
+            src={image.properties.src}
+            height={image.properties.height}
+            width={image.properties.width}
+            className={image.properties.priority ? 'banner' : null}
+            alt={image.properties.alt}
+            priority={image.properties.priority}
+          />
+        )
       }
       return <p>{paragraph.children}</p>
     },
@@ -78,10 +89,17 @@ export default function BlogMarkdown({ post }) {
       <ReactMarkdown
         children={post.content}
         components={markdownComponents}
-        remarkPlugins={[ [gfm] ]}
+        remarkPlugins={[
+          [gfm],
+          [remarkParse],
+          [remark2rehype, { allowDangerousHtml: true }]
+        ]}
         rehypePlugins={[
           [rehypeSlug],
           [link],
+          [stringify],
+          [rehypeRaw],
+          [rehypeAttrs, { properties: 'attr' }],
         ]}
       />
       <Global styles={{
@@ -127,7 +145,10 @@ export default function BlogMarkdown({ post }) {
           borderLeft: '3px solid var(--color-accent-color)',
           margin: '0 -1rem',
           padding: '0 .8rem',
-        }
+        },
+        'img.banner': {
+          paddingTop: '2rem !important',
+        },
       }} />
     </>
   )
