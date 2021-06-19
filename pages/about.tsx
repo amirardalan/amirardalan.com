@@ -166,6 +166,7 @@ export default function About({ data }) {
             width="48"
             alt={items.title}
             aria-label={items.title}
+            priority
           />
         </a>
       )

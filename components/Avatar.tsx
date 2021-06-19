@@ -13,6 +13,7 @@ export default function Photo({ height, width }) {
       width={width}
       height={height}
       css={{clipPath:`circle(${clip}px at center)`}}
+      priority
     />
   )
 }

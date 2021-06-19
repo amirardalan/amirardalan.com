@@ -194,6 +194,7 @@ export default function Navigation() {
                       height="100%"
                       width="100%"
                       alt={items.title}
+                      priority
                     />
                   </div>
                 : items.title}
