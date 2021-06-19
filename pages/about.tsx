@@ -187,7 +187,9 @@ export default function About({ data }) {
               <li>
                 <Avatar height="100" width="100" />
               </li>
-              <li><strong>{data.bio.subheading}</strong></li>
+              <li aria-label={data.bio.subheading}>
+                <strong>{data.bio.subheading}</strong>
+              </li>
               <li>
                 <em>
                   {data.bio.content}
@@ -201,15 +203,25 @@ export default function About({ data }) {
           <div className="grid">
             <ul>
               <li>
-                <h4>{data.skills.title}</h4>
+                <h4 aria-label="{data.skills.title}">
+                  {data.skills.title}
+                </h4>
               </li>
               {generateListItems(data.skills.items)}
+            </ul>
+            <ul>
+              <li>
+                <h4 aria-hidden="true">&nbsp;</h4>
+              </li>
+              {generateListItems(data.stack.items)}
             </ul>
           </div>
           <div className="grid">
             <ul>
               <li>
-                <h4>{data.experience.title}</h4>
+                <h4 aria-label={data.experience.title}>
+                  {data.experience.title}
+                </h4>
               </li>
               {generateListItems(data.experience.items)}
             </ul>
@@ -217,7 +229,9 @@ export default function About({ data }) {
           <div className="grid">
             <ul>
               <li>
-                <h4>{data.availability.title}</h4>
+                <h4 aria-label={data.availability.title}>
+                  {data.availability.title}
+                </h4>
               </li>
               {generateListItems(data.availability.items)}
             </ul>
@@ -237,7 +251,9 @@ export default function About({ data }) {
           <div className="grid">
             <ul>
               <li>
-                <h4>{data.contact.title}</h4>
+                <h4 aria-label={data.contact.title}>
+                  {data.contact.title}
+                </h4>
               </li>
               <li css={styleCtaWrapper}>
                 <a

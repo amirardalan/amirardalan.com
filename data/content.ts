@@ -8,7 +8,7 @@ export const home = {
   title: 'Amir Ardalan',
   typed: {
     heading: `interests => {`,
-    line2: `// TODO: learn more`,
+    line2: `// TODO: continue learning`,
     items: [
       `'Next.js / React'^1500`,
       `'TypeScript / JavaScript'^1500`,
@@ -101,7 +101,7 @@ export const about = {
   bio: {
     heading: 'Bio:',
     subheading: 'Developer, Designer, Writer.',
-    content: `I bridge the gap between humans and technology using deep knowledge in fullstack development and user interface design.`,
+    content: `Interfacing humans with technology through Fullstack development and UI design, with deep knowledge in Front-end and Ecommerce.`,
     items: [  
       {
         path: '/amir-ardalan-resume.pdf',
@@ -124,22 +124,32 @@ export const about = {
   skills: {
     title: 'Skills:',
     items: [
-      'Fullstack development',
-      'React – Next.js',
-      'JavaScript – TypeScript',
-      'CSS – Emotion/SCSS',
-      'UI Design – Adobe XD',
-      'RESTful APIs – Prisma ORM',
-      'Relational databases – PostgreSQL',
-      'Cross-browser/device consistency',
-      'Testing & documentation',
-    ],
+      'Front-end',
+      'React',
+      'TypeScript',
+      'CSS-in-JS',
+      'UI Design',
+      'RESTful API',
+      'Relational DB',
+      'Unit Testing',
+      'Documentation',
+      'Agile Scrum',
+    ]
+  },
+  stack: {
+    items: [
+      'Next.JS',
+      'Emotion',
+      'Prisma ORM',
+      'PostgreSQL',
+      'SWR',
+      'Adobe XD',
+    ]
   },
   experience: {
     title: 'Experience:',
     items: [
       '10+ years',
-      'Front-end development',
       'Freelance',
       'Ecommerce',
       'Salesforce Commerce Cloud',
