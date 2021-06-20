@@ -6,13 +6,9 @@ import ReactMarkdown from 'react-markdown'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import rangeParser from 'parse-numeric-range'
 import gfm from 'remark-gfm'
-import remarkParse from 'remark-parse'
-import remark2rehype from 'remark-rehype'
 import rehypeSlug from 'rehype-slug'
 import link from 'rehype-autolink-headings'
-import stringify from 'rehype-stringify'
-import rehypeRaw from 'rehype-raw'
-import rehypeAttrs from 'rehype-attr'
+
 
 export default function BlogMarkdown({ post }) {
 
@@ -65,10 +61,7 @@ export default function BlogMarkdown({ post }) {
         <code className={className} {...props} />
       )
     },
-    // Convert Markdown image to Next/Image component and enable additional attributes
-    // examples:
-    //![Alt](/images/blog/blog-image.png)<!--rehype:height=432&width=768&priority=true-->
-    // [github](https://github.com)<!--rehype:rel=noopener noreferrer&target=_blank-->
+    // Convert Markdown image to Next/Image
     p: paragraph => {
       const { node } = paragraph
       if (node.children[0].tagName === "img") {
@@ -76,11 +69,11 @@ export default function BlogMarkdown({ post }) {
         return (
           <Image
             src={image.properties.src}
-            height={image.properties.height}
-            width={image.properties.width}
+            height="432"
+            width="768"
             alt={image.properties.alt}
-            className={image.properties.priority ? 'banner' : null}
-            priority={image.properties.priority}
+            className="banner"
+            priority
           />
         )
       }
@@ -95,15 +88,10 @@ export default function BlogMarkdown({ post }) {
         components={markdownComponents}
         remarkPlugins={[
           [gfm],
-          [remarkParse],
-          [remark2rehype, { allowDangerousHtml: true }]
         ]}
         rehypePlugins={[
           [rehypeSlug],
           [link],
-          [stringify],
-          // [rehypeRaw],
-          [rehypeAttrs, { properties: 'attr' }],
         ]}
       />
       <Global styles={{
