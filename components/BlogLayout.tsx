@@ -277,8 +277,8 @@ const BlogLayout: React.FC<React.ReactNode> = (props) => {
                 borderLeft: '5px solid var(--color-accent)',
               },
               '@media (max-width: 890px)': {
-                marginLeft: '-.8rem',
-                paddingLeft: '.8rem',
+                marginLeft: '-1.5rem',
+                paddingLeft: '1.2rem',
               },
             },
             'ul li': {
