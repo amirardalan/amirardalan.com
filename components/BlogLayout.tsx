@@ -63,7 +63,7 @@ const BlogLayout: React.FC<React.ReactNode> = (props) => {
               flexDirection: 'column',
             },
             '&.postTeaser': {
-              marginBottom: '3rem',
+              marginBottom: '3.5rem',
             },
             '&.admin': {
               '.breadcrumbs': {
