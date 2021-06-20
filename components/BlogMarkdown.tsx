@@ -66,16 +66,31 @@ export default function BlogMarkdown({ post }) {
       const { node } = paragraph
       if (node.children[0].tagName === "img") {
         const image = node.children[0]
-        return (
-          <Image
-            src={image.properties.src}
-            height="432"
-            width="768"
-            alt={image.properties.alt}
-            className="banner"
-            priority
-          />
-        )
+        const alt = image.properties.alt.replace(/ *\{[^)]*\} */g, "")
+        const width = image.properties.alt.match(/{([^}]+)x/)[1]
+        const height = image.properties.alt.match(/x([^}]+)}/)[1]
+        const isBanner = image.properties.alt.includes('Banner')
+
+        if (isBanner) {
+          return (
+            <Image
+              src={image.properties.src}
+              width={width ? width : "768"}
+              height={height ? height : "432"}
+              className="banner"
+              alt={alt}
+              priority
+            />
+          )
+        } else {
+            return (
+              <Image
+              src={image.properties.src}
+              width={width ? width : "768"}
+              height={height ? height : "432"}
+            />
+          )
+        }
       }
       return <p>{paragraph.children}</p>
     },
