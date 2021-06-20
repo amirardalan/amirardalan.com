@@ -6,4 +6,3 @@
 // Declarations
 module '@/data/content'
 module '@/data/navigation'
-module 'rehype-components'
