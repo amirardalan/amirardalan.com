@@ -8,32 +8,32 @@ export default function LatestPost({ latestPost, data }) {
     padding: '0 1.2rem',
     borderLeft: '7px solid var(--color-accent)',
     fontWeight: 'normal',
-    lineHeight: '1.4rem',
     h3: {
-      marginBottom: '.3rem',
+      marginBottom: '.8rem',
       color: 'var(--color-gray)',
       fontFamily: 'var(--font-primary)',
       fontSize: 12,
       fontWeight: 'normal',
-      lineHeight: '1.3rem',
     },
-    'a': {
-      fontFamily: 'var(--font-secondary)',
-    },
-    'h4 a': {
-      fontSize: 18,
-      fontWeight: 'normal',
-      textDecoration: 'underline',
-      cursor: 'pointer',
-      '@media(max-width: 480px)': {
-        fontSize: 16,
+    h4: {
+      display: 'flex',
+      a: {
+        lineHeight: '1.2rem',
+        fontFamily: 'var(--font-secondary)',
+        fontSize: 18,
+        fontWeight: 'normal',
+        textDecoration: 'underline',
+        cursor: 'pointer',
+        '@media(max-width: 480px)': {
+          fontSize: 16,
+        }
       }
     },
     p: {
       marginTop: '.5rem',
+      lineHeight: '1.2rem',
       color: 'var(--color-gray)',
-      fontSize: 15,
-      lineHeight: '1.2rem'
+      fontSize: 14,
     },
   })
   
