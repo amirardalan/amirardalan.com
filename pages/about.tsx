@@ -92,20 +92,6 @@ export default function About({ data }) {
       fontSize: 25,
       borderBottom: '2px solid var(--color-accent-color)',
     },
-    '.iconGithub, .iconTwitter, .iconLinkedin': {
-      height: 48,
-      width: 48,
-      display: 'inline-block'
-    },
-    '.iconGithub': {
-      backgroundImage: 'var(--icon-github)',
-    },
-    '.iconTwitter': {
-      backgroundImage: 'var(--icon-twitter)',
-    },
-    '.iconLinkedin': {
-      backgroundImage: 'var(--icon-linkedin)',
-    }
   })
   const styleCtaWrapper = css({
     display: 'flex',
