@@ -18,7 +18,7 @@ export default function BlogMarkdown({ post }) {
     : materialOceanic
 
   // Syntax Highlighter Object for Markdown
-  const markdownComponents: object = {
+  const MarkdownComponents: object = {
     code({ node, inline, className,...props }) {
 
       // Set code language declared in code block: ```lang
@@ -122,7 +122,7 @@ export default function BlogMarkdown({ post }) {
     <>
       <ReactMarkdown
         children={post.content}
-        components={markdownComponents}
+        components={MarkdownComponents}
         remarkPlugins={[
           [gfm],
         ]}
