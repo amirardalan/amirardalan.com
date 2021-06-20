@@ -91,13 +91,13 @@ export default function BlogMarkdown({ post }) {
         } else {
             return (
               <Image
-              src={image.properties.src}
-              width={width}
-              height={height}
-              alt={alt}
-            />
-          )
-        }
+                src={image.properties.src}
+                width={width}
+                height={height}
+                alt={alt}
+              />
+            )
+          }
       }
       return <p>{paragraph.children}</p>
     },
