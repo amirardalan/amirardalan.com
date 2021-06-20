@@ -61,7 +61,7 @@ export default function BlogMarkdown({ post }) {
         <code className={className} {...props} />
       )
     },
-    // Convert Markdown image to Next/Image
+    // Convert Markdown img to next/image component
     p: paragraph => {
       const { node } = paragraph
       if (node.children[0].tagName === "img") {
@@ -79,10 +79,19 @@ export default function BlogMarkdown({ post }) {
       }
       return <p>{paragraph.children}</p>
     },
+    // Open external links in new tab
     a: anchor => {
       if (anchor.href.match('http')) {
-        return <a href={anchor.href} target="_blank" rel="nofollow noreferrer noopener">{anchor.children}</a>
+        return (
+          <a
+            href={anchor.href}
+            target="_blank"
+            rel="nofollow noreferrer noopener">
+            {anchor.children}
+          </a>
+        )
       }
+      // Handle internal linking normally
       return <a href={anchor.href}>{anchor.children}</a>
     }
   }
@@ -99,7 +108,6 @@ export default function BlogMarkdown({ post }) {
           [rehypeSlug],
           [link],
         ]}
-        // linkTarget={'_blank'}
       />
       <Global styles={{
         // react-syntax-highlighter styles
