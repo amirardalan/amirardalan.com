@@ -86,7 +86,7 @@ export default function BlogMarkdown({ post }) {
           <a
             href={anchor.href}
             target="_blank"
-            rel="nofollow noreferrer noopener">
+            rel="noopener noreferrer">
             {anchor.children}
           </a>
         )
