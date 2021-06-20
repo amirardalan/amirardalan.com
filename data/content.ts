@@ -18,6 +18,7 @@ export const home = {
       `'PostgreSQL'^1500`,
       `'Fullstack Development'^1500`,
       `'UI Design'^1500`,
+      `'Markdown^1500`,
       `'Web Accessibility'^1500`,
     ],
     end: '}'
@@ -144,6 +145,7 @@ export const about = {
       'PostgreSQL',
       'SWR',
       'Adobe XD',
+      'Markdown',
     ]
   },
   experience: {
