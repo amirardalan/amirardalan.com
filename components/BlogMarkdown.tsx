@@ -79,6 +79,15 @@ export default function BlogMarkdown({ post }) {
       }
       return <p>{paragraph.children}</p>
     },
+    // a: anchor => {
+    //   return <a href={anchor.href} target="_blank">{anchor.children}</a>
+    // },
+    a: anchor => {
+      if (anchor.href.match('http')) {
+        return <a href={anchor.href} target="_blank" rel="nofollow noreferrer noopener">{anchor.children}</a>
+      }
+      return <a href={anchor.href}>{anchor.children}</a>
+    }
   }
 
   return (
@@ -93,6 +102,7 @@ export default function BlogMarkdown({ post }) {
           [rehypeSlug],
           [link],
         ]}
+        // linkTarget={'_blank'}
       />
       <Global styles={{
         // react-syntax-highlighter styles
