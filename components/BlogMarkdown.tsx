@@ -28,7 +28,7 @@ export default function BlogMarkdown({ post }) {
       const hasMeta = node?.data?.meta
 
       // Highlight lines declared in code block
-      //example: ```lang {2,4-6}
+      //example: ```jsx {2,4-6}
       const applyHighlights: object = (applyHighlights: number) => {
         if (hasMeta) {
           const RE = /{([\d,-]+)}/
@@ -63,18 +63,17 @@ export default function BlogMarkdown({ post }) {
         <code className={className} {...props} />
       )
     },
-    // Convert Markdown img to next/image component and set width, height, and/or Banner
-    // Set Dimensions: ![Alt Text {768x432} ...
-    // Set Banner: ![Alt Text Banner ...
+    // Convert Markdown img to next/image component and set height, width and optional Banner
+    // example: ![AltText {Banner}{768x432}](...
     p: paragraph => {
       const { node } = paragraph
+
       if (node.children[0].tagName === "img") {
         const image = node.children[0]
         const alt = image.properties.alt?.replace(/ *\{[^)]*\} */g, "")
-        const isBanner = image.properties.alt?.includes('Banner')
-
-        const metaWidth = (image.properties.alt.match(/{([^}]+)x/))
-        const metaHeight = (image.properties.alt.match(/x([^}]+)}/))
+        const isBanner = image.properties.alt?.toLowerCase().includes('{banner}')
+        const metaWidth = image.properties.alt.match(/{([^}]+)x/)
+        const metaHeight = image.properties.alt.match(/x([^}]+)}/)
         const width = metaWidth ? metaWidth[1] : "768"
         const height = metaHeight ? metaHeight[1] : "432"
 
