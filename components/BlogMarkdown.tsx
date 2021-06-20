@@ -24,9 +24,11 @@ export default function BlogMarkdown({ post }) {
       // Set code language declared in code block: ```lang
       const match = /language-(\w+)/.exec(className || '')
 
+      // Check for line highlighting metastring
       const hasMeta = node?.data?.meta
 
-      // Highlight lines declared in code block: ```lang {2,4-6}
+      // Highlight lines declared in code block
+      //example: ```lang {2,4-6}
       const applyHighlights: object = (applyHighlights: number) => {
         if (hasMeta) {
           const RE = /{([\d,-]+)}/
@@ -61,7 +63,9 @@ export default function BlogMarkdown({ post }) {
         <code className={className} {...props} />
       )
     },
-    // Convert Markdown img to next/image component
+    // Convert Markdown img to next/image component and set width, height, and/or Banner
+    // Set Dimensions: ![Alt Text {768x432} ...
+    // Set Banner: ![Alt Text Banner ...
     p: paragraph => {
       const { node } = paragraph
       if (node.children[0].tagName === "img") {
