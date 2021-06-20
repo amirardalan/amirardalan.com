@@ -71,16 +71,19 @@ export default function BlogMarkdown({ post }) {
       if (node.children[0].tagName === "img") {
         const image = node.children[0]
         const alt = image.properties.alt?.replace(/ *\{[^)]*\} */g, "")
-        const width = image.properties.alt?.match(/{([^}]+)x/)[1]
-        const height = image.properties.alt?.match(/x([^}]+)}/)[1]
         const isBanner = image.properties.alt?.includes('Banner')
+
+        const metaWidth = (image.properties.alt.match(/{([^}]+)x/))
+        const metaHeight = (image.properties.alt.match(/x([^}]+)}/))
+        const width = metaWidth ? metaWidth[1] : "768"
+        const height = metaHeight ? metaHeight[1] : "432"
 
         if (isBanner) {
           return (
             <Image
               src={image.properties.src}
-              width={width ? width : "768"}
-              height={height ? height : "432"}
+              width={width}
+              height={height}
               className="banner"
               alt={alt}
               priority
@@ -90,8 +93,8 @@ export default function BlogMarkdown({ post }) {
             return (
               <Image
               src={image.properties.src}
-              width={width ? width : "768"}
-              height={height ? height : "432"}
+              width={width}
+              height={height}
               alt={alt}
             />
           )
