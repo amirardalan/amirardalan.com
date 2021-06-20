@@ -268,7 +268,31 @@ export default function About({ data }) {
                     ? data.contact.email
                     : 'Show Email'}
                 >
-                  {showEmail ? data.contact.email : data.contact.showEmail}
+                  {showEmail
+                    ? data.contact.email.address
+                    : data.contact.email.title}
+                  {showEmail ?
+                  <span className="icon">
+                    <Image
+                      src={theme.icons.clipboard}
+                      height="16"
+                      width="16"
+                      className="icon"
+                      alt="Email"
+                      priority
+                    />
+                  </span> :
+                  <span className="icon">
+                    <Image
+                    src={theme.icons.email}
+                    height="16"
+                    width="16"
+                    className="icon"
+                    alt="Email"
+                    priority
+                  />
+                </span>
+                }
                 </a>
               </li>
               <li>

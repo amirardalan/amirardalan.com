@@ -12,6 +12,8 @@ export const themeLight = {
     spotify: '/icons/spotify-light.svg',
     download: '/icons/download-light.svg',
     external: '/icons/external-link-light.svg',
+    email: '/icons/email-light.svg',
+    clipboard: '/icons/clipboard-dark.svg',
     error: '/icons/error-light.svg',
   },
 }
@@ -29,6 +31,8 @@ export const themeDark = {
     linkedin: '/icons/linkedin-dark.svg',
     spotify: '/icons/spotify-dark.svg',
     download: '/icons/download-dark.svg',
+    email: '/icons/email-dark.svg',
+    clipboard: '/icons/clipboard-light.svg',
     external: '/icons/external-link-dark.svg',
     error: '/icons/error-dark.svg',
   }

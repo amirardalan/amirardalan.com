@@ -168,8 +168,14 @@ export const about = {
   },
   contact: {
     title: 'Contact:',
-    email: 'hi@amirardalan.com',
-    showEmail: 'Show Email Address',
+    email: {
+      title: 'Show Email Address',
+      address: 'hi@amirardalan.com',
+      icon: {
+        light: themeLight.icons.email,
+        dark: themeDark.icons.email,
+      }
+    },
     copiedToClipboard: 'Copied to clipboard ✓',
     items: [
       {

@@ -114,8 +114,8 @@ export default function Footer() {
                 src={isDarkTheme
                   ? items.icon?.dark
                   : items.icon?.light}
-                height="18"
-                width="18"
+                height="15"
+                width="15"
                 alt={items.title}
                 aria-label={items.title}
               />
