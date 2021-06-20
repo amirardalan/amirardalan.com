@@ -338,6 +338,30 @@ export function GlobalStyles () {
           display: 'flex',
           justifyContent: 'center',
         },
+        '.tooltip': {
+          position: 'relative',
+          marginTop: '.5rem',
+          padding: '0 .5rem',
+          fontSize: 12,
+          color: 'var(--color-text)',
+          textAlign: 'center',
+          backgroundColor: 'var(--color-accent-gray)',
+          borderRadius: 5,
+          '&:before': {
+            content: '""',
+            position: 'absolute',
+            marginLeft: 'auto',
+            marginRight: 'auto',
+            top: -6,
+            left: 0,
+            right: 0,
+            width: 0,
+            height: 0,
+            borderLeft: '6px solid transparent',
+            borderRight: '6px solid transparent',
+            borderBottom: '6px solid var(--color-accent-gray)',
+          }
+        },
       }} />
       <Global styles={{
         // Text Highlighting

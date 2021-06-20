@@ -257,48 +257,54 @@ export default function About({ data }) {
                 </h4>
               </li>
               <li css={styleCtaWrapper}>
-                <a
-                  onClick={showEmail
-                    ? copyToClipboard
-                    : showEmailOnclick}
-                  className={showEmail
-                    ? 'ctaButton disabled'
-                    : 'ctaButton'}
-                  aria-label={showEmail
-                    ? data.contact.email
-                    : 'Show Email'}
-                >
-                  {showEmail
-                    ? data.contact.email.address
-                    : data.contact.email.title}
-                  {showEmail ?
-                  <span className="icon">
-                    <Image
-                      src={theme.icons.clipboard}
-                      height="16"
-                      width="16"
-                      className="icon"
-                      alt="Email"
-                      priority
-                    />
-                  </span> :
-                  <span className="icon">
-                    <Image
-                    src={theme.icons.email}
-                    height="16"
-                    width="16"
-                    className="icon"
-                    alt="Email"
-                    priority
-                  />
+                <span css={{maxWidth: 'fit-content'}}>
+                  <a
+                    onClick={showEmail
+                      ? copyToClipboard
+                      : showEmailOnclick}
+                    className={showEmail
+                      ? 'ctaButton disabled'
+                      : 'ctaButton'}
+                    aria-label={showEmail
+                      ? data.contact.email
+                      : 'Show Email'}
+                  >
+                    {showEmail
+                      ? data.contact.email.address
+                      : data.contact.email.title}
+                    <span className="icon">
+                    {showEmail ?
+                      <Image
+                        src={theme.icons.clipboard}
+                        height="16"
+                        width="16"
+                        className="icon"
+                        alt="Email"
+                        priority
+                      /> :
+                      <Image
+                        src={theme.icons.email}
+                        height="16"
+                        width="16"
+                        className="icon"
+                        alt="Email"
+                        priority
+                      />
+                    }
+                    </span>
+                  </a>
+                  {copiedToClipBoard ?
+                  <div className="tooltip">
+                    {data.contact.copiedToClipboard}
+                  </div> :
+                  <div
+                    css={{
+                      color: 'var(--color-accent)',
+                      marginTop: '.5rem',
+                    }}>
+                    –
+                  </div>}
                 </span>
-                }
-                </a>
-              </li>
-              <li>
-              {copiedToClipBoard
-                ? <div>{data.contact.copiedToClipboard}</div>
-                : <div css={{color: 'var(--color-accent)'}}>–</div>}
               </li>
             </ul>
           </div>
