@@ -5,7 +5,7 @@ export default function LatestPost({ latestPost, data }) {
 
   // Latest Post Styles
   const styleLatestPost = css({
-    paddingLeft: '1.2rem',
+    padding: '0 1.2rem',
     borderLeft: '7px solid var(--color-accent)',
     fontWeight: 'normal',
     lineHeight: '1.4rem',
@@ -30,8 +30,10 @@ export default function LatestPost({ latestPost, data }) {
       }
     },
     p: {
+      marginTop: '.5rem',
       color: 'var(--color-gray)',
       fontSize: 15,
+      lineHeight: '1.2rem'
     },
   })
   
