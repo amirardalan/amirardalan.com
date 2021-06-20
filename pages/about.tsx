@@ -279,7 +279,7 @@ export default function About({ data }) {
                         height="16"
                         width="16"
                         className="icon"
-                        alt="Email"
+                        alt="Clipboard"
                         priority
                       /> :
                       <Image
