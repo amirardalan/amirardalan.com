@@ -245,6 +245,14 @@ export const footer = {
       },
     },
     {
+      path: 'https://emotion.sh/docs/introduction/',
+      title: 'Emotion',
+      icon: {
+        light: themeLight.icons.external,
+        dark: themeDark.icons.external
+      },
+    },
+    {
       path: 'https://www.prisma.io/',
       title: 'Prisma',
       icon: {
