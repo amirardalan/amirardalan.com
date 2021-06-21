@@ -77,28 +77,16 @@ export default function BlogMarkdown({ post }) {
         const width = metaWidth ? metaWidth[1] : "768"
         const height = metaHeight ? metaHeight[1] : "432"
 
-        if (isBanner) {
-          return (
-            <Image
-              src={image.properties.src}
-              width={width}
-              height={height}
-              className="postImg"
-              alt={alt}
-              priority
-            />
-          )
-        } else {
-            return (
-              <Image
-                src={image.properties.src}
-                width={width}
-                height={height}
-                className="postImg"
-                alt={alt}
-              />
-            )
-          }
+        return (
+          <Image
+            src={image.properties.src}
+            width={width}
+            height={height}
+            className="postImg"
+            alt={alt}
+            priority={isBanner ? true : false}
+          />
+        )
       }
       return <p>{paragraph.children}</p>
     },
