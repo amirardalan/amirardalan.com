@@ -302,6 +302,14 @@ export const footer = {
         dark: themeDark.icons.external
       },
     },
+    {
+      path: '/amir-ardalan-resume.pdf',
+      title: 'Resume',
+      icon: {
+        light: themeLight.icons.download,
+        dark: themeDark.icons.download
+      },
+    },
   ],
   copyright: {
     text: 'Copyright ©',

@@ -45,9 +45,6 @@ export default function Footer() {
         lineHeight: '3rem',
       },
     },
-    'a.spotifyNav': {
-      display: 'none',
-    },
     'a': {
       display: 'flex',
       flexWrap: 'wrap',

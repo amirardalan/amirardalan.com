@@ -26,7 +26,7 @@ export const nav = [
     icon: false
   },
   {
-    title: '',
+    title: 'Spotify',
     path: '/spotify',
     exact: '',
     cName: 'spotifyNav',
