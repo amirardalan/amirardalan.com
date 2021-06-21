@@ -173,7 +173,6 @@ export const about = {
     title: 'Contact:',
     email: {
       title: 'Show Email Address',
-      address: 'hi@amirardalan.com',
       icon: {
         light: themeLight.icons.email,
         dark: themeDark.icons.email,

@@ -256,7 +256,7 @@ export default function About({ data }) {
                       : 'Show Email'}
                   >
                     {showEmail
-                      ? data.contact.email.address
+                      ? process.env.NEXT_PUBLIC_USER_EMAIL
                       : data.contact.email.title}
                     <span className="icon">
                     {showEmail ?
