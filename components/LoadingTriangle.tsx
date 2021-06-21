@@ -10,6 +10,7 @@ export default function LoadingTriangle() {
         width: '48px',
         height: '44px',
         position: 'relative',
+        margin: '0 auto',
         '&:before': {
           content: "''",
           width: '6px',
