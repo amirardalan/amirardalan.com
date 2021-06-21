@@ -8,7 +8,6 @@ import prisma from '@/lib/prisma'
 import { useSession } from 'next-auth/client'
 import LoadingTriangle from '@/components/LoadingTriangle'
 import BlogLayout from '@/components/BlogLayout'
-import AuthError from '@/components/AuthError'
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const editPost = await prisma.post.findUnique({
@@ -28,7 +27,7 @@ const Edit = ({ editPost }) => {
   if (!userHasValidSession) {
     return (
       <div className="container">
-        <AuthError />
+        <LoadingTriangle />
       </div>
     )
   }

@@ -63,15 +63,15 @@ export default function BlogMarkdown({ post }) {
         <code className={className} {...props} />
       )
     },
-    // Convert Markdown img to next/image component and set height, width and optional Banner
-    // example: ![AltText {Banner}{768x432}](...
+    // Convert Markdown img to next/image component and set height, width and priority
+    // example: ![AltText {priority}{768x432}](...
     p: paragraph => {
       const { node } = paragraph
 
       if (node.children[0].tagName === "img") {
         const image = node.children[0]
         const alt = image.properties.alt?.replace(/ *\{[^)]*\} */g, "")
-        const isBanner = image.properties.alt?.toLowerCase().includes('{banner}')
+        const isPriority = image.properties.alt?.toLowerCase().includes('{priority}')
         const metaWidth = image.properties.alt.match(/{([^}]+)x/)
         const metaHeight = image.properties.alt.match(/x([^}]+)}/)
         const width = metaWidth ? metaWidth[1] : "768"
@@ -84,7 +84,7 @@ export default function BlogMarkdown({ post }) {
             height={height}
             className="postImg"
             alt={alt}
-            priority={isBanner}
+            priority={isPriority}
           />
         )
       }

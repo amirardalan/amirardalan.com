@@ -5,7 +5,7 @@ import Head from 'next/head'
 import BlogLayout from '@/components/BlogLayout'
 import { admin, breadcrumb } from '@/data/content'
 import { useSession } from 'next-auth/client'
-import AuthError from '@/components/AuthError'
+import LoadingTriangle from '@/components/LoadingTriangle'
 
 const Draft: React.FC = () => {
 
@@ -140,7 +140,7 @@ const Draft: React.FC = () => {
     )
   } else {
     create = (
-      <AuthError />
+      <LoadingTriangle />
     )
   }
 

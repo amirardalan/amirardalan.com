@@ -7,7 +7,7 @@ import BlogLayout from '@/components/BlogLayout'
 import { admin, breadcrumb } from '@/data/content'
 import BlogPost from '@/components/BlogPost'
 import sortBlogPosts from '@/utils/sortBlogPosts'
-import AuthError from '@/components/AuthError'
+import LoadingTriangle from '@/components/LoadingTriangle'
 
 import prisma from '@/lib/prisma'
 
@@ -68,7 +68,7 @@ const Drafts: React.FC<Props>  = ({ drafts }) => {
     )
   } else {
     draftsList = (
-      <AuthError />
+      <LoadingTriangle />
     )
   }
 
