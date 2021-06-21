@@ -1,8 +1,8 @@
-## aa21
+## [amirardalan.com](https://amirardalan.com)
 
-`aa21` is a simple, yet powerful blog and CMS built with [Next.js](https://github.com/vercel/next.js/), [Prisma](https://github.com/prisma/prisma), PostgreSQL, [Emotion](https://github.com/emotion-js/emotion), and [Three.js](https://github.com/mrdoob/three.js/).
+Amir Ardalan's personal Blog and CMS written in TypeScript and powered by [Next.js](https://github.com/vercel/next.js/), [react-markdown](https://github.com/remarkjs/react-markdown), [Prisma](https://github.com/prisma/prisma), [Emotion](https://github.com/emotion-js/emotion), and [Three.js](https://github.com/mrdoob/three.js/).
 
-Built and maintained by [@amirardalan](https://github.com/amirardalan)
+Designed, Built, and maintained by [@amirardalan](https://github.com/amirardalan)
 
 ---
 
