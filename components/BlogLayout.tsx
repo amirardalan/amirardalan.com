@@ -215,7 +215,7 @@ const BlogLayout: React.FC<React.ReactNode> = (props) => {
               padding: 0,
               fontSize: 28,
               fontWeight: 'bold',
-              lineHeight: '2rem',
+              lineHeight: '2.4rem',
               '& code': {
                 fontFamily: 'var(--font-secondary)',
                 fontSize: 28,
