@@ -84,7 +84,7 @@ export default function BlogMarkdown({ post }) {
             height={height}
             className="postImg"
             alt={alt}
-            priority={isBanner ? true : false}
+            priority={isBanner}
           />
         )
       }
