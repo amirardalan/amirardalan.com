@@ -148,8 +148,11 @@ export default function BlogMarkdown({ post }) {
             minWidth: '100%',
             float: 'left',
             '& > span': {
-              display: 'block'
-            }
+              display: 'block',
+              '&:last-of-type': {
+                display: 'none',
+              }
+            },
           },
         },
         code: {
