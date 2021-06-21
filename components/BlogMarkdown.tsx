@@ -83,7 +83,7 @@ export default function BlogMarkdown({ post }) {
               src={image.properties.src}
               width={width}
               height={height}
-              className="banner"
+              className="postImg"
               alt={alt}
               priority
             />
@@ -94,6 +94,7 @@ export default function BlogMarkdown({ post }) {
                 src={image.properties.src}
                 width={width}
                 height={height}
+                className="postImg"
                 alt={alt}
               />
             )
@@ -137,6 +138,9 @@ export default function BlogMarkdown({ post }) {
           fontFamily: 'var(--font-primary)',
           fontStyle: 'normal !important'
         },
+        pre: {
+          marginBottom: '1.5rem',
+        },
         '.codeStyle': {
           padding: '1rem !important',
           overflow: 'scroll',
@@ -177,9 +181,6 @@ export default function BlogMarkdown({ post }) {
           borderLeft: '3px solid var(--color-accent-color)',
           margin: '0 -1rem',
           padding: '0 .8rem',
-        },
-        'img.banner': {
-          paddingTop: '2rem !important',
         },
       }} />
     </>

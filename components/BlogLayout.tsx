@@ -101,11 +101,12 @@ const BlogLayout: React.FC<React.ReactNode> = (props) => {
               fontSize: 12,
             }
           },
-
+          '.postImg': {
+            paddingBottom: '2rem !important',
+          },
           '.controlsPost': {
             margin: '2rem 0',
           },
-
           '.formSubmit': {
             marginTop: '1rem',
           },
@@ -204,6 +205,9 @@ const BlogLayout: React.FC<React.ReactNode> = (props) => {
             }
           },
           '.postFull': {
+            '.postDetails': {
+              marginBottom: '2rem',
+            },
             h2: {
               margin: '0 0 1rem',
               textDecoration: 'none',
@@ -211,7 +215,7 @@ const BlogLayout: React.FC<React.ReactNode> = (props) => {
             },
             h3: {
               scrollMarginTop: '4rem',
-              margin: '3.5rem 0 1rem',
+              margin: '1.5rem 0',
               padding: 0,
               display: 'inline-block',
               fontSize: 28,
@@ -246,7 +250,6 @@ const BlogLayout: React.FC<React.ReactNode> = (props) => {
               position: 'relative',
             },
             p: {
-              marginTop: '2rem',
               marginBottom: '2rem',
             },
             'p, ul, li, a, blockquote': {
