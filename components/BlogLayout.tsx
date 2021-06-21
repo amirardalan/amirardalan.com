@@ -213,6 +213,7 @@ const BlogLayout: React.FC<React.ReactNode> = (props) => {
               scrollMarginTop: '4rem',
               margin: '3.5rem 0 1rem',
               padding: 0,
+              display: 'inline-block',
               fontSize: 28,
               fontWeight: 'bold',
               lineHeight: '2.4rem',
@@ -231,9 +232,9 @@ const BlogLayout: React.FC<React.ReactNode> = (props) => {
                     color: 'var(--color-accent-gray)',
                     position: 'absolute',
                     textAlign: 'center',
-                    top: 2,
+                    top: 4,
                     left: -22,
-                    fontSize: 22
+                    fontSize: 25
                   }
                 },
               },
