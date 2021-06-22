@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
+import { useTheme } from '@emotion/react'
 import BlogLayout from '@/components/BlogLayout'
 import sortBlogPosts from '@/utils/sortBlogPosts'
 import Head from 'next/head'
+import Image from 'next/image'
 
 import BlogPost, { PostProps } from '@/components/BlogPost'
 import { breadcrumb, blog } from '@/data/content'
@@ -26,6 +28,8 @@ type Props = {
 }
 
 const Blog: React.FC<Props> = ({ data, feed }) => {
+
+  const theme: any = useTheme()
 
   // Post Feed Error Handling
   const showFeedError = feed.length <= 0
@@ -75,6 +79,16 @@ const Blog: React.FC<Props> = ({ data, feed }) => {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
+          <div className="icon">
+            <Image
+              src={theme.icons.search}
+              height="23"
+              width="23"
+              priority
+              alt={data.search.placeholder}
+              draggable={false}
+            />
+          </div>
         </div>
 
         <div>

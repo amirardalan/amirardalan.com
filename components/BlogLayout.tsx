@@ -1,4 +1,5 @@
 import { Global } from '@emotion/react'
+import { theme } from 'leva/dist/declarations/src/styles'
 import React from 'react'
 
 const BlogLayout: React.FC<React.ReactNode> = (props) => {
@@ -205,7 +206,15 @@ const BlogLayout: React.FC<React.ReactNode> = (props) => {
           },
           '.searchPosts': {
             display: 'flex',
-            margin: '.5rem 0 0 0'
+            position: 'relative',
+            marginTop: '.5rem',
+            '.icon': {
+              position: 'absolute',
+              top: 16,
+              right: 0,
+              background: 'var(--color-accent)',
+              width: 35,
+            }
           },
           '.postFull': {
             h2: {
