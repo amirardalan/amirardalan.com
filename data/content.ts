@@ -3,7 +3,7 @@ import { themeLight, themeDark } from "@/styles/theme"
 export const home = {
   meta: {
     title: 'Amir Ardalan – Developer, Designer, Writer',
-    description: 'Front-end developer, UI designer & React enthusiast based in Portland, OR'
+    description: 'Fullstack developer, UI designer & React enthusiast based in Portland, OR'
   },
   title: 'Amir Ardalan',
   typed: {
@@ -126,7 +126,7 @@ export const about = {
   skills: {
     title: 'Skills:',
     items: [
-      'Front-end',
+      'Fullstack Dev',
       'React',
       'TypeScript',
       'CSS-in-JS',
