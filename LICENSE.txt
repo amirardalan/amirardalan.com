@@ -4,3 +4,4 @@
 - Please do not directly copy the source code
 
 ** Spotify API/SWR code inspired by Lee Robinson: leerob.io
+** Three.js Terrain Generator inspired by @Mozzius: https://github.com/Mozzius/terrain-fiber

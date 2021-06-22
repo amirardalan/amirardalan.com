@@ -65,6 +65,9 @@ Open [http://localhost:5555/](http://localhost:5555/)
 ### Spotify dashboard / SWR:
 [Lee Robinson](https://github.com/leerob/leerob.io)
 
+### Three.js Terrain Generator:
+[@Mozzius](https://github.com/Mozzius/terrain-fiber)
+
 
 
 
