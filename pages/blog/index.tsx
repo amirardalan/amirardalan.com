@@ -40,6 +40,20 @@ const Blog: React.FC<Props> = ({ data, feed }) => {
     : feed.filter(data => 
       data?.title?.toLowerCase()
       .includes(search.toLowerCase()))
+
+  const RenderPosts: Function = () => {
+    if (filteredPosts.length > 0) {
+      return (
+        filteredPosts.sort(sortBlogPosts).reverse().map((post) => (
+          <BlogPost key={post.id} post={post} />
+        ))
+      )
+    } else {
+        return (
+          <span>{data.search.noresult}</span>
+        )
+    }
+  }
   
   return (
     <BlogLayout>
@@ -54,23 +68,22 @@ const Blog: React.FC<Props> = ({ data, feed }) => {
           </span>
         </nav>
 
-        <input
-          type="text"
-          placeholder="Search Posts"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
+        <div className="searchPosts">
+          <input
+            type="text"
+            placeholder={data.search.placeholder}
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+        </div>
 
         <div>
-          { showFeedError ? <FeedNotFound /> : null }
-          {filteredPosts.sort(sortBlogPosts).reverse().map((post) => (
-            <div
-              key={post.id}
-              className="post"
-            >
-              <BlogPost post={post} />
-            </div>
-          ))}
+          {showFeedError
+            ? <FeedNotFound />
+            : null}
+          <div className="post">
+            <RenderPosts />
+          </div>
         </div>
 
       </div>

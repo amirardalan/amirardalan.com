@@ -48,6 +48,10 @@ export const blog = {
     database: '⚠️ Database Error: Posts Could not be loaded.',
     auth: '⚠️ Authentication Error: Must be logged in to view this page',
   },
+  search: {
+    placeholder: 'Search posts',
+    noresult: 'No posts found.'
+  }
 }
 
 export const blogPost = {

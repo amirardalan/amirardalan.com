@@ -203,6 +203,10 @@ const BlogLayout: React.FC<React.ReactNode> = (props) => {
               width: '100%'
             }
           },
+          '.searchPosts': {
+            display: 'flex',
+            margin: '.5rem 0 0 0'
+          },
           '.postFull': {
             h2: {
               margin: '0 0 1rem',
