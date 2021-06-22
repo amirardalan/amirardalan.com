@@ -193,7 +193,12 @@ export function GlobalStyles () {
           boxSizing: 'border-box',
           '&:before, &:after': {
               boxSizing: 'border-box',
-          }
+          },
+          '&:focus': {
+            boxShadow: '0 0 0 2px var(--color-accent-color)',
+            outline: 'none',
+          },
+          '&:focus:not(:focus-visible)': { boxShadow: 'none' },
         },
         h1: {
           margin: 0,
