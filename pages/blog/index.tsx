@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import BlogLayout from '@/components/BlogLayout'
 import sortBlogPosts from '@/utils/sortBlogPosts'
 import Head from 'next/head'
@@ -33,6 +33,14 @@ const Blog: React.FC<Props> = ({ data, feed }) => {
     <span>{data.error.database}</span>
   )
   
+  // Search Posts
+  const [search, setSearch] = useState('')
+  const filteredPosts = search.length === 0
+    ? feed
+    : feed.filter(data => 
+      data?.title?.toLowerCase()
+      .includes(search.toLowerCase()))
+  
   return (
     <BlogLayout>
       <Head>
@@ -46,9 +54,16 @@ const Blog: React.FC<Props> = ({ data, feed }) => {
           </span>
         </nav>
 
+        <input
+          type="text"
+          placeholder="Search Posts"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+
         <div>
           { showFeedError ? <FeedNotFound /> : null }
-          {feed.sort(sortBlogPosts).reverse().map((post) => (
+          {filteredPosts.sort(sortBlogPosts).reverse().map((post) => (
             <div
               key={post.id}
               className="post"
