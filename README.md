@@ -58,5 +58,13 @@ Open [http://localhost:5555/](http://localhost:5555/)
 ` ```TSX {3,5-8} ... `
 - Individually highlight specific lines of code by putting a space, then a JSON metastring of line numbers after the syntax language declaration. Can be individual lines or a range of contiguous lines, separated by commas.
 
+---
+
+## Inspiration:
+
+### Spotify dashboard / SWR:
+[Lee Robinson](https://github.com/leerob/leerob.io)
+
+
 
 
