@@ -65,6 +65,9 @@ const BlogLayout: React.FC<React.ReactNode> = (props) => {
             },
             '&.postTeaser': {
               marginBottom: '3.5rem',
+              '@media(max-width: 480px)': {
+                marginBottom: '2.5rem'
+              }
             },
             '&.admin': {
               '.breadcrumbs': {
