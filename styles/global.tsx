@@ -249,7 +249,7 @@ export function GlobalStyles () {
         // Layout
         '.container': {
           minHeight: '50vh',
-          marginTop: '2rem',
+          marginTop: '1rem',
           padding: '0 4rem',
           position: 'relative',
           '.pageHeading': {

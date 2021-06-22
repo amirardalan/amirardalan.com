@@ -231,17 +231,22 @@ const BlogLayout: React.FC<React.ReactNode> = (props) => {
               textDecoration: 'none',
               cursor: 'default',
             },
+            'h3, h3 code': {
+              fontSize: 28,
+              '@media(max-width: 480px)': {
+                fontSize: 'calc(2.2vw + 2.2vh)',
+                WebkitMarqueeIncrement: '0vw',
+              }
+            },
             h3: {
               scrollMarginTop: '4rem',
               margin: '1.5rem 0',
               padding: 0,
               display: 'inline-block',
-              fontSize: 28,
               fontWeight: 'bold',
               lineHeight: '2.4rem',
               '& code': {
                 fontFamily: 'var(--font-secondary)',
-                fontSize: 28,
               },
               a: {
                 position: 'absolute',
