@@ -130,12 +130,12 @@ export const about = {
       'React',
       'TypeScript',
       'CSS-in-JS',
+      'SCSS',
       'UI Design',
       'RESTful API',
       'Relational DB',
       'Unit Testing',
       'Documentation',
-      'Agile Scrum',
     ]
   },
   stack: {
