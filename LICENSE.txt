@@ -1,0 +1,6 @@
+©2021 Amir Ardalan - All Rights Reserved**
+- You are welcome to use this source code as inspiration
+- Please do not use my personal content (content.ts) or blog posts.
+- Please do not directly copy the source code.
+
+** Spotify API / SWR code inspired by Lee Robinson: leerob.io
