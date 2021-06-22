@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useTheme } from '@emotion/react'
 import BlogLayout from '@/components/BlogLayout'
 import sortBlogPosts from '@/utils/sortBlogPosts'
 import Head from 'next/head'
+import Image from 'next/image'
 
 import BlogPost, { PostProps } from '@/components/BlogPost'
 import { breadcrumb, blog } from '@/data/content'
@@ -27,11 +29,35 @@ type Props = {
 
 const Blog: React.FC<Props> = ({ data, feed }) => {
 
+  const theme: any = useTheme()
+
   // Post Feed Error Handling
   const showFeedError = feed.length <= 0
   const FeedNotFound = () => (
     <span>{data.error.database}</span>
   )
+  
+  // Search Posts
+  const [search, setSearch] = useState('')
+  const filteredPosts = search.length === 0
+    ? feed
+    : feed.filter(data => 
+      data?.title?.toLowerCase()
+      .includes(search.toLowerCase()))
+
+  const RenderPosts: Function = () => {
+    if (filteredPosts.length > 0) {
+      return (
+        filteredPosts.sort(sortBlogPosts).reverse().map((post) => (
+          <BlogPost key={post.id} post={post} />
+        ))
+      )
+    } else {
+        return (
+          <span>{data.search.noresult}</span>
+        )
+    }
+  }
   
   return (
     <BlogLayout>
@@ -46,16 +72,32 @@ const Blog: React.FC<Props> = ({ data, feed }) => {
           </span>
         </nav>
 
+        <div className="searchPosts">
+          <input
+            type="text"
+            placeholder={data.search.placeholder}
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+          <div className="icon">
+            <Image
+              src={theme.icons.search}
+              height="23"
+              width="23"
+              priority
+              alt={data.search.placeholder}
+              draggable={false}
+            />
+          </div>
+        </div>
+
         <div>
-          { showFeedError ? <FeedNotFound /> : null }
-          {feed.sort(sortBlogPosts).reverse().map((post) => (
-            <div
-              key={post.id}
-              className="post"
-            >
-              <BlogPost post={post} />
-            </div>
-          ))}
+          {showFeedError
+            ? <FeedNotFound />
+            : null}
+          <div className="post">
+            <RenderPosts />
+          </div>
         </div>
 
       </div>

@@ -52,6 +52,9 @@ export default function Footer() {
       alignItems: 'center',
       textDecoration: 'none',
       color: 'var(--color-bg)',
+      '&:focus': {
+        boxShadow: '0 0 0 2px var(--color-accent-gray)'
+      },
       '.icon': {
         marginLeft: '.2rem',
         lineHeight: 0,
