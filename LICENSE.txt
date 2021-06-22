@@ -1,7 +1,6 @@
-©2021 Amir Ardalan - All Rights Reserved**
-- You are welcome to use this source code as inspiration
+© 2021 Amir Ardalan - All Rights Reserved
+---
+- You can use this code as inspiration for your own project
+- Please do not directly copy the source code or design
 - Please do not use my personal content (content.ts) or blog posts
-- Please do not directly copy the source code
-
-** Spotify API/SWR code inspired by Lee Robinson: leerob.io
-** Three.js Terrain Generator inspired by @Mozzius: https://github.com/Mozzius/terrain-fiber
+- Crediting the author is appreciated
