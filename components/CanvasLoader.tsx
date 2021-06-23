@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { Global, css, useTheme } from '@emotion/react'
 import { Canvas } from '@react-three/fiber'
 import { Leva } from 'leva'
