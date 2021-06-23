@@ -53,7 +53,8 @@ export default function Footer() {
       textDecoration: 'none',
       color: 'var(--color-bg)',
       '&:focus': {
-        boxShadow: '0 0 0 2px var(--color-accent-gray)'
+        boxShadow: '0 0 0 2px var(--color-accent-gray)',
+        '&:focus:not(:focus-visible)': { boxShadow: 'none' },
       },
       '.icon': {
         marginLeft: '.2rem',
