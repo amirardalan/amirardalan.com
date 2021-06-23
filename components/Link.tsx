@@ -2,10 +2,12 @@ import React from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
+
+// Custom Link component for setting an active state on top-level nav links
 export default function NavLink({ href, as, exact, activeClassName, children, ...props }) {
   const { asPath } = useRouter()
   // Normalize and split paths into their segments
-  const segment = (p: string) => new URL(p, `https://${process.env.VERCEL_URL}`).pathname.split('/').filter(s => s)
+  const segment = (p: string) => new URL(p, `${process.env.NEXT_PUBLIC_SITE_URL}`).pathname.split('/').filter(s => s)
   const currentPath = segment(asPath)
   const targetPath = segment(as || href)
   // The route is active if all of the following are true:
