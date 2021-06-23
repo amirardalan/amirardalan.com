@@ -17,7 +17,7 @@ module.exports = {
   images: {
     domains: [
       'i.scdn.co', // Spotify Album Art
-      'github.com' // GiHub Avatar
+      'github.com' // GitHub Avatar
     ]
   },
   webpack: (config, { isServer }) => {
