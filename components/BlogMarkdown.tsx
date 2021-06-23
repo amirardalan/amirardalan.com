@@ -13,7 +13,7 @@ import link from 'rehype-autolink-headings'
 export default function BlogMarkdown({ post }) {
 
   const theme: any = useTheme()
-  const setSyntaxTheme = theme.code === 'light' 
+  const setSyntaxTheme = theme.code === 'light'
     ? solarizedlight
     : tomorrow
 
@@ -28,7 +28,7 @@ export default function BlogMarkdown({ post }) {
       const hasMeta = node?.data?.meta
 
       // Highlight lines declared in code block
-      //example: ```jsx {2,4-6}
+      // example: ```jsx {2,4-6}
       const applyHighlights: object = (applyHighlights: number) => {
         if (hasMeta) {
           const RE = /{([\d,-]+)}/
