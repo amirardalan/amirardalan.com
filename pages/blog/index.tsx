@@ -53,9 +53,7 @@ const Blog: React.FC<Props> = ({ data, feed }) => {
         ))
       )
     } else {
-        return (
-          <span>{data.search.noresult}</span>
-        )
+        return <span>{data.search.noresult}</span>
     }
   }
   

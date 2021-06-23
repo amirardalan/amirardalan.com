@@ -88,8 +88,8 @@ export default function About({ data }) {
     h4: {
       marginBottom: '1.5rem',
       paddingBottom: '1rem',
-      fontFamily: 'var(font-secondary)',
       fontSize: 25,
+      color: 'var(--color-text)',
       borderBottom: '2px solid var(--color-accent-color)',
     },
   })
