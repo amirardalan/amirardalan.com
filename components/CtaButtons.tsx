@@ -1,4 +1,4 @@
-import { Global, useTheme } from '@emotion/react'
+import { useTheme } from '@emotion/react'
 import Image from 'next/image'
 
 export const generateCtaButtons = (items: Array<any>) => {
