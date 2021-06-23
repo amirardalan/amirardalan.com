@@ -43,6 +43,7 @@ export default function Logo() {
         width={22}
         height={22}
         css={styleLogo}
+        draggable={false}
         priority
       />
       <div css={{

@@ -168,6 +168,7 @@ export default function Footer() {
           height={75}
           width={75}
           alt="Logo"
+          draggable={false}
         />
       </div>
       <div css={styleCopyright}>
