@@ -194,7 +194,7 @@ const BlogLayout: React.FC<React.ReactNode> = (props) => {
             width: '100%',
             margin: '0.5rem 0',
             padding: '0.5rem',
-            '-webkit-appearance': 'none',
+            webkitAppearance: 'none',
             appearance: 'none',
             backgroundColor: 'var(--color-accent)',
             border: '2px solid var(--color-accent)',
