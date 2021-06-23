@@ -1,5 +1,4 @@
 import { Global } from '@emotion/react'
-import { theme } from 'leva/dist/declarations/src/styles'
 import React from 'react'
 
 const BlogLayout: React.FC<React.ReactNode> = (props) => {
