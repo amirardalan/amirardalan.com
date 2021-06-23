@@ -127,9 +127,9 @@ export default function Home({ data, latestPost }) {
     flexDirection: 'row',
   })
   const styleMainRight = css({
-    marginTop: '1.5rem',
+    marginTop: '1rem',
     background: 'var(--canvas-bg)',
-    height: '70vh',
+    height: '72vh',
     position: 'relative',
     display: 'flex',
     flexDirection: 'column',
