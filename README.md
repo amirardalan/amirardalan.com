@@ -48,18 +48,27 @@ Open [http://localhost:5555/](http://localhost:5555/)
 
 ---
 
-## Markdown metastrings:
-Utilize Next/Image functionality by using custom metastrings inside the Markdown Alt.
-Retain the terseness of pure Markdown while getting the benefits of the Next/Image component without mixing in JSX.
+## Markdown Features:
+- **Next/Image:** Set `width`, `height`, and optional `priority` attributes in Markdown.
+- **Code Line Highlighting:** Individually highlight `code` lines and/or line ranges within Markdown.
+- **Links:** Write normal Markdown and external links will automatically open in a new tab.
 
-### Next/Image Dimensions
-`![AltText {priority}{768x432}](/path-to-image.jpg)`
+### Next/Image Dimensions & Priority
+Utilize `Next/Image` functionality within Markdown by using custom metastrings inside the Markdown Alt.
+Retain the terseness of pure Markdown while getting the benefits of the Next/Image component without having to mix in JSX.
+
+Example: `![AltText {priority}{768x432}](/path-to-image.jpg)`
 - Define image width and height: `{Width x Height}`
 - Optionally set image as `{priority}` to utilize Next.js preloading for images above the fold.
 
 ### Code line highlight
-` ```JSX {3,5-8} ... `
+Example: ` ```JSX {3,5-8} ... `
 - Individually highlight specific lines of code using a space after the language declaration followed by this JSON metastring. Highlight individual lines and/or a range of contiguous lines, separated by commas.
+
+### Links
+Example: `[internal link](/blog/my-blog-post)` / `[external link](https://example.com)`
+- External links will automatically render with `target="_blank" rel="noopener noreferrer"` and open in a new tab
+- Internal links are handled normally
 
 ---
 
