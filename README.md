@@ -49,12 +49,13 @@ Open [http://localhost:5555/](http://localhost:5555/)
 ---
 
 ## Markdown metastrings:
-Use JSON style metadata to get the benefits of the Next/Image component without mixing JSX into your Markdown.
+Utilize Next/Image functionality by using custom metastrings inside the Markdown Alt.
+Retain the terseness of pure Markdown while getting the benefits of the Next/Image component without mixing in JSX.
 
 ### Next/Image Dimensions
 `![AltText {priority}{768x432}](/path-to-image.jpg)`
-- Define image width and height: `{Width x Height}
-- Optionally set image as {priority} to utilize Next.js preloading for images above the fold.
+- Define image width and height: `{Width x Height}`
+- Optionally set image as `{priority}` to utilize Next.js preloading for images above the fold.
 
 ### Code line highlight
 ` ```JSX {3,5-8} ... `
