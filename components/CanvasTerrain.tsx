@@ -51,7 +51,7 @@ const Terrain = ({
   
   useFrame(() => (
     rotate?
-    mesh.current.rotation.y += 0.001
+    mesh.current.rotation.y += 0.0005
     : null
   ))
 

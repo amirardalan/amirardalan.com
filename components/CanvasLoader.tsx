@@ -20,8 +20,9 @@ const CanvasLoader =  React.memo(() => {
   return (
     <>
       <Canvas
-        css={{ animation: 'slideUp 1s forwards' }}
-        gl={{ antialias: true }}
+        css={{animation: 'slideUp 1s forwards'}}
+        gl={{antialias: true}}
+        dpr={window.devicePixelRatio}
         onCreated={({ camera }) => camera.lookAt(0, 0, 0)}
         camera={{ position: [0.35, 0.35, 0.35] }}
       >
