@@ -49,14 +49,16 @@ Open [http://localhost:5555/](http://localhost:5555/)
 ---
 
 ## Markdown metastrings:
+Use JSON style metadata to get the benefits of the Next/Image component without mixing JSX into your Markdown.
 
-### Next/Image
+### Next/Image Dimensions
 `![AltText {priority}{768x432}](/path-to-image.jpg)`
-- Set the image dimensions and optionally set image as "priority" to utilize Next.js preloading for images above the fold.
+- Define image width and height: `{Width x Height}
+- Optionally set image as {priority} to utilize Next.js preloading for images above the fold.
 
 ### Code line highlight
-` ```TSX {3,5-8} ... `
-- Individually highlight specific lines of code by putting a space, then a JSON metastring of line numbers after the syntax language declaration. Can be individual lines or a range of contiguous lines, separated by commas.
+` ```JSX {3,5-8} ... `
+- Individually highlight specific lines of code using a space after the language declaration followed by this JSON metastring. Highlight individual lines and/or a range of contiguous lines, separated by commas.
 
 ---
 
