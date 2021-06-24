@@ -95,7 +95,7 @@ export default function Home({ data, latestPost }) {
   })
   const styleTypedText = css({
     marginBottom: '3rem',
-    fontSize: 'calc(.9vw + .9vh)',
+    fontSize: 'calc(.7vw + .7vh)',
     WebkitMarqueeIncrement: '0vw',
     fontWeight: 'normal',
     color: 'var(--color-gray)',
