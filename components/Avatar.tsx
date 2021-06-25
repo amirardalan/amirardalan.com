@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { avatar } from '@/data/content'
 
 
 export default function Photo({ height, width }) {
@@ -7,9 +8,9 @@ export default function Photo({ height, width }) {
 
   return (
     <Image
-      src="https://github.com/amirardalan.png"
-      alt="Amir Ardalan"
-      aria-label="Amir Ardalan"
+      src={avatar.img}
+      alt={avatar.title}
+      aria-label={avatar.title}
       width={width}
       height={height}
       css={{clipPath:`circle(${clip}px at center)`}}

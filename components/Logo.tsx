@@ -1,5 +1,6 @@
 import { css, useTheme } from '@emotion/react'
 import Image from 'next/image'
+import { logo } from '@/data/content'
 
 
 export default function Logo() {
@@ -39,23 +40,21 @@ export default function Logo() {
     <>
       <Image
         src={theme.logo}
-        alt="Amir Ardalan Logo"
+        alt={logo.title}
         width={22}
         height={22}
         css={styleLogo}
         draggable={false}
         priority
       />
-      <div css={{
-        flexDirection: 'column',
-      }}>
+      <div css={{flexDirection: 'column'}}>
         <h1 css={styleTitle}>
-          Amir Ardalan
+          {logo.title}
         </h1>
         <div
-          aria-label="Portland, Oregon"
+          aria-label={logo.subtitle}
           css={styleTitleSub}>
-          Portland,Oregon
+          {logo.subtitle}
         </div>
       </div>
     </>
