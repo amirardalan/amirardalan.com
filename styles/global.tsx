@@ -332,7 +332,7 @@ export function GlobalStyles () {
             },
           },
           '@media(max-width: 360px)': {
-            marginRight: 0,
+            marginRight: 10,
             width: '100%',
           }
         }

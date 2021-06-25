@@ -77,7 +77,8 @@ export default function Home({ data, latestPost }) {
       margin: '0 0 1rem',
       fontWeight: 'bolder',
       '@media (max-width: 890px)': {
-        fontSize: 'calc(3.4vw + 3.4vh)',
+        marginTop: '2rem',
+        fontSize: 'calc(3vw + 3vh)',
         WebkitMarqueeIncrement: '0vw',
       }
     },
@@ -100,6 +101,7 @@ export default function Home({ data, latestPost }) {
     fontWeight: 'normal',
     color: 'var(--color-gray)',
     '@media (max-width: 890px)': {
+      marginBottom: '1rem',
       fontSize: 'calc(1.2vw + 1.2vh)',
       WebkitMarqueeIncrement: '0vw',
     } 
