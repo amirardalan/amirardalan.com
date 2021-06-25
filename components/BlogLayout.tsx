@@ -64,6 +64,9 @@ const BlogLayout: React.FC<React.ReactNode> = (props) => {
             },
             '&.postTeaser': {
               marginBottom: '3.5rem',
+              p: {
+                color: 'var(--color-gray) !important',
+              },
               '@media(max-width: 480px)': {
                 marginBottom: '2.5rem'
               }
