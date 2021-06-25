@@ -3,6 +3,7 @@ import { themeLight, themeDark } from "@/styles/theme"
 export const logo = {
   title: 'Amir Ardalan',
   subtitle: 'Portland,Oregon',
+  alt: 'Amir Ardalan Logo',
 }
 
 export const avatar = {
@@ -243,6 +244,9 @@ export const error = {
 }
 
 export const footer = {
+  logo: {
+    alt: 'Amir Ardalan Logo'
+  },
   headings: {
     nav: 'Explore',
     social: 'Connect',

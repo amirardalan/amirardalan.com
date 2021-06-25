@@ -40,7 +40,7 @@ export default function Logo() {
     <>
       <Image
         src={theme.logo}
-        alt={logo.title}
+        alt={logo.alt}
         width={22}
         height={22}
         css={styleLogo}

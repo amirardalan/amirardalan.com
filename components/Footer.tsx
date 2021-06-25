@@ -167,7 +167,7 @@ export default function Footer() {
           src={theme.logoFooter}
           height={75}
           width={75}
-          alt="Logo"
+          alt={footer.logo.alt}
           draggable={false}
         />
       </div>
