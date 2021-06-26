@@ -11,6 +11,8 @@ import Footer from '@/components/Footer'
 import { AppProps } from 'next/app'
 import { Provider } from 'next-auth/client'
 
+import TrackPageviews from '@/utils/trackPageviews'
+
 import dynamic from 'next/dynamic'
 const BlogAdmin = dynamic(() => import('@/components/BlogAdmin'),{
   ssr: false
@@ -21,6 +23,9 @@ const App = ({ Component, pageProps }: AppProps) => {
   // Theme Context for non-CSS
   const [theme, toggleTheme] = useThemeContext()
   const themeMode = theme === 'light' ? themeLight : themeDark
+
+  // GA
+  TrackPageviews()
 
   return (
     <React.StrictMode>

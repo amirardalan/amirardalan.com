@@ -4,8 +4,10 @@ declare global {
   }
 }
 
+// console.log(process.env.GOOGLE_ANALYTICS_ID)
+
 export const pageview = (url: URL) => {
-  window.gtag('config', `${process.env.GOOGLE_ANALYTICS_ID}`, {
+  window.gtag('config', `${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID}`, {
     page_path: url,
   })
 }
