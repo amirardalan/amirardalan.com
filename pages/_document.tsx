@@ -70,6 +70,7 @@ export default class MyDocument extends Document {
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
               gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID}', {
+                cookie_flags: 'SameSite=None;Secure',
                 page_path: window.location.pathname,
               });
             `,
