@@ -7,6 +7,7 @@ A Next.js Markdown Blog and CMS written in TypeScript. Designed, built, and main
 [Next.js](https://github.com/vercel/next.js/)  
 [react-markdown](https://github.com/remarkjs/react-markdown)  
 [Prisma](https://github.com/prisma/prisma)  
+[SWR](https://github.com/vercel/swr)  
 [Emotion](https://github.com/emotion-js/emotion)  
 [Three.js](https://github.com/mrdoob/three.js/)  
 
