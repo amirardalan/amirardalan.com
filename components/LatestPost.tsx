@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { css } from '@emotion/react'
 
+
 export default function LatestPost({ latestPost, data }) {
 
   // Latest Post Styles

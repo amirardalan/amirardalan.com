@@ -10,13 +10,13 @@ import Footer from '@/components/Footer'
 
 import { AppProps } from 'next/app'
 import { Provider } from 'next-auth/client'
-
 import TrackPageviews from '@/utils/trackPageviews'
 
 import dynamic from 'next/dynamic'
 const BlogAdmin = dynamic(() => import('@/components/BlogAdmin'),{
   ssr: false
 })
+
 
 const App = ({ Component, pageProps }: AppProps) => {
 

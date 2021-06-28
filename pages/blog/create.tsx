@@ -7,8 +7,8 @@ import { admin, breadcrumb } from '@/data/content'
 import { useSession } from 'next-auth/client'
 import LoadingTriangle from '@/components/LoadingTriangle'
 
-const Draft: React.FC = () => {
 
+const Draft: React.FC = () => {
 
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')

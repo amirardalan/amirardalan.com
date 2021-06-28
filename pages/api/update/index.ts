@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import prisma from '@/lib/prisma'
 
+
 // POST /api/update
 // Required fields in body: title
 // Optional fields in body: content, slug, teaser

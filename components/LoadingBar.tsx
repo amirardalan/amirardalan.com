@@ -1,6 +1,7 @@
 import { useLoadingBar } from '../utils/useLoadingBar'
 import { css } from '@emotion/react'
 
+
 export default function LoadingBar() {
 
   const isLoading = useLoadingBar()

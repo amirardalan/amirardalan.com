@@ -9,6 +9,7 @@ import { useSession } from 'next-auth/client'
 import LoadingTriangle from '@/components/LoadingTriangle'
 import BlogLayout from '@/components/BlogLayout'
 
+
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const editPost = await prisma.post.findUnique({
     where: {

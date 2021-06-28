@@ -5,6 +5,7 @@ import Logo from '@/components/Logo'
 import { nav } from '@/data/navigation'
 import Image from 'next/image'
 
+
 export default function Navigation() {
   const theme: any = useTheme()
   const isDarkTheme = theme.active === 'dark'

@@ -3,8 +3,9 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import ErrorAnimation from '@/components/ErrorAnimation'
-
 import { error } from '@/data/content'
+
+
 export const getStaticProps = async () => {
   return {
     props: {
@@ -12,6 +13,7 @@ export const getStaticProps = async () => {
     },
   }
 }
+
 
 export default function Custom404({ data }) {
   const theme: any = useTheme()

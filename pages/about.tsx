@@ -5,9 +5,10 @@ import Image from 'next/image'
 import Head from 'next/head'
 import Avatar from '@/components/Avatar'
 import { generateCtaButtons } from '@/components/CtaButtons'
-
 import { about } from '@/data/content'
 import { GetStaticProps } from 'next'
+
+
 export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {

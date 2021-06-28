@@ -3,8 +3,8 @@ import { footer } from '@/data/content'
 import { nav } from '@/data/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
-
 import NowPlayingCompact from '@/components/NowPlayingCompact'
+
 
 export default function Footer() {
   const theme: any = useTheme()

@@ -8,8 +8,8 @@ import { admin, breadcrumb } from '@/data/content'
 import BlogPost from '@/components/BlogPost'
 import sortBlogPosts from '@/utils/sortBlogPosts'
 import LoadingTriangle from '@/components/LoadingTriangle'
-
 import prisma from '@/lib/prisma'
+
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   const session = await getSession({ req })
@@ -33,7 +33,6 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
     props: { drafts },
   }
 }
-
 
 type Props = {
   drafts: Array<any>

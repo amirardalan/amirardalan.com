@@ -1,6 +1,7 @@
 import { Global } from '@emotion/react'
 import React from 'react'
 
+
 const BlogLayout: React.FC<React.ReactNode> = (props) => {
 
   return (

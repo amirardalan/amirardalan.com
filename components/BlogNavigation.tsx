@@ -1,6 +1,6 @@
 import { css } from '@emotion/react'
-import sortBlogPosts from '@/utils/sortBlogPosts'
 import Link from 'next/link'
+import sortBlogPosts from '@/utils/sortBlogPosts'
 
 
 export default function BlogNavigation({ feed, post, isPublished }) {

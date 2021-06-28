@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
+
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   // Check the secret and next parameters
   // This secret should only be known to this API route and the CMS
