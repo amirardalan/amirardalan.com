@@ -77,11 +77,8 @@ export default function Footer() {
       }
     },
     '.nowPlaying': {
-      paddingTop: '.4rem',
+      paddingTop: '.1rem',
       lineHeight: '1.3rem',
-      '@media(max-width: 890px)': {
-        paddingTop: '.8rem',
-      }
     },
   })
   const styleFooterLogo = css({
