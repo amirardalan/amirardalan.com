@@ -165,6 +165,8 @@ export const about = {
       'SWR',
       'Adobe XD',
       'Markdown',
+      'Google Analytics',
+      'Salesforce Commerce Cloud'
     ]
   },
   experience: {
