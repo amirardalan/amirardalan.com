@@ -60,6 +60,7 @@ export default function Track(track: any) {
             href={track.songUrl}
             target="_blank"
             rel="noopener noreferrer"
+            title={track.album}
           >
             <Image
               src={track.image}

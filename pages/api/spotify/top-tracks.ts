@@ -10,7 +10,8 @@ export default async function handler(_: NextApiRequest, res: NextApiResponse) {
     artist: track.artists.map((_artist: any) => _artist.name).join(', '),
     songUrl: track.external_urls.spotify,
     title: track.name,
-    image: track.album.images[0].url
+    image: track.album.images[0].url,
+    album: track.album.name
   }))
 
   res.setHeader(

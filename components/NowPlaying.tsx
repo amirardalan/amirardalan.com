@@ -156,7 +156,7 @@ export default function NowPlaying() {
             layout="fill"
             objectFit="cover"
             priority
-          /> ) : null }
+          />) : null }
         </div>
         <div className="nowPlayingStatus">
           {isOnline ? (
@@ -187,13 +187,20 @@ export default function NowPlaying() {
                 </p>
               </span>
               <span css={{lineHeight: 0}}>
-                <Image
-                  src={data?.albumImageUrl}
-                  height="150"
-                  width="150"
-                  alt={data.title}
-                  priority
-                />
+                <a
+                  href={data.songUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title={data.album}
+                >
+                  <Image
+                    src={data?.albumImageUrl}
+                    height="150"
+                    width="150"
+                    alt={data.title}
+                    priority
+                  />
+                </a>
               </span>
             </div>
           </>

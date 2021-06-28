@@ -143,6 +143,7 @@ export default function About({ data }) {
           href={items.path}
           target="_blank"
           rel="noreferrer noopener"
+          title={items.title}
           aria-label={items.title}
         >
           <Image
