@@ -135,7 +135,7 @@ export default function BlogMarkdown({ post }) {
           overflow: 'scroll',
           borderRadius: 5,
           backgroundColor: 'var(--syntax-highlight-bg) !important',
-          'code': {
+          code: {
             backgroundColor: 'transparent !important',
             transform: 'translateZ(0)',
             minWidth: '100%',
@@ -146,10 +146,13 @@ export default function BlogMarkdown({ post }) {
                 display: 'none',
               }
             },
-            '@media(max-width: 480px)': {
-              paddingRight: '1.5rem',
-            }
           },
+          '@media(max-width: 480px)': {
+            borderRadius: 0,
+            code: {
+              paddingRight: '1.5rem',
+            },
+          }
         },
         code: {
           wordWrap: 'break-word',
