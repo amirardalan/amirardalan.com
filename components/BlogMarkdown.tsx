@@ -127,10 +127,10 @@ export default function BlogMarkdown({ post }) {
           fontStyle: 'normal !important'
         },
         pre: {
-          marginBottom: '1.5rem',
+          margin: '0 -1.5rem 1.5rem -1.5rem',
         },
         '.codeStyle': {
-          padding: '1rem !important',
+          padding: '1.5rem !important',
           overflow: 'scroll',
           borderRadius: 5,
           backgroundColor: 'var(--syntax-highlight-bg) !important',
@@ -167,7 +167,7 @@ export default function BlogMarkdown({ post }) {
         '[data="highlight"]': {
           background: 'var(--code-highlight)',
           borderLeft: '3px solid var(--color-accent-color)',
-          margin: '0 -1rem',
+          margin: '0 -1.5rem',
           padding: '0 .8rem',
         },
       }} />
