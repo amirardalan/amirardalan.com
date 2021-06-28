@@ -128,6 +128,7 @@ export default function BlogMarkdown({ post }) {
         },
         pre: {
           margin: '0 -1.5rem 1.5rem -1.5rem',
+          fontSize: 14,
         },
         '.codeStyle': {
           padding: '1.5rem !important',
@@ -168,7 +169,7 @@ export default function BlogMarkdown({ post }) {
           background: 'var(--code-highlight)',
           borderLeft: '3px solid var(--color-accent-color)',
           margin: '0 -1.5rem',
-          padding: '0 .8rem',
+          padding: '0 1.3rem',
         },
       }} />
     </>
