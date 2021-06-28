@@ -146,6 +146,9 @@ export default function BlogMarkdown({ post }) {
                 display: 'none',
               }
             },
+            '@media(max-width: 480px)': {
+              paddingRight: '1.5rem',
+            }
           },
         },
         code: {
