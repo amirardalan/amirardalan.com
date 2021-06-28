@@ -27,25 +27,26 @@ export default function Footer() {
     gridTemplateColumns: 'repeat(4, 1fr)',
     gap: '3rem',
     gridAutoRows: 'minmax(100px, auto)',
+    flexDirection: 'column',
+    fontFamily: 'var(--font-secondary)',
+    fontSize: 16,
+    color: 'var(--color-bg)',
     '@media(max-width: 890px)': {
       gridTemplateColumns: 'repeat(2, 1fr)',
     },
     '@media(max-width: 480px)': {
       gridTemplateColumns: 'repeat(1, 1fr)',
     },
-    flexDirection: 'column',
-    fontFamily: 'var(--font-secondary)',
-    fontSize: 16,
-    color: 'var(--color-bg)',
-    lineHeight: '2.2em',
     '.grid': {
       marginBottom: '1rem',
       '@media(max-width: 890px)': {
         marginBottom: 0,
-        lineHeight: '3rem',
       },
     },
     'a': {
+      marginBottom: '.8rem',
+      display: 'flex',
+      flexDirection: 'row',
       width: 'fit-content',
       fontSize: 16,
       alignItems: 'center',
@@ -58,6 +59,10 @@ export default function Footer() {
       '.icon': {
         marginLeft: '.2rem',
         lineHeight: 0,
+        alignSelf: 'center'
+      },
+      '@media(max-width: 480px)': {
+        marginBottom: '1.5rem',
       },
     },
     h5: {
