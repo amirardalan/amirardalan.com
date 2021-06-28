@@ -166,20 +166,21 @@ export const about = {
       'Adobe XD',
       'Markdown',
       'Google Analytics',
-      'Salesforce Commerce Cloud'
     ]
   },
   experience: {
     title: 'Experience:',
     items: [
       '10+ years',
-      'Freelance',
-      'Ecommerce',
-      'Salesforce Commerce Cloud',
-      'Columbia Sportswear',
+      'Columbia Sportswear Company',
       'KEEN Footwear',
       'Chrome Industries',
       'Hanna Andersson',
+      'Salesforce Commerce Cloud',
+      'Agile/Scrum Methodology',
+      'Freelance',
+      'Ecommerce',
+      'Agency',
     ],
   },
   availability: {

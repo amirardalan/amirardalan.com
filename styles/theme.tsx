@@ -15,7 +15,7 @@ export const themeLight = {
     search: '/icons/search-dark.svg',
     email: '/icons/email-light.svg',
     clipboard: '/icons/clipboard-dark.svg',
-    error: '/icons/error-light.svg',
+    error: '/icons/error-dark.svg',
   },
 }
 
@@ -36,6 +36,6 @@ export const themeDark = {
     search: '/icons/search-light.svg',
     email: '/icons/email-dark.svg',
     clipboard: '/icons/clipboard-light.svg',
-    error: '/icons/error-dark.svg',
+    error: '/icons/error-light.svg',
   }
 }

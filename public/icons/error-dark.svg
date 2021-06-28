@@ -1,10 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="400" height="400" viewBox="0 0 400 400">
-  <defs>
-    <clipPath id="clip-Custom_Size_1">
-      <rect width="400" height="400"/>
-    </clipPath>
-  </defs>
-  <g id="Custom_Size_1" data-name="Custom Size – 1" clip-path="url(#clip-Custom_Size_1)">
-    <path id="errorLogoDark" d="M269.05,33.333l97.617,97.633V269.033L269.05,366.667H130.95L33.333,269.033V130.967L130.95,33.333ZM282.85,0H117.15L0,117.15V282.833L117.15,400H282.833L400,282.85V117.15L282.85,0ZM175,100h50L208.333,233.333H191.667Zm25,204.167a20.833,20.833,0,1,1,20.833-20.833A20.841,20.841,0,0,1,200,304.167Z" transform="translate(0)" fill="#f5f5f5" opacity="0.999"/>
-  </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="135" height="135" viewBox="0 0 135 135"><defs><clipPath id="b"><rect width="135" height="135"/></clipPath></defs><g id="a" clip-path="url(#b)"><path d="M102.163,94.65H0L51.082,1ZM7.173,90.393H94.99L51.082,9.888Zm43.909-8.514a3.595,3.595,0,1,0-3.6-3.6A3.6,3.6,0,0,0,51.082,81.879ZM53.21,35.054V69.109H48.953V35.054Z" transform="translate(16.418 19.675)" fill-rule="evenodd"/></g></svg>
