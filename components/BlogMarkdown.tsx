@@ -131,11 +131,12 @@ export default function BlogMarkdown({ post }) {
           fontSize: 14,
         },
         '.codeStyle': {
-          padding: '1.5rem !important',
+          padding: '1.5rem 0 1.5rem 1.5rem !important',
           overflow: 'scroll',
           borderRadius: 5,
           backgroundColor: 'var(--syntax-highlight-bg) !important',
           code: {
+            paddingRight: '1.5rem',
             backgroundColor: 'transparent !important',
             transform: 'translateZ(0)',
             minWidth: '100%',
@@ -147,12 +148,9 @@ export default function BlogMarkdown({ post }) {
               }
             },
           },
-          '@media(max-width: 480px)': {
+          '@media(max-width: 768px)': {
             borderRadius: 0,
-            code: {
-              paddingRight: '1.5rem',
-            },
-          }
+          },
         },
         code: {
           wordWrap: 'break-word',
