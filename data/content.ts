@@ -214,6 +214,88 @@ export const about = {
 
 export const timeline = {
   title: 'Timeline',
+  items: [
+    {
+      content: '2000',
+      cName: 'date',
+    },
+    {
+      content: 'Wrote my first lines of HTML and CSS using Yahoo! Geocities.',
+      cName: 'event'
+    },
+    {
+      content: 'Began designing Flash websites and coding in ActionScript.',
+      cName: 'event'
+    },
+    {
+      content: '2002',
+      cName: 'date',
+    },
+    {
+      content: '2005',
+      cName: 'date',
+    },
+    {
+      content: 'Started working at Selliken Systems designing user interfaces.',
+      cName: 'event'
+    },
+    {
+      content: 'Started freelancing website consultations, design, and development.',
+      cName: 'event'
+    },
+    {
+      content: '2007',
+      cName: 'date',
+    },
+    {
+      content: '2011',
+      cName: 'date',
+    },
+    {
+      content: 'Started working at DealerSpike designing and developing websites for powersports dealerships.',
+      cName: 'event'
+    },
+    {
+      content: 'Started working at Columbia Sportswear Company as a Web Developer I',
+      cName: 'event'
+    },
+    {
+      content: '2014',
+      cName: 'date',
+    },
+    {
+      content: '2015',
+      cName: 'date',
+    },
+    {
+      content: 'Started working at KEEN Footwear as a UI Engineering Lead.',
+      cName: 'event'
+    },
+    {
+      content: 'Started working at DemandPDX working on several Salesforce Commerce Cloud projects.',
+      cName: 'event'
+    },
+    {
+      content: '2018',
+      cName: 'date',
+    },
+    {
+      content: '2019',
+      cName: 'date',
+    },
+    {
+      content: 'Began a deep-dive into React and TypeScript.',
+      cName: 'event'
+    },
+    {
+      content: 'Currently improving React skills with Next.js and TypeScript and blogging on amirardalan.com',
+      cName: 'event'
+    },
+    {
+      content: 'Present',
+      cName: 'date',
+    },
+  ]
 }
 
 export const spotify = {

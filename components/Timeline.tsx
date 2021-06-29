@@ -6,7 +6,6 @@ export default function Timeline() {
 
   const styleTimelineWrapper = css({
     marginTop: '3rem',
-    textAlign: 'center'
   })
   const styleTimeline = css({
     display: 'grid',
@@ -15,6 +14,7 @@ export default function Timeline() {
     '.timeline': {
       padding: '0 2rem',
       '&:nth-of-type(odd)': {
+        zIndex: 2,
         position: 'relative',
         justifySelf: 'flex-end',
         borderRight: '2px solid var(--color-accent-gray)',
@@ -26,20 +26,37 @@ export default function Timeline() {
           fontSize: 60,
           color: 'var(--color-accent-gray)',
         },
-        '.event:before': {
-          right: -20,
-          borderLeft: '12px solid transparent',
-          borderRight: '20px solid var(--color-accent)',
-          transform: 'rotateY(0deg) rotate(270deg)',
+        '.date': {
+          marginRight: '1rem'
+        },
+        '.event': {
+          '&:before': {
+            right: -22,
+            borderLeft: '12px solid transparent',
+            borderRight: '20px solid var(--color-accent)',
+            transform: 'rotateY(0deg) rotate(270deg)',
+            '@media(max-width: 480px)': {
+              border: 'none'
+            }
+          }
         }
       },
       '&:nth-of-type(even)': {
+        zIndex: 1,
         justifySelf: 'flex-start',
-        '.event:before': {
-          left: -20,
-          borderLeft: '20px solid var(--color-accent)',
-          borderRight: '12px solid transparent',
-          transform: 'rotateY(0deg) rotate(90deg)',
+        '.date': {
+          marginLeft: '1rem'
+        },
+        '.event': {
+          '&:before': {
+            left: -22,
+            borderLeft: '20px solid var(--color-accent)',
+            borderRight: '12px solid transparent',
+            transform: 'rotateY(0deg) rotate(90deg)',
+            '@media(max-width: 480px)': {
+              border: 'none'
+            }
+          },
         }
       },
       '.date': {
@@ -60,10 +77,30 @@ export default function Timeline() {
           width: 0,
           height: 0,
           borderBottom: '12px solid transparent',
+        },
+        '@media(max-width: 480px)': {
+          fontSize: 12,
+          padding: '1rem',
         }
+      },
+      '@media(max-width: 480px)': {
+        padding: 0,
       }
     }
   })
+
+  const generateTimeline = (items: Array<any>) => {
+    return items.map((items, i) => {
+      return (
+        <div className="timeline" key={i}>
+          <div className={items.cName}>
+            {items.content}
+          </div>
+        </div>
+      )
+    })
+  }
+
 
   return (
     <div css={styleTimelineWrapper}>
@@ -71,36 +108,7 @@ export default function Timeline() {
         {timeline.title}
       </h3>
       <div css={styleTimeline}>
-        <div className="timeline">
-          <div className="date">
-            2004
-          </div>
-        </div>
-        <div className="timeline">
-          <div className="event">
-            Zipppity Do Da, some stuff and things.
-          </div>
-        </div>
-        <div className="timeline">
-          <div className="event">
-            Zipppity Do Da, some stuff and things.
-          </div>
-        </div>
-        <div className="timeline">
-          <div className="date">
-            2005
-          </div>
-        </div>
-        <div className="timeline">
-          <div className="date">
-            2007
-          </div>
-        </div>
-        <div className="timeline">
-          <div className="event">
-            Zipppity Do Da, some stuff and things.
-          </div>
-        </div>
+        {generateTimeline(timeline.items)}
       </div>
     </div>
   )
