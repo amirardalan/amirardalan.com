@@ -146,12 +146,12 @@ export const about = {
     items: [
       'Fullstack Dev',
       'React',
+      'JavaScript',
       'TypeScript',
       'CSS-in-JS',
       'SCSS',
       'UI Design',
-      'RESTful API',
-      'Relational DB',
+      'Relational DBs',
       'Unit Testing',
       'Documentation',
     ]
@@ -164,6 +164,8 @@ export const about = {
       'PostgreSQL',
       'SWR',
       'Adobe XD',
+      'Vercel',
+      'Heroku',
       'Markdown',
       'Google Analytics',
     ]
