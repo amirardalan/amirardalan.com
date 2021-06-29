@@ -30,6 +30,7 @@ export default function Timeline() {
           marginRight: '1rem'
         },
         '.event': {
+          maxWidth: 400,
           '&:before': {
             right: -22,
             borderLeft: '12px solid transparent',
@@ -48,6 +49,7 @@ export default function Timeline() {
           marginLeft: '1rem'
         },
         '.event': {
+          maxWidth: 400,
           '&:before': {
             left: -22,
             borderLeft: '20px solid var(--color-accent)',
