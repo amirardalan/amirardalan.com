@@ -85,7 +85,7 @@ export const about = {
     twitter: 'Twitter',
     linkedin: 'LinkedIn',
   },
-  heading: 'About Me',
+  heading: 'Info',
   social: {
     title: 'Social:',
     items: [
@@ -132,12 +132,6 @@ export const about = {
           light: themeLight.icons.download,
           dark: themeDark.icons.download,
         },
-      },
-      {
-        path: '/blog/2021-a-dev-odyssey',
-        title: 'Journey',
-        rel: '',
-        target: '_self',
       },
     ],
   },
@@ -216,6 +210,10 @@ export const about = {
       },
     ],
   },
+}
+
+export const timeline = {
+  title: 'Timeline',
 }
 
 export const spotify = {
