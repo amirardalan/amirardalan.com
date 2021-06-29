@@ -85,7 +85,7 @@ export const about = {
     twitter: 'Twitter',
     linkedin: 'LinkedIn',
   },
-  heading: 'Info',
+  heading: 'Details',
   social: {
     title: 'Social:',
     items: [
