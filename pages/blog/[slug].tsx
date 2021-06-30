@@ -50,7 +50,13 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       },
     })
   ])
-  return { props: { post, feed, data: blogPost } }
+  if (post) {
+    return { props: { post, feed, data: blogPost } } 
+  } else {
+    return {
+      notFound: true
+    }
+  }
 }
 
 const Post = ({ post, feed, data }) => {
