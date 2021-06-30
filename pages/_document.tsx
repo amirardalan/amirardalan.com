@@ -50,7 +50,7 @@ export default class MyDocument extends Document {
           <meta property="og:description" content="Fullstack developer, UI designer &amp; React enthusiast based in Portland, OR" />
           <meta property="og:url" content="https://amirardalan.com" />
           <meta property="og:site_name" content="Amir Ardalan" />
-          <meta property="og:image" content="https://amirardalan.com/thumbnail.jpg" />
+          <meta name="thumbnail" property="og:image" content="https://amirardalan.com/thumbnail.jpg" />
           <meta name="twitter:image" content="https://amirardalan.com/thumbnail.jpg" />
           <meta name="twitter:image:alt" content="Amir Ardalan Blog" />
           <meta name="twitter:card" content="summary_large_image" />
