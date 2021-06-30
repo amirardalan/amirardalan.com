@@ -100,7 +100,7 @@ export default function Timeline() {
         },
         '@media(max-width: 480px)': {
           fontSize: 12,
-          padding: '1rem',
+          padding: '1.5rem 1rem',
         }
       }
     }
