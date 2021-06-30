@@ -99,8 +99,9 @@ export default function Timeline() {
           borderBottom: '12px solid transparent',
         },
         '@media(max-width: 480px)': {
-          fontSize: 12,
+          marginBottom: '2rem',
           padding: '1.5rem 1rem',
+          fontSize: 12,
         }
       }
     }

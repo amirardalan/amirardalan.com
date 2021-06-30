@@ -272,7 +272,7 @@ export const timeline = {
     },
     {
       title: 'Frontend Dev and UI Designer @ Dealer Spike',
-      content: '💼 HTML/CSS/JavaScript and design in Adobe Photoshop. Created web experiences with a focus on SEO for powersports dealerships across US and Canada.',
+      content: '💼 HTML, CSS, and JavaScript and design in Adobe Photoshop. Created web experiences with a focus on SEO for powersports dealerships across US and Canada.',
       cName: 'event'
     },
     {
@@ -285,7 +285,7 @@ export const timeline = {
     },
     {
       title: 'Freelancer @ Self Employed',
-      content: '💼 Managed all aspects of business with 30+ clients. Developed websites using HTML/CSS/JavaScript. Utilized CSS3, Boostrap, jQuery, and Wordpress.',
+      content: '💼 Managed all aspects of business with 30+ clients. Developed websites using HTML, CSS, and JavaScript. Utilized CSS3, Boostrap, jQuery, and Wordpress.',
       cName: 'event'
     },
     {
