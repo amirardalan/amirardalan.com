@@ -226,83 +226,83 @@ export const timeline = {
   title: 'Timeline',
   items: [
     {
-      content: '2000',
+      content: 'Present',
       cName: 'date',
-    },
-    {
-      content: '❤️ Wrote my first lines of HTML and CSS using Yahoo! Geocities. Fell in love with web development.',
-      cName: 'event'
-    },
-    {
-      content: '✨ Began designing/animating Macromedia Flash websites and coding in ActionScript.',
-      cName: 'event'
-    },
-    {
-      content: '2002',
-      cName: 'date',
-    },
-    {
-      content: '2005',
-      cName: 'date',
-    },
-    {
-      content: '💼 UI Designer @ Selliken Systems – Worked on the HomeQuest real estate property search tool.',
-      cName: 'event'
-    },
-    {
-      content: '💼 Freelancer & Cunsultant @ Self Employed – Managed all aspects of business with 30+ clients.',
-      cName: 'event'
-    },
-    {
-      content: '2007',
-      cName: 'date',
-    },
-    {
-      content: '2011',
-      cName: 'date',
-    },
-    {
-      content: '💼 Front-end Developer and UI Designer @ Dealer Spike – HTML/CSS/JavaScript and design in Adobe Photoshop.',
-      cName: 'event'
-    },
-    {
-      content: '💼 Web Developer I @ Columbia Sportswear Company – Developed Front-end code for Columbia, SOREL, and Mountain Hardwear.',
-      cName: 'event'
-    },
-    {
-      content: '2014',
-      cName: 'date',
-    },
-    {
-      content: '2015',
-      cName: 'date',
-    },
-    {
-      content: '💼 UI Engineering Lead @ KEEN Footwear & Chrome Industries – Developed new web experiences for both brands on Salesforce Commerce Cloud.',
-      cName: 'event'
-    },
-    {
-      content: '💼 Application Engineer @ DemandPDX – Fullstack Development in an agency environment for many clients including Hanna Andersson and Leatherman.',
-      cName: 'event'
-    },
-    {
-      content: '2018',
-      cName: 'date',
-    },
-    {
-      content: '2019',
-      cName: 'date',
-    },
-    {
-      content: '👨‍💻 Deep-dive into React, improving JavaScript skills, and honing user interface design capabilities.',
-      cName: 'event'
     },
     {
       content: '✍️ Currently expanding React skills with Next.js and TypeScript and writing about both on amirardalan.com.',
       cName: 'event'
     },
     {
-      content: 'Present',
+      content: '👨‍💻 Deep-dive into React, improving JavaScript skills, and honing user interface design capabilities.',
+      cName: 'event'
+    },
+    {
+      content: '2019',
+      cName: 'date',
+    },
+    {
+      content: '2018',
+      cName: 'date',
+    },
+    {
+      content: '💼 Application Engineer @ DemandPDX – Fullstack Development in an agency environment for many clients including Hanna Andersson and Leatherman.',
+      cName: 'event'
+    },
+    {
+      content: '💼 UI Engineering Lead @ KEEN Footwear & Chrome Industries – Developed new web experiences for both brands on Salesforce Commerce Cloud.',
+      cName: 'event'
+    },
+    {
+      content: '2015',
+      cName: 'date',
+    },
+    {
+      content: '2014',
+      cName: 'date',
+    },
+    {
+      content: '💼 Web Developer I @ Columbia Sportswear Company – Developed Front-end code for Columbia, SOREL, and Mountain Hardwear.',
+      cName: 'event'
+    },
+    {
+      content: '💼 Front-end Developer and UI Designer @ Dealer Spike – HTML/CSS/JavaScript and design in Adobe Photoshop.',
+      cName: 'event'
+    },
+    {
+      content: '2011',
+      cName: 'date',
+    },
+    {
+      content: '2007',
+      cName: 'date',
+    },
+    {
+      content: '💼 Freelancer & Cunsultant @ Self Employed – Managed all aspects of business with 30+ clients.',
+      cName: 'event'
+    },
+    {
+      content: '💼 UI Designer @ Selliken Systems – Worked on the HomeQuest real estate property search tool.',
+      cName: 'event'
+    },
+    {
+      content: '2005',
+      cName: 'date',
+    },
+    {
+      content: '2002',
+      cName: 'date',
+    },
+    {
+      content: '✨ Began designing/animating Macromedia Flash websites and coding in ActionScript.',
+      cName: 'event'
+    },
+    {
+      content: '❤️ Wrote my first lines of HTML and CSS using Yahoo! Geocities. Fell in love with web development.',
+      cName: 'event'
+    },
+    {
+      content: '2000',
       cName: 'date',
     },
   ]
