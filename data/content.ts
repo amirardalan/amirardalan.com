@@ -231,7 +231,7 @@ export const timeline = {
     },
     {
       title: 'Fullstack Developer, Writer',
-      content: '✍️ Currently expanding React skills with Next.js and TypeScript and writing about both on amirardalan.com.',
+      content: '✍️ Currently expanding React skills with Next.js and TypeScript and writing on this website.',
       cName: 'event'
     },
     {
