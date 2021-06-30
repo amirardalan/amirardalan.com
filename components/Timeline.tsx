@@ -6,7 +6,7 @@ import Link from 'next/link'
 export default function Timeline() {
 
   const styleTimelineWrapper = css({
-    marginTop: '3rem',
+    paddingTop: '4rem',
   })
   const styleTimeline = css({
     display: 'grid',
@@ -112,7 +112,7 @@ export default function Timeline() {
 
 
   return (
-    <div css={styleTimelineWrapper}>
+    <div css={styleTimelineWrapper} id="timeline">
       <h3 className="pageHeading">
         {timeline.title}
       </h3>

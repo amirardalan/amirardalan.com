@@ -133,6 +133,16 @@ export const about = {
           dark: themeDark.icons.download,
         },
       },
+      {
+        path: '#timeline',
+        title: 'Timeline',
+        rel: '',
+        target: '_self',
+        icon: {
+          light: themeLight.icons.time,
+          dark: themeDark.icons.time,
+        },
+      },
     ],
   },
   skills: {
