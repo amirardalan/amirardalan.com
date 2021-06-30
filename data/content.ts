@@ -230,10 +230,12 @@ export const timeline = {
       cName: 'date',
     },
     {
+      title: 'Fullstack Developer, Writer',
       content: '✍️ Currently expanding React skills with Next.js and TypeScript and writing about both on amirardalan.com.',
       cName: 'event'
     },
     {
+      title: 'Learning',
       content: '👨‍💻 Deep-dive into React, improving JavaScript skills, and honing user interface design capabilities.',
       cName: 'event'
     },
@@ -246,11 +248,13 @@ export const timeline = {
       cName: 'date',
     },
     {
-      content: '💼 Application Engineer @ DemandPDX – Fullstack Development in an agency environment for many clients including Hanna Andersson and Leatherman.',
+      title: 'Application Engineer @ DemandPDX',
+      content: '💼 Fullstack Development in an agency environment for many clients including Hanna Andersson and Leatherman.',
       cName: 'event'
     },
     {
-      content: '💼 UI Engineering Lead @ KEEN Footwear & Chrome Industries – Developed new web experiences for both brands on Salesforce Commerce Cloud.',
+      title: 'UI Engineering Lead @ KEEN Footwear',
+      content: '💼 Developed new Salesforce Commerce Cloud Ecommerce websites for KEEN Footwear and Chrome Industries. Collaborated with BASIC® Agency.',
       cName: 'event'
     },
     {
@@ -262,11 +266,13 @@ export const timeline = {
       cName: 'date',
     },
     {
-      content: '💼 Web Developer I @ Columbia Sportswear Company – Developed Front-end code for Columbia, SOREL, and Mountain Hardwear.',
+      title: 'Web Developer I @ Columbia Sportswear',
+      content: '💼 Developed Frontend code for Columbia, SOREL, and Mountain Hardwear. Implemented localized content and content modules for international sales.',
       cName: 'event'
     },
     {
-      content: '💼 Front-end Developer and UI Designer @ Dealer Spike – HTML/CSS/JavaScript and design in Adobe Photoshop.',
+      title: 'Frontend Dev and UI Designer @ Dealer Spike',
+      content: '💼 HTML/CSS/JavaScript and design in Adobe Photoshop. Created web experiences with a focus on SEO for powersports dealerships across US and Canada.',
       cName: 'event'
     },
     {
@@ -278,11 +284,13 @@ export const timeline = {
       cName: 'date',
     },
     {
-      content: '💼 Freelancer & Cunsultant @ Self Employed – Managed all aspects of business with 30+ clients.',
+      title: 'Freelancer @ Self Employed',
+      content: '💼 Managed all aspects of business with 30+ clients. Developed websites using HTML/CSS/JavaScript. Utilized CSS3, Boostrap, jQuery, and Wordpress.',
       cName: 'event'
     },
     {
-      content: '💼 UI Designer @ Selliken Systems – Worked on the HomeQuest real estate property search tool.',
+      title: 'UI Designer @ Selliken Systems',
+      content: '💼 Worked on the HomeQuest real estate property search tool. Designed using Adobe Photoshop and Illustrator.',
       cName: 'event'
     },
     {
@@ -294,11 +302,13 @@ export const timeline = {
       cName: 'date',
     },
     {
-      content: '✨ Began designing/animating Macromedia Flash websites and coding in ActionScript.',
+      title: 'Learning @ Southridge High School',
+      content: `✨ Began designing/animating Macromedia Flash websites and coding in ActionScript in my school's TV Studio.`,
       cName: 'event'
     },
     {
-      content: '❤️ Wrote my first lines of HTML and CSS using Yahoo! Geocities. Fell in love with web development.',
+      title: 'Learning @ Southridge High School',
+      content: '❤️ Wrote my first lines of HTML and CSS using Yahoo! Geocities. Fell in love with web development. Took HTML/CSS Web Design course sophomore year.',
       cName: 'event'
     },
     {

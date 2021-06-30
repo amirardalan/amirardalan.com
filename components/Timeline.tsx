@@ -14,6 +14,12 @@ export default function Timeline() {
     gridAutoRows: 'minmax(100px, auto)',
     '.timeline': {
       padding: '0 2rem',
+      h4: {
+        marginBottom: '.5rem',
+        fontFamily: 'var(--font-secondary)',
+        fontSize: 14,
+        lineHeight: '1rem',
+      },
       '&:nth-of-type(odd)': {
         zIndex: 2,
         position: 'relative',
@@ -103,7 +109,10 @@ export default function Timeline() {
       return (
         <div className="timeline" key={i}>
           <div className={items.cName}>
-            {items.content}
+            <h4>{items.title}</h4>
+            <span>
+              {items.content}
+            </span>
           </div>
         </div>
       )
