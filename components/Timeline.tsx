@@ -99,7 +99,7 @@ export default function Timeline() {
   })
 
   const generateTimeline = (items: Array<any>) => {
-    return items.map((items, i) => {
+    return items.reverse().map((items, i) => {
       return (
         <div className="timeline" key={i}>
           <div className={items.cName}>

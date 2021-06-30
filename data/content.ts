@@ -262,7 +262,7 @@ export const timeline = {
       cName: 'date',
     },
     {
-      content: '💼 Front-end Developer and UI Designer @ Deealer Spike – HTML/CSS/JavaScript and design in Adobe Photoshop.',
+      content: '💼 Front-end Developer and UI Designer @ Dealer Spike – HTML/CSS/JavaScript and design in Adobe Photoshop.',
       cName: 'event'
     },
     {
