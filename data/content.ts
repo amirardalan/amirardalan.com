@@ -303,7 +303,7 @@ export const timeline = {
     },
     {
       title: 'Learning @ Southridge High School',
-      content: `✨ Began designing/animating Macromedia Flash websites and coding in ActionScript in my school's TV Studio.`,
+      content: `✨ Began designing and animating Macromedia Flash websites and coding in ActionScript in my school's TV Studio.`,
       cName: 'event'
     },
     {

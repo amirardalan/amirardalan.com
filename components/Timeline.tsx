@@ -11,9 +11,7 @@ export default function Timeline() {
   const styleTimeline = css({
     display: 'grid',
     gridTemplateColumns: 'repeat(2, 1fr)',
-    gridAutoRows: 'minmax(100px, auto)',
     '.timeline': {
-      padding: '0 2rem',
       '&:nth-of-type(even), &:nth-of-type(odd)': {
         '.event': {
           maxWidth: 400,
@@ -26,9 +24,10 @@ export default function Timeline() {
         },
         '.date': {
           lineHeight: '1rem',
-        },
+        }
       },
       '&:nth-of-type(odd)': {
+        padding: '0 2rem 0 0',
         zIndex: 2,
         position: 'relative',
         justifySelf: 'flex-end',
@@ -54,9 +53,13 @@ export default function Timeline() {
               border: 'none'
             }
           }
+        },
+        '@media(max-width: 480px)': {
+          padding: 0,
         }
       },
       '&:nth-of-type(even)': {
+        padding: '0 0 0 2rem',
         zIndex: 1,
         justifySelf: 'flex-start',
         '.date': {
@@ -72,6 +75,9 @@ export default function Timeline() {
               border: 'none'
             }
           },
+        },
+        '@media(max-width: 480px)': {
+          padding: 0,
         }
       },
       '.date': {
@@ -96,9 +102,6 @@ export default function Timeline() {
           fontSize: 12,
           padding: '1rem',
         }
-      },
-      '@media(max-width: 480px)': {
-        padding: 0,
       }
     }
   })
