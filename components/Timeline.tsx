@@ -14,11 +14,19 @@ export default function Timeline() {
     gridAutoRows: 'minmax(100px, auto)',
     '.timeline': {
       padding: '0 2rem',
-      h4: {
-        marginBottom: '.5rem',
-        fontFamily: 'var(--font-secondary)',
-        fontSize: 14,
-        lineHeight: '1rem',
+      '&:nth-of-type(even), &:nth-of-type(odd)': {
+        '.event': {
+          maxWidth: 400,
+          h4: {
+            marginBottom: '.5rem',
+            fontFamily: 'var(--font-secondary)',
+            fontSize: 14,
+            lineHeight: '1rem',
+          },
+        },
+        '.date': {
+          lineHeight: '1rem',
+        },
       },
       '&:nth-of-type(odd)': {
         zIndex: 2,
@@ -34,10 +42,9 @@ export default function Timeline() {
           color: 'var(--color-accent-gray)',
         },
         '.date': {
-          marginRight: '1rem'
+          marginRight: '1rem',
         },
         '.event': {
-          maxWidth: 400,
           '&:before': {
             right: -22,
             borderLeft: '12px solid transparent',
@@ -53,10 +60,9 @@ export default function Timeline() {
         zIndex: 1,
         justifySelf: 'flex-start',
         '.date': {
-          marginLeft: '1rem'
+          marginLeft: '1rem',
         },
         '.event': {
-          maxWidth: 400,
           '&:before': {
             left: -22,
             borderLeft: '20px solid var(--color-accent)',
@@ -71,7 +77,6 @@ export default function Timeline() {
       '.date': {
         fontFamily: 'var(--font-secondary)',
         fontSize: 20,
-        lineHeight: '1rem',
       },
       '.event': {
         position: 'relative',
@@ -110,9 +115,7 @@ export default function Timeline() {
         <div className="timeline" key={i}>
           <div className={items.cName}>
             <h4>{items.title}</h4>
-            <span>
-              {items.content}
-            </span>
+            <span>{items.content}</span>
           </div>
         </div>
       )
