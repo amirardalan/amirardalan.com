@@ -220,11 +220,11 @@ export const timeline = {
       cName: 'date',
     },
     {
-      content: 'Wrote my first lines of HTML and CSS using Yahoo! Geocities.',
+      content: '❤️ Wrote my first lines of HTML and CSS using Yahoo! Geocities. Fell in love with web development.',
       cName: 'event'
     },
     {
-      content: 'Began designing Flash websites and coding in ActionScript.',
+      content: '✨ Began designing/animating Macromedia Flash websites and coding in ActionScript.',
       cName: 'event'
     },
     {
@@ -236,11 +236,11 @@ export const timeline = {
       cName: 'date',
     },
     {
-      content: 'Started working at Selliken Systems designing user interfaces.',
+      content: '💼 UI Designer @ Selliken Systems – Worked on the HomeQuest real estate property search tool.',
       cName: 'event'
     },
     {
-      content: 'Started freelancing website consultations, design, and development.',
+      content: '💼 Freelancer & Cunsultant @ Self Employed – Managed all aspects of business with 30+ clients.',
       cName: 'event'
     },
     {
@@ -252,11 +252,11 @@ export const timeline = {
       cName: 'date',
     },
     {
-      content: 'Started working at DealerSpike designing and developing websites for powersports dealerships.',
+      content: '💼 Front-end Developer and UI Designer @ Deealer Spike – HTML/CSS/JavaScript and design in Adobe Photoshop.',
       cName: 'event'
     },
     {
-      content: 'Started working at Columbia Sportswear Company as a Web Developer I',
+      content: '💼 Web Developer I @ Columbia Sportswear Company – Developed Front-end code for Columbia, SOREL, and Mountain Hardwear.',
       cName: 'event'
     },
     {
@@ -268,11 +268,11 @@ export const timeline = {
       cName: 'date',
     },
     {
-      content: 'Started working at KEEN Footwear as a UI Engineering Lead.',
+      content: '💼 UI Engineering Lead @ KEEN Footwear & Chrome Industries – Developed new web experiences for both brands on Salesforce Commerce Cloud.',
       cName: 'event'
     },
     {
-      content: 'Started working at DemandPDX working on several Salesforce Commerce Cloud projects.',
+      content: '💼 Application Engineer @ DemandPDX – Fullstack Development in an agency environment for many clients including Hanna Andersson and Leatherman.',
       cName: 'event'
     },
     {
@@ -284,11 +284,11 @@ export const timeline = {
       cName: 'date',
     },
     {
-      content: 'Began a deep-dive into React and TypeScript.',
+      content: '👨‍💻 Deep-dive into React, improving JavaScript skills, and honing user interface design capabilities.',
       cName: 'event'
     },
     {
-      content: 'Currently improving React skills with Next.js and TypeScript and blogging on amirardalan.com',
+      content: '✍️ Currently expanding React skills with Next.js and TypeScript and writing about both on amirardalan.com.',
       cName: 'event'
     },
     {

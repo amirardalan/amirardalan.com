@@ -1,5 +1,6 @@
 import { css } from '@emotion/react'
 import { timeline } from '@/data/content'
+import Link from 'next/link'
 
 
 export default function Timeline() {
@@ -90,6 +91,12 @@ export default function Timeline() {
       }
     }
   })
+  const styleReadMoreLink = ({
+    marginTop: '2rem',
+    display: 'flex',
+    justifyContent: 'center',
+    fontFamily: 'var(--font-secondary)',
+  })
 
   const generateTimeline = (items: Array<any>) => {
     return items.map((items, i) => {
@@ -111,6 +118,11 @@ export default function Timeline() {
       </h3>
       <div css={styleTimeline}>
         {generateTimeline(timeline.items)}
+      </div>
+      <div css={styleReadMoreLink}>
+        <Link href="/blog/2021-a-dev-odyssey">
+          Read the Full Story
+        </Link>
       </div>
     </div>
   )
