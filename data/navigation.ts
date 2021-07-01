@@ -26,17 +26,6 @@ export const nav = [
     icon: false
   },
   {
-    title: 'Spotify',
-    path: '/spotify',
-    exact: '',
-    cName: 'spotifyNav',
-    aria: 'Spotify Dashboard',
-    icon: {
-      light: themeLight.icons.spotify,
-      dark: themeDark.icons.spotify
-    },
-  },
-  {
     title: 'Timeline',
     path: '/about#timeline',
     exact: '',
@@ -52,4 +41,15 @@ export const nav = [
     aria: 'Tools I Use',
     icon: false
   },
+  {
+    title: 'Spotify',
+    path: '/spotify',
+    exact: '',
+    cName: 'spotifyNav',
+    aria: 'Spotify Dashboard',
+    icon: {
+      light: themeLight.icons.spotify,
+      dark: themeDark.icons.spotify
+    },
+  }
 ]
