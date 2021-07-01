@@ -375,7 +375,7 @@ export const uses = {
   },
   tools: {
     content:
-  `### Code Tools
+  `### Tools
   #### IDE
   - [VS Code](https://code.visualstudio.com/)
   ##### Extensions:
