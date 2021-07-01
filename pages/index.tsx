@@ -84,9 +84,11 @@ export default function Home({ data, latestPost }) {
     },
     '.highlightText': {
       width: 'max-content',
+      marginLeft: 3,
       padding: '0 .5rem',
       background: 'var(--color-text)',
       color: 'var(--color-bg)',
+      boxShadow: '-3px 3px 0 var(--color-accent-color)',
     },
     '@media (min-width: 480px) and (max-width: 890px)': {
       fontSize: 'calc(2.5vw + 2.5vh)',

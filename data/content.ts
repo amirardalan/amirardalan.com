@@ -371,9 +371,9 @@ export const uses = {
   - [Beyerdynamic DT770Pro 80ohm](https://north-america.beyerdynamic.com/dt-770-pro.html)
   - [Sennheiser HD25-1 II](https://en-us.sennheiser.com/on-ear-dj-headphone-hd25) `
   },
-  software: {
+  tools: {
     content:
-  `### Software
+  `### Code Tools
   #### IDE
   - [VS Code](https://code.visualstudio.com/)
   ##### Extensions:
@@ -397,31 +397,12 @@ export const uses = {
 
   #### CLI
   - Terminal (~ZSH)
-  ##### Tools:
-  - Git
-  - Yarn
-  - Vercel CLI
-  - Heroku CLI
-  
-  #### Markdown
-  - [iA Writer](https://ia.net/writer)
-
-  #### Design
-  - [Adobe XD](https://www.adobe.com/products/xd.html)
 
   #### Testing
   ##### iOS:
   - [Xcode Simulator](https://developer.apple.com/xcode/)
   ##### Android:
-  - [Browser Stack](https://www.browserstack.com/)
-  
-  #### Communication
-  - [Slack](https://slack.com/)
-  - [Zoom](https://zoom.us/)
-  - [Discord](https://discord.com/)
-  
-  #### Music & Podcasts
-  - [Spotify](https://www.spotify.com/)`
+  - [Browser Stack](https://www.browserstack.com/)`
   },
   stack: {
     content:
@@ -443,7 +424,25 @@ export const uses = {
   - [React Syntax Highlighter](https://github.com/react-syntax-highlighter/react-syntax-highlighter)
   #### Hosting
   - [Vercel](https://vercel.com)`
-  }
+  },
+  software: {
+    content:
+  `### Software
+  
+  #### Markdown
+  - [iA Writer](https://ia.net/writer)
+
+  #### Design
+  - [Adobe XD](https://www.adobe.com/products/xd.html)
+  
+  #### Communication
+  - [Slack](https://slack.com/)
+  - [Zoom](https://zoom.us/)
+  - [Discord](https://discord.com/)
+  
+  #### Music & Podcasts
+  - [Spotify](https://www.spotify.com/)`
+  },
 }
 
 export const error = {

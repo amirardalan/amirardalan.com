@@ -15,6 +15,7 @@ export default function Timeline() {
       '&:nth-of-type(even), &:nth-of-type(odd)': {
         '.event': {
           maxWidth: 400,
+          boxShadow: '-1px 1px 0 var(--color-accent-color)',
           h4: {
             marginBottom: '.5rem',
             fontFamily: 'var(--font-secondary)',
@@ -52,7 +53,7 @@ export default function Timeline() {
             '@media(max-width: 480px)': {
               border: 'none'
             }
-          }
+          },
         },
         '@media(max-width: 480px)': {
           padding: 0,
@@ -66,7 +67,9 @@ export default function Timeline() {
           marginLeft: '1rem',
         },
         '.event': {
+          position: 'relative',
           '&:before': {
+            zIndex: 3,
             left: -22,
             borderLeft: '20px solid var(--color-accent)',
             borderRight: '12px solid transparent',
@@ -75,8 +78,23 @@ export default function Timeline() {
               border: 'none'
             }
           },
+          '&:after': {
+            zIndex: 2,
+            position: 'absolute',
+            top: 11,
+            left: -23,
+            content: '""',
+            borderLeft: '20px solid var(--color-accent-color)',
+            borderRight: '12px solid transparent',
+            borderBottom: '12px solid transparent',
+            transform: 'rotateY(0deg) rotate(90deg)',
+            '@media(max-width: 480px)': {
+              border: 'none'
+            }
+          }
         },
         '@media(max-width: 480px)': {
+          marginLeft: 1,
           padding: 0,
         }
       },
