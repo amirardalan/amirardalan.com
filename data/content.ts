@@ -336,6 +336,91 @@ export const spotify = {
   }
 }
 
+export const uses = {
+  meta: {
+    title: 'Uses',
+  },
+  computer: {
+    content:
+  `### Devices
+  #### 2016 13" MacBook Pro (silver)
+  - 3.3GHz Dual-Core Intel i7
+  - 16GB RAM
+  - 500GB Flash Storage
+  - MacOS Big Sur
+  #### Self-built PC
+  - 3.8GHz 6-Core Intel i7 3930K
+  - 32GB RAM
+  - 2x 1TB SSD
+  - Geforce GTX 1080 Founders Edition
+  - Motu Audio Express
+  - 2x KRK VXT 8
+  - Microsoft Windows 10
+  #### iPhone 11 Pro (black)
+  - 512GB Storage
+  - [TORRAS Shockproof case (black)](https://www.amazon.com/TORRAS-Shockproof-iPhone-Phone-Designed/dp/B07VV2BPWT/)`
+  },
+  stack: {
+    content:
+  `### Stack
+  #### Framework
+  - Next.js
+  #### CSS
+  - Emotion CSS-in-JS
+  #### Database
+  - PostgreSQL
+  #### ORM
+  - Prisma
+  #### Data Fetching
+  - SWR
+  #### Markdown
+  - React Markdown
+  - React Syntax Highlighter`
+  },
+  software: {
+    content:
+  `### Software
+  #### VS Code
+  - Community Material Theme (Palenight)
+  - ESLint
+  - GitHub Pullrequests and Issue Provider
+  - GitLens
+  - Material Icon Theme
+  - Next.js snippets
+  - Prisma
+  - VSCode Vercel
+  - vscode-styled-components
+
+  #### Adobe XD
+  - User Interface
+  - Logos
+  - Icons
+  - Typography
+  
+  #### Terminal
+  - ZSH
+  
+  #### iA Writer
+  - Markdown Writing
+  
+  #### Firefox Developer Edition
+  - React Developer Tools
+  - Lighthouse
+  - uBlock Origin
+  - GA Debug
+  
+  #### Xcode
+  - Device Simulator
+  - Cross-device testing
+  
+  #### Slack
+  - Team Communications
+  
+  #### Spotify
+  - Music & Podcasts`
+  }
+}
+
 export const error = {
   meta: {
     title: 'Page Not Found – Amir Ardalan'

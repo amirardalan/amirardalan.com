@@ -36,4 +36,12 @@ export const nav = [
       dark: themeDark.icons.spotify
     },
   },
+  {
+    title: 'Uses',
+    path: '/uses',
+    exact: '',
+    cName: 'exludeInHeader',
+    aria: 'Tools I Use',
+    icon: false
+  },
 ]

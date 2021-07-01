@@ -10,7 +10,7 @@ import rehypeSlug from 'rehype-slug'
 import link from 'rehype-autolink-headings'
 
 
-export default function BlogMarkdown({ post }) {
+export default function BlogMarkdown({ markdown }) {
 
   const theme: any = useTheme()
   const setSyntaxTheme = theme.code === 'light'
@@ -110,7 +110,7 @@ export default function BlogMarkdown({ post }) {
   return (
     <>
       <ReactMarkdown
-        children={post.content}
+        children={markdown.content}
         components={MarkdownComponents}
         remarkPlugins={[
           [gfm],

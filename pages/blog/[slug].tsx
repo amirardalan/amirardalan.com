@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 import BlogLayout from '@/components/BlogLayout'
-import BlogMarkdown from '@/components/BlogMarkdown'
+import Markdown from '@/components/Markdown'
 import BlogNavigation from '@/components/BlogNavigation'
 import calculateReadTime from '@/utils/calculateReadTime'
 import formatDate from '@/utils/formatDate'
@@ -156,7 +156,7 @@ const Post = ({ post, feed, data }) => {
             {isEdited ? `Updated: ${editDate}`: publishDate } • {postReadTime}
           </div>
 
-          <BlogMarkdown post={post} />
+          <Markdown markdown={post} />
 
           { userHasValidSession && (
             <div className="controlsPost">
