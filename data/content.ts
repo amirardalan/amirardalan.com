@@ -338,8 +338,9 @@ export const spotify = {
 
 export const uses = {
   meta: {
-    title: 'Uses',
+    title: 'Uses – Amir Ardalan',
   },
+  heading: 'Uses',
   devices: {
     content:
   `### Devices

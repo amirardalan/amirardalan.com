@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import { uses } from '@/data/content'
 import Markdown from '@/components/Markdown'
 
@@ -44,8 +45,11 @@ export default function Uses() {
 
   return (
     <div className="container uses">
+      <Head>
+        <title>{uses.meta.title}</title>
+      </Head>
       <h2 className="pageHeading">
-        {uses.meta.title}
+        {uses.heading}
       </h2>
       <div css={styleUsesMarkdown}>
         <div>
