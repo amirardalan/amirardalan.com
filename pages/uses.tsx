@@ -24,7 +24,7 @@ export default function Uses() {
       fontSize: 24,
     },
     a: {
-      textDecoration: 'none',
+      color: 'var(--color-text)',
     },
     '@media(max-width: 890px)': {
       gridTemplateColumns: 'repeat(2, 1fr)',
