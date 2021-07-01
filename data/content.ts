@@ -340,7 +340,7 @@ export const uses = {
   meta: {
     title: 'Uses',
   },
-  computer: {
+  devices: {
     content:
   `### Devices
   #### Laptop
@@ -365,7 +365,10 @@ export const uses = {
   ##### Specs:
   - 512GB Storage
   ##### Case:
-  - [TORRAS Shockproof (black)](https://www.amazon.com/TORRAS-Shockproof-iPhone-Phone-Designed/dp/B07VV2BPWT/)`
+  - [TORRAS Silicon Series (black)](https://torraslife.com/product/iphone-11-pro-silicone-series-case/)
+  #### Headphones
+  - [Beyerdynamic DT770Pro 80ohm](https://north-america.beyerdynamic.com/dt-770-pro.html)
+  - [Sennheiser HD25-1 II](https://en-us.sennheiser.com/on-ear-dj-headphone-hd25) `
   },
   stack: {
     content:

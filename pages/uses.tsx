@@ -49,7 +49,7 @@ export default function Uses() {
       </h2>
       <div css={styleUsesMarkdown}>
         <div>
-          <Markdown markdown={uses.computer} />
+          <Markdown markdown={uses.devices} />
         </div>
         <div>
           <Markdown markdown={uses.stack} />
