@@ -33,7 +33,7 @@ export default function Uses() {
         fontSize: 30,
       },
       h4: {
-        fontSize: 18
+        fontSize: 20
       }
     },
     '@media(max-width: 480px)': {
