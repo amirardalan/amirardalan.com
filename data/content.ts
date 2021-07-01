@@ -142,7 +142,7 @@ export const about = {
           light: themeLight.icons.time,
           dark: themeDark.icons.time,
         },
-      },
+      }
     ],
   },
   skills: {
@@ -223,7 +223,9 @@ export const about = {
 }
 
 export const timeline = {
-  title: 'Timeline',
+  meta: {
+    title: 'Timeline',
+  },
   items: [
     {
       content: 'Present',

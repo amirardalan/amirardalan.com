@@ -37,6 +37,14 @@ export const nav = [
     },
   },
   {
+    title: 'Timeline',
+    path: '/about#timeline',
+    exact: '',
+    cName: 'exludeInHeader',
+    aria: 'Career Timeline',
+    icon: false
+  },
+  {
     title: 'Uses',
     path: '/uses',
     exact: '',

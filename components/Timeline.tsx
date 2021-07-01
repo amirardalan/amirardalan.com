@@ -146,9 +146,9 @@ export default function Timeline() {
 
   return (
     <div css={styleTimelineWrapper} id="timeline">
-      <h3 className="pageHeading">
-        {timeline.title}
-      </h3>
+      <h2 className="pageHeading">
+        {timeline.meta.title}
+      </h2>
       <div css={styleTimeline}>
         {generateTimeline(timeline.items)}
       </div>
