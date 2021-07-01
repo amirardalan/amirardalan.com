@@ -394,7 +394,7 @@ export const uses = {
   #### IDE
   - [VS Code](https://code.visualstudio.com/)
   ##### Extensions:
-  - [Community Material Theme (Palenight)](https://marketplace.visualstudio.com/items?itemName=whizkydee.material-palenight-theme)
+  - [Community Material Theme (Palenight)](https://marketplace.visualstudio.com/items?itemName=Equinusocio.vsc-community-material-theme)
   - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
   - [GitHub Pullrequests and Issue Provider](https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-pull-request-github)
   - [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)
