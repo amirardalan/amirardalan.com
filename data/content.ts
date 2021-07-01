@@ -344,13 +344,15 @@ export const uses = {
     content:
   `### Devices
   #### Laptop
-  ##### 2016 13" MacBook Pro (silver)
+  - 2016 13" MacBook Pro (silver)
+  ##### Specs:
   - 3.3GHz Dual-Core Intel i7
   - 16GB RAM
   - 500GB Flash Storage
   - MacOS Big Sur
   #### Desktop
-  ##### Self-built PC
+  - Self-built PC
+  ##### Specs:
   - 3.8GHz 6-Core Intel i7 3930K
   - 32GB RAM
   - 2x 1TB SSD
@@ -359,9 +361,11 @@ export const uses = {
   - 2x KRK VXT 8
   - Microsoft Windows 10
   #### Phone
-  ##### iPhone 11 Pro (black)
+  - iPhone 11 Pro (black)
+  ##### Specs:
   - 512GB Storage
-  - [TORRAS Shockproof case (black)](https://www.amazon.com/TORRAS-Shockproof-iPhone-Phone-Designed/dp/B07VV2BPWT/)`
+  ##### Case:
+  - [TORRAS Shockproof (black)](https://www.amazon.com/TORRAS-Shockproof-iPhone-Phone-Designed/dp/B07VV2BPWT/)`
   },
   stack: {
     content:
@@ -388,7 +392,7 @@ export const uses = {
     content:
   `### Software
   #### IDE
-  ##### [VS Code](https://code.visualstudio.com/)
+  - [VS Code](https://code.visualstudio.com/)
   ##### Extensions:
   - [Community Material Theme (Palenight)](https://marketplace.visualstudio.com/items?itemName=whizkydee.material-palenight-theme)
   - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
@@ -401,7 +405,7 @@ export const uses = {
   - [vscode-styled-components](https://marketplace.visualstudio.com/items?itemName=jpoissonnier.vscode-styled-components)
 
   #### Browser
-  ##### [Firefox Developer Edition](https://www.mozilla.org/en-US/firefox/developer/)
+  - [Firefox Developer Edition](https://www.mozilla.org/en-US/firefox/developer/)
   ##### Add-ons:
   - [React Developer Tools](https://addons.mozilla.org/en-US/firefox/addon/react-devtools/)
   - [Lighthouse](https://addons.mozilla.org/en-US/firefox/addon/google-lighthouse/)
@@ -409,7 +413,8 @@ export const uses = {
   - [GA Debug](https://addons.mozilla.org/en-US/firefox/addon/ga-debugger/)
 
   #### CLI
-  ##### Terminal (~ZSH)
+  - Terminal (~ZSH)
+  ##### Tools:
   - Git
   - Yarn
   - Vercel CLI

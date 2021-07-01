@@ -9,6 +9,9 @@ export default function Uses() {
     gap: '4rem',
     gridAutoRows: 'minmax(100px, auto)',
     lineHeight: '2rem',
+    'ul li, a': {
+      color: 'var(--color-gray)',
+    },
     'h3, h4, h5, h6': {
       fontFamily: 'var(--font-secondary)',
     },
@@ -22,9 +25,6 @@ export default function Uses() {
       marginTop: '2rem',
       paddingBottom: '.2rem',
       fontSize: 24,
-    },
-    a: {
-      color: 'var(--color-text)',
     },
     '@media(max-width: 890px)': {
       gridTemplateColumns: 'repeat(2, 1fr)',
