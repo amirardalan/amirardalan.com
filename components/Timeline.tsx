@@ -15,7 +15,7 @@ export default function Timeline() {
       '&:nth-of-type(even), &:nth-of-type(odd)': {
         '.event': {
           maxWidth: 400,
-          boxShadow: '-1px 1px 0 var(--color-accent-color)',
+          boxShadow: '-2px 2px 0 var(--color-accent-gray)',
           h4: {
             marginBottom: '.5rem',
             fontFamily: 'var(--font-secondary)',
@@ -81,10 +81,10 @@ export default function Timeline() {
           '&:after': {
             zIndex: 2,
             position: 'absolute',
-            top: 11,
+            top: 12,
             left: -23,
             content: '""',
-            borderLeft: '20px solid var(--color-accent-color)',
+            borderLeft: '20px solid var(--color-accent-gray)',
             borderRight: '12px solid transparent',
             borderBottom: '12px solid transparent',
             transform: 'rotateY(0deg) rotate(90deg)',
@@ -94,7 +94,6 @@ export default function Timeline() {
           }
         },
         '@media(max-width: 480px)': {
-          marginLeft: 1,
           padding: 0,
         }
       },
