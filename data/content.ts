@@ -343,12 +343,14 @@ export const uses = {
   computer: {
     content:
   `### Devices
-  #### 2016 13" MacBook Pro (silver)
+  #### Laptop
+  ##### 2016 13" MacBook Pro (silver)
   - 3.3GHz Dual-Core Intel i7
   - 16GB RAM
   - 500GB Flash Storage
   - MacOS Big Sur
-  #### Self-built PC
+  #### Desktop
+  ##### Self-built PC
   - 3.8GHz 6-Core Intel i7 3930K
   - 32GB RAM
   - 2x 1TB SSD
@@ -356,7 +358,8 @@ export const uses = {
   - Motu Audio Express
   - 2x KRK VXT 8
   - Microsoft Windows 10
-  #### iPhone 11 Pro (black)
+  #### Phone
+  ##### iPhone 11 Pro (black)
   - 512GB Storage
   - [TORRAS Shockproof case (black)](https://www.amazon.com/TORRAS-Shockproof-iPhone-Phone-Designed/dp/B07VV2BPWT/)`
   },
@@ -364,60 +367,73 @@ export const uses = {
     content:
   `### Stack
   #### Framework
-  - Next.js
+  - [Next.js](https://nextjs.org/)
+  #### Language
+  - [TypeScript](https://www.typescriptlang.org/)
   #### CSS
-  - Emotion CSS-in-JS
+  - [Emotion](https://emotion.sh/docs/introduction)
   #### Database
-  - PostgreSQL
+  - [PostgreSQL](https://www.postgresql.org/)
   #### ORM
-  - Prisma
+  - [Prisma](https://www.prisma.io/)
   #### Data Fetching
-  - SWR
+  - [SWR](https://swr.vercel.app/)
   #### Markdown
-  - React Markdown
-  - React Syntax Highlighter`
+  - [React Markdown](https://github.com/remarkjs/react-markdown)
+  - [React Syntax Highlighter](https://github.com/react-syntax-highlighter/react-syntax-highlighter)
+  #### Hosting
+  - [Vercel](https://vercel.com)`
   },
   software: {
     content:
   `### Software
-  #### VS Code
-  - Community Material Theme (Palenight)
-  - ESLint
-  - GitHub Pullrequests and Issue Provider
-  - GitLens
-  - Material Icon Theme
-  - Next.js snippets
-  - Prisma
-  - VSCode Vercel
-  - vscode-styled-components
+  #### IDE
+  ##### [VS Code](https://code.visualstudio.com/)
+  ##### Extensions:
+  - [Community Material Theme (Palenight)](https://marketplace.visualstudio.com/items?itemName=whizkydee.material-palenight-theme)
+  - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+  - [GitHub Pullrequests and Issue Provider](https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-pull-request-github)
+  - [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)
+  - [Material Icon Theme](https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme)
+  - [Next.js snippets](https://marketplace.visualstudio.com/items?itemName=PulkitGangwar.nextjs-snippets)
+  - [Prisma](https://marketplace.visualstudio.com/items?itemName=Prisma.prisma)
+  - [VSCode Vercel](https://marketplace.visualstudio.com/items?itemName=frenco.vscode-vercel)
+  - [vscode-styled-components](https://marketplace.visualstudio.com/items?itemName=jpoissonnier.vscode-styled-components)
 
-  #### Adobe XD
-  - User Interface
-  - Logos
-  - Icons
-  - Typography
+  #### Browser
+  ##### [Firefox Developer Edition](https://www.mozilla.org/en-US/firefox/developer/)
+  ##### Add-ons:
+  - [React Developer Tools](https://addons.mozilla.org/en-US/firefox/addon/react-devtools/)
+  - [Lighthouse](https://addons.mozilla.org/en-US/firefox/addon/google-lighthouse/)
+  - [uBlock Origin](https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/)
+  - [GA Debug](https://addons.mozilla.org/en-US/firefox/addon/ga-debugger/)
+
+  #### CLI
+  ##### Terminal (~ZSH)
+  - Git
+  - Yarn
+  - Vercel CLI
+  - Heroku CLI
   
-  #### Terminal
-  - ZSH
+  #### Markdown
+  - [iA Writer](https://ia.net/writer)
+
+  #### Design
+  - [Adobe XD](https://www.adobe.com/products/xd.html)
+
+  #### Testing
+  ##### iOS:
+  - [Xcode Simulator](https://developer.apple.com/xcode/)
+  ##### Android:
+  - [Browser Stack](https://www.browserstack.com/)
   
-  #### iA Writer
-  - Markdown Writing
+  #### Communication
+  - [Slack](https://slack.com/)
+  - [Zoom](https://zoom.us/)
+  - [Discord](https://discord.com/)
   
-  #### Firefox Developer Edition
-  - React Developer Tools
-  - Lighthouse
-  - uBlock Origin
-  - GA Debug
-  
-  #### Xcode
-  - Device Simulator
-  - Cross-device testing
-  
-  #### Slack
-  - Team Communications
-  
-  #### Spotify
-  - Music & Podcasts`
+  #### Music & Podcasts
+  - [Spotify](https://www.spotify.com/)`
   }
 }
 

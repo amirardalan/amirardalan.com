@@ -8,24 +8,33 @@ export default function Uses() {
     gridTemplateColumns: 'repeat(3, 1fr)',
     gap: '4rem',
     gridAutoRows: 'minmax(100px, auto)',
+    lineHeight: '2rem',
     'h3, h4, h5, h6': {
       fontFamily: 'var(--font-secondary)',
     },
     h3: {
-      marginTop: '2rem',
-      fontSize: 'calc(1.8vw + 1.8vh)',
-      WebkitMarqueeIncrement: '0vw',
+      margin: '2rem 0 1rem 0',
+      paddingBottom: '1rem',
+      fontSize: 40,
+      borderBottom: '3px solid var(--color-accent-gray)',
     },
     h4: {
-      margin: '1rem 0 .5rem 0',
+      marginTop: '2rem',
       paddingBottom: '.2rem',
-      borderBottom: '1px solid var(--color-accent-gray)',
-      fontSize: 'calc(.9vw + .9vh)',
-      WebkitMarqueeIncrement: '0vw',
+      fontSize: 24,
+    },
+    a: {
+      textDecoration: 'none',
     },
     '@media(max-width: 890px)': {
       gridTemplateColumns: 'repeat(2, 1fr)',
       gap: '2rem',
+      h3: {
+        fontSize: 30,
+      },
+      h4: {
+        fontSize: 18
+      }
     },
     '@media(max-width: 480px)': {
       gridTemplateColumns: 'repeat(1, 1fr)',
