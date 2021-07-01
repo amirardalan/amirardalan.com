@@ -52,10 +52,10 @@ export default function Uses() {
           <Markdown markdown={uses.devices} />
         </div>
         <div>
-          <Markdown markdown={uses.stack} />
+          <Markdown markdown={uses.software} />
         </div>
         <div>
-          <Markdown markdown={uses.software} />
+          <Markdown markdown={uses.stack} />
         </div>
       </div>
     </div>

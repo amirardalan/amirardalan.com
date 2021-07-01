@@ -370,27 +370,6 @@ export const uses = {
   - [Beyerdynamic DT770Pro 80ohm](https://north-america.beyerdynamic.com/dt-770-pro.html)
   - [Sennheiser HD25-1 II](https://en-us.sennheiser.com/on-ear-dj-headphone-hd25) `
   },
-  stack: {
-    content:
-  `### Stack
-  #### Framework
-  - [Next.js](https://nextjs.org/)
-  #### Language
-  - [TypeScript](https://www.typescriptlang.org/)
-  #### CSS
-  - [Emotion](https://emotion.sh/docs/introduction)
-  #### Database
-  - [PostgreSQL](https://www.postgresql.org/)
-  #### ORM
-  - [Prisma](https://www.prisma.io/)
-  #### Data Fetching
-  - [SWR](https://swr.vercel.app/)
-  #### Markdown
-  - [React Markdown](https://github.com/remarkjs/react-markdown)
-  - [React Syntax Highlighter](https://github.com/react-syntax-highlighter/react-syntax-highlighter)
-  #### Hosting
-  - [Vercel](https://vercel.com)`
-  },
   software: {
     content:
   `### Software
@@ -442,6 +421,27 @@ export const uses = {
   
   #### Music & Podcasts
   - [Spotify](https://www.spotify.com/)`
+  },
+  stack: {
+    content:
+  `### Stack
+  #### Framework
+  - [Next.js](https://nextjs.org/)
+  #### Language
+  - [TypeScript](https://www.typescriptlang.org/)
+  #### CSS
+  - [Emotion](https://emotion.sh/docs/introduction)
+  #### Database
+  - [PostgreSQL](https://www.postgresql.org/)
+  #### ORM
+  - [Prisma](https://www.prisma.io/)
+  #### Data Fetching
+  - [SWR](https://swr.vercel.app/)
+  #### Markdown
+  - [React Markdown](https://github.com/remarkjs/react-markdown)
+  - [React Syntax Highlighter](https://github.com/react-syntax-highlighter/react-syntax-highlighter)
+  #### Hosting
+  - [Vercel](https://vercel.com)`
   }
 }
 
