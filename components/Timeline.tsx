@@ -22,6 +22,10 @@ export default function Timeline() {
             fontSize: 14,
             lineHeight: '1rem',
           },
+          '@media(max-width: 480px)': {
+            borderTop: '1px solid var(--color-accent-color)',
+            boxShadow: 'none',
+          }
         },
         '.date': {
           lineHeight: '1rem',
@@ -116,8 +120,10 @@ export default function Timeline() {
           borderBottom: '12px solid transparent',
         },
         '@media(max-width: 480px)': {
+          marginTop: '.4rem',
           marginBottom: '2rem',
           padding: '1.5rem 1rem',
+          background: 'none',
           fontSize: 12,
         }
       }
