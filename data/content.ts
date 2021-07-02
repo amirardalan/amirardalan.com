@@ -154,11 +154,11 @@ export const about = {
       'JavaScript',
       'CSS / SCSS',
       'Three.js',
-      'UI Design',
-      'Relational DBs',
+      'User Interface',
+      'Databases',
       'Testing',
       'Documentation',
-      'Google Analytics',
+      'G. Analytics',
     ]
   },
   stack: {
