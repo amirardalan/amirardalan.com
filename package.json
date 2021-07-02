@@ -4,11 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "test": "jest --verbose ./tests",
-    "build": "next build && npm run build:sitemap",
+    "build": "next build && yarn build:sitemap && yarn test",
     "build:sitemap": "node ./scripts/generateSitemap.js",
+    "test": "jest --verbose ./tests",
     "start": "next start",
-    "export": "npm run build && next export -o _static"
+    "export": "yarn build && next export -o _static"
   },
   "dependencies": {
     "@emotion/react": "^11.1.5",
