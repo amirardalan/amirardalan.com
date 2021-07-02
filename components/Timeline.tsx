@@ -45,9 +45,6 @@ export default function Timeline() {
           fontSize: 60,
           color: 'var(--color-accent-gray)',
         },
-        '.date': {
-          marginRight: '1rem',
-        },
         '.event': {
           '&:before': {
             right: -22,
@@ -61,15 +58,15 @@ export default function Timeline() {
         },
         '@media(max-width: 480px)': {
           padding: 0,
+          '.date': {
+            marginRight: '1rem',
+          },
         }
       },
       '&:nth-of-type(even)': {
         padding: '0 0 0 2rem',
         zIndex: 1,
         justifySelf: 'flex-start',
-        '.date': {
-          marginLeft: '1rem',
-        },
         '.event': {
           position: 'relative',
           '&:before': {
@@ -99,6 +96,9 @@ export default function Timeline() {
         },
         '@media(max-width: 480px)': {
           padding: 0,
+          '.date': {
+            marginLeft: '1rem',
+          },
         }
       },
       '.date': {
@@ -107,7 +107,7 @@ export default function Timeline() {
       },
       '.event': {
         position: 'relative',
-        marginBottom: '3rem',
+        marginBottom: '4rem',
         padding: '2rem',
         background: 'var(--color-accent)',
         fontSize: 13,
