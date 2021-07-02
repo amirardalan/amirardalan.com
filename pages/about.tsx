@@ -32,7 +32,7 @@ export default function About({ data }) {
   const [copiedToClipBoard, setCopiedToClipBoard] = useState(false)
 
   const copyToClipboard = () => {
-    navigator.clipboard.writeText(data.contact.email)
+    navigator.clipboard.writeText(process.env.NEXT_PUBLIC_USER_EMAIL)
     setCopiedToClipBoard(true)
     setTimeout(() => {
       setCopiedToClipBoard(false)
