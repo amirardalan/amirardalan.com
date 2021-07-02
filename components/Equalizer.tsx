@@ -45,9 +45,9 @@ export default function Equalizer() {
       animationDuration: '0.5s',
       animationIterationCount: 'infinite',
       animationDelay: '0s',
-      '-webkit-animation-name': 'shorteq',
-      '-webkit-animation-duration': '0.5s',
-      '-webkit-animation-iteration-count': 'infinite',
+      WebkitAnimationName: 'shorteq',
+      WebkitAnimationDuration: '0.5s',
+      WebkitAnimationIterationCount: 'infinite',
     },
     '.eq2': {
       height: 15,
@@ -56,9 +56,9 @@ export default function Equalizer() {
       animationDuration: '0.5s',
       animationIterationCount: 'infinite',
       animationDelay: '0.17s',
-      '-webkit-animation-name': 'talleq',
-      '-webkit-animation-duration': '0.5s',
-      '-webkit-animation-iteration-count': 'infinite',
+      WebkitAnimationName: 'talleq',
+      WebkitAnimationDuration: '0.5s',
+      WebkitAnimationIterationCount: 'infinite',
     },
     '.eq3': {
       height: 13,
@@ -67,9 +67,9 @@ export default function Equalizer() {
       animationDuration: '0.5s',
       animationIterationCount: 'infinite',
       animationDelay: '0.34s',
-      '-webkit-animation-name': 'shorteq',
-      '-webkit-animation-duration': '0.5s',
-      '-webkit-animation-iteration-count': 'infinite',
+      WebkitAnimationName: 'shorteq',
+      WebkitAnimationDuration: '0.5s',
+      WebkitAnimationIterationCount: 'infinite',
     }
   })
   
