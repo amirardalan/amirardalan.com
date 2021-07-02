@@ -34,6 +34,7 @@ export const home = {
       `'Prisma ORM'^1500`,
       `'PostgreSQL'^1500`,
       `'Markdown'^1500`,
+      `'Jest Testing'^1500`,
       `'Accessibility'^1500`,
     ],
     end: '}'
@@ -151,27 +152,28 @@ export const about = {
       'Fullstack Dev',
       'React',
       'JavaScript',
-      'TypeScript',
-      'CSS-in-JS',
-      'SCSS',
+      'CSS / SCSS',
+      'Three.js',
       'UI Design',
       'Relational DBs',
-      'Unit Testing',
+      'Testing',
       'Documentation',
+      'Google Analytics',
     ]
   },
   stack: {
+    title: 'Stack:',
     items: [
       'Next.JS',
+      'TypeScript',
       'Emotion',
       'Prisma ORM',
       'PostgreSQL',
       'SWR',
-      'Adobe XD',
+      'Jest',
       'Vercel',
       'Heroku',
-      'Markdown',
-      'Google Analytics',
+      'Adobe XD',
     ]
   },
   experience: {

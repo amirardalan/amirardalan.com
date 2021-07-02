@@ -203,7 +203,9 @@ export default function About({ data }) {
             </ul>
             <ul>
               <li>
-                <h4 aria-hidden="true">&nbsp;</h4>
+                <h4 aria-label="{data.skills.title}">
+                  {data.stack.title}
+                </h4>
               </li>
               {generateListItems(data.stack.items)}
             </ul>
