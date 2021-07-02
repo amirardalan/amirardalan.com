@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "test": "jest",
+    "test": "jest --verbose ./tests",
     "build": "next build && npm run build:sitemap",
     "build:sitemap": "node ./scripts/generateSitemap.js",
     "start": "next start",
