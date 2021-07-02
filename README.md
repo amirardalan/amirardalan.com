@@ -31,6 +31,13 @@ Optionally, create a local copy of a production build. (useful for setting and t
 yarn build
 ```
 
+## Testing
+
+[Jest](jestjs.io/) is configured in the `package.json` build script. Tests will be run and logged at build time.
+
+Run Jest manually:  
+`yarn test`
+
 ## Prisma ORM:
 
 Push new tables to db from `schema.prisma`:
