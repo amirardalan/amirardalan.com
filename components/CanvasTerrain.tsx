@@ -42,7 +42,7 @@ const Terrain = ({
   texture = 5,
   scale = 1,
   offset = { x: 0, z: 0 },
-  rotate = true
+  rotation = 3
 }) => {
   const simplex = useMemo(() => new SimplexNoise(seed), [seed])
   const ref = useRef()
@@ -50,9 +50,8 @@ const Terrain = ({
   const mesh : any = useRef()
   
   useFrame(() => (
-    rotate?
-    mesh.current.rotation.y += 0.0005
-    : null
+    mesh.current.rotation.y += rotation / 2000
+
   ))
 
   useLayoutEffect(() => {

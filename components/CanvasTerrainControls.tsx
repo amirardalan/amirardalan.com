@@ -6,13 +6,13 @@ import CanvasTerrain from '@/components/CanvasTerrain'
 const CanvasTerrainControls = ({ theme }) => {
   const [seed, setSeed] = useState(Date.now())
 
-  const { detail, height, texture, scale, rotate } = useControls({
+  const { detail, height, texture, scale, rotation } = useControls({
     'Generate Terrain': button(() => setSeed(Date.now())),
     detail: { value: 256, min: 10, max: 500, step: 1 },
     height: { value: .15, min: 0, max: .3 },
     texture: { value: 3, min: 1, max: 5, step: 1 },
     scale: { value: 3, min: 1, max: 5, step: 1 },
-    rotate: { value: true },
+    rotation: { value: 1, min: 0, max: 2 },
   })
 
   return (
@@ -23,7 +23,7 @@ const CanvasTerrainControls = ({ theme }) => {
       height={height}
       texture={texture}
       scale={scale}
-      rotate={rotate}
+      rotation={rotation}
     />
   )
 }
