@@ -4,7 +4,7 @@ import SimplexNoise from 'simplex-noise'
 import { BufferAttribute } from 'three'
 
 
-const generateTerrain = (simplex, size, height, levels, scale, offset) => {
+const generateTerrain = (simplex, size, height, texture, scale, offset) => {
   const noise = (level, x, z) =>
     simplex.noise2D(
       offset.x * scale + scale * level * x,
@@ -22,7 +22,7 @@ const generateTerrain = (simplex, size, height, levels, scale, offset) => {
         v = (i - 1) / 3
         return (
           noise(
-            2 ** levels,
+            2 ** texture,
             (v % size) / size - 0.5,
             Math.floor(v / size) / size - 0.5
           ) * height
@@ -39,7 +39,7 @@ const Terrain = ({
   seed,
   size,
   height,
-  levels = 5,
+  texture = 5,
   scale = 1,
   offset = { x: 0, z: 0 },
   rotate = true
@@ -60,13 +60,13 @@ const Terrain = ({
     node?.setAttribute(
       'position',
       new BufferAttribute(
-        generateTerrain(simplex, size, height, levels, scale, offset),
+        generateTerrain(simplex, size, height, texture, scale, offset),
         3
       )
     )
     node.elementsNeedUpdate = true
     node?.computeVertexNormals()
-  }, [size, height, levels, scale, offset, simplex])
+  }, [size, height, texture, scale, offset, simplex])
 
   return (
     <mesh ref={mesh}>
