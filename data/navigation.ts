@@ -29,7 +29,7 @@ export const nav = [
     title: 'Timeline',
     path: '/about#timeline',
     exact: '',
-    cName: 'exludeInHeader',
+    cName: 'excludeInHeader',
     aria: 'Career Timeline',
     icon: false
   },
@@ -37,7 +37,7 @@ export const nav = [
     title: 'Uses',
     path: '/uses',
     exact: '',
-    cName: 'exludeInHeader',
+    cName: 'excludeInHeader',
     aria: 'Tools I Use',
     icon: false
   },

@@ -17,7 +17,7 @@ const Header = ({ toggleTheme }) => {
     top: '-2rem',
     backgroundColor: 'var(--color-bg)',
     zIndex: 5,
-    '.exludeInHeader': {
+    '.excludeInHeader': {
       display: 'none',
     },
     '@media(max-width: 1024px)': {
