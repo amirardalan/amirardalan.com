@@ -426,6 +426,8 @@ export const uses = {
   #### Markdown
   - [React Markdown](https://github.com/remarkjs/react-markdown)
   - [React Syntax Highlighter](https://github.com/react-syntax-highlighter/react-syntax-highlighter)
+  #### Testing
+  - [Jest](https://jestjs.io/)
   #### Hosting
   - [Vercel](https://vercel.com)`
   },
