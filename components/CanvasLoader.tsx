@@ -73,6 +73,9 @@ const CanvasLoader =  React.memo(() => {
             '&:hover': {
               border: 'none',
               background: 'var(--color-accent-color)',
+            },
+            '&:focus': {
+              boxShadow: '0 0 0 2px var(--color-gray)',
             }
           },
           'i.levaussed, .levarv4c7': {
@@ -127,7 +130,8 @@ const CanvasLoader =  React.memo(() => {
           '.leva2jitm': {
             background: 'var(--color-accent-gray)',
             input: {
-              color: 'var(--color-text)'
+              color: 'var(--color-text)',
+              boxShadow: 'none'
             }
           }
         }
