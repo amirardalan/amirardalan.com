@@ -23,7 +23,7 @@ const TypingAnimation = ({ data }) => {
       loop: true,
       cursorChar: "_",
     }
-    const typed = new Typed('.typingAnimation', options);
+    const typed = new Typed('.typingAnimation', options)
 
     return () => {
       typed.destroy()

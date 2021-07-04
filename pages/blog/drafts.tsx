@@ -40,7 +40,7 @@ type Props = {
 
 const Drafts: React.FC<Props>  = ({ drafts }) => {
   
-  let draftsList = null;
+  let draftsList = null
   const [session] = useSession()
 
   if (session && session.user.email == process.env.NEXT_PUBLIC_USER_EMAIL) {

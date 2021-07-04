@@ -28,7 +28,7 @@ const generateTerrain = (simplex, size, height, texture, scale, offset) => {
           ) * height
         )
       case 2:
-        v = (i - 2) / 3;
+        v = (i - 2) / 3
         return (offset.z + Math.floor(v / size) / size - 0.5) * scale
     }
   })
