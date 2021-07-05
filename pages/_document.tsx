@@ -60,6 +60,11 @@ export default class MyDocument extends Document {
           <link rel="apple-touch-icon" href="/touch-192.png" />
           <link rel="manifest" href="/manifest.json" />
 
+
+          <script
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID}`}
+          />
           <script
             dangerouslySetInnerHTML={{__html: `
               window.dataLayer = window.dataLayer || [];
