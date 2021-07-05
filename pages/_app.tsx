@@ -10,7 +10,7 @@ import Footer from '@/components/Footer'
 
 import { AppProps } from 'next/app'
 import { Provider } from 'next-auth/client'
-import TrackPageviews from '@/utils/trackPageviews'
+import gtagRoutes from '@/lib/gtagRoutes'
 
 import dynamic from 'next/dynamic'
 const BlogAdmin = dynamic(() => import('@/components/BlogAdmin'),{
@@ -25,7 +25,7 @@ const App = ({ Component, pageProps }: AppProps) => {
   const themeMode = theme === 'light' ? themeLight : themeDark
 
   // GA
-  TrackPageviews()
+  gtagRoutes()
 
   return (
     <React.StrictMode>
