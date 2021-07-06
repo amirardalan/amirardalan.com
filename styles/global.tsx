@@ -1,9 +1,9 @@
 import { Global } from '@emotion/react'
 
 // Typography
-const fontPrimary = "'Fira Code', Menlo, Monaco, 'Courier New', monospace"
-const fontSecondary = "'Poppins', Helvetica, Arial, sans-serif"
-const fontTertiary = "'Lora', 'Times New Roman', Times, serif"
+const fontPrimary = '"Fira Code", Menlo, Monaco, "Courier New", monospace'
+const fontSecondary = '"Poppins", Helvetica, Arial, sans-serif'
+const fontTertiary = '"Lora", "Times New Roman", Times, serif'
 
 // Colors
 const light= '#ffffff'
@@ -21,7 +21,7 @@ const grayAccentDark = '#3e4449'
 const buttonDisabled = '#8b8b8b'
 const warning = '#ec4949'
 const codeHighlightDark = '#2e3440'
-const codeHighlightLight = "#e3e6eb"
+const codeHighlightLight = '#e3e6eb'
 const sunrise = 'linear-gradient(to bottom, #757abf 0%,#8583be 60%,#eab0d1 100%)'
 const sunset = 'linear-gradient(to bottom, #010A10 30%,#59230B 80%,#2F1107 100%)'
 
