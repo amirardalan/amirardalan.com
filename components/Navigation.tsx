@@ -7,6 +7,7 @@ import Image from 'next/image'
 
 
 export default function Navigation() {
+  
   const theme: any = useTheme()
   const isDarkTheme = theme.active === 'dark'
   

@@ -7,6 +7,7 @@ import NowPlayingCompact from '@/components/NowPlayingCompact'
 
 
 export default function Footer() {
+  
   const theme: any = useTheme()
   const isDarkTheme = theme.active === 'dark'
 

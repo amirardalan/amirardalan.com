@@ -4,6 +4,7 @@ import { logo } from '@/data/content'
 
 
 export default function Logo() {
+  
   const theme : any = useTheme()
 
   const styleLogo = css({
