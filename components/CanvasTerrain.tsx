@@ -46,12 +46,10 @@ const Terrain = ({
 }) => {
   const simplex = useMemo(() => new SimplexNoise(seed), [seed])
   const ref = useRef()
-
-  const mesh : any = useRef()
+  const mesh: any = useRef()
   
   useFrame(() => (
     mesh.current.rotation.y += rotation / 2000
-
   ))
 
   useLayoutEffect(() => {
