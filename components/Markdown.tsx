@@ -17,18 +17,12 @@ export default function BlogMarkdown({ markdown }) {
     ? solarizedlight
     : tomorrow
 
-  // Syntax Highlighter Object for Markdown
   const MarkdownComponents: object = {
     code({ node, inline, className,...props }) {
 
-      // Set code language declared in code block: ```lang
       const match = /language-(\w+)/.exec(className || '')
-
-      // Check for line highlighting metastring
       const hasMeta = node?.data?.meta
 
-      // Highlight lines declared in code block
-      // example: ```jsx {2,4-6}
       const applyHighlights: object = (applyHighlights: number) => {
         if (hasMeta) {
           const RE = /{([\d,-]+)}/
@@ -63,8 +57,6 @@ export default function BlogMarkdown({ markdown }) {
         <code className={className} {...props} />
       )
     },
-    // Convert Markdown img to next/image component and set height, width and priority
-    // example: ![AltText {priority}{768x432}](...
     p: paragraph => {
       const { node } = paragraph
 
@@ -90,7 +82,6 @@ export default function BlogMarkdown({ markdown }) {
       }
       return <p>{paragraph.children}</p>
     },
-    // Open external links in new tab
     a: anchor => {
       if (anchor.href.match('http')) {
         return (
@@ -102,7 +93,6 @@ export default function BlogMarkdown({ markdown }) {
           </a>
         )
       }
-      // Handle internal linking normally
       return <a href={anchor.href}>{anchor.children}</a>
     }
   }
@@ -121,7 +111,6 @@ export default function BlogMarkdown({ markdown }) {
         ]}
       />
       <Global styles={{
-        // react-syntax-highlighter styles
         '.codeStyle, pre, code, code span': {
           fontFamily: 'var(--font-primary)',
           fontStyle: 'normal !important'

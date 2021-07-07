@@ -31,13 +31,11 @@ const Blog: React.FC<Props> = ({ data, feed }) => {
 
   const theme: any = useTheme()
 
-  // Post Feed Error Handling
   const showFeedError = feed.length <= 0
   const FeedNotFound = () => (
     <span>{data.error.database}</span>
   )
   
-  // Search Posts
   const [search, setSearch] = useState('')
   const filteredPosts = search.length === 0
     ? feed

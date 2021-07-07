@@ -58,7 +58,6 @@ const Edit = ({ editPost }) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
       })
-      // Enable Preview Mode by setting the cookies
       await Router.push(
         `${process.env.NEXT_PUBLIC_SITE_URL}/api/preview?secret=${process.env.NEXT_PUBLIC_PREVIEW_TOKEN}&slug=${slug}`
       )
@@ -78,7 +77,6 @@ const Edit = ({ editPost }) => {
     }
   }
 
-  // Handle state and rendering for post deletion confirmation
   const [showDeletionConfirmation, setShowDeletionConfirmation] = useState(false)
   const confirmOnClick = () => setShowDeletionConfirmation(true)
   const cancelOnClick = () => setShowDeletionConfirmation(false)

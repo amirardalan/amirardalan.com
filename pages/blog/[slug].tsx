@@ -17,7 +17,6 @@ import { GetStaticProps, GetStaticPaths } from 'next'
 import prisma from '@/lib/prisma'
 
 
-// Generate static paths based on published post slugs
 export const getStaticPaths: GetStaticPaths = async () => {
   const feed = await prisma.post.findMany({
     where: { published: true },
@@ -28,7 +27,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
   return { paths, fallback: 'blocking' }
 }
 
-// Request post data from database
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const [post, feed] = await prisma.$transaction([
     prisma.post.findFirst({
@@ -64,21 +62,15 @@ const Post = ({ post, feed, data }) => {
   const [session] = useSession()
   const userHasValidSession = Boolean(session)
 
-  // Check if Published
   const isPublished : Boolean = post.published
   const publishLabel = isPublished ? `${admin.controls.unpublish}` : `${admin.controls.publish}`
   const redirect = isPublished ? '/blog/drafts' : '/blog'
 
-  // Get the post date and format it
   const isEdited = post.editedAt.toJSON().slice(0, 10) > post.publishedAt.toJSON().slice(0, 10)
   const publishDate = formatDate(post.publishedAt)
   const editDate = formatDate(post.editedAt)
-
-
-  // Calculate Read Time
   const postReadTime = calculateReadTime(post.content)
 
-  // Exclude unpublished drafts from search engine crawlers
   const disallowRobots = ( <meta name="robots" content="noindex"></meta> )
 
   async function publishPost(slug: String, published: boolean): Promise<void> {
@@ -105,7 +97,6 @@ const Post = ({ post, feed, data }) => {
     title = `${title} ${data.title.draft}`
   }
 
-  // Handle state and rendering for post deletion confirmation
   const [showDeletionConfirmation, setShowDeletionConfirmation] = useState(false)
   const confirmOnClick = () => setShowDeletionConfirmation(true)
   const cancelOnClick = () => setShowDeletionConfirmation(false)

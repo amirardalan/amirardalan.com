@@ -33,7 +33,6 @@ const CanvasLoader =  React.memo(() => {
         <Leva collapsed={false} fill={true} flat={true} />
       </div>
       <Global styles={{
-        // Leva Controls Override
         '.levawz9l9': {
           fontFamily: 'var(--font-primary)',
           textTransform: 'uppercase',

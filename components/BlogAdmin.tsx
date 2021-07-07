@@ -16,7 +16,6 @@ const BlogAdmin: React.FC =  React.memo(()=> {
   let adminPanelLeft = null
   let adminPanelRight = null
 
-  // Deploy New Build
   const [isDeploying, setIsDeploying] = useState(false)
   const showDeployLoader: Function = () => {
     setIsDeploying(true)
@@ -35,7 +34,6 @@ const BlogAdmin: React.FC =  React.memo(()=> {
     })
   }
 
-  // Styles
   const styleAnimationWrapper = css ({
     display: session ? 'block' : 'none',
     overflow: 'hidden',
@@ -102,7 +100,6 @@ const BlogAdmin: React.FC =  React.memo(()=> {
     }
   })
 
-  // Render Admin panel for authenticated users
   if (isLoggedIn) {
     adminPanelLeft = (
       <div css={styleAdminPanelLeft}>
@@ -154,7 +151,6 @@ const BlogAdmin: React.FC =  React.memo(()=> {
       </div>
 
       <Global styles={{
-        // Buttons
         '.buttonCompact': {
           minWidth: 80,
           marginLeft: '.25rem',

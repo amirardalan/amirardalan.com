@@ -18,7 +18,6 @@ const CanvasLoader = dynamic(() => import('@/components/CanvasLoader'), {
 import { GetStaticProps } from 'next'
 import prisma from '@/lib/prisma'
 
-// Get Latest Post title, teaser, and slug
 export const getStaticProps: GetStaticProps = async () => {
   try {
     const latestPost = await prisma.post.findMany({

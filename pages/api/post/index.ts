@@ -4,8 +4,6 @@ import prisma from '@/lib/prisma'
 
 
 // POST /api/post
-// Required fields in body: title
-// Optional fields in body: content, slug, teaser
 export default async function handle(req: NextApiRequest, res: NextApiResponse) {
   const { title, content, slug, teaser } = req.body
 

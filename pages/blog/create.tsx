@@ -24,7 +24,6 @@ const Draft: React.FC = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
       })
-      // Enable Preview Mode by setting the cookies
       await Router.push(
         `${process.env.NEXT_PUBLIC_SITE_URL}/api/preview?secret=${process.env.NEXT_PUBLIC_PREVIEW_TOKEN}&slug=${slug}`
       )
@@ -33,36 +32,32 @@ const Draft: React.FC = () => {
     }
   }
 
-  // Generate Post Slug URL
   function generateSlug(str: string) {
-    str = str.replace(/^\s+|\s+$/g, '') // trim
-    str = str.toLowerCase()
-  
-    // remove accents, swap ñ for n, etc
-    var from = "àáãäâèéëêìíïîòóöôùúüûñç·/_,:;"
-    var to   = "aaaaaeeeeiiiioooouuuunc------"
 
-    for (var i=0, l=from.length ; i<l ; i++) {
+    str = str.replace(/^\s+|\s+$/g, '')
+    str = str.toLowerCase()
+    let from = "àáãäâèéëêìíïîòóöôùúüûñç·/_,:;"
+    let to   = "aaaaaeeeeiiiioooouuuunc------"
+
+    for (let i = 0, l = from.length ; i < l ; i++) {
       str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i))
     }
 
-    str = str.replace(/[^a-z0-9 -]/g, '') // remove invalid chars
-      .replace(/\s+/g, '-') // collapse whitespace and replace by -
-      .replace(/-+/g, '-') // collapse dashes
+    str = str.replace(/[^a-z0-9 -]/g, '')
+      .replace(/\s+/g, '-')
+      .replace(/-+/g, '-')
 
     return str
   }
 
   let slugUrl = generateSlug(title)
 
-  // Make sure slug input is active after autofill
-  // to ensure it submitted by the browser
+  // Ensure slug input is active after autofill
   const slugField = useRef(null)
   useEffect(() => {
     let interval = setInterval(() => {
       if (slugField.current) {
         setSlug(slugField.current.value)
-        //do the same for all autofilled fields
         clearInterval(interval)
       }
     }, 100)

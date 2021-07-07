@@ -179,7 +179,6 @@ export default function Navigation() {
     </div>
   )
 
-  // Generate Nav Items
   const NavItems = () => (
     <nav css={styleNavItems}>
       {nav.map((items: any, index: number) => {
@@ -207,7 +206,6 @@ export default function Navigation() {
     </nav>
   )
 
-  // Render the Nav
   return (
     <>
       <div css={styleMainNav}>

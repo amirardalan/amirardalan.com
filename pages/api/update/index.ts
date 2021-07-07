@@ -3,8 +3,6 @@ import prisma from '@/lib/prisma'
 
 
 // POST /api/update
-// Required fields in body: title
-// Optional fields in body: content, slug, teaser
 export default async function handle(req: NextApiRequest, res: NextApiResponse) {
   const { id, title, content, slug, teaser } = req.body
 

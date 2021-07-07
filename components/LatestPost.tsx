@@ -4,7 +4,6 @@ import { css } from '@emotion/react'
 
 export default function LatestPost({ latestPost, data }) {
 
-  // Latest Post Styles
   const styleLatestPost = css({
     padding: '0 1.2rem',
     borderLeft: '7px solid var(--color-accent)',
@@ -38,7 +37,6 @@ export default function LatestPost({ latestPost, data }) {
     },
   })
   
-  // Latest Post UI
   const renderLatestPost = !latestPost ? {} : latestPost[0]
   const ShowLatestPost = ({ data }) => (
     <div css={styleLatestPost}>
