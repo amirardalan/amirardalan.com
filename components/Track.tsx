@@ -37,7 +37,7 @@ export default function Track(track: any) {
         fontWeight: 'normal',
       },
       '@media(max-width: 600px)': {
-        gridTemplateColumns: '8% 40% 40%',
+        gridTemplateColumns: '10% 38% 40%',
         gridAutoRows: 'minmax(0, auto)',
         '.image': {
           display: 'none'
