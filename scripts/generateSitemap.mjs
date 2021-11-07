@@ -9,6 +9,7 @@ async function generate() {
     '.next/server/pages/blog/**/*.json',
     'pages/**/*{.tsx,.ts}',
     '!pages/blog/',
+    '!pages/blog/*.js.nft',
     'pages/blog/index.tsx',
     '!pages/api',
     '!pages/_*.tsx',
