@@ -69,6 +69,12 @@ const CanvasLoader =  React.memo(() => {
             bottom: '1rem',
             right: '1rem',
           },
+          '.leva-c-fxiFTg': {
+            backgroundColor: 'var(--color-accent-gray)',
+            'input': {
+              boxShadow: 'none'
+            }
+          },
           '.levam9bkr .levaolirc': {
             letterSpacing: '.1rem',
             textTransform: 'uppercase',
