@@ -155,6 +155,7 @@ export default function NowPlaying() {
             src={data?.albumImageUrl}
             layout="fill"
             objectFit="cover"
+            alt=""
             priority
           />) : null }
         </div>

@@ -2,7 +2,7 @@ import { useTheme } from '@emotion/react'
 import Image from 'next/image'
 
 
-export const generateCtaButtons = (items: Array<any>) => {
+export const GenerateCtaButtons = (items: Array<any>) => {
   const theme: any = useTheme()
   const isDarkTheme = theme.active === 'dark'
 

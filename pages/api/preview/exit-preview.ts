@@ -2,6 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next'
 
 
 // EXIT PREVIEW MODE /api/preview/exit-preview
+// eslint-disable-next-line import/no-anonymous-default-export
 export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   if (req.query.secret !== `${process.env.NEXT_PUBLIC_PREVIEW_TOKEN}`) {

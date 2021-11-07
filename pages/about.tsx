@@ -7,7 +7,7 @@ import Avatar from '@/components/Avatar'
 import Timeline from '@/components/Timeline'
 import Uses from '@/components/Uses'
 
-import { generateCtaButtons } from '@/components/CtaButtons'
+import { GenerateCtaButtons } from '@/components/CtaButtons'
 import { about } from '@/data/content'
 import { GetStaticProps } from 'next'
 
@@ -129,7 +129,7 @@ export default function About({ data }) {
     }
   })
 
-  const generateListItems = (items: Array<string>) => {
+  const GenerateListItems = (items: Array<string>) => {
     return items.map((items, i) => {
       return (
         <li key={i}>
@@ -139,7 +139,7 @@ export default function About({ data }) {
     })
   }
 
-  const generateSocialIcons = (items: Array<any>) => {
+  const GenerateSocialIcons = (items: Array<any>) => {
     return items.map((items, i) => {
       return (
         <a key={i}
@@ -188,7 +188,7 @@ export default function About({ data }) {
                 </em>
               </li>
               <li css={styleCtaWrapper}>
-                {generateCtaButtons(data.bio.items)}
+                {GenerateCtaButtons(data.bio.items)}
               </li>
             </ul>
           </div>
@@ -199,7 +199,7 @@ export default function About({ data }) {
                   {data.skills.title}
                 </h4>
               </li>
-              {generateListItems(data.skills.items)}
+              {GenerateListItems(data.skills.items)}
             </ul>
             <ul>
               <li>
@@ -207,7 +207,7 @@ export default function About({ data }) {
                   {data.stack.title}
                 </h4>
               </li>
-              {generateListItems(data.stack.items)}
+              {GenerateListItems(data.stack.items)}
             </ul>
           </div>
           <div className="grid">
@@ -217,7 +217,7 @@ export default function About({ data }) {
                   {data.experience.title}
                 </h4>
               </li>
-              {generateListItems(data.experience.items)}
+              {GenerateListItems(data.experience.items)}
             </ul>
           </div>
           <div className="grid">
@@ -227,7 +227,7 @@ export default function About({ data }) {
                   {data.availability.title}
                 </h4>
               </li>
-              {generateListItems(data.availability.items)}
+              {GenerateListItems(data.availability.items)}
             </ul>
           </div>
           <div className="grid">
@@ -237,7 +237,7 @@ export default function About({ data }) {
                   <h4>{data.social.title}</h4>
                 </li>
                 <li css={styleSocialIcons}>
-                  {generateSocialIcons(data.social.items)}
+                  {GenerateSocialIcons(data.social.items)}
                 </li>
               </ul>
             </div>
