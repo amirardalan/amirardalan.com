@@ -84,11 +84,13 @@ const CanvasLoader =  React.memo(() => {
             backgroundColor: 'var(--color-gray)'
           },
           '.leva-c-fOioiK': {
+            boxShadow: 'none !important',
             letterSpacing: '.1rem',
             textTransform: 'uppercase',
             color: 'var(--color-accent)',
-            '&:hover': {
-              boxShadow: 'none'
+            '&:active': {
+
+              backgroundColor: 'var(--color-gray)'
             }
           },
           'i.levaussed, .levarv4c7': {

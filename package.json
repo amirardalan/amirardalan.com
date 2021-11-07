@@ -14,9 +14,12 @@
   "dependencies": {
     "@emotion/eslint-plugin": "^11.5.0",
     "@emotion/react": "^11.5.0",
+    "@next/eslint-plugin-next": "^12.0.3",
     "@prisma/client": "^3.4.1",
     "@react-three/fiber": "^7.0.17",
     "@types/three": "^0.133.1",
+    "eslint-plugin-react": "^7.26.1",
+    "eslint-plugin-react-hooks": "^4.2.0",
     "globby": "^12.0.2",
     "leva": "^0.9.14",
     "next": "^12.0.3",
