@@ -36,11 +36,17 @@ const CanvasLoader =  React.memo(() => {
         '.css-g7n1w2-styleLevaContainer': {
           fontFamily: 'var(--font-primary)',
           textTransform: 'uppercase',
+          '--leva-colors-accent1': 'var(--color-accent-color)',
           '--leva-colors-accent2': 'var(--color-accent-color)',
+          '--leva-colors-highlight3': 'var(--color-accent-color)',
           'div:first-of-type': {
             fontFamily: 'var(--font-primary)',
             backgroundColor: 'var(--color-accent)',
             boxShadow: 'none',
+          },
+          '.leva-c-gUBGce': {
+            borderRadius: 'none !important',
+            boxShadow: 'none !important'
           },
           '.levavqh1g > .levam9bkr:first-of-type, .levavqh1guk05a--isRoot-true > div:first-of-type': {
             marginTop: 5,
@@ -78,10 +84,16 @@ const CanvasLoader =  React.memo(() => {
             }
           },
           '.leva-c-knrmXZ, .leva-c-bbMqub': {
-            backgroundColor: 'var(--color-gray) !important'
+            backgroundColor: 'var(--color-accent-gray) !important'
+          },
+          '.leva-c-ctBOWy > svg': {
+            fill: 'var(--color-accent-color)',
+            '&:hover': {
+              fill: 'var(--color-accent-color)'
+            }
           },
           '.leva-c-gUBGce:hover': {
-            backgroundColor: 'var(--color-gray)'
+            backgroundColor: 'var(--color-accent-color)'
           },
           '.leva-c-fOioiK': {
             boxShadow: 'none !important',
@@ -96,7 +108,8 @@ const CanvasLoader =  React.memo(() => {
           'i.levaussed, .levarv4c7': {
             background: 'var(--color-accent)',
             svg: {
-              fill: 'var(--color-accent-color)'
+              fill: 'var(--color-accent-color)',
+              '&:hover': 'var(--color-accent-color)'
             },
           },
           '.levam9bkr.levaebmh1': {
@@ -148,7 +161,12 @@ const CanvasLoader =  React.memo(() => {
               color: 'var(--color-text)',
               boxShadow: 'none'
             }
-          }
+          },
+          '.leva-c-kXfPOu': {
+            backgroundColor: 'var(--color-accent-gray)',
+            color: 'var(--color-text)',
+            boxShadow: 'none'
+          },
         }
       }} />
     </>
