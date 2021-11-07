@@ -19,21 +19,35 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@/data/*": ["data/*"],
-      "@/components/*": ["components/*"],
-      "@/lib/*": ["lib/*"],
-      "@/prisma/*": ["prisma/*"],
-      "@/styles/*": ["styles/*"],
-      "@/utils/*": ["utils/*"],
-    }
+      "@/data/*": [
+        "data/*"
+      ],
+      "@/components/*": [
+        "components/*"
+      ],
+      "@/lib/*": [
+        "lib/*"
+      ],
+      "@/prisma/*": [
+        "prisma/*"
+      ],
+      "@/styles/*": [
+        "styles/*"
+      ],
+      "@/utils/*": [
+        "utils/*"
+      ]
+    },
+    "incremental": true,
+    "jsxImportSource": "@emotion/react",
   },
-  "jsxImportSource": "@emotion/react",
+  "plugins": ["@emotion/babel-plugin"],
   "exclude": [
     "node_modules"
   ],
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx",
+    "**/*.tsx"
   ]
 }

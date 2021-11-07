@@ -33,7 +33,7 @@ const CanvasLoader =  React.memo(() => {
         <Leva collapsed={false} fill={true} flat={true} />
       </div>
       <Global styles={{
-        '.levawz9l9': {
+        '.css-g7n1w2-styleLevaContainer': {
           fontFamily: 'var(--font-primary)',
           textTransform: 'uppercase',
           '--leva-colors-accent2': 'var(--color-accent-color)',
@@ -75,6 +75,20 @@ const CanvasLoader =  React.memo(() => {
             },
             '&:focus': {
               boxShadow: '0 0 0 2px var(--color-gray)',
+            }
+          },
+          '.leva-c-knrmXZ, .leva-c-bbMqub': {
+            backgroundColor: 'var(--color-gray) !important'
+          },
+          '.leva-c-gUBGce:hover': {
+            backgroundColor: 'var(--color-gray)'
+          },
+          '.leva-c-fOioiK': {
+            letterSpacing: '.1rem',
+            textTransform: 'uppercase',
+            color: 'var(--color-accent)',
+            '&:hover': {
+              boxShadow: 'none'
             }
           },
           'i.levaussed, .levarv4c7': {

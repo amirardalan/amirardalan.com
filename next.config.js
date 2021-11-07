@@ -20,10 +20,4 @@ module.exports = {
       'github.com' // GitHub Avatar
     ]
   },
-  webpack: (config, { isServer }) => {
-    if (isServer) {
-      require('./scripts/generateSitemap.js')
-    }
-    return config
-  },
 }
