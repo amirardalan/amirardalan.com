@@ -21,18 +21,6 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 
 const Edit = ({ editPost }) => {
 
-  const [session, loading] = useSession()
-  let edit = null
-  const userHasValidSession = Boolean(session)
-
-  if (!userHasValidSession) {
-    return (
-      <div className="container">
-        <LoadingTriangle />
-      </div>
-    )
-  }
-
 
   const isPublished = editPost.published
   const id = editPost.id
@@ -93,6 +81,18 @@ const Edit = ({ editPost }) => {
       </div>
     </div>
   )
+
+  const [session, loading] = useSession()
+  let edit = null
+  const userHasValidSession = Boolean(session)
+
+  if (!userHasValidSession) {
+    return (
+      <div className="container">
+        <LoadingTriangle />
+      </div>
+    )
+  }
 
   if (loading) {
     edit = (
