@@ -7,13 +7,9 @@ async function generate() {
   const prettierConfig = await prettier.resolveConfig('./.prettierrc.js')
   const pages = await globby([
     '.next/server/pages/blog/**/*.json',
+    '!.next/server/pages/**/*.js.nft.json',
     'pages/**/*{.tsx,.ts}',
     '!pages/blog/',
-    '!pages/blog/edit/',
-    '!pages/blog/create.tsx',
-    '!pages/blog/drafts.tsx',
-    '!pages/blog/[*].tsx',
-    '!pages/blog/**/[*].tsx',
     'pages/blog/index.tsx',
     '!pages/api',
     '!pages/_*.tsx',
