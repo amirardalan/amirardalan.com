@@ -31,7 +31,7 @@ export default function BlogNavigation({ feed, post, isPublished }) {
     </div>
   const ShowNextLink = () =>
     <div css={styleNextLink}>
-      <Link href={nextLink} css={styleNextLink} aria-label={nextTitle}>
+      <Link href={nextLink} aria-label={nextTitle}>
         <a>{nextTitle} →</a>
       </Link>
     </div>
