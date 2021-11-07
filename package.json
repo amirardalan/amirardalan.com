@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && yarn build:sitemap && yarn test",
+    "build": "next build && && yarn test",
     "postbuild": "NODE_OPTIONS='--experimental-json-modules' node ./scripts/generateSitemap.mjs",
     "test": "jest --verbose ./tests",
     "start": "next start",
