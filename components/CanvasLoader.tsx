@@ -33,7 +33,7 @@ const CanvasLoader =  React.memo(() => {
         <Leva collapsed={false} fill={true} flat={true} />
       </div>
       <Global styles={{
-        '.css-g7n1w2-styleLevaContainer': {
+        '.css-g7n1w2-styleLevaContainer, .css-1w8pts7': {
           fontFamily: 'var(--font-primary)',
           textTransform: 'uppercase',
           '--leva-colors-accent1': 'var(--color-accent-color)',
