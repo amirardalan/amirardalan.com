@@ -10,7 +10,7 @@ import Footer from '@/components/Footer'
 
 import { AppProps } from 'next/app'
 import { Provider } from 'next-auth/client'
-import gtagRoutes from '@/lib/gtagRoutes'
+import GtagRoutes from '@/lib/GtagRoutes'
 
 import dynamic from 'next/dynamic'
 const BlogAdmin = dynamic(() => import('@/components/BlogAdmin'),{
@@ -22,7 +22,7 @@ const App = ({ Component, pageProps }: AppProps) => {
 
   const [theme, toggleTheme] = useThemeContext()
   const themeMode = theme === 'light' ? themeLight : themeDark
-  gtagRoutes()
+  GtagRoutes()
 
   return (
     <React.StrictMode>

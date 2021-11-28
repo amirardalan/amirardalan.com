@@ -127,12 +127,12 @@ const BlogAdmin: React.FC =  React.memo(()=> {
             Deploy
           </button>
         </div>
-        <Link href="/blog/create">
+        <Link href="/blog/create" passHref>
           <button className="buttonCompact createBtn" aria-label="New Post">
             Create
           </button>
         </Link>
-        <Link href="/blog/drafts" aria-label="Drafts">
+        <Link href="/blog/drafts" passHref aria-label="Drafts">
           <button className="buttonCompact draftsBtn" data-active={isActive('/drafts')}>
             Drafts
           </button>

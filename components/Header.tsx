@@ -64,6 +64,7 @@ const Header = ({ toggleTheme }) => {
         <Link
           href="/"
           aria-label="Amir Ardalan Logo"
+          passHref
         >
           <button css={styleLogoButton}>
             <Logo /> 

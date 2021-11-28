@@ -100,6 +100,7 @@ export default function BlogMarkdown({ markdown }) {
   return (
     <>
       <ReactMarkdown
+        // eslint-disable-next-line react/no-children-prop
         children={markdown.content}
         components={MarkdownComponents}
         remarkPlugins={[
