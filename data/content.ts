@@ -354,7 +354,7 @@ export const uses = {
   - 3.3GHz Dual-Core Intel i7
   - 16GB RAM
   - 500GB Flash Storage
-  - MacOS Big Sur
+  - MacOS Monterey
   #### Desktop
   - Self-built PC
   ##### Specs:
@@ -366,7 +366,7 @@ export const uses = {
   - 2x KRK VXT 8
   - Microsoft Windows 10
   #### Phone
-  - iPhone 11 Pro (black)
+  - iPhone 11 Pro (Space Gray)
   ##### Specs:
   - 512GB Storage
   ##### Case:
