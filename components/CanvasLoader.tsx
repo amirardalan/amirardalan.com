@@ -75,7 +75,7 @@ const CanvasLoader =  React.memo(() => {
               boxShadow: 'none'
             }
           },
-          '.levam9bkr .levaolirc': {
+          'button.leva-c-ihqPFh': {
             letterSpacing: '.1rem',
             textTransform: 'uppercase',
             color: 'var(--color-bg)',
@@ -83,10 +83,11 @@ const CanvasLoader =  React.memo(() => {
             boxShadow: 'none',
             '&:hover': {
               border: 'none',
-              background: 'var(--color-accent-color)',
+              boxShadow: 'none',
+              background: 'var(--color-text)',
             },
             '&:focus': {
-              boxShadow: '0 0 0 2px var(--color-gray)',
+              boxShadow: 'none',
             }
           },
           '.leva-c-knrmXZ, .leva-c-bbMqub': {
