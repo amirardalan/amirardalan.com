@@ -73,10 +73,10 @@ export default function Home({ data, latestPost }) {
       fontFamily: 'var(--font-secondary)',
       fontSize: 'calc(2.9vw + 2.9vh)',
       WebkitMarqueeIncrement: '0vw',
-      margin: '0 0 1rem',
+      margin: '0 0 3rem',
       fontWeight: 'bolder',
       '@media (max-width: 890px)': {
-        marginTop: '2rem',
+        margin: '2rem 0 2rem',
         fontSize: 'calc(3vw + 3vh)',
         WebkitMarqueeIncrement: '0vw',
       }
@@ -96,7 +96,7 @@ export default function Home({ data, latestPost }) {
     }
   })
   const styleTypedText = css({
-    marginBottom: '3rem',
+    margin: '1rem 1rem',
     fontSize: 'calc(.7vw + .7vh)',
     WebkitMarqueeIncrement: '0vw',
     fontWeight: 'normal',
@@ -117,7 +117,7 @@ export default function Home({ data, latestPost }) {
     }
   })
   const styleCodeBody = css({
-    color: 'var(--color-text)',
+    color: 'var(--color-bg)',
     '&:before': {
       content: '"  return "',
       whiteSpace: 'pre',
@@ -136,8 +136,6 @@ export default function Home({ data, latestPost }) {
     position: 'relative',
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
     cursor: 'crosshair',
     animation: 'fadeIn .5s forwards',
     '&:hover': {
@@ -174,18 +172,6 @@ export default function Home({ data, latestPost }) {
                   {data.title}
                 </div>
               </h2>
-              <div css={styleTypedText} aria-hidden="true">
-                <div>
-                  {data.typed.heading}
-                </div>
-                <div css={styleCodeComment}>
-                  {data.typed.line2}
-                </div>
-                <div css={styleCodeBody}>
-                  <TypingAnimation data={data.typed} />
-                </div>
-                {data.typed.end}
-              </div>
               <div css={styleButtonContainer}>
                 {GenerateCtaButtons(home.items)}
               </div>
@@ -195,6 +181,18 @@ export default function Home({ data, latestPost }) {
         </div>
         <div className="animationWrapper">
           <div css={styleMainRight}>
+            <div css={styleTypedText} aria-hidden="true">
+              <div>
+                {data.typed.heading}
+              </div>
+              <div css={styleCodeComment}>
+                {data.typed.line2}
+              </div>
+              <div css={styleCodeBody}>
+                <TypingAnimation data={data.typed} />
+              </div>
+              {data.typed.end}
+            </div>
             <CanvasLoader />
           </div>
         </div>

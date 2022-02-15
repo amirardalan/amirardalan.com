@@ -5,15 +5,16 @@ import { css } from '@emotion/react'
 export default function LatestPost({ latestPost, data }) {
 
   const styleLatestPost = css({
-    padding: '0 1.2rem',
-    borderLeft: '7px solid var(--color-accent)',
     fontWeight: 'normal',
     h3: {
-      marginBottom: '.8rem',
-      color: 'var(--color-gray)',
+      marginBottom: '.6rem',
+      color: 'var(--color-text)',
       fontFamily: 'var(--font-primary)',
       fontSize: 12,
       fontWeight: 'normal',
+      '&::before': {
+        content: "'> '"
+      }
     },
     h4: {
       display: 'flex',
