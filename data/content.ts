@@ -597,7 +597,7 @@ export const admin = {
   },
   drafts: {
     meta: {
-      title: 'Drafts - Amir Ardalan'
+      title: 'Drafts – Amir Ardalan'
     }
   }
 }
