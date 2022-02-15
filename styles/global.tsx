@@ -22,6 +22,10 @@ const buttonDisabled = '#8b8b8b'
 const warning = '#ec4949'
 const codeHighlightDark = '#2e3440'
 const codeHighlightLight = '#e3e6eb'
+const codeDark = '#3dffc5'
+const codeLight = '#571AFF'
+const codeCommentDark = '#929aee'
+const codeCommentLight = '#333c41'
 const sunrise = 'linear-gradient(to bottom, #757abf 0%,#8583be 60%,#eab0d1 100%)'
 const sunset = 'linear-gradient(to bottom, #010A10 30%,#59230B 80%,#2F1107 100%)'
 
@@ -101,6 +105,8 @@ export function GlobalStyles () {
           '--button-toggle-bg': lightAccent,
           '--button-toggle-switch': darker,
           '--canvas-bg': sunset,
+          '--canvas-text': codeLight,
+          '--canvas-accent': codeCommentLight,
           '--page-bg': lighter,
           '--code-highlight': codeHighlightLight,
           '--syntax-highlight-bg': lighter,
@@ -119,6 +125,8 @@ export function GlobalStyles () {
           '--button-toggle-bg': darker,
           '--button-toggle-switch': lighter,
           '--canvas-bg': sunrise,
+          '--canvas-text': codeDark,
+          '--canvas-accent': codeCommentDark,
           '--page-bg': darkAccent,
           '--code-highlight': codeHighlightDark,
           '--syntax-highlight-bg': darkAccent,

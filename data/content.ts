@@ -17,16 +17,17 @@ export const home = {
     description: 'Fullstack developer, UI designer & React enthusiast based in Portland, OR'
   },
   title: 'Amir Ardalan',
+  description: 'Code, design, and ideas from Portland, OR.',
   typed: {
     heading: `interests => {`,
     line2: `// TODO: continue learning`,
     items: [
-      `'Fullstack Code'^1500`,
+      `'Fullstack Development'^1500`,
       `'React'^1500`,
       `'Next.js'^1500`,
       `'JavaScript'^1500`,
       `'TypeScript'^1500`,
-      `'UI Design'^1500`,
+      `'User Interface Design'^1500`,
       `'Writing'^1500`,
       `'Emotion CSS'^1500`,
       `'Three.js'^1500`,
@@ -35,7 +36,7 @@ export const home = {
       `'PostgreSQL'^1500`,
       `'Markdown'^1500`,
       `'Jest Testing'^1500`,
-      `'Accessibility'^1500`,
+      `'Web Accessibility'^1500`,
     ],
     end: '}'
   },

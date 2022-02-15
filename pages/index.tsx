@@ -66,19 +66,32 @@ export default function Home({ data, latestPost }) {
   })
   const styleMainLeftContent = css({
     margin: 0,
+    fontWeight: 'bolder',
     lineHeight: 1.3,
     minHeight: '0vw',
-    fontWeight: 'bolder',
+    '.titleWrapper': {
+      margin: '0 0 3rem',
+      '@media (max-width: 890px)': {
+        margin: '2rem 0 2rem',
+      }
+    },
     h2: {
       fontFamily: 'var(--font-secondary)',
       fontSize: 'calc(2.9vw + 2.9vh)',
       WebkitMarqueeIncrement: '0vw',
-      margin: '0 0 3rem',
       fontWeight: 'bolder',
       '@media (max-width: 890px)': {
-        margin: '2rem 0 2rem',
         fontSize: 'calc(3vw + 3vh)',
         WebkitMarqueeIncrement: '0vw',
+      }
+    },
+    h3: {
+      marginTop: '1.2rem',
+      fontFamily: 'var(--font-primary)',
+      fontSize: 'calc(.7vw + .7vh)',
+      fontWeight: 'normal',
+      '@media (max-width: 890px)': {
+        fontSize: '.7rem',
       }
     },
     '.highlightText': {
@@ -108,7 +121,7 @@ export default function Home({ data, latestPost }) {
     } 
   })
   const styleCodeComment = css({
-    color: 'var(--color-accent-gray)',
+    color: 'var(--canvas-accent)',
     fontStyle: 'italic',
     '&:before': {
       content: '"  "',
@@ -117,7 +130,7 @@ export default function Home({ data, latestPost }) {
     }
   })
   const styleCodeBody = css({
-    color: 'var(--color-bg)',
+    color: 'var(--canvas-text)',
     '&:before': {
       content: '"  return "',
       whiteSpace: 'pre',
@@ -166,12 +179,15 @@ export default function Home({ data, latestPost }) {
         <div className="animationWrapper">
           <div css={styleMainLeft}>
             <div css={styleMainLeftContent}>
-              <h2>
-                {theme.intro}
-                <div className="highlightText">
-                  {data.title}
-                </div>
-              </h2>
+              <div className="titleWrapper">
+                <h2>
+                  {theme.intro}
+                  <div className="highlightText">
+                    {data.title}
+                  </div>
+                </h2>
+                <h3>{data.description}</h3>
+              </div>
               <div css={styleButtonContainer}>
                 {GenerateCtaButtons(home.items)}
               </div>
