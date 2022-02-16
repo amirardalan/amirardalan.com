@@ -323,6 +323,17 @@ export const timeline = {
   ]
 }
 
+export const nft= {
+  meta: {
+    title: 'NFT Dashboard – Amir Ardalan',
+  },
+  heading: 'NFT Dashboard',
+  icon: {
+    light: themeDark.icons.nft,
+    dark: themeLight.icons.nft
+  }
+}
+
 export const spotify = {
   meta: {
     title: 'Spotify Dashboard | Amir Ardalan'
