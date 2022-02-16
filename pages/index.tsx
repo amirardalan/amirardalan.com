@@ -5,13 +5,11 @@ import Head from 'next/head'
 import { GenerateCtaButtons } from '@/components/CtaButtons'
 
 import dynamic from 'next/dynamic'
-import LoadingTriangle from '@/components/LoadingTriangle'
 const TypingAnimation  = dynamic(() => import('@/components/TypingAnimation'), {
   loading: () => <span className="typingAnimation">_</span>,
   ssr: false
 })
 const CanvasLoader = dynamic(() => import('@/components/CanvasLoader'), {
-  // loading: () => <LoadingTriangle />,
   ssr: false
 })
 

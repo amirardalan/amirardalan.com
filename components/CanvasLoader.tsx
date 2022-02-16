@@ -5,8 +5,7 @@ import { Leva } from 'leva'
 import CanvasTerrainControls from '@/components/CanvasTerrainControls'
 
 
-// eslint-disable-next-line react/display-name
-const CanvasLoader =  React.memo(() => {
+const CanvasLoader =  React.memo(function CanvasLoader() {
   const theme: any = useTheme()
   const styleLevaContainer = css({
     width: 'max-content',
