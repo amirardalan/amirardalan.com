@@ -11,7 +11,7 @@ const TypingAnimation  = dynamic(() => import('@/components/TypingAnimation'), {
   ssr: false
 })
 const CanvasLoader = dynamic(() => import('@/components/CanvasLoader'), {
-  loading: () => <LoadingTriangle />,
+  // loading: () => <LoadingTriangle />,
   ssr: false
 })
 

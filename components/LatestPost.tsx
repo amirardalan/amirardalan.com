@@ -6,6 +6,7 @@ export default function LatestPost({ latestPost, data }) {
 
   const styleLatestPost = css({
     fontWeight: 'normal',
+    marginTop: '3rem',
     h4: {
       marginBottom: '.6rem',
       color: 'var(--color-text)',
@@ -13,7 +14,7 @@ export default function LatestPost({ latestPost, data }) {
       fontSize: 12,
       fontWeight: 'normal',
       '&::before': {
-        content: "'> '"
+        content: "'↳ '",
       }
     },
     h5: {
