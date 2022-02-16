@@ -24,7 +24,14 @@ export default function NFT() {
         {nft.heading}
       </h2>
       <div css={styleNftContainer}>
-
+        <div>NFT 1</div>
+        <div>NFT 2</div>
+        <div>NFT 3</div>
+        <div>NFT 4</div>
+        <div>NFT 5</div>
+        <div>NFT 6</div>
+        <div>NFT 7</div>
+        <div>NFT 8</div>
       </div>
     </>
   )
