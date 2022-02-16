@@ -323,6 +323,17 @@ export const timeline = {
   ]
 }
 
+export const nft= {
+  meta: {
+    title: 'NFT Collection – Amir Ardalan',
+  },
+  heading: 'NFT Collection',
+  icon: {
+    light: themeDark.icons.nft,
+    dark: themeLight.icons.nft
+  }
+}
+
 export const spotify = {
   meta: {
     title: 'Spotify Dashboard | Amir Ardalan'
@@ -513,6 +524,14 @@ export const footer = {
     {
       path: 'https://swr.vercel.app/',
       title: 'SWR',
+      icon: {
+        light: themeLight.icons.external,
+        dark: themeDark.icons.external
+      },
+    },
+    {
+      path: 'https://opensea.io/',
+      title: 'OpenSea',
       icon: {
         light: themeLight.icons.external,
         dark: themeDark.icons.external
