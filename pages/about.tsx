@@ -92,7 +92,7 @@ export default function About({ data }) {
     h4: {
       marginBottom: '1.5rem',
       paddingBottom: '1rem',
-      fontSize: 25,
+      fontSize: 22,
       color: 'var(--color-text)',
       borderBottom: '2px solid var(--color-accent-color)',
     },

@@ -9,6 +9,7 @@ export default function Timeline() {
     paddingTop: '4rem',
   })
   const styleTimeline = css({
+    marginTop: '2rem',
     display: 'grid',
     gridTemplateColumns: 'repeat(2, 1fr)',
     '.timeline': {
@@ -29,6 +30,7 @@ export default function Timeline() {
         },
         '.date': {
           lineHeight: '1rem',
+          color: 'var(--color-gray)'
         }
       },
       '&:nth-of-type(odd)': {
@@ -43,7 +45,7 @@ export default function Timeline() {
           right: -19,
           content: '"•"',
           fontSize: 60,
-          color: 'var(--color-accent-gray)',
+          color: 'var(--color-gray)',
         },
         '.event': {
           '&:before': {
@@ -152,7 +154,7 @@ export default function Timeline() {
 
   return (
     <div css={styleTimelineWrapper} id="timeline">
-      <h2 className="pageHeading">
+      <h2 className="pageHeading center">
         {timeline.meta.title}
       </h2>
       <div css={styleTimeline}>

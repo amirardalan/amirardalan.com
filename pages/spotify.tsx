@@ -12,6 +12,10 @@ export default function Spotify() {
       margin: '4rem 0 2rem 0',
       fontSize: 28,
       fontWeight: 'bold',
+      '@media (max-width: 1024px)': {
+        margin: '2rem 0 1rem 0',
+        fontSize: 22,
+      }
     }
   })
 

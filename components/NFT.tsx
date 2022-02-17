@@ -23,9 +23,7 @@ export default function NFT() {
       <h2 className="pageHeading">
         {nft.heading}
       </h2>
-      <div css={{
-        textAlign: 'center'
-      }}>Coming soon.</div>
+      <div>{nft.content}</div>
       <div css={styleNftContainer}>
       </div>
     </>
