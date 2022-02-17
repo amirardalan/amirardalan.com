@@ -5,9 +5,8 @@
   "scripts": {
     "lint": "next lint",
     "dev": "next dev",
-    "build": "next build && yarn test",
+    "build": "next build",
     "postbuild": "NODE_OPTIONS='--experimental-json-modules' node ./scripts/generateSitemap.mjs",
-    "test": "jest --verbose ./tests",
     "start": "next start",
     "export": "yarn build && next export -o _static"
   },
@@ -50,11 +49,9 @@
     "@types/react": "^17.0.34",
     "@types/react-dom": "^17.0.11",
     "@types/react-syntax-highlighter": "^13.5.2",
-    "babel-jest": "^27.3.1",
     "babel-plugin-superjson-next": "^0.4.2",
     "eslint": "8.9.0",
     "eslint-config-next": "12.0.10",
-    "jest": "^27.3.1",
     "prisma": "^3.4.1",
     "superjson": "^1.8.0",
     "ts-node": "^10.4.0",
