@@ -158,7 +158,7 @@ export const about = {
       'Three.js',
       'User Interface',
       'Databases',
-      'Testing',
+      'Unit Testing',
       'Documentation',
       'G. Analytics',
     ]
@@ -172,7 +172,7 @@ export const about = {
       'Prisma ORM',
       'PostgreSQL',
       'SWR',
-      'Jest',
+      'Jest/RTL',
       'Vercel',
       'Heroku',
       'Adobe XD',
