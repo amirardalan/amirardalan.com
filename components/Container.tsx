@@ -20,7 +20,7 @@ export default function Container(props: any) {
   const router = useRouter()
   const meta = {
     title: 'Amir Ardalan – Code, design, and ideas from Portland, OR.',
-    description: `Front-end developer, UI designer &amp; React enthusiast based in Portland, OR.`,
+    description: `Front-end developer, UI designer &amp; React enthusiast.`,
     image: `${process.env.NEXT_PUBLIC_SITE_URL}/thumbnail.jpg`,
     type: 'website',
     ...customMeta
@@ -32,10 +32,6 @@ export default function Container(props: any) {
   return (
     <>
       <Head>
-        <meta
-          name="description"
-          content="Front-end developer, UI designer &amp; React enthusiast based in Portland, OR"
-        />
         <title>{meta.title}</title>
         <meta name="robots" content="follow, index" />
         <meta content={meta.description} name="description" />
