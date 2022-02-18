@@ -1,12 +1,13 @@
-import { css, useTheme } from '@emotion/react'
-import { useState } from 'react'
+import { css } from '@emotion/react'
 
-import Image from 'next/image'
+import Container from '@/components/Container'
 import Head from 'next/head'
 import Avatar from '@/components/Avatar'
+import CtaButtonsAbout from '@/components/CtaButtonsAbout'
+import ContactButton from '@/components/ContactButton'
+import SocialIcons from '@/components/SocialIcons'
 import Timeline from '@/components/Timeline'
 
-import { GenerateCtaButtons } from '@/components/CtaButtons'
 import { about } from '@/data/content'
 import { GetStaticProps } from 'next'
 
@@ -20,23 +21,6 @@ export const getStaticProps: GetStaticProps = async () => {
 }
 
 export default function About({ data }) {
-
-  const theme: any = useTheme()
-  const isDarkTheme = theme.active === 'dark'
-
-  const [showEmail, setShowEmail] = useState(false)
-  const showEmailOnclick = () => {
-    setShowEmail(true)
-  }
-  const [copiedToClipBoard, setCopiedToClipBoard] = useState(false)
-
-  const copyToClipboard = () => {
-    navigator.clipboard.writeText(process.env.NEXT_PUBLIC_USER_EMAIL)
-    setCopiedToClipBoard(true)
-    setTimeout(() => {
-      setCopiedToClipBoard(false)
-    }, 10000)
-  }
 
   const styleGridWrapper = css({
     display: 'grid',
@@ -138,171 +122,101 @@ export default function About({ data }) {
     })
   }
 
-  const GenerateSocialIcons = (items: Array<any>) => {
-    return items.map((items, i) => {
-      return (
-        <a key={i}
-          href={items.path}
-          target="_blank"
-          rel="noreferrer noopener"
-          title={items.title}
-          aria-label={items.title}
-        >
-          <Image
-            src={isDarkTheme
-              ? items.icon.dark
-              : items.icon.light}
-            height="48"
-            width="48"
-            alt={items.title}
-            aria-label={items.title}
-            priority
-          />
-        </a>
-      )
-    })
-  }
-
   return (
-    <div className="container about">
-      <Head>
-        <title>{data.meta.title}</title>
-      </Head>
-      <div className="animationWrapper">
-        <h2 className="pageHeading">
-          {data.heading}
-        </h2>
-        <main css={styleGridWrapper}>
-          <div className="grid">
-            <ul css={styleBioItems}>
-              <li>
-                <Avatar height="100" width="100" />
-              </li>
-              <li aria-label={data.bio.subheading}>
-                <strong>{data.bio.subheading}</strong>
-              </li>
-              <li>
-                <em>
-                  {data.bio.content}
-                </em>
-              </li>
-              <li css={styleCtaWrapper}>
-                {GenerateCtaButtons(data.bio.items)}
-              </li>
-            </ul>
-          </div>
-          <div className="grid">
-            <ul>
-              <li>
-                <h4 aria-label="{data.skills.title}">
-                  {data.skills.title}
-                </h4>
-              </li>
-              {GenerateListItems(data.skills.items)}
-            </ul>
-            <ul>
-              <li>
-                <h4 aria-label="{data.skills.title}">
-                  {data.stack.title}
-                </h4>
-              </li>
-              {GenerateListItems(data.stack.items)}
-            </ul>
-          </div>
-          <div className="grid">
-            <ul>
-              <li>
-                <h4 aria-label={data.experience.title}>
-                  {data.experience.title}
-                </h4>
-              </li>
-              {GenerateListItems(data.experience.items)}
-            </ul>
-          </div>
-          <div className="grid">
-            <ul>
-              <li>
-                <h4 aria-label={data.availability.title}>
-                  {data.availability.title}
-                </h4>
-              </li>
-              {GenerateListItems(data.availability.items)}
-            </ul>
-          </div>
-          <div className="grid">
-            <div css={styleSocialIconsWrapper}>
-              <ul>
+    <Container>
+      <div className="container about">
+        <Head>
+          <title>{data.meta.title}</title>
+        </Head>
+        <div className="animationWrapper">
+          <h2 className="pageHeading">
+            {data.heading}
+          </h2>
+          <main css={styleGridWrapper}>
+            <div className="grid">
+              <ul css={styleBioItems}>
                 <li>
-                  <h4>{data.social.title}</h4>
+                  <Avatar height="100" width="100" />
                 </li>
-                <li css={styleSocialIcons}>
-                  {GenerateSocialIcons(data.social.items)}
+                <li aria-label={data.bio.subheading}>
+                  <strong>{data.bio.subheading}</strong>
+                </li>
+                <li>
+                  <em>
+                    {data.bio.content}
+                  </em>
+                </li>
+                <li css={styleCtaWrapper}>
+                  <CtaButtonsAbout />
                 </li>
               </ul>
             </div>
-          </div>
-          <div className="grid">
-            <ul>
-              <li>
-                <h4 aria-label={data.contact.title}>
-                  {data.contact.title}
-                </h4>
-              </li>
-              <li css={styleCtaWrapper}>
-                <span css={{maxWidth: 'fit-content'}}>
-                  <a
-                    onClick={showEmail
-                      ? copyToClipboard
-                      : showEmailOnclick}
-                    className={showEmail
-                      ? 'ctaButton disabled'
-                      : 'ctaButton'}
-                    aria-label={showEmail
-                      ? data.contact.email
-                      : 'Show Email'}
-                  >
-                    {showEmail
-                      ? process.env.NEXT_PUBLIC_USER_EMAIL
-                      : data.contact.email.title}
-                    <span className="icon">
-                    {showEmail ?
-                      <Image
-                        src={theme.icons.clipboard}
-                        height="16"
-                        width="16"
-                        className="icon"
-                        alt="Clipboard"
-                        priority
-                      /> :
-                      <Image
-                        src={theme.icons.email}
-                        height="16"
-                        width="16"
-                        className="icon"
-                        alt="Email"
-                        priority
-                      />
-                    }
-                    </span>
-                  </a>
-                  {copiedToClipBoard ?
-                  <div className="tooltip">
-                    {data.contact.copiedToClipboard}
-                  </div> :
-                  <div
-                    css={{
-                      color: 'var(--color-accent)',
-                      marginTop: '.5rem',
-                    }}>
-                    –
-                  </div>}
-                </span>
-              </li>
-            </ul>
-          </div>
-        </main>
+            <div className="grid">
+              <ul>
+                <li>
+                  <h4 aria-label="{data.skills.title}">
+                    {data.skills.title}
+                  </h4>
+                </li>
+                {GenerateListItems(data.skills.items)}
+              </ul>
+              <ul>
+                <li>
+                  <h4 aria-label="{data.skills.title}">
+                    {data.stack.title}
+                  </h4>
+                </li>
+                {GenerateListItems(data.stack.items)}
+              </ul>
+            </div>
+            <div className="grid">
+              <ul>
+                <li>
+                  <h4 aria-label={data.experience.title}>
+                    {data.experience.title}
+                  </h4>
+                </li>
+                {GenerateListItems(data.experience.items)}
+              </ul>
+            </div>
+            <div className="grid">
+              <ul>
+                <li>
+                  <h4 aria-label={data.availability.title}>
+                    {data.availability.title}
+                  </h4>
+                </li>
+                {GenerateListItems(data.availability.items)}
+              </ul>
+            </div>
+            <div className="grid">
+              <div css={styleSocialIconsWrapper}>
+                <ul>
+                  <li>
+                    <h4>{data.social.title}</h4>
+                  </li>
+                  <li css={styleSocialIcons}>
+                    <SocialIcons />
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div className="grid">
+              <ul>
+                <li>
+                  <h4 aria-label={data.contact.title}>
+                    {data.contact.title}
+                  </h4>
+                </li>
+                <li css={styleCtaWrapper}>
+                  <ContactButton />
+                </li>
+              </ul>
+            </div>
+          </main>
+        </div>
+        <Timeline />
       </div>
-      <Timeline />
-    </div>
+    </Container>
   )
 }

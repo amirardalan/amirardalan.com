@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 
+import Container from '@/components/Container'
 import BlogLayout from '@/components/BlogLayout'
 import Markdown from '@/components/Markdown'
 import BlogNavigation from '@/components/BlogNavigation'
@@ -115,76 +116,78 @@ const Post = ({ post, feed, data }) => {
   )
 
   return (
-    <BlogLayout>
-      <Head>
-        <title>{title}{data.meta.title}</title>
-        {isPublished ? null : disallowRobots }
-      </Head>
-      <div className={isPublished ? 'blog' : 'blog admin'}>
+    <Container>
+      <BlogLayout>
+        <Head>
+          <title>{title}{data.meta.title}</title>
+          {isPublished ? null : disallowRobots }
+        </Head>
+        <div className={isPublished ? 'blog' : 'blog admin'}>
 
-        <nav className="breadcrumbs">
-          <Link href="/blog">{breadcrumb.blog}</Link>
-          { !isPublished
-          ? <Link href="/blog/drafts">
-              <a>{breadcrumb.drafts}</a>
-            </Link>
-          : null }
-          <span>{title}</span>
-        </nav>
-        
-        <div className="post postFull">
+          <nav className="breadcrumbs">
+            <Link href="/blog">{breadcrumb.blog}</Link>
+            { !isPublished
+            ? <Link href="/blog/drafts">
+                <a>{breadcrumb.drafts}</a>
+              </Link>
+            : null }
+            <span>{title}</span>
+          </nav>
+          
+          <div className="post postFull">
 
-          <h2 aria-label={`${title}`}>
-            {title}
-          </h2>
-          <div className="postDetails" aria-label={`${editDate} • ${postReadTime}`}>
-            <div className="author">
-              <span className="avatar">
-                <Avatar height="18" width="18" />
-              </span>
-              {post?.author?.name || 'Unknown author'}
+            <h2 aria-label={`${title}`}>
+              {title}
+            </h2>
+            <div className="postDetails" aria-label={`${editDate} • ${postReadTime}`}>
+              <div className="author">
+                <span className="avatar">
+                  <Avatar height="18" width="18" />
+                </span>
+                {post?.author?.name || 'Unknown author'}
+              </div>
+              {isEdited ? `Updated: ${editDate}`: publishDate } • {postReadTime}
             </div>
-            {isEdited ? `Updated: ${editDate}`: publishDate } • {postReadTime}
+
+            <Markdown markdown={post} />
+
+            { userHasValidSession && (
+              <div className="controlsPost">
+
+                <button
+                  className="buttonCompact"
+                  onClick={() => publishPost(post.id, post.published)}>
+                  {publishLabel}
+                </button>
+                <button
+                  className="buttonCompact"
+                  onClick={() => editPost(post.id)}>
+                  {admin.controls.edit}
+                </button>
+                <button
+                  className="buttonCompact delete"
+                  onClick={confirmOnClick}>
+                  {admin.controls.delete}
+                </button>
+
+                { showDeletionConfirmation
+                ? <DeletionConfirmation />
+                : null }
+
+              </div>
+            )}
+
           </div>
 
-          <Markdown markdown={post} />
-
-          { userHasValidSession && (
-            <div className="controlsPost">
-
-              <button
-                className="buttonCompact"
-                onClick={() => publishPost(post.id, post.published)}>
-                {publishLabel}
-              </button>
-              <button
-                className="buttonCompact"
-                onClick={() => editPost(post.id)}>
-                {admin.controls.edit}
-              </button>
-              <button
-                className="buttonCompact delete"
-                onClick={confirmOnClick}>
-                {admin.controls.delete}
-              </button>
-
-              { showDeletionConfirmation
-              ? <DeletionConfirmation />
-              : null }
-
-            </div>
-          )}
-
+          <BlogNavigation
+            feed={feed}
+            post={post}
+            isPublished={isPublished}
+          />
+          
         </div>
-
-        <BlogNavigation
-          feed={feed}
-          post={post}
-          isPublished={isPublished}
-        />
-        
-      </div>
       </BlogLayout>
+    </Container>
   )
 }
 

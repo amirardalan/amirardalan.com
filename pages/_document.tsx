@@ -41,25 +41,10 @@ export default class MyDocument extends Document {
             type="font/woff2"
             crossOrigin="anonymous"
           />
-          <meta httpEquiv="content-type" content="text/html; charset=utf-8" />
-          <meta
-            name="description"
-            content="Fullstack developer, UI designer &amp; React enthusiast based in Portland, OR"
-          />
-          <meta property="og:title" content="Amir Ardalan – Developer, Designer, Writer" />
-          <meta property="og:description" content="Fullstack developer, UI designer &amp; React enthusiast based in Portland, OR" />
-          <meta property="og:url" content="https://amirardalan.com" />
-          <meta property="og:site_name" content="Amir Ardalan" />
-          <meta name="thumbnail" property="og:image" content="https://amirardalan.com/thumbnail.jpg" />
-          <meta name="twitter:image" content="https://amirardalan.com/thumbnail.jpg" />
-          <meta name="twitter:image:alt" content="Amir Ardalan Blog" />
-          <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:site" content="@amirardalan" />
-
           <link rel="icon" href="/favicon.png" />
           <link rel="apple-touch-icon" href="/touch-192.png" />
           <link rel="manifest" href="/manifest.json" />
-
+          <meta httpEquiv="content-type" content="text/html; charset=utf-8" />
 
           <script
             async
