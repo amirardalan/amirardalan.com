@@ -48,14 +48,14 @@ const BlogPostFilter: React.FC<Props> = ({ feed }) => {
           onChange={(e) => setSearch(e.target.value)}
         />
         <div className="icon">
-          {/* <Image
+          <Image
             src={theme.icons.search}
             height="23"
             width="23"
             priority
             alt={blog.search.placeholder}
             draggable={false}
-          /> */}
+          />
         </div>
       </div>
       <div>
