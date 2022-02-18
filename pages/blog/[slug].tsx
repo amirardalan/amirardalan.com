@@ -49,7 +49,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     })
   ])
   if (post) {
-    return { props: { post, feed, data: blogPost } } 
+    return { props: { post: JSON.parse(JSON.stringify(post)), feed, data: blogPost } } 
   } else {
     return {
       notFound: true
@@ -66,7 +66,7 @@ const Post = ({ post, feed, data }) => {
   const publishLabel = isPublished ? `${admin.controls.unpublish}` : `${admin.controls.publish}`
   const redirect = isPublished ? '/blog/drafts' : '/blog'
 
-  const isEdited = post.editedAt.toJSON().slice(0, 10) > post.publishedAt.toJSON().slice(0, 10)
+  const isEdited = post.editedAt.slice(0, 10) > post.publishedAt.slice(0, 10)
   const publishDate = formatDate(post.publishedAt)
   const editDate = formatDate(post.editedAt)
   const postReadTime = calculateReadTime(post.content)

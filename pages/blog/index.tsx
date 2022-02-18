@@ -16,7 +16,7 @@ export const getStaticProps: GetStaticProps = async () => {
     const feed = await prisma.post.findMany({
       where: { published: true },
     })
-    return { props: { feed, data: blog } }
+    return { props: { feed: JSON.parse(JSON.stringify(feed)), data: blog } }
   } catch {
     return { props: { feed: [] } }
   }
