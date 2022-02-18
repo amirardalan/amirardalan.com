@@ -5,7 +5,6 @@ import Image from 'next/image'
 import Head from 'next/head'
 import Avatar from '@/components/Avatar'
 import Timeline from '@/components/Timeline'
-import Uses from '@/components/Uses'
 
 import { GenerateCtaButtons } from '@/components/CtaButtons'
 import { about } from '@/data/content'
