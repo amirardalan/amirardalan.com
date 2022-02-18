@@ -1,5 +1,4 @@
 import Container from '@/components/Container'
-import Head from 'next/head'
 import ErrorIcon from '@/components/ErrorIcon'
 import Link from 'next/link'
 import ErrorAnimation from '@/components/ErrorAnimation'
@@ -14,12 +13,8 @@ export const getStaticProps = async () => {
 export default function Custom404({ data }) {
 
   return(
-    <Container>
-      <div className="404">
-        <Head>
-          <title>{data.meta.title}</title>
-          <meta name="robots" content="noindex"></meta>
-        </Head>
+    <Container title={data.meta.title} robots="noindex">
+      <div>
 
         <div css={{
           padding: '4rem 1.5rem',

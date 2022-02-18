@@ -1,17 +1,15 @@
+import { useSession } from 'next-auth/client'
 import { useState } from 'react'
+import Router from 'next/router'
 
 import Container from '@/components/Container'
 import BlogLayout from '@/components/BlogLayout'
-import Markdown from '@/components/Markdown'
+import Avatar from '@/components/Avatar'
 import BlogNavigation from '@/components/BlogNavigation'
 import calculateReadTime from '@/utils/calculateReadTime'
 import formatDate from '@/utils/formatDate'
-
-import { useSession } from 'next-auth/client'
-import Router from 'next/router'
 import Link from 'next/link'
-import Head from 'next/head'
-import Avatar from '@/components/Avatar'
+import Markdown from '@/components/Markdown'
 
 import { blogPost, breadcrumb, admin } from '@/data/content'
 import { GetStaticProps, GetStaticPaths } from 'next'
@@ -72,8 +70,6 @@ const Post = ({ post, feed, data }) => {
   const editDate = formatDate(post.editedAt)
   const postReadTime = calculateReadTime(post.content)
 
-  const disallowRobots = ( <meta name="robots" content="noindex"></meta> )
-
   async function publishPost(slug: String, published: boolean): Promise<void> {
     await fetch(`/api/publish/${slug}?published=${published}`, {
       method: 'PUT',
@@ -95,7 +91,7 @@ const Post = ({ post, feed, data }) => {
 
   let title = post.title
   if (!isPublished) {
-    title = `${title} ${data.title.draft}`
+    title = `${data.title.draft} ${title}`
   }
 
   const [showDeletionConfirmation, setShowDeletionConfirmation] = useState(false)
@@ -116,12 +112,8 @@ const Post = ({ post, feed, data }) => {
   )
 
   return (
-    <Container>
+    <Container title={title}{...data.meta.title} robots={isPublished ? "follow, index" : "noindex" }>
       <BlogLayout>
-        <Head>
-          <title>{title}{data.meta.title}</title>
-          {isPublished ? null : disallowRobots }
-        </Head>
         <div className={isPublished ? 'blog' : 'blog admin'}>
 
           <nav className="breadcrumbs">

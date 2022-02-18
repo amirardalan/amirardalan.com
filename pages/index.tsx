@@ -3,7 +3,6 @@ import Container from '@/components/Container'
 import { home } from '@/data/content'
 import Intro from '@/components/Intro'
 import LatestPost from '@/components/LatestPost'
-import Head from 'next/head'
 import { GenerateCtaButtons } from '@/components/CtaButtons'
 
 import dynamic from 'next/dynamic'
@@ -166,15 +165,8 @@ export default function Home({ data, latestPost }) {
   })
 
   return (
-    <Container>
+    <Container title={data.meta.title}>
       <div className="home">
-        <Head>
-          <title>{data.meta.title}</title>
-          <meta
-            name="description"
-            content={data.meta.description}
-          />
-        </Head>
         <main css={styleMain}>
           <div className="animationWrapper">
             <div css={styleMainLeft}>

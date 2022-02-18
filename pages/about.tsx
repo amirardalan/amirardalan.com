@@ -1,7 +1,6 @@
 import { css } from '@emotion/react'
 
 import Container from '@/components/Container'
-import Head from 'next/head'
 import Avatar from '@/components/Avatar'
 import CtaButtonsAbout from '@/components/CtaButtonsAbout'
 import ContactButton from '@/components/ContactButton'
@@ -123,11 +122,8 @@ export default function About({ data }) {
   }
 
   return (
-    <Container>
+    <Container title={data.meta.title}>
       <div className="about">
-        <Head>
-          <title>{data.meta.title}</title>
-        </Head>
         <div className="animationWrapper">
           <h2 className="pageHeading">
             {data.heading}

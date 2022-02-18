@@ -1,14 +1,15 @@
-import React, { useState } from 'react'
-import { admin, breadcrumb } from '@/data/content'
-import Router from 'next/router'
-import Link from 'next/link'
-import Head from 'next/head'
-import { GetServerSideProps } from 'next'
-import prisma from '@/lib/prisma'
 import { useSession } from 'next-auth/client'
-import LoadingTriangle from '@/components/LoadingTriangle'
+import { useState } from 'react'
+import Router from 'next/router'
+
 import Container from '@/components/Container'
 import BlogLayout from '@/components/BlogLayout'
+import Link from 'next/link'
+import LoadingTriangle from '@/components/LoadingTriangle'
+
+import { admin, breadcrumb } from '@/data/content'
+import { GetServerSideProps } from 'next'
+import prisma from '@/lib/prisma'
 
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
@@ -167,12 +168,8 @@ const Edit = ({ editPost }) => {
   }
 
   return (
-    <Container>
+    <Container title={admin.edit.meta.title} {...isPublished ? 'Post |' : 'Draft: '} {...editPageTitle} robots="noindex">
       <BlogLayout>
-        <Head>
-          <title>{admin.edit.meta.title} {isPublished ? 'Post |' : 'Draft: '} {editPageTitle}</title>
-          <meta name="robots" content="noindex"></meta>
-        </Head>
         <div>
           {edit}
         </div>

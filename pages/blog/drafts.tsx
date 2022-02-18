@@ -1,6 +1,5 @@
 import { useSession, getSession } from 'next-auth/client'
 import Link from 'next/link'
-import Head from 'next/head'
 import Container from '@/components/Container'
 import BlogLayout from '@/components/BlogLayout'
 import { admin, breadcrumb } from '@/data/content'
@@ -73,12 +72,8 @@ const Drafts: React.FC<Props>  = ({ drafts }) => {
   }
 
   return (
-    <Container>
+    <Container title={admin.drafts.meta.title} robots="noindex">
       <BlogLayout>
-        <Head>
-          <title>{admin.drafts.meta.title}</title>
-          <meta name="robots" content="noindex"></meta>
-        </Head>
         <div className="blog admin drafts">
           {draftsList}
         </div>

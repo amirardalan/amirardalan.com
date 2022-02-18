@@ -1,9 +1,8 @@
-import Head from 'next/head'
-import { breadcrumb, blog } from '@/data/content'
 import BlogLayout from '@/components/BlogLayout'
 import Container from '@/components/Container'
 import BlogPostFilter from '@/components/BlogPostFilter'
 
+import { breadcrumb, blog } from '@/data/content'
 import { PostProps } from '@/components/BlogPost'
 import { GetStaticProps } from 'next'
 import prisma from '@/lib/prisma'
@@ -28,11 +27,8 @@ type Props = {
 const Blog: React.FC<Props> = ({ data, feed }) => {
   
   return (
-    <Container>
+    <Container title={data.meta.title}>
       <BlogLayout>
-        <Head>
-          <title>{data.meta.title}</title>
-        </Head>
         <div className="blog">
 
           <nav className="breadcrumbs">

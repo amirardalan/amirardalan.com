@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import Router from 'next/router'
 import Link from 'next/link'
-import Head from 'next/head'
 import Container from '@/components/Container'
 import BlogLayout from '@/components/BlogLayout'
 import { admin, breadcrumb } from '@/data/content'
@@ -141,12 +140,8 @@ const Draft: React.FC = () => {
   }
 
   return (
-    <Container>
+    <Container title={admin.create.meta.title} robots="noindex">
       <BlogLayout>
-        <Head>
-          <title>{admin.create.meta.title}</title>
-          <meta name="robots" content="noindex"></meta>
-        </Head>
         <div>
           {create}
         </div>

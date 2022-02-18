@@ -1,11 +1,11 @@
-import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useThemeContext } from '@/utils/useThemeContext'
 import { themeLight, themeDark } from '@/styles/theme'
 import { GlobalStyles } from '@/styles/global'
 import { ThemeProvider } from '@emotion/react'
-import LoadingBar from '@/components/LoadingBar'
 
+import Head from 'next/head'
+import LoadingBar from '@/components/LoadingBar'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 
@@ -23,6 +23,7 @@ export default function Container(props: any) {
     description: `Front-end developer, UI designer &amp; React enthusiast.`,
     image: `${process.env.NEXT_PUBLIC_SITE_URL}/thumbnail.jpg`,
     type: 'website',
+    robots: 'follow, index',
     ...customMeta
   }
 
@@ -33,7 +34,7 @@ export default function Container(props: any) {
     <>
       <Head>
         <title>{meta.title}</title>
-        <meta name="robots" content="follow, index" />
+        <meta name="robots" content={meta.robots} />
         <meta content={meta.description} name="description" />
         <meta property="og:url" content={`${process.env.NEXT_PUBLIC_SITE_URL}${router.asPath}`} />
         <link rel="canonical" href={`${process.env.NEXT_PUBLIC_SITE_URL}${router.asPath}`} />
