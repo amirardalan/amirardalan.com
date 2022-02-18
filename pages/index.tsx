@@ -1,7 +1,8 @@
-import { css, useTheme } from '@emotion/react'
+import { css } from '@emotion/react'
+import Container from '@/components/Container'
 import { home } from '@/data/content'
+import Intro from '@/components/Intro'
 import LatestPost from '@/components/LatestPost'
-import Head from 'next/head'
 import { GenerateCtaButtons } from '@/components/CtaButtons'
 
 import dynamic from 'next/dynamic'
@@ -39,7 +40,6 @@ export const getStaticProps: GetStaticProps = async () => {
 
 
 export default function Home({ data, latestPost }) {
-  const theme: any = useTheme()
 
   // Styles
   const styleMain = css({
@@ -165,52 +165,47 @@ export default function Home({ data, latestPost }) {
   })
 
   return (
-    <div className="container home">
-      <Head>
-        <title>{data.meta.title}</title>
-        <meta
-          name="description"
-          content={data.meta.description}
-        />
-      </Head>
-      <main css={styleMain}>
-        <div className="animationWrapper">
-          <div css={styleMainLeft}>
-            <div css={styleMainLeftContent}>
-              <div className="titleWrapper">
-                <h2>
-                  {theme.intro}
-                  <div className="highlightText">
-                    {data.title}
-                  </div>
-                </h2>
-                <h3>{data.description}</h3>
+    <Container title={data.meta.title}>
+      <div className="home">
+        <main css={styleMain}>
+          <div className="animationWrapper">
+            <div css={styleMainLeft}>
+              <div css={styleMainLeftContent}>
+                <div className="titleWrapper">
+                  <h2>
+                    <Intro />
+                    <div className="highlightText">
+                      {data.title}
+                    </div>
+                  </h2>
+                  <h3>{data.description}</h3>
+                </div>
+                <div css={styleButtonContainer}>
+                  {GenerateCtaButtons(home.items)}
+                </div>
+                <LatestPost data={data} latestPost={latestPost} />
               </div>
-              <div css={styleButtonContainer}>
-                {GenerateCtaButtons(home.items)}
-              </div>
-              <LatestPost data={data} latestPost={latestPost} />
             </div>
           </div>
-        </div>
-        <div className="animationWrapper">
-          <div css={styleMainRight}>
-            <div css={styleTypedText} aria-hidden="true">
-              <div>
-                {data.typed.heading}
+          <div className="animationWrapper">
+            <div css={styleMainRight}>
+              <div css={styleTypedText} aria-hidden="true">
+                <div>
+                  {data.typed.heading}
+                </div>
+                <div css={styleCodeComment}>
+                  {data.typed.line2}
+                </div>
+                <div css={styleCodeBody}>
+                  <TypingAnimation data={data.typed} />
+                </div>
+                {data.typed.end}
               </div>
-              <div css={styleCodeComment}>
-                {data.typed.line2}
-              </div>
-              <div css={styleCodeBody}>
-                <TypingAnimation data={data.typed} />
-              </div>
-              {data.typed.end}
+              <CanvasLoader />
             </div>
-            <CanvasLoader />
           </div>
-        </div>
-      </main>
-    </div>
+        </main>
+      </div>
+    </Container>
   )
 }

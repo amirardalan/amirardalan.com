@@ -1,15 +1,14 @@
-import Head from 'next/head'
 import { uses } from '@/data/content'
+import Container from '@/components/Container'
 import Uses from '@/components/Uses'
 
 export default function UsesPage() {
 
   return (
-    <div className="container uses">
-      <Head>
-        <title>{uses.meta.title}</title>
-      </Head>
-      <Uses />
-    </div>
+    <Container title={uses.meta.title} description={uses.meta.description}>
+      <div className="uses">
+        <Uses />
+      </div>
+    </Container>
   )
 }

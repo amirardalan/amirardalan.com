@@ -13,8 +13,8 @@ export const avatar = {
 
 export const home = {
   meta: {
-    title: 'Amir Ardalan – Developer, Designer, Writer',
-    description: 'Fullstack developer, UI designer & React enthusiast based in Portland, OR'
+    title: 'Amir Ardalan – Code, design, and ideas from Portland, OR.',
+    description: 'Front-end developer, UI designer, and React enthusiast.'
   },
   title: 'Amir Ardalan',
   description: 'Code, design, and ideas from Portland, OR.',
@@ -60,6 +60,7 @@ export const home = {
 export const blog = {
   meta: {
     title: 'Blog – Amir Ardalan',
+    description: 'Thoughts on web development, design, and web 3.0 with code examples and guides.'
   },
   error: {
     database: '⚠️ Database Error: Posts Could not be loaded.',
@@ -76,7 +77,7 @@ export const blogPost = {
     title: ' – Amir Ardalan'
   },
   title: {
-    draft: '(Draft)'
+    draft: 'Draft –'
   },
 }
 
@@ -326,6 +327,7 @@ export const timeline = {
 export const nft= {
   meta: {
     title: 'NFT Dashboard – Amir Ardalan',
+    description: `Amir Ardalan's personal NFT collection.`
   },
   heading: 'NFT Dashboard',
   content: 'A personal collection of NFTs. Coming soon.',
@@ -337,7 +339,8 @@ export const nft= {
 
 export const spotify = {
   meta: {
-    title: 'Spotify Dashboard | Amir Ardalan'
+    title: 'Spotify Dashboard | Amir Ardalan',
+    description: `See what I'm currently listening to on Spotify and view my top 20 tracks of the moment.`
   },
   headings: {
     main: 'Spotify Dashboard',
@@ -356,6 +359,7 @@ export const spotify = {
 export const uses = {
   meta: {
     title: 'Uses – Amir Ardalan',
+    description: 'A list of gear, tools, and software I use.'
   },
   heading: 'Uses',
   devices: {

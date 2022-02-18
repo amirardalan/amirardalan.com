@@ -1,15 +1,14 @@
-import Head from 'next/head'
+import Container from '@/components/Container'
 import { nft } from '@/data/content'
 import NFT from '@/components/NFT'
 
 export default function NftPage() {
 
   return (
-    <div className="container nft">
-      <Head>
-        <title>{nft.meta.title}</title>
-      </Head>
-      <NFT />
-    </div>
+    <Container title={nft.meta.title} description={nft.meta.description}>
+      <div className="nft">
+        <NFT />
+      </div>
+    </Container>
   )
 }

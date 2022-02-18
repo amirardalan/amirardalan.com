@@ -1,16 +1,15 @@
-import React, { useState } from 'react'
+import { useSession } from 'next-auth/client'
+import { useState } from 'react'
+import Router from 'next/router'
 
+import Container from '@/components/Container'
 import BlogLayout from '@/components/BlogLayout'
-import Markdown from '@/components/Markdown'
+import Avatar from '@/components/Avatar'
 import BlogNavigation from '@/components/BlogNavigation'
 import calculateReadTime from '@/utils/calculateReadTime'
 import formatDate from '@/utils/formatDate'
-
-import { useSession } from 'next-auth/client'
-import Router from 'next/router'
 import Link from 'next/link'
-import Head from 'next/head'
-import Avatar from '@/components/Avatar'
+import Markdown from '@/components/Markdown'
 
 import { blogPost, breadcrumb, admin } from '@/data/content'
 import { GetStaticProps, GetStaticPaths } from 'next'
@@ -44,6 +43,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       select: {
         id: true,
         title: true,
+        teaser: true,
         slug: true,
       },
     })
@@ -71,8 +71,6 @@ const Post = ({ post, feed, data }) => {
   const editDate = formatDate(post.editedAt)
   const postReadTime = calculateReadTime(post.content)
 
-  const disallowRobots = ( <meta name="robots" content="noindex"></meta> )
-
   async function publishPost(slug: String, published: boolean): Promise<void> {
     await fetch(`/api/publish/${slug}?published=${published}`, {
       method: 'PUT',
@@ -94,7 +92,7 @@ const Post = ({ post, feed, data }) => {
 
   let title = post.title
   if (!isPublished) {
-    title = `${title} ${data.title.draft}`
+    title = `${data.title.draft} ${title}`
   }
 
   const [showDeletionConfirmation, setShowDeletionConfirmation] = useState(false)
@@ -114,77 +112,87 @@ const Post = ({ post, feed, data }) => {
     </div>
   )
 
+  // If the post contains an image, set the first image as the og:image banner
+  const hasImage = post.content.replace(/`([^`]*)/g,'').match(/!\[.*?\]\((.*?)\)/)
+    ? `${process.env.NEXT_PUBLIC_SITE_URL}` + post.content.match(/!\[.*?\]\((.*?)\)/)[1]
+    : `${process.env.NEXT_PUBLIC_SITE_URL}/thumbnail.jpg`
+
   return (
-    <BlogLayout>
-      <Head>
-        <title>{title}{data.meta.title}</title>
-        {isPublished ? null : disallowRobots }
-      </Head>
-      <div className={isPublished ? 'blog' : 'blog admin'}>
+    <Container
+      title={title}{...data.meta.title}
+      description={post.teaser}
+      image={hasImage}
+      date={publishDate}
+      robots={isPublished ? "follow, index" : "noindex"
+    }>
+      <BlogLayout>
+        <div className={isPublished ? 'blog' : 'blog admin'}>
 
-        <nav className="breadcrumbs">
-          <Link href="/blog">{breadcrumb.blog}</Link>
-          { !isPublished
-          ? <Link href="/blog/drafts">
-              <a>{breadcrumb.drafts}</a>
-            </Link>
-          : null }
-          <span>{title}</span>
-        </nav>
-        
-        <div className="post postFull">
+          <nav className="breadcrumbs">
+            <Link href="/blog">{breadcrumb.blog}</Link>
+            { !isPublished
+            ? <Link href="/blog/drafts">
+                <a>{breadcrumb.drafts}</a>
+              </Link>
+            : null }
+            <span>{title}</span>
+          </nav>
+          
+          <div className="post postFull">
 
-          <h2 aria-label={`${title}`}>
-            {title}
-          </h2>
-          <div className="postDetails" aria-label={`${editDate} • ${postReadTime}`}>
-            <div className="author">
-              <span className="avatar">
-                <Avatar height="18" width="18" />
-              </span>
-              {post?.author?.name || 'Unknown author'}
+            <h2 aria-label={`${title}`}>
+              {title}
+            </h2>
+            <p className="teaser">{post.teaser}</p>
+            <div className="postDetails" aria-label={`${editDate} • ${postReadTime}`}>
+              <div className="author">
+                <span className="avatar">
+                  <Avatar height="18" width="18" />
+                </span>
+                {post?.author?.name || 'Unknown author'}
+              </div>
+              {isEdited ? `Updated: ${editDate}`: publishDate } • {postReadTime}
             </div>
-            {isEdited ? `Updated: ${editDate}`: publishDate } • {postReadTime}
+
+            <Markdown markdown={post} />
+
+            { userHasValidSession && (
+              <div className="controlsPost">
+
+                <button
+                  className="buttonCompact"
+                  onClick={() => publishPost(post.id, post.published)}>
+                  {publishLabel}
+                </button>
+                <button
+                  className="buttonCompact"
+                  onClick={() => editPost(post.id)}>
+                  {admin.controls.edit}
+                </button>
+                <button
+                  className="buttonCompact delete"
+                  onClick={confirmOnClick}>
+                  {admin.controls.delete}
+                </button>
+
+                { showDeletionConfirmation
+                ? <DeletionConfirmation />
+                : null }
+
+              </div>
+            )}
+
           </div>
 
-          <Markdown markdown={post} />
-
-          { userHasValidSession && (
-            <div className="controlsPost">
-
-              <button
-                className="buttonCompact"
-                onClick={() => publishPost(post.id, post.published)}>
-                {publishLabel}
-              </button>
-              <button
-                className="buttonCompact"
-                onClick={() => editPost(post.id)}>
-                {admin.controls.edit}
-              </button>
-              <button
-                className="buttonCompact delete"
-                onClick={confirmOnClick}>
-                {admin.controls.delete}
-              </button>
-
-              { showDeletionConfirmation
-              ? <DeletionConfirmation />
-              : null }
-
-            </div>
-          )}
-
+          <BlogNavigation
+            feed={feed}
+            post={post}
+            isPublished={isPublished}
+          />
+          
         </div>
-
-        <BlogNavigation
-          feed={feed}
-          post={post}
-          isPublished={isPublished}
-        />
-        
-      </div>
       </BlogLayout>
+    </Container>
   )
 }
 

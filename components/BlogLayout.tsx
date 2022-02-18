@@ -5,7 +5,7 @@ import React from 'react'
 const BlogLayout: React.FC<React.ReactNode> = (props) => {
 
   return (
-    <div className="container">
+    <div>
       {props.children}
       
       <Global
@@ -230,9 +230,21 @@ const BlogLayout: React.FC<React.ReactNode> = (props) => {
               marginBottom: '2rem',
             },
             h2: {
-              margin: '0 0 1rem',
+              margin: '0 0 .8rem',
               textDecoration: 'none',
               cursor: 'default',
+              '@media(max-width: 1024px)': {
+                margin: '0 0 .5rem',
+                fontSize: 30,
+              }
+            },
+            '.teaser': {
+              fontFamily: 'var(--font-primary)',
+              fontStyle: 'italic',
+              color: 'var(--color-gray)',
+              '@media(max-width: 1024px)': {
+                fontSize: 16,
+              }
             },
             'h3, h3 code': {
               fontSize: 28,
