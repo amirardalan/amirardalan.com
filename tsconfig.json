@@ -42,7 +42,6 @@
     "incremental": true,
     "jsxImportSource": "@emotion/react",
   },
-  "plugins": ["@emotion/babel-plugin"],
   "exclude": [
     "node_modules"
   ],

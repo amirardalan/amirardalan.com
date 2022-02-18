@@ -9,7 +9,7 @@ export type PostProps = {
   nav: object
   id: number
   slug: string
-  publishedAt: Date
+  publishedAt: String
   title: string
   teaser: string
   author: {
