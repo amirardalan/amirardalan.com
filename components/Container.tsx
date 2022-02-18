@@ -35,14 +35,17 @@ export default function Container(props: any) {
       <Head>
         <title>{meta.title}</title>
         <meta name="robots" content={meta.robots} />
-        <meta content={meta.description} name="description" />
+
         <meta property="og:url" content={`${process.env.NEXT_PUBLIC_SITE_URL}${router.asPath}`} />
         <link rel="canonical" href={`${process.env.NEXT_PUBLIC_SITE_URL}${router.asPath}`} />
+        
         <meta property="og:type" content={meta.type} />
         <meta property="og:site_name" content="Amir Ardalan" />
         <meta property="og:description" content={meta.description} />
         <meta property="og:title" content={meta.title} />
         <meta property="og:image" content={meta.image} />
+
+        <meta name="description" content={meta.description} />
         <meta name="thumbnail" property="og:image" content={meta.image} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@amirardalan" />

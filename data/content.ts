@@ -14,7 +14,7 @@ export const avatar = {
 export const home = {
   meta: {
     title: 'Amir Ardalan – Code, design, and ideas from Portland, OR.',
-    description: 'Front-end developer, UI designer & React enthusiast.'
+    description: 'Front-end developer, UI designer, and React enthusiast.'
   },
   title: 'Amir Ardalan',
   description: 'Code, design, and ideas from Portland, OR.',
@@ -60,6 +60,7 @@ export const home = {
 export const blog = {
   meta: {
     title: 'Blog – Amir Ardalan',
+    description: 'Thoughts on web development, design, and web 3.0 with code examples and guides.'
   },
   error: {
     database: '⚠️ Database Error: Posts Could not be loaded.',

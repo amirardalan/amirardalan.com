@@ -43,6 +43,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       select: {
         id: true,
         title: true,
+        teaser: true,
         slug: true,
       },
     })
@@ -112,7 +113,12 @@ const Post = ({ post, feed, data }) => {
   )
 
   return (
-    <Container title={title}{...data.meta.title} robots={isPublished ? "follow, index" : "noindex" }>
+    <Container
+      title={title}{...data.meta.title}
+      description={title}
+      date={publishDate}
+      robots={isPublished ? "follow, index" : "noindex"
+    }>
       <BlogLayout>
         <div className={isPublished ? 'blog' : 'blog admin'}>
 
@@ -131,6 +137,7 @@ const Post = ({ post, feed, data }) => {
             <h2 aria-label={`${title}`}>
               {title}
             </h2>
+            <p className="teaser">{post.teaser}</p>
             <div className="postDetails" aria-label={`${editDate} • ${postReadTime}`}>
               <div className="author">
                 <span className="avatar">
