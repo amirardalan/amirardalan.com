@@ -1,6 +1,6 @@
 {
   "short_name": "Amir Ardalan",
-  "name": "Amir Ardalan – Developer, Designer, Writer",
+  "name": "Amir Ardalan – Code, design, and ideas from Portland, OR.",
   "icons": [
     {
       "src": "/touch-192.png",
@@ -24,7 +24,7 @@
     {
       "name": "Amir Ardalan Blog",
       "short_name": "Amir",
-      "description": "Fullstack developer, UI designer &amp; React enthusiast based in Portland, OR",
+      "description": "Front-end developer, UI designer &amp; React enthusiast based in Portland, OR",
       "url": "https://amirardalan.com",
       "icons": [{ "src": "/touch-192.png", "sizes": "192x192" }]
     }

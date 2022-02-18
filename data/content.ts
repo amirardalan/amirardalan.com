@@ -13,8 +13,8 @@ export const avatar = {
 
 export const home = {
   meta: {
-    title: 'Amir Ardalan – Developer, Designer, Writer',
-    description: 'Fullstack developer, UI designer & React enthusiast based in Portland, OR'
+    title: 'Amir Ardalan – Code, design, and ideas from Portland, OR.',
+    description: 'Front-end developer, UI designer & React enthusiast based in Portland, OR'
   },
   title: 'Amir Ardalan',
   description: 'Code, design, and ideas from Portland, OR.',

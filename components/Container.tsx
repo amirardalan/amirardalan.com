@@ -14,14 +14,14 @@ const BlogAdmin = dynamic(() => import('@/components/BlogAdmin'),{
   ssr: false
 })
 
-export default function Container(props) {
+export default function Container(props: any) {
 
   const { children, ...customMeta } = props;
   const router = useRouter()
   const meta = {
     title: 'Amir Ardalan – Code, design, and ideas from Portland, OR.',
     description: `Front-end developer, UI designer &amp; React enthusiast based in Portland, OR.`,
-    image: 'https://amirardalan.com/images/thumbnail.jpg',
+    image: `${process.env.NEXT_PUBLIC_SITE_URL}/thumbnail.jpg`,
     type: 'website',
     ...customMeta
   }
@@ -34,13 +34,13 @@ export default function Container(props) {
       <Head>
         <meta
           name="description"
-          content="Fullstack developer, UI designer &amp; React enthusiast based in Portland, OR"
+          content="Front-end developer, UI designer &amp; React enthusiast based in Portland, OR"
         />
         <title>{meta.title}</title>
         <meta name="robots" content="follow, index" />
         <meta content={meta.description} name="description" />
-        <meta property="og:url" content={`https://amirardalan.com${router.asPath}`} />
-        <link rel="canonical" href={`https://amirardalan.com${router.asPath}`} />
+        <meta property="og:url" content={`${process.env.NEXT_PUBLIC_SITE_URL}${router.asPath}`} />
+        <link rel="canonical" href={`${process.env.NEXT_PUBLIC_SITE_URL}${router.asPath}`} />
         <meta property="og:type" content={meta.type} />
         <meta property="og:site_name" content="Amir Ardalan" />
         <meta property="og:description" content={meta.description} />
