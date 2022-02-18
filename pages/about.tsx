@@ -124,7 +124,7 @@ export default function About({ data }) {
 
   return (
     <Container>
-      <div className="container about">
+      <div className="about">
         <Head>
           <title>{data.meta.title}</title>
         </Head>

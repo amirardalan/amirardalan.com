@@ -5,7 +5,7 @@ import React from 'react'
 const BlogLayout: React.FC<React.ReactNode> = (props) => {
 
   return (
-    <div className="container">
+    <div>
       {props.children}
       
       <Global
