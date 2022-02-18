@@ -19,7 +19,7 @@ export default function Container(props) {
   const { children, ...customMeta } = props;
   const router = useRouter()
   const meta = {
-    title: 'Amir Ardalan – Code, design, ideas.',
+    title: 'Amir Ardalan – Code, design, and ideas from Portland, OR.',
     description: `Front-end developer, UI designer &amp; React enthusiast based in Portland, OR.`,
     image: 'https://amirardalan.com/images/thumbnail.jpg',
     type: 'website',

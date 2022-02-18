@@ -1,14 +1,15 @@
-import React from 'react'
-import { GetServerSideProps } from 'next'
 import { useSession, getSession } from 'next-auth/client'
 import Link from 'next/link'
 import Head from 'next/head'
+import Container from '@/components/Container'
 import BlogLayout from '@/components/BlogLayout'
 import { admin, breadcrumb } from '@/data/content'
 import BlogPost from '@/components/BlogPost'
 import sortBlogPosts from '@/utils/sortBlogPosts'
+
 import LoadingTriangle from '@/components/LoadingTriangle'
 import prisma from '@/lib/prisma'
+import { GetServerSideProps } from 'next'
 
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
@@ -72,15 +73,17 @@ const Drafts: React.FC<Props>  = ({ drafts }) => {
   }
 
   return (
-    <BlogLayout>
-      <Head>
-        <title>{admin.drafts.meta.title}</title>
-        <meta name="robots" content="noindex"></meta>
-      </Head>
-      <div className="blog admin drafts">
-        {draftsList}
-      </div>
-    </BlogLayout>
+    <Container>
+      <BlogLayout>
+        <Head>
+          <title>{admin.drafts.meta.title}</title>
+          <meta name="robots" content="noindex"></meta>
+        </Head>
+        <div className="blog admin drafts">
+          {draftsList}
+        </div>
+      </BlogLayout>
+    </Container>
   )
 }
 

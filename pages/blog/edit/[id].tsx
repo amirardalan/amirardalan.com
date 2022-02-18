@@ -7,6 +7,7 @@ import { GetServerSideProps } from 'next'
 import prisma from '@/lib/prisma'
 import { useSession } from 'next-auth/client'
 import LoadingTriangle from '@/components/LoadingTriangle'
+import Container from '@/components/Container'
 import BlogLayout from '@/components/BlogLayout'
 
 
@@ -16,7 +17,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
       id: Number(params?.id) || -1,
     },
   })
-  return { props: { editPost } }
+  return { props: { editPost: JSON.parse(JSON.stringify(editPost)) } }
 }
 
 const Edit = ({ editPost }) => {
@@ -88,9 +89,11 @@ const Edit = ({ editPost }) => {
 
   if (!userHasValidSession) {
     return (
-      <div className="container">
-        <LoadingTriangle />
-      </div>
+      <Container>
+        <div>
+          <LoadingTriangle />
+        </div>
+      </Container>
     )
   }
 
@@ -164,15 +167,17 @@ const Edit = ({ editPost }) => {
   }
 
   return (
-    <BlogLayout>
-      <Head>
-        <title>{admin.edit.meta.title} {isPublished ? 'Post |' : 'Draft: '} {editPageTitle}</title>
-        <meta name="robots" content="noindex"></meta>
-      </Head>
-      <div>
-        {edit}
-      </div>
-    </BlogLayout>
+    <Container>
+      <BlogLayout>
+        <Head>
+          <title>{admin.edit.meta.title} {isPublished ? 'Post |' : 'Draft: '} {editPageTitle}</title>
+          <meta name="robots" content="noindex"></meta>
+        </Head>
+        <div>
+          {edit}
+        </div>
+      </BlogLayout>
+    </Container>
   )
 }
 
