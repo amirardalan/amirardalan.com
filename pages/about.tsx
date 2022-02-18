@@ -122,7 +122,7 @@ export default function About({ data }) {
   }
 
   return (
-    <Container title={data.meta.title}>
+    <Container title={data.meta.title} description={data.meta.description}>
       <div className="about">
         <div className="animationWrapper">
           <h2 className="pageHeading">

@@ -27,7 +27,7 @@ type Props = {
 const Blog: React.FC<Props> = ({ data, feed }) => {
   
   return (
-    <Container title={data.meta.title}>
+    <Container title={data.meta.title} description={data.meta.description}>
       <BlogLayout>
         <div className="blog">
 

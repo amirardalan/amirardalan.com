@@ -115,7 +115,7 @@ const Post = ({ post, feed, data }) => {
   return (
     <Container
       title={title}{...data.meta.title}
-      description={title}
+      description={post.teaser}
       date={publishDate}
       robots={isPublished ? "follow, index" : "noindex"
     }>

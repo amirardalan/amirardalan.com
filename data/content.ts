@@ -327,6 +327,7 @@ export const timeline = {
 export const nft= {
   meta: {
     title: 'NFT Dashboard – Amir Ardalan',
+    description: `Amir Ardalan's personal NFT collection.`
   },
   heading: 'NFT Dashboard',
   content: 'A personal collection of NFTs. Coming soon.',
@@ -338,7 +339,8 @@ export const nft= {
 
 export const spotify = {
   meta: {
-    title: 'Spotify Dashboard | Amir Ardalan'
+    title: 'Spotify Dashboard | Amir Ardalan',
+    description: `See what I'm currently listening to on Spotify and view my top 20 tracks of the moment.`
   },
   headings: {
     main: 'Spotify Dashboard',
@@ -357,6 +359,7 @@ export const spotify = {
 export const uses = {
   meta: {
     title: 'Uses – Amir Ardalan',
+    description: 'A list of gear, tools, and software I use.'
   },
   heading: 'Uses',
   devices: {
