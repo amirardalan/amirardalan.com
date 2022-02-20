@@ -3,6 +3,7 @@ import { nft } from '@/data/content'
 import NFT from '@/components/NFT'
 import { GetStaticProps } from 'next'
 
+
 const WALLET_ADDRESS = process.env.NEXT_PUBLIC_OPEANSEA_WALLET_ADDRESS
 const OPENSEA_WALLET_ENDPOINT = `https://api.opensea.io/api/v1/collections?asset_owner=${WALLET_ADDRESS}`
 
@@ -21,9 +22,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const data = await fetchData(url, options)
 
   if (!data) {
-    return {
-      notFound: true,
-    }
+    return null
   }
 
   return {
@@ -34,13 +33,18 @@ export const getStaticProps: GetStaticProps = async () => {
 
 }
 
-
 export default function NftPage({ data }) {
+
+  const collection = data.map((data: any) => ({
+    name: data.name,
+    description: data.description,
+    image: data.image_url,
+  }))
 
   return (
     <Container title={nft.meta.title} description={nft.meta.description}>
       <div className="nft">
-        <NFT data={data}/>
+        <NFT collection={collection}/>
       </div>
     </Container>
   )

@@ -16,9 +16,9 @@ const styleNftContainer = ({
   }
 })
 
-export default function NFT({data}) {
+export default function NFT({ collection }) {
 
-  console.log('api', data)
+  console.log('api', collection)
   
   return (
     <>
@@ -26,7 +26,7 @@ export default function NFT({data}) {
         {nft.heading}
       </h2>
       <div>{nft.content}</div>
-      <div css={styleNftContainer}>
+        <div css={styleNftContainer}>
       </div>
     </>
   )
