@@ -14,7 +14,6 @@ export default function NowPlaying() {
   const styleNowPlayingContainer = css({
     marginBottom: '2.5rem',
     display: 'flex',
-    background: '#8b8b8b',
   })
   const styleNowPlaying = css({
     position: 'relative',
@@ -87,7 +86,7 @@ export default function NowPlaying() {
     '.loadingTitle, .loadingArtist': {
       display: 'block',
       height: 10,
-      backgroundColor: 'var(--color-accent-gray)',
+      backgroundColor: '#191a22',
     },
     '.loadingTitle': {
       width: 175,
@@ -141,7 +140,7 @@ export default function NowPlaying() {
     backgroundPosition: 'center',
     height: 135,
     width: 135,
-    backgroundColor: '#14171a',
+    backgroundColor: '#191a22',
   })
 
 
