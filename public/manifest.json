@@ -24,7 +24,7 @@
     {
       "name": "Amir Ardalan Blog",
       "short_name": "Amir",
-      "description": "Front-end developer, UI designer &amp; React enthusiast.",
+      "description": "Front-end developer, UI designer, and React enthusiast.",
       "url": "https://amirardalan.com",
       "icons": [{ "src": "/touch-192.png", "sizes": "192x192" }]
     }
