@@ -35,17 +35,10 @@ export const getStaticProps: GetStaticProps = async () => {
 
 const styleNftContainer = ({
   display: 'grid',
-  gridTemplateColumns: 'repeat(4, 1fr)',
+  gridTemplateColumns: 'repeat(5, 4fr)',
   gap: '4rem',
   gridAutoRows: 'minmax(100px, auto)',
   lineHeight: '1.2rem',
-  'ul li, a': {
-    marginBottom: '1rem',
-    color: 'var(--color-gray)',
-  },
-  'h3, h4, h5, h6': {
-    fontFamily: 'var(--font-secondary)',
-  }
 })
 
 export default function NftPage({ data }) {
@@ -53,13 +46,10 @@ export default function NftPage({ data }) {
 
   return (
     <Container title={nft.meta.title} description={nft.meta.description}>
-      <div className="nft">
-        <h2 className="pageHeading">
-          {nft.heading}
-        </h2>
-        <div>{nft.content}</div>
-          <div css={styleNftContainer}>
-        </div>
+      <h2 className="pageHeading">
+        {nft.heading}
+      </h2>
+      <div css={styleNftContainer}>
         <NftCollection data={data} />
       </div>
     </Container>
