@@ -1,6 +1,6 @@
 import Container from '@/components/Container'
 import { nft } from '@/data/content'
-import NFT from '@/components/NFT'
+import NftCollection from '@/components/NftCollection'
 import { GetStaticProps } from 'next'
 
 
@@ -33,18 +33,34 @@ export const getStaticProps: GetStaticProps = async () => {
 
 }
 
-export default function NftPage({ data }) {
+const styleNftContainer = ({
+  display: 'grid',
+  gridTemplateColumns: 'repeat(4, 1fr)',
+  gap: '4rem',
+  gridAutoRows: 'minmax(100px, auto)',
+  lineHeight: '1.2rem',
+  'ul li, a': {
+    marginBottom: '1rem',
+    color: 'var(--color-gray)',
+  },
+  'h3, h4, h5, h6': {
+    fontFamily: 'var(--font-secondary)',
+  }
+})
 
-  const collection = data.map((data: any) => ({
-    name: data.name,
-    description: data.description,
-    image: data.image_url,
-  }))
+export default function NftPage({ data }) {
+  
 
   return (
     <Container title={nft.meta.title} description={nft.meta.description}>
       <div className="nft">
-        <NFT collection={collection}/>
+        <h2 className="pageHeading">
+          {nft.heading}
+        </h2>
+        <div>{nft.content}</div>
+          <div css={styleNftContainer}>
+        </div>
+        <NftCollection data={data} />
       </div>
     </Container>
   )
