@@ -245,10 +245,6 @@ const BlogLayout: React.FC<React.ReactNode> = (props) => {
             '.teaser': {
               fontFamily: 'var(--font-primary)',
               fontSize: 15,
-              color: 'var(--color-gray)',
-              '@media(max-width: 1024px)': {
-                fontSize: 12,
-              }
             },
             'h3, h3 code': {
               fontSize: 28,
