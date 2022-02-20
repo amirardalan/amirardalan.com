@@ -7,8 +7,6 @@ export default function NftCollection({data}) {
     return null
   }
 
-  console.log(data)
-
   data = Array.from(data)
 
   return data.map((asset: any) => (

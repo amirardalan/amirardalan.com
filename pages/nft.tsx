@@ -3,7 +3,7 @@ import { nft } from '@/data/content'
 import NftCollection from '@/components/NftCollection'
 import { GetStaticProps } from 'next'
 
-const WALLET_ADDRESS = process.env.NEXT_PUBLIC_OPEANSEA_WALLET_ADDRESS
+const WALLET_ADDRESS = process.env.OPEANSEA_WALLET_ADDRESS
 const OPENSEA_WALLET_ENDPOINT = `https://api.opensea.io/api/v1/collections?asset_owner=${WALLET_ADDRESS}`
 
 export const fetchData = async (url: string, options: Record<string, unknown>) => {
