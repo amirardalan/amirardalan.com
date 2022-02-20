@@ -4,7 +4,6 @@ export const themeLight = {
   logoFooter: '/logo/logo-footer-light.svg',
   code: 'light',
   canvas: '#744164',
-  intro: `👋 Hi, my name is`,
   icons: {
     github: '/icons/github-light.svg',
     twitter: '/icons/twitter-light.svg',
@@ -27,7 +26,6 @@ export const themeDark = {
   logoFooter: '/logo/logo-footer-dark.svg',
   code: 'dark',
   canvas: '#3dffc5',
-  intro: `✌️ Hi, my name is`,
   icons: {
     github: '/icons/github-dark.svg',
     twitter: '/icons/twitter-dark.svg',

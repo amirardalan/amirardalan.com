@@ -1,7 +1,6 @@
 import { css } from '@emotion/react'
 import Container from '@/components/Container'
 import { home } from '@/data/content'
-import Intro from '@/components/Intro'
 import LatestPost from '@/components/LatestPost'
 import { GenerateCtaButtons } from '@/components/CtaButtons'
 
@@ -77,6 +76,14 @@ export default function Home({ data, latestPost }) {
         display: 'inline-block',
         marginTop: '1rem',
       },
+    },
+    '.intro': {
+      marginBottom: '.5rem',
+      display: 'inline-block',
+      fontFamily: 'var(--font-primary)',
+      fontWeight: 'normal',
+      fontSize: 17,
+      color: 'var(--color-accent-color)'
     },
     h1: {
       fontFamily: 'var(--font-secondary)',
@@ -177,7 +184,7 @@ export default function Home({ data, latestPost }) {
             <div css={styleMainLeft}>
               <div css={styleMainLeftContent}>
                 <div className="titleWrapper">
-                  <Intro />
+                  <span className="intro">{data.intro}</span>
                   <h1>{data.title}</h1>
                   <h2 className="description">
                     {data.description}

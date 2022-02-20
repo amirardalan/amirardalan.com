@@ -16,6 +16,7 @@ export const home = {
     title: 'Amir Ardalan – Code, design, and ideas from Portland, OR.',
     description: 'Front-end developer, UI designer, and React enthusiast.'
   },
+  intro: '👋 Hi my name is',
   title: 'Amir Ardalan',
   description: `I'm a Front-end Engineer specializing in React, UI Design, and accessibility for the web. I'm passionate about Next.js, Three.js, and Web 3.0 technologies.`,
   typed: {
