@@ -89,9 +89,9 @@ export default function Home({ data, latestPost }) {
       }
     },
     '.description': {
-      borderTop: '1px solid var(--color-gray)',
+      borderTop: '2px solid var(--color-accent-color)',
       maxWidth: 600,
-      paddingTop: '1.2rem',
+      paddingTop: '1.8rem',
       fontFamily: 'var(--font-primary)',
       fontSize: 14,
       fontWeight: 'normal',

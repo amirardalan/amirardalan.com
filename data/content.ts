@@ -537,14 +537,14 @@ export const footer = {
         dark: themeDark.icons.external
       },
     },
-    {
-      path: 'https://opensea.io/',
-      title: 'OpenSea',
-      icon: {
-        light: themeLight.icons.external,
-        dark: themeDark.icons.external
-      },
-    },
+    // {
+    //   path: 'https://opensea.io/',
+    //   title: 'OpenSea',
+    //   icon: {
+    //     light: themeLight.icons.external,
+    //     dark: themeDark.icons.external
+    //   },
+    // },
   ],
   social: [
     {

@@ -17,7 +17,7 @@ const secondary = '#3dffc5'
 const grayLight = '#b0bccc'
 const grayDark = '#706f8a'
 const grayAccentLight = '#b7b7c9'
-const grayAccentDark = '#4c495c'
+const grayAccentDark = '#494a5c'
 const buttonDisabled = '#7d7d87'
 const warning = '#ec4949'
 const codeHighlightDark = '#41425e'
@@ -339,8 +339,11 @@ export function GlobalStyles () {
               border: '1px solid transparent',
             },
           },
-          '@media(max-width: 360px)': {
-            marginRight: 10,
+          '@media(max-width: 480px)': {
+            marginRight: 0,
+            '.home &: nth-of-type(1)': {
+              marginRight: 10
+            },
             width: '100%',
           }
         }
