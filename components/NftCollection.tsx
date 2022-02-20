@@ -9,6 +9,8 @@ export default function NftCollection({data}) {
 
   console.log(data)
 
+  data = Array.from(data)
+
   return data.map((asset: any) => (
     <NftAsset key={asset.created_date} {...asset} />
   ))
