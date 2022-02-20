@@ -16,7 +16,9 @@ const styleNftContainer = ({
   }
 })
 
-export default function NFT() {
+export default function NFT({data}) {
+
+  console.log('api', data)
   
   return (
     <>
