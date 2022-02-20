@@ -25,6 +25,7 @@ export default function Navigation() {
     }
   })
   const styleMobileNavWrapper = css ({
+    opacity: '.95',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
