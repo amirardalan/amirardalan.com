@@ -3,7 +3,6 @@ import { nft } from '@/data/content'
 import NftCollection from '@/components/NftCollection'
 import { GetStaticProps } from 'next'
 
-
 const WALLET_ADDRESS = process.env.NEXT_PUBLIC_OPEANSEA_WALLET_ADDRESS
 const OPENSEA_WALLET_ENDPOINT = `https://api.opensea.io/api/v1/collections?asset_owner=${WALLET_ADDRESS}`
 
@@ -43,7 +42,6 @@ const styleNftContainer = ({
 
 export default function NftPage({ data }) {
   
-
   return (
     <Container title={nft.meta.title} description={nft.meta.description}>
       <h2 className="pageHeading">
