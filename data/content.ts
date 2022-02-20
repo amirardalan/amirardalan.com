@@ -446,6 +446,7 @@ export const uses = {
   - [React Syntax Highlighter](https://github.com/react-syntax-highlighter/react-syntax-highlighter)
   #### Testing
   - [Jest](https://jestjs.io/)
+  - [React Testing Library](https://github.com/testing-library/react-testing-library)
   #### Hosting
   - [Vercel](https://vercel.com)`
   },
