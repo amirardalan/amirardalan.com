@@ -6,7 +6,7 @@ export default function LatestPost({ latestPost, data }) {
 
   const styleLatestPost = css({
     fontWeight: 'normal',
-    marginTop: '3rem',
+    marginTop: '1rem',
     h4: {
       marginBottom: '.6rem',
       color: 'var(--color-text)',
@@ -55,7 +55,7 @@ export default function LatestPost({ latestPost, data }) {
       <h5>
         <Link href={`/blog/${encodeURIComponent(renderLatestPost?.slug)}`}>
           <a aria-label={renderLatestPost?.title} tabIndex={0}>
-            {renderLatestPost?.title} →
+            {renderLatestPost?.title}
           </a>
         </Link>
       </h5>

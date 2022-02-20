@@ -17,7 +17,7 @@ export const home = {
     description: 'Front-end developer, UI designer, and React enthusiast.'
   },
   title: 'Amir Ardalan',
-  description: 'Code, design, and ideas from Portland, OR.',
+  description: `I'm a Front-end Engineer specializing in React, UI Design, and accessibility for the web. I'm passionate about Next.js, Three.js, and Web 3.0 technologies.`,
   typed: {
     heading: `interests => {`,
     line2: `// TODO: continue learning`,
@@ -79,6 +79,7 @@ export const blogPost = {
   title: {
     draft: 'Draft –'
   },
+  twitterUrl: 'https://twitter.com/amirardalan',
 }
 
 export const about = {
@@ -579,7 +580,7 @@ export const footer = {
   ],
   copyright: {
     text: 'Copyright ©',
-    name: 'Amir Ardalan',
+    name: 'Designed & Built by Amir Ardalan',
   },
 }
 

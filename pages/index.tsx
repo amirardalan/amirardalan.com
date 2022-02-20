@@ -51,6 +51,7 @@ export default function Home({ data, latestPost }) {
     }
   })
   const styleMainLeft = css({
+    padding: '0 6rem 0 0',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
@@ -60,6 +61,9 @@ export default function Home({ data, latestPost }) {
       flexDirection: 'column-reverse',
       justifyContent: 'start',
       alignSelf: 'flex-start',
+    },
+    '@media (max-width: 480px)': {
+      padding: 0,
     }
   })
   const styleMainLeftContent = css({
@@ -69,9 +73,10 @@ export default function Home({ data, latestPost }) {
     minHeight: '0vw',
     '.titleWrapper': {
       margin: '0 0 3rem',
-      '@media (max-width: 890px)': {
-        margin: '2rem 0 2rem',
-      }
+      '.description': {
+        display: 'inline-block',
+        marginTop: '1rem',
+      },
     },
     h2: {
       fontFamily: 'var(--font-secondary)',
@@ -83,14 +88,14 @@ export default function Home({ data, latestPost }) {
         WebkitMarqueeIncrement: '0vw',
       }
     },
-    h3: {
-      marginTop: '1.2rem',
+    '.description': {
+      borderTop: '1px solid var(--color-gray)',
+      maxWidth: 600,
+      paddingTop: '1.2rem',
       fontFamily: 'var(--font-primary)',
-      fontSize: 'calc(.7vw + .7vh)',
+      fontSize: 14,
       fontWeight: 'normal',
-      '@media (max-width: 890px)': {
-        fontSize: '.7rem',
-      }
+      color: 'var(--color-gray)',
     },
     '.highlightText': {
       width: 'max-content',
@@ -172,13 +177,9 @@ export default function Home({ data, latestPost }) {
             <div css={styleMainLeft}>
               <div css={styleMainLeftContent}>
                 <div className="titleWrapper">
-                  <h2>
-                    <Intro />
-                    <div className="highlightText">
-                      {data.title}
-                    </div>
-                  </h2>
-                  <h3>{data.description}</h3>
+                  <Intro />
+                  <h2>{data.title}</h2>
+                  <span className="description">{data.description}</span>
                 </div>
                 <div css={styleButtonContainer}>
                   {GenerateCtaButtons(home.items)}

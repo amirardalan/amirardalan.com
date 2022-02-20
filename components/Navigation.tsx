@@ -15,6 +15,7 @@ export default function Navigation() {
     display: 'flex',
     alignItems: 'center',
     marginRight: '1.5rem',
+    fontSize: 14,
     a: {
       margin: '0 1.5rem',
       color: 'var(--color-text)',
@@ -115,13 +116,14 @@ export default function Navigation() {
       },
     },
     '.navIcon': {
-      height: 20,
-      width: 20,
+      marginTop: 1.2,
+      height: 16,
+      width: 16,
       lineHeight: 0,
       '@media(max-width: 768px)': {
         marginTop: '.8rem',
-        height: 40,
-        width: 40,
+        height: 30,
+        width: 30,
       }
     },
     '@media(max-width: 768px)': {

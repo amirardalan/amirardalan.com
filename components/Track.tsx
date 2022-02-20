@@ -21,12 +21,13 @@ export default function Track(track: any) {
         alignSelf: 'center',
       },
       '.rank': {
-        fontSize: 'calc(3vw + 3vh)',
+        fontSize: 'calc(2vw + 2vh)',
         WebkitMarqueeIncrement: '0vw',
         color: 'var(--color-accent-gray)',
       },
       '.title': {
         color: 'var(--color-text)',
+        fontSize: 24,
       },
       '.title a, .artist p': {
         lineHeight: '1.8rem',
@@ -35,6 +36,7 @@ export default function Track(track: any) {
       '.artist': {
         fontFamily: 'var(--font-primary)',
         fontWeight: 'normal',
+        fontSize: 18
       },
       '@media(max-width: 600px)': {
         gridTemplateColumns: '10% 38% 40%',
