@@ -45,6 +45,21 @@ const BlogLayout: React.FC<React.ReactNode> = (props) => {
             'h2, h3, h4': {
               fontFamily: 'var(font-secondary)',
             },
+            '.blogHeading': {
+              display: 'flex',
+              color: 'var(--color-gray)',
+              fontFamily: 'var(--font-primary)',
+              fontSize: 13,
+              fontWeight: 'normal',
+              textDecoration: 'none',
+              '&::before': {
+                paddingRight: '.5rem',
+                display: 'flex',
+                content: '"📋"',
+                color: 'var(--color-link)',
+                fontSize: 20,
+              },
+            },
             h2: {
               margin: 0,
               display: 'inline-block',

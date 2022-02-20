@@ -17,6 +17,7 @@ export default function Logo() {
     }
   })
   const styleTitle = css({
+    display: 'block',
     margin: '0 0 0 .2rem',
     fontWeight: 'bold',
     fontSize: '14px',
@@ -49,9 +50,9 @@ export default function Logo() {
         priority
       />
       <div css={{flexDirection: 'column'}}>
-        <h1 css={styleTitle}>
+        <title css={styleTitle}>
           {logo.title}
-        </h1>
+        </title>
         <div
           aria-label={logo.subtitle}
           css={styleTitleSub}>

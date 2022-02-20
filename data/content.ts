@@ -58,6 +58,7 @@ export const home = {
 }
 
 export const blog = {
+  heading: 'Blog',
   meta: {
     title: 'Blog – Amir Ardalan',
     description: 'Thoughts on web development, design, and web 3.0 with code examples and guides.'
@@ -327,7 +328,7 @@ export const timeline = {
 
 export const nft= {
   meta: {
-    title: 'NFT Dashboard – Amir Ardalan',
+    title: 'NFT – Amir Ardalan',
     description: `Amir Ardalan's personal NFT collection.`
   },
   heading: 'NFT Dashboard',
@@ -340,7 +341,7 @@ export const nft= {
 
 export const spotify = {
   meta: {
-    title: 'Spotify Dashboard | Amir Ardalan',
+    title: 'Spotify – Amir Ardalan',
     description: `See what I'm currently listening to on Spotify and view my top 20 tracks of the moment.`
   },
   headings: {

@@ -53,10 +53,10 @@ export default function NowPlaying() {
     top: 0,
     left: 0,
     color: '#eee',
-    background: 'linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.5518867924528301) 100%)',
+    background: 'linear-gradient(0deg, rgb(38, 39, 56, 1) 0%, rgb(25, 26, 34, 0.5518867924528301) 100%)',
     '@media(max-width: 480px)': {
       height: 350,
-      background: 'linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.5518867924528301) 85%)',
+      background: 'linear-gradient(0deg, rgb(38, 39, 56, 1) 0%, rgb(25, 26, 34, 0.5518867924528301) 85%)',
     },
   })
   const styleNowPlayingTrack = css({
@@ -87,7 +87,7 @@ export default function NowPlaying() {
     '.loadingTitle, .loadingArtist': {
       display: 'block',
       height: 10,
-      backgroundColor: '#3e4449',
+      backgroundColor: 'var(--color-accent-gray)',
     },
     '.loadingTitle': {
       width: 175,

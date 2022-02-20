@@ -52,12 +52,15 @@ export default function About({ data }) {
         width: '100%',
       },
       'ul li': {
-        color: 'var(--color-gray)',
+        color: 'var(--color-text)',
         fontSize: 14,
         strong: {
           color: 'var(--color-text)',
           fontFamily: 'var(--font-secondary)',
           fontSize: 16,
+        },
+        '.blurb': {
+          color: 'var(--color-gray)',
         },
         em: {
           marginBottom: '1rem',
@@ -125,9 +128,9 @@ export default function About({ data }) {
     <Container title={data.meta.title} description={data.meta.description}>
       <div className="about">
         <div className="animationWrapper">
-          <h2 className="pageHeading">
+          <h1 className="pageHeading">
             {data.heading}
-          </h2>
+          </h1>
           <main css={styleGridWrapper}>
             <div className="grid">
               <ul css={styleBioItems}>
@@ -138,7 +141,7 @@ export default function About({ data }) {
                   <strong>{data.bio.subheading}</strong>
                 </li>
                 <li>
-                  <em>
+                  <em className="blurb">
                     {data.bio.content}
                   </em>
                 </li>

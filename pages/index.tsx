@@ -78,7 +78,7 @@ export default function Home({ data, latestPost }) {
         marginTop: '1rem',
       },
     },
-    h2: {
+    h1: {
       fontFamily: 'var(--font-secondary)',
       fontSize: 'calc(2.9vw + 2.9vh)',
       WebkitMarqueeIncrement: '0vw',
@@ -178,8 +178,10 @@ export default function Home({ data, latestPost }) {
               <div css={styleMainLeftContent}>
                 <div className="titleWrapper">
                   <Intro />
-                  <h2>{data.title}</h2>
-                  <span className="description">{data.description}</span>
+                  <h1>{data.title}</h1>
+                  <h2 className="description">
+                    {data.description}
+                  </h2>
                 </div>
                 <div css={styleButtonContainer}>
                   {GenerateCtaButtons(home.items)}

@@ -31,11 +31,9 @@ const Blog: React.FC<Props> = ({ data, feed }) => {
       <BlogLayout>
         <div className="blog">
 
-          <nav className="breadcrumbs">
-            <span aria-label={breadcrumb.blog}>
-              {breadcrumb.blog}
-            </span>
-          </nav>
+          <h1 className="blogHeading breadcrumbs" aria-label={blog.heading}>
+            {blog.heading}
+          </h1>
 
           <BlogPostFilter feed={feed} />
 

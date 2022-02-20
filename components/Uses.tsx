@@ -50,9 +50,9 @@ export default function Uses() {
   
   return (
     <>
-      <h2 className="pageHeading">
+      <h1 className="pageHeading">
         {uses.heading}
-      </h2>
+      </h1>
       <div css={styleUsesMarkdown}>
         <div>
           <Markdown markdown={uses.devices} />

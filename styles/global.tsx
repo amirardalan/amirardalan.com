@@ -208,11 +208,11 @@ export function GlobalStyles () {
           },
           '&:focus:not(:focus-visible)': { boxShadow: 'none' },
         },
-        h1: {
+        title: {
           margin: 0,
           padding: 0,
         },
-        'h2, h3': {
+        'h1, h2, h3': {
           fontFamily: 'var(--font-secondary)',
           fontWeight: 900
         },

@@ -50,9 +50,9 @@ export default function NftPage({data}) {
   
   return (
     <Container title={nft.meta.title} description={nft.meta.description} robots="noindex">
-      <h2 className="pageHeading">
+      <h1 className="pageHeading">
         {nft.heading}
-      </h2>
+      </h1>
       <div css={styleNftContainer}>
         <NftCollection data={data} />
       </div>
