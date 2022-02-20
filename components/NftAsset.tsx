@@ -10,7 +10,7 @@ export default function NftAsset(asset: any) {
     }
   })
 
-  const image_url_hires = asset.image_url.replace('s120', 's500') ?? '/images/nft-placeholder.jpg'
+  const image_url_hires = asset.image_url?.replace('s120', 's500') ?? '/images/nft-placeholder.jpg'
 
   return (
     <div css={styleNftAsset}>
