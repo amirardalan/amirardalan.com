@@ -5,19 +5,24 @@ export default function NftAsset(asset: any) {
 
   const styleNftAsset = css({
 
-})
+  })
+
+  const image_url_hires = asset.image_url.replace('s120', 's500')
 
   console.log(asset)
 
+
+
   return (
     <div css={styleNftAsset}>
+      {asset.image_url}
       <h3>{asset.title}</h3>
       <p>{asset.description}</p>
       <Image
-        src={asset.image_url}
+        src={image_url_hires}
         alt={asset.name}
-        width="120"
-        height="120"
+        width={500}
+        height={500}
       />
     </div>
   )
