@@ -26,7 +26,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: {
-      data: JSON.parse(JSON.stringify(data))
+      data: data
     }
   }
 
@@ -40,7 +40,7 @@ const styleNftContainer = ({
   lineHeight: '1.2rem',
 })
 
-export default function NftPage({ data }) {
+export default function NftPage({data}) {
   
   return (
     <Container title={nft.meta.title} description={nft.meta.description}>

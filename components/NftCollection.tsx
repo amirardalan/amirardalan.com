@@ -1,11 +1,13 @@
 import NftAsset from '@/components/NftAsset'
 
 
-export default function NftCollection({ data }) {
+export default function NftCollection({data}) {
 
   if (!data) {
     return null
   }
+
+  console.log(data)
 
   return data.map((asset: any) => (
     <NftAsset key={asset.created_date} {...asset} />
