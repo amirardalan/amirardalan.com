@@ -30,7 +30,7 @@ export default function Timeline() {
         },
         '.date': {
           lineHeight: '1rem',
-          color: 'var(--color-gray)'
+          color: 'var(--color-text)'
         }
       },
       '&:nth-of-type(odd)': {
