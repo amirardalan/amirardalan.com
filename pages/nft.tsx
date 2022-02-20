@@ -38,6 +38,12 @@ const styleNftContainer = ({
   gap: '4rem',
   gridAutoRows: 'minmax(100px, auto)',
   lineHeight: '1.2rem',
+  '@media (max-width: 1024px)': {
+    gridTemplateColumns: 'repeat(2, 1fr)',
+  },
+  '@media (max-width: 480px)': {
+    gridTemplateColumns: 'repeat(1, 1fr)',
+  },
 })
 
 export default function NftPage({data}) {

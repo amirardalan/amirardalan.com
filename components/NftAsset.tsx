@@ -17,8 +17,8 @@ export default function NftAsset(asset: any) {
       <Image
         src={image_url_hires}
         alt={asset.name}
-        width={600}
-        height={600}
+        width={430}
+        height={430}
       />
       <p className="assetName">
         {asset.name}
