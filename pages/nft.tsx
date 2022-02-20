@@ -49,7 +49,7 @@ const styleNftContainer = ({
 export default function NftPage({data}) {
   
   return (
-    <Container title={nft.meta.title} description={nft.meta.description}>
+    <Container title={nft.meta.title} description={nft.meta.description} robots="noindex">
       <h2 className="pageHeading">
         {nft.heading}
       </h2>

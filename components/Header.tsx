@@ -36,7 +36,8 @@ const Header = ({ toggleTheme }) => {
     justifyContent: 'space-between',
     a:  { textDecoration: 'none' },
     '.headerRight': {
-      minWidth: '464.4px',
+      // minWidth: '464.4px',
+      minWidth: '367.2px',
       display: 'flex',
       flexDirection: 'row',
       alignItems: 'center',
