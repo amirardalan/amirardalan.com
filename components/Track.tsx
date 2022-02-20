@@ -27,16 +27,15 @@ export default function Track(track: any) {
       },
       '.title': {
         color: 'var(--color-text)',
-        fontSize: 24,
+        fontSize: 'calc(1.1vw + 1.1vh)',
       },
       '.title a, .artist p': {
-        lineHeight: '1.8rem',
         textDecoration: 'none',
       },
       '.artist': {
         fontFamily: 'var(--font-primary)',
         fontWeight: 'normal',
-        fontSize: 18
+        fontSize: 'calc(.9vw + .9vh)',
       },
       '@media(max-width: 600px)': {
         gridTemplateColumns: '10% 38% 40%',
