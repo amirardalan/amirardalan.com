@@ -20,7 +20,7 @@ export default function Container(props: any) {
   const router = useRouter()
   const meta = {
     title: 'Amir Ardalan – Code, design, and ideas from Portland, OR.',
-    description: `Front-end developer, UI designer &amp; React enthusiast.`,
+    description: `Front-end developer, UI designer, and React enthusiast.`,
     image: `${process.env.NEXT_PUBLIC_SITE_URL}/thumbnail.jpg`,
     type: 'website',
     robots: 'follow, index',

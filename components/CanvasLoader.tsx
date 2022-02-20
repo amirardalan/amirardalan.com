@@ -56,6 +56,9 @@ const CanvasLoader =  React.memo(function CanvasLoader() {
         boxShadow: 'none'
       }
     },
+    '.leva-c-dKMqBT': {
+      color: 'var(--color-text)',
+    },
     '.leva-c-bduird button.leva-c-ihqPFh': {
       letterSpacing: '.1rem',
       textTransform: 'uppercase',

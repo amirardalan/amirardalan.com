@@ -42,8 +42,8 @@ export default function Logo() {
       <Image
         src={theme.logo}
         alt={logo.alt}
-        width={22}
-        height={22}
+        width={25}
+        height={25}
         css={styleLogo}
         draggable={false}
         priority

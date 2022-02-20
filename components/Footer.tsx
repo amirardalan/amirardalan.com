@@ -87,7 +87,7 @@ export default function Footer() {
     padding: '4rem 0 2rem 0',
   })
   const styleCopyright = css({
-    fontFamily: 'var(--font-secondary)',
+    fontFamily: 'var(--font-primary)',
     fontSize: 10,
     color: 'var(--color-bg)',
     lineHeight: '1.2rem',
@@ -175,7 +175,7 @@ export default function Footer() {
       </div>
       <div css={styleCopyright}>
         <div>
-          {footer.copyright.text} {(new Date().getFullYear())} – {footer.copyright.name}
+          {footer.copyright.name} - {footer.copyright.text} {(new Date().getFullYear())}
         </div>
       </div>
     </footer>

@@ -93,7 +93,11 @@ const BlogLayout: React.FC<React.ReactNode> = (props) => {
             color: 'var(--color-gray)',
             fontSize: 13,
             lineHeight: '1.2rem',
-            '.author': {
+            '.author, .authorLink': {
+              marginBottom: 3,
+              fontFamily: 'var(--font-primary)',
+              color: 'var(--color-gray)',
+              fontSize: 13,
               display: 'flex',
               flexDirection: 'row',
               alignItems: 'center',
@@ -240,10 +244,10 @@ const BlogLayout: React.FC<React.ReactNode> = (props) => {
             },
             '.teaser': {
               fontFamily: 'var(--font-primary)',
-              fontStyle: 'italic',
+              fontSize: 15,
               color: 'var(--color-gray)',
               '@media(max-width: 1024px)': {
-                fontSize: 16,
+                fontSize: 12,
               }
             },
             'h3, h3 code': {
