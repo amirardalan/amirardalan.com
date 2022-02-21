@@ -6,7 +6,7 @@ import Link from 'next/link'
 import LoadingSpinner from './LoadingSpinner'
 
 
-const BlogAdmin: React.FC = React.memo(function BlogAdmin() {
+const BlogAdmin = React.memo(function BlogAdmin() {
 
   const router = useRouter()
   const isActive: (pathname: string) => boolean = (pathname) => router.pathname === pathname

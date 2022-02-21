@@ -2,8 +2,7 @@ import BlogLayout from '@/components/BlogLayout'
 import Container from '@/components/Container'
 import BlogPostFilter from '@/components/BlogPostFilter'
 
-import { breadcrumb, blog } from '@/data/content'
-import { PostProps } from '@/components/BlogPost'
+import { blog } from '@/data/content'
 import { GetStaticProps } from 'next'
 import prisma from '@/lib/prisma'
 
@@ -19,12 +18,7 @@ export const getStaticProps: GetStaticProps = async () => {
   }
 }
 
-type Props = {
-  data: any
-  feed: PostProps[]
-}
-
-const Blog: React.FC<Props> = ({ data, feed }) => {
+const Blog = ({ data, feed }) => {
   
   return (
     <Container title={data.meta.title} description={data.meta.description}>

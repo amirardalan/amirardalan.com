@@ -2,15 +2,12 @@ import { useState } from 'react'
 import { useTheme } from '@emotion/react'
 import Image from 'next/image'
 
-import BlogPost, { PostProps } from '@/components/BlogPost'
+import BlogPost from '@/components/BlogPost'
 import { blog } from '@/data/content'
 import sortBlogPosts from '@/utils/sortBlogPosts'
 
-type Props = {
-  feed: PostProps[]
-}
 
-const BlogPostFilter: React.FC<Props> = ({ feed }) => {
+const BlogPostFilter = ({ feed }) => {
 
   const theme: any = useTheme()
 

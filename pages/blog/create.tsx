@@ -8,7 +8,7 @@ import { useSession } from 'next-auth/client'
 import LoadingTriangle from '@/components/LoadingTriangle'
 
 
-const Draft: React.FC = () => {
+const Draft = () => {
 
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')

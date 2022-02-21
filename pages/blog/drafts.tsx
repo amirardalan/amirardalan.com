@@ -34,11 +34,8 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   }
 }
 
-type Props = {
-  drafts: Array<any>
-}
 
-const Drafts: React.FC<Props>  = ({ drafts }) => {
+const Drafts  = ({ drafts }) => {
   
   let draftsList = null
   const [session] = useSession()

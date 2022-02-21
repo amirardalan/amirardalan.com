@@ -1,26 +1,9 @@
-import React from 'react'
 import Link from 'next/link'
 import formatDate from '@/utils/formatDate'
 import calculateReadTime from '@/utils/calculateReadTime'
 
 
-export type PostProps = {
-  post: object
-  nav: object
-  id: number
-  slug: string
-  publishedAt: String
-  title: string
-  teaser: string
-  author: {
-    name: string
-    email: string
-  } | null
-  content: string
-  published: boolean
-}
-
-const Post: React.FC<{ post: PostProps }> = ({ post }) => {
+const Post = ({ post }) => {
 
   const publishDate = formatDate(post.publishedAt)
   const postReadTime = calculateReadTime(post.content)
