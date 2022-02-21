@@ -10,6 +10,7 @@ import calculateReadTime from '@/utils/calculateReadTime'
 import formatDate from '@/utils/formatDate'
 import Link from 'next/link'
 import Markdown from '@/components/Markdown'
+import LoadingTriangle from '@/components/LoadingTriangle'
 
 import { blogPost, breadcrumb, admin } from '@/data/content'
 import { GetStaticProps, GetStaticPaths } from 'next'
@@ -59,6 +60,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
 const Post = ({ post, feed, data }) => {
 
+  let loadBlogPost = null
   const [session] = useSession()
   const userHasValidSession = Boolean(session)
 
@@ -117,6 +119,82 @@ const Post = ({ post, feed, data }) => {
     ? `${process.env.NEXT_PUBLIC_SITE_URL}` + post.content.match(/!\[.*?\]\((.*?)\)/)[1]
     : `${process.env.NEXT_PUBLIC_SITE_URL}/thumbnail.jpg`
 
+  if (isPublished || session && session.user.email == process.env.NEXT_PUBLIC_USER_EMAIL) {
+    loadBlogPost = (
+      <div className={isPublished ? 'blog' : 'blog admin'}>
+
+        <nav className="breadcrumbs">
+          <Link href="/blog">{breadcrumb.blog}</Link>
+          { !isPublished
+          ? <Link href="/blog/drafts">
+              <a>{breadcrumb.drafts}</a>
+            </Link>
+          : null }
+          <span>{title}</span>
+        </nav>
+
+        <div className="post postFull">
+
+          <h2 aria-label={`${title}`}>
+            {title}
+          </h2>
+          <p className="teaser">{post.teaser}</p>
+          <div className="postDetails" aria-label={`${editDate} • ${postReadTime}`}>
+            <div className="author">
+              <span className="avatar">
+                <Avatar height="18" width="18" />
+              </span>
+              <a className="authorLink" href={blogPost.twitterUrl} target="_blank" rel="noreferrer">
+                {post?.author?.name || 'Unknown author'}
+              </a>
+            </div>
+            {isEdited ? `Updated: ${editDate}`: publishDate } • {postReadTime}
+          </div>
+
+          <Markdown markdown={post} />
+
+          { userHasValidSession && (
+            <div className="controlsPost">
+
+              <button
+                className="buttonCompact"
+                onClick={() => publishPost(post.id, post.published)}>
+                {publishLabel}
+              </button>
+              <button
+                className="buttonCompact"
+                onClick={() => editPost(post.id)}>
+                {admin.controls.edit}
+              </button>
+              <button
+                className="buttonCompact delete"
+                onClick={confirmOnClick}>
+                {admin.controls.delete}
+              </button>
+
+              { showDeletionConfirmation
+              ? <DeletionConfirmation />
+              : null }
+
+            </div>
+          )}
+
+        </div>
+
+        <BlogNavigation
+          feed={feed}
+          post={post}
+          isPublished={isPublished}
+        />
+
+      </div>
+    )
+  } else {
+    loadBlogPost = (
+      <LoadingTriangle />
+    )
+  }
+
   return (
     <Container
       title={title}{...data.meta.title}
@@ -126,73 +204,7 @@ const Post = ({ post, feed, data }) => {
       robots={isPublished ? "follow, index" : "noindex"
     }>
       <BlogLayout>
-        <div className={isPublished ? 'blog' : 'blog admin'}>
-
-          <nav className="breadcrumbs">
-            <Link href="/blog">{breadcrumb.blog}</Link>
-            { !isPublished
-            ? <Link href="/blog/drafts">
-                <a>{breadcrumb.drafts}</a>
-              </Link>
-            : null }
-            <span>{title}</span>
-          </nav>
-          
-          <div className="post postFull">
-
-            <h2 aria-label={`${title}`}>
-              {title}
-            </h2>
-            <p className="teaser">{post.teaser}</p>
-            <div className="postDetails" aria-label={`${editDate} • ${postReadTime}`}>
-              <div className="author">
-                <span className="avatar">
-                  <Avatar height="18" width="18" />
-                </span>
-                <a className="authorLink" href={blogPost.twitterUrl} target="_blank" rel="noreferrer">
-                  {post?.author?.name || 'Unknown author'}
-                </a>
-              </div>
-              {isEdited ? `Updated: ${editDate}`: publishDate } • {postReadTime}
-            </div>
-
-            <Markdown markdown={post} />
-
-            { userHasValidSession && (
-              <div className="controlsPost">
-
-                <button
-                  className="buttonCompact"
-                  onClick={() => publishPost(post.id, post.published)}>
-                  {publishLabel}
-                </button>
-                <button
-                  className="buttonCompact"
-                  onClick={() => editPost(post.id)}>
-                  {admin.controls.edit}
-                </button>
-                <button
-                  className="buttonCompact delete"
-                  onClick={confirmOnClick}>
-                  {admin.controls.delete}
-                </button>
-
-                { showDeletionConfirmation
-                ? <DeletionConfirmation />
-                : null }
-
-              </div>
-            )}
-
-          </div>
-
-          <BlogNavigation
-            feed={feed}
-            post={post}
-            isPublished={isPublished}
-          />
-          
-        </div>
+        {loadBlogPost}
       </BlogLayout>
     </Container>
   )
