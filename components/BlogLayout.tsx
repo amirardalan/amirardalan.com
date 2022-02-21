@@ -97,7 +97,6 @@ const styleBlogLayout = css({
   '.postDetails': {
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'space-between',
     color: 'var(--color-gray)',
     fontSize: 13,
     lineHeight: '1.2rem',
@@ -124,6 +123,12 @@ const styleBlogLayout = css({
     '.postDate': {
       display: 'flex',
       alignItems: 'center',
+      '@media (min-width: 1025px)': {
+        '&::before': {
+          margin: '0 .5rem 0 .5rem',
+          content: '" •"'
+        }
+      },
     },
   },
   '.postImg': {
