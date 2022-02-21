@@ -1,4 +1,4 @@
-import { useTheme, Global } from '@emotion/react'
+import { useTheme } from '@emotion/react'
 import Image from 'next/image'
 
 import { base16AteliersulphurpoolLight, tomorrow } from 'react-syntax-highlighter/dist/cjs/styles/prism'
@@ -98,20 +98,18 @@ export default function BlogMarkdown({ markdown }) {
   }
 
   return (
-    <>
-      <ReactMarkdown
-        // eslint-disable-next-line react/no-children-prop
-        children={markdown.content}
-        components={MarkdownComponents}
-        remarkPlugins={[
-          [gfm],
-        ]}
-        rehypePlugins={[
-          [rehypeSlug],
-          [link],
-        ]}
-      />
-      <Global styles={{
+    <ReactMarkdown
+      // eslint-disable-next-line react/no-children-prop
+      children={markdown.content}
+      components={MarkdownComponents}
+      remarkPlugins={[
+        [gfm],
+      ]}
+      rehypePlugins={[
+        [rehypeSlug],
+        [link],
+      ]}
+      css={{
         '.codeStyle, pre, code, code span': {
           fontFamily: 'var(--font-primary)',
           fontStyle: 'normal !important'
@@ -165,7 +163,7 @@ export default function BlogMarkdown({ markdown }) {
           margin: '0 -1.5rem',
           padding: '0 1.3rem',
         },
-      }} />
-    </>
+      }}
+    />
   )
 }

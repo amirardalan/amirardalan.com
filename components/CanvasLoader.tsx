@@ -1,5 +1,5 @@
 import React from 'react'
-import { Global, css, useTheme } from '@emotion/react'
+import { css, useTheme } from '@emotion/react'
 import { Canvas } from '@react-three/fiber'
 import { Leva } from 'leva'
 import CanvasTerrainControls from '@/components/CanvasTerrainControls'

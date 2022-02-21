@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Global, css } from '@emotion/react'
+import { css } from '@emotion/react'
 import { signOut, useSession } from 'next-auth/client'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
@@ -97,6 +97,54 @@ const BlogAdmin = React.memo(function BlogAdmin() {
     '.deploymentStatus': {
       display: 'flex',
       flexAlign: 'row',
+    },
+    // Admin
+    '.buttonCompact': {
+      minWidth: 80,
+      marginLeft: '.25rem',
+      padding: '.45rem 1rem',
+      display: 'inline-block',
+      backgroundColor: 'var(--color-text)',
+      border: '1px solid var(--color-accent)',
+      borderRadius: 8,
+      color: 'var(--color-bg)',
+      fontSize: 12,
+      fontFamily: 'var(--font-primary)',
+      fontWeight: 'bold',
+      textTransform: 'uppercase',
+      textAlign: 'center',
+      textDecoration: 'none',
+      cursor: 'pointer',
+      '&:first-of-type': {
+        marginLeft: 0,
+      },
+      '&:disabled': {
+        backgroundColor: 'var(--color-button-disabled)',
+        cursor: 'default',
+      },
+      '.create &': {
+        '&.createBtn': {
+          backgroundColor: 'var(--color-button-disabled)',
+        }
+      },
+      '.drafts &': {
+        '&.draftsBtn': {
+          backgroundColor: 'var(--color-button-disabled)',
+        }
+      },
+      '&.delete': {
+        backgroundColor: 'var(--color-warning)',
+        color: '#fff',
+        textDecoration: 'none',
+      },
+      '&.deploy': {
+        backgroundColor: 'var(--color-accent-color)',
+        marginRight: '.25rem',
+        '&.disabled': { cursor: 'wait' }
+      },
+      '&.disabled': {
+        backgroundColor: 'var(--color-button-disabled)',
+      }
     }
   })
 
@@ -142,64 +190,12 @@ const BlogAdmin = React.memo(function BlogAdmin() {
   }
 
   return (
-    <>
-      <div css={styleAnimationWrapper}>
-        <nav css={styleAdminPanel}>
-          {adminPanelLeft}
-          {adminPanelRight}
-        </nav>
-      </div>
-
-      <Global styles={{
-        '.buttonCompact': {
-          minWidth: 80,
-          marginLeft: '.25rem',
-          padding: '.45rem 1rem',
-          display: 'inline-block',
-          backgroundColor: 'var(--color-text)',
-          border: '1px solid var(--color-accent)',
-          borderRadius: 8,
-          color: 'var(--color-bg)',
-          fontSize: 12,
-          fontFamily: 'var(--font-primary)',
-          fontWeight: 'bold',
-          textTransform: 'uppercase',
-          textAlign: 'center',
-          textDecoration: 'none',
-          cursor: 'pointer',
-          '&:first-of-type': {
-            marginLeft: 0,
-          },
-          '&:disabled': {
-            backgroundColor: 'var(--color-button-disabled)',
-            cursor: 'default',
-          },
-          '.create &': {
-            '&.createBtn': {
-              backgroundColor: 'var(--color-button-disabled)',
-            }
-          },
-          '.drafts &': {
-            '&.draftsBtn': {
-              backgroundColor: 'var(--color-button-disabled)',
-            }
-          },
-          '&.delete': {
-            backgroundColor: 'var(--color-warning)',
-            color: '#fff',
-            textDecoration: 'none',
-          },
-          '&.deploy': {
-            backgroundColor: 'var(--color-accent-color)',
-            marginRight: '.25rem',
-            '&.disabled': { cursor: 'wait' }
-          },
-          '&.disabled': {
-            backgroundColor: 'var(--color-button-disabled)',
-          }
-        }
-      }}/>
-    </>
+    <div css={styleAnimationWrapper}>
+      <nav css={styleAdminPanel}>
+        {adminPanelLeft}
+        {adminPanelRight}
+      </nav>
+    </div>
   )
 })
 
