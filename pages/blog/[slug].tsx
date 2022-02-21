@@ -148,7 +148,9 @@ const Post = ({ post, feed, data }) => {
                 {post?.author?.name || 'Unknown author'}
               </a>
             </div>
-            {isEdited ? `Updated: ${editDate}`: publishDate } • {postReadTime}
+            <div className="postDate">
+              {isEdited ? `Updated: ${editDate}`: publishDate } • {postReadTime}
+            </div>
           </div>
 
           <Markdown markdown={post} />

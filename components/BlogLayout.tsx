@@ -96,17 +96,17 @@ const styleBlogLayout = css({
   },
   '.postDetails': {
     display: 'flex',
-    flexDirection: 'column',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     color: 'var(--color-gray)',
     fontSize: 13,
     lineHeight: '1.2rem',
     '.author, .authorLink': {
-      marginBottom: 3,
+      marginBottom: 0,
       fontFamily: 'var(--font-primary)',
       color: 'var(--color-gray)',
       fontSize: 13,
       display: 'flex',
-      flexDirection: 'row',
       alignItems: 'center',
     },
     '.avatar': {
@@ -115,9 +115,16 @@ const styleBlogLayout = css({
       paddingBottom: '.1rem',
       alignSelf: 'center',
     },
+    '@media (max-width: 1024px)': {
+      flexDirection: 'column',
+    },
     '@media (max-width: 480px)': {
       fontSize: 12,
-    }
+    },
+    '.postDate': {
+      display: 'flex',
+      alignItems: 'center',
+    },
   },
   '.postImg': {
     paddingBottom: '2rem !important',
@@ -252,6 +259,7 @@ const styleBlogLayout = css({
     '.teaser': {
       fontFamily: 'var(--font-primary)',
       fontSize: 15,
+      lineHeight: '1.2rem',
     },
     'h3, h3 code': {
       fontSize: 28,
@@ -295,7 +303,7 @@ const styleBlogLayout = css({
       position: 'relative',
     },
     p: {
-      marginBottom: '2rem',
+      marginBottom: '1rem',
     },
     'p, ul, li, a, blockquote': {
       fontFamily: 'var(--font-tertiary)',
