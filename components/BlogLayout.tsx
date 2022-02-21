@@ -416,7 +416,7 @@ const styleBlogLayout = css({
       tr: {
         td: {
           border: '1px solid var(--color-accent-gray)',
-          padding: '.5rem',    
+          padding: '.5rem',
         }
       }
     }
