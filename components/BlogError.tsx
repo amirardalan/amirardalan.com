@@ -1,26 +1,27 @@
 import { css } from '@emotion/react'
 import Link from 'next/link'
+import { error } from '@/data/content'
 
 export default function BlogError() {
 
   const styleBlogError = css({
-    a: {
-      fontFamily: 'var(--font-secondary)'
-    }
+    a: { fontFamily: 'var(--font-secondary)' }
   })
 
   return (
     <div css={styleBlogError}>
       <div>
         <div className="blogErrorHeading">
-          <h1 className="pageHeading">Oops...</h1>
+          <h1 className="pageHeading">
+            {error.blogPostError.title}
+          </h1>
         </div>
-        <p>That post doesn't seem to exist.</p>
+        <p>{error.blogPostError.text}</p>
         <Link
-          href="/blog"
-          aria-label="Blog"
+          href={error.blogPostError.link.title}
+          aria-label={error.blogPostError.link.title}
         >
-          Return to Blog
+          {error.blogPostError.link.title}
         </Link>
       </div>
     </div>

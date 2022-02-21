@@ -485,6 +485,14 @@ export const error = {
     path: '/',
     title: 'Return Home'
   },
+  blogPostError: {
+    title: 'Oops...',
+    text: 'That post is no longer available.',
+    link: {
+      path: 'Blog',
+      title: 'Return to Blog',
+    },
+  },
 }
 
 export const footer = {
