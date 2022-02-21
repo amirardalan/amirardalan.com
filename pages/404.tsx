@@ -29,14 +29,14 @@ export default function Custom404({ data }) {
             justifyContent: 'center',
             animation: 'slideUp .5s forwards',
 
-            h2: {
+            h1: {
               margin: '0 1rem 0 .5rem',
               paddingRight: '1rem',
               alignSelf: 'center',
               borderRight: '1px solid var(--color-gray)',
               fontSize: '40px',
             },
-            h3: {
+            h2: {
               alignSelf: 'center',
               fontFamily: 'var(--font-primary)',
               fontSize: '12px',
@@ -44,12 +44,12 @@ export default function Custom404({ data }) {
             },
           }}>
             <ErrorIcon />
-            <h2 aria-label={data.title}>
+            <h1 aria-label={data.title}>
               {data.title}
-            </h2>
-            <h3 aria-label={data.text}>
+            </h1>
+            <h2 aria-label={data.text}>
               {data.text}
-            </h3>
+            </h2>
           </div>
           <div css={{
             marginTop: '1.5rem',
