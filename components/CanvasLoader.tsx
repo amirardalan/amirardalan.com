@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useTheme, css } from '@emotion/react'
 import { Canvas } from '@react-three/fiber'
 import CanvasTerrain from '@/components/CanvasTerrain'
@@ -58,10 +58,9 @@ const CanvasLoader =  React.memo(function CanvasLoader() {
 
   return (
     <>
-      <button
-        css={styleRandomizeButton}
-        onClick={randomizeTerrain}
-      />
+      <span id="tooltip">Click to Randomize</span>
+      <button css={styleRandomizeButton} onClick={randomizeTerrain} />
+
       <Canvas
         css={{animation: 'slideUp 1s forwards'}}
         gl={{antialias: true}}
