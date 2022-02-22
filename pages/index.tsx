@@ -5,10 +5,6 @@ import LatestPost from '@/components/LatestPost'
 import { GenerateCtaButtons } from '@/components/CtaButtons'
 
 import dynamic from 'next/dynamic'
-const TypingAnimation  = dynamic(() => import('@/components/TypingAnimation'), {
-  loading: () => <span className="typingAnimation">_</span>,
-  ssr: false
-})
 const CanvasLoader = dynamic(() => import('@/components/CanvasLoader'), {
   ssr: false
 })
@@ -118,35 +114,6 @@ export default function Home({ data, latestPost }) {
       minHeight: '0vw',
     }
   })
-  const styleTypedText = css({
-    margin: '1rem 1rem',
-    fontSize: 'calc(.7vw + .7vh)',
-    WebkitMarqueeIncrement: '0vw',
-    fontWeight: 'normal',
-    color: 'var(--color-gray)',
-    '@media (max-width: 890px)': {
-      marginBottom: '1rem',
-      fontSize: 'calc(1.2vw + 1.2vh)',
-      WebkitMarqueeIncrement: '0vw',
-    } 
-  })
-  const styleCodeComment = css({
-    color: 'var(--canvas-accent)',
-    fontStyle: 'italic',
-    '&:before': {
-      content: '"  "',
-      whiteSpace: 'pre',
-      color: 'var(--color-gray)',
-    }
-  })
-  const styleCodeBody = css({
-    color: 'var(--canvas-text)',
-    '&:before': {
-      content: '"  return "',
-      whiteSpace: 'pre',
-      color: 'var(--color-gray)',
-    }
-  })
   const styleButtonContainer = css({
     marginBottom: '1rem',
     display: 'flex',
@@ -158,7 +125,6 @@ export default function Home({ data, latestPost }) {
     position: 'relative',
     display: 'flex',
     flexDirection: 'column',
-    cursor: 'crosshair',
     animation: 'fadeIn .5s forwards',
     '&:hover': {
       '.canvasInfo': {
@@ -198,18 +164,6 @@ export default function Home({ data, latestPost }) {
           </div>
           <div className="animationWrapper">
             <div css={styleMainRight}>
-              <div css={styleTypedText} aria-hidden="true">
-                <div>
-                  {data.typed.heading}
-                </div>
-                <div css={styleCodeComment}>
-                  {data.typed.line2}
-                </div>
-                <div css={styleCodeBody}>
-                  <TypingAnimation data={data.typed} />
-                </div>
-                {data.typed.end}
-              </div>
               <CanvasLoader />
             </div>
           </div>

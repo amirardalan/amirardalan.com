@@ -592,7 +592,7 @@ export const footer = {
   ],
   copyright: {
     text: 'Copyright ©',
-    name: 'Designed & Built by Amir Ardalan',
+    name: 'Design + Code by Amir Ardalan',
   },
 }
 

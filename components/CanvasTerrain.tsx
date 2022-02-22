@@ -4,7 +4,7 @@ import SimplexNoise from 'simplex-noise'
 import { BufferAttribute } from 'three'
 
 
-const generateTerrain = (simplex, size, height, texture, scale, offset) => {
+const generateTerrain = (simplex, detail, height, texture, scale, offset) => {
   const noise = (level, x, z) =>
     simplex.noise2D(
       offset.x * scale + scale * level * x,
@@ -12,24 +12,24 @@ const generateTerrain = (simplex, size, height, texture, scale, offset) => {
     ) /
       level +
     (level > 1 ? noise(level / 2, x, z) : 0)
-  return Float32Array.from({ length: size ** 2 * 3 }, (_, i) => {
+  return Float32Array.from({ length: detail ** 2 * 3 }, (_, i) => {
     let v: number
     switch (i % 3) {
       case 0:
         v = i / 3
-        return (offset.x + ((v % size) / size - 0.5)) * scale
+        return (offset.x + ((v % detail) / detail - 0.5)) * scale
       case 1:
         v = (i - 1) / 3
         return (
           noise(
             2 ** texture,
-            (v % size) / size - 0.5,
-            Math.floor(v / size) / size - 0.5
+            (v % detail) / detail - 0.5,
+            Math.floor(v / detail) / detail - 0.5
           ) * height
         )
       case 2:
         v = (i - 2) / 3
-        return (offset.z + Math.floor(v / size) / size - 0.5) * scale
+        return (offset.z + Math.floor(v / detail) / detail - 0.5) * scale
     }
   })
 }
@@ -37,7 +37,7 @@ const generateTerrain = (simplex, size, height, texture, scale, offset) => {
 const Terrain = ({
   theme,
   seed,
-  size,
+  detail,
   height,
   texture = 5,
   scale = 1,
@@ -57,18 +57,18 @@ const Terrain = ({
     node?.setAttribute(
       'position',
       new BufferAttribute(
-        generateTerrain(simplex, size, height, texture, scale, offset),
+        generateTerrain(simplex, detail, height, texture, scale, offset),
         3
       )
     )
     node.elementsNeedUpdate = true
     node?.computeVertexNormals()
-  }, [size, height, texture, scale, offset, simplex])
+  }, [detail, height, texture, scale, offset, simplex])
 
   return (
     <mesh ref={mesh}>
       <planeBufferGeometry
-        args={[undefined, undefined, size - 1, size - 1]}
+        args={[undefined, undefined, detail - 1, detail - 1]}
         ref={ref}
       />
       <meshBasicMaterial

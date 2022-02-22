@@ -1,167 +1,67 @@
-import React from 'react'
-import { css, useTheme } from '@emotion/react'
+import React, { useState } from 'react'
+import { useTheme, css } from '@emotion/react'
 import { Canvas } from '@react-three/fiber'
-import { Leva } from 'leva'
-import CanvasTerrainControls from '@/components/CanvasTerrainControls'
+import CanvasTerrain from '@/components/CanvasTerrain'
 
+// Console Tag
+console.log(`
+█████   ███    ███ ██ ██████  
+██   ██ ████  ████ ██ ██   ██ 
+███████ ██ ████ ██ ██ ██████  
+██   ██ ██  ██  ██ ██ ██   ██ 
+██   ██ ██      ██ ██ ██   ██ 
+-----------------------------
+Design & Code by Amir Ardalan
+`)
+
+const styleRandomizeButton = css({
+  zIndex: 4,
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  height: '100%',
+  width: '100%',
+  background: 'transparent',
+  border: 'none',
+  outline: 'none',
+  cursor: 'crosshair',
+})
 
 const CanvasLoader =  React.memo(function CanvasLoader() {
+
   const theme: any = useTheme()
-  const styleLevaContainer = css({
-    width: 'max-content',
-    position: 'absolute',
-    bottom: 5,
-    right: 5,
-    '@media(max-width: 890px)': {
-      display: 'none'
-    },
-    fontFamily: 'var(--font-primary)',
-    textTransform: 'uppercase',
-    '--leva-colors-accent1': 'var(--color-accent-color)',
-    '--leva-colors-accent2': 'var(--color-accent-color)',
-    '--leva-colors-highlight3': 'var(--color-accent-color)',
-    'div:first-of-type': {
-      fontFamily: 'var(--font-primary)',
-      backgroundColor: 'var(--color-accent)',
-      boxShadow: 'none',
-    },
-    '.leva-c-gUBGce': {
-      borderRadius: 'none !important',
-      boxShadow: 'none !important'
-    },
-    '.levavqh1g > .levam9bkr:first-of-type, .levavqh1guk05a--isRoot-true > div:first-of-type': {
-      marginTop: 5,
-      paddingTop: 0,
-    },
-    '.levarv4c7': {
-      display: 'none'
-    },
-    '.levaf42yt': {
-      cursor: 'default',
-    },
-    '.levarv4c77egp0--drag-true:hover > svg': {
-      fill: 'var(--color-accent-color)'
-    },
-    '.levawz9l9wdj1o--fill-false': {
-      zIndex: 2,
-      position: 'absolute',
-      height: 'max-content',
-      top: '1rem',
-      bottom: '1rem',
-      right: '1rem',
-    },
-    '.leva-c-fxiFTg': {
-      backgroundColor: 'var(--color-accent-gray)',
-      'input': {
-        boxShadow: 'none'
-      }
-    },
-    '.leva-c-dKMqBT': {
-      color: 'var(--color-text)',
-    },
-    '.leva-c-bduird button.leva-c-ihqPFh': {
-      letterSpacing: '.1rem',
-      textTransform: 'uppercase',
-      color: 'var(--color-bg)',
-      border: 'none',
-      boxShadow: 'none',
-      '&:hover': {
-        border: 'none',
-        boxShadow: 'none',
-        background: 'var(--color-text)',
-      },
-      '&:focus': {
-        boxShadow: 'none',
-      }
-    },
-    '.leva-c-knrmXZ, .leva-c-bbMqub': {
-      backgroundColor: 'var(--color-accent-gray) !important'
-    },
-    '.leva-c-ctBOWy > svg': {
-      fill: 'var(--color-accent-color)',
-      '&:hover': {
-        fill: 'var(--color-accent-color)'
-      }
-    },
-    '.leva-c-gUBGce:hover': {
-      backgroundColor: 'var(--color-accent-color)'
-    },
-    '.leva-c-fOioiK': {
-      boxShadow: 'none !important',
-      letterSpacing: '.1rem',
-      textTransform: 'uppercase',
-      color: 'var(--color-accent)',
-      '&:active': {
 
-        backgroundColor: 'var(--color-gray)'
-      }
-    },
-    'i.levaussed, .levarv4c7': {
-      background: 'var(--color-accent)',
-      svg: {
-        fill: 'var(--color-accent-color)',
-        '&:hover': 'var(--color-accent-color)'
-      },
-    },
-    '.levam9bkr.levaebmh1': {
-      '&:hover': {
-        color: 'unset'
-      }
-    },
+  function getRandomInt(min: number, max: number) {
+    min = Math.ceil(min)
+    max = Math.floor(max)
+    return Math.floor(Math.random() * (max - min) + min)
+  }
 
-    label: {
-      '&:hover': {
-        color: 'var(--color-text)'
-      },
-      '+ div': {
-        display: 'none'
-      },
-      svg: {
-        background: 'var(--color-accent-color)'
-      }
-    },
-    '.levadtm57': {
-      background: 'var(--color-accent-color)',
-      boxShadow: 'none',
-      '&:hover': {
-        background: 'var(--color-accent-color)',
-      }
-    },
-    '.leva0sm9i, .levakncnr': {
-      background: 'var(--color-accent-gray) !important'
-    },
-    '.levahlc9c': {
-      background: 'var(--color-accent-gray)',
-      color: 'var(--color-text)'
-    },
-    '.leva5nscf': {
-      color: 'var(--color-gray)'
-    },
-    '.levadnk60 label': {
-      background: 'var(--color-accent-gray)',
-      svg: {
-        stroke: 'var(--color-bg)',
-      }
-    },
-    '.levat4eko, .levat4eko::placeholder': {
-      color: 'var(--color-text)',
-    },
-    '.leva2jitm': {
-      background: 'var(--color-accent-gray)',
-      input: {
-        color: 'var(--color-text)',
-        boxShadow: 'none'
-      }
-    },
-    '.leva-c-kXfPOu': {
-      backgroundColor: 'var(--color-accent-gray)',
-      color: 'var(--color-text)',
-      boxShadow: 'none'
-    },
-  })
+  function getRandomArbitrary(min: number, max: number) {
+    return Math.random() * (max - min) + min;
+  }
+
+  const [seed, setSeed] = useState(Date.now())
+  const [detail, setDetail] = useState(getRandomInt(50, 200))
+  const [height, setHeight] = useState(getRandomArbitrary(.15, .3))
+  const [texture, setTexture] = useState(getRandomInt(1, 4))
+  const [scale, setScale] = useState(getRandomInt(2, 3))
+  const rotation = 1
+
+  function randomizeTerrain() {
+    setSeed(Date.now())
+    setDetail(getRandomInt(10, 500))
+    setHeight(getRandomArbitrary(.05, .3))
+    setTexture(getRandomInt(1, 5))
+    setScale(getRandomInt(1, 5))
+  }
 
   return (
     <>
+      <button
+        css={styleRandomizeButton}
+        onClick={randomizeTerrain}
+      />
       <Canvas
         css={{animation: 'slideUp 1s forwards'}}
         gl={{antialias: true}}
@@ -169,12 +69,17 @@ const CanvasLoader =  React.memo(function CanvasLoader() {
         onCreated={({ camera }) => camera.lookAt(0, 0, 0)}
         camera={{ position: [0.35, 0.35, 0.35] }}
       >
-        <CanvasTerrainControls theme={theme} />
+        <CanvasTerrain
+          theme={theme}
+          seed={seed}
+          detail={detail}
+          height={height}
+          texture={texture}
+          scale={scale}
+          rotation={rotation}
+        />
         <ambientLight />
       </Canvas>
-      <div css={styleLevaContainer}>
-        <Leva collapsed={false} fill={true} flat={true} />
-      </div>
     </>
   )
 })
