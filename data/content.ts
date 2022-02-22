@@ -439,6 +439,7 @@ export const uses = {
   - [Emotion](https://emotion.sh/docs/introduction)
   #### Database
   - [PostgreSQL](https://www.postgresql.org/)
+  - [Heroku](https://heroku.com)
   #### ORM
   - [Prisma](https://www.prisma.io/)
   #### Data Fetching

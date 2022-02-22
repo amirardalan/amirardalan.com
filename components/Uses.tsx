@@ -27,7 +27,6 @@ const styleUsesMarkdown = ({
     padding: '.5rem',
     color: 'var(--color-bg)',
     backgroundColor: 'var(--color-text)',
-    boxShadow: '-2px 2px 0 var(--color-accent-color)',
     fontSize: 14,
   },
   h5: {
