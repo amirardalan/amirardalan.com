@@ -226,11 +226,11 @@ const styleBlogLayout = css({
     backgroundColor: 'var(--color-accent)',
     border: '2px solid var(--color-accent)',
     borderRadius: '0.25rem',
-    color: 'var(--color-text)',
+    WebkitTextFillColor: 'var(--color-gray)',
     fontSize: 16,
     '&:disabled': {
       backgroundColor: 'var(--color-input-disabled)',
-      color: 'var(--color-gray)',
+      WebkitTextFillColor: 'var(--color-accent-gray)',
     },
     '@media (max-width: 890px)': {
       width: '100%'
