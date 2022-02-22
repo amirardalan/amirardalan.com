@@ -24,7 +24,7 @@ const styleRandomizeButton = css({
   background: 'transparent',
   border: 'none',
   outline: 'none',
-  cursor: 'crosshair',
+  cursor: 'pointer',
 })
 
 const CanvasLoader =  React.memo(function CanvasLoader() {
