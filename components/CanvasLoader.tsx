@@ -58,7 +58,6 @@ const CanvasLoader =  React.memo(function CanvasLoader() {
 
   return (
     <>
-      <span id="tooltip">Click to Randomize</span>
       <button css={styleRandomizeButton} onClick={randomizeTerrain} />
 
       <Canvas
