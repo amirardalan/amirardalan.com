@@ -7,7 +7,7 @@ const fontTertiary = '"Lora", "Times New Roman", Times, serif'
 
 // Colors
 const light= '#e4e9f8'
-const lightAccent = '#d8dbee'
+const lightAccent = '#d8ddf0'
 const lighter = '#d8dbed'
 const dark= '#262738'
 const darkAccent = '#333448'
@@ -109,7 +109,7 @@ export function GlobalStyles () {
           '--canvas-accent': codeCommentLight,
           '--page-bg': lighter,
           '--code-highlight': codeHighlightLight,
-          '--syntax-highlight-bg': lighter,
+          '--syntax-highlight-bg': lightAccent,
         },
         
         'body[data-theme="dark"]': {

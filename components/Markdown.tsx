@@ -1,7 +1,7 @@
 import { useTheme } from '@emotion/react'
 import Image from 'next/image'
 
-import { base16AteliersulphurpoolLight, tomorrow } from 'react-syntax-highlighter/dist/cjs/styles/prism'
+import { solarizedlight, tomorrow } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import ReactMarkdown from 'react-markdown'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import rangeParser from 'parse-numeric-range'
@@ -14,7 +14,7 @@ export default function BlogMarkdown({ markdown }) {
 
   const theme: any = useTheme()
   const setSyntaxTheme = theme.code === 'light'
-    ? base16AteliersulphurpoolLight
+    ? solarizedlight
     : tomorrow
 
   const MarkdownComponents: object = {
@@ -153,6 +153,9 @@ export default function BlogMarkdown({ markdown }) {
         },
         'pre code': {
           '&::before, &::after': { content: 'none' },
+        },
+        span: {
+          color: 'var(--color-gray)',
         },
         'span.linenumber': {
           display: 'none !important'
