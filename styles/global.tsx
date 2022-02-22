@@ -25,7 +25,7 @@ const codeHighlightLight = '#cbcfe4'
 const codeDark = '#3dffc5'
 const codeLight = '#744164'
 const codeCommentDark = '#929aee'
-const codeCommentLight = '#333c41'
+const codeCommentLight = '#474358'
 const sunrise = 'linear-gradient(to bottom, #757abf 0%,#8583be 60%,#eab0d1 100%)'
 const sunset = 'linear-gradient(to bottom, #111011 30%,#451f4d 80%,#311946 100%)'
 
