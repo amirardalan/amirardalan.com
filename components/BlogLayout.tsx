@@ -63,6 +63,7 @@ const styleBlogLayout = css({
       '&:hover': { textDecoration: 'none' }
     },
     p: {
+      marginBottom: '2rem',
       fontFamily: 'var(--font-tertiary)',
       fontSize: 18,
     },
@@ -262,9 +263,15 @@ const styleBlogLayout = css({
       }
     },
     '.teaser': {
-      fontFamily: 'var(--font-primary)',
-      fontSize: 15,
-      lineHeight: '1.2rem',
+      marginBottom: '3rem',
+      fontFamily: 'var(--font-tertiary)',
+      fontStyle: 'italic',
+      fontSize: 20,
+      color: 'var(--color-gray)',
+      lineHeight: '1.5rem',
+      '@media (max-width: 1024px)': {
+        fontSize: 15,
+      }
     },
     'h3, h3 code': {
       fontSize: 28,
@@ -275,7 +282,7 @@ const styleBlogLayout = css({
     },
     h3: {
       scrollMarginTop: '4rem',
-      margin: '1.5rem 0',
+      margin: '2rem 0',
       padding: 0,
       display: 'inline-block',
       fontWeight: 'bold',
@@ -327,21 +334,13 @@ const styleBlogLayout = css({
       },
     },
     blockquote: {
-      marginLeft: '-1.75rem',
-      paddingLeft: '1.5rem',
-      borderLeft: '5px solid var(--color-accent-gray)',
+      margin: '2rem 0',
+      padding: '1.5rem 1.5rem .5rem 1.5rem',
+      border: '1px solid var(--color-accent-gray)',
+      borderRadius: '5px',
       color: 'var(--color-gray)',
       fontStyle: 'italic',
-      fontWeight: 'normal',
-      '& blockquote': {
-        marginLeft: 0,
-        paddingLeft: '1rem',
-        borderLeft: '5px solid var(--color-accent)',
-      },
-      '@media (max-width: 890px)': {
-        marginLeft: '-1.5rem',
-        paddingLeft: '1.2rem',
-      },
+      fontSize: '12px !important',
     },
     'ul li': {
       listStyle: 'outside',
@@ -371,6 +370,7 @@ const styleBlogLayout = css({
     },
     ol: {
       counterReset: 'counter',
+      margin: '2rem 0',
       li: {
         counterIncrement: 'counter',
         marginLeft: '2rem',
