@@ -180,6 +180,9 @@ const styleBlogLayout = css({
       fontSize: 12,
       fontStyle: 'italic',
     },
+    p: {
+      marginBottom: 0,
+    },
     '@media (max-width: 480px)': {
       padding: '1rem',
       '&::after': { content: '" "' },
