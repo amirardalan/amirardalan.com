@@ -1,17 +1,31 @@
 import React from 'react'
 import { AppProps } from 'next/app'
 import { Provider } from 'next-auth/client'
+import { useThemeContext } from '@/utils/useThemeContext'
+import { themeLight, themeDark } from '@/styles/theme'
+import { GlobalStyles } from '@/styles/global'
+import { ThemeProvider } from '@emotion/react'
+import Header from '@/components/Header'
+import LoadingBar from '@/components/LoadingBar'
 import GtagRoutes from '@/lib/GtagRoutes'
 
 
 const App = ({ Component, pageProps }: AppProps) => {
+
+  const [theme, toggleTheme] = useThemeContext()
+  const themeMode = theme === 'light' ? themeLight : themeDark
 
   GtagRoutes()
 
   return (
     <React.StrictMode>
       <Provider session={pageProps.session}>
-        <Component {...pageProps} />
+        <GlobalStyles />
+        <ThemeProvider theme={themeMode}>
+          <LoadingBar />
+          <Header toggleTheme={toggleTheme} />
+          <Component {...pageProps} />
+        </ThemeProvider>
       </Provider>
     </React.StrictMode>
   )

@@ -1,12 +1,5 @@
 import { useRouter } from 'next/router'
-import { useThemeContext } from '@/utils/useThemeContext'
-import { themeLight, themeDark } from '@/styles/theme'
-import { GlobalStyles } from '@/styles/global'
-import { ThemeProvider } from '@emotion/react'
-
 import Head from 'next/head'
-import LoadingBar from '@/components/LoadingBar'
-import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 
 import dynamic from 'next/dynamic'
@@ -27,8 +20,6 @@ export default function Container(props: any) {
     ...customMeta
   }
 
-  const [theme, toggleTheme] = useThemeContext()
-  const themeMode = theme === 'light' ? themeLight : themeDark
 
   return (
     <>
@@ -58,18 +49,14 @@ export default function Container(props: any) {
         )}
       </Head>
 
-      <GlobalStyles />
-        <ThemeProvider theme={themeMode}>
-          <BlogAdmin />
-          <LoadingBar />
 
-          <Header toggleTheme={toggleTheme} />
+
+          <BlogAdmin />
 
           <div className="container">
             {children}
           </div>
           <Footer />
-      </ThemeProvider>
     </>
   )
 }
