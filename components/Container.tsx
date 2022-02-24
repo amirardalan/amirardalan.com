@@ -65,9 +65,9 @@ export default function Container(props: any) {
 
           <Header toggleTheme={toggleTheme} />
 
-          <main className="container">
+          <div className="container">
             {children}
-          </main>
+          </div>
           <Footer />
       </ThemeProvider>
     </>
