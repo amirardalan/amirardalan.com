@@ -324,6 +324,15 @@ export const timeline = {
       content: '2000',
       cName: 'date',
     },
+    {
+      content: '1995',
+      cName: 'date'
+    },
+    {
+      title: 'First Computer',
+      content: '🖥️ Got a Compaq Presario CDS 524. Read Microsoft Encarta and played "Where In the World is Carmen San Diego" and "X-Wing".',
+      cName: 'event'
+    },
   ]
 }
 
