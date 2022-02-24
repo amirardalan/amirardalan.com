@@ -106,7 +106,7 @@ const BlogAdmin = React.memo(function BlogAdmin() {
         <span>
           Welcome, {session.user.name.split(" ")[0]}! •
           <a
-            onClick={() => signOut({ callbackUrl: `${process.env.NEXT_PUBLIC_SITE_URL}/blog` })}
+            onClick={() => signOut({ callbackUrl: `${process.env.NEXT_PUBLIC_SITE_URL+router.pathname}` })}
             aria-label="Sign Out"
             tabIndex={0}
           >
