@@ -5,7 +5,7 @@ import { GetStaticProps } from 'next'
 
 const WALLET_ADDRESS = process.env.OPENSEA_WALLET_ADDRESS
 const X_API_KEY = process.env.OPENSEA_API_KEY
-// const OPENSEA_WALLET_ENDPOINT = `https://api.opensea.io/api/v1/assets?owner=${WALLET_ADDRESS}`
+const OPENSEA_WALLET_ENDPOINT = `https://api.opensea.io/api/v1/assets?owner=${WALLET_ADDRESS}`
 const headersConfig = { Accept: 'application/json', 'X-API-KEY': `${X_API_KEY}` }
 
 export const fetchData = async (url: string, options: Record<string, unknown>) => {
@@ -53,7 +53,7 @@ export default function NftPage({data}) {
         {nft.heading}
       </h1>
       <div css={styleNftContainer}>
-        <NftCollection data={data} />
+        {/* <NftCollection data={data} /> */}
       </div>
     </Container>
   )
