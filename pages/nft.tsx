@@ -4,31 +4,30 @@ import NftCollection from '@/components/NftCollection'
 import { GetStaticProps } from 'next'
 
 const WALLET_ADDRESS = process.env.OPEANSEA_WALLET_ADDRESS
-const OPENSEA_WALLET_ENDPOINT = `https://api.opensea.io/api/v1/collections?asset_owner=${WALLET_ADDRESS}`
+const X_API_KEY = process.env.OPENSEA_API_KEY
+const OPENSEA_WALLET_ENDPOINT = `https://api.opensea.io/api/v1/assets?owner=${WALLET_ADDRESS}&order_direction=desc&limit=20`
+const headersConfig = { Accept: 'application/json', 'X-API-KEY': `${X_API_KEY}` }
 
 export const fetchData = async (url: string, options: Record<string, unknown>) => {
   const response = await fetch(url, {
-    headers: { Accept: 'application/json' },
+    headers: headersConfig,
     ...options,
   })
   const data = await response.json()
+  
   return data
 }
 
 export const getStaticProps: GetStaticProps = async () => {
   const url = `${OPENSEA_WALLET_ENDPOINT}`
-  const options = { method: 'GET', headers: {Accept: 'application/json'} }
+  const options = { method: 'GET', headers: headersConfig }
   const data = await fetchData(url, options)
 
   if (!data) {
     return null
   }
 
-  return {
-    props: {
-      data: data
-    }
-  }
+  return { props: {data: data} }
 
 }
 
