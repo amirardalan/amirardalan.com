@@ -3,33 +3,33 @@ import { nft } from '@/data/content'
 import NftCollection from '@/components/NftCollection'
 import { GetStaticProps } from 'next'
 
-// const WALLET_ADDRESS = process.env.OPEANSEA_WALLET_ADDRESS
-// const X_API_KEY = process.env.OPENSEA_API_KEY
+const WALLET_ADDRESS = process.env.OPENSEA_WALLET_ADDRESS
+const X_API_KEY = process.env.OPENSEA_API_KEY
 // const OPENSEA_WALLET_ENDPOINT = `https://api.opensea.io/api/v1/assets?owner=${WALLET_ADDRESS}`
-// const headersConfig = { Accept: 'application/json', 'X-API-KEY': `${X_API_KEY}` }
+const headersConfig = { Accept: 'application/json', 'X-API-KEY': `${X_API_KEY}` }
 
-// export const fetchData = async (url: string, options: Record<string, unknown>) => {
-//   const response = await fetch(url, {
-//     headers: headersConfig,
-//     ...options,
-//   })
-//   const data = await response.json()
+export const fetchData = async (url: string, options: Record<string, unknown>) => {
+  const response = await fetch(url, {
+    headers: headersConfig,
+    ...options,
+  })
+  const data = await response.json()
   
-//   return data
-// }
+  return data
+}
 
-// export const getStaticProps: GetStaticProps = async () => {
-//   const url = `${OPENSEA_WALLET_ENDPOINT}`
-//   const options = { method: 'GET', headers: headersConfig }
-//   const data = await fetchData(url, options)
+export const getStaticProps: GetStaticProps = async () => {
+  const url = `${OPENSEA_WALLET_ENDPOINT}`
+  const options = { method: 'GET', headers: headersConfig }
+  const data = await fetchData(url, options)
 
-//   if (!data) {
-//     return null
-//   }
+  if (!data) {
+    return null
+  }
 
-//   return { props: {data: data} }
+  return { props: {data: data} }
 
-// }
+}
 
 const styleNftContainer = ({
   display: 'grid',
@@ -53,7 +53,7 @@ export default function NftPage({data}) {
         {nft.heading}
       </h1>
       <div css={styleNftContainer}>
-        {/* <NftCollection data={data} /> */}
+        <NftCollection data={data} />
       </div>
     </Container>
   )
