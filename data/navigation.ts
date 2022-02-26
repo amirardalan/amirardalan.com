@@ -25,14 +25,6 @@ export const nav = [
     aria: 'About',
     icon: false
   },
-  // {
-  //   title: 'NFT',
-  //   path: '/nft',
-  //   exact: '',
-  //   cName: 'nftNav',
-  //   aria: 'NFT',
-  //   icon: false
-  // },
   {
     title: 'Timeline',
     path: '/about#timeline',

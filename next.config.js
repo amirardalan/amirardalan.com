@@ -18,8 +18,6 @@ module.exports = {
     domains: [
       'i.scdn.co', // Spotify Album Art
       'github.com', // GitHub Avatar
-      'lh3.googleusercontent.com', // NFT Assets
-      'storage.opensea.io'
     ]
   },
   eslint: {
