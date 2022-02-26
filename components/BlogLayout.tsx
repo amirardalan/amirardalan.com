@@ -254,7 +254,7 @@ const styleBlogLayout = css({
   },
   '.postFull': {
     '.postDetails': {
-      marginBottom: '2rem',
+      marginBottom: '3rem',
     },
     h2: {
       margin: '0 0 .8rem',
@@ -266,7 +266,7 @@ const styleBlogLayout = css({
       }
     },
     '.teaser': {
-      marginBottom: '3rem',
+      marginBottom: '1rem',
       fontFamily: 'var(--font-tertiary)',
       fontStyle: 'italic',
       fontSize: 20,
@@ -320,10 +320,8 @@ const styleBlogLayout = css({
     p: {
       marginBottom: '1rem',
     },
-    'p, ul, li, a, blockquote': {
-      fontFamily: 'var(--font-tertiary)',
-    },
     'p, ul, li, a': {
+      fontFamily: 'var(--font-tertiary)',
       fontSize: 18,
       lineHeight: '1.8rem',
     },
@@ -338,12 +336,14 @@ const styleBlogLayout = css({
     },
     blockquote: {
       margin: '2rem 0',
-      padding: '1.5rem 1.5rem .5rem 1.5rem',
+      padding: '1rem',
       border: '1px solid var(--color-accent-gray)',
       borderRadius: '5px',
       color: 'var(--color-gray)',
-      fontStyle: 'italic',
-      fontSize: '12px !important',
+      p: {
+        marginBottom: 0,
+        fontStyle: 'italic'
+      }
     },
     'ul li': {
       listStyle: 'outside',
