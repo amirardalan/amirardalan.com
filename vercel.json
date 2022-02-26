@@ -5,7 +5,7 @@
   },
   "headers": [
     {
-      "source": "/fonts/fira-code-latin-400.woff2",
+      "source": "/fonts/jetbrains-mono-v11-latin-regular.woff2",
       "headers" : [
         {
           "key": "Cache-Control",

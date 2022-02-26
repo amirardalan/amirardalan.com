@@ -7,7 +7,7 @@ export default function Document() {
       <Head>
         <link
           rel="preload"
-          href="/fonts/fira-code-latin-400.woff2"
+          href="/fonts/jetbrains-mono-v11-latin-regular.woff2"
           as="font"
           type="font/woff2"
           crossOrigin="anonymous"

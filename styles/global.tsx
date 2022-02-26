@@ -1,7 +1,7 @@
 import { Global } from '@emotion/react'
 
 // Typography
-const fontPrimary = '"Fira Code", Menlo, Monaco, "Courier New", monospace'
+const fontPrimary = '"JetBrains Mono", Menlo, Monaco, "Courier New", monospace'
 const fontSecondary = '"Poppins", Helvetica, Arial, sans-serif'
 const fontTertiary = '"Lora", "Times New Roman", Times, serif'
 
@@ -54,13 +54,13 @@ export function GlobalStyles () {
         },
       }}/>
       <Global styles={{
-        // @font: Fira Code 400
+        // @font: JetBrains Mono 400
         '@font-face': {
-          fontFamily: 'Fira Code',
+          fontFamily: 'JetBrains Mono',
           fontStyle: 'normal',
           fontWeight: 400,
           fontDisplay: 'swap',
-          src: 'url("/fonts/fira-code-latin-400.woff2") format("woff2")'
+          src: 'url("/fonts/jetbrains-mono-v11-latin-regular.woff2") format("woff2")'
         },
       }}/>
       <Global styles={{
