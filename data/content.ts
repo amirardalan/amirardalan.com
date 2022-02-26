@@ -176,7 +176,7 @@ export const about = {
       'Prisma ORM',
       'PostgreSQL',
       'SWR',
-      'Jest/RTL',
+      'Jest / RTL',
       'Vercel',
       'Heroku',
       'Adobe XD',
