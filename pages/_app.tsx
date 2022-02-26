@@ -9,6 +9,11 @@ import Header from '@/components/Header'
 import LoadingBar from '@/components/LoadingBar'
 import GtagRoutes from '@/lib/GtagRoutes'
 
+import dynamic from 'next/dynamic'
+const BlogAdmin = dynamic(() => import('@/components/BlogAdmin'),{
+  ssr: false
+})
+
 
 const App = ({ Component, pageProps }: AppProps) => {
 
@@ -23,6 +28,7 @@ const App = ({ Component, pageProps }: AppProps) => {
         <GlobalStyles />
         <ThemeProvider theme={themeMode}>
           <LoadingBar />
+          <BlogAdmin />
           <Header toggleTheme={toggleTheme} />
           <Component {...pageProps} />
         </ThemeProvider>

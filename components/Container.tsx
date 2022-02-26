@@ -1,20 +1,17 @@
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 import Footer from '@/components/Footer'
+import { metadata } from '@/data/metadata'
 
-import dynamic from 'next/dynamic'
-const BlogAdmin = dynamic(() => import('@/components/BlogAdmin'),{
-  ssr: false
-})
 
 export default function Container(props: any) {
 
   const { children, ...customMeta } = props;
   const router = useRouter()
   const meta = {
-    title: 'Amir Ardalan – Code, design, and ideas from Portland, OR.',
-    description: `Front-end developer, UI designer, and React enthusiast.`,
-    image: `${process.env.NEXT_PUBLIC_SITE_URL}/thumbnail.jpg`,
+    title: metadata.title,
+    description: metadata.description,
+    image: metadata.image,
     type: 'website',
     robots: 'follow, index',
     ...customMeta
@@ -31,7 +28,7 @@ export default function Container(props: any) {
         <link rel="canonical" href={`${process.env.NEXT_PUBLIC_SITE_URL}${router.asPath}`} />
         
         <meta property="og:type" content={meta.type} />
-        <meta property="og:site_name" content="Amir Ardalan" />
+        <meta property="og:site_name" content={metadata.name} />
         <meta property="og:description" content={meta.description} />
         <meta property="og:title" content={meta.title} />
         <meta property="og:image" content={meta.image} />
@@ -39,7 +36,7 @@ export default function Container(props: any) {
         <meta name="description" content={meta.description} />
         <meta name="thumbnail" property="og:image" content={meta.image} />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@amirardalan" />
+        <meta name="twitter:site" content={metadata.twitterHandle} />
         <meta name="twitter:title" content={meta.title} />
         <meta name="twitter:description" content={meta.description} />
         <meta name="twitter:image" content={meta.image} />
@@ -49,14 +46,11 @@ export default function Container(props: any) {
         )}
       </Head>
 
+      <div className="container">
+        {children}
+      </div>
 
-
-          <BlogAdmin />
-
-          <div className="container">
-            {children}
-          </div>
-          <Footer />
+      <Footer />
     </>
   )
 }

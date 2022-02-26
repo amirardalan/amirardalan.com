@@ -1,5 +1,6 @@
 import { themeLight, themeDark } from "@/styles/theme"
 
+
 export const logo = {
   title: 'Amir Ardalan',
   subtitle: 'Portland,Oregon',
