@@ -266,7 +266,7 @@ const styleBlogLayout = css({
       }
     },
     '.teaser': {
-      marginBottom: '1rem',
+      marginBottom: '2.5rem',
       fontFamily: 'var(--font-tertiary)',
       fontStyle: 'italic',
       fontSize: 20,

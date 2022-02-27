@@ -70,7 +70,7 @@ export function GlobalStyles () {
           fontStyle: 'normal',
           fontWeight: 500,
           fontDisplay: 'swap',
-          src: 'url("/fonts/lora-latin-500.woff2") format("woff2")',
+          src: 'url("/fonts/lora-latin-400.woff2") format("woff2")',
         },
       }}/>
       <Global styles={{
@@ -80,7 +80,7 @@ export function GlobalStyles () {
           fontStyle: 'italic',
           fontWeight: 500,
           fontDisplay: 'swap',
-          src: 'url("/fonts/lora-latin-500-italic.woff2") format("woff2")'
+          src: 'url("/fonts/lora-latin-400-italic.woff2") format("woff2")'
         },
       }}/>
       <Global styles={{
