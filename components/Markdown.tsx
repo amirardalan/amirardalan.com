@@ -143,7 +143,7 @@ export default function BlogMarkdown({ markdown }) {
         code: {
           wordWrap: 'break-word',
           fontSize: 16,
-          color: 'var(--color-gray)',
+          color: 'var(--color-text)',
           backgroundColor: 'var(--color-accent)',
           borderRadius: 5,
           '&::before, &::after': {
@@ -155,7 +155,7 @@ export default function BlogMarkdown({ markdown }) {
           '&::before, &::after': { content: 'none' },
         },
         span: {
-          color: 'var(--color-gray)',
+          color: 'var(--color-text)',
         },
         'span.linenumber': {
           display: 'none !important'

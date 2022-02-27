@@ -1,5 +1,4 @@
-import { css } from '@emotion/react'
-
+import { css, useTheme } from '@emotion/react'
 
 const styleBlogLayout = css({
   '.breadcrumbs': {
@@ -74,7 +73,9 @@ const styleBlogLayout = css({
     '&.postTeaser': {
       marginBottom: '3.5rem',
       p: {
-        color: 'var(--color-gray) !important',
+        marginTop: '.5rem',
+        lineHeight: '1.4rem',
+        color: 'var(--color-gray)',
       },
       '@media(max-width: 480px)': {
         marginBottom: '2.5rem'
@@ -254,7 +255,7 @@ const styleBlogLayout = css({
   },
   '.postFull': {
     '.postDetails': {
-      marginBottom: '3rem',
+      marginBottom: '2.5rem',
     },
     h2: {
       margin: '0 0 .8rem',
@@ -268,13 +269,9 @@ const styleBlogLayout = css({
     '.teaser': {
       marginBottom: '2.5rem',
       fontFamily: 'var(--font-tertiary)',
-      fontStyle: 'italic',
-      fontSize: 20,
-      color: 'var(--color-gray)',
+      fontSize: 18,
       lineHeight: '1.5rem',
-      '@media (max-width: 1024px)': {
-        fontSize: 15,
-      }
+
     },
     'h3, h3 code': {
       fontSize: 28,
@@ -317,9 +314,6 @@ const styleBlogLayout = css({
     'h1, h2, h3, h3, h4, h5, h6': {
       position: 'relative',
     },
-    p: {
-      marginBottom: '1rem',
-    },
     'p, ul, li, a': {
       fontFamily: 'var(--font-tertiary)',
       fontSize: 18,
@@ -327,6 +321,10 @@ const styleBlogLayout = css({
     },
     'ul, li, a': { 
       marginBottom: '1rem'
+    },
+    p: {
+      marginBottom: '2rem',
+      lineHeight: '2rem',
     },
     a: {
       textDecoration: 'underline',
@@ -336,10 +334,9 @@ const styleBlogLayout = css({
     },
     blockquote: {
       margin: '2rem 0',
-      padding: '1rem',
+      padding: '1rem 1.5rem',
       border: '1px solid var(--color-accent-gray)',
       borderRadius: '5px',
-      color: 'var(--color-gray)',
       p: {
         marginBottom: 0,
         fontStyle: 'italic'
@@ -432,6 +429,8 @@ const styleBlogLayout = css({
 })
 
 const BlogLayout = (props) => {
+
+  const theme = useTheme()
 
   return (
     <div css={styleBlogLayout}>
