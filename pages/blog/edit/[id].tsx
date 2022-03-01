@@ -8,6 +8,7 @@ import Link from 'next/link'
 import LoadingTriangle from '@/components/LoadingTriangle'
 
 import { admin, breadcrumb } from '@/data/content'
+import { categories } from '@/data/categories'
 import { GetServerSideProps } from 'next'
 import prisma from '@/lib/prisma'
 
@@ -31,12 +32,22 @@ const Edit = ({ editPost }) => {
   const editContent = editPost.content
   const editSlug = editPost.slug
   const editTeaser = editPost.teaser
-
+  const editCategory = editPost.category
 
   const [title, setTitle] = useState(editTitle)
   const [content, setContent] = useState(editContent)
   const [slug, setSlug] = useState(editSlug)
   const [teaser, setTeaser] = useState(editTeaser)
+  const [category, setCategory] = useState(editCategory)
+
+
+  const populateCategories = categories.map(populateCategories => populateCategories)
+  const handleCategoryChange = (e) => {
+    setCategory(categories[e.target.value])
+  }
+
+  console.log(editCategory)
+
 
   const submitData = async (e: React.SyntheticEvent) => {
 
@@ -143,6 +154,13 @@ const Edit = ({ editPost }) => {
               rows={8}
               value={content}
             />
+
+            <label css={{color: 'var(--color-gray)'}} htmlFor="category">Category: </label>
+            <select
+              onChange={e => handleCategoryChange(e)}
+            >
+              { populateCategories.map((category, key) => <option key={key} value={key}>{category}</option> )}
+            </select >
 
             <div className="formSubmit">
               <button

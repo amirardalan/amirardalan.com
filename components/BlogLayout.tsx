@@ -33,6 +33,16 @@ const styleBlogLayout = css({
   '.blog': {
     maxWidth: 768,
     margin: '0 auto',
+    '.category': {
+      marginBottom: '.2rem',
+      fontFamily: 'var(--font-primary)',
+      fontSize: 12,
+      textTransform: 'uppercase',
+      color: 'var(--color-accent-color)',
+      '&:before': {
+        content: '"#"'
+      }
+    },
     'h2, h3, h4': {
       fontFamily: 'var(font-secondary)',
     },

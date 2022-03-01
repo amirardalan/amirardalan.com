@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Container from '@/components/Container'
 import BlogLayout from '@/components/BlogLayout'
 import { admin, breadcrumb } from '@/data/content'
+import { categories } from '@/data/categories'
 import { useSession } from 'next-auth/client'
 import LoadingTriangle from '@/components/LoadingTriangle'
 
@@ -66,6 +67,12 @@ const Draft = () => {
   const [session] = useSession()
   let create = null
 
+  const [category, setCategory] = useState('hi')
+  const populateCategories = categories.map(populateCategories => populateCategories)
+  const handleCategoryChange = (e) => {
+    setCategory(categories[e.target.value])
+  }
+
   if (session && session.user.email == process.env.NEXT_PUBLIC_USER_EMAIL) {
 
     create = (
@@ -113,10 +120,17 @@ const Draft = () => {
               value={content}
             />
 
+            <label css={{color: 'var(--color-gray)'}} htmlFor="category">Category: </label>
+            <select
+              onChange={e => handleCategoryChange(e)}
+            >
+              { populateCategories.map((category, key) => <option key={key} value={key}>{category}</option> )}
+            </select >
+
             <div className="formSubmit">
               <button
                 className="buttonCompact"
-                disabled={!content || !title || !slug || !teaser}
+                disabled={!content || !title || !slug || !teaser || category === '-'}
                 type="submit">
                 {admin.controls.save}
               </button>
