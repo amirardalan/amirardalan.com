@@ -144,9 +144,7 @@ const Post = ({ post, feed, data }) => {
               <span className="avatar">
                 <Avatar height="18" width="18" />
               </span>
-              <a className="authorLink" href={blogPost.twitterUrl} target="_blank" rel="noreferrer">
-                {post?.author?.name || 'Unknown author'}
-              </a>
+              {post?.author?.name || 'Unknown author'}
             </div>
             <div className="postDate">
               {isEdited ? `Updated: ${editDate}`: publishDate } • {postReadTime}

@@ -75,7 +75,6 @@ const styleBlogLayout = css({
       p: {
         marginTop: '.5rem',
         lineHeight: '1.4rem',
-        color: 'var(--color-gray)',
       },
       '@media(max-width: 480px)': {
         marginBottom: '2.5rem'
@@ -103,24 +102,24 @@ const styleBlogLayout = css({
     fontSize: 13,
     lineHeight: '1.2rem',
     '.author, .authorLink': {
-      marginBottom: 0,
-      fontFamily: 'var(--font-primary)',
-      color: 'var(--color-gray)',
-      fontSize: 13,
+      marginBottom: 3,
+      fontFamily: 'var(--font-tertiary)',
+      fontSize: 16,
+      fontStyle: 'italic',
+      color: 'var(--color-text)',
       display: 'flex',
       alignItems: 'center',
+      '@media (max-width: 768px)': {
+        marginBottom: 4,
+      }
     },
     '.avatar': {
       display: 'flex',
       marginRight: '.4rem',
-      paddingBottom: '.1rem',
       alignSelf: 'center',
     },
     '@media (max-width: 1024px)': {
       flexDirection: 'column',
-    },
-    '@media (max-width: 480px)': {
-      fontSize: 12,
     },
     '.postDate': {
       display: 'flex',
@@ -200,8 +199,8 @@ const styleBlogLayout = css({
     position: 'relative',
     h2: {
       marginBottom: '.4rem',
-      fontSize: 30,
-      lineHeight: '2rem',
+      fontSize: 28,
+      lineHeight: '2.2rem',
       textDecoration: 'none',
       a: {
         color: 'var(--color-text)',
@@ -215,8 +214,8 @@ const styleBlogLayout = css({
         position: 'absolute',
         fontFamily: 'var(--font-secondary)',
         fontWeight: 900,
-        fontSize: 30,
-        lineHeight: '2rem',
+        fontSize: 28,
+        lineHeight: '2.2rem',
         left: -20,
         color: 'var(--color-accent-color)'
       }
@@ -263,11 +262,11 @@ const styleBlogLayout = css({
       cursor: 'default',
       '@media(max-width: 1024px)': {
         margin: '0 0 .5rem',
-        fontSize: 30,
+        fontSize: 35,
       }
     },
     '.teaser': {
-      marginBottom: '2.5rem',
+      marginBottom: '2rem',
       fontFamily: 'var(--font-tertiary)',
       fontSize: 18,
       lineHeight: '1.5rem',
