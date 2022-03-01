@@ -71,7 +71,7 @@ const styleBlogLayout = css({
       flexDirection: 'column',
     },
     '&.postTeaser': {
-      marginBottom: '3.5rem',
+      marginBottom: '3.2rem',
       p: {
         marginTop: '.5rem',
         lineHeight: '1.4rem',
@@ -199,7 +199,7 @@ const styleBlogLayout = css({
     position: 'relative',
     h2: {
       marginBottom: '.4rem',
-      fontSize: 28,
+      fontSize: 32,
       lineHeight: '2.2rem',
       textDecoration: 'none',
       a: {
@@ -207,6 +207,9 @@ const styleBlogLayout = css({
         textDecoration: 'none',
         border: 'none'
       },
+      '@media (max-width: 768px)': {
+        fontSize: 28,
+      }
     },
     '&:hover': {
       '&::before': {
@@ -214,10 +217,13 @@ const styleBlogLayout = css({
         position: 'absolute',
         fontFamily: 'var(--font-secondary)',
         fontWeight: 900,
-        fontSize: 28,
+        fontSize: 32,
         lineHeight: '2.2rem',
         left: -20,
-        color: 'var(--color-accent-color)'
+        color: 'var(--color-accent-color)',
+        '@media (max-width: 768px)': {
+          fontSize: 28,
+        }
       }
     }
   },
