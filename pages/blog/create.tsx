@@ -3,6 +3,7 @@ import Router from 'next/router'
 import Link from 'next/link'
 import Container from '@/components/Container'
 import BlogLayout from '@/components/BlogLayout'
+import Dropdown from '@/components/Dropdown'
 import { admin, breadcrumb } from '@/data/content'
 import { categories } from '@/data/categories'
 import { useSession } from 'next-auth/client'
@@ -15,11 +16,12 @@ const Draft = () => {
   const [content, setContent] = useState('')
   const [slug, setSlug] = useState('')
   const [teaser, setTeaser] = useState('')
+  const [category, setCategory] = useState(categories[0])
 
   const submitData = async (e: React.SyntheticEvent) => {
     e.preventDefault()
     try {
-      const body = { title, slug, teaser, content }
+      const body = { title, slug, teaser, content, category }
       await fetch('/api/post', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -66,12 +68,6 @@ const Draft = () => {
 
   const [session] = useSession()
   let create = null
-
-  const [category, setCategory] = useState('hi')
-  const populateCategories = categories.map(populateCategories => populateCategories)
-  const handleCategoryChange = (e) => {
-    setCategory(categories[e.target.value])
-  }
 
   if (session && session.user.email == process.env.NEXT_PUBLIC_USER_EMAIL) {
 
@@ -120,12 +116,12 @@ const Draft = () => {
               value={content}
             />
 
-            <label css={{color: 'var(--color-gray)'}} htmlFor="category">Category: </label>
-            <select
-              onChange={e => handleCategoryChange(e)}
-            >
-              { populateCategories.map((category, key) => <option key={key} value={key}>{category}</option> )}
-            </select >
+            <Dropdown
+              label="Category"
+              value={category}
+              handleChange={e => setCategory(e.target.value)}
+              data={categories}
+            />
 
             <div className="formSubmit">
               <button

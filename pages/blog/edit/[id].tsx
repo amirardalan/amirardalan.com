@@ -6,6 +6,7 @@ import Container from '@/components/Container'
 import BlogLayout from '@/components/BlogLayout'
 import Link from 'next/link'
 import LoadingTriangle from '@/components/LoadingTriangle'
+import Dropdown from '@/components/Dropdown'
 
 import { admin, breadcrumb } from '@/data/content'
 import { categories } from '@/data/categories'
@@ -24,7 +25,6 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 
 const Edit = ({ editPost }) => {
 
-
   const isPublished = editPost.published
   const id = editPost.id
   const editTitle = editPost.title
@@ -41,19 +41,11 @@ const Edit = ({ editPost }) => {
   const [category, setCategory] = useState(editCategory)
 
 
-  const populateCategories = categories.map(populateCategories => populateCategories)
-  const handleCategoryChange = (e) => {
-    setCategory(categories[e.target.value])
-  }
-
-  console.log(editCategory)
-
-
   const submitData = async (e: React.SyntheticEvent) => {
 
     e.preventDefault()
     try {
-      const body = { id, title, slug, teaser, content }
+      const body = { id, title, slug, teaser, content, category }
       await fetch('/api/update', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -155,12 +147,12 @@ const Edit = ({ editPost }) => {
               value={content}
             />
 
-            <label css={{color: 'var(--color-gray)'}} htmlFor="category">Category: </label>
-            <select
-              onChange={e => handleCategoryChange(e)}
-            >
-              { populateCategories.map((category, key) => <option key={key} value={key}>{category}</option> )}
-            </select >
+            <Dropdown
+              label="Category"
+              value={category}
+              handleChange={e => setCategory(e.target.value)}
+              data={categories}
+            />
 
             <div className="formSubmit">
               <button
