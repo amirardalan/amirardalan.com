@@ -1,4 +1,4 @@
-import { css, useTheme } from '@emotion/react'
+import { css } from '@emotion/react'
 
 const styleBlogLayout = css({
   '.breadcrumbs': {
@@ -433,9 +433,7 @@ const styleBlogLayout = css({
   },
 })
 
-const BlogLayout = (props) => {
-
-  const theme = useTheme()
+const BlogLayout = (props: any) => {
 
   return (
     <div css={styleBlogLayout}>
