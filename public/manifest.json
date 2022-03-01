@@ -16,10 +16,10 @@
     }
   ],
   "start_url": "https://amirardalan.com",
-  "background_color": "#e2e2e2",
+  "background_color": "#262738",
   "display": "standalone",
   "scope": "/",
-  "theme_color": "#7A00CC",
+  "theme_color": "#3dffc5",
   "shortcuts": [
     {
       "name": "Amir Ardalan Blog",
