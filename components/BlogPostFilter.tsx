@@ -28,7 +28,9 @@ const BlogPostFilter = ({ feed }) => {
       return (
         filteredPosts.sort(sortBlogPosts).reverse().map((post) => (
           <span key={post.id}>
-            <p className="category">{post.category}</p>
+            <p className="category" aria-label={post.category}>
+              {post.category}
+            </p>
             <BlogPost post={post} />
           </span>
         ))
