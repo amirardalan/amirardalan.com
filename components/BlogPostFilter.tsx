@@ -27,10 +27,10 @@ const BlogPostFilter = ({ feed }) => {
     if (filteredPosts.length > 0) {
       return (
         filteredPosts.sort(sortBlogPosts).reverse().map((post) => (
-          <>
+          <span key={post.id}>
             <p className="category">{post.category}</p>
-            <BlogPost key={post.id} post={post} />
-          </>
+            <BlogPost post={post} />
+          </span>
         ))
       )
     } else {
