@@ -16,6 +16,7 @@ model Post {
   title         String
   teaser        String?
   content       String?
+  category      String?
   published     Boolean  @default(false)
   author        User?    @relation(fields: [authorId], references: [id])
   authorId      Int?

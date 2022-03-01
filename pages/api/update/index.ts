@@ -4,7 +4,7 @@ import prisma from '@/lib/prisma'
 
 // POST /api/update
 export default async function handle(req: NextApiRequest, res: NextApiResponse) {
-  const { id, title, content, slug, teaser } = req.body
+  const { id, title, content, slug, teaser, category } = req.body
 
   const result = await prisma.post.update({
     where: {
@@ -15,6 +15,7 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
       content: content,
       slug: slug,
       teaser: teaser,
+      category: category,
     },
   })
   res.json(result)

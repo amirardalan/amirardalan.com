@@ -6,8 +6,10 @@ import Container from '@/components/Container'
 import BlogLayout from '@/components/BlogLayout'
 import Link from 'next/link'
 import LoadingTriangle from '@/components/LoadingTriangle'
+import Dropdown from '@/components/Dropdown'
 
 import { admin, breadcrumb } from '@/data/content'
+import { categories } from '@/data/categories'
 import { GetServerSideProps } from 'next'
 import prisma from '@/lib/prisma'
 
@@ -23,7 +25,6 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 
 const Edit = ({ editPost }) => {
 
-
   const isPublished = editPost.published
   const id = editPost.id
   const editTitle = editPost.title
@@ -31,18 +32,20 @@ const Edit = ({ editPost }) => {
   const editContent = editPost.content
   const editSlug = editPost.slug
   const editTeaser = editPost.teaser
-
+  const editCategory = editPost.category
 
   const [title, setTitle] = useState(editTitle)
   const [content, setContent] = useState(editContent)
   const [slug, setSlug] = useState(editSlug)
   const [teaser, setTeaser] = useState(editTeaser)
+  const [category, setCategory] = useState(editCategory)
+
 
   const submitData = async (e: React.SyntheticEvent) => {
 
     e.preventDefault()
     try {
-      const body = { id, title, slug, teaser, content }
+      const body = { id, title, slug, teaser, content, category }
       await fetch('/api/update', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -142,6 +145,13 @@ const Edit = ({ editPost }) => {
               placeholder={admin.input.placeholder.content}
               rows={8}
               value={content}
+            />
+
+            <Dropdown
+              label="Category"
+              value={category}
+              handleChange={e => setCategory(e.target.value)}
+              data={categories}
             />
 
             <div className="formSubmit">

@@ -3,7 +3,9 @@ import Router from 'next/router'
 import Link from 'next/link'
 import Container from '@/components/Container'
 import BlogLayout from '@/components/BlogLayout'
+import Dropdown from '@/components/Dropdown'
 import { admin, breadcrumb } from '@/data/content'
+import { categories } from '@/data/categories'
 import { useSession } from 'next-auth/client'
 import LoadingTriangle from '@/components/LoadingTriangle'
 
@@ -14,11 +16,12 @@ const Draft = () => {
   const [content, setContent] = useState('')
   const [slug, setSlug] = useState('')
   const [teaser, setTeaser] = useState('')
+  const [category, setCategory] = useState(categories[0])
 
   const submitData = async (e: React.SyntheticEvent) => {
     e.preventDefault()
     try {
-      const body = { title, slug, teaser, content }
+      const body = { title, slug, teaser, content, category }
       await fetch('/api/post', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -113,10 +116,17 @@ const Draft = () => {
               value={content}
             />
 
+            <Dropdown
+              label="Category"
+              value={category}
+              handleChange={e => setCategory(e.target.value)}
+              data={categories}
+            />
+
             <div className="formSubmit">
               <button
                 className="buttonCompact"
-                disabled={!content || !title || !slug || !teaser}
+                disabled={!content || !title || !slug || !teaser || category === '-'}
                 type="submit">
                 {admin.controls.save}
               </button>
