@@ -2,6 +2,7 @@ import { css } from '@emotion/react'
 
 const styleBlogLayout = css({
   '.blogCategoryNav': {
+    paddingBottom: '.5rem',
     overflow: 'scroll',
     whiteSpace: 'nowrap',
     '&::-webkit-scrollbar': {
@@ -51,6 +52,9 @@ const styleBlogLayout = css({
       textTransform: 'uppercase',
       color: 'var(--color-accent-color)',
       textDecoration: 'none',
+      '&.active': {
+        borderBottom: '2px solid var(--color-accent-color)'
+      },
       '&:before': {
         content: '"#"'
       },

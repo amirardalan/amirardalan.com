@@ -24,6 +24,7 @@ const BlogPostFilter = ({ feed }) => {
     window.scrollTo(0, 0)
   }
 
+
   const filteredPosts = search.length > 0 && search[0] === '#'
     ? feed.filter(data => data?.category?.toLowerCase().includes(search.slice(1).toLowerCase()))
     : feed.filter(data => data?.title?.toLowerCase().includes(search.toLowerCase()))
@@ -103,7 +104,7 @@ const BlogPostFilter = ({ feed }) => {
               href='javascript:void(0)'
               onClick={() => setSearch('')}
               onKeyPress={() => setSearch('')}
-              className="category"
+              className={search === '' ? "category active" : "category"}
               aria-label="All"
             >
               All
@@ -115,7 +116,7 @@ const BlogPostFilter = ({ feed }) => {
                 href='javascript:void(0)'
                 onClick={() => handleCategoryLink(category)}
                 onKeyPress={() => handleCategoryLink(category)}
-                className="category"
+                className={search === '#'+category ? "category active" : "category"}
                 aria-label={category}
               >
                 {category}
