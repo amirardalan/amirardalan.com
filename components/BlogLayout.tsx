@@ -16,7 +16,8 @@ const styleBlogLayout = css({
       fontSize: 12,
       color: 'var(--color-gray)',
       '@media(max-width: 768px)': {
-        display: 'none',
+        display: 'block',
+        marginBottom: '.5rem'
       }
     },
   },
