@@ -44,7 +44,26 @@ const BlogPostFilter = ({ feed }) => {
         ))
       )
     } else {
-        return <span>{blog.search.noresult}</span>
+        return <span>{blog.search.noresult} <a onClick={() => setSearch('')}>{blog.search.clear}</a></span>
+    }
+  }
+
+  const SearchIcons: Function = () => {
+    if (search.length === 0) {
+      return (
+        <div className="icon">
+          <Image
+            src={theme.icons.search}
+            height="23"
+            width="23"
+            priority
+            alt={blog.search.placeholder}
+            draggable={false}
+          />
+        </div>
+      )
+    } else {
+      return <div onClick={() => setSearch('')} className="clearSearch">✕</div>
     }
   }
 
@@ -75,16 +94,7 @@ const BlogPostFilter = ({ feed }) => {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
-        <div className="icon">
-          <Image
-            src={theme.icons.search}
-            height="23"
-            width="23"
-            priority
-            alt={blog.search.placeholder}
-            draggable={false}
-          />
-        </div>
+        <SearchIcons />
       </div>
       <div>
         {showFeedError

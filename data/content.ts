@@ -71,8 +71,9 @@ export const blog = {
   },
   search: {
     placeholder: 'Search posts',
-    noresult: 'No posts found.'
-  }
+    noresult: 'No posts found.',
+    clear: 'Clear search'
+  },
 }
 
 export const blogPost = {

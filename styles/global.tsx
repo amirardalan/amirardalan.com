@@ -350,6 +350,9 @@ export function GlobalStyles () {
       }}/>
       <Global styles={{
         // Utils
+        '.hidden': {
+          display: 'none'
+        },
         '.center': {
           display: 'flex',
           justifyContent: 'center',

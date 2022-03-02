@@ -271,6 +271,20 @@ const styleBlogLayout = css({
       right: 0,
       background: 'var(--color-accent)',
       width: 35,
+    },
+    '.clearSearch': {
+      display: 'flex',
+      justifyContent: 'center',
+      position: 'absolute',
+      backgroundColor: 'var(--color-accent-color)',
+      color: 'var(--color-bg)',
+      fontSize: 18,
+      borderRadius: '50px',
+      width: 25,
+      height: 25,
+      top: 16,
+      right: 8,
+      cursor: 'pointer'
     }
   },
   '.postFull': {
