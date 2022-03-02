@@ -2,7 +2,6 @@ import { css } from '@emotion/react'
 
 const styleBlogLayout = css({
   '.blogCategoryNav': {
-    paddingBottom: '.5rem',
     overflow: 'scroll',
     whiteSpace: 'nowrap',
     '&::-webkit-scrollbar': {
@@ -47,6 +46,7 @@ const styleBlogLayout = css({
     maxWidth: 768,
     margin: '0 auto',
     '.category': {
+      marginBottom: '.5rem',
       fontFamily: 'var(--font-primary)',
       fontSize: 12,
       textTransform: 'uppercase',
@@ -292,11 +292,7 @@ const styleBlogLayout = css({
       top: 16,
       right: 8,
       cursor: 'pointer',
-      '&:focus': {
-        boxShadow: '2px solid var(--color-gray) !important',
-        outline: '2px solid var(--color-gray) !important'
-      }
-    }
+    },
   },
   '.postFull': {
     '.category': {

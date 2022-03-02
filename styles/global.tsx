@@ -190,6 +190,7 @@ export function GlobalStyles () {
       <Global styles={{
         // Base
         'html, body': {
+          scrollBehavior: 'smooth',
           backgroundColor: 'var(--color-bg)',
           fontFamily: 'var(--font-primary)',
           color: 'var(--color-text)',
@@ -245,6 +246,15 @@ export function GlobalStyles () {
         },
         'button, input, textarea': {
           fontFamily: 'var(--font-primary)'
+        },
+        button: {
+          background: 'transparent',
+          border: 'none',
+          fontFamily: 'inherit',
+          fontSize: 'inherit',
+          fontWeight: 'inherit',
+          color: 'var(--color-accent-color)',
+          cursor: 'pointer',
         },
         '.icon': {
           WebkitTransformStyle: 'preserve-3d',

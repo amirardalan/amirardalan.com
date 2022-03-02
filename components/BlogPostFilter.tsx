@@ -34,14 +34,14 @@ const BlogPostFilter = ({ feed }) => {
       return (
         filteredPosts.sort(sortBlogPosts).reverse().map((post) => (
           <span key={post.id}>
-            <a
+            <button
               onClick={() => handleCategoryLink(post.category)}
               onKeyPress={() => handleCategoryLink(post.category)}
               className="category"
               aria-label={post.category}
             >
               {post.category}
-            </a>
+            </button>
             <BlogPost post={post} />
           </span>
         ))
@@ -50,14 +50,14 @@ const BlogPostFilter = ({ feed }) => {
         return (
           <span>
             {blog.search.noresult}{' '}
-            <a
-              href='javascript:void(0)'
+            <button
               onClick={() => setSearch('')}
               onKeyPress={() => setSearch('')}
+              className="clearSearch"
               aria-label={blog.search.clear}
             >
               {blog.search.clear}
-            </a>
+            </button>
           </span>
         )
     }
@@ -100,27 +100,25 @@ const BlogPostFilter = ({ feed }) => {
             {' '}Categories:
           </li>
           <li>
-            <a
-              href='javascript:void(0)'
+            <button
               onClick={() => setSearch('')}
               onKeyPress={() => setSearch('')}
               className={search === '' ? "category active" : "category"}
               aria-label="All"
             >
               All
-            </a>
+            </button>
           </li>
           {categories.slice(1).map((category) => (
             <li key={category}>
-              <a
-                href='javascript:void(0)'
+              <button
                 onClick={() => handleCategoryLink(category)}
                 onKeyPress={() => handleCategoryLink(category)}
                 className={search === '#'+category ? "category active" : "category"}
                 aria-label={category}
               >
                 {category}
-              </a>
+              </button>
             </li>
           ))}
         </ul>
