@@ -34,6 +34,7 @@ const BlogPostFilter = ({ feed }) => {
           <span key={post.id}>
             <a
               onClick={() => handleCategoryLink(post.category)}
+              onKeyPress={() => handleCategoryLink(post.category)}
               className="category"
               aria-label={post.category}
             >
@@ -44,7 +45,18 @@ const BlogPostFilter = ({ feed }) => {
         ))
       )
     } else {
-        return <span>{blog.search.noresult} <a onClick={() => setSearch('')}>{blog.search.clear}</a></span>
+        return (
+          <span>
+            {blog.search.noresult}
+            <a
+              onClick={() => setSearch('')}
+              onKeyPress={() => setSearch('')}
+              tabIndex={0}
+            >
+              {blog.search.clear}
+            </a>
+          </span>
+        )
     }
   }
 
@@ -63,7 +75,15 @@ const BlogPostFilter = ({ feed }) => {
         </div>
       )
     } else {
-      return <div onClick={() => setSearch('')} className="clearSearch">✕</div>
+        return (
+          <button
+            onClick={() => setSearch('')}
+            className="clearSearch"
+            tabIndex={0}
+          >
+            ✕
+          </button>
+        )
     }
   }
 
@@ -79,7 +99,12 @@ const BlogPostFilter = ({ feed }) => {
           </li>
           {categories.slice(1).map((category) => (
             <li key={category}>
-              <a onClick={() => handleCategoryLink(category)} className="category">
+              <a
+                onClick={() => handleCategoryLink(category)}
+                onKeyPress={() => handleCategoryLink(category)}
+                className="category"
+                tabIndex={0}
+              >
                 {category}
               </a>
             </li>

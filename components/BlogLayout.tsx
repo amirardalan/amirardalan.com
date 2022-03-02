@@ -286,6 +286,7 @@ const styleBlogLayout = css({
       fontSize: 18,
       lineHeight: '1.5rem',
       borderRadius: '50px',
+      border: 'none',
       width: 25,
       height: 25,
       top: 16,
