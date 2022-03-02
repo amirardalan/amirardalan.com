@@ -3,7 +3,6 @@ import { useTheme } from '@emotion/react'
 import Image from 'next/image'
 
 import BlogPost from '@/components/BlogPost'
-import { categories } from '@/data/categories'
 import { blog } from '@/data/content'
 import sortBlogPosts from '@/utils/sortBlogPosts'
 
