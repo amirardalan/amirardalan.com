@@ -54,9 +54,6 @@ const styleBlogLayout = css({
       '&:before': {
         content: '"#"'
       },
-      '&:focus': {
-        boxShadow: 'none',
-      }
     },
     'h2, h3, h4': {
       fontFamily: 'var(font-secondary)',
@@ -290,7 +287,11 @@ const styleBlogLayout = css({
       height: 25,
       top: 16,
       right: 8,
-      cursor: 'pointer'
+      cursor: 'pointer',
+      '&:focus': {
+        boxShadow: '2px solid var(--color-gray) !important',
+        outline: '2px solid var(--color-gray) !important'
+      }
     }
   },
   '.postFull': {

@@ -50,10 +50,10 @@ const BlogPostFilter = ({ feed }) => {
           <span>
             {blog.search.noresult}{' '}
             <a
+              href='javascript:void(0)'
               onClick={() => setSearch('')}
               onKeyPress={() => setSearch('')}
               aria-label={blog.search.clear}
-              tabIndex={0}
             >
               {blog.search.clear}
             </a>
@@ -81,7 +81,6 @@ const BlogPostFilter = ({ feed }) => {
           <button
             onClick={() => setSearch('')}
             className="clearSearch"
-            tabIndex={0}
           >
             ✕
           </button>
@@ -101,11 +100,11 @@ const BlogPostFilter = ({ feed }) => {
           </li>
           <li>
             <a
+              href='javascript:void(0)'
               onClick={() => setSearch('')}
               onKeyPress={() => setSearch('')}
               className="category"
               aria-label="All"
-              tabIndex={0}
             >
               All
             </a>
@@ -113,11 +112,11 @@ const BlogPostFilter = ({ feed }) => {
           {categories.slice(1).map((category) => (
             <li key={category}>
               <a
+                href='javascript:void(0)'
                 onClick={() => handleCategoryLink(category)}
                 onKeyPress={() => handleCategoryLink(category)}
                 className="category"
                 aria-label={category}
-                tabIndex={0}
               >
                 {category}
               </a>
