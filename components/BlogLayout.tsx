@@ -7,12 +7,16 @@ const styleBlogLayout = css({
     '&::-webkit-scrollbar': {
       display: 'none'
     },
+    ul: {
+      '@media (max-width: 768px)': {
+        minHeight: 56
+      }
+    },
     'ul li': {
       display: 'inline',
       margin: '0 1.5rem 0 0',
     },
     'li:first-of-type': {
-      fontFamily: 'var(--font-primary)',
       fontSize: 12,
       color: 'var(--color-gray)',
       '@media(max-width: 768px)': {
