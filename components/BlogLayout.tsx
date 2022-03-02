@@ -1,19 +1,29 @@
 import { css } from '@emotion/react'
 
 const styleBlogLayout = css({
+  '.blogCategoryNav': {
+    'ul li': {
+      display: 'inline',
+      margin: '0 1.5rem 0 0',
+      a: {
+        color: 'var(--color-accent-color)'
+      },
+    },
+    'li:first-of-type': {
+      fontFamily: 'var(--font-primary)',
+      fontSize: 12,
+      color: 'var(--color-gray)',
+      '@media(max-width: 768px)': {
+        display: 'none',
+      }
+    },
+  },
   '.breadcrumbs': {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
     color: 'var(--color-gray)',
     fontSize: 13,
-    '&::before': {
-      paddingRight: '.5rem',
-      display: 'flex',
-      content: '"📋"',
-      color: 'var(--color-link)',
-      fontSize: 20,
-    },
     a: {
       textDecoration: 'none',
       '&::after': {
@@ -39,6 +49,7 @@ const styleBlogLayout = css({
       fontSize: 12,
       textTransform: 'uppercase',
       color: 'var(--color-accent-color)',
+      textDecoration: 'none',
       '&:before': {
         content: '"#"'
       }
@@ -47,19 +58,12 @@ const styleBlogLayout = css({
       fontFamily: 'var(font-secondary)',
     },
     '.blogHeading': {
-      display: 'flex',
+      display: 'inline',
       color: 'var(--color-gray)',
       fontFamily: 'var(--font-primary)',
       fontSize: 13,
       fontWeight: 'normal',
       textDecoration: 'none',
-      '&::before': {
-        paddingRight: '.5rem',
-        display: 'flex',
-        content: '"📋"',
-        color: 'var(--color-link)',
-        fontSize: 20,
-      },
     },
     h2: {
       margin: 0,
@@ -260,6 +264,7 @@ const styleBlogLayout = css({
     display: 'flex',
     position: 'relative',
     marginTop: '.5rem',
+    caretColor: 'var(--color-gray)',
     '.icon': {
       position: 'absolute',
       top: 16,
@@ -269,6 +274,9 @@ const styleBlogLayout = css({
     }
   },
   '.postFull': {
+    '.category': {
+      color: 'var(--color-gray)',
+    },
     '.postDetails': {
       marginBottom: '2.5rem',
     },

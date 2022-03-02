@@ -25,10 +25,6 @@ const Blog = ({ data, feed }) => {
       <BlogLayout>
         <div className="blog">
 
-          <h1 className="blogHeading breadcrumbs" aria-label={blog.heading}>
-            {blog.heading}
-          </h1>
-
           <BlogPostFilter feed={feed} />
 
         </div>

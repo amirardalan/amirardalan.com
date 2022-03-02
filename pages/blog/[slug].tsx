@@ -136,7 +136,10 @@ const Post = ({ post, feed, data }) => {
 
         <div className="post postFull">
 
-          <p className="category" aria-label={post.category}>
+          <p
+            className="category"
+            aria-label={post.category}
+          >
             {post.category}
           </p>
           <h2 aria-label={`${title}`}>
