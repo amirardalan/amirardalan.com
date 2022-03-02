@@ -24,6 +24,9 @@ const BlogPostFilter = ({ feed }) => {
     window.scrollTo(0, 0)
   }
 
+  const activeCategories: Array<string> = Array.from(new Set(feed.map((post) => {
+    return post.category
+  })))
 
   const filteredPosts = search.length > 0 && search[0] === '#'
     ? feed.filter(data => data?.category?.toLowerCase().includes(search.slice(1).toLowerCase()))
@@ -109,8 +112,8 @@ const BlogPostFilter = ({ feed }) => {
               All
             </button>
           </li>
-          {categories.slice(1).map((category) => (
-            <li key={category}>
+          {activeCategories.map((category, index) => (
+            <li key={index}>
               <button
                 onClick={() => handleCategoryLink(category)}
                 onKeyPress={() => handleCategoryLink(category)}
