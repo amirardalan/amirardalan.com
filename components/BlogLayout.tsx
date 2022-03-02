@@ -2,6 +2,11 @@ import { css } from '@emotion/react'
 
 const styleBlogLayout = css({
   '.blogCategoryNav': {
+    overflow: 'scroll',
+    whiteSpace: 'nowrap',
+    '&::-webkit-scrollbar': {
+      display: 'none'
+    },
     'ul li': {
       display: 'inline',
       margin: '0 1.5rem 0 0',
@@ -279,6 +284,7 @@ const styleBlogLayout = css({
       backgroundColor: 'var(--color-accent-color)',
       color: 'var(--color-bg)',
       fontSize: 18,
+      lineHeight: '1.5rem',
       borderRadius: '50px',
       width: 25,
       height: 25,
