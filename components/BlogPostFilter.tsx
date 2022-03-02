@@ -21,6 +21,7 @@ const BlogPostFilter = ({ feed }) => {
 
   const handleCategoryLink = (category) => {
     setSearch('#'+category)
+    window.scrollTo(0, 0)
   }
 
   const filteredPosts = search.length > 0 && search[0] === '#'
