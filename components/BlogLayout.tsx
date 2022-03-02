@@ -10,9 +10,6 @@ const styleBlogLayout = css({
     'ul li': {
       display: 'inline',
       margin: '0 1.5rem 0 0',
-      a: {
-        color: 'var(--color-accent-color)'
-      },
     },
     'li:first-of-type': {
       fontFamily: 'var(--font-primary)',
@@ -49,7 +46,6 @@ const styleBlogLayout = css({
     maxWidth: 768,
     margin: '0 auto',
     '.category': {
-      marginBottom: '.2rem',
       fontFamily: 'var(--font-primary)',
       fontSize: 12,
       textTransform: 'uppercase',
@@ -57,6 +53,9 @@ const styleBlogLayout = css({
       textDecoration: 'none',
       '&:before': {
         content: '"#"'
+      },
+      '&:focus': {
+        boxShadow: 'none',
       }
     },
     'h2, h3, h4': {

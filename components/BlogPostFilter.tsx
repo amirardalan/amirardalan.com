@@ -47,10 +47,11 @@ const BlogPostFilter = ({ feed }) => {
     } else {
         return (
           <span>
-            {blog.search.noresult}
+            {blog.search.noresult}{' '}
             <a
               onClick={() => setSearch('')}
               onKeyPress={() => setSearch('')}
+              aria-label={blog.search.clear}
               tabIndex={0}
             >
               {blog.search.clear}
@@ -97,12 +98,24 @@ const BlogPostFilter = ({ feed }) => {
             </h1>
             {' '}Categories:
           </li>
+          <li>
+            <a
+              onClick={() => setSearch('')}
+              onKeyPress={() => setSearch('')}
+              className="category"
+              aria-label="All"
+              tabIndex={0}
+            >
+              All
+            </a>
+          </li>
           {categories.slice(1).map((category) => (
             <li key={category}>
               <a
                 onClick={() => handleCategoryLink(category)}
                 onKeyPress={() => handleCategoryLink(category)}
                 className="category"
+                aria-label={category}
                 tabIndex={0}
               >
                 {category}
@@ -117,6 +130,7 @@ const BlogPostFilter = ({ feed }) => {
           type="text"
           placeholder={blog.search.placeholder}
           value={search}
+          aria-label={blog.search.placeholder}
           onChange={(e) => setSearch(e.target.value)}
         />
         <SearchIcons />
