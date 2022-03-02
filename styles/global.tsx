@@ -6,10 +6,10 @@ const fontSecondary = '"Poppins", Helvetica, Arial, sans-serif'
 const fontTertiary = '"Lora", "Times New Roman", Times, serif'
 
 // Colors
-const light= '#e4e9f8'
+const light = '#e4e9f8'
 const lightAccent = '#d8ddf0'
 const lighter = '#d8dbed'
-const dark= '#262738'
+const dark = '#262738'
 const darkAccent = '#333448'
 const darker = '#191a22'
 const primary = '#744164'
@@ -20,8 +20,8 @@ const grayAccentLight = '#b7b7c9'
 const grayAccentDark = '#494a5c'
 const buttonDisabled = '#9e9eb6'
 const warning = '#ec4949'
-const codeHighlightDark = '#41425e'
-const codeHighlightLight = '#cbcfe4'
+const codeHighlightDark = '#3e3f5a'
+const codeHighlightLight = '#d1d3e7'
 const codeDark = '#3dffc5'
 const codeLight = '#744164'
 const codeCommentDark = '#929aee'
@@ -350,6 +350,9 @@ export function GlobalStyles () {
       }}/>
       <Global styles={{
         // Utils
+        '.hidden': {
+          display: 'none'
+        },
         '.center': {
           display: 'flex',
           justifyContent: 'center',
