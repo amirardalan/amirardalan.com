@@ -45,14 +45,14 @@ export default function Navigation() {
       position: 'absolute',
       left: -200,
       top: 0,
+      '@media (max-width: 768px) and (max-height: 600px)': {
+        width: 400,
+        left: -400
+      }
     },
     '@media(min-width: 769px)': {
       display: 'none',
     },
-    '@media (max-width: 768px) and (max-height: 600px)': {
-      flexDirection: 'row-reverse',
-      justifyContent: 'space-between',
-    }
   })
   const styleMobileNavButton = css({
     alignItems: 'center',
@@ -144,7 +144,7 @@ export default function Navigation() {
       lineHeight: '3.4rem',
     },
     '@media (max-width: 768px) and (max-height: 600px)': {
-      paddingRight: '2.5rem',
+      paddingRight: '1rem',
       alignItems: 'flex-end',
       lineHeight: '3rem',
     },
@@ -167,6 +167,9 @@ export default function Navigation() {
       textAlign: 'right',
       animation: 'slideUp .4s ease',
     },
+    '@media (max-width: 768px) and (max-height: 600px)': {
+      display: 'none',
+    }
   })
 
   // Mobile Menu
