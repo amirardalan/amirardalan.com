@@ -125,12 +125,6 @@ export default function Home({ data, latestPost }) {
     position: 'relative',
     display: 'flex',
     flexDirection: 'column',
-    animation: 'fadeIn .5s forwards',
-    '&:hover': {
-      '.canvasInfo': {
-        animation: 'fadeIn .2s forwards'
-      }
-    },
     '@media (max-width: 1024px)': {
       marginTop: 0,
     },
