@@ -9,7 +9,6 @@ export default function Timeline() {
   const [ref, inView]: any = useInView({
     threshold: 0,
   })
-
   
   const styleTimelineWrapper = css({
     paddingTop: '2rem',
@@ -30,7 +29,7 @@ export default function Timeline() {
   const styleTimeline = css({
     display: 'grid',
     gridTemplateColumns: 'repeat(2, 1fr)',
-    '.timeline': {
+    '[class*="timeline-"]': {
       '&:nth-of-type(even), &:nth-of-type(odd)': {
         '.event': {
           maxWidth: 400,
@@ -161,16 +160,23 @@ export default function Timeline() {
     fontFamily: 'var(--font-secondary)',
   })
 
-  const generateTimeline = (items: Array<any>) => {
-    return items.map((items, i) => {
+  const generateTimeline = (item: Array<any>) => {
+    return item.map((item, i) => {
       return (
-        <InView key={i} as="div" className="timeline" onChange={(inView) => {
-          inView ? document.querySelector(".timeline").classList.add("active") : null
-          console.log(inView)
+        <InView key={i} as="div" className={'section timeline-'+`${i}`} onChange={(ref, inView)=> {
+
+          const section = document.getElementById("timeline").closest('.section').classList
+
+          inView
+            ? section.add('active')
+            : section.remove('active')
+
+          {console.log('id:'+i, ref, inView)} 
+
         }}>
-          <div className={items.cName}>
-            <h4>{items.title}</h4>
-            <span>{items.content}</span>
+          <div className={item.cName}>
+            <h4>{item.title}</h4>
+            <span>{item.content}</span>
           </div>
         </InView>
       )
@@ -179,10 +185,10 @@ export default function Timeline() {
 
 
   return (
-    <div css={{ marginTop: '4rem' }}>
+    <>
       <h2 className="pageHeading center">
-          {timeline.meta.title}
-        </h2>
+        {timeline.meta.title}
+      </h2>
       <div css={styleTimelineWrapper} id="timeline">
         <div className="timelineScroll"></div>
         <div css={styleTimeline}>
@@ -194,6 +200,6 @@ export default function Timeline() {
           </Link>
         </div>
       </div>
-    </div>
+    </>
   )
 }
