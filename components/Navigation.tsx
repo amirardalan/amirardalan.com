@@ -141,7 +141,7 @@ export default function Navigation() {
       alignItems: 'flex-end',
       fontSize: 'calc(3vw + 3vh)',
       WebkitMarqueeIncrement: '0vw',
-      lineHeight: '4rem',
+      lineHeight: '3.4rem',
     },
     '@media (max-width: 768px) and (max-height: 600px)': {
       paddingRight: '2.5rem',
