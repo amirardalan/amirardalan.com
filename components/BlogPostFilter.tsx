@@ -111,7 +111,7 @@ const BlogPostFilter = ({ feed }) => {
               All
             </button>
           </li>
-          {activeCategories.sort().reverse().map((category, index) => (
+          {activeCategories.sort().map((category, index) => (
             <li key={index}>
               <button
                 onClick={() => handleCategoryLink(category)}
