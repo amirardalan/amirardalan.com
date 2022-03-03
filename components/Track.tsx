@@ -35,7 +35,7 @@ export default function Track(track: any) {
       '.artist': {
         fontFamily: 'var(--font-primary)',
         fontWeight: 'normal',
-        fontSize: 'calc(.9vw + .9vh)',
+        fontSize: 'calc(1vw + 1vh)',
       },
       '@media(max-width: 600px)': {
         gridTemplateColumns: '10% 38% 40%',
