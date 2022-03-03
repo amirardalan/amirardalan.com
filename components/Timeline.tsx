@@ -1,15 +1,33 @@
 import { css } from '@emotion/react'
 import { timeline } from '@/data/content'
 import Link from 'next/link'
+import { useInView, InView } from 'react-intersection-observer';
 
 
 export default function Timeline() {
 
+  const [ref, inView]: any = useInView({
+    threshold: 0,
+  })
+
+  
   const styleTimelineWrapper = css({
-    paddingTop: '4rem',
+    paddingTop: '2rem',
+    position: 'relative',
+    '.timelineScroll': {
+      zIndex: 3,
+      position: 'absolute',
+      marginLeft: 'auto',
+      marginRight: 'auto',
+      top: 40,
+      left: 0,
+      right: 3,
+      width: 3,
+      height: 0,
+      background: 'var(--color-accent-color)',
+    }
   })
   const styleTimeline = css({
-    marginTop: '2rem',
     display: 'grid',
     gridTemplateColumns: 'repeat(2, 1fr)',
     '.timeline': {
@@ -38,14 +56,18 @@ export default function Timeline() {
         zIndex: 2,
         position: 'relative',
         justifySelf: 'flex-end',
-        borderRight: '2px solid var(--color-accent-gray)',
+        borderRight: '3px solid var(--color-accent-gray)',
+        '&.active': {
+          zIndex: 3,
+          borderRight: '3px solid var(--color-accent-color)',
+        },
         '&:after': {
           position: 'absolute',
-          top: -32,
-          right: -19,
+          top: -50,
+          right: -25,
           content: '"•"',
-          fontSize: 60,
-          color: 'var(--color-gray)',
+          fontSize: 80,
+          color: 'var(--color-accent-color)',
         },
         '.event': {
           '&:before': {
@@ -131,6 +153,7 @@ export default function Timeline() {
       }
     }
   })
+
   const styleReadMoreLink = ({
     marginTop: '2rem',
     display: 'flex',
@@ -141,29 +164,35 @@ export default function Timeline() {
   const generateTimeline = (items: Array<any>) => {
     return items.map((items, i) => {
       return (
-        <div className="timeline" key={i}>
+        <InView key={i} as="div" className="timeline" onChange={(inView) => {
+          inView ? document.querySelector(".timeline").classList.add("active") : null
+          console.log(inView)
+        }}>
           <div className={items.cName}>
             <h4>{items.title}</h4>
             <span>{items.content}</span>
           </div>
-        </div>
+        </InView>
       )
     })
   }
 
 
   return (
-    <div css={styleTimelineWrapper} id="timeline">
+    <div css={{ marginTop: '4rem' }}>
       <h2 className="pageHeading center">
-        {timeline.meta.title}
-      </h2>
-      <div css={styleTimeline}>
-        {generateTimeline(timeline.items)}
-      </div>
-      <div css={styleReadMoreLink}>
-        <Link href="/blog/2021-a-dev-odyssey">
-          Read the Full Story
-        </Link>
+          {timeline.meta.title}
+        </h2>
+      <div css={styleTimelineWrapper} id="timeline">
+        <div className="timelineScroll"></div>
+        <div css={styleTimeline}>
+          {generateTimeline(timeline.items)}
+        </div>
+        <div css={styleReadMoreLink}>
+          <Link href="/blog/2021-a-dev-odyssey">
+            Read the Full Story
+          </Link>
+        </div>
       </div>
     </div>
   )
