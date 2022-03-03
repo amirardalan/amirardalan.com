@@ -26,13 +26,13 @@ export default function BlogNavigation({ feed, post, isPublished }) {
   const ShowPrevLink = () =>
     <div css={stylePrevLink}>
       <Link href={prevLink} aria-label={prevTitle}>
-        <a onClick={() => window.scrollTo(0, 0)}>← {prevTitle}</a>
+        <a>← {prevTitle}</a>
       </Link>
     </div>
   const ShowNextLink = () =>
     <div css={styleNextLink}>
       <Link href={nextLink} aria-label={nextTitle}>
-        <a onClick={() => window.scrollTo(0, 0)}>{nextTitle} →</a>
+        <a>{nextTitle} →</a>
       </Link>
     </div>
 

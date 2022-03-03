@@ -190,7 +190,6 @@ export function GlobalStyles () {
       <Global styles={{
         // Base
         'html, body': {
-          scrollBehavior: 'smooth',
           backgroundColor: 'var(--color-bg)',
           fontFamily: 'var(--font-primary)',
           color: 'var(--color-text)',
