@@ -409,6 +409,10 @@ export function GlobalStyles () {
           from: { opacity: 0 },
           to: { opacity: 1 }
         },
+        '@keyframes fadeIn80': {
+          from: { opacity: 0 },
+          to: { opacity: .8 }
+        },
         '@keyframes fadeOut': {
           from: { opacity: 1 },
           to: { opacity: 0 }

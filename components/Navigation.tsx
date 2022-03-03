@@ -25,24 +25,33 @@ export default function Navigation() {
     }
   })
   const styleMobileNavWrapper = css ({
-    opacity: '.95',
+    padding: '2rem',
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center',
+    alignItems: 'left',
     justifyContent: 'center',
     position: 'absolute',
     height: '105vh',
-    width: '100vw',
+    width: '75vw',
     background: 'var(--color-bg)',
     top: 0,
-    left: 0,
+    right: 0,
+    '.closeArea': {
+      animation: 'fadeIn80 .6s ease',
+      opacity: '.80',
+      height: '100%',
+      width: 200,
+      background: 'var(--canvas-bg)',
+      position: 'absolute',
+      left: -200,
+      top: 0,
+    },
     '@media(min-width: 769px)': {
       display: 'none',
     },
     '@media (max-width: 768px) and (max-height: 600px)': {
       flexDirection: 'row-reverse',
       justifyContent: 'space-between',
-      paddingLeft: '2rem',
     }
   })
   const styleMobileNavButton = css({
@@ -58,7 +67,7 @@ export default function Navigation() {
     span: {
       display: 'block',
       position: 'absolute',
-      height: 2,
+      height: 3,
       width: '100%',
       background: 'var(--color-text)',
       opacity: 1,
@@ -129,7 +138,7 @@ export default function Navigation() {
     },
     '@media(max-width: 768px)': {
       flexDirection: 'column',
-      alignItems: 'center',
+      alignItems: 'flex-end',
       fontSize: 'calc(3vw + 3vh)',
       WebkitMarqueeIncrement: '0vw',
       lineHeight: '4rem',
@@ -146,19 +155,17 @@ export default function Navigation() {
     height: 80,
     display: 'flex',
     flexDirection: 'column-reverse',
-    alignItems: 'center',
+    alignItems: 'flex-end',
     justifyContent: 'space-between',
     fontFamily: 'var(--font-secondary)',
     position: 'relative',
     textAlign: 'center',
-    paddingTop: '1rem',
-    animation: 'slideUp .5s',
     a: {
       display: 'block',
       marginBottom: '.5rem',
       color: 'var(--color-gray)',
-      textAlign: 'center',
-      animation: 'slideUp .8s ease',
+      textAlign: 'right',
+      animation: 'slideUp .4s ease',
     },
   })
 
@@ -179,6 +186,10 @@ export default function Navigation() {
       <div css={styleMobileNavSecondary}>
         <Logo />
       </div>
+      <button
+        className="closeArea"
+        onClick={toggleMenu}
+      ></button>
     </div>
   )
 
