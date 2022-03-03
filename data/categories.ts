@@ -1,7 +1,9 @@
 export const categories = [
   "-",
-  "webdev",
+	"code",
   "design",
-  "tech",
+  "devops",
   "personal",
+  "tech",
+  "webdev",
 ]
