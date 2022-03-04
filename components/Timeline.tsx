@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { css } from '@emotion/react'
 import { timeline } from '@/data/content'
 import Link from 'next/link'
@@ -29,7 +30,7 @@ export default function Timeline() {
   const styleTimeline = css({
     display: 'grid',
     gridTemplateColumns: 'repeat(2, 1fr)',
-    '[class*="timeline-"]': {
+    '.timeline': {
       '&:nth-of-type(even), &:nth-of-type(odd)': {
         '.event': {
           maxWidth: 400,
@@ -160,20 +161,18 @@ export default function Timeline() {
     fontFamily: 'var(--font-secondary)',
   })
 
+  const [sectionHighlight, setSectionHighlight] = useState('')
+
+  function handleOnChange(inView) {
+    inView ? setSectionHighlight('active') : setSectionHighlight('')
+    // console.log(inView)
+  }
+
   const generateTimeline = (item: Array<any>) => {
     return item.map((item, i) => {
       return (
-        <InView key={i} as="div" className={'section timeline-'+`${i}`} onChange={(ref, inView)=> {
-
-          const section = document.getElementById("timeline").closest('.section').classList
-
-          inView
-            ? section.add('active')
-            : section.remove('active')
-
-          {console.log('id:'+i, ref, inView)} 
-
-        }}>
+        <InView key={i} as="div" className={'timeline '+ sectionHighlight} onChange={() => handleOnChange(inView)}>
+          {console.log(i, inView)}
           <div className={item.cName}>
             <h4>{item.title}</h4>
             <span>{item.content}</span>
