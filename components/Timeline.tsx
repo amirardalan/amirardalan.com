@@ -2,7 +2,6 @@ import { css } from '@emotion/react'
 import { timeline } from '@/data/content'
 import Link from 'next/link'
 import TimelineEntry from '@/components/TimelineEntry'
-import { useInView } from 'react-intersection-observer'
 
 
 export default function Timeline() {
@@ -53,7 +52,6 @@ export default function Timeline() {
         justifySelf: 'flex-end',
         borderRight: '3px solid var(--color-accent-gray)',
         '&.active': {
-          zIndex: 3,
           borderRight: '3px solid var(--color-accent-color)',
         },
         '&:after': {
@@ -156,26 +154,22 @@ export default function Timeline() {
     fontFamily: 'var(--font-secondary)',
   }
 
-  const { ref, inView } = useInView({
-    threshold: 0,
-    trackVisibility: true
-  })
-
-  const reset = inView ? true : false
-
   
   const generateTimeline = (items: Array<any>) => {
     return items.map(({ cName, title, content }, i) => (
-      <TimelineEntry key={i} cName={cName} title={title} content={content} reset={reset} />
+      <TimelineEntry key={i} cName={cName} title={title} content={content} />
     ))
   }
 
   return (
     <>
-      {/* <h2 css={{marginTop: '2rem'}} className='pageHeading center'>{timeline.meta.title}</h2> */}
-      <div css={styleTimelineWrapper} id='timeline' ref={ref} >
-        <div className='timelineScroll'></div>
-        <div css={styleTimeline}>{generateTimeline(timeline.items)}</div>
+      <h2 css={{marginTop: '4rem'}} className='pageHeading center'>
+        {timeline.meta.title}
+      </h2>
+      <div css={styleTimelineWrapper} id='timeline'>
+        <div css={styleTimeline}>
+          {generateTimeline(timeline.items)}
+        </div>
         <div css={styleReadMoreLink}>
           <Link href='/blog/2021-a-dev-odyssey'>Read the Full Story</Link>
         </div>
