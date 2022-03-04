@@ -1,15 +1,10 @@
-import { useState } from 'react'
 import { css } from '@emotion/react'
 import { timeline } from '@/data/content'
 import Link from 'next/link'
-import { useInView, InView } from 'react-intersection-observer';
+import { useInView } from 'react-intersection-observer';
 
 
 export default function Timeline() {
-
-  const [ref, inView]: any = useInView({
-    threshold: 0,
-  })
   
   const styleTimelineWrapper = css({
     paddingTop: '2rem',
@@ -161,22 +156,21 @@ export default function Timeline() {
     fontFamily: 'var(--font-secondary)',
   })
 
-  const [sectionHighlight, setSectionHighlight] = useState('')
+  const { ref, inView, entry } = useInView({
+    threshold: 0,
+  })
 
-  function handleOnChange(inView) {
-    inView ? setSectionHighlight('active') : setSectionHighlight('')
-  }
 
   const generateTimeline = (item: Array<any>) => {
     return item.map((item, i) => {
+      console.log(i, inView)
       return (
-        <InView key={i} as="div" className={'timeline '+ sectionHighlight} onChange={() => handleOnChange(inView)}>
-          {console.log(i, inView)}
+        <div ref={ref} key={i} className={inView ? 'timeline active' : 'timeline'}>
           <div className={item.cName}>
             <h4>{item.title}</h4>
             <span>{item.content}</span>
           </div>
-        </InView>
+        </div>
       )
     })
   }
