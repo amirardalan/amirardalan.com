@@ -1,5 +1,6 @@
 import { useInView } from 'react-intersection-observer'
 
+
 const TimelineEntry = (props) => {
   const { cName, title, content } = props
 

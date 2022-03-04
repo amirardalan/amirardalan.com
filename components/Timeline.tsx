@@ -1,7 +1,8 @@
 import { css } from '@emotion/react'
 import { timeline } from '@/data/content'
 import Link from 'next/link'
-import TimelineEntry from './TimelineEntry'
+import TimelineEntry from '@/components/TimelineEntry'
+
 
 export default function Timeline() {
   const styleTimelineWrapper = css({
