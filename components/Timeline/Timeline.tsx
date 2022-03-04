@@ -1,11 +1,9 @@
-import { css } from '@emotion/react'
-import { timeline } from '@/data/content'
-import Link from 'next/link'
-import { useInView } from 'react-intersection-observer';
-
+import { css } from '@emotion/react';
+import { timeline } from '@/data/content';
+import Link from 'next/link';
+import TimelineEntry from './TimelineEntry';
 
 export default function Timeline() {
-  
   const styleTimelineWrapper = css({
     paddingTop: '2rem',
     position: 'relative',
@@ -20,8 +18,8 @@ export default function Timeline() {
       width: 3,
       height: 0,
       background: 'var(--color-accent-color)',
-    }
-  })
+    },
+  });
   const styleTimeline = css({
     display: 'grid',
     gridTemplateColumns: 'repeat(2, 1fr)',
@@ -39,12 +37,12 @@ export default function Timeline() {
           '@media(max-width: 480px)': {
             borderTop: '1px solid var(--color-accent-color)',
             boxShadow: 'none',
-          }
+          },
         },
         '.date': {
           lineHeight: '1rem',
-          color: 'var(--color-text)'
-        }
+          color: 'var(--color-text)',
+        },
       },
       '&:nth-of-type(odd)': {
         padding: '0 2rem 0 0',
@@ -71,8 +69,8 @@ export default function Timeline() {
             borderRight: '20px solid var(--color-accent)',
             transform: 'rotateY(0deg) rotate(270deg)',
             '@media(max-width: 480px)': {
-              border: 'none'
-            }
+              border: 'none',
+            },
           },
         },
         '@media(max-width: 480px)': {
@@ -80,7 +78,7 @@ export default function Timeline() {
           '.date': {
             marginRight: '1rem',
           },
-        }
+        },
       },
       '&:nth-of-type(even)': {
         padding: '0 0 0 2rem',
@@ -95,8 +93,8 @@ export default function Timeline() {
             borderRight: '12px solid transparent',
             transform: 'rotateY(0deg) rotate(90deg)',
             '@media(max-width: 480px)': {
-              border: 'none'
-            }
+              border: 'none',
+            },
           },
           '&:after': {
             zIndex: 2,
@@ -109,16 +107,16 @@ export default function Timeline() {
             borderBottom: '12px solid transparent',
             transform: 'rotateY(0deg) rotate(90deg)',
             '@media(max-width: 480px)': {
-              border: 'none'
-            }
-          }
+              border: 'none',
+            },
+          },
         },
         '@media(max-width: 480px)': {
           padding: 0,
           '.date': {
             marginLeft: '1rem',
           },
-        }
+        },
       },
       '.date': {
         fontFamily: 'var(--font-secondary)',
@@ -144,54 +142,44 @@ export default function Timeline() {
           padding: '1.5rem 1rem',
           background: 'none',
           fontSize: 12,
-        }
-      }
-    }
-  })
+        },
+      },
+    },
+  });
 
-  const styleReadMoreLink = ({
+  const styleReadMoreLink = {
     marginTop: '2rem',
     display: 'flex',
     justifyContent: 'center',
     fontFamily: 'var(--font-secondary)',
-  })
+  };
 
-  const { ref, inView, entry } = useInView({
-    threshold: 0,
-  })
-
-
-  const generateTimeline = (item: Array<any>) => {
-    return item.map((item, i) => {
-      console.log(i, inView)
-      return (
-        <div ref={ref} key={i} className={inView ? 'timeline active' : 'timeline'}>
-          <div className={item.cName}>
-            <h4>{item.title}</h4>
-            <span>{item.content}</span>
-          </div>
-        </div>
+  const generateTimeline = (items: Array<any>) => {
+    return items.map(
+      ({ cName, title, content }, i) => (
+        <TimelineEntry key={i} cName={cName} title={title} content={content} />
       )
-    })
-  }
-
+      // return (
+      //   <div ref={ref} key={i} className={inView ? 'timeline active' : 'timeline'}>
+      //     <div className={item.cName}>
+      //       <h4>{item.title}</h4>
+      //       <span>{item.content}</span>
+      //     </div>
+      //   </div>
+      // )
+    );
+  };
 
   return (
     <>
-      <h2 className="pageHeading center">
-        {timeline.meta.title}
-      </h2>
-      <div css={styleTimelineWrapper} id="timeline">
-        <div className="timelineScroll"></div>
-        <div css={styleTimeline}>
-          {generateTimeline(timeline.items)}
-        </div>
+      <h2 className='pageHeading center'>{timeline.meta.title}</h2>
+      <div css={styleTimelineWrapper} id='timeline'>
+        <div className='timelineScroll'></div>
+        <div css={styleTimeline}>{generateTimeline(timeline.items)}</div>
         <div css={styleReadMoreLink}>
-          <Link href="/blog/2021-a-dev-odyssey">
-            Read the Full Story
-          </Link>
+          <Link href='/blog/2021-a-dev-odyssey'>Read the Full Story</Link>
         </div>
       </div>
     </>
-  )
+  );
 }
