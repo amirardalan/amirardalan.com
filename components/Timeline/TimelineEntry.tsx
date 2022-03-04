@@ -1,11 +1,11 @@
-import { useInView } from 'react-intersection-observer';
+import { useInView } from 'react-intersection-observer'
 
 const TimelineEntry = (props) => {
-  const { cName, title, content } = props;
+  const { cName, title, content } = props
 
   const { ref, inView } = useInView({
-    threshold: 0,
-  });
+    threshold: 1,
+  })
 
   return (
     <div ref={ref} className={inView ? 'timeline active' : 'timeline'}>
@@ -14,7 +14,7 @@ const TimelineEntry = (props) => {
         <span>{content}</span>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default TimelineEntry;
+export default TimelineEntry

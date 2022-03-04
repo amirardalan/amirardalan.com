@@ -1,7 +1,7 @@
-import { css } from '@emotion/react';
-import { timeline } from '@/data/content';
-import Link from 'next/link';
-import TimelineEntry from './TimelineEntry';
+import { css } from '@emotion/react'
+import { timeline } from '@/data/content'
+import Link from 'next/link'
+import TimelineEntry from './TimelineEntry'
 
 export default function Timeline() {
   const styleTimelineWrapper = css({
@@ -158,21 +158,12 @@ export default function Timeline() {
     return items.map(
       ({ cName, title, content }, i) => (
         <TimelineEntry key={i} cName={cName} title={title} content={content} />
-      )
-      // return (
-      //   <div ref={ref} key={i} className={inView ? 'timeline active' : 'timeline'}>
-      //     <div className={item.cName}>
-      //       <h4>{item.title}</h4>
-      //       <span>{item.content}</span>
-      //     </div>
-      //   </div>
-      // )
-    );
-  };
+      ))
+  }
 
   return (
     <>
-      <h2 className='pageHeading center'>{timeline.meta.title}</h2>
+      <h2 css={{marginTop: '2rem'}} className='pageHeading center'>{timeline.meta.title}</h2>
       <div css={styleTimelineWrapper} id='timeline'>
         <div className='timelineScroll'></div>
         <div css={styleTimeline}>{generateTimeline(timeline.items)}</div>
