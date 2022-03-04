@@ -45,18 +45,17 @@ export default function Timeline() {
         justifySelf: 'flex-end',
         borderRight: '4px solid var(--color-accent-gray)',
         '.scrollHighlight': {
-          display: 'hidden',
           position: 'absolute',
           top: 0,
           right: -3.3,
-          height: 220,
           width: 4,
           animation: 'growUp .5s',
           background: 'var(--color-accent-color)',
         },
         '&.active': {
           '.scrollHighlight': {
-            display: 'block',
+            height: '100%',
+            background: 'var(--color-accent-color)',
             animation: 'growDown .5s',
           },
           '&:after': {
