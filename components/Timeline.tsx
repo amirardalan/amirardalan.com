@@ -165,7 +165,6 @@ export default function Timeline() {
 
   function handleOnChange(inView) {
     inView ? setSectionHighlight('active') : setSectionHighlight('')
-    // console.log(inView)
   }
 
   const generateTimeline = (item: Array<any>) => {
