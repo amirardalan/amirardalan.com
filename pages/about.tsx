@@ -10,17 +10,15 @@ import Timeline from '@/components/Timeline'
 import { about } from '@/data/content'
 import { GetStaticProps } from 'next'
 
-
 export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       data: about,
     },
-  }
-}
+  };
+};
 
 export default function About({ data }) {
-
   const styleGridWrapper = css({
     display: 'grid',
     gridTemplateColumns: 'repeat(3, 1fr)',
@@ -40,7 +38,7 @@ export default function About({ data }) {
       lineHeight: '1.8rem',
       animation: 'slideUp .5s forwards',
       h4: {
-        fontFamily: 'var(--font-secondary)'
+        fontFamily: 'var(--font-secondary)',
       },
       '@media (max-width: 1200px)': {
         padding: '1.5rem',
@@ -70,9 +68,9 @@ export default function About({ data }) {
           maxWidth: 450,
         },
         a: {
-          textDecoration: 'none'
+          textDecoration: 'none',
         },
-      }
+      },
     },
     h4: {
       marginBottom: '1.5rem',
@@ -81,28 +79,28 @@ export default function About({ data }) {
       color: 'var(--color-text)',
       borderBottom: '2px solid var(--color-accent-color)',
     },
-  })
+  });
   const styleCtaWrapper = css({
     display: 'flex',
     flexDirection: 'column',
     flexFlow: 'row wrap',
     '@media(max-width: 350px)': {
       flexDirection: 'column',
-    }
-  })
+    },
+  });
   const styleBioItems = css({
     li: {
       marginBottom: '1rem',
       '&:last-of-type': {
         marginBottom: 0,
-      }
-    }
-  })
+      },
+    },
+  });
   const styleSocialIconsWrapper = css({
     width: '100%',
     display: 'flex',
     flexDirection: 'column',
-  })
+  });
   const styleSocialIcons = css({
     display: 'flex',
     flexDirection: 'row',
@@ -110,65 +108,53 @@ export default function About({ data }) {
       marginRight: '1.5rem',
       '&:last-of-type': {
         marginRight: 0,
-      }
-    }
-  })
+      },
+    },
+  });
 
   const GenerateListItems = (items: Array<string>) => {
     return items.map((items, i) => {
-      return (
-        <li key={i}>
-          {items}
-        </li>
-      )
+      return <li key={i}>{items}</li>
     })
   }
 
   return (
     <Container title={data.meta.title} description={data.meta.description}>
-      <div className="about">
-        <div className="animationWrapper">
-          <h1 className="pageHeading">
-            {data.heading}
-          </h1>
+      <div className='about'>
+        <div className='animationWrapper'>
+          <h1 className='pageHeading'>{data.heading}</h1>
           <main css={styleGridWrapper}>
-            <div className="grid">
+            <div className='grid'>
               <ul css={styleBioItems}>
                 <li>
-                  <Avatar height="100" width="100" />
+                  <Avatar height='100' width='100' />
                 </li>
                 <li aria-label={data.bio.subheading}>
                   <strong>{data.bio.subheading}</strong>
                 </li>
                 <li>
-                  <em className="blurb">
-                    {data.bio.content}
-                  </em>
+                  <em className='blurb'>{data.bio.content}</em>
                 </li>
                 <li css={styleCtaWrapper}>
                   <CtaButtonsAbout />
                 </li>
               </ul>
             </div>
-            <div className="grid">
+            <div className='grid'>
               <ul>
                 <li>
-                  <h4 aria-label="{data.skills.title}">
-                    {data.skills.title}
-                  </h4>
+                  <h4 aria-label='{data.skills.title}'>{data.skills.title}</h4>
                 </li>
                 {GenerateListItems(data.skills.items)}
               </ul>
               <ul>
                 <li>
-                  <h4 aria-label="{data.skills.title}">
-                    {data.stack.title}
-                  </h4>
+                  <h4 aria-label='{data.skills.title}'>{data.stack.title}</h4>
                 </li>
                 {GenerateListItems(data.stack.items)}
               </ul>
             </div>
-            <div className="grid">
+            <div className='grid'>
               <ul>
                 <li>
                   <h4 aria-label={data.experience.title}>
@@ -178,7 +164,7 @@ export default function About({ data }) {
                 {GenerateListItems(data.experience.items)}
               </ul>
             </div>
-            <div className="grid">
+            <div className='grid'>
               <ul>
                 <li>
                   <h4 aria-label={data.availability.title}>
@@ -188,7 +174,7 @@ export default function About({ data }) {
                 {GenerateListItems(data.availability.items)}
               </ul>
             </div>
-            <div className="grid">
+            <div className='grid'>
               <div css={styleSocialIconsWrapper}>
                 <ul>
                   <li>
@@ -200,12 +186,10 @@ export default function About({ data }) {
                 </ul>
               </div>
             </div>
-            <div className="grid">
+            <div className='grid'>
               <ul>
                 <li>
-                  <h4 aria-label={data.contact.title}>
-                    {data.contact.title}
-                  </h4>
+                  <h4 aria-label={data.contact.title}>{data.contact.title}</h4>
                 </li>
                 <li css={styleCtaWrapper}>
                   <ContactButton />
@@ -217,5 +201,5 @@ export default function About({ data }) {
         <Timeline />
       </div>
     </Container>
-  )
+  );
 }

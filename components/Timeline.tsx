@@ -1,17 +1,22 @@
 import { css } from '@emotion/react'
 import { timeline } from '@/data/content'
 import Link from 'next/link'
+import TimelineEntry from '@/components/TimelineEntry'
 
 
 export default function Timeline() {
-
+  const styleTimelineHeading = css({
+    marginTop: '4rem',
+  })
   const styleTimelineWrapper = css({
-    paddingTop: '4rem',
+    paddingTop: '2rem',
+    position: 'relative',
   })
   const styleTimeline = css({
-    marginTop: '2rem',
     display: 'grid',
     gridTemplateColumns: 'repeat(2, 1fr)',
+    overflow: 'hidden',
+    paddingTop: 7.2,
     '.timeline': {
       '&:nth-of-type(even), &:nth-of-type(odd)': {
         '.event': {
@@ -26,26 +31,44 @@ export default function Timeline() {
           '@media(max-width: 480px)': {
             borderTop: '1px solid var(--color-accent-color)',
             boxShadow: 'none',
-          }
+          },
         },
         '.date': {
           lineHeight: '1rem',
-          color: 'var(--color-text)'
-        }
+          color: 'var(--color-text)',
+        },
       },
       '&:nth-of-type(odd)': {
         padding: '0 2rem 0 0',
         zIndex: 2,
         position: 'relative',
         justifySelf: 'flex-end',
-        borderRight: '2px solid var(--color-accent-gray)',
+        borderRight: '4px solid var(--color-accent-gray)',
+        '.scrollHighlight': {
+          position: 'absolute',
+          top: 0,
+          right: -3.3,
+          width: 4,
+          animation: 'growUp .5s',
+          background: 'var(--color-accent-color)',
+        },
+        '&.active': {
+          '.scrollHighlight': {
+            height: '100%',
+            background: 'var(--color-accent-color)',
+            animation: 'growDown .5s',
+          },
+          '&:after': {
+            color: 'var(--color-accent-color)'
+          }
+        },
         '&:after': {
           position: 'absolute',
-          top: -32,
-          right: -19,
+          top: -50,
+          right: -25.5,
           content: '"•"',
-          fontSize: 60,
-          color: 'var(--color-gray)',
+          fontSize: 80,
+          color: 'var(--color-accent-color)',
         },
         '.event': {
           '&:before': {
@@ -54,8 +77,8 @@ export default function Timeline() {
             borderRight: '20px solid var(--color-accent)',
             transform: 'rotateY(0deg) rotate(270deg)',
             '@media(max-width: 480px)': {
-              border: 'none'
-            }
+              border: 'none',
+            },
           },
         },
         '@media(max-width: 480px)': {
@@ -63,7 +86,7 @@ export default function Timeline() {
           '.date': {
             marginRight: '1rem',
           },
-        }
+        },
       },
       '&:nth-of-type(even)': {
         padding: '0 0 0 2rem',
@@ -78,8 +101,8 @@ export default function Timeline() {
             borderRight: '12px solid transparent',
             transform: 'rotateY(0deg) rotate(90deg)',
             '@media(max-width: 480px)': {
-              border: 'none'
-            }
+              border: 'none',
+            },
           },
           '&:after': {
             zIndex: 2,
@@ -92,16 +115,16 @@ export default function Timeline() {
             borderBottom: '12px solid transparent',
             transform: 'rotateY(0deg) rotate(90deg)',
             '@media(max-width: 480px)': {
-              border: 'none'
-            }
-          }
+              border: 'none',
+            },
+          },
         },
         '@media(max-width: 480px)': {
           padding: 0,
           '.date': {
             marginLeft: '1rem',
           },
-        }
+        },
       },
       '.date': {
         fontFamily: 'var(--font-secondary)',
@@ -131,40 +154,36 @@ export default function Timeline() {
       }
     }
   })
-  const styleReadMoreLink = ({
+
+  const styleReadMoreLink = {
     marginTop: '2rem',
     display: 'flex',
     justifyContent: 'center',
     fontFamily: 'var(--font-secondary)',
-  })
-
-  const generateTimeline = (items: Array<any>) => {
-    return items.map((items, i) => {
-      return (
-        <div className="timeline" key={i}>
-          <div className={items.cName}>
-            <h4>{items.title}</h4>
-            <span>{items.content}</span>
-          </div>
-        </div>
-      )
-    })
   }
 
+  
+  const generateTimeline = (items: Array<any>) => {
+    return items.map(({ cName, title, content }, i) => (
+      <TimelineEntry key={i} cName={cName} title={title} content={content} />
+    ))
+  }
 
   return (
-    <div css={styleTimelineWrapper} id="timeline">
-      <h2 className="pageHeading center">
+    <>
+      <h2 css={styleTimelineHeading} className='pageHeading center'>
         {timeline.meta.title}
       </h2>
-      <div css={styleTimeline}>
-        {generateTimeline(timeline.items)}
+      <div css={styleTimelineWrapper} id='timeline'>
+        <div css={styleTimeline}>
+          {generateTimeline(timeline.items)}
+        </div>
+        <div css={styleReadMoreLink}>
+          <Link href='/blog/2021-a-dev-odyssey'>
+            Read the Full Story
+          </Link>
+        </div>
       </div>
-      <div css={styleReadMoreLink}>
-        <Link href="/blog/2021-a-dev-odyssey">
-          Read the Full Story
-        </Link>
-      </div>
-    </div>
+    </>
   )
 }
