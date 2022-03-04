@@ -5,25 +5,18 @@ import TimelineEntry from '@/components/TimelineEntry'
 
 
 export default function Timeline() {
+  const styleTimelineHeading = css({
+    marginTop: '4rem',
+  })
   const styleTimelineWrapper = css({
     paddingTop: '2rem',
     position: 'relative',
-    '.timelineScroll': {
-      zIndex: 3,
-      position: 'absolute',
-      marginLeft: 'auto',
-      marginRight: 'auto',
-      top: 40,
-      left: 0,
-      right: 3,
-      width: 3,
-      height: 0,
-      background: 'var(--color-accent-color)',
-    },
   })
   const styleTimeline = css({
     display: 'grid',
     gridTemplateColumns: 'repeat(2, 1fr)',
+    overflow: 'hidden',
+    paddingTop: 7.2,
     '.timeline': {
       '&:nth-of-type(even), &:nth-of-type(odd)': {
         '.event': {
@@ -50,14 +43,30 @@ export default function Timeline() {
         zIndex: 2,
         position: 'relative',
         justifySelf: 'flex-end',
-        borderRight: '3px solid var(--color-accent-gray)',
+        borderRight: '4px solid var(--color-accent-gray)',
+        '.scrollHighlight': {
+          display: 'hidden',
+          position: 'absolute',
+          top: 0,
+          right: -3.3,
+          height: 220,
+          width: 4,
+          animation: 'growUp .5s',
+          background: 'var(--color-accent-color)',
+        },
         '&.active': {
-          borderRight: '3px solid var(--color-accent-color)',
+          '.scrollHighlight': {
+            display: 'block',
+            animation: 'growDown .5s',
+          },
+          '&:after': {
+            color: 'var(--color-accent-color)'
+          }
         },
         '&:after': {
           position: 'absolute',
           top: -50,
-          right: -25,
+          right: -25.5,
           content: '"•"',
           fontSize: 80,
           color: 'var(--color-accent-color)',
@@ -163,7 +172,7 @@ export default function Timeline() {
 
   return (
     <>
-      <h2 css={{marginTop: '4rem'}} className='pageHeading center'>
+      <h2 css={styleTimelineHeading} className='pageHeading center'>
         {timeline.meta.title}
       </h2>
       <div css={styleTimelineWrapper} id='timeline'>
@@ -171,7 +180,9 @@ export default function Timeline() {
           {generateTimeline(timeline.items)}
         </div>
         <div css={styleReadMoreLink}>
-          <Link href='/blog/2021-a-dev-odyssey'>Read the Full Story</Link>
+          <Link href='/blog/2021-a-dev-odyssey'>
+            Read the Full Story
+          </Link>
         </div>
       </div>
     </>

@@ -427,13 +427,23 @@ export function GlobalStyles () {
             transform: 'translate3d(0, 0, 0)',
           }
         },
-        '@keyframes slideDown': {
+        '@keyframes growUp': {
           from: {
-            opacity: 0,
+            height: 220,
+            transform: 'translate3d(0, 100%, 0)',
+          },
+          to: {
+            height: 0,
+            transform: 'translate3d(0, 0, 0)',
+          }
+        },
+        '@keyframes growDown': {
+          from: {
+            height: 0,
             transform: 'translate3d(0, -100%, 0)',
           },
           to: {
-            opacity: 1,
+            height: 220,
             transform: 'translate3d(0, 0, 0)',
           }
         },
