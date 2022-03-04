@@ -1,14 +1,14 @@
-import { css } from '@emotion/react';
+import { css } from '@emotion/react'
 
-import Container from '@/components/Container';
-import Avatar from '@/components/Avatar';
-import CtaButtonsAbout from '@/components/CtaButtonsAbout';
-import ContactButton from '@/components/ContactButton';
-import SocialIcons from '@/components/SocialIcons';
-import Timeline from '@/components/Timeline/Timeline';
+import Container from '@/components/Container'
+import Avatar from '@/components/Avatar'
+import CtaButtonsAbout from '@/components/CtaButtonsAbout'
+import ContactButton from '@/components/ContactButton'
+import SocialIcons from '@/components/SocialIcons'
+import Timeline from '@/components/Timeline'
 
-import { about } from '@/data/content';
-import { GetStaticProps } from 'next';
+import { about } from '@/data/content'
+import { GetStaticProps } from 'next'
 
 export const getStaticProps: GetStaticProps = async () => {
   return {
@@ -114,9 +114,9 @@ export default function About({ data }) {
 
   const GenerateListItems = (items: Array<string>) => {
     return items.map((items, i) => {
-      return <li key={i}>{items}</li>;
-    });
-  };
+      return <li key={i}>{items}</li>
+    })
+  }
 
   return (
     <Container title={data.meta.title} description={data.meta.description}>
