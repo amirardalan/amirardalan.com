@@ -47,7 +47,7 @@ export default function Timeline() {
         '.scrollHighlight': {
           position: 'absolute',
           top: 0,
-          right: -3.3,
+          right: -4.1,
           width: 4,
           animation: 'growUp .5s',
           background: 'var(--color-accent-color)',
@@ -65,7 +65,7 @@ export default function Timeline() {
         '&:after': {
           position: 'absolute',
           top: -50,
-          right: -25.5,
+          right: -26,
           content: '"•"',
           fontSize: 80,
           color: 'var(--color-accent-color)',
