@@ -2,6 +2,7 @@ import { css } from '@emotion/react'
 import { timeline } from '@/data/content'
 import Link from 'next/link'
 import TimelineEntry from '@/components/TimelineEntry'
+import { useInView } from 'react-intersection-observer'
 
 
 export default function Timeline() {
@@ -155,16 +156,24 @@ export default function Timeline() {
     fontFamily: 'var(--font-secondary)',
   }
 
+  const { ref, inView } = useInView({
+    threshold: 0,
+    trackVisibility: true
+  })
+
+  const reset = inView ? true : false
+
+  
   const generateTimeline = (items: Array<any>) => {
     return items.map(({ cName, title, content }, i) => (
-      <TimelineEntry key={i} cName={cName} title={title} content={content} />
+      <TimelineEntry key={i} cName={cName} title={title} content={content} reset={reset} />
     ))
   }
 
   return (
     <>
-      <h2 css={{marginTop: '2rem'}} className='pageHeading center'>{timeline.meta.title}</h2>
-      <div css={styleTimelineWrapper} id='timeline'>
+      {/* <h2 css={{marginTop: '2rem'}} className='pageHeading center'>{timeline.meta.title}</h2> */}
+      <div css={styleTimelineWrapper} id='timeline' ref={ref} >
         <div className='timelineScroll'></div>
         <div css={styleTimeline}>{generateTimeline(timeline.items)}</div>
         <div css={styleReadMoreLink}>

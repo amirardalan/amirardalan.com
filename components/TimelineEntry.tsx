@@ -1,11 +1,12 @@
 import { useInView } from 'react-intersection-observer'
 
 
-const TimelineEntry = (props) => {
-  const { cName, title, content } = props
-
+const TimelineEntry = (props: any) => {
+  const { cName, title, content, reset } = props
+  
   const { ref, inView } = useInView({
     threshold: 1,
+    triggerOnce: reset
   })
 
   return (
