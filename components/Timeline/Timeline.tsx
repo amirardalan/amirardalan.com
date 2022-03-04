@@ -19,7 +19,7 @@ export default function Timeline() {
       height: 0,
       background: 'var(--color-accent-color)',
     },
-  });
+  })
   const styleTimeline = css({
     display: 'grid',
     gridTemplateColumns: 'repeat(2, 1fr)',
@@ -142,23 +142,22 @@ export default function Timeline() {
           padding: '1.5rem 1rem',
           background: 'none',
           fontSize: 12,
-        },
-      },
-    },
-  });
+        }
+      }
+    }
+  })
 
   const styleReadMoreLink = {
     marginTop: '2rem',
     display: 'flex',
     justifyContent: 'center',
     fontFamily: 'var(--font-secondary)',
-  };
+  }
 
   const generateTimeline = (items: Array<any>) => {
-    return items.map(
-      ({ cName, title, content }, i) => (
-        <TimelineEntry key={i} cName={cName} title={title} content={content} />
-      ))
+    return items.map(({ cName, title, content }, i) => (
+      <TimelineEntry key={i} cName={cName} title={title} content={content} />
+    ))
   }
 
   return (
@@ -172,5 +171,5 @@ export default function Timeline() {
         </div>
       </div>
     </>
-  );
+  )
 }
