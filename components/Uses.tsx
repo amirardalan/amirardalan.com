@@ -53,18 +53,10 @@ export default function Uses() {
         {uses.heading}
       </h1>
       <div css={styleUsesMarkdown}>
-        <div>
-          <Markdown markdown={uses.devices} />
-        </div>
-        <div>
-          <Markdown markdown={uses.stack} />
-        </div>
-        <div>
-          <Markdown markdown={uses.tools} />
-        </div>
-        <div>
-          <Markdown markdown={uses.software} />
-        </div>
+        <Markdown markdown={uses.devices} />
+        <Markdown markdown={uses.stack} />
+        <Markdown markdown={uses.tools} />
+        <Markdown markdown={uses.software} />
       </div>
     </>
   )
