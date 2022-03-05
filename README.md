@@ -34,7 +34,7 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000)
 
-Optionally, create a local copy of a production build. (useful for setting and testing `sitemapGenerator.js` configuration):
+Optionally, create a local copy of a production build. (useful for setting and testing `generateSitemap.mjs` configuration):
 
 ```bash
 yarn build
