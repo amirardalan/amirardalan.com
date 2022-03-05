@@ -75,6 +75,7 @@ const BlogPostFilter = ({ feed }) => {
             width="23"
             priority
             alt={blog.search.placeholder}
+            aria-label={blog.search.placeholder}
             draggable={false}
           />
         </div>
@@ -85,7 +86,15 @@ const BlogPostFilter = ({ feed }) => {
             onClick={() => setSearch('')}
             className="clearSearch"
           >
-            ✕
+          <Image
+            src={theme.icons.close}
+            height="25"
+            width="25"
+            priority
+            alt={blog.search.clear}
+            aria-label={blog.search.clear}
+            draggable={false}
+          />
           </button>
         )
     }

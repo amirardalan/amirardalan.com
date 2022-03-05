@@ -1,8 +1,11 @@
 import { css } from '@emotion/react'
 
+
 const styleBlogLayout = css({
   '.blogCategoryNav': {
     overflow: 'scroll',
+    msOverflowStyle: 'none',
+    scrollbarWidth: 'none',
     whiteSpace: 'nowrap',
     '&::-webkit-scrollbar': {
       display: 'none'
@@ -286,12 +289,7 @@ const styleBlogLayout = css({
       display: 'flex',
       justifyContent: 'center',
       position: 'absolute',
-      backgroundColor: 'var(--color-accent-color)',
-      color: 'var(--color-bg)',
-      fontSize: 18,
-      lineHeight: '1.5rem',
-      borderRadius: '50px',
-      border: 'none',
+      backgroundImage: 'var(--icon-close)',
       width: 25,
       height: 25,
       top: 16,

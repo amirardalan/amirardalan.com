@@ -16,7 +16,8 @@ export const themeLight = {
     clipboard: '/icons/clipboard-dark.svg',
     time: '/icons/time-light.svg',
     error: '/icons/error-dark.svg',
-    info: '/icons/info-dark.svg'
+    info: '/icons/info-dark.svg',
+    close: '/icons/close-light.svg',
   },
 }
 
@@ -38,6 +39,7 @@ export const themeDark = {
     clipboard: '/icons/clipboard-light.svg',
     time: '/icons/time-dark.svg',
     error: '/icons/error-light.svg',
-    info: '/icons/info-light.svg'
+    info: '/icons/info-light.svg',
+    close: '/icons/close-dark.svg',
   }
 }
