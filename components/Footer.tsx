@@ -3,6 +3,7 @@ import { footer } from '@/data/content'
 import { nav } from '@/data/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
+import Donate from '@/components/Donate'
 import NowPlayingCompact from '@/components/NowPlayingCompact'
 
 
@@ -12,6 +13,7 @@ export default function Footer() {
   const isDarkTheme = theme.active === 'dark'
 
   const styleFooterWrapper = css({
+    position: 'relative',
     marginTop: '6rem',
     padding: '4rem 4rem 1rem 4rem',
     backgroundColor: 'var(--color-accent-color)',
@@ -93,6 +95,9 @@ export default function Footer() {
     lineHeight: '1.2rem',
     display: 'flex',
     alignSelf: 'end',
+    a: {
+      color: 'var(--color-bg)'
+    }
   })
   const styleFooterNav= css({
     display: 'flex',
@@ -175,8 +180,12 @@ export default function Footer() {
       </div>
       <div css={styleCopyright}>
         <div>
-          {footer.copyright.name} - {footer.copyright.text} {(new Date().getFullYear())}
+          {footer.copyright.name + ' '}
+          {footer.copyright.text + ' '}
+          {(new Date().getFullYear())} |
+          <Donate />
         </div>
+        
       </div>
     </footer>
   )
