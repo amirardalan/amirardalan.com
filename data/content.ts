@@ -373,6 +373,7 @@ export const uses = {
   - 16GB RAM
   - 500GB Flash Storage
   - MacOS Monterey
+  ------
   #### Desktop
   - Self-built PC
   ##### Specs:
@@ -383,12 +384,14 @@ export const uses = {
   - Motu Audio Express
   - 2x KRK VXT 8
   - Microsoft Windows 10
+  ------
   #### Phone
   - iPhone 11 Pro (Space Gray)
   ##### Specs:
   - 512GB Storage
   ##### Case:
   - [TORRAS Silicon Series (black)](https://torraslife.com/product/iphone-11-pro-silicone-series-case/)
+  ------
   #### Headphones
   - [Beyerdynamic DT770Pro 80ohm](https://north-america.beyerdynamic.com/dt-770-pro.html)
   - [Sennheiser HD25-1 II](https://en-us.sennheiser.com/on-ear-dj-headphone-hd25) `
@@ -408,7 +411,7 @@ export const uses = {
   - [Prisma](https://marketplace.visualstudio.com/items?itemName=Prisma.prisma)
   - [VSCode Vercel](https://marketplace.visualstudio.com/items?itemName=frenco.vscode-vercel)
   - [vscode-styled-components](https://marketplace.visualstudio.com/items?itemName=jpoissonnier.vscode-styled-components)
-
+  ------
   #### Browser
   - [Firefox Developer Edition](https://www.mozilla.org/en-US/firefox/developer/)
   ##### Add-ons:
@@ -416,10 +419,10 @@ export const uses = {
   - [Lighthouse](https://addons.mozilla.org/en-US/firefox/addon/google-lighthouse/)
   - [uBlock Origin](https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/)
   - [GA Debug](https://addons.mozilla.org/en-US/firefox/addon/ga-debugger/)
-
+  ------
   #### CLI
   - Terminal (~ZSH)
-
+  ------
   #### Testing
   ##### iOS:
   - [Xcode Simulator](https://developer.apple.com/xcode/)
@@ -429,26 +432,17 @@ export const uses = {
   stack: {
     content:
   `### Stack
-  #### Framework
   - [Next.js](https://nextjs.org/)
-  #### Language
   - [TypeScript](https://www.typescriptlang.org/)
-  #### CSS
   - [Emotion](https://emotion.sh/docs/introduction)
-  #### Database
   - [PostgreSQL](https://www.postgresql.org/)
   - [Heroku](https://heroku.com)
-  #### ORM
   - [Prisma](https://www.prisma.io/)
-  #### Data Fetching
   - [SWR](https://swr.vercel.app/)
-  #### Markdown
   - [React Markdown](https://remarkjs.github.io/react-markdown/)
   - [React Syntax Highlighter](https://react-syntax-highlighter.github.io/react-syntax-highlighter/demo/)
-  #### Testing
   - [Jest](https://jestjs.io/)
   - [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
-  #### Hosting
   - [Vercel](https://vercel.com)`
   },
   software: {

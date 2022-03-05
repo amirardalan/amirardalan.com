@@ -8,35 +8,39 @@ const styleUsesMarkdown = ({
   gap: '4rem',
   gridAutoRows: 'minmax(100px, auto)',
   lineHeight: '1.2rem',
+  hr: {
+    margin: '2rem 0'
+  },
   'ul li, a': {
-    marginBottom: '1rem',
     color: 'var(--color-gray)',
+    fontSize: 12,
   },
   'h3, h4, h5, h6': {
     fontFamily: 'var(--font-secondary)',
+    margin: '1rem 0 .2rem'
   },
   h3: {
-    margin: '2rem 0 1rem 0',
     paddingBottom: '1rem',
+    marginBottom: '2rem',
     fontSize: 30,
-    borderBottom: '3px solid var(--color-accent-gray)',
+    borderBottom: '3px solid var(--color-accent-color)',
   },
   h4: {
     width: 'fit-content',
-    margin: '2rem 0 .8rem 0',
-    padding: '.5rem',
-    color: 'var(--color-bg)',
-    backgroundColor: 'var(--color-text)',
-    fontSize: 14,
+    fontSize: 18,
   },
   h5: {
-    marginBottom: '1rem',
+    fontSize: 12
   },
   '@media(max-width: 1024px)': {
     gridTemplateColumns: 'repeat(2, 1fr)',
     gap: '2rem',
     h3: {
-      fontSize: 20,
+      fontSize: 22,
+    },
+    'ul li, a': {
+      fontSize: 14,
+      lineHeight: '1.8rem'
     },
   },
   '@media(max-width: 480px)': {
