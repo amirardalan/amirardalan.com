@@ -16,17 +16,23 @@ export default function Donate() {
   })
 
   const styleAddress = css({
-    marginBottom: 10,
-    background: 'none',
-    border: 'none',
-    color: 'var(--color-bg)',
+    paddingBottom: 5,
     display: showQrCode ? 'block' : 'none',
     opacity: showQrCode ? 1 : 0,
     fontSize: 8.6,
-    '@media (max-width: 768px)': {
-      marginBottom: 0,
-      fontSize: 11,
+    span: {
+      marginRight: 4,
+    },
+    button: {
+      background: 'none',
+      border: 'none',
+      color: 'var(--color-bg)',
       textDecoration: 'underline'
+    },
+    '@media (max-width: 768px)': {
+      display: showQrCode ? 'inline' : 'none',
+      marginBottom: 0,
+      fontSize: 10,
     }
   })
 
@@ -44,7 +50,7 @@ export default function Donate() {
       }
     },
     '.tooltipFooter': {
-      marginBottom: '.5rem',
+      marginBottom: '.2rem',
       position: 'relative',
       padding: '0 .5rem',
       fontSize: 12,
@@ -52,6 +58,7 @@ export default function Donate() {
       textAlign: 'center',
       backgroundColor: 'var(--color-accent-gray)',
       borderRadius: 5,
+      animation: 'slideUp .2s',
       '&:before': {
         content: '""',
         position: 'absolute',
@@ -68,7 +75,7 @@ export default function Donate() {
       }
     },
     '@media (max-width: 768px)': {
-      bottom: 40,
+      bottom: 35,
       left: '1.5rem',
     }
   })
@@ -86,14 +93,13 @@ export default function Donate() {
   const QR = () => {
     return (
       <div css={styleQrWrapper}>
-        {addressCopied ?
-          <div className="tooltipFooter">
-            Copied to clipboard!
-          </div> :
-        <div css={{ color: 'var(--color-accent)', marginTop: '.5rem',}}></div>}
-        <button css={styleAddress} onClick={()=> handleCopyAddress()}>
-          {addressCopied ? '✔️' : '📋'} {donate.address}
-        </button>
+        {addressCopied ? <div className="tooltipFooter">Copied to clipboard!</div> : null}
+        <div css={styleAddress}>
+          <span>{addressCopied ? '✅' : '📋'}</span>
+          <button onClick={()=> handleCopyAddress()}>
+          {donate.address}
+          </button>
+        </div>
         <div className="qrCode">
           <Image 
             src={donate.qr}
