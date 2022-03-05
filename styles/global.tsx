@@ -22,8 +22,6 @@ const buttonDisabled = '#9e9eb6'
 const warning = '#ec4949'
 const codeHighlightDark = '#3e3f5a'
 const codeHighlightLight = '#d1d3e7'
-const codeDark = '#3dffc5'
-const codeLight = '#744164'
 const codeCommentDark = '#929aee'
 const codeCommentLight = '#474358'
 const sunrise = 'linear-gradient(to bottom, #757abf 0%,#8583be 60%,#eab0d1 100%)'
@@ -99,14 +97,10 @@ export function GlobalStyles () {
           '--color-gray': grayDark,
           '--color-bg': light,
           '--color-text': darkAccent,
-          '--color-link': primary,
-          '--color-select-text': light,
           '--color-input-disabled': light,
           '--button-toggle-bg': lightAccent,
           '--button-toggle-switch': darker,
           '--canvas-bg': sunset,
-          '--canvas-text': codeLight,
-          '--canvas-accent': codeCommentLight,
           '--page-bg': lighter,
           '--code-highlight': codeHighlightLight,
           '--syntax-highlight-bg': lightAccent,
@@ -119,14 +113,10 @@ export function GlobalStyles () {
           '--color-gray': grayLight,
           '--color-bg': dark,
           '--color-text': lightAccent,
-          '--color-link': secondary,
-          '--color-select-text': dark,
           '--color-input-disabled': dark,
           '--button-toggle-bg': darker,
           '--button-toggle-switch': lighter,
           '--canvas-bg': sunrise,
-          '--canvas-text': codeDark,
-          '--canvas-accent': codeCommentDark,
           '--page-bg': darkAccent,
           '--code-highlight': codeHighlightDark,
           '--syntax-highlight-bg': darkAccent,
@@ -223,7 +213,7 @@ export function GlobalStyles () {
           fontSize: '100%',
           verticalAlign: 'baseline',
           background: 'transparent',
-          color: 'var(--color-link)',
+          color: 'var(--color-accent-color)',
           textDecoration: 'underline',
           '&.externalLink:after': {
             marginLeft: '.3rem',
@@ -366,36 +356,12 @@ export function GlobalStyles () {
           display: 'flex',
           justifyContent: 'center',
         },
-        '.tooltip': {
-          position: 'relative',
-          marginTop: '.5rem',
-          padding: '0 .5rem',
-          fontSize: 12,
-          color: 'var(--color-text)',
-          textAlign: 'center',
-          backgroundColor: 'var(--color-accent-gray)',
-          borderRadius: 5,
-          '&:before': {
-            content: '""',
-            position: 'absolute',
-            marginLeft: 'auto',
-            marginRight: 'auto',
-            top: -6,
-            left: 0,
-            right: 0,
-            width: 0,
-            height: 0,
-            borderLeft: '6px solid transparent',
-            borderRight: '6px solid transparent',
-            borderBottom: '6px solid var(--color-accent-gray)',
-          }
-        },
       }} />
       <Global styles={{
         // Text Highlighting
         '::selection': {
           background: 'var(--color-select)',
-          color: 'var(--color-select-text)',
+          color: 'var(--color-bg)',
         },
       }} />
       <Global styles={{
@@ -405,34 +371,12 @@ export function GlobalStyles () {
           overflow: 'hidden',
           alignSelf: 'flex-end',
         },
-        '@keyframes fadeIn': {
-          from: { opacity: 0 },
-          to: { opacity: 1 }
-        },
-        '@keyframes fadeIn80': {
-          from: { opacity: 0 },
-          to: { opacity: .8 }
-        },
-        '@keyframes fadeOut': {
-          from: { opacity: 1 },
-          to: { opacity: 0 }
-        },
         '@keyframes slideUp': {
           from: {
             transform: 'translate3d(0, 100%, 0)',
           },
           to: {
             transform: 'translate3d(0, 0, 0)',
-          }
-        },
-        '@keyframes slideDown': {
-          from: {
-            opacity: 0,
-            transform: 'translate3d(0, 0, 0)',
-          },
-          to: {
-            opacity: 1,
-            transform: 'translate3d(0, 100%, 0)',
           }
         },
         '@keyframes growDown': {

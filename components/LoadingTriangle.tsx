@@ -5,7 +5,7 @@ export default function LoadingTriangle() {
       className="loader triangle"
       css={{
         '--path': 'var(--color-accent)',
-        '--dot': 'var(--color-link)',
+        '--dot': 'var(--color-accent-color)',
         '--duration': '2s',
         width: '48px',
         height: '44px',
