@@ -13,6 +13,7 @@ export default function Footer() {
   const isDarkTheme = theme.active === 'dark'
 
   const styleFooterWrapper = css({
+    position: 'relative',
     marginTop: '6rem',
     padding: '4rem 4rem 1rem 4rem',
     backgroundColor: 'var(--color-accent-color)',

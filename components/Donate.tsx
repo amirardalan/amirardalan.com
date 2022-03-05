@@ -34,7 +34,6 @@ export default function Donate() {
     color: 'var(--color-bg)',
     textTransform: 'uppercase',
     textDecoration: 'underline',
-    animation: 'fadeIn .7s',
     '@media (max-width: 768px)': {
       display: 'none'
     }
@@ -42,20 +41,20 @@ export default function Donate() {
 
   const styleAddress = css({
     display: showQrCode ? 'block' : 'none',
-    animation: 'fadeIn .5s',
+    opacity: showQrCode ? 1 : 0,
     fontSize: 7.9
   })
 
   const styleQrWrapper = css({
+    animation: showQrCode ? `fadeIn .5s ease` : null,
+    opacity: showQrCode ? 1 : 0,
     overflow: 'hidden',
     position: 'absolute',
     bottom: 50,
     left: 65,
     '.qrCode': {
-      opacity: showQrCode ? 1 : 0,
       width: 200,
       height: 200,
-      animation: showQrCode ? `slideUp .2s ease` : `slideDown .2s ease`,
       '@media (max-width: 1024px)': {
         display: 'none'
       }
@@ -86,13 +85,16 @@ export default function Donate() {
   return (
     <>
       <QR/>
-      <button
-        css={styleDonateButton}
-        onClick={()=>setShowQrCode(!showQrCode)}
-      >
+      <button css={styleDonateButton} onClick={()=>setShowQrCode(!showQrCode)}>
         {donate.text}
       </button>
-      <a css={styleDonateLink} href={donate.link} target="_blank" rel="noopener noreferrer">
+      <a
+        css={styleDonateLink}
+        href={donate.link}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={donate.text}
+      >
         {donate.text}
       </a>
       ❤
