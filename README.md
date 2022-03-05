@@ -5,6 +5,7 @@ A Next.js Markdown Blog and CMS written in TypeScript. Designed, built, and main
 ### Built with:
 
 [Next.js](https://github.com/vercel/next.js/)  
+[Next Auth](https://next-auth.js.org/)  
 [react-markdown](https://github.com/remarkjs/react-markdown)  
 [Prisma](https://github.com/prisma/prisma)  
 [SWR](https://github.com/vercel/swr)  
@@ -15,9 +16,17 @@ A Next.js Markdown Blog and CMS written in TypeScript. Designed, built, and main
 
 ## Local Development: 
 
-Set local environment variables in `.env` file.
+1. Create an `.env` file for local environment variables. Start with:
 
-Run the development server:
+```
+# Site URL
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
+```
+Add additional local environment variables as needed. Create a version of this for your staging and production environments as needed, these are usually stored on your server.
+
+2. Install depencies by running `yarn`
+
+3. Run the development server:
 
 ```bash
 yarn dev
