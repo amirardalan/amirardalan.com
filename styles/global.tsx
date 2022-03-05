@@ -427,24 +427,21 @@ export function GlobalStyles () {
             transform: 'translate3d(0, 0, 0)',
           }
         },
+        '@keyframes growDown': {
+          from: {
+            transform: 'translate3d(0, -100%, 0)',
+          },
+          to: {
+            transform: 'translate3d(0, 0, 0)',
+          }
+        },
         '@keyframes growUp': {
           from: {
             height: '100%',
             transform: 'translate3d(0, 0, 0)',
           },
           to: {
-            height: 0,
             transform: 'translate3d(0, -100%, 0)',
-          }
-        },
-        '@keyframes growDown': {
-          from: {
-            height: 0,
-            transform: 'translate3d(0, -100%, 0)',
-          },
-          to: {
-            height: '100%',
-            transform: 'translate3d(0, 0, 0)',
           }
         },
         '@keyframes dash': {

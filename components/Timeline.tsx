@@ -46,20 +46,16 @@ export default function Timeline() {
         borderRight: '4px solid var(--color-accent-gray)',
         '.scrollHighlight': {
           position: 'absolute',
-          top: 0,
           right: -4.1,
           width: 4,
-          animation: 'growUp .5s',
+          animation: 'growUp .4s',
           background: 'var(--color-accent-color)',
         },
         '&.active': {
           '.scrollHighlight': {
             height: '100%',
             background: 'var(--color-accent-color)',
-            animation: 'growDown .5s',
-          },
-          '&:after': {
-            color: 'var(--color-accent-color)'
+            animation: 'growDown .2s',
           }
         },
         '&:after': {
