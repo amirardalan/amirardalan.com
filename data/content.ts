@@ -394,7 +394,9 @@ export const uses = {
   ------
   #### Headphones
   - [Beyerdynamic DT770Pro 80ohm](https://north-america.beyerdynamic.com/dt-770-pro.html)
-  - [Sennheiser HD25-1 II](https://en-us.sennheiser.com/on-ear-dj-headphone-hd25) `
+  - [Sennheiser HD25-1 II](https://en-us.sennheiser.com/on-ear-dj-headphone-hd25)
+  - [Apple AirPod Pro](https://www.apple.com/airpods-pro/)
+  `
   },
   tools: {
     content:
