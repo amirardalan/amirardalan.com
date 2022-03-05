@@ -7,7 +7,9 @@ const TimelineEntry = (props: any) => {
   const { ref, inView } = useInView({
     threshold: 1,
     triggerOnce: false,
-    rootMargin: '60% 0px -40% 0px'
+    trackVisibility: true,
+    delay: 0,
+    rootMargin: '60% 0% -40% 0%',
   })
 
   return (
