@@ -7,13 +7,9 @@ const styleBlogLayout = css({
     msOverflowStyle: 'none',
     scrollbarWidth: 'none',
     whiteSpace: 'nowrap',
+    minHeight: 40,
     '&::-webkit-scrollbar': {
       display: 'none'
-    },
-    ul: {
-      '@media (max-width: 768px)': {
-        minHeight: 56
-      }
     },
     'ul li': {
       display: 'inline',
@@ -27,6 +23,9 @@ const styleBlogLayout = css({
         marginBottom: '.5rem'
       }
     },
+    '@media (max-width: 768px)': {
+      minHeight: 57,
+    }
   },
   '.breadcrumbs': {
     display: 'flex',
