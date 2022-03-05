@@ -443,11 +443,11 @@ export const uses = {
   #### Data Fetching
   - [SWR](https://swr.vercel.app/)
   #### Markdown
-  - [React Markdown](https://github.com/remarkjs/react-markdown)
-  - [React Syntax Highlighter](https://github.com/react-syntax-highlighter/react-syntax-highlighter)
+  - [React Markdown](https://remarkjs.github.io/react-markdown/)
+  - [React Syntax Highlighter](https://react-syntax-highlighter.github.io/react-syntax-highlighter/demo/)
   #### Testing
   - [Jest](https://jestjs.io/)
-  - [React Testing Library](https://github.com/testing-library/react-testing-library)
+  - [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
   #### Hosting
   - [Vercel](https://vercel.com)`
   },
@@ -522,7 +522,7 @@ export const footer = {
       },
     },
     {
-      path: 'https://github.com/remarkjs/react-markdown',
+      path: 'https://remarkjs.github.io/react-markdown/',
       title: 'React-Markdown',
       icon: {
         light: themeLight.icons.external,
@@ -545,14 +545,6 @@ export const footer = {
         dark: themeDark.icons.external
       },
     },
-    // {
-    //   path: 'https://opensea.io/',
-    //   title: 'OpenSea',
-    //   icon: {
-    //     light: themeLight.icons.external,
-    //     dark: themeDark.icons.external
-    //   },
-    // },
   ],
   social: [
     {
