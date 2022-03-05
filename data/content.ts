@@ -463,7 +463,7 @@ export const uses = {
   - [Discord](https://discord.com/)
   
   #### Music & Podcasts
-  - [Spotify](https://www.spotify.com/)`
+  - [Spotify](/spotify)`
   },
 }
 
