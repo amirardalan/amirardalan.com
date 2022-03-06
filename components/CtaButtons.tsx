@@ -1,12 +1,13 @@
 import { useTheme } from '@emotion/react'
 import Image from 'next/image'
+import { Key } from 'react'
 
 
 export const GenerateCtaButtons = (items: Array<any>) => {
   const theme: any = useTheme()
   const isDarkTheme = theme.active === 'dark'
 
-  return items.map((items, i) => {
+  return items.map((items, i: Key) => {
     return (
       <a key={i}
         href={items.path}

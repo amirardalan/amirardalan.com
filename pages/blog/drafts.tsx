@@ -9,6 +9,7 @@ import sortBlogPosts from '@/utils/sortBlogPosts'
 import LoadingTriangle from '@/components/LoadingTriangle'
 import prisma from '@/lib/prisma'
 import { GetServerSideProps } from 'next'
+import { Key } from 'react'
 
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
@@ -50,7 +51,7 @@ const Drafts  = ({ drafts }) => {
 
       <div className="drafts">
         <main>
-          {drafts.sort(sortBlogPosts).reverse().map((post) => (
+          {drafts.sort(sortBlogPosts).reverse().map((post: { id: Key }) => (
             <div
               key={post.id}
               className="postDraft"

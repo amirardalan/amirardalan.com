@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import Donate from '@/components/Donate'
 import NowPlayingCompact from '@/components/NowPlayingCompact'
+import { Key } from 'react'
 
 
 export default function Footer() {
@@ -104,8 +105,8 @@ export default function Footer() {
     flexDirection: 'column',
   })
 
-  const generateFooterLinks = (items: Array<any>) => {
-    return items.map((items, i) => {
+  const generateFooterLinks = (items: any[]) => {
+    return items.map((items, i: Key) => {
       return (
         <li key={i}>
           <a

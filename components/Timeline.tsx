@@ -3,7 +3,7 @@ import { timeline } from '@/data/content'
 import Link from 'next/link'
 import TimelineEntry from '@/components/TimelineEntry'
 import { useInView } from 'react-intersection-observer'
-
+import { Key } from 'react'
 
 
 export default function Timeline() {
@@ -36,7 +36,7 @@ export default function Timeline() {
     display: 'grid',
     gridTemplateColumns: 'repeat(2, 1fr)',
     overflow: 'hidden',
-    paddingTop: 2.2,
+    paddingTop: 7.2,
     '.timeline': {
       '&:nth-of-type(even), &:nth-of-type(odd)': {
         '.event': {
@@ -104,7 +104,7 @@ export default function Timeline() {
           },
         },
         '@media(max-width: 480px)': {
-          padding: 0,
+          padding: '0',
           '.date': {
             marginRight: '1rem',
           },
@@ -180,21 +180,25 @@ export default function Timeline() {
           fontSize: 12,
         }
       }
-    }
+    },
+    '@media(max-width: 480px)': {
+      paddingTop: 2.2,
+    },
   })
-  
-  const generateTimeline = (items: Array<any>) => {
-    return items.map(({ cName, title, content }, i) => (
+
+
+  const generateTimeline = (items: any[]) => {
+    return items.map(({ cName, title, content }: any, i: Key) => (
       <TimelineEntry key={i} cName={cName} title={title} content={content} />
     ))
   }
 
   return (
     <>
-      <h2 css={styleTimelineHeading} className='pageHeading center'>
+      <h2 css={styleTimelineHeading} className='pageHeading center' id='timeline'>
         {timeline.meta.title}
       </h2>
-      <div css={styleTimelineWrapper} id='timeline'>
+      <div css={styleTimelineWrapper}>
         <div css={styleTimeline}>
           {generateTimeline(timeline.items)}
         </div>

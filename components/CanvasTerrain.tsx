@@ -4,8 +4,14 @@ import SimplexNoise from 'simplex-noise'
 import { BufferAttribute } from 'three'
 
 
-const generateTerrain = (simplex, detail, height, texture, scale, offset) => {
-  const noise = (level, x, z) =>
+const generateTerrain = (
+  simplex: SimplexNoise,
+  detail: number,
+  height: number,
+  texture: number,
+  scale: number,
+  offset: { x: any; z: any }) => {
+  const noise = (level: number, x: number, z: number) =>
     simplex.noise2D(
       offset.x * scale + scale * level * x,
       offset.z * scale + scale * level * z

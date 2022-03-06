@@ -474,7 +474,11 @@ const styleBlogLayout = css({
   },
 })
 
-const BlogLayout = (props: any) => {
+type Props = {
+  children: React.ReactNode
+}
+
+const BlogLayout = (props: Props) => {
 
   return (
     <div css={styleBlogLayout}>

@@ -1,8 +1,16 @@
 import { css } from '@emotion/react'
 import Image from 'next/image'
 
+interface Track {
+  ranking: number
+  songUrl: string
+  title: string
+  artist: string
+  album: string
+  image: string
+}
 
-export default function Track(track: any) {
+export default function Track(track: Track) {
 
   const styleTopTracksContainer = css({
     fontFamily: 'var(--font-secondary)',

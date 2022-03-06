@@ -101,7 +101,7 @@ export default function Navigation() {
       display: 'none',
     },
   })
-  const styleNavItems = css({
+  const styleNavitem = css({
     position: 'relative',
     display: 'flex',
     a: {
@@ -185,7 +185,7 @@ export default function Navigation() {
   }
   const MobileMenu = () => (
     <div css={styleMobileNavWrapper}>
-      <NavItems />
+      <Navitem />
       <div css={styleMobileNavSecondary}>
         <Logo />
       </div>
@@ -196,26 +196,26 @@ export default function Navigation() {
     </div>
   )
 
-  const NavItems = () => (
-    <nav css={styleNavItems}>
-      {nav.map((items: any, index: number) => {
+  const Navitem = () => (
+    <nav css={styleNavitem}>
+      {nav.map((item: any, index: number) => {
         return (
-          <Link href={items.path} activeClassName="active" exact={items.exact} as="" key={index}>
-            <a onClick={toggleMobileNav ? toggleMenu : null} className={items.cName} aria-label={items.aria}>
-              {items.icon
+          <Link href={item.path} activeClassName="active" exact={item.exact} as="" key={index}>
+            <a onClick={toggleMobileNav ? toggleMenu : null} className={item.cName} aria-label={item.aria}>
+              {item.icon
                 ?
                   <div className="navIcon">
                     <Image
                       src={isDarkTheme
-                        ? items.icon.dark
-                        : items.icon.light}
+                        ? item.icon.dark
+                        : item.icon.light}
                       height="100%"
                       width="100%"
-                      alt={items.title}
+                      alt={item.title}
                       priority
                     />
                   </div>
-                : items.title}
+                : item.title}
             </a>
           </Link>
         )}
@@ -226,7 +226,7 @@ export default function Navigation() {
   return (
     <>
       <div css={styleMainNav}>
-        <NavItems />
+        <Navitem />
       </div>
       <button
         css={styleMobileNavButton}

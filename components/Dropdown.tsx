@@ -3,7 +3,7 @@ export default function Dropdown({ label, value, handleChange, data }) {
     <label>
       {label+': '}
       <select value={value} onChange={(e) => handleChange(e)}>
-        {data.map(item => (
+        {data.map((item: any) => (
           <option key={item} value={item}>
             {item}
           </option>

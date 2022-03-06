@@ -52,49 +52,47 @@ export default function ContactButton() {
   })
 
   return (
-    <>
-      <span css={{maxWidth: 'fit-content'}}>
-        <a
-          onClick={showEmail
-            ? handleCopyToClipboard
-            : showEmailOnclick}
-          className={showEmail
-            ? 'ctaButton disabled'
-            : 'ctaButton'}
-          aria-label={showEmail
-            ? 'Copy Email address to clipboard'
-            : 'Show Email'}
-        >
-          {showEmail
-            ? process.env.NEXT_PUBLIC_USER_EMAIL
-            : about.contact.email.title}
-          <span className="icon">
-          {showEmail ?
-            <Image
-              src={theme.icons.clipboard}
-              height="16"
-              width="16"
-              className="icon"
-              alt="Clipboard"
-              priority
-            /> :
-            <Image
-              src={theme.icons.email}
-              height="16"
-              width="16"
-              className="icon"
-              alt="Email"
-              priority
-            />
-          }
-          </span>
-        </a>
-        <div css={styleTooltipWrapper}>
-          <div css={styleTooltip}>
-            {about.contact.copiedToClipboard}
-          </div>
+    <span css={{maxWidth: 'fit-content'}}>
+      <a
+        onClick={showEmail
+          ? handleCopyToClipboard
+          : showEmailOnclick}
+        className={showEmail
+          ? 'ctaButton disabled'
+          : 'ctaButton'}
+        aria-label={showEmail
+          ? 'Copy Email address to clipboard'
+          : 'Show Email'}
+      >
+        {showEmail
+          ? process.env.NEXT_PUBLIC_USER_EMAIL
+          : about.contact.email.title}
+        <span className="icon">
+        {showEmail ?
+          <Image
+            src={theme.icons.clipboard}
+            height="16"
+            width="16"
+            className="icon"
+            alt="Clipboard"
+            priority
+          /> :
+          <Image
+            src={theme.icons.email}
+            height="16"
+            width="16"
+            className="icon"
+            alt="Email"
+            priority
+          />
+        }
+        </span>
+      </a>
+      <div css={styleTooltipWrapper}>
+        <div css={styleTooltip}>
+          {about.contact.copiedToClipboard}
         </div>
-      </span>
-    </>
+      </div>
+    </span>
   )
 }

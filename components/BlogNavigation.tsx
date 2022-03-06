@@ -17,7 +17,7 @@ export default function BlogNavigation({ feed, post, isPublished }) {
   const prevPost = isPublished && !first && !only
   const nextPost = isPublished && !last && !only
 
-  const index = arrSorted.findIndex(x => x.id === current)
+  const index = arrSorted.findIndex((x: { id: number }) => x.id === current)
   const prevTitle = prevPost ? arr[index - 1].title : null
   const nextTitle = nextPost ? arr[index + 1].title : null
   const prevLink = prevPost ? `/blog/${encodeURIComponent(arr[index - 1].slug)}` : '#'

@@ -10,8 +10,16 @@ export default function TopTracks() {
   if (!data) {
     return null
   }
+  interface Track {
+    ranking: number
+    songUrl: string
+    title: string
+    artist: string
+    album: string
+    image: string
+  }
 
-  return data.tracks.map((track: any, index: number) => (
+  return data.tracks.map((track: Track, index: number) => (
     <Track ranking={index + 1} key={track.songUrl} {...track} />
   ))
 }

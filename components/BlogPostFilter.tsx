@@ -18,23 +18,23 @@ const BlogPostFilter = ({ feed }) => {
   
   const [search, setSearch] = useState('')
 
-  const handleCategoryLink = (category) => {
+  const handleCategoryLink = (category: string) => {
     setSearch('#'+category)
     window.scrollTo(0, 0)
   }
 
-  const activeCategories: Array<string> = Array.from(new Set(feed.map((post) => {
+  const activeCategories: Array<string> = Array.from(new Set(feed.map((post: Record<string, object>) => {
     return post.category
   })))
 
   const filteredPosts = search.length > 0 && search[0] === '#'
-    ? feed.filter(data => data?.category?.toLowerCase().includes(search.slice(1).toLowerCase()))
-    : feed.filter(data => data?.title?.toLowerCase().includes(search.toLowerCase()))
+    ? feed.filter((data: { category: string }) => data?.category?.toLowerCase().includes(search.slice(1).toLowerCase()))
+    : feed.filter((data: { title: string }) => data?.title?.toLowerCase().includes(search.toLowerCase()))
 
   const RenderPosts: Function = () => {
     if (filteredPosts.length > 0) {
       return (
-        filteredPosts.sort(sortBlogPosts).reverse().map((post) => (
+        filteredPosts.sort(sortBlogPosts).reverse().map((post: Record<string, string>) => (
           <span key={post.id}>
             <button
               onClick={() => handleCategoryLink(post.category)}
