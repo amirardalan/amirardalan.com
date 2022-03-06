@@ -100,13 +100,20 @@ const BlogAdmin = React.memo(function BlogAdmin() {
     },
   })
 
+  const URL = process.env.NEXT_PUBLIC_SITE_URL
+  const isAdminPage = ['/blog/create','/blog/edit/[id]','/blog/drafts','/blog/[slug]'].includes(router.pathname)
+
+  console.log('path:', router.pathname, 'isAdmin', isAdminPage)
+
   if (isLoggedIn) {
     adminPanelLeft = (
       <div css={styleAdminPanelLeft}>
         <span>
           Welcome, {session.user.name.split(" ")[0]}! •
           <a
-            onClick={() => signOut({ callbackUrl: `${process.env.NEXT_PUBLIC_SITE_URL+router.pathname}` })}
+            onClick={() => signOut({
+              callbackUrl: isAdminPage ? `${URL}/blog` : `${URL+router.pathname}`
+            })}
             aria-label="Sign Out"
             tabIndex={0}
           >
