@@ -40,7 +40,7 @@ export default function Donate() {
     position: 'absolute',
     bottom: 45,
     left: '4rem',
-    '@media (max-width: 1200px)': {
+    '@media (max-width: 1255px)': {
       bottom: 37,
       left: '4rem',
     },
@@ -57,7 +57,7 @@ export default function Donate() {
     flexDirection: 'column',
     paddingBottom: 5,
     opacity: showQrCode ? 1 : 0,
-    fontSize: 8.6,
+    fontSize: 9,
     span: {
       marginRight: 4,
     },
@@ -67,10 +67,10 @@ export default function Donate() {
       color: 'var(--color-bg)',
       textDecoration: 'underline',
       '.qrCode': {
-        width: 235,
-        height: 235,
+        width: 242,
+        height: 242,
         marginTop: 7,
-        '@media (max-width: 1200px)': {
+        '@media (max-width: 1255px)': {
           display: 'none'
         },
       },
@@ -83,7 +83,7 @@ export default function Donate() {
         lineHeight: '.8rem',
       },
     },
-    '@media (max-width: 1200px)': {
+    '@media (max-width: 1255px)': {
       display: showQrCode ? 'inline' : 'none',
       marginBottom: 0,
       fontSize: 10,
@@ -141,8 +141,8 @@ export default function Donate() {
             <div className="qrCode">
             <Image 
               src={donate.qr}
-              height={235}
-              width={235}
+              height={242}
+              width={242}
               alt={donate.text}
             />
             </div>
