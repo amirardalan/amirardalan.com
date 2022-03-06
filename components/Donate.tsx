@@ -16,12 +16,22 @@ export default function Donate() {
     }, 5000)
   }
 
+  const styleDonateWrapper = css({
+    display: 'inline',
+    button: {
+      background: 'transparent',
+      border: 'none',
+      color: 'var(--color-bg)',
+      textDecoration: 'underline',
+      '&:focus': {
+        boxShadow: '0 0 0 2px var(--color-accent-gray)',
+        '&:focus:not(:focus-visible)': { boxShadow: 'none' },
+      }
+    },
+  })
+
   const styleDonateButton = css({
     margin: '0 .4rem',
-    background: 'none',
-    border: 'none',
-    color: 'var(--color-bg)',
-    textDecoration: 'underline',
   })
 
   const styleAddress = css({
@@ -34,7 +44,7 @@ export default function Donate() {
       marginRight: 4,
     },
     button: {
-      background: 'none',
+      background: 'transparent',
       border: 'none',
       color: 'var(--color-bg)',
       textDecoration: 'underline'
@@ -55,13 +65,11 @@ export default function Donate() {
     '.qrCode': {
       width: 235,
       height: 235,
-      '@media (max-width: 1200px)': {
-        display: 'none',
-      },
     },
     '@media (max-width: 1200px)': {
       bottom: 35,
       left: '4rem',
+      '.qrCode': { display: 'none' },
     },
     '@media (max-width: 1024px)': {
       left: '2.5rem',
@@ -104,7 +112,7 @@ export default function Donate() {
 
 
   return (
-    <>
+    <div css={styleDonateWrapper}>
       <div css={styleQrWrapper}>
         <div css={styleTooltipWrapper}>
           <div className="tooltipFooter">{donate.copied}</div>
@@ -112,7 +120,7 @@ export default function Donate() {
         <div css={styleAddress}>
           <span css={{fontSize: 16}}>⎘</span>
           <button onClick={()=> handleCopyAddress()} aria-label={donate.meta}>
-          {donate.address}
+            {donate.address}
           </button>
         </div>
         <div className="qrCode">
@@ -128,6 +136,6 @@ export default function Donate() {
         {donate.text}
       </button>
       <span css={{fontSize: 14}}>⬨</span>
-    </>
+    </div>
   )
 }
