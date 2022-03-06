@@ -18,6 +18,23 @@ const Draft = () => {
   const [teaser, setTeaser] = useState('')
   const [category, setCategory] = useState(categories[0])
 
+  const [showDeletionConfirmation, setShowDeletionConfirmation] = useState(false)
+  const handleConfirmOnClick = () => setShowDeletionConfirmation(true)
+  const handleCancelOnClick = () => setShowDeletionConfirmation(false)
+  const DeletionConfirmation = () => (
+    <div className="controlsConfirm">
+      <div className="confirmSelect">
+        <span className="confirmLink delete" onClick={() => Router.push("/blog")}>
+          {admin.controls.confirm}
+        </span>
+        <span>•</span>
+        <span className="confirmLink close" onClick={handleCancelOnClick}>
+          {admin.controls.cancel}
+        </span>
+      </div>
+    </div>
+  )
+
   const submitData = async (e: React.SyntheticEvent) => {
     e.preventDefault()
     try {
@@ -130,12 +147,10 @@ const Draft = () => {
                 type="submit">
                 {admin.controls.save}
               </button>
-              <a
-                className="buttonCompact"
-                onClick={() => Router.push("/blog")}
-              >
-                {admin.controls.cancel}
+              <a className="buttonCompact delete" onClick={handleConfirmOnClick}>
+                {admin.controls.delete}
               </a>
+              { showDeletionConfirmation ? <DeletionConfirmation /> : null }
             </div>
 
           </form>
