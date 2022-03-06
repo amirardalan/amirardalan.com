@@ -1,7 +1,7 @@
 import Container from '@/components/Container'
 import ErrorIcon from '@/components/ErrorIcon'
 import Link from 'next/link'
-import ErrorAnimation from '@/components/ErrorAnimation'
+import ErrorContent from '@/components/ErrorContent'
 import { error } from '@/data/content'
 
 
@@ -17,13 +17,13 @@ export default function Custom404({ data }) {
       <div>
 
         <div css={{
+          overflow: 'hidden',
           padding: '4rem 1.5rem',
           position: 'relative',
           display: 'flex',
           flexDirection: 'column',
           backgroundColor: 'var(--page-bg)',
         }}>
-          <ErrorAnimation />
           <div css={{
             display: 'flex',
             justifyContent: 'center',
@@ -33,7 +33,6 @@ export default function Custom404({ data }) {
               margin: '0 1rem 0 .5rem',
               paddingRight: '1rem',
               alignSelf: 'center',
-              borderRight: '1px solid var(--color-gray)',
               fontSize: '40px',
             },
             h2: {
@@ -56,6 +55,7 @@ export default function Custom404({ data }) {
             textAlign: 'center',
             animation: 'slideUp 1s forwards',
           }}>
+            <ErrorContent />
             <Link
               href={data.link.path}
               aria-label={data.link.title}

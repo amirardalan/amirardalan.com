@@ -83,7 +83,7 @@ export default function Home({ data, latestPost }) {
     },
     h1: {
       fontFamily: 'var(--font-secondary)',
-      fontSize: 'calc(2.9vw + 2.9vh)',
+      fontSize: 'calc(3.2vw + 3.2vh)',
       WebkitMarqueeIncrement: '0vw',
       fontWeight: 'bolder',
       '@media (max-width: 890px)': {

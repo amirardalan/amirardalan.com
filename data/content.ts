@@ -475,11 +475,13 @@ export const error = {
   img: {
     meta: 'Error'
   },
-  text: 'You seem to be lost in space...',
+  text: 'Page not found.',
   link: {
     path: '/',
     title: 'Return Home'
   },
+  quote: `"Have no fear of perfection. You'll never reach it."`,
+  author: 'Salvadore Dalí',
   blogPostError: {
     title: 'Oops...',
     text: 'That post is no longer available.',
