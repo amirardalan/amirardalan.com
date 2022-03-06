@@ -22,7 +22,6 @@ export default function Donate() {
       background: 'transparent',
       border: 'none',
       color: 'var(--color-bg)',
-      textDecoration: 'underline',
       '&:focus': {
         boxShadow: '0 0 0 2px var(--color-accent-gray)',
         '&:focus:not(:focus-visible)': { boxShadow: 'none' },
@@ -32,6 +31,7 @@ export default function Donate() {
 
   const styleDonateButton = css({
     margin: '0 .4rem',
+    textDecoration: 'underline',
   })
 
   const styleQrWrapper = css({
@@ -65,7 +65,6 @@ export default function Donate() {
       background: 'transparent',
       border: 'none',
       color: 'var(--color-bg)',
-      textDecoration: 'underline',
       '.qrCode': {
         width: 242,
         height: 242,
@@ -74,13 +73,19 @@ export default function Donate() {
           display: 'none'
         },
       },
-      '.addressIcon': {
-        fontSize: 16
-      },
       '.address': {
         flexDirection: 'row',
         display: 'inline',
         lineHeight: '.8rem',
+        span: {
+          textDecoration: 'underline',
+        },
+        '&:before': {
+          content: '"⎘"',
+          marginRight: '.2rem',
+          fontSize: 16,
+          textDecoration: 'none !important',
+        },
       },
     },
     '@media (max-width: 1255px)': {
@@ -132,10 +137,7 @@ export default function Donate() {
           <button onClick={()=> handleCopyAddress()} aria-label={donate.meta}>
 
             <div className="address">
-              <span className="addressIcon">
-                ⎘
-              </span>
-              {donate.address}
+              <span>{donate.address}</span>
             </div>
 
             <div className="qrCode">
