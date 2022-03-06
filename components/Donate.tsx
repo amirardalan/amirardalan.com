@@ -7,6 +7,15 @@ export default function Donate() {
 
   const [showQrCode, setShowQrCode] = useState(false)
 
+  const [addressCopied, setAddressCopied] = useState(false)
+  const handleCopyAddress = () => {
+    navigator.clipboard.writeText(donate.address)
+    setAddressCopied(true)
+    setTimeout(() => {
+      setAddressCopied(false)
+    }, 5000)
+  }
+
   const styleDonateButton = css({
     margin: '0 .4rem',
     background: 'none',
@@ -20,6 +29,7 @@ export default function Donate() {
     display: showQrCode ? 'block' : 'none',
     opacity: showQrCode ? 1 : 0,
     fontSize: 8.6,
+    lineHeight: '1rem',
     span: {
       marginRight: 4,
     },
@@ -49,6 +59,15 @@ export default function Donate() {
         display: 'none'
       }
     },
+    '@media (max-width: 768px)': {
+      bottom: 35,
+      left: '1.5rem',
+    }
+  })
+
+  const styleTooltipWrapper = css({
+    overflow: 'hidden',
+    paddingBottom: 2,
     '.tooltipFooter': {
       marginBottom: '.2rem',
       position: 'relative',
@@ -58,7 +77,8 @@ export default function Donate() {
       textAlign: 'center',
       backgroundColor: 'var(--color-accent-gray)',
       borderRadius: 5,
-      animation: 'slideUp .2s',
+      opacity: addressCopied ? 1 : 0,
+      animation: addressCopied ? 'tooltip .2s forwards' : null,
       '&:before': {
         content: '""',
         position: 'absolute',
@@ -74,29 +94,17 @@ export default function Donate() {
         borderTop: '6px solid var(--color-accent-gray)',
       }
     },
-    '@media (max-width: 768px)': {
-      bottom: 35,
-      left: '1.5rem',
-    }
   })
-
-  const [addressCopied, setAddressCopied] = useState(false)
-
-  const handleCopyAddress = () => {
-    navigator.clipboard.writeText(donate.address)
-    setAddressCopied(true)
-    setTimeout(() => {
-      setAddressCopied(false)
-    }, 10000)
-  }
 
   const QR = () => {
     return (
       <div css={styleQrWrapper}>
-        {addressCopied ? <div className="tooltipFooter">{donate.copied}</div> : null}
+        <div css={styleTooltipWrapper}>
+          <div className="tooltipFooter">{donate.copied}</div>
+        </div>
         <div css={styleAddress}>
           <span>📋</span>
-          <button onClick={()=> handleCopyAddress()}>
+          <button onClick={()=> handleCopyAddress()} aria-label={donate.meta}>
           {donate.address}
           </button>
         </div>
