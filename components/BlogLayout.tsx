@@ -131,16 +131,8 @@ const styleBlogLayout = css({
     fontSize: 13,
     lineHeight: '1.2rem',
     '.author, .authorLink': {
-      marginBottom: 3,
-      fontFamily: 'var(--font-tertiary)',
-      fontSize: 16,
-      fontStyle: 'italic',
-      color: 'var(--color-text)',
       display: 'flex',
       alignItems: 'center',
-      '@media (max-width: 768px)': {
-        marginBottom: 4,
-      }
     },
     '.avatar': {
       display: 'flex',
@@ -164,11 +156,14 @@ const styleBlogLayout = css({
   '.postImg': {
     paddingBottom: '2rem !important',
   },
+  '.controlsPost, .formSubmit': {
+    minHeight: 66,
+  },
   '.controlsPost': {
     margin: '2rem 0',
   },
   '.formSubmit': {
-    marginTop: '1rem',
+    marginTop: '2rem',
   },
   '.controlsConfirm': {
     margin: '1rem 0 0 0',
