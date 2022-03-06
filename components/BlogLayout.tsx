@@ -116,6 +116,9 @@ const styleBlogLayout = css({
       form: {
         marginTop: '1rem'
       },
+      '.dropdownLabel': {
+        color: 'var(--color-gray)'
+      }
     }
   },
   '.post': {

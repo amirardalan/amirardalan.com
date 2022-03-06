@@ -119,13 +119,13 @@ const Draft = () => {
             <Dropdown
               label="Category"
               value={category}
-              handleChange={e => setCategory(e.target.value)}
+              handleChange={(e: { target: { value: React.SetStateAction<string> } }) => setCategory(e.target.value)}
               data={categories}
             />
 
             <div className="formSubmit">
               <button
-                className="buttonCompact"
+                className="buttonCompact save"
                 disabled={!content || !title || !slug || !teaser || category === '-'}
                 type="submit">
                 {admin.controls.save}

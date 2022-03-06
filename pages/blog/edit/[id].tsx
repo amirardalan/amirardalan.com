@@ -156,7 +156,7 @@ const Edit = ({ editPost }) => {
 
             <div className="formSubmit">
               <button
-                className="buttonCompact"
+                className="buttonCompact update"
                 disabled={ !content || !title || !slug || !teaser }
                 type="submit">
                 {admin.controls.update}

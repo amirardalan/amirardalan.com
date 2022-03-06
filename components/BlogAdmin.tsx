@@ -145,9 +145,11 @@ const BlogAdmin = React.memo(function BlogAdmin() {
     <>
       <Global styles={{
         // Admin
+        'button, a': {
+          marginRight: '.25rem',
+        },
         '.buttonCompact': {
           minWidth: 80,
-          marginLeft: '.25rem',
           padding: '.45rem 1rem',
           display: 'inline-block',
           backgroundColor: 'var(--color-text)',
@@ -161,8 +163,8 @@ const BlogAdmin = React.memo(function BlogAdmin() {
           textAlign: 'center',
           textDecoration: 'none',
           cursor: 'pointer',
-          '&:first-of-type': {
-            marginLeft: 0,
+          '&:last-of-type': {
+            marginRight: 0,
           },
           '&:disabled': {
             backgroundColor: 'var(--color-button-disabled)',
@@ -185,11 +187,13 @@ const BlogAdmin = React.memo(function BlogAdmin() {
           },
           '&.deploy': {
             backgroundColor: 'var(--color-accent-color)',
-            marginRight: '.25rem',
             '&.disabled': { cursor: 'wait' }
           },
           '&.disabled': {
             backgroundColor: 'var(--color-button-disabled)',
+          },
+          '&.deploy, &.save, &.update': {
+            marginRight: '.25rem',
           }
         }
       }}/>

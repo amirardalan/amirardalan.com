@@ -1,6 +1,6 @@
 export default function Dropdown({ label, value, handleChange, data }) {
   return (
-    <label>
+    <label className="dropdownLabel">
       {label+': '}
       <select value={value} onChange={(e) => handleChange(e)}>
         {data.map((item: any) => (
