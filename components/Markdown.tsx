@@ -7,6 +7,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import rangeParser from 'parse-numeric-range'
 import gfm from 'remark-gfm'
 import rehypeSlug from 'rehype-slug'
+import rehypeRaw from 'rehype-raw'
 import link from 'rehype-autolink-headings'
 
 
@@ -57,7 +58,7 @@ export default function BlogMarkdown({ markdown }) {
         <code className={className} {...props} />
       )
     },
-    p: paragraph => {
+    p: (paragraph: { children?: any; node?: any }) => {
       const { node } = paragraph
 
       if (node.children[0].tagName === "img") {
@@ -82,7 +83,7 @@ export default function BlogMarkdown({ markdown }) {
       }
       return <p>{paragraph.children}</p>
     },
-    a: anchor => {
+    a: (anchor: { href: string; children: {} }) => {
       if (anchor.href.match('http')) {
         return (
           <a
@@ -108,6 +109,7 @@ export default function BlogMarkdown({ markdown }) {
       rehypePlugins={[
         [rehypeSlug],
         [link],
+        [rehypeRaw]
       ]}
       css={{
         '.codeStyle, pre, code, code span': {
