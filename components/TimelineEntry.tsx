@@ -1,12 +1,15 @@
 import { useInView } from 'react-intersection-observer'
+interface TimelineProps {
+  cName: string
+  title: string,
+  content: string
+}
 
-
-const TimelineEntry = (props: any) => {
+const TimelineEntry = (props: TimelineProps) => {
   const { cName, title, content } = props
   
   const { ref, inView } = useInView({
-    threshold: 1,
-    rootMargin: '60% 0% -40% 0%',
+    rootMargin: '60% 0% -60% 0%',
   })
 
   return (

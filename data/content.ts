@@ -319,7 +319,7 @@ export const timeline = {
     },
     {
       title: 'Learning @ Southridge High School',
-      content: '❤️ Wrote my first lines of HTML and CSS using Yahoo! Geocities. Fell in love with web development. Took HTML/CSS Web Design course sophomore year.',
+      content: '🏫 Wrote my first lines of HTML and CSS using Yahoo! Geocities. Fell in love with web development. Took HTML/CSS Web Design course sophomore year.',
       cName: 'event'
     },
     {

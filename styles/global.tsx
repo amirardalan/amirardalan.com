@@ -372,11 +372,11 @@ export function GlobalStyles () {
           alignSelf: 'flex-end',
         },
         '@keyframes slideUp': {
-          from: {
+          '0%': {
             opacity: 0,
             transform: 'translate3d(0, 100%, 0)',
           },
-          to: {
+          '100%': {
             transform: 'translate3d(0, 0, 0)',
             opacity: 1,
           }

@@ -2,21 +2,41 @@ import { css } from '@emotion/react'
 import { timeline } from '@/data/content'
 import Link from 'next/link'
 import TimelineEntry from '@/components/TimelineEntry'
+import { useInView } from 'react-intersection-observer'
+
 
 
 export default function Timeline() {
+
+  const { ref, inView } = useInView({
+    threshold: 1,
+    rootMargin: '0% 0% -33% 0%',
+    triggerOnce: true
+  })
+
   const styleTimelineHeading = css({
     marginTop: '4rem',
   })
   const styleTimelineWrapper = css({
     paddingTop: '2rem',
     position: 'relative',
+    '.readMoreLink': {
+      marginTop: '2rem',
+      display: 'flex',
+      justifyContent: 'center',
+      fontFamily: 'var(--font-secondary)',
+      opacity: 0,
+      '&.active': {
+        animation: 'slideUp 1s',
+        opacity: 1,
+      }
+    }
   })
   const styleTimeline = css({
     display: 'grid',
     gridTemplateColumns: 'repeat(2, 1fr)',
     overflow: 'hidden',
-    paddingTop: 7.2,
+    paddingTop: 2.2,
     '.timeline': {
       '&:nth-of-type(even), &:nth-of-type(odd)': {
         '.event': {
@@ -26,15 +46,14 @@ export default function Timeline() {
             marginBottom: '.5rem',
             fontFamily: 'var(--font-secondary)',
             fontSize: 14,
-            lineHeight: '1rem',
+            lineHeight: '1.2rem',
           },
           '@media(max-width: 480px)': {
-            borderTop: '1px solid var(--color-accent-color)',
             boxShadow: 'none',
           },
         },
         '.date': {
-          lineHeight: '1rem',
+          lineHeight: '1.2rem',
           color: 'var(--color-text)',
         },
       },
@@ -46,16 +65,20 @@ export default function Timeline() {
         borderRight: '4px solid var(--color-accent-gray)',
         '.scrollHighlight': {
           position: 'absolute',
+          top: 0,
           right: -4.1,
           width: 4,
-          animation: 'growUp .4s',
+          animation: 'growUp .5s',
           background: 'var(--color-accent-color)',
         },
         '&.active': {
           '.scrollHighlight': {
             height: '100%',
             background: 'var(--color-accent-color)',
-            animation: 'growDown .2s',
+            animation: 'growDown .5s',
+          },
+          '&:after': {
+            color: 'var(--color-accent-color)'
           }
         },
         '&:after': {
@@ -65,6 +88,9 @@ export default function Timeline() {
           content: '"•"',
           fontSize: 80,
           color: 'var(--color-accent-color)',
+          '@media(max-width: 768px)': {
+            top: -45,
+          }
         },
         '.event': {
           '&:before': {
@@ -124,7 +150,10 @@ export default function Timeline() {
       },
       '.date': {
         fontFamily: 'var(--font-secondary)',
-        fontSize: 20,
+        fontSize: 30,
+        '@media(max-width: 768px)': {
+          fontSize: 22,
+        }
       },
       '.event': {
         position: 'relative',
@@ -132,6 +161,9 @@ export default function Timeline() {
         padding: '2rem',
         background: 'var(--color-accent)',
         fontSize: 13,
+        span: {
+          color: 'var(--color-gray)',
+        },
         '&:before': {
           content: '""',
           position: 'absolute',
@@ -141,23 +173,15 @@ export default function Timeline() {
           borderBottom: '12px solid transparent',
         },
         '@media(max-width: 480px)': {
-          marginTop: '.4rem',
-          marginBottom: '2rem',
-          padding: '1.5rem 1rem',
+          marginTop: 0,
+          marginBottom: '4rem',
+          padding: '0 1rem',
           background: 'none',
           fontSize: 12,
         }
       }
     }
   })
-
-  const styleReadMoreLink = {
-    marginTop: '2rem',
-    display: 'flex',
-    justifyContent: 'center',
-    fontFamily: 'var(--font-secondary)',
-  }
-
   
   const generateTimeline = (items: Array<any>) => {
     return items.map(({ cName, title, content }, i) => (
@@ -174,7 +198,7 @@ export default function Timeline() {
         <div css={styleTimeline}>
           {generateTimeline(timeline.items)}
         </div>
-        <div css={styleReadMoreLink}>
+        <div ref={ref} className={inView ? 'readMoreLink active' : 'readMoreLink'}>
           <Link href='/blog/2021-a-dev-odyssey'>
             Read the Full Story
           </Link>
