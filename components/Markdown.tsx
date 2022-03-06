@@ -1,4 +1,4 @@
-import { useTheme } from '@emotion/react'
+import { useTheme, css } from '@emotion/react'
 import Image from 'next/image'
 
 import { solarizedlight, tomorrow } from 'react-syntax-highlighter/dist/cjs/styles/prism'
@@ -12,6 +12,65 @@ import link from 'rehype-autolink-headings'
 
 
 export default function BlogMarkdown({ markdown }) {
+
+  const styleMarkdown = css({
+    '.codeStyle, pre, code, code span': {
+      fontFamily: 'var(--font-primary)',
+      fontStyle: 'normal !important'
+    },
+    pre: {
+      margin: '0 -1.5rem 1.5rem -1.5rem',
+      fontSize: 14,
+    },
+    '.codeStyle': {
+      padding: '1.5rem 0 1.5rem 1.5rem !important',
+      overflow: 'scroll',
+      borderRadius: 5,
+      backgroundColor: 'var(--syntax-highlight-bg) !important',
+      code: {
+        paddingRight: '1.5rem',
+        backgroundColor: 'transparent !important',
+        transform: 'translateZ(0)',
+        minWidth: '100%',
+        float: 'left',
+        '& > span': {
+          display: 'block',
+          '&:last-of-type': {
+            display: 'none',
+          }
+        },
+      },
+      '@media(max-width: 768px)': {
+        borderRadius: 0,
+      },
+    },
+    code: {
+      wordWrap: 'break-word',
+      fontSize: 16,
+      color: 'var(--color-text)',
+      backgroundColor: 'var(--color-accent)',
+      borderRadius: 5,
+      '&::before, &::after': {
+        content: '"`"',
+        color: 'var(--color-accent-color)'
+      },
+    },
+    'pre code': {
+      '&::before, &::after': { content: 'none' },
+    },
+    span: {
+      color: 'var(--color-text)',
+    },
+    'span.linenumber': {
+      display: 'none !important'
+    },
+    '[data="highlight"]': {
+      background: 'var(--code-highlight)',
+      borderLeft: '3px solid var(--color-accent-color)',
+      margin: '0 -1.5rem',
+      padding: '0 1.3rem',
+    },
+  })
 
   const theme: any = useTheme()
   const setSyntaxTheme = theme.code === 'light'
@@ -100,75 +159,12 @@ export default function BlogMarkdown({ markdown }) {
 
   return (
     <ReactMarkdown
-      // eslint-disable-next-line react/no-children-prop
-      children={markdown.content}
       components={MarkdownComponents}
-      remarkPlugins={[
-        [gfm],
-      ]}
-      rehypePlugins={[
-        [rehypeSlug],
-        [link],
-        [rehypeRaw]
-      ]}
-      css={{
-        '.codeStyle, pre, code, code span': {
-          fontFamily: 'var(--font-primary)',
-          fontStyle: 'normal !important'
-        },
-        pre: {
-          margin: '0 -1.5rem 1.5rem -1.5rem',
-          fontSize: 14,
-        },
-        '.codeStyle': {
-          padding: '1.5rem 0 1.5rem 1.5rem !important',
-          overflow: 'scroll',
-          borderRadius: 5,
-          backgroundColor: 'var(--syntax-highlight-bg) !important',
-          code: {
-            paddingRight: '1.5rem',
-            backgroundColor: 'transparent !important',
-            transform: 'translateZ(0)',
-            minWidth: '100%',
-            float: 'left',
-            '& > span': {
-              display: 'block',
-              '&:last-of-type': {
-                display: 'none',
-              }
-            },
-          },
-          '@media(max-width: 768px)': {
-            borderRadius: 0,
-          },
-        },
-        code: {
-          wordWrap: 'break-word',
-          fontSize: 16,
-          color: 'var(--color-text)',
-          backgroundColor: 'var(--color-accent)',
-          borderRadius: 5,
-          '&::before, &::after': {
-            content: '"`"',
-            color: 'var(--color-accent-color)'
-          },
-        },
-        'pre code': {
-          '&::before, &::after': { content: 'none' },
-        },
-        span: {
-          color: 'var(--color-text)',
-        },
-        'span.linenumber': {
-          display: 'none !important'
-        },
-        '[data="highlight"]': {
-          background: 'var(--code-highlight)',
-          borderLeft: '3px solid var(--color-accent-color)',
-          margin: '0 -1.5rem',
-          padding: '0 1.3rem',
-        },
-      }}
-    />
+      remarkPlugins={[ [gfm], ]}
+      rehypePlugins={[ [rehypeSlug], [link], [rehypeRaw] ]}
+      css={styleMarkdown}
+    >
+      {markdown.content}
+    </ReactMarkdown>
   )
 }
