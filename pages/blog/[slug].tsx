@@ -67,7 +67,7 @@ const Post = ({ post, feed, data }) => {
 
   const isPublished : Boolean = post.published
   const publishLabel = isPublished ? `${admin.controls.unpublish}` : `${admin.controls.publish}`
-  const redirect = isPublished ? '/blog/drafts' : '/blog'
+  const redirect = isPublished ? '/blog' : '/blog/drafts'
 
   const isEdited = post.editedAt.slice(0, 10) > post.publishedAt.slice(0, 10)
   const publishDate = formatDate(post.publishedAt)

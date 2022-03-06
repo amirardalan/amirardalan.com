@@ -101,7 +101,6 @@ export default function Donate() {
     '.tooltipFooter': {
       marginBottom: '.2rem',
       position: 'relative',
-      padding: '0 .5rem',
       fontSize: 11,
       color: 'var(--color-text)',
       textAlign: 'center',
