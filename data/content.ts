@@ -19,7 +19,7 @@ export const home = {
   },
   intro: '👋 Hi my name is',
   title: 'Amir Ardalan',
-  description: `I'm a Front-end Engineer specializing in React, UI Design, and accessibility for the web. I'm passionate about Next.js, Three.js, and Web 3.0 technologies.`,
+  description: `I'm a Front-end Engineer specializing in React, UI Design, and accessibility for the web. I'm passionate about Next.js, TypeScript, Three.js, and Web 3.0 technologies.`,
   typed: {
     heading: `interests => {`,
     line2: `// TODO: continue learning`,
@@ -201,7 +201,7 @@ export const about = {
   availability: {
     title: 'Availability:',
     items: [
-      '✅ Currently Available',
+      '⮑ Currently Available',
       'Remote or in Portland, OR',
     ]
   },

@@ -71,6 +71,7 @@ export default function Home({ data, latestPost }) {
       '.description': {
         display: 'inline-block',
         marginTop: '1rem',
+        lineHeight: '1.8rem',
       },
     },
     '.intro': {

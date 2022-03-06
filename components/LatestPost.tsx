@@ -8,13 +8,13 @@ export default function LatestPost({ latestPost, data }) {
     fontWeight: 'normal',
     marginTop: '1rem',
     h4: {
-      marginBottom: '.6rem',
+      margin: '1rem 0 1rem',
       color: 'var(--color-text)',
       fontFamily: 'var(--font-primary)',
-      fontSize: 12,
+      fontSize: 15,
       fontWeight: 'normal',
       '&::before': {
-        content: "'↳ '",
+        content: "'⮑ '",
       }
     },
     h5: {
