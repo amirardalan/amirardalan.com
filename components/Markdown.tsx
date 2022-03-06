@@ -161,7 +161,7 @@ export default function BlogMarkdown({ markdown }) {
     <ReactMarkdown
       components={MarkdownComponents}
       remarkPlugins={[ [gfm], ]}
-      rehypePlugins={[ [rehypeSlug], [link], [rehypeRaw] ]}
+      rehypePlugins={[ [rehypeSlug], [link] ]}
       css={styleMarkdown}
     >
       {markdown.content}
