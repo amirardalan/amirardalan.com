@@ -39,7 +39,7 @@ export default function Donate() {
       color: 'var(--color-bg)',
       textDecoration: 'underline'
     },
-    '@media (max-width: 768px)': {
+    '@media (max-width: 1200px)': {
       display: showQrCode ? 'inline' : 'none',
       marginBottom: 0,
       fontSize: 10,
@@ -51,16 +51,22 @@ export default function Donate() {
     overflow: 'hidden',
     position: 'absolute',
     bottom: 50,
-    left: 65,
+    left: '4rem',
     '.qrCode': {
       width: 235,
       height: 235,
-      '@media (max-width: 1024px)': {
-        display: 'none'
-      }
+      '@media (max-width: 1200px)': {
+        display: 'none',
+      },
     },
-    '@media (max-width: 768px)': {
+    '@media (max-width: 1200px)': {
       bottom: 35,
+      left: '4rem',
+    },
+    '@media (max-width: 1024px)': {
+      left: '2.5rem',
+    },
+    '@media (max-width: 480px)': {
       left: '1.5rem',
     }
   })
@@ -78,7 +84,7 @@ export default function Donate() {
       backgroundColor: 'var(--color-accent-gray)',
       borderRadius: 5,
       opacity: addressCopied ? 1 : 0,
-      animation: addressCopied ? 'tooltip .2s forwards' : null,
+      animation: addressCopied ? 'tooltip 5s forwards' : null,
       '&:before': {
         content: '""',
         position: 'absolute',
@@ -96,8 +102,9 @@ export default function Donate() {
     },
   })
 
-  const QR = () => {
-    return (
+
+  return (
+    <>
       <div css={styleQrWrapper}>
         <div css={styleTooltipWrapper}>
           <div className="tooltipFooter">{donate.copied}</div>
@@ -117,12 +124,6 @@ export default function Donate() {
           />
         </div>
       </div>
-    )
-  }
-
-  return (
-    <>
-      <QR/>
       <button css={styleDonateButton} onClick={()=>setShowQrCode(!showQrCode)}>
         {donate.text}
       </button>

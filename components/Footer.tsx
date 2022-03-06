@@ -86,7 +86,7 @@ export default function Footer() {
   })
   const styleFooterLogo = css({
     display: 'flex',
-    padding: '4rem 0 2rem 0',
+    padding: '4rem 0 3rem 0',
   })
   const styleCopyright = css({
     fontFamily: 'var(--font-primary)',
