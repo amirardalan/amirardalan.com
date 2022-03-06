@@ -110,7 +110,7 @@ export default function Donate() {
           <div className="tooltipFooter">{donate.copied}</div>
         </div>
         <div css={styleAddress}>
-          <span>📋</span>
+          <span css={{fontSize: 16}}>⎘</span>
           <button onClick={()=> handleCopyAddress()} aria-label={donate.meta}>
           {donate.address}
           </button>
@@ -127,7 +127,7 @@ export default function Donate() {
       <button css={styleDonateButton} onClick={()=>setShowQrCode(!showQrCode)}>
         {donate.text}
       </button>
-      ❤
+      <span css={{fontSize: 14}}>⬨</span>
     </>
   )
 }
