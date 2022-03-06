@@ -381,7 +381,7 @@ export function GlobalStyles () {
             opacity: 1,
           }
         },
-        '@keyframes tooltip': {
+        '@keyframes tooltipUp': {
           '0%': {
             opacity: 0,
             transform: 'translate3d(0, 100%, 0)',
@@ -396,6 +396,24 @@ export function GlobalStyles () {
           },
           '100%': {
             transform: 'translate3d(0, 100%, 0)',
+            opacity: 0,
+          }
+        },
+        '@keyframes tooltipDown': {
+          '0%': {
+            opacity: 0,
+            transform: 'translate3d(0, -100%, 0)',
+          },
+          '10%': {
+            transform: 'translate3d(0, 0, 0)',
+            opacity: 1,
+          },
+          '90%': {
+            transform: 'translate3d(0, 0, 0)',
+            opacity: 1,
+          },
+          '100%': {
+            transform: 'translate3d(0, -100%, 0)',
             opacity: 0,
           }
         },

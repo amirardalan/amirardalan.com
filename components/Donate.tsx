@@ -84,7 +84,7 @@ export default function Donate() {
       backgroundColor: 'var(--color-accent-gray)',
       borderRadius: 5,
       opacity: addressCopied ? 1 : 0,
-      animation: addressCopied ? 'tooltip 5s forwards' : null,
+      animation: addressCopied ? 'tooltipUp 5s forwards' : null,
       '&:before': {
         content: '""',
         position: 'absolute',

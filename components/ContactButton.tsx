@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useTheme } from '@emotion/react'
+import { useTheme, css } from '@emotion/react'
 import Image from 'next/image'
 import { about } from '@/data/content'
 
@@ -10,22 +10,53 @@ export default function ContactButton() {
   const showEmailOnclick = () => {
     setShowEmail(true)
   }
-  const [copiedToClipBoard, setCopiedToClipBoard] = useState(false)
+  const [emailCopied, setEmailCopied] = useState(false)
 
-  const copyToClipboard = () => {
+  const handleCopyToClipboard = () => {
     navigator.clipboard.writeText(process.env.NEXT_PUBLIC_USER_EMAIL)
-    setCopiedToClipBoard(true)
+    setEmailCopied(true)
     setTimeout(() => {
-      setCopiedToClipBoard(false)
-    }, 10000)
+      setEmailCopied(false)
+    }, 5000)
   }
+
+  const styleTooltipWrapper = css({
+    overflow: 'hidden',
+  })
+
+  const styleTooltip = css({
+    marginTop: '.5rem',
+    position: 'relative',
+    borderRadius: 5,
+    padding: '0 .5rem',
+    fontSize: 12,
+    color: 'var(--color-text)',
+    textAlign: 'center',
+    backgroundColor: 'var(--color-accent-gray)',
+    opacity: emailCopied ? 1 : 0,
+    animation: emailCopied ? 'tooltipDown 5s' : null,
+    '&:before': {
+      content: '""',
+      position: 'absolute',
+      marginLeft: 'auto',
+      marginRight: 'auto',
+      top: -6,
+      left: 0,
+      right: 0,
+      width: 0,
+      height: 0,
+      borderLeft: '6px solid transparent',
+      borderRight: '6px solid transparent',
+      borderBottom: '6px solid var(--color-accent-gray)',
+    }
+  })
 
   return (
     <>
       <span css={{maxWidth: 'fit-content'}}>
         <a
           onClick={showEmail
-            ? copyToClipboard
+            ? handleCopyToClipboard
             : showEmailOnclick}
           className={showEmail
             ? 'ctaButton disabled'
@@ -58,17 +89,11 @@ export default function ContactButton() {
           }
           </span>
         </a>
-        {copiedToClipBoard ?
-        <div className="tooltip">
-          {about.contact.copiedToClipboard}
-        </div> :
-        <div
-          css={{
-            color: 'var(--color-accent)',
-            marginTop: '.5rem',
-          }}>
-          –
-        </div>}
+        <div css={styleTooltipWrapper}>
+          <div css={styleTooltip}>
+            {about.contact.copiedToClipboard}
+          </div>
+        </div>
       </span>
     </>
   )

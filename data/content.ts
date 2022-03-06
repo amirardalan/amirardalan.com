@@ -214,7 +214,7 @@ export const about = {
         dark: themeDark.icons.email,
       }
     },
-    copiedToClipboard: 'Copied to clipboard ✓',
+    copiedToClipboard: 'Copied to clipboard ✅',
     items: [
       {
         path: 'https://twitter.com/messages/compose?recipient_id=23831468',
