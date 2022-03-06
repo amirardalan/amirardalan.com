@@ -34,12 +34,30 @@ export default function Donate() {
     margin: '0 .4rem',
   })
 
+  const styleQrWrapper = css({
+    opacity: showQrCode ? 1 : 0,
+    overflow: 'hidden',
+    position: 'absolute',
+    bottom: 45,
+    left: '4rem',
+    '@media (max-width: 1200px)': {
+      bottom: 37,
+      left: '4rem',
+    },
+    '@media (max-width: 1024px)': {
+      left: '2.5rem',
+    },
+    '@media (max-width: 480px)': {
+      left: '1.5rem',
+    }
+  })
+
   const styleAddress = css({
+    display: showQrCode ? 'flex' : 'none',
+    flexDirection: 'column',
     paddingBottom: 5,
-    display: showQrCode ? 'block' : 'none',
     opacity: showQrCode ? 1 : 0,
     fontSize: 8.6,
-    lineHeight: '1rem',
     span: {
       marginRight: 4,
     },
@@ -47,35 +65,28 @@ export default function Donate() {
       background: 'transparent',
       border: 'none',
       color: 'var(--color-bg)',
-      textDecoration: 'underline'
+      textDecoration: 'underline',
+      '.qrCode': {
+        width: 235,
+        height: 235,
+        marginTop: 7,
+        '@media (max-width: 1200px)': {
+          display: 'none'
+        },
+      },
+      '.addressIcon': {
+        fontSize: 16
+      },
+      '.address': {
+        flexDirection: 'row',
+        display: 'inline',
+        lineHeight: '.8rem',
+      },
     },
     '@media (max-width: 1200px)': {
       display: showQrCode ? 'inline' : 'none',
       marginBottom: 0,
       fontSize: 10,
-    }
-  })
-
-  const styleQrWrapper = css({
-    opacity: showQrCode ? 1 : 0,
-    overflow: 'hidden',
-    position: 'absolute',
-    bottom: 50,
-    left: '4rem',
-    '.qrCode': {
-      width: 235,
-      height: 235,
-    },
-    '@media (max-width: 1200px)': {
-      bottom: 35,
-      left: '4rem',
-      '.qrCode': { display: 'none' },
-    },
-    '@media (max-width: 1024px)': {
-      left: '2.5rem',
-    },
-    '@media (max-width: 480px)': {
-      left: '1.5rem',
     }
   })
 
@@ -118,18 +129,25 @@ export default function Donate() {
           <div className="tooltipFooter">{donate.copied}</div>
         </div>
         <div css={styleAddress}>
-          <span css={{fontSize: 16}}>⎘</span>
           <button onClick={()=> handleCopyAddress()} aria-label={donate.meta}>
-            {donate.address}
+
+            <div className="address">
+              <span className="addressIcon">
+                ⎘
+              </span>
+              {donate.address}
+            </div>
+
+            <div className="qrCode">
+            <Image 
+              src={donate.qr}
+              height={235}
+              width={235}
+              alt={donate.text}
+            />
+            </div>
+
           </button>
-        </div>
-        <div className="qrCode">
-          <Image 
-            src={donate.qr}
-            height={235}
-            width={235}
-            alt={donate.text}
-          />
         </div>
       </div>
       <button css={styleDonateButton} onClick={()=>setShowQrCode(!showQrCode)}>
