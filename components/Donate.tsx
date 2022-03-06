@@ -53,7 +53,7 @@ export default function Donate() {
       marginBottom: '.2rem',
       position: 'relative',
       padding: '0 .5rem',
-      fontSize: 12,
+      fontSize: 11,
       color: 'var(--color-text)',
       textAlign: 'center',
       backgroundColor: 'var(--color-accent-gray)',
@@ -93,9 +93,9 @@ export default function Donate() {
   const QR = () => {
     return (
       <div css={styleQrWrapper}>
-        {addressCopied ? <div className="tooltipFooter">Copied to clipboard!</div> : null}
+        {addressCopied ? <div className="tooltipFooter">{donate.copied}</div> : null}
         <div css={styleAddress}>
-          <span>{addressCopied ? '✅' : '📋'}</span>
+          <span>📋</span>
           <button onClick={()=> handleCopyAddress()}>
           {donate.address}
           </button>
