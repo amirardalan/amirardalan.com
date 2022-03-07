@@ -197,22 +197,25 @@ const styleBlogLayout = css({
     display: 'flex',
     justifyContent: 'space-between',
     border: '1px solid var(--color-accent)',
-    '&::after': {
-      content: '"Draft"',
-      alignSelf: 'right',
-      color: 'var(--color-gray)',
-      fontSize: 12,
-      fontStyle: 'italic',
+    '.draftInfo': {
+      display: 'flex',
+      flexDirection: 'column',
+      textAlign: 'right',
+      '.label': {
+        marginBottom: '.2rem',
+        alignSelf: 'right',
+        color: 'var(--color-gray)',
+        fontSize: 12,
+        fontStyle: 'italic',
+      },
     },
     p: {
       marginBottom: 0,
     },
     '@media (max-width: 480px)': {
       padding: '1rem',
-      '&::after': { content: '" "' },
-      h2: {
-        lineHeight: '2.1rem',
-        fontSize: 20,
+      'h2 a': {
+        fontSize: 22,
       }
     },
     '.postTeaser': {

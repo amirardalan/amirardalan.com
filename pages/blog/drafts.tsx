@@ -51,12 +51,22 @@ const Drafts  = ({ drafts }) => {
 
       <div className="drafts">
         <main>
-          {drafts.sort(sortBlogPosts).reverse().map((post: { id: Key }) => (
+          {drafts.sort(sortBlogPosts).reverse().map((post: { id: Key, category: String }) => (
             <div
               key={post.id}
-              className="postDraft"
-            >
+              className="postDraft">
+
               <BlogPost post={post} />
+
+              <div className="draftInfo">
+                <div className="label">
+                  Draft
+                </div>
+                <div className="category">
+                  {post.category}
+                </div>
+              </div>
+
             </div>
           ))}
         </main>
