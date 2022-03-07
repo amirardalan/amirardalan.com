@@ -38,8 +38,10 @@ export default function BlogNavigation({ feed, post, isPublished }) {
 
   const styleBlogNavigation = css({
     marginTop: '4rem',
+    paddingTop: '4rem',
     display: 'flex',
     justifyContent: first ? 'flex-end' : 'space-between',
+    borderTop: '1px solid var(--color-accent-gray)',
     fontFamily: 'var(--font-secondary)',
     fontSize: 18,
     lineHeight: '1.3rem',

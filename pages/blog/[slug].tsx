@@ -142,9 +142,9 @@ const Post = ({ post, feed, data }) => {
           >
             {post.category}
           </p>
-          <h2 aria-label={`${title}`}>
+          <h1 aria-label={`${title}`}>
             {title}
-          </h2>
+          </h1>
           <p className="teaser">{post.teaser}</p>
           <div className="postDetails" aria-label={`${editDate} • ${postReadTime}`}>
             <div className="author">

@@ -64,14 +64,13 @@ export default function Home({ data, latestPost }) {
   const styleMainLeftContent = css({
     margin: 0,
     fontWeight: 'bolder',
-    lineHeight: 1.3,
+    lineHeight: 1.5,
     minHeight: '0vw',
     '.titleWrapper': {
       margin: '0 0 3rem',
       '.description': {
         display: 'inline-block',
         marginTop: '1rem',
-        lineHeight: '1.8rem',
       },
     },
     '.intro': {

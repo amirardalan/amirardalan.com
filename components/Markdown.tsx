@@ -16,11 +16,14 @@ export default function BlogMarkdown({ markdown }) {
   const styleMarkdown = css({
     '.codeStyle, pre, code, code span': {
       fontFamily: 'var(--font-primary)',
-      fontStyle: 'normal !important'
+      fontStyle: 'normal !important',
     },
     pre: {
       margin: '0 -1.5rem 1.5rem -1.5rem',
-      fontSize: 14,
+      fontSize: 15,
+      '@media(max-width: 768px)': {
+        fontSize: 13
+      }
     },
     '.codeStyle': {
       padding: '1.5rem 0 1.5rem 1.5rem !important',

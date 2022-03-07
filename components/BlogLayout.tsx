@@ -66,8 +66,9 @@ const styleBlogLayout = css({
         content: '"#"'
       },
     },
-    'h2, h3, h4': {
+    'h1, h2, h3, h4': {
       fontFamily: 'var(font-secondary)',
+      lineHeight: '2.5rem',
     },
     '.blogHeading': {
       display: 'inline',
@@ -77,12 +78,14 @@ const styleBlogLayout = css({
       fontWeight: 'normal',
       textDecoration: 'none',
     },
-    h2: {
-      margin: 0,
+    'h1, h2': {
       display: 'inline-block',
-      lineHeight: '2.5rem',
       fontSize: 38,
       fontWeight: 900,
+    },
+    h2: {
+      margin: 0,
+      lineHeight: '2.5rem',
       cursor: 'pointer',
       textDecoration: 'underline',
       '&:hover': { textDecoration: 'none' }
@@ -304,7 +307,7 @@ const styleBlogLayout = css({
     '.postDetails': {
       marginBottom: '2.5rem',
     },
-    h2: {
+    h1: {
       margin: '0 0 .8rem',
       textDecoration: 'none',
       cursor: 'default',
@@ -314,7 +317,7 @@ const styleBlogLayout = css({
       }
     },
     '.teaser': {
-      marginBottom: '2rem',
+      marginBottom: '3rem',
       fontFamily: 'var(--font-tertiary)',
       fontSize: 18,
       lineHeight: '1.5rem',
@@ -371,7 +374,6 @@ const styleBlogLayout = css({
     },
     p: {
       marginBottom: '2rem',
-      lineHeight: '2rem',
     },
     a: {
       textDecoration: 'underline',
@@ -380,11 +382,12 @@ const styleBlogLayout = css({
       },
     },
     blockquote: {
-      margin: '2rem 0',
-      padding: '1rem 1.5rem',
-      border: '1px solid var(--color-accent-gray)',
-      borderRadius: '5px',
-      p: {
+      margin: '4rem -1.5rem',
+      padding: '0 1.5rem',
+      borderLeft: '8px solid var(--color-accent-gray)',
+      color: 'var(--color-gray)',
+      'p, a, code': {
+        // lineHeight: '1.5rem',
         marginBottom: 0,
         fontStyle: 'italic'
       }
