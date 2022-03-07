@@ -1,6 +1,6 @@
 import React from 'react'
 import { AppProps } from 'next/app'
-import { Provider } from 'next-auth/client'
+import { Provider } from 'next-auth/react'
 import { useThemeContext } from '@/utils/useThemeContext'
 import { themeLight, themeDark } from '@/styles/theme'
 import { GlobalStyles } from '@/styles/global'
