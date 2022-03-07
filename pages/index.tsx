@@ -70,11 +70,11 @@ export default function Home({ data, latestPost }) {
       margin: '0 0 3rem',
       '.description': {
         display: 'inline-block',
-        marginTop: '1rem',
+        marginTop: '1.8rem',
       },
     },
     '.intro': {
-      marginBottom: '.5rem',
+      marginBottom: '1rem',
       display: 'inline-block',
       fontFamily: 'var(--font-primary)',
       fontWeight: 'normal',
@@ -82,12 +82,12 @@ export default function Home({ data, latestPost }) {
       color: 'var(--color-accent-color)'
     },
     h1: {
+      lineHeight: '100%',
       fontFamily: 'var(--font-secondary)',
       fontSize: 'calc(3.2vw + 3.2vh)',
       WebkitMarqueeIncrement: '0vw',
-      fontWeight: 'bolder',
-      '@media (max-width: 890px)': {
-        fontSize: 'calc(3vw + 3vh)',
+      '@media (max-width: 768px)': {
+        fontSize: 45,
         WebkitMarqueeIncrement: '0vw',
       }
     },
