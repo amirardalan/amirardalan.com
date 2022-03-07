@@ -150,6 +150,10 @@ const Post = ({ post, feed, data }) => {
         'p, a, code': {
           marginBottom: 0,
           fontStyle: 'italic'
+        },
+        '& blockquote': {
+          marginLeft: '1rem',
+          borderLeft: '8px solid var(--color-gray)',
         }
       },
       'ul li': {

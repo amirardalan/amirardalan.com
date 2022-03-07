@@ -53,8 +53,12 @@ export default function Timeline() {
           },
         },
         '.date': {
+          marginTop: -7,
           lineHeight: '1.2rem',
           color: 'var(--color-text)',
+          '@media(max-width: 768px)': {
+            marginTop: -2,
+          }
         },
       },
       '&:nth-of-type(odd)': {

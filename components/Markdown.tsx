@@ -61,9 +61,6 @@ export default function BlogMarkdown({ markdown }) {
     'pre code': {
       '&::before, &::after': { content: 'none' },
     },
-    span: {
-      color: 'var(--color-text)',
-    },
     'span.linenumber': {
       display: 'none !important'
     },
