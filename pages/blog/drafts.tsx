@@ -1,7 +1,7 @@
 import { useSession, getSession } from 'next-auth/client'
 import Link from 'next/link'
 import Container from '@/components/Container'
-import BlogLayout from '@/components/BlogLayout'
+import BlogStyles from '@/components/BlogStyles'
 import { admin, breadcrumb } from '@/data/content'
 import BlogPost from '@/components/BlogPost'
 import sortBlogPosts from '@/utils/sortBlogPosts'
@@ -81,11 +81,11 @@ const Drafts  = ({ drafts }) => {
 
   return (
     <Container title={admin.drafts.meta.title} robots="noindex">
-      <BlogLayout>
+      <BlogStyles>
         <div className="blog admin drafts">
           {draftsList}
         </div>
-      </BlogLayout>
+      </BlogStyles>
     </Container>
   )
 }

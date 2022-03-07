@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useTheme } from '@emotion/react'
+import { useTheme, css } from '@emotion/react'
 import Image from 'next/image'
 
 import BlogPost from '@/components/BlogPost'
@@ -8,6 +8,57 @@ import sortBlogPosts from '@/utils/sortBlogPosts'
 
 
 const BlogPostFilter = ({ feed }) => {
+
+  const styleBlogCategoryNav = css({
+    overflow: 'scroll',
+    msOverflowStyle: 'none',
+    scrollbarWidth: 'none',
+    whiteSpace: 'nowrap',
+    minHeight: 40,
+    li :{
+      display: 'inline',
+      margin: '0 1.5rem 0 0',
+      '&:first-of-type': {
+        fontSize: 12,
+        color: 'var(--color-gray)',
+        '@media(max-width: 768px)': {
+          display: 'block',
+          marginBottom: '.5rem'
+        }
+      }
+    },
+    '&::-webkit-scrollbar': {
+      display: 'none'
+    },
+    '@media (max-width: 768px)': {
+      minHeight: 57,
+    }
+  })
+
+  const styleSearchPosts = css({
+    display: 'flex',
+    position: 'relative',
+    marginTop: '.5rem',
+    caretColor: 'var(--color-gray)',
+    '.icon': {
+      position: 'absolute',
+      top: 16,
+      right: 0,
+      background: 'var(--color-accent)',
+      width: 35,
+    },
+    '.clearSearch': {
+      display: 'flex',
+      justifyContent: 'center',
+      position: 'absolute',
+      backgroundImage: 'var(--icon-close)',
+      width: 25,
+      height: 25,
+      top: 16,
+      right: 8,
+      cursor: 'pointer',
+    },
+  })
 
   const theme: any = useTheme()
 
@@ -102,7 +153,7 @@ const BlogPostFilter = ({ feed }) => {
 
   return (
     <>
-      <nav className="blogCategoryNav">
+      <nav css={styleBlogCategoryNav}>
         <ul>
           <li>
             <h1 className="blogHeading breadcrumbs" aria-label={blog.heading}>
@@ -135,7 +186,7 @@ const BlogPostFilter = ({ feed }) => {
         </ul>
       </nav>
       
-      <div className="searchPosts">
+      <div css={styleSearchPosts}>
         <input
           type="text"
           placeholder={blog.search.placeholder}

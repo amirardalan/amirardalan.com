@@ -98,6 +98,9 @@ const BlogAdmin = React.memo(function BlogAdmin() {
       display: 'flex',
       flexAlign: 'row',
     },
+    'button, a': {
+      marginRight: '.25rem',
+    },
   })
 
   const URL = process.env.NEXT_PUBLIC_SITE_URL
@@ -150,9 +153,6 @@ const BlogAdmin = React.memo(function BlogAdmin() {
     <>
       <Global styles={{
         // Admin
-        'button, a': {
-          marginRight: '.25rem',
-        },
         '.buttonCompact': {
           minWidth: 80,
           padding: '.45rem 1rem',

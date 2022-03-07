@@ -1,9 +1,10 @@
 import { useSession } from 'next-auth/client'
 import { useState } from 'react'
 import Router from 'next/router'
+import { css } from '@emotion/react'
 
 import Container from '@/components/Container'
-import BlogLayout from '@/components/BlogLayout'
+import BlogStyles from '@/components/BlogStyles'
 import Avatar from '@/components/Avatar'
 import BlogNavigation from '@/components/BlogNavigation'
 import calculateReadTime from '@/utils/calculateReadTime'
@@ -60,6 +61,165 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 }
 
 const Post = ({ post, feed, data }) => {
+
+  const styleBlogPost = css({
+    '.postFull': {
+      '.category': {
+        color: 'var(--color-gray)',
+      },
+      '.postDetails': {
+        marginBottom: '2.5rem',
+      },
+      h1: {
+        margin: '0 0 .8rem',
+        textDecoration: 'none',
+        '@media(max-width: 1024px)': {
+          margin: '0 0 .5rem',
+          fontSize: 35,
+        }
+      },
+      '.teaser': {
+        marginBottom: '2.5rem',
+        fontFamily: 'var(--font-tertiary)',
+        fontSize: 18,
+        lineHeight: '1.5rem',
+      },
+      'h3, h3 code': {
+        fontSize: 28,
+        '@media(max-width: 480px)': {
+          fontSize: 'calc(2.2vw + 2.2vh)',
+          WebkitMarqueeIncrement: '0vw',
+        }
+      },
+      h3: {
+        scrollMarginTop: '4rem',
+        margin: '2rem 0',
+        padding: 0,
+        display: 'inline-block',
+        fontWeight: 'bold',
+        lineHeight: '2.4rem',
+        '& code': {
+          fontFamily: 'var(--font-secondary)',
+        },
+        a: {
+          position: 'absolute',
+          display: 'block',
+          height: '100%',
+          width: '100%',
+          '&:hover': {
+            '&::before': {
+              content: '"#"',
+              color: 'var(--color-accent-gray)',
+              position: 'absolute',
+              textAlign: 'center',
+              top: 4,
+              left: -22,
+              fontSize: 25
+            }
+          },
+        },
+        '@media(hover: none)': {
+          a: { display: 'none' }
+        },
+      },
+      'h1, h2, h3, h3, h4, h5, h6': {
+        position: 'relative',
+      },
+      'p, ul, li, a': {
+        fontFamily: 'var(--font-tertiary)',
+        fontSize: 18,
+        lineHeight: '1.8rem',
+      },
+      'ul, li, a': { 
+        marginBottom: '1rem'
+      },
+      p: {
+        marginBottom: '2rem',
+      },
+      a: {
+        textDecoration: 'underline',
+        '&:hover': {
+          textDecoration: 'none'
+        },
+      },
+      blockquote: {
+        margin: '4rem -1.5rem',
+        padding: '0 1rem',
+        borderLeft: '8px solid var(--color-accent-gray)',
+        color: 'var(--color-gray)',
+        'p, a, code': {
+          marginBottom: 0,
+          fontStyle: 'italic'
+        }
+      },
+      'ul li': {
+        listStyle: 'outside',
+        marginLeft: '2rem',
+        paddingLeft: '.5rem',
+        '&.task-list-item': {
+          fontFamily: 'var(--font-primary)',
+          fontSize: 15,
+          fontWeight: 'bold',
+        },
+        'input[type="checkbox"]': {
+          marginTop: '-.1rem',
+        },
+        '@media (max-width: 480px)': {
+          marginLeft: '1.5rem',
+        }
+      },
+      'ul.contains-task-list': {
+        li: {
+          '&:first-of-type':{
+            fontFamily: 'var(font-secondary)',
+          },
+          listStyle: 'none',
+          margin: 0,
+          padding: 0,
+        },
+      },
+      ol: {
+        counterReset: 'counter',
+        margin: '2rem 0',
+        li: {
+          counterIncrement: 'counter',
+          marginLeft: '2rem',
+          paddingLeft: '.5rem',
+          position: 'relative',
+          '&::before': {
+            content: "counter(counter)",
+            width: '1.5rem',
+            height: '1.5rem',
+            position: 'absolute',
+            top: '.2rem',
+            left: '-2rem',
+            background: 'var(--color-accent-color)',
+            borderRadius: '50%',
+            color: 'var(--color-bg)',
+            fontFamily: 'var(--font-primary)',
+            fontSize: '1rem',
+            fontWeight: 'bold',
+            lineHeight: '1.5rem',
+            textAlign: 'center',
+            '@media not all and (min-resolution:.001dpcm)': { 
+              '@supports (-webkit-appearance:none)': {
+                paddingLeft: '.1rem',
+              }
+            }
+          }
+        }
+      }
+    },
+    '.postImg': {
+      paddingBottom: '2rem !important',
+    },
+    '.controlsPost': {
+      margin: '2rem 0',
+      'button, a': {
+        marginRight: '.25rem',
+      },
+    },
+  })
 
   let loadBlogPost = null
   const [session] = useSession()
@@ -122,7 +282,7 @@ const Post = ({ post, feed, data }) => {
 
   if (isPublished || session && session.user.email == process.env.NEXT_PUBLIC_USER_EMAIL) {
     loadBlogPost = (
-      <div className={isPublished ? 'blog' : 'blog admin'}>
+      <div className={isPublished ? 'blog' : 'blog admin'} css={styleBlogPost}>
 
         <nav className="breadcrumbs">
           <Link href="/blog">{breadcrumb.blog}</Link>
@@ -210,9 +370,9 @@ const Post = ({ post, feed, data }) => {
       date={publishDate}
       robots={isPublished ? "follow, index" : "noindex"
     }>
-      <BlogLayout>
+      <BlogStyles>
         {loadBlogPost}
-      </BlogLayout>
+      </BlogStyles>
     </Container>
   )
 }

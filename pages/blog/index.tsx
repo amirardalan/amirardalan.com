@@ -1,4 +1,4 @@
-import BlogLayout from '@/components/BlogLayout'
+import BlogStyles from '@/components/BlogStyles'
 import Container from '@/components/Container'
 import BlogPostFilter from '@/components/BlogPostFilter'
 
@@ -22,13 +22,13 @@ const Blog = ({ data, feed }) => {
   
   return (
     <Container title={data.meta.title} description={data.meta.description}>
-      <BlogLayout>
+      <BlogStyles>
         <div className="blog">
 
           <BlogPostFilter feed={feed} />
 
         </div>
-      </BlogLayout>
+      </BlogStyles>
     </Container>
   )
 }

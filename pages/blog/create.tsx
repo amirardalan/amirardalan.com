@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import Router from 'next/router'
 import Link from 'next/link'
 import Container from '@/components/Container'
-import BlogLayout from '@/components/BlogLayout'
+import BlogStyles from '@/components/BlogStyles'
 import Dropdown from '@/components/Dropdown'
 import { admin, breadcrumb } from '@/data/content'
 import { categories } from '@/data/categories'
@@ -166,11 +166,11 @@ const Draft = () => {
 
   return (
     <Container title={admin.create.meta.title} robots="noindex">
-      <BlogLayout>
+      <BlogStyles>
         <div>
           {create}
         </div>
-      </BlogLayout>
+      </BlogStyles>
     </Container>
   )
 }

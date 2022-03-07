@@ -3,7 +3,7 @@ import { useState } from 'react'
 import Router from 'next/router'
 
 import Container from '@/components/Container'
-import BlogLayout from '@/components/BlogLayout'
+import BlogStyles from '@/components/BlogStyles'
 import Link from 'next/link'
 import LoadingTriangle from '@/components/LoadingTriangle'
 import Dropdown from '@/components/Dropdown'
@@ -179,11 +179,11 @@ const Edit = ({ editPost }) => {
 
   return (
     <Container title={admin.edit.meta.title} {...isPublished ? 'Post |' : 'Draft: '} {...editPageTitle} robots="noindex">
-      <BlogLayout>
+      <BlogStyles>
         <div>
           {edit}
         </div>
-      </BlogLayout>
+      </BlogStyles>
     </Container>
   )
 }
