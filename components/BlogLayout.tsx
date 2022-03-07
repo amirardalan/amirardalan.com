@@ -383,7 +383,7 @@ const styleBlogLayout = css({
     },
     blockquote: {
       margin: '4rem -1.5rem',
-      padding: '0 1.5rem',
+      padding: '0 1rem',
       borderLeft: '8px solid var(--color-accent-gray)',
       color: 'var(--color-gray)',
       'p, a, code': {
