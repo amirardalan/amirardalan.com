@@ -42,7 +42,9 @@ yarn build
 
 ## Testing
 
-[Jest](jestjs.io/) is configured in the `package.json` build script. Tests will be run and logged at build time.
+[Jest](jestjs.io/) is configured in `jest.config.ts` and included in the `package.json` build script.  
+[React Testing Library](https://github.com/testing-library/react-testing-library) is included in `jest.setup.ts`  
+Test suites will be run and logged at build time.  
 
 Run Jest manually:  
 `yarn test`
