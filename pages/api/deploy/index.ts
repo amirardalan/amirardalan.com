@@ -3,7 +3,7 @@ import { NextApiRequest, NextApiResponse } from 'next'
 
 
 export default async function handle(req: NextApiRequest, res: NextApiResponse) {
-  const url = `${process.env.DEPLOY_HOOK_TEST}`
+  const url = `${process.env.DEPLOY_HOOK}`
 
   if (req.query.secret !== `${process.env.NEXT_PUBLIC_DEPLOY_TOKEN}`) {
     return res.status(401).json({ message: 'Invalid token' })
