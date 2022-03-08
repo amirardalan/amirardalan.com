@@ -12,7 +12,6 @@ export default function NowPlaying() {
   const isOnline = data?.songUrl
 
   const styleNowPlayingContainer = css({
-    marginBottom: '2.5rem',
     display: 'flex',
   })
   const styleNowPlaying = css({
@@ -100,14 +99,14 @@ export default function NowPlaying() {
     '.title': {
       marginBottom: 5,
       lineHeight: 1,
-      fontSize: 'calc(1.5vw + 1.5vh)',
+      fontSize: 'calc(1.2vw + 1.2vh)',
       WebkitMarqueeIncrement: '0vw',
       fontFamily: 'var(--font-secondary)',
     },
     '.artist': {
       marginBottom: 2,
       lineHeight: 1,
-      fontSize: 'calc(.8vw + .8vh)',
+      fontSize: 'calc(.7vw + .7vh)',
       WebkitMarqueeIncrement: '0vw',
     },
     '@media(max-width: 480px)': {

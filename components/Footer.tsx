@@ -106,27 +106,27 @@ export default function Footer() {
   })
 
   const generateFooterLinks = (items: any[]) => {
-    return items.map((items, i: Key) => {
+    return items.map((item, i: Key) => {
       return (
         <li key={i}>
           <a
-            key={items.title}
-            href={items.path}
-            aria-label={items.title}
+            key={item.title}
+            href={item.path}
+            aria-label={item.title}
             target="_blank"
             rel="noopener noreferrer"
-            className={items?.cName}
+            className={item?.cName}
           >
-            {items.title}
+            {item.title}
             <span className="icon">
               <Image
                 src={isDarkTheme
-                  ? items.icon?.dark
-                  : items.icon?.light}
+                  ? item.icon?.dark
+                  : item.icon?.light}
                 height="15"
                 width="15"
-                alt={items.title}
-                aria-label={items.title}
+                alt={item.title}
+                aria-label={item.title}
               />
             </span>
           </a>
