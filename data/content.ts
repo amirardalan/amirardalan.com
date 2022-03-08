@@ -324,6 +324,7 @@ export const spotify = {
   headings: {
     main: 'Spotify Dashboard',
     toptracks: 'Top Tracks',
+    topartists: 'Top Artists',
     nowplaying: 'Now Playing',
     profile: `Amir's Profile`,
   },
