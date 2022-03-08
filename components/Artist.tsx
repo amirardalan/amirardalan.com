@@ -25,7 +25,7 @@ export default function Artist(artist: Artist) {
             alt={artist.artist}
           />
         </div>
-        <div className="artist title">
+        <div className="track title">
           <a
             href={artist.link}
             target="_blank"

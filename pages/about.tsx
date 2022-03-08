@@ -50,7 +50,7 @@ export default function About({ data }) {
         width: '100%',
       },
       'ul li': {
-        color: 'var(--color-text)',
+        color: 'var(--color-gray)',
         fontSize: 14,
         strong: {
           color: 'var(--color-text)',
@@ -64,7 +64,7 @@ export default function About({ data }) {
           marginBottom: '1rem',
           display: 'inline-block',
           fontFamily: 'var(--font-tertiary)',
-          fontSize: 16,
+          fontSize: 17,
           maxWidth: 450,
         },
         a: {
@@ -77,7 +77,7 @@ export default function About({ data }) {
       paddingBottom: '1rem',
       fontSize: 22,
       color: 'var(--color-text)',
-      borderBottom: '2px solid var(--color-accent-color)',
+      borderBottom: '3px solid var(--color-accent-color)',
     },
   });
   const styleCtaWrapper = css({

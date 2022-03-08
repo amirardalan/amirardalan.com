@@ -11,7 +11,7 @@ export default function LatestPost({ latestPost, data }) {
       margin: '1.5rem 0 1rem',
       color: 'var(--color-text)',
       fontFamily: 'var(--font-primary)',
-      fontSize: 15,
+      fontSize: 16,
       fontWeight: 'normal',
       '&::before': {
         content: "'⮑ '",
@@ -20,9 +20,9 @@ export default function LatestPost({ latestPost, data }) {
     h5: {
       display: 'flex',
       a: {
-        lineHeight: '1.2rem',
+        lineHeight: '1.5rem',
         fontFamily: 'var(--font-secondary)',
-        fontSize: 18,
+        fontSize: 20,
         fontWeight: 'normal',
         textDecoration: 'underline',
         cursor: 'pointer',
@@ -41,8 +41,8 @@ export default function LatestPost({ latestPost, data }) {
     p: {
       marginTop: '.5rem',
       lineHeight: '1.2rem',
-      color: 'var(--color-gray)',
-      fontSize: 14,
+      fontFamily: 'var(--font-tertiary)',
+      fontSize: 15,
     },
   })
   

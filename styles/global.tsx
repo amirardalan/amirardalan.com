@@ -3,7 +3,7 @@ import { Global } from '@emotion/react'
 // Typography
 const fontPrimary = '"JetBrains Mono", Menlo, Monaco, "Courier New", monospace'
 const fontSecondary = '"Poppins", Helvetica, Arial, sans-serif'
-const fontTertiary = '"Lora", "Times New Roman", Times, serif'
+const fontTertiary = '"IBM Plex Serif", "Times New Roman", Times, serif'
 
 // Colors
 const light = '#e4e9f8'
@@ -30,53 +30,48 @@ export function GlobalStyles () {
   return (
     <>
       <Global styles={{
-        // @font: Poppins 900
         '@font-face': {
           fontFamily: 'Poppins',
           fontStyle: 'normal',
           fontWeight: 900,
-          fontDisplay: 'swap',
+          fontDisplay: 'optional',
           src: 'url("/fonts/poppins-latin-900.woff2") format("woff2")'
         },
       }}/>
       <Global styles={{
-        // @font: Poppins 700
         '@font-face': {
           fontFamily: 'Poppins',
           fontStyle: 'normal',
           fontWeight: 700,
-          fontDisplay: 'swap',
+          fontDisplay: 'optional',
           src: 'url("/fonts/poppins-latin-700.woff2") format("woff2")'
         },
       }}/>
       <Global styles={{
-        // @font: JetBrains Mono 400
         '@font-face': {
           fontFamily: 'JetBrains Mono',
           fontStyle: 'normal',
           fontWeight: 400,
-          fontDisplay: 'swap',
+          fontDisplay: 'optional',
           src: 'url("/fonts/jetbrains-mono-v11-latin-regular.woff2") format("woff2")'
         },
       }}/>
       <Global styles={{
-        // @font: Lora 500
         '@font-face': {
-          fontFamily: 'Lora',
+          fontFamily: 'IBM Plex Serif',
           fontStyle: 'normal',
-          fontWeight: 500,
-          fontDisplay: 'swap',
-          src: 'url("/fonts/lora-latin-400.woff2") format("woff2")',
+          fontWeight: 400,
+          fontDisplay: 'optional',
+          src: 'url("/fonts/ibm-plex-serif-v14-latin-regular.woff2") format("woff2")',
         },
       }}/>
       <Global styles={{
-        // @font: Lora Italic 500
         '@font-face': {
-          fontFamily: 'Lora',
+          fontFamily: 'IBM Plex Serif',
           fontStyle: 'italic',
-          fontWeight: 500,
-          fontDisplay: 'swap',
-          src: 'url("/fonts/lora-latin-400-italic.woff2") format("woff2")'
+          fontWeight: 400,
+          fontDisplay: 'optional',
+          src: 'url("/fonts/ibm-plex-serif-v14-latin-italic.woff2") format("woff2")'
         },
       }}/>
       <Global styles={{
@@ -293,6 +288,7 @@ export function GlobalStyles () {
           border: '1px solid transparent',
           borderRadius: 8,
           color: 'var(--color-bg)',
+          fontFamily: 'var(--font-primary)',
           fontSize: 15,
           fontWeight: 400,
           textDecoration: 'none',

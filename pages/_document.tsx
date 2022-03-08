@@ -7,13 +7,6 @@ export default function Document() {
       <Head>
         <link
           rel="preload"
-          href="/fonts/jetbrains-mono-v11-latin-regular.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
           href="/fonts/poppins-latin-700.woff2"
           as="font"
           type="font/woff2"
@@ -28,14 +21,21 @@ export default function Document() {
         />
         <link
           rel="preload"
-          href="/fonts/lora-latin-400.woff2"
+          href="/fonts/jetbrains-mono-v11-latin-regular.woff2"
           as="font"
           type="font/woff2"
           crossOrigin="anonymous"
         />
         <link
           rel="preload"
-          href="/fonts/lora-latin-400-italic.woff2"
+          href="/fonts/ibm-plex-serif-v14-latin-regular.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/fonts/ibm-plex-serif-v14-latin-italic.woff2"
           as="font"
           type="font/woff2"
           crossOrigin="anonymous"

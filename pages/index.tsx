@@ -69,12 +69,14 @@ export default function Home({ data, latestPost }) {
     '.titleWrapper': {
       margin: '0 0 3rem',
       '.description': {
+        fontFamily: 'var(--font-tertiary)',
+        fontSize: 18,
         display: 'inline-block',
         marginTop: '1.8rem',
       },
     },
     '.intro': {
-      marginBottom: '1rem',
+      marginBottom: '2rem',
       display: 'inline-block',
       fontFamily: 'var(--font-primary)',
       fontWeight: 'normal',

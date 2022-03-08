@@ -242,7 +242,7 @@ export const timeline = {
       cName: 'event'
     },
     {
-      title: 'UI Engineering Lead @ KEEN Footwear',
+      title: 'Lead UI Engineer @ KEEN Footwear',
       content: '💼 Developed new Salesforce Commerce Cloud Ecommerce websites for KEEN Footwear and Chrome Industries. Collaborated with BASIC® Agency.',
       cName: 'event'
     },
@@ -255,12 +255,12 @@ export const timeline = {
       cName: 'date',
     },
     {
-      title: 'Web Developer I @ Columbia Sportswear',
+      title: 'Web Dev I @ Columbia Sportswear',
       content: '💼 Developed Frontend code for Columbia, SOREL, and Mountain Hardwear. Implemented localized content and content modules for international sales.',
       cName: 'event'
     },
     {
-      title: 'Frontend Dev and UI Designer @ Dealer Spike',
+      title: 'Frontend Dev @ Dealer Spike',
       content: '💼 HTML, CSS, and JavaScript and design in Adobe Photoshop. Created web experiences with a focus on SEO for powersports dealerships across US and Canada.',
       cName: 'event'
     },

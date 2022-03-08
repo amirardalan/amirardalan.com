@@ -37,6 +37,7 @@ export default function Timeline() {
     gridTemplateColumns: 'repeat(2, 1fr)',
     overflow: 'hidden',
     paddingTop: 7.2,
+    fontFamily: 'var(--font-tertiary)',
     '.timeline': {
       '&:nth-of-type(even), &:nth-of-type(odd)': {
         '.event': {
@@ -45,7 +46,7 @@ export default function Timeline() {
           h4: {
             marginBottom: '.5rem',
             fontFamily: 'var(--font-secondary)',
-            fontSize: 14,
+            fontSize: 16,
             lineHeight: '1.2rem',
           },
           '@media(max-width: 480px)': {
@@ -87,13 +88,13 @@ export default function Timeline() {
         },
         '&:after': {
           position: 'absolute',
-          top: -50,
-          right: -26,
+          top: -55,
+          right: -19,
           content: '"•"',
           fontSize: 80,
           color: 'var(--color-accent-color)',
           '@media(max-width: 768px)': {
-            top: -45,
+            top: -50,
           }
         },
         '.event': {
@@ -164,7 +165,7 @@ export default function Timeline() {
         marginBottom: '4rem',
         padding: '2rem',
         background: 'var(--color-accent)',
-        fontSize: 13,
+        fontSize: 15,
         span: {
           color: 'var(--color-gray)',
         },

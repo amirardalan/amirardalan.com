@@ -13,13 +13,16 @@ export default function Spotify() {
     h3: {
       marginBottom: '2rem',
       paddingBottom: '.8rem',
-      borderBottom: '2px solid var(--color-accent-color)',
+      borderBottom: '3px solid var(--color-accent-color)',
       fontSize: 28,
       fontWeight: 'bold',
       '@media (max-width: 1200px)': {
         margin: '1rem 0 2rem 0',
         fontSize: 22,
       }
+    },
+    a: {
+      color: 'var(--color-text)'
     },
     '.topGrid': {
       fontFamily: 'var(--font-secondary)',
@@ -58,9 +61,9 @@ export default function Spotify() {
         '.artist': {
           fontFamily: 'var(--font-primary)',
           fontWeight: 'normal',
-          fontSize: 'calc(.8vw + .8vh)',
+          fontSize: 16,
           '@media(max-width: 768px)': {
-            fontSize: 12
+            fontSize: 13
           }
         },
         '@media(max-width: 600px)': {
