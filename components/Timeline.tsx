@@ -107,6 +107,10 @@ export default function Timeline() {
               border: 'none',
             },
           },
+          '@media(max-width: 480px)': {
+            paddingLeft: 0,
+            textAlign: 'right'
+          },
         },
         '@media(max-width: 480px)': {
           padding: '0',
@@ -144,6 +148,9 @@ export default function Timeline() {
             '@media(max-width: 480px)': {
               border: 'none',
             },
+          },
+          '@media(max-width: 480px)': {
+            paddingRight: 0,
           },
         },
         '@media(max-width: 480px)': {

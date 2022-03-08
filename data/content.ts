@@ -220,12 +220,12 @@ export const timeline = {
     },
     {
       title: 'Fullstack Developer, Writer',
-      content: '✍️ Currently expanding React skills with Next.js and TypeScript and writing on this website.',
+      content: 'Building, maintaining open-source amirardalan.com Next.js blog & CMS. Writing about front-end code, devops, and tech.',
       cName: 'event'
     },
     {
-      title: 'Learning',
-      content: '👨‍💻 Deep-dive into React, improving JavaScript skills, and honing user interface design capabilities.',
+      title: 'Freelance + React Learning',
+      content: 'Deep-dive into React, improving JavaScript skills, and honing user interface design capabilities.',
       cName: 'event'
     },
     {
@@ -238,12 +238,12 @@ export const timeline = {
     },
     {
       title: 'Application Engineer @ DemandPDX',
-      content: '💼 Fullstack Development in an agency environment for many clients including Hanna Andersson and Leatherman.',
+      content: 'Fullstack Development in an agency environment for many clients including Hanna Andersson and Leatherman.',
       cName: 'event'
     },
     {
       title: 'Lead UI Engineer @ KEEN Footwear',
-      content: '💼 Developed new Salesforce Commerce Cloud Ecommerce websites for KEEN Footwear and Chrome Industries. Collaborated with BASIC® Agency.',
+      content: 'Developed new Salesforce Commerce Cloud Ecommerce websites for KEEN Footwear and Chrome Industries. Collaborated with BASIC® Agency.',
       cName: 'event'
     },
     {
@@ -256,12 +256,12 @@ export const timeline = {
     },
     {
       title: 'Web Dev I @ Columbia Sportswear',
-      content: '💼 Developed Frontend code for Columbia, SOREL, and Mountain Hardwear. Implemented localized content and content modules for international sales.',
+      content: 'Developed Frontend code for Columbia, SOREL, and Mountain Hardwear. Implemented localized content and content modules for international sales.',
       cName: 'event'
     },
     {
       title: 'Frontend Dev @ Dealer Spike',
-      content: '💼 HTML, CSS, and JavaScript and design in Adobe Photoshop. Created web experiences with a focus on SEO for powersports dealerships across US and Canada.',
+      content: 'HTML, CSS, and JavaScript and design in Adobe Photoshop. Created web experiences with a focus on SEO for powersports dealerships across US and Canada.',
       cName: 'event'
     },
     {
@@ -274,12 +274,12 @@ export const timeline = {
     },
     {
       title: 'Freelancer @ Self Employed',
-      content: '💼 Managed all aspects of business with 30+ clients. Developed websites using HTML, CSS, and JavaScript. Utilized CSS3, Boostrap, jQuery, and Wordpress.',
+      content: 'Managed all aspects of business with 30+ clients. Developed websites using HTML, CSS, and JavaScript. Utilized CSS3, Boostrap, jQuery, and Wordpress.',
       cName: 'event'
     },
     {
       title: 'UI Designer @ Selliken Systems',
-      content: '💼 Worked on the HomeQuest real estate property search tool. Designed using Adobe Photoshop and Illustrator.',
+      content: 'Worked on the HomeQuest real estate property search tool. Designed using Adobe Photoshop and Illustrator.',
       cName: 'event'
     },
     {
@@ -292,12 +292,12 @@ export const timeline = {
     },
     {
       title: 'Learning @ Southridge High School',
-      content: `✨ Began designing and animating Macromedia Flash websites and coding in ActionScript in my school's TV Studio.`,
+      content: `Began designing and animating Macromedia Flash websites and coding in ActionScript in my school's TV Studio.`,
       cName: 'event'
     },
     {
       title: 'Learning @ Southridge High School',
-      content: '🏫 Wrote my first lines of HTML and CSS using Yahoo! Geocities. Fell in love with web development. Took HTML/CSS Web Design course sophomore year.',
+      content: 'Wrote my first lines of HTML and CSS using Yahoo! Geocities. Fell in love with web development. Took HTML/CSS Web Design course sophomore year.',
       cName: 'event'
     },
     {
@@ -310,7 +310,7 @@ export const timeline = {
     },
     {
       title: 'First Computer',
-      content: '🖥️ Got a Compaq Presario CDS 524. Read Microsoft Encarta and played "Where In the World is Carmen San Diego" and "X-Wing".',
+      content: 'Got a Compaq Presario CDS 524. Read Microsoft Encarta and played "Where In the World is Carmen San Diego" and "X-Wing".',
       cName: 'event'
     },
   ]
