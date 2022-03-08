@@ -37,7 +37,7 @@ export default function NowPlaying() {
             <a>
             {isOnline
             ? <span>{data.artist} – {data.title}</span>
-            : <span>{spotify.headings.toptracks}</span> }
+            : <span>{spotify.headings.main}</span> }
             </a>
           </Link>
         </li>

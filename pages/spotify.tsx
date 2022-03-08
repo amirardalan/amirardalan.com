@@ -12,11 +12,11 @@ export default function Spotify() {
     h3: {
       marginBottom: '2rem',
       paddingBottom: '.8rem',
-      borderBottom: '3px solid var(--color-accent-color)',
+      borderBottom: '2px solid var(--color-accent-color)',
       fontSize: 28,
       fontWeight: 'bold',
       '@media (max-width: 1200px)': {
-        margin: '2rem 0 1rem 0',
+        margin: '1rem 0 1rem 0',
         fontSize: 22,
       }
     }
@@ -51,6 +51,7 @@ export default function Spotify() {
     },
     '@media(max-width: 1024px)': {
       gridTemplateColumns: 'repeat(1, 1fr)',
+      gap: 0,
     }
   })
 
