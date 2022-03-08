@@ -72,6 +72,22 @@ const Drafts  = ({ drafts }) => {
     )
   }
 
+  const renderDrafts = () => {
+    if (drafts.length < 1) {
+      return (
+        <div className="noDrafts">
+          {admin.drafts.empty}
+          <Link href="/blog/create">
+            {admin.drafts.empty2}
+          </Link>
+          {admin.drafts.empty3}
+        </div>
+      )
+    } else {
+      return draftsList
+    }
+  }
+
   return (
     <Container title={admin.drafts.meta.title} robots="noindex">
       <BlogStyles>
@@ -80,7 +96,7 @@ const Drafts  = ({ drafts }) => {
             <Link href="/blog">{breadcrumb.blog}</Link>
             <span>{breadcrumb.drafts}</span>
           </nav>
-          {draftsList}
+          {renderDrafts()}
         </div>
       </BlogStyles>
     </Container>

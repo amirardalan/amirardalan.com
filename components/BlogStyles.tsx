@@ -267,6 +267,9 @@ const blogStyles = css({
       }
     }
   },
+  '.noDrafts': {
+    marginTop: '6rem',
+  }
 })
 
 type Props = {

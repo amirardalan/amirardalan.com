@@ -633,6 +633,9 @@ export const admin = {
   drafts: {
     meta: {
       title: 'Drafts – Amir Ardalan'
-    }
+    },
+    empty: `⚠️ There doesn't seem to be any drafts yet! Try `,
+    empty2: 'writing',
+    empty3: ' one.',
   }
 }
