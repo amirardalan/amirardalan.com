@@ -8,7 +8,7 @@ export default function LatestPost({ latestPost, data }) {
     fontWeight: 'normal',
     marginTop: '1rem',
     h4: {
-      margin: '1rem 0 1rem',
+      margin: '1.5rem 0 1rem',
       color: 'var(--color-text)',
       fontFamily: 'var(--font-primary)',
       fontSize: 15,
@@ -48,24 +48,23 @@ export default function LatestPost({ latestPost, data }) {
   
   const renderLatestPost = !latestPost ? {} : latestPost[0]
   const ShowLatestPost = ({ data }) => (
+    latestPost ? 
     <div css={styleLatestPost}>
       <h4 aria-label={data.latestPost.title}>
         {data.latestPost.title}
       </h4>
       <h5>
-        <Link href={`/blog/${encodeURIComponent(renderLatestPost?.slug)}`}>
-          <a aria-label={renderLatestPost?.title} tabIndex={0}>
-            {renderLatestPost?.title}
-          </a>
+        <Link
+          href={`/blog/${encodeURIComponent(renderLatestPost?.slug)}`}
+          aria-label={renderLatestPost?.title}>
+          {renderLatestPost?.title}
         </Link>
       </h5>
       <p>
         {renderLatestPost?.teaser}
       </p>
-    </div>
+    </div> : null
   )
 
-  return (
-    <>{ latestPost ? <ShowLatestPost data={data} /> : null }</>
-  )
+  return <ShowLatestPost data={data} />
 }
