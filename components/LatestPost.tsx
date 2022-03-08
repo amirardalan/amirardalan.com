@@ -8,8 +8,8 @@ export default function LatestPost({ latestPost, data }) {
     fontWeight: 'normal',
     marginTop: '1rem',
     h4: {
-      margin: '1.5rem 0 1rem',
-      color: 'var(--color-text)',
+      margin: '1.5rem 0 .5rem',
+      color: 'var(--color-gray)',
       fontFamily: 'var(--font-primary)',
       fontSize: 16,
       fontWeight: 'normal',
