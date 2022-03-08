@@ -38,11 +38,22 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
 
 const Drafts  = ({ drafts }) => {
   
-  let draftsList = null
   const { data: session } = useSession()
+  const isLoggedIn = session && session.user.email == process.env.NEXT_PUBLIC_USER_EMAIL
+  let draftsList = null
 
-  if (session && session.user.email == process.env.NEXT_PUBLIC_USER_EMAIL) {
-    draftsList = (
+  const Breadcrumbs = () => {
+    return (
+      <nav className="breadcrumbs">
+        <Link href="/blog">{breadcrumb.blog}</Link>
+        <span>{breadcrumb.drafts}</span>
+      </nav>
+    )
+  }
+
+  draftsList = (
+    <>
+      <Breadcrumbs />
       <div className="drafts">
         <main>
           {drafts.sort(sortBlogPosts).reverse().map((post: { id: Key, category: String }) => (
@@ -65,26 +76,27 @@ const Drafts  = ({ drafts }) => {
           ))}
         </main>
       </div>
-    )
-  } else {
-    draftsList = (
-      <LoadingTriangle />
-    )
-  }
+    </>
+  )
 
   const RenderDrafts = () => {
-    if (drafts.length < 1) {
+    if (isLoggedIn && drafts.length < 1) {
       return (
-        <div className="noDrafts">
-          {admin.drafts.empty}
-          <Link href="/blog/create">
-            {admin.drafts.empty2}
-          </Link>
-          {admin.drafts.empty3}
-        </div>
+        <>
+          <Breadcrumbs />
+          <div className="noDrafts">
+            {admin.drafts.empty}
+            <Link href="/blog/create">
+              {admin.drafts.empty2}
+            </Link>
+            {admin.drafts.empty3}
+          </div>
+        </>
       )
-    } else {
+    } else if (isLoggedIn) {
       return draftsList
+    } else {
+      return <LoadingTriangle />
     }
   }
 
@@ -92,10 +104,6 @@ const Drafts  = ({ drafts }) => {
     <Container title={admin.drafts.meta.title} robots="noindex">
       <BlogStyles>
         <div className="blog admin drafts">
-          <nav className="breadcrumbs">
-            <Link href="/blog">{breadcrumb.blog}</Link>
-            <span>{breadcrumb.drafts}</span>
-          </nav>
           <RenderDrafts/>
         </div>
       </BlogStyles>
