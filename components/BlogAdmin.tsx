@@ -21,13 +21,16 @@ const BlogAdmin = React.memo(function BlogAdmin() {
     setIsDeploying(true)
     setTimeout(() => {
       setIsDeploying(false)
-    }, 85000)
+    }, 60000)
   }
   async function deployNewBuild(): Promise<void> {
-    fetch(`/api/deploy?secret=${process.env.NEXT_PUBLIC_DEPLOY_TOKEN}`).then(response => {
-      showDeployLoader()
-      fetch(`/api/preview/exit-preview?secret=${process.env.NEXT_PUBLIC_PREVIEW_TOKEN}`)
-      router.push('/blog')
+    fetch(`/api/deploy?secret=${process.env.NEXT_PUBLIC_DEPLOY_TOKEN}`).then((data) => {
+
+      if (data.status === 200) {
+        showDeployLoader()
+        fetch(`/api/preview/exit-preview?secret=${process.env.NEXT_PUBLIC_PREVIEW_TOKEN}`)
+        router.push('/blog')
+      }
     })
     .catch(err => {
       console.error(err)
@@ -149,6 +152,15 @@ const BlogAdmin = React.memo(function BlogAdmin() {
     )
   }
 
+  const AdminPanel = () => {
+    return (
+      <>
+        {adminPanelLeft}
+        {adminPanelRight}
+      </>
+    )
+  }
+
   return (
     <>
       <Global styles={{
@@ -201,8 +213,7 @@ const BlogAdmin = React.memo(function BlogAdmin() {
       }}/>
       <div css={styleAnimationWrapper}>
         <nav css={styleAdminPanel}>
-          {adminPanelLeft}
-          {adminPanelRight}
+          <AdminPanel/>
         </nav>
       </div>
     </>
