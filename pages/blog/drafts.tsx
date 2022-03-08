@@ -1,4 +1,4 @@
-import { useSession, getSession } from 'next-auth/client'
+import { useSession, getSession } from 'next-auth/react'
 import Link from 'next/link'
 import Container from '@/components/Container'
 import BlogStyles from '@/components/BlogStyles'
@@ -39,16 +39,10 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
 const Drafts  = ({ drafts }) => {
   
   let draftsList = null
-  const [session] = useSession()
+  const { data: session } = useSession()
 
   if (session && session.user.email == process.env.NEXT_PUBLIC_USER_EMAIL) {
     draftsList = (
-    <>
-      <nav className="breadcrumbs">
-        <Link href="/blog">{breadcrumb.blog}</Link>
-        <span>{breadcrumb.drafts}</span>
-      </nav>
-
       <div className="drafts">
         <main>
           {drafts.sort(sortBlogPosts).reverse().map((post: { id: Key, category: String }) => (
@@ -71,7 +65,6 @@ const Drafts  = ({ drafts }) => {
           ))}
         </main>
       </div>
-    </>
     )
   } else {
     draftsList = (
@@ -83,6 +76,10 @@ const Drafts  = ({ drafts }) => {
     <Container title={admin.drafts.meta.title} robots="noindex">
       <BlogStyles>
         <div className="blog admin drafts">
+          <nav className="breadcrumbs">
+            <Link href="/blog">{breadcrumb.blog}</Link>
+            <span>{breadcrumb.drafts}</span>
+          </nav>
           {draftsList}
         </div>
       </BlogStyles>

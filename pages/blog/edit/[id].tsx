@@ -1,4 +1,4 @@
-import { useSession } from 'next-auth/client'
+import { useSession } from 'next-auth/react'
 import { useState } from 'react'
 import Router from 'next/router'
 
@@ -87,7 +87,9 @@ const Edit = ({ editPost }) => {
     </div>
   )
 
-  const [session, loading] = useSession()
+  const { data: session } = useSession()
+  const loading = status === "loading"
+  
   let edit = null
   const userHasValidSession = Boolean(session)
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Global, css } from '@emotion/react'
-import { signOut, useSession } from 'next-auth/client'
+import { signOut, useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import LoadingSpinner from './LoadingSpinner'
@@ -10,7 +10,7 @@ const BlogAdmin = React.memo(function BlogAdmin() {
 
   const router = useRouter()
   const isActive: (pathname: string) => boolean = (pathname) => router.pathname === pathname
-  const [session] = useSession()
+  const { data: session } = useSession()
   const isLoggedIn = session && session.user.email == process.env.NEXT_PUBLIC_USER_EMAIL
 
   let adminPanelLeft = null

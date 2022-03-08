@@ -1,12 +1,14 @@
-import React, { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
+import { useSession } from 'next-auth/react'
 import Router from 'next/router'
+
 import Link from 'next/link'
 import Container from '@/components/Container'
 import BlogStyles from '@/components/BlogStyles'
 import Dropdown from '@/components/Dropdown'
+
 import { admin, breadcrumb } from '@/data/content'
 import { categories } from '@/data/categories'
-import { useSession } from 'next-auth/client'
 import LoadingTriangle from '@/components/LoadingTriangle'
 
 
@@ -83,7 +85,7 @@ const Draft = () => {
     }, 100)
   })
 
-  const [session] = useSession()
+  const { data: session } = useSession()
   let create = null
 
   if (session && session.user.email == process.env.NEXT_PUBLIC_USER_EMAIL) {

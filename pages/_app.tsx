@@ -1,6 +1,6 @@
 import React from 'react'
 import { AppProps } from 'next/app'
-import { Provider } from 'next-auth/client'
+import { SessionProvider } from 'next-auth/react'
 import { useThemeContext } from '@/utils/useThemeContext'
 import { themeLight, themeDark } from '@/styles/theme'
 import { GlobalStyles } from '@/styles/global'
@@ -14,7 +14,6 @@ const BlogAdmin = dynamic(() => import('@/components/BlogAdmin'),{
   ssr: false
 })
 
-
 const App = ({ Component, pageProps }: AppProps) => {
 
   const [theme, toggleTheme] = useThemeContext()
@@ -24,7 +23,7 @@ const App = ({ Component, pageProps }: AppProps) => {
 
   return (
     <React.StrictMode>
-      <Provider session={pageProps.session}>
+      <SessionProvider session={pageProps.session}>
         <GlobalStyles />
         <ThemeProvider theme={themeMode}>
           <LoadingBar />
@@ -32,7 +31,7 @@ const App = ({ Component, pageProps }: AppProps) => {
           <Header toggleTheme={toggleTheme} />
           <Component {...pageProps} />
         </ThemeProvider>
-      </Provider>
+      </SessionProvider>
     </React.StrictMode>
   )
 }

@@ -1,4 +1,4 @@
-import { useSession } from 'next-auth/client'
+import { useSession } from 'next-auth/react'
 import { useState } from 'react'
 import Router from 'next/router'
 import { css } from '@emotion/react'
@@ -226,7 +226,7 @@ const Post = ({ post, feed, data }) => {
   })
 
   let loadBlogPost = null
-  const [session] = useSession()
+  const { data: session } = useSession()
   const userHasValidSession = Boolean(session)
 
   const isPublished : Boolean = post.published
