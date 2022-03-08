@@ -72,7 +72,7 @@ const Drafts  = ({ drafts }) => {
     )
   }
 
-  const renderDrafts = () => {
+  const RenderDrafts = () => {
     if (drafts.length < 1) {
       return (
         <div className="noDrafts">
@@ -96,7 +96,7 @@ const Drafts  = ({ drafts }) => {
             <Link href="/blog">{breadcrumb.blog}</Link>
             <span>{breadcrumb.drafts}</span>
           </nav>
-          {renderDrafts()}
+          <RenderDrafts/>
         </div>
       </BlogStyles>
     </Container>

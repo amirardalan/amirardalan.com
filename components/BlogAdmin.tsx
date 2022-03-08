@@ -168,9 +168,6 @@ const BlogAdmin = React.memo(function BlogAdmin() {
           textAlign: 'center',
           textDecoration: 'none',
           cursor: 'pointer',
-          '&:last-of-type': {
-            marginRight: 0,
-          },
           '&:disabled': {
             backgroundColor: 'var(--color-button-disabled)',
             cursor: 'default',

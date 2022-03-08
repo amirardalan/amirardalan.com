@@ -62,10 +62,6 @@ const BlogPostFilter = ({ feed }) => {
 
   const theme: any = useTheme()
 
-  const showFeedError = feed.length <= 0
-  const FeedNotFound = () => (
-    <span>{blog.error.database}</span>
-  )
   
   const [search, setSearch] = useState('')
 
@@ -103,6 +99,7 @@ const BlogPostFilter = ({ feed }) => {
         return (
           <span>
             {blog.search.noresult}{' '}
+            {feed.length > 0 ?
             <button
               onClick={() => setSearch('')}
               onKeyPress={() => setSearch('')}
@@ -111,6 +108,7 @@ const BlogPostFilter = ({ feed }) => {
             >
               {blog.search.clear}
             </button>
+            : null}
           </span>
         )
     }
@@ -196,13 +194,8 @@ const BlogPostFilter = ({ feed }) => {
         />
         <SearchIcons />
       </div>
-      <div>
-        {showFeedError
-          ? <FeedNotFound />
-          : null}
-        <div className="post">
-          <RenderPosts />
-        </div>
+      <div className="post">
+        <RenderPosts />
       </div>
     </>
   )

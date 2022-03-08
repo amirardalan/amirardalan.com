@@ -257,7 +257,7 @@ const blogStyles = css({
       textTransform: 'uppercase',
       cursor: 'pointer',
       '&.delete': {
-        color: 'var(--color-warning)'
+        color: 'var(--color-warning)',
       },
       '&.close': {
         marginLeft: '.5rem',

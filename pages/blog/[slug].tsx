@@ -257,10 +257,7 @@ const Post = ({ post, feed, data }) => {
     Router.push(redirect)
   }
 
-  let title = post.title
-  if (!isPublished) {
-    title = `${data.title.draft} ${title}`
-  }
+  const title = post.title
 
   const [showDeletionConfirmation, setShowDeletionConfirmation] = useState(false)
   const confirmOnClick = () => setShowDeletionConfirmation(true)
