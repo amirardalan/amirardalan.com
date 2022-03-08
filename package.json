@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@emotion/react": "^11.5.0",
+    "@next-auth/prisma-adapter": "^1.0.1",
     "@prisma/client": "^3.4.1",
     "@react-three/fiber": "^7.0.17",
     "globby": "^13.1.1",
