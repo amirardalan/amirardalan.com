@@ -17,17 +17,20 @@ const BlogAdmin = React.memo(function BlogAdmin() {
   let adminPanelRight = null
 
   const [isDeploying, setIsDeploying] = useState(false)
-  const DeployLoader: Function = () => {
+  const showDeployLoader: Function = () => {
     setIsDeploying(true)
     setTimeout(() => {
       setIsDeploying(false)
-    }, 85000)
+    }, 60000)
   }
   async function deployNewBuild(): Promise<void> {
-    fetch(`/api/deploy?secret=${process.env.NEXT_PUBLIC_DEPLOY_TOKEN}`).then(() => {
-      <DeployLoader/>
-      fetch(`/api/preview/exit-preview?secret=${process.env.NEXT_PUBLIC_PREVIEW_TOKEN}`)
-      router.push('/blog')
+    fetch(`/api/deploy?secret=${process.env.NEXT_PUBLIC_DEPLOY_TOKEN}`).then((data) => {
+
+      if (data.status === 200) {
+        showDeployLoader()
+        fetch(`/api/preview/exit-preview?secret=${process.env.NEXT_PUBLIC_PREVIEW_TOKEN}`)
+        router.push('/blog')
+      }
     })
     .catch(err => {
       console.error(err)
