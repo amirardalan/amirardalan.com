@@ -20,28 +20,6 @@ export const home = {
   intro: '👋 Hi my name is',
   title: 'Amir Ardalan',
   description: `I'm a Front-end Engineer specializing in React, UI Design, and accessibility for the web. I'm passionate about Next.js, TypeScript, Three.js, and Web 3.0 technologies.`,
-  typed: {
-    heading: `interests => {`,
-    line2: `// TODO: continue learning`,
-    items: [
-      `'Fullstack Development'^1500`,
-      `'React'^1500`,
-      `'Next.js'^1500`,
-      `'JavaScript'^1500`,
-      `'TypeScript'^1500`,
-      `'User Interface Design'^1500`,
-      `'Writing'^1500`,
-      `'Emotion CSS'^1500`,
-      `'Three.js'^1500`,
-      `'react-three-fiber'^1500`,
-      `'Prisma ORM'^1500`,
-      `'PostgreSQL'^1500`,
-      `'Markdown'^1500`,
-      `'Jest Testing'^1500`,
-      `'Web Accessibility'^1500`,
-    ],
-    end: '}'
-  },
   items: [
     {
       path: '/blog',
