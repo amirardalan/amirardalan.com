@@ -35,7 +35,10 @@ export default function Track(track: Track) {
       },
       '.title': {
         color: 'var(--color-text)',
-        fontSize: 'calc(1.1vw + 1.1vh)',
+        fontSize: 'calc(1vw + 1vh)',
+        '@media(max-width: 768px)': {
+          fontSize: 16
+        }
       },
       '.title a, .artist p': {
         textDecoration: 'none',
@@ -43,7 +46,10 @@ export default function Track(track: Track) {
       '.artist': {
         fontFamily: 'var(--font-primary)',
         fontWeight: 'normal',
-        fontSize: 'calc(1vw + 1vh)',
+        fontSize: 'calc(.8vw + .8vh)',
+        '@media(max-width: 768px)': {
+          fontSize: 12
+        }
       },
       '@media(max-width: 600px)': {
         gridTemplateColumns: '10% 38% 40%',

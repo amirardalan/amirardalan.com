@@ -324,6 +324,8 @@ export const spotify = {
   headings: {
     main: 'Spotify Dashboard',
     toptracks: 'Top Tracks',
+    nowplaying: 'Now Playing',
+    profile: 'Profile',
   },
   status: {
     online: 'Now playing',

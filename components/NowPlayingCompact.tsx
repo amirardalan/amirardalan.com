@@ -33,7 +33,7 @@ export default function NowPlaying() {
       </h5>
       <ul>
         <li className="nowPlaying">
-          <Link href={isOnline ? '/spotify' : '/spotify#top-tracks'}>
+          <Link href={isOnline ? '/spotify' : '/spotify'}>
             <a>
             {isOnline
             ? <span>{data.artist} – {data.title}</span>
