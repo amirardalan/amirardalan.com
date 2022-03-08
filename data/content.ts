@@ -493,6 +493,14 @@ export const footer = {
       },
     },
     {
+      path: 'https://next-auth.js.org/',
+      title: 'NextAuth.js',
+      icon: {
+        light: themeLight.icons.external,
+        dark: themeDark.icons.external
+      },
+    },
+    {
       path: 'https://emotion.sh/docs/introduction/',
       title: 'Emotion',
       icon: {
@@ -501,16 +509,16 @@ export const footer = {
       },
     },
     {
-      path: 'https://remarkjs.github.io/react-markdown/',
-      title: 'React-Markdown',
+      path: 'https://www.prisma.io/',
+      title: 'Prisma',
       icon: {
         light: themeLight.icons.external,
         dark: themeDark.icons.external
       },
     },
     {
-      path: 'https://www.prisma.io/',
-      title: 'Prisma',
+      path: 'https://unifiedjs.com/',
+      title: 'Unified.js',
       icon: {
         light: themeLight.icons.external,
         dark: themeDark.icons.external

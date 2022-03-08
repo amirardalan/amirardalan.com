@@ -84,6 +84,9 @@ export default function Footer() {
       paddingTop: '.1rem',
       lineHeight: '1.3rem',
     },
+    '.spotifyNav': {
+      display: 'none',
+    }
   })
   const styleFooterLogo = css({
     display: 'flex',
