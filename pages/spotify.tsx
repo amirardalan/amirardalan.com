@@ -17,7 +17,7 @@ export default function Spotify() {
       fontSize: 28,
       fontWeight: 'bold',
       '@media (max-width: 1200px)': {
-        margin: '1rem 0 1rem 0',
+        margin: '1rem 0 2rem 0',
         fontSize: 22,
       }
     },
@@ -37,6 +37,7 @@ export default function Spotify() {
           display: 'flex',
         },
         '.rank': {
+          alignSelf: 'center',
           fontSize: 'calc(2vw + 2vh)',
           WebkitMarqueeIncrement: '0vw',
           color: 'var(--color-accent-gray)',
@@ -66,7 +67,7 @@ export default function Spotify() {
           gridTemplateColumns: '10% 38% 40%',
           gridAutoRows: 'minmax(0, auto)',
           '.image': {
-            display: 'none'
+            width: 100,
           },
           '.title a, .artist p': {
             lineHeight: '1.2rem',
@@ -109,7 +110,7 @@ export default function Spotify() {
     },
     '@media(max-width: 1024px)': {
       gridTemplateColumns: 'repeat(1, 1fr)',
-      gap: 0,
+      gap: 40,
     }
   })
 

@@ -12,7 +12,6 @@ export default function NowPlaying() {
   const isOnline = data?.songUrl
 
   const styleNowPlayingContainer = css({
-    marginBottom: '2.5rem',
     display: 'flex',
   })
   const styleNowPlaying = css({

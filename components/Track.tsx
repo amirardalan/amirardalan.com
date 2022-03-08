@@ -20,19 +20,12 @@ export default function Track(track: Track) {
           {track.ranking}
         </div>
         <div className="image">
-          <a
-            href={track.songUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            title={track.album}
-          >
-            <Image
-              src={track.image}
-              height="100"
-              width="100"
-              alt={track.title}
-            />
-          </a>
+          <Image
+            src={track.image}
+            height="100"
+            width="100"
+            alt={track.title}
+          />
         </div>
         <div className="title">
           <div>
