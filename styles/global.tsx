@@ -7,10 +7,10 @@ const fontTertiary = '"IBM Plex Serif", "Times New Roman", Times, serif'
 
 // Colors
 const light = '#e4e9f8'
-const lightAccent = '#d8ddf0'
+const lightAccent = '#dde2f1'
 const lighter = '#d8dbed'
 const dark = '#262738'
-const darkAccent = '#333448'
+const darkAccent = '#323344'
 const darker = '#191a22'
 const primary = '#744164'
 const secondary = '#3dffc5'
@@ -20,8 +20,8 @@ const grayAccentLight = '#b7b7c9'
 const grayAccentDark = '#494a5c'
 const buttonDisabled = '#9e9eb6'
 const warning = '#e64358'
-const codeHighlightDark = '#2a2c3b'
-const codeHighlightLight = '#d1d3e7'
+const codeHighlightDark = '#3d3f50'
+const codeHighlightLight = '#d5d7eb'
 const sunrise = 'linear-gradient(to bottom, #757abf 0%,#8583be 60%,#eab0d1 100%)'
 const sunset = 'linear-gradient(to bottom, #111011 30%,#451f4d 80%,#311946 100%)'
 
@@ -91,7 +91,7 @@ export function GlobalStyles () {
           '--color-bg': light,
           '--color-text': darkAccent,
           '--color-input-disabled': light,
-          '--button-toggle-bg': lightAccent,
+          '--button-toggle-bg': lighter,
           '--button-toggle-switch': darker,
           '--canvas-bg': sunset,
           '--page-bg': lighter,
