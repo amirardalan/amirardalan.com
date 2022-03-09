@@ -50,7 +50,8 @@ export const blog = {
   search: {
     placeholder: 'Search posts',
     noresult: 'No posts found.',
-    clear: 'Clear search'
+    clear: 'Clear search',
+    clearFilter: 'Clear filter'
   },
 }
 

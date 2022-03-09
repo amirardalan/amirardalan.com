@@ -103,15 +103,29 @@ const BlogPostFilter = ({ feed }) => {
             <button
               onClick={() => setSearch('')}
               onKeyPress={() => setSearch('')}
-              className="clearSearch"
               aria-label={blog.search.clear}
             >
-              {blog.search.clear}
+              <CloseIcon width={12} height={12}/>
+              {' '+blog.search.clear}
             </button>
             : null}
           </span>
         )
     }
+  }
+
+  const CloseIcon = ({width, height}) => {
+    return (
+      <Image
+        src={theme.icons.close}
+        width={width}
+        height={height}
+        priority
+        alt={blog.search.clear}
+        aria-label={blog.search.clear}
+        draggable={false}
+      />
+    )
   }
 
   const SearchIcons: Function = () => {
@@ -133,19 +147,28 @@ const BlogPostFilter = ({ feed }) => {
         return (
           <button
             onClick={() => setSearch('')}
+            onKeyPress={() => setSearch('')}
             className="clearSearch"
           >
-          <Image
-            src={theme.icons.close}
-            height="25"
-            width="25"
-            priority
-            alt={blog.search.clear}
-            aria-label={blog.search.clear}
-            draggable={false}
-          />
+            <CloseIcon width={25} height={25} />
           </button>
         )
+    }
+  }
+
+  const ClearFilters = () => {
+    if (search[0] === '#' && filteredPosts.length > 0) {
+      return (
+        <button
+          onClick={() => setSearch('')}
+          onKeyPress={() => setSearch('')}
+          aria-label="Clar Filter">
+          <CloseIcon width={12} height={12}/>
+          <span>{' '+blog.search.clearFilter}</span>
+        </button>
+      )
+    } else {
+      return null
     }
   }
 
@@ -196,6 +219,7 @@ const BlogPostFilter = ({ feed }) => {
       </div>
       <div className="post">
         <RenderPosts />
+        <ClearFilters />
       </div>
     </>
   )
