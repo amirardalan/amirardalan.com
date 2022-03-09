@@ -110,6 +110,10 @@ const blogStyles = css({
     '.author, .authorLink': {
       display: 'flex',
       alignItems: 'center',
+      span: {
+        textTransform: 'uppercase',
+        marginLeft: '.5rem',
+      }
     },
     '.avatar': {
       display: 'flex',

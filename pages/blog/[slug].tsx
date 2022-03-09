@@ -64,9 +64,6 @@ const Post = ({ post, feed, data }) => {
 
   const styleBlogPost = css({
     '.postFull': {
-      '.category': {
-        color: 'var(--color-gray)',
-      },
       '.postDetails': {
         marginBottom: '2.5rem',
       },
@@ -81,8 +78,9 @@ const Post = ({ post, feed, data }) => {
       '.teaser': {
         marginBottom: '2.5rem',
         fontFamily: 'var(--font-tertiary)',
-        fontSize: 18,
+        fontSize: 16,
         lineHeight: '1.5rem',
+        color: 'var(--color-gray)',
       },
       'h3, h3 code': {
         fontSize: 28,
@@ -134,7 +132,7 @@ const Post = ({ post, feed, data }) => {
         marginBottom: '1rem'
       },
       p: {
-        marginBottom: '2rem',
+        marginBottom: '2.5rem',
       },
       a: {
         textDecoration: 'underline',
@@ -276,6 +274,22 @@ const Post = ({ post, feed, data }) => {
     </div>
   )
 
+  const Breadcrumbs = () => {
+    if (!isPublished) {
+      return (
+        <nav className="breadcrumbs">
+          <Link href="/blog">{breadcrumb.blog}</Link>
+            <Link href="/blog/drafts">
+              <a>{breadcrumb.drafts}</a>
+            </Link>
+          <span>{title}</span>
+        </nav>
+      )
+    } else {
+      return null
+    }
+  }
+
   // If the post contains an image, set the first image as the og:image banner
   const hasImage = post.content.replace(/`([^`]*)/g,'').match(/!\[.*?\]\((.*?)\)/)
     ? `${process.env.NEXT_PUBLIC_SITE_URL}` + post.content.match(/!\[.*?\]\((.*?)\)/)[1]
@@ -285,15 +299,7 @@ const Post = ({ post, feed, data }) => {
     loadBlogPost = (
       <div className={isPublished ? 'blog' : 'blog admin'} css={styleBlogPost}>
 
-        <nav className="breadcrumbs">
-          <Link href="/blog">{breadcrumb.blog}</Link>
-          { !isPublished
-          ? <Link href="/blog/drafts">
-              <a>{breadcrumb.drafts}</a>
-            </Link>
-          : null }
-          <span>{title}</span>
-        </nav>
+        <Breadcrumbs/>
 
         <div className="post postFull">
 
@@ -309,10 +315,7 @@ const Post = ({ post, feed, data }) => {
           <p className="teaser">{post.teaser}</p>
           <div className="postDetails" aria-label={`${editDate} • ${postReadTime}`}>
             <div className="author">
-              <span className="avatar">
-                <Avatar height="18" width="18" />
-              </span>
-              {post?.author?.name || 'Unknown author'}
+              By <span>{post?.author?.name || 'Unknown author'}</span>
             </div>
             <div className="postDate">
               {isEdited ? `Updated: ${editDate}`: publishDate } • {postReadTime}
