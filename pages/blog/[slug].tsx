@@ -5,7 +5,6 @@ import { css } from '@emotion/react'
 
 import Container from '@/components/Container'
 import BlogStyles from '@/components/BlogStyles'
-import Avatar from '@/components/Avatar'
 import BlogNavigation from '@/components/BlogNavigation'
 import calculateReadTime from '@/utils/calculateReadTime'
 import formatDate from '@/utils/formatDate'
