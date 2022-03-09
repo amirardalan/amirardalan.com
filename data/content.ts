@@ -518,6 +518,14 @@ export const footer = {
       },
     },
     {
+      path: 'https://threejs.org/',
+      title: 'Three.js',
+      icon: {
+        light: themeLight.icons.external,
+        dark: themeDark.icons.external
+      },
+    },
+    {
       path: 'https://unifiedjs.com/',
       title: 'Unified.js',
       icon: {
