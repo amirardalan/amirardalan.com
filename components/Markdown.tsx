@@ -21,14 +21,15 @@ export default function BlogMarkdown({ markdown }) {
       fontSize: 16,
       border: 'none',
       boxShadow: 'none',
-      textShadow: 'none'
+      textShadow: 'none',
+      '@media(max-width: 768px)': {
+        lineHeight: '1.2rem !important',
+        fontSize: 14
+      }
     },
     pre: {
       margin: '0 -1.5rem 1.5rem -1.5rem',
       fontSize: 15,
-      '@media(max-width: 768px)': {
-        fontSize: 13
-      }
     },
     '.codeStyle': {
       padding: '1.5rem 0 1.5rem 1.5rem !important',
