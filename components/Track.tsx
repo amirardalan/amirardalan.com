@@ -1,4 +1,4 @@
-import { css } from '@emotion/react'
+import { useTheme, css } from '@emotion/react'
 import Image from 'next/image'
 
 interface Track {
@@ -12,7 +12,8 @@ interface Track {
 
 export default function Track(track: Track) {
 
- 
+ const theme: any = useTheme()
+
   return (
     <div className="topGrid">
       <div className="grid">
@@ -35,6 +36,14 @@ export default function Track(track: Track) {
               rel="noopener noreferrer"
             >
               {track.title}
+              <span className="externalIcon">
+                <Image
+                  src={theme.icons.externalAlt}
+                  width={15}
+                  height={15}
+                  alt={'Listen to '+track.title+' on Spotify'}
+                />
+              </span>
             </a>
           </div>
           <div className="artist">

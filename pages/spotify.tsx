@@ -22,16 +22,19 @@ export default function Spotify() {
       }
     },
     a: {
-      color: 'var(--color-text)'
+      color: 'var(--color-text)',
     },
     '.topGrid': {
       fontFamily: 'var(--font-secondary)',
       fontWeight: 'bold',
+      'span.externalIcon': {
+        marginLeft: 5
+      },
       '.grid': {
         padding: '2% 0',
         display: 'grid',
         gap: 20,
-        gridTemplateColumns: '10% 20% 70%',
+        gridTemplateColumns: '8% 25% 65%',
         gridAutoRows: 'minmax(100px, auto)',
         borderBottom: '1px solid var(--color-accent)',
         fontSize: 'calc(1.2vw + 1.2vh)',
@@ -67,7 +70,7 @@ export default function Spotify() {
           }
         },
         '@media(max-width: 600px)': {
-          gridTemplateColumns: '10% 38% 40%',
+          gridTemplateColumns: '5% 30% 60%',
           gridAutoRows: 'minmax(0, auto)',
           '.image': {
             width: 100,

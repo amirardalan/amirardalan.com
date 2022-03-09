@@ -1,10 +1,12 @@
-import { css } from '@emotion/react'
+import { css, useTheme } from '@emotion/react'
 import useSWR from 'swr'
 import fetcher from '@/lib/fetcher'
 import Image from 'next/image'
 
 
 export default function Profile() {
+
+  const theme: any = useTheme()
   
   const { data } = useSWR('/api/spotify/profile', fetcher)
 
@@ -21,9 +23,22 @@ export default function Profile() {
       div: {
         marginBottom: '.2rem'
       },
-      'span.em': {
+      'span.strong': {
         fontFamily: 'var(--font-secondary)',
         fontSize: 20,
+      }
+    },
+    '.profileLink': {
+      fontSize: 12,
+      '&::after': {
+        content: '""',
+        marginLeft: 5,
+        display: 'inline-block',
+        background: `url('${theme.icons.externalAlt}')`,
+        backgroundSize: 'contain',
+        backgroundRepeat: 'no-repeat',
+        width: 15,
+        height: 15,
       }
     }
   })
@@ -40,16 +55,17 @@ export default function Profile() {
       />
       <div className="profileInfo">
         <div>
-          <span className="em">{data.id}</span>
+          <span className="strong">{data.id}</span>
         </div>
         <div aria-label={data.followers + 'Followers'}>
-          <span className="em">{data.followers}</span> Followers
+          <span className="strong">{data.followers}</span> followers
         </div>
         <a
           href={`https://open.spotify.com/user/`+`${data.id}`}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label={`Open ${data.name}'s Spotify Profile`}>
+          aria-label={`Open ${data.name}'s Spotify Profile`}
+          className="profileLink">
           View Profile
         </a>
       </div>
