@@ -69,7 +69,7 @@ const Post = ({ post, feed, data }) => {
       },
       '.note': {
         position: 'relative',
-        marginBottom: '2rem',
+        marginBottom: '2.5rem',
         padding: '2.8rem 1.5rem 1.5rem 1.5rem',
         border: '1px solid var(--color-accent-gray)',
         borderRadius: 5,

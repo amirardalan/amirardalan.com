@@ -28,7 +28,7 @@ export default function BlogMarkdown({ markdown }) {
       }
     },
     pre: {
-      margin: '0 -1.5rem 1.5rem -1.5rem',
+      margin: '0 -1.5rem 2.5rem -1.5rem',
       fontSize: 15,
     },
     '.codeStyle': {
