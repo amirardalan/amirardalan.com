@@ -3,7 +3,7 @@ import { Global } from '@emotion/react'
 // Typography
 const fontPrimary = '"JetBrains Mono", Menlo, Monaco, "Courier New", monospace'
 const fontSecondary = '"Poppins", Helvetica, Arial, sans-serif'
-const fontTertiary = '"IBM Plex Serif", "Times New Roman", Times, serif'
+const fontTertiary = '"PT Serif", "Times New Roman", Times, serif'
 
 // Colors
 const light = '#e4e9f8'
@@ -58,20 +58,20 @@ export function GlobalStyles () {
       }}/>
       <Global styles={{
         '@font-face': {
-          fontFamily: 'IBM Plex Serif',
+          fontFamily: 'PT Serif',
           fontStyle: 'normal',
           fontWeight: 400,
           fontDisplay: 'swap',
-          src: 'url("/fonts/ibm-plex-serif-v14-latin-regular.woff2") format("woff2")',
+          src: 'url("/fonts/pt-serif-v16-latin-regular.woff2") format("woff2")',
         },
       }}/>
       <Global styles={{
         '@font-face': {
-          fontFamily: 'IBM Plex Serif',
+          fontFamily: 'Bitter',
           fontStyle: 'italic',
           fontWeight: 400,
           fontDisplay: 'swap',
-          src: 'url("/fonts/ibm-plex-serif-v14-latin-italic.woff2") format("woff2")'
+          src: 'url("/fonts/pt-serif-v16-latin-italic.woff2") format("woff2")'
         },
       }}/>
       <Global styles={{
@@ -96,6 +96,7 @@ export function GlobalStyles () {
           '--page-bg': lighter,
           '--code-highlight': codeHighlightLight,
           '--syntax-highlight-bg': lightAccent,
+          '--icon-info': 'url(/icons/info-dark.svg)'
         },
         
         'body[data-theme="dark"]': {
@@ -111,6 +112,7 @@ export function GlobalStyles () {
           '--page-bg': darkAccent,
           '--code-highlight': codeHighlightDark,
           '--syntax-highlight-bg': darkAccent,
+          '--icon-info': 'url(/icons/info-light.svg)'
         }
       }} />
       <Global styles={{
@@ -160,7 +162,7 @@ export function GlobalStyles () {
           display: 'block',
           height: 1,
           border: 0,  
-          borderTop: '1px solid var(--color-gray)',
+          borderTop: '1px solid var(--color-accent-gray)',
           margin: '3em 0',
           padding: 0,
         },
@@ -206,13 +208,6 @@ export function GlobalStyles () {
           background: 'transparent',
           color: 'var(--color-accent-color)',
           textDecoration: 'underline',
-          '&.externalLink:after': {
-            marginLeft: '.3rem',
-            content: '""',
-            background: 'var(--icon-external-link) no-repeat',
-            height: 12,
-            width: 12,
-          },
         },
         p: {
           margin: 0,

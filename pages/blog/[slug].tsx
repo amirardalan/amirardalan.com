@@ -59,12 +59,59 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   }
 }
 
+
 const Post = ({ post, feed, data }) => {
 
   const styleBlogPost = css({
     '.postFull': {
       '.postDetails': {
         marginBottom: '2.5rem',
+      },
+      '.note': {
+        position: 'relative',
+        marginBottom: '2rem',
+        padding: '2.8rem 1.5rem 1.5rem 1.5rem',
+        border: '1px solid var(--color-accent-gray)',
+        borderRadius: 5,
+        fontFamily: 'var(--font-tertiary)',
+        fontSize: 18,
+        lineHeight: '1.8rem',
+        color: 'var(--color-gray)',
+        '&:before, &:after': {
+          position: 'absolute',
+        },
+        '&:before': {
+          content: '""',
+          top: 20,
+          left: 22,
+          width: 15,
+          height: 15,
+          background: 'var(--icon-info) no-repeat',
+          backgroundSize: 'contain',
+        },
+        '&:after': {
+          content: '"Note:"',
+          top: 13,
+          left: 42,
+          textTransform: 'uppercase',
+          fontFamily: 'var(--font-primary)',
+          fontSize: 13,
+        },
+        '&.tip': {
+          '&:after': {
+            content: '"Tip:"',
+          },
+        },
+        '&.example': {
+          '&:after': {
+            content: '"Example:"',
+          },
+        },
+        '&.warn': {
+          '&:after': {
+            content: '"Warning:"',
+          },
+        },
       },
       h1: {
         margin: '0 0 .8rem',
@@ -140,17 +187,22 @@ const Post = ({ post, feed, data }) => {
         },
       },
       blockquote: {
-        margin: '4rem -1.5rem',
-        padding: '0 1rem',
+        margin: '2rem -2.5rem',
+        padding: '0 2rem',
         borderLeft: '8px solid var(--color-accent-gray)',
         color: 'var(--color-gray)',
-        'p, a, code': {
+        'p, a': {
           marginBottom: 0,
+          fontSize: 22,
           fontStyle: 'italic'
         },
         '& blockquote': {
           marginLeft: '1rem',
           borderLeft: '8px solid var(--color-gray)',
+        },
+        '@media(max-width: 480px)': {
+          margin: '2rem -1.5rem',
+          padding: '0 1rem',
         }
       },
       'ul li': {

@@ -18,13 +18,13 @@ export default function BlogMarkdown({ markdown }) {
       fontFamily: 'var(--font-primary)',
       fontStyle: 'normal !important',
       lineHeight: '1.5rem !important',
-      fontSize: 16,
+      fontSize: 15,
       border: 'none',
       boxShadow: 'none',
       textShadow: 'none',
       '@media(max-width: 768px)': {
         lineHeight: '1.2rem !important',
-        fontSize: 14
+        fontSize: 13
       }
     },
     pre: {
@@ -56,7 +56,7 @@ export default function BlogMarkdown({ markdown }) {
     code: {
       wordWrap: 'break-word',
       fontSize: 16,
-      color: 'var(--color-text)',
+      color: 'var(--color-gray)',
       backgroundColor: 'var(--code-highlight)',
       borderRadius: 5,
       '&::before, &::after': {

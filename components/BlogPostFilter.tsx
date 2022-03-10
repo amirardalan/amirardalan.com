@@ -54,7 +54,6 @@ const BlogPostFilter = ({ feed }) => {
       display: 'flex',
       justifyContent: 'center',
       position: 'absolute',
-      backgroundImage: 'var(--icon-close)',
       width: 25,
       height: 25,
       top: 16,

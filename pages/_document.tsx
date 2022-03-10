@@ -28,14 +28,14 @@ export default function Document() {
         />
         <link
           rel="preload"
-          href="/fonts/ibm-plex-serif-v14-latin-regular.woff2"
+          href="/fonts/pt-serif-v16-latin-regular.woff2"
           as="font"
           type="font/woff2"
           crossOrigin="anonymous"
         />
         <link
           rel="preload"
-          href="/fonts/ibm-plex-serif-v14-latin-italic.woff2"
+          href="/fonts/pt-serif-v16-latin-italic.woff2"
           as="font"
           type="font/woff2"
           crossOrigin="anonymous"
