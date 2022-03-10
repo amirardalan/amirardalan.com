@@ -96,7 +96,7 @@ export function GlobalStyles () {
           '--page-bg': lighter,
           '--code-highlight': codeHighlightLight,
           '--syntax-highlight-bg': lightAccent,
-          '--icon-info': 'url(/icons/info-dark.svg)'
+          '--icon-info': 'url(/icons/note-dark.svg)'
         },
         
         'body[data-theme="dark"]': {
@@ -112,7 +112,7 @@ export function GlobalStyles () {
           '--page-bg': darkAccent,
           '--code-highlight': codeHighlightDark,
           '--syntax-highlight-bg': darkAccent,
-          '--icon-info': 'url(/icons/info-light.svg)'
+          '--icon-info': 'url(/icons/note-light.svg)'
         }
       }} />
       <Global styles={{
