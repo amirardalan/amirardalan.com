@@ -63,6 +63,11 @@ const styleAnimationWrapper = css({
   animation: 'slideUp 1s forwards',
 })
 
+const styleHomeButton = css({
+  display: 'flex',
+  justifyContent: 'center',
+})
+
 
 export default function Custom404({ data }) {
 
@@ -89,9 +94,11 @@ export default function Custom404({ data }) {
               </p>
             </div>
           </div>
-          <Link href={error.link.path} aria-label={error.link.title}>
-            {error.link.title}
-          </Link>
+          <div css={styleHomeButton}>
+            <Link href={error.link.path} aria-label={error.link.title} passHref>
+              <button className="ctaButton">{error.link.title}</button>
+            </Link>
+          </div>
         </div>
       </div>
     </Container>
