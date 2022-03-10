@@ -36,7 +36,7 @@ export default function About({ data }) {
       padding: '3rem',
       backgroundColor: 'var(--color-accent)',
       lineHeight: '1.8rem',
-      animation: 'slideUp .5s forwards',
+      animation: 'slideUpSection .5s forwards',
       h4: {
         fontFamily: 'var(--font-secondary)',
       },

@@ -64,7 +64,7 @@ const CanvasLoader =  React.memo(function CanvasLoader() {
       </span>
 
       <Canvas
-        css={{animation: 'slideUpHome 1s forwards'}}
+        css={{animation: 'slideUpSection 1s forwards'}}
         gl={{antialias: true}}
         dpr={window.devicePixelRatio}
         onCreated={({ camera }) => camera.lookAt(0, 0, 0)}

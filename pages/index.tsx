@@ -50,7 +50,7 @@ export default function Home({ data, latestPost }) {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
-    animation: 'slideUpHome .8s forwards',
+    animation: 'slideUpSection .8s forwards',
     '@media (max-width: 890px)': {
       height: 'auto',
       flexDirection: 'column-reverse',
