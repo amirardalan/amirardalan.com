@@ -40,6 +40,9 @@ const blogStyles = css({
       '&:before': {
         content: '"#"'
       },
+      '&.all:before': {
+        content: '""'
+      }
     },
     'h1, h2, h3, h4': {
       fontFamily: 'var(font-secondary)',
