@@ -189,7 +189,7 @@ export default function Timeline() {
           marginBottom: '4rem',
           padding: '0 1rem',
           background: 'none',
-          fontSize: 12,
+          fontSize: 14,
         }
       }
     },

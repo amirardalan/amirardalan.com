@@ -19,7 +19,7 @@ export const home = {
   },
   intro: '👋 Hi my name is',
   title: 'Amir Ardalan',
-  description: `I'm a Front-end Engineer specializing in React, UI Design, and accessibility for the web. I'm passionate about Next.js, TypeScript, Three.js, and Web 3.0 technologies.`,
+  description: `I'm a Front-end developer specializing in React, User Interface, and accessibility. I'm passionate about Next.js, TypeScript, and building outstanding experiences for the web.`,
   items: [
     {
       path: '/blog',

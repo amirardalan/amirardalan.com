@@ -82,8 +82,9 @@ const BlogAdmin = React.memo(function BlogAdmin() {
       alignSelf: 'center',
       color: 'var(--color-text)',
       fontFamily: 'var(--font-primary)',
-      'a': {
+      a: {
         marginLeft: '.5rem',
+        textTransform: 'uppercase',
         textDecoration: 'none',
         cursor: 'pointer',
         '&:hover': {

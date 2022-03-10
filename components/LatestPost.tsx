@@ -9,13 +9,11 @@ export default function LatestPost({ latestPost, data }) {
     marginTop: '1rem',
     h4: {
       margin: '1.5rem 0 .5rem',
-      color: 'var(--color-gray)',
+      // color: 'var(--color-gray)',
       fontFamily: 'var(--font-primary)',
-      fontSize: 16,
+      fontSize: 12,
       fontWeight: 'normal',
-      '&::before': {
-        content: "'⮑ '",
-      }
+      textTransform: 'uppercase'
     },
     h5: {
       display: 'flex',
@@ -43,6 +41,7 @@ export default function LatestPost({ latestPost, data }) {
       lineHeight: '1.2rem',
       fontFamily: 'var(--font-tertiary)',
       fontSize: 15,
+      color: 'var(--color-gray)',
     },
   })
   
