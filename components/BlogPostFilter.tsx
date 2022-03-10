@@ -76,22 +76,27 @@ const BlogPostFilter = ({ feed }) => {
     return post.category
   })))
 
-
-  let filteredPosts = feed.filter((data: { title: string }) => 
-    data?.title?.toLowerCase().includes(search.toLowerCase()))
-
-  const categoryMatch = activeCategories.indexOf(search.slice(1).split(' ')[0]) > -1
-
-  if (search[0] === '#') {
-    filteredPosts = feed.filter((data: { category: string }) => 
-      data?.category?.toLowerCase().includes(search.slice(1).toLowerCase()))
+  const searchResults = (search: String, feed: Array<object>) => {
+    const categorySearch = search[0] === '#'
+    const categoryMatch = activeCategories.indexOf(search.slice(1).split(' ')[0]) > -1
+  
+    // if #, search categories
+    if (categorySearch) {
+      // if category matches categories, search titles with category
+      if (categoryMatch) {
+        return feed.filter((data: { category: string, title: string }) => 
+          data?.category?.toLowerCase().includes(search.slice(1).toLowerCase().split(' ')[0]) && 
+          data?.title?.toLowerCase().includes(search.replace(/#[a-z]+/, '').trim().toLowerCase()))
+      }
+      return feed.filter((data: { category: string }) => 
+        data?.category?.toLowerCase().includes(search.slice(1).toLowerCase()))
+    }
+    // if no #, just search titles
+    return feed.filter((data: { title: string }) => 
+      data?.title?.toLowerCase().includes(search.toLowerCase()))
   }
 
-  if (categoryMatch) {
-    filteredPosts = feed.filter((data: { category: string, title: string }) => 
-      data?.category?.toLowerCase().includes(search.slice(1).toLowerCase().split(' ')[0]) && 
-      data?.title?.toLowerCase().includes(search.replace(/#[a-z]+/, '').trim().toLowerCase()))
-  }
+  const filteredPosts = searchResults(search, feed)
 
   const RenderPosts: Function = () => {
     if (filteredPosts.length > 0) {
