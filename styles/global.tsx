@@ -34,7 +34,7 @@ export function GlobalStyles () {
           fontFamily: 'Poppins',
           fontStyle: 'normal',
           fontWeight: 900,
-          fontDisplay: 'optional',
+          fontDisplay: 'swap',
           src: 'url("/fonts/poppins-latin-900.woff2") format("woff2")'
         },
       }}/>
@@ -43,7 +43,7 @@ export function GlobalStyles () {
           fontFamily: 'Poppins',
           fontStyle: 'normal',
           fontWeight: 700,
-          fontDisplay: 'optional',
+          fontDisplay: 'swap',
           src: 'url("/fonts/poppins-latin-700.woff2") format("woff2")'
         },
       }}/>
@@ -52,7 +52,7 @@ export function GlobalStyles () {
           fontFamily: 'JetBrains Mono',
           fontStyle: 'normal',
           fontWeight: 400,
-          fontDisplay: 'optional',
+          fontDisplay: 'swap',
           src: 'url("/fonts/jetbrains-mono-v11-latin-regular.woff2") format("woff2")'
         },
       }}/>
@@ -61,7 +61,7 @@ export function GlobalStyles () {
           fontFamily: 'IBM Plex Serif',
           fontStyle: 'normal',
           fontWeight: 400,
-          fontDisplay: 'optional',
+          fontDisplay: 'swap',
           src: 'url("/fonts/ibm-plex-serif-v14-latin-regular.woff2") format("woff2")',
         },
       }}/>
@@ -70,7 +70,7 @@ export function GlobalStyles () {
           fontFamily: 'IBM Plex Serif',
           fontStyle: 'italic',
           fontWeight: 400,
-          fontDisplay: 'optional',
+          fontDisplay: 'swap',
           src: 'url("/fonts/ibm-plex-serif-v14-latin-italic.woff2") format("woff2")'
         },
       }}/>
