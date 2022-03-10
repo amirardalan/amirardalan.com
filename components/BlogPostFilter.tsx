@@ -25,6 +25,9 @@ const BlogPostFilter = ({ feed }) => {
           display: 'block',
           marginBottom: '.5rem'
         }
+      },
+      'button:first-of-type:before': {
+        content: '" hi "'
       }
     },
     '&::-webkit-scrollbar': {
@@ -62,7 +65,6 @@ const BlogPostFilter = ({ feed }) => {
 
   const theme: any = useTheme()
 
-  
   const [search, setSearch] = useState('')
 
   const handleCategoryLink = (category: string) => {
@@ -74,9 +76,22 @@ const BlogPostFilter = ({ feed }) => {
     return post.category
   })))
 
-  const filteredPosts = search.length > 0 && search[0] === '#'
-    ? feed.filter((data: { category: string }) => data?.category?.toLowerCase().includes(search.slice(1).toLowerCase()))
-    : feed.filter((data: { title: string }) => data?.title?.toLowerCase().includes(search.toLowerCase()))
+
+  let filteredPosts = feed.filter((data: { title: string }) => 
+    data?.title?.toLowerCase().includes(search.toLowerCase()))
+
+  const categoryMatch = activeCategories.indexOf(search.slice(1).split(' ')[0]) > -1
+
+  if (search[0] === '#') {
+    filteredPosts = feed.filter((data: { category: string }) => 
+      data?.category?.toLowerCase().includes(search.slice(1).toLowerCase()))
+  }
+
+  if (categoryMatch) {
+    filteredPosts = feed.filter((data: { category: string, title: string }) => 
+      data?.category?.toLowerCase().includes(search.slice(1).toLowerCase().split(' ')[0]) && 
+      data?.title?.toLowerCase().includes(search.replace(/#[a-z]+/, '').trim().toLowerCase()))
+  }
 
   const RenderPosts: Function = () => {
     if (filteredPosts.length > 0) {
@@ -114,7 +129,7 @@ const BlogPostFilter = ({ feed }) => {
     }
   }
 
-  const CloseIcon = ({width, height}) => {
+  const CloseIcon: Function = ({width, height}) => {
     return (
       <Image
         src={theme.icons.close}
@@ -156,7 +171,7 @@ const BlogPostFilter = ({ feed }) => {
     }
   }
 
-  const ClearFilters = () => {
+  const ClearFilters: Function = () => {
     if (search[0] === '#' && filteredPosts.length > 0) {
       return (
         <button
@@ -186,7 +201,7 @@ const BlogPostFilter = ({ feed }) => {
             <button
               onClick={() => setSearch('')}
               onKeyPress={() => setSearch('')}
-              className={search === '' ? "category active" : "category"}
+              className={search === '' ? "category all active" : "category all"}
               aria-label="All"
             >
               All
