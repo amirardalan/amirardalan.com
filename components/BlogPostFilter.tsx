@@ -212,7 +212,7 @@ const BlogPostFilter = ({ feed }) => {
               <button
                 onClick={() => handleCategoryLink(category)}
                 onKeyPress={() => handleCategoryLink(category)}
-                className={search === '#'+category ? "category active" : "category"}
+                className={search.split(' ')[0] === '#'+category ? "category active" : "category"}
                 aria-label={category}
               >
                 {category}

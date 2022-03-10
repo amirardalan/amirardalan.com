@@ -23,7 +23,7 @@ const ThemeToggle = ({ toggleTheme }) => {
     width: 50,
     height: 25,
     padding: '0 .1rem 0 .1rem',
-    background: 'var(--button-toggle-bg)',
+    background: 'var(--color-accent-darker)',
     position: 'relative',
     border: 'none',
     borderRadius: 25,
@@ -31,7 +31,7 @@ const ThemeToggle = ({ toggleTheme }) => {
     cursor: 'pointer',
   })
   const styleToggleSwitch = css({
-    background: 'var(--button-toggle-switch)',
+    background: 'var(--color-text)',
     height: 23,
     width: 23,
     position: 'relative',
