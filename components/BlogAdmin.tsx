@@ -206,7 +206,7 @@ const BlogAdmin = React.memo(function BlogAdmin() {
           '&.disabled': {
             backgroundColor: 'var(--color-button-disabled)',
           },
-          '&.deploy, &.save, &.update': {
+          '&.deploy, &.save, &.update, &.cancel': {
             marginRight: '.25rem',
           }
         }

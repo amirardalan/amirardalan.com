@@ -163,7 +163,7 @@ const Edit = ({ editPost }) => {
                 type="submit">
                 {admin.controls.update}
               </button>
-              <a className="buttonCompact" onClick={() => Router.push(`/blog/${editSlug}`)}>
+              <a className="buttonCompact cancel" onClick={() => Router.push(`/blog/${editSlug}`)}>
                 {admin.controls.cancel}
               </a>
               <a className="buttonCompact delete" onClick={confirmOnClick}>
