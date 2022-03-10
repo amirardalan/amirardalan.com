@@ -363,6 +363,14 @@ export function GlobalStyles () {
           overflow: 'hidden',
           alignSelf: 'flex-end',
         },
+        '@keyframes slideUpHome': {
+          '0%': {
+            transform: 'translate3d(0, 100%, 0)',
+          },
+          '100%': {
+            transform: 'translate3d(0, 0, 0)',
+          }
+        },
         '@keyframes slideUp': {
           '0%': {
             opacity: 0,
