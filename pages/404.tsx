@@ -5,10 +5,6 @@ import Link from 'next/link'
 import { error } from '@/data/content'
 
 
-export const getStaticProps = async () => {
-  return { props: { data: error} }
-}
-
 const style404Wrapper = css({
   overflow: 'hidden',
   padding: '4rem 1.5rem',
@@ -71,15 +67,15 @@ const styleAnimationWrapper = css({
 export default function Custom404({ data }) {
 
   return(
-    <Container title={data.meta.title} robots="noindex">
+    <Container title={error.meta.title} robots="noindex">
       <div css={style404Wrapper}>
         <div css={style404Container}>
           <ErrorIcon />
-          <h1 aria-label={data.title}>
-            {data.title}
+          <h1 aria-label={error.title}>
+            {error.title}
           </h1>
-          <h2 aria-label={data.text}>
-            {data.text}
+          <h2 aria-label={error.text}>
+            {error.text}
           </h2>
         </div>
         <div css={styleAnimationWrapper}>
@@ -93,8 +89,8 @@ export default function Custom404({ data }) {
               </p>
             </div>
           </div>
-          <Link href={data.link.path} aria-label={data.link.title}>
-            {data.link.title}
+          <Link href={error.link.path} aria-label={error.link.title}>
+            {error.link.title}
           </Link>
         </div>
       </div>
