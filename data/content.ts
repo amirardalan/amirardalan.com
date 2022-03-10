@@ -476,8 +476,12 @@ export const error = {
       author: 'Salvadore Dalí'
     },
     {
-      quote: `"Always bet on JavaScript."`,
-      author: 'Brendan Eich'
+      quote: `"If all else fails, read the instructions."`,
+      author: 'Donald Knuth'
+    },
+    {
+      quote: `"The best thing about a boolean is even if you are wrong, you are only off by a bit."`,
+      author: 'Unknown'
     },
     {
       quote: `"If your idea really is new, there might be no shared vocabulary to discuss it yet."`,
