@@ -462,8 +462,6 @@ export const error = {
     path: '/',
     title: 'Return Home'
   },
-  quote: `"Have no fear of perfection. You'll never reach it."`,
-  author: 'Salvadore Dalí',
   blogPostError: {
     title: 'Oops...',
     text: 'That post is no longer available.',
@@ -472,6 +470,20 @@ export const error = {
       title: 'Return to Blog',
     },
   },
+  randomQuote: [
+    {
+      quote: `"Have no fear of perfection. You'll never reach it."`,
+      author: 'Salvadore Dalí'
+    },
+    {
+      quote: `"Always bet on JavaScript."`,
+      author: 'Brendan Eich'
+    },
+    {
+      quote: `"If your idea really is new, there might be no shared vocabulary to discuss it yet."`,
+      author: 'Dan Abramov'
+    },
+  ]
 }
 
 export const footer = {

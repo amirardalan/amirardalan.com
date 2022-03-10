@@ -44,6 +44,7 @@ const styleErrorContent = css({
     textAlign: 'left',
   },
   '.quote': {
+    fontSize: 25,
     fontFamily: 'var(--font-tertiary)',
     fontStyle: 'italic',
     color: 'var(--color-gray)'
@@ -68,8 +69,9 @@ const styleHomeButton = css({
   justifyContent: 'center',
 })
 
+const randomize = Math.floor(Math.random()*error.randomQuote.length)
 
-export default function Custom404({ data }) {
+export default function Custom404() {
 
   return(
     <Container title={error.meta.title} robots="noindex">
@@ -86,11 +88,11 @@ export default function Custom404({ data }) {
         <div css={styleAnimationWrapper}>
           <div css={styleErrorContent}>
             <div className="quoteContainer">
-              <p className="quote">
-                {error.quote}
+              <p className="quote" suppressHydrationWarning>
+                {error.randomQuote[randomize].quote}
               </p>
-              <p className="author">
-                {error.author}
+              <p className="author" suppressHydrationWarning>
+                {error.randomQuote[randomize].author}
               </p>
             </div>
           </div>
