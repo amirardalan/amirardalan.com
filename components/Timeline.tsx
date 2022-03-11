@@ -10,7 +10,8 @@ export default function Timeline() {
 
   const { ref, inView } = useInView({
     threshold: 1,
-    rootMargin: '0% 0% -50% 0%',
+    rootMargin: '0% 0% -33% 0%',
+    triggerOnce: true
   })
 
   const styleTimelineHeading = css({
@@ -24,11 +25,10 @@ export default function Timeline() {
       display: 'flex',
       justifyContent: 'center',
       fontFamily: 'var(--font-secondary)',
-      opacity: inView ? 1 : 0,
-      animation: inView ? 'tooltipUp 5s reverse' : null,
+      opacity: 0,
       '&.active': {
-        opacity: inView ? 0 : 1,
-        animation: inView ? 'tooltipUp 5s forwards' : null,
+        animation: 'slideUp 1s',
+        opacity: 1,
       }
     }
   })

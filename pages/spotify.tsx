@@ -20,12 +20,10 @@ export default function Spotify() {
     a: {
       color: 'var(--color-text)',
     },
-    p: {
-      lineHeight: '1.5rem',
-    },
     '.topGrid': {
       fontFamily: 'var(--font-secondary)',
       fontWeight: 'bold',
+      lineHeight: '1.5rem',
       'span.externalIcon': {
         marginLeft: 5
       },
@@ -34,7 +32,7 @@ export default function Spotify() {
         alignItems: 'center',
         gap: 20,
         marginBottom: '1rem',
-        gridTemplateColumns: '8% 25% 65%',
+        gridTemplateColumns: '10% 20% 60%',
         fontSize: 'calc(1.2vw + 1.2vh)',
         WebkitMarqueeIncrement: '0vw',
         div: {
@@ -45,8 +43,8 @@ export default function Spotify() {
           fontSize: 30,
           WebkitMarqueeIncrement: '0vw',
           color: 'var(--color-accent-gray)',
-          '@media(max-width: 768px)': {
-            fontSize: 13
+          '@media(max-width: 480px)': {
+            fontSize: 18
           }
         },
         '.title': {
@@ -64,8 +62,12 @@ export default function Spotify() {
         },
         '.title a, .artist p': {
           textDecoration: 'none',
+          '@media(max-width: 480px)': {
+            lineHeight: '.8rem',
+          }
         },
         '.artist': {
+          marginTop: 5,
           fontFamily: 'var(--font-primary)',
           fontWeight: 'normal',
           fontSize: 14,
@@ -75,19 +77,13 @@ export default function Spotify() {
           },
           '@media(max-width: 480px)': {
             fontSize: 10,
-            whiteSpace: 'nowrap',
-            textOverflow: 'ellipsis',
-            maxWidth: 140
           }
         },
-        '@media(max-width: 600px)': {
-          gridTemplateColumns: '2% 15% 62%',
+        '@media(max-width: 480px)': {
+          gridTemplateColumns: '5% 20% 60%',
           '.image': {
-            width: 45,
-            height: 45,
-          },
-          '.title a, .artist p': {
-            lineHeight: '1.2rem',
+            width: 60,
+            height: 60,
           },
         },
       }
@@ -122,7 +118,7 @@ export default function Spotify() {
       },
       '&:last-of-type': {
         gridColumn: '1',
-        gridRow: '2 / 4',
+        gridRow: '2 / 3',
       },
       '@media(max-width: 1024px)': {
         '&:nth-of-type(n)': {

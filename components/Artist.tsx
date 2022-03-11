@@ -21,8 +21,8 @@ export default function Artist(artist: Artist) {
         <div className="image">
           <Image
             src={artist.image}
-            height="100"
-            width="100"
+            height={100}
+            width={100}
             alt={artist.artist}
           />
         </div>
