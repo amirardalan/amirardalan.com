@@ -11,7 +11,7 @@ const TypingAnimation = ({ data }) => {
       loop: true,
       typeSpeed: 90,
       backSpeed: 20,
-      startDelay: 1500,
+      startDelay: 500,
       fadeOutDelay: 0,
       backDelay: 5000,
     }
