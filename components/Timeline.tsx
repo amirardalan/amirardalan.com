@@ -88,13 +88,13 @@ export default function Timeline() {
         },
         '&:after': {
           position: 'absolute',
-          top: -55,
+          top: -53,
           right: -19,
           content: '"•"',
-          fontSize: 80,
+          fontSize: 77,
           color: 'var(--color-accent-color)',
           '@media(max-width: 768px)': {
-            top: -50,
+            top: -47,
           }
         },
         '.event': {
