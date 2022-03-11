@@ -56,8 +56,11 @@ export default function Spotify() {
           color: 'var(--color-text)',
           fontSize: 20,
           '@media(max-width: 768px)': {
+            fontSize: 16
+          },
+          '@media(max-width: 480px)': {
             fontSize: 12
-          }
+          },
         },
         '.title a, .artist p': {
           textDecoration: 'none',
@@ -67,6 +70,9 @@ export default function Spotify() {
           fontWeight: 'normal',
           fontSize: 14,
           color: 'var(--color-gray)',
+          '@media(max-width: 768px)': {
+            fontSize: 12
+          },
           '@media(max-width: 480px)': {
             fontSize: 10,
             whiteSpace: 'nowrap',
