@@ -3,6 +3,7 @@ import Container from '@/components/Container'
 import { home } from '@/data/content'
 import LatestPost from '@/components/LatestPost'
 import { GenerateCtaButtons } from '@/components/CtaButtons'
+import TypingAnimation from '@/components/TypingAnimation'
 
 import dynamic from 'next/dynamic'
 const CanvasLoader = dynamic(() => import('@/components/CanvasLoader'), {
@@ -54,8 +55,8 @@ export default function Home({ data, latestPost }) {
     '@media (max-width: 890px)': {
       height: 'auto',
       flexDirection: 'column-reverse',
-      justifyContent: 'start',
-      alignSelf: 'flex-start',
+      justifyContent: 'end',
+      alignSelf: 'flex-end',
     },
     '@media (max-width: 480px)': {
       padding: 0,
@@ -78,13 +79,21 @@ export default function Home({ data, latestPost }) {
         }
       },
     },
-    '.intro': {
+    '.intro, .typed': {
       margin: '2rem 0',
       display: 'inline-block',
       fontFamily: 'var(--font-primary)',
       fontWeight: 'normal',
       fontSize: 17,
-      color: 'var(--color-accent-color)'
+      color: 'var(--color-accent-color)',
+    },
+    '.typed': {
+      '&:before': {
+        content: '"> ~ % "'
+      },
+      '@media(max-width: 480px)': {
+        fontSize: 13
+      }
     },
     h1: {
       lineHeight: '100%',
@@ -148,11 +157,10 @@ export default function Home({ data, latestPost }) {
             <div css={styleMainLeft}>
               <div css={styleMainLeftContent}>
                 <div className="titleWrapper">
-                  <span className="intro">{data.intro}</span>
                   <h1>{data.title}</h1>
-                  <h2 className="description">
-                    {data.description}
-                  </h2>
+                  <span className="typed">
+                    <TypingAnimation data={data.intro} />
+                  </span>
                 </div>
                 <div css={styleButtonContainer}>
                   {GenerateCtaButtons(home.items)}
