@@ -263,25 +263,6 @@ const BlogAdmin = React.memo(function BlogAdmin() {
             margin: '0 .5rem',
           }
         },
-        'input[type="text"], textarea': {
-          width: '100%',
-          margin: '0.5rem 0',
-          padding: '0.5rem',
-          webkitAppearance: 'none',
-          appearance: 'none',
-          backgroundColor: 'var(--color-accent)',
-          border: '2px solid var(--color-accent)',
-          borderRadius: '0.25rem',
-          WebkitTextFillColor: 'var(--color-gray)',
-          fontSize: 16,
-          '&:disabled': {
-            backgroundColor: 'var(--color-input-disabled)',
-            WebkitTextFillColor: 'var(--color-accent-gray)',
-          },
-          '@media (max-width: 890px)': {
-            width: '100%'
-          }
-        },
         '.formSubmit': {
           marginTop: '2rem',
         },
