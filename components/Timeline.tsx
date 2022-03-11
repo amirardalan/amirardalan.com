@@ -54,11 +54,11 @@ export default function Timeline() {
           },
         },
         '.date': {
-          marginTop: -7,
+          marginTop: -5,
           lineHeight: '1.2rem',
           color: 'var(--color-text)',
           '@media(max-width: 768px)': {
-            marginTop: -2,
+            marginTop: 1,
           }
         },
       },
@@ -88,13 +88,13 @@ export default function Timeline() {
         },
         '&:after': {
           position: 'absolute',
-          top: -53,
-          right: -19,
+          top: -52.5,
+          right: -19.5,
           content: '"•"',
           fontSize: 77,
           color: 'var(--color-accent-color)',
           '@media(max-width: 768px)': {
-            top: -47,
+            top: -48,
           }
         },
         '.event': {
