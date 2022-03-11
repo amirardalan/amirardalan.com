@@ -73,10 +73,13 @@ export default function Home({ data, latestPost }) {
         fontSize: 18,
         display: 'inline-block',
         marginTop: '1.8rem',
+        '@media(max-width: 768px)': {
+          fontSize: 16,
+        }
       },
     },
     '.intro': {
-      marginBottom: '2rem',
+      margin: '2rem 0',
       display: 'inline-block',
       fontFamily: 'var(--font-primary)',
       fontWeight: 'normal',

@@ -34,7 +34,7 @@ const BlogPostFilter = ({ feed }) => {
       display: 'none'
     },
     '@media (max-width: 768px)': {
-      minHeight: 57,
+      minHeight: 78.5,
     }
   })
 
