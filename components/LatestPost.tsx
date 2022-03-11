@@ -12,7 +12,16 @@ export default function LatestPost({ latestPost, data }) {
       fontFamily: 'var(--font-primary)',
       fontSize: 12,
       fontWeight: 'normal',
-      textTransform: 'uppercase'
+      textTransform: 'uppercase',
+      '&:before': {
+        content: '""',
+        display: 'inline-block',
+        background: 'var(--icon-arrow)',
+        backgroundSize: 'contain',
+        height: 10,
+        width: 10,
+        marginRight: '.5rem',
+      }
     },
     h5: {
       display: 'flex',

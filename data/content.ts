@@ -17,7 +17,15 @@ export const home = {
     title: 'Amir Ardalan – Code, design, and ideas from Portland, OR.',
     description: 'Front-end developer, UI designer, and React enthusiast.'
   },
-  intro: '👋 Hi, my name is',
+  typed: [
+    `I design and code things...`,
+    `❤ front-end and UI`,
+    `peruse my <a href="/blog">blog posts</a>`,
+    `learn a bit <a href="/about">about me</a>`,
+    `browse my <a href="/about#timeline">work history</a>`,
+    `explore my <a href="/spotify">spotify</a> stats`,
+    `check out the <a href="/uses">stuff I use</a>`,
+  ],
   title: 'Amir Ardalan',
   description: `I'm a Front-end developer specializing in React, User Interface, and accessibility. I'm passionate about Next.js, TypeScript, and building outstanding experiences for the web.`,
   items: [
@@ -33,7 +41,7 @@ export const home = {
     },
   ],
   latestPost: {
-    title: 'Latest Post:'
+    title: 'Latest Post'
   }
 }
 

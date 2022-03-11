@@ -32,7 +32,8 @@
     "remark-gfm": "^3.0.1",
     "simplex-noise": "^3.0.0",
     "swr": "^1.2.2",
-    "three": "^0.138.3"
+    "three": "^0.138.3",
+    "typed.js": "^2.0.12"
   },
   "devDependencies": {
     "@babel/core": "^7.17.5",
