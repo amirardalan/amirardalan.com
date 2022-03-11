@@ -68,6 +68,8 @@ export default function Home({ data, latestPost }) {
     lineHeight: 1.5,
     minHeight: '0vw',
     '.titleWrapper': {
+      display: 'flex',
+      flexDirection: 'column',
       margin: '0 0 3rem',
       '.description': {
         fontFamily: 'var(--font-tertiary)',
@@ -78,6 +80,9 @@ export default function Home({ data, latestPost }) {
           fontSize: 16,
         }
       },
+      '@media(max-width: 768px)': {
+        flexDirection: 'column-reverse'
+      }
     },
     '.intro, .typed': {
       margin: '2rem 0',
@@ -89,7 +94,8 @@ export default function Home({ data, latestPost }) {
     },
     '.typed': {
       '&:before': {
-        content: '"> ~ % "'
+        content: '"> ~ % "',
+        color: 'var(--color-gray)',
       },
       '@media(max-width: 480px)': {
         fontSize: 13
@@ -158,8 +164,8 @@ export default function Home({ data, latestPost }) {
               <div css={styleMainLeftContent}>
                 <div className="titleWrapper">
                   <h1>{data.title}</h1>
-                  <span className="typed">
-                    <TypingAnimation data={data.intro} />
+                  <span className="typed" aria-hidden="true">
+                    <TypingAnimation data={data.typed} />
                   </span>
                 </div>
                 <div css={styleButtonContainer}>

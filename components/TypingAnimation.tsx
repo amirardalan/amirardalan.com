@@ -9,9 +9,9 @@ const TypingAnimation = ({ data }) => {
       strings: [...data],
       cursorChar: '▌',
       loop: true,
-      typeSpeed: 100,
+      typeSpeed: 90,
       backSpeed: 20,
-      // fadeOut: true,
+      startDelay: 1500,
       fadeOutDelay: 0,
       backDelay: 5000,
     }
