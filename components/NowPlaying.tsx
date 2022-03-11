@@ -23,8 +23,8 @@ export default function NowPlaying() {
     '.nowPlayingStatus': {
       zIndex: 2,
       position: 'absolute',
-      top: '1.5rem',
-      left: '1.5rem',
+      top: '2rem',
+      left: '2rem',
       color: '#e4e9f8',
       fontSize: 12,
       textTransform: 'uppercase',
@@ -44,7 +44,7 @@ export default function NowPlaying() {
   })
   const styleNowPlayingInner = css({
     display: 'flex',
-    padding: '1.5rem',
+    padding: '2rem',
     height: 226,
     width: '100%',
     alignItems: 'center',
@@ -150,7 +150,7 @@ export default function NowPlaying() {
           src={data?.albumImageUrl}
           layout="fill"
           objectFit="cover"
-          alt=""
+          alt={data?.album}
           priority
         />
       )
