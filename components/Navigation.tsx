@@ -176,7 +176,9 @@ export default function Navigation() {
   const [toggleDisableScrolling, setToggleDisableScrolling] = useState(false)
   const disableScroll = () => {
     setToggleDisableScrolling(!toggleDisableScrolling)
-    toggleDisableScrolling ? document.body.style.overflow = 'scroll' : document.body.style.overflow = 'hidden'
+    toggleDisableScrolling
+      ? document.body.style.overflow = 'scroll'
+      : document.body.style.overflow = 'hidden'
   }
   const [toggleMobileNav, setToggleMobileNav] = useState(false)
   const toggleMenu = () => {

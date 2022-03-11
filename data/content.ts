@@ -214,6 +214,10 @@ export const timeline = {
   meta: {
     title: 'Timeline',
   },
+  fullStory: {
+    text: 'Read the full story',
+    link: '/blog/2021-a-dev-odyssey'
+  },
   items: [
     {
       content: 'Present',

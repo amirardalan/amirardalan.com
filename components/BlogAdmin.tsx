@@ -165,7 +165,28 @@ const BlogAdmin = React.memo(function BlogAdmin() {
   return (
     <>
       <Global styles={{
-        // Admin
+        '.breadcrumbs': {
+          display: 'flex',
+          flexDirection: 'row',
+          alignItems: 'center',
+          color: 'var(--color-gray)',
+          fontSize: 13,
+          a: {
+            textDecoration: 'none',
+            '&::after': {
+              content: '"/"',
+              margin: '0 .5rem',
+              color: 'var(--color-gray)',
+            }
+          },
+          '@media (max-width: 480px)': {
+            span: {
+              overflow: 'hidden',
+              whiteSpace: 'nowrap',
+              textOverflow: 'ellipsis',
+            }
+          }
+        },
         '.buttonCompact': {
           minWidth: 80,
           padding: '.45rem 1rem',
@@ -210,7 +231,89 @@ const BlogAdmin = React.memo(function BlogAdmin() {
           '&.deploy, &.save, &.update, &.cancel': {
             marginRight: '.25rem',
           }
-        }
+        },
+        '.postDraft': {
+          margin: '1rem 0 .5rem',
+          padding: '1.8rem',
+          display: 'flex',
+          justifyContent: 'space-between',
+          border: '1px solid var(--color-accent)',
+          '.draftInfo': {
+            display: 'flex',
+            flexDirection: 'column',
+            textAlign: 'right',
+            '.label': {
+              marginBottom: '.2rem',
+              alignSelf: 'right',
+              color: 'var(--color-gray)',
+              fontSize: 12,
+              fontStyle: 'italic',
+            },
+          },
+          p: {
+            marginBottom: 0,
+          },
+          '@media (max-width: 480px)': {
+            padding: '1rem',
+            'h2 a': {
+              fontSize: 22,
+            }
+          },
+          '.postTeaser': {
+            margin: '0 .5rem',
+          }
+        },
+        'input[type="text"], textarea': {
+          width: '100%',
+          margin: '0.5rem 0',
+          padding: '0.5rem',
+          webkitAppearance: 'none',
+          appearance: 'none',
+          backgroundColor: 'var(--color-accent)',
+          border: '2px solid var(--color-accent)',
+          borderRadius: '0.25rem',
+          WebkitTextFillColor: 'var(--color-gray)',
+          fontSize: 16,
+          '&:disabled': {
+            backgroundColor: 'var(--color-input-disabled)',
+            WebkitTextFillColor: 'var(--color-accent-gray)',
+          },
+          '@media (max-width: 890px)': {
+            width: '100%'
+          }
+        },
+        '.formSubmit': {
+          marginTop: '2rem',
+        },
+        '.controlsConfirm': {
+          margin: '1rem 0 0 0',
+          display: 'flex',
+          flexDirection: 'row',
+          alignItems: 'center',
+          fontSize: 12,
+          fontWeight: 'lighter',
+          textTransform: 'uppercase',
+          '.confirmLink': {
+            marginRight: '.5rem',
+            color: 'var(--color-text)',
+            fontSize: 12,
+            fontWeight: 'bold',
+            textTransform: 'uppercase',
+            cursor: 'pointer',
+            '&.delete': {
+              color: 'var(--color-warning)',
+            },
+            '&.close': {
+              marginLeft: '.5rem',
+            },
+            '&.delete:hover, &.close:hover': {
+              textDecoration: 'underline',
+            }
+          }
+        },
+        '.noDrafts': {
+          marginTop: '6rem',
+        },
       }}/>
       <div css={styleAnimationWrapper}>
         <nav css={styleAdminPanel}>

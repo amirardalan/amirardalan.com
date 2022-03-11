@@ -143,76 +143,85 @@ export default function NowPlaying() {
     backgroundColor: '#191a22',
   })
 
+  const AlbumImage = () => {
+    if(isOnline) {
+      return (
+        <Image
+          src={data?.albumImageUrl}
+          layout="fill"
+          objectFit="cover"
+          alt=""
+          priority
+        />
+      )
+    } else return null
+  }
+
+  const Status = () => {
+    if (isOnline) return <span><Equalizer /> {spotify.status.online}</span>
+      else return <span>{spotify.status.offline}</span>
+  }
+
+  const NowPlaying = () => {
+    if (isOnline) {
+      return (
+        <div css={styleNowPlayingTrack}>
+          <span css={styleTrackText}>
+            <a
+              href={data.songUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="title"
+            >
+            {data.title}
+            </a>
+            <p className="artist">
+              {data.artist}
+            </p>
+          </span>
+          <span css={{lineHeight: 0}}>
+            <a
+              href={data.songUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              title={data.album}
+            >
+              <Image
+                src={data?.albumImageUrl}
+                height="150"
+                width="150"
+                alt={data.title}
+                priority
+              />
+            </a>
+          </span>
+        </div>
+      )
+    } else {
+        return (
+          <div css={styleNowPlayingTrack}>
+            <span css={styleTrackText}>
+              <span className="loadingTitle"></span>
+              <span className="loadingArtist"></span>
+            </span>
+            <div css={styleImageOffline} />
+          </div>
+        )
+    }
+  }
+
 
   return (
-
     <div css={styleNowPlayingContainer}>
       <div css={styleNowPlaying}>
         <div css={styleNowPlayingBackground}>
-        {isOnline ? (
-          <Image
-            src={data?.albumImageUrl}
-            layout="fill"
-            objectFit="cover"
-            alt=""
-            priority
-          />) : null }
+          <AlbumImage/>
         </div>
         <div className="nowPlayingStatus">
-          {isOnline ? (
-          <span>
-            <Equalizer /> {spotify.status.online}
-          </span>)
-          : (
-          <span>
-            {spotify.status.offline}
-          </span>
-          )}
+          <Status/>
         </div>
         <div css={styleNowPlayingInner}>
-        {isOnline ? (
-          <>
-            <div css={styleNowPlayingTrack}>
-              <span css={styleTrackText}>
-                <a
-                  href={data.songUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="title"
-                >
-                {data.title}
-                </a>
-                <p className="artist">
-                  {data.artist}
-                </p>
-              </span>
-              <span css={{lineHeight: 0}}>
-                <a
-                  href={data.songUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  title={data.album}
-                >
-                  <Image
-                    src={data?.albumImageUrl}
-                    height="150"
-                    width="150"
-                    alt={data.title}
-                    priority
-                  />
-                </a>
-              </span>
-            </div>
-          </>
-        ) : (
-          <div css={styleNowPlayingTrack}>
-          <span css={styleTrackText}>
-            <span className="loadingTitle"></span>
-            <span className="loadingArtist"></span>
-          </span>
-          <div css={styleImageOffline} />
-        </div>
-        )}
+          <NowPlaying/>
         </div>
       </div>
     </div>

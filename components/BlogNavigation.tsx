@@ -11,8 +11,8 @@ export default function BlogNavigation({ feed, post, isPublished }) {
   const arr = feed ? feed : null
   const arrSorted = arr.sort(sortBlogPosts)
     
-  const first = arr[0].id == current && isPublished
-  const last = arr[total - 1].id == current && isPublished
+  const first = arr[0].id === current && isPublished
+  const last = arr[total - 1].id === current && isPublished
   const only = first && last
   const prevPost = isPublished && !first && !only
   const nextPost = isPublished && !last && !only

@@ -33,9 +33,5 @@ export default function SocialIcons() {
     })
   }
 
-  return (
-    <>
-      {GenerateSocialIcons(about.social.items)}
-    </>
-  )
+  return <>{GenerateSocialIcons(about.social.items)}</>
 }

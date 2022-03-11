@@ -10,7 +10,7 @@ import calculateReadTime from '@/utils/calculateReadTime'
 import formatDate from '@/utils/formatDate'
 import Link from 'next/link'
 import Markdown from '@/components/Markdown'
-import BlogError from '@/components/BlogError'
+import LoadingTriangle from '@/components/LoadingTriangle'
 
 import { blogPost, breadcrumb, admin } from '@/data/content'
 import { GetStaticProps, GetStaticPaths } from 'next'
@@ -413,7 +413,7 @@ const Post = ({ post, feed, data }) => {
     )
   } else {
     loadBlogPost = (
-      <BlogError />
+      <LoadingTriangle />
     )
   }
 

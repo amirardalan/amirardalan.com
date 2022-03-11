@@ -9,7 +9,6 @@ export default function LatestPost({ latestPost, data }) {
     marginTop: '1rem',
     h4: {
       margin: '1.5rem 0 .5rem',
-      // color: 'var(--color-gray)',
       fontFamily: 'var(--font-primary)',
       fontSize: 12,
       fontWeight: 'normal',

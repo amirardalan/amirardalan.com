@@ -32,14 +32,11 @@ export default function LoadingBar() {
   })
 
   const RenderLoadingBar = () => (
+    isLoading ?
     <div css={styleLoadingBarWrapper}>
       <div css={styleLoadingBarProgress} />
-    </div>
+    </div> : null
   )
 
-  return (
-    <>
-      { isLoading ? <RenderLoadingBar /> : null }
-    </>
-  )
+  return <RenderLoadingBar />
 } 

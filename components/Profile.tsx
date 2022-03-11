@@ -30,6 +30,7 @@ export default function Profile() {
     },
     '.profileLink': {
       fontSize: 12,
+      textTransform: 'uppercase',
       '&::after': {
         content: '""',
         marginLeft: 5,

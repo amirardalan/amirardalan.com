@@ -215,8 +215,8 @@ export default function Timeline() {
           {generateTimeline(timeline.items)}
         </div>
         <div ref={ref} className={inView ? 'readMoreLink active' : 'readMoreLink'}>
-          <Link href='/blog/2021-a-dev-odyssey'>
-            Read the Full Story
+          <Link href={timeline.fullStory.link}>
+            {timeline.fullStory.text}
           </Link>
         </div>
       </div>
