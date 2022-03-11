@@ -17,7 +17,7 @@ export default function NowPlaying() {
   const styleNowPlaying = css({
     backgroundColor: '#333448',
     position: 'relative',
-    height: 200,
+    height: 226,
     width: '100%',
     overflow: 'hidden',
     '.nowPlayingStatus': {
@@ -45,7 +45,7 @@ export default function NowPlaying() {
   const styleNowPlayingInner = css({
     display: 'flex',
     padding: '1.5rem',
-    height: 200,
+    height: 226,
     width: '100%',
     alignItems: 'center',
     position: 'absolute',

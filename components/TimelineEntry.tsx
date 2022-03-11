@@ -9,7 +9,7 @@ const TimelineEntry = (props: TimelineProps) => {
   const { cName, title, content } = props
   
   const { ref, inView } = useInView({
-    rootMargin: '60% 0% -60% 0%',
+    rootMargin: '80% 0% -80% 0%',
   })
 
   return (

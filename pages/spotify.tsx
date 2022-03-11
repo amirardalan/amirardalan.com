@@ -104,8 +104,13 @@ export default function Spotify() {
       background: 'var(--color-accent)',
       padding: '2rem',
       '&:first-of-type': {
+        background: 'none',
+        padding: 0,
         gridColumn: '1 / 2',
         gridRow: '1',
+        h3: {
+          display: 'none',
+        }
       },
       '&:nth-of-type(2)': {
         gridColumn: '2',

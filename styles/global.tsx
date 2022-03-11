@@ -261,8 +261,9 @@ export function GlobalStyles () {
             }
           },
           '@media (max-width: 600px)': {
+            marginTop: '.5rem',
             padding: '0 1.5rem',
-          }
+          },
         }
       }} />
       <Global styles={{
