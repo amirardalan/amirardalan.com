@@ -26,9 +26,6 @@ const BlogPostFilter = ({ feed }) => {
           marginBottom: '.5rem'
         }
       },
-      'button:first-of-type:before': {
-        content: '" hi "'
-      }
     },
     '&::-webkit-scrollbar': {
       display: 'none'
