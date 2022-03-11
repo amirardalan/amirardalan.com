@@ -128,7 +128,7 @@ export default function NowPlaying() {
   const styleNowPlayingBackground = css({
     filter: 'blur(4px)',
     transform: 'scale(1.03)',
-    height: 200,
+    height: 226,
     '@media(max-width: 480px)': {
       height: 350,
     },
