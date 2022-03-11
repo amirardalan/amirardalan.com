@@ -20,12 +20,12 @@ export default function Profile() {
     alignItems: 'center',
     '.profileInfo': {
       marginLeft: '1rem',
-      div: {
-        marginBottom: '.2rem'
-      },
       'span.strong': {
         fontFamily: 'var(--font-secondary)',
         fontSize: 20,
+        '@media(max-width: 768px)': {
+          fontSize: 17
+        }
       }
     },
     '.profileLink': {
@@ -48,10 +48,10 @@ export default function Profile() {
     <div css={styleProfileWrapper}>
       <Image
         src={data?.image}
-        width={100}
-        height={100}
+        width={80}
+        height={80}
         alt={data.name}
-        css={{clipPath:`circle(50px at center)`}}
+        css={{clipPath:`circle(40px at center)`}}
         priority
       />
       <div className="profileInfo">

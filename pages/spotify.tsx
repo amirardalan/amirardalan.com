@@ -13,16 +13,15 @@ export default function Spotify() {
     h3: {
       marginBottom: '2rem',
       paddingBottom: '.8rem',
-      borderBottom: '3px solid var(--color-accent-color)',
-      fontSize: 28,
+      borderBottom: '2px solid var(--color-accent-color)',
+      fontSize: 22,
       fontWeight: 'bold',
-      '@media (max-width: 1200px)': {
-        margin: '1rem 0 2rem 0',
-        fontSize: 22,
-      }
     },
     a: {
       color: 'var(--color-text)',
+    },
+    p: {
+      lineHeight: '1.5rem',
     },
     '.topGrid': {
       fontFamily: 'var(--font-secondary)',
@@ -31,12 +30,11 @@ export default function Spotify() {
         marginLeft: 5
       },
       '.grid': {
-        padding: '2% 0',
         display: 'grid',
+        alignItems: 'center',
         gap: 20,
+        marginBottom: '1rem',
         gridTemplateColumns: '8% 25% 65%',
-        gridAutoRows: 'minmax(100px, auto)',
-        borderBottom: '1px solid var(--color-accent)',
         fontSize: 'calc(1.2vw + 1.2vh)',
         WebkitMarqueeIncrement: '0vw',
         div: {
@@ -44,18 +42,21 @@ export default function Spotify() {
         },
         '.rank': {
           alignSelf: 'center',
-          fontSize: 'calc(2vw + 2vh)',
+          fontSize: 30,
           WebkitMarqueeIncrement: '0vw',
           color: 'var(--color-accent-gray)',
+          '@media(max-width: 768px)': {
+            fontSize: 13
+          }
         },
         '.title': {
           alignSelf: 'center',
           display: 'flex',
           flexDirection: 'column',
           color: 'var(--color-text)',
-          fontSize: 'calc(1vw + 1vh)',
+          fontSize: 20,
           '@media(max-width: 768px)': {
-            fontSize: 16
+            fontSize: 12
           }
         },
         '.title a, .artist p': {
@@ -64,16 +65,20 @@ export default function Spotify() {
         '.artist': {
           fontFamily: 'var(--font-primary)',
           fontWeight: 'normal',
-          fontSize: 16,
-          '@media(max-width: 768px)': {
-            fontSize: 13
+          fontSize: 14,
+          color: 'var(--color-gray)',
+          '@media(max-width: 480px)': {
+            fontSize: 10,
+            whiteSpace: 'nowrap',
+            textOverflow: 'ellipsis',
+            maxWidth: 140
           }
         },
         '@media(max-width: 600px)': {
-          gridTemplateColumns: '5% 30% 60%',
-          gridAutoRows: 'minmax(0, auto)',
+          gridTemplateColumns: '2% 15% 62%',
           '.image': {
-            width: 100,
+            width: 45,
+            height: 45,
           },
           '.title a, .artist p': {
             lineHeight: '1.2rem',
@@ -88,16 +93,17 @@ export default function Spotify() {
     display: 'grid',
     gridTemplateColumns: 'repeat(2, 1fr)',
     justifyContent: 'space-between',
-    gap: '4rem',
-    marginTop: '2rem',
+    gap: '1rem',
     '.module': {
+      background: 'var(--color-accent)',
+      padding: '2rem',
       '&:first-of-type': {
         gridColumn: '1 / 2',
         gridRow: '1',
       },
       '&:nth-of-type(2)': {
         gridColumn: '2',
-        gridRow: '1 / 3',
+        gridRow: '1 / 1',
       },
       '&:nth-of-type(3)': {
         gridColumn: '2',
@@ -112,6 +118,9 @@ export default function Spotify() {
           gridColumn: 'initial',
           gridRow: 'initial',
         },
+      },
+      '@media(max-width: 768px)': {
+        padding: '1rem',
       }
     },
     '@media(max-width: 1024px)': {

@@ -23,8 +23,8 @@ export default function Track(track: Track) {
         <div className="image">
           <Image
             src={track.image}
-            height="100"
-            width="100"
+            height={100}
+            width={100}
             alt={track.title}
           />
         </div>

@@ -77,7 +77,7 @@ export default function About({ data }) {
       paddingBottom: '1rem',
       fontSize: 22,
       color: 'var(--color-text)',
-      borderBottom: '3px solid var(--color-accent-color)',
+      borderBottom: '2px solid var(--color-accent-color)',
     },
   });
   const styleCtaWrapper = css({
