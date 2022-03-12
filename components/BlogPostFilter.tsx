@@ -144,7 +144,7 @@ const BlogPostFilter = ({ feed }) => {
     )
   }
 
-  const SearchIcons: Function = () => {
+  const SearchIcon: Function = () => {
     if (search.length === 0) {
       return (
         <div className="icon">
@@ -178,7 +178,7 @@ const BlogPostFilter = ({ feed }) => {
         <button
           onClick={() => setSearch('')}
           onKeyPress={() => setSearch('')}
-          aria-label="Clar Filter">
+          aria-label="Clear Filter">
           <CloseIcon width={12} height={12}/>
           <span>{' '+blog.search.clearFilter}</span>
         </button>
@@ -231,7 +231,7 @@ const BlogPostFilter = ({ feed }) => {
           aria-label={blog.search.placeholder}
           onChange={(e) => setSearch(e.target.value)}
         />
-        <SearchIcons />
+        <SearchIcon />
       </div>
       <div className="post">
         <RenderPosts />
