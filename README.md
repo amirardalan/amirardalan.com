@@ -34,7 +34,7 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000)
 
-Optionally, create a local copy of a production build. (useful for setting and testing `generateSitemap.mjs` configuration):
+Optionally, create a local copy of a production build. (useful for testing `generateSitemap.mjs` configuration):
 
 ```bash
 yarn build
@@ -54,7 +54,7 @@ Run Jest manually:
 Push new tables to db from `schema.prisma`:
 
 ```bash
-yarn prisma db push --preview-feature
+yarn prisma db push
 ```
 
 Run Prisma Studio:
