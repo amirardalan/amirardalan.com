@@ -1,19 +1,10 @@
-import { useState, useEffect } from 'react'
 import { css } from '@emotion/react'
-import animateCount from '@/utils/animateCount'
 
 
 export default function BlogStats({ feed, activeCategories }) {
 
-  const [pageLoaded, setPageLoaded] = useState(true)
-  const postsNumber = pageLoaded ? feed.length : 0
-  const categoriesNumber = pageLoaded ? activeCategories.length : 0
-
-  useEffect(() => {
-    setPageLoaded(false)
-    animateCount()
-  }, [])
-
+  const postsNumber = feed.length
+  const categoriesNumber = activeCategories.length
 
   const styleBlogStatsWrapper = css({
     display: 'flex',
