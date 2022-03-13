@@ -48,10 +48,9 @@ export default function BlogStats({ feed, activeCategories }) {
           <CountUp
             start={0}
             end={postsNumber}
-            duration={1}
-            separator=" "
-            decimals={0}
             delay={0}
+            duration={1}
+            decimals={0}
           >
             {({ countUpRef }) => (
               <span className="number" ref={countUpRef} />
@@ -63,10 +62,9 @@ export default function BlogStats({ feed, activeCategories }) {
           <CountUp
             start={0}
             end={categoriesNumber}
-            duration={1}
-            separator=" "
-            decimals={0}
             delay={0}
+            duration={1}
+            decimals={0}
           >
             {({ countUpRef }) => (
               <span className="number" ref={countUpRef} />
