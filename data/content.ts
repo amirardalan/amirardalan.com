@@ -3,7 +3,7 @@ import { themeLight, themeDark } from "@/styles/theme"
 
 export const logo = {
   title: 'Amir Ardalan',
-  subtitle: 'Portland,Oregon',
+  subtitle: 'Portland•Oregon',
   alt: 'Amir Ardalan Logo',
 }
 
@@ -18,8 +18,8 @@ export const home = {
     description: 'Front-end developer, UI designer, and React enthusiast.'
   },
   typed: [
-    `I design and code things...`,
-    `❤ front-end and UI`,
+    `design / code / writing`,
+    `❤ front-end / UI`,
     `peruse my <a href="/blog">blog posts</a>`,
     `learn a bit <a href="/about">about me</a>`,
     `browse my <a href="/about#timeline">work history</a>`,
@@ -188,7 +188,7 @@ export const about = {
   availability: {
     title: 'Availability:',
     items: [
-      '⮑ Currently Available',
+      '> Currently Available',
       'Remote or in Portland, OR',
     ]
   },
