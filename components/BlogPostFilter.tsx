@@ -55,9 +55,18 @@ const BlogPostFilter = ({ feed }) => {
 
   const [search, setSearch] = useState('')
 
+  const scrollToTop = () => {
+    window.scrollTo(0, 0)
+  }
+
   const handleCategoryLink = (category: string) => {
     setSearch('#'+category)
-    window.scrollTo(0, 0)
+    scrollToTop()
+  }
+
+  const handleClearFilters = () => {
+    setSearch('')
+    scrollToTop()
   }
 
   const activeCategories: Array<string> = Array.from(new Set(feed.map((post: Record<string, object>) => {
@@ -168,8 +177,8 @@ const BlogPostFilter = ({ feed }) => {
     if (search[0] === '#' && filteredPosts.length > 0) {
       return (
         <button
-          onClick={() => setSearch('')}
-          onKeyPress={() => setSearch('')}
+          onClick={() => handleClearFilters()}
+          onKeyPress={() => handleClearFilters()}
           aria-label="Clear Filter">
           <CloseIcon width={12} height={12}/>
           <span>{' '+blog.search.clearFilter}</span>

@@ -56,7 +56,7 @@ export const blog = {
     auth: '⚠️ Authentication Error: Must be logged in to view this page',
   },
   search: {
-    placeholder: 'Search posts',
+    placeholder: 'Search by title or #category',
     noresult: 'No posts found.',
     clear: 'Clear search',
     clearFilter: 'Clear filter'
