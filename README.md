@@ -16,11 +16,14 @@ A Next.js Markdown Blog and CMS written in TypeScript. Designed, built, and main
 
 ## Local Development: 
 
-1. Create an `.env` file for local environment variables. Start with:
+1. Create an `.env` file for local environment variables. Start with the Site URL and updating updating your timezone:
 
 ```
 # Site URL
 NEXT_PUBLIC_SITE_URL=http://localhost:3000
+
+# TimeZone
+NEXT_PUBLIC_TIMEZONE=America/Los_Angeles
 ```
 Add additional local environment variables as needed. Create a version of this for your staging and production environments as needed, these are usually stored on your server.
 
