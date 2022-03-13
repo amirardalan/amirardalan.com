@@ -116,7 +116,7 @@ const Post = ({ post, feed, data }) => {
       h1: {
         margin: '0 0 .8rem',
         textDecoration: 'none',
-        '@media(max-width: 1024px)': {
+        '@media(max-width: 768px)': {
           margin: '0 0 .5rem',
           fontSize: 35,
         }

@@ -24,9 +24,7 @@ const Blog = ({ data, feed }) => {
     <Container title={data.meta.title} description={data.meta.description}>
       <BlogStyles>
         <div className="blog">
-
           <BlogPostFilter feed={feed} />
-
         </div>
       </BlogStyles>
     </Container>
