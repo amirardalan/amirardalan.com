@@ -270,11 +270,13 @@ export function GlobalStyles () {
             WebkitMarqueeIncrement: '0vw',
             fontWeight: 900,
             textAlign: 'left',
+            
           },
           '@media(max-width: 1024px)': {
             padding: '0 2.5rem',
             '.pageHeading': {
               marginBottom: '1.5rem',
+              fontSize: 30,
             }
           },
           '@media (max-width: 600px)': {
