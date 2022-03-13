@@ -10,14 +10,14 @@ const Post = ({ post }) => {
 
   return (
     <div className="blog postTeaser">
-      <h2>
+      <div className="blogListHeading">
         <Link
           href={`/blog/${post.slug}`}
           aria-label={post.title}
         >
           {post.title}
         </Link>
-      </h2>
+      </div>
       <div
         className="postDetails"
         aria-label={`${publishDate} • ${postReadTime}`}>

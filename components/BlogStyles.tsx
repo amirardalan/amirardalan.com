@@ -23,20 +23,35 @@ const blogStyles = css({
       }
     },
     'h1, h2, h3, h4': {
-      fontFamily: 'var(font-secondary)',
       lineHeight: '2.5rem',
     },
+    '.blogListHeading': {
+      marginBottom: '.5rem',
+      fontFamily: 'var(--font-secondary)',
+      fontSize: 30,
+      fontWeight: 900,
+      lineHeight: '2.2rem',
+      a: {
+        color: 'var(--color-text)',
+        textDecoration: 'none',
+      },
+      '@media(max-width: 1024px)': {
+        fontSize: 24,
+        lineHeight: '1.8rem',
+      }
+    },
     '.blogHeading': {
-      display: 'inline',
-      color: 'var(--color-gray)',
-      fontFamily: 'var(--font-primary)',
-      fontSize: 13,
-      fontWeight: 'normal',
+      fontFamily: 'var(--font-secondary)',
+      fontSize: 40,
+      fontWeight: 900,
       textDecoration: 'none',
+      '@media(max-width: 1024px)': {
+        fontSize: 30,
+      }
     },
     'h1, h2': {
       display: 'inline-block',
-      fontSize: 38,
+      fontSize: 40,
     },
     h2: {
       margin: 0,

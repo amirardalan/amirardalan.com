@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useTheme, css } from '@emotion/react'
 import Image from 'next/image'
 
+import BlogStats from '@/components/BlogStats'
 import BlogPost from '@/components/BlogPost'
 import { blog } from '@/data/content'
 import sortBlogPosts from '@/utils/sortBlogPosts'
@@ -14,31 +15,22 @@ const BlogPostFilter = ({ feed }) => {
     msOverflowStyle: 'none',
     scrollbarWidth: 'none',
     whiteSpace: 'nowrap',
-    minHeight: 40,
+    minHeight: 30,
     li :{
       display: 'inline',
       margin: '0 1.5rem 0 0',
-      '&:first-of-type': {
-        fontSize: 12,
-        color: 'var(--color-gray)',
-        '@media(max-width: 768px)': {
-          display: 'block',
-          marginBottom: '.5rem'
-        }
-      },
     },
     '&::-webkit-scrollbar': {
       display: 'none'
     },
     '@media (max-width: 768px)': {
-      minHeight: 78.5,
+      minHeight: 32,
     }
   })
 
   const styleSearchPosts = css({
     display: 'flex',
     position: 'relative',
-    marginTop: '.5rem',
     caretColor: 'var(--color-gray)',
     '.icon': {
       position: 'absolute',
@@ -190,14 +182,9 @@ const BlogPostFilter = ({ feed }) => {
 
   return (
     <>
+      <BlogStats feed={feed} activeCategories={activeCategories} />
       <nav css={styleBlogCategoryNav}>
         <ul>
-          <li>
-            <h1 className="blogHeading breadcrumbs" aria-label={blog.heading}>
-              {blog.heading}
-            </h1>
-            {' '}Categories:
-          </li>
           <li>
             <button
               onClick={() => setSearch('')}

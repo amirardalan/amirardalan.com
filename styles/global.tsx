@@ -266,7 +266,7 @@ export function GlobalStyles () {
           '.pageHeading': {
             marginBottom: '1rem',
             fontFamily: 'var(font-secondary)',
-            fontSize: 'calc(2.2vw + 2.2vh)',
+            fontSize: 40,
             WebkitMarqueeIncrement: '0vw',
             fontWeight: 900,
             textAlign: 'left',
@@ -274,7 +274,6 @@ export function GlobalStyles () {
           '@media(max-width: 1024px)': {
             padding: '0 2.5rem',
             '.pageHeading': {
-              fontSize: 'calc(2.8vw + 2.8vh)',
               marginBottom: '1.5rem',
             }
           },

@@ -22,7 +22,7 @@ const styleUsesMarkdown = ({
   h3: {
     paddingBottom: '1rem',
     marginBottom: '2rem',
-    fontSize: 30,
+    fontSize: 22,
     borderBottom: '3px solid var(--color-accent-color)',
   },
   h4: {
