@@ -16,11 +16,8 @@ module.exports = {
   },
   images: {
     domains: [
-      'i.scdn.co', // Spotify Album Art
-      'github.com', // GitHub Avatar
+      'i.scdn.co', // Spotify
+      'github.com', // GitHub
     ]
-  },
-  eslint: {
-    dirs: ['pages', 'utils'], // Only run ESLint on the 'pages' and 'utils' directories during production builds (next build)
   },
 }
