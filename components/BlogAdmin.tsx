@@ -259,8 +259,11 @@ const BlogAdmin = React.memo(function BlogAdmin() {
               fontSize: 22,
             }
           },
-          '.postTeaser': {
-            margin: '0 .5rem',
+          '.blog.postTeaser': {
+            margin: '0 .5rem 0 0',
+            p: {
+              marginBottom: 0,
+            }
           }
         },
         '.formSubmit': {

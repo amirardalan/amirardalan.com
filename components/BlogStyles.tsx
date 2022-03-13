@@ -55,7 +55,6 @@ const blogStyles = css({
       flexDirection: 'column',
     },
     '&.postTeaser': {
-      marginBottom: '3.2rem',
       p: {
         marginTop: '.5rem',
         lineHeight: '1.4rem',
@@ -81,6 +80,10 @@ const blogStyles = css({
   },
   '.post': {
     marginTop: '2rem',
+    span : {
+      display: 'block',
+      marginBottom: '3.2rem',
+    }
   },
   '.postDetails': {
     display: 'flex',
