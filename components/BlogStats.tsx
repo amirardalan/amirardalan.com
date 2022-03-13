@@ -1,4 +1,5 @@
 import { css } from '@emotion/react'
+import CountUp from 'react-countup'
 
 
 export default function BlogStats({ feed, activeCategories }) {
@@ -22,12 +23,14 @@ export default function BlogStats({ feed, activeCategories }) {
     li: {
       display: 'inline',
       marginRight: '1.5rem',
+      '@media(max-width: 1024px)': {
+        marginBottom: '.25rem'
+      },
       '&:last-of-type': {
         marginRight: 0,
       },
       '.number': {
         marginRight: '.3rem',
-        fontFamily: 'var(--font-secondary)',
         fontSize: 18,
       },
       '.text': {
@@ -42,15 +45,33 @@ export default function BlogStats({ feed, activeCategories }) {
       <h1 className="blogHeading">Blog</h1>
       <ul>
         <li>
-          <span className="number countUp">
-            {postsNumber}
-          </span>
+          <CountUp
+            start={0}
+            end={postsNumber}
+            duration={1}
+            separator=" "
+            decimals={0}
+            delay={0}
+          >
+            {({ countUpRef }) => (
+              <span className="number" ref={countUpRef} />
+            )}
+          </CountUp>
           <span className="text">articles</span>
         </li>
         <li>
-          <span className="number countUp">
-            {categoriesNumber}
-          </span>
+          <CountUp
+            start={0}
+            end={categoriesNumber}
+            duration={1}
+            separator=" "
+            decimals={0}
+            delay={0}
+          >
+            {({ countUpRef }) => (
+              <span className="number" ref={countUpRef} />
+            )}
+          </CountUp>
           <span className="text">categories</span>
         </li>
       </ul>
