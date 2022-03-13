@@ -5,15 +5,14 @@ import animateCount from '@/utils/animateCount'
 
 export default function BlogStats({ feed, activeCategories }) {
 
-  const [pageLoaded, setPageLoaded] = useState(false)
-
-  useEffect(() => {
-    setPageLoaded(true)
-    animateCount()
-  }, [pageLoaded])
-
+  const [pageLoaded, setPageLoaded] = useState(true)
   const postsNumber = pageLoaded ? feed.length : 0
   const categoriesNumber = pageLoaded ? activeCategories.length : 0
+
+  useEffect(() => {
+    setPageLoaded(false)
+    animateCount()
+  }, [])
 
 
   const styleBlogStatsWrapper = css({
