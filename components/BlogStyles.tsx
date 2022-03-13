@@ -80,7 +80,7 @@ const blogStyles = css({
   },
   '.post': {
     marginTop: '2rem',
-    span : {
+    '.publishedPosts' : {
       display: 'block',
       marginBottom: '3.2rem',
     }
