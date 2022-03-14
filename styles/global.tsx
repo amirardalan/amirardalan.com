@@ -302,7 +302,6 @@ export function GlobalStyles () {
           justifyContent: 'center',
           alignItems: 'center',
           background: 'var(--color-text)',
-          border: '1px solid transparent',
           borderRadius: 8,
           color: 'var(--color-bg)',
           fontFamily: 'var(--font-primary)',
@@ -324,19 +323,13 @@ export function GlobalStyles () {
           },
           '&:hover': {
             background: 'var(--color-primary)',
-            border: '1px solid var(--color-primary)',
           },
           '&.disabled': {
             cursor: 'pointer',
             background: 'transparent',
             color: 'var(--color-text)',
-            border: '1px solid var(--color-accent-neutral)',
             '&:hover': {
               background: 'transparent',
-              border: '1px solid var(--color-accent-neutral)'
-            },
-            '&:active': {
-              border: '1px solid var(--color-primary)'
             },
           },
           '.icon': {

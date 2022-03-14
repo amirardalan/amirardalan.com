@@ -32,9 +32,6 @@ export default function LatestPost({ latestPost, data }) {
         fontWeight: 'normal',
         textDecoration: 'underline',
         cursor: 'pointer',
-        '&:focus': {
-          boxShadow: 'none',
-        },
         '&:focus-visible': {
           boxShadow: '0 0 0 2px var(--color-primary)',
           outline: 'none',
