@@ -8,12 +8,11 @@ const TypingAnimation = ({ data }) => {
     const options: any = {
       strings: [...data],
       cursorChar: '▌',
-      loop: true,
+      startDelay: 500,
       typeSpeed: 90,
       backSpeed: 20,
-      startDelay: 500,
-      fadeOutDelay: 0,
       backDelay: 5000,
+      loop: true,
     }
     const typed = new Typed('.typingAnimation', options);
 

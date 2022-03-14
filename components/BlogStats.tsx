@@ -21,8 +21,9 @@ export default function BlogStats({ feed, activeCategories }) {
       alignItems: 'flex-end',
     },
     li: {
+      lineHeight: '1rem',
       display: 'inline',
-      marginRight: '1.5rem',
+      marginRight: '1rem',
       '@media(max-width: 1024px)': {
         marginBottom: '.25rem'
       },
@@ -56,7 +57,7 @@ export default function BlogStats({ feed, activeCategories }) {
               <span className="number" ref={countUpRef} />
             )}
           </CountUp>
-          <span className="text">articles</span>
+          <span className="text">posts</span>
         </li>
         <li>
           <CountUp

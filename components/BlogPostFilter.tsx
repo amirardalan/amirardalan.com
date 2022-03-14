@@ -32,6 +32,9 @@ const BlogPostFilter = ({ feed }) => {
     display: 'flex',
     position: 'relative',
     caretColor: 'var(--color-neutral)',
+    input: {
+      fontSize: 13,
+    },
     '.icon': {
       position: 'absolute',
       top: 16,

@@ -19,8 +19,8 @@ export const home = {
   },
   typed: [
     `Hi, my name is`,
-    `I design and code things.`,
-    `peruse my <a href="/blog">blog articles</a>`,
+    `I design and code things`,
+    `peruse my <a href="/blog">blog posts</a>`,
     `learn a bit <a href="/about">about me</a>`,
     `browse my <a href="/about#timeline">work history</a>`,
     `explore my <a href="/spotify">spotify</a> stats`,
@@ -240,7 +240,7 @@ export const timeline = {
       cName: 'event'
     },
     {
-      content: '2019',
+      content: '2020',
       cName: 'date',
     },
     {
