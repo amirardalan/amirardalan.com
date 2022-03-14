@@ -91,6 +91,10 @@ export default function Footer() {
   const styleFooterLogo = css({
     display: 'flex',
     padding: '4rem 0 3rem 0',
+    background: 'var(--logo-footer) no-repeat',
+    backgroundSize: 'contain',
+    height: 75,
+    width: 75
   })
   const styleCopyright = css({
     fontFamily: 'var(--font-primary)',
@@ -173,15 +177,7 @@ export default function Footer() {
           </ul>
         </div>
       </div>
-      <div css={styleFooterLogo}>
-        <Image
-          src={theme.logoFooter}
-          height={75}
-          width={75}
-          alt={footer.logo.alt}
-          draggable={false}
-        />
-      </div>
+      <div css={styleFooterLogo}></div>
       <div css={styleCopyright}>
         <div>
           {footer.copyright.name + ' '}

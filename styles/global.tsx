@@ -84,6 +84,8 @@ export function GlobalStyles () {
           '--color-select': grayAccentLight,
         },
         'body, body[data-theme="light"]': {
+          '--logo': 'url(/logo/logo-light.svg)',
+          '--logo-footer': 'url(/logo/logo-footer-light.svg)',
           '--color-primary': primary,
           '--color-bg': light,
           '--color-text': darkAccent,
@@ -97,9 +99,12 @@ export function GlobalStyles () {
           '--code-bg': lightAccent,
           '--icon-info': 'url(/icons/note-dark.svg)',
           '--icon-arrow': 'url(/icons/arrow-dark.svg)',
+          '--icon-spotify': 'url(/icons/spotify-dark.svg)',
         },
         
         'body[data-theme="dark"]': {
+          '--logo': 'url(/logo/logo-dark.svg)',
+          '--logo-footer': 'url(/logo/logo-footer-dark.svg)',
           '--color-primary': secondary,
           '--color-bg': dark,
           '--color-text': lightAccent,
@@ -113,6 +118,7 @@ export function GlobalStyles () {
           '--code-bg': darkAccent,
           '--icon-info': 'url(/icons/note-light.svg)',
           '--icon-arrow': 'url(/icons/arrow-light.svg)',
+          '--icon-spotify': 'url(/icons/spotify-light.svg)',
         }
       }} />
       <Global styles={{

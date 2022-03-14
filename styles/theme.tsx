@@ -1,7 +1,5 @@
 export const themeLight = {
   active: 'light',
-  logo: '/logo/logo-light.svg',
-  logoFooter: '/logo/logo-footer-light.svg',
   code: 'light',
   canvas: '#744164',
   icons: {
@@ -24,8 +22,6 @@ export const themeLight = {
 
 export const themeDark = {
   active: 'dark',
-  logo: '/logo/logo-dark.svg',
-  logoFooter: '/logo/logo-footer-dark.svg',
   code: 'dark',
   canvas: '#3dffc5',
   icons: {

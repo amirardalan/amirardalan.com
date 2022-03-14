@@ -1,20 +1,21 @@
-import { css, useTheme } from '@emotion/react'
-import Image from 'next/image'
+import { css } from '@emotion/react'
 import { logo } from '@/data/content'
 
 
 export default function Logo() {
-  
-  const theme : any = useTheme()
+
+
+  const styleLogoWrapper = css({
+    display: 'flex',
+    flexDirection: 'row'
+  })
 
   const styleLogo = css({
-    display: 'block',
-    animation: 'spin 1s forwards',
-    fontSize: 0,
-    '@keyframes spin': {
-      from: { transform: 'rotate(0deg)' },
-      to: { transform: 'rotate(360deg)' }
-    }
+    marginTop: 2,
+    background: 'var(--logo) no-repeat',
+    backgroundSize: 'contain',
+    height: 24,
+    width: 24,
   })
   const styleTitle = css({
     display: 'block',
@@ -39,17 +40,9 @@ export default function Logo() {
 
 
   return (
-    <>
-      <Image
-        src={theme.logo}
-        alt={logo.alt}
-        width={25}
-        height={25}
-        css={styleLogo}
-        draggable={false}
-        priority
-      />
-      <div css={{flexDirection: 'column'}}>
+    <div css={styleLogoWrapper}>
+      <div css={styleLogo}></div>
+      <div>
         <title css={styleTitle}>
           {logo.title}
         </title>
@@ -59,6 +52,6 @@ export default function Logo() {
           {logo.subtitle}
         </div>
       </div>
-    </>
+    </div>
   )
 }

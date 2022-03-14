@@ -3,7 +3,6 @@ import { useState } from 'react'
 import Link from '@/components/Link'
 import Logo from '@/components/Logo'
 import { nav } from '@/data/navigation'
-import Image from 'next/image'
 
 
 export default function Navigation() {
@@ -101,6 +100,17 @@ export default function Navigation() {
       display: 'none',
     },
   })
+
+  const styleNavIcon = css({
+    height: 16,
+    width: 16,
+    lineHeight: 0,
+    '@media(max-width: 768px)': {
+      height: 30,
+      width: 30,
+    }
+  })
+
   const styleNavitem = css({
     position: 'relative',
     display: 'flex',
@@ -125,16 +135,15 @@ export default function Navigation() {
         },
       },
     },
-    '.navIcon': {
-      marginTop: 1.2,
-      height: 16,
-      width: 16,
-      lineHeight: 0,
+    '.spotifyNav': {
+      marginTop: 2,
+      lineHeight: '1rem',
+      background: 'var(--icon-spotify) no-repeat',
+      backgroundSize: 'contain',
       '@media(max-width: 768px)': {
-        marginTop: '.8rem',
-        height: 30,
-        width: 30,
-      }
+        lineHeight: '1.8rem',
+        marginTop: '.8rem'
+      },
     },
     '@media(max-width: 768px)': {
       flexDirection: 'column',
@@ -151,7 +160,6 @@ export default function Navigation() {
   })
   const styleMobileNavSecondary = css({
     margin: '3rem 0',
-    fontSize: 12,
     height: 80,
     display: 'flex',
     flexDirection: 'column-reverse',
@@ -159,7 +167,6 @@ export default function Navigation() {
     justifyContent: 'space-between',
     fontFamily: 'var(--font-secondary)',
     position: 'relative',
-    textAlign: 'center',
     a: {
       display: 'block',
       marginBottom: '.5rem',
@@ -204,20 +211,7 @@ export default function Navigation() {
         return (
           <Link href={item.path} activeClassName="active" exact={item.exact} as="" key={index}>
             <a onClick={toggleMobileNav ? toggleMenu : null} className={item.cName} aria-label={item.aria}>
-              {item.icon
-                ?
-                  <div className="navIcon">
-                    <Image
-                      src={isDarkTheme
-                        ? item.icon.dark
-                        : item.icon.light}
-                      height="100%"
-                      width="100%"
-                      alt={item.title}
-                      priority
-                    />
-                  </div>
-                : item.title}
+              {item.icon ? <div css={styleNavIcon}></div> : item.title}
             </a>
           </Link>
         )}

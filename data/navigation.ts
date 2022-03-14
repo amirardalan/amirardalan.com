@@ -47,9 +47,6 @@ export const nav = [
     exact: '',
     cName: 'spotifyNav',
     aria: 'Spotify Dashboard',
-    icon: {
-      light: themeLight.icons.spotify,
-      dark: themeDark.icons.spotify
-    },
+    icon: true
   }
 ]
