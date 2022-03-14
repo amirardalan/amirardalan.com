@@ -112,14 +112,6 @@ export default function Spotify() {
         gridColumn: '2',
         gridRow: '1 / 1',
       },
-      '&:nth-of-type(3)': {
-        gridColumn: '2',
-        gridRow: '2 / 3'
-      },
-      '&:last-of-type': {
-        gridColumn: '1',
-        gridRow: '2 / 3',
-      },
       '@media(max-width: 1024px)': {
         '&:nth-of-type(n)': {
           gridColumn: 'initial',
