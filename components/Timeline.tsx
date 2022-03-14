@@ -42,7 +42,7 @@ export default function Timeline() {
       '&:nth-of-type(even), &:nth-of-type(odd)': {
         '.event': {
           maxWidth: 400,
-          boxShadow: '-2px 2px 0 var(--color-accent-gray)',
+          boxShadow: '-2px 2px 0 var(--color-accent-neutral)',
           h4: {
             marginBottom: '.5rem',
             fontFamily: 'var(--font-secondary)',
@@ -67,23 +67,23 @@ export default function Timeline() {
         zIndex: 2,
         position: 'relative',
         justifySelf: 'flex-end',
-        borderRight: '4px solid var(--color-accent-gray)',
+        borderRight: '4px solid var(--color-accent-neutral)',
         '.scrollHighlight': {
           position: 'absolute',
           top: 0,
           right: -4.1,
           width: 4,
           animation: 'growUp .5s',
-          background: 'var(--color-accent-color)',
+          background: 'var(--color-primary)',
         },
         '&.active': {
           '.scrollHighlight': {
             height: '100%',
-            background: 'var(--color-accent-color)',
+            background: 'var(--color-primary)',
             animation: 'growDown .5s',
           },
           '&:after': {
-            color: 'var(--color-accent-color)'
+            color: 'var(--color-primary)'
           }
         },
         '&:after': {
@@ -92,7 +92,7 @@ export default function Timeline() {
           right: -19.5,
           content: '"•"',
           fontSize: 77,
-          color: 'var(--color-accent-color)',
+          color: 'var(--color-primary)',
           '@media(max-width: 768px)': {
             top: -48,
           }
@@ -141,7 +141,7 @@ export default function Timeline() {
             top: 12,
             left: -23,
             content: '""',
-            borderLeft: '20px solid var(--color-accent-gray)',
+            borderLeft: '20px solid var(--color-accent-neutral)',
             borderRight: '12px solid transparent',
             borderBottom: '12px solid transparent',
             transform: 'rotateY(0deg) rotate(90deg)',
@@ -174,7 +174,7 @@ export default function Timeline() {
         background: 'var(--color-accent)',
         fontSize: 15,
         span: {
-          color: 'var(--color-gray)',
+          color: 'var(--color-neutral)',
         },
         '&:before': {
           content: '""',

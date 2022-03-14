@@ -41,7 +41,7 @@ export default function BlogNavigation({ feed, post, isPublished }) {
     paddingTop: '4rem',
     display: 'flex',
     justifyContent: first ? 'flex-end' : 'space-between',
-    borderTop: '1px solid var(--color-accent-gray)',
+    borderTop: '1px solid var(--color-accent-neutral)',
     fontFamily: 'var(--font-secondary)',
     fontSize: 18,
     lineHeight: '1.3rem',

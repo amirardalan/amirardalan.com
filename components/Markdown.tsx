@@ -35,7 +35,7 @@ export default function BlogMarkdown({ markdown }) {
       padding: '1.5rem 0 1.5rem 1.5rem !important',
       overflow: 'scroll',
       borderRadius: 5,
-      backgroundColor: 'var(--syntax-highlight-bg) !important',
+      backgroundColor: 'var(--code-bg) !important',
       code: {
         paddingRight: '1.5rem',
         backgroundColor: 'transparent !important',
@@ -56,12 +56,12 @@ export default function BlogMarkdown({ markdown }) {
     code: {
       wordWrap: 'break-word',
       fontSize: 16,
-      color: 'var(--color-gray)',
+      color: 'var(--color-neutral)',
       backgroundColor: 'var(--code-highlight)',
       borderRadius: 5,
       '&::before, &::after': {
         content: '"`"',
-        color: 'var(--color-accent-color)'
+        color: 'var(--color-primary)'
       },
     },
     'pre code': {
@@ -72,7 +72,7 @@ export default function BlogMarkdown({ markdown }) {
     },
     '[data="highlight"]': {
       background: 'var(--code-highlight)',
-      borderLeft: '3px solid var(--color-accent-color)',
+      borderLeft: '3px solid var(--color-primary)',
       margin: '0 -1.5rem',
       padding: '0 1.3rem',
     },

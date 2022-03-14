@@ -40,7 +40,7 @@ const ThemeToggle = ({ toggleTheme }) => {
     borderRadius: 25,
     transition: '.2s linear',
     '&:active': {
-      boxShadow: '0 0 8px var(--color-accent-color)',
+      boxShadow: '0 0 8px var(--color-primary)',
     }
   })
 

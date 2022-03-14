@@ -46,7 +46,7 @@ const BlogAdmin = React.memo(function BlogAdmin() {
     display: 'flex',
     padding: '.5rem 4rem',
     backgroundColor: 'var(--color-accent)',
-    borderBottom: '1px dotted var(--color-gray)',
+    borderBottom: '1px dotted var(--color-neutral)',
     flexDirection: 'row',
     justifyContent: 'space-between',
     animation: 'adminPanelSlideDown .2s',
@@ -169,14 +169,14 @@ const BlogAdmin = React.memo(function BlogAdmin() {
           display: 'flex',
           flexDirection: 'row',
           alignItems: 'center',
-          color: 'var(--color-gray)',
+          color: 'var(--color-neutral)',
           fontSize: 13,
           a: {
             textDecoration: 'none',
             '&::after': {
               content: '"/"',
               margin: '0 .5rem',
-              color: 'var(--color-gray)',
+              color: 'var(--color-neutral)',
             }
           },
           '@media (max-width: 480px)': {
@@ -222,7 +222,7 @@ const BlogAdmin = React.memo(function BlogAdmin() {
             textDecoration: 'none',
           },
           '&.deploy': {
-            backgroundColor: 'var(--color-accent-color)',
+            backgroundColor: 'var(--color-primary)',
             '&.disabled': { cursor: 'wait' }
           },
           '&.disabled': {
@@ -245,7 +245,7 @@ const BlogAdmin = React.memo(function BlogAdmin() {
             '.label': {
               marginBottom: '.2rem',
               alignSelf: 'right',
-              color: 'var(--color-gray)',
+              color: 'var(--color-neutral)',
               fontSize: 12,
               fontStyle: 'italic',
             },

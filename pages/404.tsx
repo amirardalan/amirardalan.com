@@ -40,14 +40,14 @@ const styleErrorContent = css({
     maxWidth: 600,
     paddingTop: '2rem',
     marginBottom: '3rem',
-    borderTop: '1px solid var(--color-gray)',
+    borderTop: '1px solid var(--color-neutral)',
     textAlign: 'left',
   },
   '.quote': {
     fontSize: 25,
     fontFamily: 'var(--font-tertiary)',
     fontStyle: 'italic',
-    color: 'var(--color-gray)'
+    color: 'var(--color-neutral)'
   },
   '.author': {
     marginTop: '.5rem',

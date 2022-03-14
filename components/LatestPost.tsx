@@ -36,7 +36,7 @@ export default function LatestPost({ latestPost, data }) {
           boxShadow: 'none',
         },
         '&:focus-visible': {
-          boxShadow: '0 0 0 2px var(--color-accent-color)',
+          boxShadow: '0 0 0 2px var(--color-primary)',
           outline: 'none',
         },
         '@media(max-width: 480px)': {
@@ -49,7 +49,7 @@ export default function LatestPost({ latestPost, data }) {
       lineHeight: '1.2rem',
       fontFamily: 'var(--font-tertiary)',
       fontSize: 15,
-      color: 'var(--color-gray)',
+      color: 'var(--color-neutral)',
     },
   })
   

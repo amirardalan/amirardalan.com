@@ -114,9 +114,9 @@ export const about = {
     ]
   },
   bio: {
-    heading: 'Bio:',
-    subheading: 'Developer, Designer, Writer.',
-    content: `Interfacing humans with technology through Fullstack development and UI design, with deep knowledge in Front-end and Ecommerce.`,
+    heading: 'Amir Ardalan',
+    subheading: 'Developer, designer, and writer from Portland, OR.',
+    content: `I connect humans with technology through front-end code and user interface design utilizing deep knowledge in front-end, accessibility, and ecommerce.`,
     items: [  
       {
         path: '/amir-ardalan-resume.pdf',
@@ -187,10 +187,8 @@ export const about = {
   },
   availability: {
     title: 'Availability:',
-    items: [
-      '> Currently Available',
-      'Remote or in Portland, OR',
-    ]
+    text: '☑ Currently Available',
+    location: 'Remote or in Portland, OR',
   },
   contact: {
     title: 'Contact:',

@@ -90,12 +90,12 @@ export default function Home({ data, latestPost }) {
       fontFamily: 'var(--font-primary)',
       fontWeight: 'normal',
       fontSize: 17,
-      color: 'var(--color-accent-color)',
+      color: 'var(--color-primary)',
     },
     '.typed': {
       '&:before': {
         content: '"> ~ % "',
-        color: 'var(--color-gray)',
+        color: 'var(--color-neutral)',
       },
       '@media(max-width: 480px)': {
         fontSize: 13
@@ -112,13 +112,13 @@ export default function Home({ data, latestPost }) {
       }
     },
     '.description': {
-      borderTop: '2px solid var(--color-accent-color)',
+      borderTop: '2px solid var(--color-primary)',
       maxWidth: 600,
       paddingTop: '1.8rem',
       fontFamily: 'var(--font-primary)',
       fontSize: 14,
       fontWeight: 'normal',
-      color: 'var(--color-gray)',
+      color: 'var(--color-neutral)',
     },
     '.highlightText': {
       width: 'max-content',
@@ -126,7 +126,7 @@ export default function Home({ data, latestPost }) {
       padding: '0 .5rem',
       background: 'var(--color-text)',
       color: 'var(--color-bg)',
-      boxShadow: '-3px 3px 0 var(--color-accent-color)',
+      boxShadow: '-3px 3px 0 var(--color-primary)',
     },
     '@media (min-width: 480px) and (max-width: 890px)': {
       fontSize: 'calc(2.5vw + 2.5vh)',
@@ -140,7 +140,7 @@ export default function Home({ data, latestPost }) {
     flexDirection: 'row',
   })
   const styleMainRight = css({
-    background: 'var(--canvas-bg)',
+    background: 'var(--color-gradient)',
     height: '72vh',
     position: 'relative',
     display: 'flex',

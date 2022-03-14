@@ -23,7 +23,7 @@ export default function Donate() {
       border: 'none',
       color: 'var(--color-bg)',
       '&:focus': {
-        boxShadow: '0 0 0 2px var(--color-accent-gray)',
+        boxShadow: '0 0 0 2px var(--color-accent-neutral)',
         '&:focus:not(:focus-visible)': { boxShadow: 'none' },
       }
     },
@@ -104,7 +104,7 @@ export default function Donate() {
       fontSize: 11,
       color: 'var(--color-text)',
       textAlign: 'center',
-      backgroundColor: 'var(--color-accent-gray)',
+      backgroundColor: 'var(--color-accent-neutral)',
       borderRadius: 5,
       opacity: addressCopied ? 1 : 0,
       animation: addressCopied ? 'tooltipUp 5s forwards' : null,
@@ -120,7 +120,7 @@ export default function Donate() {
         height: 0,
         borderLeft: '6px solid transparent',
         borderRight: '6px solid transparent',
-        borderTop: '6px solid var(--color-accent-gray)',
+        borderTop: '6px solid var(--color-accent-neutral)',
       }
     },
   })

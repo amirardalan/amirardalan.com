@@ -71,12 +71,12 @@ const Post = ({ post, feed, data }) => {
         position: 'relative',
         marginBottom: '2.5rem',
         padding: '2.8rem 1.5rem 1.2rem 1.5rem',
-        border: '1px solid var(--color-accent-gray)',
+        border: '1px solid var(--color-accent-neutral)',
         borderRadius: 5,
         fontFamily: 'var(--font-tertiary)',
         fontSize: 18,
         lineHeight: '1.8rem',
-        color: 'var(--color-gray)',
+        color: 'var(--color-neutral)',
         '&:before, &:after': {
           position: 'absolute',
         },
@@ -126,7 +126,7 @@ const Post = ({ post, feed, data }) => {
         fontFamily: 'var(--font-tertiary)',
         fontSize: 16,
         lineHeight: '1.5rem',
-        color: 'var(--color-gray)',
+        color: 'var(--color-neutral)',
       },
       'h3, h3 code': {
         fontSize: 28,
@@ -153,7 +153,7 @@ const Post = ({ post, feed, data }) => {
           '&:hover': {
             '&::before': {
               content: '"#"',
-              color: 'var(--color-accent-gray)',
+              color: 'var(--color-accent-neutral)',
               position: 'absolute',
               textAlign: 'center',
               top: 4,
@@ -189,8 +189,8 @@ const Post = ({ post, feed, data }) => {
       blockquote: {
         margin: '2rem -2.5rem',
         padding: '0 2rem',
-        borderLeft: '8px solid var(--color-accent-gray)',
-        color: 'var(--color-gray)',
+        borderLeft: '8px solid var(--color-accent-neutral)',
+        color: 'var(--color-neutral)',
         'p, a': {
           marginBottom: 0,
           fontSize: 22,
@@ -198,7 +198,7 @@ const Post = ({ post, feed, data }) => {
         },
         '& blockquote': {
           marginLeft: '1rem',
-          borderLeft: '8px solid var(--color-gray)',
+          borderLeft: '8px solid var(--color-neutral)',
         },
         '@media(max-width: 480px)': {
           margin: '2rem -1.5rem',
@@ -246,7 +246,7 @@ const Post = ({ post, feed, data }) => {
             position: 'absolute',
             top: '.2rem',
             left: '-2rem',
-            background: 'var(--color-accent-color)',
+            background: 'var(--color-primary)',
             borderRadius: '50%',
             color: 'var(--color-bg)',
             fontFamily: 'var(--font-primary)',

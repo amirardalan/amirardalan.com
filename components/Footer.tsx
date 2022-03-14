@@ -17,7 +17,7 @@ export default function Footer() {
     position: 'relative',
     marginTop: '6rem',
     padding: '4rem 4rem 1rem 4rem',
-    backgroundColor: 'var(--color-accent-color)',
+    backgroundColor: 'var(--color-primary)',
     '@media(max-width: 1024px)': {
       marginTop: '4rem',
       padding: '3.5rem 2.5rem 1rem 2.5rem',
@@ -57,7 +57,7 @@ export default function Footer() {
       textDecoration: 'none',
       color: 'var(--color-bg)',
       '&:focus': {
-        boxShadow: '0 0 0 2px var(--color-accent-gray)',
+        boxShadow: '0 0 0 2px var(--color-accent-neutral)',
         '&:focus:not(:focus-visible)': { boxShadow: 'none' },
       },
       '.icon': {

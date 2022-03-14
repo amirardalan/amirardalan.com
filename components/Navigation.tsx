@@ -41,7 +41,7 @@ export default function Navigation() {
       opacity: '.80',
       height: '100%',
       width: 200,
-      background: 'var(--canvas-bg)',
+      background: 'var(--color-gradient)',
       position: 'absolute',
       left: -200,
       top: 0,
@@ -109,7 +109,7 @@ export default function Navigation() {
       color: 'var(--color-text)',
       '&.active': {
         '&::before': {
-          color: 'var(--color-accent-color)',
+          color: 'var(--color-primary)',
           position: 'absolute',
           content: '">"',
           left: -10,
@@ -163,7 +163,7 @@ export default function Navigation() {
     a: {
       display: 'block',
       marginBottom: '.5rem',
-      color: 'var(--color-gray)',
+      color: 'var(--color-neutral)',
       textAlign: 'right',
       animation: 'slideUp .4s ease',
     },

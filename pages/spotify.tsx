@@ -13,7 +13,7 @@ export default function Spotify() {
     h3: {
       marginBottom: '2rem',
       paddingBottom: '.8rem',
-      borderBottom: '2px solid var(--color-accent-color)',
+      borderBottom: '2px solid var(--color-primary)',
       fontSize: 22,
       fontWeight: 'bold',
     },
@@ -42,7 +42,7 @@ export default function Spotify() {
           alignSelf: 'center',
           fontSize: 30,
           WebkitMarqueeIncrement: '0vw',
-          color: 'var(--color-accent-gray)',
+          color: 'var(--color-accent-neutral)',
           '@media(max-width: 480px)': {
             fontSize: 18
           }
@@ -71,7 +71,7 @@ export default function Spotify() {
           fontFamily: 'var(--font-primary)',
           fontWeight: 'normal',
           fontSize: 14,
-          color: 'var(--color-gray)',
+          color: 'var(--color-neutral)',
           '@media(max-width: 768px)': {
             fontSize: 12
           },

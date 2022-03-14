@@ -84,35 +84,33 @@ export function GlobalStyles () {
           '--color-select': grayAccentLight,
         },
         'body, body[data-theme="light"]': {
-          '--color-accent': lightAccent,
-          '--color-accent-darker': lighter,
-          '--color-accent-color': primary,
-          '--color-accent-gray': grayAccentLight,
-          '--color-gray': grayDark,
+          '--color-primary': primary,
           '--color-bg': light,
           '--color-text': darkAccent,
-          '--color-input-disabled': light,
-          '--canvas-bg': sunset,
+          '--color-neutral': grayDark,
+          '--color-accent-neutral': grayAccentLight,
+          '--color-accent': lightAccent,
+          '--color-accent-darker': lighter,
+          '--color-gradient': sunset,
           '--page-bg': lighter,
           '--code-highlight': codeHighlightLight,
-          '--syntax-highlight-bg': lightAccent,
+          '--code-bg': lightAccent,
           '--icon-info': 'url(/icons/note-dark.svg)',
           '--icon-arrow': 'url(/icons/arrow-dark.svg)',
         },
         
         'body[data-theme="dark"]': {
-          '--color-accent': darkAccent,
-          '--color-accent-darker': darker,
-          '--color-accent-color': secondary,
-          '--color-accent-gray': grayAccentDark,
-          '--color-gray': grayLight,
+          '--color-primary': secondary,
           '--color-bg': dark,
           '--color-text': lightAccent,
-          '--color-input-disabled': dark,
-          '--canvas-bg': sunrise,
+          '--color-neutral': grayLight,
+          '--color-accent-neutral': grayAccentDark,
+          '--color-accent': darkAccent,
+          '--color-accent-darker': darker,
+          '--color-gradient': sunrise,
           '--page-bg': darkAccent,
           '--code-highlight': codeHighlightDark,
-          '--syntax-highlight-bg': darkAccent,
+          '--code-bg': darkAccent,
           '--icon-info': 'url(/icons/note-light.svg)',
           '--icon-arrow': 'url(/icons/arrow-light.svg)',
         }
@@ -164,7 +162,7 @@ export function GlobalStyles () {
           display: 'block',
           height: 1,
           border: 0,  
-          borderTop: '1px solid var(--color-accent-gray)',
+          borderTop: '1px solid var(--color-accent-neutral)',
           margin: '4rem 0 1.5em 0',
           padding: 0,
         },
@@ -188,7 +186,7 @@ export function GlobalStyles () {
               boxSizing: 'border-box',
           },
           '&:focus': {
-            boxShadow: '0 0 0 2px var(--color-accent-color)',
+            boxShadow: '0 0 0 2px var(--color-primary)',
             outline: 'none',
           },
           '&:focus:not(:focus-visible)': { boxShadow: 'none' },
@@ -208,7 +206,7 @@ export function GlobalStyles () {
           fontSize: '100%',
           verticalAlign: 'baseline',
           background: 'transparent',
-          color: 'var(--color-accent-color)',
+          color: 'var(--color-primary)',
           textDecoration: 'underline',
         },
         p: {
@@ -230,7 +228,7 @@ export function GlobalStyles () {
           fontFamily: 'inherit',
           fontSize: 'inherit',
           fontWeight: 'inherit',
-          color: 'var(--color-accent-color)',
+          color: 'var(--color-primary)',
           cursor: 'pointer',
         },
         '.icon': {
@@ -245,11 +243,11 @@ export function GlobalStyles () {
           backgroundColor: 'var(--color-accent)',
           border: '2px solid var(--color-accent)',
           borderRadius: '0.25rem',
-          WebkitTextFillColor: 'var(--color-gray)',
+          WebkitTextFillColor: 'var(--color-neutral)',
           fontSize: 16,
           '&:disabled': {
-            backgroundColor: 'var(--color-input-disabled)',
-            WebkitTextFillColor: 'var(--color-accent-gray)',
+            backgroundColor: 'var(--color-bg)',
+            WebkitTextFillColor: 'var(--color-accent-neutral)',
           },
           '@media (max-width: 890px)': {
             width: '100%'
@@ -290,8 +288,8 @@ export function GlobalStyles () {
         '.ctaButton': {
           minWidth: 128,
           minHeight: 45,
-          marginRight: '.8rem',
-          marginBottom: '.8rem',
+          marginRight: '.6rem',
+          marginBottom: '.6rem',
           padding: '.5rem 1rem',
           display: 'flex',
           flexDirection: 'row',
@@ -319,20 +317,20 @@ export function GlobalStyles () {
             display: 'none',
           },
           '&:hover': {
-            background: 'var(--color-accent-color)',
-            border: '1px solid var(--color-accent-color)',
+            background: 'var(--color-primary)',
+            border: '1px solid var(--color-primary)',
           },
           '&.disabled': {
             cursor: 'pointer',
             background: 'transparent',
             color: 'var(--color-text)',
-            border: '1px solid var(--color-accent-gray)',
+            border: '1px solid var(--color-accent-neutral)',
             '&:hover': {
               background: 'transparent',
-              border: '1px solid var(--color-accent-gray)'
+              border: '1px solid var(--color-accent-neutral)'
             },
             '&:active': {
-              border: '1px solid var(--color-accent-color)'
+              border: '1px solid var(--color-primary)'
             },
           },
           '.icon': {

@@ -10,10 +10,10 @@ const blogStyles = css({
       fontFamily: 'var(--font-primary)',
       fontSize: 12,
       textTransform: 'uppercase',
-      color: 'var(--color-accent-color)',
+      color: 'var(--color-primary)',
       textDecoration: 'none',
       '&.active': {
-        borderBottom: '2px solid var(--color-accent-color)'
+        borderBottom: '2px solid var(--color-primary)'
       },
       '&:before': {
         content: '"#"'
@@ -89,7 +89,7 @@ const blogStyles = css({
         marginTop: '1rem'
       },
       '.dropdownLabel': {
-        color: 'var(--color-gray)'
+        color: 'var(--color-neutral)'
       }
     }
   },
@@ -103,7 +103,7 @@ const blogStyles = css({
   '.postDetails': {
     display: 'flex',
     flexDirection: 'row',
-    color: 'var(--color-gray)',
+    color: 'var(--color-neutral)',
     fontSize: 13,
     lineHeight: '1.2rem',
     '.author, .authorLink': {
@@ -158,7 +158,7 @@ const blogStyles = css({
         fontSize: 32,
         lineHeight: '2.2rem',
         left: -20,
-        color: 'var(--color-accent-color)',
+        color: 'var(--color-primary)',
         '@media (max-width: 768px)': {
           fontSize: 28,
         }
@@ -167,7 +167,7 @@ const blogStyles = css({
   },
   li: {
     '&::marker': {
-      color: 'var(--color-accent-color)',
+      color: 'var(--color-primary)',
     },
   },
   table: {
@@ -176,7 +176,7 @@ const blogStyles = css({
       fontFamily: 'var(--font-secondary)',
       tr: {
         th: {
-          border: '1px solid var(--color-accent-gray)',
+          border: '1px solid var(--color-accent-neutral)',
           backgroundColor: 'var(--color-accent)',
           padding: '.5rem',
         }
@@ -185,7 +185,7 @@ const blogStyles = css({
     tbody: {
       tr: {
         td: {
-          border: '1px solid var(--color-accent-gray)',
+          border: '1px solid var(--color-accent-neutral)',
           padding: '.5rem',
         }
       }

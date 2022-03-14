@@ -12,7 +12,7 @@ const styleUsesMarkdown = ({
     margin: '2rem 0'
   },
   'ul li, a': {
-    color: 'var(--color-gray)',
+    color: 'var(--color-neutral)',
     fontSize: 12,
   },
   'h3, h4, h5, h6': {
@@ -23,7 +23,7 @@ const styleUsesMarkdown = ({
     paddingBottom: '1rem',
     marginBottom: '2rem',
     fontSize: 22,
-    borderBottom: '3px solid var(--color-accent-color)',
+    borderBottom: '3px solid var(--color-primary)',
   },
   h4: {
     width: 'fit-content',

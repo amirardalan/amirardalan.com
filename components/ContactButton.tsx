@@ -32,7 +32,7 @@ export default function ContactButton() {
     fontSize: 12,
     color: 'var(--color-text)',
     textAlign: 'center',
-    backgroundColor: 'var(--color-accent-gray)',
+    backgroundColor: 'var(--color-accent-neutral)',
     opacity: emailCopied ? 1 : 0,
     animation: emailCopied ? 'tooltipDown 5s' : null,
     '&:before': {
@@ -47,7 +47,7 @@ export default function ContactButton() {
       height: 0,
       borderLeft: '6px solid transparent',
       borderRight: '6px solid transparent',
-      borderBottom: '6px solid var(--color-accent-gray)',
+      borderBottom: '6px solid var(--color-accent-neutral)',
     }
   })
 

@@ -24,7 +24,7 @@ export default function About({ data }) {
     gridTemplateColumns: 'repeat(3, 1fr)',
     gap: 20,
     gridAutoRows: 'minmax(100px, auto)',
-    '@media(max-width: 1200px)': {
+    '@media(max-width: 1280px)': {
       gridTemplateColumns: 'repeat(2, 1fr)',
     },
     '@media(max-width: 768px)': {
@@ -40,7 +40,7 @@ export default function About({ data }) {
       h4: {
         fontFamily: 'var(--font-secondary)',
       },
-      '@media (max-width: 1200px)': {
+      '@media (max-width: 1024px)': {
         padding: '1.5rem',
       },
       '@media (max-width: 480px)': {
@@ -50,7 +50,7 @@ export default function About({ data }) {
         width: '100%',
       },
       'ul li': {
-        color: 'var(--color-gray)',
+        color: 'var(--color-neutral)',
         fontSize: 14,
         strong: {
           color: 'var(--color-text)',
@@ -58,7 +58,7 @@ export default function About({ data }) {
           fontSize: 16,
         },
         '.blurb': {
-          color: 'var(--color-gray)',
+          color: 'var(--color-neutral)',
         },
         em: {
           marginBottom: '1rem',
@@ -71,13 +71,29 @@ export default function About({ data }) {
           textDecoration: 'none',
         },
       },
+      '.bioHeading': {
+        marginBottom: 0,
+        strong: {
+          fontSize: 22,
+        }
+      },
+      '.bioSubHeading': {
+        strong: {
+          color: 'var(--color-neutral)'
+        }
+      },
+      '.availability': {
+        fontFamily: 'var(--font-secondary)',
+        color: 'var(--color-neutral)',
+        fontSize: 16
+      },
     },
     h4: {
       marginBottom: '1.5rem',
       paddingBottom: '1rem',
       fontSize: 22,
       color: 'var(--color-text)',
-      borderBottom: '2px solid var(--color-accent-color)',
+      borderBottom: '2px solid var(--color-primary)',
     },
   });
   const styleCtaWrapper = css({
@@ -129,7 +145,10 @@ export default function About({ data }) {
                 <li>
                   <Avatar height='100' width='100' />
                 </li>
-                <li aria-label={data.bio.subheading}>
+                <li aria-label={data.bio.heading} className="bioHeading">
+                  <strong>{data.bio.heading}</strong>
+                </li>
+                <li aria-label={data.bio.subheading} className="bioSubHeading">
                   <strong>{data.bio.subheading}</strong>
                 </li>
                 <li>
@@ -171,7 +190,12 @@ export default function About({ data }) {
                     {data.availability.title}
                   </h4>
                 </li>
-                {GenerateListItems(data.availability.items)}
+                <li className="availability">
+                  {data.availability.text}
+                </li>
+                <li>
+                  {data.availability.location}
+                </li>
               </ul>
             </div>
             <div className='grid'>

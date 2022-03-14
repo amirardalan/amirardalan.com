@@ -27,7 +27,7 @@ export default function Logo() {
   const styleTitleSub = css({
     position: 'relative',
     margin: '0 0 0 .2rem',
-    color: 'var(--color-gray)',
+    color: 'var(--color-neutral)',
     fontFamily: 'var(--font-primary)',
     fontSize: '8px',
     fontWeight: 'normal',
