@@ -163,10 +163,10 @@ export default function Home({ data, latestPost }) {
             <div css={styleMainLeft}>
               <div css={styleMainLeftContent}>
                 <div className="titleWrapper">
-                  <h1>{data.title}</h1>
                   <span className="typed" aria-hidden="true">
                     <TypingAnimation data={data.typed} />
                   </span>
+                  <h1>{data.title}</h1>
                 </div>
                 <div css={styleButtonContainer}>
                   {GenerateCtaButtons(home.items)}

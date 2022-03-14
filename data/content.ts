@@ -18,9 +18,9 @@ export const home = {
     description: 'Front-end developer, UI designer, and React enthusiast.'
   },
   typed: [
-    `design / code / writing`,
-    `❤ front-end / UI`,
-    `peruse my <a href="/blog">blog posts</a>`,
+    `Hi, my name is`,
+    `I design and code things.`,
+    `peruse my <a href="/blog">blog articles</a>`,
     `learn a bit <a href="/about">about me</a>`,
     `browse my <a href="/about#timeline">work history</a>`,
     `explore my <a href="/spotify">spotify</a> stats`,
@@ -396,15 +396,15 @@ export const uses = {
   #### IDE
   - [VS Code](https://code.visualstudio.com/)
   ##### Extensions:
-  - [Community Material Theme (Palenight)](https://marketplace.visualstudio.com/items?itemName=Equinusocio.vsc-community-material-theme)
-  - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
-  - [GitHub Pullrequests and Issue Provider](https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-pull-request-github)
-  - [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)
+  - [Tokyo Night](https://marketplace.visualstudio.com/items?itemName=enkia.tokyo-night)
   - [Material Icon Theme](https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme)
-  - [Next.js snippets](https://marketplace.visualstudio.com/items?itemName=PulkitGangwar.nextjs-snippets)
+  - [VSCode Color Picker](https://marketplace.visualstudio.com/items?itemName=MarkosTh09.color-picker)
+  - [CSS-in-JS](https://marketplace.visualstudio.com/items?itemName=paulmolluzzo.convert-css-in-js)
   - [Prisma](https://marketplace.visualstudio.com/items?itemName=Prisma.prisma)
-  - [VSCode Vercel](https://marketplace.visualstudio.com/items?itemName=frenco.vscode-vercel)
-  - [vscode-styled-components](https://marketplace.visualstudio.com/items?itemName=jpoissonnier.vscode-styled-components)
+  - [Debugger for Firefox](https://marketplace.visualstudio.com/items?itemName=firefox-devtools.vscode-firefox-debug)
+  - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+  - [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)
+
   ------
   #### Browser
   - [Firefox Developer Edition](https://www.mozilla.org/en-US/firefox/developer/)
@@ -455,7 +455,8 @@ export const uses = {
   - [Discord](https://discord.com/)
   
   #### Music & Podcasts
-  - [Spotify](/spotify)`
+  - [Spotify](/spotify)
+  - [Google Music](https://music.youtube.com)`
   },
 }
 
