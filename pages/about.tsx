@@ -72,15 +72,12 @@ export default function About({ data }) {
         },
       },
       '.bioHeading': {
-        marginBottom: 0,
         strong: {
-          fontSize: 22,
+          fontSize: 28,
         }
       },
       '.bioSubHeading': {
-        strong: {
-          color: 'var(--color-neutral)'
-        }
+        lineHeight: '1.2rem',
       },
       '.availability': {
         fontFamily: 'var(--font-secondary)',
