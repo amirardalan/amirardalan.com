@@ -71,11 +71,6 @@ export default function About({ data }) {
           textDecoration: 'none',
         },
       },
-      '.bioHeading': {
-        strong: {
-          fontSize: 28,
-        }
-      },
       '.bioSubHeading': {
         lineHeight: '1.2rem',
       },
@@ -143,7 +138,7 @@ export default function About({ data }) {
                   <Avatar height='100' width='100' />
                 </li>
                 <li aria-label={data.bio.heading} className="bioHeading">
-                  <strong>{data.bio.heading}</strong>
+                  {data.bio.heading}
                 </li>
                 <li aria-label={data.bio.subheading} className="bioSubHeading">
                   <strong>{data.bio.subheading}</strong>

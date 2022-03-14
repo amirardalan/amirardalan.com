@@ -114,8 +114,8 @@ export const about = {
     ]
   },
   bio: {
-    heading: 'Amir Ardalan',
-    subheading: 'Developer, designer, and writer from Portland, OR.',
+    heading: 'Amir Ardalan - Portland, OR',
+    subheading: 'Developer, Designer, Writer.',
     content: `I connect humans with technology through front-end code and user interface design utilizing deep knowledge in front-end, accessibility, and ecommerce.`,
     items: [  
       {
