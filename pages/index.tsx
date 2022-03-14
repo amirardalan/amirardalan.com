@@ -79,9 +79,6 @@ export default function Home({ data, latestPost }) {
         '@media(max-width: 768px)': {
           fontSize: 16,
         }
-      },
-      '@media(max-width: 768px)': {
-        flexDirection: 'column-reverse'
       }
     },
     '.intro, .typed': {

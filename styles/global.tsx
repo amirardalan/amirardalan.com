@@ -371,7 +371,7 @@ export function GlobalStyles () {
       <Global styles={{
         // Text Highlighting
         '::selection': {
-          background: 'var(--color-select)',
+          background: 'var(--color-neutral)',
           color: 'var(--color-bg)',
         },
       }} />
