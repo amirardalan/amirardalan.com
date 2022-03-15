@@ -94,7 +94,10 @@ export default function Footer() {
     background: 'var(--logo-footer) no-repeat',
     backgroundSize: 'contain',
     height: 75,
-    width: 75
+    width: 75,
+    '@media(max-width: 768px)': {
+      marginTop: '2.5rem',
+    }
   })
   const styleCopyright = css({
     fontFamily: 'var(--font-primary)',
