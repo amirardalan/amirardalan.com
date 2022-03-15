@@ -33,7 +33,7 @@ const BlogPostFilter = ({ feed }) => {
     position: 'relative',
     caretColor: 'var(--color-neutral)',
     input: {
-      fontSize: 13,
+      fontSize: 15,
     },
     '.icon': {
       position: 'absolute',
@@ -46,8 +46,8 @@ const BlogPostFilter = ({ feed }) => {
       display: 'flex',
       justifyContent: 'center',
       position: 'absolute',
-      width: 25,
-      height: 25,
+      width: 24,
+      height: 24,
       top: 16,
       right: 8,
       cursor: 'pointer',
