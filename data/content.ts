@@ -226,12 +226,21 @@ export const timeline = {
   },
   items: [
     {
+      title: 'Fullstack Developer, Writer',
+      content: 'Building, maintaining open-source amirardalan.com Next.js blog & CMS. Writing about front-end code, devops, and tech.',
+      cName: 'event'
+    },
+    {
       content: 'Present',
       cName: 'date',
     },
     {
-      title: 'Fullstack Developer, Writer',
-      content: 'Building, maintaining open-source amirardalan.com Next.js blog & CMS. Writing about front-end code, devops, and tech.',
+      content: '2022',
+      cName: 'date',
+    },
+    {
+      title: 'Built Open-source NFT Gallery',
+      content: 'Build an NFT gallery app powered by the OpenSea API and Next.js: synapsekit.com',
       cName: 'event'
     },
     {
