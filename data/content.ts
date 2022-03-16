@@ -239,8 +239,8 @@ export const timeline = {
       cName: 'date',
     },
     {
-      title: 'Built Open-source NFT Gallery',
-      content: 'Build an NFT gallery app powered by the OpenSea API and Next.js: synapsekit.com',
+      title: 'Launched synapsekit.com',
+      content: 'Created an open source NFT gallery app powered by the OpenSea API and Next.js.',
       cName: 'event'
     },
     {
