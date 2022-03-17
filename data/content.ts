@@ -422,6 +422,7 @@ export const uses = {
   - [Lighthouse](https://addons.mozilla.org/en-US/firefox/addon/google-lighthouse/)
   - [uBlock Origin](https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/)
   - [GA Debug](https://addons.mozilla.org/en-US/firefox/addon/ga-debugger/)
+  - [MetaMask](https://addons.mozilla.org/en-US/firefox/addon/ether-metamask/)
   ------
   #### CLI
   - Terminal (~ZSH)
@@ -465,7 +466,7 @@ export const uses = {
   
   #### Music & Podcasts
   - [Spotify](/spotify)
-  - [Google Music](https://music.youtube.com)`
+  - [YouTube Music](https://music.youtube.com)`
   },
 }
 
