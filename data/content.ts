@@ -508,6 +508,10 @@ export const error = {
       quote: `"If your idea really is new, there might be no shared vocabulary to discuss it yet."`,
       author: 'Dan Abramov'
     },
+    {
+      quote: `"You are what you are and you are where you are because of what has gone into your mind. You change what you are and you change where you are by changing what goes into your mind."`,
+      author: 'Zig Ziglar'
+    },
   ]
 }
 
