@@ -1,7 +1,7 @@
 import { css } from '@emotion/react'
 import Image from 'next/image'
 
-import { coldarkDark } from 'react-syntax-highlighter/dist/cjs/styles/prism'
+import { darcula } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import ReactMarkdown from 'react-markdown'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import rangeParser from 'parse-numeric-range'
@@ -13,15 +13,17 @@ import link from 'rehype-autolink-headings'
 
 export default function BlogMarkdown({ markdown }) {
 
+  const syntaxTheme = darcula
+
   const styleMarkdown = css({
     '.codeStyle, pre, code, code span': {
       fontFamily: 'var(--font-primary)',
-      fontStyle: 'normal !important',
+      fontStyle: 'normal',
       lineHeight: '1.5rem !important',
       fontSize: 15,
-      border: 'none !important',
-      boxShadow: 'none !important',
-      textShadow: 'none !important',
+      border: 'none',
+      boxShadow: 'none',
+      textShadow: 'none',
       '@media(max-width: 768px)': {
         lineHeight: '1.2rem !important',
         fontSize: 13
@@ -35,6 +37,7 @@ export default function BlogMarkdown({ markdown }) {
       padding: '1.5rem 0 1.5rem 1.5rem !important',
       overflow: 'scroll',
       borderRadius: 5,
+      background: 'transparent !important',
       backgroundColor: 'var(--code-bg) !important',
       code: {
         paddingRight: '1.5rem',
@@ -50,7 +53,7 @@ export default function BlogMarkdown({ markdown }) {
         },
       },
       '@media(max-width: 768px)': {
-        borderRadius: 0,
+        borderRadius: '0 !important',
       },
     },
     code: {
@@ -76,8 +79,6 @@ export default function BlogMarkdown({ markdown }) {
       padding: '0 1.3rem',
     },
   })
-
-  const syntaxTheme = coldarkDark
 
   const MarkdownComponents: object = {
     code({ node, inline, className,...props }) {
