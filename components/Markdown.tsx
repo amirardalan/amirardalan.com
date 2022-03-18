@@ -1,7 +1,7 @@
-import { useTheme, css } from '@emotion/react'
+import { css } from '@emotion/react'
 import Image from 'next/image'
 
-import { base16AteliersulphurpoolLight, atomDark } from 'react-syntax-highlighter/dist/cjs/styles/prism'
+import { coldarkDark } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import ReactMarkdown from 'react-markdown'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import rangeParser from 'parse-numeric-range'
@@ -19,9 +19,9 @@ export default function BlogMarkdown({ markdown }) {
       fontStyle: 'normal !important',
       lineHeight: '1.5rem !important',
       fontSize: 15,
-      border: 'none',
-      boxShadow: 'none',
-      textShadow: 'none',
+      border: 'none !important',
+      boxShadow: 'none !important',
+      textShadow: 'none !important',
       '@media(max-width: 768px)': {
         lineHeight: '1.2rem !important',
         fontSize: 13
@@ -57,7 +57,7 @@ export default function BlogMarkdown({ markdown }) {
       wordWrap: 'break-word',
       fontSize: 16,
       color: 'var(--color-neutral)',
-      backgroundColor: 'var(--code-highlight)',
+      backgroundColor: 'var(--code)',
       borderRadius: 5,
       '&::before, &::after': {
         content: '"`"',
@@ -72,16 +72,12 @@ export default function BlogMarkdown({ markdown }) {
     },
     '[data="highlight"]': {
       background: 'var(--code-highlight)',
-      borderLeft: '3px solid var(--color-primary)',
       margin: '0 -1.5rem',
       padding: '0 1.3rem',
     },
   })
 
-  const theme: any = useTheme()
-  const setSyntaxTheme = theme.code === 'light'
-    ? base16AteliersulphurpoolLight
-    : atomDark
+  const syntaxTheme = coldarkDark
 
   const MarkdownComponents: object = {
     code({ node, inline, className,...props }) {
@@ -109,7 +105,7 @@ export default function BlogMarkdown({ markdown }) {
 
       return match ? (
         <SyntaxHighlighter
-          style={setSyntaxTheme}
+          style={syntaxTheme}
           language={match[1]}
           PreTag="div"
           className="codeStyle"
