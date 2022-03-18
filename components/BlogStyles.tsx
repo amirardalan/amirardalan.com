@@ -97,7 +97,7 @@ const blogStyles = css({
     marginTop: '2rem',
     '.publishedPosts' : {
       display: 'block',
-      marginBottom: '3.2rem',
+      marginBottom: '2.5rem',
     }
   },
   '.postDetails': {
