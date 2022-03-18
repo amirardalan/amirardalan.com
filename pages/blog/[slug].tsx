@@ -178,7 +178,7 @@ const Post = ({ post, feed, data }) => {
         marginBottom: '1rem'
       },
       p: {
-        marginBottom: '2.5rem',
+        marginBottom: '2rem',
       },
       a: {
         textDecoration: 'underline',
