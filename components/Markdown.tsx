@@ -76,7 +76,7 @@ export default function BlogMarkdown({ markdown }) {
     '[data="highlight"]': {
       background: 'var(--code-highlight)',
       margin: '0 -1.5rem',
-      padding: '0 1.3rem',
+      padding: '0 1.5rem',
     },
   })
 
