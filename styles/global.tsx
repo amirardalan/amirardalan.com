@@ -195,6 +195,9 @@ export function GlobalStyles () {
           '&:focus': {
             boxShadow: '0 0 0 2px var(--color-primary)',
             outline: 'none',
+            '@media(max-width: 480px)': {
+              boxShadow: 'none',
+            }
           },
           '&:focus:not(:focus-visible)': { boxShadow: 'none' },
         },
