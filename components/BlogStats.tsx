@@ -50,7 +50,7 @@ export default function BlogStats({ feed, activeCategories }) {
             start={0}
             end={postsNumber}
             delay={0}
-            duration={1}
+            duration={1.5}
             decimals={0}
           >
             {({ countUpRef }) => (
@@ -64,7 +64,7 @@ export default function BlogStats({ feed, activeCategories }) {
             start={0}
             end={categoriesNumber}
             delay={0}
-            duration={1}
+            duration={1.5}
             decimals={0}
           >
             {({ countUpRef }) => (
