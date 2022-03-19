@@ -336,7 +336,9 @@ export function GlobalStyles () {
             cursor: 'pointer',
             background: 'transparent',
             color: 'var(--color-text)',
+            border: '1px solid var(--color-accent-neutral)',
             '&:hover': {
+              border: '1px solid var(--color-accent-neutral)',
               background: 'transparent',
             },
           },
@@ -364,7 +366,6 @@ export function GlobalStyles () {
             backgroundSize: 'contain',
           },
           '&.clipboard': {
-            border: '1px solid var(--color-accent-neutral)',
             '&:after': {
               background: 'var(--icon-clipboard) no-repeat',
               backgroundSize: 'contain',
@@ -385,6 +386,30 @@ export function GlobalStyles () {
           }
         }
       }}/>
+      <Global styles={{
+        // Tooltip
+        '.tooltip': {
+          position: 'relative',
+          borderRadius: 5,
+          padding: '0 .5rem',
+          color: 'var(--color-text)',
+          fontSize: 11,
+          textAlign: 'center',
+          backgroundColor: 'var(--color-accent-neutral)',
+          '&:before': {
+            content: '""',
+            position: 'absolute',
+            marginLeft: 'auto',
+            marginRight: 'auto',
+            left: 0,
+            right: 0,
+            width: 0,
+            height: 0,
+            borderLeft: '6px solid transparent',
+            borderRight: '6px solid transparent',
+          }
+        }
+      }} />
       <Global styles={{
         // Utils
         '.hidden': {

@@ -95,50 +95,32 @@ export default function Donate() {
     }
   })
 
-  const styleTooltipWrapper = css({
+  const styleTooltipFooter = css({
     overflow: 'hidden',
     paddingBottom: 2,
-    '.tooltipFooter': {
+    '.tooltip': {
       marginBottom: '.2rem',
-      position: 'relative',
-      fontSize: 11,
-      color: 'var(--color-text)',
-      textAlign: 'center',
-      backgroundColor: 'var(--color-accent-neutral)',
-      borderRadius: 5,
       opacity: addressCopied ? 1 : 0,
       animation: addressCopied ? 'tooltipUp 5s forwards' : null,
       '&:before': {
-        content: '""',
-        position: 'absolute',
-        marginLeft: 'auto',
-        marginRight: 'auto',
         bottom: -6,
-        left: 0,
-        right: 0,
-        width: 0,
-        height: 0,
-        borderLeft: '6px solid transparent',
-        borderRight: '6px solid transparent',
         borderTop: '6px solid var(--color-accent-neutral)',
       }
-    },
+    }
   })
 
 
   return (
     <div css={styleDonateWrapper}>
       <div css={styleQrWrapper}>
-        <div css={styleTooltipWrapper}>
-          <div className="tooltipFooter">{donate.copied}</div>
+        <div css={styleTooltipFooter}>
+          <div className="tooltip">{donate.copied}</div>
         </div>
         <div css={styleAddress}>
           <button onClick={()=> handleCopyAddress()} aria-label={donate.meta}>
-
             <div className="address">
               <span>{donate.address}</span>
             </div>
-
             <div className="qrCode">
             <Image 
               src={donate.qr}
@@ -147,7 +129,6 @@ export default function Donate() {
               alt={donate.text}
             />
             </div>
-
           </button>
         </div>
       </div>

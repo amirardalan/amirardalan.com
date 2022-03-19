@@ -194,7 +194,7 @@ export default function Timeline() {
       }
     },
     '@media(max-width: 768px)': {
-      paddingTop: 2.2,
+      paddingTop: 2.5,
     },
   })
 

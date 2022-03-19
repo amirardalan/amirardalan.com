@@ -126,18 +126,18 @@ export const about = {
         icon: 'time'
       },
       {
-        path: 'https://codepen.io/amirardalan/collections/?grid_type=list',
-        title: 'CodePen',
-        rel: 'noopener noreferrer',
-        target: '_blank',
-        icon: 'external'
-      },
-      {
         path: '/amir-ardalan-resume.pdf',
         title: 'Resume',
         rel: 'noopener noreferrer',
         target: '_blank',
         icon: 'download'
+      },
+      {
+        path: 'https://codepen.io/amirardalan/collections/?grid_type=list',
+        title: 'CodePen',
+        rel: 'noopener noreferrer',
+        target: '_blank',
+        icon: 'external'
       },
     ],
   },

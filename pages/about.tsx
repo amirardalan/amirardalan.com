@@ -100,6 +100,7 @@ export default function About({ data }) {
     },
     '@media(max-width: 510px)': {
       flexDirection: 'column',
+      width: '100%',
       '.ctaButton': {
         marginRight: 0,
       }
