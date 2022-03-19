@@ -66,7 +66,16 @@ export function GlobalStyles () {
       }}/>
       <Global styles={{
         '@font-face': {
-          fontFamily: 'Bitter',
+          fontFamily: 'PT Serif',
+          fontStyle: 'normal',
+          fontWeight: 700,
+          fontDisplay: 'swap',
+          src: 'url("/fonts/pt-serif-v16-latin-700.woff2") format("woff2")'
+        },
+      }}/>
+      <Global styles={{
+        '@font-face': {
+          fontFamily: 'PT Serif',
           fontStyle: 'italic',
           fontWeight: 400,
           fontDisplay: 'swap',
