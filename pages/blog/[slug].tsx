@@ -283,6 +283,7 @@ const Post = ({ post, feed, data }) => {
   const redirect = isPublished ? '/blog/drafts' : '/blog'
 
   const isEdited = post.editedAt.slice(0, 10) > post.publishedAt.slice(0, 10)
+  const showEdited = post.showEdited
   const publishDate = formatDate(post.publishedAt)
   const editDate = formatDate(post.editedAt)
   const postReadTime = calculateReadTime(post.content)
@@ -293,11 +294,11 @@ const Post = ({ post, feed, data }) => {
     })
     await Router.push(redirect)
   }
-  async function editPost(id: number): Promise<void> {
-    await fetch(`/blog/edit/${id}`, {
+  async function editPost(slug: string): Promise<void> {
+    await fetch(`/blog/edit/${slug}`, {
       method: 'PUT',
     })
-    await Router.push(`/blog/edit/${id}`)
+    await Router.push(`/blog/edit/${slug}`)
   }
   async function deletePost(id: number): Promise<void> {
     await fetch(`/api/post/${id}`, {
@@ -364,12 +365,12 @@ const Post = ({ post, feed, data }) => {
             {title}
           </h1>
           <p className="teaser">{post.teaser}</p>
-          <div className="postDetails" aria-label={`${editDate} • ${postReadTime}`}>
+          <div className="postDetails" aria-label={isEdited ? `${editDate} • ${postReadTime}` : `${publishDate} • ${postReadTime}`}>
             <div className="author">
               By <span>{post?.author?.name || 'Unknown author'}</span>
             </div>
             <div className="postDate">
-              {isEdited ? `Updated: ${editDate}`: publishDate } • {postReadTime}
+              {isEdited && showEdited ? `Updated: ${editDate}`: publishDate } • {postReadTime}
             </div>
           </div>
 
@@ -385,7 +386,7 @@ const Post = ({ post, feed, data }) => {
               </button>
               <button
                 className="buttonCompact"
-                onClick={() => editPost(post.id)}>
+                onClick={() => editPost(post.slug)}>
                 {admin.controls.edit}
               </button>
               <button

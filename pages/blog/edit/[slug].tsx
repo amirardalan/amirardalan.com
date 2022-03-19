@@ -7,6 +7,7 @@ import BlogStyles from '@/components/BlogStyles'
 import Link from 'next/link'
 import LoadingTriangle from '@/components/LoadingTriangle'
 import Dropdown from '@/components/Dropdown'
+import Checkbox from '@/components/Checkbox'
 
 import { admin, breadcrumb } from '@/data/content'
 import { categories } from '@/data/categories'
@@ -15,9 +16,9 @@ import prisma from '@/lib/prisma'
 
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-  const editPost = await prisma.post.findUnique({
+  const editPost = await prisma.post.findFirst({
     where: {
-      id: Number(params?.id) || -1,
+      slug: String(params?.slug),
     },
   })
   return { props: { editPost: JSON.parse(JSON.stringify(editPost)) } }
@@ -33,6 +34,7 @@ const Edit = ({ editPost }) => {
   const editSlug = editPost.slug
   const editTeaser = editPost.teaser
   const editCategory = editPost.category
+  const editEdited = editPost.showEdited
 
   const [title, setTitle] = useState(editTitle)
   const [content, setContent] = useState(editContent)
@@ -40,12 +42,16 @@ const Edit = ({ editPost }) => {
   const [teaser, setTeaser] = useState(editTeaser)
   const [category, setCategory] = useState(editCategory)
 
+  const [showEdited, setShowEdited] = useState(editEdited)
+  const handleShowEdited = () => {
+    setShowEdited(!showEdited)
+  }
 
   const submitData = async (e: React.SyntheticEvent) => {
 
     e.preventDefault()
     try {
-      const body = { id, title, slug, teaser, content, category }
+      const body = { id, title, slug, teaser, content, category, showEdited }
       await fetch('/api/update', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -88,7 +94,6 @@ const Edit = ({ editPost }) => {
   )
 
   const { data: session } = useSession()
-  const loading = status === "loading"
   
   let edit = null
   const userHasValidSession = Boolean(session)
@@ -100,14 +105,6 @@ const Edit = ({ editPost }) => {
           <LoadingTriangle />
         </div>
       </Container>
-    )
-  }
-
-  if (loading) {
-    edit = (
-      <div className="center">
-        <LoadingTriangle />
-      </div>
     )
   }
 
@@ -149,18 +146,28 @@ const Edit = ({ editPost }) => {
               value={content}
             />
 
-            <Dropdown
-              label="Category"
-              value={category}
-              handleChange={e => setCategory(e.target.value)}
-              data={categories}
-            />
+            <div className="postOptions">
+              <Dropdown
+                label="Category:"
+                value={category}
+                handleChange={(e) => setCategory(e.target.value)}
+                data={categories}
+              />
+              <div className="showEditDate">
+                <Checkbox 
+                  label="Show Edit Date"
+                  value={showEdited}
+                  onChange={handleShowEdited}
+                />
+              </div>
+            </div>
 
             <div className="formSubmit">
               <button
                 className="buttonCompact update"
                 disabled={ !content || !title || !slug || !teaser }
-                type="submit">
+                type="submit"
+              >
                 {admin.controls.update}
               </button>
               <a className="buttonCompact cancel" onClick={() => Router.push(`/blog/${editSlug}`)}>
