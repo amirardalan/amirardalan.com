@@ -95,7 +95,7 @@ const Edit = ({ editPost }) => {
 
   const { data: session } = useSession()
   const userHasValidSession = Boolean(session)
-  const userHasValidEmail = session.user.email === process.env.NEXT_PUBLIC_USER_EMAIL
+  const userHasValidEmail = session?.user?.email === process.env.NEXT_PUBLIC_USER_EMAIL
   let edit = null
 
   if (!userHasValidSession) {
