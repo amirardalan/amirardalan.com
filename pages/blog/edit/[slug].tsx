@@ -94,9 +94,9 @@ const Edit = ({ editPost }) => {
   )
 
   const { data: session } = useSession()
-  
-  let edit = null
   const userHasValidSession = Boolean(session)
+  const userHasValidEmail = session.user.email === process.env.NEXT_PUBLIC_USER_EMAIL
+  let edit = null
 
   if (!userHasValidSession) {
     return (
@@ -108,7 +108,7 @@ const Edit = ({ editPost }) => {
     )
   }
 
-  if (session && session.user.email == process.env.NEXT_PUBLIC_USER_EMAIL) {
+  if (userHasValidSession && userHasValidEmail) {
     edit = (
       <div className="blog admin edit">
 
@@ -142,7 +142,7 @@ const Edit = ({ editPost }) => {
               cols={50}
               onChange={(e) => setContent(e.target.value)}
               placeholder={admin.input.placeholder.content}
-              rows={20}
+              rows={18}
               value={content}
             />
 
@@ -155,7 +155,7 @@ const Edit = ({ editPost }) => {
               />
               <div className="showEditDate">
                 <Checkbox 
-                  label="Show Edit Date"
+                  label='Update Date'
                   value={showEdited}
                   onChange={handleShowEdited}
                 />
