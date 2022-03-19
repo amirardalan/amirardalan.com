@@ -117,27 +117,28 @@ export const about = {
     heading: 'Amir Ardalan - Portland, OR',
     subheading: 'Developer, Designer, Writer.',
     content: `I connect humans with technology through front-end code and user interface design utilizing deep knowledge in front-end, accessibility, and ecommerce.`,
-    items: [  
-      {
-        path: '/amir-ardalan-resume.pdf',
-        title: 'Resume',
-        rel: 'noopener noreferrer',
-        target: '_blank',
-        icon: {
-          light: themeLight.icons.download,
-          dark: themeDark.icons.download,
-        },
-      },
+    items: [
       {
         path: '#timeline',
         title: 'Timeline',
         rel: '',
         target: '_self',
-        icon: {
-          light: themeLight.icons.time,
-          dark: themeDark.icons.time,
-        },
-      }
+        icon: 'time'
+      },
+      {
+        path: 'https://codepen.io/amirardalan/collections/?grid_type=list',
+        title: 'CodePen',
+        rel: 'noopener noreferrer',
+        target: '_blank',
+        icon: 'external'
+      },
+      {
+        path: '/amir-ardalan-resume.pdf',
+        title: 'Resume',
+        rel: 'noopener noreferrer',
+        target: '_blank',
+        icon: 'download'
+      },
     ],
   },
   skills: {

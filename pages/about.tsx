@@ -92,8 +92,11 @@ export default function About({ data }) {
     display: 'flex',
     flexDirection: 'column',
     flexFlow: 'row wrap',
-    '@media(max-width: 350px)': {
+    '@media(max-width: 1200px)': {
       flexDirection: 'column',
+      '.ctaButton': {
+        marginRight: 0,
+      }
     },
   });
   const styleBioItems = css({

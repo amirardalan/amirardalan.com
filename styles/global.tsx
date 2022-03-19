@@ -109,6 +109,11 @@ export function GlobalStyles () {
           '--icon-info': 'url(/icons/note-dark.svg)',
           '--icon-arrow': 'url(/icons/arrow-dark.svg)',
           '--icon-spotify': 'url(/icons/spotify-dark.svg)',
+          '--icon-external': 'url(/icons/external-link-light.svg)',
+          '--icon-download': 'url(/icons/download-light.svg)',
+          '--icon-time': 'url(/icons/time-light.svg)',
+          '--icon-email': 'url(/icons/email-light.svg)',
+          '--icon-clipboard': 'url(/icons/clipboard-dark.svg)',
         },
         
         'body[data-theme="dark"]': {
@@ -129,6 +134,11 @@ export function GlobalStyles () {
           '--icon-info': 'url(/icons/note-light.svg)',
           '--icon-arrow': 'url(/icons/arrow-light.svg)',
           '--icon-spotify': 'url(/icons/spotify-light.svg)',
+          '--icon-external': 'url(/icons/external-link-dark.svg)',
+          '--icon-download': 'url(/icons/download-dark.svg)',
+          '--icon-time': 'url(/icons/time-dark.svg)',
+          '--icon-email': 'url(/icons/email-dark.svg)',
+          '--icon-clipboard': 'url(/icons/clipboard-light.svg)',
         }
       }} />
       <Global styles={{
@@ -309,12 +319,13 @@ export function GlobalStyles () {
           minHeight: 45,
           marginRight: '.6rem',
           marginBottom: '.6rem',
-          padding: '.5rem 1rem',
+          padding: '.4rem 1rem',
           display: 'flex',
           flexDirection: 'row',
           justifyContent: 'center',
           alignItems: 'center',
           background: 'var(--color-text)',
+          border: '1px solid transparent',
           borderRadius: 8,
           color: 'var(--color-bg)',
           fontFamily: 'var(--font-primary)',
@@ -322,6 +333,9 @@ export function GlobalStyles () {
           fontWeight: 400,
           textDecoration: 'none',
           cursor: 'pointer',
+          'span': {
+            marginLeft: 100,
+          },
           '&:first-of-type': {
             marginLeft: 0,
           },
@@ -345,9 +359,35 @@ export function GlobalStyles () {
               background: 'transparent',
             },
           },
-          '.icon': {
-            marginLeft: '.4rem',
-            lineHeight: 0,
+          '&.external:after, &.download:after, &.time:after, &.email:after, &.clipboard:after': {
+            marginLeft: 4,
+            content: '""',
+            display: 'inline-block',
+            width: 16,
+            height: 16,
+          },
+          '&.external:after': {
+            background: 'var(--icon-external) no-repeat',
+            backgroundSize: 'contain',
+          },
+          '&.download:after': {
+            background: 'var(--icon-download) no-repeat',
+            backgroundSize: 'contain',
+          },
+          '&.time:after': {
+            background: 'var(--icon-time) no-repeat',
+            backgroundSize: 'contain',
+          },
+          '&.email:after': {
+            background: 'var(--icon-email) no-repeat',
+            backgroundSize: 'contain',
+          },
+          '&.clipboard': {
+            border: '1px solid var(--color-accent-neutral)',
+            '&:after': {
+              background: 'var(--icon-clipboard) no-repeat',
+              backgroundSize: 'contain',
+            }
           },
           '@media(max-width: 1024px)': {
             '&:hover': {

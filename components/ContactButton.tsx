@@ -58,8 +58,8 @@ export default function ContactButton() {
           ? handleCopyToClipboard
           : showEmailOnclick}
         className={showEmail
-          ? 'ctaButton disabled'
-          : 'ctaButton'}
+          ? 'ctaButton clipboard disabled'
+          : 'ctaButton email'}
         aria-label={showEmail
           ? 'Copy Email address to clipboard'
           : 'Show Email'}
@@ -67,26 +67,6 @@ export default function ContactButton() {
         {showEmail
           ? process.env.NEXT_PUBLIC_USER_EMAIL
           : about.contact.email.title}
-        <span className="icon">
-        {showEmail ?
-          <Image
-            src={theme.icons.clipboard}
-            height="16"
-            width="16"
-            className="icon"
-            alt="Clipboard"
-            priority
-          /> :
-          <Image
-            src={theme.icons.email}
-            height="16"
-            width="16"
-            className="icon"
-            alt="Email"
-            priority
-          />
-        }
-        </span>
       </a>
       <div css={styleTooltipWrapper}>
         <div css={styleTooltip}>
