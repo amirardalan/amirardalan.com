@@ -459,20 +459,6 @@ export function GlobalStyles () {
             transform: 'translate3d(0, -100%, 0)',
           }
         },
-        '@keyframes dash': {
-          '0%': {
-            strokeDasharray: '1, 150',
-            strokeDashoffset: '0',
-          },
-          '50%': {
-            strokeDasharray: '90, 150',
-            strokeDashoffset: '-35',
-          },
-          '100%': {
-            strokeDasharray: '90, 150',
-            strokeDashoffset: '-124',
-          }
-        }
       }}/>
     </>
   )

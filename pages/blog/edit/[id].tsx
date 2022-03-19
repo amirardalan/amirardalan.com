@@ -145,7 +145,7 @@ const Edit = ({ editPost }) => {
               cols={50}
               onChange={(e) => setContent(e.target.value)}
               placeholder={admin.input.placeholder.content}
-              rows={8}
+              rows={20}
               value={content}
             />
 

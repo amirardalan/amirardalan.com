@@ -131,7 +131,7 @@ const Draft = () => {
               cols={50}
               onChange={(e) => setContent(e.target.value)}
               placeholder="Content"
-              rows={8}
+              rows={20}
               value={content}
             />
 

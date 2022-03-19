@@ -79,6 +79,7 @@ const blogStyles = css({
       }
     },
     '&.admin': {
+      maxWidth: '100%',
       '.breadcrumbs': {
         marginTop: '1rem',
       },
