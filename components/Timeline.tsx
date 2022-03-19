@@ -36,7 +36,7 @@ export default function Timeline() {
     display: 'grid',
     gridTemplateColumns: 'repeat(2, 1fr)',
     overflow: 'hidden',
-    paddingTop: 7.2,
+    paddingTop: 7.5,
     fontFamily: 'var(--font-tertiary)',
     '.timeline': {
       '&:nth-of-type(even), &:nth-of-type(odd)': {

@@ -91,13 +91,19 @@ export default function About({ data }) {
   const styleCtaWrapper = css({
     display: 'flex',
     flexDirection: 'column',
-    flexFlow: 'row wrap',
-    '@media(max-width: 1200px)': {
+    flexFlow: 'row nowrap',
+    '@media (min-width: 769px) and (max-width: 900px)': {
       flexDirection: 'column',
       '.ctaButton': {
         marginRight: 0,
       }
     },
+    '@media(max-width: 510px)': {
+      flexDirection: 'column',
+      '.ctaButton': {
+        marginRight: 0,
+      }
+    }
   });
   const styleBioItems = css({
     li: {

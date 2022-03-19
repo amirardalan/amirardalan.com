@@ -297,7 +297,7 @@ export function GlobalStyles () {
         // CTA Button
         '.ctaButton': {
           minWidth: 128,
-          minHeight: 45,
+          minHeight: 42,
           marginRight: '.6rem',
           marginBottom: '.6rem',
           padding: '.4rem 1rem',
