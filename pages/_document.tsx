@@ -35,7 +35,7 @@ export default function Document() {
         />
         <link
           rel="preload"
-          href="pt-serif-v16-latin-700.woff2"
+          href="/fonts/pt-serif-v16-latin-700.woff2"
           as="font"
           type="font/woff2"
           crossOrigin="anonymous"
