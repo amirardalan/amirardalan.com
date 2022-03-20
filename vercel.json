@@ -14,7 +14,7 @@
       ]
     },
     {
-      "source": "/fonts/lora-latin-400-italic.woff2",
+      "source": "/fonts/pt-serif-v16-latin-regular.woff2",
       "headers" : [
         {
           "key": "Cache-Control",
@@ -23,7 +23,16 @@
       ]
     },
     {
-      "source": "/fonts/lora-latin-400.woff2",
+      "source": "/fonts/pt-serif-v16-latin-700.woff2",
+      "headers" : [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/fonts/pt-serif-v16-latin-italic.woff2",
       "headers" : [
         {
           "key": "Cache-Control",

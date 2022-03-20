@@ -1,4 +1,4 @@
-import { useTheme, css } from '@emotion/react'
+import { useTheme } from '@emotion/react'
 import Image from 'next/image'
 
 interface Track {

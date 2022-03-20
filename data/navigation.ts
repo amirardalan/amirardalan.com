@@ -1,5 +1,3 @@
-import { themeLight, themeDark } from "@/styles/theme"
-
 export const nav = [
   {
     title: 'Home',
