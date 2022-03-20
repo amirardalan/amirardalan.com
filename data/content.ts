@@ -133,7 +133,7 @@ export const about = {
         icon: 'download'
       },
       {
-        path: 'https://codepen.io/amirardalan/collections/?grid_type=list',
+        path: 'https://codepen.io/amirardalan/pens/public?grid_type=list',
         title: 'CodePen',
         rel: 'noopener noreferrer',
         target: '_blank',
