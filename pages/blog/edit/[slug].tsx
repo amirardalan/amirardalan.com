@@ -26,15 +26,15 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 
 const Edit = ({ editPost }) => {
 
-  const isPublished = editPost.published
-  const id = editPost.id
-  const editTitle = editPost.title
+  const isPublished = editPost?.published
+  const id = editPost?.id
+  const editTitle = editPost?.title
   const editPageTitle = isPublished ? editTitle : editTitle+' (draft)'
-  const editContent = editPost.content
-  const editSlug = editPost.slug
-  const editTeaser = editPost.teaser
-  const editCategory = editPost.category
-  const editEdited = editPost.showEdited
+  const editContent = editPost?.content
+  const editSlug = editPost?.slug
+  const editTeaser = editPost?.teaser
+  const editCategory = editPost?.category
+  const editEdited = editPost?.showEdited
 
   const [title, setTitle] = useState(editTitle)
   const [content, setContent] = useState(editContent)
