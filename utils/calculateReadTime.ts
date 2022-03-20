@@ -1,5 +1,5 @@
 // Calculate estimated read time of "content"
-const ReadTime = (content: string) => {
+const calculateReadTime = (content: string) => {
   const wpm = 200
   const words = content.trim().split(/\s+/).length
   const time = Math.ceil(words / wpm)
@@ -7,4 +7,4 @@ const ReadTime = (content: string) => {
   return readTime as string
 }
 
-export default ReadTime
+export default calculateReadTime

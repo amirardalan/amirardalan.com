@@ -1,6 +1,6 @@
 import { css } from '@emotion/react'
 import Link from 'next/link'
-import sortBlogPosts from '@/utils/sortBlogPosts'
+import compareID from '@/utils/compareID'
 
 
 export default function BlogNavigation({ feed, post, isPublished }) {
@@ -9,7 +9,7 @@ export default function BlogNavigation({ feed, post, isPublished }) {
   const current : number = post?.id
 
   const arr = feed ? feed : null
-  const arrSorted = arr.sort(sortBlogPosts)
+  const arrSorted = arr.sort(compareID)
     
   const first = arr[0].id === current && isPublished
   const last = arr[total - 1].id === current && isPublished

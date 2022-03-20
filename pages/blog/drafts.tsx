@@ -4,7 +4,7 @@ import Container from '@/components/Container'
 import BlogStyles from '@/components/BlogStyles'
 import { admin, breadcrumb } from '@/data/content'
 import BlogPost from '@/components/BlogPost'
-import sortBlogPosts from '@/utils/sortBlogPosts'
+import compareID from '@/utils/compareID'
 
 import LoadingTriangle from '@/components/LoadingTriangle'
 import prisma from '@/lib/prisma'
@@ -56,7 +56,7 @@ const Drafts  = ({ drafts }) => {
       <Breadcrumbs />
       <div className="drafts">
         <main>
-          {drafts.sort(sortBlogPosts).reverse().map((post: { id: Key, category: String }) => (
+          {drafts.sort(compareID).reverse().map((post: { id: Key, category: String }) => (
             <div
               key={post.id}
               className="postDraft">

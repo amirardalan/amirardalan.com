@@ -5,7 +5,7 @@ import Image from 'next/image'
 import BlogStats from '@/components/BlogStats'
 import BlogPost from '@/components/BlogPost'
 import { blog } from '@/data/content'
-import sortBlogPosts from '@/utils/sortBlogPosts'
+import compareID from '@/utils/compareID'
 
 
 const BlogPostFilter = ({ feed }) => {
@@ -101,7 +101,7 @@ const BlogPostFilter = ({ feed }) => {
   const RenderPosts: Function = () => {
     if (filteredPosts.length > 0) {
       return (
-        filteredPosts.sort(sortBlogPosts).reverse().map((post: Record<string, string>) => (
+        filteredPosts.sort(compareID).reverse().map((post: Record<string, string>) => (
           <div className="publishedPosts" key={post.id}>
             <button
               onClick={() => handleCategoryLink(post.category)}
