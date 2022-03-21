@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { css } from '@emotion/react'
 import Image from 'next/image'
 
@@ -27,6 +28,27 @@ export default function BlogMarkdown({ markdown }) {
       '@media(max-width: 768px)': {
         lineHeight: '1.2rem !important',
         fontSize: 13
+      }
+    },
+    '.copyCode': {
+      position: 'relative',
+      button: {
+        zIndex: 1,
+        position: 'absolute',
+        top: 13,
+        right: -10,
+        backgroundColor: 'var(--code-highlight)',
+        borderRadius: 5,
+        textTransform: 'uppercase',
+        fontSize: 13,
+        padding: '.1rem .4rem .2rem',
+        color: 'var(--color-bg)',
+        '&:after': {
+          content: '"📋"',
+        },
+      },
+      '&.active button:after': {
+        content: '"☑️"'
       }
     },
     pre: {
@@ -81,7 +103,7 @@ export default function BlogMarkdown({ markdown }) {
   })
 
   const MarkdownComponents: object = {
-    code({ node, inline, className,...props }) {
+    code({ node, inline, className, ...props }) {
 
       const match = /language-(\w+)/.exec(className || '')
       const hasMeta = node?.data?.meta
@@ -157,6 +179,24 @@ export default function BlogMarkdown({ markdown }) {
         )
       }
       return <a href={anchor.href}>{anchor.children}</a>
+    },
+    pre: (pre: any) => {
+      const codeChunk = pre.node.children[0].children[0].value
+      
+      const [codeCopied, setCodeCopied] = useState(false)
+      const handleCopyCode = (codeChunk: string) => {
+        setCodeCopied(true)
+        navigator.clipboard.writeText(codeChunk)
+        setTimeout(() => {
+          setCodeCopied(false)
+        }, 5000)
+      }
+      return (
+        <div className={codeCopied ? 'copyCode active' : 'copyCode'}>
+          <button onClick={()=> handleCopyCode(codeChunk)} />
+          <pre {...pre}></pre>
+        </div>
+      )
     }
   }
 
