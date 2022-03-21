@@ -23,7 +23,7 @@ const blogStyles = css({
       }
     },
     'h1, h2, h3, h4': {
-      lineHeight: '2.5rem',
+      lineHeight: '2.8rem',
     },
     '.blogListHeading': {
       marginBottom: '.5rem',
