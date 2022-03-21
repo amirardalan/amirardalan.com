@@ -42,7 +42,7 @@ export default function BlogMarkdown({ markdown }) {
     '.codeBlock': {
       position: 'relative',
       '.copyCode': {
-        zIndex: 5,
+        zIndex: 1,
         position: 'absolute',
         top: 13,
         right: -10,
@@ -50,15 +50,10 @@ export default function BlogMarkdown({ markdown }) {
         borderRadius: 5,
         textTransform: 'uppercase',
         fontSize: 13,
-        padding: '.1rem .4rem',
+        padding: '.1rem .4rem .2rem',
         color: 'var(--color-bg)',
         '&:after': {
-          content: '""',
-          display: 'inline-block',
-          background: 'url(/icons/clipboard-light.svg) no-repeat',
-          backgroundSize: 'contain',
-          height: 20,
-          width: 20,
+          content: codeCopied ? '"☑️"' : '"📋"',
         }
       }
     },
@@ -195,7 +190,6 @@ export default function BlogMarkdown({ markdown }) {
       const codeChunk = pre.node.children[0].children[0].value
       return (
         <div className="codeBlock">
-          {codeCopied ? 'copied!' : null}
           <button
             className="copyCode"
             onClick={()=> handleCopyCode(codeChunk)}
