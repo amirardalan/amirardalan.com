@@ -16,15 +16,6 @@ export default function BlogMarkdown({ markdown }) {
 
   const syntaxTheme = darcula
 
-  const [codeCopied, setCodeCopied] = useState(false)
-  const handleCopyCode = (codeChunk: any) => {
-    navigator.clipboard.writeText(codeChunk)
-    setCodeCopied(true)
-    setTimeout(() => {
-      setCodeCopied(false)
-    }, 5000)
-  }
-
   const styleMarkdown = css({
     '.codeStyle, pre, code, code span': {
       fontFamily: 'var(--font-primary)',
@@ -39,9 +30,9 @@ export default function BlogMarkdown({ markdown }) {
         fontSize: 13
       }
     },
-    '.codeBlock': {
+    '.copyCode': {
       position: 'relative',
-      '.copyCode': {
+      button: {
         zIndex: 1,
         position: 'absolute',
         top: 13,
@@ -53,8 +44,11 @@ export default function BlogMarkdown({ markdown }) {
         padding: '.1rem .4rem .2rem',
         color: 'var(--color-bg)',
         '&:after': {
-          content: codeCopied ? '"☑️"' : '"📋"',
-        }
+          content: '"📋"',
+        },
+      },
+      '&.active button:after': {
+        content: '"☑️"'
       }
     },
     pre: {
@@ -188,12 +182,18 @@ export default function BlogMarkdown({ markdown }) {
     },
     pre: (pre: any) => {
       const codeChunk = pre.node.children[0].children[0].value
+      
+      const [codeCopied, setCodeCopied] = useState(false)
+      const handleCopyCode = (codeChunk: string) => {
+        setCodeCopied(true)
+        navigator.clipboard.writeText(codeChunk)
+        setTimeout(() => {
+          setCodeCopied(false)
+        }, 5000)
+      }
       return (
-        <div className="codeBlock">
-          <button
-            className="copyCode"
-            onClick={()=> handleCopyCode(codeChunk)}
-          />
+        <div className={codeCopied ? 'copyCode active' : 'copyCode'}>
+          <button onClick={()=> handleCopyCode(codeChunk)} />
           <pre {...pre}></pre>
         </div>
       )
