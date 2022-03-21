@@ -90,6 +90,7 @@ export function GlobalStyles () {
           '--color-warning': warning,
           '--color-button-disabled': buttonDisabled,
           '--color-select': grayAccentLight,
+          '--code-highlight': codeHighlight,
         },
         'body, body[data-theme="light"]': {
           '--logo': 'url(/logo/logo-light.svg)',
@@ -103,7 +104,6 @@ export function GlobalStyles () {
           '--color-accent-darker': lighter,
           '--color-gradient': sunset,
           '--page-bg': lighter,
-          '--code-highlight': codeHighlight,
           '--code': lighter,
           '--code-bg': darkAccent,
           '--icon-info': 'url(/icons/note-dark.svg)',
@@ -129,7 +129,6 @@ export function GlobalStyles () {
           '--color-gradient': sunrise,
           '--page-bg': darkAccent,
           '--code': codeHighlight,
-          '--code-highlight': codeHighlight,
           '--code-bg': darkAccent,
           '--icon-info': 'url(/icons/note-light.svg)',
           '--icon-arrow': 'url(/icons/arrow-light.svg)',

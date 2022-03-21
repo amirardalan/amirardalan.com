@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { css } from '@emotion/react'
 import Image from 'next/image'
 
@@ -15,6 +16,15 @@ export default function BlogMarkdown({ markdown }) {
 
   const syntaxTheme = darcula
 
+  const [codeCopied, setCodeCopied] = useState(false)
+  const handleCopyCode = (codeChunk: any) => {
+    navigator.clipboard.writeText(codeChunk)
+    setCodeCopied(true)
+    setTimeout(() => {
+      setCodeCopied(false)
+    }, 5000)
+  }
+
   const styleMarkdown = css({
     '.codeStyle, pre, code, code span': {
       fontFamily: 'var(--font-primary)',
@@ -27,6 +37,29 @@ export default function BlogMarkdown({ markdown }) {
       '@media(max-width: 768px)': {
         lineHeight: '1.2rem !important',
         fontSize: 13
+      }
+    },
+    '.codeBlock': {
+      position: 'relative',
+      '.copyCode': {
+        zIndex: 5,
+        position: 'absolute',
+        top: 13,
+        right: -10,
+        backgroundColor: 'var(--code-highlight)',
+        borderRadius: 5,
+        textTransform: 'uppercase',
+        fontSize: 13,
+        padding: '.1rem .4rem',
+        color: 'var(--color-bg)',
+        '&:after': {
+          content: '""',
+          display: 'inline-block',
+          background: 'url(/icons/clipboard-light.svg) no-repeat',
+          backgroundSize: 'contain',
+          height: 20,
+          width: 20,
+        }
       }
     },
     pre: {
@@ -81,7 +114,7 @@ export default function BlogMarkdown({ markdown }) {
   })
 
   const MarkdownComponents: object = {
-    code({ node, inline, className,...props }) {
+    code({ node, inline, className, ...props }) {
 
       const match = /language-(\w+)/.exec(className || '')
       const hasMeta = node?.data?.meta
@@ -157,6 +190,19 @@ export default function BlogMarkdown({ markdown }) {
         )
       }
       return <a href={anchor.href}>{anchor.children}</a>
+    },
+    pre: (pre: any) => {
+      const codeChunk = pre.node.children[0].children[0].value
+      return (
+        <div className="codeBlock">
+          {codeCopied ? 'copied!' : null}
+          <button
+            className="copyCode"
+            onClick={()=> handleCopyCode(codeChunk)}
+          />
+          <pre {...pre}></pre>
+        </div>
+      )
     }
   }
 
