@@ -78,7 +78,7 @@ const Post = ({ post, feed, data }) => {
         }
       },
       '.teaser': {
-        marginBottom: '2.5rem',
+        marginBottom: '1rem',
         fontFamily: 'var(--font-tertiary)',
         fontSize: 16,
         lineHeight: '1.5rem',

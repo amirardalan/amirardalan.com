@@ -7,11 +7,6 @@ module.exports = {
         destination: '/blog',
         permanent: true,
       },
-      {
-        source: '/bio',
-        destination: '/about',
-        permanent: true,
-      },
     ]
   },
   images: {
