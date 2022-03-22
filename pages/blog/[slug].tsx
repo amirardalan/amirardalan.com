@@ -91,7 +91,7 @@ const Post = ({ post, feed, data }) => {
       },
       h3: {
         scrollMarginTop: '4rem',
-        margin: '1rem 0',
+        margin: '1rem 0 1.5rem',
         padding: 0,
         display: 'inline-block',
         fontWeight: 'bold',
