@@ -290,7 +290,6 @@ const Post = ({ post, feed, data }) => {
   const editDate = formatDate(post.editedAt)
   const postReadTime = calculateReadTime(post.content)
 
-  console.log(post.publishedAt)
 
   async function publishPost(slug: String, published: boolean): Promise<void> {
     await fetch(`/api/publish/${slug}?published=${published}`, {
