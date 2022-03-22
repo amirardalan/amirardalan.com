@@ -130,7 +130,7 @@ export default function Spotify() {
 
   return (
     <Container title={spotify.meta.title} description={spotify.meta.description}>
-      <div className="spotify">
+      <main className="spotify">
         <div css={styleSpotifyContainer}>
           <h1 className="pageHeading">
             {spotify.headings.main}
@@ -154,7 +154,7 @@ export default function Spotify() {
             </div>
           </div>
         </div>
-      </div>
+      </main>
     </Container>
   )
 }

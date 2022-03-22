@@ -67,6 +67,78 @@ const Post = ({ post, feed, data }) => {
       '.postDetails': {
         marginBottom: '2.5rem',
       },
+      h1: {
+        margin: '0 0 .8rem',
+        textDecoration: 'none',
+        '@media(max-width: 768px)': {
+          margin: '0 0 .5rem',
+          fontSize: 35,
+        }
+      },
+      '.teaser': {
+        marginBottom: '2.5rem',
+        fontFamily: 'var(--font-tertiary)',
+        fontSize: 16,
+        lineHeight: '1.5rem',
+        color: 'var(--color-neutral)',
+      },
+      'h3, h3 code': {
+        fontSize: 28,
+        '@media(max-width: 480px)': {
+          fontSize: 'calc(2.2vw + 2.2vh)',
+          WebkitMarqueeIncrement: '0vw',
+        }
+      },
+      h3: {
+        scrollMarginTop: '4rem',
+        margin: '1rem 0',
+        padding: 0,
+        display: 'inline-block',
+        fontWeight: 'bold',
+        '& code': {
+          fontFamily: 'var(--font-secondary)',
+        },
+        a: {
+          position: 'absolute',
+          display: 'block',
+          height: '100%',
+          width: '100%',
+          '&:hover': {
+            '&::before': {
+              content: '"#"',
+              color: 'var(--color-accent-neutral)',
+              position: 'absolute',
+              textAlign: 'center',
+              top: 4,
+              left: -22,
+              fontSize: 25
+            }
+          },
+        },
+        '@media(hover: none)': {
+          a: { display: 'none' }
+        },
+      },
+      'h1, h2, h3, h3, h4, h5, h6': {
+        position: 'relative',
+      },
+      'p, ul, li, a': {
+        fontFamily: 'var(--font-tertiary)',
+        fontSize: 18,
+        lineHeight: '1.8rem',
+      },
+      'ul, li, a': { 
+        marginBottom: '1rem'
+      },
+      p: {
+        marginBottom: '2rem',
+      },
+      a: {
+        textDecoration: 'underline',
+        '&:hover': {
+          textDecoration: 'none'
+        },
+      },
       '.note': {
         position: 'relative',
         marginBottom: '2.5rem',
@@ -111,79 +183,6 @@ const Post = ({ post, feed, data }) => {
           '&:after': {
             content: '"Warning:"',
           },
-        },
-      },
-      h1: {
-        margin: '0 0 .8rem',
-        textDecoration: 'none',
-        '@media(max-width: 768px)': {
-          margin: '0 0 .5rem',
-          fontSize: 35,
-        }
-      },
-      '.teaser': {
-        marginBottom: '2.5rem',
-        fontFamily: 'var(--font-tertiary)',
-        fontSize: 16,
-        lineHeight: '1.5rem',
-        color: 'var(--color-neutral)',
-      },
-      'h3, h3 code': {
-        fontSize: 28,
-        '@media(max-width: 480px)': {
-          fontSize: 'calc(2.2vw + 2.2vh)',
-          WebkitMarqueeIncrement: '0vw',
-        }
-      },
-      h3: {
-        scrollMarginTop: '4rem',
-        margin: '2rem 0',
-        padding: 0,
-        display: 'inline-block',
-        fontWeight: 'bold',
-        lineHeight: '2.4rem',
-        '& code': {
-          fontFamily: 'var(--font-secondary)',
-        },
-        a: {
-          position: 'absolute',
-          display: 'block',
-          height: '100%',
-          width: '100%',
-          '&:hover': {
-            '&::before': {
-              content: '"#"',
-              color: 'var(--color-accent-neutral)',
-              position: 'absolute',
-              textAlign: 'center',
-              top: 4,
-              left: -22,
-              fontSize: 25
-            }
-          },
-        },
-        '@media(hover: none)': {
-          a: { display: 'none' }
-        },
-      },
-      'h1, h2, h3, h3, h4, h5, h6': {
-        position: 'relative',
-      },
-      'p, ul, li, a': {
-        fontFamily: 'var(--font-tertiary)',
-        fontSize: 18,
-        lineHeight: '1.8rem',
-      },
-      'ul, li, a': { 
-        marginBottom: '1rem'
-      },
-      p: {
-        marginBottom: '2rem',
-      },
-      a: {
-        textDecoration: 'underline',
-        '&:hover': {
-          textDecoration: 'none'
         },
       },
       blockquote: {
@@ -288,6 +287,8 @@ const Post = ({ post, feed, data }) => {
   const editDate = formatDate(post.editedAt)
   const postReadTime = calculateReadTime(post.content)
 
+  console.log(post.publishedAt)
+
   async function publishPost(slug: String, published: boolean): Promise<void> {
     await fetch(`/api/publish/${slug}?published=${published}`, {
       method: 'PUT',
@@ -353,7 +354,7 @@ const Post = ({ post, feed, data }) => {
 
         <Breadcrumbs/>
 
-        <div className="post postFull">
+        <article className="post postFull">
 
           <p
             className="category"
@@ -365,12 +366,20 @@ const Post = ({ post, feed, data }) => {
             {title}
           </h1>
           <p className="teaser">{post.teaser}</p>
-          <div className="postDetails" aria-label={isEdited ? `${editDate} • ${postReadTime}` : `${publishDate} • ${postReadTime}`}>
+          <div 
+            className="postDetails" 
+            aria-label={isEdited 
+              ? `${editDate} • ${postReadTime}` 
+              : `${publishDate} • ${postReadTime}`}
+          >
             <div className="author">
               By <span>{post?.author?.name || 'Unknown author'}</span>
             </div>
-            <div className="postDate">
-              {isEdited && showEdited ? `Updated: ${editDate}`: publishDate } • {postReadTime}
+            <div className="dateAndReadTime">
+              {isEdited && showEdited
+                ? <time dateTime={post.editedAt}>Updated: {editDate}</time> 
+                : <time dateTime={post.publishedAt}>{publishDate}</time>} 
+                  <span className="readTime">• {postReadTime}</span>
             </div>
           </div>
 
@@ -402,7 +411,7 @@ const Post = ({ post, feed, data }) => {
             </div>
           )}
 
-        </div>
+        </article>
 
         <BlogNavigation
           feed={feed}

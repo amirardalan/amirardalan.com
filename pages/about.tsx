@@ -138,10 +138,10 @@ export default function About({ data }) {
 
   return (
     <Container title={data.meta.title} description={data.meta.description}>
-      <div className='about'>
+      <main className='about'>
         <div className='animationWrapper'>
           <h1 className='pageHeading'>{data.heading}</h1>
-          <main css={styleGridWrapper}>
+          <div css={styleGridWrapper}>
             <div className='grid'>
               <ul css={styleBioItems}>
                 <li>
@@ -222,10 +222,10 @@ export default function About({ data }) {
                 </li>
               </ul>
             </div>
-          </main>
+          </div>
         </div>
         <Timeline />
-      </div>
+      </main>
     </Container>
   );
 }

@@ -6,9 +6,9 @@ export default function UsesPage() {
 
   return (
     <Container title={uses.meta.title} description={uses.meta.description}>
-      <div className="uses">
+      <main className="uses">
         <Uses />
-      </div>
+      </main>
     </Container>
   )
 }

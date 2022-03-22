@@ -154,8 +154,8 @@ export default function Home({ data, latestPost }) {
 
   return (
     <Container title={data.meta.title}>
-      <div className="home">
-        <main css={styleMain}>
+      <main className="home">
+        <div css={styleMain}>
           <div className="animationWrapper">
             <div css={styleMainLeft}>
               <div css={styleMainLeftContent}>
@@ -177,8 +177,8 @@ export default function Home({ data, latestPost }) {
               <CanvasLoader />
             </div>
           </div>
-        </main>
-      </div>
+        </div>
+      </main>
     </Container>
   )
 }

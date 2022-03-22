@@ -75,7 +75,7 @@ export default function Custom404() {
 
   return(
     <Container title={error.meta.title} robots="noindex">
-      <div css={style404Wrapper}>
+      <main css={style404Wrapper}>
         <div css={style404Container}>
           <ErrorIcon />
           <h1 aria-label={error.title}>
@@ -102,7 +102,7 @@ export default function Custom404() {
             </Link>
           </div>
         </div>
-      </div>
+      </main>
     </Container>
   )
 }

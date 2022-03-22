@@ -22,9 +22,6 @@ const blogStyles = css({
         content: '""'
       }
     },
-    'h1, h2, h3, h4': {
-      lineHeight: '2.8rem',
-    },
     '.blogListHeading': {
       marginBottom: '.5rem',
       fontFamily: 'var(--font-secondary)',
@@ -134,15 +131,13 @@ const blogStyles = css({
         marginLeft: '.5rem',
       }
     },
-    '.avatar': {
-      display: 'flex',
-      marginRight: '.4rem',
-      alignSelf: 'center',
+    '.readTime': {
+      marginLeft: '.5rem',
     },
     '@media (max-width: 1024px)': {
       flexDirection: 'column',
     },
-    '.postDate': {
+    '.dateAndReadTime': {
       display: 'flex',
       alignItems: 'center',
       '@media (min-width: 1025px)': {

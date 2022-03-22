@@ -22,7 +22,7 @@ const Post = ({ post }) => {
         className="postDetails"
         aria-label={`${publishDate} • ${postReadTime}`}>
           <div className="postDetails">
-            {publishDate} • {postReadTime}
+            <time>{publishDate}</time> • {postReadTime}
           </div>
         </div>
       <p>{post.teaser}</p>
