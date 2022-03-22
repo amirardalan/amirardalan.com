@@ -59,7 +59,7 @@ const Header = ({ toggleTheme }) => {
   })
 
   return (
-    <div css={styleHeaderWrapper}>
+    <header css={styleHeaderWrapper}>
       <div css={styleHeader}>
         <Link
           href="/"
@@ -75,7 +75,7 @@ const Header = ({ toggleTheme }) => {
           <ThemeToggle toggleTheme={toggleTheme} />
         </div>
       </div>
-    </div>
+    </header>
   )
 
 }
