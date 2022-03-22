@@ -206,7 +206,7 @@ export default function Timeline() {
   }
 
   return (
-    <>
+    <section>
       <h2 css={styleTimelineHeading} className='pageHeading center' id='timeline'>
         {timeline.meta.title}
       </h2>
@@ -220,6 +220,6 @@ export default function Timeline() {
           </Link>
         </div>
       </div>
-    </>
+    </section>
   )
 }

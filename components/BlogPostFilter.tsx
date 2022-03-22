@@ -102,7 +102,7 @@ const BlogPostFilter = ({ feed }) => {
     if (filteredPosts.length > 0) {
       return (
         filteredPosts.sort(compareID).reverse().map((post: Record<string, string>) => (
-          <div className="publishedPosts" key={post.id}>
+          <article className="publishedPost" key={post.id}>
             <button
               onClick={() => handleCategoryLink(post.category)}
               onKeyPress={() => handleCategoryLink(post.category)}
@@ -112,7 +112,7 @@ const BlogPostFilter = ({ feed }) => {
               {post.category}
             </button>
             <BlogPost post={post} />
-          </div>
+          </article>
         ))
       )
     } else {

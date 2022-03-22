@@ -2,7 +2,7 @@ import { css } from '@emotion/react'
 
 import Container from '@/components/Container'
 import Avatar from '@/components/Avatar'
-import { GenerateCtaButtons } from '@/components/CtaButtons'
+import { generateCtaButtons } from '@/components/CtaButtons'
 import ContactButton from '@/components/ContactButton'
 import SocialIcons from '@/components/SocialIcons'
 import Timeline from '@/components/Timeline'
@@ -157,7 +157,7 @@ export default function About({ data }) {
                   <em className='blurb'>{data.bio.content}</em>
                 </li>
                 <li css={styleCtaWrapper}>
-                  {GenerateCtaButtons(about.bio.items)}
+                  {generateCtaButtons(about.bio.items)}
                 </li>
               </ul>
             </div>

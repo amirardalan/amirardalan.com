@@ -53,7 +53,7 @@ export default function LatestPost({ latestPost, data }) {
   const renderLatestPost = !latestPost ? {} : latestPost[0]
   const ShowLatestPost = ({ data }) => (
     latestPost ? 
-    <div css={styleLatestPost}>
+    <article css={styleLatestPost}>
       <h4 aria-label={data.latestPost.title}>
         {data.latestPost.title}
       </h4>
@@ -67,7 +67,7 @@ export default function LatestPost({ latestPost, data }) {
       <p>
         {renderLatestPost?.teaser}
       </p>
-    </div> : null
+    </article> : null
   )
 
   return <ShowLatestPost data={data} />

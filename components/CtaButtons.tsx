@@ -1,7 +1,7 @@
 import { Key } from 'react'
 
 
-export const GenerateCtaButtons = (items: Array<any>) => {
+export const generateCtaButtons = (items: Array<any>) => {
 
   return items.map((item, i: Key) => {
     return (

@@ -18,6 +18,10 @@ export default function ContactButton() {
     }, 5000)
   }
 
+  const styleAddress = css({
+    fontStyle: 'normal',
+  })
+
   const styleTooltipContact= css({
     overflow: 'hidden',
     '.tooltip': {
@@ -45,7 +49,7 @@ export default function ContactButton() {
           : 'Show Email'}
       >
         {showEmail
-          ? process.env.NEXT_PUBLIC_USER_EMAIL
+          ? <address css={styleAddress}>{process.env.NEXT_PUBLIC_USER_EMAIL}</address>
           : about.contact.email.title}
       </a>
       <div css={styleTooltipContact}>

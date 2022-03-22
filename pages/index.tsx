@@ -2,7 +2,7 @@ import { css } from '@emotion/react'
 import Container from '@/components/Container'
 import { home } from '@/data/content'
 import LatestPost from '@/components/LatestPost'
-import { GenerateCtaButtons } from '@/components/CtaButtons'
+import { generateCtaButtons } from '@/components/CtaButtons'
 import TypingAnimation from '@/components/TypingAnimation'
 
 import dynamic from 'next/dynamic'
@@ -131,7 +131,7 @@ export default function Home({ data, latestPost }) {
       minHeight: '0vw',
     }
   })
-  const styleButtonContainer = css({
+  const styleCtaButtons = css({
     marginBottom: '1rem',
     display: 'flex',
     flexDirection: 'row',
@@ -157,7 +157,7 @@ export default function Home({ data, latestPost }) {
       <main className="home">
         <div css={styleMain}>
           <div className="animationWrapper">
-            <div css={styleMainLeft}>
+            <div css={styleMainLeft} className="animationWrapper">
               <div css={styleMainLeftContent}>
                 <div className="titleWrapper">
                   <span className="typed" aria-hidden="true">
@@ -165,17 +165,15 @@ export default function Home({ data, latestPost }) {
                   </span>
                   <h1>{data.title}</h1>
                 </div>
-                <div css={styleButtonContainer}>
-                  {GenerateCtaButtons(home.items)}
+                <div css={styleCtaButtons}>
+                  {generateCtaButtons(home.items)}
                 </div>
                 <LatestPost data={data} latestPost={latestPost} />
               </div>
             </div>
           </div>
-          <div className="animationWrapper">
-            <div css={styleMainRight}>
-              <CanvasLoader />
-            </div>
+          <div css={styleMainRight} className="animationWrapper">
+            <CanvasLoader />
           </div>
         </div>
       </main>
