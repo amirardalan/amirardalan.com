@@ -131,21 +131,22 @@ const blogStyles = css({
         marginLeft: '.5rem',
       }
     },
-    '.readTime': {
-      marginLeft: '.5rem',
+    'time, .author': {
+      '&::after': {
+        margin: '0 .5rem',
+        content: '"•"'
+      }
     },
     '@media (max-width: 1024px)': {
       flexDirection: 'column',
+      '.author::after': {
+        margin: 0,
+        content: '""'
+      }
     },
     '.dateAndReadTime': {
       display: 'flex',
       alignItems: 'center',
-      '@media (min-width: 1025px)': {
-        '&::before': {
-          margin: '0 .5rem 0 .5rem',
-          content: '" •"'
-        }
-      },
     },
   },
   '.postTeaser': {

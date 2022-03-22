@@ -70,9 +70,11 @@ const Post = ({ post, feed, data }) => {
       h1: {
         margin: '0 0 .8rem',
         textDecoration: 'none',
+        lineHeight: '2.8rem',
         '@media(max-width: 768px)': {
           margin: '0 0 .5rem',
-          fontSize: 35,
+          fontSize: 32,
+          lineHeight: '2.5rem'
         }
       },
       '.teaser': {
@@ -84,19 +86,20 @@ const Post = ({ post, feed, data }) => {
       },
       'h3, h3 code': {
         fontSize: 28,
-        '@media(max-width: 480px)': {
-          fontSize: 'calc(2.2vw + 2.2vh)',
-          WebkitMarqueeIncrement: '0vw',
-        }
+        lineHeight: '1.8rem',
+        '@media (max-width: 768px)': {
+          fontSize: 24,
+        },
       },
       h3: {
         scrollMarginTop: '4rem',
         margin: '1rem 0 1.5rem',
         padding: 0,
         display: 'inline-block',
-        fontWeight: 'bold',
+        fontWeight: 700,
         '& code': {
           fontFamily: 'var(--font-secondary)',
+          background: 'transparent'
         },
         a: {
           position: 'absolute',
@@ -372,14 +375,14 @@ const Post = ({ post, feed, data }) => {
               ? `${editDate} • ${postReadTime}` 
               : `${publishDate} • ${postReadTime}`}
           >
-            <div className="author">
+            <span className="author">
               By <span>{post?.author?.name || 'Unknown author'}</span>
-            </div>
+            </span>
             <div className="dateAndReadTime">
               {isEdited && showEdited
                 ? <time dateTime={post.editedAt}>Updated: {editDate}</time> 
                 : <time dateTime={post.publishedAt}>{publishDate}</time>} 
-                  <span className="readTime">• {postReadTime}</span>
+                  <span className="readTime">{postReadTime}</span>
             </div>
           </div>
 
