@@ -65,7 +65,7 @@ const Post = ({ post, feed, data }) => {
   const styleBlogPost = css({
     '.postDetails': {
       marginBottom: '2rem',
-      '.author span': {
+      '.author': {
         fontFamily: 'var(--font-secondary)',
         fontWeight: 700,
       },
@@ -103,7 +103,7 @@ const Post = ({ post, feed, data }) => {
         }
       },
       '.teaser': {
-        marginBottom: '4rem',
+        marginBottom: '2.5rem',
         fontFamily: 'var(--font-tertiary)',
         fontSize: 22,
         lineHeight: '1.5rem',
@@ -115,13 +115,6 @@ const Post = ({ post, feed, data }) => {
       'h3, h3 code': {
         fontSize: 24,
         lineHeight: '1.8rem',
-      },
-      h3: {
-        scrollMarginTop: '4rem',
-        margin: '1rem 0',
-        padding: 0,
-        display: 'inline-block',
-        fontWeight: 700,
         '@media(max-width: 768px)': {
           fontSize: 22,
         },
@@ -129,6 +122,13 @@ const Post = ({ post, feed, data }) => {
           lineHeight: '1.5rem',
           fontSize: 18,
         },
+      },
+      h3: {
+        scrollMarginTop: '4rem',
+        margin: '1rem 0',
+        padding: 0,
+        display: 'inline-block',
+        fontWeight: 700,
         '& code': {
           fontFamily: 'var(--font-secondary)',
           background: 'transparent'
@@ -227,7 +227,7 @@ const Post = ({ post, feed, data }) => {
         color: 'var(--color-neutral)',
         'p, a': {
           marginBottom: 0,
-          fontSize: 22,
+          fontSize: 20,
           fontStyle: 'italic'
         },
         '& blockquote': {
@@ -389,9 +389,6 @@ const Post = ({ post, feed, data }) => {
         <Breadcrumbs/>
 
         <article className="post postFull">
-          <div className="category full" aria-label={post.category}>
-            {post.category}
-          </div>
           <div 
             className="postDetails" 
             aria-label={isEdited 
@@ -399,7 +396,7 @@ const Post = ({ post, feed, data }) => {
               : `${publishDate} • ${postReadTime}`}
           >
             <span className="author">
-              By <span>{post?.author?.name || 'Unknown author'}</span>
+              {post?.author?.name || 'Unknown author'}
             </span>
             <span className="dateAndReadTime">
               {isEdited && showEdited
@@ -407,6 +404,9 @@ const Post = ({ post, feed, data }) => {
                 : <time dateTime={post.publishedAt}>{publishDate}</time>} 
                   <span className="readTime">{postReadTime}</span>
             </span>
+          </div>
+          <div className="category full" aria-label={post.category}>
+            {post.category}
           </div>
           <h1 aria-label={`${title}`}>
             {title}

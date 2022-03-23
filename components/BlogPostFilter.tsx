@@ -15,7 +15,7 @@ const BlogPostFilter = ({ feed }) => {
     msOverflowStyle: 'none',
     scrollbarWidth: 'none',
     whiteSpace: 'nowrap',
-    minHeight: 30,
+    minHeight: 32,
     li :{
       display: 'inline',
       margin: '0 1.5rem 0 0',
