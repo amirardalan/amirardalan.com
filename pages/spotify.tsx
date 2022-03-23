@@ -1,9 +1,9 @@
 import { css } from '@emotion/react'
 import { spotify } from '@/data/content'
 import Container from '@/components/Container'
-import NowPlaying from '@/components/NowPlaying'
-import TopTracks from '@/components/TopTracks'
-import TopArtists from '@/components/TopArtists'
+import NowPlaying from '@/components/SpotifyPlayer'
+import TopTracks from '@/components/SpotifyTopTracks'
+import TopArtists from '@/components/SpotifyTopArtists'
 import Profile from '@/components/Profile'
 
 

@@ -3,8 +3,8 @@ import { footer } from '@/data/content'
 import { nav } from '@/data/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
-import Donate from '@/components/Donate'
-import NowPlayingCompact from '@/components/NowPlayingCompact'
+import DonateEth from '@/components/FooterDonate'
+import NowPlayingCompact from '@/components/SpotifyPlayerSmall'
 import { Key } from 'react'
 
 
@@ -186,7 +186,7 @@ export default function Footer() {
           {footer.copyright.name + ' '}
           {footer.copyright.text + ' '}
           {(new Date().getFullYear())} |
-          <Donate />
+          <DonateEth />
         </div>
         
       </div>
