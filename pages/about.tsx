@@ -2,8 +2,7 @@ import { css } from '@emotion/react'
 
 import Container from '@/components/Container'
 import Avatar from '@/components/Avatar'
-import { generateCtaButtons } from '@/components/CtaButtons'
-import ContactButton from '@/components/ContactButton'
+import { generateCtaButtons, ContactButton } from '@/components/CtaButtons'
 import SocialIcons from '@/components/SocialIcons'
 import Timeline from '@/components/Timeline'
 

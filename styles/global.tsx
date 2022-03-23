@@ -15,7 +15,7 @@ const darker = '#191a22'
 const primary = '#744164'
 const secondary = '#3dffc5'
 const grayLight = '#b0bccc'
-const grayDark = '#706f8a'
+const grayDark = '#64647a'
 const grayAccentLight = '#b7b7c9'
 const grayAccentDark = '#494a5c'
 const buttonDisabled = '#9e9eb6'
@@ -138,10 +138,7 @@ export function GlobalStyles () {
           '--icon-time': 'url(/icons/time-dark.svg)',
           '--icon-email': 'url(/icons/email-dark.svg)',
           '--icon-clipboard': 'url(/icons/clipboard-light.svg)',
-        }
-      }} />
-      <Global styles={{
-        // Reset
+        },
         'html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video': {
           margin: 0,
           padding: 0,
@@ -194,8 +191,6 @@ export function GlobalStyles () {
         'input, select': {
           verticalAlign: 'middle',
         },
-      }}/>
-      <Global styles={{
         // Base
         'html, body': {
           backgroundColor: 'var(--color-bg)',
@@ -262,9 +257,6 @@ export function GlobalStyles () {
         '.icon': {
           WebkitTransformStyle: 'preserve-3d',
         },
-      }} />
-      <Global styles={{
-        // Layout
         '.container': {
           minHeight: '50vh',
           marginTop: '2rem',
@@ -277,9 +269,9 @@ export function GlobalStyles () {
             WebkitMarqueeIncrement: '0vw',
             fontWeight: 900,
             textAlign: 'left',
-            
           },
           '@media(max-width: 1024px)': {
+            marginTop: 0,
             padding: '0 2.5rem',
             '.pageHeading': {
               marginBottom: '1.5rem',
@@ -290,10 +282,7 @@ export function GlobalStyles () {
             marginTop: '.5rem',
             padding: '0 1.5rem',
           },
-        }
-      }} />
-      <Global styles={{
-        // CTA Button
+        },
         '.ctaButton': {
           minWidth: 128,
           minHeight: 42,
@@ -383,10 +372,7 @@ export function GlobalStyles () {
             },
             width: '100%',
           }
-        }
-      }}/>
-      <Global styles={{
-        // Tooltip
+        },
         '.tooltip': {
           position: 'relative',
           borderRadius: 5,
@@ -407,10 +393,7 @@ export function GlobalStyles () {
             borderLeft: '6px solid transparent',
             borderRight: '6px solid transparent',
           }
-        }
-      }} />
-      <Global styles={{
-        // Utils
+        },
         '.hidden': {
           display: 'none'
         },
@@ -418,16 +401,10 @@ export function GlobalStyles () {
           display: 'flex',
           justifyContent: 'center',
         },
-      }} />
-      <Global styles={{
-        // Text Highlighting
         '::selection': {
           background: 'var(--color-accent-neutral)',
           color: 'var(--color-text)',
         },
-      }} />
-      <Global styles={{
-        // Animation
         '.animationWrapper':{
           width: '100%',
           overflow: 'hidden',
