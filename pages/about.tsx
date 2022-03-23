@@ -76,7 +76,7 @@ export default function About({ data }) {
       },
       '.availability': {
         fontFamily: 'var(--font-secondary)',
-        color: 'var(--color-neutral)',
+        color: 'var(--color-text)',
         fontSize: 16
       },
     },

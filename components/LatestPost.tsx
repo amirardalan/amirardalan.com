@@ -28,7 +28,7 @@ export default function LatestPost({ latestPost, data }) {
       a: {
         lineHeight: '1.5rem',
         fontFamily: 'var(--font-secondary)',
-        fontSize: 20,
+        fontSize: 18,
         fontWeight: 'normal',
         textDecoration: 'underline',
         cursor: 'pointer',
