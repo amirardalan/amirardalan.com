@@ -1,6 +1,6 @@
 import useSWR from 'swr'
 import fetcher from '@/lib/fetcher'
-import Artist from '@/components/Artist'
+import Artist from '@/components/SpotifyArtist'
 
 
 export default function TopArtists() {
