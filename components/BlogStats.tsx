@@ -11,11 +11,6 @@ export default function BlogStats({ feed, activeCategories }) {
     display: 'flex',
     justifyContent: 'space-between',
     marginBottom: '1rem',
-    paddingBottom: '1rem',
-    '@media(max-width: 1024px)': {
-      marginBottom: '.8rem',
-      paddingBottom: '.8rem',
-    },
     ul: {
       display: 'flex',
       alignItems: 'flex-end',

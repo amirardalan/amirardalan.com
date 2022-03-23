@@ -35,6 +35,7 @@ const BlogPostFilter = ({ feed }) => {
     caretColor: 'var(--color-neutral)',
     input: {
       fontSize: 15,
+      marginBottom: 0,
     },
     '.icon': {
       position: 'absolute',
