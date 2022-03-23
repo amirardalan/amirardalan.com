@@ -64,7 +64,28 @@ const Post = ({ post, feed, data }) => {
 
   const styleBlogPost = css({
     '.postDetails': {
-      marginBottom: '.5rem',
+      marginBottom: '2rem',
+      '.author span': {
+        fontFamily: 'var(--font-secondary)',
+        fontWeight: 700,
+      },
+      '.dateAndReadTime': {
+        time: {
+          '&:before, &:after': {
+            margin: '0 .5rem',
+            content: '"•"'
+          },
+        },
+        '@media(max-width: 480px)': {
+          '.author:after, time:before': {
+            content: '""',
+            margin: 0
+          },
+        }
+      },
+      '@media(max-width: 480px)': {
+        flexDirection: 'column',
+      }
     },
     '.postFull': {
       h1: {
@@ -82,7 +103,7 @@ const Post = ({ post, feed, data }) => {
         }
       },
       '.teaser': {
-        marginBottom: '2.5rem',
+        marginBottom: '4rem',
         fontFamily: 'var(--font-tertiary)',
         fontSize: 22,
         lineHeight: '1.5rem',
@@ -367,26 +388,25 @@ const Post = ({ post, feed, data }) => {
 
         <Breadcrumbs/>
 
-        <div 
-          className="postDetails" 
-          aria-label={isEdited 
-            ? `${editDate} • ${postReadTime}` 
-            : `${publishDate} • ${postReadTime}`}
-        >
-          <span className="author">
-            {post?.author?.name || 'Unknown author'}
-          </span>
-          <span className="dateAndReadTime">
-            {isEdited && showEdited
-              ? <time dateTime={post.editedAt}>Updated: {editDate}</time> 
-              : <time dateTime={post.publishedAt}>{publishDate}</time>} 
-                <span className="readTime">{postReadTime}</span>
-          </span>
-        </div>
-
         <article className="post postFull">
           <div className="category full" aria-label={post.category}>
             {post.category}
+          </div>
+          <div 
+            className="postDetails" 
+            aria-label={isEdited 
+              ? `${editDate} • ${postReadTime}` 
+              : `${publishDate} • ${postReadTime}`}
+          >
+            <span className="author">
+              By <span>{post?.author?.name || 'Unknown author'}</span>
+            </span>
+            <span className="dateAndReadTime">
+              {isEdited && showEdited
+                ? <time dateTime={post.editedAt}>Updated: {editDate}</time> 
+                : <time dateTime={post.publishedAt}>{publishDate}</time>} 
+                  <span className="readTime">{postReadTime}</span>
+            </span>
           </div>
           <h1 aria-label={`${title}`}>
             {title}

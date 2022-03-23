@@ -112,9 +112,6 @@ const blogStyles = css({
     '.publishedPost' : {
       display: 'block',
       marginBottom: '1rem',
-      // '@media(max-width: 480px)': {
-      //   marginBottom: '1rem'
-      // }
     }
   },
   '.postDetails': {
@@ -123,26 +120,16 @@ const blogStyles = css({
     color: 'var(--color-neutral)',
     fontSize: 13,
     lineHeight: '1.2rem',
-    '.author': {
-      fontFamily: 'var(--font-secondary)',
-      fontWeight: 700,
-    },
-    'time, .author': {
-      '&::after': {
+    'time': {
+      '&:after': {
         margin: '0 .5rem',
         content: '"•"'
       }
     },
-    '@media (max-width: 480px)': {
-      flexDirection: 'column',
-      '.author::after': {
-        margin: 0,
-        content: '""'
-      }
-    }
   },
   '.postTeaser': {
     position: 'relative',
+    color: 'var(--color-neutral)',
     h2: {
       marginBottom: '.4rem',
       fontSize: 32,
