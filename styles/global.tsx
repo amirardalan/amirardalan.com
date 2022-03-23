@@ -188,8 +188,9 @@ export function GlobalStyles () {
           margin: '4rem 0 1.5em 0',
           padding: 0,
         },
-        'input, select': {
+        'input, textarea, select': {
           verticalAlign: 'middle',
+          caretColor: 'var(--color-text)'
         },
         // Base
         'html, body': {
