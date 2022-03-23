@@ -7,8 +7,8 @@ const fontTertiary = '"PT Serif", "Times New Roman", Times, serif'
 
 // Colors
 const light = '#e4e9f8'
-const lightAccent = '#dde2f1'
-const lighter = '#d8dbed'
+const lightAccent = '#d7ddeb'
+const lighter = '#d5d9ee'
 const dark = '#262738'
 const darkAccent = '#2f3044'
 const darker = '#191a22'
