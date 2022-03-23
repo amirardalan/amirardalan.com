@@ -63,40 +63,51 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 const Post = ({ post, feed, data }) => {
 
   const styleBlogPost = css({
+    '.postDetails': {
+      marginBottom: '.5rem',
+    },
     '.postFull': {
-      '.postDetails': {
-        marginBottom: '2.5rem',
-      },
       h1: {
         margin: '0 0 .8rem',
         textDecoration: 'none',
         lineHeight: '2.8rem',
         '@media(max-width: 768px)': {
-          margin: '0 0 .5rem',
           fontSize: 32,
+          margin: '0 0 .5rem',
           lineHeight: '2.5rem'
+        },
+        '@media(max-width: 480px)': {
+          fontSize: 28,
+          lineHeight: '2rem'
         }
       },
       '.teaser': {
-        marginBottom: '1rem',
+        marginBottom: '2.5rem',
         fontFamily: 'var(--font-tertiary)',
-        fontSize: 16,
+        fontSize: 22,
         lineHeight: '1.5rem',
         color: 'var(--color-neutral)',
+        '@media(max-width: 768px)': {
+          fontSize: 16,
+        }
       },
       'h3, h3 code': {
-        fontSize: 28,
+        fontSize: 24,
         lineHeight: '1.8rem',
-        '@media (max-width: 768px)': {
-          fontSize: 24,
-        },
       },
       h3: {
         scrollMarginTop: '4rem',
-        margin: '1rem 0 1.5rem',
+        margin: '1rem 0',
         padding: 0,
         display: 'inline-block',
         fontWeight: 700,
+        '@media(max-width: 768px)': {
+          fontSize: 22,
+        },
+        '@media(max-width: 480px)': {
+          lineHeight: '1.5rem',
+          fontSize: 18,
+        },
         '& code': {
           fontFamily: 'var(--font-secondary)',
           background: 'transparent'
@@ -189,9 +200,9 @@ const Post = ({ post, feed, data }) => {
         },
       },
       blockquote: {
-        margin: '2rem -2.5rem',
-        padding: '0 2rem',
-        borderLeft: '8px solid var(--color-accent-neutral)',
+        margin: '2.5rem -1.5rem',
+        padding: '0 1rem',
+        borderLeft: '8px solid var(--color-primary)',
         color: 'var(--color-neutral)',
         'p, a': {
           marginBottom: 0,
@@ -356,34 +367,31 @@ const Post = ({ post, feed, data }) => {
 
         <Breadcrumbs/>
 
-        <article className="post postFull">
+        <div 
+          className="postDetails" 
+          aria-label={isEdited 
+            ? `${editDate} • ${postReadTime}` 
+            : `${publishDate} • ${postReadTime}`}
+        >
+          <span className="author">
+            {post?.author?.name || 'Unknown author'}
+          </span>
+          <span className="dateAndReadTime">
+            {isEdited && showEdited
+              ? <time dateTime={post.editedAt}>Updated: {editDate}</time> 
+              : <time dateTime={post.publishedAt}>{publishDate}</time>} 
+                <span className="readTime">{postReadTime}</span>
+          </span>
+        </div>
 
-          <p
-            className="category"
-            aria-label={post.category}
-          >
+        <article className="post postFull">
+          <div className="category full" aria-label={post.category}>
             {post.category}
-          </p>
+          </div>
           <h1 aria-label={`${title}`}>
             {title}
           </h1>
           <p className="teaser">{post.teaser}</p>
-          <div 
-            className="postDetails" 
-            aria-label={isEdited 
-              ? `${editDate} • ${postReadTime}` 
-              : `${publishDate} • ${postReadTime}`}
-          >
-            <span className="author">
-              By <span>{post?.author?.name || 'Unknown author'}</span>
-            </span>
-            <div className="dateAndReadTime">
-              {isEdited && showEdited
-                ? <time dateTime={post.editedAt}>Updated: {editDate}</time> 
-                : <time dateTime={post.publishedAt}>{publishDate}</time>} 
-                  <span className="readTime">{postReadTime}</span>
-            </div>
-          </div>
 
           <Markdown markdown={post} />
 

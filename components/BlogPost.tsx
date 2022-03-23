@@ -26,7 +26,7 @@ const Post = ({ post }) => {
             <span className="readTime">{postReadTime}</span>
           </div>
         </div>
-      <p>{post.teaser}</p>
+      <p className="teaser">{post.teaser}</p>
     </div>
   )
 }

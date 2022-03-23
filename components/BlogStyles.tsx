@@ -20,7 +20,7 @@ const blogStyles = css({
       },
       '&.all:before': {
         content: '""'
-      }
+      },
     },
     '.blogListHeading': {
       marginBottom: '.5rem',
@@ -71,9 +71,6 @@ const blogStyles = css({
         marginTop: '.5rem',
         lineHeight: '1.4rem',
       },
-      '@media(max-width: 480px)': {
-        marginBottom: '2.5rem'
-      }
     },
     '&.admin': {
       maxWidth: '100%',
@@ -114,7 +111,10 @@ const blogStyles = css({
     marginTop: '2rem',
     '.publishedPost' : {
       display: 'block',
-      marginBottom: '2.5rem',
+      marginBottom: '1rem',
+      // '@media(max-width: 480px)': {
+      //   marginBottom: '1rem'
+      // }
     }
   },
   '.postDetails': {
@@ -123,13 +123,9 @@ const blogStyles = css({
     color: 'var(--color-neutral)',
     fontSize: 13,
     lineHeight: '1.2rem',
-    '.author, .authorLink': {
-      display: 'flex',
-      alignItems: 'center',
-      span: {
-        textTransform: 'uppercase',
-        marginLeft: '.5rem',
-      }
+    '.author': {
+      fontFamily: 'var(--font-secondary)',
+      fontWeight: 700,
     },
     'time, .author': {
       '&::after': {
@@ -137,17 +133,13 @@ const blogStyles = css({
         content: '"•"'
       }
     },
-    '@media (max-width: 1024px)': {
+    '@media (max-width: 480px)': {
       flexDirection: 'column',
       '.author::after': {
         margin: 0,
         content: '""'
       }
-    },
-    '.dateAndReadTime': {
-      display: 'flex',
-      alignItems: 'center',
-    },
+    }
   },
   '.postTeaser': {
     position: 'relative',
