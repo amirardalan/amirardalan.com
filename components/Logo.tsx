@@ -4,7 +4,6 @@ import { logo } from '@/data/content'
 
 export default function Logo() {
 
-
   const styleLogoWrapper = css({
     display: 'flex',
     flexDirection: 'row'
@@ -17,24 +16,27 @@ export default function Logo() {
     height: 24,
     width: 24,
   })
+
+  const styleWordMark = css({
+    marginLeft: '.4rem',
+    textAlign: 'left',
+  })
+
   const styleTitle = css({
     display: 'block',
-    margin: '0 0 0 .2rem',
     fontWeight: 'bold',
     fontSize: '14px',
     color: 'var(--color-text)',
     lineHeight: '1rem'
   })
+  
   const styleTitleSub = css({
     position: 'relative',
-    margin: '0 0 0 .2rem',
     color: 'var(--color-neutral)',
     fontFamily: 'var(--font-primary)',
     fontSize: '8px',
     fontWeight: 'normal',
     letterSpacing: '.11rem',
-    paddingLeft: '.09rem',
-    textAlign: 'left',
     textTransform: 'uppercase'
   })
 
@@ -42,7 +44,7 @@ export default function Logo() {
   return (
     <div css={styleLogoWrapper}>
       <div css={styleLogo}></div>
-      <div>
+      <div css={styleWordMark}>
         <title css={styleTitle}>
           {logo.title}
         </title>
