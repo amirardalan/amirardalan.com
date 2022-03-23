@@ -3,7 +3,7 @@ import { css } from '@emotion/react'
 import Image from 'next/image'
 import { donate } from '@/data/content'
 
-export default function Donate() {
+export default function DonateEth() {
 
   const [showQrCode, setShowQrCode] = useState(false)
 
