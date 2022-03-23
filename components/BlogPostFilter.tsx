@@ -4,6 +4,7 @@ import Image from 'next/image'
 
 import BlogStats from '@/components/BlogStats'
 import BlogPost from '@/components/BlogPost'
+import CloseButton from '@/components/CloseButton'
 import { blog } from '@/data/content'
 import compareID from '@/utils/compareID'
 
@@ -48,7 +49,7 @@ const BlogPostFilter = ({ feed }) => {
       position: 'absolute',
       width: 24,
       height: 24,
-      top: 16,
+      top: 16.5,
       right: 8,
       cursor: 'pointer',
     },
@@ -125,27 +126,13 @@ const BlogPostFilter = ({ feed }) => {
               onKeyPress={() => setSearch('')}
               aria-label={blog.search.clear}
             >
-              <CloseIcon width={12} height={12}/>
+              <CloseButton width={12} height={12}/>
               {' '+blog.search.clear}
             </button>
             : null}
           </span>
         )
     }
-  }
-
-  const CloseIcon: Function = ({width, height}) => {
-    return (
-      <Image
-        src={theme.icons.close}
-        width={width}
-        height={height}
-        priority
-        alt={blog.search.clear}
-        aria-label={blog.search.clear}
-        draggable={false}
-      />
-    )
   }
 
   const SearchIcon: Function = () => {
@@ -170,7 +157,7 @@ const BlogPostFilter = ({ feed }) => {
             onKeyPress={() => setSearch('')}
             className="clearSearch"
           >
-            <CloseIcon width={25} height={25} />
+            <CloseButton width={25} height={25} />
           </button>
         )
     }
@@ -183,7 +170,7 @@ const BlogPostFilter = ({ feed }) => {
           onClick={() => handleClearFilters()}
           onKeyPress={() => handleClearFilters()}
           aria-label="Clear Filter">
-          <CloseIcon width={12} height={12}/>
+          <CloseButton width={12} height={12}/>
           <span>{' '+blog.search.clearFilter}</span>
         </button>
       )

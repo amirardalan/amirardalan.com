@@ -1,14 +1,12 @@
-import { css, useTheme } from '@emotion/react'
+import { css } from '@emotion/react'
 import { useState } from 'react'
+import CloseButton from '@/components/CloseButton'
 import Link from '@/components/Link'
 import Logo from '@/components/Logo'
 import { nav } from '@/data/navigation'
 
 
 export default function Navigation() {
-  
-  const theme: any = useTheme()
-  const isDarkTheme = theme.active === 'dark'
   
   const styleMainNav = css({
     display: 'flex',
@@ -24,7 +22,7 @@ export default function Navigation() {
     }
   })
   const styleMobileNavWrapper = css ({
-    padding: '2rem',
+    padding: '1.5rem',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'left',
@@ -52,53 +50,47 @@ export default function Navigation() {
     '@media(min-width: 769px)': {
       display: 'none',
     },
+    '@media(max-width: 768px)': {
+      padding: '2.5rem',
+    },
+    '@media(max-width: 480px)': {
+      padding: '1.5rem',
+    },
+    '@keyframes spin': {
+      from: { transform: 'rotate(0deg)' },
+      to: { transform: 'rotate(180deg)' }
+    }
   })
   const styleMobileNavButton = css({
-    alignItems: 'center',
-    marginLeft: 30,
-    zIndex: 6,
-    width: 36,
-    height: 22,
-    background: 'transparent',
-    border: 'none',
-    transform: 'rotate(0deg)',
-    cursor: 'pointer',
-    span: {
-      display: 'block',
-      position: 'absolute',
-      height: 3,
-      width: '100%',
-      background: 'var(--color-text)',
-      opacity: 1,
-      left: 0,
-      transform: 'rotate(0deg)',
-      transition: '.25s ease-in-out',
-      '&:nth-of-type(1)': { top: 0, },
-      '&:nth-of-type(2)': { top: 10, },
-      '&:nth-of-type(3)': { top: 10, },
-      '&:nth-of-type(4)': { top: 20, }
+    display: 'none',
+    zIndex: 2,
+    marginLeft: '2rem',
+    '.menuOpen': {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      height: 28,
+      width: 28,
+      textTransform: 'uppercase',
+      textAlign: 'center',
+      fontSize: 9,
+      boxShadow: 'inset 0 0 0 1px var(--color-primary)',
+      borderRadius: 20,
+      '&:active': {
+        background: 'var(--color-primary)',
+        color: 'var(--color-bg)',
+      }
     },
-    '&.open': {
-      'span:nth-of-type(1)': {
-        top: 10,
-        width: 0,
-        left: '50%',
-      },
-      'span:nth-of-type(2)': {
-        transform: 'rotate(45deg)',
-      },
-      'span:nth-of-type(3)': {
-        transform: 'rotate(-45deg)',
-      },
-      'span:nth-of-type(4)': {
-        top: 14,
-        width: '0%',
-        left: '50%',
-      },
+    '.menuClose': {
+      display: 'flex',
+      alignItems: 'right',
+      justifyContent: 'flex-end',
+      animation: 'spin 1s forwards'
     },
-    '@media(min-width: 769px)': {
-      display: 'none',
-    },
+    '@media(max-width: 768px)': {
+      display: 'flex',
+      justifyContent: 'right',
+    }
   })
 
   const styleNavIcon = css({
@@ -123,17 +115,11 @@ export default function Navigation() {
           position: 'absolute',
           content: '">"',
           left: -10,
+          '@media(max-width: 768px)': {
+            left: -20,
+          }
         }
-      },
-      '@media (max-width: 768px)': {
-        '&.active': {
-          '&::before': {
-            position: 'absolute',
-            content: '">"',
-            left: -30,
-          },
-        },
-      },
+      }
     },
     '.spotifyNav': {
       marginTop: 2,
@@ -148,8 +134,7 @@ export default function Navigation() {
     '@media(max-width: 768px)': {
       flexDirection: 'column',
       alignItems: 'flex-end',
-      fontSize: 'calc(3vw + 3vh)',
-      WebkitMarqueeIncrement: '0vw',
+      fontSize: 30,
       lineHeight: '3.4rem',
     },
     '@media (max-width: 768px) and (max-height: 600px)': {
@@ -201,7 +186,7 @@ export default function Navigation() {
       <button
         className="closeArea"
         onClick={toggleMenu}
-      ></button>
+      />
     </div>
   )
 
@@ -227,12 +212,11 @@ export default function Navigation() {
       <button
         css={styleMobileNavButton}
         onClick={toggleMenu}
-        className={toggleMobileNav ? 'open' : 'closed'}
+        className={toggleMobileNav ? 'open' : null}
         aria-label="Navigation Menu">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
+        {toggleMobileNav
+          ? <div className="menuClose"><CloseButton width={28} height={28}/></div>
+          : <div className="menuOpen">•••</div>}
       </button>
       { toggleMobileNav ? <MobileMenu /> : null }
     </>
