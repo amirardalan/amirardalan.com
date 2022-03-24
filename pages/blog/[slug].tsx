@@ -222,7 +222,7 @@ const Post = ({ post, feed, data }) => {
       },
       blockquote: {
         margin: '2.5rem -1.5rem',
-        padding: '0 1rem',
+        padding: '0 2rem',
         borderLeft: '8px solid var(--color-primary)',
         color: 'var(--color-neutral)',
         'p, a': {
@@ -234,10 +234,6 @@ const Post = ({ post, feed, data }) => {
           marginLeft: '1rem',
           borderLeft: '8px solid var(--color-neutral)',
         },
-        '@media(max-width: 480px)': {
-          margin: '2rem -1.5rem',
-          padding: '0 1rem',
-        }
       },
       'ul li': {
         listStyle: 'outside',

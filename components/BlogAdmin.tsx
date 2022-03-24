@@ -261,9 +261,6 @@ const BlogAdmin = React.memo(function BlogAdmin() {
               fontStyle: 'italic',
             },
           },
-          p: {
-            marginBottom: 0,
-          },
           '@media (max-width: 480px)': {
             padding: '1rem',
             'h2 a': {
@@ -272,7 +269,7 @@ const BlogAdmin = React.memo(function BlogAdmin() {
           },
           '.blog.postTeaser': {
             margin: '0 .5rem 0 0',
-            p: {
+            'p.teaser': {
               marginBottom: 0,
             }
           }
