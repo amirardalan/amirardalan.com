@@ -67,7 +67,7 @@ export default function BlogMarkdown({ markdown }) {
         transform: 'translateZ(0)',
         minWidth: '100%',
         float: 'left',
-        '& > span': {
+        '& > span[data="highlight"]': {
           display: 'block',
           '&:last-of-type': {
             display: 'none',
@@ -142,7 +142,7 @@ export default function BlogMarkdown({ markdown }) {
           PreTag="div"
           className="codeStyle"
           showLineNumbers={true}
-          wrapLines={true}
+          wrapLines={hasMeta ? true : false}
           useInlineStyles={true}
           lineProps={applyHighlights}
           {...props}
