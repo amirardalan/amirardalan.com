@@ -144,9 +144,9 @@ const Post = ({ post, feed, data }) => {
               color: 'var(--color-accent-neutral)',
               position: 'absolute',
               textAlign: 'center',
-              top: 4,
+              top: -1,
               left: -22,
-              fontSize: 25
+              fontSize: 26
             }
           },
         },
