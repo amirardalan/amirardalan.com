@@ -26,7 +26,7 @@ export default function About({ data }) {
       backgroundColor: 'var(--color-accent)',
       lineHeight: '1.8rem',
       animation: 'slideUpSection .5s forwards',
-      h4: {
+      h3: {
         fontFamily: 'var(--font-secondary)',
       },
       '@media (max-width: 1024px)': {
@@ -59,6 +59,7 @@ export default function About({ data }) {
       },
       '.bioSubHeading': {
         lineHeight: '1.2rem',
+        margin: '2rem 0 1rem'
       },
       '.availability': {
         fontFamily: 'var(--font-secondary)',
@@ -66,7 +67,14 @@ export default function About({ data }) {
         fontSize: 16
       },
     },
-    h4: {
+    'h2, h3': {
+      fontWeight: 700,
+    },
+    h2: {
+      color: 'var(--color-text)',
+      fontSize: 18,
+    },
+    h3: {
       marginBottom: '1.5rem',
       paddingBottom: '1rem',
       fontSize: 22,
@@ -134,7 +142,7 @@ export default function About({ data }) {
                   <Avatar height='100' width='100' />
                 </li>
                 <li aria-label={about.bio.subheading} className="bioSubHeading">
-                  <strong>{about.bio.subheading}</strong>
+                  <h2>{about.bio.subheading}</h2>
                 </li>
                 <li>
                   <em className='blurb'>{about.bio.content}</em>
@@ -147,13 +155,13 @@ export default function About({ data }) {
             <div className='grid'>
               <ul>
                 <li>
-                  <h4 aria-label='{about.skills.title}'>{about.skills.title}</h4>
+                  <h3 aria-label='{about.skills.title}'>{about.skills.title}</h3>
                 </li>
                 {GenerateListItems(about.skills.items)}
               </ul>
               <ul>
                 <li>
-                  <h4 aria-label='{about.skills.title}'>{about.stack.title}</h4>
+                  <h3 aria-label='{about.skills.title}'>{about.stack.title}</h3>
                 </li>
                 {GenerateListItems(about.stack.items)}
               </ul>
@@ -161,9 +169,9 @@ export default function About({ data }) {
             <div className='grid'>
               <ul>
                 <li>
-                  <h4 aria-label={about.experience.title}>
+                  <h3 aria-label={about.experience.title}>
                     {about.experience.title}
-                  </h4>
+                  </h3>
                 </li>
                 {GenerateListItems(about.experience.items)}
               </ul>
@@ -171,9 +179,9 @@ export default function About({ data }) {
             <div className='grid'>
               <ul>
                 <li>
-                  <h4 aria-label={about.availability.title}>
+                  <h3 aria-label={about.availability.title}>
                     {about.availability.title}
-                  </h4>
+                  </h3>
                 </li>
                 <li className="availability">
                   {about.availability.text}
@@ -187,7 +195,7 @@ export default function About({ data }) {
               <div css={styleSocialIconsWrapper}>
                 <ul>
                   <li>
-                    <h4>{about.social.title}</h4>
+                    <h3>{about.social.title}</h3>
                   </li>
                   <li css={styleSocialIcons}>
                     <SocialIcons />
@@ -198,7 +206,7 @@ export default function About({ data }) {
             <div className='grid'>
               <ul>
                 <li>
-                  <h4 aria-label={about.contact.title}>{about.contact.title}</h4>
+                  <h3 aria-label={about.contact.title}>{about.contact.title}</h3>
                 </li>
                 <li css={styleCtaWrapper}>
                   <ContactButton />

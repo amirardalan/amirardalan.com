@@ -22,13 +22,13 @@ export default function LatestPost({ latestPost, data }) {
       }
     },
     'h3 a' : {
-      lineHeight: '1rem',
       fontFamily: 'var(--font-secondary)',
       fontSize: 16,
+      fontWeight: 700,
     },
     p: {
       marginTop: '.5rem',
-      lineHeight: '1rem',
+      lineHeight: '.5rem',
       fontSize: 11,
       color: 'var(--color-neutral)',
       '@media(max-width: 480px)': {
