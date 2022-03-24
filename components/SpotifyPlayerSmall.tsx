@@ -16,7 +16,7 @@ export default function NowPlaying() {
 
   return (
     <>
-      <h5 css={{ display: 'flex' }}>
+      <h4 css={{ display: 'flex' }}>
         <Image
           src={isDarkTheme
             ? spotify.icon?.dark
@@ -30,7 +30,7 @@ export default function NowPlaying() {
           css={{ marginLeft: '.5rem' }}>
           { isOnline ? 'Now Playing' : 'Spotify' }
         </span>
-      </h5>
+      </h4>
       <ul>
         <li className="nowPlaying">
           <Link href={isOnline ? '/spotify' : '/spotify'}>

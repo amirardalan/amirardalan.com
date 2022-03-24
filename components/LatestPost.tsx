@@ -5,8 +5,9 @@ import { css } from '@emotion/react'
 export default function LatestPost({ latestPost, data }) {
 
   const styleLatestPost = css({
-    h4: {
+    h2: {
       margin: '2rem 0 .5rem',
+      fontFamily: 'var(--font-primary)',
       fontSize: 12,
       fontWeight: 'normal',
       textTransform: 'uppercase',
@@ -20,7 +21,7 @@ export default function LatestPost({ latestPost, data }) {
         marginRight: '.5rem',
       }
     },
-    'h5 a' : {
+    'h3 a' : {
       lineHeight: '1rem',
       fontFamily: 'var(--font-secondary)',
       fontSize: 16,
@@ -37,21 +38,24 @@ export default function LatestPost({ latestPost, data }) {
   })
   
   const renderLatestPost = !latestPost ? {} : latestPost[0]
+  
   const ShowLatestPost = ({ data }) => (
-    latestPost ? 
-    <article css={styleLatestPost}>
-      <h4 aria-label={data.latestPost.title}>
+    latestPost ?
+    <div css={styleLatestPost}>
+      <h2 aria-label={data.latestPost.title}>
         {data.latestPost.title}
-      </h4>
-      <h5>
-        <Link
-          href={`/blog/${encodeURIComponent(renderLatestPost?.slug)}`}
-          aria-label={renderLatestPost?.title}>
-          {renderLatestPost?.title}
-        </Link>
-      </h5>
-      <p>{renderLatestPost?.teaser}</p>
-    </article> : null
+      </h2>
+      <article>
+        <h3>
+          <Link
+            href={`/blog/${encodeURIComponent(renderLatestPost?.slug)}`}
+            aria-label={renderLatestPost?.title}>
+            {renderLatestPost?.title}
+          </Link>
+        </h3>
+        <p>{renderLatestPost?.teaser}</p>
+      </article>
+    </div> : null
   )
 
   return <ShowLatestPost data={data} />

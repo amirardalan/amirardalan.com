@@ -69,7 +69,7 @@ export default function Footer() {
         marginBottom: '1.5rem',
       },
     },
-    h5: {
+    h4: {
       marginBottom: '1rem',
       paddingBottom: '1rem',
       lineHeight: '1rem',
@@ -152,7 +152,7 @@ export default function Footer() {
           <NowPlayingCompact />
         </div>
         <div css={styleFooterNav} className="grid">
-          <h5>{footer.headings.nav}</h5>
+          <h4>{footer.headings.nav}</h4>
           <ul>
             {nav.map((item: any, i: number) => {
               return (
@@ -168,13 +168,13 @@ export default function Footer() {
           </ul>
         </div>
         <div className="grid">
-          <h5>{footer.headings.social}</h5>
+          <h4>{footer.headings.social}</h4>
           <ul>
             {generateFooterLinks(footer.social)}
           </ul>
         </div>
         <div className="grid">
-          <h5>{footer.headings.poweredby}</h5>
+          <h4>{footer.headings.poweredby}</h4>
           <ul>
             {generateFooterLinks(footer.poweredby)}
           </ul>
