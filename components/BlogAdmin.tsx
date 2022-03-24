@@ -143,6 +143,7 @@ const BlogAdmin = React.memo(function BlogAdmin() {
 
   return (
     <>
+      {isLoggedIn ?
       <Global styles={{
         '.breadcrumbs': {
           display: 'flex',
@@ -165,6 +166,37 @@ const BlogAdmin = React.memo(function BlogAdmin() {
               textOverflow: 'ellipsis',
             }
           }
+        },
+        '.blog.admin': {
+          width: '100%',
+          '.drafts': {
+            marginTop: '1rem',
+          },
+          form: {
+            marginTop: '1rem'
+          },
+          '.postOptions': {
+            display: 'flex',
+            flexDirection: 'row',
+            fontSize: 13,
+            '@media(max-width: 480px)': {
+              flexDirection: 'column'
+            }
+          },
+          '.showEditDate, .dropdownLabel': {
+            display: 'flex',
+            alignItems: 'center',
+            marginTop: '1rem',
+          },
+          '.checkbox': {
+            marginRight: '.5rem'
+          },
+          '.dropdownLabel': {
+            marginRight: '2rem',
+            span: {
+              marginRight: '.5rem'
+            }
+          },
         },
         '.buttonCompact': {
           minWidth: 80,
@@ -277,7 +309,8 @@ const BlogAdmin = React.memo(function BlogAdmin() {
         '.noDrafts': {
           marginTop: '6rem',
         },
-      }}/>
+      }}/> : null}
+
       <div css={styleAnimationWrapper}>
         <nav css={styleAdminPanel}>
           {isLoggedIn ? <AdminPanel/> : null}

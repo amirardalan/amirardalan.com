@@ -93,8 +93,6 @@ export function GlobalStyles () {
           '--code-highlight': codeHighlight,
         },
         'body, body[data-theme="light"]': {
-          '--logo': 'url(/logo/logo-light.svg)',
-          '--logo-footer': 'url(/logo/logo-footer-light.svg)',
           '--color-primary': primary,
           '--color-bg': light,
           '--color-text': darkAccent,
@@ -114,11 +112,11 @@ export function GlobalStyles () {
           '--icon-time': 'url(/icons/time-light.svg)',
           '--icon-email': 'url(/icons/email-light.svg)',
           '--icon-clipboard': 'url(/icons/clipboard-dark.svg)',
+          '--logo': 'url(/logo/logo-light.svg)',
+          '--logo-footer': 'url(/logo/logo-footer-light.svg)',
         },
         
         'body[data-theme="dark"]': {
-          '--logo': 'url(/logo/logo-dark.svg)',
-          '--logo-footer': 'url(/logo/logo-footer-dark.svg)',
           '--color-primary': secondary,
           '--color-bg': dark,
           '--color-text': lightAccent,
@@ -138,6 +136,8 @@ export function GlobalStyles () {
           '--icon-time': 'url(/icons/time-dark.svg)',
           '--icon-email': 'url(/icons/email-dark.svg)',
           '--icon-clipboard': 'url(/icons/clipboard-light.svg)',
+          '--logo': 'url(/logo/logo-dark.svg)',
+          '--logo-footer': 'url(/logo/logo-footer-dark.svg)',
         },
         'html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video': {
           margin: 0,

@@ -80,37 +80,6 @@ const blogStyles = css({
     },
     '&.admin': {
       maxWidth: '100%',
-      '.breadcrumbs': {
-        marginTop: '1rem',
-      },
-      '.drafts': {
-        marginTop: '1rem',
-      },
-      form: {
-        marginTop: '1rem'
-      },
-      '.postOptions': {
-        display: 'flex',
-        flexDirection: 'row',
-        fontSize: 13,
-        '@media(max-width: 480px)': {
-          flexDirection: 'column'
-        }
-      },
-      '.showEditDate, .dropdownLabel': {
-        display: 'flex',
-        alignItems: 'center',
-        marginTop: '1rem',
-      },
-      '.checkbox': {
-        marginRight: '.5rem'
-      },
-      '.dropdownLabel': {
-        marginRight: '2rem',
-        span: {
-          marginRight: '.5rem'
-        }
-      },
     }
   },
   '.post': {
