@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { ReactChild, ReactFragment, ReactPortal, useState } from 'react'
 import { css } from '@emotion/react'
 import Image from 'next/image'
 
@@ -102,6 +102,15 @@ export default function BlogMarkdown({ markdown }) {
     },
   })
 
+  interface PreNode {
+    node?: any
+    children: Array<object>
+    position: object
+    properties: object
+    tagName: string
+    type: string
+  }
+
   const MarkdownComponents: object = {
     code({ node, inline, className, ...props }) {
 
@@ -142,7 +151,7 @@ export default function BlogMarkdown({ markdown }) {
         <code className={className} {...props} />
       )
     },
-    p: (paragraph: { children?: any; node?: any }) => {
+    p: (paragraph: { children?: boolean; node?: any}) => {
       const { node } = paragraph
 
       if (node.children[0].tagName === "img") {
@@ -180,9 +189,9 @@ export default function BlogMarkdown({ markdown }) {
       }
       return <a href={anchor.href}>{anchor.children}</a>
     },
-    pre: (pre: any) => {
+    pre: (pre: PreNode) => {
       const codeChunk = pre.node.children[0].children[0].value
-      
+
       const [codeCopied, setCodeCopied] = useState(false)
       const handleCopyCode = (codeChunk: string) => {
         setCodeCopied(true)
