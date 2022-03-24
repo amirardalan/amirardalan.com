@@ -17,7 +17,7 @@ const TimelineEntry = (props: TimelineProps) => {
       <div className={inView ? 'scrollHighlight active' : 'scrollHighlight'}>
       </div>
       <div className={cName}>
-        <h4>{title}</h4>
+        <h3>{title}</h3>
         <span>{content}</span>
       </div>
     </div>

@@ -43,7 +43,7 @@ export default function Timeline() {
         '.event': {
           maxWidth: 400,
           boxShadow: '-2px 2px 0 var(--color-accent-neutral)',
-          h4: {
+          h3: {
             marginBottom: '.5rem',
             fontFamily: 'var(--font-secondary)',
             fontSize: 16,

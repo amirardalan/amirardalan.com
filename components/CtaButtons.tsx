@@ -56,7 +56,7 @@ export const ContactButton = () => {
 
   return (
     <span>
-      <a
+      <button
         onClick={showEmail
           ? handleCopyToClipboard
           : showEmailOnclick}
@@ -70,7 +70,7 @@ export const ContactButton = () => {
         {showEmail
           ? <address css={styleAddress}>{process.env.NEXT_PUBLIC_USER_EMAIL}</address>
           : about.contact.email.title}
-      </a>
+      </button>
       <div css={styleTooltipContact}>
         <div className="tooltip">
           {about.contact.copiedToClipboard}
