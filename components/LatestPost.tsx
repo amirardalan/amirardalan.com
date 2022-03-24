@@ -5,48 +5,34 @@ import { css } from '@emotion/react'
 export default function LatestPost({ latestPost, data }) {
 
   const styleLatestPost = css({
-    fontWeight: 'normal',
-    marginTop: '1rem',
     h4: {
-      margin: '1.5rem 0 .5rem',
-      fontFamily: 'var(--font-primary)',
+      margin: '2rem 0 .5rem',
       fontSize: 12,
       fontWeight: 'normal',
       textTransform: 'uppercase',
       '&:before': {
         content: '""',
         display: 'inline-block',
-        background: 'var(--icon-arrow)',
+        background: 'var(--icon-arrow) no-repeat',
         backgroundSize: 'contain',
         height: 10,
         width: 10,
         marginRight: '.5rem',
       }
     },
-    h5: {
-      display: 'flex',
-      a: {
-        lineHeight: '1.5rem',
-        fontFamily: 'var(--font-secondary)',
-        fontSize: 18,
-        fontWeight: 'normal',
-        textDecoration: 'underline',
-        cursor: 'pointer',
-        '&:focus-visible': {
-          boxShadow: '0 0 0 2px var(--color-primary)',
-          outline: 'none',
-        },
-        '@media(max-width: 480px)': {
-          fontSize: 16,
-        }
-      }
+    'h5 a' : {
+      lineHeight: '1rem',
+      fontFamily: 'var(--font-secondary)',
+      fontSize: 16,
     },
     p: {
       marginTop: '.5rem',
-      lineHeight: '1.2rem',
-      fontFamily: 'var(--font-tertiary)',
-      fontSize: 15,
+      lineHeight: '1rem',
+      fontSize: 11,
       color: 'var(--color-neutral)',
+      '@media(max-width: 480px)': {
+        display: 'none'
+      }
     },
   })
   
@@ -64,9 +50,7 @@ export default function LatestPost({ latestPost, data }) {
           {renderLatestPost?.title}
         </Link>
       </h5>
-      <p>
-        {renderLatestPost?.teaser}
-      </p>
+      <p>{renderLatestPost?.teaser}</p>
     </article> : null
   )
 

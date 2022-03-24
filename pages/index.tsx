@@ -1,98 +1,52 @@
-import { css } from '@emotion/react'
-import Container from '@/components/Container'
-import { home } from '@/data/content'
-import LatestPost from '@/components/LatestPost'
-import { generateCtaButtons } from '@/components/CtaButtons'
-import TypingAnimation from '@/components/TypingAnimation'
-
+import { GetStaticProps } from 'next'
+import prisma from '@/lib/prisma'
 import dynamic from 'next/dynamic'
 const CanvasLoader = dynamic(() => import('@/components/CanvasLoader'), {
   ssr: false
 })
 
-import { GetStaticProps } from 'next'
-import prisma from '@/lib/prisma'
-
-export const getStaticProps: GetStaticProps = async () => {
-  try {
-    const latestPost = await prisma.post.findMany({
-      where: { published: true },
-      orderBy: {
-        publishedAt: 'desc',
-      },
-      take: 1,
-      select: {
-        title: true,
-        teaser: true,
-        slug: true,
-      },
-    })
-    return { props: { latestPost, data: home } }
-  }
-  catch {
-    return { props: { data: home } }
-  }
-}
+import { css } from '@emotion/react'
+import { home } from '@/data/content'
+import Container from '@/components/Container'
+import TypingAnimation from '@/components/TypingAnimation'
+import LatestPost from '@/components/LatestPost'
+import { generateCtaButtons } from '@/components/CtaButtons'
 
 
 export default function Home({ data, latestPost }) {
 
-  // Styles
   const styleMain = css({
     display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
     '@media (max-width: 890px)': {
       flexDirection: 'column',
     }
   })
   const styleMainLeft = css({
-    padding: '0 6rem 0 0',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-between',
+    padding: '0 2rem 0 0',
     animation: 'slideUpSection .8s forwards',
     '@media (max-width: 890px)': {
-      height: 'auto',
       flexDirection: 'column-reverse',
-      justifyContent: 'end',
-      alignSelf: 'flex-end',
     },
     '@media (max-width: 480px)': {
       padding: 0,
     }
   })
-  const styleMainLeftContent = css({
-    margin: 0,
-    fontWeight: 'bolder',
-    lineHeight: 1.5,
-    minHeight: '0vw',
+
+  const styleContent = css({
     '.titleWrapper': {
-      display: 'flex',
-      flexDirection: 'column',
-      margin: '0 0 3rem',
-      '.description': {
-        fontFamily: 'var(--font-tertiary)',
-        fontSize: 18,
-        display: 'inline-block',
-        marginTop: '1.8rem',
-        '@media(max-width: 768px)': {
-          fontSize: 16,
-        }
+      marginBottom: '3rem',
+      '@media(max-width: 480px)': {
+        marginBottom: '2rem',
       }
     },
     '.intro, .typed': {
+      display: 'block',
       margin: '2rem 0',
-      display: 'inline-block',
-      fontFamily: 'var(--font-primary)',
-      fontWeight: 'normal',
-      fontSize: 17,
-      color: 'var(--color-primary)',
     },
     '.typed': {
       '&:before': {
         content: '"> ~ % "',
-        color: 'var(--color-neutral)',
+        color: 'var(--color-primary)',
       },
       '@media(max-width: 480px)': {
         fontSize: 13
@@ -103,80 +57,55 @@ export default function Home({ data, latestPost }) {
       fontFamily: 'var(--font-secondary)',
       fontSize: 'calc(3.2vw + 3.2vh)',
       WebkitMarqueeIncrement: '0vw',
-      '@media (max-width: 768px)': {
-        fontSize: 45,
-        WebkitMarqueeIncrement: '0vw',
-      }
     },
-    '.description': {
-      borderTop: '2px solid var(--color-primary)',
-      maxWidth: 600,
-      paddingTop: '1.8rem',
-      fontFamily: 'var(--font-primary)',
-      fontSize: 14,
-      fontWeight: 'normal',
-      color: 'var(--color-neutral)',
-    },
-    '.highlightText': {
-      width: 'max-content',
-      marginLeft: 3,
-      padding: '0 .5rem',
-      background: 'var(--color-text)',
-      color: 'var(--color-bg)',
-      boxShadow: '-3px 3px 0 var(--color-primary)',
-    },
-    '@media (min-width: 480px) and (max-width: 890px)': {
-      fontSize: 'calc(2.5vw + 2.5vh)',
-      WebkitMarqueeIncrement: '0vw',
-      minHeight: '0vw',
-    }
   })
   const styleCtaButtons = css({
-    marginBottom: '1rem',
     display: 'flex',
     flexDirection: 'row',
   })
   const styleMainRight = css({
+    position: 'relative',
     background: 'var(--color-gradient)',
     height: '72vh',
-    position: 'relative',
-    display: 'flex',
-    flexDirection: 'column',
-    '@media (max-width: 1024px)': {
-      marginTop: 0,
-    },
     '@media (max-width: 890px)': {
       height: '45vh',
       marginTop: '2rem',
-      alignSelf: 'flex-start',
     }
   })
 
   return (
     <Container title={data.meta.title}>
-      <main className="home">
-        <div css={styleMain}>
-          <div className="animationWrapper">
-            <div css={styleMainLeft} className="animationWrapper">
-              <div css={styleMainLeftContent}>
-                <div className="titleWrapper">
-                  <span className="typed" aria-hidden="true">
-                    <TypingAnimation data={data.typed} />
-                  </span>
-                  <h1>{data.title}</h1>
-                </div>
-                <div css={styleCtaButtons}>
-                  {generateCtaButtons(home.items)}
-                </div>
-                <LatestPost data={data} latestPost={latestPost} />
-              </div>
+      <main css={styleMain} className="home">
+        <div css={styleMainLeft} className="animationWrapper">
+          <div css={styleContent}>
+            <div className="titleWrapper">
+              <span className="typed" aria-hidden="true">
+                <TypingAnimation data={data.typed} />
+              </span>
+              <h1>{data.title}</h1>
             </div>
+            <div css={styleCtaButtons}>
+              {generateCtaButtons(home.items)}
+            </div>
+            <LatestPost data={data} latestPost={latestPost} />
           </div>
-          <div css={styleMainRight} className="animationWrapper">
-            <CanvasLoader />
-          </div>
+        </div>
+        <div css={styleMainRight} className="animationWrapper">
+          <CanvasLoader />
         </div>
       </main>
     </Container>
   )
+}
+
+export const getStaticProps: GetStaticProps = async () => {
+  try {
+    const latestPost = await prisma.post.findMany({
+      where: { published: true },
+      orderBy: { publishedAt: 'desc' },
+      take: 1, select: { title: true, teaser: true, slug: true }
+    })
+    return { props: { latestPost, data: home } }
+  }
+  catch { return { props: { data: home } } }
 }
