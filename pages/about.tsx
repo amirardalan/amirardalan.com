@@ -1,21 +1,11 @@
 import { css } from '@emotion/react'
-
 import Container from '@/components/Container'
 import Avatar from '@/components/Avatar'
 import { generateCtaButtons, ContactButton } from '@/components/CtaButtons'
 import SocialIcons from '@/components/SocialIcons'
 import Timeline from '@/components/Timeline'
-
 import { about } from '@/data/content'
-import { GetStaticProps } from 'next'
 
-export const getStaticProps: GetStaticProps = async () => {
-  return {
-    props: {
-      data: about,
-    },
-  };
-};
 
 export default function About({ data }) {
   const styleGridWrapper = css({
@@ -65,9 +55,6 @@ export default function About({ data }) {
           fontFamily: 'var(--font-tertiary)',
           fontSize: 17,
           maxWidth: 450,
-        },
-        a: {
-          textDecoration: 'none',
         },
       },
       '.bioSubHeading': {
@@ -136,24 +123,21 @@ export default function About({ data }) {
   }
 
   return (
-    <Container title={data.meta.title} description={data.meta.description}>
+    <Container title={about.meta.title} description={about.meta.description}>
       <main className='about'>
         <div className='animationWrapper'>
-          <h1 className='pageHeading'>{data.heading}</h1>
+          <h1 className='pageHeading'>{about.heading}</h1>
           <div css={styleGridWrapper}>
             <div className='grid'>
               <ul css={styleBioItems}>
                 <li>
                   <Avatar height='100' width='100' />
                 </li>
-                <li aria-label={data.bio.heading} className="bioHeading">
-                  {data.bio.heading}
-                </li>
-                <li aria-label={data.bio.subheading} className="bioSubHeading">
-                  <strong>{data.bio.subheading}</strong>
+                <li aria-label={about.bio.subheading} className="bioSubHeading">
+                  <strong>{about.bio.subheading}</strong>
                 </li>
                 <li>
-                  <em className='blurb'>{data.bio.content}</em>
+                  <em className='blurb'>{about.bio.content}</em>
                 </li>
                 <li css={styleCtaWrapper}>
                   {generateCtaButtons(about.bio.items)}
@@ -163,39 +147,39 @@ export default function About({ data }) {
             <div className='grid'>
               <ul>
                 <li>
-                  <h4 aria-label='{data.skills.title}'>{data.skills.title}</h4>
+                  <h4 aria-label='{about.skills.title}'>{about.skills.title}</h4>
                 </li>
-                {GenerateListItems(data.skills.items)}
+                {GenerateListItems(about.skills.items)}
               </ul>
               <ul>
                 <li>
-                  <h4 aria-label='{data.skills.title}'>{data.stack.title}</h4>
+                  <h4 aria-label='{about.skills.title}'>{about.stack.title}</h4>
                 </li>
-                {GenerateListItems(data.stack.items)}
+                {GenerateListItems(about.stack.items)}
               </ul>
             </div>
             <div className='grid'>
               <ul>
                 <li>
-                  <h4 aria-label={data.experience.title}>
-                    {data.experience.title}
+                  <h4 aria-label={about.experience.title}>
+                    {about.experience.title}
                   </h4>
                 </li>
-                {GenerateListItems(data.experience.items)}
+                {GenerateListItems(about.experience.items)}
               </ul>
             </div>
             <div className='grid'>
               <ul>
                 <li>
-                  <h4 aria-label={data.availability.title}>
-                    {data.availability.title}
+                  <h4 aria-label={about.availability.title}>
+                    {about.availability.title}
                   </h4>
                 </li>
                 <li className="availability">
-                  {data.availability.text}
+                  {about.availability.text}
                 </li>
                 <li>
-                  {data.availability.location}
+                  {about.availability.location}
                 </li>
               </ul>
             </div>
@@ -203,7 +187,7 @@ export default function About({ data }) {
               <div css={styleSocialIconsWrapper}>
                 <ul>
                   <li>
-                    <h4>{data.social.title}</h4>
+                    <h4>{about.social.title}</h4>
                   </li>
                   <li css={styleSocialIcons}>
                     <SocialIcons />
@@ -214,7 +198,7 @@ export default function About({ data }) {
             <div className='grid'>
               <ul>
                 <li>
-                  <h4 aria-label={data.contact.title}>{data.contact.title}</h4>
+                  <h4 aria-label={about.contact.title}>{about.contact.title}</h4>
                 </li>
                 <li css={styleCtaWrapper}>
                   <ContactButton />

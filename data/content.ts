@@ -49,7 +49,7 @@ export const blog = {
   heading: 'Blog',
   meta: {
     title: 'Blog – Amir Ardalan',
-    description: 'Thoughts on web development, design, and web 3.0 with code examples and guides.'
+    description: 'Thoughts on web development, design, and technology. Detailed guides for React, Next.js, TypeScript, and Markdown projects.'
   },
   error: {
     database: '⚠️ Database Error: Posts Could not be loaded.',
@@ -76,6 +76,7 @@ export const blogPost = {
 export const about = {
   meta: {
     title: 'About – Amir Ardalan',
+    description: `Amir Ardalan's bio, mission statement, skills, stack, experience, availability, and career timeline.`,
     github: 'GitHub',
     twitter: 'Twitter',
     linkedin: 'LinkedIn',
@@ -114,8 +115,7 @@ export const about = {
     ]
   },
   bio: {
-    heading: 'Amir Ardalan - Portland, OR',
-    subheading: 'Developer, Designer, Writer.',
+    subheading: `👋 Hey there, I'm Amir!`,
     content: `I connect humans with technology through front-end code and user interface design utilizing deep knowledge in front-end, accessibility, and ecommerce.`,
     items: [
       {
