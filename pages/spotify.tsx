@@ -99,7 +99,7 @@ export default function Spotify() {
     '.module': {
       background: 'var(--color-accent)',
       padding: '2rem',
-      '&:first-of-type': {
+      '&.player': {
         background: 'none',
         padding: 0,
         gridColumn: '1 / 2',
@@ -108,12 +108,12 @@ export default function Spotify() {
           display: 'none',
         }
       },
-      '&:nth-of-type(2)': {
+      '&.profile': {
         gridColumn: '2',
         gridRow: '1 / 1',
       },
       '@media(max-width: 1024px)': {
-        '&:nth-of-type(n)': {
+        '&.module': {
           gridColumn: 'initial',
           gridRow: 'initial',
         },
@@ -136,19 +136,19 @@ export default function Spotify() {
             {spotify.headings.main}
           </h1>
           <div css={styleSpotifyModules}>
-            <div className="module">
+            <div className="module player">
               <h3>{spotify.headings.nowplaying}</h3>
               <NowPlaying />
             </div>
-            <div className="module">
+            <div className="module profile">
               <h3>{spotify.headings.profile}</h3>
               <Profile />
             </div>
-            <div className="module">
+            <div className="module tracks">
               <h3>{spotify.headings.toptracks}</h3>
               <TopTracks />
             </div>
-            <div className="module">
+            <div className="module artists">
               <h3>{spotify.headings.topartists}</h3>
               <TopArtists />
             </div>
