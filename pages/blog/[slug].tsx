@@ -217,6 +217,7 @@ const Post = ({ post, feed, data }) => {
         '&.warn': {
           '&:after': {
             content: '"Warning:"',
+            color: 'var(--color-warning)'
           },
         },
       },

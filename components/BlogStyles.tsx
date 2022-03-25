@@ -79,7 +79,7 @@ const blogStyles = css({
         }
       }
     },
-    '&.admin': {
+    '&.admin.create': {
       maxWidth: '100%',
     }
   },
