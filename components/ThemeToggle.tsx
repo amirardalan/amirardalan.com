@@ -18,7 +18,7 @@ const ThemeToggle = ({ toggleTheme }) => {
     window.localStorage.setItem('theme', activeTheme)
   }, [activeTheme])
 
-  const styleToggleSwitchControl = css({
+  const styleToggleTrack = css({
     zIndex: 6,
     width: 42,
     height: 26,
@@ -28,7 +28,7 @@ const ThemeToggle = ({ toggleTheme }) => {
     borderRadius: 20,
     cursor: 'pointer',
   })
-  const styleToggleSwitch = css({
+  const styleToggleSlider = css({
     background: 'var(--color-accent)',
     height: 22,
     width: 22,
@@ -48,11 +48,9 @@ const ThemeToggle = ({ toggleTheme }) => {
       title={`Change to ${inactiveTheme} mode`}
       type="button"
       onClick={themeToggled}
-      css={styleToggleSwitchControl}
+      css={styleToggleTrack}
     >
-      <div>
-        <div css={styleToggleSwitch} />
-      </div>
+      <div css={styleToggleSlider} />
     </button>
   )
 }
