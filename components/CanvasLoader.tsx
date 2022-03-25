@@ -42,10 +42,10 @@ const CanvasLoader =  React.memo(function CanvasLoader() {
   }
 
   const [seed, setSeed] = useState(Date.now())
-  const [detail, setDetail] = useState(getRandomInt(50, 200))
+  const [detail, setDetail] = useState(getRandomInt(50, 100))
   const [height, setHeight] = useState(getRandomArbitrary(.15, .3))
   const [texture, setTexture] = useState(getRandomInt(1, 4))
-  const [scale, setScale] = useState(getRandomInt(2, 3))
+  const [scale, setScale] = useState(getRandomInt(2, 5))
   const rotation = 1
 
   function randomizeTerrain() {
