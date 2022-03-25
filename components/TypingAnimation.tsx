@@ -21,7 +21,7 @@ const TypingAnimation = ({ data }) => {
     }
   })
 
-    return <span className="typingAnimation"></span>
+  return <span className="typingAnimation" />
 }
 
 export default React.memo(TypingAnimation)
