@@ -5,6 +5,5 @@ export const categories = [
   "devops",
   "music",
   "personal",
-  "tech",
-  "webdev",
+  "web3",
 ]

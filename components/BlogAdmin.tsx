@@ -195,6 +195,9 @@ const BlogAdmin = React.memo(function BlogAdmin() {
             marginRight: '2rem',
             span: {
               marginRight: '.5rem'
+            },
+            select: {
+              textTransform: 'capitalize',
             }
           },
         },
