@@ -71,9 +71,10 @@ const blogStyles = css({
     },
     '&.postTeaser': {
       p: {
-        margin: '.5rem 0 2rem',
+        margin: '.5rem 0 2.5rem',
         lineHeight: '1.4rem',
         '@media(max-width: 768px)': {
+          fontSize: 15,
           margin: '.5rem 0 1.5rem',
         }
       },
