@@ -20,22 +20,21 @@ const ThemeToggle = ({ toggleTheme }) => {
 
   const styleToggleSwitchControl = css({
     zIndex: 6,
-    width: 45,
-    height: 25,
-    padding: '0 .1rem 0 .1rem',
+    width: 42,
+    height: 26,
     background: 'var(--color-text)',
     position: 'relative',
     border: 'none',
-    borderRadius: 25,
+    borderRadius: 20,
     cursor: 'pointer',
   })
   const styleToggleSwitch = css({
     background: 'var(--color-accent)',
-    height: 23,
-    width: 23,
+    height: 22,
+    width: 22,
     position: 'relative',
-    marginLeft: activeTheme === 'dark' ? 0 : 19,
-    marginRight: activeTheme === 'light' ? 24 : .4,
+    marginLeft: activeTheme === 'dark' ? 2 : 18,
+    marginRight: activeTheme === 'light' ? 21 : 1,
     borderRadius: 25,
     transition: '.2s linear',
     '&:active': {
