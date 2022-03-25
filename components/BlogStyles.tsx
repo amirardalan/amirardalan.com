@@ -77,7 +77,7 @@ const blogStyles = css({
           fontSize: 15,
           margin: '.5rem 0 1.5rem',
         }
-      },
+      }
     },
     '&.admin': {
       maxWidth: '100%',
@@ -101,7 +101,7 @@ const blogStyles = css({
         margin: '0 .5rem',
         content: '"•"'
       }
-    },
+    }
   },
   '.postTeaser': {
     position: 'relative',
@@ -139,26 +139,22 @@ const blogStyles = css({
   li: {
     '&::marker': {
       color: 'var(--color-primary)',
-    },
+    }
   },
   table: {
     width: '100%',
     thead: {
       fontFamily: 'var(--font-secondary)',
-      tr: {
-        th: {
-          border: '1px solid var(--color-accent-neutral)',
-          backgroundColor: 'var(--color-accent)',
-          padding: '.5rem',
-        }
+      'tr th': {
+        border: '1px solid var(--color-accent-neutral)',
+        backgroundColor: 'var(--color-accent)',
+        padding: '.5rem',
       }
     },
     tbody: {
-      tr: {
-        td: {
-          border: '1px solid var(--color-accent-neutral)',
-          padding: '.5rem',
-        }
+      'tr td': {
+        border: '1px solid var(--color-accent-neutral)',
+        padding: '.5rem',
       }
     }
   },
