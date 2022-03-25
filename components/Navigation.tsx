@@ -11,7 +11,7 @@ export default function Navigation() {
   const styleMainNav = css({
     display: 'flex',
     alignItems: 'center',
-    marginRight: '1.5rem',
+    marginRight: '2rem',
     fontSize: 14,
     a: {
       margin: '0 1.5rem',
