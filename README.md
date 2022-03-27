@@ -17,9 +17,9 @@ A Next.js Markdown Blog and CMS written in TypeScript. Designed, built, and main
 ## Local Development: 
 
 1. Create an `.env` file for local environment variables.
-_Keep this file private, ensure `.env` remains in `.gitignore`, don't commit to a public reposotiry._
+_Keep this file private, ensure `.env` remains in `.gitignore`, don't commit to a public reposotory._
 
-### When intially setting up this project, the following environment variables are required for full functionality.
+#### For full functionality, the following environment variables are required:
 
 - Site URL: https://localhost:3000 for development (you will need a separate .env for production, update the URL accordingly)
 - Blog: Timezone and Database URL.
