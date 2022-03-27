@@ -14,7 +14,7 @@ A Next.js Markdown Blog and CMS written in TypeScript. Designed, built, and main
 
 ---
 
-## Local Development: 
+## Initial Setup: 
 
 1. Create an `.env` file for local environment variables.
 _Keep this file private, ensure `.env` remains in `.gitignore`, don't commit to a public reposotory._
@@ -77,7 +77,8 @@ Run Jest manually:
 
 ## Prisma ORM:
 
-Push new tables to db from `schema.prisma`:
+The existing schema is configured for PostgreSQL. Update accordingly.  
+Update schema and push new tables to db from `schema.prisma`:
 
 ```bash
 yarn prisma db push
