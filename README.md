@@ -16,14 +16,37 @@ A Next.js Markdown Blog and CMS written in TypeScript. Designed, built, and main
 
 ## Local Development: 
 
-1. Create an `.env` file for local environment variables. Start with the Site URL and updating updating your timezone:
+1. Create an `.env` file for local environment variables.
+_Keep this file private, ensure `.env` remains in `.gitignore`, don't commit to a public reposotiry._
+
+### When intially setting up this project, the following environment variables are required for full functionality.
+
+- Site URL: https://localhost:3000 for development (you will need a separate .env for production, update the URL accordingly)
+- Blog: Timezone and Database URL.
+- CMS: [Preview Mode](https://nextjs.org/docs/advanced-features/preview-mode#securely-accessing-it-from-your-headless-cms) token, and if using Vercel: [Deploy Hook](https://vercel.com/docs/concepts/git/deploy-hooks).
+- Spotify: [API guide](https://developer.spotify.com/documentation/web-api/quick-start/)
 
 ```
 # Site URL
 NEXT_PUBLIC_SITE_URL=http://localhost:3000
 
+# Database URL
+#DATABASE_URL="postgresql://yourDbUrl"
+
 # TimeZone
 NEXT_PUBLIC_TIMEZONE=America/Los_Angeles
+
+# Preview Secret Token
+NEXT_PUBLIC_PREVIEW_TOKEN=
+
+# Deploy
+DEPLOY_HOOK=
+NEXT_PUBLIC_DEPLOY_TOKEN=
+
+# Spotify
+SPOTIFY_CLIENT_ID=
+SPOTIFY_CLIENT_SECRET=
+SPOTIFY_REFRESH_TOKEN=
 ```
 Add additional local environment variables as needed. Create a version of this for your staging and production environments as needed, these are usually stored on your server.
 
