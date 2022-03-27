@@ -17,7 +17,7 @@ A Next.js Markdown Blog and CMS written in TypeScript. Designed, built, and main
 ## Initial Setup: 
 
 1. Create an `.env` file for local environment variables.
-_Keep this file private, ensure `.env` remains in `.gitignore`, don't commit to a public reposotory._
+_Keep this file private, ensure `.env` remains in `.gitignore`, don't commit to a public repository._
 
 #### For full functionality, the following environment variables are required:
 
