@@ -21,7 +21,7 @@ _Keep this file private, ensure `.env` remains in `.gitignore`, don't commit to 
 
 #### For full functionality, the following environment variables are required:
 
-- Site URL: https://localhost:3000 for development (you will need a separate .env for production, update the URL accordingly)
+- Site URL: Leave as localhost:3000 for local development
 - Blog: Timezone and Database URL.
 - CMS: [Preview Mode](https://nextjs.org/docs/advanced-features/preview-mode#securely-accessing-it-from-your-headless-cms) token, and if using Vercel: [Deploy Hook](https://vercel.com/docs/concepts/git/deploy-hooks).
 - Spotify: [API guide](https://developer.spotify.com/documentation/web-api/quick-start/)
@@ -48,7 +48,7 @@ SPOTIFY_CLIENT_ID=
 SPOTIFY_CLIENT_SECRET=
 SPOTIFY_REFRESH_TOKEN=
 ```
-Add additional local environment variables as needed. Create a version of this for your staging and production environments as needed, these are usually stored on your server.
+Add additional local environment variables as needed. You can set up test tokens, deploy hooks, etc. locally and create seprate versions of this file with staging and/or production values (usually stored on your server).
 
 2. Install depencies by running `yarn`
 
