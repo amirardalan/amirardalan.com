@@ -47,6 +47,7 @@ export default function Timeline() {
             marginBottom: '.5rem',
             fontFamily: 'var(--font-secondary)',
             fontSize: 16,
+            fontWeight: 700,
             lineHeight: '1.2rem',
           },
           '@media(max-width: 480px)': {
