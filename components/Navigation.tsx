@@ -32,6 +32,16 @@ export default function Navigation() {
     background: 'var(--color-bg)',
     top: 0,
     right: 0,
+    a: {
+      content: '""',
+      display: 'inline',
+      borderBottom: '1px solid var(--color-accent-neutral)',
+      width: '100%',
+      height: '100%',
+      '&.spotifyNav': {
+        borderBottom: 'none',
+      }
+    },
     '.closeArea': {
       opacity: '.80',
       height: '100%',
@@ -94,6 +104,11 @@ export default function Navigation() {
   const styleNavitem = css({
     position: 'relative',
     display: 'flex',
+    '&:after': {
+      borderBottom: '1px solid var(--color-primary)',
+      width: '100%',
+      height: 1,
+    },
     a: {
       position: 'relative',
       color: 'var(--color-text)',
@@ -115,7 +130,7 @@ export default function Navigation() {
       background: 'var(--icon-spotify) no-repeat',
       backgroundSize: 'contain',
       '@media(max-width: 768px)': {
-        marginTop: '1rem'
+        marginTop: '1.2rem'
       },
     },
     '@media(max-width: 768px)': {
