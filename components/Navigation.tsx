@@ -28,7 +28,7 @@ export default function Navigation() {
     position: 'absolute',
     height: '105vh',
     width: '75vw',
-    padding: '4.5rem',
+    padding: '3.5rem',
     background: 'var(--color-bg)',
     top: 0,
     right: 0,
