@@ -24,7 +24,7 @@ export default function Navigation() {
   const styleMobileNavWrapper = css ({
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'left',
+    // alignItems: 'left',
     justifyContent: 'center',
     position: 'absolute',
     height: '105vh',
@@ -42,13 +42,17 @@ export default function Navigation() {
       position: 'absolute',
       left: -200,
       top: 0,
-      '@media (max-width: 768px) and (max-height: 600px)': {
-        width: 400,
-        left: -400
-      }
     },
     '@media(min-width: 769px)': {
       display: 'none',
+    },
+    '@media (max-width: 768px) and (max-height: 600px)': {
+      width: '33vw',
+      '.closeArea': {
+        width: 500,
+        left: -500
+      },
+      alignItems: 'right'
     },
     '@keyframes spin': {
       from: { transform: 'rotate(0deg)' },
