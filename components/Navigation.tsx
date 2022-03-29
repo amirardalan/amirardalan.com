@@ -22,7 +22,6 @@ export default function Navigation() {
     }
   })
   const styleMobileNavWrapper = css ({
-    padding: '1.5rem',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'left',
@@ -30,6 +29,7 @@ export default function Navigation() {
     position: 'absolute',
     height: '105vh',
     width: '75vw',
+    padding: '4.5rem',
     background: 'var(--color-bg)',
     top: 0,
     right: 0,
@@ -50,12 +50,6 @@ export default function Navigation() {
     '@media(min-width: 769px)': {
       display: 'none',
     },
-    '@media(max-width: 768px)': {
-      padding: '2.5rem',
-    },
-    '@media(max-width: 480px)': {
-      padding: '1.5rem',
-    },
     '@keyframes spin': {
       from: { transform: 'rotate(0deg)' },
       to: { transform: 'rotate(180deg)' }
@@ -63,6 +57,9 @@ export default function Navigation() {
   })
   const styleMobileNavButton = css({
     display: 'none',
+    '@media(max-width: 768px)': {
+      display: 'flex',
+    },
     zIndex: 2,
     marginLeft: '2rem',
     '.menuOpen': {
@@ -83,24 +80,13 @@ export default function Navigation() {
     },
     '.menuClose': {
       display: 'flex',
-      alignItems: 'right',
-      justifyContent: 'flex-end',
       animation: 'spin 1s forwards'
     },
-    '@media(max-width: 768px)': {
-      display: 'flex',
-      justifyContent: 'right',
-    }
   })
 
   const styleNavIcon = css({
     height: 16,
-    width: 16,
-    lineHeight: 0,
-    '@media(max-width: 768px)': {
-      height: 30,
-      width: 30,
-    }
+    width: 16
   })
 
   const styleNavitem = css({
@@ -127,19 +113,15 @@ export default function Navigation() {
       background: 'var(--icon-spotify) no-repeat',
       backgroundSize: 'contain',
       '@media(max-width: 768px)': {
-        lineHeight: '1.8rem',
-        marginTop: '.8rem'
+        marginTop: '1rem'
       },
     },
     '@media(max-width: 768px)': {
       flexDirection: 'column',
-      alignItems: 'flex-end',
-      fontSize: 30,
       lineHeight: '3.4rem',
     },
     '@media (max-width: 768px) and (max-height: 600px)': {
       paddingRight: '1rem',
-      alignItems: 'flex-end',
       lineHeight: '3rem',
     },
   })
@@ -148,7 +130,6 @@ export default function Navigation() {
     height: 80,
     display: 'flex',
     flexDirection: 'column-reverse',
-    alignItems: 'flex-end',
     justifyContent: 'space-between',
     fontFamily: 'var(--font-secondary)',
     position: 'relative',
@@ -156,7 +137,6 @@ export default function Navigation() {
       display: 'block',
       marginBottom: '.5rem',
       color: 'var(--color-neutral)',
-      textAlign: 'right',
       animation: 'slideUp .4s ease',
     },
     '@media (max-width: 768px) and (max-height: 600px)': {
