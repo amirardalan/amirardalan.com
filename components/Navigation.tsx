@@ -24,7 +24,6 @@ export default function Navigation() {
   const styleMobileNavWrapper = css ({
     display: 'flex',
     flexDirection: 'column',
-    // alignItems: 'left',
     justifyContent: 'center',
     position: 'absolute',
     height: '105vh',
@@ -34,7 +33,6 @@ export default function Navigation() {
     top: 0,
     right: 0,
     '.closeArea': {
-      animation: 'fadeIn80 .6s ease',
       opacity: '.80',
       height: '100%',
       width: 200,
