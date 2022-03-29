@@ -30,7 +30,20 @@ export default function Timeline() {
         animation: 'slideUp 1s',
         opacity: 1,
       }
-    }
+    },
+    '@keyframes growDown': {
+      from: {
+        transform: 'translate3d(0, -100%, 0)'
+      },
+      to: { transform: 'translate3d(0, 0, 0)' }
+    },
+    '@keyframes growUp': {
+      from: {
+        height: '100%',
+        transform: 'translate3d(0, 0, 0)',
+      },
+      to: { transform: 'translate3d(0, -100%, 0)' }
+    },
   })
   const styleTimeline = css({
     display: 'grid',
@@ -53,14 +66,6 @@ export default function Timeline() {
           '@media(max-width: 480px)': {
             boxShadow: 'none',
           },
-        },
-        '.date': {
-          marginTop: -5,
-          lineHeight: '1.2rem',
-          color: 'var(--color-text)',
-          '@media(max-width: 768px)': {
-            marginTop: 1,
-          }
         },
       },
       '&:nth-of-type(odd)': {
@@ -95,7 +100,9 @@ export default function Timeline() {
           fontSize: 77,
           color: 'var(--color-primary)',
           '@media(max-width: 768px)': {
-            top: -48,
+            top: -43.5,
+            right: -18,
+            fontSize: 70
           }
         },
         '.event': {
@@ -117,6 +124,7 @@ export default function Timeline() {
           padding: '0',
           '.date': {
             marginRight: '1rem',
+            marginTop: '-.6rem'
           },
         },
       },
@@ -151,27 +159,34 @@ export default function Timeline() {
             },
           },
           '@media(max-width: 480px)': {
-            paddingRight: 0,
+            padding: '0 0 0 1rem',
           },
         },
         '@media(max-width: 480px)': {
           padding: 0,
           '.date': {
             marginLeft: '1rem',
+            marginTop: '-.65rem'
           },
         },
       },
       '.date': {
         fontFamily: 'var(--font-secondary)',
         fontSize: 30,
+        lineHeight: '.5rem',
         '@media(max-width: 768px)': {
-          fontSize: 22,
+          paddingTop: '.2rem',
+          fontSize: 24,
+        },
+        '@media(max-width: 480px)': {
+          paddingTop: '.9rem',
+          fontSize: 20,
         }
       },
       '.event': {
         position: 'relative',
         marginBottom: '4rem',
-        padding: '2rem',
+        padding: '2.5rem',
         background: 'var(--color-accent)',
         fontSize: 15,
         span: {
@@ -185,12 +200,15 @@ export default function Timeline() {
           height: 0,
           borderBottom: '12px solid transparent',
         },
+        '@media(max-width: 768px)': {
+          padding: '1.5rem'
+        },
         '@media(max-width: 480px)': {
           marginTop: 0,
           marginBottom: '4rem',
-          padding: '0 1rem',
+          padding: '0 1rem 0 0',
           background: 'none',
-          fontSize: 14,
+          fontSize: 12,
         }
       }
     },

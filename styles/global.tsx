@@ -465,23 +465,6 @@ export function GlobalStyles () {
             opacity: 0,
           }
         },
-        '@keyframes growDown': {
-          from: {
-            transform: 'translate3d(0, -100%, 0)',
-          },
-          to: {
-            transform: 'translate3d(0, 0, 0)',
-          }
-        },
-        '@keyframes growUp': {
-          from: {
-            height: '100%',
-            transform: 'translate3d(0, 0, 0)',
-          },
-          to: {
-            transform: 'translate3d(0, -100%, 0)',
-          }
-        },
         '@keyframes dash': {
           '0%': {
             strokeDasharray: '1, 150',
