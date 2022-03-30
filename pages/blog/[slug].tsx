@@ -1,63 +1,20 @@
-import { useSession } from 'next-auth/react'
-import { useState } from 'react'
-import Router from 'next/router'
-import { css } from '@emotion/react'
-
-import Container from '@/components/Container'
-import BlogStyles from '@/components/BlogStyles'
-import BlogNavigation from '@/components/BlogNavigation'
-import calculateReadTime from '@/utils/calculateReadTime'
-import formatDate from '@/utils/formatDate'
-import Link from 'next/link'
-import Markdown from '@/components/Markdown'
-import LoadingTriangle from '@/components/LoadingTriangle'
-
-import { blogPost, breadcrumb, admin } from '@/data/content'
 import { GetStaticProps, GetStaticPaths } from 'next'
 import prisma from '@/lib/prisma'
 
+import { useSession } from 'next-auth/react'
+import { css } from '@emotion/react'
+import { blogPost, admin } from '@/data/content'
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const feed = await prisma.post.findMany({
-    where: { published: true },
-  })
-  const paths = feed.map((post) => ({
-    params: { slug: post.slug }
-  }))
-  return { paths, fallback: 'blocking' }
-}
+import Container from '@/components/Container'
+import BlogStyles from '@/components/BlogStyles'
+import LoadingTriangle from '@/components/LoadingTriangle'
+import BlogNavigation from '@/components/BlogNavigation'
+import calculateReadTime from '@/utils/calculateReadTime'
+import formatDate from '@/utils/formatDate'
+import Markdown from '@/components/Markdown'
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const [post, feed] = await prisma.$transaction([
-    prisma.post.findFirst({
-      where: {
-        slug: String(params?.slug),
-      },
-      include: {
-        author: {
-          select: { name: true },
-        },
-      },
-    }),
-    prisma.post.findMany({
-      where: { published: true },
-      select: {
-        id: true,
-        title: true,
-        teaser: true,
-        slug: true,
-        category: true
-      },
-    })
-  ])
-  if (post) {
-    return { props: { post: JSON.parse(JSON.stringify(post)), feed, data: blogPost } } 
-  } else {
-    return {
-      notFound: true
-    }
-  }
-}
+import dynamic from 'next/dynamic'
+const BlogAdminPostActions = dynamic(() => import('@/components/BlogAdminPostActions'), { ssr: false })
 
 
 const Post = ({ post, feed, data }) => {
@@ -301,12 +258,12 @@ const Post = ({ post, feed, data }) => {
     },
   })
 
-  let loadBlogPost = null
   const { data: session } = useSession()
   const userHasValidSession = Boolean(session)
 
-  const isPublished : Boolean = post.published
+  const isPublished: Boolean = post.published
   const publishLabel = isPublished ? `${admin.controls.unpublish}` : `${admin.controls.publish}`
+  const displayPost = isPublished || session && session.user.email === process.env.NEXT_PUBLIC_USER_EMAIL
   const redirect = isPublished ? '/blog/drafts' : '/blog'
 
   const isEdited = post.editedAt.slice(0, 10) > post.publishedAt.slice(0, 10)
@@ -314,139 +271,54 @@ const Post = ({ post, feed, data }) => {
   const publishDate = formatDate(post.publishedAt)
   const editDate = formatDate(post.editedAt)
   const postReadTime = calculateReadTime(post.content)
-
-
-  async function publishPost(slug: String, published: boolean): Promise<void> {
-    await fetch(`/api/publish/${slug}?published=${published}`, {
-      method: 'PUT',
-    })
-    await Router.push(redirect)
-  }
-  async function editPost(slug: string): Promise<void> {
-    await fetch(`/blog/edit/${slug}`, {
-      method: 'PUT',
-    })
-    await Router.push(`/blog/edit/${slug}`)
-  }
-  async function deletePost(id: number): Promise<void> {
-    await fetch(`/api/post/${id}`, {
-      method: 'DELETE',
-    })
-    Router.push(redirect)
-  }
-
   const title = post.title
-
-  const [showDeletionConfirmation, setShowDeletionConfirmation] = useState(false)
-  const confirmOnClick = () => setShowDeletionConfirmation(true)
-  const cancelOnClick = () => setShowDeletionConfirmation(false)
-  const DeletionConfirmation = () => (
-    <div className="controlsConfirm">
-      <div className="confirmSelect">
-        <span className="confirmLink delete" onClick={() => deletePost(post.id)}>
-          {admin.controls.confirm}
-        </span>
-        <span>•</span>
-        <span className="confirmLink close" onClick={cancelOnClick}>
-          {admin.controls.cancel}
-        </span>
-      </div>
-    </div>
-  )
-
-  const Breadcrumbs = () => {
-    if (!isPublished) {
-      return (
-        <nav className="breadcrumbs">
-          <Link href="/blog">{breadcrumb.blog}</Link>
-            <Link href="/blog/drafts">
-              <a>{breadcrumb.drafts}</a>
-            </Link>
-          <span>{title}</span>
-        </nav>
-      )
-    } else {
-      return null
-    }
-  }
 
   // If the post contains an image, set the first image as the og:image banner
   const hasImage = post.content.replace(/`([^`]*)/g,'').match(/!\[.*?\]\((.*?)\)/)
     ? `${process.env.NEXT_PUBLIC_SITE_URL}` + post.content.match(/!\[.*?\]\((.*?)\)/)[1]
     : `${process.env.NEXT_PUBLIC_SITE_URL}/thumbnail.jpg`
 
-  if (isPublished || session && session.user.email == process.env.NEXT_PUBLIC_USER_EMAIL) {
-    loadBlogPost = (
+
+  const RenderBlogPost = () => {
+    return (
       <div className={isPublished ? 'blog' : 'blog admin'} css={styleBlogPost}>
 
-        <Breadcrumbs/>
+      <article className="post postFull">
+        <div 
+          className="postDetails" 
+          aria-label={isEdited ? `${editDate} • ${postReadTime}` : `${publishDate} • ${postReadTime}`}
+        >
+          <span className="author">
+            {post?.author?.name || 'Unknown author'}
+          </span>
+          <span className="dateAndReadTime">
+            {isEdited && showEdited
+            ? <time dateTime={post.editedAt}>Updated: {editDate}</time> 
+            : <time dateTime={post.publishedAt}>{publishDate}</time>} 
+              <span className="readTime">{postReadTime}</span>
+          </span>
+        </div>
 
-        <article className="post postFull">
-          <div 
-            className="postDetails" 
-            aria-label={isEdited 
-              ? `${editDate} • ${postReadTime}` 
-              : `${publishDate} • ${postReadTime}`}
-          >
-            <span className="author">
-              {post?.author?.name || 'Unknown author'}
-            </span>
-            <span className="dateAndReadTime">
-              {isEdited && showEdited
-                ? <time dateTime={post.editedAt}>Updated: {editDate}</time> 
-                : <time dateTime={post.publishedAt}>{publishDate}</time>} 
-                  <span className="readTime">{postReadTime}</span>
-            </span>
+        <div className="category full" aria-label={post.category}>{post.category}</div>
+        <h1 aria-label={`${title}`}>{title}</h1>
+        <p className="teaser">{post.teaser}</p>
+
+        <Markdown markdown={post} />
+
+        { userHasValidSession && (
+          <div className="controlsPost">
+            <BlogAdminPostActions props={{post, admin, redirect, publishLabel}} />
           </div>
-          <div className="category full" aria-label={post.category}>
-            {post.category}
-          </div>
-          <h1 aria-label={`${title}`}>
-            {title}
-          </h1>
-          <p className="teaser">{post.teaser}</p>
+        )}
+      </article>
 
-          <Markdown markdown={post} />
+      <BlogNavigation
+        feed={feed}
+        post={post}
+        isPublished={isPublished}
+      />
 
-          { userHasValidSession && (
-            <div className="controlsPost">
-
-              <button
-                className="buttonCompact"
-                onClick={() => publishPost(post.id, post.published)}>
-                {publishLabel}
-              </button>
-              <button
-                className="buttonCompact"
-                onClick={() => editPost(post.slug)}>
-                {admin.controls.edit}
-              </button>
-              <button
-                className="buttonCompact delete"
-                onClick={confirmOnClick}>
-                {admin.controls.delete}
-              </button>
-
-              { showDeletionConfirmation
-              ? <DeletionConfirmation />
-              : null }
-
-            </div>
-          )}
-
-        </article>
-
-        <BlogNavigation
-          feed={feed}
-          post={post}
-          isPublished={isPublished}
-        />
-
-      </div>
-    )
-  } else {
-    loadBlogPost = (
-      <LoadingTriangle />
+    </div>
     )
   }
 
@@ -459,10 +331,52 @@ const Post = ({ post, feed, data }) => {
       robots={isPublished ? "follow, index" : "noindex"
     }>
       <BlogStyles>
-        {loadBlogPost}
+        {displayPost ? <RenderBlogPost/> : <LoadingTriangle />}
       </BlogStyles>
     </Container>
   )
 }
 
 export default Post
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const feed = await prisma.post.findMany({
+    where: { published: true },
+  })
+  const paths = feed.map((post) => ({
+    params: { slug: post.slug }
+  }))
+  return { paths, fallback: 'blocking' }
+}
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const [post, feed] = await prisma.$transaction([
+    prisma.post.findFirst({
+      where: {
+        slug: String(params?.slug),
+      },
+      include: {
+        author: {
+          select: { name: true },
+        },
+      },
+    }),
+    prisma.post.findMany({
+      where: { published: true },
+      select: {
+        id: true,
+        title: true,
+        teaser: true,
+        slug: true,
+        category: true
+      },
+    })
+  ])
+  if (post) {
+    return { props: { post: JSON.parse(JSON.stringify(post)), feed, data: blogPost } } 
+  } else {
+    return {
+      notFound: true
+    }
+  }
+}
