@@ -191,7 +191,8 @@ export default function BlogMarkdown({ markdown }) {
     },
     pre: (pre: PreNode) => {
       const codeChunk = pre.node.children[0].children[0].value
-
+      
+      // eslint-disable-next-line react-hooks/rules-of-hooks
       const [codeCopied, setCodeCopied] = useState(false)
       const handleCopyCode = (codeChunk: string) => {
         setCodeCopied(true)
