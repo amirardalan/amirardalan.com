@@ -33,6 +33,7 @@ export default function BlogMarkdown({ markdown }) {
     '.copyCode': {
       position: 'relative',
       button: {
+        display: 'none',
         zIndex: 1,
         position: 'absolute',
         top: 13,
@@ -49,6 +50,11 @@ export default function BlogMarkdown({ markdown }) {
       },
       '&.active button:after': {
         content: '"☑️"'
+      },
+      '&:hover': {
+        button: {
+          display: 'block'
+        }
       }
     },
     pre: {
