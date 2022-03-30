@@ -14,7 +14,7 @@ export default function LoadingSpinner() {
         height: 30,
         marginRight: 5,
         '& .path': {
-          stroke: 'hsl(0, 0%, 50%)',
+          stroke: 'var(--color-disabled)',
           strokeLinecap: 'round',
           animation: 'dash 1.5s ease-in-out infinite',
         }

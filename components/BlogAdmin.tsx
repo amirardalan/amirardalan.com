@@ -218,17 +218,17 @@ const BlogAdmin = React.memo(function BlogAdmin() {
           textDecoration: 'none',
           cursor: 'pointer',
           '&:disabled': {
-            backgroundColor: 'var(--color-button-disabled)',
+            backgroundColor: 'var(--color-disabled)',
             cursor: 'default',
           },
           '.create &': {
             '&.createBtn': {
-              backgroundColor: 'var(--color-button-disabled)',
+              backgroundColor: 'var(--color-disabled)',
             }
           },
           '.drafts &': {
             '&.draftsBtn': {
-              backgroundColor: 'var(--color-button-disabled)',
+              backgroundColor: 'var(--color-disabled)',
             }
           },
           '&.delete': {
@@ -241,7 +241,7 @@ const BlogAdmin = React.memo(function BlogAdmin() {
             '&.disabled': { cursor: 'wait' }
           },
           '&.disabled': {
-            backgroundColor: 'var(--color-button-disabled)',
+            backgroundColor: 'var(--color-disabled)',
           },
           '&.deploy, &.save, &.update, &.cancel': {
             marginRight: '.25rem',

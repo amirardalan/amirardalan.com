@@ -90,7 +90,7 @@ export function GlobalStyles () {
           '--font-secondary': fontSecondary,
           '--font-tertiary': fontTertiary,
           '--color-warning': warning,
-          '--color-button-disabled': buttonDisabled,
+          '--color-disabled': buttonDisabled,
           '--color-select': grayAccentLight,
           '--code-highlight': codeHighlight,
         },
