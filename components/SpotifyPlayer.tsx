@@ -15,7 +15,6 @@ export default function NowPlaying() {
     display: 'flex',
   })
   const styleNowPlaying = css({
-    backgroundColor: '#333448',
     position: 'relative',
     height: 226,
     width: '100%',
@@ -25,7 +24,7 @@ export default function NowPlaying() {
       position: 'absolute',
       top: '2rem',
       left: '2rem',
-      color: '#e4e9f8',
+      // color: '#e4e9f8',
       fontSize: 12,
       textTransform: 'uppercase',
     },
@@ -51,7 +50,7 @@ export default function NowPlaying() {
     position: 'absolute',
     top: 0,
     left: 0,
-    color: '#e4e9f8',
+    color: 'red',
     background: 'linear-gradient(0deg, rgb(25, 26, 34, 1) 0%, rgb(25, 26, 34, 0.5518867924528301) 100%)',
     '@media(max-width: 480px)': {
       height: 350,

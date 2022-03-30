@@ -23,7 +23,7 @@ export default function About({ data }) {
       display: 'flex',
       justifyContent: 'center',
       padding: '3rem',
-      backgroundColor: 'var(--color-accent)',
+      border: '1px solid var(--color-accent-neutral)',
       lineHeight: '1.8rem',
       animation: 'slideUpSection .5s forwards',
       h3: {
