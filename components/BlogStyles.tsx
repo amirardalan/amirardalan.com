@@ -20,9 +20,6 @@ const blogStyles = css({
       },
       '&.all:before': {
         content: '""'
-      },
-      '&.full': {
-        color: 'var(--color-neutral)'
       }
     },
     '.blogListHeading': {
