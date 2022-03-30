@@ -45,9 +45,9 @@ export default function Logo() {
     <div css={styleLogoWrapper}>
       <div css={styleLogo}></div>
       <div css={styleWordMark}>
-        <title css={styleTitle}>
+        <div css={styleTitle}>
           {logo.title}
-        </title>
+        </div>
         <div
           aria-label={logo.subtitle}
           css={styleTitleSub}>
