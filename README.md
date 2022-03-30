@@ -116,6 +116,10 @@ Example: `[internal link](/blog/my-blog-post)` / `[external link](https://exampl
 - External links will automatically render with `target="_blank" rel="noopener noreferrer"` and open in a new tab
 - Internal links are handled normally
 
+### iFrame Embed Support
+- Out of the box configuration of iframe embeds within markdown.
+- Uses [Rehype Raw](https://github.com/rehypejs/rehype-raw). Disable if using this code in a way where you may not be able to trust the markdown.
+
 ---
 
 ## Inspiration:
