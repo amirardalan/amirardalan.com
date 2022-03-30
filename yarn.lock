@@ -4456,13 +4456,13 @@ react-countup@^6.1.1:
   dependencies:
     countup.js "^2.0.8"
 
-react-dom@^18.0.0:
-  version "18.0.0"
-  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-18.0.0.tgz#26b88534f8f1dbb80853e1eabe752f24100d8023"
-  integrity sha512-XqX7uzmFo0pUceWFCt7Gff6IyIMzFUn7QMZrbrQfGxtaxXZIcGQzoNpRLE3fQLnS4XzLLPMZX2T9TRcSrasicw==
+react-dom@^18.0.0-rc.3:
+  version "18.0.0-rc.3"
+  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-18.0.0-rc.3.tgz#e26884e58dea59c6887e6b1f6a53851314253c94"
+  integrity sha512-WPlWXyzZp22+uGUNNNoZnAPWAcr5sSeaEj0S1lLqKc2DkovKugJl1VgnBfk6gQX9llTb5/qkRNVtW31WdhG8iA==
   dependencies:
     loose-envify "^1.1.0"
-    scheduler "^0.21.0"
+    scheduler "^0.21.0-rc.3"
 
 react-intersection-observer@^8.33.1:
   version "8.33.1"
@@ -4553,10 +4553,10 @@ react-use-measure@^2.1.1:
   dependencies:
     debounce "^1.2.1"
 
-react@^18.0.0:
-  version "18.0.0"
-  resolved "https://registry.yarnpkg.com/react/-/react-18.0.0.tgz#b468736d1f4a5891f38585ba8e8fb29f91c3cb96"
-  integrity sha512-x+VL6wbT4JRVPm7EGxXhZ8w8LTROaxPXOqhlGyVSrv0sB1jkyFGgXxJ8LVoPRLvPR6/CIZGFmfzqUa2NYeMr2A==
+react@^18.0.0-rc.3:
+  version "18.0.0-rc.3"
+  resolved "https://registry.yarnpkg.com/react/-/react-18.0.0-rc.3.tgz#bb7c7fe1fb8f2909bf2bcd9834642fabddbb90ed"
+  integrity sha512-2NzSty8Dtq+5lnOdnP5MNA2iSn51PmvAuqgHLmUoXU3ohEtL+r0a1Az1iWvurMBIqW9cz49fJ42AM/+ziPmlWg==
   dependencies:
     loose-envify "^1.1.0"
 
@@ -4746,7 +4746,7 @@ saxes@^5.0.1:
   dependencies:
     xmlchars "^2.2.0"
 
-scheduler@^0.21.0:
+scheduler@^0.21.0, scheduler@^0.21.0-rc.3:
   version "0.21.0"
   resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.21.0.tgz#6fd2532ff5a6d877b6edb12f00d8ab7e8f308820"
   integrity sha512-1r87x5fz9MXqswA2ERLo0EbOAU74DpIUO090gIasYTqlVoJeMcl+Z1Rg7WHz+qtPujhS/hGIt9kxZOYBV3faRQ==
