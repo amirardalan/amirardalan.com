@@ -24,7 +24,7 @@ export default function NowPlaying() {
       position: 'absolute',
       top: '2rem',
       left: '2rem',
-      // color: '#e4e9f8',
+      color: '#e4e9f8',
       fontSize: 12,
       textTransform: 'uppercase',
     },
