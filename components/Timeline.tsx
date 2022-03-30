@@ -213,7 +213,7 @@ export default function Timeline() {
       }
     },
     '@media(max-width: 768px)': {
-      paddingTop: 2.5,
+      paddingTop: 1.9,
     },
   })
 

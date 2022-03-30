@@ -116,16 +116,12 @@ const Post = ({ post, feed, data }) => {
         fontSize: 24,
         lineHeight: '1.8rem',
         '@media(max-width: 768px)': {
-          fontSize: 22,
-        },
-        '@media(max-width: 480px)': {
-          lineHeight: '1.5rem',
-          fontSize: 18,
-        },
+          fontSize: 20,
+        }
       },
       h3: {
         scrollMarginTop: '4rem',
-        margin: '1rem 0',
+        margin: '1rem 0 1.5rem',
         padding: 0,
         display: 'inline-block',
         fontWeight: 700,
