@@ -20,6 +20,8 @@ const grayAccentLight = '#b7b7c9'
 const grayAccentDark = '#494a5c'
 const buttonDisabled = '#9e9eb6'
 const warning = '#e64358'
+const codeDark = '#addb67'
+const codeLight = '#e64358'
 const codeHighlight = '#393a4e'
 const sunrise = 'linear-gradient(to bottom, #757abf 0%,#8583be 60%,#eab0d1 100%)'
 const sunset = 'linear-gradient(to bottom, #111011 30%,#451f4d 80%,#311946 100%)'
@@ -102,7 +104,7 @@ export function GlobalStyles () {
           '--color-accent-darker': lighter,
           '--color-gradient': sunset,
           '--page-bg': lighter,
-          '--code': lighter,
+          '--code': codeLight,
           '--code-bg': darkAccent,
           '--icon-info': 'url(/icons/note-dark.svg)',
           '--icon-arrow': 'url(/icons/arrow-dark.svg)',
@@ -126,7 +128,7 @@ export function GlobalStyles () {
           '--color-accent-darker': darker,
           '--color-gradient': sunrise,
           '--page-bg': darkAccent,
-          '--code': codeHighlight,
+          '--code': codeDark,
           '--code-bg': darkAccent,
           '--icon-info': 'url(/icons/note-light.svg)',
           '--icon-arrow': 'url(/icons/arrow-light.svg)',

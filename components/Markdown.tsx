@@ -81,12 +81,11 @@ export default function BlogMarkdown({ markdown }) {
     code: {
       wordWrap: 'break-word',
       fontSize: 16,
-      color: 'var(--color-neutral)',
-      backgroundColor: 'var(--code)',
+      color: 'var(--code)',
       borderRadius: 5,
       '&::before, &::after': {
         content: '"`"',
-        color: 'var(--color-primary)'
+        color: 'var(--code)'
       },
     },
     'pre code': {
