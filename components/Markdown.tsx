@@ -202,7 +202,7 @@ export default function BlogMarkdown({ markdown }) {
       }
       return (
         <div className={codeCopied ? 'copyCode active' : 'copyCode'}>
-          <button onClick={()=> handleCopyCode(codeChunk)} />
+          <button onClick={()=> handleCopyCode(codeChunk)} aria-label="Copy code to clipboard" />
           <pre {...pre}></pre>
         </div>
       )

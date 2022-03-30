@@ -7,6 +7,7 @@ export default function Checkbox({ label, value, onChange }) {
       onChange={onChange}
       className="checkbox"
       aria-label={label}
+      aria-checked={value}
     />
     {label}
   </label>

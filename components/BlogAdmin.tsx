@@ -122,6 +122,7 @@ const BlogAdmin = React.memo(function BlogAdmin() {
               onClick={ !isDeploying ? deployNewBuild : null }
               className={ (isDeploying) ? 'buttonCompact deploy disabled' : 'buttonCompact deploy' }
               aria-label="Deploy"
+              aria-disabled={ isDeploying ? true : false}
             >
               Deploy
             </button>
