@@ -85,7 +85,7 @@ export default function NowPlaying() {
     '.loadingTitle, .loadingArtist': {
       display: 'block',
       height: 10,
-      backgroundColor: '#494a5c',
+      backgroundColor: 'var(--color-accent-neutral)',
     },
     '.loadingTitle': {
       width: 175,
