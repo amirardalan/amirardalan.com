@@ -36,7 +36,7 @@ export default function Spotify() {
         fontSize: 'calc(1.2vw + 1.2vh)',
         WebkitMarqueeIncrement: '0vw',
         '@media(max-width: 480px)': {
-          gridTemplateColumns: '5% 15% 50%',
+          gridTemplateColumns: '5% 20% 50%',
           gap: '1rem',
           '.image': {
             width: 60,
