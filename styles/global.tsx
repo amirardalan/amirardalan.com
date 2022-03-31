@@ -7,7 +7,7 @@ const fontTertiary = '"PT Serif", "Times New Roman", Times, serif'
 
 // Colors
 const light = '#e4e9f8'
-const lightAccent = '#dbe1f0'
+const lightAccent = '#d8dff0'
 const lighter = '#d5d9ee'
 const dark = '#262738'
 const darkAccent = '#2f3044'
@@ -25,7 +25,7 @@ const codeDark = '#c792ea'
 const codeHighlight = '#393a4e'
 const avatar = '#281483'
 const sunrise = 'linear-gradient(to bottom,#676caf 0%,#4f4983 50%,#6d367e 100%)'
-const sunset = 'linear-gradient(to bottom,#1d1d25 0%,#2b2141 50%,#4e2a47 100%)'
+const sunset = 'linear-gradient(to bottom,#0e050e 0%,#2d1933 50%,#332462 100%)'
 
 export function GlobalStyles () {
 
@@ -303,9 +303,9 @@ export function GlobalStyles () {
           border: '1px solid transparent',
           borderRadius: 8,
           color: 'var(--color-bg)',
-          fontFamily: 'var(--font-primary)',
+          fontFamily: 'var(--font-secondary)',
           fontSize: 15,
-          fontWeight: 400,
+          fontWeight: 700,
           textDecoration: 'none',
           cursor: 'pointer',
           'span': {
@@ -347,9 +347,12 @@ export function GlobalStyles () {
             background: 'var(--icon-external) no-repeat',
             backgroundSize: 'contain',
           },
-          '&.download:after': {
-            background: 'var(--icon-download) no-repeat',
-            backgroundSize: 'contain',
+          '&.download': {
+            mixBlendMode: 'screen',
+            '&:after': {
+              background: 'var(--icon-download) no-repeat',
+              backgroundSize: 'contain',
+            },
           },
           '&.time:after': {
             background: 'var(--icon-time) no-repeat',

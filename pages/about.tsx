@@ -16,19 +16,17 @@ export default function About() {
     '@media(max-width: 1280px)': {
       gridTemplateColumns: 'repeat(2, 1fr)',
     },
-    '@media(max-width: 1024px)': {
-      gap: '2rem',
-    },
     '@media(max-width: 768px)': {
       gridTemplateColumns: 'repeat(1, 1fr)',
     },
     '.grid': {
       display: 'flex',
       justifyContent: 'center',
-      border: '1px solid var(--color-accent-neutral)',
+      border: '1px solid var(--color-accent)',
+      backgroundColor: 'var(--color-bg)',
+      boxShadow: '0 0 1rem rgba(12, 12, 14, 0.1)',
       padding: '2rem',
       lineHeight: '1.8rem',
-      animation: 'slideUpSection .5s forwards',
       '&:first-of-type': {
         border: 'transparent',
         background: 'var(--color-gradient)',
@@ -55,10 +53,6 @@ export default function About() {
           fontSize: 17,
           maxWidth: 450,
         }
-      },
-      '@media(max-width: 768px)': {
-        padding: 0,
-        border: 'transparent'
       },
       h3: {
         fontFamily: 'var(--font-secondary)',
@@ -139,8 +133,7 @@ export default function About() {
   return (
     <Container title={about.meta.title} description={about.meta.description}>
       <main className='about'>
-        <div className='animationWrapper'>
-          <h1 className='pageHeading'>{about.heading}</h1>
+      <h1 className='pageHeading'>{about.heading}</h1>
           <div css={styleGridWrapper}>
             <div className='grid'>
               <ul css={styleBioItems}>
@@ -220,7 +213,6 @@ export default function About() {
               </ul>
             </div>
           </div>
-        </div>
         <Timeline />
       </main>
     </Container>

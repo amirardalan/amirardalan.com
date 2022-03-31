@@ -143,9 +143,9 @@ export const about = {
     title: 'Skills',
     items: [
       'Front-end',
+      'JavaScript',
       'TypeScript',
-      'Next.js / React',
-      'Test-driven Dev',
+      'React/Next',
       'CSS-in-JS',
       'Agile Scrum',
       'Three.js',
