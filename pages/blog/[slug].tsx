@@ -23,8 +23,10 @@ const Post = ({ post, feed, data }) => {
     '.postDetails': {
       marginBottom: '2rem',
       '.author': {
-        fontFamily: 'var(--font-secondary)',
-        fontWeight: 700,
+        span: {
+          fontFamily: 'var(--font-secondary)',
+          fontWeight: 700,
+        }
       },
       '.dateAndReadTime': {
         time: {
@@ -48,7 +50,7 @@ const Post = ({ post, feed, data }) => {
       h1: {
         margin: '0 0 .8rem',
         textDecoration: 'none',
-        lineHeight: '2.8rem',
+        lineHeight: '3rem',
         '@media(max-width: 768px)': {
           fontSize: 32,
           margin: '0 0 .5rem',
@@ -56,7 +58,7 @@ const Post = ({ post, feed, data }) => {
         },
         '@media(max-width: 480px)': {
           fontSize: 28,
-          lineHeight: '2rem'
+          lineHeight: '2.2rem'
         }
       },
       '.teaser': {
@@ -66,8 +68,8 @@ const Post = ({ post, feed, data }) => {
         lineHeight: '1.5rem',
         color: 'var(--color-neutral)',
         '@media(max-width: 768px)': {
-          fontSize: 16,
-        }
+          fontSize: 19,
+        },
       },
       'h3, h3 code': {
         fontSize: 24,
@@ -284,12 +286,16 @@ const Post = ({ post, feed, data }) => {
       <div className={isPublished ? 'blog' : 'blog admin'} css={styleBlogPost}>
 
       <article className="post postFull">
+        <div className="category full" aria-label={post.category}>{post.category}</div>
+        <h1 aria-label={`${title}`}>{title}</h1>
+        <p className="teaser">{post.teaser}</p>
+
         <div 
           className="postDetails" 
           aria-label={isEdited ? `${editDate} • ${postReadTime}` : `${publishDate} • ${postReadTime}`}
         >
           <span className="author">
-            {post?.author?.name || 'Unknown author'}
+            By <span>{post?.author?.name || 'Unknown author'}</span>
           </span>
           <span className="dateAndReadTime">
             {isEdited && showEdited
@@ -298,10 +304,6 @@ const Post = ({ post, feed, data }) => {
               <span className="readTime">{postReadTime}</span>
           </span>
         </div>
-
-        <div className="category full" aria-label={post.category}>{post.category}</div>
-        <h1 aria-label={`${title}`}>{title}</h1>
-        <p className="teaser">{post.teaser}</p>
 
         <Markdown markdown={post} />
 
