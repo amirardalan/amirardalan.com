@@ -95,6 +95,15 @@ export const about = {
         },
       },
       {
+        path: 'https://codepen.io/amirardalan/collections/public',
+        title: 'CodePen',
+        cName: 'iconCodePen icon',
+        icon: {
+          light: themeLight.icons.codepen,
+          dark: themeDark.icons.codepen
+        },
+      },
+      {
         path: 'https://twitter.com/amirardalan',
         title: 'Twitter',
         cName: 'iconTwitter icon',
