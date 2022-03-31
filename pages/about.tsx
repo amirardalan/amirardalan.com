@@ -25,11 +25,12 @@ export default function About() {
     '.grid': {
       display: 'flex',
       justifyContent: 'center',
-      background: 'var(--color-accent)',
+      border: '1px solid var(--color-accent-neutral)',
       padding: '2rem',
       lineHeight: '1.8rem',
       animation: 'slideUpSection .5s forwards',
       '&:first-of-type': {
+        border: 'transparent',
         background: 'var(--color-gradient)',
         padding: '2rem',
         '.bioSubHeading': {
@@ -53,7 +54,11 @@ export default function About() {
           fontFamily: 'var(--font-tertiary)',
           fontSize: 17,
           maxWidth: 450,
-        },
+        }
+      },
+      '@media(max-width: 768px)': {
+        padding: 0,
+        border: 'transparent'
       },
       h3: {
         fontFamily: 'var(--font-secondary)',
