@@ -40,6 +40,14 @@ const Post = ({ post, feed, data }) => {
             content: '""',
             margin: 0
           },
+        },
+        '@media(max-width: 350px)': {
+          'time:after': {
+            content: '""'
+          },
+          span: {
+            display: 'block'
+          },
         }
       },
       '@media(max-width: 480px)': {
@@ -68,6 +76,7 @@ const Post = ({ post, feed, data }) => {
         lineHeight: '1.5rem',
         color: 'var(--color-neutral)',
         '@media(max-width: 768px)': {
+          marginBottom: '2rem',
           fontSize: 19,
         },
       },
