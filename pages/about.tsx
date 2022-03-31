@@ -7,11 +7,11 @@ import Timeline from '@/components/Timeline'
 import { about } from '@/data/content'
 
 
-export default function About({ data }) {
+export default function About() {
   const styleGridWrapper = css({
     display: 'grid',
     gridTemplateColumns: 'repeat(3, 1fr)',
-    gap: 20,
+    gap: '4rem',
     gridAutoRows: 'minmax(100px, auto)',
     '@media(max-width: 1280px)': {
       gridTemplateColumns: 'repeat(2, 1fr)',
@@ -22,18 +22,10 @@ export default function About({ data }) {
     '.grid': {
       display: 'flex',
       justifyContent: 'center',
-      padding: '3rem',
-      border: '1px solid var(--color-accent-neutral)',
       lineHeight: '1.8rem',
       animation: 'slideUpSection .5s forwards',
       h3: {
         fontFamily: 'var(--font-secondary)',
-      },
-      '@media (max-width: 1024px)': {
-        padding: '1.5rem',
-      },
-      '@media (max-width: 480px)': {
-        padding: '1.5rem',
       },
       ul: {
         width: '100%',
@@ -72,7 +64,7 @@ export default function About({ data }) {
     },
     h2: {
       color: 'var(--color-text)',
-      fontSize: 18,
+      fontSize: 22,
     },
     h3: {
       marginBottom: '1.5rem',
@@ -86,6 +78,7 @@ export default function About({ data }) {
     display: 'flex',
     flexDirection: 'column',
     flexFlow: 'row nowrap',
+    marginTop: '2rem',
     '@media (min-width: 769px) and (max-width: 900px)': {
       flexDirection: 'column',
       '.ctaButton': {
@@ -139,16 +132,13 @@ export default function About({ data }) {
             <div className='grid'>
               <ul css={styleBioItems}>
                 <li>
-                  <Avatar height='100' width='100' />
+                  <Avatar height={125} width={125} />
                 </li>
                 <li aria-label={about.bio.subheading} className="bioSubHeading">
                   <h2>{about.bio.subheading}</h2>
                 </li>
                 <li>
                   <em className='blurb'>{about.bio.content}</em>
-                </li>
-                <li css={styleCtaWrapper}>
-                  {generateCtaButtons(about.bio.items)}
                 </li>
               </ul>
             </div>
@@ -174,6 +164,9 @@ export default function About({ data }) {
                   </h3>
                 </li>
                 {GenerateListItems(about.experience.items)}
+                <li css={styleCtaWrapper}>
+                  {generateCtaButtons(about.bio.items)}
+                </li>
               </ul>
             </div>
             <div className='grid'>

@@ -30,7 +30,7 @@ export default function Spotify() {
       '.grid': {
         display: 'grid',
         alignItems: 'center',
-        gap: 20,
+        gap: '4rem',
         marginBottom: '1rem',
         gridTemplateColumns: '10% 20% 60%',
         fontSize: 'calc(1.2vw + 1.2vh)',
@@ -95,10 +95,8 @@ export default function Spotify() {
     display: 'grid',
     gridTemplateColumns: 'repeat(2, 1fr)',
     justifyContent: 'space-between',
-    gap: '1rem',
+    gap: '4rem',
     '.module': {
-      border: '1px solid var(--color-accent-neutral)',
-      padding: '2rem',
       '&.player': {
         background: 'none',
         padding: 0,
@@ -118,9 +116,6 @@ export default function Spotify() {
           gridRow: 'initial',
         },
       },
-      '@media(max-width: 768px)': {
-        padding: '1rem',
-      }
     },
     '@media(max-width: 1024px)': {
       gridTemplateColumns: 'repeat(1, 1fr)',

@@ -9,7 +9,7 @@ export const logo = {
 
 export const avatar = {
   title: 'Amir Ardalan',
-  img: 'https://github.com/amirardalan.png',
+  img: '/avatar/amir-ardalan.jpg',
 }
 
 export const home = {
@@ -116,28 +116,14 @@ export const about = {
   },
   bio: {
     subheading: `👋 Hey there, I'm Amir!`,
-    content: `I connect humans with technology through front-end code and user interface design utilizing deep knowledge in front-end, accessibility, and ecommerce.`,
+    content: `I connect humans with technology through front-end engineering and user interface design. I'm passionate about functional programming and crafting outstanding digital experiences.`,
     items: [
-      {
-        path: '#timeline',
-        title: 'Timeline',
-        rel: '',
-        target: '_self',
-        icon: 'time'
-      },
       {
         path: '/amir-ardalan-resume.pdf',
         title: 'Resume',
         rel: 'noopener noreferrer',
         target: '_blank',
         icon: 'download'
-      },
-      {
-        path: 'https://codepen.io/amirardalan/collections/',
-        title: 'CodePen',
-        rel: 'noopener noreferrer',
-        target: '_blank',
-        icon: 'external'
       },
     ],
   },
@@ -189,7 +175,7 @@ export const about = {
   contact: {
     title: 'Contact:',
     email: {
-      title: 'Show Email Address',
+      title: 'Email Me',
       icon: {
         light: themeLight.icons.email,
         dark: themeDark.icons.email,
