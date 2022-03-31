@@ -13,6 +13,7 @@ export default function NowPlaying() {
 
   const styleNowPlayingContainer = css({
     display: 'flex',
+    backgroundColor: 'var(--color-dark)'
   })
   const styleNowPlaying = css({
     position: 'relative',
@@ -85,7 +86,7 @@ export default function NowPlaying() {
     '.loadingTitle, .loadingArtist': {
       display: 'block',
       height: 10,
-      backgroundColor: 'var(--color-accent-neutral)',
+      backgroundColor: 'var(--color-dark)',
     },
     '.loadingTitle': {
       width: 175,

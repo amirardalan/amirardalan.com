@@ -90,11 +90,6 @@ export default function About() {
       borderBottom: '2px solid var(--color-primary)',
     },
   })
-  const styleCtaWrapper = css({
-    width: 'fit-content',
-    margin: '1rem 0 .5rem',
-
-  })
   const styleBioItems = css({
     li: {
       marginBottom: '1rem',
@@ -207,7 +202,7 @@ export default function About() {
                 <li>
                   <h3 aria-label={about.contact.title}>{about.contact.title}</h3>
                 </li>
-                <li css={styleCtaWrapper}>
+                <li>
                   <ContactButton />
                 </li>
               </ul>

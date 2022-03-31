@@ -103,6 +103,7 @@ export default function Spotify() {
       backgroundColor: 'var(--color-bg)',
       boxShadow: '0 0 1rem rgba(12, 12, 14, 0.1)',
       '&.player': {
+        border: 'transparent',
         background: 'none',
         padding: 0,
         gridColumn: '1 / 2',
