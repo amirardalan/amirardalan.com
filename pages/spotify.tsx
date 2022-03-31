@@ -31,11 +31,13 @@ export default function Spotify() {
         display: 'grid',
         alignItems: 'center',
         marginBottom: '1rem',
-        gridTemplateColumns: '15% 30% 55%',
+        gridTemplateColumns: '5% 18% 55%',
+        gap: '1rem',
         fontSize: 'calc(1.2vw + 1.2vh)',
         WebkitMarqueeIncrement: '0vw',
         '@media(max-width: 480px)': {
-          gridTemplateColumns: '12% 28% 60%',
+          gridTemplateColumns: '5% 15% 50%',
+          gap: '1rem',
           '.image': {
             width: 60,
             height: 60,
