@@ -79,7 +79,7 @@ export default function About() {
   });
   const styleCtaWrapper = css({
     width: 'fit-content',
-    marginTop: '2rem',
+    margin: '1rem 0 .5rem',
 
   });
   const styleBioItems = css({
@@ -153,11 +153,6 @@ export default function About() {
                   </h3>
                 </li>
                 {GenerateListItems(about.experience.items)}
-              </ul>
-              <ul>
-                <li>
-                  <h3 aria-hidden="true">&nbsp;</h3>
-                </li>
                 <li css={styleCtaWrapper}>
                   {generateCtaButtons(about.bio.items)}
                 </li>

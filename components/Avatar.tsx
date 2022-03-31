@@ -14,12 +14,12 @@ export default function Photo({ height, width }) {
     height: `${height}px`,
     background: 'var(--color-primary)',
     opacity: .1,
-    borderRadius: `${clip}px`
+    borderRadius: `${clip}px`,
   })
 
   return (
     <>
-    <div css={styleAvatarTint}></div>
+      <div css={styleAvatarTint}/>
       <Image
         src={avatar.img}
         alt={avatar.title}
@@ -30,6 +30,6 @@ export default function Photo({ height, width }) {
         css={{clipPath:`circle(${clip}px at center)`,}}
         priority
       />
-      </>
+    </>
   )
 }
