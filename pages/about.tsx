@@ -11,7 +11,7 @@ export default function About() {
   const styleGridWrapper = css({
     display: 'grid',
     gridTemplateColumns: 'repeat(3, 1fr)',
-    gap: '4rem',
+    gap: '1rem',
     gridAutoRows: 'minmax(100px, auto)',
     '@media(max-width: 1280px)': {
       gridTemplateColumns: 'repeat(2, 1fr)',
@@ -25,8 +25,36 @@ export default function About() {
     '.grid': {
       display: 'flex',
       justifyContent: 'center',
+      background: 'var(--color-accent)',
+      padding: '2rem',
       lineHeight: '1.8rem',
       animation: 'slideUpSection .5s forwards',
+      '&:first-of-type': {
+        background: 'var(--color-gradient)',
+        padding: '2rem',
+        '.bioSubHeading': {
+          margin: '1rem 0',
+          lineHeight: '1.2rem',
+          h2: {
+            color: 'var(--color-light)'
+          }
+        },
+        '.ctaButton': {
+          background: 'var(--color-select)',
+          color: 'var(--color-dark)',
+          '&:hover': {
+            background: 'var(--color-light)',
+          }
+        },
+        em: {
+          color: 'var(--color-select)',
+          marginBottom: '1rem',
+          display: 'inline-block',
+          fontFamily: 'var(--font-tertiary)',
+          fontSize: 17,
+          maxWidth: 450,
+        },
+      },
       h3: {
         fontFamily: 'var(--font-secondary)',
       },
@@ -41,20 +69,6 @@ export default function About() {
           fontFamily: 'var(--font-secondary)',
           fontSize: 16,
         },
-        '.blurb': {
-          color: 'var(--color-neutral)',
-        },
-        em: {
-          marginBottom: '1rem',
-          display: 'inline-block',
-          fontFamily: 'var(--font-tertiary)',
-          fontSize: 17,
-          maxWidth: 450,
-        },
-      },
-      '.bioSubHeading': {
-        lineHeight: '1.2rem',
-        margin: '1rem 0'
       },
       '.availability': {
         fontFamily: 'var(--font-secondary)',
@@ -76,12 +90,12 @@ export default function About() {
       color: 'var(--color-text)',
       borderBottom: '2px solid var(--color-primary)',
     },
-  });
+  })
   const styleCtaWrapper = css({
     width: 'fit-content',
     margin: '1rem 0 .5rem',
 
-  });
+  })
   const styleBioItems = css({
     li: {
       marginBottom: '1rem',
@@ -89,12 +103,12 @@ export default function About() {
         marginBottom: 0,
       },
     },
-  });
+  })
   const styleSocialIconsWrapper = css({
     width: '100%',
     display: 'flex',
     flexDirection: 'column',
-  });
+  })
   const styleSocialIcons = css({
     display: 'flex',
     flexDirection: 'row',
@@ -104,7 +118,12 @@ export default function About() {
         marginRight: 0,
       },
     },
-  });
+  })
+  const styleDownloadResume = css({
+    margin: '2rem 0',
+    background: 'var(--color-accent)',
+    padding: '4rem',
+  })
 
   const GenerateListItems = (items: Array<string>) => {
     return items.map((items, i) => {
@@ -129,6 +148,9 @@ export default function About() {
                 <li>
                   <em className='blurb'>{about.bio.content}</em>
                 </li>
+                <div>
+                  {generateCtaButtons(about.bio.items)}
+                </div>
               </ul>
             </div>
             <div className='grid'>
@@ -153,9 +175,6 @@ export default function About() {
                   </h3>
                 </li>
                 {GenerateListItems(about.experience.items)}
-                <li css={styleCtaWrapper}>
-                  {generateCtaButtons(about.bio.items)}
-                </li>
               </ul>
             </div>
             <div className='grid'>

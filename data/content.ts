@@ -129,7 +129,7 @@ export const about = {
     items: [
       {
         path: '/amir-ardalan-resume.pdf',
-        title: 'Resume',
+        title: 'Download Resume',
         rel: 'noopener noreferrer',
         target: '_blank',
         icon: 'download'

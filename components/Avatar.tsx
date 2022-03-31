@@ -8,13 +8,13 @@ export default function Photo({ height, width }) {
   const clip = width / 2
 
   const styleAvatarTint = css({
-    position: 'absolute',
     zIndex: 2,
+    position: 'absolute',
     width: `${width}px`,
     height: `${height}px`,
-    background: 'var(--color-primary)',
-    opacity: .1,
+    background: 'var(--color-avatar)',
     borderRadius: `${clip}px`,
+    opacity: .15,
   })
 
   return (

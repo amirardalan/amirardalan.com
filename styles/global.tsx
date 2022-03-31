@@ -20,11 +20,12 @@ const grayAccentLight = '#b7b7c9'
 const grayAccentDark = '#494a5c'
 const buttonDisabled = '#9e9eb6'
 const warning = '#e64358'
-const codeDark = '#c792ea'
 const codeLight = '#4346e6'
+const codeDark = '#c792ea'
 const codeHighlight = '#393a4e'
-const sunrise = 'linear-gradient(to bottom, #757abf 0%,#8583be 60%,#eab0d1 100%)'
-const sunset = 'linear-gradient(to bottom, #111011 30%,#451f4d 80%,#311946 100%)'
+const avatar = '#281483'
+const sunrise = 'linear-gradient(to bottom,#676caf 0%,#4f4983 50%,#6d367e 100%)'
+const sunset = 'linear-gradient(to bottom,#1d1d25 0%,#2b2141 50%,#4e2a47 100%)'
 
 export function GlobalStyles () {
 
@@ -89,10 +90,14 @@ export function GlobalStyles () {
           '--font-primary': fontPrimary,
           '--font-secondary': fontSecondary,
           '--font-tertiary': fontTertiary,
+          '--color-light': lightAccent,
+          '--color-dark': darkAccent,
           '--color-warning': warning,
           '--color-disabled': buttonDisabled,
+          '--color-avatar': avatar,
           '--color-select': grayAccentLight,
           '--code-highlight': codeHighlight,
+          '--icon-download': 'url(/icons/download-dark.svg)',
         },
         'body, body[data-theme="light"]': {
           '--color-primary': primary,
@@ -110,7 +115,6 @@ export function GlobalStyles () {
           '--icon-arrow': 'url(/icons/arrow-dark.svg)',
           '--icon-spotify': 'url(/icons/spotify-dark.svg)',
           '--icon-external': 'url(/icons/external-link-light.svg)',
-          '--icon-download': 'url(/icons/download-light.svg)',
           '--icon-time': 'url(/icons/time-light.svg)',
           '--icon-email': 'url(/icons/email-light.svg)',
           '--icon-clipboard': 'url(/icons/clipboard-dark.svg)',
@@ -134,7 +138,6 @@ export function GlobalStyles () {
           '--icon-arrow': 'url(/icons/arrow-light.svg)',
           '--icon-spotify': 'url(/icons/spotify-light.svg)',
           '--icon-external': 'url(/icons/external-link-dark.svg)',
-          '--icon-download': 'url(/icons/download-dark.svg)',
           '--icon-time': 'url(/icons/time-dark.svg)',
           '--icon-email': 'url(/icons/email-dark.svg)',
           '--icon-clipboard': 'url(/icons/clipboard-light.svg)',
@@ -374,7 +377,7 @@ export function GlobalStyles () {
               marginRight: 10
             },
             width: '100%',
-          }
+          },
         },
         '.tooltip': {
           position: 'relative',
