@@ -30,11 +30,17 @@ export default function Spotify() {
       '.grid': {
         display: 'grid',
         alignItems: 'center',
-        gap: '4rem',
         marginBottom: '1rem',
-        gridTemplateColumns: '10% 20% 60%',
+        gridTemplateColumns: '15% 30% 55%',
         fontSize: 'calc(1.2vw + 1.2vh)',
         WebkitMarqueeIncrement: '0vw',
+        '@media(max-width: 480px)': {
+          gridTemplateColumns: '12% 28% 60%',
+          '.image': {
+            width: 60,
+            height: 60,
+          },
+        },
         div: {
           display: 'flex',
         },
@@ -79,13 +85,6 @@ export default function Spotify() {
             fontSize: 10,
           }
         },
-        '@media(max-width: 480px)': {
-          gridTemplateColumns: '5% 20% 60%',
-          '.image': {
-            width: 60,
-            height: 60,
-          },
-        },
       }
     }
   })
@@ -119,7 +118,7 @@ export default function Spotify() {
     },
     '@media(max-width: 1024px)': {
       gridTemplateColumns: 'repeat(1, 1fr)',
-      gap: 40,
+      // gap: 40,
     }
   })
 
