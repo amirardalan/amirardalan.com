@@ -16,6 +16,9 @@ export default function About() {
     '@media(max-width: 1280px)': {
       gridTemplateColumns: 'repeat(2, 1fr)',
     },
+    '@media(max-width: 1024px)': {
+      gap: '2rem',
+    },
     '@media(max-width: 768px)': {
       gridTemplateColumns: 'repeat(1, 1fr)',
     },
@@ -51,7 +54,7 @@ export default function About() {
       },
       '.bioSubHeading': {
         lineHeight: '1.2rem',
-        margin: '2rem 0 1rem'
+        margin: '1rem 0'
       },
       '.availability': {
         fontFamily: 'var(--font-secondary)',
@@ -75,23 +78,9 @@ export default function About() {
     },
   });
   const styleCtaWrapper = css({
-    display: 'flex',
-    flexDirection: 'column',
-    flexFlow: 'row nowrap',
+    width: 'fit-content',
     marginTop: '2rem',
-    '@media (min-width: 769px) and (max-width: 900px)': {
-      flexDirection: 'column',
-      '.ctaButton': {
-        marginRight: 0,
-      }
-    },
-    '@media(max-width: 510px)': {
-      flexDirection: 'column',
-      width: '100%',
-      '.ctaButton': {
-        marginRight: 0,
-      }
-    }
+
   });
   const styleBioItems = css({
     li: {
@@ -145,13 +134,13 @@ export default function About() {
             <div className='grid'>
               <ul>
                 <li>
-                  <h3 aria-label='{about.skills.title}'>{about.skills.title}</h3>
+                  <h3 aria-label={about.skills.title}>{about.skills.title}</h3>
                 </li>
                 {GenerateListItems(about.skills.items)}
               </ul>
               <ul>
                 <li>
-                  <h3 aria-label='{about.skills.title}'>{about.stack.title}</h3>
+                  <h3 aria-hidden="true">&nbsp;</h3>
                 </li>
                 {GenerateListItems(about.stack.items)}
               </ul>
@@ -164,6 +153,11 @@ export default function About() {
                   </h3>
                 </li>
                 {GenerateListItems(about.experience.items)}
+              </ul>
+              <ul>
+                <li>
+                  <h3 aria-hidden="true">&nbsp;</h3>
+                </li>
                 <li css={styleCtaWrapper}>
                   {generateCtaButtons(about.bio.items)}
                 </li>

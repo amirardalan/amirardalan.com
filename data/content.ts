@@ -83,7 +83,7 @@ export const about = {
   },
   heading: 'About',
   social: {
-    title: 'Social:',
+    title: 'Social',
     items: [
       {
         path: 'https://github.com/amirardalan',
@@ -127,8 +127,11 @@ export const about = {
       },
     ],
   },
+  resume: {
+    title: 'Resume'
+  },
   skills: {
-    title: 'Skills:',
+    title: 'Skills',
     items: [
       'Front-end',
       'TypeScript',
@@ -142,7 +145,6 @@ export const about = {
     ]
   },
   stack: {
-    title: 'Stack:',
     items: [
       'Next.JS',
       'TypeScript',
@@ -156,7 +158,7 @@ export const about = {
     ]
   },
   experience: {
-    title: 'Experience:',
+    title: 'Experience',
     items: [
       '10+ years',
       'Columbia Sportswear',
@@ -168,12 +170,12 @@ export const about = {
     ],
   },
   availability: {
-    title: 'Availability:',
+    title: 'Availability',
     text: '☑ Currently Available',
     location: 'Remote or in Portland, OR',
   },
   contact: {
-    title: 'Contact:',
+    title: 'Contact',
     email: {
       title: 'Email Me',
       icon: {
