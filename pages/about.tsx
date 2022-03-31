@@ -40,10 +40,10 @@ export default function About() {
           }
         },
         '.ctaButton': {
-          background: 'var(--color-select)',
+          background: 'var(--color-light)',
           color: 'var(--color-dark)',
           '&:hover': {
-            background: 'var(--color-light)',
+            background: 'var(--color-select)',
           }
         },
         em: {
