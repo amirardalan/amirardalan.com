@@ -122,13 +122,15 @@ const blogStyles = css({
         content: '"|"',
         position: 'absolute',
         fontFamily: 'var(--font-secondary)',
-        fontWeight: 700,
-        fontSize: 32,
-        lineHeight: '2.2rem',
+        fontWeight: 800,
+        fontSize: 24,
+        lineHeight: '2rem',
         left: -20,
         color: 'var(--color-primary)',
-        '@media (max-width: 768px)': {
-          fontSize: 28,
+        '@media (max-width: 1024px)': {
+          top: -2,
+          left: -15,
+          fontSize: 18,
         }
       }
     }
