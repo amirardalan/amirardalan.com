@@ -186,7 +186,7 @@ export const about = {
   contact: {
     title: 'Contact',
     email: {
-      title: 'Email Me',
+      title: 'Show Email Address',
     },
     copiedToClipboard: 'Copied to clipboard ✅',
     items: [
