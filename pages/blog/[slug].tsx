@@ -25,6 +25,7 @@ const Post = ({ post, feed, data }) => {
       '.author': {
         span: {
           fontFamily: 'var(--font-secondary)',
+          fontSize: 15,
           fontWeight: 700,
         }
       },
@@ -88,7 +89,7 @@ const Post = ({ post, feed, data }) => {
           fontSize: 24,
         },
         '@media(max-width: 480px)': {
-          fontSize: 20,
+          fontSize: 22,
         },
       },
       h3: {

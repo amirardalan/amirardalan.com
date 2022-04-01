@@ -82,9 +82,7 @@ const BlogPostFilter = ({ feed }) => {
     const categorySearch = search[0] === '#'
     const categoryMatch = activeCategories.indexOf(search.slice(1).split(' ')[0]) > -1
   
-    // if #, search categories
     if (categorySearch) {
-      // if category matches categories, search titles with category
       if (categoryMatch) {
         return feed.filter((data: { category: string, title: string }) => 
           data?.category?.toLowerCase().includes(search.slice(1).toLowerCase().split(' ')[0]) && 
@@ -93,7 +91,6 @@ const BlogPostFilter = ({ feed }) => {
       return feed.filter((data: { category: string }) => 
         data?.category?.toLowerCase().includes(search.slice(1).toLowerCase()))
     }
-    // if no #, just search titles
     return feed.filter((data: { title: string }) => 
       data?.title?.toLowerCase().includes(search.toLowerCase()))
   }

@@ -72,7 +72,7 @@ const blogStyles = css({
         lineHeight: '1.4rem',
         '@media(max-width: 768px)': {
           fontSize: 15,
-          margin: '.5rem 0 1.5rem',
+          margin: '.5rem 0 1.8rem',
         }
       }
     },
@@ -171,7 +171,8 @@ const blogStyles = css({
       WebkitTextFillColor: 'var(--color-accent-neutral)',
     },
     '@media (max-width: 890px)': {
-      width: '100%'
+      width: '100%',
+      margin: '0.5rem 0 0 0',
     }
   },
 })

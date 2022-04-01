@@ -75,7 +75,8 @@ export default function Footer() {
       lineHeight: '1rem',
       borderBottom: '2px solid var(--color-bg)',
       textTransform: 'uppercase',
-      fontSize: 10,
+      fontSize: 12,
+      fontWeight: 800,
       '@media(max-width: 600px)': {
         width: '100%',
       }
