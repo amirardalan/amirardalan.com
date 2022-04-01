@@ -10,7 +10,7 @@ const lighter = '#d5d9ee'
 const dark = '#262738'
 const darkAccent = '#2f3044'
 const darker = '#191a22'
-const primary = '#744164'
+const primary = '#7E37A4'
 const secondary = '#3dffc5'
 const grayLight = '#b0bccc'
 const grayDark = '#606071'
@@ -18,12 +18,10 @@ const grayAccentLight = '#b7b7c9'
 const grayAccentDark = '#494a5c'
 const buttonDisabled = '#9e9eb6'
 const warning = '#e64358'
-const codeLight = '#0f88ad'
-const codeDark = '#c792ea'
 const codeHighlight = '#393a4e'
 const avatar = '#281483'
-const sunrise = 'linear-gradient(to bottom,#676caf 0%,#4f4983 50%,#6d367e 100%)'
-const sunset = 'linear-gradient(to bottom,#0e050e 0%,#2d1933 50%,#332462 100%)'
+const sunrise = 'linear-gradient(to bottom,#676caf 0%,#4f4983 50%,#5f367e 100%)'
+const sunset = 'linear-gradient(to bottom,#16141b 0%,#2c1c52 50%,#3f165d 100%)'
 
 export function GlobalStyles () {
 
@@ -108,7 +106,6 @@ export function GlobalStyles () {
           '--color-accent-darker': lighter,
           '--color-gradient': sunset,
           '--page-bg': lighter,
-          '--code': codeLight,
           '--code-bg': darkAccent,
           '--logo': 'url(/logo/logo-light.svg)',
           '--logo-footer': 'url(/logo/logo-footer-light.svg)',
@@ -129,7 +126,6 @@ export function GlobalStyles () {
           '--color-accent-darker': darker,
           '--color-gradient': sunrise,
           '--page-bg': darkAccent,
-          '--code': codeDark,
           '--code-bg': darkAccent,
           '--logo': 'url(/logo/logo-dark.svg)',
           '--logo-footer': 'url(/logo/logo-footer-dark.svg)',

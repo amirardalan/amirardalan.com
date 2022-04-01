@@ -1,6 +1,6 @@
 export const themeLight = {
   active: 'light',
-  canvas: '#744164',
+  canvas: '#7E37A4',
   icons: {
     github: '/icons/github-light.svg',
     twitter: '/icons/twitter-light.svg',
