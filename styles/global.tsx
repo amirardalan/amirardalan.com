@@ -358,6 +358,7 @@ export function GlobalStyles () {
             '&:hover': {
               background: 'var(--color-text)',
               border: '1px solid transparent',
+              color: 'var(--color-bg)'
             },
           },
           '@media(max-width: 480px)': {
