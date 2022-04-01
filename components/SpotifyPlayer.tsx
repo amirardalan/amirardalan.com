@@ -25,7 +25,7 @@ export default function NowPlaying() {
       position: 'absolute',
       top: '2rem',
       left: '2rem',
-      color: '#e4e9f8',
+      color: 'var(--color-light)',
       fontSize: 12,
       textTransform: 'uppercase',
     },
@@ -79,7 +79,7 @@ export default function NowPlaying() {
     '.title, .artist': {
       margin: 0,
       padding: 0,
-      color: '#e4e9f8',
+      color: 'var(--color-light)',
       textDecoration: 'none',
     },
     '.loadingTitle, .loadingArtist': {

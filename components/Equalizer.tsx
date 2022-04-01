@@ -14,7 +14,7 @@ export default function Equalizer() {
     span: {
       display: 'inline-block',
       width: 3,
-      backgroundColor: '#eee',
+      backgroundColor: 'var(--color-light)',
       position: 'absolute',
       bottom: 0,
     },
