@@ -187,10 +187,6 @@ export const about = {
     title: 'Contact',
     email: {
       title: 'Email Me',
-      icon: {
-        light: themeLight.icons.email,
-        dark: themeDark.icons.email,
-      }
     },
     copiedToClipboard: 'Copied to clipboard ✅',
     items: [

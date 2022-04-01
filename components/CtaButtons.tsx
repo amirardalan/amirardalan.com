@@ -9,7 +9,7 @@ export const generateCtaButtons = (items: Array<any>) => {
     return (
       <a key={i}
         href={item.path}
-        className={item.icon ? `ctaButton ${item.icon}` : "ctaButton"}
+        className={item?.icon ? `ctaButton ${item.icon}` : "ctaButton"}
         aria-label={item.title}
         target={item?.target}
         rel={item?.rel}
