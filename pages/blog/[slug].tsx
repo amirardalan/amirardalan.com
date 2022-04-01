@@ -246,13 +246,13 @@ const Post = ({ post, feed, data }) => {
             position: 'absolute',
             top: '.2rem',
             left: '-2rem',
-            background: 'var(--color-primary)',
+            border: '1px solid var(--color-primary)',
             borderRadius: '50%',
-            color: 'var(--color-bg)',
+            color: 'var(--color-primary)',
             fontFamily: 'var(--font-primary)',
-            fontSize: '1rem',
-            fontWeight: 'bold',
-            lineHeight: '1.5rem',
+            fontSize: '.8rem',
+            fontWeight: 'normal',
+            lineHeight: '1.4rem',
             textAlign: 'center',
             '@media not all and (min-resolution:.001dpcm)': { 
               '@supports (-webkit-appearance:none)': {
