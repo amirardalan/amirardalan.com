@@ -20,8 +20,8 @@ const buttonDisabled = '#9e9eb6'
 const warning = '#e64358'
 const codeHighlight = '#393a4e'
 const avatar = '#281483'
-const sunrise = 'linear-gradient(to bottom,#676caf 0%,#4f4983 50%,#5f367e 100%)'
-const sunset = 'linear-gradient(to bottom,#1a131f 0%,#221438 50%,#501a76 100%)'
+const sunrise = 'linear-gradient(to bottom,#676caf 0%,#4f4983 50%,#6e488b 100%)'
+const sunset = 'linear-gradient(to bottom,#22102f 0%,#2b174c 50%,#531d6e 100%)'
 
 export function GlobalStyles () {
 
