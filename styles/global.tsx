@@ -1,11 +1,9 @@
 import { Global } from '@emotion/react'
 
-// Typography
 const fontPrimary = '"JetBrains Mono", Menlo, Monaco, "Courier New", monospace'
 const fontSecondary = '"Poppins", Helvetica, Arial, sans-serif'
 const fontTertiary = '"PT Serif", "Times New Roman", Times, serif'
 
-// Colors
 const light = '#e4e9f8'
 const lightAccent = '#d8dff0'
 const lighter = '#d5d9ee'
@@ -97,7 +95,8 @@ export function GlobalStyles () {
           '--color-avatar': avatar,
           '--color-select': grayAccentLight,
           '--code-highlight': codeHighlight,
-          '--icon-download': 'url(/icons/download-dark.svg)',
+          '--icon-download-dark': 'url(/icons/download-dark.svg)',
+          '--icon-download-light': 'url(/icons/download-light.svg)',
         },
         'body, body[data-theme="light"]': {
           '--color-primary': primary,
@@ -111,15 +110,13 @@ export function GlobalStyles () {
           '--page-bg': lighter,
           '--code': codeLight,
           '--code-bg': darkAccent,
+          '--logo': 'url(/logo/logo-light.svg)',
+          '--logo-footer': 'url(/logo/logo-footer-light.svg)',
           '--icon-info': 'url(/icons/note-dark.svg)',
           '--icon-arrow': 'url(/icons/arrow-dark.svg)',
           '--icon-spotify': 'url(/icons/spotify-dark.svg)',
           '--icon-external': 'url(/icons/external-link-light.svg)',
-          '--icon-time': 'url(/icons/time-light.svg)',
-          '--icon-email': 'url(/icons/email-light.svg)',
           '--icon-clipboard': 'url(/icons/clipboard-dark.svg)',
-          '--logo': 'url(/logo/logo-light.svg)',
-          '--logo-footer': 'url(/logo/logo-footer-light.svg)',
         },
         
         'body[data-theme="dark"]': {
@@ -134,15 +131,13 @@ export function GlobalStyles () {
           '--page-bg': darkAccent,
           '--code': codeDark,
           '--code-bg': darkAccent,
+          '--logo': 'url(/logo/logo-dark.svg)',
+          '--logo-footer': 'url(/logo/logo-footer-dark.svg)',
           '--icon-info': 'url(/icons/note-light.svg)',
           '--icon-arrow': 'url(/icons/arrow-light.svg)',
           '--icon-spotify': 'url(/icons/spotify-light.svg)',
           '--icon-external': 'url(/icons/external-link-dark.svg)',
-          '--icon-time': 'url(/icons/time-dark.svg)',
-          '--icon-email': 'url(/icons/email-dark.svg)',
           '--icon-clipboard': 'url(/icons/clipboard-light.svg)',
-          '--logo': 'url(/logo/logo-dark.svg)',
-          '--logo-footer': 'url(/logo/logo-footer-dark.svg)',
         },
         'html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video': {
           margin: 0,
@@ -321,7 +316,13 @@ export function GlobalStyles () {
             display: 'none',
           },
           '&:hover': {
-            background: 'var(--color-disabled)',
+            background: 'transparent',
+            border: '1px solid var(--color-text)',
+            color: 'var(--color-text)',
+            '&.download:after': {
+              background: 'var(--icon-download-light) no-repeat',
+              backgroundSize: 'contain',
+            },
           },
           '&.disabled': {
             cursor: 'pointer',
@@ -333,31 +334,19 @@ export function GlobalStyles () {
               background: 'transparent',
             },
           },
-          '&.external:after, &.download:after, &.time:after, &.email:after, &.clipboard:after': {
+          '&.download:after, &.clipboard:after': {
             marginLeft: 4,
             content: '""',
             display: 'inline-block',
             width: 16,
             height: 16,
           },
-          '&.external:after': {
-            background: 'var(--icon-external) no-repeat',
-            backgroundSize: 'contain',
-          },
           '&.download': {
             mixBlendMode: 'screen',
             '&:after': {
-              background: 'var(--icon-download) no-repeat',
+              background: 'var(--icon-download-dark) no-repeat',
               backgroundSize: 'contain',
-            },
-          },
-          '&.time:after': {
-            background: 'var(--icon-time) no-repeat',
-            backgroundSize: 'contain',
-          },
-          '&.email:after': {
-            background: 'var(--icon-email) no-repeat',
-            backgroundSize: 'contain',
+            }
           },
           '&.clipboard': {
             '&:after': {

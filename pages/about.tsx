@@ -43,7 +43,9 @@ export default function About() {
           color: 'var(--color-dark)',
           '@media(min-width: 1025px)': {
             '&:hover': {
-              background: 'var(--color-select)',
+              background: 'transparent',
+              border: '1px solid var(--color-light)',
+              color: 'var(--color-light)'
             },
           }
         },

@@ -1,6 +1,5 @@
 export const themeLight = {
   active: 'light',
-  code: 'light',
   canvas: '#744164',
   icons: {
     github: '/icons/github-light.svg',
@@ -12,9 +11,6 @@ export const themeLight = {
     external: '/icons/external-link-light.svg',
     externalAlt: '/icons/external-link-dark.svg',
     search: '/icons/search-dark.svg',
-    email: '/icons/email-light.svg',
-    clipboard: '/icons/clipboard-dark.svg',
-    time: '/icons/time-light.svg',
     error: '/icons/error-dark.svg',
     info: '/icons/info-dark.svg',
     close: '/icons/close-light.svg',
@@ -23,7 +19,6 @@ export const themeLight = {
 
 export const themeDark = {
   active: 'dark',
-  code: 'dark',
   canvas: '#3dffc5',
   icons: {
     github: '/icons/github-dark.svg',
@@ -36,8 +31,6 @@ export const themeDark = {
     externalAlt: '/icons/external-link-light.svg',
     search: '/icons/search-light.svg',
     email: '/icons/email-dark.svg',
-    clipboard: '/icons/clipboard-light.svg',
-    time: '/icons/time-dark.svg',
     error: '/icons/error-light.svg',
     info: '/icons/info-light.svg',
     close: '/icons/close-dark.svg',

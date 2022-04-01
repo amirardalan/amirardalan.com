@@ -37,6 +37,14 @@ export const ContactButton = () => {
     }, 5000)
   }
 
+  const styleAboutCtaWrapper = css({
+    display: 'block',
+    width: 'fit-content',
+    '@media(max-width: 480px)': {
+      width: '100%'
+    }
+  })
+
   const styleAddress = css({
     fontStyle: 'normal',
   })
@@ -55,7 +63,7 @@ export const ContactButton = () => {
   })
 
   return (
-    <span>
+    <span css={styleAboutCtaWrapper}>
       <button
         onClick={showEmail
           ? handleCopyToClipboard
