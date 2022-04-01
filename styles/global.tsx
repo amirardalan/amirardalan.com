@@ -332,6 +332,7 @@ export function GlobalStyles () {
             '&:hover': {
               border: '1px solid var(--color-accent-neutral)',
               background: 'transparent',
+              color: 'var(--color-text)',
             },
           },
           '&.download:after, &.clipboard:after': {

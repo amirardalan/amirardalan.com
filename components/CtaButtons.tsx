@@ -41,7 +41,7 @@ export const ContactButton = () => {
     display: 'block',
     width: 'fit-content',
     '@media(max-width: 480px)': {
-      width: '100%'
+      width: '100%',
     }
   })
 

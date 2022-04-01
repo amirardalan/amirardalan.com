@@ -86,7 +86,7 @@ export default function BlogMarkdown({ markdown }) {
     },
     code: {
       wordWrap: 'break-word',
-      fontSize: 16,
+      fontSize: 18,
       color: 'var(--code)',
       borderRadius: 5,
       '&::before, &::after': {

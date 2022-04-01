@@ -6,7 +6,7 @@ declare global {
 
 export const pageview = (url: URL) => {
   window.gtag('config',
-  process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID, {
+  process.env.NEXT_PUBLIC_ANALYTICS_ID, {
     cookie_flags: 'SameSite=None;Secure',
     page_path: url,
   })
