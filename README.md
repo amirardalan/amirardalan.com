@@ -31,7 +31,7 @@ _Keep this file private, ensure `.env` remains in `.gitignore`, don't commit to 
 NEXT_PUBLIC_SITE_URL=http://localhost:3000
 
 # Database URL
-#DATABASE_URL="postgresql://yourDbUrl"
+DATABASE_URL="postgresql://yourDbUrl"
 
 # TimeZone
 NEXT_PUBLIC_TIMEZONE=America/Los_Angeles
