@@ -47,13 +47,13 @@ export default function NowPlaying() {
     padding: '2rem',
     height: 226,
     width: '100%',
-    alignItems: 'center',
     position: 'absolute',
     top: 0,
     left: 0,
     color: 'red',
     background: 'linear-gradient(0deg, rgb(25, 26, 34, 1) 0%, rgb(25, 26, 34, 0.5518867924528301) 100%)',
     '@media(max-width: 480px)': {
+      alignItems: 'center',
       height: 350,
       background: 'linear-gradient(0deg, rgb(25, 26, 34, 1) 0%, rgb(25, 26, 34, 0.5518867924528301) 85%)',
     },
@@ -76,7 +76,6 @@ export default function NowPlaying() {
     display: 'flex',
     flexDirection: 'column',
     paddingRight: '.5rem',
-  
     '.title, .artist': {
       margin: 0,
       padding: 0,
@@ -99,21 +98,29 @@ export default function NowPlaying() {
     '.title': {
       marginBottom: 5,
       lineHeight: 1,
-      fontSize: 'calc(1.2vw + 1.2vh)',
+      fontSize: 28,
       WebkitMarqueeIncrement: '0vw',
       fontFamily: 'var(--font-secondary)',
     },
     '.artist': {
-      marginBottom: 2,
-      lineHeight: 1,
-      fontSize: 'calc(.7vw + .7vh)',
+      marginTop: '.25rem',
+      lineHeight: 1.25,
+      fontSize: 14,
       WebkitMarqueeIncrement: '0vw',
     },
+    '@media(max-width: 768px)': {
+      '.title': {
+        fontSize: 20,
+      },
+      '.artist': {
+        fontSize: 12,
+      },
+    },
     '@media(max-width: 480px)': {
+      alignItems: 'center',
       paddingRight: 'unset',
       lineHeight: '1.5rem',
       margin: '1rem 0',
-      alignItems: 'center',
       '.title': {
         fontSize: 20,
         marginBottom: '.6rem',
