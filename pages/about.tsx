@@ -41,8 +41,10 @@ export default function About() {
         '.ctaButton': {
           background: 'var(--color-light)',
           color: 'var(--color-dark)',
-          '&:hover': {
-            background: 'var(--color-select)',
+          '@media(min-width: 1025px)': {
+            '&:hover': {
+              background: 'var(--color-select)',
+            },
           }
         },
         em: {
@@ -113,11 +115,6 @@ export default function About() {
       },
     },
   })
-  const styleDownloadResume = css({
-    margin: '2rem 0',
-    background: 'var(--color-accent)',
-    padding: '4rem',
-  })
 
   const GenerateListItems = (items: Array<string>) => {
     return items.map((items, i) => {
@@ -141,9 +138,9 @@ export default function About() {
                 <li>
                   <em className='blurb'>{about.bio.content}</em>
                 </li>
-                <div>
+                <li>
                   {generateCtaButtons(about.bio.items)}
-                </div>
+                </li>
               </ul>
             </div>
             <div className='grid'>
