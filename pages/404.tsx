@@ -1,7 +1,8 @@
+import Link from 'next/link'
+
 import { css } from '@emotion/react'
 import Container from '@/components/Container'
 import ErrorIcon from '@/components/ErrorIcon'
-import Link from 'next/link'
 import { error } from '@/data/content'
 
 
@@ -17,13 +18,13 @@ const style404Wrapper = css({
 const style404Container = css({
   display: 'flex',
   justifyContent: 'center',
-  animation: 'slideUp .5s forwards',
-
+  marginBottom: '1.5rem',
   h1: {
     margin: '0 1rem 0 .5rem',
     paddingRight: '1rem',
     alignSelf: 'center',
     fontSize: '40px',
+    fontWeight: 800
   },
   h2: {
     alignSelf: 'center',
@@ -37,17 +38,17 @@ const styleErrorContent = css({
   display: 'flex',
   justifyContent: 'center',
   '.quoteContainer': {
-    maxWidth: 600,
+    maxWidth: 400,
     paddingTop: '2rem',
     marginBottom: '3rem',
     borderTop: '1px solid var(--color-neutral)',
-    textAlign: 'left',
+    textAlign: 'center',
   },
   '.quote': {
-    fontSize: 25,
+    fontSize: 22,
     fontFamily: 'var(--font-tertiary)',
     fontStyle: 'italic',
-    color: 'var(--color-neutral)'
+    color: 'var(--color-neutral)',
   },
   '.author': {
     marginTop: '.5rem',
@@ -58,18 +59,10 @@ const styleErrorContent = css({
   }
 })
 
-const styleAnimationWrapper = css({
-  marginTop: '1.5rem',
-  textAlign: 'center',
-  animation: 'slideUp 1s forwards',
-})
-
 const styleHomeButton = css({
   display: 'flex',
   justifyContent: 'center',
 })
-
-const randomize = Math.floor(Math.random()*error.randomQuote.length)
 
 export default function Custom404() {
 
@@ -85,22 +78,20 @@ export default function Custom404() {
             {error.text}
           </h2>
         </div>
-        <div css={styleAnimationWrapper}>
-          <div css={styleErrorContent}>
-            <div className="quoteContainer">
-              <p className="quote" suppressHydrationWarning>
-                {error.randomQuote[randomize].quote}
-              </p>
-              <p className="author" suppressHydrationWarning>
-                {error.randomQuote[randomize].author}
-              </p>
-            </div>
+        <div css={styleErrorContent}>
+          <div className="quoteContainer">
+            <p className="quote">
+              {error.quote}
+            </p>
+            <p className="author">
+              {error.author}
+            </p>
           </div>
-          <div css={styleHomeButton}>
-            <Link href={error.link.path} aria-label={error.link.title} passHref>
-              <button className="ctaButton">{error.link.title}</button>
-            </Link>
-          </div>
+        </div>
+        <div css={styleHomeButton}>
+          <Link href={error.link.path} aria-label={error.link.title} passHref>
+            <button className="ctaButton">{error.link.title}</button>
+          </Link>
         </div>
       </main>
     </Container>

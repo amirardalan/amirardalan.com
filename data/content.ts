@@ -480,28 +480,8 @@ export const error = {
       title: 'Return to Blog',
     },
   },
-  randomQuote: [
-    {
-      quote: `"Have no fear of perfection. You'll never reach it."`,
-      author: 'Salvadore Dalí'
-    },
-    {
-      quote: `"If all else fails, read the instructions."`,
-      author: 'Donald Knuth'
-    },
-    {
-      quote: `"The best thing about a boolean is even if you are wrong, you are only off by a bit."`,
-      author: 'Unknown'
-    },
-    {
-      quote: `"If your idea really is new, there might be no shared vocabulary to discuss it yet."`,
-      author: 'Dan Abramov'
-    },
-    {
-      quote: `"You are what you are and you are where you are because of what has gone into your mind. You change what you are and you change where you are by changing what goes into your mind."`,
-      author: 'Zig Ziglar'
-    },
-  ]
+  quote: `"The best thing about a boolean is even if you are wrong, you are only off by a bit."`,
+  author: 'Unknown'
 }
 
 export const footer = {
