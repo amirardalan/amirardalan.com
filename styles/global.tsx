@@ -299,15 +299,12 @@ export function GlobalStyles () {
           flexDirection: 'row',
           justifyContent: 'center',
           alignItems: 'center',
+          fontSize: 15,
           background: 'var(--color-text)',
           border: '1px solid transparent',
           borderRadius: 8,
           color: 'var(--color-bg)',
-          fontFamily: 'var(--font-secondary)',
-          fontSize: 15,
-          fontWeight: 700,
           textDecoration: 'none',
-          cursor: 'pointer',
           'span': {
             marginLeft: 100,
           },
@@ -324,7 +321,7 @@ export function GlobalStyles () {
             display: 'none',
           },
           '&:hover': {
-            background: 'var(--color-primary)',
+            background: 'var(--color-disabled)',
           },
           '&.disabled': {
             cursor: 'pointer',
