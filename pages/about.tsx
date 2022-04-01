@@ -76,7 +76,7 @@ export default function About() {
       '.availability': {
         fontFamily: 'var(--font-secondary)',
         color: 'var(--color-text)',
-        fontSize: 16
+        fontSize: 18
       },
     },
     'h2, h3': {
@@ -84,12 +84,12 @@ export default function About() {
     },
     h2: {
       color: 'var(--color-text)',
-      fontSize: 22,
+      fontSize: 24,
     },
     h3: {
       marginBottom: '1.5rem',
       paddingBottom: '1rem',
-      fontSize: 22,
+      fontSize: 24,
       color: 'var(--color-text)',
       borderBottom: '2px solid var(--color-primary)',
     },

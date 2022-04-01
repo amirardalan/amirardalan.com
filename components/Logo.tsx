@@ -25,6 +25,8 @@ export default function Logo() {
   const styleTitle = css({
     display: 'block',
     fontWeight: 'bold',
+    textTransform: 'uppercase',
+    letterSpacing: .5,
     fontSize: '14px',
     color: 'var(--color-text)',
     lineHeight: '1rem'

@@ -26,7 +26,7 @@ const blogStyles = css({
       marginBottom: '.5rem',
       fontFamily: 'var(--font-secondary)',
       fontSize: 30,
-      fontWeight: 900,
+      fontWeight: 800,
       lineHeight: '2.2rem',
       a: {
         color: 'var(--color-text)',
@@ -40,7 +40,7 @@ const blogStyles = css({
     '.blogHeading': {
       fontFamily: 'var(--font-secondary)',
       fontSize: 40,
-      fontWeight: 900,
+      fontWeight: 800,
       textDecoration: 'none',
       '@media(max-width: 1024px)': {
         fontSize: 30,
@@ -122,7 +122,7 @@ const blogStyles = css({
         content: '"|"',
         position: 'absolute',
         fontFamily: 'var(--font-secondary)',
-        fontWeight: 900,
+        fontWeight: 700,
         fontSize: 32,
         lineHeight: '2.2rem',
         left: -20,

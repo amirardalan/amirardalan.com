@@ -1,7 +1,7 @@
 import { Global } from '@emotion/react'
 
 const fontPrimary = '"JetBrains Mono", Menlo, Monaco, "Courier New", monospace'
-const fontSecondary = '"Poppins", Helvetica, Arial, sans-serif'
+const fontSecondary = '"Assistant", Helvetica, Arial, sans-serif'
 const fontTertiary = '"PT Serif", "Times New Roman", Times, serif'
 
 const light = '#e4e9f8'
@@ -31,20 +31,20 @@ export function GlobalStyles () {
     <>
       <Global styles={{
         '@font-face': {
-          fontFamily: 'Poppins',
+          fontFamily: 'Assistant',
           fontStyle: 'normal',
-          fontWeight: 900,
+          fontWeight: 800,
           fontDisplay: 'swap',
-          src: 'url("/fonts/poppins-latin-900.woff2") format("woff2")'
+          src: 'url("/fonts/assistant-v15-latin-800.woff2") format("woff2")'
         },
       }}/>
       <Global styles={{
         '@font-face': {
-          fontFamily: 'Poppins',
+          fontFamily: 'Assistant',
           fontStyle: 'normal',
           fontWeight: 700,
           fontDisplay: 'swap',
-          src: 'url("/fonts/poppins-latin-700.woff2") format("woff2")'
+          src: 'url("/fonts/assistant-v15-latin-700.woff2") format("woff2")'
         },
       }}/>
       <Global styles={{
@@ -221,7 +221,7 @@ export function GlobalStyles () {
         },
         'h1, h2, h3': {
           fontFamily: 'var(--font-secondary)',
-          fontWeight: 900
+          fontWeight: 700
         },
         a: {
           cursor: 'pointer',
@@ -268,7 +268,7 @@ export function GlobalStyles () {
             fontFamily: 'var(font-secondary)',
             fontSize: 40,
             WebkitMarqueeIncrement: '0vw',
-            fontWeight: 900,
+            fontWeight: 800,
             textAlign: 'left',
           },
           '@media(max-width: 1024px)': {

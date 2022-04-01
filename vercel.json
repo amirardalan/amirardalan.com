@@ -41,7 +41,7 @@
       ]
     },
     {
-      "source": "/fonts/poppins-latin-700.woff2",
+      "source": "/fonts/assistant-v15-latin-700.woff2",
       "headers" : [
         {
           "key": "Cache-Control",
@@ -50,7 +50,7 @@
       ]
     },
     {
-      "source": "/fonts/poppins-latin-900.woff2",
+      "source": "/fonts/assistant-v15-latin-800.woff2",
       "headers" : [
         {
           "key": "Cache-Control",

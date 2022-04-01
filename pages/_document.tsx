@@ -7,14 +7,14 @@ export default function Document() {
       <Head>
         <link
           rel="preload"
-          href="/fonts/poppins-latin-700.woff2"
+          href="/fonts/assistant-v15-latin-700.woff2"
           as="font"
           type="font/woff2"
           crossOrigin="anonymous"
         />
         <link
           rel="preload"
-          href="/fonts/poppins-latin-900.woff2"
+          href="/fonts/assistant-v15-latin-800.woff2"
           as="font"
           type="font/woff2"
           crossOrigin="anonymous"

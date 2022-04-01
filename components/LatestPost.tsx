@@ -23,7 +23,7 @@ export default function LatestPost({ latestPost, data }) {
     },
     'h3 a' : {
       fontFamily: 'var(--font-secondary)',
-      fontSize: 16,
+      fontSize: 18,
       fontWeight: 700,
     },
     p: {

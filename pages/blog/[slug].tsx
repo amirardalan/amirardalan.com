@@ -58,15 +58,16 @@ const Post = ({ post, feed, data }) => {
       h1: {
         margin: '0 0 .8rem',
         textDecoration: 'none',
-        lineHeight: '3rem',
+        lineHeight: '2.8rem',
+        fontWeight: 800,
         '@media(max-width: 768px)': {
           fontSize: 32,
           margin: '0 0 .5rem',
-          lineHeight: '2.5rem'
+          lineHeight: '2.2rem'
         },
         '@media(max-width: 480px)': {
           fontSize: 28,
-          lineHeight: '2.2rem'
+          lineHeight: '2rem'
         }
       },
       '.teaser': {
@@ -81,11 +82,14 @@ const Post = ({ post, feed, data }) => {
         },
       },
       'h3, h3 code': {
-        fontSize: 24,
+        fontSize: 26,
         lineHeight: '1.8rem',
         '@media(max-width: 768px)': {
+          fontSize: 24,
+        },
+        '@media(max-width: 480px)': {
           fontSize: 20,
-        }
+        },
       },
       h3: {
         scrollMarginTop: '4rem',
@@ -108,9 +112,9 @@ const Post = ({ post, feed, data }) => {
               color: 'var(--color-accent-neutral)',
               position: 'absolute',
               textAlign: 'center',
-              top: -1,
+              top: 0,
               left: -22,
-              fontSize: 26
+              fontSize: 28
             }
           },
         },

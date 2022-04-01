@@ -55,7 +55,8 @@ export default function Home({ data, latestPost }) {
     h1: {
       lineHeight: '100%',
       fontFamily: 'var(--font-secondary)',
-      fontSize: 'calc(3.2vw + 3.2vh)',
+      fontSize: 'calc(3.5vw + 3.5vh)',
+      fontWeight: 800,
       WebkitMarqueeIncrement: '0vw',
     },
   })

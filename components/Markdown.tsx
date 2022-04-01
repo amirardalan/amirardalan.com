@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { css } from '@emotion/react'
 import Image from 'next/image'
 
-import { nightOwl } from 'react-syntax-highlighter/dist/cjs/styles/prism'
+import { oneDark } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import ReactMarkdown from 'react-markdown'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import rangeParser from 'parse-numeric-range'
@@ -14,7 +14,7 @@ import link from 'rehype-autolink-headings'
 
 export default function BlogMarkdown({ markdown }) {
 
-  const syntaxTheme = nightOwl
+  const syntaxTheme = oneDark
 
   const styleMarkdown = css({
     '.codeStyle, pre, code, code span': {
