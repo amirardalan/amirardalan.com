@@ -21,7 +21,7 @@ const warning = '#e64358'
 const codeHighlight = '#393a4e'
 const avatar = '#281483'
 const sunrise = 'linear-gradient(to bottom,#676caf 0%,#4f4983 50%,#5f367e 100%)'
-const sunset = 'linear-gradient(to bottom,#16141b 0%,#2c1c52 50%,#3f165d 100%)'
+const sunset = 'linear-gradient(to bottom,#1a131f 0%,#221438 50%,#501a76 100%)'
 
 export function GlobalStyles () {
 
@@ -315,10 +315,12 @@ export function GlobalStyles () {
             background: 'transparent',
             border: '1px solid var(--color-text)',
             color: 'var(--color-text)',
-            '&.download:after': {
-              background: 'var(--icon-download-light) no-repeat',
-              backgroundSize: 'contain',
-            },
+            '@media(min-width: 1025px)': {
+              '&.download:after': {
+                background: 'var(--icon-download-light) no-repeat',
+                backgroundSize: 'contain',
+              },
+            }
           },
           '&.disabled': {
             cursor: 'pointer',
