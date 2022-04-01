@@ -24,21 +24,21 @@ export default function Logo() {
 
   const styleTitle = css({
     display: 'block',
-    fontWeight: 'bold',
-    textTransform: 'uppercase',
-    letterSpacing: .5,
-    fontSize: '14px',
+    fontWeight: 700,
+    fontSize: 14,
+    letterSpacing: .6,
     color: 'var(--color-text)',
-    lineHeight: '1rem'
+    lineHeight: '1rem',
+    textTransform: 'uppercase'
   })
   
   const styleTitleSub = css({
     position: 'relative',
     color: 'var(--color-neutral)',
     fontFamily: 'var(--font-primary)',
-    fontSize: '8px',
+    fontSize: 8,
     fontWeight: 'normal',
-    letterSpacing: '.11rem',
+    letterSpacing: 1.8,
     textTransform: 'uppercase'
   })
 
