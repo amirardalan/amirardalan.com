@@ -65,6 +65,7 @@ Optionally, create a local copy of a production build. (useful for testing `gene
 ```bash
 yarn build
 ```
+---
 
 ## Prisma ORM:
 
@@ -110,6 +111,8 @@ Example: `[internal link](/blog/my-blog-post)` / `[external link](https://exampl
 ### iFrame Embed Support
 - Out of the box configuration of iframe embeds within markdown.
 - Uses [Rehype Raw](https://github.com/rehypejs/rehype-raw). Disable if using this code in a way where you may not be able to trust the markdown.
+
+---
 
 ## Testing
 
