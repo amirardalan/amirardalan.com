@@ -66,15 +66,6 @@ Optionally, create a local copy of a production build. (useful for testing `gene
 yarn build
 ```
 
-## Testing
-
-- [Jest](jestjs.io/) is configured in `jest.config.ts` and included in the `package.json` build script.
-- [React Testing Library](https://github.com/testing-library/react-testing-library) is included in `jest.setup.ts`.
-- Verbose test suites will be run and logged at build time.
-
-Run Jest manually:  
-`yarn test`
-
 ## Prisma ORM:
 
 The existing schema is configured for PostgreSQL. Update accordingly.  
@@ -119,6 +110,15 @@ Example: `[internal link](/blog/my-blog-post)` / `[external link](https://exampl
 ### iFrame Embed Support
 - Out of the box configuration of iframe embeds within markdown.
 - Uses [Rehype Raw](https://github.com/rehypejs/rehype-raw). Disable if using this code in a way where you may not be able to trust the markdown.
+
+## Testing
+
+- [Jest](jestjs.io/) is configured in `jest.config.ts` and included in the `package.json` build script.
+- [React Testing Library](https://github.com/testing-library/react-testing-library) is included in `jest.setup.ts`.
+- Verbose test suites will be run and logged at build time.
+
+Run Jest manually:  
+`yarn test`
 
 ---
 
