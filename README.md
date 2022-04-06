@@ -90,6 +90,7 @@ Open [http://localhost:5555/](http://localhost:5555/)
 - **Next/Image:** Set `width`, `height`, and optional `priority` attributes in Markdown.
 - **Code Line Highlighting:** Individually highlight `code` lines and/or line ranges within Markdown.
 - **Links:** Write normal Markdown and external links will automatically open in a new tab.
+- **iFrame Embedding:** Drop in an iFrame embed code to display in a blog post.
 
 ### Next/Image Dimensions & Priority
 Utilize `Next/Image` functionality within Markdown by using custom metastrings inside the Markdown Alt.
