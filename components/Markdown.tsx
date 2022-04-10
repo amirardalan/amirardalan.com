@@ -86,13 +86,17 @@ export default function BlogMarkdown({ markdown }) {
     },
     code: {
       wordWrap: 'break-word',
-      fontSize: 17,
+      fontFamily: 'var(--font-primary) !important',
       color: 'var(--color-primary)',
       borderRadius: 5,
       '&::before, &::after': {
         content: '"`"',
         color: 'var(--color-primary)'
       },
+    },
+    'p code': {
+      textShadow: 'none !important',
+      fontSize: '17px !important',
     },
     'pre code': {
       '&::before, &::after': { content: 'none' },
