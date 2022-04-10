@@ -28,7 +28,7 @@ export default function LatestPost({ latestPost, data }) {
     },
     p: {
       marginTop: '.5rem',
-      lineHeight: '.5rem',
+      lineHeight: '1rem',
       fontSize: 11,
       color: 'var(--color-neutral)',
       '@media(max-width: 480px)': {
