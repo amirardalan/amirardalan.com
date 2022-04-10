@@ -1,2 +1,8 @@
 User-agent: *
 Sitemap: https://amirardalan.com/sitemap.xml
+
+Disallow: /*.json$
+Disallow: /*_buildManifest.js$
+Disallow: /*_middlewareManifest.js$
+Disallow: /*_ssgManifest.js$
+Disallow: /*.js$
