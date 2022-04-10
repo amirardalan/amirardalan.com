@@ -92,7 +92,7 @@ export default function BlogMarkdown({ markdown }) {
       '&::before, &::after': {
         content: '"`"',
         color: 'var(--color-primary)'
-      },
+      }
     },
     'p code': {
       textShadow: 'none !important',
