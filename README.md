@@ -15,8 +15,9 @@ A Next.js Markdown Blog and CMS written in TypeScript. Designed, built, and main
 ---
 
 ## Initial Setup: 
+1. Update `public/manifest.json`. Fill out information relevant to your web app. _Note:_ The latest version of iOS Safari uses `theme_color` from this file as the background color for the notch area of iPhones and the area behind the background when the site is scrolled past the bottom with iOS's elastic scroll effect.
 
-1. Create an `.env` file for local environment variables.
+2. Create an `.env` file for local environment variables.
 _Keep this file private, ensure `.env` remains in `.gitignore`, don't commit to a public repository._
 
 #### For full functionality, the following environment variables are required:
@@ -50,9 +51,9 @@ SPOTIFY_REFRESH_TOKEN=
 ```
 Add additional local environment variables as needed. You can set up test tokens, deploy hooks, etc. locally and create seprate versions of this file with staging and/or production values (usually stored on your server).
 
-2. Install depencies by running `yarn`
+3. Install depencies by running `yarn`
 
-3. Run the development server:
+4. Run the development server:
 
 ```bash
 yarn dev
