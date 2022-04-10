@@ -10,8 +10,10 @@ const lighter = '#d5d9ee'
 const dark = '#262738'
 const darkAccent = '#2f3044'
 const darker = '#191a22'
-const primary = '#7E37A4'
+const primary = '#7e37a4'
+const primaryAlt = '#ff0040'
 const secondary = '#3dffc5'
+const secondaryAlt = '#ffcc00'
 const grayLight = '#b0bccc'
 const grayDark = '#606071'
 const grayAccentLight = '#b7b7c9'
@@ -98,6 +100,7 @@ export function GlobalStyles () {
         },
         'body, body[data-theme="light"]': {
           '--color-primary': primary,
+          '--color-primary-alt': primaryAlt,
           '--color-bg': light,
           '--color-text': darkAccent,
           '--color-neutral': grayDark,
@@ -118,6 +121,7 @@ export function GlobalStyles () {
         
         'body[data-theme="dark"]': {
           '--color-primary': secondary,
+          '--color-primary-alt': secondaryAlt,
           '--color-bg': dark,
           '--color-text': lightAccent,
           '--color-neutral': grayLight,

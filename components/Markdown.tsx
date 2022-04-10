@@ -86,8 +86,7 @@ export default function BlogMarkdown({ markdown }) {
     },
     code: {
       wordWrap: 'break-word',
-      fontFamily: 'var(--font-primary) !important',
-      color: 'var(--color-primary)',
+      color: 'var(--color-primary-alt)',
       borderRadius: 5,
       '&::before, &::after': {
         content: '"`"',
@@ -99,7 +98,11 @@ export default function BlogMarkdown({ markdown }) {
       fontSize: '17px !important',
     },
     'pre code': {
+      fontFamily: 'var(--font-primary) !important',
       '&::before, &::after': { content: 'none' },
+    },
+    'h3 code': {
+      color: 'inherit'
     },
     'span.linenumber': {
       display: 'none !important'
