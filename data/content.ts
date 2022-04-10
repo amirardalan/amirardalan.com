@@ -363,7 +363,7 @@ export const uses = {
   - 16GB RAM
   - 500GB Flash Storage
   - MacOS Monterey
-  ------
+  ---
   #### Desktop
   - Self-built PC
   ##### Specs:
@@ -374,14 +374,14 @@ export const uses = {
   - Motu Audio Express
   - 2x KRK VXT 8
   - Microsoft Windows 10
-  ------
+  ---
   #### Phone
   - iPhone 11 Pro (Space Gray)
   ##### Specs:
   - 512GB Storage
   ##### Case:
   - [TORRAS Silicon Series (black)](https://torraslife.com/product/iphone-11-pro-silicone-series-case/)
-  ------
+  ---
   #### Headphones
   - [Beyerdynamic DT770Pro 80ohm](https://north-america.beyerdynamic.com/dt-770-pro.html)
   - [Sennheiser HD25-1 II](https://en-us.sennheiser.com/on-ear-dj-headphone-hd25)
@@ -393,7 +393,7 @@ export const uses = {
   `### Tools
   #### IDE
   - [VS Code](https://code.visualstudio.com/)
-  ##### Extensions:
+  ##### Web App Extensions:
   - [Tokyo Night](https://marketplace.visualstudio.com/items?itemName=enkia.tokyo-night)
   - [Material Icon Theme](https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme)
   - [VSCode Color Picker](https://marketplace.visualstudio.com/items?itemName=MarkosTh09.color-picker)
@@ -402,8 +402,12 @@ export const uses = {
   - [Debugger for Firefox](https://marketplace.visualstudio.com/items?itemName=firefox-devtools.vscode-firefox-debug)
   - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
   - [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)
+  ##### Game Dev Extensions:
+  - [Lua](https://marketplace.visualstudio.com/items?itemName=sumneko.lua)
+  - [Lua linter](https://marketplace.visualstudio.com/items?itemName=dcr30.lualinter)
+  - [Playdate](https://marketplace.visualstudio.com/items?itemName=Orta.playdate)
 
-  ------
+  ---
   #### Browser
   - [Firefox Developer Edition](https://www.mozilla.org/en-US/firefox/developer/)
   ##### Add-ons:
@@ -412,19 +416,14 @@ export const uses = {
   - [uBlock Origin](https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/)
   - [GA Debug](https://addons.mozilla.org/en-US/firefox/addon/ga-debugger/)
   - [MetaMask](https://addons.mozilla.org/en-US/firefox/addon/ether-metamask/)
-  ------
-  #### CLI
-  - Terminal (~ZSH)
-  ------
-  #### Testing
-  ##### iOS:
-  - [Xcode Simulator](https://developer.apple.com/xcode/)
-  ##### Android:
-  - [Browser Stack](https://www.browserstack.com/)`
+
+  `
   },
   stack: {
     content:
   `### Stack
+
+  #### Web App
   - [Next.js](https://nextjs.org/)
   - [TypeScript](https://www.typescriptlang.org/)
   - [Emotion](https://emotion.sh/docs/introduction)
@@ -436,7 +435,20 @@ export const uses = {
   - [React Syntax Highlighter](https://react-syntax-highlighter.github.io/react-syntax-highlighter/demo/)
   - [Jest](https://jestjs.io/)
   - [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
-  - [Vercel](https://vercel.com)`
+  - [Vercel](https://vercel.com)
+
+  #### Game Dev
+  - [Lua](https://www.lua.org/)
+  - [Playdate SDK](https://play.date/dev/)
+  - [GB Studio](https://www.gbstudio.dev/)
+
+  ---
+  #### CLI
+  - Terminal (~ZSH)
+  - [Vercel CLI](https://vercel.com/cli)
+  - [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli)
+
+  `
   },
   software: {
     content:
@@ -447,6 +459,7 @@ export const uses = {
 
   #### Design
   - [Adobe XD](https://www.adobe.com/products/xd.html)
+  - [Aseprite](https://www.aseprite.org/)
   
   #### Communication
   - [Slack](https://slack.com/)
@@ -455,7 +468,18 @@ export const uses = {
   
   #### Music & Podcasts
   - [Spotify](/spotify)
-  - [YouTube Music](https://music.youtube.com)`
+  - [YouTube Music](https://music.youtube.com)
+
+  ---
+
+  #### Testing
+  ##### iOS:
+  - [Xcode Simulator](https://developer.apple.com/xcode/)
+  ##### Android:
+  - [Browser Stack](https://www.browserstack.com/)
+  ##### Playdate:
+  - [Playdate Simulator](https://play.date/dev/)
+  `
   },
 }
 

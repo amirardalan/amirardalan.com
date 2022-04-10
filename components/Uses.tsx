@@ -7,7 +7,7 @@ const styleUsesMarkdown = ({
   gridTemplateColumns: 'repeat(4, 1fr)',
   gap: '4rem',
   gridAutoRows: 'minmax(100px, auto)',
-  lineHeight: '1.2rem',
+  lineHeight: '1.8rem',
   hr: {
     margin: '2rem 0'
   },
