@@ -3,7 +3,6 @@ export const categories = [
 	"code",
   "design",
   "devops",
-  "music",
+  "gamedev",
   "personal",
-  "web3",
 ]
