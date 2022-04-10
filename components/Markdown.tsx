@@ -169,14 +169,16 @@ export default function BlogMarkdown({ markdown }) {
         const height = metaHeight ? metaHeight[1] : "432"
 
         return (
-          <Image
-            src={image.properties.src}
-            width={width}
-            height={height}
-            className="postImg"
-            alt={alt}
-            priority={isPriority}
-          />
+          <div className="postImgWrapper">
+            <Image
+              src={image.properties.src}
+              width={width}
+              height={height}
+              className="postImg"
+              alt={alt}
+              priority={isPriority}
+            />
+          </div>
         )
       }
       return <p>{paragraph.children}</p>

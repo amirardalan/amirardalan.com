@@ -263,7 +263,7 @@ const Post = ({ post, feed, data }) => {
         }
       }
     },
-    '.postImg': {
+    '.postImgWrapper': {
       paddingBottom: '2rem !important',
     },
     '.controlsPost': {
