@@ -160,9 +160,9 @@ const Edit = ({ editPost }) => {
                   onChange={handleShowEdited}
                 />
               </div>
-
-              <UploadImage/>
             </div>
+
+            <UploadImage/>
 
 
             <div className="formSubmit">

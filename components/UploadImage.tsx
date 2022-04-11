@@ -1,15 +1,28 @@
 
-import { useState } from 'react'
+import { useState, useRef } from 'react'
+import { css } from '@emotion/react'
 
 export default function UploadImage() {
 
-  const [image, setImage] = useState(null)
+  const styleUploadImage = css({
+    marginTop: '1rem'
+  })
+
+  const [image, setImage] = useState('')
+  const imageInputRef = useRef<HTMLInputElement>()
 
   const handleUploadToClient = (e) => {
     if (e.target.files && e.target.files[0]) {
       const i = e.target.files[0]
         setImage(i)
     }
+    console.log(e.target.files)
+  }
+
+  const handleClearImage = (e) => {
+    e.preventDefault()
+    imageInputRef.current.value = ""
+    setImage('')
   }
 
   const handleUploadToServer = async (e) => {
@@ -23,12 +36,17 @@ export default function UploadImage() {
   }
 
   const UploadButton = () => {
-    return image ? <input type="submit" value="uplaod" onClick={handleUploadToServer} /> : null
+    return (
+      <div>
+        <button type="submit" onClick={handleUploadToServer}>Upload</button>
+        <button onClick={handleClearImage}>Delete</button>
+      </div>
+    )
   }
   
   return (
-    <div className="uploadImage">
-      <input type="file" onChange={handleUploadToClient} />
+    <div css={styleUploadImage}>
+      <input ref={imageInputRef} type="file" onChange={()=> handleUploadToClient} />
       <UploadButton/>
     </div>
   )
