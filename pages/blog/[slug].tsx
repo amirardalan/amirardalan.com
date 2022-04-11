@@ -292,7 +292,7 @@ const Post = ({ post, feed, data }) => {
   // If the post contains an image, set the first image as the og:image banner
   const hasImage = post.content.replace(/`([^`]*)/g,'').match(/!\[.*?\]\((.*?)\)/)
     ? `${process.env.NEXT_PUBLIC_SITE_URL}` + post.content.match(/!\[.*?\]\((.*?)\)/)[1]
-    : `${process.env.NEXT_PUBLIC_SITE_URL}/thumbnail.jpg`
+    : `${process.env.NEXT_PUBLIC_OG_IMAGE_URL}/${post.title}`
 
 
   const RenderBlogPost = () => {
