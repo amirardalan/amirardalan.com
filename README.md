@@ -23,6 +23,7 @@ _Keep this file private, ensure `.env` remains in `.gitignore`, don't commit to 
 #### For full functionality, the following environment variables are required:
 
 - Site URL: Leave as localhost:3000 for local development
+- OG Image URL: Create an [OG Image Service](https://github.com/vercel/og-image) and set this to the URL of your service app. [Further reading](#dynamically-generate-blog-og-images)
 - Blog: Timezone and Database URL.
 - CMS: [Preview Mode](https://nextjs.org/docs/advanced-features/preview-mode#securely-accessing-it-from-your-headless-cms) token, and if using Vercel: [Deploy Hook](https://vercel.com/docs/concepts/git/deploy-hooks).
 - Spotify: [API guide](https://developer.spotify.com/documentation/web-api/quick-start/)
@@ -30,6 +31,9 @@ _Keep this file private, ensure `.env` remains in `.gitignore`, don't commit to 
 ```
 # Site URL
 NEXT_PUBLIC_SITE_URL=http://localhost:3000
+
+# OG Image Generator
+NEXT_PUBLIC_OG_IMAGE_URL=https://yourOgImageAppName.vercel.app
 
 # Database URL
 DATABASE_URL="postgresql://yourDbUrl"
@@ -124,6 +128,15 @@ Example: `[internal link](/blog/my-blog-post)` / `[external link](https://exampl
 
 Run Jest manually:  
 `yarn test`
+
+---
+
+## Dynamically Generate Blog OG Images
+For any blog posts that do not contain an image, [this service](https://github.com/vercel/og-image) will dynamically generate one for you.
+
+1. Fork the repo and follow the README.md and CONTRIBUTING.md.
+2. Update with logos, fonts, and css that suits your blog.
+3. Deploy to vercel and set a domain name, set this to the `NEXT_PUBLIC_OG_IMAGE_URL` environment variable
 
 ---
 
