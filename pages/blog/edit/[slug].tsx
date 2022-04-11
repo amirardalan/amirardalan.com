@@ -8,6 +8,7 @@ import Link from 'next/link'
 import LoadingTriangle from '@/components/LoadingTriangle'
 import Dropdown from '@/components/Dropdown'
 import Checkbox from '@/components/Checkbox'
+import UploadImage from '@/components/UploadImage'
 
 import { admin, breadcrumb } from '@/data/content'
 import { categories } from '@/data/categories'
@@ -48,7 +49,6 @@ const Edit = ({ editPost }) => {
   }
 
   const submitData = async (e: React.SyntheticEvent) => {
-
     e.preventDefault()
     try {
       const body = { id, title, slug, teaser, content, category, showEdited }
@@ -155,12 +155,15 @@ const Edit = ({ editPost }) => {
               />
               <div className="showEditDate">
                 <Checkbox 
-                  label='Update Date'
+                  label='Display "Updated" Date'
                   value={showEdited}
                   onChange={handleShowEdited}
                 />
               </div>
             </div>
+
+            <UploadImage/>
+
 
             <div className="formSubmit">
               <button

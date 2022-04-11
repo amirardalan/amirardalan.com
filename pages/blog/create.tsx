@@ -6,6 +6,7 @@ import Link from 'next/link'
 import Container from '@/components/Container'
 import BlogStyles from '@/components/BlogStyles'
 import Dropdown from '@/components/Dropdown'
+import UploadImage from '@/components/UploadImage'
 
 import { admin, breadcrumb } from '@/data/content'
 import { categories } from '@/data/categories'
@@ -141,6 +142,8 @@ const Draft = () => {
               handleChange={(e: { target: { value: React.SetStateAction<string> } }) => setCategory(e.target.value)}
               data={categories}
             />
+
+            <UploadImage/>
 
             <div className="formSubmit">
               <button

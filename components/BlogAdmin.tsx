@@ -179,15 +179,14 @@ const BlogAdmin = React.memo(function BlogAdmin() {
           '.postOptions': {
             display: 'flex',
             flexDirection: 'row',
+            marginTop: '1rem',
             fontSize: 13,
-            '@media(max-width: 480px)': {
+            '.uploadImage': {
+              span: { margin: '0 .5rem 0 2rem' }
+            },
+            '@media(max-width: 768px)': {
               flexDirection: 'column'
             }
-          },
-          '.showEditDate, .dropdownLabel': {
-            display: 'flex',
-            alignItems: 'center',
-            marginTop: '1rem',
           },
           '.checkbox': {
             marginRight: '.5rem'
