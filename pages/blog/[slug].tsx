@@ -290,9 +290,10 @@ const Post = ({ post, feed, data }) => {
   const title = post.title
 
   // If the post contains an image, set the first image as the og:image banner
+
   const hasImage = post.content.replace(/`([^`]*)/g,'').match(/!\[.*?\]\((.*?)\)/)
     ? `${process.env.NEXT_PUBLIC_SITE_URL}` + post.content.match(/!\[.*?\]\((.*?)\)/)[1]
-    : `${process.env.NEXT_PUBLIC_OG_IMAGE_URL}/${post.title}?fontSize=150px`
+    : `${process.env.NEXT_PUBLIC_OG_IMAGE_URL}/${encodeURIComponent(post.title).replace(/\./g, '%2E')}?fontSize=150px`
 
 
   const RenderBlogPost = () => {
