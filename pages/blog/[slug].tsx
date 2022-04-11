@@ -289,8 +289,7 @@ const Post = ({ post, feed, data }) => {
   const postReadTime = calculateReadTime(post.content)
   const title = post.title
 
-  // If the post contains an image, set the first image as the og:image banner
-
+  // Set OG Image for blog posts. Use first image from post, otherwise dynamically generate one.
   const hasImage = post.content.replace(/`([^`]*)/g,'').match(/!\[.*?\]\((.*?)\)/)
     ? `${process.env.NEXT_PUBLIC_SITE_URL}` + post.content.match(/!\[.*?\]\((.*?)\)/)[1]
     : `${process.env.NEXT_PUBLIC_OG_IMAGE_URL}/${encodeURIComponent(post.title).replace(/\./g, '%2E')}?fontSize=150px`
