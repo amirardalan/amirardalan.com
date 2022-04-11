@@ -116,7 +116,7 @@ export default function BlogMarkdown({ markdown }) {
 
   interface PreNode {
     node?: any
-    children: Array<object>
+    children: Array<any>
     position: object
     properties: object
     tagName: string
@@ -190,7 +190,7 @@ export default function BlogMarkdown({ markdown }) {
       }
       return <p>{paragraph.children}</p>
     },
-    a: (anchor: { href: string; children: {} }) => {
+    a: (anchor: { href: string; children: Array<any> }) => {
       if (anchor.href.match('http')) {
         return (
           <a
