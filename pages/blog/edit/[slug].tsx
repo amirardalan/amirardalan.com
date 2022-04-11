@@ -8,7 +8,6 @@ import Link from 'next/link'
 import LoadingTriangle from '@/components/LoadingTriangle'
 import Dropdown from '@/components/Dropdown'
 import Checkbox from '@/components/Checkbox'
-import UploadImage from '@/components/UploadImage'
 
 import { admin, breadcrumb } from '@/data/content'
 import { categories } from '@/data/categories'
@@ -161,9 +160,6 @@ const Edit = ({ editPost }) => {
                 />
               </div>
             </div>
-
-            <UploadImage/>
-
 
             <div className="formSubmit">
               <button
