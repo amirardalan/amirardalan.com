@@ -6,6 +6,10 @@ import Image from 'next/image'
 export default function UploadImage() {
 
   const styleUploadImage = css({
+    'label > span': {
+      marginRight: '.5rem',
+      fontSize: 13
+    },
     marginTop: '1rem',
     '.upload, .delete': {
       margin: '1rem .5rem',
@@ -63,7 +67,8 @@ export default function UploadImage() {
 
   const ConfirmUpload = () => {
     return (
-      image ? <div>
+      image ?
+      <div>
         <button className="upload" type="submit" onClick={handleUploadToServer}>
           Confirm Upload
         </button>
@@ -80,7 +85,10 @@ export default function UploadImage() {
   
   return (
     <div css={styleUploadImage}>
-      <input ref={imageInputRef} type="file" onChange={handleUploadToClient} />
+      <label>
+        <span>Image:</span>
+        <input type="file" onChange={handleUploadToClient} ref={imageInputRef}/>
+      </label>
       <ConfirmUpload/>
     </div>
   )
