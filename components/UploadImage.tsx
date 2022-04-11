@@ -6,6 +6,8 @@ import Image from 'next/image'
 export default function UploadImage() {
 
   const styleUploadImage = css({
+    borderTop: '1px solid var(--color-accent-neutral)',
+    padding: '1rem 0',
     'label > span': {
       marginRight: '.5rem',
       fontSize: 13
@@ -37,8 +39,21 @@ export default function UploadImage() {
     position: 'relative'
   })
 
+  const styleUploadedImages = css({
+    background: 'var(--color-accent)',
+    marginTop: '1rem',
+    padding: '1rem',
+    fontSize: 12,
+    h5: {
+      fontFamily: 'var(--font-secondary)',
+      fontSize: 17,
+      marginBottom: '.5rem'
+    }
+  })
+
   const [image, setImage] = useState(null)
   const [createObjectURL, setCreateObjectURL] = useState(null)
+  const [imageName, setImageName] = useState(null)
   const imageInputRef = useRef<HTMLInputElement>()
 
   const handleUploadToClient = (e) => {
@@ -47,16 +62,28 @@ export default function UploadImage() {
         setImage(i)
         setCreateObjectURL(URL.createObjectURL(i))
     }
+    setImageName(e.target.files[0].name)
   }
 
-  const handleClearImage = () => {
+  const handleClearImage = (e) => {
+    e.preventDefault()
     imageInputRef.current.value = ''
     setImage(null)
   }
 
+  const handleClearImageName = () => {
+    setImageName(null)
+  }
+
+  const handleDeleteImage = (e) => {
+    handleClearImage(e)
+    handleClearImageName()
+  }
+
+
   const handleUploadToServer = async (e) => {
     e.preventDefault()
-    handleClearImage()
+    handleClearImage(e)
     const body = new FormData()
     body.append("file", image)
     await fetch("/api/upload", {
@@ -66,27 +93,34 @@ export default function UploadImage() {
   }
 
   const ConfirmUpload = () => {
-    return (
-      image ?
-      <div>
-        <button className="upload" type="submit" onClick={handleUploadToServer}>
-          Confirm Upload
-        </button>
-        <button className="delete" onClick={handleClearImage}>
-          Delete
-        </button>
-        <div css={styleImageWrapper}>
-          <Image src={createObjectURL} alt="" layout="fill" />
+    if (image && imageInputRef.current.value !== '') {
+      return (
+        <div>
+          <button className="upload" type="submit" onClick={handleUploadToServer}>
+            Confirm Upload
+          </button>
+          <button className="delete" onClick={handleDeleteImage}>
+            Delete
+          </button>
+          <div css={styleImageWrapper}>
+            <Image src={createObjectURL} alt="" layout="fill" />
+          </div>
         </div>
-      </div>
-      : null
-    )
+      )
+    } else if (imageName) {
+      return (
+        <div css={styleUploadedImages}>
+          <h5>Uploaded Image:</h5>
+          {`![AltText {priority}{768x432}](/images/blog/${imageName})`}
+        </div>
+      )
+    }
   }
   
   return (
     <div css={styleUploadImage}>
       <label>
-        <span>Image:</span>
+        <span>Upload Image:</span>
         <input type="file" onChange={handleUploadToClient} ref={imageInputRef}/>
       </label>
       <ConfirmUpload/>

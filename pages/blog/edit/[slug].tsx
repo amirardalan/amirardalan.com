@@ -155,7 +155,7 @@ const Edit = ({ editPost }) => {
               />
               <div className="showEditDate">
                 <Checkbox 
-                  label='Update Date'
+                  label='Display "Updated" Date'
                   value={showEdited}
                   onChange={handleShowEdited}
                 />
