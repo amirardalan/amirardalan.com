@@ -15,5 +15,5 @@ const options = {
     }),
   ],
   adapter: PrismaAdapter(prisma),
-  secret: process.env.AUTH_SECRET,
+  secret: process.env.NEXT_AUTH_SECRET,
 };

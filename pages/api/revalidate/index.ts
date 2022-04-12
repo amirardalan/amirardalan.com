@@ -7,7 +7,6 @@ export default async function handler(req:NextApiRequest, res:NextApiResponse) {
   }
 
   try {
-    console.log(`[Next.js] Revalidating ${req.query.path}`)
     await res.unstable_revalidate(`${req.query.path}`)
     return res.json({ revalidated: true })
   } catch (err) {
