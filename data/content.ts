@@ -18,13 +18,14 @@ export const home = {
     description: 'Front-end developer, UI designer, and React enthusiast.'
   },
   typed: [
-    `Hi, my name is`,
-    `I design and code things`,
+    `I craft digital experiences`,
     `peruse my <a href="/blog">blog posts</a>`,
     `learn a bit <a href="/about">about me</a>`,
     `browse my <a href="/about#timeline">work history</a>`,
     `explore my <a href="/spotify">spotify</a> stats`,
-    `check out the <a href="/uses">stuff I use</a>`,
+    `check out the <a href="/uses">tools I use</a>`,
+    `delve into my <a href="https://github.com/amirardalan" rel="noopener noreferrer">GitHub</a>`,
+    `follow me on <a href="https://twitter.com/amirardalan" rel="noopener noreferrer">Twitter</a>`
   ],
   title: 'Amir Ardalan',
   description: `I'm a Front-end developer specializing in React, User Interface, and accessibility. I'm passionate about Next.js, TypeScript, and building outstanding experiences for the web.`,
