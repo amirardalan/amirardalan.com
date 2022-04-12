@@ -20,17 +20,13 @@ const BlogAdmin = React.memo(function BlogAdmin() {
 
   // On-Demand ISR Webhook
   const [isRevalidating, setIsRevalidating] = useState(false)
-  const showDeployLoader: Function = () => {
-    setIsRevalidating(true)
-    setTimeout(() => {
-      setIsRevalidating(false)
-    }, 5000)
-  }
-  async function revalidatePage(): Promise<void> {
-    fetch(`/api/revalidate?secret=${process.env.NEXT_PUBLIC_REVALIDATE_SECRET}&path=${revalidatePath}`).then((data) => {
 
+  async function handleRevalidatePage(): Promise<void> {
+    if(isRevalidating) { return }
+    setIsRevalidating(true)
+    fetch(`/api/revalidate?secret=${process.env.NEXT_PUBLIC_REVALIDATE_SECRET}&path=${revalidatePath}`).then((data) => {
       if (data.status === 200) {
-        showDeployLoader()
+        setIsRevalidating(false),
         fetch(`/api/preview/exit-preview?secret=${process.env.NEXT_PUBLIC_PREVIEW_TOKEN}`)
       }
     })
@@ -119,8 +115,8 @@ const BlogAdmin = React.memo(function BlogAdmin() {
           <div className="deploymentStatus">
             { isRevalidating ? <LoadingSpinner /> : null }
             <button
-              onClick={ !isRevalidating ? revalidatePage : null }
-              className={ (isRevalidating) ? 'buttonCompact deploy disabled' : 'buttonCompact deploy' }
+              onClick={handleRevalidatePage}
+              className={ isRevalidating ? 'buttonCompact deploy disabled' : 'buttonCompact deploy' }
               aria-label="Deploy"
               aria-disabled={ isRevalidating ? true : false}
             >
