@@ -11,9 +11,7 @@ const dark = '#262738'
 const darkAccent = '#2f3044'
 const darker = '#191a22'
 const primary = '#7e37a4'
-const primaryAlt = '#ff0040'
 const secondary = '#3dffc5'
-const secondaryAlt = '#f5be3e'
 const grayLight = '#b0bccc'
 const grayDark = '#606071'
 const grayAccentLight = '#b7b7c9'
@@ -23,7 +21,7 @@ const warning = '#e64358'
 const codeHighlight = '#393a4e'
 const avatar = '#281483'
 const sunrise = 'linear-gradient(to bottom,#676caf 0%,#4f4983 50%,#6e488b 100%)'
-const sunset = 'linear-gradient(to bottom,#22102f 0%,#2b174c 50%,#531d6e 100%)'
+const sunset = 'linear-gradient(to bottom,#1b0e24 0%,#2b174c 50%,#381d6e 100%)'
 
 export function GlobalStyles () {
 
@@ -100,7 +98,6 @@ export function GlobalStyles () {
         },
         'body, body[data-theme="light"]': {
           '--color-primary': primary,
-          '--color-primary-alt': primaryAlt,
           '--color-bg': light,
           '--color-text': darkAccent,
           '--color-neutral': grayDark,
@@ -121,7 +118,6 @@ export function GlobalStyles () {
         
         'body[data-theme="dark"]': {
           '--color-primary': secondary,
-          '--color-primary-alt': secondaryAlt,
           '--color-bg': dark,
           '--color-text': lightAccent,
           '--color-neutral': grayLight,

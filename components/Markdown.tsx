@@ -86,7 +86,7 @@ export default function BlogMarkdown({ markdown }) {
     },
     code: {
       wordWrap: 'break-word',
-      color: 'var(--color-primary-alt)',
+      color: 'var(--color-primary)',
       borderRadius: 5,
       '&::before, &::after': {
         content: '"`"',

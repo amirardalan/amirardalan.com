@@ -138,9 +138,11 @@ const Post = ({ post, feed, data }) => {
         marginBottom: '2rem',
       },
       a: {
+        color: 'inherit',
         textDecoration: 'underline',
+        textDecorationColor: 'var(--color-primary)',
         '&:hover': {
-          textDecoration: 'none'
+          color: 'var(--color-primary)',
         },
       },
       '.note': {
