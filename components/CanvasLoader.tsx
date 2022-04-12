@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useTheme, css } from '@emotion/react'
 import { Canvas } from '@react-three/fiber'
 import CanvasTerrain from '@/components/CanvasTerrain'
@@ -30,6 +30,12 @@ const styleRandomizeButton = css({
 const CanvasLoader =  React.memo(function CanvasLoader() {
 
   const theme: any = useTheme()
+
+  const [pixelRatio, setPixelRatio] = useState(null)
+
+  useEffect(() => {
+    setPixelRatio(window.devicePixelRatio)
+  }, [pixelRatio])
 
   function getRandomInt(min: number, max: number) {
     min = Math.ceil(min)
@@ -66,7 +72,7 @@ const CanvasLoader =  React.memo(function CanvasLoader() {
       <Canvas
         css={{animation: 'slideUpSection 1s forwards'}}
         gl={{antialias: true}}
-        dpr={window.devicePixelRatio}
+        dpr={pixelRatio}
         onCreated={({ camera }) => camera.lookAt(0, 0, 0)}
         camera={{ position: [0.35, 0.35, 0.35] }}
       >

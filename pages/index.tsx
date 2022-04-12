@@ -1,9 +1,6 @@
 import { GetStaticProps } from 'next'
 import prisma from '@/lib/prisma'
-import dynamic from 'next/dynamic'
-const CanvasLoader = dynamic(() => import('@/components/CanvasLoader'), {
-  ssr: false
-})
+import CanvasLoader from '@/components/CanvasLoader'
 
 import { css } from '@emotion/react'
 import { home } from '@/data/content'
