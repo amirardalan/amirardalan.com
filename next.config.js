@@ -11,6 +11,7 @@ module.exports = {
   },
   images: {
     domains: [
+      'res.cloudinary.com', // Cloudinary
       'i.scdn.co', // Spotify
     ]
   },
