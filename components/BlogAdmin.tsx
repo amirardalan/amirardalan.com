@@ -207,7 +207,7 @@ const BlogAdmin = React.memo(function BlogAdmin() {
           color: 'var(--color-bg)',
           fontSize: 12,
           fontFamily: 'var(--font-primary)',
-          fontWeight: 'bold',
+          fontWeight: 'normal',
           textTransform: 'uppercase',
           textAlign: 'center',
           textDecoration: 'none',
