@@ -32,7 +32,6 @@ const BlogAdmin = React.memo(function BlogAdmin() {
       if (data.status === 200) {
         showDeployLoader()
         fetch(`/api/preview/exit-preview?secret=${process.env.NEXT_PUBLIC_PREVIEW_TOKEN}`)
-        router.push('/blog')
       }
     })
     .catch(err => {
