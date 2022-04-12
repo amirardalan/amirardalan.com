@@ -11,22 +11,23 @@ const BlogAdmin = React.memo(function BlogAdmin() {
   const { data: session } = useSession()
   const router = useRouter()
   const URL = process.env.NEXT_PUBLIC_SITE_URL
+  const routerPath = router.pathname
 
   // Session & Route Conditionals
   const isLoggedIn = session && session.user.email == process.env.NEXT_PUBLIC_USER_EMAIL
-  const isAdminPage = ['/blog/create','/blog/edit/[id]','/blog/drafts'].includes(router.pathname)
-  const isActive: (pathname: string) => boolean = (pathname) => router.pathname === pathname
+  const isAdminPage = ['/blog/create','/blog/edit/[id]','/blog/drafts'].includes(routerPath)
+  const isActive: (pathname: string) => boolean = (pathname) => routerPath === pathname
 
-  // Deploy Hook
-  const [isDeploying, setIsDeploying] = useState(false)
+  // On-Demand ISR Webhook
+  const [isRevalidating, setIsRevalidating] = useState(false)
   const showDeployLoader: Function = () => {
-    setIsDeploying(true)
+    setIsRevalidating(true)
     setTimeout(() => {
-      setIsDeploying(false)
-    }, 60000)
+      setIsRevalidating(false)
+    }, 5000)
   }
-  async function deployNewBuild(): Promise<void> {
-    fetch(`/api/deploy?secret=${process.env.NEXT_PUBLIC_DEPLOY_TOKEN}`).then((data) => {
+  async function revalidatePage(): Promise<void> {
+    fetch(`/api/revalidate?secret=${process.env.REVALIDATE_SECRET}&path=${routerPath}`).then((data) => {
 
       if (data.status === 200) {
         showDeployLoader()
@@ -117,12 +118,12 @@ const BlogAdmin = React.memo(function BlogAdmin() {
 
         <div css={styleAdminPanelRight}>
           <div className="deploymentStatus">
-            { isDeploying ? <LoadingSpinner /> : null }
+            { isRevalidating ? <LoadingSpinner /> : null }
             <button
-              onClick={ !isDeploying ? deployNewBuild : null }
-              className={ (isDeploying) ? 'buttonCompact deploy disabled' : 'buttonCompact deploy' }
+              onClick={ !isRevalidating ? revalidatePage : null }
+              className={ (isRevalidating) ? 'buttonCompact deploy disabled' : 'buttonCompact deploy' }
               aria-label="Deploy"
-              aria-disabled={ isDeploying ? true : false}
+              aria-disabled={ isRevalidating ? true : false}
             >
               Deploy
             </button>
