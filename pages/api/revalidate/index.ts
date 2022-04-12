@@ -7,7 +7,7 @@ export default async function handler(req:NextApiRequest, res:NextApiResponse) {
   }
 
   try {
-    await res.unstable_revalidate(`${req.query.path}`)
+    await res.unstable_revalidate(`${process.env.NEXT_PUBLIC_SITE_URL}${req.query.path}`)
     return res.json({ revalidated: true })
   } catch (err) {
     return res.status(500).send('Error revalidating')
