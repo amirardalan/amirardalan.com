@@ -13,3 +13,9 @@ export default async function handler(req:NextApiRequest, res:NextApiResponse) {
     return res.status(500).send('Error revalidating')
   }
 }
+
+export const config = {
+  api: {
+    bodyParser: false,
+  },
+};
