@@ -11,12 +11,12 @@ const BlogAdmin = React.memo(function BlogAdmin() {
   const { data: session } = useSession()
   const router = useRouter()
   const URL = process.env.NEXT_PUBLIC_SITE_URL
-  const routerPath = router.pathname
+  const revalidatePath = router.asPath
 
   // Session & Route Conditionals
   const isLoggedIn = session && session.user.email == process.env.NEXT_PUBLIC_USER_EMAIL
-  const isAdminPage = ['/blog/create','/blog/edit/[id]','/blog/drafts'].includes(routerPath)
-  const isActive: (pathname: string) => boolean = (pathname) => routerPath === pathname
+  const isAdminPage = ['/blog/create','/blog/edit/[id]','/blog/drafts'].includes(router.pathname)
+  const isActive: (pathname: string) => boolean = (pathname) => router.pathname === pathname
 
   // On-Demand ISR Webhook
   const [isRevalidating, setIsRevalidating] = useState(false)
@@ -27,7 +27,7 @@ const BlogAdmin = React.memo(function BlogAdmin() {
     }, 5000)
   }
   async function revalidatePage(): Promise<void> {
-    fetch(`/api/revalidate?secret=${process.env.REVALIDATE_SECRET}&path=${routerPath}`).then((data) => {
+    fetch(`/api/revalidate?secret=${process.env.NEXT_PUBLIC_REVALIDATE_SECRET}&path=${revalidatePath}`).then((data) => {
 
       if (data.status === 200) {
         showDeployLoader()
