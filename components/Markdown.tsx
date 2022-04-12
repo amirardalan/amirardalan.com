@@ -95,7 +95,7 @@ export default function BlogMarkdown({ markdown }) {
     },
     'p code': {
       textShadow: 'none !important',
-      fontSize: '17px !important',
+      // fontSize: '17px !important',
     },
     'pre code': {
       fontFamily: 'var(--font-primary) !important',
