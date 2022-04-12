@@ -117,10 +117,10 @@ const BlogAdmin = React.memo(function BlogAdmin() {
             <button
               onClick={handleRevalidatePage}
               className={ isRevalidating ? 'buttonCompact deploy disabled' : 'buttonCompact deploy' }
-              aria-label="Deploy"
+              aria-label="Revalidate Page"
               aria-disabled={ isRevalidating ? true : false}
             >
-              Deploy
+              Revalidate
             </button>
           </div>
           <Link href="/blog/create" passHref>
