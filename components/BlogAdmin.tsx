@@ -24,7 +24,7 @@ const BlogAdmin = React.memo(function BlogAdmin() {
   async function handleRevalidatePage(): Promise<void> {
     if(isRevalidating) { return }
     setIsRevalidating(true)
-    fetch(`/api/revalidate?secret=${process.env.NEXT_PUBLIC_REVALIDATE_SECRET}&path=${process.env.NEXT_PUBLIC_SITE_URL}${revalidatePath}`).then((data) => {
+    fetch(`/api/revalidate?secret=${process.env.NEXT_PUBLIC_REVALIDATE_SECRET}&path=${revalidatePath}`).then((data) => {
       if (data.status === 200) {
         setIsRevalidating(false),
         fetch(`/api/preview/exit-preview?secret=${process.env.NEXT_PUBLIC_PREVIEW_TOKEN}`)
