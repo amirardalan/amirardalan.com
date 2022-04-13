@@ -47,7 +47,7 @@ const Draft = () => {
         body: JSON.stringify(body),
       })
       await Router.push(
-        `${process.env.NEXT_PUBLIC_SITE_URL}/api/preview?secret=${process.env.NEXT_PUBLIC_PREVIEW_TOKEN}&slug=${slug}`
+        `${process.env.NEXT_PUBLIC_SITE_URL}/api/preview?secret=${process.env.NEXT_PUBLIC_REVALIDATE_SECRET}&slug=${slug}`
       )
     } catch (error) {
       console.error(error)
