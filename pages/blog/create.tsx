@@ -135,12 +135,14 @@ const Draft = () => {
               value={content}
             />
 
-            <Dropdown
-              label="Category"
-              value={category}
-              handleChange={(e: { target: { value: React.SetStateAction<string> } }) => setCategory(e.target.value)}
-              data={categories}
-            />
+            <div className="postOptions">
+              <Dropdown
+                label="Category:"
+                value={category}
+                handleChange={(e: { target: { value: React.SetStateAction<string> } }) => setCategory(e.target.value)}
+                data={categories}
+              />
+            </div>
 
             <div className="formSubmit">
               <button
