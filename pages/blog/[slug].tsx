@@ -390,6 +390,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       },
     })
   ])
+  console.log('test revalidate route')
   if (post) {
     return { props: { post: JSON.parse(JSON.stringify(post)), feed, data: blogPost } } 
   } else {
