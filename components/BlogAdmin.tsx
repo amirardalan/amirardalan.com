@@ -22,7 +22,6 @@ const BlogAdmin = React.memo(function BlogAdmin() {
   const [isRevalidating, setIsRevalidating] = useState(false)
 
   async function handleRevalidatePage(): Promise<void> {
-    if(isRevalidating) { return }
     setIsRevalidating(true)
     fetch(`/api/revalidate?secret=${process.env.NEXT_PUBLIC_REVALIDATE_SECRET}&path=${revalidatePath}`).then((data) => {
       if (data.status === 200) {
@@ -115,7 +114,7 @@ const BlogAdmin = React.memo(function BlogAdmin() {
           <div className="deploymentStatus">
             { isRevalidating ? <LoadingSpinner /> : null }
             <button
-              onClick={handleRevalidatePage}
+              onClick={isRevalidating ? null : handleRevalidatePage}
               className={ isRevalidating ? 'buttonCompact deploy disabled' : 'buttonCompact deploy' }
               aria-label="Revalidate Page"
               aria-disabled={ isRevalidating ? true : false}
