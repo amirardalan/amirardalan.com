@@ -11,6 +11,18 @@ A Next.js Markdown Blog and CMS written in TypeScript. Designed, built, and main
 [SWR](https://github.com/vercel/swr)  
 [Emotion](https://github.com/emotion-js/emotion)
 
+### Who is this for?
+This is my personal portfolio and blog. You may find the CMS portion useful. It is a modern and lightweight alternative to a Wordpress blog. This application utilizes bleeding edge features from Next.js and React.
+
+### CMS Features
+- Manage blog posts from an authenticated Admin Panel
+- Write blog posts with [extensible Markdown](#markdown-features)
+- Publish changes on per-page basis, no need to rebuild the entire application
+- Create and manage unpublished Drafts
+- Publish, unpublish, or delete Posts or Drafts
+- Set/Edit Title, Teaser, Slug, Content, and Category
+- Optionally suppress "Updated" date when editing
+
 ---
 
 ## Setup:
@@ -167,6 +179,16 @@ For any blog posts that do not contain an image, [this service](https://github.c
 1. Fork the repo and follow the README.md and CONTRIBUTING.md.
 2. Update with logos, fonts, and css that suits your blog.
 3. Deploy to vercel and set a domain name, set this to the `NEXT_PUBLIC_OG_IMAGE_URL` environment variable
+
+---
+
+## Additional Notes
+
+- Most static content can be edited in `data/content.ts`
+- Currently blog categories are manually set in `data/categories.ts`
+- For blog image hosting, I recommend Cloudinary's Free [Digital Asset Manager](https://cloudinary.com/documentation/digital_asset_management_overview)
+- This project is the culmination of thousands of hours of work. It's primarily open-source for educational purposes. If you intend to use parts of the code, please create your own design and content!
+- If you have any questions, reach out to me on [Twitter](https://twitter.com/amirardalan)!
 
 ---
 
