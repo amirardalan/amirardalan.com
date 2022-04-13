@@ -25,17 +25,17 @@ _Keep this file private, ensure `.env` remains in `.gitignore`, don't commit to 
 _Note: you will need to set up different [environment varibles](https://vercel.com/docs/concepts/projects/environment-variables) for Development and Production instances._
 
 - `NEXT_PUBLIC_SITE_URL`: Leave as `http://localhost:3000` Development, `https://yourDomainName.com` for Production
-- `NEXT_PUBLIC_USER_EMAIL=`: your email address, used for authentication and optionally your about or contact page.  
+- `NEXT_PUBLIC_USER_EMAIL`: your email address, used for authentication and optionally your about or contact page.  
 
 - `DATABASE_URL`: The URL for your PostgreSQL database  
 
-- `NEXT_AUTH_SECRET`= Generate a secret for Next Auth
+- `NEXT_AUTH_SECRET`: Generate a secret for Next Auth
 - `GITHUB_SECRET`: For GitHub oAuth with Next Auth, see [Next Auth Crash Course](https://www.youtube.com/watch?v=o_wZIVmWteQ)
 - `GITHUB_ID`: Your GitHub developer app ID, also for Next Auth  
 
 - `NEXT_PUBLIC_REVALIDATE_SECRET`: Generate a secret for use with Next [Preview Mode](https://nextjs.org/docs/advanced-features/preview-mode) and [On-Demand Incremental Static Regeneration](https://nextjs.org/docs/basic-features/data-fetching/incremental-static-regeneration#on-demand-revalidation-beta)
 - `NEXT_PUBLIC_OG_IMAGE_URL`: Create an [OG Image Service](https://github.com/vercel/og-image) and set this to the URL of your service app. [Further reading](#dynamically-generate-blog-og-images)
-- `NEXT_PUBLIC_TIMEZONE`= Example: `America/Los_Angeles`. Set this to your local timezone for your blog posts to display the correct date and time.  
+- `NEXT_PUBLIC_TIMEZONE`: Example: `America/Los_Angeles`. Set this to your local timezone for your blog posts to display the correct date and time.  
 
 - `SPOTIFY_CLIENT_SECRET`: See [API guide](https://developer.spotify.com/documentation/web-api/quick-start/)
 - `SPOTIFY_CLIENT_ID`: 
