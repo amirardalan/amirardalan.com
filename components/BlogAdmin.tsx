@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Global, css } from '@emotion/react'
 import { signOut, useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
@@ -20,7 +20,6 @@ const BlogAdmin = React.memo(function BlogAdmin() {
 
   // On-Demand ISR Webhook
   const [isRevalidating, setIsRevalidating] = useState(false)
-
   async function handleRevalidatePage(): Promise<void> {
     setIsRevalidating(true)
     fetch(`/api/preview/exit-preview?secret=${process.env.NEXT_PUBLIC_REVALIDATE_SECRET}`).then((data) => {
@@ -33,6 +32,11 @@ const BlogAdmin = React.memo(function BlogAdmin() {
       console.error(err)
     })
   }
+
+  useEffect(() => {
+    if (isRevalidating)
+      router.reload()
+  })
 
   const styleAnimationWrapper = css ({
     display: session ? 'block' : 'none',
