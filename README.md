@@ -124,10 +124,10 @@ Open [http://localhost:5555/](http://localhost:5555/)
 
 ## Markdown Features:
 
-- [Next/Image Component](#Next/Image%20Component)
-- [Code Line Highlighting](#Code%20Line%20Highlighting)
-- [Links Behavior](#Links%20Behavior)
-- [iFrame Embeds](#iFrame%20Embed%20Support)
+- [Next/Image Component](#nextimage-component)
+- [Code Line Highlighting](#code-line-highlighting)
+- [Links Behavior](#links-behavior)
+- [iFrame Embeds](#iframe-embeds)
 
 ### Next/Image Component
 Utilize `Next/Image` functionality within Markdown by using custom metastrings inside the Markdown Alt.
