@@ -123,7 +123,7 @@ const BlogAdmin = React.memo(function BlogAdmin() {
               aria-label="Revalidate Page"
               aria-disabled={ isRevalidating ? true : false}
             >
-              Revalidate
+              Publish
             </button>
           </div>
           <Link href="/blog/create" passHref>
