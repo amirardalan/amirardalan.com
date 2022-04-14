@@ -47,11 +47,13 @@ export default function LatestPost({ latestPost, data }) {
       </h2>
       <article>
         <h3>
+          {renderLatestPost ?
           <Link
             href={`/blog/${encodeURIComponent(renderLatestPost?.slug)}`}
             aria-label={renderLatestPost?.title}>
             {renderLatestPost?.title}
           </Link>
+          : null}
         </h3>
         <p>{renderLatestPost?.teaser}</p>
       </article>

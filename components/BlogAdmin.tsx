@@ -1,9 +1,10 @@
+import { signOut, useSession } from 'next-auth/react'
 import React, { useState, useEffect } from 'react'
 import { Global, css } from '@emotion/react'
-import { signOut, useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
-import LoadingSpinner from './LoadingSpinner'
+import LoadingSpinner from '@/components/LoadingSpinner'
+import { useUpdatedContext } from '@/utils/useUpdatedContext'
 
 
 const BlogAdmin = React.memo(function BlogAdmin() {
@@ -17,6 +18,18 @@ const BlogAdmin = React.memo(function BlogAdmin() {
   const isLoggedIn = session && session.user.email == process.env.NEXT_PUBLIC_USER_EMAIL
   const isAdminPage = ['/blog/create','/blog/edit/[id]','/blog/drafts'].includes(router.pathname)
   const isActive: (pathname: string) => boolean = (pathname) => router.pathname === pathname
+  const [isUpdated, setIsUpdated] = useUpdatedContext()
+  const isBlogPost = !router.pathname.match(/\/create/) && router.pathname.match(/\/blog\/*/) && !router.pathname.match(/\/edit\/.*/)
+  
+  
+  const stylePublishBtn = () => {
+    if (isRevalidating)
+      return 'buttonCompact disabled inProgress' 
+    else if (isUpdated)
+      return 'buttonCompact publishBtn'
+    else
+      return 'buttonCompact disabled'
+  }
 
   // On-Demand ISR Webhook
   const [isRevalidating, setIsRevalidating] = useState(false)
@@ -34,8 +47,13 @@ const BlogAdmin = React.memo(function BlogAdmin() {
   }
 
   useEffect(() => {
-    if (isRevalidating)
+    if (isBlogPost) {
+      setIsUpdated(true)
+    } else setIsUpdated(false)
+    
+    if (isRevalidating) {
       router.reload()
+    }
   })
 
   const styleAnimationWrapper = css ({
@@ -90,7 +108,7 @@ const BlogAdmin = React.memo(function BlogAdmin() {
   const styleAdminPanelRight = css({
     display: 'flex',
     justifyContent: 'right',
-    '.deploymentStatus': {
+    '.publishStatus': {
       display: 'flex',
     },
     'button, a': {
@@ -115,15 +133,15 @@ const BlogAdmin = React.memo(function BlogAdmin() {
         </div>
 
         <div css={styleAdminPanelRight}>
-          <div className="deploymentStatus">
+          <div className="publishStatus">
             { isRevalidating ? <LoadingSpinner /> : null }
             <button
-              onClick={isRevalidating ? null : handleRevalidatePage}
-              className={ isRevalidating ? 'buttonCompact deploy disabled' : 'buttonCompact deploy' }
+              onClick={isUpdated && !isRevalidating ? handleRevalidatePage : null}
+              className={stylePublishBtn()}
               aria-label="Revalidate Page"
               aria-disabled={ isRevalidating ? true : false}
             >
-              Publish
+              Revalidate
             </button>
           </div>
           <Link href="/blog/create" passHref>
@@ -215,33 +233,33 @@ const BlogAdmin = React.memo(function BlogAdmin() {
           textAlign: 'center',
           textDecoration: 'none',
           cursor: 'pointer',
-          '&:disabled': {
+          '&:disabled, &.disabled': {
             backgroundColor: 'var(--color-disabled)',
             cursor: 'default',
           },
-          '.create &': {
+          '&.inProgress': { 
+            backgroundColor: 'var(--color-disabled)',
+            cursor: 'wait'
+          },
+          '.createBtn &': {
             '&.createBtn': {
               backgroundColor: 'var(--color-disabled)',
             }
           },
-          '.drafts &': {
+          '.draftsBtn &': {
             '&.draftsBtn': {
               backgroundColor: 'var(--color-disabled)',
             }
           },
-          '&.delete': {
+          '&.deleteBtn': {
             backgroundColor: 'var(--color-warning)',
-            color: '#fff',
+            color: 'var(--color-light)',
             textDecoration: 'none',
           },
-          '&.deploy': {
+          '&.publishBtn': {
             backgroundColor: 'var(--color-primary)',
-            '&.disabled': { cursor: 'wait' }
           },
-          '&.disabled': {
-            backgroundColor: 'var(--color-disabled)',
-          },
-          '&.deploy, &.save, &.update, &.cancel': {
+          '&.publishBtn, &.saveBtn, &.updateBtn, &.cancelBtn': {
             marginRight: '.25rem',
           }
         },

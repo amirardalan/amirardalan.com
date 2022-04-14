@@ -86,9 +86,7 @@ Create an [OG Image Service](https://github.com/vercel/og-image) and set this to
 `NEXT_PUBLIC_TIMEZONE`: Example: `America/Los_Angeles`. Set this to your local timezone for your blog posts to display the correct date and time. [Full List of IANA Timezones](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)   
 
 `SPOTIFY_CLIENT_SECRET`, `SPOTIFY_CLIENT_ID`, `SPOTIFY_REFRESH_TOKEN`
-See [Spotify API guide](https://developer.spotify.com/documentation/web-api/quick-start/)  
-
-Add additional local environment variables as needed. You can set up test tokens, deploy hooks, etc. locally and create seprate versions of this file with staging and/or production values (usually stored on your server).
+See [Spotify API guide](https://developer.spotify.com/documentation/web-api/quick-start/)
 
 ---
 

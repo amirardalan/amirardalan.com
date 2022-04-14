@@ -635,6 +635,9 @@ export const donate = {
 
 // Admin
 export const admin = {
+  meta: {
+    title: ' – Amir Ardalan'
+  },
   controls: {
     publish: 'Publish',
     unpublish: 'Unpublish',

@@ -146,12 +146,12 @@ const Draft = () => {
 
             <div className="formSubmit">
               <button
-                className="buttonCompact save"
+                className="buttonCompact saveBtn"
                 disabled={!content || !title || !slug || !teaser || category === '-'}
                 type="submit">
                 {admin.controls.save}
               </button>
-              <a className="buttonCompact delete" onClick={handleConfirmOnClick}>
+              <a className="buttonCompact deleteBtn" onClick={handleConfirmOnClick}>
                 {admin.controls.delete}
               </a>
               { showDeletionConfirmation ? <DeletionConfirmation /> : null }

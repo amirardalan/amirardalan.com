@@ -289,7 +289,7 @@ const Post = ({ post, feed, data }) => {
   const publishDate = formatDate(post.publishedAt)
   const editDate = formatDate(post.editedAt)
   const postReadTime = calculateReadTime(post.content)
-  const title = post.title
+  const title = post.title + admin.meta.title
 
   // Set OG Image for blog posts. Use first image from post, otherwise dynamically generate one.
   const hasImage = post.content.replace(/`([^`]*)/g,'').match(/!\[.*?\]\((.*?)\)/)
