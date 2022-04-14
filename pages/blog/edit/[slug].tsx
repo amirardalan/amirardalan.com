@@ -1,6 +1,7 @@
 import { useSession } from 'next-auth/react'
 import { useState } from 'react'
 import Router from 'next/router'
+import revalidateChanges from '@/utils/revalidateChanges'
 
 import Container from '@/components/Container'
 import BlogStyles from '@/components/BlogStyles'
@@ -56,7 +57,7 @@ const Edit = ({ editPost }) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
       })
-      await Router.push(`${process.env.NEXT_PUBLIC_SITE_URL}/api/preview?secret=${process.env.NEXT_PUBLIC_REVALIDATE_SECRET}&slug=${slug}`)
+      await Router.push(`/api/preview?secret=${process.env.NEXT_PUBLIC_REVALIDATE_SECRET}&slug=${slug}`)
     } catch (error) {
       console.error(error)
     }
@@ -163,6 +164,7 @@ const Edit = ({ editPost }) => {
               <button
                 className="buttonCompact updateBtn"
                 disabled={ !content || !title || !slug || !teaser }
+                onClick={revalidateChanges}
                 type="submit"
               >
                 {admin.controls.update}

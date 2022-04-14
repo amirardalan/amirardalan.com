@@ -282,14 +282,14 @@ const Post = ({ post, feed, data }) => {
   const isPublished: Boolean = post.published
   const publishLabel = isPublished ? `${admin.controls.unpublish}` : `${admin.controls.publish}`
   const displayPost = isPublished || session && session.user.email === process.env.NEXT_PUBLIC_USER_EMAIL
-  const redirect = isPublished ? '/blog/drafts' : '/blog'
+  const redirect = isPublished ? '/blog' : '/blog/drafts'
 
   const isEdited = post.editedAt.slice(0, 10) > post.publishedAt.slice(0, 10)
   const showEdited = post.showEdited
   const publishDate = formatDate(post.publishedAt)
   const editDate = formatDate(post.editedAt)
   const postReadTime = calculateReadTime(post.content)
-  const title = post.title + admin.meta.title
+  const title = post.title
 
   // Set OG Image for blog posts. Use first image from post, otherwise dynamically generate one.
   const hasImage = post.content.replace(/`([^`]*)/g,'').match(/!\[.*?\]\((.*?)\)/)
@@ -342,7 +342,7 @@ const Post = ({ post, feed, data }) => {
 
   return (
     <Container
-      title={title}{...data.meta.title}
+      title={title+data.meta.title}
       description={post.teaser}
       image={hasImage}
       date={publishDate}

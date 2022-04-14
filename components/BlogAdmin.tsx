@@ -4,7 +4,6 @@ import { Global, css } from '@emotion/react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import LoadingSpinner from '@/components/LoadingSpinner'
-import { useUpdatedContext } from '@/utils/useUpdatedContext'
 
 
 const BlogAdmin = React.memo(function BlogAdmin() {
@@ -12,46 +11,12 @@ const BlogAdmin = React.memo(function BlogAdmin() {
   const { data: session } = useSession()
   const router = useRouter()
   const URL = process.env.NEXT_PUBLIC_SITE_URL
-  const REVALIDATE_SECRET = process.env.NEXT_PUBLIC_REVALIDATE_SECRET
-  const revalidatePath = router.asPath
 
   // Session & Route Conditionals
   const path = router.pathname
   const isLoggedIn = session && session.user.email == process.env.NEXT_PUBLIC_USER_EMAIL
   const isAdminPage = ['/blog/create','/blog/edit/[id]','/blog/drafts'].includes(path)
   const isActive: (pathname: string) => boolean = (pathname) => path === pathname
-  const [isUpdated, setIsUpdated] = useUpdatedContext()
-  const isBlogPost = path.match(/\/blog\/.*/) && !path.match(/\/edit|\/create|\/drafts/)
-  
-  
-  const stylePublishBtn = () => {
-    if (isRevalidating) return 'buttonCompact disabled inProgress' 
-    else if (isUpdated) return 'buttonCompact publishBtn'
-    else return 'buttonCompact disabled'
-  }
-
-  // On-Demand ISR Webhook
-  const [isRevalidating, setIsRevalidating] = useState(false)
-  async function handleRevalidatePage(): Promise<void> {
-    setIsRevalidating(true)
-    fetch(`/api/preview/exit-preview?secret=${REVALIDATE_SECRET}`).then((data) => {
-      if (data.status === 200) {
-        fetch(`/api/revalidate?secret=${REVALIDATE_SECRET}&path=${revalidatePath}`).then((data) => {
-          if (data.status === 200) {
-            fetch(`/api/revalidate?secret=${REVALIDATE_SECRET}&path='/blog'`)
-            setIsRevalidating(false)
-            router.reload()
-          }
-        }).catch(err => { console.error(err, 'Revalidation failed') })
-      }
-    }).catch(err => { console.error(err, 'Failed to exit preview mode') })
-  }
-
-  useEffect(() => {
-    if (isBlogPost) {
-      setIsUpdated(true)
-    } else setIsUpdated(false)
-  })
 
   const styleAnimationWrapper = css ({
     display: session ? 'block' : 'none',
@@ -130,18 +95,6 @@ const BlogAdmin = React.memo(function BlogAdmin() {
         </div>
 
         <div css={styleAdminPanelRight}>
-          <div className="publishStatus">
-            { isRevalidating ? <LoadingSpinner /> : null }
-            <button
-              onClick={isUpdated && !isRevalidating ? handleRevalidatePage : null}
-              className={stylePublishBtn()}
-              aria-label="Revalidate"
-              aria-disabled={ isRevalidating ? true : false}
-              title="Revalidate cache to publish changes to front-end."
-            >
-              Revalidate
-            </button>
-          </div>
           <Link href="/blog/create" passHref>
             <button className="buttonCompact createBtn" aria-label="New Post">
               Create
