@@ -1,17 +1,17 @@
 import Router from 'next/router'
 
-export async function publishPost(slug: String, published: boolean, redirect: string): Promise<void> {
-  await fetch(`/api/publish/${slug}?published=${published}`, {
+export async function publishPost(id: number, published: boolean): Promise<void> {
+  await fetch(`/api/publish/${id}?published=${published}`, {
     method: 'PUT',
   })
-  await Router.push(redirect)
+  Router.reload()
 }
 
 export async function editPost(slug: string): Promise<void> {
   await fetch(`/blog/edit/${slug}`, {
     method: 'PUT',
   })
-  await Router.push(`/blog/edit/${slug}`)
+  Router.push(`/blog/edit/${slug}`)
 }
 
 export async function deletePost(id: number, redirect: string): Promise<void> {

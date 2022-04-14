@@ -21,7 +21,7 @@ const BlogAdmin = React.memo(function BlogAdmin() {
   const isAdminPage = ['/blog/create','/blog/edit/[id]','/blog/drafts'].includes(path)
   const isActive: (pathname: string) => boolean = (pathname) => path === pathname
   const [isUpdated, setIsUpdated] = useUpdatedContext()
-  const isBlogPost = path.match(/\/blog\/*/) && !path.match(/\/edit|\/create|\/drafts/)
+  const isBlogPost = path.match(/\/blog\/.*/) && !path.match(/\/edit|\/create|\/drafts/)
   
   
   const stylePublishBtn = () => {
@@ -38,7 +38,7 @@ const BlogAdmin = React.memo(function BlogAdmin() {
       if (data.status === 200) {
         fetch(`/api/revalidate?secret=${REVALIDATE_SECRET}&path=${revalidatePath}`).then((data) => {
           if (data.status === 200) {
-            fetch(`/api/revalidate?secret=${REVALIDATE_SECRET}&path='/blog`)
+            fetch(`/api/revalidate?secret=${REVALIDATE_SECRET}&path='/blog'`)
             setIsRevalidating(false)
             router.reload()
           }

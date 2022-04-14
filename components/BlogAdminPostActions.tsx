@@ -26,7 +26,7 @@ const BlogAdminPostActions = ({props}) => {
     <div className="controlsPost">
       <button
         className="buttonCompact"
-        onClick={() => publishPost(props.post.id, props.post.published, props.redirect)}>
+        onClick={() => publishPost(props.post.id, props.post.published)}>
         {props.publishLabel}
       </button>
       <button
