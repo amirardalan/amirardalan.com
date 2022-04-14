@@ -1,7 +1,6 @@
 import { useSession } from 'next-auth/react'
 import { useState } from 'react'
 import Router from 'next/router'
-import { publishEdit } from '@/utils/managePost'
 
 import Container from '@/components/Container'
 import BlogStyles from '@/components/BlogStyles'
@@ -14,6 +13,7 @@ import { admin, breadcrumb } from '@/data/content'
 import { categories } from '@/data/categories'
 import { GetServerSideProps } from 'next'
 import prisma from '@/lib/prisma'
+import revalidateChanges from '@/utils/revalidateChanges'
 
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
@@ -57,7 +57,7 @@ const Edit = ({ editPost }) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
       })
-      await Router.push(`/api/preview?secret=${process.env.NEXT_PUBLIC_REVALIDATE_SECRET}&slug=${slug}`)
+      revalidateChanges()
     } catch (error) {
       console.error(error)
     }
@@ -164,7 +164,6 @@ const Edit = ({ editPost }) => {
               <button
                 className="buttonCompact updateBtn"
                 disabled={ !content || !title || !slug || !teaser }
-                onClick={()=> publishEdit}
                 type="submit"
               >
                 {admin.controls.update}

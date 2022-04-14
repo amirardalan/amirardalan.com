@@ -1,17 +1,19 @@
-
-
 import Router from 'next/router'
-  
+
+
 const revalidateChanges = () => {
 
   const REVALIDATE_SECRET = process.env.NEXT_PUBLIC_REVALIDATE_SECRET
-  const revalidatePath = Router.asPath
+  const isEditPage = Router.asPath.includes('/edit')
+  const revalidatePath = isEditPage ? Router.asPath.replace('/edit','') : Router.asPath
 
   fetch(`/api/revalidate?secret=${REVALIDATE_SECRET}&path=${revalidatePath}`).then((data) => {
     if (data.status === 200) {
       fetch(`/api/revalidate?secret=${REVALIDATE_SECRET}&path=/blog`).then((data) => {
-        if (data.status === 200) {
+        if (data.status === 200 && !isEditPage) {
           Router.reload()
+        } else if (data.status === 200 && isEditPage) {
+          Router.push(revalidatePath)
         }
       }).catch(err => { console.error(err, 'Blog Revalidation failed') })
     }

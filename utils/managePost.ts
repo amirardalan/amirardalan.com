@@ -15,13 +15,6 @@ export async function editPost(slug: string): Promise<void> {
   Router.push(`/blog/edit/${slug}`)
 }
 
-export async function publishEdit(slug: string): Promise<void> {
-  await fetch(`/blog/edit/${slug}`, {
-    method: 'PUT',
-  })
-  revalidateChanges()
-}
-
 export async function deletePost(id: number, redirect: string): Promise<void> {
   await fetch(`/api/post/${id}`, {
     method: 'DELETE',
