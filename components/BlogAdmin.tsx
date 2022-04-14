@@ -12,6 +12,7 @@ const BlogAdmin = React.memo(function BlogAdmin() {
   const { data: session } = useSession()
   const router = useRouter()
   const URL = process.env.NEXT_PUBLIC_SITE_URL
+  const REVALIDATE_SECRET = process.env.NEXT_PUBLIC_REVALIDATE_SECRET
   const revalidatePath = router.asPath
 
   // Session & Route Conditionals
@@ -33,10 +34,11 @@ const BlogAdmin = React.memo(function BlogAdmin() {
   const [isRevalidating, setIsRevalidating] = useState(false)
   async function handleRevalidatePage(): Promise<void> {
     setIsRevalidating(true)
-    fetch(`/api/preview/exit-preview?secret=${process.env.NEXT_PUBLIC_REVALIDATE_SECRET}`).then((data) => {
+    fetch(`/api/preview/exit-preview?secret=${REVALIDATE_SECRET}`).then((data) => {
       if (data.status === 200) {
-        fetch(`/api/revalidate?secret=${process.env.NEXT_PUBLIC_REVALIDATE_SECRET}&path=${revalidatePath}`).then((data) => {
+        fetch(`/api/revalidate?secret=${REVALIDATE_SECRET}&path=${revalidatePath}`).then((data) => {
           if (data.status === 200) {
+            fetch(`/api/revalidate?secret=${REVALIDATE_SECRET}&path='/blog`)
             setIsRevalidating(false)
             router.reload()
           }
