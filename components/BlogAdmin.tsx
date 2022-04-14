@@ -3,6 +3,8 @@ import React from 'react'
 import { Global, css } from '@emotion/react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
+import { useLoadingBar } from '@/utils/useLoadingBar'
+import LoadingSpinner from '@/components/LoadingSpinner'
 
 
 const BlogAdmin = React.memo(function BlogAdmin() {
@@ -10,6 +12,7 @@ const BlogAdmin = React.memo(function BlogAdmin() {
   const { data: session } = useSession()
   const router = useRouter()
   const URL = process.env.NEXT_PUBLIC_SITE_URL
+  const isLoading = useLoadingBar()
 
   // Session & Route Conditionals
   const path = router.pathname
@@ -94,6 +97,7 @@ const BlogAdmin = React.memo(function BlogAdmin() {
         </div>
 
         <div css={styleAdminPanelRight}>
+          {isLoading ? <LoadingSpinner/> : null}
           <Link href="/blog/create" passHref>
             <button className="buttonCompact createBtn" aria-label="New Post">
               Create
@@ -190,9 +194,6 @@ const BlogAdmin = React.memo(function BlogAdmin() {
           '&.inProgress': { 
             backgroundColor: 'var(--color-disabled)',
             cursor: 'wait'
-          },
-          '.createBtn': {
-            backgroundColor: 'var(--color-primary)',
           },
           '.createBtn &': {
             '&.createBtn': {

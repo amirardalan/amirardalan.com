@@ -1,4 +1,4 @@
-import { useLoadingBar } from '../utils/useLoadingBar'
+import { useLoadingBar } from '@/utils/useLoadingBar'
 import { css } from '@emotion/react'
 
 
