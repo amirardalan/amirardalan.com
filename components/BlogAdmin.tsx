@@ -38,16 +38,16 @@ const BlogAdmin = React.memo(function BlogAdmin() {
     fetch(`/api/preview/exit-preview?secret=${process.env.NEXT_PUBLIC_REVALIDATE_SECRET}`).then((data) => {
       if (data.status === 200) {
         fetch(`/api/revalidate?secret=${process.env.NEXT_PUBLIC_REVALIDATE_SECRET}&path=${revalidatePath}`).then(
-          () => {
-            setIsRevalidating(false)
-            router.reload()
-          }
-        )
+          (data) => {
+            if (data.status === 200) {
+              setIsRevalidating(false)
+              router.reload()
+            }
+          })
+        .catch(err => { console.error(err, 'Revalidation failed') })
       }
     })
-    .catch(err => {
-      console.error(err)
-    })
+    .catch(err => { console.error(err, 'Failed to exit preview mode') })
   }
 
   useEffect(() => {
