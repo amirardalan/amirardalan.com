@@ -54,14 +54,14 @@ const Draft = () => {
     }
   }
 
-  function generateSlug(str: string) {
+  const generateSlug = (str: string) => {
 
     str = str.replace(/^\s+|\s+$/g, '')
     str = str.toLowerCase()
-    let from = "àáãäâèéëêìíïîòóöôùúüûñç·/_,:;"
-    let to   = "aaaaaeeeeiiiioooouuuunc------"
+    const from = 'àáãäâèéëêìíïîòóöôùúüûñç·/_,:;'
+    const to   = 'aaaaaeeeeiiiioooouuuunc------'
 
-    for (let i = 0, l = from.length ; i < l ; i++) {
+    for (let i = 0, l = from.length; i < l; i++) {
       str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i))
     }
 
@@ -72,7 +72,7 @@ const Draft = () => {
     return str
   }
 
-  let slugUrl = generateSlug(title)
+  const slugUrl = generateSlug(title)
 
   // Ensure slug input is active after autofill
   const slugField = useRef(null)
