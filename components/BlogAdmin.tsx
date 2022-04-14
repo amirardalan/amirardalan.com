@@ -37,8 +37,12 @@ const BlogAdmin = React.memo(function BlogAdmin() {
     setIsRevalidating(true)
     fetch(`/api/preview/exit-preview?secret=${process.env.NEXT_PUBLIC_REVALIDATE_SECRET}`).then((data) => {
       if (data.status === 200) {
-        fetch(`/api/revalidate?secret=${process.env.NEXT_PUBLIC_REVALIDATE_SECRET}&path=${revalidatePath}`)
-        setIsRevalidating(false)
+        fetch(`/api/revalidate?secret=${process.env.NEXT_PUBLIC_REVALIDATE_SECRET}&path=${revalidatePath}`).then(
+          () => {
+            setIsRevalidating(false)
+            router.reload()
+          }
+        )
       }
     })
     .catch(err => {
@@ -50,10 +54,6 @@ const BlogAdmin = React.memo(function BlogAdmin() {
     if (isBlogPost) {
       setIsUpdated(true)
     } else setIsUpdated(false)
-    
-    if (isRevalidating) {
-      router.reload()
-    }
   })
 
   const styleAnimationWrapper = css ({
