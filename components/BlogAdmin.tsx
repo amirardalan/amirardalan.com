@@ -15,20 +15,18 @@ const BlogAdmin = React.memo(function BlogAdmin() {
   const revalidatePath = router.asPath
 
   // Session & Route Conditionals
+  const path = router.pathname
   const isLoggedIn = session && session.user.email == process.env.NEXT_PUBLIC_USER_EMAIL
-  const isAdminPage = ['/blog/create','/blog/edit/[id]','/blog/drafts'].includes(router.pathname)
-  const isActive: (pathname: string) => boolean = (pathname) => router.pathname === pathname
+  const isAdminPage = ['/blog/create','/blog/edit/[id]','/blog/drafts'].includes(path)
+  const isActive: (pathname: string) => boolean = (pathname) => path === pathname
   const [isUpdated, setIsUpdated] = useUpdatedContext()
-  const isBlogPost = !router.pathname.match(/\/create/) && router.pathname.match(/\/blog\/*/) && !router.pathname.match(/\/edit\/.*/)
+  const isBlogPost = path.match(/\/blog\/*/) && !path.match(/\/edit|\/create|\/drafts/)
   
   
   const stylePublishBtn = () => {
-    if (isRevalidating)
-      return 'buttonCompact disabled inProgress' 
-    else if (isUpdated)
-      return 'buttonCompact publishBtn'
-    else
-      return 'buttonCompact disabled'
+    if (isRevalidating) return 'buttonCompact disabled inProgress' 
+    else if (isUpdated) return 'buttonCompact publishBtn'
+    else return 'buttonCompact disabled'
   }
 
   // On-Demand ISR Webhook
@@ -37,17 +35,14 @@ const BlogAdmin = React.memo(function BlogAdmin() {
     setIsRevalidating(true)
     fetch(`/api/preview/exit-preview?secret=${process.env.NEXT_PUBLIC_REVALIDATE_SECRET}`).then((data) => {
       if (data.status === 200) {
-        fetch(`/api/revalidate?secret=${process.env.NEXT_PUBLIC_REVALIDATE_SECRET}&path=${revalidatePath}`).then(
-          (data) => {
-            if (data.status === 200) {
-              setIsRevalidating(false)
-              router.reload()
-            }
-          })
-        .catch(err => { console.error(err, 'Revalidation failed') })
+        fetch(`/api/revalidate?secret=${process.env.NEXT_PUBLIC_REVALIDATE_SECRET}&path=${revalidatePath}`).then((data) => {
+          if (data.status === 200) {
+            setIsRevalidating(false)
+            router.reload()
+          }
+        }).catch(err => { console.error(err, 'Revalidation failed') })
       }
-    })
-    .catch(err => { console.error(err, 'Failed to exit preview mode') })
+    }).catch(err => { console.error(err, 'Failed to exit preview mode') })
   }
 
   useEffect(() => {
@@ -138,8 +133,9 @@ const BlogAdmin = React.memo(function BlogAdmin() {
             <button
               onClick={isUpdated && !isRevalidating ? handleRevalidatePage : null}
               className={stylePublishBtn()}
-              aria-label="Revalidate Page"
+              aria-label="Revalidate"
               aria-disabled={ isRevalidating ? true : false}
+              title="Revalidate cache to publish changes to front-end."
             >
               Revalidate
             </button>
