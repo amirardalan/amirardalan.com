@@ -1,7 +1,7 @@
 import { useSession } from 'next-auth/react'
 import { useState } from 'react'
 import Router from 'next/router'
-import revalidateChanges from '@/utils/revalidateChanges'
+import { publishEdit } from '@/utils/managePost'
 
 import Container from '@/components/Container'
 import BlogStyles from '@/components/BlogStyles'
@@ -164,7 +164,7 @@ const Edit = ({ editPost }) => {
               <button
                 className="buttonCompact updateBtn"
                 disabled={ !content || !title || !slug || !teaser }
-                onClick={revalidateChanges}
+                onClick={()=> publishEdit}
                 type="submit"
               >
                 {admin.controls.update}
