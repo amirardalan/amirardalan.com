@@ -1,9 +1,8 @@
 import { signOut, useSession } from 'next-auth/react'
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { Global, css } from '@emotion/react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
-import LoadingSpinner from '@/components/LoadingSpinner'
 
 
 const BlogAdmin = React.memo(function BlogAdmin() {
@@ -73,9 +72,6 @@ const BlogAdmin = React.memo(function BlogAdmin() {
   const styleAdminPanelRight = css({
     display: 'flex',
     justifyContent: 'right',
-    '.publishStatus': {
-      display: 'flex',
-    },
     'button, a': {
       marginRight: '.25rem',
     },
@@ -195,6 +191,9 @@ const BlogAdmin = React.memo(function BlogAdmin() {
             backgroundColor: 'var(--color-disabled)',
             cursor: 'wait'
           },
+          '.createBtn': {
+            backgroundColor: 'var(--color-primary)',
+          },
           '.createBtn &': {
             '&.createBtn': {
               backgroundColor: 'var(--color-disabled)',
@@ -210,10 +209,10 @@ const BlogAdmin = React.memo(function BlogAdmin() {
             color: 'var(--color-light)',
             textDecoration: 'none',
           },
-          '&.publishBtn': {
+          '&.createBtn': {
             backgroundColor: 'var(--color-primary)',
           },
-          '&.publishBtn, &.saveBtn, &.updateBtn, &.cancelBtn': {
+          '&.saveBtn, &.updateBtn, &.cancelBtn': {
             marginRight: '.25rem',
           }
         },
