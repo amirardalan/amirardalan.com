@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { css } from '@emotion/react'
 
 
-export default function featuredPost({ featuredPost, data }) {
+export default function featuredPost({ home, featuredPost, featuredFallback }) {
 
   const styleFeaturedPost = css({
     h2: {
@@ -36,14 +36,13 @@ export default function featuredPost({ featuredPost, data }) {
       }
     },
   })
+
+  const renderFeaturedPost = !featuredPost ? featuredFallback : featuredPost
   
-  const renderFeaturedPost = !featuredPost ? {} : featuredPost[0]
-  
-  const ShowFeaturedPost = ({ data }) => (
-    featuredPost ?
+  return (
     <div css={styleFeaturedPost}>
-      <h2 aria-label={data?.featured?.title}>
-        {data?.featured?.title}
+      <h2 aria-label={home?.featured?.title}>
+        {home?.featured?.title}
       </h2>
       <article>
         <h3>
@@ -57,8 +56,6 @@ export default function featuredPost({ featuredPost, data }) {
         </h3>
         <p>{renderFeaturedPost?.teaser}</p>
       </article>
-    </div> : null
+    </div>
   )
-
-  return <ShowFeaturedPost data={data} />
 }

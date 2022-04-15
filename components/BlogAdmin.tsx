@@ -270,10 +270,10 @@ const BlogAdmin = React.memo(function BlogAdmin() {
             cursor: 'pointer',
             '&.delete': {
               color: 'var(--color-warning)',
+              marginLeft: '.5rem',
             },
             '&.delete:hover, &.close:hover': {
               textDecoration: 'underline',
-              marginLeft: '.5rem',
             }
           }
         },

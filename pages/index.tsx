@@ -11,18 +11,28 @@ import prisma from '@/lib/prisma'
 
 export const getStaticProps: GetStaticProps = async () => {
   try {
-    const featuredPost = await prisma.post.findMany({
-      where: { published: true },
-      orderBy: { publishedAt: 'desc' },
-      take: 1, select: { title: true, teaser: true, slug: true }
-    })
-    return { props: { featuredPost, data: home } }
+    const [featuredPost, featuredFallback] = await prisma.$transaction([
+      prisma.post.findFirst({
+        where: { featured: true, published: true },
+        select: { title: true, teaser: true, slug: true }
+      }),
+      prisma.post.findFirst({
+        where: { featured: false, published: true},
+        select: { title: true, teaser: true, slug: true }
+      })
+    ])
+    return { 
+      props: {
+        featuredPost: featuredPost,
+        featuredFallback: featuredFallback
+      }
+    }
   }
   catch { return { props: { data: home } } }
 }
 
 
-export default function Home({ data, featuredPost }) {
+export default function Home({ featuredPost, featuredFallback }) {
 
   const styleMain = css({
     display: 'flex',
@@ -83,20 +93,25 @@ export default function Home({ data, featuredPost }) {
   })
 
   return (
-    <Container title={data.meta.title}>
+    <Container title={home.meta.title}>
       <main css={styleMain} className="home">
         <div css={styleMainLeft} className="animationWrapper">
           <div css={styleContent}>
             <div className="titleWrapper">
               <span className="typed" aria-hidden="true">
-                <TypingAnimation data={data.typed} />
+                <TypingAnimation data={home.typed} />
               </span>
-              <h1>{data.title}</h1>
+              <h1>{home.title}</h1>
             </div>
             <div css={styleCtaButtons}>
               {generateCtaButtons(home.items)}
             </div>
-            <FeaturedPost data={data} featuredPost={featuredPost} />
+            { featuredPost || featuredFallback ?
+            <FeaturedPost
+              home={home}
+              featuredPost={featuredPost}
+              featuredFallback={featuredFallback}
+            /> : null }
           </div>
         </div>
         <div css={styleMainRight} className="animationWrapper">
