@@ -2,11 +2,10 @@ import { NextApiRequest, NextApiResponse } from 'next'
 import { getSession } from 'next-auth/react'
 import prisma from '@/lib/prisma'
 
-
 // POST /api/post
 export default async function handle(req: NextApiRequest, res: NextApiResponse) {
+
   const { title, content, slug, teaser, category, featured } = req.body
-  
   const session = await getSession({ req })
 
   if (featured) {
@@ -29,7 +28,7 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
     ])
     res.json(result)
   }
-  else {
+  else if (!featured) {
     const result = await prisma.post.create({
       data: {
         title: title,
