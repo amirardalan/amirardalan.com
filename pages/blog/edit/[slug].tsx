@@ -36,6 +36,7 @@ const Edit = ({ editPost }) => {
   const editSlug = editPost?.slug
   const editTeaser = editPost?.teaser
   const editCategory = editPost?.category
+  const editFeatured = editPost?.featured
   const editEdited = editPost?.showEdited
 
   const [title, setTitle] = useState(editTitle)
@@ -43,6 +44,11 @@ const Edit = ({ editPost }) => {
   const [slug, setSlug] = useState(editSlug)
   const [teaser, setTeaser] = useState(editTeaser)
   const [category, setCategory] = useState(editCategory)
+
+  const [featured, setFeatured] = useState(editFeatured)
+  const handleSetFeatured = () => {
+    setFeatured(!featured)
+  }
 
   const [showEdited, setShowEdited] = useState(editEdited)
   const handleShowEdited = () => {
@@ -152,7 +158,14 @@ const Edit = ({ editPost }) => {
                 handleChange={(e) => setCategory(e.target.value)}
                 data={categories}
               />
-              <div className="showEditDate">
+              <div className="checkbox">
+                <Checkbox 
+                  label='Set as Featured'
+                  value={featured}
+                  onChange={handleSetFeatured}
+                />
+              </div>
+              <div className="checkbox">
                 <Checkbox 
                   label='Display "Updated" Date'
                   value={showEdited}

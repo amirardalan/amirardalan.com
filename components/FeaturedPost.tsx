@@ -2,9 +2,9 @@ import Link from 'next/link'
 import { css } from '@emotion/react'
 
 
-export default function LatestPost({ latestPost, data }) {
+export default function featuredPost({ featuredPost, data }) {
 
-  const styleLatestPost = css({
+  const styleFeaturedPost = css({
     h2: {
       margin: '2rem 0 .5rem',
       fontFamily: 'var(--font-primary)',
@@ -37,28 +37,28 @@ export default function LatestPost({ latestPost, data }) {
     },
   })
   
-  const renderLatestPost = !latestPost ? {} : latestPost[0]
+  const renderFeaturedPost = !featuredPost ? {} : featuredPost[0]
   
-  const ShowLatestPost = ({ data }) => (
-    latestPost ?
-    <div css={styleLatestPost}>
-      <h2 aria-label={data.latestPost.title}>
-        {data.latestPost.title}
+  const ShowFeaturedPost = ({ data }) => (
+    featuredPost ?
+    <div css={styleFeaturedPost}>
+      <h2 aria-label={data?.featured?.title}>
+        {data?.featured?.title}
       </h2>
       <article>
         <h3>
-          {renderLatestPost ?
+          {renderFeaturedPost ?
           <Link
-            href={`/blog/${encodeURIComponent(renderLatestPost?.slug)}`}
-            aria-label={renderLatestPost?.title}>
-            {renderLatestPost?.title}
+            href={`/blog/${encodeURIComponent(renderFeaturedPost?.slug)}`}
+            aria-label={renderFeaturedPost?.title}>
+            {renderFeaturedPost?.title}
           </Link>
           : null}
         </h3>
-        <p>{renderLatestPost?.teaser}</p>
+        <p>{renderFeaturedPost?.teaser}</p>
       </article>
     </div> : null
   )
 
-  return <ShowLatestPost data={data} />
+  return <ShowFeaturedPost data={data} />
 }

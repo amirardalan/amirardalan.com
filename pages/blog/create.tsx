@@ -6,6 +6,7 @@ import Link from 'next/link'
 import Container from '@/components/Container'
 import BlogStyles from '@/components/BlogStyles'
 import Dropdown from '@/components/Dropdown'
+import Checkbox from '@/components/Checkbox'
 
 import { admin, breadcrumb } from '@/data/content'
 import { categories } from '@/data/categories'
@@ -19,6 +20,11 @@ const Draft = () => {
   const [slug, setSlug] = useState('')
   const [teaser, setTeaser] = useState('')
   const [category, setCategory] = useState(categories[0])
+
+  const [featured, setFeatured] = useState(false)
+  const handleSetFeatured = () => {
+    setFeatured(!featured)
+  }
 
   const [showDeletionConfirmation, setShowDeletionConfirmation] = useState(false)
   const handleConfirmOnClick = () => setShowDeletionConfirmation(true)
@@ -140,6 +146,13 @@ const Draft = () => {
                 handleChange={(e: { target: { value: React.SetStateAction<string> } }) => setCategory(e.target.value)}
                 data={categories}
               />
+              <div className="checkbox">
+                <Checkbox 
+                  label='Set as Featured'
+                  value={featured}
+                  onChange={handleSetFeatured}
+                />
+              </div>
             </div>
 
             <div className="formSubmit">

@@ -160,7 +160,10 @@ const BlogAdmin = React.memo(function BlogAdmin() {
             }
           },
           '.checkbox': {
-            marginRight: '.5rem'
+            marginRight: '.5rem',
+            'label': {
+              marginRight: '1rem'
+            }
           },
           '.dropdownLabel': {
             marginRight: '2rem',

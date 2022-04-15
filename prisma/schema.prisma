@@ -16,6 +16,7 @@ model Post {
   teaser        String?
   content       String?
   category      String?
+  featured      Boolean? @default(false)
   published     Boolean  @default(false)
   showEdited    Boolean  @default(false)
   author        User?    @relation(fields: [authorId], references: [id])

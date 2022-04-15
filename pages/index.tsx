@@ -2,7 +2,7 @@ import { css } from '@emotion/react'
 import { home } from '@/data/content'
 import Container from '@/components/Container'
 import TypingAnimation from '@/components/TypingAnimation'
-import LatestPost from '@/components/LatestPost'
+import FeaturedPost from '@/components/FeaturedPost'
 import { generateCtaButtons } from '@/components/CtaButtons'
 import CanvasLoader from '@/components/CanvasLoader'
 
@@ -11,18 +11,18 @@ import prisma from '@/lib/prisma'
 
 export const getStaticProps: GetStaticProps = async () => {
   try {
-    const latestPost = await prisma.post.findMany({
+    const featuredPost = await prisma.post.findMany({
       where: { published: true },
       orderBy: { publishedAt: 'desc' },
       take: 1, select: { title: true, teaser: true, slug: true }
     })
-    return { props: { latestPost, data: home } }
+    return { props: { featuredPost, data: home } }
   }
   catch { return { props: { data: home } } }
 }
 
 
-export default function Home({ data, latestPost }) {
+export default function Home({ data, featuredPost }) {
 
   const styleMain = css({
     display: 'flex',
@@ -96,7 +96,7 @@ export default function Home({ data, latestPost }) {
             <div css={styleCtaButtons}>
               {generateCtaButtons(home.items)}
             </div>
-            <LatestPost data={data} latestPost={latestPost} />
+            <FeaturedPost data={data} featuredPost={featuredPost} />
           </div>
         </div>
         <div css={styleMainRight} className="animationWrapper">
