@@ -78,7 +78,7 @@ For GitHub oAuth with Next Auth, see [GitHub Developer App Docs](https://docs.gi
 Your GitHub developer app ID, [GitHub Developer App Docs](https://docs.github.com/en/developers/apps/getting-started-with-apps/setting-up-your-development-environment-to-create-a-github-app)  
 
 `NEXT_PUBLIC_REVALIDATE_SECRET`
-Generate a secret for use with Next [Preview Mode](https://nextjs.org/docs/advanced-features/preview-mode) and [On-Demand Incremental Static Regeneration](https://nextjs.org/docs/basic-features/data-fetching/incremental-static-regeneration#on-demand-revalidation-beta)  
+Generate a secret for use with Next [On-Demand Incremental Static Regeneration](https://nextjs.org/docs/basic-features/data-fetching/incremental-static-regeneration#on-demand-revalidation-beta)  
 
 `NEXT_PUBLIC_OG_IMAGE_URL`
 Create an [OG Image Service](https://github.com/vercel/og-image) and set this to the URL of your service app. [Further reading](#dynamically-generate-blog-og-images)  
