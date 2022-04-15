@@ -40,7 +40,6 @@ export default function Home({ data, latestPost }) {
       padding: 0,
     }
   })
-
   const styleContent = css({
     '.titleWrapper': {
       marginBottom: '3rem',
