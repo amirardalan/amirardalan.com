@@ -46,7 +46,7 @@ const Draft = () => {
   const submitData = async (e: React.SyntheticEvent) => {
     e.preventDefault()
     try {
-      const body = { title, slug, teaser, content, category }
+      const body = { title, slug, teaser, content, category, featured }
       await fetch('/api/post', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -148,7 +148,7 @@ const Draft = () => {
               />
               <div className="checkbox">
                 <Checkbox 
-                  label='Set as Featured'
+                  label='Featured Post'
                   value={featured}
                   onChange={handleSetFeatured}
                 />

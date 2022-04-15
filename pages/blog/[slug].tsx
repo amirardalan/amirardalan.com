@@ -26,6 +26,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const [post, feed] = await prisma.$transaction([
     prisma.post.findFirst({
       where: { slug: String(params?.slug) },
+      include: { author: { select: { name: true } } },
     }),
     prisma.post.findMany({
       where: { published: true },

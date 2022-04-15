@@ -160,7 +160,7 @@ const Edit = ({ editPost }) => {
               />
               <div className="checkbox">
                 <Checkbox 
-                  label='Set as Featured'
+                  label='Featured Post'
                   value={featured}
                   onChange={handleSetFeatured}
                 />
