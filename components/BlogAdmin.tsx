@@ -253,14 +253,13 @@ const BlogAdmin = React.memo(function BlogAdmin() {
         },
         '.formSubmit': {
           marginTop: '2rem',
-        },
-        '.controlsConfirm': {
-          margin: '1rem 0 0 0',
           display: 'flex',
           flexDirection: 'row',
+        },
+        '.controlsConfirm, .confirmSelect': {
+          display: 'flex',
           alignItems: 'center',
-          fontSize: 12,
-          fontWeight: 'lighter',
+          marginLeft: '.5rem',
           textTransform: 'uppercase',
           '.confirmLink': {
             marginRight: '.5rem',
@@ -272,11 +271,9 @@ const BlogAdmin = React.memo(function BlogAdmin() {
             '&.delete': {
               color: 'var(--color-warning)',
             },
-            '&.close': {
-              marginLeft: '.5rem',
-            },
             '&.delete:hover, &.close:hover': {
               textDecoration: 'underline',
+              marginLeft: '.5rem',
             }
           }
         },

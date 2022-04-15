@@ -26,15 +26,16 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const [post, feed] = await prisma.$transaction([
     prisma.post.findFirst({
       where: { slug: String(params?.slug) },
-      include: { author: { select: { name: true } } },
     }),
     prisma.post.findMany({
       where: { published: true },
-      select: { id: true, title: true, teaser: true, slug: true, category: true, featured: true },
     })
   ])
   if (post) { 
-    return { props: { post: JSON.parse(JSON.stringify(post)), feed, data: blogPost } 
+    return { props: { 
+      post: JSON.parse(JSON.stringify(post)),
+      feed: JSON.parse(JSON.stringify(feed)),
+    } 
   } 
   } else { 
     return { notFound: true }
@@ -355,7 +356,12 @@ const Post = ({ post, feed, data }) => {
 
         { userHasValidSession && (
           <div className="controlsPost">
-            <BlogAdminPostActions props={{post, admin, redirect, publishLabel}} />
+            <BlogAdminPostActions 
+              post={post}
+              admin={admin}
+              redirect={redirect}
+              publishLabel={publishLabel}
+            />
           </div>
         )}
       </article>
@@ -372,8 +378,8 @@ const Post = ({ post, feed, data }) => {
 
   return (
     <Container
-      title={title+data.meta.title}
-      description={post.teaser}
+      title={title + blogPost?.meta?.title}
+      description={post?.teaser}
       image={hasImage}
       date={publishDate}
       robots={isPublished ? "follow, index" : "noindex"

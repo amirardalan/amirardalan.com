@@ -30,17 +30,17 @@ const Draft = () => {
   const handleConfirmOnClick = () => setShowDeletionConfirmation(true)
   const handleCancelOnClick = () => setShowDeletionConfirmation(false)
   const DeletionConfirmation = () => (
-    <div className="controlsConfirm">
+    <span className="controlsConfirm">
       <div className="confirmSelect">
-        <span className="confirmLink delete" onClick={() => Router.push("/blog")}>
-          {admin.controls.confirm}
-        </span>
         <span>•</span>
         <span className="confirmLink close" onClick={handleCancelOnClick}>
           {admin.controls.cancel}
         </span>
+        <span className="confirmLink delete" onClick={() => Router.push("/blog")}>
+          {admin.controls.confirm}
+        </span>
       </div>
-    </div>
+    </span>
   )
 
   const submitData = async (e: React.SyntheticEvent) => {

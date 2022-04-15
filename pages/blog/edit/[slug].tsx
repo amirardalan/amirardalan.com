@@ -85,17 +85,17 @@ const Edit = ({ editPost }) => {
   const confirmOnClick = () => setShowDeletionConfirmation(true)
   const cancelOnClick = () => setShowDeletionConfirmation(false)
   const DeletionConfirmation = () => (
-    <div className="controlsConfirm">
+    <span className="controlsConfirm">
       <div className="confirmSelect">
-        <span className="confirmLink delete" onClick={() => deletePost(id)}>
-          {admin.controls.confirm}
-        </span>
-        <span>•</span>
         <span className="confirmLink close" onClick={cancelOnClick}>
           {admin.controls.cancel}
         </span>
+        <span>•</span>
+        <span className="confirmLink delete" onClick={() => deletePost(id)}>
+          {admin.controls.confirm}
+        </span>
       </div>
-    </div>
+    </span>
   )
 
   const { data: session } = useSession()
