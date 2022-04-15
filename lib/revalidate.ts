@@ -6,17 +6,19 @@ const revalidateChanges = () => {
   const isEditPage = Router.asPath.includes('/edit')
   const revalidatePath = isEditPage ? Router.asPath.replace('/edit','') : Router.asPath
 
-  Promise.all([
-    fetch(`/api/revalidate?secret=${REVALIDATE_SECRET}&path=${revalidatePath}`),
-    fetch(`/api/revalidate?secret=${REVALIDATE_SECRET}&path=/blog`),
-    fetch(`/api/revalidate?secret=${REVALIDATE_SECRET}&path=/`),
-  ])
-  .then(() => {
-    isEditPage ? Router.push(revalidatePath) : Router.reload()
-  })
-  .catch(error => {
-    console.error(error.message)
-  })
+  fetch(`/api/revalidate?secret=${REVALIDATE_SECRET}&path=${revalidatePath}`).then((data) => {
+    if (data.status === 200) {
+      fetch(`/api/revalidate?secret=${REVALIDATE_SECRET}&path=/blog`).then((data) => {
+        if (data.status === 200) {
+          fetch(`/api/revalidate?secret=${REVALIDATE_SECRET}&path=/`).then((data) => {
+            if (data.status === 200) {
+              isEditPage ? Router.push(revalidatePath) : Router.reload()
+            }
+          }).catch(err => { console.error(err, 'Latest Post Revalidation failed') })
+        }
+      }).catch(err => { console.error(err, 'Blog Revalidation failed') })
+    }
+  }).catch(err => { console.error(err, 'Post Revalidation failed') })
   
 }
 
