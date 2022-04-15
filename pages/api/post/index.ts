@@ -9,7 +9,7 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
   
   const session = await getSession({ req })
 
-  if (featured) {
+  if (req.body.featured) {
     const result = await prisma.$transaction([
       prisma.post.updateMany({
         where: { featured: true },
