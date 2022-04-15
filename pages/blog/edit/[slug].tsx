@@ -1,3 +1,7 @@
+import { GetServerSideProps } from 'next'
+import prisma from '@/lib/prisma'
+import revalidateChanges from '@/lib/revalidate'
+
 import { useSession } from 'next-auth/react'
 import { useState } from 'react'
 import Router from 'next/router'
@@ -11,9 +15,6 @@ import Checkbox from '@/components/Checkbox'
 
 import { admin, breadcrumb } from '@/data/content'
 import { categories } from '@/data/categories'
-import { GetServerSideProps } from 'next'
-import prisma from '@/lib/prisma'
-import revalidateChanges from '@/utils/revalidateChanges'
 
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {

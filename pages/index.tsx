@@ -1,13 +1,25 @@
-import { GetStaticProps } from 'next'
-import prisma from '@/lib/prisma'
-import CanvasLoader from '@/components/CanvasLoader'
-
 import { css } from '@emotion/react'
 import { home } from '@/data/content'
 import Container from '@/components/Container'
 import TypingAnimation from '@/components/TypingAnimation'
 import LatestPost from '@/components/LatestPost'
 import { generateCtaButtons } from '@/components/CtaButtons'
+import CanvasLoader from '@/components/CanvasLoader'
+
+import { GetStaticProps } from 'next'
+import prisma from '@/lib/prisma'
+
+export const getStaticProps: GetStaticProps = async () => {
+  try {
+    const latestPost = await prisma.post.findMany({
+      where: { published: true },
+      orderBy: { publishedAt: 'desc' },
+      take: 1, select: { title: true, teaser: true, slug: true }
+    })
+    return { props: { latestPost, data: home } }
+  }
+  catch { return { props: { data: home } } }
+}
 
 
 export default function Home({ data, latestPost }) {
@@ -94,16 +106,4 @@ export default function Home({ data, latestPost }) {
       </main>
     </Container>
   )
-}
-
-export const getStaticProps: GetStaticProps = async () => {
-  try {
-    const latestPost = await prisma.post.findMany({
-      where: { published: true },
-      orderBy: { publishedAt: 'desc' },
-      take: 1, select: { title: true, teaser: true, slug: true }
-    })
-    return { props: { latestPost, data: home } }
-  }
-  catch { return { props: { data: home } } }
 }

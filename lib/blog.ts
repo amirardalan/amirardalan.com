@@ -1,5 +1,5 @@
 import Router from 'next/router'
-import revalidateChanges from '@/utils/revalidateChanges'
+import revalidateChanges from '@/lib/revalidate'
 
 export async function publishPost(id: number, published: boolean): Promise<void> {
   await fetch(`/api/publish/${id}?published=${published}`, {

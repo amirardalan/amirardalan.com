@@ -1,6 +1,3 @@
-import { GetStaticProps, GetStaticPaths } from 'next'
-import prisma from '@/lib/prisma'
-
 import { useSession } from 'next-auth/react'
 import { css } from '@emotion/react'
 import { blogPost, admin } from '@/data/content'
@@ -15,6 +12,34 @@ import Markdown from '@/components/Markdown'
 
 import dynamic from 'next/dynamic'
 const BlogAdminPostActions = dynamic(() => import('@/components/BlogAdminPostActions'), { ssr: false })
+
+import { GetStaticProps, GetStaticPaths } from 'next'
+import prisma from '@/lib/prisma'
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const feed = await prisma.post.findMany({ where: { published: true } })
+  const paths = feed.map((post) => ({ params: { slug: post.slug } }))
+  return { paths, fallback: 'blocking' }
+}
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const [post, feed] = await prisma.$transaction([
+    prisma.post.findFirst({
+      where: { slug: String(params?.slug) },
+      include: { author: { select: { name: true } } },
+    }),
+    prisma.post.findMany({
+      where: { published: true },
+      select: { id: true, title: true, teaser: true, slug: true, category: true },
+    })
+  ])
+  if (post) { 
+    return { props: { post: JSON.parse(JSON.stringify(post)), feed, data: blogPost } 
+  } 
+  } else { 
+    return { notFound: true }
+  }
+}
 
 
 const Post = ({ post, feed, data }) => {
@@ -296,7 +321,6 @@ const Post = ({ post, feed, data }) => {
     ? `${process.env.NEXT_PUBLIC_SITE_URL}` + post.content.match(/!\[.*?\]\((.*?)\)/)[1]
     : `${process.env.NEXT_PUBLIC_OG_IMAGE_URL}/${encodeURIComponent(post.title).replace(/\./g, '%2E')}?fontSize=150px`
 
-
   const RenderBlogPost = () => {
     return (
       <div className={isPublished ? 'blog' : 'blog admin'} css={styleBlogPost}>
@@ -356,45 +380,3 @@ const Post = ({ post, feed, data }) => {
 }
 
 export default Post
-
-export const getStaticPaths: GetStaticPaths = async () => {
-  const feed = await prisma.post.findMany({
-    where: { published: true },
-  })
-  const paths = feed.map((post) => ({
-    params: { slug: post.slug }
-  }))
-  return { paths, fallback: 'blocking' }
-}
-
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const [post, feed] = await prisma.$transaction([
-    prisma.post.findFirst({
-      where: {
-        slug: String(params?.slug),
-      },
-      include: {
-        author: {
-          select: { name: true },
-        },
-      },
-    }),
-    prisma.post.findMany({
-      where: { published: true },
-      select: {
-        id: true,
-        title: true,
-        teaser: true,
-        slug: true,
-        category: true
-      },
-    })
-  ])
-  if (post) {
-    return { props: { post: JSON.parse(JSON.stringify(post)), feed, data: blogPost } } 
-  } else {
-    return {
-      notFound: true
-    }
-  }
-}

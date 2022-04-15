@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { publishPost, editPost, deletePost } from '@/utils/managePost'
+import { publishPost, editPost, deletePost } from '@/lib/blog'
 
 
 const BlogAdminPostActions = ({props}) => {
