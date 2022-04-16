@@ -17,7 +17,7 @@ const blogStyles = css({
       color: 'var(--color-primary)',
       textDecoration: 'none',
       '&.featured': {
-        marginRight: '.5rem'
+        marginRight: '1rem'
       },
       '&.active': {
         borderBottom: '2px solid var(--color-primary)'
