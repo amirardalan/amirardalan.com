@@ -16,10 +16,10 @@ export const getStaticProps: GetStaticProps = async () => {
         where: { featured: true, published: true },
         select: { title: true, teaser: true, slug: true }
       }),
-      prisma.post.findMany({
+      prisma.post.findFirst({
         where: { featured: false, published: true},
         orderBy: { publishedAt: 'desc' },
-        take: 1, select: { title: true, teaser: true, slug: true }
+        select: { title: true, teaser: true, slug: true }
       })
     ])
     return { 
@@ -107,12 +107,11 @@ export default function Home({ featuredPost, latestPost }) {
             <div css={styleCtaButtons}>
               {generateCtaButtons(home.items)}
             </div>
-            { featuredPost || latestPost ?
             <FeaturedPost
               home={home}
               featuredPost={featuredPost}
               latestPost={latestPost}
-            /> : null }
+            />
           </div>
         </div>
         <div css={styleMainRight} className="animationWrapper">

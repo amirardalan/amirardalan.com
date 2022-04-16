@@ -40,23 +40,25 @@ export default function featuredPost({ home, featuredPost, latestPost }) {
   const renderFeaturedPost = !featuredPost ? latestPost : featuredPost
   const componentTitle = featuredPost ? home.featured.title : home.latest.title
   
-  return (
-    <div css={styleFeaturedPost}>
-      <h2 aria-label={componentTitle}>
-        {componentTitle}
-      </h2>
-      <article>
-        <h3>
-          {renderFeaturedPost ?
-          <Link
-            href={`/blog/${encodeURIComponent(renderFeaturedPost?.slug)}`}
-            aria-label={renderFeaturedPost?.title}>
-            {renderFeaturedPost?.title}
-          </Link>
-          : null}
-        </h3>
-        <p>{renderFeaturedPost?.teaser}</p>
-      </article>
-    </div>
-  )
+  if (latestPost || featuredPost) {
+    return (
+      <div css={styleFeaturedPost}>
+        <h2 aria-label={componentTitle}>
+          {componentTitle}
+        </h2>
+        <article>
+          <h3>
+            {renderFeaturedPost ?
+            <Link
+              href={`/blog/${encodeURIComponent(renderFeaturedPost?.slug)}`}
+              aria-label={renderFeaturedPost?.title}>
+              {renderFeaturedPost?.title}
+            </Link>
+            : null}
+          </h3>
+          <p>{renderFeaturedPost?.teaser}</p>
+        </article>
+      </div>
+    )
+  } else return null
 }
