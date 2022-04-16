@@ -1,11 +1,11 @@
 import Router from 'next/router'
 import revalidateChanges from '@/lib/revalidate'
 
-export async function publishPost(id: number, published: boolean, featured: boolean, latestPost: number): Promise<void> {
-  await fetch(`/api/publish/${id}?published=${published}?featured=${featured}?latestPost${latestPost}`, {
+export async function publishPost(id: number, published: boolean, featured: boolean, latestPost: boolean): Promise<void> {
+  await fetch(`/api/publish/${id}?published=${published}&featured=${featured}`, {
     method: 'PUT',
   })
-  revalidateChanges(latestPost, featured)
+  revalidateChanges(published, latestPost, featured)
 }
 
 export async function editPost(slug: string): Promise<void> {
@@ -15,11 +15,11 @@ export async function editPost(slug: string): Promise<void> {
   Router.push(`/blog/edit/${slug}`)
 }
 
-export async function deletePost(id: number, redirect: string, latestPost: number, featured: boolean): Promise<void> {
+export async function deletePost(id: number, published: boolean, redirect: string, latestPost: boolean, featured: boolean): Promise<void> {
   await fetch(`/api/post/${id}`, {
     method: 'DELETE',
   })
-  revalidateChanges(latestPost, featured)
+  revalidateChanges(published, latestPost, featured)
   if (!redirect.match('/blog/drafts')) {
     Router.push(redirect)
   } else {

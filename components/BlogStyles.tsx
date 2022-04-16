@@ -16,6 +16,9 @@ const blogStyles = css({
       textTransform: 'uppercase',
       color: 'var(--color-primary)',
       textDecoration: 'none',
+      '&.featured': {
+        marginRight: '.5rem'
+      },
       '&.active': {
         borderBottom: '2px solid var(--color-primary)'
       },

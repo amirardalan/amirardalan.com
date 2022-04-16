@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { publishPost, editPost, deletePost } from '@/lib/blog'
 
 
-const BlogAdminPostActions = ({ post, admin, redirect, publishLabel, latestPost }) => {
+const BlogAdminPostActions = ({ post, published, redirect, publishLabel, latestPost, admin }) => {
 
   const [showDeletionConfirmation, setShowDeletionConfirmation] = useState(false)
   const confirmOnClick = () => setShowDeletionConfirmation(true)
@@ -15,7 +15,7 @@ const BlogAdminPostActions = ({ post, admin, redirect, publishLabel, latestPost 
           {admin.controls.cancel}
         </span>
         <span>•</span>
-        <span className="confirmLink delete" onClick={() => deletePost(post.id, redirect, latestPost, post.featured)}>
+        <span className="confirmLink delete" onClick={() => deletePost(post.id, published, redirect, latestPost, post.featured)}>
           {admin.controls.confirm}
         </span>
       </div>
@@ -26,7 +26,7 @@ const BlogAdminPostActions = ({ post, admin, redirect, publishLabel, latestPost 
     <div className="controlsPost">
       <button
         className="buttonCompact"
-        onClick={() => publishPost(post.id, post.published, post.featured, latestPost)}>
+        onClick={() => publishPost(post.id, published, post.featured, latestPost)}>
         {publishLabel}
       </button>
       <button

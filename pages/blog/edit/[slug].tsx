@@ -40,8 +40,9 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 const Edit = ({ editPost, getLatestPost }) => {
 
   const isPublished = editPost?.published
+  const published = isPublished
   const id = editPost?.id
-  const latestPost = getLatestPost?.id
+  const latestPost = getLatestPost?.id === id
   const redirect = isPublished ? '/blog' : '/blog/drafts'
 
   const editTitle = editPost?.title
@@ -63,13 +64,14 @@ const Edit = ({ editPost, getLatestPost }) => {
   const handleSetFeatured = () => {
     setFeatured(!featured)
   }
+  const isFeatured = featured
 
   const [showEdited, setShowEdited] = useState(editEdited)
   const handleShowEdited = () => {
     setShowEdited(!showEdited)
   }
 
-  const submitData = async (e: React.SyntheticEvent, latestPost: number) => {
+  const submitData = async (e: React.SyntheticEvent) => {
     e.preventDefault()
     try {
       const body = { id, title, slug, teaser, content, category, featured, editFeatured, showEdited }
@@ -78,7 +80,7 @@ const Edit = ({ editPost, getLatestPost }) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
       })
-      revalidateChanges(latestPost, featured)
+      revalidateChanges(published, latestPost, featured)
     } catch (error) {
       console.error(error)
     }
@@ -94,7 +96,7 @@ const Edit = ({ editPost, getLatestPost }) => {
           {admin.controls.cancel}
         </span>
         <span>•</span>
-        <span className="confirmLink delete" onClick={() => deletePost(id, redirect, latestPost, featured)}>
+        <span className="confirmLink delete" onClick={() => deletePost(id, published, redirect, latestPost, featured)}>
           {admin.controls.confirm}
         </span>
       </div>
@@ -126,7 +128,7 @@ const Edit = ({ editPost, getLatestPost }) => {
         </nav>
 
         <div>
-          <form onSubmit={()=> submitData}>
+          <form onSubmit={submitData}>
             <input
               autoFocus
               onChange={(e) => setTitle(e.target.value)}
