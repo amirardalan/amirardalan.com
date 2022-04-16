@@ -296,6 +296,8 @@ const Post = ({ post, feed }) => {
       paddingBottom: '2rem !important',
     },
     '.controlsPost': {
+      display: 'flex',
+      flexDirection: 'row',
       margin: '2rem 0',
       'button, a': {
         marginRight: '.25rem',
@@ -307,11 +309,15 @@ const Post = ({ post, feed }) => {
   const userHasValidSession = Boolean(session)
 
   const isPublished: Boolean = post.published
-  const publishLabel = isPublished ? `${admin.controls.unpublish}` : `${admin.controls.publish}`
+  const published = isPublished
+  const publishLabel = isPublished ? admin.controls.unpublish : admin.controls.publish
   const displayPost = isPublished || session && session.user.email === process.env.NEXT_PUBLIC_USER_EMAIL
   const redirect = isPublished ? '/blog' : '/blog/drafts'
 
   const isFeatured = post.featured
+  const latestPostID = feed[feed?.length - 1].id
+  const latestPost = latestPostID === post.id
+
   const isEdited = post.editedAt.slice(0, 10) > post.publishedAt.slice(0, 10)
   const showEdited = post.showEdited
   const publishDate = formatDate(post.publishedAt)
@@ -357,9 +363,11 @@ const Post = ({ post, feed }) => {
           <div className="controlsPost">
             <BlogAdminPostActions 
               post={post}
-              admin={admin}
+              published={published}
               redirect={redirect}
               publishLabel={publishLabel}
+              latestPost={latestPost}
+              admin={admin}
             />
           </div>
         )}

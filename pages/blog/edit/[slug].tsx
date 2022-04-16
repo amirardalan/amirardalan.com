@@ -1,5 +1,6 @@
 import { GetServerSideProps } from 'next'
 import prisma from '@/lib/prisma'
+import { deletePost } from '@/lib/blog'
 import revalidateChanges from '@/lib/revalidate'
 
 import { useSession } from 'next-auth/react'
@@ -18,18 +19,32 @@ import { categories } from '@/data/categories'
 
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-  const editPost = await prisma.post.findFirst({
-    where: {
-      slug: String(params?.slug),
-    },
-  })
-  return { props: { editPost: JSON.parse(JSON.stringify(editPost)) } }
+  const [editPost, getLatestPost] = await prisma.$transaction([
+    prisma.post.findFirst({
+      where: { slug: String(params?.slug) },
+    }),
+    prisma.post.findFirst({
+      where: { published: true },
+      orderBy: { publishedAt: 'desc' },
+      select: { id: true }
+    })
+  ])
+  return {
+    props: {
+      editPost: JSON.parse(JSON.stringify(editPost)),
+      getLatestPost: getLatestPost
+    } 
+  }
 }
 
-const Edit = ({ editPost }) => {
+const Edit = ({ editPost, getLatestPost }) => {
 
   const isPublished = editPost?.published
+  const published = isPublished
   const id = editPost?.id
+  const latestPost = getLatestPost?.id === id
+  const redirect = isPublished ? '/blog' : '/blog/drafts'
+
   const editTitle = editPost?.title
   const editPageTitle = isPublished ? editTitle : editTitle+' (draft)'
   const editContent = editPost?.content
@@ -49,6 +64,7 @@ const Edit = ({ editPost }) => {
   const handleSetFeatured = () => {
     setFeatured(!featured)
   }
+  const isFeatured = featured
 
   const [showEdited, setShowEdited] = useState(editEdited)
   const handleShowEdited = () => {
@@ -64,26 +80,15 @@ const Edit = ({ editPost }) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
       })
-      revalidateChanges()
+      revalidateChanges(published, latestPost, featured)
     } catch (error) {
       console.error(error)
     }
   }
 
-  async function deletePost(id: number): Promise<void> {
-    await fetch(`/api/post/${id}`, {
-      method: 'DELETE',
-    })
-    if (editPost.published) {
-      Router.push('/blog')
-    } else {
-      Router.push('/blog/drafts')
-    }
-  }
-
   const [showDeletionConfirmation, setShowDeletionConfirmation] = useState(false)
   const confirmOnClick = () => setShowDeletionConfirmation(true)
-  const cancelOnClick = () => setShowDeletionConfirmation(false)
+  const cancelOnClick = () => setShowDeletionConfirmation(true)
   const DeletionConfirmation = () => (
     <span className="controlsConfirm">
       <div className="confirmSelect">
@@ -91,7 +96,7 @@ const Edit = ({ editPost }) => {
           {admin.controls.cancel}
         </span>
         <span>•</span>
-        <span className="confirmLink delete" onClick={() => deletePost(id)}>
+        <span className="confirmLink delete" onClick={() => deletePost(id, published, redirect, latestPost, featured)}>
           {admin.controls.confirm}
         </span>
       </div>
