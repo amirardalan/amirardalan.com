@@ -58,7 +58,7 @@ const Edit = ({ editPost }) => {
   const submitData = async (e: React.SyntheticEvent) => {
     e.preventDefault()
     try {
-      const body = { id, title, slug, teaser, content, category, showEdited }
+      const body = { id, title, slug, teaser, content, category, featured, showEdited }
       await fetch('/api/update', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

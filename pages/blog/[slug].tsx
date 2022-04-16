@@ -46,8 +46,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
 const Post = ({ post, feed, data }) => {
 
-  console.log(post.featured)
-
   const styleBlogPost = css({
     '.postDetails': {
       marginBottom: '2rem',
