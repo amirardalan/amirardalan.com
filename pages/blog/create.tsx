@@ -7,7 +7,7 @@ import Container from '@/components/Container'
 import BlogStyles from '@/components/BlogStyles'
 import Dropdown from '@/components/Dropdown'
 import Checkbox from '@/components/Checkbox'
-import DeletePost from '@/components/DeletePost'
+import BlogPostDelete from '@/components/BlogPostDelete'
 
 import { admin, breadcrumb } from '@/data/content'
 import { categories } from '@/data/categories'
@@ -153,7 +153,7 @@ const Draft = () => {
                 {admin.controls.save}
               </button>
 
-              <DeletePost
+              <BlogPostDelete
                 handleDeletion={handleDeletion}
                 cancelText={admin.controls.cancel}
                 confirmText={admin.controls.confirm}

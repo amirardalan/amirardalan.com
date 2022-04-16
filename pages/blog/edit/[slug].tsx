@@ -10,7 +10,7 @@ import revalidateChanges from '@/lib/revalidate'
 import Container from '@/components/Container'
 import BlogStyles from '@/components/BlogStyles'
 import Link from 'next/link'
-import DeletePost from '@/components/DeletePost'
+import BlogPostDelete from '@/components/BlogPostDelete'
 import Dropdown from '@/components/Dropdown'
 import Checkbox from '@/components/Checkbox'
 import LoadingTriangle from '@/components/LoadingTriangle'
@@ -181,7 +181,7 @@ const Edit = ({ editPost, getLatestPost }) => {
                 {admin.controls.cancel}
               </a>
               
-              <DeletePost
+              <BlogPostDelete
                 handleDeletion={handleDeletion}
                 cancelText={admin.controls.cancel}
                 confirmText={admin.controls.confirm}

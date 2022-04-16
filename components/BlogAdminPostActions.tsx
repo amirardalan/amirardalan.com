@@ -1,4 +1,4 @@
-import DeletePost from '@/components/DeletePost'
+import BlogPostDelete from '@/components/BlogPostDelete'
 import { publishPost, editPost, deletePost } from '@/lib/blog'
 
 
@@ -21,7 +21,7 @@ const BlogAdminPostActions = ({ post, slug, published, redirect, publishLabel, l
         {admin.controls.edit}
       </button>
 
-      <DeletePost
+      <BlogPostDelete
         handleDeletion={handleDeletion}
         cancelText={admin.controls.cancel}
         confirmText={admin.controls.confirm}
