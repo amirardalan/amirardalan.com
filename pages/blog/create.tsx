@@ -32,10 +32,10 @@ const Draft = () => {
   const DeletionConfirmation = () => (
     <span className="controlsConfirm">
       <div className="confirmSelect">
-        <span>•</span>
         <span className="confirmLink close" onClick={handleCancelOnClick}>
           {admin.controls.cancel}
         </span>
+        <span>•</span>
         <span className="confirmLink delete" onClick={() => Router.push("/blog")}>
           {admin.controls.confirm}
         </span>
