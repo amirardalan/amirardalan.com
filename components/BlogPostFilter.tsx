@@ -19,13 +19,16 @@ const BlogPostFilter = ({ feed }) => {
     minHeight: 32,
     li :{
       display: 'inline',
-      margin: '0 1rem 0 0',
+      marginRight: '1.8rem',
     },
     '&::-webkit-scrollbar': {
       display: 'none'
     },
     '@media (max-width: 768px)': {
       minHeight: 32,
+      li: {
+        marginRight: '1.2rem'
+      }
     }
   })
 
