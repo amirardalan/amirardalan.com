@@ -650,6 +650,10 @@ export const admin = {
     cancel: 'Cancel',
     update: 'Update',
     save: 'Save',
+    checkbox: {
+      featured: 'Display on homepage. Can only feature one post at a time.',
+      updateDate: 'If unchecked, original post date will display on post.'
+    }
   },
   input: {
     placeholder: {

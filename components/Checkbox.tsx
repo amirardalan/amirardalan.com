@@ -1,4 +1,4 @@
-export default function Checkbox({ label, value, onChange }) {
+export default function Checkbox({ label, value, onChange, title }) {
   return (
   <label>
     <input
@@ -6,6 +6,7 @@ export default function Checkbox({ label, value, onChange }) {
       checked={value}
       onChange={onChange}
       className="checkbox"
+      title={title}
       aria-label={label}
       aria-checked={value}
     />

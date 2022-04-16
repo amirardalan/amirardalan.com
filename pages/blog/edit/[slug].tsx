@@ -165,14 +165,16 @@ const Edit = ({ editPost, getLatestPost }) => {
               />
               <div className="checkbox">
                 <Checkbox 
-                  label='Featured Post'
+                  label='Featured'
+                  title={admin.controls.checkbox.featured}
                   value={featured}
                   onChange={handleSetFeatured}
                 />
               </div>
               <div className="checkbox">
                 <Checkbox 
-                  label='Display "Updated" Date'
+                  label='Update Date'
+                  title={admin.controls.checkbox.updateDate}
                   value={showEdited}
                   onChange={handleShowEdited}
                 />

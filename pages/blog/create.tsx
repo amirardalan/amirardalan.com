@@ -149,6 +149,7 @@ const Draft = () => {
               <div className="checkbox">
                 <Checkbox 
                   label='Featured Post'
+                  title={admin.controls.checkbox.featured}
                   value={featured}
                   onChange={handleSetFeatured}
                 />

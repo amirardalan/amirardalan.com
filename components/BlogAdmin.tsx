@@ -155,13 +155,18 @@ const BlogAdmin = React.memo(function BlogAdmin() {
             '.uploadImage': {
               span: { margin: '0 .5rem 0 2rem' }
             },
-            '@media(max-width: 768px)': {
-              flexDirection: 'column'
+            '@media(max-width: 600px)': {
+              flexDirection: 'column',
+              label: {
+                marginBottom: '1rem'
+              }
             }
           },
           '.checkbox': {
             marginRight: '.5rem',
             'label': {
+              display: 'flex',
+              width: 'fit-content',
               marginRight: '1rem'
             }
           },
