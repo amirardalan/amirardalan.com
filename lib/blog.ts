@@ -20,5 +20,10 @@ export async function deletePost(id: number, redirect: string, latestPost: numbe
     method: 'DELETE',
   })
   revalidateChanges(latestPost, featured)
-  Router.push(redirect)
+  if (!redirect.match('/blog/drafts')) {
+    Router.push(redirect)
+  } else {
+    Router.push(redirect)
+    Router.reload()
+  }
 }
