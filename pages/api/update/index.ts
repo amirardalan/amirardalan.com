@@ -4,9 +4,25 @@ import prisma from '@/lib/prisma'
 
 // POST /api/update
 export default async function handle(req: NextApiRequest, res: NextApiResponse) {
-  const { id, title, content, slug, teaser, category, featured, showEdited } = req.body
+  const { id, title, content, slug, teaser, category, featured, editFeatured, showEdited } = req.body
 
-  if (featured) {
+  if (!featured && !editFeatured) {
+    const result = await prisma.post.update({
+      where: {
+        id: id,
+      },
+      data: {
+        title: title,
+        content: content,
+        slug: slug,
+        teaser: teaser,
+        category: category,
+        featured: featured,
+        showEdited: showEdited
+      },
+    })
+    res.json(result)
+  } else {
     const result = await prisma.$transaction([
       prisma.post.updateMany({
         where: { featured: true },
@@ -27,22 +43,6 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
         },
       })
     ])
-    res.json(result)
-  }
-  else if (!featured) {
-    const result = await prisma.post.update({
-      where: {
-        id: id,
-      },
-      data: {
-        title: title,
-        content: content,
-        slug: slug,
-        teaser: teaser,
-        category: category,
-        showEdited: showEdited
-      },
-    })
     res.json(result)
   }
 

@@ -11,20 +11,21 @@ import prisma from '@/lib/prisma'
 
 export const getStaticProps: GetStaticProps = async () => {
   try {
-    const [featuredPost, featuredFallback] = await prisma.$transaction([
+    const [featuredPost, latestPost] = await prisma.$transaction([
       prisma.post.findFirst({
         where: { featured: true, published: true },
         select: { title: true, teaser: true, slug: true }
       }),
-      prisma.post.findFirst({
+      prisma.post.findMany({
         where: { featured: false, published: true},
-        select: { title: true, teaser: true, slug: true }
+        orderBy: { publishedAt: 'desc' },
+        take: 1, select: { title: true, teaser: true, slug: true }
       })
     ])
     return { 
       props: {
         featuredPost: featuredPost,
-        featuredFallback: featuredFallback
+        latestPost: latestPost
       }
     }
   }
@@ -32,7 +33,7 @@ export const getStaticProps: GetStaticProps = async () => {
 }
 
 
-export default function Home({ featuredPost, featuredFallback }) {
+export default function Home({ featuredPost, latestPost }) {
 
   const styleMain = css({
     display: 'flex',
@@ -106,11 +107,11 @@ export default function Home({ featuredPost, featuredFallback }) {
             <div css={styleCtaButtons}>
               {generateCtaButtons(home.items)}
             </div>
-            { featuredPost || featuredFallback ?
+            { featuredPost || latestPost ?
             <FeaturedPost
               home={home}
               featuredPost={featuredPost}
-              featuredFallback={featuredFallback}
+              latestPost={latestPost}
             /> : null }
           </div>
         </div>

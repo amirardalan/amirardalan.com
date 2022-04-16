@@ -43,6 +43,9 @@ export const home = {
   ],
   featured: {
     title: 'Featured Post'
+  },
+  latest: {
+    title: 'Latest Post'
   }
 }
 
