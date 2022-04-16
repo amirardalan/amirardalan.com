@@ -1,18 +1,19 @@
 import { GetServerSideProps } from 'next'
 import prisma from '@/lib/prisma'
-import { deletePost } from '@/lib/blog'
-import revalidateChanges from '@/lib/revalidate'
 
 import { useSession } from 'next-auth/react'
 import { useState } from 'react'
 import Router from 'next/router'
+import { deletePost } from '@/lib/blog'
+import revalidateChanges from '@/lib/revalidate'
 
 import Container from '@/components/Container'
 import BlogStyles from '@/components/BlogStyles'
 import Link from 'next/link'
-import LoadingTriangle from '@/components/LoadingTriangle'
+import DeletePost from '@/components/DeletePost'
 import Dropdown from '@/components/Dropdown'
 import Checkbox from '@/components/Checkbox'
+import LoadingTriangle from '@/components/LoadingTriangle'
 
 import { admin, breadcrumb } from '@/data/content'
 import { categories } from '@/data/categories'
@@ -86,22 +87,9 @@ const Edit = ({ editPost, getLatestPost }) => {
     }
   }
 
-  const [showDeletionConfirmation, setShowDeletionConfirmation] = useState(false)
-  const confirmOnClick = () => setShowDeletionConfirmation(true)
-  const cancelOnClick = () => setShowDeletionConfirmation(true)
-  const DeletionConfirmation = () => (
-    <span className="controlsConfirm">
-      <div className="confirmSelect">
-        <span className="confirmLink close" onClick={cancelOnClick}>
-          {admin.controls.cancel}
-        </span>
-        <span>•</span>
-        <span className="confirmLink delete" onClick={() => deletePost(id, published, redirect, latestPost, featured)}>
-          {admin.controls.confirm}
-        </span>
-      </div>
-    </span>
-  )
+  const handleDeletion = () => {
+    return deletePost(id, slug, published, redirect, latestPost, featured)
+  }
 
   const { data: session } = useSession()
   const userHasValidSession = Boolean(session)
@@ -192,10 +180,14 @@ const Edit = ({ editPost, getLatestPost }) => {
               <a className="buttonCompact cancelBtn" onClick={() => Router.push(`/blog/${editSlug}`)}>
                 {admin.controls.cancel}
               </a>
-              <a className="buttonCompact deleteBtn" onClick={confirmOnClick}>
-                {admin.controls.delete}
-              </a>
-              { showDeletionConfirmation ? <DeletionConfirmation /> : null }
+              
+              <DeletePost
+                handleDeletion={handleDeletion}
+                cancelText={admin.controls.cancel}
+                confirmText={admin.controls.confirm}
+                deleteText={admin.controls.delete}
+              />
+      
             </div>
 
           </form>

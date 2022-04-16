@@ -7,6 +7,7 @@ import Container from '@/components/Container'
 import BlogStyles from '@/components/BlogStyles'
 import Dropdown from '@/components/Dropdown'
 import Checkbox from '@/components/Checkbox'
+import DeletePost from '@/components/DeletePost'
 
 import { admin, breadcrumb } from '@/data/content'
 import { categories } from '@/data/categories'
@@ -26,22 +27,9 @@ const Draft = () => {
     setFeatured(!featured)
   }
 
-  const [showDeletionConfirmation, setShowDeletionConfirmation] = useState(false)
-  const handleConfirmOnClick = () => setShowDeletionConfirmation(true)
-  const handleCancelOnClick = () => setShowDeletionConfirmation(false)
-  const DeletionConfirmation = () => (
-    <span className="controlsConfirm">
-      <div className="confirmSelect">
-        <span className="confirmLink close" onClick={handleCancelOnClick}>
-          {admin.controls.cancel}
-        </span>
-        <span>•</span>
-        <span className="confirmLink delete" onClick={() => Router.push("/blog")}>
-          {admin.controls.confirm}
-        </span>
-      </div>
-    </span>
-  )
+  const handleDeletion = () => {
+    return Router.push("/blog")
+  }
 
   const submitData = async (e: React.SyntheticEvent) => {
     e.preventDefault()
@@ -157,16 +145,20 @@ const Draft = () => {
             </div>
 
             <div className="formSubmit">
+              
               <button
                 className="buttonCompact saveBtn"
                 disabled={!content || !title || !slug || !teaser || category === '-'}
                 type="submit">
                 {admin.controls.save}
               </button>
-              <a className="buttonCompact deleteBtn" onClick={handleConfirmOnClick}>
-                {admin.controls.delete}
-              </a>
-              { showDeletionConfirmation ? <DeletionConfirmation /> : null }
+
+              <DeletePost
+                handleDeletion={handleDeletion}
+                cancelText={admin.controls.cancel}
+                confirmText={admin.controls.confirm}
+                deleteText={admin.controls.delete}
+              />
             </div>
 
           </form>

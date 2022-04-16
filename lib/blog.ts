@@ -2,9 +2,9 @@ import Router from 'next/router'
 import revalidateChanges from '@/lib/revalidate'
 
 export async function publishPost(id: number, published: boolean, featured: boolean, latestPost: boolean): Promise<void> {
-  await fetch(`/api/publish/${id}?published=${published}&featured=${featured}`, {
-    method: 'PUT',
-  })
+  featured
+    ? await fetch(`/api/publish/${id}?published=${published}&featured=${featured}`, { method: 'PUT',})
+    : await fetch(`/api/publish/${id}?published=${published}`, { method: 'PUT',})
   revalidateChanges(published, latestPost, featured)
 }
 
@@ -15,15 +15,19 @@ export async function editPost(slug: string): Promise<void> {
   Router.push(`/blog/edit/${slug}`)
 }
 
-export async function deletePost(id: number, published: boolean, redirect: string, latestPost: boolean, featured: boolean): Promise<void> {
+export async function deletePost(id: number, slug: string, published: boolean, redirect: string, latestPost: boolean, featured: boolean): Promise<void> {
   await fetch(`/api/post/${id}`, {
     method: 'DELETE',
   })
-  revalidateChanges(published, latestPost, featured)
-  if (!redirect.match('/blog/drafts')) {
-    Router.push(redirect)
-  } else {
-    Router.push(redirect)
-    Router.reload()
-  }
+
+  Router.push(`/blog/edit/${slug}?delete`, undefined, { shallow: true }).then(()=> {
+    revalidateChanges(published, latestPost, featured)
+    if (published) {
+      Router.push(redirect)
+    }
+    else if (!published ) {
+      Router.push(redirect)
+      Router.reload()
+    }
+  })
 }

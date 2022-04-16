@@ -4,6 +4,7 @@ const revalidateChanges = (published: boolean, latestPost: boolean, featured: bo
 
   const REVALIDATE_SECRET = process.env.NEXT_PUBLIC_REVALIDATE_SECRET
   const isEditPage = Router.asPath.includes('/edit')
+  const isDeleted = Router.asPath.includes('?delete')
   const revalidatePath = isEditPage ? Router.asPath.replace('/edit','') : Router.asPath
 
   const blog = published ? fetch(`/api/revalidate?secret=${REVALIDATE_SECRET}&path=/blog`) : Promise.resolve()
@@ -12,6 +13,8 @@ const revalidateChanges = (published: boolean, latestPost: boolean, featured: bo
 
   Promise.all([ current, blog, home ])
   .then(() => {
+    if (isDeleted) return
+
     isEditPage
       ? Router.push(revalidatePath).then(()=> Router.reload())
       : Router.reload()

@@ -1,26 +1,12 @@
-import { useState } from 'react'
+import DeletePost from '@/components/DeletePost'
 import { publishPost, editPost, deletePost } from '@/lib/blog'
 
 
-const BlogAdminPostActions = ({ post, published, redirect, publishLabel, latestPost, admin }) => {
+const BlogAdminPostActions = ({ post, slug, published, redirect, publishLabel, latestPost, admin }) => {
 
-  const [showDeletionConfirmation, setShowDeletionConfirmation] = useState(false)
-  const confirmOnClick = () => setShowDeletionConfirmation(true)
-  const cancelOnClick = () => setShowDeletionConfirmation(false)
-
-  const DeletionConfirmation = () => (
-    <span className="controlsConfirm">
-      <div className="confirmSelect">
-        <span className="confirmLink close" onClick={cancelOnClick}>
-          {admin.controls.cancel}
-        </span>
-        <span>•</span>
-        <span className="confirmLink delete" onClick={() => deletePost(post.id, published, redirect, latestPost, post.featured)}>
-          {admin.controls.confirm}
-        </span>
-      </div>
-    </span>
-  )
+ const handleDeletion = () => {
+    return deletePost(post.id, slug, published, redirect, latestPost, post.featured)
+ }
 
   return (
     <div className="controlsPost">
@@ -34,15 +20,13 @@ const BlogAdminPostActions = ({ post, published, redirect, publishLabel, latestP
         onClick={() => editPost(post.slug)}>
         {admin.controls.edit}
       </button>
-      <button
-        className="buttonCompact delete"
-        onClick={confirmOnClick}>
-        {admin.controls.delete}
-      </button>
 
-      { showDeletionConfirmation
-      ? <DeletionConfirmation/>
-      : null }
+      <DeletePost
+        handleDeletion={handleDeletion}
+        cancelText={admin.controls.cancel}
+        confirmText={admin.controls.confirm}
+        deleteText={admin.controls.delete}
+      />
 
     </div>
   )
