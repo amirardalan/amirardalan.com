@@ -44,7 +44,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 }
 
 
-const Post = ({ post, feed, data }) => {
+const Post = ({ post, feed }) => {
 
   const styleBlogPost = css({
     '.postDetails': {
