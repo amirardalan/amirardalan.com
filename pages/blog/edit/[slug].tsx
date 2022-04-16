@@ -36,6 +36,7 @@ const Edit = ({ editPost }) => {
   const editSlug = editPost?.slug
   const editTeaser = editPost?.teaser
   const editCategory = editPost?.category
+  const editFeatured = editPost?.featured
   const editEdited = editPost?.showEdited
 
   const [title, setTitle] = useState(editTitle)
@@ -43,6 +44,11 @@ const Edit = ({ editPost }) => {
   const [slug, setSlug] = useState(editSlug)
   const [teaser, setTeaser] = useState(editTeaser)
   const [category, setCategory] = useState(editCategory)
+
+  const [featured, setFeatured] = useState(editFeatured)
+  const handleSetFeatured = () => {
+    setFeatured(!featured)
+  }
 
   const [showEdited, setShowEdited] = useState(editEdited)
   const handleShowEdited = () => {
@@ -52,7 +58,7 @@ const Edit = ({ editPost }) => {
   const submitData = async (e: React.SyntheticEvent) => {
     e.preventDefault()
     try {
-      const body = { id, title, slug, teaser, content, category, showEdited }
+      const body = { id, title, slug, teaser, content, category, featured, editFeatured, showEdited }
       await fetch('/api/update', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -79,17 +85,17 @@ const Edit = ({ editPost }) => {
   const confirmOnClick = () => setShowDeletionConfirmation(true)
   const cancelOnClick = () => setShowDeletionConfirmation(false)
   const DeletionConfirmation = () => (
-    <div className="controlsConfirm">
+    <span className="controlsConfirm">
       <div className="confirmSelect">
-        <span className="confirmLink delete" onClick={() => deletePost(id)}>
-          {admin.controls.confirm}
-        </span>
-        <span>•</span>
         <span className="confirmLink close" onClick={cancelOnClick}>
           {admin.controls.cancel}
         </span>
+        <span>•</span>
+        <span className="confirmLink delete" onClick={() => deletePost(id)}>
+          {admin.controls.confirm}
+        </span>
       </div>
-    </div>
+    </span>
   )
 
   const { data: session } = useSession()
@@ -152,7 +158,14 @@ const Edit = ({ editPost }) => {
                 handleChange={(e) => setCategory(e.target.value)}
                 data={categories}
               />
-              <div className="showEditDate">
+              <div className="checkbox">
+                <Checkbox 
+                  label='Featured Post'
+                  value={featured}
+                  onChange={handleSetFeatured}
+                />
+              </div>
+              <div className="checkbox">
                 <Checkbox 
                   label='Display "Updated" Date'
                   value={showEdited}

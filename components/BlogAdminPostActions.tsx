@@ -2,42 +2,42 @@ import { useState } from 'react'
 import { publishPost, editPost, deletePost } from '@/lib/blog'
 
 
-const BlogAdminPostActions = ({props}) => {
+const BlogAdminPostActions = ({post, admin, redirect, publishLabel}) => {
 
   const [showDeletionConfirmation, setShowDeletionConfirmation] = useState(false)
   const confirmOnClick = () => setShowDeletionConfirmation(true)
   const cancelOnClick = () => setShowDeletionConfirmation(false)
 
   const DeletionConfirmation = () => (
-    <div className="controlsConfirm">
+    <span className="controlsConfirm">
       <div className="confirmSelect">
-        <span className="confirmLink delete" onClick={() => deletePost(props.post.id, props.redirect)}>
-          {props.admin.controls.confirm}
+        <span className="confirmLink close" onClick={cancelOnClick}>
+          {admin.controls.cancel}
         </span>
         <span>•</span>
-        <span className="confirmLink close" onClick={cancelOnClick}>
-          {props.admin.controls.cancel}
+        <span className="confirmLink delete" onClick={() => deletePost(post.id, redirect)}>
+          {admin.controls.confirm}
         </span>
       </div>
-    </div>
+    </span>
   )
 
   return (
     <div className="controlsPost">
       <button
         className="buttonCompact"
-        onClick={() => publishPost(props.post.id, props.post.published)}>
-        {props.publishLabel}
+        onClick={() => publishPost(post.id, post.published, post.featured)}>
+        {publishLabel}
       </button>
       <button
         className="buttonCompact"
-        onClick={() => editPost(props.post.slug)}>
-        {props.admin.controls.edit}
+        onClick={() => editPost(post.slug)}>
+        {admin.controls.edit}
       </button>
       <button
         className="buttonCompact delete"
         onClick={confirmOnClick}>
-        {props.admin.controls.delete}
+        {admin.controls.delete}
       </button>
 
       { showDeletionConfirmation

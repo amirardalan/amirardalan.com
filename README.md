@@ -19,8 +19,9 @@ This is my personal portfolio and blog. You may find the CMS portion useful. It 
 - Write blog posts with [extensible Markdown](#markdown-features)
 - Publish changes on per-page basis, no need to rebuild the entire application
 - Create and manage unpublished Drafts
-- Publish, unpublish, or delete Posts or Drafts
+- Publish, unpublish, and delete Posts/Drafts
 - Set/Edit Title, Teaser, Slug, Content, and Category
+- Set a featured post. If no post is featured, use the latest post as a fallback.
 - Optionally suppress "Updated" date when editing
 
 ---

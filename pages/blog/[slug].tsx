@@ -30,11 +30,13 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     }),
     prisma.post.findMany({
       where: { published: true },
-      select: { id: true, title: true, teaser: true, slug: true, category: true },
     })
   ])
   if (post) { 
-    return { props: { post: JSON.parse(JSON.stringify(post)), feed, data: blogPost } 
+    return { props: { 
+      post: JSON.parse(JSON.stringify(post)),
+      feed: JSON.parse(JSON.stringify(feed)),
+    } 
   } 
   } else { 
     return { notFound: true }
@@ -42,7 +44,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 }
 
 
-const Post = ({ post, feed, data }) => {
+const Post = ({ post, feed }) => {
 
   const styleBlogPost = css({
     '.postDetails': {
@@ -309,6 +311,7 @@ const Post = ({ post, feed, data }) => {
   const displayPost = isPublished || session && session.user.email === process.env.NEXT_PUBLIC_USER_EMAIL
   const redirect = isPublished ? '/blog' : '/blog/drafts'
 
+  const isFeatured = post.featured
   const isEdited = post.editedAt.slice(0, 10) > post.publishedAt.slice(0, 10)
   const showEdited = post.showEdited
   const publishDate = formatDate(post.publishedAt)
@@ -326,7 +329,10 @@ const Post = ({ post, feed, data }) => {
       <div className={isPublished ? 'blog' : 'blog admin'} css={styleBlogPost}>
 
       <article className="post postFull">
-        <div className="category full" aria-label={post.category}>{post.category}</div>
+        <div className="categoryWrapper">
+          {isFeatured ? <div className="category featured full" aria-label="Featured Post">Featured</div> : null}
+          <div className="category full" aria-label={post.category}>{post.category}</div>
+        </div>
         <h1 aria-label={`${title}`}>{title}</h1>
         <p className="teaser">{post.teaser}</p>
 
@@ -349,7 +355,12 @@ const Post = ({ post, feed, data }) => {
 
         { userHasValidSession && (
           <div className="controlsPost">
-            <BlogAdminPostActions props={{post, admin, redirect, publishLabel}} />
+            <BlogAdminPostActions 
+              post={post}
+              admin={admin}
+              redirect={redirect}
+              publishLabel={publishLabel}
+            />
           </div>
         )}
       </article>
@@ -366,8 +377,8 @@ const Post = ({ post, feed, data }) => {
 
   return (
     <Container
-      title={title+data.meta.title}
-      description={post.teaser}
+      title={title + blogPost?.meta?.title}
+      description={post?.teaser}
       image={hasImage}
       date={publishDate}
       robots={isPublished ? "follow, index" : "noindex"

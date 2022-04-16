@@ -5,8 +5,12 @@ const blogStyles = css({
   '.blog': {
     maxWidth: 768,
     margin: '0 auto',
+    '.categoryWrapper': {
+      display: 'flex',
+      flexDirection: 'row',
+    },
     '.category': {
-      marginBottom: '.5rem',
+      margin: '0 .5rem .5rem 0',
       fontFamily: 'var(--font-primary)',
       fontSize: 12,
       textTransform: 'uppercase',
@@ -18,9 +22,9 @@ const blogStyles = css({
       '&:before': {
         content: '"#"'
       },
-      '&.all:before': {
-        content: '""'
-      }
+      '&.all, &.featured': {
+        '&:before': { content: '""' }
+      },
     },
     '.blogListHeading': {
       marginBottom: '.5rem',

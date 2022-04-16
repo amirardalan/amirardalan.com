@@ -2,7 +2,7 @@ import { css } from '@emotion/react'
 import { home } from '@/data/content'
 import Container from '@/components/Container'
 import TypingAnimation from '@/components/TypingAnimation'
-import LatestPost from '@/components/LatestPost'
+import FeaturedPost from '@/components/FeaturedPost'
 import { generateCtaButtons } from '@/components/CtaButtons'
 import CanvasLoader from '@/components/CanvasLoader'
 
@@ -11,18 +11,29 @@ import prisma from '@/lib/prisma'
 
 export const getStaticProps: GetStaticProps = async () => {
   try {
-    const latestPost = await prisma.post.findMany({
-      where: { published: true },
-      orderBy: { publishedAt: 'desc' },
-      take: 1, select: { title: true, teaser: true, slug: true }
-    })
-    return { props: { latestPost, data: home } }
+    const [featuredPost, latestPost] = await prisma.$transaction([
+      prisma.post.findFirst({
+        where: { featured: true, published: true },
+        select: { title: true, teaser: true, slug: true }
+      }),
+      prisma.post.findFirst({
+        where: { featured: false, published: true},
+        orderBy: { publishedAt: 'desc' },
+        select: { title: true, teaser: true, slug: true }
+      })
+    ])
+    return { 
+      props: {
+        featuredPost: featuredPost,
+        latestPost: latestPost
+      }
+    }
   }
   catch { return { props: { data: home } } }
 }
 
 
-export default function Home({ data, latestPost }) {
+export default function Home({ featuredPost, latestPost }) {
 
   const styleMain = css({
     display: 'flex',
@@ -83,20 +94,24 @@ export default function Home({ data, latestPost }) {
   })
 
   return (
-    <Container title={data.meta.title}>
+    <Container title={home.meta.title}>
       <main css={styleMain} className="home">
         <div css={styleMainLeft} className="animationWrapper">
           <div css={styleContent}>
             <div className="titleWrapper">
               <span className="typed" aria-hidden="true">
-                <TypingAnimation data={data.typed} />
+                <TypingAnimation data={home.typed} />
               </span>
-              <h1>{data.title}</h1>
+              <h1>{home.title}</h1>
             </div>
             <div css={styleCtaButtons}>
               {generateCtaButtons(home.items)}
             </div>
-            <LatestPost data={data} latestPost={latestPost} />
+            <FeaturedPost
+              home={home}
+              featuredPost={featuredPost}
+              latestPost={latestPost}
+            />
           </div>
         </div>
         <div css={styleMainRight} className="animationWrapper">

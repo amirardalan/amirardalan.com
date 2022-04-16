@@ -6,6 +6,7 @@ import Link from 'next/link'
 import Container from '@/components/Container'
 import BlogStyles from '@/components/BlogStyles'
 import Dropdown from '@/components/Dropdown'
+import Checkbox from '@/components/Checkbox'
 
 import { admin, breadcrumb } from '@/data/content'
 import { categories } from '@/data/categories'
@@ -20,27 +21,32 @@ const Draft = () => {
   const [teaser, setTeaser] = useState('')
   const [category, setCategory] = useState(categories[0])
 
+  const [featured, setFeatured] = useState(false)
+  const handleSetFeatured = () => {
+    setFeatured(!featured)
+  }
+
   const [showDeletionConfirmation, setShowDeletionConfirmation] = useState(false)
   const handleConfirmOnClick = () => setShowDeletionConfirmation(true)
   const handleCancelOnClick = () => setShowDeletionConfirmation(false)
   const DeletionConfirmation = () => (
-    <div className="controlsConfirm">
+    <span className="controlsConfirm">
       <div className="confirmSelect">
-        <span className="confirmLink delete" onClick={() => Router.push("/blog")}>
-          {admin.controls.confirm}
-        </span>
         <span>•</span>
         <span className="confirmLink close" onClick={handleCancelOnClick}>
           {admin.controls.cancel}
         </span>
+        <span className="confirmLink delete" onClick={() => Router.push("/blog")}>
+          {admin.controls.confirm}
+        </span>
       </div>
-    </div>
+    </span>
   )
 
   const submitData = async (e: React.SyntheticEvent) => {
     e.preventDefault()
     try {
-      const body = { title, slug, teaser, content, category }
+      const body = { title, slug, teaser, content, category, featured }
       await fetch('/api/post', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -140,6 +146,13 @@ const Draft = () => {
                 handleChange={(e: { target: { value: React.SetStateAction<string> } }) => setCategory(e.target.value)}
                 data={categories}
               />
+              <div className="checkbox">
+                <Checkbox 
+                  label='Featured Post'
+                  value={featured}
+                  onChange={handleSetFeatured}
+                />
+              </div>
             </div>
 
             <div className="formSubmit">

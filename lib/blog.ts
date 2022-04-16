@@ -1,8 +1,8 @@
 import Router from 'next/router'
 import revalidateChanges from '@/lib/revalidate'
 
-export async function publishPost(id: number, published: boolean): Promise<void> {
-  await fetch(`/api/publish/${id}?published=${published}`, {
+export async function publishPost(id: number, published: boolean, featured: boolean): Promise<void> {
+  await fetch(`/api/publish/${id}?published=${published}?featured=${featured}`, {
     method: 'PUT',
   })
   revalidateChanges()

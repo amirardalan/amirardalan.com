@@ -41,7 +41,10 @@ export const home = {
       target: '_self',
     },
   ],
-  latestPost: {
+  featured: {
+    title: 'Featured Post'
+  },
+  latest: {
     title: 'Latest Post'
   }
 }
