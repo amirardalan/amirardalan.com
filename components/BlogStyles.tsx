@@ -10,7 +10,7 @@ const blogStyles = css({
       flexDirection: 'row',
     },
     '.category': {
-      margin: '0 .5rem .5rem 0',
+      marginBottom: '.5rem',
       fontFamily: 'var(--font-primary)',
       fontSize: 12,
       textTransform: 'uppercase',

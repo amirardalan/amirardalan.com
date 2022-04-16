@@ -19,7 +19,7 @@ const BlogPostFilter = ({ feed }) => {
     minHeight: 32,
     li :{
       display: 'inline',
-      margin: '0 1.5rem 0 0',
+      margin: '0 1rem 0 0',
     },
     '&::-webkit-scrollbar': {
       display: 'none'
