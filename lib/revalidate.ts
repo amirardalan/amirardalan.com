@@ -13,7 +13,7 @@ const revalidateChanges = (published: boolean, latestPost: boolean, featured: bo
   Promise.all([ current, blog, home ])
   .then(() => {
     isEditPage
-      ? (Router.push(revalidatePath), Router.reload())
+      ? Router.push(revalidatePath).then(()=> Router.reload())
       : Router.reload()
   })
   .catch(error => {
