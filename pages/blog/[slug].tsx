@@ -363,6 +363,7 @@ const Post = ({ post, feed }) => {
           <div className="controlsPost">
             <BlogAdminPostActions 
               post={post}
+              slug={post.slug}
               published={published}
               redirect={redirect}
               publishLabel={publishLabel}
