@@ -1,6 +1,6 @@
 import Router from 'next/router'
 
-const revalidateChanges = () => {
+const revalidateChanges = (latestPost: number, featured: boolean) => {
 
   const REVALIDATE_SECRET = process.env.NEXT_PUBLIC_REVALIDATE_SECRET
   const isEditPage = Router.asPath.includes('/edit')

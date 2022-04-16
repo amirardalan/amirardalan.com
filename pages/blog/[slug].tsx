@@ -296,6 +296,8 @@ const Post = ({ post, feed }) => {
       paddingBottom: '2rem !important',
     },
     '.controlsPost': {
+      display: 'flex',
+      flexDirection: 'row',
       margin: '2rem 0',
       'button, a': {
         marginRight: '.25rem',
@@ -312,6 +314,8 @@ const Post = ({ post, feed }) => {
   const redirect = isPublished ? '/blog' : '/blog/drafts'
 
   const isFeatured = post.featured
+  const latestPost = feed[feed?.length - 1].id
+
   const isEdited = post.editedAt.slice(0, 10) > post.publishedAt.slice(0, 10)
   const showEdited = post.showEdited
   const publishDate = formatDate(post.publishedAt)
@@ -360,6 +364,7 @@ const Post = ({ post, feed }) => {
               admin={admin}
               redirect={redirect}
               publishLabel={publishLabel}
+              latestPost={latestPost}
             />
           </div>
         )}

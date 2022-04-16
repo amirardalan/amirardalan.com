@@ -1,11 +1,11 @@
 import Router from 'next/router'
 import revalidateChanges from '@/lib/revalidate'
 
-export async function publishPost(id: number, published: boolean, featured: boolean): Promise<void> {
-  await fetch(`/api/publish/${id}?published=${published}?featured=${featured}`, {
+export async function publishPost(id: number, published: boolean, featured: boolean, latestPost: number): Promise<void> {
+  await fetch(`/api/publish/${id}?published=${published}?featured=${featured}?latestPost${latestPost}`, {
     method: 'PUT',
   })
-  revalidateChanges()
+  revalidateChanges(latestPost, featured)
 }
 
 export async function editPost(slug: string): Promise<void> {
@@ -15,10 +15,10 @@ export async function editPost(slug: string): Promise<void> {
   Router.push(`/blog/edit/${slug}`)
 }
 
-export async function deletePost(id: number, redirect: string): Promise<void> {
+export async function deletePost(id: number, redirect: string, latestPost: number, featured: boolean): Promise<void> {
   await fetch(`/api/post/${id}`, {
     method: 'DELETE',
   })
-  revalidateChanges()
+  revalidateChanges(latestPost, featured)
   Router.push(redirect)
 }
