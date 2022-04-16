@@ -12,7 +12,9 @@ const revalidateChanges = () => {
     fetch(`/api/revalidate?secret=${REVALIDATE_SECRET}&path=/`),
   ])
   .then(() => {
-    isEditPage ? Router.push(revalidatePath) : Router.reload()
+    isEditPage
+      ? (Router.push(revalidatePath), Router.reload())
+      : Router.reload()
   })
   .catch(error => {
     console.error(error.message)
