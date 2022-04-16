@@ -1,8 +1,8 @@
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
-import * as gtag from './gtag'
+import * as gtag from '@/lib/gtag'
 
-const GtagRoutes = () => {
+const useGtag = () => {
   const router = useRouter()
   useEffect(() => {
     const handleRouteChange = (url: URL) => {
@@ -15,4 +15,4 @@ const GtagRoutes = () => {
   }, [router.events])
 }
 
-export default GtagRoutes
+export default useGtag
