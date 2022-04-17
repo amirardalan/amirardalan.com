@@ -1,4 +1,3 @@
-import { uses } from '@/data/content'
 import Markdown from '@/components/Markdown'
 
 
@@ -49,18 +48,18 @@ const styleUsesMarkdown = ({
   },
 })
 
-export default function Uses() {
+export default function Uses({ content }) {
   
   return (
     <>
       <h1 className="pageHeading">
-        {uses.heading}
+        {content.heading}
       </h1>
       <div css={styleUsesMarkdown}>
-        <Markdown markdown={uses.devices} />
-        <Markdown markdown={uses.stack} />
-        <Markdown markdown={uses.tools} />
-        <Markdown markdown={uses.software} />
+        <Markdown markdown={content.devices} />
+        <Markdown markdown={content.stack} />
+        <Markdown markdown={content.tools} />
+        <Markdown markdown={content.software} />
       </div>
     </>
   )
