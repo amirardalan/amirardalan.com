@@ -5,8 +5,8 @@ import revalidateChanges from '@/lib/revalidate'
 export async function publishPost(
     id: number,
     published: boolean,
-    featured: boolean,
     latestPost: boolean,
+    featured: boolean,
     setFetchStatus: boolean
   ): Promise<void> {
 
@@ -21,9 +21,15 @@ export async function publishPost(
   }
 }
 
-export async function editPost(slug: string): Promise<void> {
+export async function editPost(
+  slug: string,
+  published: boolean,
+  latestPost: boolean,
+  featured: boolean,
+  setFetchStatus: boolean
+): Promise<void> {
   await fetch(`/blog/edit/${slug}`, { method: 'PUT' }).then(()=> {
-    Router.push(`/blog/edit/${slug}`)
+    revalidateChanges(published, latestPost, featured, setFetchStatus)
   })
 }
 
@@ -39,9 +45,8 @@ export async function deletePost(
 
   await fetch(`/api/post/${id}`, { method: 'DELETE', }).then(()=> {
     Router.push(`/blog/edit/${slug}?delete`, undefined, { shallow: true }).then(()=> {
-      revalidateChanges(published, latestPost, featured, setFetchStatus)
       if (published) {
-        Router.push(redirect)
+        revalidateChanges(published, latestPost, featured, setFetchStatus)
       }
       else if (!published ) {
         Router.push(redirect)

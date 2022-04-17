@@ -62,12 +62,12 @@ const BlogPostControls = ({
       <div className={isFetching ? "postControls disabled" : "postControls"}>
         <button
           className="buttonCompact publishBtn"
-          onClick={() => publishPost(post.id, post.published, post.featured, latestPost, setFetchStatus)}>
+          onClick={() => publishPost(post.id, post.published, latestPost, post.featured, setFetchStatus)}>
           {publishLabel}
         </button>
         <button
           className="buttonCompact"
-          onClick={() => editPost(post.slug)}>
+          onClick={() => editPost(post.slug, post.published, latestPost, post.featured, setFetchStatus)}>
           {admin.controls.edit}
         </button>
         <BlogPostDelete
