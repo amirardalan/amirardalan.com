@@ -2,7 +2,7 @@ import { useSession, getSession } from 'next-auth/react'
 import Link from 'next/link'
 import Container from '@/components/Container'
 import BlogStyles from '@/components/BlogStyles'
-import { admin, breadcrumb } from '@/data/content'
+import { adminContent, breadcrumbContent } from '@/data/content'
 import BlogPost from '@/components/BlogPost'
 import compareID from '@/utils/compareID'
 
@@ -31,12 +31,12 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
     },
   })
   return {
-    props: { drafts: JSON.parse(JSON.stringify(drafts)) },
+    props: { drafts: JSON.parse(JSON.stringify(drafts)), admin: adminContent, breadcrumb: breadcrumbContent },
   }
 }
 
 
-const Drafts  = ({ drafts }) => {
+const Drafts  = ({ drafts, admin, breadcrumb }) => {
   
   const { data: session } = useSession()
   const isLoggedIn = session && session.user.email == process.env.NEXT_PUBLIC_USER_EMAIL

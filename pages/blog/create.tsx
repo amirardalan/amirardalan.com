@@ -10,12 +10,17 @@ import Checkbox from '@/components/Checkbox'
 import BlogPostControls from '@/components/BlogPostControls'
 import { useFetchStatus } from '@/utils/useFetchStatus'
 
-import { admin, breadcrumb } from '@/data/content'
+import { adminContent, breadcrumbContent } from '@/data/content'
 import { categories } from '@/data/categories'
 import LoadingTriangle from '@/components/LoadingTriangle'
 
+import { GetStaticProps } from 'next'
+export const getStaticProps: GetStaticProps = async () => {
+  return { props: { admin: adminContent, breadcrumb: breadcrumbContent } }
+}
 
-const Draft = () => {
+
+const Draft = ({ admin, breadcrumb }) => {
 
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
@@ -157,6 +162,7 @@ const Draft = () => {
             <div className={isFetching ? "postControls disabled" : "postControls"}>
 
               <BlogPostControls
+                admin={admin}
                 post={null}
                 publishLabel={admin.controls.save}
                 latestPost={null}
