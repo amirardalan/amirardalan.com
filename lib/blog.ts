@@ -1,7 +1,7 @@
 import Router from 'next/router'
 import revalidateChanges from '@/lib/revalidate'
 
-
+// Publish/Unpublish Post
 export async function publishPost(
     id: number,
     published: boolean,
@@ -22,6 +22,7 @@ export async function editPost(slug: string): Promise<void> {
   })
 }
 
+// Delete Post
 export async function deletePost(
   id: number,
   slug: string,

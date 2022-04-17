@@ -13,7 +13,6 @@ import { useFetchStatus } from '@/utils/useFetchStatus'
 import { admin, breadcrumb } from '@/data/content'
 import { categories } from '@/data/categories'
 import LoadingTriangle from '@/components/LoadingTriangle'
-import LoadingSpinner from '@/components/LoadingSpinner'
 
 
 const Draft = () => {
@@ -42,6 +41,7 @@ const Draft = () => {
 
   const submitData = async (e: React.SyntheticEvent) => {
     e.preventDefault()
+    setFetchStatus(true)
     try {
       const body = { title, slug, teaser, content, category, featured }
       await fetch('/api/post', {
@@ -166,8 +166,6 @@ const Draft = () => {
                 setFetchStatus={setFetchStatus}
                 isFetching={isFetching}
               />
-
-              {isFetching ? <LoadingSpinner/> : null}
 
             </div>
 
