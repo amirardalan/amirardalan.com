@@ -230,7 +230,7 @@ const BlogAdmin = React.memo(function BlogAdmin() {
         '.postControls': {
           display: 'flex',
           flexDirection: 'row',
-          margin: '2rem 0',
+          marginTop: '1rem',
           '&.disabled': {
             '.buttonCompact': {
               backgroundColor: 'var(--color-disabled)',

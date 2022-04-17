@@ -13,6 +13,7 @@ const BlogPostControls = ({
   submitClass,
   handleCancel,
   handleDeletion,
+  deleted,
   setFetchStatus,
   isFetching
 }) => {
@@ -72,7 +73,7 @@ const BlogPostControls = ({
       <div className={isFetching ? "postControls disabled" : "postControls"}>
         <button
           className="buttonCompact publishBtn"
-          onClick={() => publishPost(post.id, post.published, latestPost, post.featured, setFetchStatus)}>
+          onClick={() => publishPost(post.id, post.published, latestPost, post.featured, deleted, setFetchStatus)}>
           {publishLabel}
         </button>
         <button

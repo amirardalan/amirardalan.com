@@ -303,10 +303,8 @@ const Post = ({ post, feed }) => {
   const userHasValidSession = Boolean(session)
 
   const isPublished: Boolean = post.published
-  const published = isPublished
   const publishLabel = isPublished ? admin.controls.unpublish : admin.controls.publish
   const displayPost = isPublished || session && session.user.email === process.env.NEXT_PUBLIC_USER_EMAIL
-  const redirect = isPublished ? '/blog' : '/blog/drafts'
 
   const isFeatured = post.featured
   const latestPostID = feed[feed?.length - 1].id
@@ -323,7 +321,8 @@ const Post = ({ post, feed }) => {
   const isFetching = fetchStatus
 
   const handleDeletion = () => {
-    return deletePost(post.id, post.slug, post.published, latestPost, post.featured, setFetchStatus)
+    setFetchStatus(true)
+    return deletePost(post.id, post.published, latestPost, post.featured, setFetchStatus)
   }
 
   // Set OG Image for blog posts. Use first image from post, otherwise dynamically generate one.
@@ -368,19 +367,18 @@ const Post = ({ post, feed }) => {
         <Markdown markdown={post} />
 
         { userHasValidSession && (
-          <div className="postControls">
-            <BlogPostControls
-              post={post}
-              latestPost={latestPost}
-              publishLabel={publishLabel}
-              requiredFields={null}
-              submitClass="buttonCompact publishBtn"
-              handleCancel={null}
-              handleDeletion={handleDeletion}
-              setFetchStatus={setFetchStatus}
-              isFetching={isFetching}
-            />
-          </div>
+          <BlogPostControls
+            post={post}
+            latestPost={latestPost}
+            publishLabel={publishLabel}
+            requiredFields={null}
+            submitClass="buttonCompact publishBtn"
+            handleCancel={null}
+            handleDeletion={handleDeletion}
+            deleted={false}
+            setFetchStatus={setFetchStatus}
+            isFetching={isFetching}
+          />
         )}
       </article>
 

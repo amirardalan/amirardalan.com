@@ -74,16 +74,18 @@ const Edit = ({ editPost, getLatestPost }) => {
 
   const [fetchStatus, setFetchStatus] = useFetchStatus()
   const isFetching = fetchStatus
+  const deleted = false
 
   const submitData = async (e: React.SyntheticEvent) => {
     e.preventDefault()
+    setFetchStatus(true)
     try {
       const body = { id, title, slug, teaser, content, category, featured, editFeatured, showEdited }
       await fetch('/api/update', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
-      }).then(()=> revalidateChanges(published, latestPost, featured, setFetchStatus))
+      }).then(()=> revalidateChanges(published, latestPost, featured, deleted, setFetchStatus))
     } catch (error) {
       console.error(error)
     }
@@ -94,7 +96,8 @@ const Edit = ({ editPost, getLatestPost }) => {
     return Router.push(`/blog/${editSlug}`)
   }
   const handleDeletion = () => {
-    return deletePost(id, slug, published, latestPost, featured, setFetchStatus)
+    setFetchStatus(true)
+    return deletePost(id, published, latestPost, featured, setFetchStatus)
   }
 
   const { data: session } = useSession()
@@ -175,21 +178,18 @@ const Edit = ({ editPost, getLatestPost }) => {
               </div>
             </div>
 
-            <div className="postControls">
-
-              <BlogPostControls
-                post={id}
-                publishLabel={admin.controls.update}
-                latestPost={latestPost}
-                requiredFields={!content || !title || !slug || !teaser}
-                submitClass="buttonCompact updateBtn"
-                handleCancel={handleCancel}
-                handleDeletion={handleDeletion}
-                setFetchStatus={setFetchStatus}
-                isFetching={isFetching}
-              />
-
-            </div>
+            <BlogPostControls
+              post={id}
+              publishLabel={admin.controls.update}
+              latestPost={latestPost}
+              requiredFields={!content || !title || !slug || !teaser}
+              submitClass="buttonCompact updateBtn"
+              handleCancel={handleCancel}
+              handleDeletion={handleDeletion}
+              setFetchStatus={setFetchStatus}
+              deleted={false}
+              isFetching={isFetching}
+            />
 
           </form>
         </div>

@@ -32,6 +32,7 @@ const Draft = () => {
   const isFetching = fetchStatus
 
   const handleDeletion = () => {
+    setFetchStatus(true)
     return Router.push("/blog")
   }
   const handleCancel = (e: React.SyntheticEvent) => {
@@ -164,6 +165,7 @@ const Draft = () => {
                 handleCancel={handleCancel}
                 handleDeletion={handleDeletion}
                 setFetchStatus={setFetchStatus}
+                deleted={false}
                 isFetching={isFetching}
               />
 

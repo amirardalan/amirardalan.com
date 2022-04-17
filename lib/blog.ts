@@ -7,11 +7,12 @@ export async function publishPost(
     published: boolean,
     featured: boolean,
     latestPost: boolean,
+    deleted: boolean,
     setFetchStatus: (active: boolean) => void
   ): Promise<void> {
 
   await fetch(`/api/publish/${id}?published=${published}&featured=${featured}`, { method: 'PUT',}).then(()=> {
-    revalidateChanges(published, latestPost, featured, setFetchStatus)
+    revalidateChanges(published, latestPost, featured, deleted, setFetchStatus)
   })
 }
 
@@ -25,16 +26,15 @@ export async function editPost(slug: string): Promise<void> {
 // Delete Post
 export async function deletePost(
   id: number,
-  slug: string,
   published: boolean,
   latestPost: boolean,
   featured: boolean,
   setFetchStatus: (active: boolean) => void
   ): Promise<void> {
 
+  const deleted = true
+
   await fetch(`/api/post/${id}`, { method: 'DELETE', }).then(()=> {
-    Router.push(`/blog/${slug}?delete`, undefined, { shallow: true }).then(()=> {
-      revalidateChanges(published, latestPost, featured, setFetchStatus)
-    })
+    revalidateChanges(published, latestPost, featured, deleted, setFetchStatus)
   })
 }
