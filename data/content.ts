@@ -399,12 +399,12 @@ export const usesContent = {
   ##### Web App Extensions:
   - [Tokyo Night](https://marketplace.visualstudio.com/items?itemName=enkia.tokyo-night)
   - [Material Icon Theme](https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme)
-  - [VSCode Color Picker](https://marketplace.visualstudio.com/items?itemName=MarkosTh09.color-picker)
   - [CSS-in-JS](https://marketplace.visualstudio.com/items?itemName=paulmolluzzo.convert-css-in-js)
   - [Prisma](https://marketplace.visualstudio.com/items?itemName=Prisma.prisma)
   - [Debugger for Firefox](https://marketplace.visualstudio.com/items?itemName=firefox-devtools.vscode-firefox-debug)
   - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
   - [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)
+  - [vscode-styled-components](https://marketplace.visualstudio.com/items?itemName=styled-components.vscode-styled-components)
   ##### Game Dev Extensions:
   - [Lua](https://marketplace.visualstudio.com/items?itemName=sumneko.lua)
   - [Lua linter](https://marketplace.visualstudio.com/items?itemName=dcr30.lualinter)
