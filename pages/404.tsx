@@ -3,7 +3,13 @@ import Link from 'next/link'
 import { css } from '@emotion/react'
 import Container from '@/components/Container'
 import ErrorIcon from '@/components/ErrorIcon'
-import { error } from '@/data/content'
+import { errorContent } from '@/data/content'
+
+import { GetStaticProps } from 'next'
+export const getStaticProps: GetStaticProps = async () => {
+  return { props: { error: errorContent } }
+}
+
 
 
 const style404Wrapper = css({
@@ -64,7 +70,7 @@ const styleHomeButton = css({
   justifyContent: 'center',
 })
 
-export default function Custom404() {
+export default function Custom404({ error }) {
 
   return(
     <Container title={error.meta.title} robots="noindex">

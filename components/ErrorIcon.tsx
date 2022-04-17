@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { error } from '@/data/content'
+import { errorContent } from '@/data/content'
 import { useTheme } from '@emotion/react'
 
 export default function ErrorIcon() {
@@ -8,8 +8,8 @@ export default function ErrorIcon() {
   return (
     <Image
       src={theme.icons.error}
-      alt={error.img.meta}
-      aria-label={error.img.meta}
+      alt={errorContent.img.meta}
+      aria-label={errorContent.img.meta}
       width={40}
       height={40}
     />

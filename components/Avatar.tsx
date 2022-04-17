@@ -1,9 +1,8 @@
 import Image from 'next/image'
 import { css } from '@emotion/react'
-import { avatar } from '@/data/content'
 
 
-export default function Photo({ height, width }) {
+export default function Photo({avatar, height, width }) {
 
   const clip = width / 2
 

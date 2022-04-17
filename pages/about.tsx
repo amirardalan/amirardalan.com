@@ -135,20 +135,14 @@ export default function About({ about, timeline }) {
       <h1 className='pageHeading'>{about.heading}</h1>
           <div css={styleGridWrapper}>
             <div className='grid'>
-              <ul css={styleBioItems}>
-                <li>
-                  <Avatar height={125} width={125} />
-                </li>
-                <li aria-label={about.bio.subheading} className="bioSubHeading">
-                  <h2>{about.bio.subheading}</h2>
-                </li>
-                <li>
-                  <em className='blurb'>{about.bio.content}</em>
-                </li>
-                <li>
-                  <CtaButtons items={about.bio.items} />
-                </li>
-              </ul>
+              <div css={styleBioItems}>
+                <Avatar height={125} width={125} avatar={about.avatar} />
+                <h2 aria-label={about.bio.subheading} className="bioSubHeading">
+                  {about.bio.subheading}
+                </h2>
+                <em className='blurb'>{about.bio.content}</em>
+                <CtaButtons items={about.bio.items} />
+              </div>
             </div>
             <div className='grid'>
               <ul>

@@ -7,11 +7,6 @@ export const logo = {
   alt: 'Amir Ardalan Logo',
 }
 
-export const avatar = {
-  title: 'Amir Ardalan',
-  img: '/avatar/amir-ardalan.jpg',
-}
-
 export const homeContent = {
   meta: {
     title: 'Amir Ardalan – Code, design, and ideas from Portland, OR.',
@@ -86,6 +81,10 @@ export const aboutContent = {
     linkedin: 'LinkedIn',
   },
   heading: 'About',
+  avatar: {
+    title: 'Amir Ardalan',
+    img: '/avatar/amir-ardalan.jpg',
+  },
   social: {
     title: 'Social',
     items: [
@@ -620,7 +619,7 @@ export const footer = {
   },
 }
 
-export const breadcrumb = {
+export const breadcrumbContent = {
   blog: 'Blog',
   create: 'Create',
   drafts: 'Drafts',

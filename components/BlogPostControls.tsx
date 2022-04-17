@@ -1,11 +1,11 @@
 import Router from 'next/router'
 import BlogPostDelete from '@/components/BlogPostDelete'
 import { publishPost, editPost } from '@/lib/blog'
-import { admin } from '@/data/content'
 import LoadingSpinner from '@/components/LoadingSpinner'
 
 
 const BlogPostControls = ({
+  admin,
   post,
   latestPost,
   publishLabel,

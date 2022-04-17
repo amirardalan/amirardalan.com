@@ -16,7 +16,7 @@ import Dropdown from '@/components/Dropdown'
 import Checkbox from '@/components/Checkbox'
 import LoadingTriangle from '@/components/LoadingTriangle'
 
-import { admin, breadcrumb } from '@/data/content'
+import { adminContent, breadcrumbContent } from '@/data/content'
 import { categories } from '@/data/categories'
 
 
@@ -33,13 +33,15 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   ])
   return {
     props: {
+      admin: adminContent,
+      breadcrumb: breadcrumbContent,
       editPost: JSON.parse(JSON.stringify(editPost)),
       getLatestPost: getLatestPost
     } 
   }
 }
 
-const Edit = ({ editPost, getLatestPost }) => {
+const Edit = ({ admin, breadcrumb, editPost, getLatestPost }) => {
 
   const isPublished = editPost?.published
   const published = isPublished
@@ -179,6 +181,7 @@ const Edit = ({ editPost, getLatestPost }) => {
             </div>
 
             <BlogPostControls
+              admin={admin}
               post={id}
               publishLabel={admin.controls.update}
               latestPost={latestPost}

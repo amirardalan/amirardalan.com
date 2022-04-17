@@ -370,6 +370,7 @@ const Post = ({ blogPost, admin, post, feed }) => {
 
         { userHasValidSession && (
           <BlogPostControls
+            admin={admin}
             post={post}
             latestPost={latestPost}
             publishLabel={publishLabel}
