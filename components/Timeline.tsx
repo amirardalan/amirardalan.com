@@ -1,12 +1,11 @@
 import { css } from '@emotion/react'
-import { timeline } from '@/data/content'
 import Link from 'next/link'
 import TimelineEntry from '@/components/TimelineEntry'
 import { useInView } from 'react-intersection-observer'
 import { Key } from 'react'
 
 
-export default function Timeline() {
+export default function Timeline({ content }) {
 
   const { ref, inView } = useInView({
     threshold: 1,
@@ -227,15 +226,15 @@ export default function Timeline() {
   return (
     <section>
       <h2 css={styleTimelineHeading} className='pageHeading center' id='timeline'>
-        {timeline.meta.title}
+        {content.meta.title}
       </h2>
       <div css={styleTimelineWrapper}>
         <div css={styleTimeline}>
-          {generateTimeline(timeline.items)}
+          {generateTimeline(content.items)}
         </div>
         <div ref={ref} className={inView ? 'readMoreLink active' : 'readMoreLink'}>
-          <Link href={timeline.fullStory.link}>
-            {timeline.fullStory.text}
+          <Link href={content.fullStory.link}>
+            {content.fullStory.text}
           </Link>
         </div>
       </div>
