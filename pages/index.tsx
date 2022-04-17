@@ -22,18 +22,13 @@ export const getStaticProps: GetStaticProps = async () => {
         select: { title: true, teaser: true, slug: true }
       })
     ])
-    return { 
-      props: {
-        featuredPost: featuredPost,
-        latestPost: latestPost
-      }
-    }
+    return { props: { content: home, featuredPost: featuredPost, latestPost: latestPost } }
   }
-  catch { return { props: { data: home } } }
+  catch { return { props: { content: home } } }
 }
 
 
-export default function Home({ featuredPost, latestPost }) {
+export default function Home({ content, featuredPost, latestPost }) {
 
   const styleMain = css({
     display: 'flex',
@@ -94,21 +89,21 @@ export default function Home({ featuredPost, latestPost }) {
   })
 
   return (
-    <Container title={home.meta.title}>
+    <Container title={content.meta.title}>
       <main css={styleMain} className="home">
         <div css={styleMainLeft} className="animationWrapper">
           <div css={styleContent}>
             <div className="titleWrapper">
               <span className="typed" aria-hidden="true">
-                <TypingAnimation data={home.typed} />
+                <TypingAnimation data={content.typed} />
               </span>
-              <h1>{home.title}</h1>
+              <h1>{content.title}</h1>
             </div>
             <div css={styleCtaButtons}>
-              {generateCtaButtons(home.items)}
+              {generateCtaButtons(content.items)}
             </div>
             <FeaturedPost
-              home={home}
+              content={content}
               featuredPost={featuredPost}
               latestPost={latestPost}
             />
