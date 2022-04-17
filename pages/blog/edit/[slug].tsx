@@ -6,11 +6,12 @@ import { useState } from 'react'
 import Router from 'next/router'
 import { deletePost } from '@/lib/blog'
 import revalidateChanges from '@/lib/revalidate'
+import { useFetchStatus } from '@/utils/useFetchStatus'
 
 import Container from '@/components/Container'
 import BlogStyles from '@/components/BlogStyles'
 import Link from 'next/link'
-import BlogPostDelete from '@/components/BlogPostDelete'
+import BlogPostControls from '@/components/BlogPostControls'
 import Dropdown from '@/components/Dropdown'
 import Checkbox from '@/components/Checkbox'
 import LoadingTriangle from '@/components/LoadingTriangle'
@@ -65,12 +66,14 @@ const Edit = ({ editPost, getLatestPost }) => {
   const handleSetFeatured = () => {
     setFeatured(!featured)
   }
-  const isFeatured = featured
 
   const [showEdited, setShowEdited] = useState(editEdited)
   const handleShowEdited = () => {
     setShowEdited(!showEdited)
   }
+
+  const [fetchStatus, setFetchStatus] = useFetchStatus()
+  const isFetching = fetchStatus
 
   const submitData = async (e: React.SyntheticEvent) => {
     e.preventDefault()
@@ -80,15 +83,18 @@ const Edit = ({ editPost, getLatestPost }) => {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
-      })
-      revalidateChanges(published, latestPost, featured)
+      }).then(()=> revalidateChanges(published, latestPost, featured, setFetchStatus))
     } catch (error) {
       console.error(error)
     }
   }
 
+  const handleCancel = (e: React.SyntheticEvent) => {
+    e.preventDefault()
+    return Router.push(`/blog/${editSlug}`)
+  }
   const handleDeletion = () => {
-    return deletePost(id, slug, published, redirect, latestPost, featured)
+    return deletePost(id, slug, published, redirect, latestPost, featured, setFetchStatus)
   }
 
   const { data: session } = useSession()
@@ -169,25 +175,20 @@ const Edit = ({ editPost, getLatestPost }) => {
               </div>
             </div>
 
-            <div className="formSubmit">
-              <button
-                className="buttonCompact updateBtn"
-                disabled={ !content || !title || !slug || !teaser }
-                type="submit"
-              >
-                {admin.controls.update}
-              </button>
-              <a className="buttonCompact cancelBtn" onClick={() => Router.push(`/blog/${editSlug}`)}>
-                {admin.controls.cancel}
-              </a>
-              
-              <BlogPostDelete
+            <div className="postControls">
+
+              <BlogPostControls
+                post={id}
+                publishLabel={admin.controls.update}
+                latestPost={latestPost}
+                requiredFields={!content || !title || !slug || !teaser}
+                submitClass="buttonCompact updateBtn"
+                handleCancel={handleCancel}
                 handleDeletion={handleDeletion}
-                cancelText={admin.controls.cancel}
-                confirmText={admin.controls.confirm}
-                deleteText={admin.controls.delete}
+                setFetchStatus={setFetchStatus}
+                isFetching={isFetching}
               />
-      
+
             </div>
 
           </form>
@@ -200,9 +201,7 @@ const Edit = ({ editPost, getLatestPost }) => {
   return (
     <Container title={admin.edit.meta.title} {...isPublished ? 'Post |' : 'Draft: '} {...editPageTitle} robots="noindex">
       <BlogStyles>
-        <div>
-          {edit}
-        </div>
+        <div>{edit}</div>
       </BlogStyles>
     </Container>
   )

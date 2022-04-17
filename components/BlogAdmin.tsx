@@ -3,8 +3,6 @@ import React from 'react'
 import { Global, css } from '@emotion/react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
-import { useLoadingBar } from '@/utils/useLoadingBar'
-import LoadingSpinner from '@/components/LoadingSpinner'
 
 
 const BlogAdmin = React.memo(function BlogAdmin() {
@@ -12,12 +10,13 @@ const BlogAdmin = React.memo(function BlogAdmin() {
   const { data: session } = useSession()
   const router = useRouter()
   const URL = process.env.NEXT_PUBLIC_SITE_URL
-  const isLoading = useLoadingBar()
 
   // Session & Route Conditionals
   const path = router.pathname
   const isLoggedIn = session && session.user.email == process.env.NEXT_PUBLIC_USER_EMAIL
   const isAdminPage = ['/blog/create','/blog/edit/[id]','/blog/drafts'].includes(path)
+  const isCreatePage = router.asPath === '/blog/create'
+  const isDraftsPage = router.asPath === '/blog/drafts'
   const isActive: (pathname: string) => boolean = (pathname) => path === pathname
 
   const styleAnimationWrapper = css ({
@@ -97,14 +96,13 @@ const BlogAdmin = React.memo(function BlogAdmin() {
         </div>
 
         <div css={styleAdminPanelRight}>
-          {isLoading ? <LoadingSpinner/> : null}
           <Link href="/blog/create" passHref>
-            <button className="buttonCompact createBtn" aria-label="New Post">
+            <button className={`buttonCompact createBtn ${isCreatePage ? 'disabled' : null}`} aria-label="New Post">
               Create
             </button>
           </Link>
           <Link href="/blog/drafts" passHref aria-label="Drafts">
-            <button className="buttonCompact draftsBtn" data-active={isActive('/drafts')}>
+            <button className={`buttonCompact draftsBtn ${isDraftsPage ? 'disabled' : null}`} data-active={isActive('/drafts')}>
               Drafts
             </button>
           </Link>
@@ -138,6 +136,11 @@ const BlogAdmin = React.memo(function BlogAdmin() {
               textOverflow: 'ellipsis',
             }
           }
+        },
+        '.draftNotification': {
+          padding: '1rem',
+          background: 'var(--color-accent)',
+          fontSize: 13,
         },
         '.blog.admin': {
           width: '100%',
@@ -182,6 +185,7 @@ const BlogAdmin = React.memo(function BlogAdmin() {
         },
         '.buttonCompact': {
           minWidth: 80,
+          marginRight: '.25rem',
           padding: '.45rem 1rem',
           display: 'inline-block',
           backgroundColor: 'var(--color-text)',
@@ -196,6 +200,7 @@ const BlogAdmin = React.memo(function BlogAdmin() {
           textDecoration: 'none',
           cursor: 'pointer',
           '&:disabled, &.disabled': {
+            pointerEvents: 'none',
             backgroundColor: 'var(--color-disabled)',
             cursor: 'default',
           },
@@ -217,9 +222,6 @@ const BlogAdmin = React.memo(function BlogAdmin() {
             backgroundColor: 'var(--color-warning)',
             color: 'var(--color-light)',
             textDecoration: 'none',
-          },
-          '&.createBtn': {
-            backgroundColor: 'var(--color-primary)',
           },
           '&.saveBtn, &.updateBtn, &.cancelBtn': {
             marginRight: '.25rem',
@@ -256,30 +258,48 @@ const BlogAdmin = React.memo(function BlogAdmin() {
             }
           }
         },
-        '.formSubmit': {
-          marginTop: '2rem',
+        '.postControls': {
           display: 'flex',
           flexDirection: 'row',
+          margin: '2rem 0',
+          '&.disabled': {
+            '.buttonCompact': {
+              backgroundColor: 'var(--color-disabled)',
+              cursor: 'default',
+              pointerEvents: 'none',
+            }
+          }
         },
-        '.controlsConfirm, .confirmSelect': {
+        '.deleteControlsWrapper': {
           display: 'flex',
-          alignItems: 'center',
-          marginLeft: '.5rem',
+          flexDirection: 'column',
+          '.deleteControls': {
+            flexDirection: 'row',
+          }
+        },
+        '.controlsConfirm': {
+          marginLeft: '1rem',
           textTransform: 'uppercase',
           '.confirmLink': {
-            marginRight: '.5rem',
             color: 'var(--color-text)',
             fontSize: 12,
             fontWeight: 'bold',
             textTransform: 'uppercase',
             cursor: 'pointer',
+            textDecoration: 'none',
+            '&:hover': {
+              textDecoration: 'none'
+            },
+            '&.close': {
+              '&:after': {
+                content: '"•"',
+                marginLeft: '.5rem',
+              }
+            },
             '&.delete': {
               color: 'var(--color-warning)',
               marginLeft: '.5rem',
             },
-            '&.delete:hover, &.close:hover': {
-              textDecoration: 'underline',
-            }
           }
         },
         '.noDrafts': {

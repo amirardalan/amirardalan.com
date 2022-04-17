@@ -7,30 +7,30 @@ const BlogPostDelete = ({ handleDeletion, cancelText, confirmText, deleteText })
     e.preventDefault()
     setShowBlogPostDelete(true)
   }
-  const handleCancelOnClick = () => setShowBlogPostDelete(false)
+  const handleCancelOnClick = (e: React.SyntheticEvent) => {
+    e.preventDefault()
+    setShowBlogPostDelete(false)
+  }
   const RenderConfirmation = () => (
     <span className="controlsConfirm">
-      <div className="confirmSelect">
-        <span className="confirmLink close" onClick={handleCancelOnClick}>
-          {cancelText}
-        </span>
-        <span>•</span>
-        <span className="confirmLink delete" onClick={handleDeletion}>
-          {confirmText}
-        </span>
-      </div>
+      <a className="confirmLink close" onClick={handleCancelOnClick}>
+        {cancelText}
+      </a>
+      <a className="confirmLink delete" onClick={handleDeletion}>
+        {confirmText}
+      </a>
     </span>
   )
 
   return (
-    <>
+    <span>
       <button
         className="buttonCompact deleteBtn"
         onClick={handleConfirmOnClick}>
         {deleteText}
       </button>
       {showBlogPostDelete ? <RenderConfirmation /> : null}
-    </>
+    </span>
   )
 }
 
