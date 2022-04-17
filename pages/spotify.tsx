@@ -2,12 +2,17 @@ import { css } from '@emotion/react'
 import { spotify } from '@/data/content'
 import Container from '@/components/Container'
 import NowPlaying from '@/components/SpotifyPlayer'
-import TopTracks from '@/components/SpotifyTopTracks'
-import TopArtists from '@/components/SpotifyTopArtists'
+import SpotifyTopTracks from '@/components/SpotifyTopTracks'
+import SpotifyTopArtists from '@/components/SpotifyTopArtists'
 import SpotifyProfile from '@/components/SpotifyProfile'
 
+import { GetStaticProps } from 'next'
+export const getStaticProps: GetStaticProps = async () => {
+  return { props: { content: spotify } }
+}
 
-export default function Spotify() {
+
+export default function Spotify({ content }) {
 
   const styleSpotifyContainer = css({
     h3: {
@@ -129,28 +134,28 @@ export default function Spotify() {
   })
 
   return (
-    <Container title={spotify.meta.title} description={spotify.meta.description}>
+    <Container title={content.meta.title} description={content.meta.description}>
       <main className="spotify">
         <div css={styleSpotifyContainer}>
           <h1 className="pageHeading">
-            {spotify.headings.main}
+            {content.headings.main}
           </h1>
           <div css={styleSpotifyModules}>
             <div className="module player">
-              <h3>{spotify.headings.nowplaying}</h3>
+              <h3>{content.headings.nowplaying}</h3>
               <NowPlaying />
             </div>
             <div className="module profile">
-              <h3>{spotify.headings.profile}</h3>
+              <h3>{content.headings.profile}</h3>
               <SpotifyProfile />
             </div>
             <div className="module tracks">
-              <h3>{spotify.headings.toptracks}</h3>
-              <TopTracks />
+              <h3>{content.headings.toptracks}</h3>
+              <SpotifyTopTracks />
             </div>
             <div className="module artists">
-              <h3>{spotify.headings.topartists}</h3>
-              <TopArtists />
+              <h3>{content.headings.topartists}</h3>
+              <SpotifyTopArtists />
             </div>
           </div>
         </div>

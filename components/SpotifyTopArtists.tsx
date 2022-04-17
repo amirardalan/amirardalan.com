@@ -1,9 +1,9 @@
 import useSWR from 'swr'
 import fetcher from '@/lib/fetcher'
-import Artist from '@/components/SpotifyArtist'
+import SpotifyArtist from '@/components/SpotifyArtist'
 
 
-export default function TopArtists() {
+export default function SpotifyTopArtists() {
   
   const { data } = useSWR('/api/spotify/top-artists', fetcher)
 
@@ -18,6 +18,6 @@ export default function TopArtists() {
   }
 
   return data.artists.map((artist: Artist, index: number) => (
-    <Artist ranking={index + 1} key={Artist.name + index} {...artist} />
+    <SpotifyArtist ranking={index + 1} key={SpotifyArtist.name + index} {...artist} />
   ))
 }
