@@ -323,7 +323,7 @@ const Post = ({ post, feed }) => {
   const isFetching = fetchStatus
 
   const handleDeletion = () => {
-    return deletePost(post.id, post.slug, post.published, redirect, latestPost, post.featured, setFetchStatus)
+    return deletePost(post.id, post.slug, post.published, latestPost, post.featured, setFetchStatus)
   }
 
   // Set OG Image for blog posts. Use first image from post, otherwise dynamically generate one.

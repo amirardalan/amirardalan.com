@@ -33,6 +33,21 @@ const BlogPostControls = ({
     } else return null
   }
 
+  const RenderDeleteButton = () => {
+    return (
+      <BlogPostDelete
+        handleDeletion={handleDeletion}
+        cancelText={admin.controls.cancel}
+        confirmText={admin.controls.confirm}
+        deleteText={admin.controls.delete}
+      />
+    )
+  }
+
+  const RenderLoadingSpinner = () => {
+    return isFetching ? <LoadingSpinner/> : null
+  }
+
   // Create & Edit Page Controls
   if (isEditPage || isCreatePage) {
     return (
@@ -45,13 +60,8 @@ const BlogPostControls = ({
           {publishLabel}
         </button>
         <RenderEditButton/>
-        <BlogPostDelete
-          handleDeletion={handleDeletion}
-          cancelText={admin.controls.cancel}
-          confirmText={admin.controls.confirm}
-          deleteText={admin.controls.delete}
-        />
-        {isFetching ? <LoadingSpinner/> : null}
+        <RenderDeleteButton/>
+        <RenderLoadingSpinner/>
       </div>
     )
   }
@@ -67,16 +77,11 @@ const BlogPostControls = ({
         </button>
         <button
           className="buttonCompact"
-          onClick={() => editPost(post.slug, post.published, latestPost, post.featured, setFetchStatus)}>
+          onClick={() => editPost(post.slug)}>
           {admin.controls.edit}
         </button>
-        <BlogPostDelete
-          handleDeletion={handleDeletion}
-          cancelText={admin.controls.cancel}
-          confirmText={admin.controls.confirm}
-          deleteText={admin.controls.delete}
-        />
-        {isFetching ? <LoadingSpinner/> : null}
+        <RenderDeleteButton/>
+        <RenderLoadingSpinner/>
       </div>
     )
   }

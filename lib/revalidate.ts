@@ -15,7 +15,16 @@ const revalidateChanges = (published: boolean, latestPost: boolean, featured: bo
 
   Promise.all([ post, blog, home ])
     .then(() => {
-      if (isDeleted) return
+      // Deleted Posts
+      if (isDeleted && published) {
+        Router.push('/blog')
+        return
+      }
+      else if (isDeleted && !published) {
+        Router.push('/blog/drafts')
+        return
+      }
+      // All other Posts
       Router.push(revalidatePath).then(()=> Router.reload())
     })
     .catch(error => {

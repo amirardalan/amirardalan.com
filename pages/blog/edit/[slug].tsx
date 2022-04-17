@@ -94,7 +94,7 @@ const Edit = ({ editPost, getLatestPost }) => {
     return Router.push(`/blog/${editSlug}`)
   }
   const handleDeletion = () => {
-    return deletePost(id, slug, published, redirect, latestPost, featured, setFetchStatus)
+    return deletePost(id, slug, published, latestPost, featured, setFetchStatus)
   }
 
   const { data: session } = useSession()

@@ -6,8 +6,8 @@ import prisma from '@/lib/prisma'
 // PUT /api/publish/:id
 export default async function handle(req: NextApiRequest, res: NextApiResponse) {
   const postId = req.query.id
-  const isFeatured = req.query.featured
-  const isPublished = (req.query.published === 'true') ? false : true
+  const isFeatured = req.query.featured === 'true' ? true : false
+  const isPublished = req.query.published === 'true' ? false : true
 
   if (isFeatured) {
     const post = await prisma.post.update({

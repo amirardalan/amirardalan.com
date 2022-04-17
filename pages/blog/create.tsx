@@ -153,7 +153,7 @@ const Draft = () => {
               </div>
             </div>
 
-            <div className="postControls">
+            <div className={isFetching ? "postControls disabled" : "postControls"}>
 
               <BlogPostControls
                 post={null}
