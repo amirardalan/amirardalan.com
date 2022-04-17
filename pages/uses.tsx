@@ -8,7 +8,6 @@ export const getStaticProps: GetStaticProps = async () => {
 }
 
 export default function UsesPage({ content }) {
-
   return (
     <Container title={content.meta.title} description={content.meta.description}>
       <main className="uses">
