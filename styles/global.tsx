@@ -18,7 +18,7 @@ const grayAccentLight = '#b7b7c9'
 const grayAccentDark = '#494a5c'
 const buttonDisabled = '#9e9eb6'
 const warning = '#e64358'
-const codeHighlight = '#393a4e'
+const codeHighlight = '#35374c'
 const avatar = '#281483'
 const sunrise = 'linear-gradient(to bottom,#676caf 0%,#4f4983 50%,#6e488b 100%)'
 const sunset = 'linear-gradient(to bottom,#1b0e24 0%,#2b174c 50%,#381d6e 100%)'
@@ -99,7 +99,8 @@ export function GlobalStyles () {
         'body, body[data-theme="light"]': {
           '--color-primary': primary,
           '--color-bg': light,
-          '--color-text': darkAccent,
+          '--color-text': grayAccentDark,
+          '--color-heading': dark,
           '--color-gray': grayDark,
           '--color-accent-gray': grayAccentLight,
           '--color-accent': lightAccent,
@@ -119,7 +120,8 @@ export function GlobalStyles () {
         'body[data-theme="dark"]': {
           '--color-primary': secondary,
           '--color-bg': dark,
-          '--color-text': lightAccent,
+          '--color-text': lightDarker,
+          '--color-heading': light,
           '--color-gray': grayLight,
           '--color-accent-gray': grayAccentDark,
           '--color-accent': darkAccent,
@@ -216,6 +218,7 @@ export function GlobalStyles () {
           padding: 0,
         },
         'h1, h2, h3': {
+          color: 'var(--color-heading)',
           fontFamily: 'var(--font-secondary)',
           fontWeight: 700
         },
@@ -291,7 +294,7 @@ export function GlobalStyles () {
           justifyContent: 'center',
           alignItems: 'center',
           fontSize: 15,
-          background: 'var(--color-text)',
+          background: 'var(--color-heading)',
           border: '1px solid transparent',
           borderRadius: 8,
           color: 'var(--color-bg)',

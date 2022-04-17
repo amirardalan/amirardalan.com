@@ -188,7 +188,7 @@ const BlogAdmin = React.memo(function BlogAdmin() {
           marginRight: '.25rem',
           padding: '.45rem 1rem',
           display: 'inline-block',
-          backgroundColor: 'var(--color-text)',
+          backgroundColor: 'var(--color-heading)',
           border: '1px solid var(--color-accent)',
           borderRadius: 8,
           color: 'var(--color-bg)',

@@ -20,8 +20,7 @@ export default function BlogMarkdown({ markdown }) {
     '.codeStyle, pre, code, code span': {
       fontFamily: 'var(--font-primary)',
       fontStyle: 'normal',
-      lineHeight: '1.5rem !important',
-      fontSize: 15,
+      fontSize: 16,
       border: 'none',
       boxShadow: 'none',
       textShadow: 'none',
@@ -95,7 +94,6 @@ export default function BlogMarkdown({ markdown }) {
     },
     'p code': {
       textShadow: 'none !important',
-      // fontSize: '17px !important',
     },
     'pre code': {
       fontFamily: 'var(--font-primary) !important',

@@ -109,9 +109,10 @@ const blogStyles = css({
   },
   '.postTeaser': {
     position: 'relative',
-    color: 'var(--color-gray)',
+    color: 'var(--color-text)',
     h2: {
       marginBottom: '.4rem',
+      color: 'var(--color-heading)',
       fontSize: 32,
       lineHeight: '2.2rem',
       textDecoration: 'none',

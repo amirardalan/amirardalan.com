@@ -27,7 +27,7 @@ export default function Logo() {
     fontWeight: 700,
     fontSize: 14,
     letterSpacing: .6,
-    color: 'var(--color-text)',
+    color: 'var(--color-heading)',
     lineHeight: '1rem',
     textTransform: 'uppercase'
   })

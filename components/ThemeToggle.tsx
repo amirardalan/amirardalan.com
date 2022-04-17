@@ -22,7 +22,7 @@ const ThemeToggle = ({ toggleTheme }) => {
     zIndex: 6,
     width: 42,
     height: 26,
-    background: 'var(--color-text)',
+    background: 'var(--color-heading)',
     position: 'relative',
     border: 'none',
     borderRadius: 20,

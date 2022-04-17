@@ -114,7 +114,7 @@ const Post = ({ blogPost, admin, post, feed }) => {
         },
       },
       'h3, h3 code': {
-        fontSize: 26,
+        fontSize: 28,
         lineHeight: '1.8rem',
         '@media(max-width: 768px)': {
           fontSize: 24,
@@ -159,7 +159,7 @@ const Post = ({ blogPost, admin, post, feed }) => {
       },
       'p, ul, li, a': {
         fontFamily: 'var(--font-tertiary)',
-        fontSize: 18,
+        fontSize: 19,
         lineHeight: '1.8rem',
       },
       'ul, li, a': { 
@@ -183,7 +183,7 @@ const Post = ({ blogPost, admin, post, feed }) => {
         border: '1px solid var(--color-accent-gray)',
         borderRadius: 5,
         fontFamily: 'var(--font-tertiary)',
-        fontSize: 18,
+        fontSize: 16,
         lineHeight: '1.8rem',
         color: 'var(--color-gray)',
         '&:before, &:after': {
@@ -205,6 +205,9 @@ const Post = ({ blogPost, admin, post, feed }) => {
           textTransform: 'uppercase',
           fontFamily: 'var(--font-primary)',
           fontSize: 13,
+        },
+        'code': {
+          fontSize: 14,
         },
         '&.tip': {
           '&:after': {
@@ -238,9 +241,12 @@ const Post = ({ blogPost, admin, post, feed }) => {
           borderLeft: '8px solid var(--color-gray)',
         },
       },
+      ul : {
+        marginBottom: '2rem'
+      },
       'ul li': {
         listStyle: 'outside',
-        marginLeft: '2rem',
+        margin: '0 0 .5rem 1rem',
         paddingLeft: '.5rem',
         '&.task-list-item': {
           fontFamily: 'var(--font-primary)',
