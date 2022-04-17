@@ -38,10 +38,11 @@ export default function About({ about, timeline }) {
         padding: '2rem',
         '.bioSubHeading': {
           margin: '1rem 0',
+          color: 'var(--color-light)',
           lineHeight: '1.2rem',
-          h2: {
-            color: 'var(--color-light)'
-          }
+        },
+        '.blurb': {
+          marginBottom: '1.5rem'
         },
         '.ctaButton': {
           background: 'var(--color-light)',
