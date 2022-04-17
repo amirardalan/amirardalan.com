@@ -206,6 +206,9 @@ const Post = ({ blogPost, admin, post, feed }) => {
           fontFamily: 'var(--font-primary)',
           fontSize: 13,
         },
+        a: {
+          fontSize: 16,
+        },
         'code': {
           fontSize: 14,
         },
