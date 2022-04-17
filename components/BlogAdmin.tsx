@@ -227,6 +227,51 @@ const BlogAdmin = React.memo(function BlogAdmin() {
             marginRight: '.25rem',
           }
         },
+        '.postControls': {
+          display: 'flex',
+          flexDirection: 'row',
+          margin: '2rem 0',
+          '&.disabled': {
+            '.buttonCompact': {
+              backgroundColor: 'var(--color-disabled)',
+              cursor: 'default',
+              pointerEvents: 'none',
+            }
+          },
+          '.controlsConfirm': {
+            marginLeft: '1rem',
+            textTransform: 'uppercase',
+            '.confirmLink': {
+              color: 'var(--color-text)',
+              fontFamily: 'var(--font-primary)',
+              fontSize: 12,
+              fontWeight: 'bold',
+              textTransform: 'uppercase',
+              cursor: 'pointer',
+              textDecoration: 'none',
+              '&:hover': {
+                textDecoration: 'none'
+              },
+              '&.close': {
+                '&:after': {
+                  content: '"•"',
+                  marginLeft: '.5rem',
+                }
+              },
+              '&.delete': {
+                color: 'var(--color-warning)',
+                marginLeft: '.5rem',
+              },
+            }
+          },
+        },
+        '.deleteControlsWrapper': {
+          display: 'flex',
+          flexDirection: 'column',
+          '.deleteControls': {
+            flexDirection: 'row',
+          }
+        },
         '.postDraft': {
           margin: '1rem 0 .5rem',
           padding: '1.8rem',
@@ -256,50 +301,6 @@ const BlogAdmin = React.memo(function BlogAdmin() {
             'p.teaser': {
               marginBottom: 0,
             }
-          }
-        },
-        '.postControls': {
-          display: 'flex',
-          flexDirection: 'row',
-          margin: '2rem 0',
-          '&.disabled': {
-            '.buttonCompact': {
-              backgroundColor: 'var(--color-disabled)',
-              cursor: 'default',
-              pointerEvents: 'none',
-            }
-          }
-        },
-        '.deleteControlsWrapper': {
-          display: 'flex',
-          flexDirection: 'column',
-          '.deleteControls': {
-            flexDirection: 'row',
-          }
-        },
-        '.controlsConfirm': {
-          marginLeft: '1rem',
-          textTransform: 'uppercase',
-          '.confirmLink': {
-            color: 'var(--color-text)',
-            fontSize: 12,
-            fontWeight: 'bold',
-            textTransform: 'uppercase',
-            cursor: 'pointer',
-            textDecoration: 'none',
-            '&:hover': {
-              textDecoration: 'none'
-            },
-            '&.close': {
-              '&:after': {
-                content: '"•"',
-                marginLeft: '.5rem',
-              }
-            },
-            '&.delete': {
-              color: 'var(--color-warning)',
-              marginLeft: '.5rem',
-            },
           }
         },
         '.noDrafts': {

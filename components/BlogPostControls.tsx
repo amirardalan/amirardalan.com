@@ -36,7 +36,6 @@ const BlogPostControls = ({
   // Create & Edit Page Controls
   if (isEditPage || isCreatePage) {
     return (
-      <>
       <div className={isFetching ? "postControls disabled" : "postControls"}>
         <button
           className={submitClass}
@@ -52,10 +51,8 @@ const BlogPostControls = ({
           confirmText={admin.controls.confirm}
           deleteText={admin.controls.delete}
         />
+        {isFetching ? <LoadingSpinner/> : null}
       </div>
-
-      {isFetching ? <LoadingSpinner/> : null}
-      </>
     )
   }
 
