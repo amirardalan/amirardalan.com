@@ -1,5 +1,4 @@
 import Router from 'next/router'
-import { SetStateAction } from 'react'
 
 const revalidateChanges = (published: boolean, latestPost: boolean, featured: boolean, setFetchStatus: any) => {
 
