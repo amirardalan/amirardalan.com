@@ -3,8 +3,6 @@ import React from 'react'
 import { Global, css } from '@emotion/react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
-import { useLoadingBar } from '@/utils/useLoadingBar'
-import LoadingSpinner from '@/components/LoadingSpinner'
 
 
 const BlogAdmin = React.memo(function BlogAdmin() {
@@ -12,7 +10,6 @@ const BlogAdmin = React.memo(function BlogAdmin() {
   const { data: session } = useSession()
   const router = useRouter()
   const URL = process.env.NEXT_PUBLIC_SITE_URL
-  const isLoading = useLoadingBar()
 
   // Session & Route Conditionals
   const path = router.pathname
@@ -99,7 +96,6 @@ const BlogAdmin = React.memo(function BlogAdmin() {
         </div>
 
         <div css={styleAdminPanelRight}>
-          {isLoading ? <LoadingSpinner/> : null}
           <Link href="/blog/create" passHref>
             <button className={`buttonCompact createBtn ${isCreatePage ? 'disabled' : null}`} aria-label="New Post">
               Create
@@ -262,8 +258,17 @@ const BlogAdmin = React.memo(function BlogAdmin() {
             }
           }
         },
-        '.formSubmit': {
-          marginTop: '2rem',
+        '.postControls': {
+          display: 'flex',
+          flexDirection: 'row',
+          margin: '2rem 0',
+          '&.disabled': {
+            '.buttonCompact': {
+              backgroundColor: 'var(--color-disabled)',
+              cursor: 'default',
+              pointerEvents: 'none',
+            }
+          }
         },
         '.deleteControlsWrapper': {
           display: 'flex',

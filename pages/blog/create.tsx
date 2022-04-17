@@ -8,10 +8,12 @@ import BlogStyles from '@/components/BlogStyles'
 import Dropdown from '@/components/Dropdown'
 import Checkbox from '@/components/Checkbox'
 import BlogPostControls from '@/components/BlogPostControls'
+import { useFetchStatus } from '@/utils/useFetchStatus'
 
 import { admin, breadcrumb } from '@/data/content'
 import { categories } from '@/data/categories'
 import LoadingTriangle from '@/components/LoadingTriangle'
+import LoadingSpinner from '@/components/LoadingSpinner'
 
 
 const Draft = () => {
@@ -27,10 +29,12 @@ const Draft = () => {
     setFeatured(!featured)
   }
 
+  const [fetchStatus, setFetchStatus] = useFetchStatus()
+  const isFetching = fetchStatus
+
   const handleDeletion = () => {
     return Router.push("/blog")
   }
-
   const handleCancel = (e: React.SyntheticEvent) => {
     e.preventDefault()
     return Router.push("/blog")
@@ -149,7 +153,7 @@ const Draft = () => {
               </div>
             </div>
 
-            <div className="formSubmit">
+            <div className="postControls">
 
               <BlogPostControls
                 post={null}
@@ -159,7 +163,11 @@ const Draft = () => {
                 submitClass="buttonCompact saveBtn"
                 handleCancel={handleCancel}
                 handleDeletion={handleDeletion}
+                setFetchStatus={setFetchStatus}
+                isFetching={isFetching}
               />
+
+              {isFetching ? <LoadingSpinner/> : null}
 
             </div>
 

@@ -2,6 +2,7 @@ import Router from 'next/router'
 import BlogPostDelete from '@/components/BlogPostDelete'
 import { publishPost, editPost } from '@/lib/blog'
 import { admin } from '@/data/content'
+import LoadingSpinner from '@/components/LoadingSpinner'
 
 
 const BlogPostControls = ({
@@ -12,6 +13,8 @@ const BlogPostControls = ({
   submitClass,
   handleCancel,
   handleDeletion,
+  setFetchStatus,
+  isFetching
 }) => {
 
   const isEditPage = Router.asPath.includes('/blog/edit/')
@@ -33,7 +36,8 @@ const BlogPostControls = ({
   // Create & Edit Page Controls
   if (isEditPage || isCreatePage) {
     return (
-      <div className="controlsPost">
+      <>
+      <div className={isFetching ? "postControls disabled" : "postControls"}>
         <button
           className={submitClass}
           disabled={requiredFields}
@@ -49,16 +53,19 @@ const BlogPostControls = ({
           deleteText={admin.controls.delete}
         />
       </div>
+
+      {isFetching ? <LoadingSpinner/> : null}
+      </>
     )
   }
 
   // Slug Page Controls
   else if (!isEditPage && !isCreatePage) {
     return (
-      <div className="controlsPost">
+      <div className={isFetching ? "postControls disabled" : "postControls"}>
         <button
           className="buttonCompact publishBtn"
-          onClick={() => publishPost(post.id, post.published, post.featured, latestPost)}>
+          onClick={() => publishPost(post.id, post.published, post.featured, latestPost, setFetchStatus)}>
           {publishLabel}
         </button>
         <button
@@ -72,6 +79,7 @@ const BlogPostControls = ({
           confirmText={admin.controls.confirm}
           deleteText={admin.controls.delete}
         />
+        {isFetching ? <LoadingSpinner/> : null}
       </div>
     )
   }

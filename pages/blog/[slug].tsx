@@ -2,6 +2,7 @@ import { useSession } from 'next-auth/react'
 import { css } from '@emotion/react'
 import { blogPost, admin } from '@/data/content'
 import { deletePost } from '@/lib/blog'
+import { useFetchStatus } from '@/utils/useFetchStatus'
 
 import Container from '@/components/Container'
 import BlogStyles from '@/components/BlogStyles'
@@ -296,11 +297,6 @@ const Post = ({ post, feed }) => {
     '.postImgWrapper': {
       paddingBottom: '2rem !important',
     },
-    '.controlsPost': {
-      display: 'flex',
-      flexDirection: 'row',
-      margin: '2rem 0',
-    },
   })
 
   const { data: session } = useSession()
@@ -323,8 +319,11 @@ const Post = ({ post, feed }) => {
   const postReadTime = calculateReadTime(post.content)
   const title = post.title
 
+  const [fetchStatus, setFetchStatus] = useFetchStatus()
+  const isFetching = fetchStatus
+
   const handleDeletion = () => {
-    return deletePost(post.id, post.slug, post.published, redirect, latestPost, post.featured)
+    return deletePost(post.id, post.slug, post.published, redirect, latestPost, post.featured, setFetchStatus)
   }
 
   // Set OG Image for blog posts. Use first image from post, otherwise dynamically generate one.
@@ -369,7 +368,7 @@ const Post = ({ post, feed }) => {
         <Markdown markdown={post} />
 
         { userHasValidSession && (
-          <div className="controlsPost">
+          <div className="postControls">
             <BlogPostControls
               post={post}
               latestPost={latestPost}
@@ -378,6 +377,8 @@ const Post = ({ post, feed }) => {
               submitClass="buttonCompact publishBtn"
               handleCancel={null}
               handleDeletion={handleDeletion}
+              setFetchStatus={setFetchStatus}
+              isFetching={isFetching}
             />
           </div>
         )}

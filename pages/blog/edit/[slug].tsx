@@ -6,6 +6,7 @@ import { useState } from 'react'
 import Router from 'next/router'
 import { deletePost } from '@/lib/blog'
 import revalidateChanges from '@/lib/revalidate'
+import { useFetchStatus } from '@/utils/useFetchStatus'
 
 import Container from '@/components/Container'
 import BlogStyles from '@/components/BlogStyles'
@@ -71,6 +72,9 @@ const Edit = ({ editPost, getLatestPost }) => {
     setShowEdited(!showEdited)
   }
 
+  const [fetchStatus, setFetchStatus] = useFetchStatus()
+  const isFetching = fetchStatus
+
   const submitData = async (e: React.SyntheticEvent) => {
     e.preventDefault()
     try {
@@ -79,19 +83,18 @@ const Edit = ({ editPost, getLatestPost }) => {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
-      })
-      revalidateChanges(published, latestPost, featured)
+      }).then(()=> revalidateChanges(published, latestPost, featured, setFetchStatus))
     } catch (error) {
       console.error(error)
     }
   }
 
-  const handleCancel = () => {
+  const handleCancel = (e: React.SyntheticEvent) => {
+    e.preventDefault()
     return Router.push(`/blog/${editSlug}`)
   }
-
   const handleDeletion = () => {
-    return deletePost(id, slug, published, redirect, latestPost, featured)
+    return deletePost(id, slug, published, redirect, latestPost, featured, setFetchStatus)
   }
 
   const { data: session } = useSession()
@@ -172,7 +175,7 @@ const Edit = ({ editPost, getLatestPost }) => {
               </div>
             </div>
 
-            <div className="formSubmit">
+            <div className="postControls">
 
               <BlogPostControls
                 post={id}
@@ -182,6 +185,8 @@ const Edit = ({ editPost, getLatestPost }) => {
                 submitClass="buttonCompact updateBtn"
                 handleCancel={handleCancel}
                 handleDeletion={handleDeletion}
+                setFetchStatus={setFetchStatus}
+                isFetching={isFetching}
               />
 
             </div>
@@ -196,9 +201,7 @@ const Edit = ({ editPost, getLatestPost }) => {
   return (
     <Container title={admin.edit.meta.title} {...isPublished ? 'Post |' : 'Draft: '} {...editPageTitle} robots="noindex">
       <BlogStyles>
-        <div>
-          {edit}
-        </div>
+        <div>{edit}</div>
       </BlogStyles>
     </Container>
   )
