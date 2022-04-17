@@ -78,7 +78,7 @@ const BlogPostControls = ({
         </button>
         <button
           className="buttonCompact"
-          onClick={() => editPost(post.slug)}>
+          onClick={() => editPost(post.slug, setFetchStatus)}>
           {admin.controls.edit}
         </button>
         <RenderDeleteButton/>

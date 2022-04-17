@@ -17,7 +17,8 @@ export async function publishPost(
 }
 
 // Open Edit Page
-export async function editPost(slug: string): Promise<void> {
+export async function editPost(slug: string, setFetchStatus: (active: boolean) => void): Promise<void> {
+  setFetchStatus(true)
   await fetch(`/blog/edit/${slug}`, { method: 'PUT' }).then(()=> {
     Router.push(`/blog/edit/${slug}`)
   })
