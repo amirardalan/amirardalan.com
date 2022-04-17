@@ -84,7 +84,7 @@ const Drafts  = ({ drafts }) => {
       return (
         <>
           <Breadcrumbs />
-          <div className="noDrafts">
+          <div className="noDrafts draftNotification">
             {admin.drafts.empty}
             <Link href="/blog/create">
               {admin.drafts.empty2}

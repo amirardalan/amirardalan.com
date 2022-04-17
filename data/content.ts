@@ -678,8 +678,8 @@ export const admin = {
       title: 'Drafts – Amir Ardalan'
     },
     notice: `⚠️ Unpublished Draft`,
-    empty: `⚠️ There doesn't seem to be any drafts yet! Try `,
-    empty2: 'writing',
-    empty3: ' one.',
+    empty: `No drafts. Nice and tidy! Perhaps `,
+    empty2: 'try writing',
+    empty3: ' one?',
   }
 }

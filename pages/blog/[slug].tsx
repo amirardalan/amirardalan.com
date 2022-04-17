@@ -300,9 +300,6 @@ const Post = ({ post, feed }) => {
       display: 'flex',
       flexDirection: 'row',
       margin: '2rem 0',
-      'button, a': {
-        marginRight: '.25rem',
-      },
     },
   })
 

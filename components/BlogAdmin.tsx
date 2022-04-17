@@ -140,9 +140,9 @@ const BlogAdmin = React.memo(function BlogAdmin() {
           }
         },
         '.draftNotification': {
-          padding: '1rem 1.5rem',
+          padding: '1rem',
           background: 'var(--color-accent)',
-          fontFamily: 'var(--font-secondary)',
+          fontSize: 13,
         },
         '.blog.admin': {
           width: '100%',
@@ -187,6 +187,7 @@ const BlogAdmin = React.memo(function BlogAdmin() {
         },
         '.buttonCompact': {
           minWidth: 80,
+          marginRight: '.25rem',
           padding: '.45rem 1rem',
           display: 'inline-block',
           backgroundColor: 'var(--color-text)',
@@ -260,28 +261,37 @@ const BlogAdmin = React.memo(function BlogAdmin() {
         },
         '.formSubmit': {
           marginTop: '2rem',
-          display: 'flex',
-          flexDirection: 'row',
         },
-        '.controlsConfirm, .confirmSelect': {
+        '.deleteControlsWrapper': {
           display: 'flex',
-          alignItems: 'center',
-          marginLeft: '.5rem',
+          flexDirection: 'column',
+          '.deleteControls': {
+            flexDirection: 'row',
+          }
+        },
+        '.controlsConfirm': {
+          marginLeft: '1rem',
           textTransform: 'uppercase',
           '.confirmLink': {
-            marginRight: '.5rem',
             color: 'var(--color-text)',
             fontSize: 12,
             fontWeight: 'bold',
             textTransform: 'uppercase',
             cursor: 'pointer',
+            textDecoration: 'none',
+            '&:hover': {
+              textDecoration: 'none'
+            },
+            '&.close': {
+              '&:after': {
+                content: '"•"',
+                marginLeft: '.5rem',
+              }
+            },
             '&.delete': {
               color: 'var(--color-warning)',
               marginLeft: '.5rem',
             },
-            '&.delete:hover, &.close:hover': {
-              textDecoration: 'underline',
-            }
           }
         },
         '.noDrafts': {
