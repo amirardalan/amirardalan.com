@@ -1,7 +1,6 @@
 import Router from 'next/router'
 import BlogPostDelete from '@/components/BlogPostDelete'
 import { publishPost, editPost } from '@/lib/blog'
-import { useFetchStatus } from '@/utils/useFetchStatus'
 import { admin } from '@/data/content'
 
 
@@ -12,10 +11,9 @@ const BlogPostControls = ({
   requiredFields,
   submitClass,
   handleCancel,
-  handleDeletion
+  handleDeletion,
 }) => {
 
-  const isLoading = useFetchStatus()
   const isEditPage = Router.asPath.includes('/blog/edit/')
   const isCreatePage = Router.asPath === '/blog/create'
 

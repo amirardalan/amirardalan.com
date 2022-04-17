@@ -18,6 +18,8 @@ const BlogAdmin = React.memo(function BlogAdmin() {
   const path = router.pathname
   const isLoggedIn = session && session.user.email == process.env.NEXT_PUBLIC_USER_EMAIL
   const isAdminPage = ['/blog/create','/blog/edit/[id]','/blog/drafts'].includes(path)
+  const isCreatePage = router.asPath === '/blog/create'
+  const isDraftsPage = router.asPath === '/blog/drafts'
   const isActive: (pathname: string) => boolean = (pathname) => path === pathname
 
   const styleAnimationWrapper = css ({
@@ -99,12 +101,12 @@ const BlogAdmin = React.memo(function BlogAdmin() {
         <div css={styleAdminPanelRight}>
           {isLoading ? <LoadingSpinner/> : null}
           <Link href="/blog/create" passHref>
-            <button className="buttonCompact createBtn" aria-label="New Post">
+            <button className={`buttonCompact createBtn ${isCreatePage ? 'disabled' : null}`} aria-label="New Post">
               Create
             </button>
           </Link>
           <Link href="/blog/drafts" passHref aria-label="Drafts">
-            <button className="buttonCompact draftsBtn" data-active={isActive('/drafts')}>
+            <button className={`buttonCompact draftsBtn ${isDraftsPage ? 'disabled' : null}`} data-active={isActive('/drafts')}>
               Drafts
             </button>
           </Link>
@@ -202,6 +204,7 @@ const BlogAdmin = React.memo(function BlogAdmin() {
           textDecoration: 'none',
           cursor: 'pointer',
           '&:disabled, &.disabled': {
+            pointerEvents: 'none',
             backgroundColor: 'var(--color-disabled)',
             cursor: 'default',
           },
