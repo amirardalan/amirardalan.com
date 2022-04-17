@@ -23,7 +23,7 @@ export default function DonateEth() {
       border: 'none',
       color: 'var(--color-bg)',
       '&:focus': {
-        boxShadow: '0 0 0 2px var(--color-accent-neutral)',
+        boxShadow: '0 0 0 2px var(--color-accent-gray)',
         '&:focus:not(:focus-visible)': { boxShadow: 'none' },
       }
     },
@@ -104,7 +104,7 @@ export default function DonateEth() {
       animation: addressCopied ? 'tooltipUp 5s forwards' : null,
       '&:before': {
         bottom: -6,
-        borderTop: '6px solid var(--color-accent-neutral)',
+        borderTop: '6px solid var(--color-accent-gray)',
       }
     }
   })

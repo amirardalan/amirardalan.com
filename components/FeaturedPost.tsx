@@ -30,7 +30,7 @@ export default function featuredPost({ home, featuredPost, latestPost }) {
       marginTop: '.5rem',
       lineHeight: '1rem',
       fontSize: 11,
-      color: 'var(--color-neutral)',
+      color: 'var(--color-gray)',
       '@media(max-width: 480px)': {
         display: 'none'
       }

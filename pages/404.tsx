@@ -47,14 +47,14 @@ const styleErrorContent = css({
     maxWidth: 400,
     paddingTop: '2rem',
     marginBottom: '3rem',
-    borderTop: '1px solid var(--color-neutral)',
+    borderTop: '1px solid var(--color-gray)',
     textAlign: 'center',
   },
   '.quote': {
     fontSize: 22,
     fontFamily: 'var(--font-tertiary)',
     fontStyle: 'italic',
-    color: 'var(--color-neutral)',
+    color: 'var(--color-gray)',
   },
   '.author': {
     marginTop: '.5rem',

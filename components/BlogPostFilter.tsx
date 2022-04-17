@@ -34,7 +34,7 @@ const BlogPostFilter = ({ blog, feed }) => {
   const styleSearchPosts = css({
     display: 'flex',
     position: 'relative',
-    caretColor: 'var(--color-neutral)',
+    caretColor: 'var(--color-gray)',
     input: {
       fontSize: 15,
       marginBottom: 0,

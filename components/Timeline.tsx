@@ -54,7 +54,7 @@ export default function Timeline({ timeline }) {
       '&:nth-of-type(even), &:nth-of-type(odd)': {
         '.event': {
           maxWidth: 400,
-          boxShadow: '-2px 2px 0 var(--color-accent-neutral)',
+          boxShadow: '-2px 2px 0 var(--color-accent-gray)',
           h3: {
             marginBottom: '.5rem',
             fontFamily: 'var(--font-secondary)',
@@ -72,7 +72,7 @@ export default function Timeline({ timeline }) {
         zIndex: 2,
         position: 'relative',
         justifySelf: 'flex-end',
-        borderRight: '4px solid var(--color-accent-neutral)',
+        borderRight: '4px solid var(--color-accent-gray)',
         '.scrollHighlight': {
           position: 'absolute',
           top: 0,
@@ -149,7 +149,7 @@ export default function Timeline({ timeline }) {
             top: 12,
             left: -23,
             content: '""',
-            borderLeft: '20px solid var(--color-accent-neutral)',
+            borderLeft: '20px solid var(--color-accent-gray)',
             borderRight: '12px solid transparent',
             borderBottom: '12px solid transparent',
             transform: 'rotateY(0deg) rotate(90deg)',
@@ -189,7 +189,7 @@ export default function Timeline({ timeline }) {
         background: 'var(--color-accent)',
         fontSize: 15,
         span: {
-          color: 'var(--color-neutral)',
+          color: 'var(--color-gray)',
         },
         '&:before': {
           content: '""',

@@ -71,7 +71,7 @@ export default function About({ about, timeline }) {
         width: '100%',
       },
       'ul li': {
-        color: 'var(--color-neutral)',
+        color: 'var(--color-gray)',
         fontSize: 14,
         strong: {
           color: 'var(--color-text)',

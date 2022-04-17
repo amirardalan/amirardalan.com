@@ -34,7 +34,7 @@ export default function Logo() {
   
   const styleTitleSub = css({
     position: 'relative',
-    color: 'var(--color-neutral)',
+    color: 'var(--color-gray)',
     fontFamily: 'var(--font-primary)',
     fontSize: 8,
     fontWeight: 'normal',

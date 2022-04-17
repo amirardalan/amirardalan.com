@@ -11,7 +11,7 @@ const styleUsesMarkdown = ({
     margin: '2rem 0'
   },
   'ul li, a': {
-    color: 'var(--color-neutral)',
+    color: 'var(--color-gray)',
     fontSize: 12,
   },
   'h3, h4, h5, h6': {

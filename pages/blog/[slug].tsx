@@ -107,7 +107,7 @@ const Post = ({ blogPost, admin, post, feed }) => {
         fontFamily: 'var(--font-tertiary)',
         fontSize: 22,
         lineHeight: '1.5rem',
-        color: 'var(--color-neutral)',
+        color: 'var(--color-gray)',
         '@media(max-width: 768px)': {
           marginBottom: '2rem',
           fontSize: 19,
@@ -141,7 +141,7 @@ const Post = ({ blogPost, admin, post, feed }) => {
           '&:hover': {
             '&::before': {
               content: '"#"',
-              color: 'var(--color-accent-neutral)',
+              color: 'var(--color-accent-gray)',
               position: 'absolute',
               textAlign: 'center',
               top: 0,
@@ -180,12 +180,12 @@ const Post = ({ blogPost, admin, post, feed }) => {
         position: 'relative',
         marginBottom: '2.5rem',
         padding: '2.8rem 1.5rem 1.2rem 1.5rem',
-        border: '1px solid var(--color-accent-neutral)',
+        border: '1px solid var(--color-accent-gray)',
         borderRadius: 5,
         fontFamily: 'var(--font-tertiary)',
         fontSize: 18,
         lineHeight: '1.8rem',
-        color: 'var(--color-neutral)',
+        color: 'var(--color-gray)',
         '&:before, &:after': {
           position: 'absolute',
         },
@@ -227,7 +227,7 @@ const Post = ({ blogPost, admin, post, feed }) => {
         margin: '2.5rem -1.5rem',
         padding: '0 2rem',
         borderLeft: '8px solid var(--color-primary)',
-        color: 'var(--color-neutral)',
+        color: 'var(--color-gray)',
         'p, a': {
           marginBottom: 0,
           fontSize: 20,
@@ -235,7 +235,7 @@ const Post = ({ blogPost, admin, post, feed }) => {
         },
         '& blockquote': {
           marginLeft: '1rem',
-          borderLeft: '8px solid var(--color-neutral)',
+          borderLeft: '8px solid var(--color-gray)',
         },
       },
       'ul li': {

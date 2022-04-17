@@ -56,7 +56,7 @@ export const ContactButton = ({ content }) => {
       animation: emailCopied ? 'tooltipDown 5s' : null,
       '&:before': {
         top: -6,
-        borderBottom: '6px solid var(--color-accent-neutral)',
+        borderBottom: '6px solid var(--color-accent-gray)',
       }
     }
   })

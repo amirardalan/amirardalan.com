@@ -35,7 +35,7 @@ export default function Navigation() {
     a: {
       content: '""',
       display: 'inline',
-      borderBottom: '1px solid var(--color-accent-neutral)',
+      borderBottom: '1px solid var(--color-accent-gray)',
       width: '100%',
       height: '100%',
       '&.spotifyNav': {
@@ -153,7 +153,7 @@ export default function Navigation() {
     a: {
       display: 'block',
       marginBottom: '.5rem',
-      color: 'var(--color-neutral)',
+      color: 'var(--color-gray)',
       animation: 'slideUp .4s ease',
     },
     '@media (max-width: 768px) and (max-height: 600px)': {

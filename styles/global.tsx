@@ -6,7 +6,7 @@ const fontTertiary = '"PT Serif", "Times New Roman", Times, serif'
 
 const light = '#e4e9f8'
 const lightAccent = '#d8dff0'
-const lighter = '#d5d9ee'
+const lightDarker = '#d5d9ee'
 const dark = '#262738'
 const darkAccent = '#2f3044'
 const darker = '#191a22'
@@ -100,12 +100,12 @@ export function GlobalStyles () {
           '--color-primary': primary,
           '--color-bg': light,
           '--color-text': darkAccent,
-          '--color-neutral': grayDark,
-          '--color-accent-neutral': grayAccentLight,
+          '--color-gray': grayDark,
+          '--color-accent-gray': grayAccentLight,
           '--color-accent': lightAccent,
-          '--color-accent-darker': lighter,
+          '--color-accent-darker': lightDarker,
           '--color-gradient': sunset,
-          '--page-bg': lighter,
+          '--page-bg': lightDarker,
           '--code-bg': darkAccent,
           '--logo': 'url(/logo/logo-light.svg)',
           '--logo-footer': 'url(/logo/logo-footer-light.svg)',
@@ -120,8 +120,8 @@ export function GlobalStyles () {
           '--color-primary': secondary,
           '--color-bg': dark,
           '--color-text': lightAccent,
-          '--color-neutral': grayLight,
-          '--color-accent-neutral': grayAccentDark,
+          '--color-gray': grayLight,
+          '--color-accent-gray': grayAccentDark,
           '--color-accent': darkAccent,
           '--color-accent-darker': darker,
           '--color-gradient': sunrise,
@@ -180,7 +180,7 @@ export function GlobalStyles () {
           display: 'block',
           height: 1,
           border: 0,  
-          borderTop: '1px solid var(--color-accent-neutral)',
+          borderTop: '1px solid var(--color-accent-gray)',
           margin: '4rem 0 1.5em 0',
           padding: 0,
         },
@@ -326,9 +326,9 @@ export function GlobalStyles () {
             cursor: 'pointer',
             background: 'transparent',
             color: 'var(--color-text)',
-            border: '1px solid var(--color-accent-neutral)',
+            border: '1px solid var(--color-accent-gray)',
             '&:hover': {
-              border: '1px solid var(--color-accent-neutral)',
+              border: '1px solid var(--color-accent-gray)',
               background: 'transparent',
               color: 'var(--color-text)',
             },
@@ -375,7 +375,7 @@ export function GlobalStyles () {
           color: 'var(--color-text)',
           fontSize: 11,
           textAlign: 'center',
-          backgroundColor: 'var(--color-accent-neutral)',
+          backgroundColor: 'var(--color-accent-gray)',
           '&:before': {
             content: '""',
             position: 'absolute',
@@ -397,7 +397,7 @@ export function GlobalStyles () {
           justifyContent: 'center',
         },
         '::selection': {
-          background: 'var(--color-accent-neutral)',
+          background: 'var(--color-accent-gray)',
           color: 'var(--color-text)',
         },
         '.animationWrapper':{

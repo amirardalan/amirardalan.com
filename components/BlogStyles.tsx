@@ -97,7 +97,7 @@ const blogStyles = css({
   '.postDetails': {
     display: 'flex',
     flexDirection: 'row',
-    color: 'var(--color-neutral)',
+    color: 'var(--color-gray)',
     fontSize: 13,
     lineHeight: '1.2rem',
     'time': {
@@ -109,7 +109,7 @@ const blogStyles = css({
   },
   '.postTeaser': {
     position: 'relative',
-    color: 'var(--color-neutral)',
+    color: 'var(--color-gray)',
     h2: {
       marginBottom: '.4rem',
       fontSize: 32,
@@ -152,14 +152,14 @@ const blogStyles = css({
     thead: {
       fontFamily: 'var(--font-secondary)',
       'tr th': {
-        border: '1px solid var(--color-accent-neutral)',
+        border: '1px solid var(--color-accent-gray)',
         backgroundColor: 'var(--color-accent)',
         padding: '.5rem',
       }
     },
     tbody: {
       'tr td': {
-        border: '1px solid var(--color-accent-neutral)',
+        border: '1px solid var(--color-accent-gray)',
         padding: '.5rem',
       }
     }
@@ -173,11 +173,11 @@ const blogStyles = css({
     backgroundColor: 'var(--color-accent)',
     border: '2px solid var(--color-accent)',
     borderRadius: '0.25rem',
-    WebkitTextFillColor: 'var(--color-neutral)',
+    WebkitTextFillColor: 'var(--color-gray)',
     fontSize: 16,
     '&:disabled': {
       backgroundColor: 'var(--color-bg)',
-      WebkitTextFillColor: 'var(--color-accent-neutral)',
+      WebkitTextFillColor: 'var(--color-accent-gray)',
     },
     '@media (max-width: 890px)': {
       width: '100%',

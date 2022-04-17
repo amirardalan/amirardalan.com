@@ -28,7 +28,7 @@ const BlogAdmin = React.memo(function BlogAdmin() {
     display: 'flex',
     padding: '.5rem 4rem',
     backgroundColor: 'var(--color-accent)',
-    borderBottom: '1px solid var(--color-accent-neutral)',
+    borderBottom: '1px solid var(--color-accent-gray)',
     justifyContent: 'space-between',
     animation: 'adminPanelSlideDown .2s',
     '@media (max-width: 1024px)': {
@@ -60,7 +60,7 @@ const BlogAdmin = React.memo(function BlogAdmin() {
     span: {
       fontSize: 11,
       alignSelf: 'center',
-      color: 'var(--color-neutral)',
+      color: 'var(--color-gray)',
       a: {
         marginLeft: '.5rem',
         textTransform: 'uppercase',
@@ -119,14 +119,14 @@ const BlogAdmin = React.memo(function BlogAdmin() {
           display: 'flex',
           flexDirection: 'row',
           alignItems: 'center',
-          color: 'var(--color-neutral)',
+          color: 'var(--color-gray)',
           fontSize: 13,
           a: {
             textDecoration: 'none',
             '&::after': {
               content: '"/"',
               margin: '0 .5rem',
-              color: 'var(--color-neutral)',
+              color: 'var(--color-gray)',
             }
           },
           '@media (max-width: 480px)': {
@@ -285,7 +285,7 @@ const BlogAdmin = React.memo(function BlogAdmin() {
             '.label': {
               marginBottom: '.2rem',
               alignSelf: 'right',
-              color: 'var(--color-neutral)',
+              color: 'var(--color-gray)',
               fontSize: 12,
               fontStyle: 'italic',
             },

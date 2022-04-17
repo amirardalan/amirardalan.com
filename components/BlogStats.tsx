@@ -31,7 +31,7 @@ export default function BlogStats({ feed, activeCategories }) {
       },
       '.text': {
         fontSize: 12,
-        color: 'var(--color-neutral)'
+        color: 'var(--color-gray)'
       }
     }
   })

@@ -55,7 +55,7 @@ export default function Spotify({ spotify }) {
           alignSelf: 'center',
           fontSize: 30,
           WebkitMarqueeIncrement: '0vw',
-          color: 'var(--color-accent-neutral)',
+          color: 'var(--color-accent-gray)',
           '@media(max-width: 480px)': {
             fontSize: 18
           }
@@ -84,7 +84,7 @@ export default function Spotify({ spotify }) {
           fontFamily: 'var(--font-primary)',
           fontWeight: 'normal',
           fontSize: 14,
-          color: 'var(--color-neutral)',
+          color: 'var(--color-gray)',
           '@media(max-width: 768px)': {
             fontSize: 12
           },
