@@ -4,7 +4,7 @@ import Container from '@/components/Container'
 import NowPlaying from '@/components/SpotifyPlayer'
 import TopTracks from '@/components/SpotifyTopTracks'
 import TopArtists from '@/components/SpotifyTopArtists'
-import Profile from '@/components/Profile'
+import SpotifyProfile from '@/components/SpotifyProfile'
 
 
 export default function Spotify() {
@@ -142,7 +142,7 @@ export default function Spotify() {
             </div>
             <div className="module profile">
               <h3>{spotify.headings.profile}</h3>
-              <Profile />
+              <SpotifyProfile />
             </div>
             <div className="module tracks">
               <h3>{spotify.headings.toptracks}</h3>
