@@ -5,7 +5,7 @@ import { useInView } from 'react-intersection-observer'
 import { Key } from 'react'
 
 
-export default function Timeline({ content }) {
+export default function Timeline({ timeline }) {
 
   const { ref, inView } = useInView({
     threshold: 1,
@@ -226,15 +226,15 @@ export default function Timeline({ content }) {
   return (
     <section>
       <h2 css={styleTimelineHeading} className='pageHeading center' id='timeline'>
-        {content.meta.title}
+        {timeline.meta.title}
       </h2>
       <div css={styleTimelineWrapper}>
         <div css={styleTimeline}>
-          {generateTimeline(content.items)}
+          {generateTimeline(timeline.items)}
         </div>
         <div ref={ref} className={inView ? 'readMoreLink active' : 'readMoreLink'}>
-          <Link href={content.fullStory.link}>
-            {content.fullStory.text}
+          <Link href={timeline.fullStory.link}>
+            {timeline.fullStory.text}
           </Link>
         </div>
       </div>

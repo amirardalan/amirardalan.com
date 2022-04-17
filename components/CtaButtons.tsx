@@ -1,9 +1,8 @@
 import { useState, Key } from 'react'
 import { css } from '@emotion/react'
-import { about } from '@/data/content'
 
 
-export const generateCtaButtons = (items: Array<any>) => {
+export const CtaButtons = ({ items }) => {
 
   return items.map((item, i: Key) => {
     return (
@@ -21,7 +20,7 @@ export const generateCtaButtons = (items: Array<any>) => {
   })
 }
 
-export const ContactButton = () => {
+export const ContactButton = ({ content }) => {
 
   const [showEmail, setShowEmail] = useState(false)
   const showEmailOnclick = () => {
@@ -77,11 +76,11 @@ export const ContactButton = () => {
       >
         {showEmail
           ? <address css={styleAddress}>{process.env.NEXT_PUBLIC_USER_EMAIL}</address>
-          : about.contact.email.title}
+          : content.contact.email.title}
       </button>
       <div css={styleTooltipContact}>
         <div className="tooltip">
-          {about.contact.copiedToClipboard}
+          {content.contact.copiedToClipboard}
         </div>
       </div>
     </span>

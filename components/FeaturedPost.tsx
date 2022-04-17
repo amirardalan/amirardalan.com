@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { css } from '@emotion/react'
 
 
-export default function featuredPost({ content, featuredPost, latestPost }) {
+export default function featuredPost({ home, featuredPost, latestPost }) {
 
   const styleFeaturedPost = css({
     h2: {
@@ -38,7 +38,7 @@ export default function featuredPost({ content, featuredPost, latestPost }) {
   })
 
   const renderFeaturedPost = !featuredPost ? latestPost : featuredPost
-  const componentTitle = featuredPost ? content.featured.title : content.latest.title
+  const componentTitle = featuredPost ? home.featured.title : home.latest.title
   
   if (latestPost || featuredPost) {
     return (

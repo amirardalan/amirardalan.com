@@ -1,18 +1,18 @@
 import { css } from '@emotion/react'
 import Container from '@/components/Container'
 import Avatar from '@/components/Avatar'
-import { generateCtaButtons, ContactButton } from '@/components/CtaButtons'
+import { CtaButtons, ContactButton } from '@/components/CtaButtons'
 import SocialIcons from '@/components/SocialIcons'
 import Timeline from '@/components/Timeline'
-import { about, timeline } from '@/data/content'
+import { aboutContent, timelineContent } from '@/data/content'
 
 import { GetStaticProps } from 'next'
 export const getStaticProps: GetStaticProps = async () => {
-  return { props: { content: about, timeline } }
+  return { props: { about: aboutContent, timeline: timelineContent } }
 }
 
 
-export default function About({ content }) {
+export default function About({ about, timeline }) {
   const styleGridWrapper = css({
     display: 'grid',
     gridTemplateColumns: 'repeat(3, 1fr)',
@@ -130,62 +130,62 @@ export default function About({ content }) {
   }
 
   return (
-    <Container title={content.meta.title} description={content.meta.description}>
+    <Container title={about.meta.title} description={about.meta.description}>
       <main className='about'>
-      <h1 className='pageHeading'>{content.heading}</h1>
+      <h1 className='pageHeading'>{about.heading}</h1>
           <div css={styleGridWrapper}>
             <div className='grid'>
               <ul css={styleBioItems}>
                 <li>
                   <Avatar height={125} width={125} />
                 </li>
-                <li aria-label={content.bio.subheading} className="bioSubHeading">
-                  <h2>{content.bio.subheading}</h2>
+                <li aria-label={about.bio.subheading} className="bioSubHeading">
+                  <h2>{about.bio.subheading}</h2>
                 </li>
                 <li>
-                  <em className='blurb'>{content.bio.content}</em>
+                  <em className='blurb'>{about.bio.content}</em>
                 </li>
                 <li>
-                  {generateCtaButtons(content.bio.items)}
+                  <CtaButtons items={about.bio.items} />
                 </li>
               </ul>
             </div>
             <div className='grid'>
               <ul>
                 <li>
-                  <h3 aria-label={content.skills.title}>{content.skills.title}</h3>
+                  <h3 aria-label={about.skills.title}>{about.skills.title}</h3>
                 </li>
-                {GenerateListItems(content.skills.items)}
+                {GenerateListItems(about.skills.items)}
               </ul>
               <ul>
                 <li>
                   <h3 aria-hidden="true">&nbsp;</h3>
                 </li>
-                {GenerateListItems(content.stack.items)}
+                {GenerateListItems(about.stack.items)}
               </ul>
             </div>
             <div className='grid'>
               <ul>
                 <li>
-                  <h3 aria-label={content.experience.title}>
-                    {content.experience.title}
+                  <h3 aria-label={about.experience.title}>
+                    {about.experience.title}
                   </h3>
                 </li>
-                {GenerateListItems(content.experience.items)}
+                {GenerateListItems(about.experience.items)}
               </ul>
             </div>
             <div className='grid'>
               <ul>
                 <li>
-                  <h3 aria-label={content.availability.title}>
-                    {content.availability.title}
+                  <h3 aria-label={about.availability.title}>
+                    {about.availability.title}
                   </h3>
                 </li>
                 <li className="availability">
-                  {content.availability.text}
+                  {about.availability.text}
                 </li>
                 <li>
-                  {content.availability.location}
+                  {about.availability.location}
                 </li>
               </ul>
             </div>
@@ -193,10 +193,10 @@ export default function About({ content }) {
               <div css={styleSocialIconsWrapper}>
                 <ul>
                   <li>
-                    <h3>{content.social.title}</h3>
+                    <h3>{about.social.title}</h3>
                   </li>
                   <li css={styleSocialIcons}>
-                    <SocialIcons />
+                    <SocialIcons about={about} />
                   </li>
                 </ul>
               </div>
@@ -204,15 +204,15 @@ export default function About({ content }) {
             <div className='grid'>
               <ul>
                 <li>
-                  <h3 aria-label={content.contact.title}>{content.contact.title}</h3>
+                  <h3 aria-label={about.contact.title}>{about.contact.title}</h3>
                 </li>
                 <li>
-                  <ContactButton />
+                  <ContactButton content={about} />
                 </li>
               </ul>
             </div>
           </div>
-        <Timeline content={timeline} />
+        <Timeline timeline={timeline} />
       </main>
     </Container>
   );

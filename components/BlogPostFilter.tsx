@@ -5,11 +5,10 @@ import Image from 'next/image'
 import BlogStats from '@/components/BlogStats'
 import BlogPost from '@/components/BlogPost'
 import CloseButton from '@/components/CloseButton'
-import { blog } from '@/data/content'
 import compareID from '@/utils/compareID'
 
 
-const BlogPostFilter = ({ feed }) => {
+const BlogPostFilter = ({ blog, feed }) => {
 
   const styleBlogCategoryNav = css({
     overflow: 'scroll',

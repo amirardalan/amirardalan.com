@@ -1,9 +1,9 @@
 import { css } from '@emotion/react'
-import { home } from '@/data/content'
+import { homeContent } from '@/data/content'
 import Container from '@/components/Container'
 import TypingAnimation from '@/components/TypingAnimation'
 import FeaturedPost from '@/components/FeaturedPost'
-import { generateCtaButtons } from '@/components/CtaButtons'
+import { CtaButtons } from '@/components/CtaButtons'
 import CanvasLoader from '@/components/CanvasLoader'
 
 import { GetStaticProps } from 'next'
@@ -22,13 +22,13 @@ export const getStaticProps: GetStaticProps = async () => {
         select: { title: true, teaser: true, slug: true }
       })
     ])
-    return { props: { content: home, featuredPost: featuredPost, latestPost: latestPost } }
+    return { props: { home: homeContent, featuredPost: featuredPost, latestPost: latestPost } }
   }
-  catch { return { props: { content: home } } }
+  catch { return { props: { home: homeContent } } }
 }
 
 
-export default function Home({ content, featuredPost, latestPost }) {
+export default function Home({ home, featuredPost, latestPost }) {
 
   const styleMain = css({
     display: 'flex',
@@ -89,21 +89,21 @@ export default function Home({ content, featuredPost, latestPost }) {
   })
 
   return (
-    <Container title={content.meta.title}>
+    <Container title={home.meta.title}>
       <main css={styleMain} className="home">
         <div css={styleMainLeft} className="animationWrapper">
           <div css={styleContent}>
             <div className="titleWrapper">
               <span className="typed" aria-hidden="true">
-                <TypingAnimation data={content.typed} />
+                <TypingAnimation data={home.typed} />
               </span>
-              <h1>{content.title}</h1>
+              <h1>{home.title}</h1>
             </div>
             <div css={styleCtaButtons}>
-              {generateCtaButtons(content.items)}
+              <CtaButtons items={home.items} />
             </div>
             <FeaturedPost
-              content={content}
+              home={home}
               featuredPost={featuredPost}
               latestPost={latestPost}
             />

@@ -1,6 +1,6 @@
 import { useSession } from 'next-auth/react'
 import { css } from '@emotion/react'
-import { blogPost, admin } from '@/data/content'
+import { blogPostContent, adminContent } from '@/data/content'
 import { deletePost } from '@/lib/blog'
 import { useFetchStatus } from '@/utils/useFetchStatus'
 
@@ -35,7 +35,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     })
   ])
   if (post) { 
-    return { props: { 
+    return { props: {
+      blogPost: blogPostContent,
+      admin: adminContent,
       post: JSON.parse(JSON.stringify(post)),
       feed: JSON.parse(JSON.stringify(feed)),
     } 
@@ -46,7 +48,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 }
 
 
-const Post = ({ post, feed }) => {
+const Post = ({ blogPost, admin, post, feed }) => {
 
   const styleBlogPost = css({
     '.postDetails': {

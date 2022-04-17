@@ -1,7 +1,7 @@
 import useSWR from 'swr'
 import fetcher from '@/lib/fetcher'
 import Link from 'next/link'
-import { spotify } from '@/data/content'
+import { spotifyContent } from '@/data/content'
 import Image from 'next/image'
 import { useTheme } from '@emotion/react'
 
@@ -19,8 +19,8 @@ export default function NowPlaying() {
       <h4 css={{ display: 'flex' }}>
         <Image
           src={isDarkTheme
-            ? spotify.icon?.dark
-            : spotify.icon?.light}
+            ? spotifyContent.icon?.dark
+            : spotifyContent.icon?.light}
           height="15"
           width="15"
           alt="Spotify"
@@ -37,7 +37,7 @@ export default function NowPlaying() {
             <a>
             {isOnline
             ? <span>{data.artist} – {data.title}</span>
-            : <span>{spotify.headings.main}</span> }
+            : <span>{spotifyContent.headings.main}</span> }
             </a>
           </Link>
         </li>

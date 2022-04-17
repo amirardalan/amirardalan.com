@@ -12,7 +12,7 @@ export const avatar = {
   img: '/avatar/amir-ardalan.jpg',
 }
 
-export const home = {
+export const homeContent = {
   meta: {
     title: 'Amir Ardalan – Code, design, and ideas from Portland, OR.',
     description: 'Front-end developer, UI designer, and React enthusiast.'
@@ -49,7 +49,7 @@ export const home = {
   }
 }
 
-export const blog = {
+export const blogContent = {
   heading: 'Blog',
   meta: {
     title: 'Blog – Amir Ardalan',
@@ -67,7 +67,7 @@ export const blog = {
   },
 }
 
-export const blogPost = {
+export const blogPostContent = {
   meta: {
     title: ' – Amir Ardalan'
   },
@@ -77,7 +77,7 @@ export const blogPost = {
   twitterUrl: 'https://twitter.com/amirardalan',
 }
 
-export const about = {
+export const aboutContent = {
   meta: {
     title: 'About – Amir Ardalan',
     description: `Amir Ardalan's bio, mission statement, skills, stack, experience, availability, and career timeline.`,
@@ -209,7 +209,7 @@ export const about = {
   },
 }
 
-export const timeline = {
+export const timelineContent = {
   meta: {
     title: 'Timeline',
   },
@@ -329,7 +329,7 @@ export const timeline = {
   ]
 }
 
-export const spotify = {
+export const spotifyContent = {
   meta: {
     title: 'Spotify – Amir Ardalan',
     description: `See what I'm currently listening to on Spotify and view my top 20 tracks of the moment.`
@@ -351,7 +351,7 @@ export const spotify = {
   }
 }
 
-export const uses = {
+export const usesContent = {
   meta: {
     title: 'Uses – Amir Ardalan',
     description: 'A list of gear, tools, and software I use.'
@@ -487,7 +487,7 @@ export const uses = {
   },
 }
 
-export const error = {
+export const errorContent = {
   meta: {
     title: 'Page Not Found – Amir Ardalan'
   },
@@ -637,7 +637,7 @@ export const donate = {
 }
 
 // Admin
-export const admin = {
+export const adminContent = {
   meta: {
     title: ' – Amir Ardalan'
   },
