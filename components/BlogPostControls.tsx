@@ -60,7 +60,7 @@ const BlogPostControls = ({
       <div className="controlsPost">
         <button
           className="buttonCompact publishBtn"
-          onClick={() => {publishPost(post.id, post.published, post.featured, latestPost)}}>
+          onClick={() => publishPost(post.id, post.published, post.featured, latestPost)}>
           {publishLabel}
         </button>
         <button
