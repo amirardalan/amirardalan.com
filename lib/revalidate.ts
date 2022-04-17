@@ -8,23 +8,22 @@ const revalidateChanges = (published: boolean, latestPost: boolean, featured: bo
   const revalidatePath = isEditPage ? Router.asPath.replace('/edit','') : Router.asPath
 
   const blog = published ? fetch(`/api/revalidate?secret=${REVALIDATE_SECRET}&path=/blog`) : Promise.resolve()
-  const current = published || featured ? fetch(`/api/revalidate?secret=${REVALIDATE_SECRET}&path=${revalidatePath}`) : Promise.resolve()
+  const current = featured ? fetch(`/api/revalidate?secret=${REVALIDATE_SECRET}&path=${revalidatePath}`) : Promise.resolve()
   const home = featured || latestPost ? fetch(`/api/revalidate?secret=${REVALIDATE_SECRET}&path=/`) : Promise.resolve()
 
   setFetchStatus(true)
 
   Promise.all([ current, blog, home ])
-  .then(() => {
-    if (isDeleted) return
+    .then(() => {
+      if (isDeleted) return
 
-    isEditPage
-      ? Router.push(revalidatePath).then(()=> Router.reload()).then(()=> setFetchStatus(false))
-      : Router.reload()
-  })
-  .catch(error => {
-    setFetchStatus(false)
-    console.error(error.message)
-  })
+      isEditPage
+        ? Router.push(revalidatePath).then(()=> Router.reload())
+        : Router.reload()
+    })
+    .catch(error => {
+      console.error(error.message)
+    })
   
 }
 
