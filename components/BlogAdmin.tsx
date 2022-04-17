@@ -139,6 +139,11 @@ const BlogAdmin = React.memo(function BlogAdmin() {
             }
           }
         },
+        '.draftNotification': {
+          padding: '1rem 1.5rem',
+          background: 'var(--color-accent)',
+          fontFamily: 'var(--font-secondary)',
+        },
         '.blog.admin': {
           width: '100%',
           '.drafts': {
@@ -217,9 +222,6 @@ const BlogAdmin = React.memo(function BlogAdmin() {
             backgroundColor: 'var(--color-warning)',
             color: 'var(--color-light)',
             textDecoration: 'none',
-          },
-          '&.createBtn': {
-            backgroundColor: 'var(--color-primary)',
           },
           '&.saveBtn, &.updateBtn, &.cancelBtn': {
             marginRight: '.25rem',

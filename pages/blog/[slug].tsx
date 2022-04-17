@@ -1,6 +1,7 @@
 import { useSession } from 'next-auth/react'
 import { css } from '@emotion/react'
 import { blogPost, admin } from '@/data/content'
+import { deletePost } from '@/lib/blog'
 
 import Container from '@/components/Container'
 import BlogStyles from '@/components/BlogStyles'
@@ -11,7 +12,7 @@ import formatDate from '@/utils/formatDate'
 import Markdown from '@/components/Markdown'
 
 import dynamic from 'next/dynamic'
-const BlogAdminPostActions = dynamic(() => import('@/components/BlogAdminPostActions'), { ssr: false })
+const BlogPostControls = dynamic(() => import('@/components/BlogPostControls'), { ssr: false })
 
 import { GetStaticProps, GetStaticPaths } from 'next'
 import prisma from '@/lib/prisma'
@@ -325,6 +326,10 @@ const Post = ({ post, feed }) => {
   const postReadTime = calculateReadTime(post.content)
   const title = post.title
 
+  const handleDeletion = () => {
+    return deletePost(post.id, post.slug, post.published, redirect, latestPost, post.featured)
+  }
+
   // Set OG Image for blog posts. Use first image from post, otherwise dynamically generate one.
   const hasImage = post.content.replace(/`([^`]*)/g,'').match(/!\[.*?\]\((.*?)\)/)
     ? `${process.env.NEXT_PUBLIC_SITE_URL}` + post.content.match(/!\[.*?\]\((.*?)\)/)[1]
@@ -333,6 +338,13 @@ const Post = ({ post, feed }) => {
   const RenderBlogPost = () => {
     return (
       <div className={isPublished ? 'blog' : 'blog admin'} css={styleBlogPost}>
+
+      {!isPublished ?
+        <div className="draftNotification">
+          {admin.drafts.notice}
+        </div>
+        : null
+      }
 
       <article className="post postFull">
         <div className="categoryWrapper">
@@ -361,14 +373,14 @@ const Post = ({ post, feed }) => {
 
         { userHasValidSession && (
           <div className="controlsPost">
-            <BlogAdminPostActions 
+            <BlogPostControls
               post={post}
-              slug={post.slug}
-              published={published}
-              redirect={redirect}
-              publishLabel={publishLabel}
               latestPost={latestPost}
-              admin={admin}
+              publishLabel={publishLabel}
+              requiredFields={null}
+              submitClass="buttonCompact publishBtn"
+              handleCancel={null}
+              handleDeletion={handleDeletion}
             />
           </div>
         )}

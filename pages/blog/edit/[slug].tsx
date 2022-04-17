@@ -10,7 +10,7 @@ import revalidateChanges from '@/lib/revalidate'
 import Container from '@/components/Container'
 import BlogStyles from '@/components/BlogStyles'
 import Link from 'next/link'
-import BlogPostDelete from '@/components/BlogPostDelete'
+import BlogPostControls from '@/components/BlogPostControls'
 import Dropdown from '@/components/Dropdown'
 import Checkbox from '@/components/Checkbox'
 import LoadingTriangle from '@/components/LoadingTriangle'
@@ -65,7 +65,6 @@ const Edit = ({ editPost, getLatestPost }) => {
   const handleSetFeatured = () => {
     setFeatured(!featured)
   }
-  const isFeatured = featured
 
   const [showEdited, setShowEdited] = useState(editEdited)
   const handleShowEdited = () => {
@@ -85,6 +84,10 @@ const Edit = ({ editPost, getLatestPost }) => {
     } catch (error) {
       console.error(error)
     }
+  }
+
+  const handleCancel = () => {
+    return Router.push(`/blog/${editSlug}`)
   }
 
   const handleDeletion = () => {
@@ -170,24 +173,17 @@ const Edit = ({ editPost, getLatestPost }) => {
             </div>
 
             <div className="formSubmit">
-              <button
-                className="buttonCompact updateBtn"
-                disabled={ !content || !title || !slug || !teaser }
-                type="submit"
-              >
-                {admin.controls.update}
-              </button>
-              <a className="buttonCompact cancelBtn" onClick={() => Router.push(`/blog/${editSlug}`)}>
-                {admin.controls.cancel}
-              </a>
-              
-              <BlogPostDelete
+
+              <BlogPostControls
+                post={id}
+                publishLabel={admin.controls.update}
+                latestPost={latestPost}
+                requiredFields={!content || !title || !slug || !teaser}
+                submitClass="buttonCompact updateBtn"
+                handleCancel={handleCancel}
                 handleDeletion={handleDeletion}
-                cancelText={admin.controls.cancel}
-                confirmText={admin.controls.confirm}
-                deleteText={admin.controls.delete}
               />
-      
+
             </div>
 
           </form>

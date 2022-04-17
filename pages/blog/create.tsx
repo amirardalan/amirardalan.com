@@ -7,7 +7,7 @@ import Container from '@/components/Container'
 import BlogStyles from '@/components/BlogStyles'
 import Dropdown from '@/components/Dropdown'
 import Checkbox from '@/components/Checkbox'
-import BlogPostDelete from '@/components/BlogPostDelete'
+import BlogPostControls from '@/components/BlogPostControls'
 
 import { admin, breadcrumb } from '@/data/content'
 import { categories } from '@/data/categories'
@@ -28,6 +28,11 @@ const Draft = () => {
   }
 
   const handleDeletion = () => {
+    return Router.push("/blog")
+  }
+
+  const handleCancel = (e: React.SyntheticEvent) => {
+    e.preventDefault()
     return Router.push("/blog")
   }
 
@@ -145,20 +150,17 @@ const Draft = () => {
             </div>
 
             <div className="formSubmit">
-              
-              <button
-                className="buttonCompact saveBtn"
-                disabled={!content || !title || !slug || !teaser || category === '-'}
-                type="submit">
-                {admin.controls.save}
-              </button>
 
-              <BlogPostDelete
+              <BlogPostControls
+                post={null}
+                publishLabel={admin.controls.save}
+                latestPost={null}
+                requiredFields={!content || !title || !slug || !teaser || category === '-'}
+                submitClass="buttonCompact saveBtn"
+                handleCancel={handleCancel}
                 handleDeletion={handleDeletion}
-                cancelText={admin.controls.cancel}
-                confirmText={admin.controls.confirm}
-                deleteText={admin.controls.delete}
               />
+
             </div>
 
           </form>
