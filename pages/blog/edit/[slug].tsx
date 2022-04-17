@@ -83,9 +83,13 @@ const Edit = ({ editPost, getLatestPost }) => {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
-      }).then(()=> revalidateChanges(published, latestPost, featured, setFetchStatus))
-    } catch (error) {
+      })
+    }
+    catch (error) {
       console.error(error)
+    }
+    finally {
+      revalidateChanges(published, latestPost, featured, setFetchStatus)
     }
   }
 
