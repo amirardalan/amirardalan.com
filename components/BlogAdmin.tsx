@@ -199,11 +199,6 @@ const BlogAdmin = React.memo(function BlogAdmin() {
           textAlign: 'center',
           textDecoration: 'none',
           cursor: 'pointer',
-          '&:disabled, &.disabled': {
-            pointerEvents: 'none',
-            backgroundColor: 'var(--color-disabled)',
-            cursor: 'default',
-          },
           '&.inProgress': { 
             backgroundColor: 'var(--color-disabled)',
             cursor: 'wait'
@@ -225,7 +220,12 @@ const BlogAdmin = React.memo(function BlogAdmin() {
           },
           '&.saveBtn, &.updateBtn, &.cancelBtn': {
             marginRight: '.25rem',
-          }
+          },
+          '&:disabled, &.disabled': {
+            pointerEvents: 'none',
+            backgroundColor: 'var(--color-disabled)',
+            cursor: 'default',
+          },
         },
         '.postControls': {
           display: 'flex',
@@ -233,6 +233,7 @@ const BlogAdmin = React.memo(function BlogAdmin() {
           marginTop: '1rem',
           '&.disabled': {
             '.buttonCompact': {
+              color: 'var(--color-bg)',
               backgroundColor: 'var(--color-disabled)',
               cursor: 'default',
               pointerEvents: 'none',
