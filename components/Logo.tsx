@@ -22,6 +22,7 @@ const Logo = () => {
     backgroundSize: 'contain',
     height: 24,
     width: 24,
+    animation: 'spin 1s forwards'
   })
   const styleWordMark = css({
     textAlign: 'left',

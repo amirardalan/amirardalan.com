@@ -61,10 +61,6 @@ export default function Navigation() {
         left: -500
       },
       alignItems: 'right'
-    },
-    '@keyframes spin': {
-      from: { transform: 'rotate(0deg)' },
-      to: { transform: 'rotate(180deg)' }
     }
   })
   const styleMobileNavButton = css({
