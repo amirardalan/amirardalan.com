@@ -19,12 +19,11 @@ const Logo = () => {
     flexDirection: 'row',
   })
   const styleLogo = css({
-    margin: '.1rem .4rem 0 0',
+    margin: '.08rem .4rem 0 0',
     background: 'var(--logo) no-repeat',
     backgroundSize: 'contain',
     height: 24,
     width: 24,
-    animation: 'spin 1s forwards'
   })
   const styleWordMark = css({
     textAlign: 'left',
@@ -54,7 +53,7 @@ const Logo = () => {
     '.loader': {
       zIndex: 10,
       top: 9,
-      left: 27,
+      left: 32,
       position: 'absolute',
       display: 'flex',
       alignItems: 'center',
@@ -66,38 +65,22 @@ const Logo = () => {
         background: 'var(--color-heading)',
         borderRadius: '50%',
         opacity: '0',
-        boxShadow: '0 0 2px black',
         animation: 'loadingFade 1s infinite',
       },
       '.loadingDot:nth-of-type(1)': {
-        WebkitAnimationDelay: '0s',
-        MozAnimationDelay: '0s',
         animationDelay: '0s',
       },
       '.loadingDot:nth-of-type(2)': {
-        WebkitAnimationDelay: '0.1s',
-        MozAnimationDelay: '0.1s',
         animationDelay: '0.1s',
       },
       '.loadingDot:nth-of-type(3)': {
-        WebkitAnimationDelay: '0.2s',
-        MozAnimationDelay: '0.2s',
         animationDelay: '0.2s',
       },
       '.loadingDot:nth-of-type(4)': {
-        WebkitAnimationDelay: '0.3s',
-        MozAnimationDelay: '0.3s',
         animationDelay: '0.3s',
       },
-      '@-webkit-keyframes loadingFade': {
-        '0%': { opacity: 0 },
-        '50%': { opacity: 0.8 },
-        '100%': { opacity: 0 },
-      },
-      '@-moz-keyframes loadingFade': {
-        '0%': { opacity: 0 },
-        '50%': { opacity: 0.8 },
-        '100%': { opacity: 0 },
+      '.loadingDot:nth-of-type(5)': {
+        animationDelay: '0.4s',
       },
       '@keyframes loadingFade': {
         '0%': { opacity: 0 },
@@ -131,6 +114,7 @@ const Logo = () => {
         <div css={styleLoaderWrapper}>
           <div css={styleLogo}/>
           <div className="loader">
+            <div className="loadingDot"/>
             <div className="loadingDot"/>
             <div className="loadingDot"/>
             <div className="loadingDot"/>

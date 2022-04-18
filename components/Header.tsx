@@ -1,3 +1,4 @@
+import React from 'react'
 import { css } from '@emotion/react'
 import Navigation  from '@/components/Navigation'
 import Link from 'next/link'
@@ -80,4 +81,4 @@ const Header = ({ toggleTheme }) => {
 
 }
 
-export default Header
+export default React.memo(Header)
