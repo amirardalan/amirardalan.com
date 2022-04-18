@@ -10,7 +10,7 @@ export async function publishPost(
     deleted: boolean,
     setFetchStatus: (active: boolean) => void
   ): Promise<void> {
-
+  setFetchStatus(true)
   await fetch(`/api/publish/${id}?published=${published}&featured=${featured}`, { method: 'PUT',}).then(()=> {
     revalidateChanges(published, latestPost, featured, deleted, setFetchStatus)
   })
