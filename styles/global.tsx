@@ -426,6 +426,16 @@ export function GlobalStyles () {
             opacity: 1,
           }
         },
+        '@keyframes slideDown': {
+          '0%': {
+            opacity: 0,
+            transform: 'translate3d(0, -100%, 0)',
+          },
+          '100%': {
+            transform: 'translate3d(0, 0, 0)',
+            opacity: 1,
+          }
+        },
         '@keyframes tooltipUp': {
           '0%': {
             opacity: 0,
