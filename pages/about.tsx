@@ -74,14 +74,14 @@ export default function About({ about, timeline }) {
         color: 'var(--color-gray)',
         fontSize: 14,
         strong: {
-          color: 'var(--color-text)',
+          color: 'var(--color-heading)',
           fontFamily: 'var(--font-secondary)',
           fontSize: 16,
         },
       },
       '.availability': {
         fontFamily: 'var(--font-secondary)',
-        color: 'var(--color-text)',
+        color: 'var(--color-heading)',
         fontSize: 18
       },
     },
@@ -89,14 +89,14 @@ export default function About({ about, timeline }) {
       fontWeight: 700,
     },
     h2: {
-      color: 'var(--color-text)',
+      color: 'var(--color-heading)',
       fontSize: 24,
     },
     h3: {
       marginBottom: '1.5rem',
       paddingBottom: '1rem',
       fontSize: 24,
-      color: 'var(--color-text)',
+      color: 'var(--color-heading)',
       borderBottom: '2px solid var(--color-primary)',
     },
   })

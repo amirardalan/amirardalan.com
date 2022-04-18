@@ -188,7 +188,7 @@ export function GlobalStyles () {
         },
         'input, textarea, select': {
           verticalAlign: 'middle',
-          caretColor: 'var(--color-text)'
+          caretColor: 'var(--color-heading)'
         },
         // Base
         'html, body': {
@@ -316,8 +316,8 @@ export function GlobalStyles () {
           },
           '&:hover': {
             background: 'transparent',
-            border: '1px solid var(--color-text)',
-            color: 'var(--color-text)',
+            border: '1px solid var(--color-heading)',
+            color: 'var(--color-heading)',
             '@media(min-width: 1025px)': {
               '&.download:after': {
                 background: 'var(--icon-download-light) no-repeat',
@@ -328,12 +328,12 @@ export function GlobalStyles () {
           '&.disabled': {
             cursor: 'pointer',
             background: 'transparent',
-            color: 'var(--color-text)',
+            color: 'var(--color-heading)',
             border: '1px solid var(--color-accent-gray)',
             '&:hover': {
               border: '1px solid var(--color-accent-gray)',
               background: 'transparent',
-              color: 'var(--color-text)',
+              color: 'var(--color-heading)',
             },
           },
           '&.download:after, &.clipboard:after': {
@@ -358,7 +358,7 @@ export function GlobalStyles () {
           },
           '@media(max-width: 1024px)': {
             '&:hover': {
-              background: 'var(--color-text)',
+              background: 'var(--color-heading)',
               border: '1px solid transparent',
               color: 'var(--color-bg)'
             },
@@ -375,7 +375,7 @@ export function GlobalStyles () {
           position: 'relative',
           borderRadius: 5,
           padding: '0 .5rem',
-          color: 'var(--color-text)',
+          color: 'var(--color-heading)',
           fontSize: 11,
           textAlign: 'center',
           backgroundColor: 'var(--color-accent-gray)',
@@ -401,7 +401,7 @@ export function GlobalStyles () {
         },
         '::selection': {
           background: 'var(--color-accent-gray)',
-          color: 'var(--color-text)',
+          color: 'var(--color-heading)',
         },
         '.animationWrapper':{
           width: '100%',

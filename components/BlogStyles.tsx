@@ -36,7 +36,7 @@ const blogStyles = css({
       fontWeight: 800,
       lineHeight: '2.2rem',
       a: {
-        color: 'var(--color-text)',
+        color: 'var(--color-heading)',
         textDecoration: 'none',
       },
       '@media(max-width: 1024px)': {
@@ -109,7 +109,6 @@ const blogStyles = css({
   },
   '.postTeaser': {
     position: 'relative',
-    color: 'var(--color-text)',
     h2: {
       marginBottom: '.4rem',
       color: 'var(--color-heading)',
@@ -117,7 +116,7 @@ const blogStyles = css({
       lineHeight: '2.2rem',
       textDecoration: 'none',
       a: {
-        color: 'var(--color-text)',
+        color: 'var(--color-heading)',
         textDecoration: 'none',
         border: 'none'
       },

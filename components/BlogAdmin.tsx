@@ -243,7 +243,7 @@ const BlogAdmin = React.memo(function BlogAdmin() {
             marginLeft: '1rem',
             textTransform: 'uppercase',
             '.confirmLink': {
-              color: 'var(--color-text)',
+              color: 'var(--color-heading)',
               fontFamily: 'var(--font-primary)',
               fontSize: 12,
               fontWeight: 'bold',

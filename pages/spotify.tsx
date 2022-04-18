@@ -23,7 +23,7 @@ export default function Spotify({ spotify }) {
       fontWeight: 'bold',
     },
     a: {
-      color: 'var(--color-text)',
+      color: 'var(--color-heading)',
     },
     '.topGrid': {
       fontFamily: 'var(--font-secondary)',
@@ -64,7 +64,7 @@ export default function Spotify({ spotify }) {
           alignSelf: 'center',
           display: 'flex',
           flexDirection: 'column',
-          color: 'var(--color-text)',
+          color: 'var(--color-heading)',
           fontSize: 20,
           '@media(max-width: 768px)': {
             fontSize: 16

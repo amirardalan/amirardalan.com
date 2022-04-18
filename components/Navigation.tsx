@@ -15,7 +15,7 @@ export default function Navigation() {
     fontSize: 14,
     a: {
       margin: '0 1.5rem',
-      color: 'var(--color-text)',
+      color: 'var(--color-heading)',
     },
     '@media(max-width: 768px)': {
       display: 'none',
@@ -111,7 +111,7 @@ export default function Navigation() {
     },
     a: {
       position: 'relative',
-      color: 'var(--color-text)',
+      color: 'var(--color-heading)',
       '&.active': {
         '&::before': {
           color: 'var(--color-primary)',
