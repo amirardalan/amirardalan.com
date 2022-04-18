@@ -6,7 +6,6 @@ import { themeLight, themeDark } from '@/styles/theme'
 import { GlobalStyles } from '@/styles/global'
 import { ThemeProvider } from '@emotion/react'
 import Header from '@/components/Header'
-import LoadingBar from '@/components/LoadingBar'
 import useGtag from '@/utils/useGtag'
 
 import dynamic from 'next/dynamic'
@@ -25,7 +24,6 @@ const App = ({ Component, pageProps }: AppProps) => {
       <SessionProvider session={pageProps.session}>
         <GlobalStyles />
         <ThemeProvider theme={themeMode}>
-          <LoadingBar />
           <BlogAdmin />
           <Header toggleTheme={toggleTheme} />
           <Component {...pageProps} />
