@@ -8,7 +8,7 @@ import BlogStyles from '@/components/BlogStyles'
 import Dropdown from '@/components/Dropdown'
 import Checkbox from '@/components/Checkbox'
 import BlogPostControls from '@/components/BlogPostControls'
-import { useFetchStatus } from '@/utils/useFetchStatus'
+import { useFetchStatus } from '@/utils/useLoadingIndicator'
 
 import { adminContent, breadcrumbContent } from '@/data/content'
 import { categories } from '@/data/categories'

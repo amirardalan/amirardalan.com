@@ -1,12 +1,12 @@
 import React from 'react'
 import { css } from '@emotion/react'
 import { logo } from '@/data/content'
-import { useLoadingBar } from '@/utils/useLoadingBar'
+import { useRouteStatus } from '@/utils/useLoadingIndicator'
 
 
 const Logo = () => {
   
-  const isLoading = useLoadingBar()
+  const isLoading = useRouteStatus()
 
   const styleAnimationWrapper = css({
     maxHeight: 24,

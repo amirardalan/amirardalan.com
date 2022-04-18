@@ -3,7 +3,7 @@ import Router from 'next/router'
 
 
 // Show loading indicator on router events
-export const useLoadingBar = () => {
+export const useRouteStatus = () => {
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
@@ -20,4 +20,9 @@ export const useLoadingBar = () => {
   }, [])
 
   return loading
+}
+
+export const useFetchStatus = () => {
+  const [fetchStatus, setFetchStatus] = useState(false)
+  return [fetchStatus, setFetchStatus] as const
 }

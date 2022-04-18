@@ -1,6 +1,6 @@
 import { signOut, useSession } from 'next-auth/react'
-import React from 'react'
 import { Global, css } from '@emotion/react'
+import { useRouteStatus, useFetchStatus } from '@/utils/useLoadingIndicator'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 
@@ -10,6 +10,11 @@ const BlogAdmin = () => {
   const { data: session } = useSession()
   const router = useRouter()
   const URL = process.env.NEXT_PUBLIC_SITE_URL
+
+  const isPageLoad = useRouteStatus()
+  const isFetching = useFetchStatus()
+  const isLoading = isPageLoad || isFetching[0]
+
 
   // Session & Route Conditionals
   const path = router.pathname
@@ -97,12 +102,18 @@ const BlogAdmin = () => {
 
         <div css={styleAdminPanelRight}>
           <Link href="/blog/create" passHref>
-            <button className={`buttonCompact createBtn ${isCreatePage ? 'disabled' : null}`} aria-label="New Post">
+            <button
+              className={`buttonCompact createBtn ${isCreatePage || isLoading ? 'disabled' : null}`}
+              aria-label="New Post"
+            >
               Create
             </button>
           </Link>
           <Link href="/blog/drafts" passHref aria-label="Drafts">
-            <button className={`buttonCompact draftsBtn ${isDraftsPage ? 'disabled' : null}`} data-active={isActive('/drafts')}>
+            <button
+              className={`buttonCompact draftsBtn ${isDraftsPage || isLoading ? 'disabled' : null}`}
+              data-active={isActive('/drafts')}
+            >
               Drafts
             </button>
           </Link>

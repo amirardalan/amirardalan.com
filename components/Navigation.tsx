@@ -68,7 +68,7 @@ export default function Navigation() {
     '@media(max-width: 768px)': {
       display: 'flex',
     },
-    zIndex: 2,
+    zIndex: 1,
     marginLeft: '2rem',
     '.menuOpen': {
       display: 'flex',

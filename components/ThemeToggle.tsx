@@ -19,7 +19,6 @@ const ThemeToggle = ({ toggleTheme }) => {
   }, [activeTheme])
 
   const styleToggleTrack = css({
-    zIndex: 6,
     width: 42,
     height: 26,
     background: 'var(--color-heading)',

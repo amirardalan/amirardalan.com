@@ -2,7 +2,7 @@ import { useSession } from 'next-auth/react'
 import { css } from '@emotion/react'
 import { blogPostContent, adminContent } from '@/data/content'
 import { deletePost } from '@/lib/blog'
-import { useFetchStatus } from '@/utils/useFetchStatus'
+import { useFetchStatus } from '@/utils/useLoadingIndicator'
 
 import Container from '@/components/Container'
 import BlogStyles from '@/components/BlogStyles'
