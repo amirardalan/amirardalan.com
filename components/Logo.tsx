@@ -1,4 +1,3 @@
-import React from 'react'
 import { css } from '@emotion/react'
 import { logo } from '@/data/content'
 import { useRouteStatus } from '@/utils/useLoadingIndicator'
@@ -133,4 +132,4 @@ const Logo = () => {
   )
 }
 
-export default React.memo(Logo)
+export default Logo

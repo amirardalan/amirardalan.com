@@ -7,6 +7,11 @@ import dynamic from 'next/dynamic'
 const ThemeToggle = dynamic(() => import('@/components/ThemeToggle'), {
   ssr: false
 })
+const BlogAdmin = dynamic(() => import('@/components/BlogAdmin'),{
+  ssr: false
+})
+
+
 
 
 const Header = ({ toggleTheme }) => {
@@ -59,23 +64,26 @@ const Header = ({ toggleTheme }) => {
   })
 
   return (
-    <header css={styleHeaderWrapper}>
-      <div css={styleHeader}>
-        <Link
-          href="/"
-          aria-label="Amir Ardalan Logo"
-          passHref
-        >
-          <button css={styleLogoButton}>
-            <Logo /> 
-          </button>
-        </Link>
-        <div className="headerRight">
-          <Navigation />
-          <ThemeToggle toggleTheme={toggleTheme} />
+    <>
+      <BlogAdmin/>
+      <header css={styleHeaderWrapper}>
+        <div css={styleHeader}>
+          <Link
+            href="/"
+            aria-label="Amir Ardalan Logo"
+            passHref
+          >
+            <button css={styleLogoButton}>
+              <Logo /> 
+            </button>
+          </Link>
+          <div className="headerRight">
+            <Navigation />
+            <ThemeToggle toggleTheme={toggleTheme} />
+          </div>
         </div>
-      </div>
-    </header>
+      </header>
+    </>
   )
 
 }

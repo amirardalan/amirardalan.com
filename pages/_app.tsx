@@ -8,11 +8,6 @@ import { ThemeProvider } from '@emotion/react'
 import Header from '@/components/Header'
 import useGtag from '@/utils/useGtag'
 
-import dynamic from 'next/dynamic'
-const BlogAdmin = dynamic(() => import('@/components/BlogAdmin'),{
-  ssr: false
-})
-
 const App = ({ Component, pageProps }: AppProps) => {
 
   useGtag() // Analytics
@@ -24,7 +19,6 @@ const App = ({ Component, pageProps }: AppProps) => {
       <SessionProvider session={pageProps.session}>
         <GlobalStyles />
         <ThemeProvider theme={themeMode}>
-          <BlogAdmin />
           <Header toggleTheme={toggleTheme} />
           <Component {...pageProps} />
         </ThemeProvider>

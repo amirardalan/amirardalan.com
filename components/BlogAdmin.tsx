@@ -1,20 +1,21 @@
 import { signOut, useSession } from 'next-auth/react'
-import { Global, css } from '@emotion/react'
 import { useRouteStatus, useFetchStatus } from '@/utils/useLoadingIndicator'
+import { Global, css } from '@emotion/react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 
 
 const BlogAdmin = () => {
 
+  // Session
   const { data: session } = useSession()
   const router = useRouter()
   const URL = process.env.NEXT_PUBLIC_SITE_URL
 
+  // Route & Fetch Loading
   const isPageLoad = useRouteStatus()
   const isFetching = useFetchStatus()
   const isLoading = isPageLoad || isFetching[0]
-
 
   // Session & Route Conditionals
   const path = router.pathname
