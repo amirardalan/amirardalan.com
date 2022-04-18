@@ -1,10 +1,11 @@
+import React from 'react'
 import { css } from '@emotion/react'
 import { logo } from '@/data/content'
 import { useLoadingBar } from '@/utils/useLoadingBar'
 
 
-export default function Logo() {
-
+const Logo = () => {
+  
   const isLoading = useLoadingBar()
 
   const styleAnimationWrapper = css({
@@ -126,16 +127,15 @@ export default function Logo() {
         <div css={styleLoaderWrapper}>
           <div css={styleLogo}/>
           <div className="loader">
-            <div className="loadingDot"></div>
-            <div className="loadingDot"></div>
-            <div className="loadingDot"></div>
-            <div className="loadingDot"></div>
+            <div className="loadingDot"/>
+            <div className="loadingDot"/>
+            <div className="loadingDot"/>
+            <div className="loadingDot"/>
           </div>
         </div>
       )
     } else return null
   }
-
 
   return (
     <div className="animationWrapper" css={styleAnimationWrapper}>
@@ -144,3 +144,5 @@ export default function Logo() {
     </div>
   )
 }
+
+export default React.memo(Logo)
