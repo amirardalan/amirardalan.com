@@ -10,11 +10,13 @@ const Logo = () => {
 
   const styleAnimationWrapper = css({
     maxHeight: 24,
+    width: 130,
     overflow: 'hidden',
+    position: 'relative'
   })
   const styleLogoWrapper = css({
     display: 'flex',
-    flexDirection: 'row'
+    flexDirection: 'row',
   })
   const styleLogo = css({
     margin: '.1rem .4rem 0 0',
@@ -35,22 +37,25 @@ const Logo = () => {
     color: 'var(--color-heading)',
     lineHeight: '.95rem',
     textTransform: 'uppercase',
-    animation: 'slideDown .5s ease',
+    animation: isLoading ? 'slideDown .2s reverse forwards' : 'slideDown .5s forwards'
   })
   const styleTitleSub = css({
-    position: 'relative',
     color: 'var(--color-gray)',
     fontFamily: 'var(--font-primary)',
     fontSize: 8,
     fontWeight: 'normal',
     letterSpacing: 1.8,
     textTransform: 'uppercase',
-    animation: 'slideUp .5s ease',
+    animation: isLoading ? 'slideUp .2s reverse forwards' : 'slideUp .5s forwards'
   })
   const styleLoaderWrapper = css({
     display: 'flex',
     flexDirection: 'row',
     '.loader': {
+      zIndex: 10,
+      top: 9,
+      left: 27,
+      position: 'absolute',
       display: 'flex',
       alignItems: 'center',
       '.loadingDot': {
@@ -70,56 +75,54 @@ const Logo = () => {
         animationDelay: '0s',
       },
       '.loadingDot:nth-of-type(2)': {
-          WebkitAnimationDelay: '0.1s',
-          MozAnimationDelay: '0.1s',
-          animationDelay: '0.1s',
+        WebkitAnimationDelay: '0.1s',
+        MozAnimationDelay: '0.1s',
+        animationDelay: '0.1s',
       },
       '.loadingDot:nth-of-type(3)': {
-          WebkitAnimationDelay: '0.2s',
-          MozAnimationDelay: '0.2s',
-          animationDelay: '0.2s',
+        WebkitAnimationDelay: '0.2s',
+        MozAnimationDelay: '0.2s',
+        animationDelay: '0.2s',
       },
       '.loadingDot:nth-of-type(4)': {
-          WebkitAnimationDelay: '0.3s',
-          MozAnimationDelay: '0.3s',
-          animationDelay: '0.3s',
+        WebkitAnimationDelay: '0.3s',
+        MozAnimationDelay: '0.3s',
+        animationDelay: '0.3s',
       },
       '@-webkit-keyframes loadingFade': {
-          '0%': { opacity: 0 },
-          '50%': { opacity: 0.8 },
-          '100%': { opacity: 0 },
+        '0%': { opacity: 0 },
+        '50%': { opacity: 0.8 },
+        '100%': { opacity: 0 },
       },
       '@-moz-keyframes loadingFade': {
-          '0%': { opacity: 0 },
-          '50%': { opacity: 0.8 },
-          '100%': { opacity: 0 },
+        '0%': { opacity: 0 },
+        '50%': { opacity: 0.8 },
+        '100%': { opacity: 0 },
       },
       '@keyframes loadingFade': {
-          '0%': { opacity: 0 },
-          '50%': { opacity: 0.8 },
-          '100%': { opacity: 0 },
+        '0%': { opacity: 0 },
+        '50%': { opacity: 0.8 },
+        '100%': { opacity: 0 },
       }
     }
   })
 
   const RenderLogo = () => {
-    if (!isLoading) {
-      return (
-        <div css={styleLogoWrapper}>
-          <div css={styleLogo}/>
-          <div css={styleWordMark}>
-            <div css={styleTitle}>
-              {logo.title}
-            </div>
-            <div
-              aria-label={logo.subtitle}
-              css={styleTitleSub}>
-              {logo.subtitle}
-            </div>
+    return (
+      <div css={styleLogoWrapper}>
+        <div css={styleLogo}/>
+        <div css={styleWordMark}>
+          <div css={styleTitle}>
+            {logo.title}
+          </div>
+          <div
+            aria-label={logo.subtitle}
+            css={styleTitleSub}>
+            {logo.subtitle}
           </div>
         </div>
-      )
-    } else return null
+      </div>
+    )
   }
 
   const RenderLoading = () => {
@@ -135,7 +138,7 @@ const Logo = () => {
           </div>
         </div>
       )
-    } else return null
+    } else null
   }
 
   return (
