@@ -24,7 +24,7 @@ export default function Navigation() {
   const styleMobileNavWrapper = css ({
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'center',
+    justifyContent: 'space-around',
     position: 'absolute',
     height: '105vh',
     width: '75vw',
@@ -139,11 +139,6 @@ export default function Navigation() {
     },
   })
   const styleMobileNavSecondary = css({
-    margin: '3rem 0',
-    height: 80,
-    display: 'flex',
-    flexDirection: 'column-reverse',
-    justifyContent: 'space-between',
     fontFamily: 'var(--font-secondary)',
     position: 'relative',
     a: {
