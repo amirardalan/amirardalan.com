@@ -30,7 +30,7 @@ const BlogAdmin = React.memo(function BlogAdmin() {
     backgroundColor: 'var(--color-accent)',
     borderBottom: '1px solid var(--color-accent-gray)',
     justifyContent: 'space-between',
-    animation: 'adminPanelSlideDown .2s',
+    animation: 'adminPanelSlideDown .5s',
     '@media (max-width: 1024px)': {
       padding: '.5rem 2.5rem',
     },
