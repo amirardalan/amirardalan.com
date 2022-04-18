@@ -1,21 +1,31 @@
 import { useState, Key } from 'react'
 import { css } from '@emotion/react'
+import Link from 'next/link'
 
 
 export const CtaButtons = ({ items }) => {
+  interface Item {
+    path: string
+    icon: object
+    title: string
+    target: string
+    rel: string
+  }
 
-  return items.map((item, i: Key) => {
+  return items.map((item: Item, i: Key) => {
     return (
-      <a key={i}
+      <Link key={i}
         href={item.path}
-        className={item?.icon ? `ctaButton ${item.icon}` : "ctaButton"}
         aria-label={item.title}
-        target={item?.target}
-        rel={item?.rel}
-        data-screen-name={item?.screenname}
       >
-        {item.title}
-      </a>
+        <a
+          className={item?.icon ? `ctaButton ${item.icon}` : "ctaButton"}
+          target={item?.target}
+          rel={item?.rel}
+        >
+          {item.title}
+        </a>
+      </Link>
     )
   })
 }

@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 import Link from 'next/link'
 
 
-const BlogAdmin = React.memo(function BlogAdmin() {
+const BlogAdmin = () => {
 
   const { data: session } = useSession()
   const router = useRouter()
@@ -316,6 +316,6 @@ const BlogAdmin = React.memo(function BlogAdmin() {
       </div>
     </>
   )
-})
+}
 
 export default BlogAdmin

@@ -27,7 +27,7 @@ const styleRandomizeButton = css({
   cursor: 'pointer',
 })
 
-const CanvasLoader =  React.memo(function CanvasLoader() {
+const CanvasLoader = () => {
 
   const theme: any = useTheme()
 
@@ -89,7 +89,7 @@ const CanvasLoader =  React.memo(function CanvasLoader() {
       </Canvas>
     </>
   )
-})
+}
 
 export default CanvasLoader
 
