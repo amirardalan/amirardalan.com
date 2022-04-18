@@ -42,6 +42,7 @@ const Draft = ({ admin, breadcrumb }) => {
   }
   const handleCancel = (e: React.SyntheticEvent) => {
     e.preventDefault()
+    setFetchStatus(true)
     return Router.push("/blog")
   }
 

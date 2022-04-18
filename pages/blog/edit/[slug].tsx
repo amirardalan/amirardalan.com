@@ -95,6 +95,7 @@ const Edit = ({ admin, breadcrumb, editPost, getLatestPost }) => {
 
   const handleCancel = (e: React.SyntheticEvent) => {
     e.preventDefault()
+    setFetchStatus(true)
     return Router.push(`/blog/${editSlug}`)
   }
   const handleDeletion = () => {
