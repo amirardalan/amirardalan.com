@@ -119,9 +119,6 @@ const Post = ({ blogPost, admin, post, feed }) => {
         '@media(max-width: 768px)': {
           fontSize: 24,
         },
-        '@media(max-width: 480px)': {
-          fontSize: 22,
-        },
       },
       h3: {
         scrollMarginTop: '4rem',

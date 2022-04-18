@@ -25,8 +25,7 @@ export default function BlogMarkdown({ markdown }) {
       boxShadow: 'none',
       textShadow: 'none',
       '@media(max-width: 768px)': {
-        lineHeight: '1.2rem !important',
-        fontSize: 13
+        fontSize: 14
       }
     },
     '.copyCode': {
@@ -90,6 +89,9 @@ export default function BlogMarkdown({ markdown }) {
       '&::before, &::after': {
         content: '"`"',
         color: 'var(--color-primary)'
+      },
+      '@media(max-width: 768px)': {
+        fontSize: 16
       }
     },
     'p code': {
