@@ -343,7 +343,7 @@ const Post = ({ blogPost, admin, post, feed }) => {
       <div className={isPublished ? 'blog' : 'blog admin'} css={styleBlogPost}>
 
       {!isPublished ?
-        <div className="draftNotification">
+        <div className="draftNotification warn">
           {admin.drafts.notice}
         </div>
         : null

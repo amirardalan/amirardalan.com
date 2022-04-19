@@ -115,6 +115,7 @@ export function GlobalStyles () {
           '--icon-spotify': 'url(/icons/spotify-dark.svg)',
           '--icon-external': 'url(/icons/external-link-light.svg)',
           '--icon-clipboard': 'url(/icons/clipboard-dark.svg)',
+          '--icon-warning': 'url(/icons/warning-dark.svg)',
         },
         
         'body[data-theme="dark"]': {
@@ -136,6 +137,7 @@ export function GlobalStyles () {
           '--icon-spotify': 'url(/icons/spotify-light.svg)',
           '--icon-external': 'url(/icons/external-link-dark.svg)',
           '--icon-clipboard': 'url(/icons/clipboard-light.svg)',
+          '--icon-warning': 'url(/icons/warning-light.svg)',
         },
         'html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video': {
           margin: 0,
@@ -370,6 +372,19 @@ export function GlobalStyles () {
             },
             width: '100%',
           },
+        },
+        '.warn': {
+          display: 'flex',
+          flexDirection: 'row',
+          alignItems: 'center',
+          '&:before': {
+            content: '""',
+            marginRight: '.4rem',
+            background: 'var(--icon-warning) no-repeat',
+            backgroundSize: 'contain',
+            height: 20,
+            width: 20,
+          }
         },
         '.tooltip': {
           position: 'relative',
