@@ -149,23 +149,23 @@ export const aboutContent = {
       'Front-end',
       'JavaScript',
       'TypeScript',
-      'React/Next',
-      'CSS-in-JS',
-      'Agile Scrum',
-      'Three.js',
+      'React.js',
+      'Next.js',
+      'HTML/CSS',
+      'Emotion CSS',
       'UI Design',
       'Adobe XD',
     ]
   },
   stack: {
     items: [
-      'Next.JS',
-      'TypeScript',
-      'Emotion',
-      'Prisma',
+      'Jest',
+      'Testing Lib',
+      'Three.js',
+      'Prisma ORM',
       'PostgreSQL',
       'SWR',
-      'Jest / RTL',
+      'Git',
       'Vercel',
       'Heroku',
     ]
@@ -180,6 +180,8 @@ export const aboutContent = {
       'KEEN Footwear',
       'Chrome Industries',
       'Hanna Andersson',
+      'Agile Scrum',
+      'Code Review'
     ],
   },
   availability: {
