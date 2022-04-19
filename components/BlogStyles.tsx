@@ -164,15 +164,12 @@ const blogStyles = css({
       }
     }
   },
-  'input::placeholder': {
-    color: 'var(--color-gray)',
-    opacity: '0.5'
-  },
   'input[type="text"], textarea': {
     width: '100%',
     margin: '0.5rem 0',
     padding: '0.5rem',
     webkitAppearance: 'none',
+    color: 'var(--color-gray)',
     appearance: 'none',
     backgroundColor: 'var(--color-accent)',
     border: '2px solid var(--color-accent)',
@@ -186,6 +183,10 @@ const blogStyles = css({
       width: '100%',
       margin: '0.5rem 0 0 0',
     }
+  },
+  'input::placeholder': {
+    color: 'var(--color-gray)',
+    opacity: '0.5'
   },
 })
 
