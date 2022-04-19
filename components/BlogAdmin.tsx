@@ -36,7 +36,8 @@ const BlogAdmin = () => {
     backgroundColor: 'var(--color-accent)',
     borderBottom: '1px solid var(--color-accent-gray)',
     justifyContent: 'space-between',
-    animation: 'adminPanelSlideDown .5s',
+    marginTop: '-3rem',
+    animation: 'adminPanelSlideDown .5s forwards',
     '@media (max-width: 1024px)': {
       padding: '.5rem 2.5rem',
     },
@@ -45,16 +46,8 @@ const BlogAdmin = () => {
       padding: '.5rem 1rem'
     },
     '@keyframes adminPanelSlideDown': {
-      from: {
-        opacity: 0,
-        transform: 'translate3d(0, -100%, 0)',
-        height: 0,
-      },
-      to: {
-        opacity: 1,
-        transform: 'translate3d(0, 0, 0)',
-        height: 50
-      }
+      from: { marginTop: '-3rem' },
+      to: { marginTop: 0 }
     },
   })
   const styleAdminPanelLeft = css({
