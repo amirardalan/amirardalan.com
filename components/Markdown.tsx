@@ -168,15 +168,15 @@ export default function BlogMarkdown({ markdown }) {
 
       if (node.children[0].tagName === "img") {
         const image = node.children[0]
-        const metastring = image.properties.alt
+        const metastring = image?.properties?.alt
         const alt = metastring?.replace(/ *\{[^)]*\} */g, "")
-        const isPriority = metastring?.toLowerCase().match('{priority}')
-        const hasCaption = metastring?.toLowerCase().includes('{caption:')
-        const caption = metastring?.match(/(?<={caption:).*(?=})/)
-        const metaWidth = metastring.match(/{([^}]+)x/)
-        const metaHeight = metastring.match(/x([^}]+)}/)
+        const metaWidth = metastring?.match(/{([^}]+)x/)
+        const metaHeight = metastring?.match(/x([^}]+)}/)
         const width = metaWidth ? metaWidth[1] : "768"
         const height = metaHeight ? metaHeight[1] : "432"
+        const isPriority = metastring?.toLowerCase().match('{priority}')
+        const hasCaption = metastring?.toLowerCase().includes('{caption:')
+        const imgCaption = metastring?.match(/{caption:(.*?)}/)?.pop()
 
         return (
           <div className="postImgWrapper">
@@ -188,7 +188,7 @@ export default function BlogMarkdown({ markdown }) {
               alt={alt}
               priority={isPriority}
             />
-            {hasCaption ? <div className="caption">{caption}</div> : null}
+            {hasCaption ? <div className="caption">{imgCaption}</div> : null}
           </div>
         )
       }
