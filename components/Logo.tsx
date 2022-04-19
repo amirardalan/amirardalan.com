@@ -1,3 +1,4 @@
+import React from 'react'
 import { css } from '@emotion/react'
 import { logo } from '@/data/content'
 import { useRouteStatus } from '@/utils/useLoadingIndicator'
@@ -35,7 +36,7 @@ const Logo = () => {
     color: 'var(--color-heading)',
     lineHeight: '.95rem',
     textTransform: 'uppercase',
-    animation: isLoading ? 'slideDown .2s reverse forwards' : 'slideDown .5s forwards'
+    animation: isLoading ? 'slideDown .15s reverse forwards' : 'slideDown .5s forwards'
   })
   const styleTitleSub = css({
     color: 'var(--color-gray)',
@@ -44,7 +45,7 @@ const Logo = () => {
     fontWeight: 'normal',
     letterSpacing: 1.8,
     textTransform: 'uppercase',
-    animation: isLoading ? 'slideUp .2s reverse forwards' : 'slideUp .5s forwards'
+    animation: isLoading ? 'slideUp .15s reverse forwards' : 'slideUp .5s forwards'
   })
   const styleLoaderWrapper = css({
     display: 'flex',
@@ -132,4 +133,4 @@ const Logo = () => {
   )
 }
 
-export default Logo
+export default React.memo(Logo)

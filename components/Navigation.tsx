@@ -165,18 +165,6 @@ export default function Navigation() {
     setToggleMobileNav(!toggleMobileNav),
     disableScroll()
   }
-  const MobileMenu = () => (
-    <div css={styleMobileNavWrapper}>
-      <Navitem />
-      <div css={styleMobileNavSecondary}>
-        <Logo />
-      </div>
-      <button
-        className="closeArea"
-        onClick={toggleMenu}
-      />
-    </div>
-  )
 
   const Navitem = () => (
     <nav css={styleNavitem}>
@@ -192,6 +180,30 @@ export default function Navigation() {
     </nav>
   )
 
+  const NavMobileMenu = () => {
+    if (toggleMobileNav) {
+      return (
+        <div css={styleMobileNavWrapper}>
+          <Navitem />
+          <div css={styleMobileNavSecondary}>
+            <Logo />
+          </div>
+          <button
+            className="closeArea"
+            onClick={toggleMenu}
+          />
+        </div>
+      )
+    } else return null
+  }
+
+  const NavMenuControl = () => {
+    if (toggleMobileNav) {
+      return <div className="menuClose"><CloseButton width={28} height={28}/></div>
+    } else
+      return <div className="menuOpen">•••</div>
+  }
+
   return (
     <>
       <div css={styleMainNav}>
@@ -204,11 +216,9 @@ export default function Navigation() {
         aria-label="Navigation Menu"
         aria-expanded={toggleMobileNav ? 'true' : 'false'}
       >
-        {toggleMobileNav
-          ? <div className="menuClose"><CloseButton width={28} height={28}/></div>
-          : <div className="menuOpen">•••</div>}
+        <NavMenuControl/>
       </button>
-      { toggleMobileNav ? <MobileMenu /> : null }
+      <NavMobileMenu />
     </>
   )
 }

@@ -1,4 +1,5 @@
 import { themeLight, themeDark } from "@/styles/theme"
+import { existsSync } from "fs"
 
 
 export const logo = {
@@ -494,7 +495,7 @@ export const errorContent = {
   img: {
     meta: 'Error'
   },
-  text: 'Page not found.',
+  text: `Page not found`,
   link: {
     path: '/',
     title: 'Return Home'

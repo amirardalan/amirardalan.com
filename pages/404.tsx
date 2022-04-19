@@ -2,14 +2,12 @@ import Link from 'next/link'
 
 import { css } from '@emotion/react'
 import Container from '@/components/Container'
-import ErrorIcon from '@/components/ErrorIcon'
 import { errorContent } from '@/data/content'
 
 import { GetStaticProps } from 'next'
 export const getStaticProps: GetStaticProps = async () => {
   return { props: { error: errorContent } }
 }
-
 
 
 const style404Wrapper = css({
@@ -23,19 +21,31 @@ const style404Wrapper = css({
 
 const style404Container = css({
   display: 'flex',
+  flexDirection: 'column',
   justifyContent: 'center',
   marginBottom: '1.5rem',
+  '.errorCode': {
+    display: 'flex',
+    alignItems: 'center',
+    '& > span': {
+      marginTop: '.7rem'
+    }
+  },
+  '& > div': {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
   h1: {
-    margin: '0 1rem 0 .5rem',
-    paddingRight: '1rem',
     alignSelf: 'center',
-    fontSize: '40px',
+    fontSize: 70,
     fontWeight: 800
   },
   h2: {
     alignSelf: 'center',
+    color: 'var(--color-gray)',
     fontFamily: 'var(--font-primary)',
-    fontSize: '12px',
+    fontSize: 20,
     fontWeight: 'normal',
   },
 })
@@ -47,11 +57,12 @@ const styleErrorContent = css({
     maxWidth: 400,
     paddingTop: '2rem',
     marginBottom: '3rem',
-    borderTop: '1px solid var(--color-gray)',
+    borderTop: '1px solid var(--color-accent-gray)',
     textAlign: 'center',
   },
   '.quote': {
-    fontSize: 22,
+    fontSize: 16,
+    lineHeight: '1.3rem',
     fontFamily: 'var(--font-tertiary)',
     fontStyle: 'italic',
     color: 'var(--color-gray)',
@@ -76,13 +87,16 @@ export default function Custom404({ error }) {
     <Container title={error.meta.title} robots="noindex">
       <main css={style404Wrapper}>
         <div css={style404Container}>
-          <ErrorIcon />
-          <h1 aria-label={error.title}>
-            {error.title}
-          </h1>
-          <h2 aria-label={error.text}>
-            {error.text}
-          </h2>
+          <div className="errorCode">
+            <h1 aria-label={error.title}>
+              {error.title}
+            </h1>
+          </div>
+          <div>
+            <h2 aria-label={error.text}>
+              {error.text}
+            </h2>
+          </div>
         </div>
         <div css={styleErrorContent}>
           <div className="quoteContainer">
