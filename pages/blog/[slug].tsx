@@ -305,6 +305,11 @@ const Post = ({ blogPost, admin, post, feed }) => {
     '.postImgWrapper': {
       paddingBottom: '2rem !important',
     },
+    '.caption, .caption a': {
+      fontFamily: 'var(--font-primary)',
+      fontSize: 12,
+      color: 'var(--color-gray)'
+    }
   })
 
   const { data: session } = useSession()
