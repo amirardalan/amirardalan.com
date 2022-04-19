@@ -189,6 +189,9 @@ export function GlobalStyles () {
           padding: 0,
         },
         'input, textarea, select': {
+          '&:placeholder': {
+            color: 'red !important'
+          },
           verticalAlign: 'middle',
           caretColor: 'var(--color-heading)'
         },
