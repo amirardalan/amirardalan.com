@@ -145,11 +145,12 @@ Utilize `Next/Image` functionality within Markdown by using custom metastrings i
 Retain the terseness of pure Markdown while getting the benefits of the Next/Image component without having to mix in JSX.
 
 ```
-![AltText {priority}{768x432}](/path-to-image.jpg)
+![AltText {caption: Photo credit: Some Person}{priority}{768x432}](/path-to-image.jpg)
 ```
 
 - Define image width and height: `{Width x Height}`
 - Optionally set image as `{priority}` to utilize Next.js preloading for images above the fold.
+- Add an optional caption that displays beneath the image.
 
 ### Code Line Highlighting
 ` ```JSX {3,5-8} ... `

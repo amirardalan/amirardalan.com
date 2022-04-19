@@ -176,7 +176,7 @@ export default function BlogMarkdown({ markdown }) {
         const height = metaHeight ? metaHeight[1] : "432"
         const isPriority = metastring?.toLowerCase().match('{priority}')
         const hasCaption = metastring?.toLowerCase().includes('{caption:')
-        const imgCaption = metastring?.match(/{caption:(.*?)}/)?.pop()
+        const caption = metastring?.match(/{caption: (.*?)}/)?.pop()
 
         return (
           <div className="postImgWrapper">
@@ -188,7 +188,7 @@ export default function BlogMarkdown({ markdown }) {
               alt={alt}
               priority={isPriority}
             />
-            {hasCaption ? <div className="caption">{imgCaption}</div> : null}
+            {hasCaption ? <div className="caption" aria-label={caption}>{caption}</div> : null}
           </div>
         )
       }
