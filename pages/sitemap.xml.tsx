@@ -10,10 +10,10 @@ export const getServerSideProps = async ({ res }) => {
   .readdirSync('./.next/server/pages')
   .filter((staticPage) => {
     return ![
-      "_app.tsx",
-      "_document.tsx",
-      "404.tsx",
-      "sitemap.xml.tsx",
+      // "_app.tsx",
+      // "_document.tsx",
+      // "404.tsx",
+      // "sitemap.xml.tsx",
     ].includes(staticPage);
   })
   .map((staticPagePath) => {
