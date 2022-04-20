@@ -6,7 +6,11 @@ export const getServerSideProps = async ({ res }) => {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL
 
   const staticPages = fs
-    .readdirSync("pages")
+    .readdirSync({
+      development: 'pages',
+      preview: './',
+      production: './',
+    }[process.env.NODE_ENV])
     .filter((staticPage) => {
       return ![
         "_app.tsx",
