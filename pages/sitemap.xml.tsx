@@ -15,6 +15,7 @@ export const getServerSideProps = async ({ res }) => {
     '!pages/api',
     '!pages/_*.tsx',
     '!pages/404.tsx',
+    '!pages/sitemap.xml.tsx'
   ])
 
   const feed = await prisma.post.findMany({
