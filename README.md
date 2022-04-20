@@ -105,10 +105,15 @@ yarn dev
 Open [http://localhost:3000](http://localhost:3000)
 
 ### Generate a Test Build
-Create a local copy of a production build (useful for testing `generateSitemap.mjs` configuration):
+Create a local copy of a production build (useful for testing [on-demand ISR](https://nextjs.org/docs/basic-features/data-fetching/incremental-static-regeneration#on-demand-revalidation-beta) and `pages/sitemap.xml.tsx` configuration):
 
 ```bash
 yarn build
+```
+the run
+
+```bash
+yarn start
 ```
 ---
 

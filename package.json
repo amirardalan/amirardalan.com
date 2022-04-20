@@ -4,9 +4,11 @@
   "private": true,
   "scripts": {
     "lint": "next lint",
+    "predev": "yarn build:config",
     "dev": "next dev",
+    "prebuild": "yarn build:config",
     "build": "next build && yarn test",
-    "postbuild": "NODE_OPTIONS='--experimental-json-modules' node ./scripts/generateSitemap.mjs",
+    "build:config": "esbuild next.config.ts --bundle --outfile=next.config.js --platform=node --external:pnpapi --target=es2020 --minify",
     "test": "jest --verbose",
     "start": "next start",
     "export": "yarn build && next export -o _static"
@@ -55,6 +57,7 @@
     "@types/react-syntax-highlighter": "^13.5.2",
     "@types/react-test-renderer": "^18.0.0",
     "@types/three": "^0.139.0",
+    "esbuild": "^0.14.36",
     "eslint": "8.13.0",
     "eslint-config-next": "12.1.5",
     "identity-obj-proxy": "^3.0.0",

@@ -6,7 +6,7 @@ import { metadata } from '@/data/metadata'
 
 export default function Container(props: any) {
 
-  const { children, ...customMeta } = props;
+  const { children, ...customMeta } = props
   const router = useRouter()
   const meta = {
     title: metadata.title,
@@ -16,7 +16,6 @@ export default function Container(props: any) {
     robots: 'follow, index',
     ...customMeta
   }
-
 
   return (
     <>

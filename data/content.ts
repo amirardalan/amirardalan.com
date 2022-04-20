@@ -490,28 +490,32 @@ export const usesContent = {
 }
 
 export const errorContent = {
-  meta: {
-    title: 'Page Not Found – Amir Ardalan'
-  },
-  title: '404',
-  img: {
-    meta: 'Error'
-  },
-  text: `Page not found`,
-  link: {
-    path: '/',
-    title: 'Return Home'
-  },
-  blogPostError: {
-    title: 'Oops...',
-    text: 'That post is no longer available.',
-    link: {
-      path: 'Blog',
-      title: 'Return to Blog',
+  notFound: {
+    meta: {
+      title: 'Page Not Found – Amir Ardalan'
     },
+    title: '404',
+    text: `Page not found`,
+    link: {
+      path: '/',
+      title: 'Return Home'
+    },
+    quote: `"The best thing about a boolean is even if you are wrong, you are only off by a bit."`,
+    author: 'Unknown',
   },
-  quote: `"The best thing about a boolean is even if you are wrong, you are only off by a bit."`,
-  author: 'Unknown'
+  internalServerError: {
+    meta: {
+      title: 'Internal Server Error – Amir Ardalan'
+    },
+    title: '500',
+    text: `Internal server error`,
+    link: {
+      path: '/',
+      title: 'Return Home'
+    },
+    quote: `"Whoops, something has gone awry. I'll have this patched up in no time..."`,
+    author: 'Amir',
+  },
 }
 
 export const footer = {

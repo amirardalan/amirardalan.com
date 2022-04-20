@@ -210,5 +210,5 @@ export default function About({ about, timeline }) {
         <Timeline timeline={timeline} />
       </main>
     </Container>
-  );
+  )
 }
