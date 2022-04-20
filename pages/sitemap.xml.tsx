@@ -7,7 +7,7 @@ export const getServerSideProps = async ({ res }) => {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL
 
   const staticPages = fs
-  .readdirSync('./pages')
+  .readdirSync('./')
   .filter((staticPage) => {
     return ![
       "_app.js",
