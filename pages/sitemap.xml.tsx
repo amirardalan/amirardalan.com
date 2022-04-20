@@ -48,7 +48,7 @@ const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
       .map(({ slug, editedAt }) => {
         return `
             <url>
-              <loc>${baseUrl}/${slug}</loc>
+              <loc>${baseUrl}/blog/${slug}</loc>
               <lastmod>${editedAt}</lastmod>
               <priority>1.0</priority>
             </url>
