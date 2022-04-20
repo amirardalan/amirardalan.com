@@ -1,28 +1,20 @@
-import fs from "fs"
+import { globby } from 'globby'
 import prisma from '@/lib/prisma'
 
 export const getServerSideProps = async ({ res }) => {
   
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL
 
-  const staticPages = fs
-    .readdirSync({
-      development: 'pages',
-      preview: './',
-      production: './',
-    }[process.env.NODE_ENV])
-    .filter((staticPage) => {
-      return ![
-        "_app.tsx",
-        "_document.tsx",
-        "api",
-        "404.tsx",
-        "sitemap.xml.tsx",
-      ].includes(staticPage)
-    })
-    .map((staticPagePath) => {
-      return `${baseUrl}/${staticPagePath.replace('.tsx','')}`
-    })
+  const staticPages = await globby([
+    '.next/server/pages/blog/**/*.json',
+    '!.next/server/pages/**/*.js.nft.json',
+    'pages/**/*{.tsx,.ts}',
+    '!pages/blog/',
+    'pages/blog/index.tsx',
+    '!pages/api',
+    '!pages/_*.tsx',
+    '!pages/404.tsx',
+  ])
 
   const feed = await prisma.post.findMany({
     where: { published: true },
