@@ -6,7 +6,6 @@
     "lint": "next lint",
     "dev": "next dev",
     "build": "next build && yarn test",
-    "postbuild": "NODE_OPTIONS='--experimental-json-modules' node ./scripts/generateSitemap.mjs",
     "test": "jest --verbose",
     "start": "next start",
     "export": "yarn build && next export -o _static"
