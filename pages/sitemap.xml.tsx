@@ -9,13 +9,12 @@ export const getServerSideProps = async ({ res }) => {
   const staticPages = await globby([
     '.next/server/pages/blog/**/*.json',
     '!.next/server/pages/**/*.js.nft.json',
+    'pages/**/*{.tsx,.ts}',
     '!pages/blog/',
     'pages/blog/index.tsx',
     '!pages/api',
     '!pages/_*.tsx',
     '!pages/404.tsx',
-    '!pages/sitemap.xml.tsx',
-    'pages/**/*{.tsx,.ts}'
   ])
 
   const feed = await prisma.post.findMany({
@@ -34,6 +33,7 @@ export const getServerSideProps = async ({ res }) => {
           .replace('.tsx', '')
           .replace('.json', '')
         const slug = path === '/index' ? '' : path
+        console.log(slug)
         return `
           <url>
             <loc>${`${baseUrl}${slug}`}</loc>
@@ -41,6 +41,7 @@ export const getServerSideProps = async ({ res }) => {
         `
       })
       .join('')}
+
       ${feed
         .map(({ slug, editedAt }) => {
           return `
