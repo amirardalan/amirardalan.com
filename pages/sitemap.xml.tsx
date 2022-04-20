@@ -7,13 +7,13 @@ export const getServerSideProps = async ({ res }) => {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL
 
   const staticPages = fs
-  .readdirSync('pages/')
+  .readdirSync('./.next/server/pages')
   .filter((staticPage) => {
     return ![
-      "_app.js",
-      "_document.js",
-      "_error.js",
-      "sitemap.xml.js",
+      "_app.tsx",
+      "_document.tsx",
+      "404.tsx",
+      "sitemap.xml.tsx",
     ].includes(staticPage);
   })
   .map((staticPagePath) => {
