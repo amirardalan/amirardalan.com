@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import { css } from '@emotion/react'
 import Container from '@/components/Container'
-import { errorContent } from '@/data/content'
 
 
 export default function ErrorLayout({ error }) {
