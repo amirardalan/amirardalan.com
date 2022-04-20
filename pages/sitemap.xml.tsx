@@ -9,12 +9,9 @@ export const getServerSideProps = async ({ res }) => {
   const staticPages = fs
   .readdirSync('./.next/server/pages')
   .filter((staticPage) => {
+    console.log(staticPage)
     return ![
-      // "_app.tsx",
-      // "_document.tsx",
-      // "404.tsx",
-      // "sitemap.xml.tsx",
-    ].includes(staticPage);
+    ].includes(staticPage)
   })
   .map((staticPagePath) => {
     return `${baseUrl}/${staticPagePath}`;
@@ -32,8 +29,6 @@ const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
         return `
           <url>
             <loc>${url}</loc>
-            <lastmod>${new Date().toISOString()}</lastmod>
-            <changefreq>monthly</changefreq>
             <priority>1.0</priority>
           </url>
         `;
@@ -45,7 +40,6 @@ const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
             <url>
               <loc>${baseUrl}/${slug}</loc>
               <lastmod>${editedAt}</lastmod>
-              <changefreq>monthly</changefreq>
               <priority>1.0</priority>
             </url>
           `;
