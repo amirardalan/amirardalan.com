@@ -1,6 +1,7 @@
 import { globby } from 'globby'
 import prisma from '@/lib/prisma'
 
+// Dynamically Generate sitemap.xml
 export const getServerSideProps = async ({ res }) => {
   
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL
@@ -15,8 +16,6 @@ export const getServerSideProps = async ({ res }) => {
     '!pages/_*.tsx',
     '!pages/404.tsx',
   ])
-
-  console.log(pages)
 
   const feed = await prisma.post.findMany({
     where: { published: true },
@@ -36,7 +35,7 @@ export const getServerSideProps = async ({ res }) => {
         const route = path === '/index' ? '' : path;
         return `
           <url>
-            <loc>${`${process.env.NEXT_PUBLIC_SITE_URL}${route}`}</loc>
+            <loc>${`${baseUrl}${route}`}</loc>
           </url>
         `
       })
@@ -61,9 +60,7 @@ export const getServerSideProps = async ({ res }) => {
   res.end()
 
   return { props: {} }
-
 }
-
 
 const Sitemap = () => {}
 export default Sitemap
