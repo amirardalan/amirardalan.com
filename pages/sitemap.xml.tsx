@@ -7,7 +7,7 @@ export const getServerSideProps = async ({ res }) => {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL
 
   const staticPages = fs
-  .readdirSync('./.next/server/static/')
+  .readdirSync('./.next/static/')
   console.log(staticPages)
   // .filter((staticPage) => {
   //   console.log(staticPage)
