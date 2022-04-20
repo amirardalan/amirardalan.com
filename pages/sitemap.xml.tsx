@@ -8,15 +8,14 @@ export const getServerSideProps = async ({ res }) => {
 
   const staticPages = fs
   .readdirSync('./.next/server/pages')
-  console.log(staticPages)
-  // .filter((staticPage) => {
-  //   console.log(staticPage)
-  //   return ![
-  //   ].includes(staticPage)
-  // })
-  // .map((staticPagePath) => {
-  //   return `${baseUrl}/${staticPagePath}`;
-  // })
+  .filter((staticPage) => {
+    console.log(staticPage)
+    return ![
+    ].includes(staticPage)
+  })
+  .map((staticPagePath) => {
+    return `${baseUrl}/${staticPagePath}`;
+  })
 
   const feed = await prisma.post.findMany({
     where: { published: true },
