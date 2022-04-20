@@ -9,6 +9,7 @@
 /coverage
 
 # next.js
+next.config.js
 /.next/
 /out/
 
