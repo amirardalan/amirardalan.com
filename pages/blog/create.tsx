@@ -8,6 +8,7 @@ import BlogStyles from '@/components/BlogStyles'
 import Dropdown from '@/components/Dropdown'
 import Checkbox from '@/components/Checkbox'
 import BlogPostControls from '@/components/BlogPostControls'
+import generateSlug from '@/utils/generateSlug'
 import { useFetchStatus } from '@/utils/useLoadingIndicator'
 
 import { adminContent, breadcrumbContent } from '@/data/content'
@@ -60,24 +61,6 @@ const Draft = ({ admin, breadcrumb }) => {
     } catch (error) {
       console.error(error)
     }
-  }
-
-  const generateSlug = (str: string) => {
-
-    str = str.replace(/^\s+|\s+$/g, '')
-    str = str.toLowerCase()
-    const from = 'àáãäâèéëêìíïîòóöôùúüûñç·/_,:;'
-    const to   = 'aaaaaeeeeiiiioooouuuunc------'
-
-    for (let i = 0, l = from.length; i < l; i++) {
-      str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i))
-    }
-
-    str = str.replace(/[^a-z0-9 -]/g, '')
-      .replace(/\s+/g, '-')
-      .replace(/-+/g, '-')
-
-    return str
   }
 
   const slugUrl = generateSlug(title)

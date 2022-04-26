@@ -2,14 +2,23 @@ import { useState } from 'react'
 import { css } from '@emotion/react'
 import Image from 'next/image'
 
-import { oneDark } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import ReactMarkdown from 'react-markdown'
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import rangeParser from 'parse-numeric-range'
-import gfm from 'remark-gfm'
-import rehypeSlug from 'rehype-slug'
 import rehypeRaw from 'rehype-raw'
-import link from 'rehype-autolink-headings'
+import generateSlug from '@/utils/generateSlug'
+import rangeParser from 'parse-numeric-range'
+
+import { PrismAsyncLight as SyntaxHighlighter } from 'react-syntax-highlighter'
+import { oneDark } from 'react-syntax-highlighter/dist/cjs/styles/prism'
+import jsx from 'react-syntax-highlighter/dist/cjs/languages/prism/jsx'
+import typescript from 'react-syntax-highlighter/dist/cjs/languages/prism/typescript'
+import scss from 'react-syntax-highlighter/dist/cjs/languages/prism/scss'
+import bash from 'react-syntax-highlighter/dist/cjs/languages/prism/bash'
+import markdown from 'react-syntax-highlighter/dist/cjs/languages/prism/markdown'
+SyntaxHighlighter.registerLanguage('jsx', jsx)
+SyntaxHighlighter.registerLanguage('typescript', typescript)
+SyntaxHighlighter.registerLanguage('scss', scss)
+SyntaxHighlighter.registerLanguage('bash', bash)
+SyntaxHighlighter.registerLanguage('markdown', markdown)
 
 
 export default function BlogMarkdown({ markdown }) {
@@ -133,8 +142,8 @@ export default function BlogMarkdown({ markdown }) {
         if (hasMeta) {
           const RE = /{([\d,-]+)}/
           const metadata = node.data.meta?.replace(/\s/g, '')
-          const strlineNumbers = RE.test(metadata)
-            ? RE.exec(metadata)[1]
+          const strlineNumbers = RE?.test(metadata)
+            ? RE?.exec(metadata)[1]
             : '0'
           const highlightLines = rangeParser(strlineNumbers)
           const highlight = highlightLines
@@ -167,7 +176,7 @@ export default function BlogMarkdown({ markdown }) {
       const { node } = paragraph
 
       if (node.children[0].tagName === "img") {
-        const image = node.children[0]
+        const image = node?.children[0]
         const metastring = image?.properties?.alt
         const alt = metastring?.replace(/ *\{[^)]*\} */g, "")
         const metaWidth = metastring?.match(/{([^}]+)x/)
@@ -207,6 +216,11 @@ export default function BlogMarkdown({ markdown }) {
       }
       return <a href={anchor.href}>{anchor.children}</a>
     },
+    h3: (h3: any) => {
+      const heading = h3.node.children[0].value
+      const slug = generateSlug(heading)
+      return <h3 id={slug}><a href={`#${slug}`}>{heading}</a></h3>
+    },
     pre: (pre: PreNode) => {
       const codeChunk = pre.node.children[0].children[0].value
       
@@ -231,8 +245,7 @@ export default function BlogMarkdown({ markdown }) {
   return (
     <ReactMarkdown
       components={MarkdownComponents}
-      remarkPlugins={[ [gfm], ]}
-      rehypePlugins={[ [rehypeSlug], [link], [rehypeRaw, { passThrough: ["element"] }] ]}
+      rehypePlugins={[[rehypeRaw, { passThrough: ["element"] }]]}
       css={styleMarkdown}
     >
       {markdown.content}

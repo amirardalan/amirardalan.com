@@ -131,10 +131,10 @@ const Post = ({ blogPost, admin, post, feed }) => {
           background: 'transparent'
         },
         a: {
-          position: 'absolute',
-          display: 'block',
-          height: '100%',
-          width: '100%',
+          fontFamily: 'var(--font-secondary)',
+          textDecoration: 'none',
+          color: 'var(--color-heading)',
+          fontSize: 28,
           '&:hover': {
             '&::before': {
               content: '"#"',
@@ -164,13 +164,13 @@ const Post = ({ blogPost, admin, post, feed }) => {
       },
       p: {
         marginBottom: '2rem',
-      },
-      a: {
-        color: 'inherit',
-        textDecoration: 'underline',
-        textDecorationColor: 'var(--color-primary)',
-        '&:hover': {
-          color: 'var(--color-primary)',
+        a: {
+          color: 'inherit',
+          textDecoration: 'underline',
+          textDecorationColor: 'var(--color-primary)',
+          '&:hover': {
+            color: 'var(--color-primary)',
+          },
         },
       },
       '.note': {
