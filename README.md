@@ -197,20 +197,6 @@ For any blog posts that do not contain an image, [this service](https://github.c
 
 ---
 
-## Testing
-
-- [Jest](jestjs.io/) is configured in `jest.config.ts` and included in the `package.json` build script.
-- [React Testing Library](https://github.com/testing-library/react-testing-library) is included in `jest.setup.ts`.
-- Verbose test suites will be run and logged at build time.
-
-Run Jest manually:
-
-```
-yarn test
-```
-
----
-
 ## Inspiration:
 
 ### Spotify dashboard / SWR:

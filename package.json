@@ -7,9 +7,8 @@
     "predev": "yarn build:config",
     "dev": "next dev",
     "prebuild": "yarn build:config",
-    "build": "next build && yarn test",
+    "build": "next build",
     "build:config": "esbuild next.config.ts --bundle --outfile=next.config.js --platform=node --external:pnpapi --target=es2020 --minify",
-    "test": "jest --verbose",
     "start": "next start",
     "export": "yarn build && next export -o _static"
   },
@@ -37,26 +36,16 @@
   "devDependencies": {
     "@emotion/eslint-plugin": "^11.7.0",
     "@next/eslint-plugin-next": "^12.1.5",
-    "@testing-library/dom": "^8.13.0",
-    "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^13.1.0",
-    "@testing-library/user-event": "^14.1.0",
-    "@types/formidable": "^2.0.4",
-    "@types/jest": "^27.4.0",
     "@types/node": "^17.0.24",
     "@types/parse-numeric-range": "^0.0.1",
     "@types/react": "^18.0.5",
     "@types/react-dom": "^18.0.1",
     "@types/react-syntax-highlighter": "^13.5.2",
-    "@types/react-test-renderer": "^18.0.0",
     "@types/three": "^0.139.0",
     "esbuild": "^0.14.36",
     "eslint": "8.13.0",
     "eslint-config-next": "12.1.5",
-    "identity-obj-proxy": "^3.0.0",
-    "jest": "^27.5.1",
     "prisma": "^3.12.0",
-    "react-test-renderer": "^18.0.0",
     "typescript": "^4.6.3"
   }
 }
