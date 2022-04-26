@@ -135,7 +135,7 @@ export default function BlogMarkdown({ markdown }) {
   const MarkdownComponents: object = {
     code({ node, inline, className, ...props }) {
 
-      const match = /language-(\w+)/.exec(className || '')
+      const language = /language-(\w+)/.exec(className || '')
       const hasMeta = node?.data?.meta
 
       const applyHighlights: object = (applyHighlights: number) => {
@@ -156,10 +156,10 @@ export default function BlogMarkdown({ markdown }) {
         }
       }
 
-      return match ? (
+      return language ? (
         <SyntaxHighlighter
           style={syntaxTheme}
-          language={match[1]}
+          language={language[1].toLowerCase()}
           PreTag="div"
           className="codeStyle"
           showLineNumbers={true}
