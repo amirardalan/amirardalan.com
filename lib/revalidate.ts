@@ -12,7 +12,7 @@ const revalidateChanges = (
   const revalidatePath = isEditPage ? Router.asPath.replace('/edit','') : Router.asPath
 
   const post = fetch(`/api/revalidate?secret=${REVALIDATE_SECRET}&path=${revalidatePath}`)
-  const blog = published ? fetch(`/api/revalidate?secret=${REVALIDATE_SECRET}&path=/blog`) : Promise.resolve()
+  const blog = fetch(`/api/revalidate?secret=${REVALIDATE_SECRET}&path=/blog`)
   const home = featured || latestPost ? fetch(`/api/revalidate?secret=${REVALIDATE_SECRET}&path=/`) : Promise.resolve()
 
   setFetchStatus(true)
