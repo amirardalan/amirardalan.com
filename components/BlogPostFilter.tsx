@@ -181,7 +181,7 @@ const BlogPostFilter = ({ blog, feed }) => {
 
   return (
     <>
-      <BlogStats feed={feed} activeCategories={activeCategories} />
+      <BlogStats feed={feed} activeCategories={activeCategories} filteredPosts={filteredPosts} />
       <nav css={styleBlogCategoryNav}>
         <ul>
           <li>

@@ -2,9 +2,10 @@ import { css } from '@emotion/react'
 import CountUp from 'react-countup'
 
 
-export default function BlogStats({ feed, activeCategories }) {
+export default function BlogStats({ feed, activeCategories, filteredPosts }) {
 
-  const postsNumber = feed.length
+  const filterActive = filteredPosts.length < feed.length
+  const postsNumber = filterActive ? filteredPosts.length : feed.length
   const categoriesNumber = activeCategories.length
 
   const styleBlogStatsWrapper = css({
@@ -18,12 +19,14 @@ export default function BlogStats({ feed, activeCategories }) {
     li: {
       lineHeight: '1rem',
       display: 'inline',
-      marginRight: '1rem',
+      '&.catsCount': {
+        display: filterActive ? 'none' : 'inline-block'
+      },
       '@media(max-width: 1024px)': {
         marginBottom: '.25rem'
       },
       '&:last-of-type': {
-        marginRight: 0,
+        marginLeft: '1rem',
       },
       '.number': {
         marginRight: '.3rem',
@@ -40,12 +43,12 @@ export default function BlogStats({ feed, activeCategories }) {
     <div css={styleBlogStatsWrapper}>
       <h1 className="blogHeading">Blog</h1>
       <ul>
-        <li>
+        <li className="postsCount">
           <CountUp
             start={0}
             end={postsNumber}
             delay={0}
-            duration={1.5}
+            duration={.5}
             decimals={0}
           >
             {({ countUpRef }) => (
@@ -54,12 +57,12 @@ export default function BlogStats({ feed, activeCategories }) {
           </CountUp>
           <span className="text">posts</span>
         </li>
-        <li>
+        <li className="catsCount">
           <CountUp
             start={0}
             end={categoriesNumber}
             delay={0}
-            duration={1.5}
+            duration={.5}
             decimals={0}
           >
             {({ countUpRef }) => (
