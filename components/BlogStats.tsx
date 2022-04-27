@@ -7,6 +7,8 @@ export default function BlogStats({ feed, activeCategories, filteredPosts }) {
   const filterActive = filteredPosts.length < feed.length
   const postsNumber = filterActive ? filteredPosts.length : feed.length
   const categoriesNumber = activeCategories.length
+  const isPlural = postsNumber > 1
+  const postsText = isPlural ? 'posts' : 'post'
 
   const styleBlogStatsWrapper = css({
     display: 'flex',
@@ -55,7 +57,7 @@ export default function BlogStats({ feed, activeCategories, filteredPosts }) {
               <span className="number" ref={countUpRef} />
             )}
           </CountUp>
-          <span className="text">posts</span>
+          <span className="text">{postsText}</span>
         </li>
         <li className="catsCount">
           <CountUp
