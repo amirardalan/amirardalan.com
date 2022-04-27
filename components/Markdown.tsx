@@ -14,12 +14,16 @@ import typescript from 'react-syntax-highlighter/dist/cjs/languages/prism/typesc
 import scss from 'react-syntax-highlighter/dist/cjs/languages/prism/scss'
 import bash from 'react-syntax-highlighter/dist/cjs/languages/prism/bash'
 import markdown from 'react-syntax-highlighter/dist/cjs/languages/prism/markdown'
+import json from 'react-syntax-highlighter/dist/cjs/languages/prism/json'
+import lua from 'react-syntax-highlighter/dist/cjs/languages/prism/lua'
 
 SyntaxHighlighter.registerLanguage('tsx', tsx)
 SyntaxHighlighter.registerLanguage('typescript', typescript)
 SyntaxHighlighter.registerLanguage('scss', scss)
 SyntaxHighlighter.registerLanguage('bash', bash)
 SyntaxHighlighter.registerLanguage('markdown', markdown)
+SyntaxHighlighter.registerLanguage('json', json)
+SyntaxHighlighter.registerLanguage('lua', lua)
 
 
 export default function BlogMarkdown({ markdown }) {
