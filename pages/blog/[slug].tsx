@@ -151,7 +151,12 @@ const Post = ({ blogPost, admin, post, feed }) => {
           }
         },
         '@media(hover: none)': {
-          a: { display: 'none' }
+          a: {
+            pointerEvents: 'none',
+            '&:hover:before': {
+              content: '""'
+            }
+          }
         },
       },
       'h1, h2, h3, h3, h4, h5, h6': {
