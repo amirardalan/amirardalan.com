@@ -14,6 +14,7 @@ import typescript from 'react-syntax-highlighter/dist/cjs/languages/prism/typesc
 import scss from 'react-syntax-highlighter/dist/cjs/languages/prism/scss'
 import bash from 'react-syntax-highlighter/dist/cjs/languages/prism/bash'
 import markdown from 'react-syntax-highlighter/dist/cjs/languages/prism/markdown'
+import { join } from 'node:path/posix'
 SyntaxHighlighter.registerLanguage('jsx', jsx)
 SyntaxHighlighter.registerLanguage('typescript', typescript)
 SyntaxHighlighter.registerLanguage('scss', scss)
@@ -135,7 +136,7 @@ export default function BlogMarkdown({ markdown }) {
   const MarkdownComponents: object = {
     code({ node, inline, className, ...props }) {
 
-      const language = /language-(\w+)/.exec(className || '')
+      const match = /language-(\w+)/.exec(className || '')
       const hasMeta = node?.data?.meta
 
       const applyHighlights: object = (applyHighlights: number) => {
@@ -156,10 +157,10 @@ export default function BlogMarkdown({ markdown }) {
         }
       }
 
-      return language ? (
+      return match ? (
         <SyntaxHighlighter
           style={syntaxTheme}
-          language={language[1].toLowerCase()}
+          language={match[1]}
           PreTag="div"
           className="codeStyle"
           showLineNumbers={true}
@@ -216,10 +217,21 @@ export default function BlogMarkdown({ markdown }) {
       }
       return <a href={anchor.href}>{anchor.children}</a>
     },
-    h3: (h3: any) => {
-      const heading = h3.node.children[0].value
+    h3: (props: any) => {
+      const arr = props.children
+      
+      let heading = ''
+
+      for (let i = 0; i < arr.length; i++) {
+        if (arr[i]?.type !== undefined) {
+          for (let j = 0; j < arr[i].props.children.length; j++) {
+            heading += arr[i]?.props?.children[0]
+          }
+        } else heading += arr[i]
+      }
+
       const slug = generateSlug(heading)
-      return <h3 id={slug}><a href={`#${slug}`}>{heading}</a></h3>
+      return <h3 id={slug}><a href={`#${slug}`} {...props}></a></h3>
     },
     pre: (pre: PreNode) => {
       const codeChunk = pre.node.children[0].children[0].value

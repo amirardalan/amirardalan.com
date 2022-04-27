@@ -146,6 +146,9 @@ const Post = ({ blogPost, admin, post, feed }) => {
               fontSize: 28
             }
           },
+          '@media (max-width: 768px)': {
+            fontSize: 24,
+          }
         },
         '@media(hover: none)': {
           a: { display: 'none' }
