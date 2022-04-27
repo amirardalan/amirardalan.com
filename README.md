@@ -142,7 +142,8 @@ Open [http://localhost:5555/](http://localhost:5555/)
 
 - [Next/Image Component](#nextimage-component)
 - [Code Line Highlighting](#code-line-highlighting)
-- [Links Behavior](#links-behavior)
+- [Heading Anchors](#heading-anchors)
+- [Link Behavior](#link-behavior)
 - [iFrame Embeds](#iframe-embeds)
 
 ### Next/Image Component
@@ -161,7 +162,9 @@ Retain the terseness of pure Markdown while getting the benefits of the Next/Ima
 ` ```JSX {3,5-8} ... `
 - Individually highlight specific lines of code using a space after the language declaration followed by this JSON metastring. Highlight individual lines and/or a range of contiguous lines, separated by commas.
 
-### Links Behavior
+### Heading Anchors
+- H3 headings in a blog post automatically generate an anchor link from a generated slug based on the heading contents. Seamlessly handles `code` inside headings.
+### Link Behavior
 ```
 [internal link](/blog/my-blog-post)
 [external link](https://example.com)

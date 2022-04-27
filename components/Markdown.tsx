@@ -50,18 +50,30 @@ export default function BlogMarkdown({ markdown }) {
         position: 'absolute',
         top: 13,
         right: -10,
-        backgroundColor: 'var(--code-highlight)',
+        border: '1px solid var(--color-gray)',
         borderRadius: 5,
         textTransform: 'uppercase',
         fontSize: 13,
         padding: '.1rem .4rem .2rem',
         color: 'var(--color-bg)',
         '&:after': {
-          content: '"📋"',
+          background: 'var(--icon-copy) no-repeat',
+          backgroundSize: 'contain',
         },
+        '&:hover': {
+          backgroundColor: 'var(--code-highlight)',
+        }
+      },
+      '&.active button:after, button:after': {
+        marginTop: 4,
+        display: 'inline-block',
+        content: '""',
+        height: 18,
+        width: 18,
       },
       '&.active button:after': {
-        content: '"☑️"'
+        background: 'var(--icon-check) no-repeat',
+        backgroundSize: 'contain',
       },
       '&:hover': {
         button: {

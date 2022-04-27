@@ -95,6 +95,8 @@ export function GlobalStyles () {
           '--code-highlight': codeHighlight,
           '--icon-download-dark': 'url(/icons/download-dark.svg)',
           '--icon-download-light': 'url(/icons/download-light.svg)',
+          '--icon-copy': 'url(/icons/copy-light.svg)',
+          '--icon-check': 'url(/icons/check-light.svg)',
         },
         'body, body[data-theme="light"]': {
           '--color-primary': primary,
