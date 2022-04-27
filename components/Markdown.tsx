@@ -7,7 +7,7 @@ import rehypeRaw from 'rehype-raw'
 import generateSlug from '@/utils/generateSlug'
 import rangeParser from 'parse-numeric-range'
 
-import { PrismAsyncLight as SyntaxHighlighter } from 'react-syntax-highlighter'
+import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { oneDark } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import tsx from 'react-syntax-highlighter/dist/cjs/languages/prism/tsx'
 import typescript from 'react-syntax-highlighter/dist/cjs/languages/prism/typescript'
