@@ -12,8 +12,6 @@ const BlogAdmin = dynamic(() => import('@/components/BlogAdmin'),{
 })
 
 
-
-
 const Header = ({ toggleTheme }) => {
   
   const styleHeaderWrapper = css({
@@ -85,7 +83,6 @@ const Header = ({ toggleTheme }) => {
       </header>
     </>
   )
-
 }
 
 export default Header

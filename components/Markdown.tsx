@@ -236,7 +236,6 @@ export default function BlogMarkdown({ markdown }) {
     },
     h3: (props: any) => {
       const arr = props.children
-      
       let heading = ''
 
       for (let i = 0; i < arr.length; i++) {
