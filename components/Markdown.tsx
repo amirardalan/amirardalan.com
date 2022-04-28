@@ -45,31 +45,32 @@ export default function BlogMarkdown({ markdown }) {
     '.copyCode': {
       position: 'relative',
       button: {
+        backgroundColor: 'var(--code-highlight)',
         display: 'none',
         zIndex: 1,
         position: 'absolute',
         top: 13,
         right: -10,
-        border: '1px solid var(--color-gray)',
+        border: '1px solid var(--color-gray-dark)',
         borderRadius: 5,
         textTransform: 'uppercase',
         fontSize: 13,
-        padding: '.1rem .4rem .2rem',
+        padding: '.1rem .4rem',
         color: 'var(--color-bg)',
         '&:after': {
           background: 'var(--icon-copy) no-repeat',
           backgroundSize: 'contain',
         },
         '&:hover': {
-          backgroundColor: 'var(--code-highlight)',
+          backgroundColor: 'var(--color-gray-dark)',
         }
       },
       '&.active button:after, button:after': {
         marginTop: 4,
         display: 'inline-block',
         content: '""',
-        height: 18,
-        width: 18,
+        height: 18.5,
+        width: 18.5,
       },
       '&.active button:after': {
         background: 'var(--icon-check) no-repeat',

@@ -88,6 +88,7 @@ export function GlobalStyles () {
           '--font-tertiary': fontTertiary,
           '--color-light': lightAccent,
           '--color-dark': darkAccent,
+          '--color-gray-dark': grayDark,
           '--color-warning': warning,
           '--color-disabled': buttonDisabled,
           '--color-avatar': avatar,
