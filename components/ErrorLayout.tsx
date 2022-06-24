@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import { css } from '@emotion/react'
-import Container from '@/components/Container'
 
 
 export default function ErrorLayout({ error }) {
@@ -11,7 +10,7 @@ export default function ErrorLayout({ error }) {
     position: 'relative',
     display: 'flex',
     flexDirection: 'column',
-    backgroundColor: 'var(--page-bg)',
+  backgroundColor: 'var(--page-bg)',
   })
   
   const styleErrorContainer = css({
@@ -78,36 +77,34 @@ export default function ErrorLayout({ error }) {
 
 
   return (
-    <Container title={error.meta.title} robots="noindex">
-      <main css={styleErrorWrapper}>
-        <div css={styleErrorContainer}>
-          <div className="errorCode">
-            <h1 aria-label={error.title}>
-              {error.title}
-            </h1>
-          </div>
-          <div>
-            <h2 aria-label={error.text}>
-              {error.text}
-            </h2>
-          </div>
+    <main css={styleErrorWrapper}>
+      <div css={styleErrorContainer}>
+        <div className="errorCode">
+          <h1 aria-label={error.title}>
+            {error.title}
+          </h1>
         </div>
-        <div css={styleErrorContent}>
-          <div className="quoteContainer">
-            <p className="quote">
-              {error.quote}
-            </p>
-            <p className="author">
-              {error.author}
-            </p>
-          </div>
+        <div>
+          <h2 aria-label={error.text}>
+            {error.text}
+          </h2>
         </div>
-        <div css={styleHomeButton}>
-          <Link href={error.link.path} aria-label={error.link.title} passHref>
-            <button className="ctaButton">{error.link.title}</button>
-          </Link>
+      </div>
+      <div css={styleErrorContent}>
+        <div className="quoteContainer">
+          <p className="quote">
+            {error.quote}
+          </p>
+          <p className="author">
+            {error.author}
+          </p>
         </div>
-      </main>
-    </Container>
+      </div>
+      <div css={styleHomeButton}>
+        <Link href={error.link.path} aria-label={error.link.title} passHref>
+          <button className="ctaButton">{error.link.title}</button>
+        </Link>
+      </div>
+    </main>
   )
 }
