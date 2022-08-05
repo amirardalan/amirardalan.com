@@ -41,7 +41,7 @@
     "@types/parse-numeric-range": "^0.0.1",
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
-    "@types/react-syntax-highlighter": "^15.5.4",
+    "@types/react-syntax-highlighter": "^13.5.2",
     "@types/three": "^0.143.0",
     "esbuild": "^0.14.53",
     "eslint": "8.21.0",
