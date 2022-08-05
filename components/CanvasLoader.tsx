@@ -44,7 +44,7 @@ const CanvasLoader = () => {
   }
 
   function getRandomArbitrary(min: number, max: number) {
-    return Math.random() * (max - min) + min;
+    return Math.random() * (max - min) + min
   }
 
   const [seed, setSeed] = useState(Date.now())
