@@ -203,7 +203,7 @@ const Edit = ({ admin, breadcrumb, editPost, getLatestPost }) => {
   }
 
   return (
-    <Container title={admin.edit.meta.title} {...isPublished ? 'Post |' : 'Draft: '} {...editPageTitle} robots="noindex">
+    <Container title={admin.edit.meta.title} {...editPageTitle} robots="noindex">
       <BlogStyles>
         <div>{edit}</div>
       </BlogStyles>
