@@ -1,18 +1,19 @@
 import { useLayoutEffect, useMemo, useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
-import SimplexNoise from 'simplex-noise'
+import { createNoise2D } from 'simplex-noise'
+import alea from 'alea'
 import { BufferAttribute } from 'three'
 
 
 const generateTerrain = (
-  simplex: SimplexNoise,
   detail: number,
   height: number,
   texture: number,
   scale: number,
   offset: { x: any; z: any }) => {
+  const noise2D = createNoise2D()
   const noise = (level: number, x: number, z: number) =>
-    simplex.noise2D(
+    noise2D(
       offset.x * scale + scale * level * x,
       offset.z * scale + scale * level * z
     ) /
@@ -50,7 +51,7 @@ const Terrain = ({
   offset = { x: 0, z: 0 },
   rotation = 1
 }) => {
-  const simplex = useMemo(() => new SimplexNoise(seed), [seed])
+  const simplex = useMemo(() => createNoise2D(alea('seed')), [])
   const ref = useRef()
   const mesh: any = useRef()
   
@@ -63,7 +64,7 @@ const Terrain = ({
     node?.setAttribute(
       'position',
       new BufferAttribute(
-        generateTerrain(simplex, detail, height, texture, scale, offset),
+        generateTerrain(detail, height, texture, scale, offset),
         3
       )
     )
