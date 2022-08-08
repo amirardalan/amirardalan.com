@@ -42,9 +42,9 @@ export default function About({ about, timeline }) {
           lineHeight: '1.2rem',
         },
         '.blurb': {
-          marginBottom: '1.5rem',
-          fontSize: 12,
-          lineHeight: '1.2rem',
+          marginBottom: '2.5rem',
+          fontFamily: 'var(--font-tertiary)',
+          lineHeight: '1.25rem',
           color: 'var(--color-light)'
         },
         '.ctaButton': {
