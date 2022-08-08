@@ -129,7 +129,7 @@ export const aboutContent = {
   },
   bio: {
     subheading: `👋 Hey there, I'm Amir!`,
-    content: `I connect humans with technology through front-end engineering and user interface design. I'm passionate about functional programming and crafting outstanding digital experiences.`,
+    content: `I connect humans with technology through front-end engineering and user interface design.`,
     items: [
       {
         path: '/amir-ardalan-resume.pdf',
