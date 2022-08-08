@@ -42,7 +42,10 @@ export default function About({ about, timeline }) {
           lineHeight: '1.2rem',
         },
         '.blurb': {
-          marginBottom: '1.5rem'
+          marginBottom: '1.5rem',
+          fontSize: 12,
+          lineHeight: '1.2rem',
+          color: 'var(--color-light)'
         },
         '.ctaButton': {
           background: 'var(--color-light)',
@@ -141,7 +144,7 @@ export default function About({ about, timeline }) {
                 <h2 aria-label={about.bio.subheading} className="bioSubHeading">
                   {about.bio.subheading}
                 </h2>
-                <em className='blurb'>{about.bio.content}</em>
+                <p className='blurb'>{about.bio.content}</p>
                 <CtaButtons items={about.bio.items} />
               </div>
             </div>
