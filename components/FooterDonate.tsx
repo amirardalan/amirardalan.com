@@ -65,6 +65,7 @@ export default function DonateEth() {
       background: 'transparent',
       border: 'none',
       color: 'var(--color-bg)',
+      textAlign: 'left',
       '.qrCode': {
         width: 242,
         height: 242,
