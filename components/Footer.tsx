@@ -38,6 +38,7 @@ export default function Footer() {
       gridTemplateColumns: 'repeat(2, 1fr)',
     },
     '@media(max-width: 480px)': {
+      gap: '1rem',
       gridTemplateColumns: 'repeat(1, 1fr)',
     },
     '.grid': {
@@ -92,6 +93,9 @@ export default function Footer() {
     backgroundSize: 'contain',
     height: 75,
     width: 75,
+    '@media(max-width: 768px)': {
+      padding: 0,
+    }
   })
   const styleCopyright = css({
     marginTop: '2rem',
