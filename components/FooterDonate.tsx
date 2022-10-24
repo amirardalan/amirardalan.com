@@ -38,7 +38,7 @@ export default function DonateEth() {
     opacity: showQrCode ? 1 : 0,
     overflow: 'hidden',
     position: 'absolute',
-    bottom: 45,
+    bottom: 52,
     left: '4rem',
     '@media (max-width: 1255px)': {
       bottom: 37,
