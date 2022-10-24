@@ -38,7 +38,7 @@ export default function Footer() {
       gridTemplateColumns: 'repeat(2, 1fr)',
     },
     '@media(max-width: 480px)': {
-      gap: '1rem',
+      gap: '1.5rem',
       gridTemplateColumns: 'repeat(1, 1fr)',
     },
     '.grid': {
@@ -80,10 +80,6 @@ export default function Footer() {
       '@media(max-width: 600px)': {
         width: '100%',
       }
-    },
-    '.nowPlaying': {
-      paddingTop: '.1rem',
-      lineHeight: '1.3rem',
     },
   })
   const styleFooterLogo = css({
