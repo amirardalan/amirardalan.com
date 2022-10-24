@@ -195,11 +195,9 @@ For any blog posts that do not contain an image, [this service](https://github.c
 
 ## Inspiration:
 
-### Spotify dashboard / SWR:
-[Lee Robinson](https://github.com/leerob/leerob.io)
+[Lee Robinson](https://github.com/leerob/leerob.io)  
 
-### Three.js Terrain Generator:
-[@Mozzius](https://github.com/Mozzius/terrain-fiber)
+[@Mozzius](https://github.com/Mozzius/terrain-fiber)  
 
 
 
