@@ -39,7 +39,7 @@ const Header = ({ toggleTheme }) => {
     justifyContent: 'space-between',
     a:  { textDecoration: 'none' },
     '.headerRight': {
-      minWidth: '395.2px',
+      minWidth: '327.2px', // Fix header content shifting
       display: 'flex',
       flexDirection: 'row',
       alignItems: 'center',
