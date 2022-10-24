@@ -18,7 +18,6 @@ export const homeContent = {
     `peruse my <a href="/blog">blog posts</a>`,
     `learn a bit <a href="/about">about me</a>`,
     `browse my <a href="/about#timeline">work history</a>`,
-    `explore my <a href="/spotify">spotify</a> stats`,
     `check out the <a href="/uses">tools I use</a>`,
     `delve into my <a href="https://github.com/amirardalan" rel="noopener noreferrer">GitHub</a>`,
     `follow me on <a href="https://twitter.com/amirardalan" rel="noopener noreferrer">Twitter</a>`
@@ -331,28 +330,6 @@ export const timelineContent = {
   ]
 }
 
-export const spotifyContent = {
-  meta: {
-    title: 'Spotify – Amir Ardalan',
-    description: `See what I'm currently listening to on Spotify and view my top 20 tracks of the moment.`
-  },
-  headings: {
-    main: 'Spotify Dashboard',
-    toptracks: 'Top Tracks',
-    topartists: 'Top Artists',
-    nowplaying: 'Now Playing',
-    profile: `Amir's Profile`,
-  },
-  status: {
-    online: 'Now playing',
-    offline: 'Currently Offline'
-  },
-  icon: {
-    light: themeDark.icons.spotify,
-    dark: themeLight.icons.spotify
-  }
-}
-
 export const usesContent = {
   meta: {
     title: 'Uses – Amir Ardalan',
@@ -473,8 +450,8 @@ export const usesContent = {
   - [Discord](https://discord.com/)
   
   #### Music & Podcasts
-  - [Spotify](/spotify)
   - [YouTube Music](https://music.youtube.com)
+  - [Google Podcasts](https://podcasts.google.com/)
 
   ---
 
@@ -546,14 +523,6 @@ export const footer = {
       },
     },
     {
-      path: 'https://emotion.sh/docs/introduction/',
-      title: 'Emotion',
-      icon: {
-        light: themeLight.icons.external,
-        dark: themeDark.icons.external
-      },
-    },
-    {
       path: 'https://www.prisma.io/',
       title: 'Prisma',
       icon: {
@@ -564,14 +533,6 @@ export const footer = {
     {
       path: 'https://threejs.org/',
       title: 'Three.js',
-      icon: {
-        light: themeLight.icons.external,
-        dark: themeDark.icons.external
-      },
-    },
-    {
-      path: 'https://unifiedjs.com/',
-      title: 'Unified.js',
       icon: {
         light: themeLight.icons.external,
         dark: themeDark.icons.external

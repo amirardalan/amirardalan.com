@@ -38,13 +38,5 @@ export const nav = [
     cName: 'excludeInHeader',
     aria: 'Tools I Use',
     icon: false
-  },
-  {
-    title: 'Spotify',
-    path: '/spotify',
-    exact: '',
-    cName: 'spotifyNav',
-    aria: 'Spotify Dashboard',
-    icon: true
   }
 ]

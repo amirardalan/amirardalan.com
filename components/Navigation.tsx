@@ -38,9 +38,6 @@ export default function Navigation() {
       borderBottom: '1px solid var(--color-accent-gray)',
       width: '100%',
       height: '100%',
-      '&.spotifyNav': {
-        borderBottom: 'none',
-      }
     },
     '.closeArea': {
       opacity: '.80',
@@ -119,15 +116,6 @@ export default function Navigation() {
           }
         }
       }
-    },
-    '.spotifyNav': {
-      marginTop: 2,
-      lineHeight: '1rem',
-      background: 'var(--icon-spotify) no-repeat',
-      backgroundSize: 'contain',
-      '@media(max-width: 768px)': {
-        marginTop: '1.2rem'
-      },
     },
     '@media(max-width: 768px)': {
       flexDirection: 'column',

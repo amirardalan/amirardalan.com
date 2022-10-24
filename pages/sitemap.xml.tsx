@@ -37,10 +37,6 @@ const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>${baseUrl}/spotify</loc>
-    <priority>1.0</priority>
-  </url>
-  <url>
     <loc>${baseUrl}/uses</loc>
     <priority>1.0</priority>
   </url>

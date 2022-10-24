@@ -4,7 +4,6 @@ import { nav } from '@/data/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
 import DonateEth from '@/components/FooterDonate'
-import NowPlayingCompact from '@/components/SpotifyPlayerSmall'
 import { Key } from 'react'
 
 
@@ -85,9 +84,6 @@ export default function Footer() {
       paddingTop: '.1rem',
       lineHeight: '1.3rem',
     },
-    '.spotifyNav': {
-      display: 'none',
-    }
   })
   const styleFooterLogo = css({
     display: 'flex',
@@ -96,11 +92,9 @@ export default function Footer() {
     backgroundSize: 'contain',
     height: 75,
     width: 75,
-    '@media(max-width: 768px)': {
-      marginTop: '2.5rem',
-    }
   })
   const styleCopyright = css({
+    marginTop: '2rem',
     fontFamily: 'var(--font-primary)',
     fontSize: 10,
     color: 'var(--color-bg)',
@@ -109,6 +103,9 @@ export default function Footer() {
     alignSelf: 'end',
     a: {
       color: 'var(--color-bg)'
+    },
+    '@media(max-width: 768px)': {
+      marginTop: '1.5rem',
     }
   })
   const styleFooterNav= css({
@@ -150,7 +147,7 @@ export default function Footer() {
     <footer css={styleFooterWrapper}>
       <div css={styleFooter}>
         <div className="grid">
-          <NowPlayingCompact />
+          <div css={styleFooterLogo} />
         </div>
         <div css={styleFooterNav} className="grid">
           <h4>{footer.headings.nav}</h4>
@@ -181,7 +178,6 @@ export default function Footer() {
           </ul>
         </div>
       </div>
-      <div css={styleFooterLogo}></div>
       <div css={styleCopyright}>
         <div>
           {footer.copyright.name + ' '}
