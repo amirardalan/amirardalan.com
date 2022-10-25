@@ -42,9 +42,10 @@ export default function About({ about, timeline }) {
           lineHeight: '1.2rem',
         },
         '.blurb': {
-          marginBottom: '2.5rem',
+          margin: '.5rem 0 2.5rem 0',
           fontFamily: 'var(--font-tertiary)',
-          lineHeight: '1.25rem',
+          lineHeight: '1.5rem',
+          fontStyle: 'italic',
           color: 'var(--color-light)'
         },
         '.ctaButton': {
@@ -140,7 +141,7 @@ export default function About({ about, timeline }) {
           <div css={styleGridWrapper}>
             <div className='grid'>
               <div css={styleBioItems}>
-                <Avatar height={125} width={125} avatar={about.avatar} />
+                <Avatar height={90} width={90} avatar={about.avatar} />
                 <h2 aria-label={about.bio.subheading} className="bioSubHeading">
                   {about.bio.subheading}
                 </h2>

@@ -128,7 +128,7 @@ export const aboutContent = {
   },
   bio: {
     subheading: `👋 Hey there, I'm Amir!`,
-    content: `I connect humans with technology through front-end engineering and user interface design.`,
+    content: `I connect humans with technology through front-end engineering and user interface design. I love clean code, excellent documentation, and efficient processes. I believe in producing outstanding digital experiences with a focus on performance and accessibility.`,
     items: [
       {
         path: '/amir-ardalan-resume.pdf',
@@ -146,20 +146,21 @@ export const aboutContent = {
     title: 'Skills',
     items: [
       'Front-end',
-      'JavaScript',
-      'TypeScript',
-      'React.js',
+      'React',
       'Next.js',
-      'HTML/CSS',
-      'Emotion CSS',
+      'TypeScript',
+      'JavaScript',
+      'HTML',
+      'Emotion / CSS',
       'UI Design',
       'Adobe XD',
+      'Web Accessibility'
     ]
   },
   stack: {
     items: [
       'Jest',
-      'Testing Lib',
+      'Testing Lib.',
       'Three.js',
       'Prisma ORM',
       'PostgreSQL',
@@ -167,20 +168,22 @@ export const aboutContent = {
       'Git',
       'Vercel',
       'Heroku',
+      'OpenSea API'
     ]
   },
   experience: {
     title: 'Experience',
     items: [
-      '10+ years',
-      'Columbia Sportswear',
-      'SOREL',
-      'Mountain Hardwear',
+      'Projects / Clients:',
+      '-',
+      'Columbia Sportswear Company',
+      'Hanna Andersson',
+      'Leatherman',
       'KEEN Footwear',
       'Chrome Industries',
-      'Hanna Andersson',
-      'Agile Scrum',
-      'Code Review'
+      'SOREL',
+      'Mountain Hardwear',
+      'Hartwell Homes',
     ],
   },
   availability: {
