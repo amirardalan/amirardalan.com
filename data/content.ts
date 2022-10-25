@@ -154,7 +154,7 @@ export const aboutContent = {
       'Emotion / CSS',
       'UI Design',
       'Adobe XD',
-      'Web Accessibility'
+      'Accessibility'
     ]
   },
   stack: {
