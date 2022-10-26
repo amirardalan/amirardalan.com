@@ -48,15 +48,20 @@ export default function DonationCta() {
       right: -15,
       animation: 'spin 1s forwards'
     },
+    '.supportContainer': {
+      background: showPayments ? 'var(--color-accent)' : 'none',
+      animation: showPayments ? 'slideUpSection 1s reverse' : 'slideDown 1s forwards',
+      animationFillMode: 'both'
+    },
     '.supportContent': {
+      display: 'flex',
+      position: 'relative',
+      width: '100%',
       overflow: 'hidden',
       height: 160,
-      width: 768,
-      display: 'flex',
       padding: '2.5rem',
-      position: 'relative',
-      animation: showPayments ? 'slideUpSection 1s reverse' : 'none',
-      animationFillMode: 'forwards',
+    },
+    '.animationWrapper': {
     },
     '.left': {
       width: '70%'
@@ -186,17 +191,19 @@ export default function DonationCta() {
 
       <div className="animationWrapper">
 
-        <div className="supportContent">
-          <div className="left">
-            <div className="copyContainer">
-              <h4>Did you find this article useful?</h4>
-              <p>I believe in open-source code and free knowledge for all.</p>
-              <p>Consider supporting the production of more content like this!</p>
+        <div className="supportContainer">
+          <div className="supportContent">
+            <div className="left">
+              <div className="copyContainer">
+                <h4>Did you find this article useful?</h4>
+                <p>I believe in open-source code and free knowledge for all.</p>
+                <p>Consider supporting the production of more content like this!</p>
+              </div>
             </div>
-          </div>
 
-          <div className="right">
-            <a onClick={handleShowPayments}>Make a donation</a>
+            <div className="right">
+              <a onClick={handleShowPayments}>Make a donation</a>
+            </div>
           </div>
         </div>
 
