@@ -6,6 +6,11 @@ import CloseButton from '@/components/CloseButton'
 
 export default function DonationCta() {
 
+  const [hideModule, setHideModule] = useState(false)
+  const handleHideModule = () => {
+    setHideModule(true)
+  }
+
   const [showPayments, setShowPayments] = useState(false)
   const handleShowPayments = () => {
     setShowPayments(!showPayments)
@@ -23,20 +28,27 @@ export default function DonationCta() {
   }
 
   const styleDonateWrapper = css({
+    display: hideModule ? 'none' : 'inline-block',
+    width: '100%',
     position: 'relative',
-    background: showPayments ? 'var(--color-accent)' : 'none',
-    display: 'flex',
+    marginBottom: '3.5rem',
     border: '1px solid var(--color-accent-gray)',
     borderRadius: '5px',
-    padding: '2.5rem',
-    marginBottom: '3.5rem',
     '.closeBtn': {
+      zIndex: 2,
+      cursor: 'pointer',
       border: '10px solid var(--color-bg)',
       borderRadius: 50,
       height: 40,
       position: 'absolute',
-      top: -10,
-      right: -9,
+      top: -15,
+      right: -15,
+    },
+    '.animationWrapper': {
+      position: 'relative',
+      background: showPayments ? 'var(--color-accent)' : 'none',
+      display: 'flex',
+      padding: '2.5rem',
     },
     '.left': {
       width: '70%'
@@ -157,50 +169,54 @@ export default function DonationCta() {
   return (
     <div css={styleDonateWrapper}>
 
-      <span className="closeBtn">
-        <CloseButton width={20} height={20}/>
-      </span>
+      <button className="closeBtn" onClick={handleHideModule}>
+        <CloseButton width={20} height={20} />
+      </button>
 
-      <div className="left">
-        <div className="copyContainer">
-          <h4>Did you find this article useful?</h4>
-          <p>I believe in open-source code and free knowledge for all.</p>
-          <p>Consider donating to support the production of more content!</p>
-        </div>
-      </div>
+      <div className="animationWrapper">
 
-      <div className="right">
-        <a onClick={handleShowPayments}>Make a donation</a>
-      </div>
-
-      <div className="eth">
-        <div css={styleQrWrapper}>
-          <div css={styleTooltipFooter}>
-            <div className="tooltip">{donate.copied}</div>
-          </div>
-          <div css={styleAddress}>
-            <button onClick={() => handleCopyAddress()} aria-label={donate.meta}>
-              <div className="address">
-                <span>{donate.address}</span>
-              </div>
-              <div className="qrCode">
-                <Image
-                  src={donate.qr}
-                  height={242}
-                  width={242}
-                  alt={donate.text}
-                />
-              </div>
-            </button>
+        <div className="left">
+          <div className="copyContainer">
+            <h4>Did you find this article useful?</h4>
+            <p>I believe in open-source code and free knowledge for all.</p>
+            <p>Consider donating to support the production of more content!</p>
           </div>
         </div>
-        <button css={styleDonateButton} onClick={() => setShowQrCode(!showQrCode)}>
-          {donate.text}
-        </button>
-        <span css={{ fontSize: 14 }}>⬨</span>
-      </div>
 
-      <div className="pp"></div>
+        <div className="right">
+          <a onClick={handleShowPayments}>Make a donation</a>
+        </div>
+
+        <div className="eth">
+          <div css={styleQrWrapper}>
+            <div css={styleTooltipFooter}>
+              <div className="tooltip">{donate.copied}</div>
+            </div>
+            <div css={styleAddress}>
+              <button onClick={() => handleCopyAddress()} aria-label={donate.meta}>
+                <div className="address">
+                  <span>{donate.address}</span>
+                </div>
+                <div className="qrCode">
+                  <Image
+                    src={donate.qr}
+                    height={242}
+                    width={242}
+                    alt={donate.text}
+                  />
+                </div>
+              </button>
+            </div>
+          </div>
+          <button css={styleDonateButton} onClick={() => setShowQrCode(!showQrCode)}>
+            {donate.text}
+          </button>
+          <span css={{ fontSize: 14 }}>⬨</span>
+        </div>
+
+        <div className="pp"></div>
+
+      </div>
 
     </div>
   )
