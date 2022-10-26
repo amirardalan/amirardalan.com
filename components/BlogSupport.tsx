@@ -45,6 +45,7 @@ export default function DonationCta() {
       right: -15,
     },
     '.animationWrapper': {
+      animation: showPayments ? 'slideUpSection 1s forwards' : 'none',
       position: 'relative',
       background: showPayments ? 'var(--color-accent)' : 'none',
       display: 'flex',
@@ -57,7 +58,10 @@ export default function DonationCta() {
       width: '30%',
       display: 'flex',
       alignItems: 'center',
-      justifyContent: 'center'
+      justifyContent: 'center',
+      a: {
+        color: 'var(--color-text)',
+      }
     },
     '.eth, .pp': {
       display: 'none' // TODO: Create hook to toggle
@@ -179,7 +183,7 @@ export default function DonationCta() {
           <div className="copyContainer">
             <h4>Did you find this article useful?</h4>
             <p>I believe in open-source code and free knowledge for all.</p>
-            <p>Consider donating to support the production of more content!</p>
+            <p>Consider supporting the production of more content like this!</p>
           </div>
         </div>
 
