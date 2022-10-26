@@ -7,14 +7,17 @@ import CloseButton from '@/components/CloseButton'
 export default function DonationCta() {
 
   const [hideModule, setHideModule] = useState(false)
-  const handleHideModule = () => {
-    setHideModule(true)
-  }
-
   const [showPayments, setShowPayments] = useState(false)
   const handleShowPayments = () => {
     setShowPayments(!showPayments)
   }
+  const handleHideModule = () => {
+    setHideModule(!showPayments)
+    if (showPayments) {
+      setShowPayments(false)
+    }
+  }
+
 
   const [showQrCode, setShowQrCode] = useState(false)
 
@@ -27,14 +30,14 @@ export default function DonationCta() {
     }, 5000)
   }
 
-  const styleDonateWrapper = css({
-    display: hideModule ? 'none' : 'inline-block',
+  const styleSupportModule = css({
     width: '100%',
     position: 'relative',
     marginBottom: '3.5rem',
     border: '1px solid var(--color-accent-gray)',
     borderRadius: '5px',
     '.closeBtn': {
+      display: showPayments ? 'inline-block' : 'none',
       zIndex: 2,
       cursor: 'pointer',
       border: '10px solid var(--color-bg)',
@@ -43,13 +46,17 @@ export default function DonationCta() {
       position: 'absolute',
       top: -15,
       right: -15,
+      animation: 'spin 1s forwards'
     },
-    '.animationWrapper': {
-      animation: showPayments ? 'slideUpSection 1s forwards' : 'none',
-      position: 'relative',
-      background: showPayments ? 'var(--color-accent)' : 'none',
+    '.supportContent': {
+      overflow: 'hidden',
+      height: 160,
+      width: 768,
       display: 'flex',
       padding: '2.5rem',
+      position: 'relative',
+      animation: showPayments ? 'slideUpSection 1s reverse' : 'none',
+      animationFillMode: 'forwards',
     },
     '.left': {
       width: '70%'
@@ -171,7 +178,7 @@ export default function DonationCta() {
 
 
   return (
-    <div css={styleDonateWrapper}>
+    <div css={styleSupportModule}>
 
       <button className="closeBtn" onClick={handleHideModule}>
         <CloseButton width={20} height={20} />
@@ -179,19 +186,21 @@ export default function DonationCta() {
 
       <div className="animationWrapper">
 
-        <div className="left">
-          <div className="copyContainer">
-            <h4>Did you find this article useful?</h4>
-            <p>I believe in open-source code and free knowledge for all.</p>
-            <p>Consider supporting the production of more content like this!</p>
+        <div className="supportContent">
+          <div className="left">
+            <div className="copyContainer">
+              <h4>Did you find this article useful?</h4>
+              <p>I believe in open-source code and free knowledge for all.</p>
+              <p>Consider supporting the production of more content like this!</p>
+            </div>
+          </div>
+
+          <div className="right">
+            <a onClick={handleShowPayments}>Make a donation</a>
           </div>
         </div>
 
-        <div className="right">
-          <a onClick={handleShowPayments}>Make a donation</a>
-        </div>
-
-        <div className="eth">
+        {/* <div className="eth">
           <div css={styleQrWrapper}>
             <div css={styleTooltipFooter}>
               <div className="tooltip">{donate.copied}</div>
@@ -218,7 +227,7 @@ export default function DonationCta() {
           <span css={{ fontSize: 14 }}>⬨</span>
         </div>
 
-        <div className="pp"></div>
+        <div className="pp"></div> */}
 
       </div>
 
