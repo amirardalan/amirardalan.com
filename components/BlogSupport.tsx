@@ -5,6 +5,11 @@ import { donate } from '@/data/content'
 
 export default function DonationCta() {
 
+  const [showPayments, setShowPayments] = useState(false)
+  const handleShowPayments = () => {
+    setShowPayments(!showPayments)
+  }
+
   const [showQrCode, setShowQrCode] = useState(false)
 
   const [addressCopied, setAddressCopied] = useState(false)
@@ -17,16 +22,17 @@ export default function DonationCta() {
   }
 
   const styleDonateWrapper = css({
+    background: showPayments ? 'var(--color-accent)' : 'none',
     display: 'flex',
     border: '1px solid var(--color-accent-gray)',
     borderRadius: '5px',
-    padding: '1.5rem 2rem',
-    marginBottom: '2rem',
+    padding: '2.5rem',
+    marginBottom: '3.5rem',
     '.left': {
-      width: '58%'
+      width: '70%'
     },
     '.right': {
-      width: '42%',
+      width: '30%',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center'
@@ -150,7 +156,7 @@ export default function DonationCta() {
       </div>
 
       <div className="right">
-        <a>Make a donation</a>
+        <a onClick={handleShowPayments}>Make a donation</a>
       </div>
 
       <div className="eth">
