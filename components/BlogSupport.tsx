@@ -49,7 +49,6 @@ export default function DonationCta() {
       animation: 'spin 1s forwards'
     },
     '.supportContainer': {
-      background: showPayments ? 'var(--color-accent)' : 'none',
       animation: showPayments ? 'slideUpSection 1s reverse' : 'slideDown 1s forwards',
       animationFillMode: 'both'
     },
@@ -196,13 +195,13 @@ export default function DonationCta() {
             <div className="left">
               <div className="copyContainer">
                 <h4>Did you find this article useful?</h4>
-                <p>I believe in open-source code and free knowledge for all.</p>
-                <p>Consider supporting the production of more content like this!</p>
+                <p>This app is <a href="https://github.com/amirardalan/amirardalan.com" target="_blank" rel="noopener noreferrer">open-source</a> and all of the content is free!</p>
+                <p>If you found this article helpful, consider supporting the author:</p>
               </div>
             </div>
 
             <div className="right">
-              <a onClick={handleShowPayments}>Make a donation</a>
+              <span>☕</span><a onClick={handleShowPayments}>Buy me a Coffee</a>
             </div>
           </div>
         </div>
