@@ -17,10 +17,36 @@ export default function DonationCta() {
   }
 
   const styleDonateWrapper = css({
+    display: 'flex',
     border: '1px solid var(--color-accent-gray)',
     borderRadius: '5px',
     padding: '1.5rem 2rem',
     marginBottom: '2rem',
+    '.left': {
+      width: '58%'
+    },
+    '.right': {
+      width: '42%',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center'
+    },
+    '.eth, .pp': {
+      display: 'none' // TODO: Create hook to toggle
+    },
+    '.copyContainer': {
+      h4: {
+        fontSize: 22,
+        marginBottom: '1rem'
+      },
+      p: {
+        fontSize: 14,
+        lineHeight: 1.5,
+        margin: 0,
+        padding: 0,
+      
+      }
+    },
     button: {
       background: 'transparent',
       border: 'none',
@@ -115,32 +141,47 @@ export default function DonationCta() {
   return (
     <div css={styleDonateWrapper}>
 
-      <p>Did you enjoy this article? If you found this information useful please consider donating to support future content.</p>
-
-      <div css={styleQrWrapper}>
-        <div css={styleTooltipFooter}>
-          <div className="tooltip">{donate.copied}</div>
-        </div>
-        <div css={styleAddress}>
-          <button onClick={()=> handleCopyAddress()} aria-label={donate.meta}>
-            <div className="address">
-              <span>{donate.address}</span>
-            </div>
-            <div className="qrCode">
-            <Image 
-              src={donate.qr}
-              height={242}
-              width={242}
-              alt={donate.text}
-            />
-            </div>
-          </button>
+      <div className="left">
+        <div className="copyContainer">
+          <h4>Did you find this article useful?</h4>
+          <p>I believe in open-source code and free knowledge for all.</p>
+          <p>Consider donating to support the production of more content!</p>
         </div>
       </div>
-      <button css={styleDonateButton} onClick={()=>setShowQrCode(!showQrCode)}>
-        {donate.text}
-      </button>
-      <span css={{fontSize: 14}}>⬨</span>
+
+      <div className="right">
+        <a>Make a donation</a>
+      </div>
+
+      <div className="eth">
+        <div css={styleQrWrapper}>
+          <div css={styleTooltipFooter}>
+            <div className="tooltip">{donate.copied}</div>
+          </div>
+          <div css={styleAddress}>
+            <button onClick={()=> handleCopyAddress()} aria-label={donate.meta}>
+              <div className="address">
+                <span>{donate.address}</span>
+              </div>
+              <div className="qrCode">
+              <Image 
+                src={donate.qr}
+                height={242}
+                width={242}
+                alt={donate.text}
+              />
+              </div>
+            </button>
+          </div>
+        </div>
+        <button css={styleDonateButton} onClick={()=>setShowQrCode(!showQrCode)}>
+          {donate.text}
+        </button>
+        <span css={{fontSize: 14}}>⬨</span>
+      </div>
+
+      <div className="pp"></div>
+
     </div>
   )
 }
