@@ -238,8 +238,8 @@ export default function DonationCta() {
             <div className="left">
               <div className="copyContainer">
                 <h4>Did you find this article useful?</h4>
-                <p>This app is <a href="https://github.com/amirardalan/amirardalan.com" target="_blank" rel="noopener noreferrer">open-source</a> and all of the content is free!</p>
-                <p>If you found this article helpful, consider supporting the author:</p>
+                <p>This project is <a href="https://github.com/amirardalan/amirardalan.com" target="_blank" rel="noopener noreferrer">open-source</a> and all of the content is free.</p>
+                <p>If you enjoyed this blog post consider supporting future content:</p>
               </div>
             </div>
             <div className="right">

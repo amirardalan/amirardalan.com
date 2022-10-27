@@ -128,7 +128,7 @@ export const aboutContent = {
   },
   bio: {
     subheading: `👋 Hey there, I'm Amir!`,
-    content: `I connect humans with technology through front-end engineering and user interface design. I love clean code, excellent documentation, and efficient processes. I believe in producing outstanding digital experiences with a focus on performance and accessibility.`,
+    content: `I connect humans with technology through front-end engineering and user interface design. I strive to produce outstanding digital experiences with a focus on performance, accessibility, and ease-of-use.`,
     items: [
       {
         path: '/amir-ardalan-resume.pdf',
@@ -174,11 +174,9 @@ export const aboutContent = {
   experience: {
     title: 'Experience',
     items: [
-      'Projects / Clients:',
+      'Select Projects:',
       '-',
       'Columbia Sportswear Company',
-      'Hanna Andersson',
-      'Leatherman',
       'KEEN Footwear',
       'Chrome Industries',
       'SOREL',
