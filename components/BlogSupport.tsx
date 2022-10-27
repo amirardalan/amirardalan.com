@@ -38,7 +38,6 @@ export default function DonationCta() {
     borderRadius: '5px',
     '.closeBtn': {
       display: showOptions ? 'inline-block' : 'none',
-      zIndex: 2,
       cursor: 'pointer',
       border: '10px solid var(--color-bg)',
       borderRadius: 50,
@@ -46,34 +45,30 @@ export default function DonationCta() {
       position: 'absolute',
       top: -15,
       right: -15,
-      animation: 'spin 1s forwards'
+      animation: 'spin .5s ease'
     },
     '.animationWrapper': {
-      maxHeight: 160,
-      overflow: 'hidden',
-      width: '100%',
-    },
-    '.supportContent': {
-      display: 'flex',
       position: 'relative',
-      padding: '2.5rem',
-    },
-    '.supportOptions': {
-      zIndex: 1,
-      display: 'flex',
       height: 160,
-      position: 'absolute',
-      top: 0,
-      flexDirection: 'column',
-      padding: '1.5rem',
-      animation: showOptions ? 'fade 1s forwards' : 'fade 1s reverse',
-      animationFillMode: 'both',
-      // animationDelay: '1s'
+      width: '100%',
+      overflow: 'hidden',
     },
     '.supportContainer': {
-      background: 'var(--color-background)',
-      animation: showOptions ? 'slideUpSection 1s reverse' : 'slideDown 1s forwards',
-      animationFillMode: 'both'
+      width: '100%',
+      position: 'absolute',
+      top: showOptions ? -160 : 0,
+      transition: 'top .5s ease',
+      '.supportContent': {
+        width: '100%',
+        display: 'flex',
+        position: 'relative',
+        padding: '2.5rem',
+      },
+      '.supportOptions': {
+        display: 'flex',
+        flexDirection: 'row',
+        padding: '2.5rem',
+      },
     },
     '.left': {
       width: '70%'
@@ -207,6 +202,7 @@ export default function DonationCta() {
       <div className="animationWrapper">
 
         <div className="supportContainer">
+
           <div className="supportContent">
             <div className="left">
               <div className="copyContainer">
@@ -215,11 +211,21 @@ export default function DonationCta() {
                 <p>If you found this article helpful, consider supporting the author:</p>
               </div>
             </div>
-
             <div className="right">
               <span>☕</span><a onClick={handleshowOptions}>Buy me a coffee</a>
             </div>
           </div>
+
+          <div className="supportOptions">
+            <h4>Select Payment Method:</h4>
+            <div className="ether">
+              <p>Etherium</p>
+            </div>
+            <div className="paypal">
+              <p>PayPal</p>
+            </div>
+          </div>
+
         </div>
 
         {/* <div className="eth">
@@ -251,16 +257,6 @@ export default function DonationCta() {
 
         <div className="pp"></div> */}
 
-      </div>
-
-      <div className="supportOptions">
-        <h4>Select Payment Method:</h4>
-        <div className="ether">
-          <p>Etherium</p>
-        </div>
-        <div className="paypal">
-          <p>PayPal</p>
-        </div>
       </div>
 
     </div>

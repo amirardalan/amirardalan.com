@@ -181,7 +181,7 @@ export default function Footer() {
         <div>
         {footer.copyright.text}
         {(new Date().getFullYear()) + ' '}
-        {footer.copyright.name + ' '} &mdash; All rights reserved
+        {footer.copyright.name}
         </div>
         
       </div>

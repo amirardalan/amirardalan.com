@@ -514,14 +514,6 @@ export function GlobalStyles () {
           from: { transform: 'rotate(0deg)' },
           to: { transform: 'rotate(180deg)' }
         },
-        '@keyframes fade': {
-          '0%': {
-            opacity: 0
-          },
-          '100%': {
-            opacity: 1
-          }
-        }
       }}/>
     </>
   )
