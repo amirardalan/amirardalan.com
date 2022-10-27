@@ -8,7 +8,6 @@
     </clipPath>
   </defs>
   <g id="eth-dark" clip-path="url(#clip-eth-dark)">
-    <rect width="133" height="33" fill="#fff"/>
     <g id="Group_1" data-name="Group 1" transform="translate(0.75 0.25)">
       <text id="ethereum" transform="translate(28 23)" fill="#e4e9f8" font-size="28" font-family="PrintClearly, Print Clearly" letter-spacing="0.048em"><tspan x="0" y="0">ethereum</tspan></text>
       <rect id="eth-glyph-colored" width="22" height="33" fill="url(#pattern)"/>

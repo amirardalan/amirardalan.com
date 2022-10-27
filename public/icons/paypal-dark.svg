@@ -8,7 +8,6 @@
     </clipPath>
   </defs>
   <g id="paypal-dark" clip-path="url(#clip-paypal-dark)">
-    <rect width="114" height="30" fill="#fff"/>
     <rect id="PP_Dark" width="114" height="30" transform="translate(0.25 0.25)" fill="url(#pattern)"/>
   </g>
 </svg>
