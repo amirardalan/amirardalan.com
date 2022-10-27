@@ -7,14 +7,14 @@ import CloseButton from '@/components/CloseButton'
 export default function DonationCta() {
 
   const [hideModule, setHideModule] = useState(false)
-  const [showPayments, setShowPayments] = useState(false)
-  const handleShowPayments = () => {
-    setShowPayments(!showPayments)
+  const [showOptions, setshowOptions] = useState(false)
+  const handleshowOptions = () => {
+    setshowOptions(!showOptions)
   }
   const handleHideModule = () => {
-    setHideModule(!showPayments)
-    if (showPayments) {
-      setShowPayments(false)
+    setHideModule(!showOptions)
+    if (showOptions) {
+      setshowOptions(false)
     }
   }
 
@@ -37,7 +37,7 @@ export default function DonationCta() {
     border: '1px solid var(--color-accent-gray)',
     borderRadius: '5px',
     '.closeBtn': {
-      display: showPayments ? 'inline-block' : 'none',
+      display: showOptions ? 'inline-block' : 'none',
       zIndex: 2,
       cursor: 'pointer',
       border: '10px solid var(--color-bg)',
@@ -48,19 +48,32 @@ export default function DonationCta() {
       right: -15,
       animation: 'spin 1s forwards'
     },
-    '.supportContainer': {
-      animation: showPayments ? 'slideUpSection 1s reverse' : 'slideDown 1s forwards',
-      animationFillMode: 'both'
+    '.animationWrapper': {
+      maxHeight: 160,
+      overflow: 'hidden',
+      width: '100%',
     },
     '.supportContent': {
       display: 'flex',
       position: 'relative',
-      width: '100%',
-      overflow: 'hidden',
-      height: 160,
       padding: '2.5rem',
     },
-    '.animationWrapper': {
+    '.supportOptions': {
+      zIndex: 1,
+      display: 'flex',
+      height: 160,
+      position: 'absolute',
+      top: 0,
+      flexDirection: 'column',
+      padding: '1.5rem',
+      animation: showOptions ? 'fade 1s forwards' : 'fade 1s reverse',
+      animationFillMode: 'both',
+      // animationDelay: '1s'
+    },
+    '.supportContainer': {
+      background: 'var(--color-background)',
+      animation: showOptions ? 'slideUpSection 1s reverse' : 'slideDown 1s forwards',
+      animationFillMode: 'both'
     },
     '.left': {
       width: '70%'
@@ -98,6 +111,9 @@ export default function DonationCta() {
         '&:focus:not(:focus-visible)': { boxShadow: 'none' },
       }
     },
+    '@media (max-width: 1023px)': {
+      display: 'none', // suppress on mobile
+    }
   })
 
   const styleDonateButton = css({
@@ -201,7 +217,7 @@ export default function DonationCta() {
             </div>
 
             <div className="right">
-              <span>☕</span><a onClick={handleShowPayments}>Buy me a Coffee</a>
+              <span>☕</span><a onClick={handleshowOptions}>Buy me a coffee</a>
             </div>
           </div>
         </div>
@@ -235,6 +251,16 @@ export default function DonationCta() {
 
         <div className="pp"></div> */}
 
+      </div>
+
+      <div className="supportOptions">
+        <h4>Select Payment Method:</h4>
+        <div className="ether">
+          <p>Etherium</p>
+        </div>
+        <div className="paypal">
+          <p>PayPal</p>
+        </div>
       </div>
 
     </div>

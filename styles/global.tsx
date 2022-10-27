@@ -432,6 +432,14 @@ export function GlobalStyles () {
             transform: 'translate3d(0, 0, 0)',
           }
         },
+        '@keyframes slideDownSection': {
+          '0%': {
+            transform: 'translate3d(0, 0, 0)',
+          },
+          '100%': {
+            transform: 'translate3d(0, 100%, 0)',
+          }
+        },
         '@keyframes slideUp': {
           '0%': {
             opacity: 0,
@@ -505,6 +513,14 @@ export function GlobalStyles () {
         '@keyframes spin': {
           from: { transform: 'rotate(0deg)' },
           to: { transform: 'rotate(180deg)' }
+        },
+        '@keyframes fade': {
+          '0%': {
+            opacity: 0
+          },
+          '100%': {
+            opacity: 1
+          }
         }
       }}/>
     </>
