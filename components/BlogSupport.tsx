@@ -37,6 +37,7 @@ export default function DonationCta() {
     border: '1px solid var(--color-accent-gray)',
     borderRadius: '5px',
     '.closeBtn': {
+      zIndex: 3,
       display: showOptions ? 'inline-block' : 'none',
       cursor: 'pointer',
       border: '10px solid var(--color-bg)',
@@ -66,8 +67,18 @@ export default function DonationCta() {
       },
       '.supportOptions': {
         display: 'flex',
-        flexDirection: 'row',
+        flexDirection: 'column',
         padding: '2.5rem',
+        '.optionsHeading': {
+          marginBottom: '2rem'
+        },
+        '.paymentMethods': {
+          display: 'flex',
+          flexDirection: 'row',
+          'div:first-of-type': {
+            marginRight: '1rem',
+          }
+        }
       },
     },
     '.left': {
@@ -217,12 +228,16 @@ export default function DonationCta() {
           </div>
 
           <div className="supportOptions">
-            <h4>Select Payment Method:</h4>
-            <div className="ether">
-              <p>Etherium</p>
+            <div className="optionsHeading">
+              <h4>Select payment type:</h4>
             </div>
-            <div className="paypal">
-              <p>PayPal</p>
+            <div className="paymentMethods">
+              <div className="ether">
+                <p>Etherium</p>
+              </div>
+              <div className="paypal">
+                <p>PayPal</p>
+              </div>
             </div>
           </div>
 
