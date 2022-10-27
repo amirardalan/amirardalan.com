@@ -68,13 +68,23 @@ export default function DonationCta() {
       '.supportOptions': {
         display: 'flex',
         flexDirection: 'column',
-        padding: '2.5rem',
+        margin: '4.2rem 2.5rem',
         '.optionsHeading': {
-          marginBottom: '2rem'
+          marginBottom: '2rem',
+          h4: {
+            fontSize: 12,
+            textTransform: 'uppercase',
+            fontFamily: 'var(--font-primary)',
+            fontWeight: 'normal',
+            textDecoration: 'underline',
+            textAlign: 'center'
+          }
         },
         '.paymentMethods': {
           display: 'flex',
           flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'space-around',
           'div:first-of-type': {
             marginRight: '1rem',
           }
@@ -228,12 +238,12 @@ export default function DonationCta() {
           </div>
 
           <div className="supportOptions">
-            <div className="optionsHeading">
-              <h4>Select payment type:</h4>
-            </div>
             <div className="paymentMethods">
               <div className="ether">
-                <p>Etherium</p>
+                <p>Ethereum</p>
+              </div>
+              <div className="optionsHeading">
+                <h4>Choose a payment method</h4>
               </div>
               <div className="paypal">
                 <p>PayPal</p>
