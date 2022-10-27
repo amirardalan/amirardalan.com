@@ -95,8 +95,8 @@ export default function DonationCta() {
             display: 'flex',
             background: 'var(--icon-paypal) no-repeat',
             backgroundSize: 'contain',
-            height: 30,
-            width: 114,
+            height: 32,
+            width: 123,
           }
         }
       },
