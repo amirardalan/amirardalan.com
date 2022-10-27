@@ -75,7 +75,7 @@ export default function DonationCta() {
             textTransform: 'uppercase',
             fontFamily: 'var(--font-primary)',
             fontWeight: 'normal',
-            borderBottom: '1px solid var(--color-text)',
+            // borderBottom: '1px solid var(--color-text)',
             textAlign: 'center'
           }
         },
@@ -95,8 +95,8 @@ export default function DonationCta() {
             display: 'flex',
             background: 'var(--icon-paypal) no-repeat',
             backgroundSize: 'contain',
-            height: 32,
-            width: 123,
+            height: 30,
+            width: 114,
           }
         }
       },
@@ -251,9 +251,11 @@ export default function DonationCta() {
             <div className="paymentMethods">
               <div className="ether" />
               <div className="optionsHeading">
-                <h4>Choose a payment method</h4>
+                <h4>Select payment type</h4>
               </div>
-              <div className="paypal" />
+              <a href="https://www.paypal.com/donate/?hosted_button_id=PDSXCAVYMLW2G">
+                <div className="paypal" />
+              </a>
             </div>
           </div>
 
