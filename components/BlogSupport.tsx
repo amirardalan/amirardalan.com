@@ -76,7 +76,7 @@ export default function DonationCta() {
             textTransform: 'uppercase',
             fontFamily: 'var(--font-primary)',
             fontWeight: 'normal',
-            textDecoration: 'underline',
+            borderBottom: '1px solid var(--color-text)',
             textAlign: 'center'
           }
         },
