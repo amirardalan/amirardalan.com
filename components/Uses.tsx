@@ -20,9 +20,8 @@ const styleUsesMarkdown = ({
   },
   h3: {
     a: {
-      fontSize: 18,
+      fontSize: 22,
       fontWeight: 900,
-      textTransform: 'uppercase',
       textDecoration: 'none'
     },
     paddingBottom: '1rem',
