@@ -331,6 +331,15 @@ export const timelineContent = {
   ]
 }
 
+export const thanksContent = {
+  meta: {
+    title: 'Thank You – Amir Ardalan',
+    description: 'Your contribution is greatly appreciated!'
+  },
+  heading: 'Thank You.',
+  copy: 'Your contribution to the project is greatly appreciated!'
+}
+
 export const usesContent = {
   meta: {
     title: 'Uses – Amir Ardalan',
