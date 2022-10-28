@@ -10,6 +10,11 @@ export default function DonationCta() {
   const [showOptions, setshowOptions] = useState(false)
   const handleshowOptions = () => {
     setshowOptions(!showOptions)
+    if (addressCopied) {
+      setTimeout(() => {
+        setAddressCopied(false)
+      }, 80)
+    }
   }
   const handleHideModule = () => {
     setHideModule(!showOptions)
@@ -18,16 +23,10 @@ export default function DonationCta() {
     }
   }
 
-
-  const [showQrCode, setShowQrCode] = useState(false)
-
   const [addressCopied, setAddressCopied] = useState(false)
   const handleCopyAddress = () => {
     navigator.clipboard.writeText(donate.address)
     setAddressCopied(true)
-    setTimeout(() => {
-      setAddressCopied(false)
-    }, 5000)
   }
 
   const styleSupportModule = css({
@@ -111,6 +110,25 @@ export default function DonationCta() {
             backgroundSize: 'contain',
             height: 30,
             width: 114,
+          },
+          '.ethAddressCopied': {
+            zIndex: 3,
+            background: 'var(--color-bg)',
+            display: addressCopied ? 'flex' : 'none',
+            flexDirection: 'column',
+            position: 'absolute',
+            top: 0,
+            width: '100%',
+            height: '100%',
+            textAlign: 'center',
+            '.successMessage': {
+              fontSize: 12,
+              fontFamily: 'var(--font-primary)',
+              margin: 0,
+            },
+            '.ethAddress': {
+              color: 'var(--color-primary)'
+            }
           }
         }
       },
@@ -153,50 +171,6 @@ export default function DonationCta() {
     }
   })
 
-  const styleAddress = css({
-    display: showQrCode ? 'flex' : 'none',
-    flexDirection: 'column',
-    paddingBottom: 5,
-    opacity: showQrCode ? 1 : 0,
-    fontSize: 9,
-    span: {
-      marginRight: 4,
-    },
-    button: {
-      background: 'transparent',
-      border: 'none',
-      color: 'var(--color-bg)',
-      textAlign: 'left',
-      '.qrCode': {
-        width: 242,
-        height: 242,
-        marginTop: 7,
-        '@media (max-width: 1255px)': {
-          display: 'none'
-        },
-      },
-      '.address': {
-        flexDirection: 'row',
-        display: 'inline',
-        lineHeight: '.8rem',
-        span: {
-          textDecoration: 'underline',
-        },
-        '&:before': {
-          content: '"⎘"',
-          marginRight: '.2rem',
-          fontSize: 16,
-          textDecoration: 'none !important',
-        },
-      },
-    },
-    '@media (max-width: 1255px)': {
-      display: showQrCode ? 'inline' : 'none',
-      marginBottom: 0,
-      fontSize: 10,
-    }
-  })
-
 
   return (
     <div css={styleSupportModule}>
@@ -224,7 +198,13 @@ export default function DonationCta() {
 
           <div className="supportOptions">
             <div className="paymentMethods">
-              <a onClick={() => setShowQrCode(!showQrCode)}>
+
+              <div className="ethAddressCopied">
+                <p className="successMessage">ETH address copied to clipboard ✅</p>
+                <p className="ethAddress">amirardalan.eth</p>
+              </div>
+
+              <a onClick={() => handleCopyAddress()}>
                 <div className="ether" />
               </a>
               <div className="optionsHeading">
