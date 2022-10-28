@@ -151,7 +151,7 @@ export const aboutContent = {
       'TypeScript',
       'JavaScript',
       'HTML',
-      'Emotion / CSS',
+      'CSS / SCSS',
       'UI Design',
       'Adobe XD',
       'Accessibility'
@@ -159,28 +159,30 @@ export const aboutContent = {
   },
   stack: {
     items: [
-      'Jest',
-      'Testing Lib.',
+      'Node',
+      'Emotion',
       'Three.js',
       'Prisma ORM',
       'PostgreSQL',
+      'Testing Library',
       'SWR',
       'Git',
       'Vercel',
       'Heroku',
-      'OpenSea API'
     ]
   },
   experience: {
     title: 'Experience',
     items: [
-      'Select Projects:',
+      '10+ years w/ top brands',
+      'providing design & code',
       '-',
-      'Columbia Sportswear Company',
+      'Web3 / OpenSea API',
+      'Columbia Sportswear',
       'KEEN Footwear',
-      'Chrome Industries',
       'SOREL',
       'Mountain Hardwear',
+      'Chrome Industries',
       'Hartwell Homes',
     ],
   },
@@ -348,7 +350,7 @@ export const usesContent = {
   heading: 'Uses',
   devices: {
     content:
-  `### Devices
+      `### Devices
   #### Laptop
   - 2016 13" MacBook Pro (silver)
   ##### Specs:
@@ -383,7 +385,7 @@ export const usesContent = {
   },
   tools: {
     content:
-  `### Tools
+      `### Tools
   #### IDE
   - [VS Code](https://code.visualstudio.com/)
   ##### Web App Extensions:
@@ -414,7 +416,7 @@ export const usesContent = {
   },
   stack: {
     content:
-  `### Stack
+      `### Stack
 
   #### Web App
   - [Next.js](https://nextjs.org/)
@@ -445,7 +447,7 @@ export const usesContent = {
   },
   software: {
     content:
-  `### Software
+      `### Software
   
   #### Markdown
   - [iA Writer](https://ia.net/writer)
