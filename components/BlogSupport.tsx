@@ -13,7 +13,7 @@ export default function DonationCta() {
     if (addressCopied) {
       setTimeout(() => {
         setAddressCopied(false)
-      }, 80)
+      }, 10)
     }
   }
   const handleHideModule = () => {
@@ -111,24 +111,33 @@ export default function DonationCta() {
             height: 30,
             width: 114,
           },
+          '.copyConfirmation': {
+            display: 'flex',
+            flexDirection: 'column',
+            marginTop: '2rem',
+          },
           '.ethAddressCopied': {
             zIndex: 3,
             background: 'var(--color-bg)',
             display: addressCopied ? 'flex' : 'none',
-            flexDirection: 'column',
+            flexDirection: 'row',
             position: 'absolute',
-            top: 0,
+            left: -25,
             width: '100%',
-            height: '100%',
-            textAlign: 'center',
+            alignItems: 'center',
+            '.qrCode': {
+              marginRight: '10rem'
+            },
+            '.ethAddress': {
+              fontFamily: 'var(--font-secondary)',
+              fontSize: 35,
+              color: 'var(--color-primary)',
+              marginBottom: 5,
+            },
             '.successMessage': {
               fontSize: 12,
               fontFamily: 'var(--font-primary)',
-              margin: 0,
             },
-            '.ethAddress': {
-              color: 'var(--color-primary)'
-            }
           }
         }
       },
@@ -200,8 +209,18 @@ export default function DonationCta() {
             <div className="paymentMethods">
 
               <div className="ethAddressCopied">
-                <p className="successMessage">ETH address copied to clipboard ✅</p>
-                <p className="ethAddress">amirardalan.eth</p>
+                <div className="qrCode">
+                  <Image
+                    src="https://res.cloudinary.com/amir-ardalan/image/upload/v1666919421/Blog/amirardalan-eth-qr_qf4nym.png"
+                    width={131}
+                    height={131}
+                    alt="amirardalan.eth QR Code"
+                  />
+                </div>
+                <div className="copyConfirmation">
+                  <p className="ethAddress">amirardalan.eth</p>
+                  <p className="successMessage">ETH address copied to clipboard ✅</p>
+                </div>
               </div>
 
               <a onClick={() => handleCopyAddress()}>
