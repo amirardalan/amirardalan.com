@@ -121,13 +121,11 @@ export default function DonationCta() {
             background: 'var(--color-bg)',
             display: addressCopied ? 'flex' : 'none',
             flexDirection: 'row',
+            justifyContent: 'space-between',
             position: 'absolute',
             left: -25,
             width: '100%',
             alignItems: 'center',
-            '.qrCode': {
-              marginRight: '10rem'
-            },
             '.ethAddress': {
               fontFamily: 'var(--font-secondary)',
               fontSize: 35,
@@ -175,7 +173,7 @@ export default function DonationCta() {
         '&:focus:not(:focus-visible)': { boxShadow: 'none' },
       }
     },
-    '@media (max-width: 1023px)': {
+    '@media (max-width: 768px)': {
       display: 'none', // suppress on mobile
     }
   })
