@@ -75,11 +75,25 @@ export default function DonationCta() {
             textTransform: 'uppercase',
             fontFamily: 'var(--font-primary)',
             fontWeight: 'normal',
-            // borderBottom: '1px solid var(--color-text)',
-            textAlign: 'center'
+            textAlign: 'center',
+            position: 'relative',
+            background: 'var(--color-bg)',
+            padding: '0 .75rem',
+            height: '100%',
+            width: '100%',
+            '&:after': {
+              zIndex: -1,
+              content: '""',
+              width: '200%',
+              position: 'absolute',
+              left: '-50%',
+              top: 10,
+              borderTop: '1px solid var(--color-accent-gray)',
+            }
           }
         },
         '.paymentMethods': {
+          position: 'relative',
           display: 'flex',
           flexDirection: 'row',
           alignItems: 'center',
@@ -113,9 +127,6 @@ export default function DonationCta() {
         color: 'var(--color-text)',
       }
     },
-    '.eth, .pp': {
-      display: 'none' // TODO: Create hook to toggle
-    },
     '.copyContainer': {
       h4: {
         fontSize: 22,
@@ -140,14 +151,6 @@ export default function DonationCta() {
     '@media (max-width: 1023px)': {
       display: 'none', // suppress on mobile
     }
-  })
-
-  const styleQrWrapper = css({
-    opacity: showQrCode ? 1 : 0,
-    overflow: 'hidden',
-    position: 'absolute',
-    top: 145,
-    right: '4rem',
   })
 
   const styleAddress = css({
@@ -194,20 +197,6 @@ export default function DonationCta() {
     }
   })
 
-  const styleTooltip = css({
-    overflow: 'hidden',
-    paddingBottom: 2,
-    '.tooltip': {
-      marginBottom: '.2rem',
-      opacity: addressCopied ? 1 : 0,
-      animation: addressCopied ? 'tooltipUp 5s forwards' : null,
-      '&:before': {
-        bottom: -6,
-        borderTop: '6px solid var(--color-accent-gray)',
-      }
-    }
-  })
-
 
   return (
     <div css={styleSupportModule}>
@@ -235,7 +224,6 @@ export default function DonationCta() {
 
           <div className="supportOptions">
             <div className="paymentMethods">
-
               <a onClick={() => setShowQrCode(!showQrCode)}>
                 <div className="ether" />
               </a>
@@ -245,29 +233,8 @@ export default function DonationCta() {
               <a href="https://www.paypal.com/donate/?hosted_button_id=PDSXCAVYMLW2G">
                 <div className="paypal" />
               </a>
-
-              <div css={styleQrWrapper}>
-                  <div css={styleTooltip}>
-                    <div className="tooltip">{donate.copied}</div>
-                  </div>
-                  <div css={styleAddress}>
-                    <button onClick={() => handleCopyAddress()} aria-label={donate.meta}>
-                      <div className="address">
-                        <span>{donate.address}</span>
-                      </div>
-                      <div className="qrCode">
-                        <Image
-                          src={donate.qr}
-                          height={100}
-                          width={100}
-                          alt={donate.text}
-                        />
-                      </div>
-                    </button>
-                  </div>
-                </div>
-
             </div>
+
           </div>
 
         </div>
