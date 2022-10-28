@@ -197,7 +197,7 @@ export default function DonationCta() {
               <div className="copyContainer">
                 <h4>Did you enjoy this article?</h4>
                 <p>This project is <a href="https://github.com/amirardalan/amirardalan.com" target="_blank" rel="noopener noreferrer">open-source</a> and all of the content is free.</p>
-                <p>If you enjoyed this blog post consider supporting future content:</p>
+                <p>If you liked this blog post consider supporting future content:</p>
               </div>
             </div>
             <div className="right">
