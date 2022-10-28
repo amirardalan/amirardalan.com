@@ -1,6 +1,7 @@
 import { css } from '@emotion/react'
 import Link from 'next/link'
 import compareID from '@/utils/compareID'
+import BlogSupport from '@/components/BlogSupport'
 
 
 export default function BlogNavigation({ feed, post, isPublished }) {
@@ -38,13 +39,13 @@ export default function BlogNavigation({ feed, post, isPublished }) {
 
   const styleBlogNavigation = css({
     marginTop: '4rem',
-    paddingTop: '4rem',
-    display: 'flex',
-    justifyContent: first ? 'flex-end' : 'space-between',
-    borderTop: '1px solid var(--color-accent-gray)',
     fontFamily: 'var(--font-secondary)',
     fontSize: 18,
     lineHeight: '1.3rem',
+  })
+  const styleBlogLinks = css({
+    display: 'flex',
+    justifyContent: first ? 'flex-end' : 'space-between',
     '@media(max-width: 768px)': {
       flexDirection: 'row',
       fontSize: 16
@@ -61,8 +62,11 @@ export default function BlogNavigation({ feed, post, isPublished }) {
 
   return (
     <div css={styleBlogNavigation}>
-       { prevPost ? <ShowPrevLink /> : null }
-       { nextPost ? <ShowNextLink /> : null }
+      <BlogSupport/>
+      <div css={styleBlogLinks}>
+        { prevPost ? <ShowPrevLink /> : null }
+        { nextPost ? <ShowNextLink /> : null }
+      </div>
     </div>
   )
 }

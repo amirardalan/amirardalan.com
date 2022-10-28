@@ -113,6 +113,8 @@ export function GlobalStyles () {
           '--code-bg': darkAccent,
           '--logo': 'url(/logo/logo-light.svg)',
           '--logo-footer': 'url(/logo/logo-footer-light.svg)',
+          '--icon-paypal': 'url(/icons/paypal-light.svg)',
+          '--icon-eth': 'url(/icons/eth-light.svg)',
           '--icon-info': 'url(/icons/note-dark.svg)',
           '--icon-arrow': 'url(/icons/arrow-dark.svg)',
           '--icon-external': 'url(/icons/external-link-light.svg)',
@@ -134,6 +136,8 @@ export function GlobalStyles () {
           '--code-bg': darkAccent,
           '--logo': 'url(/logo/logo-dark.svg)',
           '--logo-footer': 'url(/logo/logo-footer-dark.svg)',
+          '--icon-paypal': 'url(/icons/paypal-dark.svg)',
+          '--icon-eth': 'url(/icons/eth-dark.svg)',
           '--icon-info': 'url(/icons/note-light.svg)',
           '--icon-arrow': 'url(/icons/arrow-light.svg)',
           '--icon-external': 'url(/icons/external-link-dark.svg)',
@@ -432,6 +436,14 @@ export function GlobalStyles () {
             transform: 'translate3d(0, 0, 0)',
           }
         },
+        '@keyframes slideDownSection': {
+          '0%': {
+            transform: 'translate3d(0, 0, 0)',
+          },
+          '100%': {
+            transform: 'translate3d(0, 100%, 0)',
+          }
+        },
         '@keyframes slideUp': {
           '0%': {
             opacity: 0,
@@ -505,7 +517,7 @@ export function GlobalStyles () {
         '@keyframes spin': {
           from: { transform: 'rotate(0deg)' },
           to: { transform: 'rotate(180deg)' }
-        }
+        },
       }}/>
     </>
   )
