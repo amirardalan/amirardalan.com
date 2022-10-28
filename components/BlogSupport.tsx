@@ -229,7 +229,11 @@ export default function DonationCta() {
               <div className="optionsHeading">
                 <h4>Select payment type</h4>
               </div>
-              <a href="https://www.paypal.com/donate/?hosted_button_id=PDSXCAVYMLW2G">
+              <a
+                href="https://www.paypal.com/donate/?hosted_button_id=PDSXCAVYMLW2G"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <div className="paypal" />
               </a>
             </div>
