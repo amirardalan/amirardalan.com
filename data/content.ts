@@ -168,7 +168,7 @@ export const aboutContent = {
       'SWR',
       'Git',
       'Vercel',
-      'Heroku',
+      'Supabase',
     ]
   },
   experience: {
@@ -423,7 +423,7 @@ export const usesContent = {
   - [TypeScript](https://www.typescriptlang.org/)
   - [Emotion](https://emotion.sh/docs/introduction)
   - [PostgreSQL](https://www.postgresql.org/)
-  - [Heroku](https://heroku.com)
+  - [Supabase](https://supabase.com)
   - [Prisma](https://www.prisma.io/)
   - [SWR](https://swr.vercel.app/)
   - [React Markdown](https://remarkjs.github.io/react-markdown/)
@@ -441,7 +441,7 @@ export const usesContent = {
   #### CLI
   - Terminal (~ZSH)
   - [Vercel CLI](https://vercel.com/cli)
-  - [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli)
+  - [Supabase CLI](https://supabase.com/docs/reference/cli)
 
   `
   },
