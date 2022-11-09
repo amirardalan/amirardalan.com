@@ -1,12 +1,14 @@
 import { css } from '@emotion/react'
 import { useState } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import CloseButton from '@/components/CloseButton'
 import Logo from '@/components/Logo'
 import { nav } from '@/data/navigation'
 
 
 export default function Navigation() {
+  const router = useRouter()
   
   const styleMainNav = css({
     display: 'flex',
@@ -162,7 +164,7 @@ export default function Navigation() {
             href={item.path}
             key={index}
             onClick={toggleMobileNav ? toggleMenu : null}
-            className={item.cName}
+            className={router.pathname === item.path ? item.cName + ' active' : item.cName}
             aria-label={item.aria}
           >
             {item.icon ? <div css={styleNavIcon}></div> : item.title}
