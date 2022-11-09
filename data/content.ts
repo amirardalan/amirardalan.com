@@ -145,7 +145,7 @@ export const aboutContent = {
   skills: {
     title: 'Skills',
     items: [
-      'Front-end',
+      'Font-end',
       'React',
       'Next.js',
       'TypeScript',
@@ -153,7 +153,7 @@ export const aboutContent = {
       'HTML',
       'CSS / SCSS',
       'UI Design',
-      'Adobe XD',
+      'Performance',
       'Accessibility'
     ]
   },
@@ -172,24 +172,17 @@ export const aboutContent = {
     ]
   },
   experience: {
-    title: 'Experience',
+    title: "Experience",
     items: [
-      '10+ years w/ top brands',
-      'providing design & code',
+      "I have worked for and collaborated with some of the best brands in the world including; Columbia Sportswear, SOREL, Mountain Hardwear, KEEN Footwear, Chrome Industries, Hanna Andersson, Leatherman, and Adidas Outdoor.",
       '-',
-      'Web3 / OpenSea API',
-      'Columbia Sportswear',
-      'KEEN Footwear',
-      'SOREL',
-      'Mountain Hardwear',
-      'Chrome Industries',
-      'Hartwell Homes',
+      "Over the years I have acquired deep knowledge in fullstack application development, UI/UX, accessibility, ecommerce, and rapid prototyping in Agile environments."
     ],
   },
   availability: {
     title: 'Availability',
     text: '☑ Currently Available',
-    location: 'Remote or in Portland, OR',
+    location: 'Remote or Portland, OR area.',
   },
   contact: {
     title: 'Contact',
@@ -599,15 +592,7 @@ export const footer = {
         light: themeLight.icons.download,
         dark: themeDark.icons.download
       },
-    },
-    {
-      path: '/about#contact',
-      title: 'Contact',
-      icon: {
-        light: themeLight.icons.download,
-        dark: themeDark.icons.download
-      },
-    },
+    }
   ],
   copyright: {
     text: '©',
