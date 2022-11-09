@@ -19,6 +19,7 @@ const styleUsesMarkdown = ({
     margin: '1rem 0 .2rem'
   },
   h3: {
+    // textTransform: 'uppercase',
     a: {
       fontSize: 22,
       fontWeight: 900,

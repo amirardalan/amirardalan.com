@@ -1,7 +1,7 @@
 import { css } from '@emotion/react'
 import { useState } from 'react'
+import Link from 'next/link'
 import CloseButton from '@/components/CloseButton'
-import Link from '@/components/Link'
 import Logo from '@/components/Logo'
 import { nav } from '@/data/navigation'
 
@@ -158,10 +158,14 @@ export default function Navigation() {
     <nav css={styleNavitem}>
       {nav.map((item: any, index: number) => {
         return (
-          <Link href={item.path} activeClassName="active" exact={item.exact} as="" key={index}>
-            <a onClick={toggleMobileNav ? toggleMenu : null} className={item.cName} aria-label={item.aria}>
-              {item.icon ? <div css={styleNavIcon}></div> : item.title}
-            </a>
+          <Link
+            href={item.path}
+            key={index}
+            onClick={toggleMobileNav ? toggleMenu : null}
+            className={item.cName}
+            aria-label={item.aria}
+          >
+            {item.icon ? <div css={styleNavIcon}></div> : item.title}
           </Link>
         )}
       )}

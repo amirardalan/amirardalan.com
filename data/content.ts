@@ -527,6 +527,22 @@ export const footer = {
       },
     },
     {
+      path: 'https://next-auth.js.org/',
+      title: 'NextAuth.js',
+      icon: {
+        light: themeLight.icons.external,
+        dark: themeDark.icons.external
+      },
+    },
+    {
+      path: 'https://vercel.com/',
+      title: 'Vercel',
+      icon: {
+        light: themeLight.icons.external,
+        dark: themeDark.icons.external
+      },
+    },
+    {
       path: 'https://www.prisma.io/',
       title: 'Prisma',
       icon: {
@@ -535,16 +551,16 @@ export const footer = {
       },
     },
     {
-      path: 'https://threejs.org/',
-      title: 'Three.js',
+      path: 'https://supabase.com/',
+      title: 'Supabase',
       icon: {
         light: themeLight.icons.external,
         dark: themeDark.icons.external
       },
     },
     {
-      path: 'https://swr.vercel.app/',
-      title: 'SWR',
+      path: 'https://threejs.org/',
+      title: 'Three.js',
       icon: {
         light: themeLight.icons.external,
         dark: themeDark.icons.external
@@ -579,6 +595,14 @@ export const footer = {
     {
       path: '/amir-ardalan-resume.pdf',
       title: 'Resume',
+      icon: {
+        light: themeLight.icons.download,
+        dark: themeDark.icons.download
+      },
+    },
+    {
+      path: '/about#contact',
+      title: 'Contact',
       icon: {
         light: themeLight.icons.download,
         dark: themeDark.icons.download
