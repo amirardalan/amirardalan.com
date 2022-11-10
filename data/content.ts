@@ -175,8 +175,7 @@ export const aboutContent = {
     title: "Experience",
     items: [
       "I've been writing code for the web since 2002. During that time I've had the pleasure of working alongside amazingly talented people at; Columbia Sportswear, SOREL, Mountain Hardwear, KEEN Footwear, and Chrome Industries to name a few.",
-      '-',
-      "My core skills revolve around: fullstack application development, user interface design/dev, web accessibility, ecommerce, and rapid prototyping in Agile environments."
+      "My core skills revolve around: fullstack application development, user interface design and development, web accessibility, ecommerce, and rapid prototyping in Agile environments."
     ],
   },
   availability: {

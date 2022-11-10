@@ -81,6 +81,12 @@ export default function About({ about, timeline }) {
           fontSize: 16,
         },
       },
+      '.experience': {
+        fontFamily: 'var(--font-tertiary)',
+        'li': {
+          marginBottom: '1.2rem'
+        }
+      },
       '.availability': {
         fontFamily: 'var(--font-secondary)',
         color: 'var(--color-heading)',
@@ -162,7 +168,7 @@ export default function About({ about, timeline }) {
               </ul>
             </div>
             <div className='grid'>
-              <ul>
+              <ul className="experience">
                 <li>
                   <h3 aria-label={about.experience.title}>
                     {about.experience.title}
