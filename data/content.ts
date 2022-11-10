@@ -174,9 +174,9 @@ export const aboutContent = {
   experience: {
     title: "Experience",
     items: [
-      "I have worked for and collaborated with some of the best brands in the world including; Columbia Sportswear, SOREL, Mountain Hardwear, KEEN Footwear, Chrome Industries, Hanna Andersson, Leatherman, and Adidas Outdoor.",
+      "I've been writing code for the web since 2002. During that time I've had the pleasure of working alongside amazingly talented people at; Columbia Sportswear, SOREL, Mountain Hardwear, KEEN Footwear, and Chrome Industries to name a few.",
       '-',
-      "Over the years I have acquired deep knowledge in fullstack application development, UI/UX, accessibility, ecommerce, and rapid prototyping in Agile environments."
+      "My core skills revolve around: fullstack application development, user interface design/dev, web accessibility, ecommerce, and rapid prototyping in Agile environments."
     ],
   },
   availability: {
