@@ -27,18 +27,18 @@ export default function featuredPost({ home, featuredPost, latestPost }) {
       fontFamily: 'var(--font-secondary)',
       fontSize: 18,
       fontWeight: 700,
+      '@media(max-width: 480px)': {
+        fontSize: 16,
+      }
     },
     p: {
       marginTop: '.25rem',
-      paddingBottom: '1rem',
+      paddingBottom: '.2rem',
       lineHeight: '1rem',
       fontSize: 15,
       fontFamily: 'var(--font-tertiary)',
       fontStyle: 'italic',
       color: 'var(--color-gray)',
-      '@media(max-width: 480px)': {
-        display: 'none'
-      }
     },
   })
 
