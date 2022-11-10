@@ -6,30 +6,36 @@ export default function featuredPost({ home, featuredPost, latestPost }) {
 
   const styleFeaturedPost = css({
     h2: {
-      margin: '2rem 0 .5rem',
-      fontFamily: 'var(--font-primary)',
-      fontSize: 12,
-      fontWeight: 'normal',
-      textTransform: 'uppercase',
+      display: 'flex',
+      alignItems: 'baseline',
+      margin: '.5rem 0',
+      paddingBottom: '.5rem',
+      fontFamily: 'var(--font-secondary)',
+      fontSize: 15,
+      fontWeight: 300,
+      borderBottom: '2px dotted var(--color-accent-gray)',
       '&:before': {
         content: '""',
-        display: 'inline-block',
-        background: 'var(--icon-arrow) no-repeat',
+        background: 'var(--icon-pin) no-repeat',
         backgroundSize: 'contain',
-        height: 10,
-        width: 10,
-        marginRight: '.5rem',
+        height: 11,
+        width: 11,
+        marginRight: '.25rem',
       }
     },
     'h3 a' : {
       fontFamily: 'var(--font-secondary)',
       fontSize: 18,
       fontWeight: 700,
+      textDecoration: 'none'
     },
     p: {
-      marginTop: '.5rem',
+      marginTop: '.25rem',
+      paddingBottom: '1rem',
       lineHeight: '1rem',
-      fontSize: 11,
+      fontSize: 15,
+      fontFamily: 'var(--font-tertiary)',
+      fontStyle: 'italic',
       color: 'var(--color-gray)',
       '@media(max-width: 480px)': {
         display: 'none'

@@ -81,6 +81,7 @@ export default function Home({ home, featuredPost, latestPost }) {
   const styleCtaButtons = css({
     display: 'flex',
     flexDirection: 'row',
+    marginBottom: '1rem'
   })
   const styleMainRight = css({
     position: 'relative',

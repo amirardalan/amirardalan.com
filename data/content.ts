@@ -37,7 +37,7 @@ export const homeContent = {
     },
   ],
   featured: {
-    title: 'Featured Post'
+    title: 'Featured Post:'
   },
   latest: {
     title: 'Latest Post'
@@ -594,8 +594,8 @@ export const footer = {
     }
   ],
   copyright: {
-    text: '©',
-    name: 'Amir Ardalan',
+    text: 'Copyright © ',
+    name: '— Amir Ardalan',
   },
 }
 
