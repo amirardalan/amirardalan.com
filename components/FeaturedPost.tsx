@@ -27,7 +27,6 @@ export default function featuredPost({ home, featuredPost, latestPost }) {
       fontFamily: 'var(--font-secondary)',
       fontSize: 18,
       fontWeight: 700,
-      textDecoration: 'none'
     },
     p: {
       marginTop: '.25rem',

@@ -60,7 +60,7 @@ export default function About({ about, timeline }) {
           '@media(min-width: 1025px)': {
             '&:hover': {
               background: 'transparent',
-              border: '1px solid var(--color-light)',
+              border: '2px solid var(--color-light)',
               color: 'var(--color-light)'
             },
           }

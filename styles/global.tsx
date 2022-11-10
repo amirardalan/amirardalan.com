@@ -305,7 +305,7 @@ export function GlobalStyles () {
           justifyContent: 'center',
           alignItems: 'center',
           fontFamily: 'var(--font-secondary)',
-          fontSize: 14,
+          fontSize: 13,
           fontWeight: 900,
           background: 'var(--color-heading)',
           border: '1px solid transparent',
@@ -330,7 +330,7 @@ export function GlobalStyles () {
           },
           '&:hover': {
             background: 'transparent',
-            border: '1px solid var(--color-heading)',
+            border: '2px solid var(--color-heading)',
             color: 'var(--color-heading)',
             '@media(min-width: 1025px)': {
               '&.download:after': {
@@ -354,8 +354,8 @@ export function GlobalStyles () {
             marginLeft: 4,
             content: '""',
             display: 'inline-block',
-            width: 16,
-            height: 16,
+            width: 18,
+            height: 18,
           },
           '&.download': {
             mixBlendMode: 'screen',

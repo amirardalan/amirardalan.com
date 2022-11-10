@@ -130,8 +130,8 @@ export default function Footer() {
                 src={isDarkTheme
                   ? item.icon?.dark
                   : item.icon?.light}
-                height="15"
-                width="15"
+                height={15.5}
+                width={15.5}
                 alt={item.title}
                 aria-label={item.title}
               />
