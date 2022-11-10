@@ -113,6 +113,12 @@ export default function About({ about, timeline }) {
         color: 'var(--color-heading)',
         fontSize: 18
       },
+      '@media(max-width: 768px)': {
+        boxShadow: 'none',
+        border: 'none',
+        padding: 0,
+        margin: '1rem 0',
+      }
     },
     'h2, h3': {
       fontWeight: 700,
