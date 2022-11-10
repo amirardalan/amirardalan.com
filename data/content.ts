@@ -1,6 +1,4 @@
 import { themeLight, themeDark } from "@/styles/theme"
-import { existsSync } from "fs"
-
 
 export const logo = {
   title: 'Amir Ardalan',

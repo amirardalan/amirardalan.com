@@ -27,7 +27,6 @@ export default function About({ about, timeline }) {
     '.grid': {
       display: 'flex',
       justifyContent: 'center',
-      // border: '1px solid var(--color-accent)',
       backgroundColor: 'var(--color-bg)',
       boxShadow: '0 0 1rem rgba(12, 12, 14, 0.1)',
       padding: '2rem',
