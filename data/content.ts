@@ -128,7 +128,7 @@ export const aboutContent = {
   },
   bio: {
     subheading: `👋 Hey there, I'm Amir!`,
-    content: `I connect humans with technology through front-end engineering and user interface design. I strive to produce outstanding digital experiences with a focus on performance, accessibility, and ease-of-use.`,
+    content: `I produce outstanding digital experiences with a focus on performance, accessibility, and impactful design. I write about solutions to modern web development problems.`,
     items: [
       {
         path: '/amir-ardalan-resume.pdf',

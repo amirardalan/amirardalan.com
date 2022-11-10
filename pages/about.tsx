@@ -44,8 +44,6 @@ export default function About({ about, timeline }) {
         '.blurb': {
           margin: '.5rem 0 2.5rem 0',
           fontFamily: 'var(--font-tertiary)',
-          lineHeight: '1.5rem',
-          fontStyle: 'italic',
           color: 'var(--color-light)'
         },
         '.ctaButton': {
