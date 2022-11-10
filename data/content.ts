@@ -86,7 +86,7 @@ export const aboutContent = {
     img: '/avatar/amir-ardalan.jpg',
   },
   social: {
-    title: 'Social',
+    title: 'Follow me',
     items: [
       {
         path: 'https://github.com/amirardalan',
@@ -143,7 +143,7 @@ export const aboutContent = {
     title: 'Resume'
   },
   skills: {
-    title: 'Skills',
+    title: 'Skills / Tools',
     items: [
       'Font-end',
       'React',
@@ -174,7 +174,7 @@ export const aboutContent = {
   experience: {
     title: "Experience",
     items: [
-      "I've been writing code for the web since 2002. During that time I've had the pleasure of working alongside amazingly talented people at; Columbia Sportswear, SOREL, Mountain Hardwear, KEEN Footwear, and Chrome Industries to name a few.",
+      "I've been writing code for the web since 2002. During that time I've had the pleasure of working alongside amazingly talented people at; Columbia Sportswear, SOREL, Mountain Hardwear, KEEN Footwear, and Chrome Industries, to name a few.",
       "My core skills revolve around: fullstack application development, user interface design and development, web accessibility, ecommerce, and rapid prototyping in Agile environments."
     ],
   },
@@ -184,7 +184,7 @@ export const aboutContent = {
     location: 'Remote or Portland, OR area.',
   },
   contact: {
-    title: 'Contact',
+    title: "Let's talk",
     email: {
       title: 'Show Email Address',
     },

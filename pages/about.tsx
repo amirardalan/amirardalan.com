@@ -81,11 +81,26 @@ export default function About({ about, timeline }) {
           fontSize: 16,
         },
       },
+      '.skills': {
+        'li': {
+          '&:first-of-type': {
+            '&:before': {
+              content: '" "'
+            }
+          },
+          '&:before': {
+            content: '"• "'
+          }
+        }
+      },
       '.experience': {
         fontFamily: 'var(--font-tertiary)',
         'li': {
-          marginBottom: '1.2rem'
-        }
+          marginBottom: '1.2rem',
+          '@media(min-width: 1025px)': {
+            fontSize: 16
+          }
+        },
       },
       '.availability': {
         fontFamily: 'var(--font-secondary)',
@@ -154,13 +169,13 @@ export default function About({ about, timeline }) {
               </div>
             </div>
             <div className='grid'>
-              <ul>
+              <ul className="skills">
                 <li>
                   <h3 aria-label={about.skills.title}>{about.skills.title}</h3>
                 </li>
                 {GenerateListItems(about.skills.items)}
               </ul>
-              <ul>
+              <ul className="skills">
                 <li>
                   <h3 aria-hidden="true">&nbsp;</h3>
                 </li>
