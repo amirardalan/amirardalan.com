@@ -159,12 +159,16 @@ export default function Navigation() {
   const Navitem = () => (
     <nav css={styleNavitem}>
       {nav.map((item: any, index: number) => {
+
+        const isActiveNav = router.asPath === item.path
+        const isBlog = router.asPath.includes('/blog/') && item.path === '/blog'
+
         return (
           <Link
             href={item.path}
             key={index}
             onClick={toggleMobileNav ? toggleMenu : null}
-            className={router.pathname === item.path ? item.cName + ' active' : item.cName}
+            className={isActiveNav || isBlog ? item.cName + ' active' : item.cName}
             aria-label={item.aria}
           >
             {item.icon ? <div css={styleNavIcon}></div> : item.title}
