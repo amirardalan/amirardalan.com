@@ -128,7 +128,7 @@ export const aboutContent = {
   },
   bio: {
     subheading: `Hey there, I'm Amir! 👋`,
-    content: `I produce outstanding digital experiences with a focus on performance, accessibility, and impactful design. I write about solutions to modern web development problems.`,
+    content: `I craft outstanding digital experiences with a focus on performance, accessibility, and impactful design. I write about solutions to modern web development problems.`,
     items: [
       {
         path: '/amir-ardalan-resume.pdf',
@@ -175,12 +175,12 @@ export const aboutContent = {
     title: "Experience",
     items: [
       "I've been writing code for the web since 2002. During that time I've had the pleasure of working alongside amazingly talented people at; Columbia Sportswear, SOREL, Mountain Hardwear, KEEN Footwear, and Chrome Industries, to name a few.",
-      "My core skills revolve around: fullstack application development, user interface design and development, web accessibility, ecommerce, and rapid prototyping in Agile environments."
+      "My core skills revolve around: fullstack application development, user interface, web accessibility, ecommerce, and rapid prototyping in Agile environments."
     ],
   },
   availability: {
     title: 'Availability',
-    text: '☑ Currently Available',
+    text: '☑ Currently Available for Hire',
     location: 'Remote or Portland, OR area.',
   },
   contact: {

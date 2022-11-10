@@ -27,7 +27,7 @@ export default function About({ about, timeline }) {
     '.grid': {
       display: 'flex',
       justifyContent: 'center',
-      border: '1px solid var(--color-accent)',
+      // border: '1px solid var(--color-accent)',
       backgroundColor: 'var(--color-bg)',
       boxShadow: '0 0 1rem rgba(12, 12, 14, 0.1)',
       padding: '2rem',
@@ -44,12 +44,15 @@ export default function About({ about, timeline }) {
         '.blurb': {
           fontFamily: 'var(--font-tertiary)',
           color: 'var(--color-light)',
-          borderBottom: '2px solid var(--color-light)',
-          paddingBottom: '1.8rem',
-          marginBottom: '2.2rem',
           '@media(max-width: 768px)': {
             fontSize: 18,
           }
+        },
+        '.divider': {
+          borderBottom: '2px dotted var(--color-light)',
+          opacity: '.2',
+          paddingBottom: '1.8rem',
+          marginBottom: '2.2rem',
         },
         '.ctaButton': {
           background: 'var(--color-light)',
@@ -88,6 +91,7 @@ export default function About({ about, timeline }) {
       },
       '.skills': {
         'li': {
+          fontSize: 13,
           '&:first-of-type': {
             '&:before': {
               content: '" "'
@@ -103,7 +107,7 @@ export default function About({ about, timeline }) {
         'li': {
           marginBottom: '1.2rem',
           fontSize: 18,
-          '@media(min-width: 1025px)': {
+          '@media(min-width: 769px)': {
             fontSize: 16
           }
         },
@@ -111,7 +115,15 @@ export default function About({ about, timeline }) {
       '.availability': {
         fontFamily: 'var(--font-secondary)',
         color: 'var(--color-heading)',
-        fontSize: 18
+        fontSize: 18,
+        '.title': {
+          fontSize: 18,
+          color: 'var(--color-text)'
+        },
+        '.text': {
+          fontFamily: 'var(--font-tertiary)',
+          fontStyle: 'italic'
+        }
       },
       '@media(max-width: 768px)': {
         boxShadow: 'none',
@@ -180,6 +192,7 @@ export default function About({ about, timeline }) {
                   {about.bio.subheading}
                 </h2>
                 <p className='blurb'>{about.bio.content}</p>
+                <div className="divider" />
                 <CtaButtons items={about.bio.items} />
               </div>
             </div>
@@ -208,16 +221,16 @@ export default function About({ about, timeline }) {
               </ul>
             </div>
             <div className='grid'>
-              <ul>
+              <ul className="availability">
                 <li>
                   <h3 aria-label={about.availability.title}>
                     {about.availability.title}
                   </h3>
                 </li>
-                <li className="availability">
+                <li className="title">
                   {about.availability.text}
                 </li>
-                <li>
+                <li className="text">
                   {about.availability.location}
                 </li>
               </ul>
