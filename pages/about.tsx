@@ -42,9 +42,14 @@ export default function About({ about, timeline }) {
           lineHeight: '1.2rem',
         },
         '.blurb': {
-          margin: '.5rem 0 2.5rem 0',
           fontFamily: 'var(--font-tertiary)',
-          color: 'var(--color-light)'
+          color: 'var(--color-light)',
+          borderBottom: '2px solid var(--color-light)',
+          paddingBottom: '1.8rem',
+          marginBottom: '2.2rem',
+          '@media(max-width: 768px)': {
+            fontSize: 18,
+          }
         },
         '.ctaButton': {
           background: 'var(--color-light)',
@@ -97,6 +102,7 @@ export default function About({ about, timeline }) {
         fontFamily: 'var(--font-tertiary)',
         'li': {
           marginBottom: '1.2rem',
+          fontSize: 18,
           '@media(min-width: 1025px)': {
             fontSize: 16
           }
@@ -114,6 +120,7 @@ export default function About({ about, timeline }) {
     h2: {
       color: 'var(--color-heading)',
       fontSize: 24,
+      paddingBottom: '.25rem'
     },
     h3: {
       marginBottom: '1.5rem',
@@ -160,7 +167,9 @@ export default function About({ about, timeline }) {
           <div css={styleGridWrapper}>
             <div className='grid'>
               <div css={styleBioItems}>
-                <Avatar height={90} width={90} avatar={about.avatar} />
+                <div className="avatar">
+                  <Avatar height={90} width={90} avatar={about.avatar} />
+                </div>
                 <h2 aria-label={about.bio.subheading} className="bioSubHeading">
                   {about.bio.subheading}
                 </h2>

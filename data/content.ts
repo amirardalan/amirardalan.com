@@ -127,7 +127,7 @@ export const aboutContent = {
     ]
   },
   bio: {
-    subheading: `👋 Hey there, I'm Amir!`,
+    subheading: `Hey there, I'm Amir! 👋`,
     content: `I produce outstanding digital experiences with a focus on performance, accessibility, and impactful design. I write about solutions to modern web development problems.`,
     items: [
       {
@@ -164,7 +164,7 @@ export const aboutContent = {
       'Three.js',
       'Prisma ORM',
       'PostgreSQL',
-      'Testing Library',
+      'Jest',
       'SWR',
       'Git',
       'Vercel',
