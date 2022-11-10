@@ -27,13 +27,13 @@ export default function BlogNavigation({ feed, post, isPublished }) {
   const ShowPrevLink = () =>
     <div css={stylePrevLink}>
       <Link href={prevLink} aria-label={prevTitle}>
-        <a>← {prevTitle}</a>
+        ← {prevTitle}
       </Link>
     </div>
   const ShowNextLink = () =>
     <div css={styleNextLink}>
       <Link href={nextLink} aria-label={nextTitle}>
-        <a>{nextTitle} →</a>
+        {nextTitle} →
       </Link>
     </div>
 

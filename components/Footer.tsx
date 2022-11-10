@@ -154,10 +154,8 @@ export default function Footer() {
             {nav.map((item: any, i: number) => {
               return (
                 <li key={i}>
-                  <Link href={item.path} aria-label={item.title}>
-                    <a className={item.cName}>
-                      {item.title}
-                    </a>
+                  <Link href={item.path} aria-label={item.title} className={item.cName}>
+                    {item.title}
                   </Link>
                 </li>
               )}

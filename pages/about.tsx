@@ -200,7 +200,7 @@ export default function About({ about, timeline }) {
                 </ul>
               </div>
             </div>
-            <div className='grid'>
+            <div className='grid' id="contact">
               <ul>
                 <li>
                   <h3 aria-label={about.contact.title}>{about.contact.title}</h3>
