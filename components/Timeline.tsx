@@ -171,7 +171,9 @@ export default function Timeline({ timeline }) {
       },
       '.date': {
         fontFamily: 'var(--font-secondary)',
-        fontSize: 30,
+        color: 'var(--color-primary)',
+        fontSize: 22,
+        fontWeight: 900,
         lineHeight: '.5rem',
         '@media(max-width: 768px)': {
           paddingTop: '.2rem',
@@ -187,7 +189,8 @@ export default function Timeline({ timeline }) {
         marginBottom: '4rem',
         padding: '2.5rem',
         background: 'var(--color-accent)',
-        fontSize: 15,
+        fontSize: 12,
+        fontFamily: 'var(--font-primary)',
         span: {
           color: 'var(--color-gray)',
         },
