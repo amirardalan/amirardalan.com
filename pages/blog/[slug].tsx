@@ -110,7 +110,7 @@ const Post = ({ blogPost, admin, post, feed }) => {
         color: 'var(--color-gray)',
         '@media(max-width: 768px)': {
           marginBottom: '2rem',
-          fontSize: 19,
+          fontSize: 18,
         },
       },
       'h3, h3 code': {
@@ -164,7 +164,7 @@ const Post = ({ blogPost, admin, post, feed }) => {
       },
       'p, ul, li, a': {
         fontFamily: 'var(--font-tertiary)',
-        fontSize: 19,
+        fontSize: 18,
         lineHeight: '1.8rem',
       },
       'ul, li, a': { 
@@ -189,14 +189,14 @@ const Post = ({ blogPost, admin, post, feed }) => {
         borderRadius: 5,
         fontFamily: 'var(--font-tertiary)',
         fontSize: 16,
-        lineHeight: '1.8rem',
+        lineHeight: '1.5rem',
         color: 'var(--color-gray)',
         '&:before, &:after': {
           position: 'absolute',
         },
         '&:before': {
           content: '""',
-          top: 20,
+          top: 18,
           left: 22,
           width: 15,
           height: 15,

@@ -67,7 +67,7 @@ const blogStyles = css({
     p: {
       marginBottom: '2rem',
       fontFamily: 'var(--font-tertiary)',
-      fontSize: 18,
+      // fontSize: 18,
     },
     main: {
       display: 'flex',
