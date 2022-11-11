@@ -5,19 +5,30 @@ import { css } from '@emotion/react'
 export default function featuredPost({ home, featuredPost, latestPost }) {
 
   const styleFeaturedPost = css({
+    marginTop: '2.25rem',
+    backgroundColor: 'var(--color-accent)',
+    padding: '1rem 1.2rem',
+    width: 'fit-content',
+    '@media(max-width: 1024px)': {
+      background: 'transparent',
+      padding: 0,
+    },
     h2: {
       display: 'flex',
       alignItems: 'baseline',
       paddingBottom: '.5rem',
-      fontFamily: 'var(--font-secondary)',
-      fontSize: 15,
-      fontWeight: 300,
+      fontFamily: 'var(--font-primary)',
+      fontSize: 14,
+      fontWeight: 400,
+      color: 'var(--color-gray)',
       '&:before': {
+        display: 'flex',
+        alignSelf: 'center',
         content: '""',
         background: 'var(--icon-pin) no-repeat',
         backgroundSize: 'contain',
-        height: 11,
-        width: 11,
+        height: 14,
+        width: 14,
         marginRight: '.25rem',
       }
     },
@@ -32,7 +43,7 @@ export default function featuredPost({ home, featuredPost, latestPost }) {
     p: {
       marginTop: '.25rem',
       paddingBottom: '.2rem',
-      lineHeight: '1rem',
+      lineHeight: '1.25rem',
       fontSize: 15,
       fontFamily: 'var(--font-tertiary)',
       fontStyle: 'italic',

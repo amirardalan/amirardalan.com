@@ -38,7 +38,7 @@ export const homeContent = {
     title: 'Featured Post:'
   },
   latest: {
-    title: 'Latest Post'
+    title: 'Latest Post:'
   }
 }
 
