@@ -365,12 +365,12 @@ export const usesContent = {
   ##### Specs:
   - 512GB Storage
   ##### Case:
-  - [TORRAS Silicon Series (black)](https://torraslife.com/product/iphone-11-pro-silicone-series-case/)
+  - TORRAS Silicon Series (black)
   ---
   #### Headphones
   - [Beyerdynamic DT770Pro 80ohm](https://north-america.beyerdynamic.com/dt-770-pro.html)
   - [Sennheiser HD25-1 II](https://en-us.sennheiser.com/on-ear-dj-headphone-hd25)
-  - [Apple AirPod Pro](https://www.apple.com/airpods-pro/)
+  - [Apple AirPods Pro](https://www.apple.com/airpods-pro/)
   `
   },
   tools: {
@@ -425,7 +425,6 @@ export const usesContent = {
   #### Game Dev
   - [Lua](https://www.lua.org/)
   - [Playdate SDK](https://play.date/dev/)
-  - [GB Studio](https://www.gbstudio.dev/)
 
   ---
   #### CLI
