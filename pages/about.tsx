@@ -28,7 +28,7 @@ export default function About({ about, timeline }) {
       display: 'flex',
       justifyContent: 'center',
       backgroundColor: 'var(--color-bg)',
-      boxShadow: '0 0 1rem rgba(12, 12, 14, 0.1)',
+      background: 'var(--color-accent)',
       padding: '2rem',
       lineHeight: '1.8rem',
       '&:first-of-type': {
@@ -125,7 +125,7 @@ export default function About({ about, timeline }) {
         }
       },
       '@media(max-width: 768px)': {
-        boxShadow: 'none',
+        background: 'none',
         border: 'none',
         padding: 0,
         margin: '1rem 0',

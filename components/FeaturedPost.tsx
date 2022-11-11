@@ -8,12 +8,10 @@ export default function featuredPost({ home, featuredPost, latestPost }) {
     h2: {
       display: 'flex',
       alignItems: 'baseline',
-      margin: '.5rem 0',
       paddingBottom: '.5rem',
       fontFamily: 'var(--font-secondary)',
       fontSize: 15,
       fontWeight: 300,
-      borderBottom: '2px dotted var(--color-accent-gray)',
       '&:before': {
         content: '""',
         background: 'var(--icon-pin) no-repeat',
