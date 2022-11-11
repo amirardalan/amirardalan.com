@@ -172,15 +172,14 @@ export const aboutContent = {
   experience: {
     title: "Experience",
     items: [
-      "I've been writing code for the web since 2002. Over the years, I have been fortunate to have worked for some amazing brands including; Columbia Sportswear, SOREL, Mountain Hardwear, KEEN Footwear, and Chrome Industries, to name a few.",
-      "My core skillset includes: fullstack application development, user interface design, web accessibility, ecommerce, and rapid front-end prototyping in Agile environments.",
-      "At my core, I am a lifelong learner who enjoys the challenges of design and technical problem solving."
+      "I've been writing code for the web since 2002. Over the years, I have been fortunate to have worked with some amazing brands including; Columbia Sportswear, SOREL, Mountain Hardwear, KEEN Footwear, and Chrome Industries, to name a few.",
+      "I have real-world experience with fullstack application development, user interface design, web accessibility, ecommerce, and rapid front-end prototyping in Agile environments.",
     ],
   },
   availability: {
     title: 'Availability',
     text: '☑ Currently Available for Hire',
-    location: 'Remote or Portland, OR area.',
+    location: 'Remote or in-office in Portland, OR area.',
   },
   contact: {
     title: "Let's talk",
