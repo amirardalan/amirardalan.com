@@ -91,5 +91,5 @@ const CanvasLoader = () => {
   )
 }
 
-export default CanvasLoader
+export default React.memo(CanvasLoader)
 
