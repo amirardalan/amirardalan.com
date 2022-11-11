@@ -126,7 +126,7 @@ export const aboutContent = {
   },
   bio: {
     subheading: `Hey there, I'm Amir! 👋`,
-    content: `I craft outstanding digital experiences with a focus on performance, accessibility, and design. I also blog about my journey as a web developer and publish React and TypeScript tutorials and guides.`,
+    content: `I design and build web apps with a focus on performance and accessibility. I also blog about my journey as a web developer and publish code tutorials and guides.`,
     items: [
       {
         path: '/amir-ardalan-resume.pdf',
@@ -172,7 +172,7 @@ export const aboutContent = {
   experience: {
     title: "Experience",
     items: [
-      "I've been writing code for the web since 2002. Over the years, I have been fortunate to have worked with some amazing brands including; Columbia Sportswear, SOREL, Mountain Hardwear, KEEN Footwear, and Chrome Industries, to name a few.",
+      "I've written code for the web since the early 2000's. I've worked with brands including; Columbia Sportswear, SOREL, Mountain Hardwear, KEEN Footwear, and Chrome Industries.",
       "I have real-world experience with fullstack application development, user interface design, web accessibility, ecommerce, and rapid front-end prototyping in Agile environments.",
     ],
   },
