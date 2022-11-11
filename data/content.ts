@@ -2,14 +2,14 @@ import { themeLight, themeDark } from "@/styles/theme"
 
 export const logo = {
   title: 'Amir Ardalan',
-  subtitle: 'Developer + Designer',
+  subtitle: 'Developer & Designer',
   alt: 'Amir Ardalan Logo',
 }
 
 export const homeContent = {
   meta: {
-    title: 'Amir Ardalan – Developer + Designer',
-    description: 'Front-end developer, UI designer, and React enthusiast.'
+    title: 'Amir Ardalan – Developer & designer',
+    description: 'Amir Ardalan. Fullstack developer, User Interface designer, and React enthusiast. Building modern websites. Publishing React and Next.js ideas and guides.'
   },
   typed: [
     `I craft digital experiences`,
