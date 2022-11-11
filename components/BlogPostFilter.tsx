@@ -52,7 +52,7 @@ const BlogPostFilter = ({ blog, feed }) => {
       position: 'absolute',
       width: 23,
       height: 23,
-      top: 16.5,
+      top: 16,
       right: 8,
       cursor: 'pointer',
     },
