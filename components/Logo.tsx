@@ -43,7 +43,7 @@ const Logo = () => {
     fontFamily: 'var(--font-primary)',
     fontSize: 8,
     fontWeight: 'normal',
-    letterSpacing: 1.8,
+    letterSpacing: .1,
     textTransform: 'uppercase',
     animation: isLoading ? 'slideUp .15s reverse forwards' : 'slideUp .5s forwards'
   })

@@ -2,13 +2,13 @@ import { themeLight, themeDark } from "@/styles/theme"
 
 export const logo = {
   title: 'Amir Ardalan',
-  subtitle: 'Portland•Oregon',
+  subtitle: 'Developer + Designer',
   alt: 'Amir Ardalan Logo',
 }
 
 export const homeContent = {
   meta: {
-    title: 'Amir Ardalan – Code, design, and ideas from Portland, OR.',
+    title: 'Amir Ardalan – Developer + Designer',
     description: 'Front-end developer, UI designer, and React enthusiast.'
   },
   typed: [
@@ -21,7 +21,7 @@ export const homeContent = {
     `follow me on <a href="https://twitter.com/amirardalan" rel="noopener noreferrer">Twitter</a>`
   ],
   title: 'Amir Ardalan',
-  description: `I'm a Front-end developer specializing in React, User Interface, and accessibility. I'm passionate about Next.js, TypeScript, and building outstanding experiences for the web.`,
+  description: `I'm a Front-end developer specializing in React, User Interface, and accessibility. I'm passionate about Next.js, TypeScript, and building outstanding digital experiences.`,
   items: [
     {
       path: '/blog',
@@ -172,14 +172,15 @@ export const aboutContent = {
   experience: {
     title: "Experience",
     items: [
-      "I've written code for the web since the early 2000's. I've worked with brands including; Columbia Sportswear, SOREL, Mountain Hardwear, KEEN Footwear, and Chrome Industries.",
+      "I've written code for the web since the early 2000's and have been fortunate enough to have worked with some amazing brands including; Columbia Sportswear, SOREL, Mountain Hardwear, KEEN Footwear, and Chrome Industries, to name a few.",
       "I have real-world experience with fullstack application development, user interface design, web accessibility, ecommerce, and rapid front-end prototyping in Agile environments.",
+      "I'm passionate about the pursuit of knowledge and tackling complex technical challenges."
     ],
   },
   availability: {
     title: 'Availability',
     text: '☑ Currently Available for Hire',
-    location: 'Remote or in-office in Portland, OR area.',
+    location: 'Remote or in-office in Portland, Ore. area.',
   },
   contact: {
     title: "Let's talk",
