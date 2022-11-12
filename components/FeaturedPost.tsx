@@ -6,7 +6,7 @@ export default function featuredPost({ home, featuredPost, latestPost }) {
 
   const styleFeaturedPost = css({
     marginTop: '2.25rem',
-    borderLeft: '6px solid var(--color-accent-gray)',
+    borderLeft: '4px solid var(--color-accent-gray)',
     paddingLeft: '1.25rem',
     width: 'fit-content',
     h2: {
@@ -14,7 +14,8 @@ export default function featuredPost({ home, featuredPost, latestPost }) {
       alignItems: 'baseline',
       paddingBottom: '.25rem',
       fontFamily: 'var(--font-primary)',
-      fontSize: 13,
+      textTransform: 'uppercase',
+      fontSize: 11,
       fontWeight: 400,
       color: 'var(--color-gray)',
       '&:before': {
@@ -23,8 +24,8 @@ export default function featuredPost({ home, featuredPost, latestPost }) {
         content: '""',
         background: 'var(--icon-pin) no-repeat',
         backgroundSize: 'contain',
-        height: 13,
-        width: 13,
+        height: 11,
+        width: 11,
         marginRight: '.35rem',
       }
     },

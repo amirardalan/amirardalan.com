@@ -305,13 +305,13 @@ export function GlobalStyles () {
           justifyContent: 'center',
           alignItems: 'center',
           fontFamily: 'var(--font-secondary)',
-          fontSize: 13,
-          fontWeight: 900,
+          fontSize: 16,
+          fontWeight: 400,
           background: 'var(--color-heading)',
           border: '1px solid transparent',
           borderRadius: 8,
           color: 'var(--color-bg)',
-          textTransform: 'uppercase',
+          // textTransform: 'uppercase',
           textDecoration: 'none',
           'span': {
             marginLeft: 100,
@@ -330,7 +330,7 @@ export function GlobalStyles () {
           },
           '&:hover': {
             background: 'transparent',
-            border: '2px solid var(--color-heading)',
+            border: '3px solid var(--color-heading)',
             color: 'var(--color-heading)',
             '@media(min-width: 1025px)': {
               '&.download:after': {
