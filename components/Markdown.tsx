@@ -214,6 +214,7 @@ export default function BlogMarkdown({ markdown }) {
               className="postImg"
               alt={alt}
               priority={isPriority}
+              sizes="(max-width: 768px) 100vw)"
             />
             {hasCaption ? <div className="caption" aria-label={caption}>{caption}</div> : null}
           </div>

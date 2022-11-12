@@ -311,7 +311,11 @@ const Post = ({ blogPost, admin, post, feed }) => {
       }
     },
     '.postImgWrapper': {
-      paddingBottom: '2rem !important',
+      paddingBottom: '2rem',
+      img: {
+        width: '100%',
+        height: 'auto'
+      }
     },
     '.caption, .caption a': {
       fontFamily: 'var(--font-primary)',
