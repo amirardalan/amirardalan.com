@@ -330,7 +330,7 @@ export function GlobalStyles () {
           },
           '&:hover': {
             background: 'transparent',
-            border: '3px solid var(--color-heading)',
+            border: '2px solid var(--color-heading)',
             color: 'var(--color-heading)',
             '@media(min-width: 1025px)': {
               '&.download:after': {
@@ -343,9 +343,9 @@ export function GlobalStyles () {
             cursor: 'pointer',
             background: 'transparent',
             color: 'var(--color-heading)',
-            border: '1px solid var(--color-accent-gray)',
+            border: '2px solid var(--color-accent-gray)',
             '&:hover': {
-              border: '1px solid var(--color-accent-gray)',
+              border: '2px solid var(--color-accent-gray)',
               background: 'transparent',
               color: 'var(--color-heading)',
             },
