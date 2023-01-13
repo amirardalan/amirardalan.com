@@ -172,14 +172,16 @@ export const aboutContent = {
   experience: {
     title: "Experience",
     items: [
-      "I've written code for the web since the early 2000's and worked for awesome brands including; Columbia Sportswear, SOREL, Mountain Hardwear, KEEN Footwear, and Chrome Industries.",
+      "I've written code for the web since the early 2000's and worked for awesome brands including; Nike, Columbia Sportswear, and KEEN Footwear.",
       "I have real-world experience with fullstack application development, user interface design, web accessibility, ecommerce, and rapid front-end prototyping in Agile environments.",
     ],
   },
   availability: {
-    title: 'Availability',
-    text: '☑ Currently Available for Hire',
+    title: 'Currently working on',
+    text: 'Application development @',
+    text2: 'Nike Innovation Center',
     location: 'Remote or in-office in Portland, Ore. area.',
+    link: 'https://lebronjamesinnovationcenter.nike.com/'
   },
   contact: {
     title: "Let's talk",
