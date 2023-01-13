@@ -215,8 +215,8 @@ export const timelineContent = {
   },
   items: [
     {
-      title: 'Fullstack Developer, Writer',
-      content: 'Building, maintaining open-source amirardalan.com Next.js blog & CMS. Writing about front-end code, devops, and tech.',
+      title: 'Application Developer @ Nike',
+      content: 'Developing application prototypes and tools for Nike Innovation Center utilizing modern front-end technologies.',
       cName: 'event'
     },
     {
@@ -228,8 +228,8 @@ export const timelineContent = {
       cName: 'date',
     },
     {
-      title: 'Launched SynapseKit',
-      content: 'Created an open source NFT gallery app powered by the OpenSea API and Next.js: synapsekit.com.',
+      title: 'Fullstack Developer, Writer',
+      content: 'Building, maintaining open-source amirardalan.com Next.js blog & CMS. Writing about front-end code, devops, and tech.',
       cName: 'event'
     },
     {
