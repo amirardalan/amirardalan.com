@@ -229,9 +229,9 @@ export default function About({ about, timeline }) {
                 <li className="title">
                   {about.availability.text}
                 </li>
-                <li className="text">
+                {/* <li className="text">
                   {about.availability.location}
-                </li>
+                </li> */}
               </ul>
             </div>
             <div className='grid'>
