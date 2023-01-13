@@ -177,9 +177,11 @@ export const aboutContent = {
     ],
   },
   availability: {
-    title: 'Availability',
-    text: '☑ Currently Unavailable',
+    title: 'Currently working on',
+    text: 'Application development @',
+    text2: 'Nike Innovation Center',
     location: 'Remote or in-office in Portland, Ore. area.',
+    link: 'https://lebronjamesinnovationcenter.nike.com/'
   },
   contact: {
     title: "Let's talk",

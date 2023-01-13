@@ -226,8 +226,8 @@ export default function About({ about, timeline }) {
                     {about.availability.title}
                   </h3>
                 </li>
-                <li className="title">
-                  {about.availability.text}
+                <li>
+                  {about.availability.text} <a target="_blank" rel="noopener noreferrer" href={about.availability.link}>{about.availability.text2}</a>.
                 </li>
                 {/* <li className="text">
                   {about.availability.location}
