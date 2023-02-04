@@ -12,7 +12,7 @@ A Next.js Markdown Blog and CMS written in TypeScript. Designed, built, and main
 [Emotion](https://github.com/emotion-js/emotion)
 
 ### Who is this for?
-This is my personal portfolio and blog. You may find the CMS portion useful. It is a modern and lightweight alternative to a Wordpress blog. This application utilizes bleeding edge features from Next.js and React.
+This is my personal portfolio and blog. You may find the CMS portion and some of the custom Markdown functionality useful. This application currently runs on Next13 using the Page directory paradigm. I plan to upgrade this project to the app directory to take advantage of full React 18 support in the near future.
 
 ### CMS Features
 - Manage blog posts from an authenticated Admin Panel
