@@ -1,21 +1,9 @@
-import fs from 'fs'
 import prisma from '@/lib/prisma'
 
 // Dynamically Generate sitemap.xml
 export const getServerSideProps = async ({ res }) => {
   
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL
-
-  // const staticPages = fs
-  // .readdirSync('./.next/server/pages')
-  // .filter((staticPage) => {
-  //   console.log(staticPage)
-  //   return ![
-  //   ].includes(staticPage)
-  // })
-  // .map((staticPagePath) => {
-  //   return `${baseUrl}/${staticPagePath}`;
-  // })
 
   const feed = await prisma.post.findMany({
     where: { published: true },

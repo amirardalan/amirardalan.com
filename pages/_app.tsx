@@ -1,7 +1,7 @@
 import React from 'react'
 import type { AppProps } from 'next/app'
 import { Session } from "next-auth"
-import { SessionProvider } from "next-auth/react";
+import { SessionProvider } from "next-auth/react"
 import { useThemeContext } from '@/utils/useThemeContext'
 import { themeLight, themeDark } from '@/styles/theme'
 import { GlobalStyles } from '@/styles/global'

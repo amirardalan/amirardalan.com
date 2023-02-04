@@ -1,4 +1,4 @@
-import { useLayoutEffect, useMemo, useRef } from 'react'
+import { useLayoutEffect, useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
 import { createNoise2D } from 'simplex-noise'
 import alea from 'alea'
@@ -51,7 +51,7 @@ const Terrain = ({
   offset = { x: 0, z: 0 },
   rotation = 1
 }) => {
-  const simplex = useMemo(() => createNoise2D(alea('seed')), [])
+  const simplex = createNoise2D(alea(seed))
   const ref = useRef()
   const mesh: any = useRef()
   
