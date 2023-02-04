@@ -19,7 +19,7 @@ const TypingAnimation = ({ data }) => {
     return () => {
       typed.destroy()
     }
-  })
+  }, [data])
 
   return <span className="typingAnimation" />
 }
