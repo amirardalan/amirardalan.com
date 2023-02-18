@@ -8,6 +8,7 @@ import { GlobalStyles } from '@/styles/global'
 import { ThemeProvider } from '@emotion/react'
 import Header from '@/components/Header'
 import useGtag from '@/utils/useGtag'
+import { Analytics } from '@vercel/analytics/react'
 
 
 const App = ({ Component, pageProps }: AppProps<{session: Session}>) => {
@@ -23,6 +24,7 @@ const App = ({ Component, pageProps }: AppProps<{session: Session}>) => {
         <ThemeProvider theme={themeMode}>
           <Header toggleTheme={toggleTheme} />
           <Component {...pageProps} />
+          <Analytics />
         </ThemeProvider>
       </SessionProvider>
     </React.StrictMode>

@@ -554,6 +554,11 @@
     "@typescript-eslint/types" "5.50.0"
     eslint-visitor-keys "^3.3.0"
 
+"@vercel/analytics@^0.1.10":
+  version "0.1.10"
+  resolved "https://registry.yarnpkg.com/@vercel/analytics/-/analytics-0.1.10.tgz#772ab975f1226b6db9632568299ead173c21da7d"
+  integrity sha512-jjJ8GzcPnQp0cMxpfYoUycMRBtDiaIeyVjZPiEPe99Dj1PdjMzAFYEASiV/hpNsXHkpcNYCveDFh6jnmh0YSDQ==
+
 acorn-jsx@^5.3.2:
   version "5.3.2"
   resolved "https://registry.yarnpkg.com/acorn-jsx/-/acorn-jsx-5.3.2.tgz#7ed5bb55908b3b2f1bc55c6af1653bada7f07937"
