@@ -1,5 +1,9 @@
-import { css } from '@emotion/react'
+import { FC } from 'react';
+import { css } from '@emotion/react';
 
+type BlogLayoutProps = {
+  children: React.ReactNode;
+};
 
 const blogStyles = css({
   '.blog': {
@@ -17,16 +21,16 @@ const blogStyles = css({
       color: 'var(--color-primary)',
       textDecoration: 'none',
       '&.featured': {
-        marginRight: '1rem'
+        marginRight: '1rem',
       },
       '&.active': {
-        borderBottom: '2px solid var(--color-primary)'
+        borderBottom: '2px solid var(--color-primary)',
       },
       '&:before': {
-        content: '"#"'
+        content: '"#"',
       },
       '&.all, &.featured': {
-        '&:before': { content: '""' }
+        '&:before': { content: '""' },
       },
     },
     '.blogListHeading': {
@@ -42,7 +46,7 @@ const blogStyles = css({
       '@media(max-width: 1024px)': {
         fontSize: 24,
         lineHeight: '1.8rem',
-      }
+      },
     },
     '.blogHeading': {
       fontFamily: 'var(--font-secondary)',
@@ -51,7 +55,7 @@ const blogStyles = css({
       textDecoration: 'none',
       '@media(max-width: 1024px)': {
         fontSize: 30,
-      }
+      },
     },
     'h1, h2': {
       display: 'inline-block',
@@ -62,7 +66,7 @@ const blogStyles = css({
       lineHeight: '2.5rem',
       cursor: 'pointer',
       textDecoration: 'underline',
-      '&:hover': { textDecoration: 'none' }
+      '&:hover': { textDecoration: 'none' },
     },
     p: {
       marginBottom: '2rem',
@@ -80,19 +84,19 @@ const blogStyles = css({
         '@media(max-width: 768px)': {
           fontSize: 15,
           margin: '.5rem 0 1.8rem',
-        }
-      }
+        },
+      },
     },
     '&.admin.create, &.admin.edit': {
       maxWidth: '100%',
-    }
+    },
   },
   '.post': {
     marginTop: '2rem',
-    '.publishedPost' : {
+    '.publishedPost': {
       display: 'block',
       marginBottom: '1rem',
-    }
+    },
   },
   '.postDetails': {
     display: 'flex',
@@ -100,12 +104,12 @@ const blogStyles = css({
     color: 'var(--color-gray)',
     fontSize: 13,
     lineHeight: '1.2rem',
-    'time': {
+    time: {
       '&:after': {
         margin: '0 .5rem',
-        content: '"•"'
-      }
-    }
+        content: '"•"',
+      },
+    },
   },
   '.postTeaser': {
     position: 'relative',
@@ -118,11 +122,11 @@ const blogStyles = css({
       a: {
         color: 'var(--color-heading)',
         textDecoration: 'none',
-        border: 'none'
+        border: 'none',
       },
       '@media (max-width: 768px)': {
         fontSize: 28,
-      }
+      },
     },
     '&:hover': {
       '&::before': {
@@ -138,14 +142,14 @@ const blogStyles = css({
           top: -2,
           left: -15,
           fontSize: 18,
-        }
-      }
-    }
+        },
+      },
+    },
   },
   li: {
     '&::marker': {
       color: 'var(--color-primary)',
-    }
+    },
   },
   table: {
     width: '100%',
@@ -155,14 +159,14 @@ const blogStyles = css({
         border: '1px solid var(--color-accent-gray)',
         backgroundColor: 'var(--color-accent)',
         padding: '.5rem',
-      }
+      },
     },
     tbody: {
       'tr td': {
         border: '1px solid var(--color-accent-gray)',
         padding: '.5rem',
-      }
-    }
+      },
+    },
   },
   'input[type="text"], textarea': {
     width: '100%',
@@ -182,25 +186,16 @@ const blogStyles = css({
     '@media (max-width: 890px)': {
       width: '100%',
       margin: '0.5rem 0 0 0',
-    }
+    },
   },
   'input::placeholder': {
     color: 'var(--color-gray)',
-    opacity: '0.5'
+    opacity: '0.5',
   },
-})
+});
 
-type Props = {
-  children: React.ReactNode
-}
+const BlogLayout: FC<BlogLayoutProps> = ({ children }) => {
+  return <div css={blogStyles}>{children}</div>;
+};
 
-const BlogLayout = (props: Props) => {
-
-  return (
-    <div css={blogStyles}>
-      {props.children}
-    </div>
-  )
-}
-
-export default BlogLayout
+export default BlogLayout;

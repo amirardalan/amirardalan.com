@@ -1,35 +1,58 @@
-import { useState } from 'react'
-import { useTheme, css } from '@emotion/react'
-import Image from 'next/image'
+import { type FC, useState } from 'react';
+import { useTheme, css } from '@emotion/react';
+import Image from 'next/image';
 
-import BlogStats from '@/components/BlogStats'
-import BlogPost from '@/components/BlogPost'
-import CloseButton from '@/components/CloseButton'
-import compareID from '@/utils/compareID'
+import BlogStats from '@/components/BlogStats';
+import BlogPost from '@/components/BlogPost';
+import CloseButton from '@/components/CloseButton';
+import compareID from '@/utils/compareID';
 
+type BlogPostFilterProps = {
+  theme: {
+    icons: Object;
+  };
+  blog: {
+    search: {
+      noresult: string;
+      placeholder: string;
+      clearFilter: string;
+      clear: string;
+    };
+  };
+  feed: Array<any>;
+};
 
-const BlogPostFilter = ({ blog, feed }) => {
+type PostProps = {
+  id: number;
+  category: string;
+  publishedAt: Date;
+  content: string;
+  slug: string;
+  title: string;
+  teaser: string;
+};
 
+const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
   const styleBlogCategoryNav = css({
     overflow: 'scroll',
     msOverflowStyle: 'none',
     scrollbarWidth: 'none',
     whiteSpace: 'nowrap',
     minHeight: 32,
-    li :{
+    li: {
       display: 'inline',
       marginRight: '1.8rem',
     },
     '&::-webkit-scrollbar': {
-      display: 'none'
+      display: 'none',
     },
     '@media (max-width: 768px)': {
       minHeight: 32,
       li: {
-        marginRight: '1.2rem'
-      }
-    }
-  })
+        marginRight: '1.2rem',
+      },
+    },
+  });
 
   const styleSearchPosts = css({
     display: 'flex',
@@ -56,57 +79,75 @@ const BlogPostFilter = ({ blog, feed }) => {
       right: 8,
       cursor: 'pointer',
     },
-  })
+  });
 
-  const theme: any = useTheme()
+  const theme: any = useTheme();
 
-  const [search, setSearch] = useState('')
+  const [search, setSearch] = useState('');
 
   const scrollToTop = () => {
-    window.scrollTo(0, 0)
-  }
+    window.scrollTo(0, 0);
+  };
 
   const handleCategoryLink = (category: string) => {
-    setSearch('#'+category)
-    scrollToTop()
-  }
+    setSearch('#' + category);
+    scrollToTop();
+  };
 
   const handleClearFilters = () => {
-    setSearch('')
-    scrollToTop()
-  }
+    setSearch('');
+    scrollToTop();
+  };
 
-  const activeCategories: Array<string> = Array.from(new Set(feed.map((post: Record<string, object>) => {
-    return post.category
-  })))
+  const activeCategories = Array.from(
+    new Set(
+      feed.map((post) => {
+        return post.category;
+      })
+    )
+  );
 
-  const searchResults = (search: String, feed: Array<object>) => {
-    const categorySearch = search[0] === '#'
-    const categoryMatch = activeCategories.indexOf(search.slice(1).split(' ')[0]) > -1
-  
+  const searchResults = (search: string, feed: any[]) => {
+    const categorySearch = search[0] === '#';
+    const categoryMatch =
+      activeCategories.indexOf(search.slice(1).split(' ')[0]) > -1;
+
     if (categorySearch) {
       if (categoryMatch) {
-        return feed.filter((data: { category: string, title: string }) => 
-          data?.category?.toLowerCase().includes(search.slice(1).toLowerCase().split(' ')[0]) && 
-          data?.title?.toLowerCase().includes(search.replace(/#[a-z]+/, '').trim().toLowerCase()))
+        return feed.filter(
+          (data: { category: string; title: string }) =>
+            data?.category
+              ?.toLowerCase()
+              .includes(search.slice(1).toLowerCase().split(' ')[0]) &&
+            data?.title?.toLowerCase().includes(
+              search
+                .replace(/#[a-z]+/, '')
+                .trim()
+                .toLowerCase()
+            )
+        );
       }
-      return feed.filter((data: { category: string }) => 
-        data?.category?.toLowerCase().includes(search.slice(1).toLowerCase()))
+      return feed.filter((data: { category: string }) =>
+        data?.category?.toLowerCase().includes(search.slice(1).toLowerCase())
+      );
     }
-    return feed.filter((data: { title: string }) => 
-      data?.title?.toLowerCase().includes(search.toLowerCase()))
-  }
+    return feed.filter((data: { title: string }) =>
+      data?.title?.toLowerCase().includes(search.toLowerCase())
+    );
+  };
 
-  const filteredPosts = searchResults(search, feed)
+  const filteredPosts = searchResults(search, feed);
 
   const RenderPosts: Function = () => {
     if (filteredPosts.length > 0) {
-      return (
-        filteredPosts.sort(compareID).reverse().map((post: Record<string, string>) => (
+      return filteredPosts
+        .sort(compareID)
+        .reverse()
+        .map((post: PostProps) => (
           <article className="publishedPost" key={post.id}>
             <button
               onClick={() => handleCategoryLink(post.category)}
-              onKeyPress={() => handleCategoryLink(post.category)}
+              onKeyDown={() => handleCategoryLink(post.category)}
               className="category"
               aria-label={post.category}
             >
@@ -114,26 +155,25 @@ const BlogPostFilter = ({ blog, feed }) => {
             </button>
             <BlogPost post={post} />
           </article>
-        ))
-      )
+        ));
     } else {
-        return (
-          <span>
-            {blog.search.noresult}{' '}
-            {feed.length > 0 ?
+      return (
+        <span>
+          {blog.search?.noresult}{' '}
+          {feed.length > 0 ? (
             <button
               onClick={() => setSearch('')}
-              onKeyPress={() => setSearch('')}
+              onKeyDown={() => setSearch('')}
               aria-label={blog.search.clear}
             >
-              <CloseButton width={12} height={12}/>
-              {' '+blog.search.clear}
+              <CloseButton width={12} height={12} />
+              {' ' + blog.search.clear}
             </button>
-            : null}
-          </span>
-        )
+          ) : null}
+        </span>
+      );
     }
-  }
+  };
 
   const SearchIcon: Function = () => {
     if (search.length === 0) {
@@ -149,46 +189,51 @@ const BlogPostFilter = ({ blog, feed }) => {
             draggable={false}
           />
         </div>
-      )
+      );
     } else {
-        return (
-          <button
-            onClick={() => setSearch('')}
-            onKeyPress={() => setSearch('')}
-            className="clearSearch"
-          >
-            <CloseButton width={25} height={25} />
-          </button>
-        )
+      return (
+        <button
+          onClick={() => setSearch('')}
+          onKeyDown={() => setSearch('')}
+          className="clearSearch"
+        >
+          <CloseButton width={25} height={25} />
+        </button>
+      );
     }
-  }
+  };
 
   const ClearFilters: Function = () => {
     if (search[0] === '#' && filteredPosts.length > 0) {
       return (
         <button
           onClick={() => handleClearFilters()}
-          onKeyPress={() => handleClearFilters()}
-          aria-label="Clear Filter">
-          <CloseButton width={12} height={12}/>
-          <span>{' '+blog.search.clearFilter}</span>
+          onKeyDown={() => handleClearFilters()}
+          aria-label="Clear Filter"
+        >
+          <CloseButton width={12} height={12} />
+          <span>{' ' + blog.search.clearFilter}</span>
         </button>
-      )
+      );
     } else {
-      return null
+      return null;
     }
-  }
+  };
 
   return (
     <>
-      <BlogStats feed={feed} activeCategories={activeCategories} filteredPosts={filteredPosts} />
+      <BlogStats
+        feed={feed}
+        activeCategories={activeCategories}
+        filteredPosts={filteredPosts}
+      />
       <nav css={styleBlogCategoryNav}>
         <ul>
           <li>
             <button
               onClick={() => setSearch('')}
-              onKeyPress={() => setSearch('')}
-              className={search === '' ? "category all active" : "category all"}
+              onKeyDown={() => setSearch('')}
+              className={search === '' ? 'category all active' : 'category all'}
               aria-label="All"
             >
               All
@@ -198,8 +243,12 @@ const BlogPostFilter = ({ blog, feed }) => {
             <li key={index}>
               <button
                 onClick={() => handleCategoryLink(category)}
-                onKeyPress={() => handleCategoryLink(category)}
-                className={search.split(' ')[0] === '#'+category ? "category active" : "category"}
+                onKeyDown={() => handleCategoryLink(category)}
+                className={
+                  search.split(' ')[0] === '#' + category
+                    ? 'category active'
+                    : 'category'
+                }
                 aria-label={category}
               >
                 {category}
@@ -208,7 +257,7 @@ const BlogPostFilter = ({ blog, feed }) => {
           ))}
         </ul>
       </nav>
-      
+
       <div css={styleSearchPosts}>
         <input
           type="text"
@@ -224,7 +273,7 @@ const BlogPostFilter = ({ blog, feed }) => {
         <ClearFilters />
       </div>
     </>
-  )
-}
+  );
+};
 
-export default BlogPostFilter
+export default BlogPostFilter;

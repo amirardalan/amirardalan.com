@@ -1,10 +1,18 @@
-import Image from 'next/image'
-import { css } from '@emotion/react'
+import type { FC } from 'react';
+import Image from 'next/image';
+import { css } from '@emotion/react';
 
+type PhotoProps = {
+  avatar: {
+    img: string;
+    title: string;
+  };
+  height: number;
+  width: number;
+};
 
-export default function Photo({avatar, height, width }) {
-
-  const clip = width / 2
+const Photo: FC<PhotoProps> = ({ avatar, height, width }) => {
+  const clip = width / 2;
 
   const styleAvatarTint = css({
     zIndex: 2,
@@ -13,12 +21,12 @@ export default function Photo({avatar, height, width }) {
     height: `${height}px`,
     background: 'var(--color-avatar)',
     borderRadius: `${clip}px`,
-    opacity: .15,
-  })
+    opacity: 0.15,
+  });
 
   return (
     <>
-      <div css={styleAvatarTint}/>
+      <div css={styleAvatarTint} />
       <Image
         src={avatar.img}
         alt={avatar.title}
@@ -26,9 +34,11 @@ export default function Photo({avatar, height, width }) {
         width={width}
         height={height}
         draggable={false}
-        css={{clipPath:`circle(${clip}px at center)`,}}
+        css={{ clipPath: `circle(${clip}px at center)` }}
         priority
       />
     </>
-  )
-}
+  );
+};
+
+export default Photo;

@@ -1,22 +1,24 @@
-import { useState, useEffect } from "react"
-import { css } from '@emotion/react'
+import { type FC, useState, useEffect } from 'react';
+import { css } from '@emotion/react';
 
+type ThemeToggleProps = {
+  toggleTheme: Function;
+};
 
-const ThemeToggle = ({ toggleTheme }) => {
-
-  const [activeTheme, setActiveTheme] = useState(document.body.dataset.theme)
-  const inactiveTheme = activeTheme === "light" ? "dark" : "light"
-  const [toggleThemeControl, setToggleThemeControl] = useState(false)
+const ThemeToggle: FC<ThemeToggleProps> = ({ toggleTheme }) => {
+  const [activeTheme, setActiveTheme] = useState(document.body.dataset.theme);
+  const inactiveTheme = activeTheme === 'light' ? 'dark' : 'light';
+  const [toggleThemeControl, setToggleThemeControl] = useState(false);
 
   const themeToggled = () => {
-    setActiveTheme(inactiveTheme)
-    setToggleThemeControl(!toggleThemeControl)
-    toggleTheme()
-  }
+    setActiveTheme(inactiveTheme);
+    setToggleThemeControl(!toggleThemeControl);
+    toggleTheme();
+  };
   useEffect(() => {
-    document.body.dataset.theme = activeTheme
-    window.localStorage.setItem('theme', activeTheme)
-  }, [activeTheme])
+    document.body.dataset.theme = activeTheme;
+    window.localStorage.setItem('theme', activeTheme);
+  }, [activeTheme]);
 
   const styleToggleTrack = css({
     width: 42,
@@ -26,7 +28,7 @@ const ThemeToggle = ({ toggleTheme }) => {
     border: 'none',
     borderRadius: 20,
     cursor: 'pointer',
-  })
+  });
   const styleToggleSlider = css({
     background: 'var(--color-accent)',
     height: 22,
@@ -38,8 +40,8 @@ const ThemeToggle = ({ toggleTheme }) => {
     transition: '.2s linear',
     '&:active': {
       boxShadow: '0 0 8px var(--color-primary)',
-    }
-  })
+    },
+  });
 
   return (
     <button
@@ -51,7 +53,7 @@ const ThemeToggle = ({ toggleTheme }) => {
     >
       <div css={styleToggleSlider} />
     </button>
-  )
-}
+  );
+};
 
-export default ThemeToggle
+export default ThemeToggle;

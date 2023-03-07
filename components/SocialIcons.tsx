@@ -1,16 +1,25 @@
-import { useTheme } from '@emotion/react'
-import Image from 'next/image'
-import { Key } from 'react'
+import { type FC, Key } from 'react';
+import { useTheme } from '@emotion/react';
+import Image from 'next/image';
 
-export default function SocialIcons({ about }) {
+type SocialiconsProps = {
+  about: {
+    social: {
+      items: Array<object>;
+    };
+  };
+  content: string;
+};
 
-  const theme: any = useTheme()
-  const isDarkTheme = theme.active === 'dark'
+const SocialIcons: FC<SocialiconsProps> = ({ about }) => {
+  const theme: any = useTheme();
+  const isDarkTheme = theme.active === 'dark';
 
   const GenerateSocialIcons = (items: any[]) => {
     return items.map((item, i: Key) => {
       return (
-        <a key={i}
+        <a
+          key={i}
           href={item.path}
           target="_blank"
           rel="noreferrer noopener"
@@ -18,9 +27,7 @@ export default function SocialIcons({ about }) {
           aria-label={item.title}
         >
           <Image
-            src={isDarkTheme
-              ? item.icon.dark
-              : item.icon.light}
+            src={isDarkTheme ? item.icon.dark : item.icon.light}
             height="48"
             width="48"
             alt={item.title}
@@ -28,9 +35,11 @@ export default function SocialIcons({ about }) {
             priority
           />
         </a>
-      )
-    })
-  }
+      );
+    });
+  };
 
-  return <>{GenerateSocialIcons(about.social.items)}</>
-}
+  return <>{GenerateSocialIcons(about.social.items)}</>;
+};
+
+export default SocialIcons;

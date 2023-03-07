@@ -1,8 +1,15 @@
-import Image from 'next/image'
-import { useTheme } from '@emotion/react'
+import type { FC } from 'react';
 
-const CloseIcon: Function = ({width, height}) => {
-  const theme: any = useTheme()
+import Image from 'next/image';
+import { useTheme } from '@emotion/react';
+
+type CloseIconProps = {
+  width: number;
+  height: number;
+};
+
+const CloseIcon: FC<CloseIconProps> = ({ width, height }) => {
+  const theme: any = useTheme();
 
   return (
     <Image
@@ -14,7 +21,7 @@ const CloseIcon: Function = ({width, height}) => {
       aria-label="close menu"
       draggable={false}
     />
-  )
-}
+  );
+};
 
-export default CloseIcon
+export default CloseIcon;

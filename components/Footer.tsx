@@ -1,15 +1,13 @@
-import { css, useTheme } from '@emotion/react'
-import { footer } from '@/data/content'
-import { nav } from '@/data/navigation'
-import Link from 'next/link'
-import Image from 'next/image'
-import { Key } from 'react'
+import { type FC, Key } from 'react';
+import { css, useTheme } from '@emotion/react';
+import { footer } from '@/data/content';
+import { nav } from '@/data/navigation';
+import Link from 'next/link';
+import Image from 'next/image';
 
-
-export default function Footer() {
-  
-  const theme: any = useTheme()
-  const isDarkTheme = theme.active === 'dark'
+const Footer: FC = () => {
+  const theme: any = useTheme();
+  const isDarkTheme = theme.active === 'dark';
 
   const styleFooterWrapper = css({
     position: 'relative',
@@ -22,8 +20,8 @@ export default function Footer() {
     },
     '@media(max-width: 480px)': {
       padding: '3rem 1.5rem 1rem 1.5rem',
-    }
-  })
+    },
+  });
   const styleFooter = css({
     display: 'grid',
     gridTemplateColumns: 'repeat(4, 1fr)',
@@ -46,7 +44,7 @@ export default function Footer() {
         marginBottom: 0,
       },
     },
-    'a': {
+    a: {
       marginBottom: '.8rem',
       display: 'flex',
       flexDirection: 'row',
@@ -62,7 +60,7 @@ export default function Footer() {
       '.icon': {
         marginLeft: '.2rem',
         lineHeight: 0,
-        alignSelf: 'center'
+        alignSelf: 'center',
       },
       '@media(max-width: 480px)': {
         marginBottom: '1.5rem',
@@ -78,9 +76,9 @@ export default function Footer() {
       fontWeight: 800,
       '@media(max-width: 600px)': {
         width: '100%',
-      }
+      },
     },
-  })
+  });
   const styleFooterLogo = css({
     display: 'flex',
     padding: '4rem 0 3rem 0',
@@ -90,8 +88,8 @@ export default function Footer() {
     width: 75,
     '@media(max-width: 768px)': {
       padding: 0,
-    }
-  })
+    },
+  });
   const styleCopyright = css({
     marginTop: '2rem',
     fontFamily: 'var(--font-primary)',
@@ -101,16 +99,16 @@ export default function Footer() {
     display: 'flex',
     alignSelf: 'end',
     a: {
-      color: 'var(--color-bg)'
+      color: 'var(--color-bg)',
     },
     '@media(max-width: 768px)': {
       marginTop: '1.5rem',
-    }
-  })
-  const styleFooterNav= css({
+    },
+  });
+  const styleFooterNav = css({
     display: 'flex',
     flexDirection: 'column',
-  })
+  });
 
   const generateFooterLinks = (items: any[]) => {
     return items.map((item, i: Key) => {
@@ -127,9 +125,7 @@ export default function Footer() {
             {item.title}
             <span className="icon">
               <Image
-                src={isDarkTheme
-                  ? item.icon?.dark
-                  : item.icon?.light}
+                src={isDarkTheme ? item.icon?.dark : item.icon?.light}
                 height={15.5}
                 width={15.5}
                 alt={item.title}
@@ -138,9 +134,9 @@ export default function Footer() {
             </span>
           </a>
         </li>
-      )
-    })
-  }
+      );
+    });
+  };
 
   return (
     <footer css={styleFooterWrapper}>
@@ -154,35 +150,36 @@ export default function Footer() {
             {nav.map((item: any, i: number) => {
               return (
                 <li key={i}>
-                  <Link href={item.path} aria-label={item.title} className={item.cName}>
+                  <Link
+                    href={item.path}
+                    aria-label={item.title}
+                    className={item.cName}
+                  >
                     {item.title}
                   </Link>
                 </li>
-              )}
-            )}
+              );
+            })}
           </ul>
         </div>
         <div className="grid">
           <h4>{footer.headings.social}</h4>
-          <ul>
-            {generateFooterLinks(footer.social)}
-          </ul>
+          <ul>{generateFooterLinks(footer.social)}</ul>
         </div>
         <div className="grid">
           <h4>{footer.headings.poweredby}</h4>
-          <ul>
-            {generateFooterLinks(footer.poweredby)}
-          </ul>
+          <ul>{generateFooterLinks(footer.poweredby)}</ul>
         </div>
       </div>
       <div css={styleCopyright}>
         <div>
-        {footer.copyright.text}
-        {(new Date().getFullYear()) + ' '}
-        {footer.copyright.name}
+          {footer.copyright.text}
+          {new Date().getFullYear() + ' '}
+          {footer.copyright.name}
         </div>
-        
       </div>
     </footer>
-  )
-}
+  );
+};
+
+export default Footer;

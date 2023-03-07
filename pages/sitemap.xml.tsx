@@ -1,16 +1,15 @@
-import prisma from '@/lib/prisma'
+import prisma from '@/lib/prisma';
 
 // Dynamically Generate sitemap.xml
 export const getServerSideProps = async ({ res }) => {
-  
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL;
 
   const feed = await prisma.post.findMany({
     where: { published: true },
-    select: { slug: true, editedAt: true }
-  })
+    select: { slug: true, editedAt: true },
+  });
 
-const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
   <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>${baseUrl}</loc>
@@ -38,16 +37,16 @@ const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
             </url>
           `;
       })
-      .join("")}
+      .join('')}
   </urlset>
-`
+`;
 
-  res.setHeader("Content-Type", "text/xml")
-  res.write(sitemap)
-  res.end()
+  res.setHeader('Content-Type', 'text/xml');
+  res.write(sitemap);
+  res.end();
 
-  return { props: {} }
-}
+  return { props: {} };
+};
 
-const Sitemap = () => {}
-export default Sitemap
+const Sitemap = () => {};
+export default Sitemap;

@@ -1,4 +1,13 @@
-export default function Dropdown({ label, value, handleChange, data }) {
+import type { FC, ChangeEventHandler } from 'react';
+
+type DropdownProps = {
+  label: string;
+  value: string;
+  handleChange: ChangeEventHandler;
+  data: Array<object>;
+};
+
+const Dropdown: FC<DropdownProps> = ({ label, value, handleChange, data }) => {
   return (
     <label className="dropdownLabel">
       <span>{label}</span>
@@ -10,5 +19,7 @@ export default function Dropdown({ label, value, handleChange, data }) {
         ))}
       </select>
     </label>
-  )
-}
+  );
+};
+
+export default Dropdown;

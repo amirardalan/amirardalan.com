@@ -1,31 +1,47 @@
-import { useRouter } from 'next/router'
-import Head from 'next/head'
-import Footer from '@/components/Footer'
-import { metadata } from '@/data/metadata'
+import type { FC, ReactNode } from 'react';
+import { useRouter } from 'next/router';
+import Head from 'next/head';
+import Footer from '@/components/Footer';
+import { metadata } from '@/data/metadata';
 
+type ContainerProps = {
+  title: string;
+  description: string;
+  children: ReactNode;
+  date: Date | null;
+  robots: string;
+};
 
-export default function Container(props: any) {
-
-  const { children, ...customMeta } = props
-  const router = useRouter()
+const Container: FC<ContainerProps> = (
+  props,
+  { title, description, date, robots }
+) => {
+  const { children, ...customMeta } = props;
+  const router = useRouter();
   const meta = {
-    title: metadata.title,
-    description: metadata.description,
-    image: metadata.image,
+    title,
+    description,
+    image: metadata?.image,
     type: 'website',
-    robots: 'follow, index',
-    ...customMeta
-  }
+    robots,
+    ...customMeta,
+  };
 
   return (
     <>
       <Head>
-        <title>{meta.title}</title>
+        <title>{title}</title>
         <meta name="robots" content={meta.robots} />
 
-        <meta property="og:url" content={`${process.env.NEXT_PUBLIC_SITE_URL}${router.asPath}`} />
-        <link rel="canonical" href={`${process.env.NEXT_PUBLIC_SITE_URL}${router.asPath}`} />
-        
+        <meta
+          property="og:url"
+          content={`${process.env.NEXT_PUBLIC_SITE_URL}${router.asPath}`}
+        />
+        <link
+          rel="canonical"
+          href={`${process.env.NEXT_PUBLIC_SITE_URL}${router.asPath}`}
+        />
+
         <meta property="og:type" content={meta.type} />
         <meta property="og:site_name" content={metadata.name} />
         <meta property="og:description" content={meta.description} />
@@ -40,16 +56,14 @@ export default function Container(props: any) {
         <meta name="twitter:description" content={meta.description} />
         <meta name="twitter:image" content={meta.image} />
         <meta name="twitter:image:alt" content={meta.title} />
-        {meta.date && (
-          <meta property="article:published_time" content={meta.date} />
-        )}
+        {date && <meta property="article:published_time" content={date} />}
       </Head>
 
-      <div className="container">
-        {children}
-      </div>
+      <div className="container">{children}</div>
 
       <Footer />
     </>
-  )
-}
+  );
+};
+
+export default Container;

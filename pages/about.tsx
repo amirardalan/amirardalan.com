@@ -1,18 +1,56 @@
-import { css } from '@emotion/react'
-import Container from '@/components/Container'
-import Avatar from '@/components/Avatar'
-import { CtaButtons, ContactButton } from '@/components/CtaButtons'
-import SocialIcons from '@/components/SocialIcons'
-import Timeline from '@/components/Timeline'
-import { aboutContent, timelineContent } from '@/data/content'
+import { NextPage, GetStaticProps } from 'next';
+import { css } from '@emotion/react';
+import Container from '@/components/Container';
+import Avatar from '@/components/Avatar';
+import { CtaButtons, ContactButton } from '@/components/CtaButtons';
+import SocialIcons from '@/components/SocialIcons';
+import Timeline from '@/components/Timeline';
+import { aboutContent, timelineContent } from '@/data/content';
 
-import { GetStaticProps } from 'next'
-export const getStaticProps: GetStaticProps = async () => {
-  return { props: { about: aboutContent, timeline: timelineContent } }
-}
+type NextPageProps = {
+  about: {
+    availability: {
+      title: string;
+      text: string;
+      text2: string;
+      link: string;
+    };
+    stack: {
+      items: string;
+    };
+    social: {
+      title: string;
+    };
+    contact: {
+      title: string;
+    };
+    skills: {
+      title: string;
+      items: string;
+    };
+    experience: {
+      title: string;
+      items: string;
+    };
+    avatar: {
+      img: string;
+      title: string;
+    };
+    heading: string;
+    bio: {
+      items: string;
+      content: string;
+      subheading: string;
+    };
+    meta: {
+      title: string;
+      description: string;
+    };
+  };
+  timeline: Object;
+};
 
-
-export default function About({ about, timeline }) {
+const About: NextPage<NextPageProps> = ({ about, timeline }) => {
   const styleGridWrapper = css({
     display: 'grid',
     gridTemplateColumns: 'repeat(3, 1fr)',
@@ -45,7 +83,7 @@ export default function About({ about, timeline }) {
           color: 'var(--color-light)',
           '@media(max-width: 768px)': {
             fontSize: 18,
-          }
+          },
         },
         '.divider': {
           borderBottom: '2px dotted var(--color-light)',
@@ -60,9 +98,9 @@ export default function About({ about, timeline }) {
             '&:hover': {
               background: 'transparent',
               border: '2px solid var(--color-light)',
-              color: 'var(--color-light)'
+              color: 'var(--color-light)',
             },
-          }
+          },
         },
         em: {
           color: 'var(--color-select)',
@@ -71,7 +109,7 @@ export default function About({ about, timeline }) {
           fontFamily: 'var(--font-tertiary)',
           fontSize: 17,
           maxWidth: 450,
-        }
+        },
       },
       h3: {
         fontFamily: 'var(--font-secondary)',
@@ -89,26 +127,26 @@ export default function About({ about, timeline }) {
         },
       },
       '.skills': {
-        'li': {
+        li: {
           fontSize: 13,
           '&:first-of-type': {
             '&:before': {
-              content: '" "'
-            }
+              content: '" "',
+            },
           },
           '&:before': {
-            content: '"• "'
-          }
-        }
+            content: '"• "',
+          },
+        },
       },
       '.experience': {
         fontFamily: 'var(--font-tertiary)',
-        'li': {
+        li: {
           marginBottom: '1.2rem',
           fontSize: 18,
           '@media(min-width: 769px)': {
-            fontSize: 16
-          }
+            fontSize: 16,
+          },
         },
       },
       '.availability': {
@@ -117,19 +155,19 @@ export default function About({ about, timeline }) {
         fontSize: 18,
         '.title': {
           fontSize: 18,
-          color: 'var(--color-text)'
+          color: 'var(--color-text)',
         },
         '.text': {
           fontFamily: 'var(--font-tertiary)',
-          fontStyle: 'italic'
-        }
+          fontStyle: 'italic',
+        },
       },
       '@media(max-width: 768px)': {
         background: 'none',
         border: 'none',
         padding: 0,
         margin: '1rem 0',
-      }
+      },
     },
     'h2, h3': {
       fontWeight: 700,
@@ -137,7 +175,7 @@ export default function About({ about, timeline }) {
     h2: {
       color: 'var(--color-heading)',
       fontSize: 24,
-      paddingBottom: '.25rem'
+      paddingBottom: '.25rem',
     },
     h3: {
       marginBottom: '1.5rem',
@@ -146,7 +184,7 @@ export default function About({ about, timeline }) {
       color: 'var(--color-heading)',
       borderBottom: '2px solid var(--color-primary)',
     },
-  })
+  });
   const styleBioItems = css({
     li: {
       marginBottom: '1rem',
@@ -154,12 +192,12 @@ export default function About({ about, timeline }) {
         marginBottom: 0,
       },
     },
-  })
+  });
   const styleSocialIconsWrapper = css({
     width: '100%',
     display: 'flex',
     flexDirection: 'column',
-  })
+  });
   const styleSocialIcons = css({
     display: 'flex',
     flexDirection: 'row',
@@ -169,96 +207,115 @@ export default function About({ about, timeline }) {
         marginRight: 0,
       },
     },
-  })
+  });
 
-  const GenerateListItems = (items: Array<string>) => {
-    return items.map((items, i) => {
-      return <li key={i}>{items}</li>
-    })
-  }
+  const GenerateListItems = (items) => {
+    return items.map((item: string, i: number) => {
+      return <li key={i}>{item}</li>;
+    });
+  };
 
   return (
-    <Container title={about.meta.title} description={about.meta.description}>
-      <main className='about'>
-      <h1 className='pageHeading'>{about.heading}</h1>
-          <div css={styleGridWrapper}>
-            <div className='grid'>
-              <div css={styleBioItems}>
-                <div className="avatar">
-                  <Avatar height={90} width={90} avatar={about.avatar} />
-                </div>
-                <h2 aria-label={about.bio.subheading} className="bioSubHeading">
-                  {about.bio.subheading}
-                </h2>
-                <p className='blurb'>{about.bio.content}</p>
-                <div className="divider" />
-                <CtaButtons items={about.bio.items} />
+    <Container
+      title={about.meta.title}
+      description={about.meta.description}
+      date={null}
+      robots="follow, index"
+    >
+      <main className="about">
+        <h1 className="pageHeading">{about.heading}</h1>
+        <div css={styleGridWrapper}>
+          <div className="grid">
+            <div css={styleBioItems}>
+              <div className="avatar">
+                <Avatar height={90} width={90} avatar={about.avatar} />
               </div>
+              <h2 aria-label={about.bio.subheading} className="bioSubHeading">
+                {about.bio.subheading}
+              </h2>
+              <p className="blurb">{about.bio.content}</p>
+              <div className="divider" />
+              <CtaButtons items={about.bio.items} />
             </div>
-            <div className='grid'>
-              <ul className="skills">
-                <li>
-                  <h3 aria-label={about.skills.title}>{about.skills.title}</h3>
-                </li>
-                {GenerateListItems(about.skills.items)}
-              </ul>
-              <ul className="skills">
-                <li>
-                  <h3 aria-hidden="true">&nbsp;</h3>
-                </li>
-                {GenerateListItems(about.stack.items)}
-              </ul>
-            </div>
-            <div className='grid'>
-              <ul className="experience">
-                <li>
-                  <h3 aria-label={about.experience.title}>
-                    {about.experience.title}
-                  </h3>
-                </li>
-                {GenerateListItems(about.experience.items)}
-              </ul>
-            </div>
-            <div className='grid'>
-              <ul className="availability">
-                <li>
-                  <h3 aria-label={about.availability.title}>
-                    {about.availability.title}
-                  </h3>
-                </li>
-                <li>
-                  {about.availability.text} <a target="_blank" rel="noopener noreferrer" href={about.availability.link}>{about.availability.text2}</a>.
-                </li>
-                {/* <li className="text">
+          </div>
+          <div className="grid">
+            <ul className="skills">
+              <li>
+                <h3 aria-label={about.skills.title}>{about.skills.title}</h3>
+              </li>
+              {GenerateListItems(about.skills.items)}
+            </ul>
+            <ul className="skills">
+              <li>
+                <h3 aria-hidden="true">&nbsp;</h3>
+              </li>
+              {GenerateListItems(about.stack.items)}
+            </ul>
+          </div>
+          <div className="grid">
+            <ul className="experience">
+              <li>
+                <h3 aria-label={about.experience.title}>
+                  {about.experience.title}
+                </h3>
+              </li>
+              {GenerateListItems(about.experience.items)}
+            </ul>
+          </div>
+          <div className="grid">
+            <ul className="availability">
+              <li>
+                <h3 aria-label={about.availability.title}>
+                  {about.availability.title}
+                </h3>
+              </li>
+              <li>
+                {about.availability.text}{' '}
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href={about.availability.link}
+                >
+                  {about.availability.text2}
+                </a>
+                .
+              </li>
+              {/* <li className="text">
                   {about.availability.location}
                 </li> */}
-              </ul>
-            </div>
-            <div className='grid'>
-              <div css={styleSocialIconsWrapper}>
-                <ul>
-                  <li>
-                    <h3>{about.social.title}</h3>
-                  </li>
-                  <li css={styleSocialIcons}>
-                    <SocialIcons about={about} />
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div className='grid' id="contact">
+            </ul>
+          </div>
+          <div className="grid">
+            <div css={styleSocialIconsWrapper}>
               <ul>
                 <li>
-                  <h3 aria-label={about.contact.title}>{about.contact.title}</h3>
+                  <h3>{about.social.title}</h3>
                 </li>
-                <li>
-                  <ContactButton content={about} />
+                <li css={styleSocialIcons}>
+                  <SocialIcons about={about} />
                 </li>
               </ul>
             </div>
           </div>
+          <div className="grid" id="contact">
+            <ul>
+              <li>
+                <h3 aria-label={about.contact.title}>{about.contact.title}</h3>
+              </li>
+              <li>
+                <ContactButton content={about} />
+              </li>
+            </ul>
+          </div>
+        </div>
         <Timeline timeline={timeline} />
       </main>
     </Container>
-  )
-}
+  );
+};
+
+export default About;
+
+export const getStaticProps: GetStaticProps = async () => {
+  return { props: { about: aboutContent, timeline: timelineContent } };
+};

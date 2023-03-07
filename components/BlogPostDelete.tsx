@@ -1,16 +1,27 @@
-import React, { useState } from 'react'
+import React, { type FC, type MouseEventHandler, useState } from 'react';
 
-const BlogPostDelete = ({ handleDeletion, cancelText, confirmText, deleteText }) => {
+type BlogPostDeleteProps = {
+  handleDeletion: MouseEventHandler;
+  cancelText: string;
+  confirmText: string;
+  deleteText: string;
+};
 
-  const [showBlogPostDelete, setShowBlogPostDelete] = useState(false)
+const BlogPostDelete: FC<BlogPostDeleteProps> = ({
+  handleDeletion,
+  cancelText,
+  confirmText,
+  deleteText,
+}) => {
+  const [showBlogPostDelete, setShowBlogPostDelete] = useState(false);
   const handleConfirmOnClick = (e: React.SyntheticEvent) => {
-    e.preventDefault()
-    setShowBlogPostDelete(true)
-  }
+    e.preventDefault();
+    setShowBlogPostDelete(true);
+  };
   const handleCancelOnClick = (e: React.SyntheticEvent) => {
-    e.preventDefault()
-    setShowBlogPostDelete(false)
-  }
+    e.preventDefault();
+    setShowBlogPostDelete(false);
+  };
   const RenderConfirmation = () => (
     <span className="controlsConfirm">
       <a className="confirmLink close" onClick={handleCancelOnClick}>
@@ -20,18 +31,19 @@ const BlogPostDelete = ({ handleDeletion, cancelText, confirmText, deleteText })
         {confirmText}
       </a>
     </span>
-  )
+  );
 
   return (
     <span>
       <button
         className="buttonCompact deleteBtn"
-        onClick={handleConfirmOnClick}>
+        onClick={handleConfirmOnClick}
+      >
         {deleteText}
       </button>
       {showBlogPostDelete ? <RenderConfirmation /> : null}
     </span>
-  )
-}
+  );
+};
 
-export default BlogPostDelete
+export default BlogPostDelete;

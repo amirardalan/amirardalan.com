@@ -1,21 +1,32 @@
-import { css } from '@emotion/react'
-import Link from 'next/link'
-import TimelineEntry from '@/components/TimelineEntry'
-import { useInView } from 'react-intersection-observer'
-import { Key } from 'react'
+import { css } from '@emotion/react';
+import Link from 'next/link';
+import TimelineEntry from '@/components/TimelineEntry';
+import { useInView } from 'react-intersection-observer';
+import { type FC, Key } from 'react';
 
+type TimelineProps = {
+  timeline: {
+    items: Array<string>;
+    meta: {
+      title: string;
+    };
+    fullStory: {
+      text: string;
+      link: string;
+    };
+  };
+};
 
-export default function Timeline({ timeline }) {
-
+const Timeline: FC<TimelineProps> = ({ timeline }) => {
   const { ref, inView } = useInView({
     threshold: 1,
     rootMargin: '0% 0% -33% 0%',
-    triggerOnce: true
-  })
+    triggerOnce: true,
+  });
 
   const styleTimelineHeading = css({
     marginTop: '4rem',
-  })
+  });
   const styleTimelineWrapper = css({
     paddingTop: '2rem',
     position: 'relative',
@@ -28,22 +39,22 @@ export default function Timeline({ timeline }) {
       '&.active': {
         animation: 'slideUp 1s',
         opacity: 1,
-      }
+      },
     },
     '@keyframes growDown': {
       from: {
-        transform: 'translate3d(0, -100%, 0)'
+        transform: 'translate3d(0, -100%, 0)',
       },
-      to: { transform: 'translate3d(0, 0, 0)' }
+      to: { transform: 'translate3d(0, 0, 0)' },
     },
     '@keyframes growUp': {
       from: {
         height: '100%',
         transform: 'translate3d(0, 0, 0)',
       },
-      to: { transform: 'translate3d(0, -100%, 0)' }
+      to: { transform: 'translate3d(0, -100%, 0)' },
     },
-  })
+  });
   const styleTimeline = css({
     display: 'grid',
     gridTemplateColumns: 'repeat(2, 1fr)',
@@ -88,8 +99,8 @@ export default function Timeline({ timeline }) {
             animation: 'growDown .5s',
           },
           '&:after': {
-            color: 'var(--color-primary)'
-          }
+            color: 'var(--color-primary)',
+          },
         },
         '&:after': {
           position: 'absolute',
@@ -101,8 +112,8 @@ export default function Timeline({ timeline }) {
           '@media(max-width: 768px)': {
             top: -43.5,
             right: -18,
-            fontSize: 70
-          }
+            fontSize: 70,
+          },
         },
         '.event': {
           '&:before': {
@@ -116,14 +127,14 @@ export default function Timeline({ timeline }) {
           },
           '@media(max-width: 480px)': {
             paddingLeft: 0,
-            textAlign: 'right'
+            textAlign: 'right',
           },
         },
         '@media(max-width: 480px)': {
           padding: '0',
           '.date': {
             marginRight: '1rem',
-            marginTop: '-.6rem'
+            marginTop: '-.6rem',
           },
         },
       },
@@ -165,7 +176,7 @@ export default function Timeline({ timeline }) {
           padding: 0,
           '.date': {
             marginLeft: '1rem',
-            marginTop: '-.65rem'
+            marginTop: '-.65rem',
           },
         },
       },
@@ -182,7 +193,7 @@ export default function Timeline({ timeline }) {
         '@media(max-width: 480px)': {
           paddingTop: '.9rem',
           fontSize: 20,
-        }
+        },
       },
       '.event': {
         position: 'relative',
@@ -203,7 +214,7 @@ export default function Timeline({ timeline }) {
           borderBottom: '12px solid transparent',
         },
         '@media(max-width: 768px)': {
-          padding: '1.5rem'
+          padding: '1.5rem',
         },
         '@media(max-width: 480px)': {
           marginTop: 0,
@@ -211,36 +222,40 @@ export default function Timeline({ timeline }) {
           padding: '0 1rem 0 0',
           background: 'none',
           fontSize: 12,
-        }
-      }
+        },
+      },
     },
     '@media(max-width: 768px)': {
       paddingTop: 1.9,
     },
-  })
-
+  });
 
   const generateTimeline = (items: any[]) => {
     return items.map(({ cName, title, content }: any, i: Key) => (
       <TimelineEntry key={i} cName={cName} title={title} content={content} />
-    ))
-  }
+    ));
+  };
 
   return (
     <section>
-      <h2 css={styleTimelineHeading} className='pageHeading center' id='timeline'>
+      <h2
+        css={styleTimelineHeading}
+        className="pageHeading center"
+        id="timeline"
+      >
         {timeline.meta.title}
       </h2>
       <div css={styleTimelineWrapper}>
-        <div css={styleTimeline}>
-          {generateTimeline(timeline.items)}
-        </div>
-        <div ref={ref} className={inView ? 'readMoreLink active' : 'readMoreLink'}>
-          <Link href={timeline.fullStory.link}>
-            {timeline.fullStory.text}
-          </Link>
+        <div css={styleTimeline}>{generateTimeline(timeline.items)}</div>
+        <div
+          ref={ref}
+          className={inView ? 'readMoreLink active' : 'readMoreLink'}
+        >
+          <Link href={timeline.fullStory.link}>{timeline.fullStory.text}</Link>
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
+
+export default Timeline;

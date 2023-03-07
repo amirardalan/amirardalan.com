@@ -1,18 +1,30 @@
-import Link from 'next/link'
-import { css } from '@emotion/react'
+import type { FC } from 'react';
+import Link from 'next/link';
+import { css } from '@emotion/react';
 
+type ErrorLayoutProps = {
+  error: {
+    title: string;
+    text: string;
+    author: string;
+    quote: string;
+    link: {
+      path: string;
+      title: string;
+    };
+  };
+};
 
-export default function ErrorLayout({ error }) {
-
+const ErrorLayout: FC<ErrorLayoutProps> = ({ error }) => {
   const styleErrorWrapper = css({
     overflow: 'hidden',
     padding: '4rem 1.5rem',
     position: 'relative',
     display: 'flex',
     flexDirection: 'column',
-  backgroundColor: 'var(--page-bg)',
-  })
-  
+    backgroundColor: 'var(--page-bg)',
+  });
+
   const styleErrorContainer = css({
     display: 'flex',
     flexDirection: 'column',
@@ -22,8 +34,8 @@ export default function ErrorLayout({ error }) {
       display: 'flex',
       alignItems: 'center',
       '& > span': {
-        marginTop: '.7rem'
-      }
+        marginTop: '.7rem',
+      },
     },
     '& > div': {
       display: 'flex',
@@ -33,7 +45,7 @@ export default function ErrorLayout({ error }) {
     h1: {
       alignSelf: 'center',
       fontSize: 70,
-      fontWeight: 800
+      fontWeight: 800,
     },
     h2: {
       alignSelf: 'center',
@@ -42,8 +54,8 @@ export default function ErrorLayout({ error }) {
       fontSize: 20,
       fontWeight: 'normal',
     },
-  })
-  
+  });
+
   const styleErrorContent = css({
     display: 'flex',
     justifyContent: 'center',
@@ -65,39 +77,30 @@ export default function ErrorLayout({ error }) {
       marginTop: '.5rem',
       fontFamily: 'var(--font-tertiary)',
       '&::before': {
-        content: '"— "'
-      }
-    }
-  })
-  
+        content: '"— "',
+      },
+    },
+  });
+
   const styleHomeButton = css({
     display: 'flex',
     justifyContent: 'center',
-  })
-
+  });
 
   return (
     <main css={styleErrorWrapper}>
       <div css={styleErrorContainer}>
         <div className="errorCode">
-          <h1 aria-label={error.title}>
-            {error.title}
-          </h1>
+          <h1 aria-label={error.title}>{error.title}</h1>
         </div>
         <div>
-          <h2 aria-label={error.text}>
-            {error.text}
-          </h2>
+          <h2 aria-label={error.text}>{error.text}</h2>
         </div>
       </div>
       <div css={styleErrorContent}>
         <div className="quoteContainer">
-          <p className="quote">
-            {error.quote}
-          </p>
-          <p className="author">
-            {error.author}
-          </p>
+          <p className="quote">{error.quote}</p>
+          <p className="author">{error.author}</p>
         </div>
       </div>
       <div css={styleHomeButton}>
@@ -106,5 +109,7 @@ export default function ErrorLayout({ error }) {
         </Link>
       </div>
     </main>
-  )
-}
+  );
+};
+
+export default ErrorLayout;

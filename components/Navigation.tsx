@@ -1,15 +1,14 @@
-import { css } from '@emotion/react'
-import { useState } from 'react'
-import Link from 'next/link'
-import { useRouter } from 'next/router'
-import CloseButton from '@/components/CloseButton'
-import Logo from '@/components/Logo'
-import { nav } from '@/data/navigation'
+import { css } from '@emotion/react';
+import { type FC, useState } from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import CloseButton from '@/components/CloseButton';
+import Logo from '@/components/Logo';
+import { nav } from '@/data/navigation';
 
+const Navigation: FC = () => {
+  const router = useRouter();
 
-export default function Navigation() {
-  const router = useRouter()
-  
   const styleMainNav = css({
     display: 'flex',
     alignItems: 'center',
@@ -21,9 +20,9 @@ export default function Navigation() {
     },
     '@media(max-width: 768px)': {
       display: 'none',
-    }
-  })
-  const styleMobileNavWrapper = css ({
+    },
+  });
+  const styleMobileNavWrapper = css({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-around',
@@ -57,11 +56,11 @@ export default function Navigation() {
       width: '33vw',
       '.closeArea': {
         width: 500,
-        left: -500
+        left: -500,
       },
-      alignItems: 'right'
-    }
-  })
+      alignItems: 'right',
+    },
+  });
   const styleMobileNavButton = css({
     display: 'none',
     '@media(max-width: 768px)': {
@@ -83,18 +82,18 @@ export default function Navigation() {
       '&:active': {
         background: 'var(--color-primary)',
         color: 'var(--color-bg)',
-      }
+      },
     },
     '.menuClose': {
       display: 'flex',
-      animation: 'spin 1s forwards'
+      animation: 'spin 1s forwards',
     },
-  })
+  });
 
   const styleNavIcon = css({
     height: 16,
-    width: 16
-  })
+    width: 16,
+  });
 
   const styleNavitem = css({
     position: 'relative',
@@ -115,9 +114,9 @@ export default function Navigation() {
           left: -10,
           '@media(max-width: 768px)': {
             left: -20,
-          }
-        }
-      }
+          },
+        },
+      },
     },
     '@media(max-width: 768px)': {
       flexDirection: 'column',
@@ -127,7 +126,7 @@ export default function Navigation() {
       paddingRight: '1rem',
       lineHeight: '3rem',
     },
-  })
+  });
   const styleMobileNavSecondary = css({
     fontFamily: 'var(--font-secondary)',
     position: 'relative',
@@ -139,44 +138,45 @@ export default function Navigation() {
     },
     '@media (max-width: 768px) and (max-height: 600px)': {
       display: 'none',
-    }
-  })
+    },
+  });
 
   // Mobile Menu
-  const [toggleDisableScrolling, setToggleDisableScrolling] = useState(false)
+  const [toggleDisableScrolling, setToggleDisableScrolling] = useState(false);
   const disableScroll = () => {
-    setToggleDisableScrolling(!toggleDisableScrolling)
+    setToggleDisableScrolling(!toggleDisableScrolling);
     toggleDisableScrolling
-      ? document.body.style.overflow = 'scroll'
-      : document.body.style.overflow = 'hidden'
-  }
-  const [toggleMobileNav, setToggleMobileNav] = useState(false)
+      ? (document.body.style.overflow = 'scroll')
+      : (document.body.style.overflow = 'hidden');
+  };
+  const [toggleMobileNav, setToggleMobileNav] = useState(false);
   const toggleMenu = () => {
-    setToggleMobileNav(!toggleMobileNav),
-    disableScroll()
-  }
+    setToggleMobileNav(!toggleMobileNav), disableScroll();
+  };
 
   const Navitem = () => (
     <nav css={styleNavitem}>
       {nav.map((item: any, index: number) => {
-
-        const isActiveNav = router.asPath === item.path
-        const isBlog = router.asPath.includes('/blog/') && item.path === '/blog'
+        const isActiveNav = router.asPath === item.path;
+        const isBlog =
+          router.asPath.includes('/blog/') && item.path === '/blog';
 
         return (
           <Link
             href={item.path}
             key={index}
             onClick={toggleMobileNav ? toggleMenu : null}
-            className={isActiveNav || isBlog ? item.cName + ' active' : item.cName}
+            className={
+              isActiveNav || isBlog ? item.cName + ' active' : item.cName
+            }
             aria-label={item.aria}
           >
             {item.icon ? <div css={styleNavIcon}></div> : item.title}
           </Link>
-        )}
-      )}
+        );
+      })}
     </nav>
-  )
+  );
 
   const NavMobileMenu = () => {
     if (toggleMobileNav) {
@@ -186,21 +186,21 @@ export default function Navigation() {
           <div css={styleMobileNavSecondary}>
             <Logo />
           </div>
-          <button
-            className="closeArea"
-            onClick={toggleMenu}
-          />
+          <button className="closeArea" onClick={toggleMenu} />
         </div>
-      )
-    } else return null
-  }
+      );
+    } else return null;
+  };
 
   const NavMenuControl = () => {
     if (toggleMobileNav) {
-      return <div className="menuClose"><CloseButton width={28} height={28}/></div>
-    } else
-      return <div className="menuOpen">•••</div>
-  }
+      return (
+        <div className="menuClose">
+          <CloseButton width={28} height={28} />
+        </div>
+      );
+    } else return <div className="menuOpen">•••</div>;
+  };
 
   return (
     <>
@@ -214,9 +214,11 @@ export default function Navigation() {
         aria-label="Navigation Menu"
         aria-expanded={toggleMobileNav ? 'true' : 'false'}
       >
-        <NavMenuControl/>
+        <NavMenuControl />
       </button>
       <NavMobileMenu />
     </>
-  )
-}
+  );
+};
+
+export default Navigation;

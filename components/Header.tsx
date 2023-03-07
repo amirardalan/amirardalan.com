@@ -1,19 +1,22 @@
-import { css } from '@emotion/react'
-import Navigation  from '@/components/Navigation'
-import Link from 'next/link'
-import Logo from '@/components/Logo'
+import type { FC } from 'react';
+import { css } from '@emotion/react';
+import Navigation from '@/components/Navigation';
+import Link from 'next/link';
+import Logo from '@/components/Logo';
 
-import dynamic from 'next/dynamic'
+import dynamic from 'next/dynamic';
 const ThemeToggle = dynamic(() => import('@/components/ThemeToggle'), {
-  ssr: false
-})
-const BlogAdmin = dynamic(() => import('@/components/BlogAdmin'),{
-  ssr: false
-})
+  ssr: false,
+});
+const BlogAdmin = dynamic(() => import('@/components/BlogAdmin'), {
+  ssr: false,
+});
 
+type HeaderProps = {
+  toggleTheme: boolean;
+};
 
-const Header = ({ toggleTheme }) => {
-  
+const Header: FC<HeaderProps> = ({ toggleTheme }) => {
   const styleHeaderWrapper = css({
     padding: '2rem 4rem 0',
     position: 'sticky',
@@ -29,15 +32,15 @@ const Header = ({ toggleTheme }) => {
     },
     '@media(max-width: 600px)': {
       padding: '0 1.5rem',
-    }
-  })
+    },
+  });
   const styleHeader = css({
     paddingBottom: '1rem',
     paddingTop: '1rem',
     height: 'auto',
     display: 'flex',
     justifyContent: 'space-between',
-    a:  { textDecoration: 'none' },
+    a: { textDecoration: 'none' },
     '.headerRight': {
       minWidth: '327.2px', // Fix header content shifting
       display: 'flex',
@@ -46,9 +49,9 @@ const Header = ({ toggleTheme }) => {
       '@media (max-width: 768px)': {
         flexDirection: 'row-reverse',
         minWidth: 'unset',
-      }
-    }
-  })
+      },
+    },
+  });
   const styleLogoButton = css({
     margin: 0,
     padding: 0,
@@ -59,20 +62,16 @@ const Header = ({ toggleTheme }) => {
     border: 'none',
     fontFamily: 'var(--font-secondary)',
     cursor: 'pointer',
-  })
+  });
 
   return (
     <>
-      <BlogAdmin/>
+      <BlogAdmin />
       <header css={styleHeaderWrapper}>
         <div css={styleHeader}>
-          <Link
-            href="/"
-            aria-label="Amir Ardalan Logo"
-            passHref
-          >
+          <Link href="/" aria-label="Amir Ardalan Logo" passHref>
             <button css={styleLogoButton}>
-              <Logo /> 
+              <Logo />
             </button>
           </Link>
           <div className="headerRight">
@@ -82,7 +81,7 @@ const Header = ({ toggleTheme }) => {
         </div>
       </header>
     </>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;
