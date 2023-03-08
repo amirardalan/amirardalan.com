@@ -3,7 +3,7 @@ import { css } from '@emotion/react';
 import Link from 'next/link';
 
 type CtaButtonsProps = {
-  items: any;
+  items: any | null;
 };
 
 export const CtaButtons: FC<CtaButtonsProps> = ({ items }) => {
@@ -13,6 +13,7 @@ export const CtaButtons: FC<CtaButtonsProps> = ({ items }) => {
     title: string;
     target: string;
     rel: string;
+    content: string;
   }
 
   return items.map((item: Item, i: Key) => {
@@ -32,15 +33,8 @@ export const CtaButtons: FC<CtaButtonsProps> = ({ items }) => {
 };
 
 type ContactButtonProps = {
-  content: {
-    contact: {
-      copiedToClipboard: boolean;
-      email: {
-        title: string;
-      };
-    };
-  };
-  items: string;
+  content: any;
+  items: any;
 };
 
 export const ContactButton: FC<ContactButtonProps> = ({ content }) => {

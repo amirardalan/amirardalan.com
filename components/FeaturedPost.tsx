@@ -3,24 +3,9 @@ import Link from 'next/link';
 import { css } from '@emotion/react';
 
 type FeaturedPostProps = {
-  home: {
-    featured: {
-      title: string;
-    };
-    latest: {
-      title: string;
-    };
-  };
-  featuredPost: {
-    slug: string;
-    title: string;
-    teaser: string;
-  };
-  latestPost: {
-    slug: string;
-    title: string;
-    teaser: string;
-  };
+  home: any;
+  featuredPost: any;
+  latestPost: any;
 };
 
 const FeaturedPost: FC<FeaturedPostProps> = ({

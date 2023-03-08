@@ -47,7 +47,7 @@ type NextPageProps = {
       description: string;
     };
   };
-  timeline: Object;
+  timeline: object;
 };
 
 const About: NextPage<NextPageProps> = ({ about, timeline }) => {
@@ -303,7 +303,7 @@ const About: NextPage<NextPageProps> = ({ about, timeline }) => {
                 <h3 aria-label={about.contact.title}>{about.contact.title}</h3>
               </li>
               <li>
-                <ContactButton content={about} />
+                <ContactButton content={about} items={null} />
               </li>
             </ul>
           </div>

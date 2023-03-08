@@ -21,6 +21,7 @@ type HomeProps = {
     items: Array<object>;
     meta: {
       title: string;
+      description: string;
     };
   };
   featuredPost: Object;

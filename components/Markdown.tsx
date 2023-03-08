@@ -26,11 +26,10 @@ SyntaxHighlighter.registerLanguage('json', json);
 SyntaxHighlighter.registerLanguage('lua', lua);
 
 type BlogMarkdownProps = {
-  children: React.ReactNode;
   markdown: any;
 };
 
-const BlogMarkdown: FC<BlogMarkdownProps> = ({ markdown, children }) => {
+const BlogMarkdown: FC<BlogMarkdownProps> = ({ markdown }) => {
   const syntaxTheme = oneDark;
 
   const styleMarkdown = css({
@@ -177,6 +176,7 @@ const BlogMarkdown: FC<BlogMarkdownProps> = ({ markdown, children }) => {
       };
 
       return match ? (
+        //@ts-ignore
         <SyntaxHighlighter
           style={syntaxTheme}
           language={match[1]}

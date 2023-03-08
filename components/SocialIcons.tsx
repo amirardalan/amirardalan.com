@@ -3,20 +3,28 @@ import { useTheme } from '@emotion/react';
 import Image from 'next/image';
 
 type SocialiconsProps = {
-  about: {
-    social: {
-      items: Array<object>;
-    };
-  };
-  content: string;
+  //TODO: Update to server components to this isn't needed
+  about: any;
 };
 
 const SocialIcons: FC<SocialiconsProps> = ({ about }) => {
   const theme: any = useTheme();
-  const isDarkTheme = theme.active === 'dark';
+  const isDarkTheme: boolean = theme.active === 'dark';
 
-  const GenerateSocialIcons = (items: any[]) => {
-    return items.map((item, i: Key) => {
+  interface Item {
+    path: string;
+    title: string;
+    target: string;
+    rel: string;
+    content: string;
+    icon: {
+      dark: string;
+      light: string;
+    };
+  }
+
+  const GenerateSocialIcons: any = (items: Array<object>) => {
+    return items.map((item: Item, i: Key) => {
       return (
         <a
           key={i}

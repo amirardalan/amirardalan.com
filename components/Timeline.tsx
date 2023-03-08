@@ -5,16 +5,8 @@ import { useInView } from 'react-intersection-observer';
 import { type FC, Key } from 'react';
 
 type TimelineProps = {
-  timeline: {
-    items: Array<string>;
-    meta: {
-      title: string;
-    };
-    fullStory: {
-      text: string;
-      link: string;
-    };
-  };
+  //TODO: Update to server components so this isn't needed
+  timeline: any;
 };
 
 const Timeline: FC<TimelineProps> = ({ timeline }) => {
