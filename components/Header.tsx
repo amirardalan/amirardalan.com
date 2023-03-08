@@ -64,8 +64,6 @@ const Header: FC<HeaderProps> = ({ toggleTheme }) => {
     cursor: 'pointer',
   });
 
-  console.log(typeof toggleTheme);
-
   return (
     <>
       <BlogAdmin />

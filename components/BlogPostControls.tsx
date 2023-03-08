@@ -45,8 +45,6 @@ const BlogPostControls: FC<BlogPostControlsProps> = ({
   setFetchStatus,
   isFetching,
 }) => {
-  console.log(typeof latestPost);
-
   const isEditPage = Router.asPath.includes('/blog/edit/');
   const isCreatePage = Router.asPath === '/blog/create';
 
