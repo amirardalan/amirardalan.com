@@ -1,36 +1,24 @@
-import type { FC, ReactNode } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import Footer from '@/components/Footer';
 import { metadata } from '@/data/metadata';
 
-type ContainerProps = {
-  title: string;
-  description: string;
-  children: ReactNode;
-  date: Date | null;
-  robots: string;
-};
-
-const Container: FC<ContainerProps> = (
-  props,
-  { title, description, date, robots }
-) => {
+export default function Container(props: any) {
   const { children, ...customMeta } = props;
   const router = useRouter();
   const meta = {
-    title,
-    description,
-    image: metadata?.image,
+    title: metadata.title,
+    description: metadata.description,
+    image: metadata.image,
     type: 'website',
-    robots,
+    robots: 'follow, index',
     ...customMeta,
   };
 
   return (
     <>
       <Head>
-        <title>{title}</title>
+        <title>{meta.title}</title>
         <meta name="robots" content={meta.robots} />
 
         <meta
@@ -56,7 +44,9 @@ const Container: FC<ContainerProps> = (
         <meta name="twitter:description" content={meta.description} />
         <meta name="twitter:image" content={meta.image} />
         <meta name="twitter:image:alt" content={meta.title} />
-        {date && <meta property="article:published_time" content={date} />}
+        {meta.date && (
+          <meta property="article:published_time" content={meta.date} />
+        )}
       </Head>
 
       <div className="container">{children}</div>
@@ -64,6 +54,4 @@ const Container: FC<ContainerProps> = (
       <Footer />
     </>
   );
-};
-
-export default Container;
+}

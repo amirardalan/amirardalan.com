@@ -4,6 +4,10 @@ import formatDate from '@/utils/formatDate';
 import calculateReadTime from '@/utils/calculateReadTime';
 
 type PostProps = {
+  post: any;
+};
+
+interface Post {
   post: {
     publishedAt: Date;
     content: string;
@@ -11,7 +15,7 @@ type PostProps = {
     title: string;
     teaser: string;
   };
-};
+}
 
 const Post: FC<PostProps> = ({ post }) => {
   const publishDate = formatDate(post.publishedAt);

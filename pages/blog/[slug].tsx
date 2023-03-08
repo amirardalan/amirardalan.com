@@ -1,28 +1,31 @@
-import { useSession } from 'next-auth/react'
-import { css } from '@emotion/react'
-import { blogPostContent, adminContent } from '@/data/content'
-import { deletePost } from '@/lib/blog'
-import { useFetchStatus } from '@/utils/useLoadingIndicator'
+import { useSession } from 'next-auth/react';
+import { css } from '@emotion/react';
+import { blogPostContent, adminContent } from '@/data/content';
+import { deletePost } from '@/lib/blog';
+import { useFetchStatus } from '@/utils/useLoadingIndicator';
 
-import Container from '@/components/Container'
-import BlogStyles from '@/components/BlogStyles'
-import LoadingTriangle from '@/components/LoadingTriangle'
-import BlogNavigation from '@/components/BlogNavigation'
-import calculateReadTime from '@/utils/calculateReadTime'
-import formatDate from '@/utils/formatDate'
-import Markdown from '@/components/Markdown'
+import Container from '@/components/Container';
+import BlogStyles from '@/components/BlogStyles';
+import LoadingTriangle from '@/components/LoadingTriangle';
+import BlogNavigation from '@/components/BlogNavigation';
+import calculateReadTime from '@/utils/calculateReadTime';
+import formatDate from '@/utils/formatDate';
+import Markdown from '@/components/Markdown';
 
-import dynamic from 'next/dynamic'
-const BlogPostControls = dynamic(() => import('@/components/BlogPostControls'), { ssr: false })
+import dynamic from 'next/dynamic';
+const BlogPostControls = dynamic(
+  () => import('@/components/BlogPostControls'),
+  { ssr: false }
+);
 
-import { GetStaticProps, GetStaticPaths } from 'next'
-import prisma from '@/lib/prisma'
+import { GetStaticProps, GetStaticPaths } from 'next';
+import prisma from '@/lib/prisma';
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const feed = await prisma.post.findMany({ where: { published: true } })
-  const paths = feed.map((post) => ({ params: { slug: post.slug } }))
-  return { paths, fallback: 'blocking' }
-}
+  const feed = await prisma.post.findMany({ where: { published: true } });
+  const paths = feed.map((post) => ({ params: { slug: post.slug } }));
+  return { paths, fallback: 'blocking' };
+};
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const [post, feed] = await prisma.$transaction([
@@ -32,24 +35,23 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     }),
     prisma.post.findMany({
       where: { published: true },
-    })
-  ])
-  if (post) { 
-    return { props: {
-      blogPost: blogPostContent,
-      admin: adminContent,
-      post: JSON.parse(JSON.stringify(post)),
-      feed: JSON.parse(JSON.stringify(feed)),
-    } 
-  } 
-  } else { 
-    return { notFound: true }
+    }),
+  ]);
+  if (post) {
+    return {
+      props: {
+        blogPost: blogPostContent,
+        admin: adminContent,
+        post: JSON.parse(JSON.stringify(post)),
+        feed: JSON.parse(JSON.stringify(feed)),
+      },
+    };
+  } else {
+    return { notFound: true };
   }
-}
-
+};
 
 const Post = ({ blogPost, admin, post, feed }) => {
-
   const styleBlogPost = css({
     '.postDetails': {
       marginBottom: '2rem',
@@ -58,33 +60,33 @@ const Post = ({ blogPost, admin, post, feed }) => {
           fontFamily: 'var(--font-secondary)',
           fontSize: 15,
           fontWeight: 700,
-        }
+        },
       },
       '.dateAndReadTime': {
         time: {
           '&:before, &:after': {
             margin: '0 .5rem',
-            content: '"•"'
+            content: '"•"',
           },
         },
         '@media(max-width: 480px)': {
           '.author:after, time:before': {
             content: '""',
-            margin: 0
+            margin: 0,
           },
         },
         '@media(max-width: 350px)': {
           'time:after': {
-            content: '""'
+            content: '""',
           },
           span: {
-            display: 'block'
+            display: 'block',
           },
-        }
+        },
       },
       '@media(max-width: 480px)': {
         flexDirection: 'column',
-      }
+      },
     },
     '.postFull': {
       h1: {
@@ -95,12 +97,12 @@ const Post = ({ blogPost, admin, post, feed }) => {
         '@media(max-width: 768px)': {
           fontSize: 32,
           margin: '0 0 .5rem',
-          lineHeight: '2.2rem'
+          lineHeight: '2.2rem',
         },
         '@media(max-width: 480px)': {
           fontSize: 28,
-          lineHeight: '2rem'
-        }
+          lineHeight: '2rem',
+        },
       },
       '.teaser': {
         marginBottom: '2.5rem',
@@ -128,7 +130,7 @@ const Post = ({ blogPost, admin, post, feed }) => {
         fontWeight: 700,
         '& code': {
           fontFamily: 'var(--font-secondary)',
-          background: 'transparent'
+          background: 'transparent',
         },
         a: {
           fontFamily: 'var(--font-secondary)',
@@ -143,20 +145,20 @@ const Post = ({ blogPost, admin, post, feed }) => {
               textAlign: 'center',
               top: 0,
               left: -22,
-              fontSize: 28
-            }
+              fontSize: 28,
+            },
           },
           '@media (max-width: 768px)': {
             fontSize: 24,
-          }
+          },
         },
         '@media(hover: none)': {
           a: {
             pointerEvents: 'none',
             '&:hover:before': {
-              content: '""'
-            }
-          }
+              content: '""',
+            },
+          },
         },
       },
       'h1, h2, h3, h3, h4, h5, h6': {
@@ -167,8 +169,8 @@ const Post = ({ blogPost, admin, post, feed }) => {
         fontSize: 18,
         lineHeight: '1.8rem',
       },
-      'ul, li, a': { 
-        marginBottom: '1rem'
+      'ul, li, a': {
+        marginBottom: '1rem',
       },
       p: {
         marginBottom: '2rem',
@@ -214,7 +216,7 @@ const Post = ({ blogPost, admin, post, feed }) => {
         a: {
           fontSize: 16,
         },
-        'code': {
+        code: {
           fontSize: 14,
         },
         '&.tip': {
@@ -230,7 +232,7 @@ const Post = ({ blogPost, admin, post, feed }) => {
         '&.warn': {
           '&:after': {
             content: '"Warning:"',
-            color: 'var(--color-warning)'
+            color: 'var(--color-warning)',
           },
         },
       },
@@ -242,15 +244,15 @@ const Post = ({ blogPost, admin, post, feed }) => {
         'p, a': {
           marginBottom: 0,
           fontSize: 20,
-          fontStyle: 'italic'
+          fontStyle: 'italic',
         },
         '& blockquote': {
           marginLeft: '1rem',
           borderLeft: '8px solid var(--color-gray)',
         },
       },
-      ul : {
-        marginBottom: '2rem'
+      ul: {
+        marginBottom: '2rem',
       },
       'ul li': {
         listStyle: 'outside',
@@ -266,11 +268,11 @@ const Post = ({ blogPost, admin, post, feed }) => {
         },
         '@media (max-width: 480px)': {
           marginLeft: '1.5rem',
-        }
+        },
       },
       'ul.contains-task-list': {
         li: {
-          '&:first-of-type':{
+          '&:first-of-type': {
             fontFamily: 'var(font-secondary)',
           },
           listStyle: 'none',
@@ -287,7 +289,7 @@ const Post = ({ blogPost, admin, post, feed }) => {
           paddingLeft: '.5rem',
           position: 'relative',
           '&::before': {
-            content: "counter(counter)",
+            content: 'counter(counter)',
             width: '1.5rem',
             height: '1.5rem',
             position: 'absolute',
@@ -301,122 +303,143 @@ const Post = ({ blogPost, admin, post, feed }) => {
             fontWeight: 'normal',
             lineHeight: '1.4rem',
             textAlign: 'center',
-            '@media not all and (min-resolution:.001dpcm)': { 
+            '@media not all and (min-resolution:.001dpcm)': {
               '@supports (-webkit-appearance:none)': {
                 paddingLeft: '.1rem',
-              }
-            }
-          }
-        }
-      }
+              },
+            },
+          },
+        },
+      },
     },
     '.postImgWrapper': {
       paddingBottom: '2rem',
       img: {
         width: '100%',
-        height: 'auto'
-      }
+        height: 'auto',
+      },
     },
     '.caption, .caption a': {
       fontFamily: 'var(--font-primary)',
       fontSize: 12,
-      color: 'var(--color-gray)'
-    }
-  })
+      color: 'var(--color-gray)',
+    },
+  });
 
-  const { data: session } = useSession()
-  const userHasValidSession = Boolean(session)
+  const { data: session } = useSession();
+  const userHasValidSession = Boolean(session);
 
-  const isPublished: Boolean = post.published
-  const publishLabel = isPublished ? admin.controls.unpublish : admin.controls.publish
-  const displayPost = isPublished || session && session.user.email === process.env.NEXT_PUBLIC_USER_EMAIL
+  const isPublished: Boolean = post.published;
+  const publishLabel = isPublished
+    ? admin.controls.unpublish
+    : admin.controls.publish;
+  const displayPost =
+    isPublished ||
+    (session && session.user.email === process.env.NEXT_PUBLIC_USER_EMAIL);
 
-  const isFeatured = post.featured
-  const latestPostID = feed[feed?.length - 1].id
-  const latestPost = latestPostID === post.id
+  const isFeatured = post.featured;
+  const latestPostID = feed[feed?.length - 1].id;
+  const latestPost = latestPostID === post.id;
 
-  const isEdited = post.editedAt.slice(0, 10) > post.publishedAt.slice(0, 10)
-  const showEdited = post.showEdited
-  const publishDate = formatDate(post.publishedAt)
-  const editDate = formatDate(post.editedAt)
-  const postReadTime = calculateReadTime(post.content)
-  const title = post.title
+  const isEdited = post.editedAt.slice(0, 10) > post.publishedAt.slice(0, 10);
+  const showEdited = post.showEdited;
+  const publishDate = formatDate(post.publishedAt);
+  const editDate = formatDate(post.editedAt);
+  const postReadTime = calculateReadTime(post.content);
+  const title = post.title;
 
-  const [fetchStatus, setFetchStatus] = useFetchStatus()
-  const isFetching = fetchStatus
+  const [fetchStatus, setFetchStatus] = useFetchStatus();
+  const isFetching = fetchStatus;
 
   const handleDeletion = () => {
-    setFetchStatus(true)
-    return deletePost(post.id, post.published, latestPost, post.featured, setFetchStatus)
-  }
+    setFetchStatus(true);
+    return deletePost(
+      post.id,
+      post.published,
+      latestPost,
+      post.featured,
+      setFetchStatus
+    );
+  };
 
   // Set OG Image for blog posts. Use first image from post, otherwise dynamically generate one.
-  const hasImage = post.content.replace(/`([^`]*)/g,'').match(/!\[.*?\]\((.*?)\)/)
-    ? `${process.env.NEXT_PUBLIC_SITE_URL}` + post.content.match(/!\[.*?\]\((.*?)\)/)[1]
-    : `${process.env.NEXT_PUBLIC_OG_IMAGE_URL}/${encodeURIComponent(post.title).replace(/\./g, '%2E')}?fontSize=150px`
+  const hasImage = post.content
+    .replace(/`([^`]*)/g, '')
+    .match(/!\[.*?\]\((.*?)\)/)
+    ? `${process.env.NEXT_PUBLIC_SITE_URL}` +
+      post.content.match(/!\[.*?\]\((.*?)\)/)[1]
+    : `${process.env.NEXT_PUBLIC_OG_IMAGE_URL}/${encodeURIComponent(
+        post.title
+      ).replace(/\./g, '%2E')}?fontSize=150px`;
 
   const RenderBlogPost = () => {
     return (
       <div className={isPublished ? 'blog' : 'blog admin'} css={styleBlogPost}>
+        {!isPublished ? (
+          <div className="draftNotification warn">{admin.drafts.notice}</div>
+        ) : null}
 
-      {!isPublished ?
-        <div className="draftNotification warn">
-          {admin.drafts.notice}
-        </div>
-        : null
-      }
+        <article className="post postFull">
+          <div className="categoryWrapper">
+            {isFeatured ? (
+              <div
+                className="category featured full"
+                aria-label="Featured Post"
+              >
+                Featured
+              </div>
+            ) : null}
+            <div className="category full" aria-label={post.category}>
+              {post.category}
+            </div>
+          </div>
+          <h1 aria-label={`${title}`}>{title}</h1>
+          <p className="teaser">{post.teaser}</p>
 
-      <article className="post postFull">
-        <div className="categoryWrapper">
-          {isFeatured ? <div className="category featured full" aria-label="Featured Post">Featured</div> : null}
-          <div className="category full" aria-label={post.category}>{post.category}</div>
-        </div>
-        <h1 aria-label={`${title}`}>{title}</h1>
-        <p className="teaser">{post.teaser}</p>
-
-        <div 
-          className="postDetails" 
-          aria-label={isEdited ? `${editDate} • ${postReadTime}` : `${publishDate} • ${postReadTime}`}
-        >
-          <span className="author">
-            By <span>{post?.author?.name || 'Unknown author'}</span>
-          </span>
-          <span className="dateAndReadTime">
-            {isEdited && showEdited
-            ? <time dateTime={post.editedAt}>Updated: {editDate}</time> 
-            : <time dateTime={post.publishedAt}>{publishDate}</time>} 
+          <div
+            className="postDetails"
+            aria-label={
+              isEdited
+                ? `${editDate} • ${postReadTime}`
+                : `${publishDate} • ${postReadTime}`
+            }
+          >
+            <span className="author">
+              By <span>{post?.author?.name || 'Unknown author'}</span>
+            </span>
+            <span className="dateAndReadTime">
+              {isEdited && showEdited ? (
+                <time dateTime={post.editedAt}>Updated: {editDate}</time>
+              ) : (
+                <time dateTime={post.publishedAt}>{publishDate}</time>
+              )}
               <span className="readTime">{postReadTime}</span>
-          </span>
-        </div>
+            </span>
+          </div>
 
-        <Markdown markdown={post} />
+          <Markdown markdown={post} />
 
-        { userHasValidSession && (
-          <BlogPostControls
-            admin={admin}
-            post={post}
-            latestPost={latestPost}
-            publishLabel={publishLabel}
-            requiredFields={null}
-            submitClass="buttonCompact publishBtn"
-            handleCancel={null}
-            handleDeletion={handleDeletion}
-            deleted={false}
-            setFetchStatus={setFetchStatus}
-            isFetching={isFetching}
-          />
-        )}
-      </article>
+          {userHasValidSession && (
+            <BlogPostControls
+              admin={admin}
+              post={post}
+              latestPost={latestPost}
+              publishLabel={publishLabel}
+              requiredFields={null}
+              submitClass="buttonCompact publishBtn"
+              handleCancel={null}
+              handleDeletion={handleDeletion}
+              deleted={false}
+              setFetchStatus={setFetchStatus}
+              isFetching={isFetching}
+            />
+          )}
+        </article>
 
-      <BlogNavigation
-        feed={feed}
-        post={post}
-        isPublished={isPublished}
-      />
-
-    </div>
-    )
-  }
+        <BlogNavigation feed={feed} post={post} isPublished={isPublished} />
+      </div>
+    );
+  };
 
   return (
     <Container
@@ -424,13 +447,13 @@ const Post = ({ blogPost, admin, post, feed }) => {
       description={post?.teaser}
       image={hasImage}
       date={publishDate}
-      robots={isPublished ? "follow, index" : "noindex"
-    }>
+      robots={isPublished ? 'follow, index' : 'noindex'}
+    >
       <BlogStyles>
-        {displayPost ? <RenderBlogPost/> : <LoadingTriangle />}
+        {displayPost ? <RenderBlogPost /> : <LoadingTriangle />}
       </BlogStyles>
     </Container>
-  )
-}
+  );
+};
 
-export default Post
+export default Post;

@@ -1,8 +1,8 @@
 export const categories = [
-  "-",
-	"code",
-  "design",
-  "devops",
-  "gamedev",
-  "personal",
-]
+  '-',
+  'code',
+  'design',
+  'devops',
+  'gamedev',
+  'personal',
+];

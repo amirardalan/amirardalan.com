@@ -8,9 +8,6 @@ import CloseButton from '@/components/CloseButton';
 import compareID from '@/utils/compareID';
 
 type BlogPostFilterProps = {
-  theme: {
-    icons: Object;
-  };
   blog: {
     search: {
       noresult: string;

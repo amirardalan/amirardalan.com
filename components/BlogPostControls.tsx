@@ -4,7 +4,7 @@ import BlogPostDelete from '@/components/BlogPostDelete';
 import { publishPost, editPost } from '@/lib/blog';
 import LoadingSpinner from '@/components/LoadingSpinner';
 
-type setFetchStatusFn = () => void;
+type setFetchStatusFn = (active: boolean) => void;
 
 type BlogPostControlsProps = {
   admin: {

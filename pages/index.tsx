@@ -91,7 +91,7 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
   return (
     <Container
       title={home.meta.title}
-      robots="index, follow"
+      robots="follow, index"
       description={home.meta.description}
       date={null}
     >

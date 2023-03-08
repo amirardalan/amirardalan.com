@@ -1,27 +1,33 @@
-import Router from 'next/router'
-import revalidateChanges from '@/lib/revalidate'
+import Router from 'next/router';
+import revalidateChanges from '@/lib/revalidate';
 
 // Publish/Unpublish Post
 export async function publishPost(
-    id: number,
-    published: boolean,
-    featured: boolean,
-    latestPost: boolean,
-    deleted: boolean,
-    setFetchStatus: (active: boolean) => void
-  ): Promise<void> {
-  setFetchStatus(true)
-  await fetch(`/api/publish/${id}?published=${published}&featured=${featured}`, { method: 'PUT',}).then(()=> {
-    revalidateChanges(published, latestPost, featured, deleted, setFetchStatus)
-  })
+  id: number,
+  published: boolean,
+  featured: boolean,
+  latestPost: boolean,
+  deleted: boolean,
+  setFetchStatus: (active: boolean) => void
+): Promise<void> {
+  setFetchStatus(true);
+  await fetch(
+    `/api/publish/${id}?published=${published}&featured=${featured}`,
+    { method: 'PUT' }
+  ).then(() => {
+    revalidateChanges(published, latestPost, featured, deleted, setFetchStatus);
+  });
 }
 
 // Open Edit Page
-export async function editPost(slug: string, setFetchStatus: (active: boolean) => void): Promise<void> {
-  setFetchStatus(true)
-  await fetch(`/blog/edit/${slug}`, { method: 'PUT' }).then(()=> {
-    Router.push(`/blog/edit/${slug}`)
-  })
+export async function editPost(
+  slug: string,
+  setFetchStatus: (active: boolean) => void
+): Promise<void> {
+  setFetchStatus(true);
+  await fetch(`/blog/edit/${slug}`, { method: 'PUT' }).then(() => {
+    Router.push(`/blog/edit/${slug}`);
+  });
 }
 
 // Delete Post
@@ -31,11 +37,10 @@ export async function deletePost(
   latestPost: boolean,
   featured: boolean,
   setFetchStatus: (active: boolean) => void
-  ): Promise<void> {
+): Promise<void> {
+  const deleted = true;
 
-  const deleted = true
-
-  await fetch(`/api/post/${id}`, { method: 'DELETE', }).then(()=> {
-    revalidateChanges(published, latestPost, featured, deleted, setFetchStatus)
-  })
+  await fetch(`/api/post/${id}`, { method: 'DELETE' }).then(() => {
+    revalidateChanges(published, latestPost, featured, deleted, setFetchStatus);
+  });
 }

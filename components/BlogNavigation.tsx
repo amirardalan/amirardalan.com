@@ -12,7 +12,7 @@ type BlogNavigationProps = {
   post: {
     id: number;
   };
-  isPublished: boolean;
+  isPublished: Boolean;
 };
 
 const BlogNavigation: FC<BlogNavigationProps> = ({

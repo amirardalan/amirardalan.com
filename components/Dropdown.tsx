@@ -1,10 +1,10 @@
-import type { FC, ChangeEventHandler } from 'react';
+import type { FC, ChangeEventHandler, Key } from 'react';
 
 type DropdownProps = {
   label: string;
   value: string;
-  handleChange: ChangeEventHandler;
-  data: Array<object>;
+  handleChange: ChangeEventHandler | any;
+  data: any;
 };
 
 const Dropdown: FC<DropdownProps> = ({ label, value, handleChange, data }) => {
@@ -12,7 +12,7 @@ const Dropdown: FC<DropdownProps> = ({ label, value, handleChange, data }) => {
     <label className="dropdownLabel">
       <span>{label}</span>
       <select value={value} onChange={(e) => handleChange(e)}>
-        {data.map((item: any) => (
+        {data.map((item) => (
           <option key={item} value={item}>
             {item}
           </option>

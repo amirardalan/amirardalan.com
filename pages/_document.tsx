@@ -1,7 +1,6 @@
-import { Html, Head, Main, NextScript } from 'next/document'
+import { Html, Head, Main, NextScript } from 'next/document';
 
 export default function Document() {
-
   return (
     <Html lang="en">
       <Head>
@@ -57,7 +56,8 @@ export default function Document() {
           src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_ANALYTICS_ID}`}
         />
         <script
-          dangerouslySetInnerHTML={{__html: `
+          dangerouslySetInnerHTML={{
+            __html: `
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
@@ -86,5 +86,5 @@ export default function Document() {
         <NextScript />
       </body>
     </Html>
-  )
+  );
 }
