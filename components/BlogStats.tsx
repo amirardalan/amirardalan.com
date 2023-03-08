@@ -1,13 +1,22 @@
-import { css } from '@emotion/react'
-import CountUp from 'react-countup'
+import type { FC } from 'react';
+import { css } from '@emotion/react';
+import CountUp from 'react-countup';
 
+type BlogStatsProps = {
+  feed: Array<object>;
+  activeCategories: Array<object>;
+  filteredPosts: Array<object>;
+};
 
-export default function BlogStats({ feed, activeCategories, filteredPosts }) {
-
-  const filterActive = filteredPosts.length < feed.length
-  const postsNumber = filterActive ? filteredPosts.length : feed.length
-  const categoriesNumber = activeCategories.length
-  const postsText = postsNumber > 1 ? 'posts' : 'post'
+const BlogStats: FC<BlogStatsProps> = ({
+  feed,
+  activeCategories,
+  filteredPosts,
+}) => {
+  const filterActive = filteredPosts.length < feed.length;
+  const postsNumber = filterActive ? filteredPosts.length : feed.length;
+  const categoriesNumber = activeCategories.length;
+  const postsText = postsNumber > 1 ? 'posts' : 'post';
 
   const styleBlogStatsWrapper = css({
     display: 'flex',
@@ -21,10 +30,10 @@ export default function BlogStats({ feed, activeCategories, filteredPosts }) {
       lineHeight: '1rem',
       display: 'inline',
       '&.catsCount': {
-        display: filterActive ? 'none' : 'inline-block'
+        display: filterActive ? 'none' : 'inline-block',
       },
       '@media(max-width: 1024px)': {
-        marginBottom: '.25rem'
+        marginBottom: '.25rem',
       },
       '&:last-of-type': {
         marginLeft: '1rem',
@@ -35,10 +44,10 @@ export default function BlogStats({ feed, activeCategories, filteredPosts }) {
       },
       '.text': {
         fontSize: 12,
-        color: 'var(--color-gray)'
-      }
-    }
-  })
+        color: 'var(--color-gray)',
+      },
+    },
+  });
 
   return (
     <div css={styleBlogStatsWrapper}>
@@ -49,12 +58,10 @@ export default function BlogStats({ feed, activeCategories, filteredPosts }) {
             start={0}
             end={postsNumber}
             delay={0}
-            duration={.5}
+            duration={0.5}
             decimals={0}
           >
-            {({ countUpRef }) => (
-              <span className="number" ref={countUpRef} />
-            )}
+            {({ countUpRef }) => <span className="number" ref={countUpRef} />}
           </CountUp>
           <span className="text">{postsText}</span>
         </li>
@@ -63,16 +70,16 @@ export default function BlogStats({ feed, activeCategories, filteredPosts }) {
             start={0}
             end={categoriesNumber}
             delay={0}
-            duration={.5}
+            duration={0.5}
             decimals={0}
           >
-            {({ countUpRef }) => (
-              <span className="number" ref={countUpRef} />
-            )}
+            {({ countUpRef }) => <span className="number" ref={countUpRef} />}
           </CountUp>
           <span className="text">categories</span>
         </li>
       </ul>
     </div>
-  )
-}
+  );
+};
+
+export default BlogStats;

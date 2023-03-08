@@ -1,15 +1,16 @@
-import { themeLight, themeDark } from "@/styles/theme"
+import { themeLight, themeDark } from '@/styles/theme';
 
 export const logo = {
   title: 'Amir Ardalan',
   subtitle: 'Developer & Designer',
   alt: 'Amir Ardalan Logo',
-}
+};
 
 export const homeContent = {
   meta: {
     title: 'Amir Ardalan – Developer & designer',
-    description: 'Amir Ardalan. Fullstack developer, User Interface designer, and React enthusiast. Building modern websites. Publishing React and Next.js ideas and guides.'
+    description:
+      'Amir Ardalan. Fullstack developer, User Interface designer, and React enthusiast. Building modern websites. Publishing React and Next.js ideas and guides.',
   },
   typed: [
     `I craft digital experiences`,
@@ -18,7 +19,7 @@ export const homeContent = {
     `browse my <a href="/about#timeline">work history</a>`,
     `check out the <a href="/uses">tools I use</a>`,
     `delve into my <a href="https://github.com/amirardalan" rel="noopener noreferrer">GitHub</a>`,
-    `follow me on <a href="https://twitter.com/amirardalan" rel="noopener noreferrer">Twitter</a>`
+    `follow me on <a href="https://twitter.com/amirardalan" rel="noopener noreferrer">Twitter</a>`,
   ],
   title: 'Amir Ardalan',
   description: `I'm a Front-end developer specializing in React, User Interface, and accessibility. I'm passionate about Next.js, TypeScript, and building outstanding digital experiences.`,
@@ -35,18 +36,19 @@ export const homeContent = {
     },
   ],
   featured: {
-    title: 'Featured Post:'
+    title: 'Featured Post:',
   },
   latest: {
-    title: 'Latest Post:'
-  }
-}
+    title: 'Latest Post:',
+  },
+};
 
 export const blogContent = {
   heading: 'Blog',
   meta: {
     title: 'Blog – Amir Ardalan',
-    description: 'Thoughts on web development, design, and technology. Detailed guides for React, Next.js, TypeScript, and Markdown projects.'
+    description:
+      'Thoughts on web development, design, and technology. Detailed guides for React, Next.js, TypeScript, and Markdown projects.',
   },
   error: {
     database: '⚠️ Database Error: Posts Could not be loaded.',
@@ -56,19 +58,19 @@ export const blogContent = {
     placeholder: 'Search title or #category',
     noresult: 'No posts found.',
     clear: 'Clear search',
-    clearFilter: 'Clear filter'
+    clearFilter: 'Clear filter',
   },
-}
+};
 
 export const blogPostContent = {
   meta: {
-    title: ' – Amir Ardalan'
+    title: ' – Amir Ardalan',
   },
   title: {
-    draft: 'Draft –'
+    draft: 'Draft –',
   },
   twitterUrl: 'https://twitter.com/amirardalan',
-}
+};
 
 export const aboutContent = {
   meta: {
@@ -92,7 +94,7 @@ export const aboutContent = {
         cName: 'iconGithub icon',
         icon: {
           light: themeLight.icons.github,
-          dark: themeDark.icons.github
+          dark: themeDark.icons.github,
         },
       },
       {
@@ -101,7 +103,7 @@ export const aboutContent = {
         cName: 'iconCodePen icon',
         icon: {
           light: themeLight.icons.codepen,
-          dark: themeDark.icons.codepen
+          dark: themeDark.icons.codepen,
         },
       },
       {
@@ -110,7 +112,7 @@ export const aboutContent = {
         cName: 'iconTwitter icon',
         icon: {
           light: themeLight.icons.twitter,
-          dark: themeDark.icons.twitter
+          dark: themeDark.icons.twitter,
         },
       },
       {
@@ -119,10 +121,10 @@ export const aboutContent = {
         cName: 'iconLinkedin icon',
         icon: {
           light: themeLight.icons.linkedin,
-          dark: themeDark.icons.linkedin
+          dark: themeDark.icons.linkedin,
         },
       },
-    ]
+    ],
   },
   bio: {
     subheading: `Hey there, I'm Amir! 👋`,
@@ -133,12 +135,12 @@ export const aboutContent = {
         title: 'Download Resume',
         rel: 'noopener noreferrer',
         target: '_blank',
-        icon: 'download'
+        icon: 'download',
       },
     ],
   },
   resume: {
-    title: 'Resume'
+    title: 'Resume',
   },
   skills: {
     title: 'Skills / Tools',
@@ -152,8 +154,8 @@ export const aboutContent = {
       'CSS / SCSS',
       'UI Design',
       'Performance',
-      'Accessibility'
-    ]
+      'Accessibility',
+    ],
   },
   stack: {
     items: [
@@ -167,13 +169,13 @@ export const aboutContent = {
       'Git',
       'Vercel',
       'Supabase',
-    ]
+    ],
   },
   experience: {
-    title: "Experience",
+    title: 'Experience',
     items: [
       "I've written code for the web since the early 2000's and worked for awesome brands including; Nike, Columbia Sportswear, and KEEN Footwear.",
-      "I have real-world experience with fullstack application development, user interface design, web accessibility, ecommerce, and rapid front-end prototyping in Agile environments.",
+      'I have real-world experience with fullstack application development, user interface design, web accessibility, ecommerce, and rapid front-end prototyping in Agile environments.',
     ],
   },
   availability: {
@@ -181,7 +183,7 @@ export const aboutContent = {
     text: 'Application development @',
     text2: 'Nike Innovation Center',
     location: 'Remote or in-office in Portland, Ore. area.',
-    link: 'https://lebronjamesinnovationcenter.nike.com/'
+    link: 'https://lebronjamesinnovationcenter.nike.com/',
   },
   contact: {
     title: "Let's talk",
@@ -198,12 +200,12 @@ export const aboutContent = {
         handle: '@amirardalan',
         icon: {
           light: themeLight.icons.external,
-          dark: themeDark.icons.external
+          dark: themeDark.icons.external,
         },
       },
     ],
   },
-}
+};
 
 export const timelineContent = {
   meta: {
@@ -211,13 +213,14 @@ export const timelineContent = {
   },
   fullStory: {
     text: 'Read the full story',
-    link: '/blog/2021-a-dev-odyssey'
+    link: '/blog/2021-a-dev-odyssey',
   },
   items: [
     {
       title: 'Application Developer @ Nike',
-      content: 'Developing application prototypes and tools for Nike Innovation Center utilizing modern front-end technologies.',
-      cName: 'event'
+      content:
+        'Developing application prototypes and tools for Nike Innovation Center utilizing modern front-end technologies.',
+      cName: 'event',
     },
     {
       content: 'Present',
@@ -229,13 +232,15 @@ export const timelineContent = {
     },
     {
       title: 'Fullstack Developer, Writer',
-      content: 'Building, maintaining open-source amirardalan.com Next.js blog & CMS. Writing about front-end code, devops, and tech.',
-      cName: 'event'
+      content:
+        'Building, maintaining open-source amirardalan.com Next.js blog & CMS. Writing about front-end code, devops, and tech.',
+      cName: 'event',
     },
     {
       title: 'Freelance + React Learning',
-      content: 'Deep-dive into React, improving JavaScript skills, and honing user interface design capabilities.',
-      cName: 'event'
+      content:
+        'Deep-dive into React, improving JavaScript skills, and honing user interface design capabilities.',
+      cName: 'event',
     },
     {
       content: '2020',
@@ -247,13 +252,15 @@ export const timelineContent = {
     },
     {
       title: 'Application Engineer @ DemandPDX',
-      content: 'Fullstack Development in an agency environment for many clients including Hanna Andersson and Leatherman.',
-      cName: 'event'
+      content:
+        'Fullstack Development in an agency environment for many clients including Hanna Andersson and Leatherman.',
+      cName: 'event',
     },
     {
       title: 'Lead UI Engineer @ KEEN Footwear',
-      content: 'Developed new Salesforce Commerce Cloud Ecommerce websites for KEEN Footwear and Chrome Industries. Collaborated with BASIC® Agency.',
-      cName: 'event'
+      content:
+        'Developed new Salesforce Commerce Cloud Ecommerce websites for KEEN Footwear and Chrome Industries. Collaborated with BASIC® Agency.',
+      cName: 'event',
     },
     {
       content: '2015',
@@ -265,13 +272,15 @@ export const timelineContent = {
     },
     {
       title: 'Web Dev I @ Columbia Sportswear',
-      content: 'Developed Frontend code for Columbia, SOREL, and Mountain Hardwear. Implemented localized content and content modules for international sales.',
-      cName: 'event'
+      content:
+        'Developed Frontend code for Columbia, SOREL, and Mountain Hardwear. Implemented localized content and content modules for international sales.',
+      cName: 'event',
     },
     {
       title: 'Frontend Dev @ Dealer Spike',
-      content: 'HTML, CSS, and JavaScript and design in Adobe Photoshop. Created web experiences with a focus on SEO for powersports dealerships across US and Canada.',
-      cName: 'event'
+      content:
+        'HTML, CSS, and JavaScript and design in Adobe Photoshop. Created web experiences with a focus on SEO for powersports dealerships across US and Canada.',
+      cName: 'event',
     },
     {
       content: '2011',
@@ -283,13 +292,15 @@ export const timelineContent = {
     },
     {
       title: 'Freelancer @ Self Employed',
-      content: 'Managed all aspects of business with 30+ clients. Developed websites using HTML, CSS, and JavaScript. Utilized CSS3, Boostrap, jQuery, and Wordpress.',
-      cName: 'event'
+      content:
+        'Managed all aspects of business with 30+ clients. Developed websites using HTML, CSS, and JavaScript. Utilized CSS3, Boostrap, jQuery, and Wordpress.',
+      cName: 'event',
     },
     {
       title: 'UI Designer @ Selliken Systems',
-      content: 'Worked on the HomeQuest real estate property search tool. Designed using Adobe Photoshop and Illustrator.',
-      cName: 'event'
+      content:
+        'Worked on the HomeQuest real estate property search tool. Designed using Adobe Photoshop and Illustrator.',
+      cName: 'event',
     },
     {
       content: '2005',
@@ -302,12 +313,13 @@ export const timelineContent = {
     {
       title: 'Learning @ Southridge High School',
       content: `Began designing and animating Macromedia Flash websites and coding in ActionScript in my school's TV Studio.`,
-      cName: 'event'
+      cName: 'event',
     },
     {
       title: 'Learning @ Southridge High School',
-      content: 'Wrote my first lines of HTML and CSS using Yahoo! Geocities. Fell in love with web development. Took HTML/CSS Web Design course sophomore year.',
-      cName: 'event'
+      content:
+        'Wrote my first lines of HTML and CSS using Yahoo! Geocities. Fell in love with web development. Took HTML/CSS Web Design course sophomore year.',
+      cName: 'event',
     },
     {
       content: '2000',
@@ -315,34 +327,34 @@ export const timelineContent = {
     },
     {
       content: '1995',
-      cName: 'date'
+      cName: 'date',
     },
     {
       title: 'First Computer',
-      content: 'Got a Compaq Presario CDS 524. Read Microsoft Encarta and played "Where In the World is Carmen San Diego" and "X-Wing".',
-      cName: 'event'
+      content:
+        'Got a Compaq Presario CDS 524. Read Microsoft Encarta and played "Where In the World is Carmen San Diego" and "X-Wing".',
+      cName: 'event',
     },
-  ]
-}
+  ],
+};
 
 export const thanksContent = {
   meta: {
     title: 'Thank You – Amir Ardalan',
-    description: 'Your contribution is greatly appreciated!'
+    description: 'Your contribution is greatly appreciated!',
   },
   heading: 'Thank You.',
-  copy: 'Your contribution to the project is greatly appreciated!'
-}
+  copy: 'Your contribution to the project is greatly appreciated!',
+};
 
 export const usesContent = {
   meta: {
     title: 'Uses – Amir Ardalan',
-    description: 'A list of gear, tools, and software I use.'
+    description: 'A list of gear, tools, and software I use.',
   },
   heading: 'Uses',
   devices: {
-    content:
-      `### Devices
+    content: `### Devices
   #### Laptop
   - 2016 13" MacBook Pro (silver)
   ##### Specs:
@@ -373,11 +385,10 @@ export const usesContent = {
   - [Beyerdynamic DT770Pro 80ohm](https://north-america.beyerdynamic.com/dt-770-pro.html)
   - [Sennheiser HD25-1 II](https://en-us.sennheiser.com/on-ear-dj-headphone-hd25)
   - [Apple AirPods Pro](https://www.apple.com/airpods-pro/)
-  `
+  `,
   },
   tools: {
-    content:
-      `### Tools
+    content: `### Tools
   #### IDE
   - [VS Code](https://code.visualstudio.com/)
   ##### Web App Extensions:
@@ -404,11 +415,10 @@ export const usesContent = {
   - [GA Debug](https://addons.mozilla.org/en-US/firefox/addon/ga-debugger/)
   - [MetaMask](https://addons.mozilla.org/en-US/firefox/addon/ether-metamask/)
 
-  `
+  `,
   },
   stack: {
-    content:
-      `### Stack
+    content: `### Stack
 
   #### Web App
   - [Next.js](https://nextjs.org/)
@@ -434,11 +444,10 @@ export const usesContent = {
   - [Vercel CLI](https://vercel.com/cli)
   - [Supabase CLI](https://supabase.com/docs/reference/cli)
 
-  `
+  `,
   },
   software: {
-    content:
-      `### Software
+    content: `### Software
   
   #### Markdown
   - [iA Writer](https://ia.net/writer)
@@ -465,42 +474,42 @@ export const usesContent = {
   - [Browser Stack](https://www.browserstack.com/)
   ##### Playdate:
   - [Playdate Simulator](https://play.date/dev/)
-  `
+  `,
   },
-}
+};
 
 export const errorContent = {
   notFound: {
     meta: {
-      title: 'Page Not Found – Amir Ardalan'
+      title: 'Page Not Found – Amir Ardalan',
     },
     title: '404',
     text: `Page not found`,
     link: {
       path: '/',
-      title: 'Return Home'
+      title: 'Return Home',
     },
     quote: `"The best thing about a boolean is even if you are wrong, you are only off by a bit."`,
     author: 'Unknown',
   },
   internalServerError: {
     meta: {
-      title: 'Internal Server Error – Amir Ardalan'
+      title: 'Internal Server Error – Amir Ardalan',
     },
     title: '500',
     text: `Internal server error`,
     link: {
       path: '/',
-      title: 'Return Home'
+      title: 'Return Home',
     },
     quote: `"Whoops, something has gone awry. I'll have this patched up in no time..."`,
     author: 'Amir',
   },
-}
+};
 
 export const footer = {
   logo: {
-    alt: 'Amir Ardalan Logo'
+    alt: 'Amir Ardalan Logo',
   },
   headings: {
     nav: 'Explore',
@@ -514,7 +523,7 @@ export const footer = {
       title: 'Next.js',
       icon: {
         light: themeLight.icons.external,
-        dark: themeDark.icons.external
+        dark: themeDark.icons.external,
       },
     },
     {
@@ -522,7 +531,7 @@ export const footer = {
       title: 'NextAuth.js',
       icon: {
         light: themeLight.icons.external,
-        dark: themeDark.icons.external
+        dark: themeDark.icons.external,
       },
     },
     {
@@ -530,7 +539,7 @@ export const footer = {
       title: 'Vercel',
       icon: {
         light: themeLight.icons.external,
-        dark: themeDark.icons.external
+        dark: themeDark.icons.external,
       },
     },
     {
@@ -538,7 +547,7 @@ export const footer = {
       title: 'Prisma',
       icon: {
         light: themeLight.icons.external,
-        dark: themeDark.icons.external
+        dark: themeDark.icons.external,
       },
     },
     {
@@ -546,7 +555,7 @@ export const footer = {
       title: 'Supabase',
       icon: {
         light: themeLight.icons.external,
-        dark: themeDark.icons.external
+        dark: themeDark.icons.external,
       },
     },
     {
@@ -554,7 +563,7 @@ export const footer = {
       title: 'Three.js',
       icon: {
         light: themeLight.icons.external,
-        dark: themeDark.icons.external
+        dark: themeDark.icons.external,
       },
     },
   ],
@@ -564,7 +573,7 @@ export const footer = {
       title: 'GitHub',
       icon: {
         light: themeLight.icons.external,
-        dark: themeDark.icons.external
+        dark: themeDark.icons.external,
       },
     },
     {
@@ -572,7 +581,7 @@ export const footer = {
       title: 'Twitter',
       icon: {
         light: themeLight.icons.external,
-        dark: themeDark.icons.external
+        dark: themeDark.icons.external,
       },
     },
     {
@@ -580,7 +589,7 @@ export const footer = {
       title: 'LinkedIn',
       icon: {
         light: themeLight.icons.external,
-        dark: themeDark.icons.external
+        dark: themeDark.icons.external,
       },
     },
     {
@@ -588,22 +597,22 @@ export const footer = {
       title: 'Resume',
       icon: {
         light: themeLight.icons.download,
-        dark: themeDark.icons.download
+        dark: themeDark.icons.download,
       },
-    }
+    },
   ],
   copyright: {
     text: 'Copyright © ',
     name: '— Amir Ardalan',
   },
-}
+};
 
 export const breadcrumbContent = {
   blog: 'Blog',
   create: 'Create',
   drafts: 'Drafts',
   edit: 'Edit',
-}
+};
 
 // Donate
 export const donate = {
@@ -611,13 +620,13 @@ export const donate = {
   text: 'amirardalan.eth',
   address: 'amirardalan.eth',
   copied: 'Copied to clipboard ✅',
-  meta: 'Copy ETH address'
-}
+  meta: 'Copy ETH address',
+};
 
 // Admin
 export const adminContent = {
   meta: {
-    title: ' – Amir Ardalan'
+    title: ' – Amir Ardalan',
   },
   controls: {
     publish: 'Publish',
@@ -630,34 +639,34 @@ export const adminContent = {
     save: 'Save',
     checkbox: {
       featured: 'Display on homepage. Can only feature one post at a time.',
-      updateDate: 'If unchecked, original post date will display on post.'
-    }
+      updateDate: 'If unchecked, original post date will display on post.',
+    },
   },
   input: {
     placeholder: {
       title: 'Title',
       slug: 'URL/Slug',
       teaser: 'Teaser',
-      content: 'Content'
-    }
+      content: 'Content',
+    },
   },
   edit: {
     meta: {
-      title: 'Edit'
-    }
+      title: 'Edit',
+    },
   },
   create: {
     meta: {
-      title: 'Create – Amir Ardalan'
-    }
+      title: 'Create – Amir Ardalan',
+    },
   },
   drafts: {
     meta: {
-      title: 'Drafts – Amir Ardalan'
+      title: 'Drafts – Amir Ardalan',
     },
     notice: `Unpublished Draft`,
     empty: `No drafts. Nice and tidy! Perhaps `,
     empty2: 'try writing',
     empty3: ' one?',
-  }
-}
+  },
+};

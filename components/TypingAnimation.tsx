@@ -1,9 +1,11 @@
-import React,{ useEffect } from 'react'
-import Typed from 'typed.js'
+import React, { type FC, useEffect } from 'react';
+import Typed from 'typed.js';
 
+type TypingAnimationProps = {
+  data: any;
+};
 
-const TypingAnimation = ({ data }) => {
-    
+const TypingAnimation: FC<TypingAnimationProps> = ({ data }) => {
   useEffect(() => {
     const options: any = {
       strings: [...data],
@@ -13,15 +15,15 @@ const TypingAnimation = ({ data }) => {
       backSpeed: 20,
       backDelay: 5000,
       loop: true,
-    }
+    };
     const typed = new Typed('.typingAnimation', options);
 
     return () => {
-      typed.destroy()
-    }
-  }, [data])
+      typed.destroy();
+    };
+  }, [data]);
 
-  return <span className="typingAnimation" />
-}
+  return <span className="typingAnimation" />;
+};
 
-export default React.memo(TypingAnimation)
+export default React.memo(TypingAnimation);

@@ -1,6 +1,7 @@
-export default function LoadingTriangle() {
+import type { FC } from 'react';
 
-  return(
+const LoadingTriangle: FC = () => {
+  return (
     <div
       className="loader triangle"
       css={{
@@ -22,13 +23,14 @@ export default function LoadingTriangle() {
           top: '37px',
           left: '21px',
           transform: 'translate(-10px, -18px)',
-          animation: 'dotTriangle var(--duration) cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite',
+          animation:
+            'dotTriangle var(--duration) cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite',
           '@keyframes dotTriangle': {
             '33%': { transform: 'translate(0, 0)' },
             '66%': { transform: 'translate(10px, -18px)' },
             '100%': { transform: 'translate(-10px, -18px)' },
-          }
-        }
+          },
+        },
       }}
     >
       <svg
@@ -49,16 +51,18 @@ export default function LoadingTriangle() {
             strokeLinecap: 'round',
             strokeDasharray: '145 76 145 76',
             strokeDashoffset: '0',
-            animation: 'pathTriangle var(--duration) cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite',
+            animation:
+              'pathTriangle var(--duration) cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite',
             '@keyframes pathTriangle': {
               '33%': { strokeDashoffset: 74 },
               '66%': { strokeDashoffset: 147 },
               '100%': { strokeDashoffset: 221 },
-            }
+            },
           }}
-        >
-        </polygon>
+        ></polygon>
       </svg>
     </div>
-  )
-}
+  );
+};
+
+export default LoadingTriangle;

@@ -1,89 +1,85 @@
-import { useState, useEffect, useRef } from 'react'
-import { useSession } from 'next-auth/react'
-import Router from 'next/router'
+import { useState, useEffect, useRef } from 'react';
+import { useSession } from 'next-auth/react';
+import Router from 'next/router';
 
-import Link from 'next/link'
-import Container from '@/components/Container'
-import BlogStyles from '@/components/BlogStyles'
-import Dropdown from '@/components/Dropdown'
-import Checkbox from '@/components/Checkbox'
-import BlogPostControls from '@/components/BlogPostControls'
-import generateSlug from '@/utils/generateSlug'
-import { useFetchStatus } from '@/utils/useLoadingIndicator'
+import Link from 'next/link';
+import Container from '@/components/Container';
+import BlogStyles from '@/components/BlogStyles';
+import Dropdown from '@/components/Dropdown';
+import Checkbox from '@/components/Checkbox';
+import BlogPostControls from '@/components/BlogPostControls';
+import generateSlug from '@/utils/generateSlug';
+import { useFetchStatus } from '@/utils/useLoadingIndicator';
 
-import { adminContent, breadcrumbContent } from '@/data/content'
-import { categories } from '@/data/categories'
-import LoadingTriangle from '@/components/LoadingTriangle'
+import { adminContent, breadcrumbContent } from '@/data/content';
+import { categories } from '@/data/categories';
+import LoadingTriangle from '@/components/LoadingTriangle';
 
-import { GetStaticProps } from 'next'
+import { GetStaticProps } from 'next';
 export const getStaticProps: GetStaticProps = async () => {
-  return { props: { admin: adminContent, breadcrumb: breadcrumbContent } }
-}
-
+  return { props: { admin: adminContent, breadcrumb: breadcrumbContent } };
+};
 
 const Draft = ({ admin, breadcrumb }) => {
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
+  const [slug, setSlug] = useState('');
+  const [teaser, setTeaser] = useState('');
+  const [category, setCategory] = useState(categories[0]);
 
-  const [title, setTitle] = useState('')
-  const [content, setContent] = useState('')
-  const [slug, setSlug] = useState('')
-  const [teaser, setTeaser] = useState('')
-  const [category, setCategory] = useState(categories[0])
-
-  const [featured, setFeatured] = useState(false)
+  const [featured, setFeatured] = useState(false);
   const handleSetFeatured = () => {
-    setFeatured(!featured)
-  }
+    setFeatured(!featured);
+  };
 
-  const [fetchStatus, setFetchStatus] = useFetchStatus()
-  const isFetching = fetchStatus
+  const [fetchStatus, setFetchStatus] = useFetchStatus();
+  const isFetching = fetchStatus;
 
   const handleDeletion = () => {
-    setFetchStatus(true)
-    return Router.push("/blog")
-  }
+    setFetchStatus(true);
+    return Router.push('/blog');
+  };
   const handleCancel = (e: React.SyntheticEvent) => {
-    e.preventDefault()
-    setFetchStatus(true)
-    return Router.push("/blog")
-  }
+    e.preventDefault();
+    setFetchStatus(true);
+    return Router.push('/blog');
+  };
 
   const submitData = async (e: React.SyntheticEvent) => {
-    e.preventDefault()
-    setFetchStatus(true)
+    e.preventDefault();
+    setFetchStatus(true);
     try {
-      const body = { title, slug, teaser, content, category, featured }
+      const body = { title, slug, teaser, content, category, featured };
       await fetch('/api/post', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
-      })
-      await Router.push(`/blog/${slug}`)
+      });
+      await Router.push(`/blog/${slug}`);
     } catch (error) {
-      console.error(error)
+      console.error(error);
     }
-  }
+  };
 
-  const slugUrl = generateSlug(title)
+  const slugUrl = generateSlug(title);
 
   // Ensure slug input is active after autofill
-  const slugField = useRef(null)
+  const slugField = useRef(null);
   useEffect(() => {
     let interval = setInterval(() => {
       if (slugField.current) {
-        setSlug(slugField.current.value)
-        clearInterval(interval)
+        setSlug(slugField.current.value);
+        clearInterval(interval);
       }
-    }, 100)
-  })
+    }, 100);
+  });
 
-  const { data: session } = useSession()
-  let create = null
+  const { data: session } = useSession();
+  let create = null;
 
   if (session && session.user.email == process.env.NEXT_PUBLIC_USER_EMAIL) {
-
     create = (
       <div className="blog admin create">
-
         <nav className="breadcrumbs">
           <Link href="/blog">{breadcrumb.blog}</Link>
           <span>{breadcrumb.create}</span>
@@ -130,12 +126,14 @@ const Draft = ({ admin, breadcrumb }) => {
               <Dropdown
                 label="Category:"
                 value={category}
-                handleChange={(e: { target: { value: React.SetStateAction<string> } }) => setCategory(e.target.value)}
+                handleChange={(e: {
+                  target: { value: React.SetStateAction<string> };
+                }) => setCategory(e.target.value)}
                 data={categories}
               />
               <div className="checkbox">
-                <Checkbox 
-                  label='Featured Post'
+                <Checkbox
+                  label="Featured Post"
                   title={admin.controls.checkbox.featured}
                   value={featured}
                   onChange={handleSetFeatured}
@@ -143,14 +141,17 @@ const Draft = ({ admin, breadcrumb }) => {
               </div>
             </div>
 
-            <div className={isFetching ? "postControls disabled" : "postControls"}>
-
+            <div
+              className={isFetching ? 'postControls disabled' : 'postControls'}
+            >
               <BlogPostControls
                 admin={admin}
                 post={null}
                 publishLabel={admin.controls.save}
                 latestPost={null}
-                requiredFields={!content || !title || !slug || !teaser || category === '-'}
+                requiredFields={
+                  !content || !title || !slug || !teaser || category === '-'
+                }
                 submitClass="buttonCompact saveBtn"
                 handleCancel={handleCancel}
                 handleDeletion={handleDeletion}
@@ -158,29 +159,27 @@ const Draft = ({ admin, breadcrumb }) => {
                 deleted={false}
                 isFetching={isFetching}
               />
-
             </div>
-
           </form>
         </div>
-
       </div>
-    )
+    );
   } else {
-    create = (
-      <LoadingTriangle />
-    )
+    create = <LoadingTriangle />;
   }
 
   return (
-    <Container title={admin.create.meta.title} robots="noindex">
+    <Container
+      title={admin.create.meta.title}
+      robots="noindex"
+      date={null}
+      description={null}
+    >
       <BlogStyles>
-        <div>
-          {create}
-        </div>
+        <div>{create}</div>
       </BlogStyles>
     </Container>
-  )
-}
+  );
+};
 
-export default Draft
+export default Draft;

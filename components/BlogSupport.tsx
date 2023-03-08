@@ -1,33 +1,32 @@
-import { useState } from 'react'
-import { css } from '@emotion/react'
-import Image from 'next/image'
-import { donate } from '@/data/content'
-import CloseButton from '@/components/CloseButton'
+import { type FC, useState } from 'react';
+import { css } from '@emotion/react';
+import Image from 'next/image';
+import { donate } from '@/data/content';
+import CloseButton from '@/components/CloseButton';
 
-export default function DonationCta() {
-
-  const [hideModule, setHideModule] = useState(false)
-  const [showOptions, setshowOptions] = useState(false)
+const DonationCta: FC = () => {
+  const [hideModule, setHideModule] = useState(false);
+  const [showOptions, setshowOptions] = useState(false);
   const handleshowOptions = () => {
-    setshowOptions(!showOptions)
+    setshowOptions(!showOptions);
     if (addressCopied) {
       setTimeout(() => {
-        setAddressCopied(false)
-      }, 10)
+        setAddressCopied(false);
+      }, 10);
     }
-  }
+  };
   const handleHideModule = () => {
-    setHideModule(!showOptions)
+    setHideModule(!showOptions);
     if (showOptions) {
-      setshowOptions(false)
+      setshowOptions(false);
     }
-  }
+  };
 
-  const [addressCopied, setAddressCopied] = useState(false)
+  const [addressCopied, setAddressCopied] = useState(false);
   const handleCopyAddress = () => {
-    navigator.clipboard.writeText(donate.address)
-    setAddressCopied(true)
-  }
+    navigator.clipboard.writeText(donate.address);
+    setAddressCopied(true);
+  };
 
   const styleSupportModule = css({
     width: '100%',
@@ -45,7 +44,7 @@ export default function DonationCta() {
       position: 'absolute',
       top: -15,
       right: -15,
-      animation: 'spin .5s ease'
+      animation: 'spin .5s ease',
     },
     '.animationWrapper': {
       position: 'relative',
@@ -88,8 +87,8 @@ export default function DonationCta() {
               left: '-50%',
               top: 10,
               borderTop: '1px solid var(--color-accent-gray)',
-            }
-          }
+            },
+          },
         },
         '.paymentMethods': {
           position: 'relative',
@@ -136,12 +135,12 @@ export default function DonationCta() {
               fontSize: 12,
               fontFamily: 'var(--font-primary)',
             },
-          }
-        }
+          },
+        },
       },
     },
     '.left': {
-      width: '70%'
+      width: '70%',
     },
     '.right': {
       width: '30%',
@@ -150,20 +149,19 @@ export default function DonationCta() {
       justifyContent: 'center',
       a: {
         color: 'var(--color-text)',
-      }
+      },
     },
     '.copyContainer': {
       h4: {
         fontSize: 22,
-        marginBottom: '1rem'
+        marginBottom: '1rem',
       },
       p: {
         fontSize: 14,
         lineHeight: 1.5,
         margin: 0,
         padding: 0,
-
-      }
+      },
     },
     button: {
       background: 'transparent',
@@ -171,41 +169,50 @@ export default function DonationCta() {
       '&:focus': {
         boxShadow: '0 0 0 2px var(--color-accent-gray)',
         '&:focus:not(:focus-visible)': { boxShadow: 'none' },
-      }
+      },
     },
     '@media (max-width: 768px)': {
       display: 'none', // suppress on mobile
-    }
-  })
-
+    },
+  });
 
   return (
     <div css={styleSupportModule}>
-
       <button className="closeBtn" onClick={handleHideModule}>
         <CloseButton width={20} height={20} />
       </button>
 
       <div className="animationWrapper">
-
         <div className="supportContainer">
-
           <div className="supportContent">
             <div className="left">
               <div className="copyContainer">
                 <h4>Did you enjoy this article?</h4>
-                <p>This project is <a href="https://github.com/amirardalan/amirardalan.com" target="_blank" rel="noopener noreferrer">open-source</a> and all of the content is free.</p>
-                <p>If you liked this blog post consider supporting future content:</p>
+                <p>
+                  This project is{' '}
+                  <a
+                    href="https://github.com/amirardalan/amirardalan.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    open-source
+                  </a>{' '}
+                  and all of the content is free.
+                </p>
+                <p>
+                  If you liked this blog post consider supporting future
+                  content:
+                </p>
               </div>
             </div>
             <div className="right">
-              <span>☕</span><a onClick={handleshowOptions}>Buy me a coffee</a>
+              <span>☕</span>
+              <a onClick={handleshowOptions}>Buy me a coffee</a>
             </div>
           </div>
 
           <div className="supportOptions">
             <div className="paymentMethods">
-
               <div className="ethAddressCopied">
                 <div className="qrCode">
                   <Image
@@ -217,7 +224,9 @@ export default function DonationCta() {
                 </div>
                 <div className="copyConfirmation">
                   <p className="ethAddress">amirardalan.eth</p>
-                  <p className="successMessage">ETH address copied to clipboard ✅</p>
+                  <p className="successMessage">
+                    ETH address copied to clipboard ✅
+                  </p>
                 </div>
               </div>
 
@@ -235,13 +244,11 @@ export default function DonationCta() {
                 <div className="paypal" />
               </a>
             </div>
-
           </div>
-
         </div>
-
       </div>
-
     </div>
-  )
-}
+  );
+};
+
+export default DonationCta;

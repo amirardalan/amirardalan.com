@@ -1,10 +1,22 @@
-import { NextApiRequest, NextApiResponse } from 'next'
-import prisma from '@/lib/prisma'
-
+import { NextApiRequest, NextApiResponse } from 'next';
+import prisma from '@/lib/prisma';
 
 // POST /api/update
-export default async function handle(req: NextApiRequest, res: NextApiResponse) {
-  const { id, title, content, slug, teaser, category, featured, editFeatured, showEdited } = req.body
+export default async function handle(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
+  const {
+    id,
+    title,
+    content,
+    slug,
+    teaser,
+    category,
+    featured,
+    editFeatured,
+    showEdited,
+  } = req.body;
 
   if (!featured && !editFeatured) {
     const result = await prisma.post.update({
@@ -18,15 +30,15 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
         teaser: teaser,
         category: category,
         featured: featured,
-        showEdited: showEdited
+        showEdited: showEdited,
       },
-    })
-    res.json(result)
+    });
+    res.json(result);
   } else {
     const result = await prisma.$transaction([
       prisma.post.updateMany({
         where: { featured: true },
-        data: { featured: false }
+        data: { featured: false },
       }),
       prisma.post.update({
         where: {
@@ -39,11 +51,10 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
           teaser: teaser,
           category: category,
           featured: featured,
-          showEdited: showEdited
+          showEdited: showEdited,
         },
-      })
-    ])
-    res.json(result)
+      }),
+    ]);
+    res.json(result);
   }
-
 }

@@ -14,7 +14,7 @@ export const themeLight = {
     info: '/icons/info-dark.svg',
     close: '/icons/close-light.svg',
   },
-}
+};
 
 export const themeDark = {
   active: 'dark',
@@ -32,5 +32,5 @@ export const themeDark = {
     error: '/icons/error-light.svg',
     info: '/icons/info-light.svg',
     close: '/icons/close-dark.svg',
-  }
-}
+  },
+};

@@ -5,7 +5,7 @@ export const nav = [
     exact: 'false',
     cName: 'homeNav',
     aria: 'Home',
-    icon: false
+    icon: false,
   },
   {
     title: 'Blog',
@@ -13,7 +13,7 @@ export const nav = [
     exact: '',
     cName: 'blogNav',
     aria: 'Blog',
-    icon: false
+    icon: false,
   },
   {
     title: 'About',
@@ -21,7 +21,7 @@ export const nav = [
     exact: '',
     cName: 'aboutNav',
     aria: 'About',
-    icon: false
+    icon: false,
   },
   {
     title: 'Timeline',
@@ -29,7 +29,7 @@ export const nav = [
     exact: '',
     cName: 'excludeInHeader',
     aria: 'Career Timeline',
-    icon: false
+    icon: false,
   },
   {
     title: 'Uses',
@@ -37,6 +37,6 @@ export const nav = [
     exact: '',
     cName: 'excludeInHeader',
     aria: 'Tools I Use',
-    icon: false
-  }
-]
+    icon: false,
+  },
+];

@@ -1,9 +1,18 @@
-import Link from 'next/link'
-import { css } from '@emotion/react'
+import type { FC } from 'react';
+import Link from 'next/link';
+import { css } from '@emotion/react';
 
+type FeaturedPostProps = {
+  home: any;
+  featuredPost: any;
+  latestPost: any;
+};
 
-export default function featuredPost({ home, featuredPost, latestPost }) {
-
+const FeaturedPost: FC<FeaturedPostProps> = ({
+  home,
+  featuredPost,
+  latestPost,
+}) => {
   const styleFeaturedPost = css({
     marginTop: '2.25rem',
     borderLeft: '4px solid var(--color-accent-gray)',
@@ -27,15 +36,15 @@ export default function featuredPost({ home, featuredPost, latestPost }) {
         height: 11,
         width: 11,
         marginRight: '.35rem',
-      }
+      },
     },
-    'h3 a' : {
+    'h3 a': {
       fontFamily: 'var(--font-secondary)',
       fontSize: 18,
       fontWeight: 700,
       '@media(max-width: 480px)': {
         fontSize: 16,
-      }
+      },
     },
     p: {
       marginTop: '.25rem',
@@ -45,30 +54,31 @@ export default function featuredPost({ home, featuredPost, latestPost }) {
       fontStyle: 'italic',
       color: 'var(--color-gray)',
     },
-  })
+  });
 
-  const renderFeaturedPost = !featuredPost ? latestPost : featuredPost
-  const componentTitle = featuredPost ? home.featured.title : home.latest.title
-  
-  if (latestPost || featuredPost) {
+  const featured = featuredPost ? featuredPost : latestPost;
+  const componentTitle = featuredPost ? home.featured.title : home.latest.title;
+
+  if (featuredPost || latestPost) {
     return (
       <div css={styleFeaturedPost}>
-        <h2 aria-label={componentTitle}>
-          {componentTitle}
-        </h2>
+        <h2 aria-label={componentTitle}>{componentTitle}</h2>
         <article>
           <h3>
-            {renderFeaturedPost ?
-            <Link
-              href={`/blog/${encodeURIComponent(renderFeaturedPost?.slug)}`}
-              aria-label={renderFeaturedPost?.title}>
-              {renderFeaturedPost?.title}
-            </Link>
-            : null}
+            {featured ? (
+              <Link
+                href={`/blog/${encodeURIComponent(featured?.slug)}`}
+                aria-label={featured?.title}
+              >
+                {featured?.title}
+              </Link>
+            ) : null}
           </h3>
-          <p>{renderFeaturedPost?.teaser}</p>
+          <p>{featured?.teaser}</p>
         </article>
       </div>
-    )
-  } else return null
-}
+    );
+  } else return null;
+};
+
+export default FeaturedPost;
