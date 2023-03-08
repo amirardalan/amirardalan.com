@@ -13,7 +13,7 @@ const BlogAdmin = dynamic(() => import('@/components/BlogAdmin'), {
 });
 
 type HeaderProps = {
-  toggleTheme: boolean;
+  toggleTheme: Function;
 };
 
 const Header: FC<HeaderProps> = ({ toggleTheme }) => {
@@ -63,6 +63,8 @@ const Header: FC<HeaderProps> = ({ toggleTheme }) => {
     fontFamily: 'var(--font-secondary)',
     cursor: 'pointer',
   });
+
+  console.log(typeof toggleTheme);
 
   return (
     <>

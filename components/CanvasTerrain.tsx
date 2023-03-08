@@ -8,13 +8,13 @@ type CanvasTerrainProps = {
   theme: {
     canvas: string;
   };
-  seed: Date;
+  seed: number;
   detail: number;
   height: number;
   texture: number;
   scale: number;
-  offset: { x: number; z: number };
   rotation: number;
+  offset: any;
 };
 
 const generateTerrain = (
@@ -22,7 +22,7 @@ const generateTerrain = (
   height: number,
   texture: number,
   scale: number,
-  offset: { x: any; z: any }
+  offset: { x: number; z: number }
 ) => {
   const noise2D = createNoise2D();
   const noise = (level: number, x: number, z: number) =>
