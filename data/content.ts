@@ -131,7 +131,7 @@ export const aboutContent = {
     content: `I design and build web apps with a focus on performance and accessibility. I also blog about my journey as a web developer and publish code tutorials and guides.`,
     items: [
       {
-        path: '/amir-ardalan-resume.pdf',
+        path: '/resume',
         title: 'Download Resume',
         rel: 'noopener noreferrer',
         target: '_blank',
@@ -593,7 +593,7 @@ export const footer = {
       },
     },
     {
-      path: '/amir-ardalan-resume.pdf',
+      path: '/resume',
       title: 'Resume',
       icon: {
         light: themeLight.icons.download,

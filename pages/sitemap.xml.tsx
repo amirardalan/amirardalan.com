@@ -27,6 +27,10 @@ export const getServerSideProps = async ({ res }) => {
     <loc>${baseUrl}/uses</loc>
     <priority>1.0</priority>
   </url>
+  <url>
+    <loc>${baseUrl}/resume</loc>
+    <priority>1.0</priority>
+  </url>
     ${feed
       .map(({ slug, editedAt }) => {
         return `
