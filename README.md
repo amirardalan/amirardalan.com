@@ -93,6 +93,13 @@ Create an [OG Image Service](https://github.com/vercel/og-image) and set this to
 npm install
 ```
 
+### Configure Prettier
+
+If you'd like to contribute to this project or use Prettier with your fork, download the [VSCode Extension](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode#review-details).
+
+1. After installing the extension, open the extensions panel in VSCode, find Prettier - Code Formatter, click on the gear icon, and select `Extension Settings`.
+2. Inside of the Prettier Extension Settings, locate `Prettier: Config Path` and ensure it is set to `.prettierrc`.
+
 ### Start the Development Server
 
 ```bash
