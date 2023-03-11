@@ -12,9 +12,11 @@ A Next.js Markdown Blog and CMS written in TypeScript. Designed, built, and main
 [Emotion](https://github.com/emotion-js/emotion)
 
 ### Who is this for?
+
 This is my personal portfolio and blog. You may find the CMS portion and some of the custom Markdown functionality useful. This application currently runs on Next13 using the Page directory paradigm. I plan to upgrade this project to the app directory to take advantage of full React 18 support in the near future.
 
 ### CMS Features
+
 - Manage blog posts from an authenticated Admin Panel
 - Write blog posts with [extensible Markdown](#markdown-features)
 - Publish changes on per-page basis, no need to rebuild the entire application
@@ -29,6 +31,7 @@ This is my personal portfolio and blog. You may find the CMS portion and some of
 ## Setup:
 
 ### Manifest.json
+
 Update `public/manifest.json`. Fill out information relevant to your web app. _Note:_ The latest version of iOS Safari uses `theme_color` from this file as the background color for the notch area of iPhones and the area behind the background when the site is scrolled past the bottom with iOS's elastic scroll effect.
 
 ---
@@ -57,57 +60,61 @@ NEXT_PUBLIC_TIMEZONE=America/Los_Angeles
 ```
 
 `NEXT_PUBLIC_SITE_URL`
-Leave as `http://localhost:3000` for Development, set as `https://yourDomainName.com` for Production  
+Leave as `http://localhost:3000` for Development, set as `https://yourDomainName.com` for Production
 
 `NEXT_PUBLIC_USER_EMAIL`
-Your email address, used for authentication and optionally your about or contact page.  
+Your email address, used for authentication and optionally your about or contact page.
 
 `DATABASE_URL`
-The URL for your PostgreSQL database  
+The URL for your PostgreSQL database
 
 `NEXT_AUTH_SECRET`
-[Generate a secret](https://next-auth.js.org/configuration/options#nextauth_secret) for Next Auth  
+[Generate a secret](https://next-auth.js.org/configuration/options#nextauth_secret) for Next Auth
 
 `GITHUB_SECRET`
 For GitHub oAuth with Next Auth, see [GitHub Developer App Docs](https://docs.github.com/en/developers/apps/getting-started-with-apps/setting-up-your-development-environment-to-create-a-github-app)
 
 `GITHUB_ID`
-Your GitHub developer app ID, [GitHub Developer App Docs](https://docs.github.com/en/developers/apps/getting-started-with-apps/setting-up-your-development-environment-to-create-a-github-app)  
+Your GitHub developer app ID, [GitHub Developer App Docs](https://docs.github.com/en/developers/apps/getting-started-with-apps/setting-up-your-development-environment-to-create-a-github-app)
 
 `NEXT_PUBLIC_REVALIDATE_SECRET`
-Generate a secret for use with Next [On-Demand Incremental Static Regeneration](https://nextjs.org/docs/basic-features/data-fetching/incremental-static-regeneration#on-demand-revalidation-beta)  
+Generate a secret for use with Next [On-Demand Incremental Static Regeneration](https://nextjs.org/docs/basic-features/data-fetching/incremental-static-regeneration#on-demand-revalidation-beta)
 
 `NEXT_PUBLIC_OG_IMAGE_URL`
-Create an [OG Image Service](https://github.com/vercel/og-image) and set this to the URL of your service app. [Further reading](#dynamically-generate-blog-og-images)  
+Create an [OG Image Service](https://github.com/vercel/og-image) and set this to the URL of your service app. [Further reading](#dynamically-generate-blog-og-images)
 
-`NEXT_PUBLIC_TIMEZONE`: Example: `America/Los_Angeles`. Set this to your local timezone for your blog posts to display the correct date and time. [Full List of IANA Timezones](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)   
+`NEXT_PUBLIC_TIMEZONE`: Example: `America/Los_Angeles`. Set this to your local timezone for your blog posts to display the correct date and time. [Full List of IANA Timezones](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)
 
 ---
 
 ### Install Dependencies
+
 ```bash
-yarn
+npm install
 ```
 
 ### Start the Development Server
 
 ```bash
-yarn dev
+npx next dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000)
 
-### Generate a Test Build
-Create a local copy of a production build (useful for testing [on-demand ISR](https://nextjs.org/docs/basic-features/data-fetching/incremental-static-regeneration#on-demand-revalidation-beta) and `pages/sitemap.xml.tsx` configuration):
+### Generate a Static Test Build
+
+Create a local copy of a production build (useful for testing [on-demand ISR](https://nextjs.org/docs/basic-features/data-fetching/incremental-static-regeneration#on-demand-revalidation-beta), `pages/sitemap.xml.tsx` configuration), and [Lighthouse](https://developer.chrome.com/docs/lighthouse/overview/) performance:
 
 ```bash
-yarn build
+npx next build
 ```
-the run
+
+### Run the Static Test Build
 
 ```bash
-yarn start
+npx next start
 ```
+
 ---
 
 ## Prisma ORM:
@@ -118,13 +125,13 @@ The existing schema is configured for PostgreSQL. Update accordingly.
 Update schema and push new tables to db from `schema.prisma`:
 
 ```bash
-yarn prisma db push
+npx prisma db push
 ```
 
 Run Prisma Studio:
 
 ```bash
-yarn prisma studio
+npx prisma studio
 ```
 
 Open [http://localhost:5555/](http://localhost:5555/)
@@ -140,6 +147,7 @@ Open [http://localhost:5555/](http://localhost:5555/)
 - [iFrame Embeds](#iframe-embeds)
 
 ### Next/Image Component
+
 Utilize `Next/Image` functionality within Markdown by using custom metastrings inside the Markdown Alt.
 Retain the terseness of pure Markdown while getting the benefits of the Next/Image component without having to mix in JSX.
 
@@ -152,20 +160,27 @@ Retain the terseness of pure Markdown while getting the benefits of the Next/Ima
 - Add an optional caption that displays beneath the image.
 
 ### Code Line Highlighting
+
 ` ```JSX {3,5-8} ... `
+
 - Individually highlight specific lines of code using a space after the language declaration followed by this JSON metastring. Highlight individual lines and/or a range of contiguous lines, separated by commas.
 
 ### Heading Anchors
+
 - H3 headings in a blog post automatically generate an anchor link from a generated slug based on the heading contents. Seamlessly handles `code` inside headings.
+
 ### Link Behavior
+
 ```
 [internal link](/blog/my-blog-post)
 [external link](https://example.com)
 ```
+
 - External links will automatically render with `target="_blank" rel="noopener noreferrer"` and open in a new tab
 - Internal links are handled normally
 
 ### iFrame Embed Support
+
 - Out of the box configuration of iframe embeds within markdown.
 - Uses [Rehype Raw](https://github.com/rehypejs/rehype-raw). Disable if using this code in a way where you may not be able to trust the markdown.
 
@@ -195,10 +210,6 @@ For any blog posts that do not contain an image, [this service](https://github.c
 
 ## Inspiration:
 
-[Lee Robinson](https://github.com/leerob/leerob.io)  
+[Lee Robinson](https://github.com/leerob/leerob.io)
 
-[@Mozzius](https://github.com/Mozzius/terrain-fiber)  
-
-
-
-
+[@Mozzius](https://github.com/Mozzius/terrain-fiber)
