@@ -1,6 +1,6 @@
 {
   "short_name": "Amir Ardalan",
-  "name": "Amir Ardalan – Code, design, and ideas from Portland, OR.",
+  "name": "Amir Ardalan – Developer & designer",
   "icons": [
     {
       "src": "/touch-192.png",
@@ -15,7 +15,7 @@
       "purpose": "any maskable"
     }
   ],
-  "start_url": "https://amirardalan.com",
+  "start_url": "amirardalan.com",
   "background_color": "#e4e9f8",
   "display": "standalone",
   "scope": "/",
@@ -25,7 +25,7 @@
       "name": "Amir Ardalan Blog",
       "short_name": "Amir",
       "description": "Front-end developer, UI designer, and React enthusiast.",
-      "url": "https://amirardalan.com",
+      "url": "amirardalan.com",
       "icons": [{ "src": "/touch-192.png", "sizes": "192x192" }]
     }
   ],
