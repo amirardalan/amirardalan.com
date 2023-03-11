@@ -64,7 +64,7 @@ const CanvasLoader: FC = () => {
 
   return (
     <>
-      <span css={styleRandomizeButton} onClick={randomizeTerrain}></span>
+      <button css={styleRandomizeButton} onClick={randomizeTerrain} />
 
       <Canvas
         css={{ animation: 'slideUpSection 1s forwards' }}

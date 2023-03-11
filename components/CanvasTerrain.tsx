@@ -85,7 +85,7 @@ const CanvasTerrain: FC<CanvasTerrainProps> = ({
 
   return (
     <mesh ref={mesh}>
-      <planeBufferGeometry
+      <planeGeometry
         args={[undefined, undefined, detail - 1, detail - 1]}
         ref={ref}
       />
