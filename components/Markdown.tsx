@@ -40,6 +40,7 @@ const BlogMarkdown: FC<BlogMarkdownProps> = ({ markdown }) => {
       border: 'none',
       boxShadow: 'none',
       textShadow: 'none',
+
       '@media(max-width: 768px)': {
         fontSize: 14,
       },
