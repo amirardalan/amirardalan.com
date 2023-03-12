@@ -16,7 +16,6 @@ type CanvasTerrainProps = {
   rotation: number;
   offset: {
     x: number;
-    y: number;
     z: number;
   };
 };
