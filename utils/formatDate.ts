@@ -4,10 +4,10 @@ const formatDate = (date: Date) => {
     timeZone: `${process.env.NEXT_PUBLIC_TIMEZONE}`,
     month: 'long',
     day: 'numeric',
-    year: 'numeric'
-  })
-  
-  return formatDate
-}
+    year: 'numeric',
+  });
 
-export default formatDate
+  return formatDate;
+};
+
+export default formatDate;
