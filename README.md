@@ -103,7 +103,7 @@ If you'd like to contribute to this project or use Prettier with your fork, down
 ### Start the Development Server
 
 ```bash
-npx next dev
+npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000)
