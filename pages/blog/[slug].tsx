@@ -54,7 +54,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 const Post = ({ blogPost, admin, post, feed }) => {
   const styleBlogPost = css({
     '.postDetails': {
-      marginBottom: '2rem',
+      marginBottom: '5rem',
       '.author': {
         span: {
           fontFamily: 'var(--font-secondary)',
@@ -84,6 +84,9 @@ const Post = ({ blogPost, admin, post, feed }) => {
           },
         },
       },
+      '@media(max-width: 1024px)': {
+        marginBottom: '2rem',
+      },
       '@media(max-width: 480px)': {
         flexDirection: 'column',
       },
@@ -105,12 +108,12 @@ const Post = ({ blogPost, admin, post, feed }) => {
         },
       },
       '.teaser': {
-        marginBottom: '2.5rem',
+        marginBottom: '3.5rem',
         fontFamily: 'var(--font-tertiary)',
         fontSize: 22,
         lineHeight: '1.5rem',
         color: 'var(--color-gray)',
-        '@media(max-width: 768px)': {
+        '@media(max-width: 1024px)': {
           marginBottom: '2rem',
           fontSize: 18,
         },
