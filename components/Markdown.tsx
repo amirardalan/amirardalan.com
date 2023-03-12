@@ -1,4 +1,4 @@
-import { type FC, useState } from 'react';
+import { type FC, useState, Key } from 'react';
 import { css } from '@emotion/react';
 import Image from 'next/image';
 
@@ -9,6 +9,7 @@ import rangeParser from 'parse-numeric-range';
 
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+
 import tsx from 'react-syntax-highlighter/dist/cjs/languages/prism/tsx';
 import typescript from 'react-syntax-highlighter/dist/cjs/languages/prism/typescript';
 import scss from 'react-syntax-highlighter/dist/cjs/languages/prism/scss';
@@ -144,9 +145,21 @@ const BlogMarkdown: FC<BlogMarkdownProps> = ({ markdown }) => {
     },
   });
 
+  interface Node {
+    node: object;
+    children: object;
+  }
+
   interface PreNode {
-    node?: any;
-    children: Array<any>;
+    node: Node;
+    children: {
+      position: object;
+      properties: object;
+      tagName: string;
+      type: string;
+      key: Key;
+      props: object[];
+    };
     position: object;
     properties: object;
     tagName: string;
@@ -155,7 +168,7 @@ const BlogMarkdown: FC<BlogMarkdownProps> = ({ markdown }) => {
 
   const MarkdownComponents: object = {
     code({ node, inline, className, ...props }) {
-      const match = /language-(\w+)/.exec(className || '');
+      const hasLang = /language-(\w+)/.exec(className || '');
       const hasMeta = node?.data?.meta;
 
       const applyHighlights: object = (applyHighlights: number) => {
@@ -176,24 +189,24 @@ const BlogMarkdown: FC<BlogMarkdownProps> = ({ markdown }) => {
         }
       };
 
-      return match ? (
-        //@ts-ignore
+      return hasLang ? (
         <SyntaxHighlighter
           style={syntaxTheme}
-          language={match[1]}
+          language={hasLang[1]}
           PreTag="div"
           className="codeStyle"
           showLineNumbers={true}
           wrapLines={hasMeta}
           useInlineStyles={true}
           lineProps={applyHighlights}
-          {...props}
-        />
+        >
+          {props.children}
+        </SyntaxHighlighter>
       ) : (
         <code className={className} {...props} />
       );
     },
-    p: (paragraph: { children?: boolean; node?: any }) => {
+    p: (paragraph: { children?: boolean; node?: Node }) => {
       const { node } = paragraph;
 
       if (node.children[0].tagName === 'img') {
@@ -229,7 +242,7 @@ const BlogMarkdown: FC<BlogMarkdownProps> = ({ markdown }) => {
       }
       return <p>{paragraph.children}</p>;
     },
-    a: (anchor: { href: string; children: Array<string> }) => {
+    a: (anchor: { href: string; children: any }) => {
       if (anchor.href.match('http')) {
         return (
           <a href={anchor.href} target="_blank" rel="noopener noreferrer">
