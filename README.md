@@ -108,18 +108,12 @@ npx next dev
 
 Open [http://localhost:3000](http://localhost:3000)
 
-### Generate a Static Test Build
+### Generate and Run a Static Test Build
 
 Create a local copy of a production build (useful for testing [on-demand ISR](https://nextjs.org/docs/basic-features/data-fetching/incremental-static-regeneration#on-demand-revalidation-beta), `pages/sitemap.xml.tsx` configuration), and [Lighthouse](https://developer.chrome.com/docs/lighthouse/overview/) performance:
 
 ```bash
-npx next build
-```
-
-### Run the Static Test Build
-
-```bash
-npx next start
+npm run test
 ```
 
 ---

@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "test": "next build && next start",
     "build": "next build",
     "start": "next start"
   },
@@ -25,6 +26,7 @@
     "react-markdown": "^8.0.3",
     "react-syntax-highlighter": "^15.5.0",
     "rehype-raw": "^6.1.1",
+    "sharp": "^0.31.3",
     "simplex-noise": "^4.0.0",
     "swr": "^2.1.0",
     "three": "^0.150.1",
