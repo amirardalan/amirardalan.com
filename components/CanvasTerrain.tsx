@@ -1,8 +1,8 @@
-import { type FC, useLayoutEffect, useRef } from 'react';
+import { type FC, RefObject, ReactNode, useLayoutEffect, useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { createNoise2D } from 'simplex-noise';
 import alea from 'alea';
-import { BufferAttribute } from 'three';
+import { BufferAttribute, Mesh, BufferGeometry, Material } from 'three';
 
 type CanvasTerrainProps = {
   theme: {
@@ -14,8 +14,19 @@ type CanvasTerrainProps = {
   texture: number;
   scale: number;
   rotation: number;
-  offset: any;
+  offset: {
+    x: number;
+    y: number;
+    z: number;
+  };
 };
+
+interface Node {
+  node: string;
+  elementsNeedUpdate: boolean;
+  setAttribute: Function;
+  computeVertexNormals: Function;
+}
 
 const generateTerrain = (
   detail: number,
@@ -66,12 +77,12 @@ const CanvasTerrain: FC<CanvasTerrainProps> = ({
 }) => {
   const simplex = createNoise2D(alea(seed));
   const ref = useRef();
-  const mesh: any = useRef();
+  const mesh: RefObject<Mesh<BufferGeometry, Material | Material[]>> = useRef();
 
   useFrame(() => (mesh.current.rotation.y += rotation / 2000));
 
   useLayoutEffect(() => {
-    const node = ref.current as any;
+    const node: Node = ref.current;
     node?.setAttribute(
       'position',
       new BufferAttribute(
