@@ -178,7 +178,9 @@ const Edit = ({ admin, breadcrumb, editPost, getLatestPost }) => {
               <Dropdown
                 label="Category:"
                 value={category}
-                handleChange={(e) => setCategory(e.target.value)}
+                handleChange={(e: {
+                  target: { value: React.SetStateAction<string> };
+                }) => setCategory(e.target.value)}
                 data={categories}
               />
               <div className="checkbox">

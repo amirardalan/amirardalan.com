@@ -1,13 +1,27 @@
-import type { FC, ChangeEventHandler, Key } from 'react';
+import type { FC } from 'react';
 
 type DropdownProps = {
   label: string;
   value: string;
-  handleChange: ChangeEventHandler | any;
-  data: any;
+  handleChange: Function;
+  data: object;
 };
 
-const Dropdown: FC<DropdownProps> = ({ label, value, handleChange, data }) => {
+interface Data {
+  map: Function;
+}
+
+const Dropdown: FC<DropdownProps> = ({
+  label,
+  value,
+  handleChange,
+  data,
+}: {
+  label: string;
+  value: string;
+  handleChange: Function;
+  data: Data;
+}) => {
   return (
     <label className="dropdownLabel">
       <span>{label}</span>
