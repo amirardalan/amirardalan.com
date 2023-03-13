@@ -104,7 +104,7 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
     )
   );
 
-  const searchResults = (search: string, feed: any[]) => {
+  const searchResults = (search: string, feed: object[]) => {
     const categorySearch = search[0] === '#';
     const categoryMatch =
       activeCategories.indexOf(search.slice(1).split(' ')[0]) > -1;

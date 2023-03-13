@@ -7,7 +7,7 @@ import SocialIcons from '@/components/SocialIcons';
 import Timeline from '@/components/Timeline';
 import { aboutContent, timelineContent } from '@/data/content';
 
-type NextPageProps = {
+type AboutPageProps = {
   about: {
     availability: {
       title: string;
@@ -50,7 +50,7 @@ type NextPageProps = {
   timeline: object;
 };
 
-const About: NextPage<NextPageProps> = ({ about, timeline }) => {
+const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
   const styleGridWrapper = css({
     display: 'grid',
     gridTemplateColumns: 'repeat(3, 1fr)',
@@ -303,7 +303,7 @@ const About: NextPage<NextPageProps> = ({ about, timeline }) => {
                 <h3 aria-label={about.contact.title}>{about.contact.title}</h3>
               </li>
               <li>
-                <ContactButton content={about} items={null} />
+                <ContactButton content={about} />
               </li>
             </ul>
           </div>

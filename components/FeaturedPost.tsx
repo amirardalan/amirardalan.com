@@ -3,15 +3,34 @@ import Link from 'next/link';
 import { css } from '@emotion/react';
 
 type FeaturedPostProps = {
-  home: any;
-  featuredPost: any;
-  latestPost: any;
+  home: object;
+  featuredPost: object;
+  latestPost: object;
 };
+
+interface Home {
+  featured: {
+    title: string;
+  };
+  latest: {
+    title: string;
+  };
+}
+
+interface Post {
+  slug?: string;
+  title: string;
+  teaser?: string;
+}
 
 const FeaturedPost: FC<FeaturedPostProps> = ({
   home,
   featuredPost,
   latestPost,
+}: {
+  home: Home;
+  featuredPost: Post;
+  latestPost: Post;
 }) => {
   const styleFeaturedPost = css({
     marginTop: '2.25rem',

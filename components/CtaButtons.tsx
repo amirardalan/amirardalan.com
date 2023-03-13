@@ -3,26 +3,25 @@ import { css } from '@emotion/react';
 import Link from 'next/link';
 
 type CtaButtonsProps = {
-  items: any | null;
+  items: object | any;
 };
 
-export const CtaButtons: FC<CtaButtonsProps> = ({ items }) => {
-  interface Item {
-    path: string;
-    icon: object;
-    title: string;
-    target: string;
-    rel: string;
-    content: string;
-  }
+interface Item {
+  path: string;
+  title: string;
+  icon: object;
+  target: string;
+  rel: string;
+}
 
+export const CtaButtons: FC<CtaButtonsProps> = ({ items }) => {
   return items.map((item: Item, i: Key) => {
     return (
       <Link
         key={i}
         href={item.path}
         aria-label={item.title}
-        className={item?.icon ? `ctaButton ${item.icon}` : 'ctaButton'}
+        className={item.icon ? `ctaButton ${item.icon}` : 'ctaButton'}
         target={item?.target}
         rel={item?.rel}
       >
@@ -33,11 +32,23 @@ export const CtaButtons: FC<CtaButtonsProps> = ({ items }) => {
 };
 
 type ContactButtonProps = {
-  content: any;
-  items: any;
+  content: object;
 };
 
-export const ContactButton: FC<ContactButtonProps> = ({ content }) => {
+interface Content {
+  contact: {
+    email: {
+      title: string;
+    };
+    copiedToClipboard: boolean;
+  };
+}
+
+export const ContactButton: FC<ContactButtonProps> = ({
+  content,
+}: {
+  content: Content;
+}) => {
   const [showEmail, setShowEmail] = useState(false);
   const showEmailOnclick = () => {
     setShowEmail(true);
