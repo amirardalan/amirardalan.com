@@ -3,8 +3,12 @@ import { css } from '@emotion/react';
 import Link from 'next/link';
 
 type CtaButtonsProps = {
-  items: object | any;
+  items: string | object;
 };
+
+interface Map {
+  map: Function;
+}
 
 interface Item {
   path: string;
@@ -14,7 +18,7 @@ interface Item {
   rel: string;
 }
 
-export const CtaButtons: FC<CtaButtonsProps> = ({ items }) => {
+export const CtaButtons: FC<CtaButtonsProps> = ({ items }: { items: Map }) => {
   return items.map((item: Item, i: Key) => {
     return (
       <Link

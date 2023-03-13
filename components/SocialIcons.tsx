@@ -23,7 +23,7 @@ const SocialIcons: FC<SocialiconsProps> = ({ about }) => {
     };
   }
 
-  const GenerateSocialIcons: any = (items: Array<object>) => {
+  const GenerateSocialIcons: Function = (items: Array<object>) => {
     return items.map((item: Item, i: Key) => {
       return (
         <a

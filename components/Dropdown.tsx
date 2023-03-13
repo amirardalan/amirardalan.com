@@ -12,7 +12,7 @@ const Dropdown: FC<DropdownProps> = ({ label, value, handleChange, data }) => {
     <label className="dropdownLabel">
       <span>{label}</span>
       <select value={value} onChange={(e) => handleChange(e)}>
-        {data.map((item) => (
+        {data.map((item: string) => (
           <option key={item} value={item}>
             {item}
           </option>
