@@ -1,4 +1,4 @@
-import { type FC, useState, Key } from 'react';
+import { type FC, Key, ReactNode, useState } from 'react';
 import { css } from '@emotion/react';
 import Image from 'next/image';
 
@@ -27,7 +27,9 @@ SyntaxHighlighter.registerLanguage('json', json);
 SyntaxHighlighter.registerLanguage('lua', lua);
 
 type BlogMarkdownProps = {
-  markdown: any;
+  markdown: {
+    content: string;
+  };
 };
 
 const BlogMarkdown: FC<BlogMarkdownProps> = ({ markdown }) => {
@@ -166,6 +168,10 @@ const BlogMarkdown: FC<BlogMarkdownProps> = ({ markdown }) => {
     type: string;
   }
 
+  interface H3Props {
+    children: ReactNode & { length: number };
+  }
+
   const MarkdownComponents: object = {
     code({ node, inline, className, ...props }) {
       const hasLang = /language-(\w+)/.exec(className || '');
@@ -242,7 +248,7 @@ const BlogMarkdown: FC<BlogMarkdownProps> = ({ markdown }) => {
       }
       return <p>{paragraph.children}</p>;
     },
-    a: (anchor: { href: string; children: any }) => {
+    a: (anchor: { href: string; children: string }) => {
       if (anchor.href.match('http')) {
         return (
           <a href={anchor.href} target="_blank" rel="noopener noreferrer">
@@ -252,7 +258,7 @@ const BlogMarkdown: FC<BlogMarkdownProps> = ({ markdown }) => {
       }
       return <a href={anchor.href}>{anchor.children}</a>;
     },
-    h3: (props: any) => {
+    h3: (props: H3Props) => {
       const arr = props.children;
       let heading = '';
 
@@ -265,6 +271,7 @@ const BlogMarkdown: FC<BlogMarkdownProps> = ({ markdown }) => {
       }
 
       const slug = generateSlug(heading);
+
       return (
         <h3 id={slug}>
           <a href={`#${slug}`} {...props}></a>
