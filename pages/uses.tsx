@@ -9,12 +9,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
 export default function UsesPage({ uses }) {
   return (
-    <Container
-      title={uses.meta.title}
-      description={uses.meta.description}
-      robots="follow, index"
-      date={null}
-    >
+    <Container title={uses.meta.title} description={uses.meta.description}>
       <main className="uses">
         <Uses content={uses} />
       </main>
