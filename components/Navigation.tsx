@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import { type FC, useState } from 'react';
+import { type FC, useState, Key } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import CloseButton from '@/components/CloseButton';
@@ -154,9 +154,17 @@ const Navigation: FC = () => {
     setToggleMobileNav(!toggleMobileNav), disableScroll();
   };
 
+  interface NavItem {
+    path: string;
+    cName: string;
+    aria: string;
+    icon: boolean;
+    title: string;
+  }
+
   const Navitem = () => (
     <nav css={styleNavitem}>
-      {nav.map((item: any, index: number) => {
+      {nav.map((item: NavItem, index: Key) => {
         const isActiveNav = router.asPath === item.path;
         const isBlog =
           router.asPath.includes('/blog/') && item.path === '/blog';
