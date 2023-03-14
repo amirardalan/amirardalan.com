@@ -1,13 +1,12 @@
-import { type FC, RefObject, ReactNode, useLayoutEffect, useRef } from 'react';
+import { type FC, RefObject, useLayoutEffect, useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
+import { Theme } from '@emotion/react';
 import { createNoise2D } from 'simplex-noise';
 import alea from 'alea';
 import { BufferAttribute, Mesh, BufferGeometry, Material } from 'three';
 
 type CanvasTerrainProps = {
-  theme: {
-    canvas: string;
-  };
+  theme: Theme;
   seed: number;
   detail: number;
   height: number;

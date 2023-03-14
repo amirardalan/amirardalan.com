@@ -1,20 +1,18 @@
-import type { FC } from 'react';
+import type { FC, Key } from 'react';
 import Link from 'next/link';
 import formatDate from '@/utils/formatDate';
 import calculateReadTime from '@/utils/calculateReadTime';
 
 type PostProps = {
-  post: any;
+  post: Post;
 };
 
 interface Post {
-  post: {
-    publishedAt: Date;
-    content: string;
-    slug: string;
-    title: string;
-    teaser: string;
-  };
+  publishedAt: Date;
+  content: string;
+  slug: string;
+  title: string;
+  teaser: string;
 }
 
 const Post: FC<PostProps> = ({ post }) => {

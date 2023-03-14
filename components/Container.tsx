@@ -1,9 +1,21 @@
+import type { FC, ReactNode } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import Footer from '@/components/Footer';
 import { metadata } from '@/data/metadata';
 
-export default function Container(props: any) {
+type ContainerProps = {
+  children: ReactNode;
+  title?: string;
+  description?: string;
+  image?: string;
+  type?: string;
+  robots?: string;
+  date?: string;
+  meta?: object;
+};
+
+const Container: FC<ContainerProps> = (props) => {
   const { children, ...customMeta } = props;
   const router = useRouter();
   const meta = {
@@ -54,4 +66,6 @@ export default function Container(props: any) {
       <Footer />
     </>
   );
-}
+};
+
+export default Container;

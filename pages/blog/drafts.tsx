@@ -11,33 +11,6 @@ import prisma from '@/lib/prisma';
 import { GetServerSideProps } from 'next';
 import { Key } from 'react';
 
-export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
-  const session = await getSession({ req });
-  if (!session) {
-    res.statusCode = 403;
-    return { props: { drafts: [] } };
-  }
-
-  const drafts = await prisma.post.findMany({
-    where: {
-      author: { email: session.user.email },
-      published: false,
-    },
-    include: {
-      author: {
-        select: { name: true },
-      },
-    },
-  });
-  return {
-    props: {
-      drafts: JSON.parse(JSON.stringify(drafts)),
-      admin: adminContent,
-      breadcrumb: breadcrumbContent,
-    },
-  };
-};
-
 const Drafts = ({ drafts, admin, breadcrumb }) => {
   const { data: session } = useSession();
   const isLoggedIn =
@@ -53,6 +26,16 @@ const Drafts = ({ drafts, admin, breadcrumb }) => {
     );
   };
 
+  interface Post {
+    id: Key;
+    category: String;
+    publishedAt: Date;
+    content: string;
+    slug: string;
+    title: string;
+    teaser: string;
+  }
+
   draftsList = (
     <>
       <Breadcrumbs />
@@ -61,7 +44,7 @@ const Drafts = ({ drafts, admin, breadcrumb }) => {
           {drafts
             .sort(compareID)
             .reverse()
-            .map((post: { id: Key; category: String }) => (
+            .map((post: Post) => (
               <div key={post.id} className="postDraft">
                 <BlogPost post={post} />
 
@@ -107,3 +90,30 @@ const Drafts = ({ drafts, admin, breadcrumb }) => {
 };
 
 export default Drafts;
+
+export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
+  const session = await getSession({ req });
+  if (!session) {
+    res.statusCode = 403;
+    return { props: { drafts: [] } };
+  }
+
+  const drafts = await prisma.post.findMany({
+    where: {
+      author: { email: session.user.email },
+      published: false,
+    },
+    include: {
+      author: {
+        select: { name: true },
+      },
+    },
+  });
+  return {
+    props: {
+      drafts: JSON.parse(JSON.stringify(drafts)),
+      admin: adminContent,
+      breadcrumb: breadcrumbContent,
+    },
+  };
+};

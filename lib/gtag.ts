@@ -1,6 +1,6 @@
 declare global {
   interface Window {
-    gtag: any;
+    gtag: Function;
   }
 }
 

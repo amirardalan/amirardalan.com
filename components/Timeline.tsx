@@ -5,8 +5,16 @@ import { useInView } from 'react-intersection-observer';
 import { type FC, Key } from 'react';
 
 type TimelineProps = {
-  //TODO: Update to server components so this isn't needed
-  timeline: any;
+  timeline: object & {
+    items?: string;
+    meta?: object & {
+      title: string;
+    };
+    fullStory?: object & {
+      link: string;
+      text: string;
+    };
+  };
 };
 
 const Timeline: FC<TimelineProps> = ({ timeline }) => {
@@ -222,8 +230,18 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
     },
   });
 
-  const generateTimeline = (items: any[]) => {
-    return items.map(({ cName, title, content }: any, i: Key) => (
+  interface Items {
+    map: Function;
+  }
+
+  interface Item {
+    cName: string;
+    title: string;
+    content: string;
+  }
+
+  const generateTimeline: Function = (items: Items) => {
+    return items.map(({ cName, title, content }: Item, i: Key) => (
       <TimelineEntry key={i} cName={cName} title={title} content={content} />
     ));
   };

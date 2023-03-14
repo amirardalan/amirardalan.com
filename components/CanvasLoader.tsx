@@ -1,5 +1,5 @@
 import { type FC, useState, useEffect } from 'react';
-import { useTheme, css } from '@emotion/react';
+import { useTheme, css, Theme } from '@emotion/react';
 import { Canvas } from '@react-three/fiber';
 import CanvasTerrain from '@/components/CanvasTerrain';
 
@@ -28,7 +28,7 @@ const styleRandomizeButton = css({
 });
 
 const CanvasLoader: FC = () => {
-  const theme: any = useTheme();
+  const theme: Theme = useTheme();
 
   const [pixelRatio, setPixelRatio] = useState(null);
 

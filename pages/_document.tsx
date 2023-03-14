@@ -1,6 +1,7 @@
-import { Html, Head, Main, NextScript } from 'next/document';
+import { Html, Head, Main, NextScript, DocumentProps } from 'next/document';
+import type { NextPage } from 'next';
 
-export default function Document() {
+const Document: NextPage<DocumentProps> = () => {
   return (
     <Html lang="en">
       <Head>
@@ -87,4 +88,6 @@ export default function Document() {
       </body>
     </Html>
   );
-}
+};
+
+export default Document;

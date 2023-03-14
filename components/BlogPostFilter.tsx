@@ -1,5 +1,5 @@
 import { type FC, useState } from 'react';
-import { useTheme, css } from '@emotion/react';
+import { useTheme, css, Theme } from '@emotion/react';
 import Image from 'next/image';
 
 import BlogStats from '@/components/BlogStats';
@@ -78,7 +78,7 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
     },
   });
 
-  const theme: any = useTheme();
+  const theme: Theme = useTheme();
 
   const [search, setSearch] = useState('');
 
@@ -104,7 +104,7 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
     )
   );
 
-  const searchResults = (search: string, feed: any[]) => {
+  const searchResults = (search: string, feed: object[]) => {
     const categorySearch = search[0] === '#';
     const categoryMatch =
       activeCategories.indexOf(search.slice(1).split(' ')[0]) > -1;

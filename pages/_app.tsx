@@ -5,7 +5,7 @@ import { SessionProvider } from 'next-auth/react';
 import { useThemeContext } from '@/utils/useThemeContext';
 import { themeLight, themeDark } from '@/styles/theme';
 import { GlobalStyles } from '@/styles/global';
-import { ThemeProvider } from '@emotion/react';
+import { ThemeProvider, Theme } from '@emotion/react';
 import Header from '@/components/Header';
 import useGtag from '@/utils/useGtag';
 import { Analytics } from '@vercel/analytics/react';
@@ -13,7 +13,7 @@ import { Analytics } from '@vercel/analytics/react';
 const App = ({ Component, pageProps }: AppProps<{ session: Session }>) => {
   useGtag(); // Analytics
   const [theme, toggleTheme] = useThemeContext();
-  const themeMode = theme === 'light' ? themeLight : themeDark;
+  const themeMode: Theme = theme === 'light' ? themeLight : themeDark;
 
   return (
     <React.StrictMode>
