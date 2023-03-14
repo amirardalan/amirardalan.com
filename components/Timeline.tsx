@@ -6,11 +6,11 @@ import { type FC, Key } from 'react';
 
 type TimelineProps = {
   timeline: object & {
-    items: string;
-    meta: object & {
+    items?: string;
+    meta?: object & {
       title: string;
     };
-    fullStory: object & {
+    fullStory?: object & {
       link: string;
       text: string;
     };

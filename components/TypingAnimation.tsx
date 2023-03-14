@@ -2,21 +2,17 @@ import React, { type FC, useEffect } from 'react';
 import Typed from 'typed.js';
 
 type TypingAnimationProps = {
-  data: object[];
+  data: any;
 };
 
 interface Options {
-  strings: Array<any>;
+  strings: string[];
   cursorChar: string;
   startDelay: number;
   typeSpeed: number;
   backSpeed: number;
   backDelay: number;
   loop: boolean;
-}
-
-interface Types {
-  options: any;
 }
 
 const TypingAnimation: FC<TypingAnimationProps> = ({ data }) => {

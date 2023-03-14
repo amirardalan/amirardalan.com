@@ -3,9 +3,9 @@ import { useTheme, Theme } from '@emotion/react';
 import Image from 'next/image';
 
 type SocialiconsProps = {
-  about: {
-    social: {
-      items: string;
+  about: object & {
+    social?: object & {
+      items?: string;
     };
   };
 };
