@@ -2,7 +2,7 @@ import React, { type FC, useEffect } from 'react';
 import Typed from 'typed.js';
 
 type TypingAnimationProps = {
-  data: any;
+  data: string;
 };
 
 interface Options {

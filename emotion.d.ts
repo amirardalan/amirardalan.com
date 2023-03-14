@@ -3,7 +3,7 @@ import '@emotion/react';
 declare module '@emotion/react' {
   export interface Theme {
     active?: string;
-    canvas?: any;
+    canvas?: string;
     icons?: {
       github?: string;
       twitter?: string;
