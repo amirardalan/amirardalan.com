@@ -3,9 +3,9 @@ import { css } from '@emotion/react';
 import CountUp from 'react-countup';
 
 type BlogStatsProps = {
-  feed: Array<object>;
-  activeCategories: Array<object>;
-  filteredPosts: Array<object>;
+  feed: object[];
+  activeCategories: string[];
+  filteredPosts: object[];
 };
 
 const BlogStats: FC<BlogStatsProps> = ({

@@ -16,7 +16,7 @@ type BlogPostFilterProps = {
       clear: string;
     };
   };
-  feed: Array<any>;
+  feed: object[];
 };
 
 type PostProps = {
@@ -96,9 +96,13 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
     scrollToTop();
   };
 
+  interface CategoryItem {
+    category: string;
+  }
+
   const activeCategories = Array.from(
     new Set(
-      feed.map((post) => {
+      feed.map((post: CategoryItem) => {
         return post.category;
       })
     )
