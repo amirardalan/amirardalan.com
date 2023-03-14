@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 
 import Image from 'next/image';
-import { useTheme } from '@emotion/react';
+import { useTheme, Theme } from '@emotion/react';
 
 type CloseIconProps = {
   width: number;
@@ -9,7 +9,7 @@ type CloseIconProps = {
 };
 
 const CloseIcon: FC<CloseIconProps> = ({ width, height }) => {
-  const theme: any = useTheme();
+  const theme: Theme = useTheme();
 
   return (
     <Image

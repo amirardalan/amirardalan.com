@@ -1,14 +1,17 @@
 import { type FC, Key } from 'react';
-import { useTheme } from '@emotion/react';
+import { useTheme, Theme } from '@emotion/react';
 import Image from 'next/image';
 
 type SocialiconsProps = {
-  //TODO: Update to server components to this isn't needed
-  about: any;
+  about: {
+    social: {
+      items: string;
+    };
+  };
 };
 
 const SocialIcons: FC<SocialiconsProps> = ({ about }) => {
-  const theme: any = useTheme();
+  const theme: Theme = useTheme();
   const isDarkTheme: boolean = theme.active === 'dark';
 
   interface Item {

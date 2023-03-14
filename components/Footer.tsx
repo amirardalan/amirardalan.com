@@ -1,12 +1,14 @@
 import { type FC, Key } from 'react';
-import { css, useTheme } from '@emotion/react';
+import { css, useTheme, Theme } from '@emotion/react';
 import { footer } from '@/data/content';
 import { nav } from '@/data/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 
-const Footer: FC = () => {
-  const theme: any = useTheme();
+type FooterProps = {};
+
+const Footer: FC<FooterProps> = () => {
+  const theme: Theme = useTheme();
   const isDarkTheme = theme.active === 'dark';
 
   const styleFooterWrapper = css({
@@ -110,8 +112,22 @@ const Footer: FC = () => {
     flexDirection: 'column',
   });
 
-  const generateFooterLinks = (items: any[]) => {
-    return items.map((item, i: Key) => {
+  interface FooterLinks {
+    map: Function;
+  }
+
+  interface LinksItem {
+    title: string;
+    path: string;
+    cName: string;
+    icon: {
+      dark: string;
+      light: string;
+    };
+  }
+
+  const generateFooterLinks = (footerLinks: FooterLinks) => {
+    return footerLinks.map((item: LinksItem, i: Key) => {
       return (
         <li key={i}>
           <a
@@ -138,6 +154,12 @@ const Footer: FC = () => {
     });
   };
 
+  interface NavItem {
+    path: string;
+    title: string;
+    cName: string;
+  }
+
   return (
     <footer css={styleFooterWrapper}>
       <div css={styleFooter}>
@@ -147,7 +169,7 @@ const Footer: FC = () => {
         <div css={styleFooterNav} className="grid">
           <h4>{footer.headings.nav}</h4>
           <ul>
-            {nav.map((item: any, i: number) => {
+            {nav.map((item: NavItem, i: number) => {
               return (
                 <li key={i}>
                   <Link
