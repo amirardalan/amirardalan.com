@@ -1,4 +1,4 @@
-import type { FC, ReactNode } from 'react';
+import { FC, ReactNode } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import Footer from '@/components/Footer';

@@ -1,4 +1,4 @@
-import React, { type FC, useEffect } from 'react';
+import React, { FC, useEffect } from 'react';
 import Typed from 'typed.js';
 
 type TypingAnimationProps = {
@@ -22,8 +22,8 @@ const TypingAnimation: FC<TypingAnimationProps> = ({ data }) => {
       cursorChar: '▌',
       startDelay: 500,
       typeSpeed: 90,
-      backSpeed: 20,
-      backDelay: 5000,
+      backSpeed: 30,
+      backDelay: 4800,
       loop: true,
     };
     const typed = new Typed('.typingAnimation', options);

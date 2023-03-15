@@ -1,4 +1,4 @@
-import { type FC, Key } from 'react';
+import { FC, Key } from 'react';
 import { useTheme, Theme } from '@emotion/react';
 import Image from 'next/image';
 

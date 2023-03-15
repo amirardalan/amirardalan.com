@@ -1,4 +1,4 @@
-import React, { type FC, type MouseEventHandler, useState } from 'react';
+import { FC, MouseEventHandler, useState } from 'react';
 
 type BlogPostDeleteProps = {
   handleDeletion: MouseEventHandler;

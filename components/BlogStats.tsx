@@ -1,4 +1,4 @@
-import type { FC } from 'react';
+import { FC } from 'react';
 import { css } from '@emotion/react';
 import CountUp from 'react-countup';
 

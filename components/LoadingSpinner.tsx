@@ -1,4 +1,4 @@
-import type { FC } from 'react';
+import { FC } from 'react';
 
 const LoadingSpinner: FC = () => {
   return (

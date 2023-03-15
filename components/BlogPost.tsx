@@ -1,4 +1,4 @@
-import type { FC, Key } from 'react';
+import type { FC } from 'react';
 import Link from 'next/link';
 import formatDate from '@/utils/formatDate';
 import calculateReadTime from '@/utils/calculateReadTime';

@@ -1,7 +1,7 @@
-import { css } from '@emotion/react';
-import { type FC, useState, Key } from 'react';
+import { FC, useState, Key } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { css } from '@emotion/react';
 import CloseButton from '@/components/CloseButton';
 import Logo from '@/components/Logo';
 import { nav } from '@/data/navigation';

@@ -1,4 +1,4 @@
-import type { NextPage } from 'next';
+import { NextPage } from 'next';
 import { css } from '@emotion/react';
 import { homeContent } from '@/data/content';
 import Container from '@/components/Container';
@@ -8,11 +8,36 @@ import { CtaButtons } from '@/components/CtaButtons';
 
 import dynamic from 'next/dynamic';
 const CanvasLoader = dynamic(() => import('@/components/CanvasLoader'), {
-  ssr: false,
+  ssr: true,
 });
 
 import { GetStaticProps } from 'next';
 import prisma from '@/lib/prisma';
+
+export const getStaticProps: GetStaticProps = async () => {
+  try {
+    const [featuredPost, latestPost] = await prisma.$transaction([
+      prisma.post.findFirst({
+        where: { featured: true, published: true },
+        select: { title: true, teaser: true, slug: true },
+      }),
+      prisma.post.findFirst({
+        where: { featured: false, published: true },
+        orderBy: { publishedAt: 'desc' },
+        select: { title: true, teaser: true, slug: true },
+      }),
+    ]);
+    return {
+      props: {
+        home: homeContent,
+        featuredPost: featuredPost,
+        latestPost: latestPost,
+      },
+    };
+  } catch {
+    return { props: { home: homeContent } };
+  }
+};
 
 type HomeProps = {
   home: {
@@ -123,28 +148,3 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
 };
 
 export default Home;
-
-export const getStaticProps: GetStaticProps = async () => {
-  try {
-    const [featuredPost, latestPost] = await prisma.$transaction([
-      prisma.post.findFirst({
-        where: { featured: true, published: true },
-        select: { title: true, teaser: true, slug: true },
-      }),
-      prisma.post.findFirst({
-        where: { featured: false, published: true },
-        orderBy: { publishedAt: 'desc' },
-        select: { title: true, teaser: true, slug: true },
-      }),
-    ]);
-    return {
-      props: {
-        home: homeContent,
-        featuredPost: featuredPost,
-        latestPost: latestPost,
-      },
-    };
-  } catch {
-    return { props: { home: homeContent } };
-  }
-};

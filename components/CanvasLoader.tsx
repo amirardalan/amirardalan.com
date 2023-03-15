@@ -1,4 +1,4 @@
-import { type FC, useState, useEffect } from 'react';
+import { FC, useState, useEffect } from 'react';
 import { useTheme, css, Theme } from '@emotion/react';
 import { Canvas } from '@react-three/fiber';
 import CanvasTerrain from '@/components/CanvasTerrain';

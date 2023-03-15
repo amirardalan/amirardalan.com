@@ -1,4 +1,4 @@
-import { type FC, useState } from 'react';
+import { FC, useState } from 'react';
 import { css } from '@emotion/react';
 import Image from 'next/image';
 import { donate } from '@/data/content';

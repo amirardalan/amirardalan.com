@@ -1,4 +1,4 @@
-import { type FC, RefObject, useLayoutEffect, useRef } from 'react';
+import { FC, RefObject, useLayoutEffect, useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { Theme } from '@emotion/react';
 import { createNoise2D } from 'simplex-noise';

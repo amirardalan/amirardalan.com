@@ -1,4 +1,4 @@
-import { type FC, useState, Key } from 'react';
+import { FC, useState, Key } from 'react';
 import { css } from '@emotion/react';
 import Link from 'next/link';
 

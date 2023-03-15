@@ -1,4 +1,4 @@
-import React, { type FC } from 'react';
+import React, { FC } from 'react';
 import { css } from '@emotion/react';
 import { logo } from '@/data/content';
 import { useRouteStatus } from '@/utils/useLoadingIndicator';

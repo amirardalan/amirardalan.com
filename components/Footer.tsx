@@ -1,4 +1,4 @@
-import { type FC, Key } from 'react';
+import { FC, Key } from 'react';
 import { css, useTheme, Theme } from '@emotion/react';
 import { footer } from '@/data/content';
 import { nav } from '@/data/navigation';
