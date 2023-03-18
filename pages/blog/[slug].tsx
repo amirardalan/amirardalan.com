@@ -366,11 +366,10 @@ const Post = ({ blogPost, admin, post, feed }) => {
   };
 
   // Set OG Image for blog posts. Use first image from post, otherwise dynamically generate one.
-  const hasImage = post.content
+  const metaImage = post.content
     .replace(/`([^`]*)/g, '')
     .match(/!\[.*?\]\((.*?)\)/)
-    ? `${process.env.NEXT_PUBLIC_SITE_URL}` +
-      post.content.match(/!\[.*?\]\((.*?)\)/)[1]
+    ? post.content.match(/!\[.*?\]\((.*?)\)/)[1]
     : `${process.env.NEXT_PUBLIC_OG_IMAGE_URL}/${encodeURIComponent(
         post.title
       ).replace(/\./g, '%2E')}?fontSize=150px`;
@@ -448,7 +447,7 @@ const Post = ({ blogPost, admin, post, feed }) => {
     <Container
       title={title + blogPost?.meta?.title}
       description={post?.teaser}
-      image={hasImage}
+      image={metaImage}
       date={publishDate}
       robots={isPublished ? 'follow, index' : 'noindex'}
     >

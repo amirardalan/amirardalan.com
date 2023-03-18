@@ -46,7 +46,7 @@ const Container: FC<ContainerProps> = (props) => {
         <meta property="og:site_name" content={metadata.name} />
         <meta property="og:description" content={meta.description} />
         <meta property="og:title" content={meta.title} />
-        <meta property="og:image" content={meta.image} />
+        <meta property="og:image" content={metadata.image} />
 
         <meta name="description" content={meta.description} />
         <meta name="thumbnail" property="og:image" content={meta.image} />
