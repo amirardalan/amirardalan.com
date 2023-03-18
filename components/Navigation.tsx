@@ -1,12 +1,17 @@
 import { FC, useState, Key } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { css } from '@emotion/react';
+import { css, useTheme, Theme } from '@emotion/react';
 import CloseButton from '@/components/CloseButton';
 import Logo from '@/components/Logo';
 import { nav } from '@/data/navigation';
+import dynamic from 'next/dynamic';
+const GitHubButton = dynamic(() => import('react-github-btn'), {
+  ssr: false,
+});
 
 const Navigation: FC = () => {
+  const theme: Theme = useTheme();
   const router = useRouter();
 
   const styleMainNav = css({
@@ -98,6 +103,7 @@ const Navigation: FC = () => {
   const styleNavitem = css({
     position: 'relative',
     display: 'flex',
+    alignItems: 'center',
     '&:after': {
       borderBottom: '1px solid var(--color-primary)',
       width: '100%',
@@ -138,6 +144,16 @@ const Navigation: FC = () => {
     },
     '@media (max-width: 768px) and (max-height: 600px)': {
       display: 'none',
+    },
+  });
+  const styleGhButton = css({
+    margin: '.25rem 1rem 0 1rem',
+    display: 'flex',
+    width: '100%',
+    justifyContent: 'flex-start',
+    alignSelf: 'left',
+    '@media (max-width: 768px)': {
+      marginTop: '.65rem',
     },
   });
 
@@ -183,6 +199,17 @@ const Navigation: FC = () => {
           </Link>
         );
       })}
+      <div css={styleGhButton}>
+        <GitHubButton
+          href="https://github.com/amirardalan/amirardalan.com"
+          data-color-scheme={theme.star}
+          data-icon="octicon-star"
+          data-show-count="false"
+          aria-label="Star amirardalan/amirardalan.com on GitHub"
+        >
+          Star
+        </GitHubButton>
+      </div>
     </nav>
   );
 
@@ -218,9 +245,9 @@ const Navigation: FC = () => {
       <button
         css={styleMobileNavButton}
         onClick={toggleMenu}
-        className={toggleMobileNav ? 'open' : null}
+        className={toggleMobileNav ? 'open' : ''}
         aria-label="Navigation Menu"
-        aria-expanded={toggleMobileNav ? 'true' : 'false'}
+        aria-expanded={toggleMobileNav}
       >
         <NavMenuControl />
       </button>
