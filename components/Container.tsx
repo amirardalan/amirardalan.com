@@ -46,10 +46,9 @@ const Container: FC<ContainerProps> = (props) => {
         <meta property="og:site_name" content={metadata.name} />
         <meta property="og:description" content={meta.description} />
         <meta property="og:title" content={meta.title} />
-        <meta property="og:image" content={metadata.image} />
-
         <meta name="description" content={meta.description} />
         <meta name="thumbnail" property="og:image" content={meta.image} />
+
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content={metadata.twitterHandle} />
         <meta name="twitter:title" content={meta.title} />
