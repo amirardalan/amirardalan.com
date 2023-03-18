@@ -47,7 +47,6 @@ const Document: NextPage<DocumentProps> = () => {
           type="font/woff2"
           crossOrigin="anonymous"
         />
-        <link rel="icon" href="/favicon.png" />
         <link rel="apple-touch-icon" href="/touch-192.png" />
         <link rel="manifest" href="/manifest.json" />
         <meta httpEquiv="content-type" content="text/html; charset=utf-8" />

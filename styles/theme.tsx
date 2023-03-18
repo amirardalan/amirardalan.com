@@ -1,5 +1,6 @@
 export const themeLight = {
   active: 'light',
+  favicon: '/favicon-light.png',
   canvas: '#7e37a4',
   gh: 'dark',
   icons: {
@@ -19,6 +20,7 @@ export const themeLight = {
 
 export const themeDark = {
   active: 'dark',
+  favicon: '/favicon-dark.png',
   canvas: '#3dffc5',
   star: 'light',
   icons: {
