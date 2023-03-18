@@ -208,7 +208,7 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
       fontFamily: 'var(--font-secondary)',
       fontStyle: 'normal',
       fontSize: 16,
-      color: 'var(--color-light)',
+      color: 'var(--color-text)',
       marginBottom: '.25rem',
     },
     li: {
