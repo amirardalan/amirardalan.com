@@ -32,7 +32,6 @@ const Container: FC<ContainerProps> = (props) => {
       <Head>
         <title>{meta.title}</title>
         <meta name="robots" content={meta.robots} />
-
         <meta
           property="og:url"
           content={`${process.env.NEXT_PUBLIC_SITE_URL}${router.asPath}`}
@@ -41,14 +40,16 @@ const Container: FC<ContainerProps> = (props) => {
           rel="canonical"
           href={`${process.env.NEXT_PUBLIC_SITE_URL}${router.asPath}`}
         />
-
         <meta property="og:type" content={meta.type} />
         <meta property="og:site_name" content={metadata.name} />
         <meta property="og:description" content={meta.description} />
         <meta property="og:title" content={meta.title} />
         <meta name="description" content={meta.description} />
-        <meta name="thumbnail" property="og:image" content={meta.image} />
-
+        <meta
+          name="thumbnail"
+          property="og:image"
+          content={meta.image === metadata.image ? metadata.image : meta.image}
+        />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content={metadata.twitterHandle} />
         <meta name="twitter:title" content={meta.title} />
