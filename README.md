@@ -32,7 +32,8 @@ This is my personal portfolio and blog. You may find the CMS portion and some of
 
 ### Manifest.json
 
-Update `public/manifest.json`. Fill out information relevant to your web app. _Note:_ The latest version of iOS Safari uses `theme_color` from this file as the background color for the notch area of iPhones and the area behind the background when the site is scrolled past the bottom with iOS's elastic scroll effect.
+Update `public/manifest.json`. Fill out information relevant to your web app.  
+Note: I've ommited `theme_color` to allow Safari to match the background and notch area according to the app background color, which works great for light and dark mode. Hopefully w3c will [officially add a way](https://github.com/w3c/manifest/issues/1045) to control this ourselves in the future.
 
 ---
 
