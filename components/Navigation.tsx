@@ -145,13 +145,14 @@ const Navigation: FC = () => {
     },
   });
   const styleGhButton = css({
-    margin: '.25rem 1rem 0 1rem',
+    margin: '.25rem 2rem 0 1.8rem',
     display: 'flex',
     width: '100%',
     justifyContent: 'flex-start',
     alignSelf: 'left',
     '@media (max-width: 768px)': {
       marginTop: '.65rem',
+      marginLeft: '2rem',
     },
   });
 
