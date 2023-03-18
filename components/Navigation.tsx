@@ -1,9 +1,10 @@
-import { FC, useState, Key } from 'react';
+import { FC, useState, useEffect, Key } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { css, useTheme, Theme } from '@emotion/react';
 import CloseButton from '@/components/CloseButton';
 import Logo from '@/components/Logo';
+import { useMediaQuery } from '@/utils/useMediaQuery';
 import { nav } from '@/data/navigation';
 import GitHubButton from 'react-github-btn';
 
@@ -154,18 +155,26 @@ const Navigation: FC = () => {
     },
   });
 
-  // Mobile Menu
-  const [toggleDisableScrolling, setToggleDisableScrolling] = useState(false);
-  const disableScroll = () => {
-    setToggleDisableScrolling(!toggleDisableScrolling);
-    toggleDisableScrolling
-      ? (document.body.style.overflow = 'scroll')
-      : (document.body.style.overflow = 'hidden');
+  const isMobile = useMediaQuery(768);
+  const [scrollDisabled, setScrollDisabled] = useState(false);
+  const [toggleMenu, setToggleMenu] = useState(false);
+
+  const handleToggleMenu = () => {
+    setToggleMenu(!toggleMenu);
+    handleDisableScroll();
   };
-  const [toggleMobileNav, setToggleMobileNav] = useState(false);
-  const toggleMenu = () => {
-    setToggleMobileNav(!toggleMobileNav), disableScroll();
+
+  const handleDisableScroll = () => {
+    toggleMenu ? setScrollDisabled(true) : setScrollDisabled(false);
   };
+
+  useEffect(() => {
+    !isMobile ? setToggleMenu(false) : null;
+
+    isMobile && toggleMenu
+      ? (document.body.style.overflowY = 'hidden')
+      : (document.body.style.overflowY = 'scroll');
+  }, [isMobile, toggleMenu]);
 
   interface NavItem {
     path: string;
@@ -186,7 +195,7 @@ const Navigation: FC = () => {
           <Link
             href={item.path}
             key={index}
-            onClick={toggleMobileNav ? toggleMenu : null}
+            onClick={handleToggleMenu}
             className={
               isActiveNav || isBlog ? item.cName + ' active' : item.cName
             }
@@ -199,33 +208,31 @@ const Navigation: FC = () => {
       <div css={styleGhButton}>
         <GitHubButton
           href="https://github.com/amirardalan/amirardalan.com"
-          data-color-scheme={theme.star}
-          data-icon="octicon-star"
-          data-show-count="false"
-          aria-label="Star amirardalan/amirardalan.com on GitHub"
+          data-color-scheme={theme.gh}
+          aria-label="View amirardalan.com on GitHub"
         >
-          Star
+          GitHub
         </GitHubButton>
       </div>
     </nav>
   );
 
   const NavMobileMenu = () => {
-    if (toggleMobileNav) {
+    if (toggleMenu) {
       return (
         <div css={styleMobileNavWrapper}>
           <Navitem />
           <div css={styleMobileNavSecondary}>
             <Logo />
           </div>
-          <button className="closeArea" onClick={toggleMenu} />
+          <button className="closeArea" onClick={handleToggleMenu} />
         </div>
       );
     } else return null;
   };
 
   const NavMenuControl = () => {
-    if (toggleMobileNav) {
+    if (toggleMenu) {
       return (
         <div className="menuClose">
           <CloseButton width={28} height={28} />
@@ -241,10 +248,10 @@ const Navigation: FC = () => {
       </div>
       <button
         css={styleMobileNavButton}
-        onClick={toggleMenu}
-        className={toggleMobileNav ? 'open' : ''}
+        onClick={handleToggleMenu}
+        className={toggleMenu ? 'open' : ''}
         aria-label="Navigation Menu"
-        aria-expanded={toggleMobileNav}
+        aria-expanded={toggleMenu}
       >
         <NavMenuControl />
       </button>

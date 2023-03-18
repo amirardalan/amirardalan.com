@@ -52,7 +52,7 @@ const Header: FC<HeaderProps> = ({ toggleTheme }) => {
     a: { textDecoration: 'none' },
     '.headerRight': {
       display: 'flex',
-      width: 407.72,
+      width: 424,
       flexDirection: 'row',
       alignItems: 'center',
       opacity: 0,
