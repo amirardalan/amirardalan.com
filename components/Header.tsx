@@ -3,13 +3,12 @@ import { css } from '@emotion/react';
 import Navigation from '@/components/Navigation';
 import Link from 'next/link';
 import Logo from '@/components/Logo';
-
 import dynamic from 'next/dynamic';
 const ThemeToggle = dynamic(() => import('@/components/ThemeToggle'), {
   ssr: false,
 });
 const BlogAdmin = dynamic(() => import('@/components/BlogAdmin'), {
-  ssr: false,
+  ssr: true,
 });
 
 type HeaderProps = {
@@ -42,7 +41,7 @@ const Header: FC<HeaderProps> = ({ toggleTheme }) => {
     justifyContent: 'space-between',
     a: { textDecoration: 'none' },
     '.headerRight': {
-      minWidth: '327.2px', // Fix header content shifting
+      minWidth: '333.75px', // Fix header content shifting
       display: 'flex',
       flexDirection: 'row',
       alignItems: 'center',

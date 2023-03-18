@@ -4,6 +4,7 @@ declare module '@emotion/react' {
   export interface Theme {
     active?: string;
     canvas?: string;
+    star?: string;
     icons?: {
       github?: string;
       twitter?: string;
