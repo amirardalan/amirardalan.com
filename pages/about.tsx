@@ -1,3 +1,4 @@
+import { Key, ReactNode } from 'react';
 import { NextPage, GetStaticProps } from 'next';
 import { css } from '@emotion/react';
 import Container from '@/components/Container';
@@ -13,10 +14,12 @@ type AboutPageProps = {
       title: string;
       text: string;
       text2: string;
+      title2: string;
       link: string;
+      items: string[];
     };
     stack: {
-      items: string;
+      items: string[];
     };
     social: {
       title: string;
@@ -26,11 +29,11 @@ type AboutPageProps = {
     };
     skills: {
       title: string;
-      items: string;
+      items: string[];
     };
     experience: {
       title: string;
-      items: string;
+      items: string[];
     };
     avatar: {
       img: string;
@@ -119,11 +122,9 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
       },
       'ul li': {
         color: 'var(--color-gray)',
-        fontSize: 14,
         strong: {
           color: 'var(--color-heading)',
           fontFamily: 'var(--font-secondary)',
-          fontSize: 16,
         },
       },
       '.skills': {
@@ -143,7 +144,6 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
         fontFamily: 'var(--font-tertiary)',
         li: {
           marginBottom: '1.2rem',
-          fontSize: 18,
           '@media(min-width: 769px)': {
             fontSize: 16,
           },
@@ -153,13 +153,8 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
         fontFamily: 'var(--font-secondary)',
         color: 'var(--color-heading)',
         fontSize: 18,
-        '.title': {
-          fontSize: 18,
-          color: 'var(--color-text)',
-        },
-        '.text': {
-          fontFamily: 'var(--font-tertiary)',
-          fontStyle: 'italic',
+        '.subheading': {
+          marginTop: '1rem',
         },
       },
       '@media(max-width: 768px)': {
@@ -208,9 +203,28 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
       },
     },
   });
+  const styleAvailability = css({
+    h4: {
+      fontFamily: 'var(--font-secondary)',
+      fontStyle: 'normal',
+      fontSize: 16,
+      color: 'var(--color-light)',
+      marginBottom: '.25rem',
+    },
+    li: {
+      fontFamily: 'var(--font-tertiary)',
+      fontStyle: 'normal',
+      fontSize: 13,
+      fontWeight: 400,
+    },
+  });
 
-  const GenerateListItems = (items) => {
-    return items.map((item: string, i: number) => {
+  interface Items {
+    map: Function;
+  }
+
+  const generateListItems = (items: Items) => {
+    return items.map((item: string, i: Key) => {
       return <li key={i}>{item}</li>;
     });
   };
@@ -243,13 +257,13 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
               <li>
                 <h3 aria-label={about.skills.title}>{about.skills.title}</h3>
               </li>
-              {GenerateListItems(about.skills.items)}
+              {generateListItems(about.skills.items)}
             </ul>
             <ul className="skills">
               <li>
                 <h3 aria-hidden="true">&nbsp;</h3>
               </li>
-              {GenerateListItems(about.stack.items)}
+              {generateListItems(about.stack.items)}
             </ul>
           </div>
           <div className="grid">
@@ -259,7 +273,7 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
                   {about.experience.title}
                 </h3>
               </li>
-              {GenerateListItems(about.experience.items)}
+              {generateListItems(about.experience.items)}
             </ul>
           </div>
           <div className="grid">
@@ -280,9 +294,12 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
                 </a>
                 .
               </li>
-              {/* <li className="text">
-                  {about.availability.location}
-                </li> */}
+              <ul css={styleAvailability} className="subheading">
+                <li>
+                  <h4>{about.availability.title2}</h4>
+                </li>
+                {generateListItems(about.availability.items)}
+              </ul>
             </ul>
           </div>
           <div className="grid">

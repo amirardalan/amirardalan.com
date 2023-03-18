@@ -128,11 +128,11 @@ export const aboutContent = {
   },
   bio: {
     subheading: `Hey there, I'm Amir! 👋`,
-    content: `I design and build web apps with a focus on performance and accessibility. I also blog about my journey as a web developer and publish code tutorials and guides.`,
+    content: `I design and build web apps with a focus on performance and accessibility. I use this blog to learn in public, share useful tutorials and guides, and document my journey as a developer.`,
     items: [
       {
         path: '/resume',
-        title: 'Download Resume',
+        title: 'View Resume',
         rel: 'noopener noreferrer',
         target: '_blank',
         icon: 'download',
@@ -143,30 +143,30 @@ export const aboutContent = {
     title: 'Resume',
   },
   skills: {
-    title: 'Skills / Tools',
+    title: 'Proficiencies',
     items: [
-      'Font-end',
-      'React',
+      'Font-end dev',
+      'React.js',
       'Next.js',
       'TypeScript',
       'JavaScript',
-      'HTML',
-      'CSS / SCSS',
-      'UI Design',
+      'HTML & CSS',
+      'Tailwind CSS',
+      'User Interface',
       'Performance',
       'Accessibility',
     ],
   },
   stack: {
     items: [
-      'Node',
-      'Emotion',
+      'Node.js',
       'Three.js',
       'Prisma ORM',
       'PostgreSQL',
-      'Jest',
-      'SWR',
       'Git',
+      'SWR',
+      'SEO',
+      'TDD',
       'Vercel',
       'Supabase',
     ],
@@ -179,11 +179,18 @@ export const aboutContent = {
     ],
   },
   availability: {
-    title: 'Currently working on',
+    title: 'Current Project',
     text: 'Application development @',
     text2: 'Nike Innovation Center',
+    title2: 'Responsibilities:',
     location: 'Remote or in-office in Portland, Ore. area.',
     link: 'https://lebronjamesinnovationcenter.nike.com/',
+    items: [
+      '• Rapid prototyping modern, full stack applications and tools',
+      '• Digitally innovating utilizing bleeding-edge browser technologies',
+      '• Exploring new and creative methods for building complex features',
+      '• Collaborating with UX and Design teams',
+    ],
   },
   contact: {
     title: "Let's talk",
@@ -217,7 +224,7 @@ export const timelineContent = {
   },
   items: [
     {
-      title: 'Application Developer @ Nike',
+      title: 'Application Developer @ Nike (via CDW)',
       content:
         'Developing application prototypes and tools for Nike Innovation Center utilizing modern front-end technologies.',
       cName: 'event',
