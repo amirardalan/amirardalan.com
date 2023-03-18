@@ -5,10 +5,7 @@ import { css, useTheme, Theme } from '@emotion/react';
 import CloseButton from '@/components/CloseButton';
 import Logo from '@/components/Logo';
 import { nav } from '@/data/navigation';
-import dynamic from 'next/dynamic';
-const GitHubButton = dynamic(() => import('react-github-btn'), {
-  ssr: false,
-});
+import GitHubButton from 'react-github-btn';
 
 const Navigation: FC = () => {
   const theme: Theme = useTheme();
