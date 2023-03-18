@@ -20,6 +20,10 @@
   "display": "standalone",
   "scope": "/",
   "theme_color": "#262738",
+  "theme_colors": [
+    { "color": "#e4e9f8" },
+    { "color": "#262738", "media": "(prefers-color-scheme: dark)" }
+  ],
   "shortcuts": [
     {
       "name": "Amir Ardalan Blog",
