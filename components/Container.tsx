@@ -27,6 +27,8 @@ const Container: FC<ContainerProps> = (props) => {
     ...customMeta,
   };
 
+  const metaImage = meta.image ? meta.image : metadata.image;
+
   return (
     <>
       <Head>
@@ -45,16 +47,13 @@ const Container: FC<ContainerProps> = (props) => {
         <meta property="og:description" content={meta.description} />
         <meta property="og:title" content={meta.title} />
         <meta name="description" content={meta.description} />
-        <meta
-          name="thumbnail"
-          property="og:image"
-          content={meta.image === metadata.image ? metadata.image : meta.image}
-        />
+        <meta property="og:image" content={metaImage} />
+        <meta name="thumbnail" property="og:image" content={metaImage} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content={metadata.twitterHandle} />
         <meta name="twitter:title" content={meta.title} />
         <meta name="twitter:description" content={meta.description} />
-        <meta name="twitter:image" content={meta.image} />
+        <meta name="twitter:image" content={metaImage} />
         <meta name="twitter:image:alt" content={meta.title} />
         {meta.date && (
           <meta property="article:published_time" content={meta.date} />
