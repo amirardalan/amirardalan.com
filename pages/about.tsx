@@ -209,13 +209,15 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
       fontStyle: 'normal',
       fontSize: 16,
       color: 'var(--color-text)',
-      marginBottom: '.25rem',
+      marginBottom: '1rem',
     },
     li: {
       fontFamily: 'var(--font-tertiary)',
       fontStyle: 'normal',
       fontSize: 13,
       fontWeight: 400,
+      lineHeight: '1.2rem',
+      marginBottom: '.5rem',
     },
   });
 
