@@ -16,6 +16,12 @@ type HeaderProps = {
 };
 
 const Header: FC<HeaderProps> = ({ toggleTheme }) => {
+  const styleToggleSkeleton = css({
+    display: 'flex',
+    alignSelf: 'center',
+    minHeight: 26,
+    minWidth: 42,
+  });
   const styleHeaderWrapper = css({
     padding: '2rem 4rem 0',
     position: 'sticky',
@@ -34,6 +40,10 @@ const Header: FC<HeaderProps> = ({ toggleTheme }) => {
     },
   });
   const styleHeader = css({
+    '@keyframes fadein': {
+      from: { opacity: 0 },
+      to: { opacity: 1 },
+    },
     paddingBottom: '1rem',
     paddingTop: '1rem',
     height: 'auto',
@@ -41,10 +51,12 @@ const Header: FC<HeaderProps> = ({ toggleTheme }) => {
     justifyContent: 'space-between',
     a: { textDecoration: 'none' },
     '.headerRight': {
-      minWidth: '333.75px', // Fix header content shifting
       display: 'flex',
+      width: 407.72,
       flexDirection: 'row',
       alignItems: 'center',
+      opacity: 0,
+      animation: 'fadein 1s forwards',
       '@media (max-width: 768px)': {
         flexDirection: 'row-reverse',
         minWidth: 'unset',
@@ -75,7 +87,9 @@ const Header: FC<HeaderProps> = ({ toggleTheme }) => {
           </Link>
           <div className="headerRight">
             <Navigation />
-            <ThemeToggle toggleTheme={toggleTheme} />
+            <div css={styleToggleSkeleton}>
+              <ThemeToggle toggleTheme={toggleTheme} />
+            </div>
           </div>
         </div>
       </header>
