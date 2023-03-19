@@ -7,18 +7,7 @@ declare module '@emotion/react' {
     canvas?: string;
     gh?: string;
     icons?: {
-      github?: string;
-      twitter?: string;
-      linkedin?: string;
-      codepen?: string;
-      download?: string;
-      external?: string;
-      externalAlt?: string;
-      search?: string;
-      email?: string;
-      error?: string;
-      info?: string;
-      close?: string;
+      [key: string]: string;
     };
   }
 }
