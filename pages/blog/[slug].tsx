@@ -347,11 +347,13 @@ const Post = ({ blogPost, admin, post, feed }) => {
   const latestPostID = feed[feed?.length - 1].id;
   const latestPost = latestPostID === post.id;
 
-  const isEdited = post.editedAt.slice(0, 10) > post.publishedAt.slice(0, 10);
+  const isEdited = post.editedAt?.slice(0, 10) > post.publishedAt?.slice(0, 10);
   const showEdited = post.showEdited;
   const publishDate = formatDate(post.publishedAt);
-  const editDate = formatDate(post.editedAt);
-  const prevEditDate = formatDate(post.postHistory[0].editedAt);
+  const editDate = formatDate(post?.editedAt);
+  const prevEditDate = post?.postHistory[0]
+    ? formatDate(post?.postHistory[0]?.editedAt)
+    : null;
   const postReadTime = calculateReadTime(post.content);
   const title = post.title;
 
@@ -417,8 +419,11 @@ const Post = ({ blogPost, admin, post, feed }) => {
               {showEdited ? (
                 <time dateTime={post.editedAt}>Updated: {editDate}</time>
               ) : (
-                <time dateTime={post.postHistory[0].editedAt}>
-                  {prevEditDate}
+                <time
+                  dateTime={post.postHistory[0]?.editedAt || post.publishedAt}
+                >
+                  {prevEditDate ? 'Updated:' : null}{' '}
+                  {prevEditDate || publishDate}
                 </time>
               )}
               <span className="readTime">{postReadTime}</span>
