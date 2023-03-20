@@ -18,6 +18,12 @@ export default async function handle(
     showEdited,
   } = req.body;
 
+  const post = await prisma.post.findUnique({
+    where: {
+      id: id,
+    },
+  });
+
   if (!featured && !editFeatured) {
     const result = await prisma.post.update({
       where: {
@@ -33,6 +39,15 @@ export default async function handle(
         showEdited: showEdited,
       },
     });
+
+    // create PostHistory record
+    await prisma.postHistory.create({
+      data: {
+        editedAt: post.editedAt,
+        postId: post.id,
+      },
+    });
+
     res.json(result);
   } else {
     const result = await prisma.$transaction([
@@ -55,6 +70,15 @@ export default async function handle(
         },
       }),
     ]);
+
+    // create PostHistory record
+    await prisma.postHistory.create({
+      data: {
+        editedAt: post.editedAt,
+        postId: post.id,
+      },
+    });
+
     res.json(result);
   }
 }

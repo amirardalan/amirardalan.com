@@ -45,7 +45,6 @@ const Edit = ({ admin, breadcrumb, editPost, getLatestPost }) => {
   const published = isPublished;
   const id = editPost?.id;
   const latestPost = getLatestPost?.id === id;
-  const redirect = isPublished ? '/blog' : '/blog/drafts';
 
   const editTitle = editPost?.title;
   const editPageTitle = isPublished ? editTitle : editTitle + ' (draft)';
