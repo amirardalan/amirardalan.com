@@ -18,6 +18,36 @@ export default async function handle(
     showEdited,
   } = req.body;
 
+  const post = await prisma.post.findUnique({
+    where: {
+      id: id,
+    },
+  });
+
+  const postHistoryCount = await prisma.postHistory.count({
+    where: { postId: post.id },
+  });
+
+  if (postHistoryCount >= 2) {
+    const oldestPostHistory = await prisma.postHistory.findFirst({
+      where: { postId: post.id },
+      orderBy: { editedAt: 'asc' },
+    });
+
+    await prisma.postHistory.delete({
+      where: { id: oldestPostHistory.id },
+    });
+  }
+
+  if (showEdited) {
+    await prisma.postHistory.create({
+      data: {
+        editedAt: post.editedAt,
+        postId: post.id,
+      },
+    });
+  }
+
   if (!featured && !editFeatured) {
     const result = await prisma.post.update({
       where: {
@@ -33,6 +63,7 @@ export default async function handle(
         showEdited: showEdited,
       },
     });
+
     res.json(result);
   } else {
     const result = await prisma.$transaction([
@@ -55,6 +86,7 @@ export default async function handle(
         },
       }),
     ]);
+
     res.json(result);
   }
 }

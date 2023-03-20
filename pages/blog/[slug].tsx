@@ -31,7 +31,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const [post, feed] = await prisma.$transaction([
     prisma.post.findFirst({
       where: { slug: String(params?.slug) },
-      include: { author: { select: { name: true } } },
+      include: {
+        author: { select: { name: true } },
+        postHistory: { orderBy: { editedAt: 'desc' }, take: 2 },
+      },
     }),
     prisma.post.findMany({
       where: { published: true },
@@ -344,10 +347,13 @@ const Post = ({ blogPost, admin, post, feed }) => {
   const latestPostID = feed[feed?.length - 1].id;
   const latestPost = latestPostID === post.id;
 
-  const isEdited = post.editedAt.slice(0, 10) > post.publishedAt.slice(0, 10);
+  const isEdited = post.editedAt?.slice(0, 10) > post.publishedAt?.slice(0, 10);
   const showEdited = post.showEdited;
   const publishDate = formatDate(post.publishedAt);
-  const editDate = formatDate(post.editedAt);
+  const editDate = formatDate(post?.editedAt);
+  const prevEditDate = post?.postHistory[0]
+    ? formatDate(post?.postHistory[0]?.editedAt)
+    : null;
   const postReadTime = calculateReadTime(post.content);
   const title = post.title;
 
@@ -410,10 +416,15 @@ const Post = ({ blogPost, admin, post, feed }) => {
               By <span>{post?.author?.name || 'Unknown author'}</span>
             </span>
             <span className="dateAndReadTime">
-              {isEdited && showEdited ? (
+              {showEdited ? (
                 <time dateTime={post.editedAt}>Updated: {editDate}</time>
               ) : (
-                <time dateTime={post.publishedAt}>{publishDate}</time>
+                <time
+                  dateTime={post.postHistory[0]?.editedAt || post.publishedAt}
+                >
+                  {prevEditDate ? 'Updated:' : null}{' '}
+                  {prevEditDate || publishDate}
+                </time>
               )}
               <span className="readTime">{postReadTime}</span>
             </span>
