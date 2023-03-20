@@ -1,5 +1,5 @@
-import { FC, useState, useEffect } from 'react';
-import { useTheme, css, Theme } from '@emotion/react';
+import React, { FC, useState, useEffect } from 'react';
+import { css } from '@emotion/react';
 import { Canvas } from '@react-three/fiber';
 import CanvasTerrain from '@/components/CanvasTerrain';
 
@@ -28,13 +28,12 @@ const styleRandomizeButton = css({
 });
 
 const CanvasLoader: FC = () => {
-  const theme: Theme = useTheme();
-
   const [pixelRatio, setPixelRatio] = useState(null);
+  const [seed, setSeed] = useState(Date.now());
 
   useEffect(() => {
     setPixelRatio(window.devicePixelRatio);
-  }, [pixelRatio]);
+  }, [setPixelRatio]);
 
   function getRandomInt(min: number, max: number) {
     min = Math.ceil(min);
@@ -46,21 +45,19 @@ const CanvasLoader: FC = () => {
     return Math.random() * (max - min) + min;
   }
 
-  const [seed, setSeed] = useState(Date.now());
   const [detail, setDetail] = useState(getRandomInt(50, 100));
   const [height, setHeight] = useState(getRandomArbitrary(0.15, 0.3));
   const [texture, setTexture] = useState(getRandomInt(1, 4));
-  const [scale, setScale] = useState(getRandomInt(2, 5));
+  const [scale, setScale] = useState(getRandomInt(0, 5));
   const rotation = 1;
   const offset = { x: 0, z: 0 };
 
-  function randomizeTerrain() {
-    setSeed(Date.now());
-    setDetail(getRandomInt(10, 500));
+  const randomizeTerrain = () => {
+    setDetail(getRandomInt(25, 175));
     setHeight(getRandomArbitrary(0.05, 0.3));
-    setTexture(getRandomInt(1, 5));
-    setScale(getRandomInt(1, 5));
-  }
+    setTexture(getRandomInt(1, 6));
+    setScale(getRandomInt(3, 9));
+  };
 
   return (
     <>
@@ -74,8 +71,7 @@ const CanvasLoader: FC = () => {
         camera={{ position: [0.35, 0.35, 0.35] }}
       >
         <CanvasTerrain
-          theme={theme}
-          seed={seed}
+          theme="#a1a4b0"
           detail={detail}
           height={height}
           texture={texture}
@@ -89,4 +85,4 @@ const CanvasLoader: FC = () => {
   );
 };
 
-export default CanvasLoader;
+export default React.memo(CanvasLoader);

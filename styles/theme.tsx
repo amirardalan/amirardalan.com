@@ -1,7 +1,6 @@
 export const themeLight = {
   active: 'light',
   favicon: '/favicon-light.png',
-  canvas: '#7e37a4',
   gh: 'dark',
   icons: {
     github: '/icons/github-light.svg',
@@ -21,7 +20,6 @@ export const themeLight = {
 export const themeDark = {
   active: 'dark',
   favicon: '/favicon-dark.png',
-  canvas: '#3dffc5',
   star: 'light',
   icons: {
     github: '/icons/github-dark.svg',

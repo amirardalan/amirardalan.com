@@ -21,8 +21,8 @@ const warning = '#e64358';
 const codeHighlight = '#37394e';
 const avatar = '#281483';
 const sunrise =
-  'linear-gradient(to bottom,#676caf 0%,#4f4983 50%,#6e488b 100%)';
-const sunset = 'linear-gradient(to bottom,#1b0e24 0%,#2b174c 50%,#381d6e 100%)';
+  'linear-gradient(to bottom,#515690 0%,#30597d 50%,#277782 100%)';
+const sunset = 'linear-gradient(to bottom,#884e78 0%,#5e4076 50%,#3f427a 100%)';
 
 export function GlobalStyles() {
   return (

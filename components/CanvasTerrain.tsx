@@ -1,13 +1,11 @@
-import { FC, RefObject, useLayoutEffect, useRef } from 'react';
+import React, { FC, RefObject, useEffect, useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
-import { Theme } from '@emotion/react';
+import { MeshDistortMaterial } from '@react-three/drei';
 import { createNoise2D } from 'simplex-noise';
-import alea from 'alea';
-import { BufferAttribute, Mesh, BufferGeometry, Material } from 'three';
+import { BufferAttribute, PlaneGeometry, Mesh, Material } from 'three';
 
 type CanvasTerrainProps = {
-  theme: Theme;
-  seed: number;
+  theme: string;
   detail: number;
   height: number;
   texture: number;
@@ -65,21 +63,18 @@ const generateTerrain = (
 
 const CanvasTerrain: FC<CanvasTerrainProps> = ({
   theme,
-  seed,
   detail,
   height,
-  texture = 5,
+  texture = 2,
   scale = 1,
   offset = { x: 0, z: 0 },
   rotation = 1,
 }) => {
-  const simplex = createNoise2D(alea(seed));
-  const ref = useRef();
-  const mesh: RefObject<Mesh<BufferGeometry, Material | Material[]>> = useRef();
+  const ref = useRef(null);
+  const mesh: RefObject<Mesh<PlaneGeometry, Material | Material[]>> = useRef();
+  useFrame(() => (mesh.current.rotation.y += rotation / 10000));
 
-  useFrame(() => (mesh.current.rotation.y += rotation / 2000));
-
-  useLayoutEffect(() => {
+  useEffect(() => {
     const node: Node = ref.current;
     node?.setAttribute(
       'position',
@@ -90,7 +85,7 @@ const CanvasTerrain: FC<CanvasTerrainProps> = ({
     );
     node.elementsNeedUpdate = true;
     node?.computeVertexNormals();
-  }, [detail, height, texture, scale, offset, simplex]);
+  }, [detail, height, texture, scale, offset]);
 
   return (
     <mesh ref={mesh}>
@@ -98,7 +93,7 @@ const CanvasTerrain: FC<CanvasTerrainProps> = ({
         args={[undefined, undefined, detail - 1, detail - 1]}
         ref={ref}
       />
-      <meshBasicMaterial color={theme.canvas} wireframe />
+      <MeshDistortMaterial distort={1} speed={0.1} wireframe color={theme} />
     </mesh>
   );
 };
