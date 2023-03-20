@@ -1,4 +1,4 @@
-import { Key, ReactNode } from 'react';
+import { Key } from 'react';
 import { NextPage, GetStaticProps } from 'next';
 import { css } from '@emotion/react';
 import Container from '@/components/Container';
@@ -10,48 +10,27 @@ import { aboutContent, timelineContent } from '@/data/content';
 
 type AboutPageProps = {
   about: {
-    availability: {
-      title: string;
-      text: string;
-      text2: string;
-      title2: string;
-      link: string;
+    heading: string;
+  } & Record<
+    string,
+    {
       items: string[];
-    };
-    stack: {
-      items: string[];
-    };
-    social: {
-      title: string;
-    };
-    contact: {
-      title: string;
-    };
-    skills: {
-      title: string;
-      items: string[];
-    };
-    experience: {
-      title: string;
-      items: string[];
-    };
-    avatar: {
       img: string;
       title: string;
-    };
-    heading: string;
-    bio: {
-      items: string;
-      content: string;
-      subheading: string;
-    };
-    meta: {
-      title: string;
-      description: string;
-    };
-  };
+    } & AboutInfo &
+      Avatar
+  >;
   timeline: object;
 };
+
+interface AboutInfo {
+  [key: string]: string;
+}
+
+interface Avatar {
+  img: string;
+  title: string;
+}
 
 const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
   const styleGridWrapper = css({
