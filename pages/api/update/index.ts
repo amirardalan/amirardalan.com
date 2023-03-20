@@ -28,23 +28,25 @@ export default async function handle(
     where: { postId: post.id },
   });
 
-  if (postHistoryCount >= 10) {
+  if (postHistoryCount >= 2) {
     const oldestPostHistory = await prisma.postHistory.findFirst({
       where: { postId: post.id },
       orderBy: { editedAt: 'asc' },
     });
 
-    await prisma.postHistory.deleteMany({
+    await prisma.postHistory.delete({
       where: { id: oldestPostHistory.id },
     });
   }
 
-  await prisma.postHistory.create({
-    data: {
-      editedAt: post.editedAt,
-      postId: post.id,
-    },
-  });
+  if (showEdited) {
+    await prisma.postHistory.create({
+      data: {
+        editedAt: post.editedAt,
+        postId: post.id,
+      },
+    });
+  }
 
   if (!featured && !editFeatured) {
     const result = await prisma.post.update({
