@@ -128,7 +128,7 @@ export const aboutContent = {
   },
   bio: {
     subheading: `Hey there, I'm Amir! 👋`,
-    content: `I design and build web apps with a focus on performance and accessibility. I use this blog to learn in public, share useful tutorials and guides, and document my journey as a developer.`,
+    content: `I design and build web apps with a focus on performance and accessibility. I use this blog to learn in public, tutorials, and document my journey as a developer.`,
     items: [
       {
         path: '/resume',
