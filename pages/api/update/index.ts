@@ -24,6 +24,28 @@ export default async function handle(
     },
   });
 
+  const postHistoryCount = await prisma.postHistory.count({
+    where: { postId: post.id },
+  });
+
+  if (postHistoryCount >= 10) {
+    const oldestPostHistory = await prisma.postHistory.findFirst({
+      where: { postId: post.id },
+      orderBy: { editedAt: 'asc' },
+    });
+
+    await prisma.postHistory.deleteMany({
+      where: { id: oldestPostHistory.id },
+    });
+  }
+
+  await prisma.postHistory.create({
+    data: {
+      editedAt: post.editedAt,
+      postId: post.id,
+    },
+  });
+
   if (!featured && !editFeatured) {
     const result = await prisma.post.update({
       where: {
@@ -37,14 +59,6 @@ export default async function handle(
         category: category,
         featured: featured,
         showEdited: showEdited,
-      },
-    });
-
-    // create PostHistory record
-    await prisma.postHistory.create({
-      data: {
-        editedAt: post.editedAt,
-        postId: post.id,
       },
     });
 
@@ -70,14 +84,6 @@ export default async function handle(
         },
       }),
     ]);
-
-    // create PostHistory record
-    await prisma.postHistory.create({
-      data: {
-        editedAt: post.editedAt,
-        postId: post.id,
-      },
-    });
 
     res.json(result);
   }
