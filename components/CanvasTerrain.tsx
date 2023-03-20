@@ -1,8 +1,8 @@
-import React, { FC, RefObject, useEffect, useRef } from 'react';
+import { FC, RefObject, useEffect, useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { MeshDistortMaterial } from '@react-three/drei';
 import { createNoise2D } from 'simplex-noise';
-import { BufferAttribute, PlaneGeometry, Mesh, Material } from 'three';
+import { BufferAttribute, PlaneGeometry, Mesh } from 'three';
 
 type CanvasTerrainProps = {
   theme: string;
@@ -66,12 +66,12 @@ const CanvasTerrain: FC<CanvasTerrainProps> = ({
   detail,
   height,
   texture = 2,
-  scale = 1,
+  scale = 2,
   offset = { x: 0, z: 0 },
   rotation = 1,
 }) => {
   const ref = useRef(null);
-  const mesh: RefObject<Mesh<PlaneGeometry, Material | Material[]>> = useRef();
+  const mesh: RefObject<Mesh<PlaneGeometry>> = useRef();
   useFrame(() => (mesh.current.rotation.y += rotation / 10000));
 
   useEffect(() => {
