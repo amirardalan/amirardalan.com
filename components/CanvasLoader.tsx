@@ -29,7 +29,6 @@ const styleRandomizeButton = css({
 
 const CanvasLoader: FC = () => {
   const [pixelRatio, setPixelRatio] = useState(null);
-  const [seed, setSeed] = useState(Date.now());
 
   useEffect(() => {
     setPixelRatio(window.devicePixelRatio);
