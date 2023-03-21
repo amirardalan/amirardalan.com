@@ -1,4 +1,4 @@
-import { FC, RefObject, useEffect, useRef } from 'react';
+import { FC, RefObject, useLayoutEffect, useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { MeshDistortMaterial } from '@react-three/drei';
 import { createNoise2D } from 'simplex-noise';
@@ -74,7 +74,7 @@ const CanvasTerrain: FC<CanvasTerrainProps> = ({
   const mesh: RefObject<Mesh<PlaneGeometry>> = useRef();
   useFrame(() => (mesh.current.rotation.y += rotation / 10000));
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const node: Node = ref.current;
     node?.setAttribute(
       'position',
