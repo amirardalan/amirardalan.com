@@ -66,6 +66,7 @@ const Post = ({ blogPost, admin, post, feed }) => {
         },
       },
       '.dateAndReadTime': {
+        lineHeight: '1.4rem',
         time: {
           '&:before, &:after': {
             margin: '0 .5rem',
@@ -422,7 +423,7 @@ const Post = ({ blogPost, admin, post, feed }) => {
                 <time
                   dateTime={post.postHistory[0]?.editedAt || post.publishedAt}
                 >
-                  {prevEditDate ? 'Updated:' : null}{' '}
+                  {prevEditDate ? 'Updated: ' : publishDate}
                   {prevEditDate || publishDate}
                 </time>
               )}
