@@ -401,12 +401,12 @@ export const usesContent = {
   ##### Web App Extensions:
   - [Tokyo Night](https://marketplace.visualstudio.com/items?itemName=enkia.tokyo-night)
   - [Material Icon Theme](https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme)
+  - [Tailwind CSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss)
   - [CSS-in-JS](https://marketplace.visualstudio.com/items?itemName=paulmolluzzo.convert-css-in-js)
+  - [vscode-styled-components](https://marketplace.visualstudio.com/items?itemName=styled-components.vscode-styled-components)
   - [Prisma](https://marketplace.visualstudio.com/items?itemName=Prisma.prisma)
-  - [Debugger for Firefox](https://marketplace.visualstudio.com/items?itemName=firefox-devtools.vscode-firefox-debug)
   - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
   - [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)
-  - [vscode-styled-components](https://marketplace.visualstudio.com/items?itemName=styled-components.vscode-styled-components)
   ##### Game Dev Extensions:
   - [Lua](https://marketplace.visualstudio.com/items?itemName=sumneko.lua)
   - [Lua linter](https://marketplace.visualstudio.com/items?itemName=dcr30.lualinter)
@@ -414,13 +414,13 @@ export const usesContent = {
 
   ---
   #### Browser
+  - [Google Chrome](https://www.google.com/chrome/)
   - [Firefox Developer Edition](https://www.mozilla.org/en-US/firefox/developer/)
   ##### Add-ons:
   - [React Developer Tools](https://addons.mozilla.org/en-US/firefox/addon/react-devtools/)
   - [Lighthouse](https://addons.mozilla.org/en-US/firefox/addon/google-lighthouse/)
   - [uBlock Origin](https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/)
   - [GA Debug](https://addons.mozilla.org/en-US/firefox/addon/ga-debugger/)
-  - [MetaMask](https://addons.mozilla.org/en-US/firefox/addon/ether-metamask/)
 
   `,
   },
@@ -431,13 +431,13 @@ export const usesContent = {
   - [Next.js](https://nextjs.org/)
   - [TypeScript](https://www.typescriptlang.org/)
   - [Emotion](https://emotion.sh/docs/introduction)
+  - [Tailwind CSS](https://tailwindcss.com/)
   - [PostgreSQL](https://www.postgresql.org/)
   - [Supabase](https://supabase.com)
   - [Prisma](https://www.prisma.io/)
   - [SWR](https://swr.vercel.app/)
   - [React Markdown](https://remarkjs.github.io/react-markdown/)
   - [React Syntax Highlighter](https://react-syntax-highlighter.github.io/react-syntax-highlighter/demo/)
-  - [Jest](https://jestjs.io/)
   - [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
   - [Vercel](https://vercel.com)
 
@@ -448,6 +448,7 @@ export const usesContent = {
   ---
   #### CLI
   - Terminal (~ZSH)
+  - [Powerlevel10k](https://github.com/romkatv/powerlevel10k)
   - [Vercel CLI](https://vercel.com/cli)
   - [Supabase CLI](https://supabase.com/docs/reference/cli)
 
@@ -460,7 +461,7 @@ export const usesContent = {
   - [iA Writer](https://ia.net/writer)
 
   #### Design
-  - [Adobe XD](https://www.adobe.com/products/xd.html)
+  - [Figma](https://www.figma.com/)
   - [Aseprite](https://www.aseprite.org/)
   
   #### Communication
