@@ -36,10 +36,10 @@ export const homeContent = {
     },
   ],
   featured: {
-    title: 'Featured Post:',
+    title: 'Featured Post',
   },
   latest: {
-    title: 'Latest Post:',
+    title: 'Latest Post',
   },
 };
 

@@ -34,28 +34,19 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
 }) => {
   const styleFeaturedPost = css({
     marginTop: '2.25rem',
-    borderLeft: '4px solid var(--color-accent-gray)',
-    paddingLeft: '1.25rem',
     width: 'fit-content',
     h2: {
       display: 'flex',
       alignItems: 'baseline',
-      paddingBottom: '.25rem',
+      marginBottom: '.8rem',
+      padding: '.25rem .5rem .2rem .65rem',
+      lineHeight: '.8rem',
+      backgroundColor: 'var(--color-accent-gray)',
+      borderRadius: 10,
       fontFamily: 'var(--font-primary)',
       textTransform: 'uppercase',
       fontSize: 11,
       fontWeight: 400,
-      color: 'var(--color-gray)',
-      '&:before': {
-        display: 'flex',
-        alignSelf: 'center',
-        content: '""',
-        background: 'var(--icon-pin) no-repeat',
-        backgroundSize: 'contain',
-        height: 11,
-        width: 11,
-        marginRight: '.35rem',
-      },
     },
     'h3 a': {
       fontFamily: 'var(--font-secondary)',
@@ -66,7 +57,7 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
       },
     },
     p: {
-      marginTop: '.25rem',
+      marginTop: '.4rem',
       lineHeight: '1.25rem',
       fontSize: 15,
       fontFamily: 'var(--font-tertiary)',

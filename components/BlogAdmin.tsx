@@ -211,7 +211,7 @@ const BlogAdmin: FC = () => {
               display: 'inline-block',
               backgroundColor: 'var(--color-heading)',
               border: '1px solid var(--color-accent)',
-              borderRadius: 8,
+              borderRadius: 6,
               color: 'var(--color-bg)',
               fontSize: 12,
               fontFamily: 'var(--font-primary)',
