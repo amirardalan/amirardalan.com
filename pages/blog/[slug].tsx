@@ -423,7 +423,7 @@ const Post = ({ blogPost, admin, post, feed }) => {
                 <time
                   dateTime={post.postHistory[0]?.editedAt || post.publishedAt}
                 >
-                  {prevEditDate ? 'Updated: ' : publishDate}
+                  {prevEditDate ? 'Updated: ' : null}
                   {prevEditDate || publishDate}
                 </time>
               )}
