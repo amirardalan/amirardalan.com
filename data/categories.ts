@@ -1,8 +1,1 @@
-export const categories = [
-  '-',
-  'code',
-  'design',
-  'devops',
-  'gamedev',
-  'personal',
-];
+export const categories = ['-', 'code', 'tools', 'design', 'personal'];
