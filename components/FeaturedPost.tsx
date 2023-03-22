@@ -34,11 +34,15 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
 }) => {
   const styleFeaturedPost = css({
     marginTop: '2.25rem',
+    display: 'flex',
+    flexDirection: 'column',
     h2: {
+      maxWidth: 'min-content',
+      whiteSpace: 'nowrap',
       display: 'flex',
       alignItems: 'baseline',
       marginBottom: '.8rem',
-      padding: '.25rem .5rem .2rem .65rem',
+      padding: '.25rem .6rem .2rem .65rem',
       lineHeight: '.8rem',
       backgroundColor: 'var(--color-accent-gray)',
       borderRadius: 10,
