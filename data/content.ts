@@ -375,7 +375,7 @@ export const usesContent = {
   ##### Specs:
   - 3.8GHz 6-Core Intel i7 3930K
   - 32GB RAM
-  - 2x 1TB SSD
+  - 2x 500GB SSD
   - Geforce GTX 1080 Founders Edition
   - Motu Audio Express
   - 2x KRK VXT 8
@@ -441,16 +441,22 @@ export const usesContent = {
   - [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
   - [Vercel](https://vercel.com)
 
-  #### Game Dev
-  - [Lua](https://www.lua.org/)
-  - [Playdate SDK](https://play.date/dev/)
-
   ---
   #### CLI
   - Terminal (~ZSH)
   - [Powerlevel10k](https://github.com/romkatv/powerlevel10k)
+  - [GitHub CLI](https://cli.github.com/)
   - [Vercel CLI](https://vercel.com/cli)
   - [Supabase CLI](https://supabase.com/docs/reference/cli)
+
+  ---
+  #### AI
+  - [ChatGPT](https://chat.openai.com/chat)
+
+  ---
+  #### Game Dev
+  - [Lua](https://www.lua.org/)
+  - [Playdate SDK](https://play.date/dev/)
 
   `,
   },

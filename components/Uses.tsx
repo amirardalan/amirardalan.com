@@ -20,7 +20,7 @@ const styleUsesMarkdown = {
   },
   h3: {
     a: {
-      fontSize: 18,
+      fontSize: 16,
       fontWeight: 300,
       fontFamily: 'var(--font-primary)',
       textDecoration: 'none',
@@ -36,6 +36,11 @@ const styleUsesMarkdown = {
   },
   h5: {
     fontSize: 12,
+    color: 'var(--color-gray)',
+    '&:before': {
+      content: '"↪"',
+      marginRight: '.25rem',
+    },
   },
   '@media(max-width: 1024px)': {
     gridTemplateColumns: 'repeat(2, 1fr)',
