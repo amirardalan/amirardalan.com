@@ -34,7 +34,6 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
 }) => {
   const styleFeaturedPost = css({
     marginTop: '2.25rem',
-    width: 'fit-content',
     h2: {
       display: 'flex',
       alignItems: 'baseline',
