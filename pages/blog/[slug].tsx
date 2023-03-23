@@ -8,6 +8,7 @@ import Container from '@/components/Container';
 import BlogStyles from '@/components/BlogStyles';
 import LoadingTriangle from '@/components/LoadingTriangle';
 import BlogNavigation from '@/components/BlogNavigation';
+import Like from '@/components/Like';
 import calculateReadTime from '@/utils/calculateReadTime';
 import formatDate from '@/utils/formatDate';
 import Markdown from '@/components/Markdown';
@@ -430,6 +431,7 @@ const Post = ({ blogPost, admin, post, feed }) => {
               )}
               <span className="readTime">{postReadTime}</span>
             </span>
+            <Like id={post.id} likes={post.likes} />
           </div>
 
           <Markdown markdown={post} />

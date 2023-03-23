@@ -11,6 +11,7 @@ model Post {
   id            Int      @default(autoincrement()) @id
   publishedAt   DateTime @default(now())
   editedAt      DateTime @updatedAt
+  postHistory   PostHistory[]
   slug          String?
   title         String
   teaser        String?
@@ -21,7 +22,7 @@ model Post {
   showEdited    Boolean  @default(false)
   author        User?    @relation(fields: [authorId], references: [id])
   authorId      Int?
-  postHistory   PostHistory[]
+  likes         Int     @default(0)
 }
 
 model PostHistory {
