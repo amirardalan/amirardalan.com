@@ -59,6 +59,14 @@ const Post = ({ blogPost, admin, post, feed }) => {
     '.postDetails': {
       marginBottom: '5rem',
       '.author': {
+        // marginTop: '1rem',
+        '&:after': {
+          margin: '0 .5rem',
+          content: '"•"',
+          '@media(max-width: 480px)': {
+            content: 'none',
+          },
+        },
         span: {
           fontFamily: 'var(--font-secondary)',
           fontSize: 15,
@@ -66,25 +74,15 @@ const Post = ({ blogPost, admin, post, feed }) => {
         },
       },
       '.dateAndReadTime': {
-        lineHeight: '1.4rem',
-        time: {
-          '&:before, &:after': {
-            margin: '0 .5rem',
-            content: '"•"',
-          },
-        },
+        display: 'flex',
+        justifyContent: 'center',
+        marginTop: '.05rem',
         '@media(max-width: 480px)': {
-          '.author:after, time:before': {
-            content: '""',
-            margin: 0,
-          },
+          flexDirection: 'column',
         },
         '@media(max-width: 350px)': {
           'time:after': {
             content: '""',
-          },
-          span: {
-            display: 'block',
           },
         },
       },
@@ -108,7 +106,7 @@ const Post = ({ blogPost, admin, post, feed }) => {
         },
         '@media(max-width: 480px)': {
           fontSize: 28,
-          lineHeight: '2rem',
+          lineHeight: '2.2rem',
         },
       },
       '.teaser': {
@@ -120,6 +118,9 @@ const Post = ({ blogPost, admin, post, feed }) => {
         '@media(max-width: 1024px)': {
           marginBottom: '2rem',
           fontSize: 18,
+        },
+        '@media(max-width: 480px)': {
+          marginBottom: '1.25rem',
         },
       },
       'h3, h3 code': {

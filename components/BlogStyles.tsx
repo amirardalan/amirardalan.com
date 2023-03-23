@@ -104,11 +104,8 @@ const blogStyles = css({
     color: 'var(--color-gray)',
     fontSize: 13,
     lineHeight: '1.2rem',
-    time: {
-      '&:after': {
-        margin: '0 .5rem',
-        content: '"•"',
-      },
+    '@media (max-width: 480px)': {
+      flexDirection: 'column',
     },
   },
   '.postTeaser': {
@@ -144,6 +141,22 @@ const blogStyles = css({
           fontSize: 18,
         },
       },
+    },
+  },
+  '.readTime': {
+    margin: '0 0 0 1rem',
+    maxWidth: 'min-content',
+    whiteSpace: 'nowrap',
+    padding: '.15rem .5rem .08rem .5rem',
+    lineHeight: '.8rem',
+    border: '1px solid var(--color-gray)',
+    color: 'var(--color-gray)',
+    backgroundColor: 'transparent',
+    borderRadius: 10,
+    textTransform: 'uppercase',
+    fontSize: 11,
+    '@media (max-width: 480px)': {
+      margin: '.65rem 0 0 0',
     },
   },
   li: {

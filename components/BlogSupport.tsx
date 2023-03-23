@@ -61,12 +61,12 @@ const DonationCta: FC = () => {
         width: '100%',
         display: 'flex',
         position: 'relative',
-        padding: '2.5rem',
+        padding: '2.25rem',
       },
       '.supportOptions': {
         display: 'flex',
         flexDirection: 'column',
-        margin: '4.2rem 2.5rem',
+        margin: '3.7rem 2.5rem',
         '.optionsHeading': {
           h4: {
             fontSize: 12,
@@ -76,6 +76,7 @@ const DonationCta: FC = () => {
             textAlign: 'center',
             position: 'relative',
             background: 'var(--color-bg)',
+            marginTop: '.2rem',
             padding: '0 .75rem',
             height: '100%',
             width: '100%',
@@ -158,7 +159,6 @@ const DonationCta: FC = () => {
       },
       p: {
         fontSize: 14,
-        lineHeight: 1.5,
         margin: 0,
         padding: 0,
       },
