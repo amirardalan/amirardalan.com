@@ -104,8 +104,9 @@ const blogStyles = css({
     color: 'var(--color-gray)',
     fontSize: 13,
     lineHeight: '1.2rem',
-    '@media (max-width: 480px)': {
+    '@media (max-width: 600px)': {
       flexDirection: 'column',
+      alignItems: 'flex-start',
     },
   },
   '.postTeaser': {
@@ -143,6 +144,13 @@ const blogStyles = css({
       },
     },
   },
+  '.timeAndLikes': {
+    display: 'flex',
+    alignItems: 'flex-end',
+    '@media (max-width: 480px)': {
+      flexDirection: 'row',
+    },
+  },
   '.readTime': {
     margin: '0 0 0 1rem',
     maxWidth: 'min-content',
@@ -158,6 +166,9 @@ const blogStyles = css({
     '@media (max-width: 480px)': {
       margin: '.65rem 0 0 0',
     },
+  },
+  '.likeCount': {
+    marginLeft: '.5rem',
   },
   li: {
     '&::marker': {

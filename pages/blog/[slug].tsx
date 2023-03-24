@@ -8,7 +8,6 @@ import Container from '@/components/Container';
 import BlogStyles from '@/components/BlogStyles';
 import LoadingTriangle from '@/components/LoadingTriangle';
 import BlogNavigation from '@/components/BlogNavigation';
-import LikeButton from '@/components/LikeButton';
 import calculateReadTime from '@/utils/calculateReadTime';
 import formatDate from '@/utils/formatDate';
 import Markdown from '@/components/Markdown';
@@ -430,10 +429,13 @@ const Post = ({ blogPost, admin, post, feed }) => {
                   {prevEditDate || publishDate}
                 </time>
               )}
-              <span className="readTime">{postReadTime}</span>
+              <span className="timeAndLikes">
+                <span className="readTime">{postReadTime}</span>
+                <span className="likeCount">
+                  <LikeCount id={post.id} likes={post.likes} />
+                </span>
+              </span>
             </span>
-            <LikeButton id={post.id} />
-            <LikeCount id={post.id} likes={post.likes} />
           </div>
 
           <Markdown markdown={post} />

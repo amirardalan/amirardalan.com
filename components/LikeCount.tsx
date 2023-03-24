@@ -9,7 +9,11 @@ type LikeCountProps = {
 const Like: FC<LikeCountProps> = ({ id, likes }) => {
   const { likeCount } = useLikeCount(id);
 
-  return <span>{likeCount || likes}</span>;
+  return (
+    <span>
+      • {likeCount || likes} {likeCount === 1 ? 'like' : 'likes'}
+    </span>
+  );
 };
 
 export default Like;
