@@ -10,7 +10,7 @@ type LikeProps = {
 
 const Like: FC<LikeProps> = ({ id, likes }) => {
   const [liked, setLiked] = useState(false);
-  const [likeCount, setLikeCount] = useState(likes);
+  const [likeCount, setLikeCount] = useState<number>(likes);
 
   const handleLike = async () => {
     const newLikeCount = liked ? Math.max(0, likeCount - 1) : likeCount + 1;
@@ -20,9 +20,14 @@ const Like: FC<LikeProps> = ({ id, likes }) => {
     localStorage.setItem(`liked_${id}`, (!liked).toString());
   };
 
-  const { data: updatedLikes } = useSWR(`/api/posts/${id}/likes`, fetcher, {
+  const { data: updatedLikes } = useSWR(() => `/api/like/${id}`, fetcher, {
     refreshInterval: 5000,
     revalidateOnFocus: false,
+    shouldRetryOnError: false,
+    revalidateOnMount: true,
+    dedupingInterval: 10000,
+    revalidateOnReconnect: true,
+    method: 'GET',
   });
 
   useEffect(() => {
@@ -33,8 +38,9 @@ const Like: FC<LikeProps> = ({ id, likes }) => {
   }, [id]);
 
   useEffect(() => {
-    if (updatedLikes !== undefined) {
-      setLikeCount(updatedLikes.likes);
+    if (updatedLikes && updatedLikes !== undefined) {
+      setLikeCount(updatedLikes);
+      console.log('SWR refreshed');
     }
   }, [updatedLikes]);
 
