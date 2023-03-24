@@ -3,11 +3,11 @@ import fetcher from '@/lib/fetcher';
 
 const useLikeCount = (id: number) => {
   const { data: likeCount, error } = useSWR(`/api/like/${id}`, fetcher, {
-    refreshInterval: 1000,
+    refreshInterval: 2500,
     revalidateOnFocus: false,
     shouldRetryOnError: false,
     revalidateOnMount: true,
-    dedupingInterval: 2000,
+    dedupingInterval: 5000,
     revalidateOnReconnect: true,
     method: 'GET',
   });
