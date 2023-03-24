@@ -1,22 +1,39 @@
 import { FC } from 'react';
 import { css } from '@emotion/react';
-import CountUp from 'react-countup';
+import useTotalLikes from '@/utils/useTotalLikes';
+import formatLikeCount from '@/utils/formatLikeCount';
 
-type BlogStatsProps = {
-  feed: object[];
-  activeCategories: string[];
-  filteredPosts: object[];
+type BlogPost = {
+  id: number;
+  publishedAt: string;
+  editedAt: string;
+  slug: string;
+  title: string;
+  teaser: string;
+  content: string;
+  category: string;
+  featured: boolean;
+  published: boolean;
+  showEdited: boolean;
+  authorId: number;
+  likes: number;
 };
 
-const BlogStats: FC<BlogStatsProps> = ({
-  feed,
-  activeCategories,
-  filteredPosts,
-}) => {
+type BlogStatsProps = {
+  feed: BlogPost[];
+  activeCategories: string[];
+  filteredPosts: BlogPost[];
+};
+
+const BlogStats: FC<BlogStatsProps> = ({ feed, filteredPosts }) => {
   const filterActive = filteredPosts.length < feed.length;
-  const postsNumber = filterActive ? filteredPosts.length : feed.length;
-  const categoriesNumber = activeCategories.length;
-  const postsText = postsNumber > 1 ? 'posts' : 'post';
+  const postCount = filterActive ? filteredPosts.length : feed.length;
+  const postsText = postCount === 1 ? 'post' : 'posts';
+  const likesText = postCount === 1 ? 'like' : 'likes';
+  const initialTotalLikesCount = feed.reduce(
+    (acc, post) => acc + post.likes,
+    0
+  );
 
   const styleBlogStatsWrapper = css({
     display: 'flex',
@@ -26,17 +43,24 @@ const BlogStats: FC<BlogStatsProps> = ({
       display: 'flex',
       alignItems: 'flex-end',
     },
+    '.divider': {
+      color: 'var(--color-accent-gray)',
+    },
     li: {
       lineHeight: '1rem',
       display: 'inline',
+      marginLeft: '1rem',
+      span: {
+        marginLeft: '.25rem',
+      },
       '&.catsCount': {
         display: filterActive ? 'none' : 'inline-block',
       },
       '@media(max-width: 1024px)': {
         marginBottom: '.25rem',
       },
-      '&:last-of-type': {
-        marginLeft: '1rem',
+      '&:first-of-type': {
+        marginLeft: 0,
       },
       '.number': {
         marginRight: '.3rem',
@@ -49,33 +73,20 @@ const BlogStats: FC<BlogStatsProps> = ({
     },
   });
 
+  const { totalLikesCount } = useTotalLikes();
+
   return (
     <div css={styleBlogStatsWrapper}>
       <h1 className="blogHeading">Blog</h1>
       <ul>
         <li className="postsCount">
-          <CountUp
-            start={0}
-            end={postsNumber}
-            delay={0}
-            duration={0.5}
-            decimals={0}
-          >
-            {({ countUpRef }) => <span className="number" ref={countUpRef} />}
-          </CountUp>
+          {postCount}
           <span className="text">{postsText}</span>
         </li>
-        <li className="catsCount">
-          <CountUp
-            start={0}
-            end={categoriesNumber}
-            delay={0}
-            duration={0.5}
-            decimals={0}
-          >
-            {({ countUpRef }) => <span className="number" ref={countUpRef} />}
-          </CountUp>
-          <span className="text">categories</span>
+        <li className="divider">/</li>
+        <li className="likesCount">
+          {formatLikeCount(totalLikesCount || initialTotalLikesCount)}
+          <span className="text">{likesText}</span>
         </li>
       </ul>
     </div>
