@@ -2,13 +2,16 @@ import type { FC } from 'react';
 import Link from 'next/link';
 import formatDate from '@/utils/formatDate';
 import calculateReadTime from '@/utils/calculateReadTime';
+import LikeCount from '@/components/LikeCount';
 
 type PostProps = {
   post: Post;
 };
 
 interface Post {
+  id: number;
   publishedAt: Date;
+  likes: number;
   content: string;
   slug: string;
   title: string;
@@ -33,6 +36,9 @@ const Post: FC<PostProps> = ({ post }) => {
         <div className="dateAndReadTime">
           <time dateTime={publishDate}>{publishDate}</time>
           <span className="readTime">{postReadTime}</span>
+          <span className="likeCount">
+            <LikeCount id={post.id} likes={post.likes} />
+          </span>
         </div>
       </div>
       <p className="teaser">{post.teaser}</p>

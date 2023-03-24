@@ -6,7 +6,7 @@ type LikeProps = {
   id: number;
 };
 
-const Like: FC<LikeProps> = ({ id }) => {
+const LikeButton: FC<LikeProps> = ({ id }) => {
   const [liked, setLiked] = useState(false);
 
   const handleLike = async () => {
@@ -29,4 +29,4 @@ const Like: FC<LikeProps> = ({ id }) => {
   );
 };
 
-export default Like;
+export default LikeButton;

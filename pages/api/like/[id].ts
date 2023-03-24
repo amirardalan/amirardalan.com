@@ -1,6 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import prisma from '@/lib/prisma';
-import rateLimit from '@/api/middleware';
 
 interface UpdateLikesData {
   title?: string;
@@ -57,4 +56,4 @@ const updateLikesHandler = async (
   }
 };
 
-export default rateLimit(updateLikesHandler, 10, 60000);
+export default updateLikesHandler;

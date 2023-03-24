@@ -3,7 +3,6 @@ import { css } from '@emotion/react';
 import Link from 'next/link';
 import compareID from '@/utils/compareID';
 import BlogSupport from '@/components/BlogSupport';
-import LikeButton from '@/components/LikeButton';
 
 type BlogNavigationProps = {
   feed: {
@@ -83,8 +82,7 @@ const BlogNavigation: FC<BlogNavigationProps> = ({
 
   return (
     <div css={styleBlogNavigation}>
-      <LikeButton id={post.id} />
-      <BlogSupport />
+      <BlogSupport id={post.id} />
       <div css={styleBlogLinks}>
         {prevPost ? <ShowPrevLink /> : null}
         {nextPost ? <ShowNextLink /> : null}

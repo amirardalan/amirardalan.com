@@ -144,6 +144,19 @@ const blogStyles = css({
       },
     },
   },
+  '.dateAndReadTime': {
+    display: 'flex',
+    justifyContent: 'center',
+    marginTop: '.05rem',
+    '@media(max-width: 480px)': {
+      flexDirection: 'column',
+    },
+    '@media(max-width: 350px)': {
+      'time:after': {
+        content: '""',
+      },
+    },
+  },
   '.timeAndLikes': {
     display: 'flex',
     alignItems: 'flex-end',

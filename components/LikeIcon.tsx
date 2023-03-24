@@ -8,8 +8,8 @@ type LikeIconProps = {
 const LikeIcon: FC<LikeIconProps> = ({ active }) => {
   const theme: Theme = useTheme();
 
-  const iconHeight = 15;
-  const iconWidth = 15;
+  const iconHeight = 22;
+  const iconWidth = 22;
 
   if (theme.active === 'dark') {
     return (

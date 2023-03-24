@@ -74,19 +74,6 @@ const Post = ({ blogPost, admin, post, feed }) => {
           fontWeight: 700,
         },
       },
-      '.dateAndReadTime': {
-        display: 'flex',
-        justifyContent: 'center',
-        marginTop: '.05rem',
-        '@media(max-width: 480px)': {
-          flexDirection: 'column',
-        },
-        '@media(max-width: 350px)': {
-          'time:after': {
-            content: '""',
-          },
-        },
-      },
       '@media(max-width: 1024px)': {
         marginBottom: '2rem',
       },

@@ -3,8 +3,13 @@ import { css } from '@emotion/react';
 import Image from 'next/image';
 import { donate } from '@/data/content';
 import CloseButton from '@/components/CloseButton';
+import LikeButton from '@/components/LikeButton';
 
-const DonationCta: FC = () => {
+type BlogSupportProps = {
+  id: number;
+};
+
+const BlogSupport: FC<BlogSupportProps> = ({ id }) => {
   const [hideModule, setHideModule] = useState(false);
   const [showOptions, setshowOptions] = useState(false);
   const handleshowOptions = () => {
@@ -61,12 +66,12 @@ const DonationCta: FC = () => {
         width: '100%',
         display: 'flex',
         position: 'relative',
-        padding: '2.25rem',
+        padding: '2.8rem',
       },
       '.supportOptions': {
         display: 'flex',
         flexDirection: 'column',
-        margin: '3.7rem 2.5rem',
+        margin: '4.5rem 2.5rem',
         '.optionsHeading': {
           h4: {
             fontSize: 12,
@@ -143,19 +148,25 @@ const DonationCta: FC = () => {
     '.left': {
       width: '70%',
     },
-    '.right': {
-      width: '30%',
+    '.donate': {
       display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
+      justifyContent: 'flex-start',
+      span: {
+        marginRight: '.5rem',
+      },
       a: {
         color: 'var(--color-text)',
       },
     },
     '.copyContainer': {
+      '.supportHeading': {
+        display: 'flex',
+        flexDirection: 'row',
+        marginBottom: '1rem',
+      },
       h4: {
         fontSize: 22,
-        marginBottom: '1rem',
+        marginRight: '1rem',
       },
       p: {
         fontSize: 14,
@@ -187,27 +198,15 @@ const DonationCta: FC = () => {
           <div className="supportContent">
             <div className="left">
               <div className="copyContainer">
-                <h4>Did you enjoy this article?</h4>
-                <p>
-                  This project is{' '}
-                  <a
-                    href="https://github.com/amirardalan/amirardalan.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    open-source
-                  </a>{' '}
-                  and all of the content is free.
-                </p>
-                <p>
-                  If you liked this blog post consider supporting future
-                  content:
-                </p>
+                <span className="supportHeading">
+                  <h4>Like this article:</h4>
+                  <LikeButton id={id} />
+                </span>
+                <div className="donate">
+                  <span>☕</span>
+                  <a onClick={handleshowOptions}>Buy me a coffee</a>
+                </div>
               </div>
-            </div>
-            <div className="right">
-              <span>☕</span>
-              <a onClick={handleshowOptions}>Buy me a coffee</a>
             </div>
           </div>
 
@@ -251,4 +250,4 @@ const DonationCta: FC = () => {
   );
 };
 
-export default DonationCta;
+export default BlogSupport;
