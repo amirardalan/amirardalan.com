@@ -11,18 +11,18 @@ const Like: FC<LikeProps> = ({ id, likes }) => {
   const [liked, setLiked] = useState(false);
 
   useEffect(() => {
-    const cookieValue = document.cookie.match(`liked_${id}=([^;]+)`);
-    if (cookieValue) {
-      setLiked(cookieValue[1] === 'true');
+    const likedStatus = localStorage.getItem(`liked_${id}`);
+    if (likedStatus === 'true') {
+      setLiked(true);
     }
   }, [id]);
 
   const handleLike = async () => {
     const newLikeCount = liked ? Math.max(0, likeCount - 1) : likeCount + 1;
-    setLiked(!liked);
     setLikeCount(newLikeCount);
-    await likePost(id, !liked);
-    document.cookie = `liked_${id}=${!liked}; path=/`;
+    setLiked(!liked);
+    await likePost(id, liked);
+    localStorage.setItem(`liked_${id}`, (!liked).toString());
   };
 
   return (
