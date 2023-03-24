@@ -9,7 +9,6 @@ import compareID from '@/utils/compareID';
 import LoadingTriangle from '@/components/LoadingTriangle';
 import prisma from '@/lib/prisma';
 import { GetServerSideProps } from 'next';
-import { Key } from 'react';
 
 const Drafts = ({ drafts, admin, breadcrumb }) => {
   const { data: session } = useSession();
@@ -27,7 +26,7 @@ const Drafts = ({ drafts, admin, breadcrumb }) => {
   };
 
   interface Post {
-    id: Key;
+    id: number;
     category: String;
     publishedAt: Date;
     content: string;
