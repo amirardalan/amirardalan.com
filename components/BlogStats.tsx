@@ -1,39 +1,39 @@
-import { FC } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { css } from '@emotion/react';
 import useTotalLikes from '@/utils/useTotalLikes';
 import formatLikeCount from '@/utils/formatLikeCount';
 
 type BlogPost = {
-  id: number;
-  publishedAt: string;
-  editedAt: string;
-  slug: string;
-  title: string;
-  teaser: string;
-  content: string;
-  category: string;
-  featured: boolean;
-  published: boolean;
-  showEdited: boolean;
-  authorId: number;
-  likes: number;
+  id?: number;
+  publishedAt?: string;
+  editedAt?: string;
+  slug?: string;
+  title?: string;
+  teaser?: string;
+  content?: string;
+  featured?: boolean;
+  published?: boolean;
+  showEdited?: boolean;
+  authorId?: number;
+  likes?: number;
 };
 
 type BlogStatsProps = {
   feed: BlogPost[];
-  activeCategories: string[];
   filteredPosts: BlogPost[];
 };
 
-const BlogStats: FC<BlogStatsProps> = ({ feed, filteredPosts }) => {
+const BlogStats: FC<BlogStatsProps> = ({
+  feed,
+  filteredPosts,
+}: BlogStatsProps) => {
   const filterActive = filteredPosts.length < feed.length;
   const postCount = filterActive ? filteredPosts.length : feed.length;
   const postsText = postCount === 1 ? 'post' : 'posts';
-  const likesText = postCount === 1 ? 'like' : 'likes';
-  const initialTotalLikesCount = feed.reduce(
-    (acc, post) => acc + post.likes,
-    0
-  );
+  const initialLikesCount = filterActive
+    ? filteredPosts.reduce((acc, post) => acc + (post.likes || 0), 0)
+    : feed.reduce((acc, post) => acc + (post.likes || 0), 0);
+  const likesText = initialLikesCount === 1 ? 'like' : 'likes';
 
   const styleBlogStatsWrapper = css({
     display: 'flex',
@@ -53,9 +53,6 @@ const BlogStats: FC<BlogStatsProps> = ({ feed, filteredPosts }) => {
       span: {
         marginLeft: '.25rem',
       },
-      '&.catsCount': {
-        display: filterActive ? 'none' : 'inline-block',
-      },
       '@media(max-width: 1024px)': {
         marginBottom: '.25rem',
       },
@@ -74,6 +71,14 @@ const BlogStats: FC<BlogStatsProps> = ({ feed, filteredPosts }) => {
   });
 
   const { totalLikesCount } = useTotalLikes();
+  const [likesCount, setLikesCount] = useState(initialLikesCount);
+
+  useEffect(() => {
+    const newLikesCount = filterActive
+      ? filteredPosts.reduce((acc, post) => acc + (post.likes || 0), 0)
+      : feed.reduce((acc, post) => acc + (post.likes || 0), 0);
+    setLikesCount(newLikesCount);
+  }, [feed, filteredPosts, filterActive]);
 
   return (
     <div css={styleBlogStatsWrapper}>
@@ -85,7 +90,7 @@ const BlogStats: FC<BlogStatsProps> = ({ feed, filteredPosts }) => {
         </li>
         <li className="divider">/</li>
         <li className="likesCount">
-          {formatLikeCount(totalLikesCount || initialTotalLikesCount)}
+          {formatLikeCount(filterActive ? initialLikesCount : totalLikesCount)}
           <span className="text">{likesText}</span>
         </li>
       </ul>

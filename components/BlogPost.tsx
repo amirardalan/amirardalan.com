@@ -11,7 +11,7 @@ type PostProps = {
 interface Post {
   id: number;
   publishedAt: Date;
-  likes: number;
+  likes?: number;
   content: string;
   slug: string;
   title: string;
