@@ -35,14 +35,11 @@ const Like: FC<LikeProps> = ({ id, likes }) => {
     if (likedStatus === 'true') {
       setLiked(true);
     }
-  }, [id]);
 
-  useEffect(() => {
     if (updatedLikes && updatedLikes !== undefined) {
       setLikeCount(updatedLikes);
-      console.log('SWR refreshed');
     }
-  }, [updatedLikes]);
+  }, [id, updatedLikes]);
 
   return (
     <button onClick={handleLike}>
