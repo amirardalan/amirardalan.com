@@ -8,7 +8,7 @@ type TotalLikes = {
 
 const useTotalLikes = (): TotalLikes => {
   const { data: totalLikesCount, error } = useSWR(
-    '/api/total-likes/',
+    '/api/likes/total/',
     fetcher,
     {
       refreshInterval: 1000,

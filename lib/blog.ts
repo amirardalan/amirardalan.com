@@ -48,5 +48,5 @@ export async function deletePost(
 // Like Post
 export async function likePost(id: number, liked: boolean): Promise<void> {
   const method = liked ? 'DELETE' : 'PUT';
-  await fetch(`/api/update-likes/${id}`, { method });
+  await fetch(`/api/likes/update/${id}`, { method });
 }
