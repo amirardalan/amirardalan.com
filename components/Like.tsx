@@ -7,8 +7,8 @@ type LikeProps = {
 };
 
 const Like: FC<LikeProps> = ({ id, likes }) => {
-  const [likeCount, setLikeCount] = useState(likes);
   const [liked, setLiked] = useState(false);
+  const [likeCount, setLikeCount] = useState(liked ? likes + 1 : likes);
 
   useEffect(() => {
     const likedStatus = localStorage.getItem(`liked_${id}`);
