@@ -12,8 +12,6 @@ const useLikeCount = (id: number) => {
     method: 'GET',
   });
 
-  console.log('swr updated');
-
   return {
     likeCount,
     error,
