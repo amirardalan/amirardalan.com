@@ -1,8 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import prisma from '@/lib/prisma';
-import { rateLimit } from '@/api/middleware';
+import rateLimit from '@/api/middleware';
 
-interface UpdatePostInput {
+interface UpdateLikesData {
   title?: string;
   content?: string;
   published?: boolean;
@@ -12,7 +12,10 @@ interface UpdatePostInput {
   };
 }
 
-const updatePostHandler = async (req: NextApiRequest, res: NextApiResponse) => {
+const updateLikesHandler = async (
+  req: NextApiRequest,
+  res: NextApiResponse
+) => {
   const postId = req.query.id;
 
   if (req.method === 'PUT') {
@@ -20,7 +23,7 @@ const updatePostHandler = async (req: NextApiRequest, res: NextApiResponse) => {
     try {
       const post = await prisma.post.update({
         where: { id: Number(postId) },
-        data: { likes: { increment: 1 } } as UpdatePostInput,
+        data: { likes: { increment: 1 } } as UpdateLikesData,
       });
       res.json(post);
     } catch (error) {
@@ -31,7 +34,7 @@ const updatePostHandler = async (req: NextApiRequest, res: NextApiResponse) => {
     try {
       const post = await prisma.post.update({
         where: { id: Number(postId) },
-        data: { likes: { decrement: 1 } } as UpdatePostInput,
+        data: { likes: { decrement: 1 } } as UpdateLikesData,
       });
       res.json(post);
     } catch (error) {
@@ -54,4 +57,4 @@ const updatePostHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 };
 
-export default rateLimit(updatePostHandler, 10, 60000);
+export default rateLimit(updateLikesHandler, 10, 60000);
