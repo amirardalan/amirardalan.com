@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import { signOut, useSession } from 'next-auth/react';
-import { useRouteStatus, useFetchStatus } from '@/utils/useLoadingIndicator';
+import { useRouteStatus, useFetchStatus } from '@/hooks/useLoadingIndicator';
 import { Global, css } from '@emotion/react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';

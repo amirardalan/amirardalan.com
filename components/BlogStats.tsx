@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { css } from '@emotion/react';
-import useTotalLikes from '@/utils/useTotalLikes';
+import useTotalLikes from '@/hooks/useTotalLikes';
 import formatLikeCount from '@/utils/formatLikeCount';
 import LoadingSpinner from '@/components/LoadingSpinner';
 

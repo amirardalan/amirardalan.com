@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { css, useTheme, Theme } from '@emotion/react';
 import CloseButton from '@/components/CloseButton';
 import Logo from '@/components/Logo';
-import { useMediaQuery } from '@/utils/useMediaQuery';
+import { useMediaQuery } from '@/hooks/useMediaQuery';
 import { nav } from '@/data/navigation';
 import GitHubButton from 'react-github-btn';
 

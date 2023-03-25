@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import useLikeCount from '@/utils/useLikeCount';
+import useLikeCount from '@/hooks/useLikeCount';
 import formatLikeCount from '@/utils/formatLikeCount';
 
 type LikeCountProps = {

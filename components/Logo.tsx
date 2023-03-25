@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { css } from '@emotion/react';
 import { logo } from '@/data/content';
-import { useRouteStatus } from '@/utils/useLoadingIndicator';
+import { useRouteStatus } from '@/hooks/useLoadingIndicator';
 
 const Logo: FC = () => {
   const isLoading = useRouteStatus();
