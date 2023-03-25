@@ -12,6 +12,7 @@ const LoadingSpinner: FC<LoadingSpinnerProps> = ({ size }) => {
         '@keyframes rotate': {
           '100%': { transform: 'rotate(360deg)' },
         },
+        display: 'flex',
         animation: 'rotate 2s linear infinite',
         alignSelf: 'center',
         zIndex: 2,
