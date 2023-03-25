@@ -181,20 +181,20 @@ const Post = ({ blogPost, admin, post, feed }) => {
       },
       '.note': {
         position: 'relative',
-        marginBottom: '2.5rem',
-        padding: '2.8rem 1.5rem 1.5rem 1.5rem',
+        marginBottom: '2.2rem',
+        padding: '2.8rem 1.5rem 1.25rem 1.5rem',
         border: '1px solid var(--color-accent-gray)',
         borderRadius: 5,
-        fontFamily: 'var(--font-tertiary)',
-        fontSize: 16,
-        lineHeight: '1.5rem',
+        fontFamily: 'var(--font-primary)',
+        fontSize: 13,
+        lineHeight: '1.8rem',
         color: 'var(--color-gray)',
         '&:before, &:after': {
           position: 'absolute',
         },
         '&:before': {
           content: '""',
-          top: 18,
+          top: 20,
           left: 22,
           width: 15,
           height: 15,
@@ -203,17 +203,18 @@ const Post = ({ blogPost, admin, post, feed }) => {
         },
         '&:after': {
           content: '"Note:"',
-          top: 13,
+          top: 14,
           left: 42,
           textTransform: 'uppercase',
-          fontFamily: 'var(--font-primary)',
+          fontFamily: 'var(--font-secondary)',
           fontSize: 13,
         },
         a: {
-          fontSize: 16,
+          fontFamily: 'var(--font-primary)',
+          fontSize: 13,
         },
         code: {
-          fontSize: 14,
+          fontSize: 13,
         },
         '&.tip': {
           '&:after': {
