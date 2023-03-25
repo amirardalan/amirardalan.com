@@ -449,6 +449,14 @@ export function GlobalStyles() {
             overflow: 'hidden',
             alignSelf: 'flex-end',
           },
+          '@keyframes fadeIn': {
+            '0%': {
+              opacity: 0,
+            },
+            '100%': {
+              opacity: 1,
+            },
+          },
           '@keyframes slideUpSection': {
             '0%': {
               transform: 'translate3d(0, 100%, 0)',

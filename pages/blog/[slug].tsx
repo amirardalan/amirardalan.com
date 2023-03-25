@@ -162,8 +162,8 @@ const Post = ({ blogPost, admin, post, feed }) => {
       },
       'p, ul, li, a': {
         fontFamily: 'var(--font-tertiary)',
-        fontSize: 18,
-        lineHeight: '1.8rem',
+        fontSize: 17,
+        lineHeight: '2rem',
       },
       'ul, li, a': {
         marginBottom: '1rem',

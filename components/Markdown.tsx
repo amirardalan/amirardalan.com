@@ -48,12 +48,19 @@ const BlogMarkdown: FC<BlogMarkdownProps> = ({ markdown }) => {
     },
     '.copyCode': {
       position: 'relative',
+      '.language': {
+        position: 'absolute',
+        top: 8,
+        right: -10,
+        color: 'var(--color-accent-gray)',
+        textAlign: 'right',
+        fontSize: 11,
+      },
       button: {
         backgroundColor: 'var(--code-highlight)',
-        display: 'none',
         zIndex: 1,
         position: 'absolute',
-        top: 13,
+        top: 25,
         right: -10,
         border: '1px solid var(--color-gray-dark)',
         borderRadius: 5,
@@ -68,13 +75,18 @@ const BlogMarkdown: FC<BlogMarkdownProps> = ({ markdown }) => {
         '&:hover': {
           backgroundColor: 'var(--color-gray-dark)',
         },
+        '&:not(:hover)': {
+          opacity: 0,
+          animation: 'fadeOut ease-out .2s',
+          animationFillMode: 'forwards',
+        },
       },
       '&.active button:after, button:after': {
         marginTop: 4,
         display: 'inline-block',
         content: '""',
-        height: 18.5,
-        width: 18.5,
+        height: 14,
+        width: 14,
       },
       '&.active button:after': {
         background: 'var(--icon-check) no-repeat',
@@ -82,8 +94,15 @@ const BlogMarkdown: FC<BlogMarkdownProps> = ({ markdown }) => {
       },
       '&:hover': {
         button: {
-          display: 'block',
+          opacity: 0,
+          animation: 'fadeIn ease-in .2s',
+          animationFillMode: 'forwards',
         },
+      },
+      '@keyframes fadeOut': {
+        // New animation keyframes for fadeOut
+        from: { opacity: 1 },
+        to: { opacity: 0 },
       },
     },
     pre: {
@@ -114,6 +133,9 @@ const BlogMarkdown: FC<BlogMarkdownProps> = ({ markdown }) => {
       },
     },
     code: {
+      fontSize: 14,
+      backgroundColor: 'var(--color-accent)',
+      padding: '.1rem .3rem',
       wordWrap: 'break-word',
       color: 'var(--color-primary)',
       borderRadius: 5,
@@ -288,12 +310,19 @@ const BlogMarkdown: FC<BlogMarkdownProps> = ({ markdown }) => {
           setCodeCopied(false);
         }, 5000);
       };
+
+      const language = pre.children[0].props.className.replace(
+        /language-/g,
+        ''
+      );
+
       return (
         <div className={codeCopied ? 'copyCode active' : 'copyCode'}>
           <button
             onClick={() => handleCopyCode(codeChunk)}
             aria-label="Copy code to clipboard"
           />
+          <span className="language">{language}</span>
           <pre {...pre}></pre>
         </div>
       );

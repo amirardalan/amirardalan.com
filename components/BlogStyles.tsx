@@ -71,7 +71,7 @@ const blogStyles = css({
     p: {
       marginBottom: '2rem',
       fontFamily: 'var(--font-tertiary)',
-      fontSize: 18,
+      fontSize: 17,
     },
     main: {
       display: 'flex',
@@ -139,7 +139,7 @@ const blogStyles = css({
         '@media (max-width: 1024px)': {
           top: -2,
           left: -15,
-          fontSize: 18,
+          fontSize: 17,
         },
       },
     },
