@@ -35,9 +35,11 @@ const Post: FC<PostProps> = ({ post }) => {
       >
         <div className="dateAndReadTime">
           <time dateTime={publishDate}>{publishDate}</time>
-          <span className="readTime">{postReadTime}</span>
-          <span className="likeCount">
-            <LikeCount id={post.id} likes={post.likes} />
+          <span className="timeAndLikes">
+            <span className="readTime">{postReadTime}</span>
+            <span className="likeCount">
+              <LikeCount id={post.id} likes={post.likes} />
+            </span>
           </span>
         </div>
       </div>
