@@ -44,3 +44,9 @@ export async function deletePost(
     revalidateChanges(published, latestPost, featured, deleted, setFetchStatus);
   });
 }
+
+// Like Post
+export async function likePost(id: number, liked: boolean): Promise<void> {
+  const method = liked ? 'DELETE' : 'PUT';
+  await fetch(`/api/likes/update/${id}`, { method });
+}

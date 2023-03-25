@@ -82,7 +82,7 @@ const BlogNavigation: FC<BlogNavigationProps> = ({
 
   return (
     <div css={styleBlogNavigation}>
-      <BlogSupport />
+      <BlogSupport id={post.id} />
       <div css={styleBlogLinks}>
         {prevPost ? <ShowPrevLink /> : null}
         {nextPost ? <ShowNextLink /> : null}

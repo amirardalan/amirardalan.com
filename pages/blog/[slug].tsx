@@ -20,6 +20,7 @@ const BlogPostControls = dynamic(
 
 import { GetStaticProps, GetStaticPaths } from 'next';
 import prisma from '@/lib/prisma';
+import LikeCount from '@/components/LikeCount';
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const feed = await prisma.post.findMany({ where: { published: true } });
@@ -71,19 +72,6 @@ const Post = ({ blogPost, admin, post, feed }) => {
           fontFamily: 'var(--font-secondary)',
           fontSize: 15,
           fontWeight: 700,
-        },
-      },
-      '.dateAndReadTime': {
-        display: 'flex',
-        justifyContent: 'center',
-        marginTop: '.05rem',
-        '@media(max-width: 480px)': {
-          flexDirection: 'column',
-        },
-        '@media(max-width: 350px)': {
-          'time:after': {
-            content: '""',
-          },
         },
       },
       '@media(max-width: 1024px)': {
@@ -428,7 +416,12 @@ const Post = ({ blogPost, admin, post, feed }) => {
                   {prevEditDate || publishDate}
                 </time>
               )}
-              <span className="readTime">{postReadTime}</span>
+              <span className="timeAndLikes">
+                <span className="readTime">{postReadTime}</span>
+                <span className="likeCount">
+                  <LikeCount id={post.id} likes={post.likes} />
+                </span>
+              </span>
             </span>
           </div>
 
