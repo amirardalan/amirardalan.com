@@ -1,6 +1,10 @@
 import { FC } from 'react';
 
-const LoadingSpinner: FC = () => {
+type LoadingSpinnerProps = {
+  size: number;
+};
+
+const LoadingSpinner: FC<LoadingSpinnerProps> = ({ size }) => {
   return (
     <svg
       viewBox="0 0 50 50"
@@ -11,8 +15,8 @@ const LoadingSpinner: FC = () => {
         animation: 'rotate 2s linear infinite',
         alignSelf: 'center',
         zIndex: 2,
-        width: 30,
-        height: 30,
+        width: size,
+        height: size,
         marginRight: 5,
         '& .path': {
           stroke: 'var(--color-disabled)',

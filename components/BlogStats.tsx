@@ -1,7 +1,8 @@
-import { FC, useEffect, useState } from 'react';
+import { FC } from 'react';
 import { css } from '@emotion/react';
 import useTotalLikes from '@/utils/useTotalLikes';
 import formatLikeCount from '@/utils/formatLikeCount';
+import LoadingSpinner from '@/components/LoadingSpinner';
 
 type BlogPost = {
   id?: number;
@@ -34,7 +35,7 @@ const BlogStats: FC<BlogStatsProps> = ({
     (acc, post) => acc + (post.likes || 0),
     0
   );
-  const { totalLikesCount } = useTotalLikes();
+  const { totalLikesCount, error } = useTotalLikes();
   const likesText =
     (filteredLikesCount | totalLikesCount) === 1 ? 'like' : 'likes';
 
@@ -82,10 +83,18 @@ const BlogStats: FC<BlogStatsProps> = ({
           <span className="text">{postsText}</span>
         </li>
         <li className="divider">/</li>
-        <li className="likesCount">
-          {formatLikeCount(filterActive ? filteredLikesCount : totalLikesCount)}
-          <span className="text">{likesText}</span>
-        </li>
+        {error || totalLikesCount === undefined || totalLikesCount === 0 ? (
+          <li className="likesCount">
+            <LoadingSpinner size={15} />
+          </li>
+        ) : (
+          <li className="likesCount">
+            {formatLikeCount(
+              filterActive ? filteredLikesCount : totalLikesCount
+            )}
+            <span className="text">{likesText}</span>
+          </li>
+        )}
       </ul>
     </div>
   );

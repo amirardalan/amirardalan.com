@@ -70,7 +70,7 @@ const BlogPostControls: FC<BlogPostControlsProps> = ({
   };
 
   const RenderLoadingSpinner = () => {
-    return isFetching ? <LoadingSpinner /> : null;
+    return isFetching ? <LoadingSpinner size={30} /> : null;
   };
 
   // Create & Edit Page Controls
