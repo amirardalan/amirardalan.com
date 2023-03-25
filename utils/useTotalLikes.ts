@@ -22,7 +22,7 @@ const useTotalLikes = (): TotalLikes => {
   );
 
   return {
-    totalLikesCount,
+    totalLikesCount: totalLikesCount ?? 0,
     error,
   };
 };
