@@ -1,9 +1,9 @@
 import { FC, Key } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
 import { css, useTheme, Theme } from '@emotion/react';
 import { footer } from '@/data/content';
 import { nav } from '@/data/navigation';
-import Link from 'next/link';
-import Image from 'next/image';
 
 type FooterProps = {};
 

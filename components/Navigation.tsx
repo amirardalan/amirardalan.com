@@ -2,11 +2,11 @@ import { FC, useState, useEffect, Key } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { css, useTheme, Theme } from '@emotion/react';
+import { useMediaQuery } from '@/hooks/useMediaQuery';
+import GitHubButton from 'react-github-btn';
 import CloseButton from '@/components/CloseButton';
 import Logo from '@/components/Logo';
-import { useMediaQuery } from '@/hooks/useMediaQuery';
 import { nav } from '@/data/navigation';
-import GitHubButton from 'react-github-btn';
 
 const Navigation: FC = () => {
   const theme: Theme = useTheme();

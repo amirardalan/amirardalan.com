@@ -1,9 +1,10 @@
 import { FC } from 'react';
+import dynamic from 'next/dynamic';
+import Link from 'next/link';
 import { css } from '@emotion/react';
 import Navigation from '@/components/Navigation';
-import Link from 'next/link';
 import Logo from '@/components/Logo';
-import dynamic from 'next/dynamic';
+
 const ThemeToggle = dynamic(() => import('@/components/ThemeToggle'), {
   ssr: false,
 });

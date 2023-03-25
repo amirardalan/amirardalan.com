@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import { css } from '@emotion/react';
 import useTotalLikes from '@/hooks/useTotalLikes';
-import formatLikeCount from '@/utils/formatLikeCount';
 import LoadingSpinner from '@/components/LoadingSpinner';
+import formatLikeCount from '@/utils/formatLikeCount';
 
 type BlogPost = {
   id?: number;

@@ -1,7 +1,7 @@
 import type { FC, MouseEventHandler } from 'react';
 import Router from 'next/router';
-import BlogPostDelete from '@/components/BlogPostDelete';
 import { publishPost, editPost } from '@/lib/blog';
+import BlogPostDelete from '@/components/BlogPostDelete';
 import LoadingSpinner from '@/components/LoadingSpinner';
 
 type setFetchStatusFn = (active: boolean) => void;
