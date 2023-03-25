@@ -1,15 +1,15 @@
 import { GetServerSideProps } from 'next';
 import Link from 'next/link';
 
-import prisma from '@/lib/prisma';
 import { useSession, getSession } from 'next-auth/react';
+import prisma from '@/lib/prisma';
 
 import LoadingTriangle from '@/components/LoadingTriangle';
 import Container from '@/components/Container';
 import BlogStyles from '@/components/BlogStyles';
 import BlogPost from '@/components/BlogPost';
-import compareID from '@/utils/compareID';
 
+import compareID from '@/utils/compareID';
 import { adminContent, breadcrumbContent } from '@/data/content';
 
 const Drafts = ({ drafts, admin, breadcrumb }) => {

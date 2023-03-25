@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import prisma from '@/lib/prisma';
 import rateLimit from '@/api/middleware';
+import prisma from '@/lib/prisma';
 
 interface UpdateLikesData {
   title?: string;

@@ -1,6 +1,7 @@
+import dynamic from 'next/dynamic';
 import { useSession } from 'next-auth/react';
 import { css } from '@emotion/react';
-import { blogPostContent, adminContent } from '@/data/content';
+
 import { deletePost } from '@/lib/blog';
 import { useFetchStatus } from '@/hooks/useLoadingIndicator';
 
@@ -8,11 +9,12 @@ import Container from '@/components/Container';
 import BlogStyles from '@/components/BlogStyles';
 import LoadingTriangle from '@/components/LoadingTriangle';
 import BlogNavigation from '@/components/BlogNavigation';
-import calculateReadTime from '@/utils/calculateReadTime';
-import formatDate from '@/utils/formatDate';
 import Markdown from '@/components/Markdown';
 
-import dynamic from 'next/dynamic';
+import calculateReadTime from '@/utils/calculateReadTime';
+import formatDate from '@/utils/formatDate';
+import { blogPostContent, adminContent } from '@/data/content';
+
 const BlogPostControls = dynamic(
   () => import('@/components/BlogPostControls'),
   { ssr: false }

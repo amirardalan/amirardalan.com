@@ -1,4 +1,5 @@
-// Calculate estimated read time of "content"
+// Calculate estimated "read time"
+
 const calculateReadTime = (content: string) => {
   const wpm = 200;
   const words = content.trim().split(/\s+/).length;

@@ -13,13 +13,14 @@ const styleThanks = {
 };
 
 type ThanksProps = {
-  content: {
-    heading: string;
-    copy: string;
-  };
+  content: object;
 };
 
-const Thanks: FC<ThanksProps> = ({ content }) => {
+const Thanks: FC<ThanksProps> = ({
+  content,
+}: {
+  content: { heading: string; copy: string };
+}) => {
   return (
     <>
       <h1 className="pageHeading">{content.heading}</h1>

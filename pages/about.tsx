@@ -1,11 +1,13 @@
 import { Key } from 'react';
 import { NextPage, GetStaticProps } from 'next';
 import { css } from '@emotion/react';
+
 import Container from '@/components/Container';
 import Avatar from '@/components/Avatar';
 import { CtaButtons, ContactButton } from '@/components/CtaButtons';
 import SocialIcons from '@/components/SocialIcons';
 import Timeline from '@/components/Timeline';
+
 import { aboutContent, timelineContent } from '@/data/content';
 
 type AboutPageProps = {

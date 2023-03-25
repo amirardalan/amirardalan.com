@@ -1,12 +1,14 @@
 import { NextPage } from 'next';
+import dynamic from 'next/dynamic';
 import { css } from '@emotion/react';
-import { homeContent } from '@/data/content';
+
 import Container from '@/components/Container';
 import TypingAnimation from '@/components/TypingAnimation';
 import FeaturedPost from '@/components/FeaturedPost';
 import { CtaButtons } from '@/components/CtaButtons';
 
-import dynamic from 'next/dynamic';
+import { homeContent } from '@/data/content';
+
 const CanvasLoader = dynamic(() => import('@/components/CanvasLoader'), {
   ssr: true,
 });

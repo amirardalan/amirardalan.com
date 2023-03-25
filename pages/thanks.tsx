@@ -1,9 +1,11 @@
 import type { FC } from 'react';
-import { thanksContent } from '@/data/content';
+import { GetStaticProps } from 'next';
+
 import Container from '@/components/Container';
 import Thanks from '@/components/Thanks';
 
-import { GetStaticProps } from 'next';
+import { thanksContent } from '@/data/content';
+
 export const getStaticProps: GetStaticProps = async () => {
   return { props: { thanks: thanksContent } };
 };
@@ -11,12 +13,13 @@ export const getStaticProps: GetStaticProps = async () => {
 type ThanksPageProps = {
   thanks: {
     meta: {
+      title: string;
       description: string;
     };
   };
 };
 
-const ThanksPage = ({ thanks }) => {
+const ThanksPage: FC<ThanksPageProps> = ({ thanks }) => {
   return (
     <Container
       title={thanks.meta.title}

@@ -1,10 +1,12 @@
+import { GetStaticProps } from 'next';
+import prisma from '@/lib/prisma';
+
 import Container from '@/components/Container';
 import BlogStyles from '@/components/BlogStyles';
 import BlogPostFilter from '@/components/BlogPostFilter';
+
 import { blogContent } from '@/data/content';
 
-import { GetStaticProps } from 'next';
-import prisma from '@/lib/prisma';
 export const getStaticProps: GetStaticProps = async () => {
   try {
     const feed = await prisma.post.findMany({ where: { published: true } });

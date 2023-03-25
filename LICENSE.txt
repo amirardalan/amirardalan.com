@@ -1,6 +1,6 @@
-© 2021 Amir Ardalan - All Rights Reserved
+© 2023 Amir Ardalan - All Rights Reserved
 ---
 - You can use this code as inspiration for your own project
 - Please do not directly copy the source code or design
 - Please do not use my personal content (content.ts) or blog posts
-- Crediting the author is appreciated
+- Crediting the author is appreciated ❤

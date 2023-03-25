@@ -1,4 +1,5 @@
-// Sort Blog posts by ID
+// Sort items numberically
+
 type ID = { id: number };
 
 const compareID = (a: ID, b: ID) => {

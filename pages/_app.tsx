@@ -1,14 +1,18 @@
 import React from 'react';
 import type { AppProps } from 'next/app';
+
 import { Session } from 'next-auth';
 import { SessionProvider } from 'next-auth/react';
+
+import { Analytics } from '@vercel/analytics/react';
+import useGtag from '@/hooks/useGtag';
+
+import { ThemeProvider, Theme } from '@emotion/react';
 import { useThemeContext } from '@/hooks/useThemeContext';
 import { themeLight, themeDark } from '@/styles/theme';
 import { GlobalStyles } from '@/styles/global';
-import { ThemeProvider, Theme } from '@emotion/react';
+
 import Header from '@/components/Header';
-import useGtag from '@/hooks/useGtag';
-import { Analytics } from '@vercel/analytics/react';
 
 const App = ({ Component, pageProps }: AppProps<{ session: Session }>) => {
   useGtag(); // Analytics

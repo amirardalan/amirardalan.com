@@ -11,8 +11,8 @@ import BlogStyles from '@/components/BlogStyles';
 import Dropdown from '@/components/Dropdown';
 import Checkbox from '@/components/Checkbox';
 import BlogPostControls from '@/components/BlogPostControls';
-import generateSlug from '@/utils/generateSlug';
 
+import generateSlug from '@/utils/generateSlug';
 import { adminContent, breadcrumbContent } from '@/data/content';
 import { categories } from '@/data/categories';
 
