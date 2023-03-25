@@ -50,17 +50,17 @@ const BlogMarkdown: FC<BlogMarkdownProps> = ({ markdown }) => {
       position: 'relative',
       '.language': {
         position: 'absolute',
-        top: 8,
+        bottom: 10,
         right: -10,
         color: 'var(--color-accent-gray)',
         textAlign: 'right',
-        fontSize: 11,
+        fontSize: 12,
       },
       button: {
         backgroundColor: 'var(--code-highlight)',
         zIndex: 1,
         position: 'absolute',
-        top: 25,
+        top: 14,
         right: -10,
         border: '1px solid var(--color-gray-dark)',
         borderRadius: 5,
@@ -85,8 +85,8 @@ const BlogMarkdown: FC<BlogMarkdownProps> = ({ markdown }) => {
         marginTop: 4,
         display: 'inline-block',
         content: '""',
-        height: 14,
-        width: 14,
+        height: 15,
+        width: 15,
       },
       '&.active button:after': {
         background: 'var(--icon-check) no-repeat',
@@ -117,6 +117,7 @@ const BlogMarkdown: FC<BlogMarkdownProps> = ({ markdown }) => {
       backgroundColor: 'var(--code-bg) !important',
       code: {
         paddingRight: '1.5rem',
+        marginLeft: -5,
         backgroundColor: 'transparent !important',
         transform: 'translateZ(0)',
         minWidth: '100%',
@@ -142,9 +143,6 @@ const BlogMarkdown: FC<BlogMarkdownProps> = ({ markdown }) => {
       '&::before, &::after': {
         content: '"`"',
         color: 'var(--color-primary)',
-      },
-      '@media(max-width: 768px)': {
-        fontSize: 16,
       },
     },
     'p code': {

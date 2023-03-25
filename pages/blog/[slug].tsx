@@ -182,7 +182,7 @@ const Post = ({ blogPost, admin, post, feed }) => {
       '.note': {
         position: 'relative',
         marginBottom: '2.5rem',
-        padding: '2.8rem 1.5rem 1.2rem 1.5rem',
+        padding: '2.8rem 1.5rem 1.5rem 1.5rem',
         border: '1px solid var(--color-accent-gray)',
         borderRadius: 5,
         fontFamily: 'var(--font-tertiary)',
