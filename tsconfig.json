@@ -19,6 +19,7 @@
       "@/api/*": ["pages/api/*"],
       "@/data/*": ["data/*"],
       "@/components/*": ["components/*"],
+      "@/hooks/*": ["hooks/*"],
       "@/lib/*": ["lib/*"],
       "@/prisma/*": ["prisma/*"],
       "@/styles/*": ["styles/*"],

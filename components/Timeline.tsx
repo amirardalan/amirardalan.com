@@ -1,8 +1,8 @@
 import { FC, Key } from 'react';
-import { css } from '@emotion/react';
 import Link from 'next/link';
-import TimelineEntry from '@/components/TimelineEntry';
+import { css } from '@emotion/react';
 import { useInView } from 'react-intersection-observer';
+import TimelineEntry from '@/components/TimelineEntry';
 
 type TimelineProps = {
   timeline: object & {

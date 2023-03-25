@@ -1,8 +1,8 @@
 import { FC, RefObject, useLayoutEffect, useRef } from 'react';
+import { BufferAttribute, PlaneGeometry, Mesh } from 'three';
 import { useFrame } from '@react-three/fiber';
 import { MeshDistortMaterial } from '@react-three/drei';
 import { createNoise2D } from 'simplex-noise';
-import { BufferAttribute, PlaneGeometry, Mesh } from 'three';
 
 type CanvasTerrainProps = {
   theme: string;

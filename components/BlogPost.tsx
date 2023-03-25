@@ -1,8 +1,8 @@
 import type { FC } from 'react';
 import Link from 'next/link';
+import LikeCount from '@/components/LikeCount';
 import formatDate from '@/utils/formatDate';
 import calculateReadTime from '@/utils/calculateReadTime';
-import LikeCount from '@/components/LikeCount';
 
 type PostProps = {
   post: Post;

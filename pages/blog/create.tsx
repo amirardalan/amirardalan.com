@@ -1,19 +1,20 @@
 import { useState, useEffect, useRef } from 'react';
-import { useSession } from 'next-auth/react';
+import Link from 'next/link';
 import Router from 'next/router';
 
-import Link from 'next/link';
+import { useSession } from 'next-auth/react';
+import { useFetchStatus } from '@/hooks/useLoadingIndicator';
+
+import LoadingTriangle from '@/components/LoadingTriangle';
 import Container from '@/components/Container';
 import BlogStyles from '@/components/BlogStyles';
 import Dropdown from '@/components/Dropdown';
 import Checkbox from '@/components/Checkbox';
 import BlogPostControls from '@/components/BlogPostControls';
-import generateSlug from '@/utils/generateSlug';
-import { useFetchStatus } from '@/utils/useLoadingIndicator';
 
+import generateSlug from '@/utils/generateSlug';
 import { adminContent, breadcrumbContent } from '@/data/content';
 import { categories } from '@/data/categories';
-import LoadingTriangle from '@/components/LoadingTriangle';
 
 import { GetStaticProps } from 'next';
 export const getStaticProps: GetStaticProps = async () => {

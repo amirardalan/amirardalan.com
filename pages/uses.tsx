@@ -1,8 +1,9 @@
-import { usesContent } from '@/data/content';
+import { GetStaticProps } from 'next';
 import Container from '@/components/Container';
 import Uses from '@/components/Uses';
 
-import { GetStaticProps } from 'next';
+import { usesContent } from '@/data/content';
+
 export const getStaticProps: GetStaticProps = async () => {
   return { props: { uses: usesContent } };
 };

@@ -1,7 +1,7 @@
 import { FC, ReactNode, useEffect, useState } from 'react';
-import { useTheme, Theme } from '@emotion/react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
+import { useTheme, Theme } from '@emotion/react';
 import Footer from '@/components/Footer';
 import { metadata } from '@/data/metadata';
 
