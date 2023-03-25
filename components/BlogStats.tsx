@@ -30,10 +30,13 @@ const BlogStats: FC<BlogStatsProps> = ({
   const filterActive = filteredPosts.length < feed.length;
   const postCount = filterActive ? filteredPosts.length : feed.length;
   const postsText = postCount === 1 ? 'post' : 'posts';
-  const initialLikesCount = filterActive
-    ? filteredPosts.reduce((acc, post) => acc + (post.likes || 0), 0)
-    : feed.reduce((acc, post) => acc + (post.likes || 0), 0);
-  const likesText = initialLikesCount === 1 ? 'like' : 'likes';
+  const filteredLikesCount = filteredPosts.reduce(
+    (acc, post) => acc + (post.likes || 0),
+    0
+  );
+  const { totalLikesCount } = useTotalLikes();
+  const likesText =
+    (filteredLikesCount | totalLikesCount) === 1 ? 'like' : 'likes';
 
   const styleBlogStatsWrapper = css({
     display: 'flex',
@@ -70,16 +73,6 @@ const BlogStats: FC<BlogStatsProps> = ({
     },
   });
 
-  const { totalLikesCount } = useTotalLikes();
-  const [likesCount, setLikesCount] = useState(initialLikesCount);
-
-  useEffect(() => {
-    const newLikesCount = filterActive
-      ? filteredPosts.reduce((acc, post) => acc + (post.likes || 0), 0)
-      : feed.reduce((acc, post) => acc + (post.likes || 0), 0);
-    setLikesCount(newLikesCount);
-  }, [feed, filteredPosts, filterActive]);
-
   return (
     <div css={styleBlogStatsWrapper}>
       <h1 className="blogHeading">Blog</h1>
@@ -90,7 +83,7 @@ const BlogStats: FC<BlogStatsProps> = ({
         </li>
         <li className="divider">/</li>
         <li className="likesCount">
-          {formatLikeCount(filterActive ? initialLikesCount : totalLikesCount)}
+          {formatLikeCount(filterActive ? filteredLikesCount : totalLikesCount)}
           <span className="text">{likesText}</span>
         </li>
       </ul>
