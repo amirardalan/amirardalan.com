@@ -168,6 +168,24 @@ export function GlobalStyles() {
               border: 0,
               fontSize: '100%',
               verticalAlign: 'baseline',
+              '::-webkit-scrollbar-track': {
+                WebkitBoxShadow: 'none',
+                borderRadius: '10px',
+                backgroundColor: 'transparent',
+              },
+              '::-webkit-scrollbar': {
+                width: '8px',
+                height: '8px',
+                backgroundColor: 'transparent',
+              },
+              '::-webkit-scrollbar-thumb': {
+                borderRadius: '10px',
+                WebkitBoxShadow: 'none',
+                backgroundColor: 'var(--color-accent-gray)',
+                '&:hover': {
+                  backgroundColor: 'var(--color-disabled)',
+                },
+              },
             },
           'article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section':
             {
