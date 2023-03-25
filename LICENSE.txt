@@ -1,6 +1,10 @@
-© 2023 Amir Ardalan - All Rights Reserved
----
-- You can use this code as inspiration for your own project
-- Please do not directly copy the source code or design
-- Please do not use my personal content (content.ts) or blog posts
-- Crediting the author is appreciated ❤
+Copyright © 2023 Amir Ardalan - All Rights Reserved
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to use the code contained in this repository as inspiration for their own projects, subject to the following conditions:
+
+1. You may not directly copy the source code or design of the website.
+2. You may not use any personal content belonging to the author, including but not limited to content.ts, manifest.json or blog posts.
+3. You may not use any proprietary media assets belonging to the author, including but not limited to the logo, images, icons, videos, and the like.
+4. If you do use this code as inspiration for your own project, crediting the author is appreciated but not required.
+
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
