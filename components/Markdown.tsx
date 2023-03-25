@@ -52,7 +52,7 @@ const BlogMarkdown: FC<BlogMarkdownProps> = ({ markdown }) => {
         position: 'absolute',
         bottom: 10,
         right: -10,
-        color: 'var(--color-accent-gray)',
+        color: 'var(--color-disabled)',
         textAlign: 'right',
         fontSize: 12,
       },
@@ -66,7 +66,7 @@ const BlogMarkdown: FC<BlogMarkdownProps> = ({ markdown }) => {
         borderRadius: 5,
         textTransform: 'uppercase',
         fontSize: 13,
-        padding: '.1rem .4rem',
+        padding: '.05rem .3rem',
         color: 'var(--color-bg)',
         '&:after': {
           background: 'var(--icon-copy) no-repeat',
@@ -116,7 +116,7 @@ const BlogMarkdown: FC<BlogMarkdownProps> = ({ markdown }) => {
       background: 'transparent !important',
       backgroundColor: 'var(--code-bg) !important',
       code: {
-        paddingRight: '1.5rem',
+        paddingRight: '1.2rem',
         marginLeft: -5,
         backgroundColor: 'transparent !important',
         transform: 'translateZ(0)',
