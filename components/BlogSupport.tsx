@@ -103,8 +103,14 @@ const BlogSupport: FC<BlogSupportProps> = ({ id }) => {
         },
         '.paymentMethods': {
           position: 'relative',
-          display: 'flex',
-          flexDirection: 'column',
+          'a:hover::before': {
+            height: 32,
+            width: 4,
+            position: 'absolute',
+            left: -14,
+            content: '""',
+            borderLeft: '4px solid var(--color-primary)',
+          },
           '.ether': {
             display: 'flex',
             background: 'var(--icon-eth) no-repeat',
