@@ -89,8 +89,10 @@ const BlogStats: FC<BlogStatsProps> = ({
           </li>
         ) : (
           <li className="likesCount">
-            <LoadingSpinner size={15} />
-            {/* <span className="text">{likesText}</span> */}
+            {formatLikeCount(
+              filterActive ? filteredLikesCount : totalLikesCount
+            )}
+            <span className="text">{likesText}</span>
           </li>
         )}
       </ul>
