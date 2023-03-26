@@ -14,7 +14,9 @@ const getLikesHandler: NextApiHandler = async (
         where: { id: Number(postId) },
         select: { likes: true },
       });
-      res.json(post.likes);
+      if (post) {
+        res.json(post.likes);
+      }
     } catch (error) {
       res.status(500).json({ message: 'Something went wrong' });
     }

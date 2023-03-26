@@ -1,15 +1,7 @@
 import { FC } from 'react';
 import Link from 'next/link';
 import { css } from '@emotion/react';
-
-interface Home {
-  featured: {
-    title: string;
-  };
-  latest: {
-    title: string;
-  };
-}
+import { Home } from '@/types/home';
 
 interface Post {
   slug: string;

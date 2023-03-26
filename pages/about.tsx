@@ -9,30 +9,9 @@ import SocialIcons from '@/components/SocialIcons';
 import Timeline from '@/components/Timeline';
 
 import { aboutContent, timelineContent } from '@/data/content';
+import { CtaButtonsProps, ContactButtonProps } from '@/types/button';
 
-type AboutPageProps = {
-  about: {
-    heading: string;
-  } & Record<
-    string,
-    {
-      items: string[];
-      img: string;
-      title: string;
-    } & AboutInfo &
-      Avatar
-  >;
-  timeline: object;
-};
-
-interface AboutInfo {
-  [key: string]: string;
-}
-
-interface Avatar {
-  img: string;
-  title: string;
-}
+type AboutPageProps = {};
 
 const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
   const styleGridWrapper = css({
@@ -302,7 +281,7 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
                 <h3 aria-label={about.contact.title}>{about.contact.title}</h3>
               </li>
               <li>
-                <ContactButton content={about} />
+                <ContactButton props={about} />
               </li>
             </ul>
           </div>
