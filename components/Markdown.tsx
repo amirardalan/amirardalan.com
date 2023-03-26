@@ -223,8 +223,6 @@ const BlogMarkdown: FC<BlogMarkdownProps> = ({ markdown }) => {
         }
       };
 
-      console.log(props);
-
       return hasLang ? (
         <SyntaxHighlighter
           style={syntaxTheme}
