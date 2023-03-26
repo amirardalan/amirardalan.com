@@ -188,7 +188,7 @@ const BlogMarkdown: FC<BlogMarkdownProps | SyntaxHighlighterProps> = ({
   }
 
   interface H3Props {
-    children: ReactNode & { length: number };
+    children: React.ReactNode;
   }
 
   const MarkdownComponents: object = {
@@ -290,16 +290,19 @@ const BlogMarkdown: FC<BlogMarkdownProps | SyntaxHighlighterProps> = ({
       return <a href={anchor.href}>{anchor.children}</a>;
     },
     h3: (props: H3Props) => {
-      const arr = props.children;
-      let heading = '';
-
-      for (let i = 0; i < arr.length; i++) {
-        if (arr[i]?.type !== undefined) {
-          for (let j = 0; j < arr[i].props.children.length; j++) {
-            heading += arr[i]?.props?.children[0];
-          }
-        } else heading += arr[i];
-      }
+      const children = Array.isArray(props.children)
+        ? props.children
+        : [props.children];
+      const heading = children
+        .flatMap((element) =>
+          typeof element === 'string'
+            ? element
+            : element?.type !== undefined &&
+              typeof element.props.children === 'string'
+            ? element.props.children
+            : []
+        )
+        .join('');
 
       const slug = generateSlug(heading);
 
