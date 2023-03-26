@@ -1,5 +1,4 @@
-import type { FC } from 'react';
-import { GetStaticProps } from 'next';
+import { NextPage, GetStaticProps } from 'next';
 
 import Container from '@/components/Container';
 import Thanks from '@/components/Thanks';
@@ -16,16 +15,17 @@ type ThanksPageProps = {
       title: string;
       description: string;
     };
+    heading: string;
+    copy: string;
   };
 };
 
-const ThanksPage: FC<ThanksPageProps> = ({ thanks }) => {
+const ThanksPage: NextPage<ThanksPageProps> = ({ thanks }) => {
   return (
     <Container
       title={thanks.meta.title}
       description={thanks.meta.description}
       robots="noindex"
-      date={null}
     >
       <main className="thanks">
         <Thanks content={thanks} />
