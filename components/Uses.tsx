@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import Markdown from '@/components/Markdown';
+import { MarkdownTypes } from '@/types/markdown';
 
 const styleUsesMarkdown = {
   display: 'grid',
@@ -61,20 +62,23 @@ const styleUsesMarkdown = {
 
 type ContentItem = {
   heading: string;
-  devices: string;
-  stack: string;
-  tools: string;
-  software: string;
+  devices: { content: string };
+  stack: { content: string };
+  tools: { content: string };
+  software: { content: string };
 };
 
 type UsesProps = {
-  content: ContentItem[];
+  content: {
+    items: ContentItem[];
+    markdown: MarkdownTypes;
+  };
 };
 
 const Uses: FC<UsesProps> = ({ content }) => {
   return (
     <>
-      {content.map((item, index) => (
+      {content.items.map((item, index) => (
         <div key={index}>
           <h1 className="pageHeading">{item.heading}</h1>
           <div css={styleUsesMarkdown}>

@@ -26,9 +26,9 @@ SyntaxHighlighter.registerLanguage('markdown', markdown);
 SyntaxHighlighter.registerLanguage('json', json);
 SyntaxHighlighter.registerLanguage('lua', lua);
 
-type BlogMarkdownProps = {
-  markdown: { content: string };
-};
+import { MarkdownTypes } from '@/types/markdown';
+
+type BlogMarkdownProps = MarkdownTypes;
 
 const BlogMarkdown: FC<BlogMarkdownProps> = ({ markdown }) => {
   const syntaxTheme = oneDark;
