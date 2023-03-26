@@ -233,7 +233,6 @@ const Edit: FC<EditProps> = ({
               requiredFields={!content || !title || !slug || !teaser}
               submitClass="buttonCompact updateBtn"
               handleCancel={handleCancel}
-              handleDeletion={handleDeletion}
               setFetchStatus={setFetchStatus}
               deleted={false}
               isFetching={isFetching}

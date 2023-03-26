@@ -1,6 +1,6 @@
 import { FC, MouseEventHandler } from 'react';
 import Router from 'next/router';
-import { publishPost, editPost } from '@/lib/blog';
+import { publishPost, editPost, deletePost } from '@/lib/blog';
 import BlogPostDelete from '@/components/BlogPostDelete';
 import LoadingSpinner from '@/components/LoadingSpinner';
 import { AdminControlsTypes } from '@/types/admin';
@@ -18,7 +18,6 @@ type BlogPostControlsProps = AdminControlsTypes & {
   requiredFields: boolean | undefined;
   submitClass: string;
   handleCancel: MouseEventHandler | undefined;
-  handleDeletion: MouseEventHandler;
   deleted: boolean;
   setFetchStatus: (active: boolean) => void;
   isFetching: boolean;
@@ -32,13 +31,23 @@ const BlogPostControls: FC<BlogPostControlsProps> = ({
   requiredFields,
   submitClass,
   handleCancel,
-  handleDeletion,
   deleted,
   setFetchStatus,
   isFetching,
 }) => {
   const isEditPage = Router.asPath.includes('/blog/edit/');
   const isCreatePage = Router.asPath === '/blog/create';
+
+  const handleDeletion = () => {
+    setFetchStatus(true);
+    return deletePost(
+      post.id,
+      post.published,
+      latestPost,
+      post.featured,
+      setFetchStatus
+    );
+  };
 
   const RenderEditButton = () => {
     if (!isCreatePage) {

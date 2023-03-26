@@ -6,7 +6,6 @@ import prisma from '@/lib/prisma';
 import { useSession } from 'next-auth/react';
 import { css } from '@emotion/react';
 import { useFetchStatus } from '@/hooks/useLoadingIndicator';
-import { deletePost } from '@/lib/blog';
 
 import Container from '@/components/Container';
 import BlogStyles from '@/components/BlogStyles';
@@ -100,17 +99,6 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
   const [fetchStatus, setFetchStatus] = useFetchStatus();
   const isFetching = fetchStatus;
 
-  const handleDeletion = () => {
-    setFetchStatus(true);
-    return deletePost(
-      post.id,
-      post.published,
-      latestPost,
-      post.featured,
-      setFetchStatus
-    );
-  };
-
   // Set OG Image for blog posts. Use first image from post, otherwise dynamically generate one.
   const metaImage = post.content
     .replace(/`([^`]*)/g, '')
@@ -124,7 +112,7 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
     return (
       <div className={isPublished ? 'blog' : 'blog admin'} css={styleBlogPost}>
         {!isPublished ? (
-          <div className="draftNotification warn">{admin?.drafts?.notice}</div>
+          <div className="draftNotification warn">{admin.drafts.notice}</div>
         ) : null}
 
         <article className="post postFull">
@@ -191,7 +179,6 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
               requiredFields={undefined}
               submitClass="buttonCompact publishBtn"
               handleCancel={undefined}
-              handleDeletion={handleDeletion}
               deleted={false}
               setFetchStatus={setFetchStatus}
               isFetching={isFetching}
