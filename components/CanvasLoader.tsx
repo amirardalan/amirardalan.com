@@ -28,7 +28,7 @@ const styleRandomizeButton = css({
 });
 
 const CanvasLoader: FC = () => {
-  const [pixelRatio, setPixelRatio] = useState(null);
+  const [pixelRatio, setPixelRatio] = useState(1);
 
   useEffect(() => {
     setPixelRatio(window.devicePixelRatio);
@@ -69,6 +69,7 @@ const CanvasLoader: FC = () => {
         onCreated={({ camera }) => camera.lookAt(0, 0, 0)}
         camera={{ position: [0.35, 0.35, 0.35] }}
       >
+        <ambientLight />
         <CanvasTerrain
           theme="#a1a4b0"
           detail={detail}
@@ -78,7 +79,6 @@ const CanvasLoader: FC = () => {
           rotation={rotation}
           offset={offset}
         />
-        <ambientLight />
       </Canvas>
     </>
   );
