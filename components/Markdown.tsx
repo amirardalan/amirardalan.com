@@ -1,4 +1,4 @@
-import { FC, Key, ReactNode, useState } from 'react';
+import { FC, Key, ReactElement, ReactNode, useState } from 'react';
 import Image from 'next/image';
 import { css } from '@emotion/react';
 
@@ -29,7 +29,6 @@ SyntaxHighlighter.registerLanguage('lua', lua);
 
 type BlogMarkdownProps = {
   markdown: string & { content?: string };
-  children: ReactNode;
 };
 
 const BlogMarkdown: FC<BlogMarkdownProps | SyntaxHighlighterProps> = ({
@@ -169,20 +168,18 @@ const BlogMarkdown: FC<BlogMarkdownProps | SyntaxHighlighterProps> = ({
     },
   });
 
+  interface PreProps {
+    className: string;
+  }
+
   interface PreNode {
     node: Node;
-    children: {
-      position: object;
-      properties: object;
-      tagName: string;
-      type: string;
-      key: Key;
-      props: object[];
-    };
+    children: ReactElement<PreProps, string>[];
     position: object;
     properties: object;
     tagName: string;
     type: string;
+    value: string;
   }
 
   interface Node {
