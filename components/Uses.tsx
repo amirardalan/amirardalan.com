@@ -59,26 +59,32 @@ const styleUsesMarkdown = {
   },
 };
 
+type ContentItem = {
+  heading: string;
+  devices: string;
+  stack: string;
+  tools: string;
+  software: string;
+};
+
 type UsesProps = {
-  content: {
-    heading: string;
-    devices: string;
-    stack: string;
-    tools: string;
-    software: string;
-  };
+  content: ContentItem[];
 };
 
 const Uses: FC<UsesProps> = ({ content }) => {
   return (
     <>
-      <h1 className="pageHeading">{content.heading}</h1>
-      <div css={styleUsesMarkdown}>
-        <Markdown markdown={content.devices} />
-        <Markdown markdown={content.stack} />
-        <Markdown markdown={content.tools} />
-        <Markdown markdown={content.software} />
-      </div>
+      {content.map((item, index) => (
+        <div key={index}>
+          <h1 className="pageHeading">{item.heading}</h1>
+          <div css={styleUsesMarkdown}>
+            <Markdown markdown={item.devices} />
+            <Markdown markdown={item.stack} />
+            <Markdown markdown={item.tools} />
+            <Markdown markdown={item.software} />
+          </div>
+        </div>
+      ))}
     </>
   );
 };

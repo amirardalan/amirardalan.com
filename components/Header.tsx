@@ -13,7 +13,7 @@ const BlogAdmin = dynamic(() => import('@/components/BlogAdmin'), {
 });
 
 type HeaderProps = {
-  toggleTheme: Function;
+  toggleTheme: () => void;
 };
 
 const Header: FC<HeaderProps> = ({ toggleTheme }) => {

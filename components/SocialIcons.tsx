@@ -1,23 +1,10 @@
 import { FC, Key } from 'react';
 import Image from 'next/image';
 import { useTheme, Theme } from '@emotion/react';
+import { SocialIconsTypes } from '@/types/icons';
 
 type SocialiconsProps = {
-  about: object & {
-    social?: object & {
-      items?: Array<{
-        path: string;
-        title: string;
-        target: string;
-        rel: string;
-        content: string;
-        icon: {
-          dark: string;
-          light: string;
-        };
-      }>;
-    };
-  };
+  about: object & SocialIconsTypes;
 };
 
 const SocialIcons: FC<SocialiconsProps> = ({ about }) => {

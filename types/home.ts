@@ -1,4 +1,4 @@
-export interface Home {
+export interface HomeTypes {
   featured: {
     title: string;
   };

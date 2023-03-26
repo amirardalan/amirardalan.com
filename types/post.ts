@@ -6,4 +6,11 @@ export interface PostProps {
   slug: string;
   title: string;
   teaser: string;
+  published: boolean;
+  featured: boolean;
+  showEdited: boolean;
+  editedAt: Date;
+  postHistory: { editedAt: Date }[];
+  author: number & { name: string };
+  likes: number;
 }

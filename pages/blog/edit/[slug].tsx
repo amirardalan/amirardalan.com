@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { FC, useState } from 'react';
 import { GetServerSideProps } from 'next';
 import Router from 'next/router';
 import Link from 'next/link';
@@ -41,7 +41,31 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   };
 };
 
-const Edit = ({ admin, breadcrumb, editPost, getLatestPost }) => {
+type EditProps = {
+  admin: typeof adminContent;
+  breadcrumb: typeof breadcrumbContent;
+  editPost: {
+    id: number;
+    title: string;
+    slug: string;
+    teaser: string;
+    content: string;
+    category: string;
+    published: boolean;
+    featured: boolean;
+    showEdited: boolean;
+  };
+  getLatestPost: {
+    id: number;
+  };
+};
+
+const Edit: FC<EditProps> = ({
+  admin,
+  breadcrumb,
+  editPost,
+  getLatestPost,
+}) => {
   const isPublished = editPost?.published;
   const published = isPublished;
   const id = editPost?.id;

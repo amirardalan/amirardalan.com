@@ -9,9 +9,14 @@ import SocialIcons from '@/components/SocialIcons';
 import Timeline from '@/components/Timeline';
 
 import { aboutContent, timelineContent } from '@/data/content';
-import { CtaButtonsProps, ContactButtonProps } from '@/types/button';
+import { AboutTypes, TimelineContentTypes } from '@/types/about';
+import { CtaButtonsTypes, ContactButtonTypes } from '@/types/button';
+import { SocialIconsTypes } from '@/types/icons';
 
-type AboutPageProps = {};
+type AboutPageProps = {
+  about: AboutTypes & SocialIconsTypes & CtaButtonsTypes & ContactButtonTypes;
+  timeline: TimelineContentTypes;
+};
 
 const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
   const styleGridWrapper = css({

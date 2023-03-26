@@ -1,7 +1,11 @@
 import { FC, useState } from 'react';
 import Link from 'next/link';
 import { css } from '@emotion/react';
-import { CtaButtonsProps, ContactButtonProps } from '@/types/button';
+import { ContactButtonTypes, CtaButtonsTypes } from '@/types/button';
+
+type CtaButtonsProps = {
+  items: CtaButtonsTypes['items'];
+};
 
 export const CtaButtons: FC<CtaButtonsProps> = ({ items }) => {
   return (
@@ -22,7 +26,11 @@ export const CtaButtons: FC<CtaButtonsProps> = ({ items }) => {
   );
 };
 
-export const ContactButton: FC<ContactButtonProps> = ({ props }) => {
+type ContactButtonProps = {
+  content: ContactButtonTypes;
+};
+
+export const ContactButton: FC<ContactButtonProps> = ({ content }) => {
   const [showEmail, setShowEmail] = useState(false);
   const showEmailOnclick = () => {
     setShowEmail(true);
@@ -78,11 +86,11 @@ export const ContactButton: FC<ContactButtonProps> = ({ props }) => {
             {process.env.NEXT_PUBLIC_USER_EMAIL}
           </address>
         ) : (
-          props.contact.email.title
+          content.contact.email.title
         )}
       </button>
       <div css={styleTooltipContact}>
-        <div className="tooltip">{props.contact.copiedToClipboard}</div>
+        <div className="tooltip">{content.contact.copiedToClipboard}</div>
       </div>
     </span>
   );

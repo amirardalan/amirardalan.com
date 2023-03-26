@@ -1,4 +1,4 @@
-export type CtaButtonsProps = {
+export type CtaButtonsTypes = {
   items: Array<{
     path: string;
     title: string;
@@ -8,8 +8,8 @@ export type CtaButtonsProps = {
   }>;
 };
 
-export type ContactButtonProps = {
-  props: {
+export type ContactButtonTypes = {
+  content: {
     contact: {
       email: {
         title: string;

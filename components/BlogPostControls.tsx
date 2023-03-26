@@ -23,9 +23,9 @@ type BlogPostControlsProps = {
   };
   latestPost: boolean;
   publishLabel: string;
-  requiredFields: boolean;
+  requiredFields: boolean | undefined;
   submitClass: string;
-  handleCancel: MouseEventHandler;
+  handleCancel: MouseEventHandler | undefined;
   handleDeletion: MouseEventHandler;
   deleted: boolean;
   setFetchStatus: setFetchStatusFn;

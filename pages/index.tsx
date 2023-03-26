@@ -8,8 +8,8 @@ import FeaturedPost from '@/components/FeaturedPost';
 import { CtaButtons } from '@/components/CtaButtons';
 
 import { homeContent } from '@/data/content';
-import { Home } from '@/types/home';
-import { CtaButtonsProps } from '@/types/button';
+import { HomeTypes } from '@/types/home';
+import { CtaButtonsTypes } from '@/types/button';
 
 const CanvasLoader = dynamic(() => import('@/components/CanvasLoader'), {
   ssr: true,
@@ -44,10 +44,10 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 
 type HomeProps = {
-  home: Home & {
+  home: HomeTypes & {
     typed: string;
     title: string;
-    items: CtaButtonsProps['items'];
+    items: CtaButtonsTypes['items'];
     meta: {
       title: string;
       description: string;
