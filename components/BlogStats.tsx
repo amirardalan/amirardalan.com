@@ -6,7 +6,7 @@ import formatLikeCount from '@/utils/formatLikeCount';
 
 type BlogPost = {
   id?: number;
-  publishedAt?: string;
+  publishedAt?: string | Date;
   editedAt?: string;
   slug?: string;
   title?: string;

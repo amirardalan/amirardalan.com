@@ -117,6 +117,8 @@ const BlogPostControls: FC<BlogPostControlsProps> = ({
       </div>
     );
   }
+
+  return <></>;
 };
 
 export default BlogPostControls;
