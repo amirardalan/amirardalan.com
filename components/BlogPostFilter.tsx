@@ -7,6 +7,7 @@ import CloseButton from '@/components/CloseButton';
 import compareID from '@/utils/compareID';
 
 import { PostProps } from '@/types/post';
+import { BlogStatsTypes } from '@/types/blog';
 
 type BlogPostFilterProps = {
   blog: {
@@ -18,57 +19,10 @@ type BlogPostFilterProps = {
     };
   };
   feed: PostProps[];
+  filteredPosts: BlogStatsTypes[];
 };
 
 const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
-  const styleBlogCategoryNav = css({
-    overflow: 'scroll',
-    msOverflowStyle: 'none',
-    scrollbarWidth: 'none',
-    whiteSpace: 'nowrap',
-    minHeight: 32,
-    li: {
-      display: 'inline',
-      marginRight: '1.8rem',
-    },
-    '&::-webkit-scrollbar': {
-      display: 'none',
-    },
-    '@media (max-width: 768px)': {
-      minHeight: 32,
-      li: {
-        marginRight: '1.2rem',
-      },
-    },
-  });
-
-  const styleSearchPosts = css({
-    display: 'flex',
-    position: 'relative',
-    caretColor: 'var(--color-gray)',
-    input: {
-      fontSize: 15,
-      marginBottom: 0,
-    },
-    '.icon': {
-      position: 'absolute',
-      top: 16,
-      right: 0,
-      background: 'var(--color-accent)',
-      width: 35,
-    },
-    '.clearSearch': {
-      display: 'flex',
-      justifyContent: 'center',
-      position: 'absolute',
-      width: 23,
-      height: 23,
-      top: 16,
-      right: 8,
-      cursor: 'pointer',
-    },
-  });
-
   const theme: Theme = useTheme();
 
   const [search, setSearch] = useState('');
@@ -280,3 +234,51 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
 };
 
 export default BlogPostFilter;
+
+const styleBlogCategoryNav = css({
+  overflow: 'scroll',
+  msOverflowStyle: 'none',
+  scrollbarWidth: 'none',
+  whiteSpace: 'nowrap',
+  minHeight: 32,
+  li: {
+    display: 'inline',
+    marginRight: '1.8rem',
+  },
+  '&::-webkit-scrollbar': {
+    display: 'none',
+  },
+  '@media (max-width: 768px)': {
+    minHeight: 32,
+    li: {
+      marginRight: '1.2rem',
+    },
+  },
+});
+
+const styleSearchPosts = css({
+  display: 'flex',
+  position: 'relative',
+  caretColor: 'var(--color-gray)',
+  input: {
+    fontSize: 15,
+    marginBottom: 0,
+  },
+  '.icon': {
+    position: 'absolute',
+    top: 16,
+    right: 0,
+    background: 'var(--color-accent)',
+    width: 35,
+  },
+  '.clearSearch': {
+    display: 'flex',
+    justifyContent: 'center',
+    position: 'absolute',
+    width: 23,
+    height: 23,
+    top: 16,
+    right: 8,
+    cursor: 'pointer',
+  },
+});

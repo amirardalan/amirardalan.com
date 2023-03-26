@@ -3,31 +3,14 @@ import { css } from '@emotion/react';
 import useTotalLikes from '@/hooks/useTotalLikes';
 import LoadingSpinner from '@/components/LoadingSpinner';
 import formatLikeCount from '@/utils/formatLikeCount';
-
-type BlogPost = {
-  id?: number;
-  publishedAt?: string | Date;
-  editedAt?: string;
-  slug?: string;
-  title?: string;
-  teaser?: string;
-  content?: string;
-  featured?: boolean;
-  published?: boolean;
-  showEdited?: boolean;
-  authorId?: number;
-  likes?: number;
-};
+import { BlogStatsTypes } from '@/types/blog';
 
 type BlogStatsProps = {
-  feed: BlogPost[];
-  filteredPosts: BlogPost[];
+  feed: BlogStatsTypes[];
+  filteredPosts: BlogStatsTypes[];
 };
 
-const BlogStats: FC<BlogStatsProps> = ({
-  feed,
-  filteredPosts,
-}: BlogStatsProps) => {
+const BlogStats: FC<BlogStatsProps> = ({ feed, filteredPosts }) => {
   const filterActive = filteredPosts.length < feed.length;
   const postCount = filterActive ? filteredPosts.length : feed.length;
   const postsText = postCount === 1 ? 'post' : 'posts';

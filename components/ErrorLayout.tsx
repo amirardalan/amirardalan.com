@@ -1,7 +1,11 @@
 import { FC } from 'react';
 import Link from 'next/link';
 import { css } from '@emotion/react';
-import { ErrorProps } from '@/types/error';
+import { ErrorTypes } from '@/types/error';
+
+type ErrorProps = {
+  error: ErrorTypes;
+};
 
 const ErrorLayout: FC<ErrorProps> = ({ error }) => {
   const styleErrorWrapper = css({
