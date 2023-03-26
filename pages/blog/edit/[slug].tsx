@@ -227,7 +227,7 @@ const Edit: FC<EditProps> = ({
 
             <BlogPostControls
               admin={admin}
-              post={id}
+              post={{ id, slug, published, featured }}
               publishLabel={admin.controls.update}
               latestPost={latestPost}
               requiredFields={!content || !title || !slug || !teaser}
@@ -246,8 +246,7 @@ const Edit: FC<EditProps> = ({
 
   return (
     <Container
-      title={admin.edit.meta.title}
-      {...editPageTitle}
+      title={`${admin.edit.meta.title} > ${editPageTitle}`}
       robots="noindex"
     >
       <BlogStyles>
