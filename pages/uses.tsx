@@ -14,6 +14,11 @@ type UsesPageProps = {
       title: string;
       description: string;
     };
+    heading: string;
+    devices: string;
+    stack: string;
+    tools: string;
+    software: string;
   };
 };
 
