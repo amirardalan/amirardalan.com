@@ -1,3 +1,4 @@
+import { FC, useEffect, useState } from 'react';
 import { GetServerSideProps } from 'next';
 import Link from 'next/link';
 
@@ -9,14 +10,32 @@ import Container from '@/components/Container';
 import BlogStyles from '@/components/BlogStyles';
 import BlogPost from '@/components/BlogPost';
 
-import compareID from '@/utils/compareID';
 import { adminContent, breadcrumbContent } from '@/data/content';
 
-const Drafts = ({ drafts, admin, breadcrumb }) => {
+import { PostProps } from '@/types/post';
+
+type DraftsProps = {
+  drafts: PostProps[];
+  admin: {
+    drafts: {
+      meta: {
+        title: string;
+      };
+      empty: string;
+      empty2: string;
+      empty3: string;
+    };
+  };
+  breadcrumb: {
+    blog: string;
+    drafts: string;
+  };
+};
+
+const Drafts = ({ drafts, admin, breadcrumb }: DraftsProps) => {
   const { data: session } = useSession();
   const isLoggedIn =
-    session && session.user.email == process.env.NEXT_PUBLIC_USER_EMAIL;
-  let draftsList = null;
+    session && session?.user?.email == process.env.NEXT_PUBLIC_USER_EMAIL;
 
   const Breadcrumbs = () => {
     return (
@@ -27,38 +46,24 @@ const Drafts = ({ drafts, admin, breadcrumb }) => {
     );
   };
 
-  interface Post {
-    id: number;
-    category: String;
-    publishedAt: Date;
-    content: string;
-    slug: string;
-    title: string;
-    teaser: string;
-  }
+  const [draftsList, setDraftsList] = useState<JSX.Element[]>([]);
 
-  draftsList = (
-    <>
-      <Breadcrumbs />
-      <div className="drafts">
-        <main>
-          {drafts
-            .sort(compareID)
-            .reverse()
-            .map((post: Post) => (
-              <div key={post.id} className="postDraft">
-                <BlogPost post={post} />
-
-                <div className="draftInfo">
-                  <div className="label">Draft</div>
-                  <div className="category">{post.category}</div>
-                </div>
-              </div>
-            ))}
-        </main>
-      </div>
-    </>
-  );
+  useEffect(() => {
+    const newDraftsList: JSX.Element[] = [];
+    drafts.forEach((post: PostProps) => {
+      const postElement = (
+        <div key={post.id} className="postDraft">
+          <BlogPost post={post} />
+          <div className="draftInfo">
+            <div className="label">Draft</div>
+            <div className="category">{post.category}</div>
+          </div>
+        </div>
+      );
+      newDraftsList.push(postElement);
+    });
+    setDraftsList(newDraftsList);
+  }, [drafts]);
 
   const RenderDrafts = () => {
     if (isLoggedIn && drafts.length < 1) {
@@ -73,7 +78,14 @@ const Drafts = ({ drafts, admin, breadcrumb }) => {
         </>
       );
     } else if (isLoggedIn) {
-      return draftsList;
+      return (
+        <>
+          <Breadcrumbs />
+          <div className="drafts">
+            <main>{draftsList}</main>
+          </div>
+        </>
+      );
     } else {
       return <LoadingTriangle />;
     }
@@ -101,7 +113,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
 
   const drafts = await prisma.post.findMany({
     where: {
-      author: { email: session.user.email },
+      author: { email: session?.user?.email },
       published: false,
     },
     include: {
