@@ -8,7 +8,9 @@ export interface AdminControlsTypes {
       save: string;
       publish: string;
       unpublish: string;
-      drafts?: { id: number; notice: string }[];
+    };
+    drafts: {
+      notice: string;
     };
   };
 }
