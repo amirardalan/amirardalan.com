@@ -9,7 +9,7 @@ type BlogNavigationProps = {
     length: number;
     sort: Function;
     id: number;
-    [key: number]: any; // index signature to allow numeric indexing
+    [key: number]: any;
   };
   post: {
     id: number;
@@ -47,8 +47,8 @@ const BlogNavigation: FC<BlogNavigationProps> = ({
 
   const prevTitle = prevPost && arr ? arr[index - 1]?.title : null;
   const nextTitle = nextPost && arr ? arr[index + 1]?.title : null;
-  const prevSlug = arr ? arr[index - 1].slug : null;
-  const nextSlug = arr ? arr[index + 1].slug : null;
+  const prevSlug = arr ? arr[index - 1]?.slug : null;
+  const nextSlug = arr ? arr[index + 1]?.slug : null;
   const prevLink = prevPost ? `/blog/${encodeURIComponent(prevSlug)}` : '#';
   const nextLink = nextPost ? `/blog/${encodeURIComponent(nextSlug)}` : '#';
 

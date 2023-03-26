@@ -78,7 +78,7 @@ const Draft = ({ admin, breadcrumb }) => {
   const { data: session } = useSession();
   let create = null;
 
-  if (session && session.user.email == process.env.NEXT_PUBLIC_USER_EMAIL) {
+  if (session && session?.user?.email == process.env.NEXT_PUBLIC_USER_EMAIL) {
     create = (
       <div className="blog admin create">
         <nav className="breadcrumbs">

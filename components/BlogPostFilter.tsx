@@ -6,6 +6,8 @@ import BlogPost from '@/components/BlogPost';
 import CloseButton from '@/components/CloseButton';
 import compareID from '@/utils/compareID';
 
+import { PostProps } from '@/types/post';
+
 type BlogPostFilterProps = {
   blog: {
     search: {
@@ -17,16 +19,6 @@ type BlogPostFilterProps = {
   };
   feed: PostProps[];
 };
-
-interface PostProps {
-  id: number;
-  category: string;
-  publishedAt: Date;
-  content: string;
-  slug: string;
-  title: string;
-  teaser: string;
-}
 
 const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
   const styleBlogCategoryNav = css({

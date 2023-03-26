@@ -1,9 +1,9 @@
 import { useState, useEffect, useCallback } from 'react';
 
-// Usage: const isBreakpoint = useMediaQuery(890)
-export const useMediaQuery = (width: Number) => {
-  const [targetReached, setTargetReached] = useState(false);
-  const updateTarget = useCallback((e) => {
+export const useMediaQuery = (width: number) => {
+  const [targetReached, setTargetReached] = useState<boolean>(false);
+
+  const updateTarget = useCallback((e: MediaQueryListEvent) => {
     if (e.matches) {
       setTargetReached(true);
     } else {
@@ -13,13 +13,13 @@ export const useMediaQuery = (width: Number) => {
 
   useEffect(() => {
     const media = window.matchMedia(`(max-width: ${width}px)`);
-    media.addEventListener('change', (e) => updateTarget(e));
+    media.addEventListener('change', updateTarget);
 
     if (media.matches) {
       setTargetReached(true);
     }
 
-    return () => media.removeEventListener('change', (e) => updateTarget(e));
+    return () => media.removeEventListener('change', updateTarget);
   }, [updateTarget, width]);
 
   return targetReached;

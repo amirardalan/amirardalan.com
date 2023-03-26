@@ -16,7 +16,7 @@ export default async function handle(
       content: content,
       slug: slug,
       teaser: teaser,
-      author: { connect: { email: session?.user?.email } },
+      author: { connect: { email: session?.user?.email || '' } },
       category: category,
       featured: featured,
     },
