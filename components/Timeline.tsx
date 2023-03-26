@@ -5,17 +5,25 @@ import { useInView } from 'react-intersection-observer';
 import TimelineEntry from '@/components/TimelineEntry';
 
 type TimelineProps = {
-  timeline: object & {
-    items?: string;
-    meta?: object & {
+  timeline: {
+    meta: {
       title: string;
     };
-    fullStory?: object & {
+    items: Items;
+    fullStory: {
       link: string;
       text: string;
     };
   };
 };
+
+interface Item {
+  cName: string;
+  title: string;
+  content: string;
+}
+
+type Items = Item[];
 
 const Timeline: FC<TimelineProps> = ({ timeline }) => {
   const { ref, inView } = useInView({

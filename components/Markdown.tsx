@@ -7,6 +7,7 @@ import rehypeRaw from 'rehype-raw';
 import generateSlug from '@/utils/generateSlug';
 import rangeParser from 'parse-numeric-range';
 
+import { SyntaxHighlighterProps } from 'react-syntax-highlighter';
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 
@@ -28,9 +29,12 @@ SyntaxHighlighter.registerLanguage('lua', lua);
 
 type BlogMarkdownProps = {
   markdown: string & { content?: string };
+  children: ReactNode;
 };
 
-const BlogMarkdown: FC<BlogMarkdownProps> = ({ markdown }) => {
+const BlogMarkdown: FC<BlogMarkdownProps | SyntaxHighlighterProps> = ({
+  markdown,
+}) => {
   const syntaxTheme = oneDark;
 
   const styleMarkdown = css({
@@ -165,11 +169,6 @@ const BlogMarkdown: FC<BlogMarkdownProps> = ({ markdown }) => {
     },
   });
 
-  interface Node {
-    node: object;
-    children: object;
-  }
-
   interface PreNode {
     node: Node;
     children: {
@@ -186,27 +185,45 @@ const BlogMarkdown: FC<BlogMarkdownProps> = ({ markdown }) => {
     type: string;
   }
 
+  interface Node {
+    data: any;
+    node: object;
+    children: object;
+  }
+
   interface H3Props {
     children: ReactNode & { length: number };
   }
 
   const MarkdownComponents: object = {
-    code({ node, inline, className, ...props }) {
+    code({
+      node,
+      inline,
+      className,
+      ...props
+    }: {
+      node: Node;
+      inline: boolean;
+      className: string;
+      props: object;
+    }) {
       const hasLang = /language-(\w+)/.exec(className || '');
       const hasMeta = node?.data?.meta;
 
-      const applyHighlights: object = (applyHighlights: number) => {
+      const applyHighlights = (lineNumber: number) => {
         if (hasMeta) {
           const RE = /{([\d,-]+)}/;
-          const metadata = node.data.meta?.replace(/\s/g, '');
-          const strlineNumbers = RE?.test(metadata)
-            ? RE?.exec(metadata)[1]
-            : '0';
+          const metadata = node.data.meta.replace(/\s/g, '');
+          let strlineNumbers = '0';
+          if (RE.test(metadata)) {
+            const match = RE.exec(metadata);
+            if (match) {
+              strlineNumbers = match[1];
+            }
+          }
           const highlightLines = rangeParser(strlineNumbers);
           const highlight = highlightLines;
-          const data: string = highlight.includes(applyHighlights)
-            ? 'highlight'
-            : null;
+          const data = highlight.includes(lineNumber) ? 'highlight' : undefined;
           return { data };
         } else {
           return {};

@@ -3,30 +3,16 @@ import { FC } from 'react';
 type DropdownProps = {
   label: string;
   value: string;
-  handleChange: Function;
-  data: object;
+  handleChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+  data: string[];
 };
 
-interface Data {
-  map: Function;
-}
-
-const Dropdown: FC<DropdownProps> = ({
-  label,
-  value,
-  handleChange,
-  data,
-}: {
-  label: string;
-  value: string;
-  handleChange: Function;
-  data: Data;
-}) => {
+const Dropdown: FC<DropdownProps> = ({ label, value, handleChange, data }) => {
   return (
     <label className="dropdownLabel">
       <span>{label}</span>
-      <select value={value} onChange={(e) => handleChange(e)}>
-        {data.map((item: string) => (
+      <select value={value} onChange={handleChange}>
+        {data.map((item) => (
           <option key={item} value={item}>
             {item}
           </option>

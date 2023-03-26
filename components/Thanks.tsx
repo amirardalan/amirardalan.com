@@ -1,6 +1,15 @@
 import { FC } from 'react';
 import Link from 'next/link';
 
+type ThanksContent = {
+  heading: string;
+  copy: string;
+};
+
+type ThanksProps = {
+  content: ThanksContent;
+};
+
 const styleThanks = {
   p: {
     fontFamily: 'var(--font-tertiary)',
@@ -12,15 +21,7 @@ const styleThanks = {
   },
 };
 
-type ThanksProps = {
-  content: object;
-};
-
-const Thanks: FC<ThanksProps> = ({
-  content,
-}: {
-  content: { heading: string; copy: string };
-}) => {
+const Thanks: FC<ThanksProps> = ({ content }) => {
   return (
     <>
       <h1 className="pageHeading">{content.heading}</h1>

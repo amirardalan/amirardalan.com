@@ -120,7 +120,7 @@ const Logo: FC = () => {
           </div>
         </div>
       );
-    } else null;
+    } else return null;
   };
 
   return (

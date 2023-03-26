@@ -2,12 +2,6 @@ import { FC } from 'react';
 import Link from 'next/link';
 import { css } from '@emotion/react';
 
-type FeaturedPostProps = {
-  home: object;
-  featuredPost: object;
-  latestPost: object;
-};
-
 interface Home {
   featured: {
     title: string;
@@ -18,19 +12,21 @@ interface Home {
 }
 
 interface Post {
-  slug?: string;
+  slug: string;
   title: string;
-  teaser?: string;
+  teaser: string;
+}
+
+interface FeaturedPostProps {
+  home: Home;
+  featuredPost: Post | null;
+  latestPost: Post | null;
 }
 
 const FeaturedPost: FC<FeaturedPostProps> = ({
   home,
   featuredPost,
   latestPost,
-}: {
-  home: Home;
-  featuredPost: Post;
-  latestPost: Post;
 }) => {
   const styleFeaturedPost = css({
     marginTop: '2.25rem',
@@ -71,7 +67,7 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
     },
   });
 
-  const featured = featuredPost ? featuredPost : latestPost;
+  const featured: Post | null = featuredPost ? featuredPost : latestPost;
   const componentTitle = featuredPost ? home.featured.title : home.latest.title;
 
   if (featuredPost || latestPost) {

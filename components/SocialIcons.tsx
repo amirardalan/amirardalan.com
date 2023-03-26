@@ -5,7 +5,17 @@ import { useTheme, Theme } from '@emotion/react';
 type SocialiconsProps = {
   about: object & {
     social?: object & {
-      items?: string;
+      items?: Array<{
+        path: string;
+        title: string;
+        target: string;
+        rel: string;
+        content: string;
+        icon: {
+          dark: string;
+          light: string;
+        };
+      }>;
     };
   };
 };
@@ -14,20 +24,20 @@ const SocialIcons: FC<SocialiconsProps> = ({ about }) => {
   const theme: Theme = useTheme();
   const isDarkTheme: boolean = theme.active === 'dark';
 
-  interface Item {
-    path: string;
-    title: string;
-    target: string;
-    rel: string;
-    content: string;
-    icon: {
-      dark: string;
-      light: string;
-    };
-  }
-
-  const GenerateSocialIcons: Function = (items: Array<object>) => {
-    return items.map((item: Item, i: Key) => {
+  const GenerateSocialIcons: Function = (
+    items: Array<{
+      path: string;
+      title: string;
+      target: string;
+      rel: string;
+      content: string;
+      icon: {
+        dark: string;
+        light: string;
+      };
+    }>
+  ) => {
+    return items.map((item, i: Key) => {
       return (
         <a
           key={i}
@@ -50,7 +60,7 @@ const SocialIcons: FC<SocialiconsProps> = ({ about }) => {
     });
   };
 
-  return <>{GenerateSocialIcons(about.social.items)}</>;
+  return <>{about.social && GenerateSocialIcons(about.social.items)}</>;
 };
 
 export default SocialIcons;
