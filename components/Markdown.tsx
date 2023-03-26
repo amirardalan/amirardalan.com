@@ -173,19 +173,18 @@ const BlogMarkdown: FC<BlogMarkdownProps | SyntaxHighlighterProps> = ({
   }
 
   interface PreNode {
-    node: Node;
+    node: Node & { [key: string]: any };
     children: ReactElement<PreProps, string>[];
     position: object;
     properties: object;
     tagName: string;
     type: string;
-    value: string;
   }
 
   interface Node {
-    data: any;
-    node: object;
-    children: object;
+    [key: string]: any;
+    type: string;
+    value: string;
   }
 
   interface H3Props {
