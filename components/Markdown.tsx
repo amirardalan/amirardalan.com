@@ -1,4 +1,4 @@
-import { FC, Key, ReactElement, ReactNode, useState } from 'react';
+import { FC, ReactElement, useState } from 'react';
 import Image from 'next/image';
 import { css } from '@emotion/react';
 
@@ -7,7 +7,6 @@ import rehypeRaw from 'rehype-raw';
 import generateSlug from '@/utils/generateSlug';
 import rangeParser from 'parse-numeric-range';
 
-import { SyntaxHighlighterProps } from 'react-syntax-highlighter';
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 
@@ -28,12 +27,10 @@ SyntaxHighlighter.registerLanguage('json', json);
 SyntaxHighlighter.registerLanguage('lua', lua);
 
 type BlogMarkdownProps = {
-  markdown: string & { content?: string };
+  markdown: { content: string };
 };
 
-const BlogMarkdown: FC<BlogMarkdownProps | SyntaxHighlighterProps> = ({
-  markdown,
-}) => {
+const BlogMarkdown: FC<BlogMarkdownProps> = ({ markdown }) => {
   const syntaxTheme = oneDark;
 
   const styleMarkdown = css({
@@ -201,7 +198,7 @@ const BlogMarkdown: FC<BlogMarkdownProps | SyntaxHighlighterProps> = ({
       node: Node;
       inline: boolean;
       className: string;
-      props: object;
+      [key: string]: any;
     }) {
       const hasLang = /language-(\w+)/.exec(className || '');
       const hasMeta = node?.data?.meta;
@@ -226,6 +223,8 @@ const BlogMarkdown: FC<BlogMarkdownProps | SyntaxHighlighterProps> = ({
         }
       };
 
+      console.log(props);
+
       return hasLang ? (
         <SyntaxHighlighter
           style={syntaxTheme}
@@ -246,7 +245,7 @@ const BlogMarkdown: FC<BlogMarkdownProps | SyntaxHighlighterProps> = ({
     p: (paragraph: { children?: boolean; node?: Node }) => {
       const { node } = paragraph;
 
-      if (node.children[0].tagName === 'img') {
+      if (node?.children[0].tagName === 'img') {
         const image = node?.children[0];
         const metastring = image?.properties?.alt;
         const alt = metastring?.replace(/ *\{[^)]*\} */g, '');
@@ -349,7 +348,7 @@ const BlogMarkdown: FC<BlogMarkdownProps | SyntaxHighlighterProps> = ({
       rehypePlugins={[[rehypeRaw, { passThrough: ['element'] }]]}
       css={styleMarkdown}
     >
-      {markdown.content}
+      {markdown?.content ?? ''}
     </ReactMarkdown>
   );
 };
