@@ -1,20 +1,12 @@
-import type { FC, MouseEventHandler } from 'react';
+import { FC, MouseEventHandler } from 'react';
 import Router from 'next/router';
 import { publishPost, editPost } from '@/lib/blog';
 import BlogPostDelete from '@/components/BlogPostDelete';
 import LoadingSpinner from '@/components/LoadingSpinner';
+import { AdminControlsTypes } from '@/types/admin';
 
-type setFetchStatusFn = (active: boolean) => void;
-
-type BlogPostControlsProps = {
-  admin: {
-    controls: {
-      cancel: string;
-      confirm: string;
-      delete: string;
-      edit: string;
-    };
-  };
+type BlogPostControlsProps = AdminControlsTypes & {
+  admin: AdminControlsTypes['admin'];
   post: {
     id: number;
     slug: string;
@@ -28,7 +20,7 @@ type BlogPostControlsProps = {
   handleCancel: MouseEventHandler | undefined;
   handleDeletion: MouseEventHandler;
   deleted: boolean;
-  setFetchStatus: setFetchStatusFn;
+  setFetchStatus: (active: boolean) => void;
   isFetching: boolean;
 };
 

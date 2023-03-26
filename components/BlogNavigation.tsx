@@ -3,19 +3,9 @@ import Link from 'next/link';
 import { css } from '@emotion/react';
 import BlogSupport from '@/components/BlogSupport';
 import compareID from '@/utils/compareID';
+import { BlogNavigationTypes } from '@/types/blog';
 
-type BlogNavigationProps = {
-  feed: {
-    length: number;
-    sort: Function;
-    id: number;
-    [key: number]: any;
-  };
-  post: {
-    id: number;
-  };
-  isPublished: Boolean;
-};
+type BlogNavigationProps = BlogNavigationTypes;
 
 const BlogNavigation: FC<BlogNavigationProps> = ({
   feed,

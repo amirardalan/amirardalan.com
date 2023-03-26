@@ -1,30 +1,31 @@
 import { FC } from 'react';
+import { GetStaticProps, GetStaticPaths } from 'next';
 import dynamic from 'next/dynamic';
+
+import prisma from '@/lib/prisma';
 import { useSession } from 'next-auth/react';
 import { css } from '@emotion/react';
-
-import { deletePost } from '@/lib/blog';
 import { useFetchStatus } from '@/hooks/useLoadingIndicator';
+import { deletePost } from '@/lib/blog';
 
 import Container from '@/components/Container';
 import BlogStyles from '@/components/BlogStyles';
 import LoadingTriangle from '@/components/LoadingTriangle';
 import BlogNavigation from '@/components/BlogNavigation';
 import Markdown from '@/components/Markdown';
+import LikeCount from '@/components/LikeCount';
 
 import calculateReadTime from '@/utils/calculateReadTime';
 import formatDate from '@/utils/formatDate';
 import { blogPostContent, adminContent } from '@/data/content';
 import { PostProps } from '@/types/post';
+import { AdminControlsTypes } from '@/types/admin';
+import { BlogNavigationTypes } from '@/types/blog';
 
 const BlogPostControls = dynamic(
   () => import('@/components/BlogPostControls'),
   { ssr: false }
 );
-
-import { GetStaticProps, GetStaticPaths } from 'next';
-import prisma from '@/lib/prisma';
-import LikeCount from '@/components/LikeCount';
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const feed = await prisma.post.findMany({ where: { published: true } });
@@ -59,26 +60,13 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   }
 };
 
-interface BlogPostProps {
+interface BlogPostProps extends AdminControlsTypes, BlogNavigationTypes {
   blogPost?: {
     meta?: {
       title?: string;
     };
   };
   post: PostProps;
-  feed: {
-    id: number;
-  }[];
-  admin: {
-    drafts: string & {
-      notice: string;
-    };
-    controls: {
-      publish: string;
-      unpublish: string;
-      delete: string;
-    };
-  };
 }
 
 const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
