@@ -216,7 +216,6 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
     <Container
       title={about.meta.title}
       description={about.meta.description}
-      date={null}
       robots="follow, index"
     >
       <main className="about">

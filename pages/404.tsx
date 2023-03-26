@@ -1,5 +1,4 @@
-import { FC } from 'react';
-import { GetStaticProps } from 'next';
+import { GetStaticProps, NextPage } from 'next';
 import Container from '@/components/Container';
 import ErrorLayout from '@/components/ErrorLayout';
 import { errorContent } from '@/data/content';
@@ -9,7 +8,7 @@ export const getStaticProps: GetStaticProps = async () => {
   return { props: { error: errorContent.notFound } };
 };
 
-const Error404: FC<ErrorProps> = ({ error }) => {
+const Error404: NextPage<ErrorProps> = ({ error }) => {
   return (
     <Container title={error.title} description={error.title} robots="noindex">
       <ErrorLayout error={error} />

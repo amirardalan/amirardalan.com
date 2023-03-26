@@ -1,11 +1,11 @@
-import { NextApiRequest, NextApiResponse } from 'next';
+import { NextApiHandler, NextApiRequest, NextApiResponse } from 'next';
 import prisma from '@/lib/prisma';
 
 // PUT /api/publish/:id
-export default async function handle(
+const publishHandler: NextApiHandler = async (
   req: NextApiRequest,
   res: NextApiResponse
-) {
+) => {
   const postId = req.query.id;
   const isFeatured = req.query.featured === 'true' ? true : false;
   const isPublished = req.query.published === 'true' ? false : true;
@@ -23,4 +23,6 @@ export default async function handle(
     });
     res.json(post);
   }
-}
+};
+
+export default publishHandler;

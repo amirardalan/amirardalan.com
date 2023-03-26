@@ -1,7 +1,10 @@
-import { NextApiRequest, NextApiResponse } from 'next';
+import { NextApiHandler, NextApiRequest, NextApiResponse } from 'next';
 import prisma from '@/lib/prisma';
 
-const getTotalLikes = async (req: NextApiRequest, res: NextApiResponse) => {
+const getTotalLikes: NextApiHandler = async (
+  req: NextApiRequest,
+  res: NextApiResponse
+) => {
   if (req.method !== 'GET') {
     return res.status(405).json({ message: 'Method not allowed' });
   }

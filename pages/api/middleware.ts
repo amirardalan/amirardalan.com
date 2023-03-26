@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
+// /api/middleware
 const rateLimit = (handler: any, limit: number, period: number) => {
   const lastCalledTimes = new Map<string, number>();
   const counters = new Map<string, number>();

@@ -1,4 +1,4 @@
-import { NextApiRequest, NextApiResponse } from 'next';
+import { NextApiHandler, NextApiRequest, NextApiResponse } from 'next';
 import prisma from '@/lib/prisma';
 
 interface UpdatePostRequestBody {
@@ -14,10 +14,7 @@ interface UpdatePostRequestBody {
 }
 
 // POST /api/update
-export default async function handle(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+const updateHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   const {
     id,
     title,
@@ -108,4 +105,6 @@ export default async function handle(
 
     res.json(result);
   }
-}
+};
+
+export default updateHandler;

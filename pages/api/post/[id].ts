@@ -1,11 +1,11 @@
-import { NextApiRequest, NextApiResponse } from 'next';
+import { NextApiHandler, NextApiRequest, NextApiResponse } from 'next';
 import prisma from '@/lib/prisma';
 
 // DELETE /api/post/:id
-export default async function handle(
+const deletePostHandler: NextApiHandler = async (
   req: NextApiRequest,
   res: NextApiResponse
-) {
+) => {
   const postId = req.query.id;
   if (req.method === 'DELETE') {
     const post = await prisma.post.delete({
@@ -17,4 +17,6 @@ export default async function handle(
       `The HTTP ${req.method} method is not supported at this route.`
     );
   }
-}
+};
+
+export default deletePostHandler;

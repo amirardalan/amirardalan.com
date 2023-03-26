@@ -334,7 +334,7 @@ const Post = ({ blogPost, admin, post, feed }) => {
     : admin.controls.publish;
   const displayPost =
     isPublished ||
-    (session && session.user.email === process.env.NEXT_PUBLIC_USER_EMAIL);
+    (session && session?.user?.email === process.env.NEXT_PUBLIC_USER_EMAIL);
 
   const isFeatured = post.featured;
   const latestPostID = feed[feed?.length - 1].id;

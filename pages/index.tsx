@@ -120,7 +120,6 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
       title={home.meta.title}
       robots="follow, index"
       description={home.meta.description}
-      date={null}
     >
       <main css={styleMain} className="home">
         <div css={styleMainLeft} className="animationWrapper">
