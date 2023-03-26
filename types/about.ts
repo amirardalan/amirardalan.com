@@ -77,6 +77,19 @@ export interface AboutTypes {
   };
 }
 
+export interface TimelineTypes {
+  timeline: {
+    meta: {
+      title: string;
+    };
+    items: { title?: string | undefined; content: string; cName: string }[];
+    fullStory: {
+      link: string;
+      text: string;
+    };
+  };
+}
+
 export interface TimelineContentTypes {
   meta: {
     title: string;

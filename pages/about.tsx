@@ -12,10 +12,11 @@ import { aboutContent, timelineContent } from '@/data/content';
 import { AboutTypes, TimelineContentTypes } from '@/types/about';
 import { CtaButtonsTypes, ContactButtonTypes } from '@/types/button';
 import { SocialIconsTypes } from '@/types/icons';
+import { TimelineTypes } from '@/types/about';
 
 type AboutPageProps = {
   about: AboutTypes & SocialIconsTypes & CtaButtonsTypes & ContactButtonTypes;
-  timeline: TimelineContentTypes;
+  timeline: TimelineTypes & TimelineContentTypes;
 };
 
 const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
@@ -286,7 +287,7 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
                 <h3 aria-label={about.contact.title}>{about.contact.title}</h3>
               </li>
               <li>
-                <ContactButton props={about} />
+                <ContactButton content={about} />
               </li>
             </ul>
           </div>

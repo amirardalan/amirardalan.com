@@ -26,9 +26,7 @@ export const CtaButtons: FC<CtaButtonsProps> = ({ items }) => {
   );
 };
 
-type ContactButtonProps = {
-  content: ContactButtonTypes;
-};
+type ContactButtonProps = ContactButtonTypes;
 
 export const ContactButton: FC<ContactButtonProps> = ({ content }) => {
   const [showEmail, setShowEmail] = useState(false);
