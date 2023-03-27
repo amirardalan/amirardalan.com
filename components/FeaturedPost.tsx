@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import Link from 'next/link';
 import { css } from '@emotion/react';
-import { Home } from '@/types/home';
+import { HomeTypes } from '@/types/home';
 
 interface Post {
   slug: string;
@@ -10,7 +10,7 @@ interface Post {
 }
 
 interface FeaturedPostProps {
-  home: Home;
+  home: HomeTypes;
   featuredPost: Post | null;
   latestPost: Post | null;
 }
