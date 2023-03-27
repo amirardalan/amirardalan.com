@@ -20,6 +20,7 @@ import { blogPostContent, adminContent } from '@/data/content';
 import { PostProps } from '@/types/post';
 import { AdminControlsTypes } from '@/types/admin';
 import { BlogNavigationTypes } from '@/types/blog';
+import { inherits } from 'util';
 
 const BlogPostControls = dynamic(
   () => import('@/components/BlogPostControls'),
@@ -339,14 +340,13 @@ const styleBlogPost = css({
       borderRadius: 5,
       fontFamily: 'var(--font-primary)',
       fontSize: 13,
-      lineHeight: '1.8rem',
       color: 'var(--color-gray)',
       '&:before, &:after': {
         position: 'absolute',
       },
       '&:before': {
         content: '""',
-        top: 20,
+        top: 16,
         left: 22,
         width: 15,
         height: 15,
@@ -360,13 +360,26 @@ const styleBlogPost = css({
         textTransform: 'uppercase',
         fontFamily: 'var(--font-secondary)',
         fontSize: 13,
+        '@media (max-width: 768px)': {
+          top: 18,
+        },
       },
       a: {
         fontFamily: 'var(--font-primary)',
         fontSize: 13,
+        '@media (max-width: 768px)': {
+          margin: '0 !important',
+          padding: '0 !important',
+          lineHeight: '.5rem !important',
+        },
       },
       code: {
         fontSize: 13,
+        '@media (max-width: 768px)': {
+          padding: '.05rem .05rem !important',
+          margin: '0 !important',
+          lineHeight: '.5rem !important',
+        },
       },
       '&.tip': {
         '&:after': {

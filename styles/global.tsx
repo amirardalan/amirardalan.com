@@ -96,6 +96,7 @@ export function GlobalStyles() {
       <Global
         styles={{
           'body, body[data-theme="light"], body[data-theme="dark"]': {
+            overflow: 'overlay',
             '--font-primary': fontPrimary,
             '--font-secondary': fontSecondary,
             '--font-tertiary': fontTertiary,
@@ -161,6 +162,32 @@ export function GlobalStyles() {
             '--icon-clipboard': 'url(/icons/clipboard-light.svg)',
             '--icon-warning': 'url(/icons/warning-light.svg)',
           },
+          body: {
+            '::-webkit-scrollbar-track': {
+              backgroundColor: 'transparent',
+              WebkitBoxShadow: 'none',
+              borderRadius: 10,
+            },
+            '::-webkit-scrollbar-track-piece': {
+              display: 'none',
+            },
+            '::-webkit-scrollbar': {
+              backgroundColor: 'transparent',
+              width: 16,
+              height: '8px',
+            },
+            '::-webkit-scrollbar-thumb': {
+              border: '4px solid rgba(0, 0, 0, 0)',
+              width: 8,
+              backgroundClip: 'padding-box',
+              borderRadius: 10,
+              WebkitBoxShadow: 'none',
+              backgroundColor: 'var(--color-accent-gray)',
+              '&:hover': {
+                backgroundColor: 'var(--color-disabled)',
+              },
+            },
+          },
           'html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video':
             {
               margin: 0,
@@ -168,24 +195,6 @@ export function GlobalStyles() {
               border: 0,
               fontSize: '100%',
               verticalAlign: 'baseline',
-              '::-webkit-scrollbar-track': {
-                WebkitBoxShadow: 'none',
-                borderRadius: '10px',
-                backgroundColor: 'transparent',
-              },
-              '::-webkit-scrollbar': {
-                width: '8px',
-                height: '8px',
-                backgroundColor: 'transparent',
-              },
-              '::-webkit-scrollbar-thumb': {
-                borderRadius: '10px',
-                WebkitBoxShadow: 'none',
-                backgroundColor: 'var(--color-accent-gray)',
-                '&:hover': {
-                  backgroundColor: 'var(--color-disabled)',
-                },
-              },
             },
           'article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section':
             {
