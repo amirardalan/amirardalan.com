@@ -1,4 +1,4 @@
-import { NextApiRequest, NextApiResponse } from 'next';
+import { NextApiHandler, NextApiRequest, NextApiResponse } from 'next';
 import rateLimit from '@/api/middleware';
 import prisma from '@/lib/prisma';
 
@@ -12,7 +12,7 @@ interface UpdateLikesData {
   };
 }
 
-const updateLikesHandler = async (
+const updateLikesHandler: NextApiHandler = async (
   req: NextApiRequest,
   res: NextApiResponse
 ) => {

@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 
+type Theme = 'light' | 'dark';
+
 // Theme context for theme-specific non-CSS
-export const useThemeContext = () => {
-  const [theme, setTheme] = useState(null);
-  const setMode = (mode: string) => {
+export const useThemeContext = (): [Theme, () => void] => {
+  const [theme, setTheme] = useState<Theme>('light');
+  const setMode = (mode: Theme) => {
     setTheme(mode);
   };
 
@@ -16,14 +18,16 @@ export const useThemeContext = () => {
   };
 
   useEffect(() => {
-    const localTheme = window.localStorage.getItem('theme');
-    window.matchMedia &&
-    window.matchMedia('(prefers-color-scheme: dark)').matches &&
-    !localTheme
-      ? setMode('dark')
-      : localTheme
-      ? setTheme(localTheme)
-      : setMode('light');
+    const localTheme = window.localStorage.getItem('theme') as Theme | null;
+    if (
+      window.matchMedia &&
+      window.matchMedia('(prefers-color-scheme: dark)').matches &&
+      !localTheme
+    ) {
+      setMode('dark');
+    } else if (localTheme) {
+      setTheme(localTheme);
+    }
   }, []);
 
   return [theme, toggleTheme];

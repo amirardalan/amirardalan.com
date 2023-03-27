@@ -1,20 +1,12 @@
-import type { FC, MouseEventHandler } from 'react';
+import { FC, MouseEventHandler } from 'react';
 import Router from 'next/router';
-import { publishPost, editPost } from '@/lib/blog';
+import { publishPost, editPost, deletePost } from '@/lib/blog';
 import BlogPostDelete from '@/components/BlogPostDelete';
 import LoadingSpinner from '@/components/LoadingSpinner';
+import { AdminControlsTypes } from '@/types/admin';
 
-type setFetchStatusFn = (active: boolean) => void;
-
-type BlogPostControlsProps = {
-  admin: {
-    controls: {
-      cancel: string;
-      confirm: string;
-      delete: string;
-      edit: string;
-    };
-  };
+type BlogPostControlsProps = AdminControlsTypes & {
+  admin: AdminControlsTypes['admin'];
   post: {
     id: number;
     slug: string;
@@ -23,12 +15,12 @@ type BlogPostControlsProps = {
   };
   latestPost: boolean;
   publishLabel: string;
-  requiredFields: boolean;
+  requiredFields: boolean | undefined;
   submitClass: string;
-  handleCancel: MouseEventHandler;
-  handleDeletion: MouseEventHandler;
+  handleCancel: MouseEventHandler | undefined;
+  handleDeletion?: () => void;
   deleted: boolean;
-  setFetchStatus: setFetchStatusFn;
+  setFetchStatus: (active: boolean) => void;
   isFetching: boolean;
 };
 
@@ -40,13 +32,23 @@ const BlogPostControls: FC<BlogPostControlsProps> = ({
   requiredFields,
   submitClass,
   handleCancel,
-  handleDeletion,
   deleted,
   setFetchStatus,
   isFetching,
 }) => {
   const isEditPage = Router.asPath.includes('/blog/edit/');
   const isCreatePage = Router.asPath === '/blog/create';
+
+  const handleDeletion = () => {
+    setFetchStatus(true);
+    return deletePost(
+      post.id,
+      post.published,
+      latestPost,
+      post.featured,
+      setFetchStatus
+    );
+  };
 
   const RenderEditButton = () => {
     if (!isCreatePage) {
@@ -117,6 +119,8 @@ const BlogPostControls: FC<BlogPostControlsProps> = ({
       </div>
     );
   }
+
+  return <></>;
 };
 
 export default BlogPostControls;

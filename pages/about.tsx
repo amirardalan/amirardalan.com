@@ -9,30 +9,15 @@ import SocialIcons from '@/components/SocialIcons';
 import Timeline from '@/components/Timeline';
 
 import { aboutContent, timelineContent } from '@/data/content';
+import { AboutTypes, TimelineContentTypes } from '@/types/about';
+import { CtaButtonsTypes, ContactButtonTypes } from '@/types/button';
+import { SocialIconsTypes } from '@/types/icons';
+import { TimelineTypes } from '@/types/about';
 
 type AboutPageProps = {
-  about: {
-    heading: string;
-  } & Record<
-    string,
-    {
-      items: string[];
-      img: string;
-      title: string;
-    } & AboutInfo &
-      Avatar
-  >;
-  timeline: object;
+  about: AboutTypes & SocialIconsTypes & CtaButtonsTypes & ContactButtonTypes;
+  timeline: TimelineTypes & TimelineContentTypes;
 };
-
-interface AboutInfo {
-  [key: string]: string;
-}
-
-interface Avatar {
-  img: string;
-  title: string;
-}
 
 const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
   const styleGridWrapper = css({
@@ -216,7 +201,6 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
     <Container
       title={about.meta.title}
       description={about.meta.description}
-      date={null}
       robots="follow, index"
     >
       <main className="about">

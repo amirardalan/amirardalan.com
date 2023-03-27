@@ -3,17 +3,9 @@ import Link from 'next/link';
 import { css } from '@emotion/react';
 import BlogSupport from '@/components/BlogSupport';
 import compareID from '@/utils/compareID';
+import { BlogNavigationTypes } from '@/types/blog';
 
-type BlogNavigationProps = {
-  feed: {
-    length: number;
-    sort: Function;
-  };
-  post: {
-    id: number;
-  };
-  isPublished: Boolean;
-};
+type BlogNavigationProps = BlogNavigationTypes;
 
 const BlogNavigation: FC<BlogNavigationProps> = ({
   feed,
@@ -24,23 +16,31 @@ const BlogNavigation: FC<BlogNavigationProps> = ({
   const current = post?.id;
 
   const arr = feed ? feed : null;
-  const arrSorted = arr.sort(compareID);
+  const arrSorted = arr?.sort(compareID);
 
-  const first = arr[0].id === current && isPublished;
-  const last = arr[total - 1].id === current && isPublished;
+  const first =
+    Array.isArray(arr) &&
+    arr.length > 0 &&
+    arr[0].id === current &&
+    isPublished;
+  const last =
+    Array.isArray(arr) &&
+    total > 0 &&
+    arr[total - 1]?.id === current &&
+    isPublished;
+
   const only = first && last;
   const prevPost = isPublished && !first && !only;
   const nextPost = isPublished && !last && !only;
 
   const index = arrSorted.findIndex((x: { id: number }) => x.id === current);
-  const prevTitle = prevPost ? arr[index - 1].title : null;
-  const nextTitle = nextPost ? arr[index + 1].title : null;
-  const prevLink = prevPost
-    ? `/blog/${encodeURIComponent(arr[index - 1].slug)}`
-    : '#';
-  const nextLink = nextPost
-    ? `/blog/${encodeURIComponent(arr[index + 1].slug)}`
-    : '#';
+
+  const prevTitle = prevPost && arr ? arr[index - 1]?.title : null;
+  const nextTitle = nextPost && arr ? arr[index + 1]?.title : null;
+  const prevSlug = arr ? arr[index - 1]?.slug : null;
+  const nextSlug = arr ? arr[index + 1]?.slug : null;
+  const prevLink = prevPost ? `/blog/${encodeURIComponent(prevSlug)}` : '#';
+  const nextLink = nextPost ? `/blog/${encodeURIComponent(nextSlug)}` : '#';
 
   const ShowPrevLink = () => (
     <div css={stylePrevLink}>

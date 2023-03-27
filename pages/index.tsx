@@ -8,6 +8,8 @@ import FeaturedPost from '@/components/FeaturedPost';
 import { CtaButtons } from '@/components/CtaButtons';
 
 import { homeContent } from '@/data/content';
+import { HomeTypes } from '@/types/home';
+import { CtaButtonsTypes } from '@/types/button';
 
 const CanvasLoader = dynamic(() => import('@/components/CanvasLoader'), {
   ssr: true,
@@ -42,17 +44,17 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 
 type HomeProps = {
-  home: {
+  home: HomeTypes & {
     typed: string;
     title: string;
-    items: Array<object>;
+    items: CtaButtonsTypes['items'];
     meta: {
       title: string;
       description: string;
     };
   };
-  featuredPost: Object;
-  latestPost: Object;
+  featuredPost: any;
+  latestPost: any;
 };
 
 const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
@@ -120,7 +122,6 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
       title={home.meta.title}
       robots="follow, index"
       description={home.meta.description}
-      date={null}
     >
       <main css={styleMain} className="home">
         <div css={styleMainLeft} className="animationWrapper">

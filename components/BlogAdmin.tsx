@@ -19,7 +19,7 @@ const BlogAdmin: FC = () => {
   // Session & Route Conditionals
   const path = router.pathname;
   const isLoggedIn =
-    session && session.user.email == process.env.NEXT_PUBLIC_USER_EMAIL;
+    session && session?.user?.email == process.env.NEXT_PUBLIC_USER_EMAIL;
   const isAdminPage = [
     '/blog/create',
     '/blog/edit/[id]',
@@ -88,7 +88,7 @@ const BlogAdmin: FC = () => {
       <>
         <div css={styleAdminPanelLeft}>
           <span>
-            Welcome, {session.user.name.split(' ')[0]}! •
+            Welcome, {session?.user?.name?.split(' ')[0]}! •
             <a
               onClick={() =>
                 signOut({

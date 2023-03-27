@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import Markdown from '@/components/Markdown';
+import { UsesTypes } from '@/types/uses';
 
 const styleUsesMarkdown = {
   display: 'grid',
@@ -59,15 +60,9 @@ const styleUsesMarkdown = {
   },
 };
 
-type UsesProps = {
-  content: {
-    heading: string;
-    devices: string;
-    stack: string;
-    tools: string;
-    software: string;
-  };
-};
+interface UsesProps {
+  content: UsesTypes;
+}
 
 const Uses: FC<UsesProps> = ({ content }) => {
   return (

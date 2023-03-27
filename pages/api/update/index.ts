@@ -1,11 +1,20 @@
-import { NextApiRequest, NextApiResponse } from 'next';
+import { NextApiHandler, NextApiRequest, NextApiResponse } from 'next';
 import prisma from '@/lib/prisma';
 
+interface UpdatePostRequestBody {
+  id: number;
+  title: string;
+  content: string;
+  slug: string;
+  teaser: string;
+  category: string;
+  featured: boolean;
+  editFeatured: boolean;
+  showEdited: boolean;
+}
+
 // POST /api/update
-export default async function handle(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+const updateHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   const {
     id,
     title,
@@ -16,13 +25,18 @@ export default async function handle(
     featured,
     editFeatured,
     showEdited,
-  } = req.body;
+  }: UpdatePostRequestBody = req.body;
 
   const post = await prisma.post.findUnique({
     where: {
       id: id,
     },
   });
+
+  if (!post) {
+    res.status(404).json({ message: `Post with ID ${id} not found` });
+    return;
+  }
 
   const postHistoryCount = await prisma.postHistory.count({
     where: { postId: post.id },
@@ -34,9 +48,11 @@ export default async function handle(
       orderBy: { editedAt: 'asc' },
     });
 
-    await prisma.postHistory.delete({
-      where: { id: oldestPostHistory.id },
-    });
+    if (oldestPostHistory) {
+      await prisma.postHistory.delete({
+        where: { id: oldestPostHistory.id },
+      });
+    }
   }
 
   if (showEdited) {
@@ -89,4 +105,6 @@ export default async function handle(
 
     res.json(result);
   }
-}
+};
+
+export default updateHandler;

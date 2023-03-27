@@ -3,19 +3,9 @@ import Link from 'next/link';
 import { css } from '@emotion/react';
 import { useInView } from 'react-intersection-observer';
 import TimelineEntry from '@/components/TimelineEntry';
+import { TimelineTypes } from '@/types/about';
 
-type TimelineProps = {
-  timeline: object & {
-    items?: string;
-    meta?: object & {
-      title: string;
-    };
-    fullStory?: object & {
-      link: string;
-      text: string;
-    };
-  };
-};
+type TimelineProps = TimelineTypes;
 
 const Timeline: FC<TimelineProps> = ({ timeline }) => {
   const { ref, inView } = useInView({

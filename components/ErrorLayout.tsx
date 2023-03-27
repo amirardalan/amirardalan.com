@@ -1,21 +1,13 @@
 import { FC } from 'react';
 import Link from 'next/link';
 import { css } from '@emotion/react';
+import { ErrorTypes } from '@/types/error';
 
-type ErrorLayoutProps = {
-  error: {
-    title: string;
-    text: string;
-    author: string;
-    quote: string;
-    link: {
-      path: string;
-      title: string;
-    };
-  };
+type ErrorProps = {
+  error: ErrorTypes;
 };
 
-const ErrorLayout: FC<ErrorLayoutProps> = ({ error }) => {
+const ErrorLayout: FC<ErrorProps> = ({ error }) => {
   const styleErrorWrapper = css({
     overflow: 'hidden',
     padding: '4rem 1.5rem',

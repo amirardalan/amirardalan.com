@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { FC, useState } from 'react';
 import { GetServerSideProps } from 'next';
 import Router from 'next/router';
 import Link from 'next/link';
@@ -41,7 +41,31 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   };
 };
 
-const Edit = ({ admin, breadcrumb, editPost, getLatestPost }) => {
+type EditProps = {
+  admin: typeof adminContent;
+  breadcrumb: typeof breadcrumbContent;
+  editPost: {
+    id: number;
+    title: string;
+    slug: string;
+    teaser: string;
+    content: string;
+    category: string;
+    published: boolean;
+    featured: boolean;
+    showEdited: boolean;
+  };
+  getLatestPost: {
+    id: number;
+  };
+};
+
+const Edit: FC<EditProps> = ({
+  admin,
+  breadcrumb,
+  editPost,
+  getLatestPost,
+}) => {
   const isPublished = editPost?.published;
   const published = isPublished;
   const id = editPost?.id;
@@ -203,13 +227,12 @@ const Edit = ({ admin, breadcrumb, editPost, getLatestPost }) => {
 
             <BlogPostControls
               admin={admin}
-              post={id}
+              post={{ id, slug, published, featured }}
               publishLabel={admin.controls.update}
               latestPost={latestPost}
               requiredFields={!content || !title || !slug || !teaser}
               submitClass="buttonCompact updateBtn"
               handleCancel={handleCancel}
-              handleDeletion={handleDeletion}
               setFetchStatus={setFetchStatus}
               deleted={false}
               isFetching={isFetching}
@@ -222,8 +245,7 @@ const Edit = ({ admin, breadcrumb, editPost, getLatestPost }) => {
 
   return (
     <Container
-      title={admin.edit.meta.title}
-      {...editPageTitle}
+      title={`${admin.edit.meta.title} > ${editPageTitle}`}
       robots="noindex"
     >
       <BlogStyles>

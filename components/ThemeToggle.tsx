@@ -2,13 +2,15 @@ import { FC, useState, useEffect } from 'react';
 import { css } from '@emotion/react';
 
 type ThemeToggleProps = {
-  toggleTheme: Function;
+  toggleTheme: () => void;
 };
 
 const ThemeToggle: FC<ThemeToggleProps> = ({ toggleTheme }) => {
-  const [activeTheme, setActiveTheme] = useState(document.body.dataset.theme);
+  const [activeTheme, setActiveTheme] = useState(
+    document.body.dataset.theme ?? 'light'
+  );
   const inactiveTheme = activeTheme === 'light' ? 'dark' : 'light';
-  const [toggleThemeControl, setToggleThemeControl] = useState(false);
+  const [toggleThemeControl, setToggleThemeControl] = useState<boolean>(false);
 
   const themeToggled = () => {
     setActiveTheme(inactiveTheme);
@@ -16,8 +18,10 @@ const ThemeToggle: FC<ThemeToggleProps> = ({ toggleTheme }) => {
     toggleTheme();
   };
   useEffect(() => {
-    document.body.dataset.theme = activeTheme;
-    window.localStorage.setItem('theme', activeTheme);
+    if (activeTheme !== null) {
+      document.body.dataset.theme = activeTheme;
+      window.localStorage.setItem('theme', activeTheme);
+    }
   }, [activeTheme]);
 
   const styleToggleTrack = css({

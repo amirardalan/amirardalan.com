@@ -1,7 +1,10 @@
-import { NextApiRequest, NextApiResponse } from 'next';
+import { NextApiHandler, NextApiRequest, NextApiResponse } from 'next';
 import prisma from '@/lib/prisma';
 
-const getLikesHandler = async (req: NextApiRequest, res: NextApiResponse) => {
+const getLikesHandler: NextApiHandler = async (
+  req: NextApiRequest,
+  res: NextApiResponse
+) => {
   const postId = req.query.id;
 
   if (req.method === 'GET') {
@@ -11,7 +14,9 @@ const getLikesHandler = async (req: NextApiRequest, res: NextApiResponse) => {
         where: { id: Number(postId) },
         select: { likes: true },
       });
-      res.json(post.likes);
+      if (post) {
+        res.json(post.likes);
+      }
     } catch (error) {
       res.status(500).json({ message: 'Something went wrong' });
     }

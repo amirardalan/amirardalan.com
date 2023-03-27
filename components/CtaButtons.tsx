@@ -1,58 +1,34 @@
-import { FC, useState, Key } from 'react';
+import { FC, useState } from 'react';
 import Link from 'next/link';
 import { css } from '@emotion/react';
+import { ContactButtonTypes, CtaButtonsTypes } from '@/types/button';
 
 type CtaButtonsProps = {
-  items: string | object;
+  items: CtaButtonsTypes['items'];
 };
 
-interface Map {
-  map: Function;
-}
-
-interface Item {
-  path: string;
-  title: string;
-  icon: object;
-  target: string;
-  rel: string;
-}
-
-export const CtaButtons: FC<CtaButtonsProps> = ({ items }: { items: Map }) => {
-  return items.map((item: Item, i: Key) => {
-    return (
-      <Link
-        key={i}
-        href={item.path}
-        aria-label={item.title}
-        className={item.icon ? `ctaButton ${item.icon}` : 'ctaButton'}
-        target={item?.target}
-        rel={item?.rel}
-      >
-        {item.title}
-      </Link>
-    );
-  });
+export const CtaButtons: FC<CtaButtonsProps> = ({ items }) => {
+  return (
+    <>
+      {items.map((item, i) => (
+        <Link
+          key={i}
+          href={item.path}
+          aria-label={item.title}
+          className={item.icon ? `ctaButton ${item.icon}` : 'ctaButton'}
+          target={item.target}
+          rel={item.rel}
+        >
+          {item.title}
+        </Link>
+      ))}
+    </>
+  );
 };
 
-type ContactButtonProps = {
-  content: object;
-};
+type ContactButtonProps = ContactButtonTypes;
 
-interface Content {
-  contact: {
-    email: {
-      title: string;
-    };
-    copiedToClipboard: boolean;
-  };
-}
-
-export const ContactButton: FC<ContactButtonProps> = ({
-  content,
-}: {
-  content: Content;
-}) => {
+export const ContactButton: FC<ContactButtonProps> = ({ content }) => {
   const [showEmail, setShowEmail] = useState(false);
   const showEmailOnclick = () => {
     setShowEmail(true);
@@ -60,7 +36,7 @@ export const ContactButton: FC<ContactButtonProps> = ({
   const [emailCopied, setEmailCopied] = useState(false);
 
   const handleCopyToClipboard = () => {
-    navigator.clipboard.writeText(process.env.NEXT_PUBLIC_USER_EMAIL);
+    navigator.clipboard.writeText(process.env.NEXT_PUBLIC_USER_EMAIL ?? '');
     setEmailCopied(true);
     setTimeout(() => {
       setEmailCopied(false);
@@ -84,7 +60,7 @@ export const ContactButton: FC<ContactButtonProps> = ({
     '.tooltip': {
       marginTop: '.5rem',
       opacity: emailCopied ? 1 : 0,
-      animation: emailCopied ? 'tooltipDown 5s' : null,
+      animation: emailCopied ? 'tooltipDown 5s' : 'none',
       '&:before': {
         top: -6,
         borderBottom: '6px solid var(--color-accent-gray)',

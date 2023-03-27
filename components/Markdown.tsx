@@ -1,4 +1,4 @@
-import { FC, Key, ReactNode, useState } from 'react';
+import { FC, ReactElement, useState } from 'react';
 import Image from 'next/image';
 import { css } from '@emotion/react';
 
@@ -26,9 +26,9 @@ SyntaxHighlighter.registerLanguage('markdown', markdown);
 SyntaxHighlighter.registerLanguage('json', json);
 SyntaxHighlighter.registerLanguage('lua', lua);
 
-type BlogMarkdownProps = {
-  markdown: string & { content?: string };
-};
+import { MarkdownTypes } from '@/types/markdown';
+
+type BlogMarkdownProps = MarkdownTypes;
 
 const BlogMarkdown: FC<BlogMarkdownProps> = ({ markdown }) => {
   const syntaxTheme = oneDark;
@@ -165,48 +165,58 @@ const BlogMarkdown: FC<BlogMarkdownProps> = ({ markdown }) => {
     },
   });
 
-  interface Node {
-    node: object;
-    children: object;
+  interface PreProps {
+    className: string;
   }
 
   interface PreNode {
-    node: Node;
-    children: {
-      position: object;
-      properties: object;
-      tagName: string;
-      type: string;
-      key: Key;
-      props: object[];
-    };
+    node: Node & { [key: string]: any };
+    children: ReactElement<PreProps, string>[];
     position: object;
     properties: object;
     tagName: string;
     type: string;
   }
 
+  interface Node {
+    [key: string]: any;
+    type: string;
+    value: string;
+  }
+
   interface H3Props {
-    children: ReactNode & { length: number };
+    children: React.ReactNode;
   }
 
   const MarkdownComponents: object = {
-    code({ node, inline, className, ...props }) {
+    code({
+      node,
+      inline,
+      className,
+      ...props
+    }: {
+      node: Node;
+      inline: boolean;
+      className: string;
+      [key: string]: any;
+    }) {
       const hasLang = /language-(\w+)/.exec(className || '');
       const hasMeta = node?.data?.meta;
 
-      const applyHighlights: object = (applyHighlights: number) => {
+      const applyHighlights = (lineNumber: number) => {
         if (hasMeta) {
           const RE = /{([\d,-]+)}/;
-          const metadata = node.data.meta?.replace(/\s/g, '');
-          const strlineNumbers = RE?.test(metadata)
-            ? RE?.exec(metadata)[1]
-            : '0';
+          const metadata = node.data.meta.replace(/\s/g, '');
+          let strlineNumbers = '0';
+          if (RE.test(metadata)) {
+            const match = RE.exec(metadata);
+            if (match) {
+              strlineNumbers = match[1];
+            }
+          }
           const highlightLines = rangeParser(strlineNumbers);
           const highlight = highlightLines;
-          const data: string = highlight.includes(applyHighlights)
-            ? 'highlight'
-            : null;
+          const data = highlight.includes(lineNumber) ? 'highlight' : undefined;
           return { data };
         } else {
           return {};
@@ -233,7 +243,7 @@ const BlogMarkdown: FC<BlogMarkdownProps> = ({ markdown }) => {
     p: (paragraph: { children?: boolean; node?: Node }) => {
       const { node } = paragraph;
 
-      if (node.children[0].tagName === 'img') {
+      if (node?.children[0].tagName === 'img') {
         const image = node?.children[0];
         const metastring = image?.properties?.alt;
         const alt = metastring?.replace(/ *\{[^)]*\} */g, '');
@@ -277,16 +287,19 @@ const BlogMarkdown: FC<BlogMarkdownProps> = ({ markdown }) => {
       return <a href={anchor.href}>{anchor.children}</a>;
     },
     h3: (props: H3Props) => {
-      const arr = props.children;
-      let heading = '';
-
-      for (let i = 0; i < arr.length; i++) {
-        if (arr[i]?.type !== undefined) {
-          for (let j = 0; j < arr[i].props.children.length; j++) {
-            heading += arr[i]?.props?.children[0];
-          }
-        } else heading += arr[i];
-      }
+      const children = Array.isArray(props.children)
+        ? props.children
+        : [props.children];
+      const heading = children
+        .flatMap((element) =>
+          typeof element === 'string'
+            ? element
+            : element?.type !== undefined &&
+              typeof element.props.children === 'string'
+            ? element.props.children
+            : []
+        )
+        .join('');
 
       const slug = generateSlug(heading);
 
@@ -333,7 +346,7 @@ const BlogMarkdown: FC<BlogMarkdownProps> = ({ markdown }) => {
       rehypePlugins={[[rehypeRaw, { passThrough: ['element'] }]]}
       css={styleMarkdown}
     >
-      {markdown.content}
+      {markdown?.content ?? ''}
     </ReactMarkdown>
   );
 };

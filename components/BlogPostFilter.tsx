@@ -6,6 +6,9 @@ import BlogPost from '@/components/BlogPost';
 import CloseButton from '@/components/CloseButton';
 import compareID from '@/utils/compareID';
 
+import { PostProps } from '@/types/post';
+import { BlogStatsTypes } from '@/types/blog';
+
 type BlogPostFilterProps = {
   blog: {
     search: {
@@ -15,68 +18,11 @@ type BlogPostFilterProps = {
       clear: string;
     };
   };
-  feed: object[];
-};
-
-type PostProps = {
-  id: number;
-  category: string;
-  publishedAt: Date;
-  content: string;
-  slug: string;
-  title: string;
-  teaser: string;
+  feed: PostProps[];
+  filteredPosts: BlogStatsTypes[];
 };
 
 const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
-  const styleBlogCategoryNav = css({
-    overflow: 'scroll',
-    msOverflowStyle: 'none',
-    scrollbarWidth: 'none',
-    whiteSpace: 'nowrap',
-    minHeight: 32,
-    li: {
-      display: 'inline',
-      marginRight: '1.8rem',
-    },
-    '&::-webkit-scrollbar': {
-      display: 'none',
-    },
-    '@media (max-width: 768px)': {
-      minHeight: 32,
-      li: {
-        marginRight: '1.2rem',
-      },
-    },
-  });
-
-  const styleSearchPosts = css({
-    display: 'flex',
-    position: 'relative',
-    caretColor: 'var(--color-gray)',
-    input: {
-      fontSize: 15,
-      marginBottom: 0,
-    },
-    '.icon': {
-      position: 'absolute',
-      top: 16,
-      right: 0,
-      background: 'var(--color-accent)',
-      width: 35,
-    },
-    '.clearSearch': {
-      display: 'flex',
-      justifyContent: 'center',
-      position: 'absolute',
-      width: 23,
-      height: 23,
-      top: 16,
-      right: 8,
-      cursor: 'pointer',
-    },
-  });
-
   const theme: Theme = useTheme();
 
   const [search, setSearch] = useState('');
@@ -107,7 +53,18 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
     )
   );
 
-  const searchResults = (search: string, feed: object[]) => {
+  interface FeedItem extends PostProps {
+    date: Date;
+    likes: number;
+  }
+
+  interface PostFeedItem extends PostProps, FeedItem {}
+
+  const searchResults = (
+    search: string,
+    feed: FeedItem[],
+    activeCategories: string[]
+  ): FeedItem[] => {
     const categorySearch = search[0] === '#';
     const categoryMatch =
       activeCategories.indexOf(search.slice(1).split(' ')[0]) > -1;
@@ -115,7 +72,7 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
     if (categorySearch) {
       if (categoryMatch) {
         return feed.filter(
-          (data: { category: string; title: string }) =>
+          (data: FeedItem) =>
             data?.category
               ?.toLowerCase()
               .includes(search.slice(1).toLowerCase().split(' ')[0]) &&
@@ -127,23 +84,27 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
             )
         );
       }
-      return feed.filter((data: { category: string }) =>
+      return feed.filter((data: FeedItem) =>
         data?.category?.toLowerCase().includes(search.slice(1).toLowerCase())
       );
     }
-    return feed.filter((data: { title: string }) =>
+    return feed.filter((data: FeedItem) =>
       data?.title?.toLowerCase().includes(search.toLowerCase())
     );
   };
 
-  const filteredPosts = searchResults(search, feed);
+  const filteredPosts = searchResults(
+    search,
+    feed as PostFeedItem[],
+    activeCategories
+  );
 
   const RenderPosts: Function = () => {
     if (filteredPosts.length > 0) {
       return filteredPosts
         .sort(compareID)
         .reverse()
-        .map((post: PostProps) => (
+        .map((post) => (
           <article className="publishedPost" key={post.id}>
             <button
               onClick={() => handleCategoryLink(post.category)}
@@ -180,7 +141,7 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
       return (
         <div className="icon">
           <Image
-            src={theme.icons.search}
+            src={theme?.icons?.search || ''}
             height="23"
             width="23"
             priority
@@ -273,3 +234,51 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
 };
 
 export default BlogPostFilter;
+
+const styleBlogCategoryNav = css({
+  overflow: 'scroll',
+  msOverflowStyle: 'none',
+  scrollbarWidth: 'none',
+  whiteSpace: 'nowrap',
+  minHeight: 32,
+  li: {
+    display: 'inline',
+    marginRight: '1.8rem',
+  },
+  '&::-webkit-scrollbar': {
+    display: 'none',
+  },
+  '@media (max-width: 768px)': {
+    minHeight: 32,
+    li: {
+      marginRight: '1.2rem',
+    },
+  },
+});
+
+const styleSearchPosts = css({
+  display: 'flex',
+  position: 'relative',
+  caretColor: 'var(--color-gray)',
+  input: {
+    fontSize: 15,
+    marginBottom: 0,
+  },
+  '.icon': {
+    position: 'absolute',
+    top: 16,
+    right: 0,
+    background: 'var(--color-accent)',
+    width: 35,
+  },
+  '.clearSearch': {
+    display: 'flex',
+    justifyContent: 'center',
+    position: 'absolute',
+    width: 23,
+    height: 23,
+    top: 16,
+    right: 8,
+    cursor: 'pointer',
+  },
+});

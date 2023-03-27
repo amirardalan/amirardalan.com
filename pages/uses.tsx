@@ -1,14 +1,19 @@
-import { GetStaticProps } from 'next';
+import { NextPage, GetStaticProps } from 'next';
 import Container from '@/components/Container';
 import Uses from '@/components/Uses';
 
 import { usesContent } from '@/data/content';
+import { UsesTypes } from '@/types/uses';
 
 export const getStaticProps: GetStaticProps = async () => {
   return { props: { uses: usesContent } };
 };
 
-export default function UsesPage({ uses }) {
+interface UsesPageProps {
+  uses: UsesTypes;
+}
+
+const UsesPage: NextPage<UsesPageProps> = ({ uses }) => {
   return (
     <Container title={uses.meta.title} description={uses.meta.description}>
       <main className="uses">
@@ -16,4 +21,6 @@ export default function UsesPage({ uses }) {
       </main>
     </Container>
   );
-}
+};
+
+export default UsesPage;

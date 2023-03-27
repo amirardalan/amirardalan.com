@@ -1,7 +1,8 @@
+import { GetServerSideProps } from 'next';
 import prisma from '@/lib/prisma';
 
 // Dynamically Generate sitemap.xml
-export const getServerSideProps = async ({ res }) => {
+export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL;
 
   const feed = await prisma.post.findMany({

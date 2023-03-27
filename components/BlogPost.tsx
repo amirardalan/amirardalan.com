@@ -3,22 +3,13 @@ import Link from 'next/link';
 import LikeCount from '@/components/LikeCount';
 import formatDate from '@/utils/formatDate';
 import calculateReadTime from '@/utils/calculateReadTime';
+import type { PostProps } from '@/types/post';
 
-type PostProps = {
-  post: Post;
+type BlogPostProps = {
+  post: PostProps;
 };
 
-interface Post {
-  id: number;
-  publishedAt: Date;
-  likes?: number;
-  content: string;
-  slug: string;
-  title: string;
-  teaser: string;
-}
-
-const Post: FC<PostProps> = ({ post }) => {
+const BlogPost: FC<BlogPostProps> = ({ post }) => {
   const publishDate = formatDate(post.publishedAt);
   const postReadTime = calculateReadTime(post.content);
 
@@ -48,4 +39,4 @@ const Post: FC<PostProps> = ({ post }) => {
   );
 };
 
-export default Post;
+export default BlogPost;
