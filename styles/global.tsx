@@ -243,40 +243,6 @@ export function GlobalStyles() {
             verticalAlign: 'middle',
             caretColor: 'var(--color-heading)',
           },
-          'input[type="checkbox"]': {
-            cursor: 'pointer',
-            appearance: 'none',
-            background: 'var(--color-accent)',
-            border: '1px solid var(--color-accent-gray)',
-            borderRadius: 4,
-            width: 16,
-            height: 16,
-            position: 'relative',
-            '&::before': {
-              content: '"✕"',
-              fontSize: '1.2rem',
-              color: 'var(--color-text)',
-              position: 'absolute',
-              right: -0.8,
-              top: -1.8,
-              visibility: 'hidden',
-            },
-            '&:checked': {
-              '&::before': {
-                background: 'transparent',
-                visibility: 'visible',
-              },
-            },
-            '&::before, &:checked::before': {
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              width: 16,
-              height: 16,
-              borderRadius: 4,
-              transition: 'all 0.2s ease',
-            },
-          },
           // Base
           'html, body': {
             backgroundColor: 'var(--color-bg)',
