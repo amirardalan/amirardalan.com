@@ -360,9 +360,6 @@ const styleBlogPost = css({
         textTransform: 'uppercase',
         fontFamily: 'var(--font-secondary)',
         fontSize: 13,
-        '@media (max-width: 768px)': {
-          top: 18,
-        },
       },
       a: {
         fontFamily: 'var(--font-primary)',
