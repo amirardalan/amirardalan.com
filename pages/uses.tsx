@@ -1,26 +1,17 @@
-import { GetStaticProps, NextPage } from 'next';
+import { NextPage, GetStaticProps } from 'next';
 import Container from '@/components/Container';
 import Uses from '@/components/Uses';
 
 import { usesContent } from '@/data/content';
+import { UsesTypes } from '@/types/uses';
 
 export const getStaticProps: GetStaticProps = async () => {
   return { props: { uses: usesContent } };
 };
 
-type UsesPageProps = {
-  uses: {
-    meta: {
-      title: string;
-      description: string;
-    };
-    heading: string;
-    devices: string;
-    stack: string;
-    tools: string;
-    software: string;
-  };
-};
+interface UsesPageProps {
+  uses: UsesTypes;
+}
 
 const UsesPage: NextPage<UsesPageProps> = ({ uses }) => {
   return (
