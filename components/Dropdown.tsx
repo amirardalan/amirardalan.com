@@ -9,31 +9,22 @@ type DropdownProps = {
 };
 
 const Dropdown: FC<DropdownProps> = ({ label, value, handleChange, data }) => {
-  // const styleDropdown = css({
-  //   appearance: 'none',
-  //   background: 'blue !important',
-  //   border: '1px solid red !important',
-  //   borderRadius: '4px !important',
-  //   color: 'red !important',
-  //   cursor: 'pointer',
-  //   fontSize: '16px !important',
-  //   padding: '8px !important',
-  //   position: 'relative',
-  //   '&::before': {
-  //     content: '"▼"',
-  //     color: 'red !important',
-  //     fontSize: '12px !important',
-  //     position: 'absolute',
-  //     right: '10px !important',
-  //     top: '50% !important',
-  //     transform: 'translateY(-50%) !important',
-  //   },
-  // });
+  const styleDropdown = css({
+    background: 'var(--color-accent)',
+    border: '1px solid var(--color-accent-gray)',
+    borderRadius: 4,
+    color: 'var(--color-text)',
+    cursor: 'pointer',
+    fontSize: 12,
+    height: 25,
+    padding: '.2rem .8rem .2rem .4rem',
+    position: 'relative',
+  });
 
   return (
     <label className="dropdownLabel">
       <span>{label}</span>
-      <select value={value} onChange={handleChange}>
+      <select value={value} onChange={handleChange} css={styleDropdown}>
         {data.map((item) => (
           <option key={item} value={item}>
             {item}

@@ -174,6 +174,7 @@ const BlogAdmin: FC = () => {
               '.postOptions': {
                 display: 'flex',
                 flexDirection: 'row',
+                alignItems: 'center',
                 marginTop: '1rem',
                 fontSize: 13,
                 '.uploadImage': {
