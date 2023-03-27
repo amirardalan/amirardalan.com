@@ -48,7 +48,7 @@ const Blog = ({ blog, feed }: BlogProps) => {
     <Container title={blog.meta.title} description={blog.meta.description}>
       <BlogStyles>
         <main className="blog">
-          <BlogPostFilter blog={blog} feed={feed} />
+          <BlogPostFilter blog={blog} feed={feed} filteredPosts={[]} />
         </main>
       </BlogStyles>
     </Container>

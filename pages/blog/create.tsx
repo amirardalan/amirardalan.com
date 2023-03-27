@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { FC, useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Router from 'next/router';
 
@@ -16,12 +16,16 @@ import generateSlug from '@/utils/generateSlug';
 import { adminContent, breadcrumbContent } from '@/data/content';
 import { categories } from '@/data/categories';
 
+import { DraftTypes } from '@/types/admin';
+
 import { GetStaticProps } from 'next';
 export const getStaticProps: GetStaticProps = async () => {
   return { props: { admin: adminContent, breadcrumb: breadcrumbContent } };
 };
 
-const Draft = ({ admin, breadcrumb }) => {
+type DraftProps = DraftTypes;
+
+const Draft: FC<DraftProps> = ({ admin, breadcrumb }) => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [slug, setSlug] = useState('');
@@ -65,7 +69,7 @@ const Draft = ({ admin, breadcrumb }) => {
   const slugUrl = generateSlug(title);
 
   // Ensure slug input is active after autofill
-  const slugField = useRef(null);
+  const slugField = useRef<HTMLInputElement>(null);
   useEffect(() => {
     let interval = setInterval(() => {
       if (slugField.current) {
@@ -147,9 +151,7 @@ const Draft = ({ admin, breadcrumb }) => {
             >
               <BlogPostControls
                 admin={admin}
-                post={null}
                 publishLabel={admin.controls.save}
-                latestPost={null}
                 requiredFields={
                   !content || !title || !slug || !teaser || category === '-'
                 }
@@ -159,6 +161,13 @@ const Draft = ({ admin, breadcrumb }) => {
                 setFetchStatus={setFetchStatus}
                 deleted={false}
                 isFetching={isFetching}
+                latestPost={false}
+                post={{
+                  id: 0,
+                  slug: '',
+                  published: false,
+                  featured: false,
+                }}
               />
             </div>
           </form>
@@ -170,12 +179,7 @@ const Draft = ({ admin, breadcrumb }) => {
   }
 
   return (
-    <Container
-      title={admin.create.meta.title}
-      robots="noindex"
-      date={null}
-      description={null}
-    >
+    <Container title={admin.create.meta.title} robots="noindex">
       <BlogStyles>
         <div>{create}</div>
       </BlogStyles>

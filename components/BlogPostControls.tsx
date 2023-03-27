@@ -18,6 +18,7 @@ type BlogPostControlsProps = AdminControlsTypes & {
   requiredFields: boolean | undefined;
   submitClass: string;
   handleCancel: MouseEventHandler | undefined;
+  handleDeletion?: () => void;
   deleted: boolean;
   setFetchStatus: (active: boolean) => void;
   isFetching: boolean;
