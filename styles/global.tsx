@@ -346,6 +346,7 @@ export function GlobalStyles() {
             flexDirection: 'row',
             justifyContent: 'center',
             alignItems: 'center',
+            lineHeight: '1.5rem',
             fontSize: 15,
             fontWeight: 400,
             background: 'var(--color-heading)',
