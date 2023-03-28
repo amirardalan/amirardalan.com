@@ -180,16 +180,16 @@ export const aboutContent = {
   },
   availability: {
     title: 'Current Project',
-    text: 'Application development @',
+    text: 'Software Engineer II @',
     text2: 'Nike Innovation Center',
-    title2: 'Responsibilities:',
+    title2: 'Summary:',
     location: 'Remote or in-office in Portland, Ore. area.',
     link: 'https://lebronjamesinnovationcenter.nike.com/',
     items: [
-      '• Rapid prototyping modern, full stack applications and tools',
-      '• Digitally innovating utilizing bleeding-edge browser technologies',
-      '• Exploring new and creative methods for building complex features',
-      '• Collaborating with UX and Design teams',
+      '• Building tools that power the future of Nike design and manufacturing',
+      '• Collaborating with a team of talented engineers and designers',
+      '• Pushing the boundaries of web technologies and user experience',
+      '• Focusing on end-users and their needs so they can better serve our athletes',
     ],
   },
   contact: {

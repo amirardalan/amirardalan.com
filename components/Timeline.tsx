@@ -16,6 +16,9 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
 
   const styleTimelineHeading = css({
     marginTop: '4rem',
+    '@media (max-width: 768px)': {
+      marginTop: 0,
+    },
   });
   const styleTimelineWrapper = css({
     paddingTop: '2rem',

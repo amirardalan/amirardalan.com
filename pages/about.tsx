@@ -116,11 +116,10 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
         },
       },
       '.availability': {
-        fontFamily: 'var(--font-secondary)',
         color: 'var(--color-heading)',
-        fontSize: 18,
         '.subheading': {
-          marginTop: '1rem',
+          marginTop: '2rem',
+          fontFamily: 'var(--font-primary) !important',
         },
       },
       '@media(max-width: 768px)': {
@@ -128,6 +127,9 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
         border: 'none',
         padding: 0,
         margin: '1rem 0',
+        '.availability .subheading': {
+          marginTop: '1.5rem',
+        },
       },
     },
     'h2, h3': {
