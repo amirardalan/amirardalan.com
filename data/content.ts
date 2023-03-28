@@ -128,7 +128,7 @@ export const aboutContent = {
   },
   bio: {
     subheading: `Hey there, I'm Amir! 👋`,
-    content: `As a web developer and designer, I'm passionate about sharing my knowledge and experience through tutorials and documenting my development journey on this blog. I believe that learning in public benefits the web development community, and I hope to help others grow and thrive in the field.`,
+    content: `I'm a web developer and designer who's passionate about crafting outstanding digital experiences. This blog is a platform to document my career journey, learn in public, and share my knowledge with the web development comminity. I'm glad you're here!`,
     items: [
       {
         path: '/resume',

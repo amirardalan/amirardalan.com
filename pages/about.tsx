@@ -49,6 +49,7 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
         },
         '.blurb': {
           fontFamily: 'var(--font-tertiary)',
+          fontStyle: 'italic',
           color: 'var(--color-light)',
           '@media(max-width: 768px)': {
             fontSize: 18,
