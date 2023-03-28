@@ -4,16 +4,23 @@ import { css } from '@emotion/react';
 import CloseButton from '@/components/CloseButton';
 import LikeButton from '@/components/LikeButton';
 import { donate } from '@/data/content';
+import { gtagEvent } from '@/lib/gtag';
 
 type BlogSupportProps = {
   id: number;
+  title: string;
 };
 
-const BlogSupport: FC<BlogSupportProps> = ({ id }) => {
+const BlogSupport: FC<BlogSupportProps> = ({ id, title }) => {
   const [hideModule, setHideModule] = useState(false);
   const [showOptions, setshowOptions] = useState(false);
   const handleshowOptions = () => {
     setshowOptions(!showOptions);
+    gtagEvent({
+      action: 'support',
+      category: 'post',
+      label: `Post ${title} (ID: ${id})`,
+    });
     if (addressCopied) {
       setTimeout(() => {
         setAddressCopied(false);
@@ -201,9 +208,6 @@ const BlogSupport: FC<BlogSupportProps> = ({ id }) => {
         '&:focus:not(:focus-visible)': { boxShadow: 'none' },
       },
     },
-    '@media (max-width: 768px)': {
-      // display: 'none', // suppress on mobile
-    },
   });
 
   return (
@@ -219,7 +223,7 @@ const BlogSupport: FC<BlogSupportProps> = ({ id }) => {
               <div className="copyContainer">
                 <span className="supportHeading">
                   <h4>Did you enjoy this post?</h4>
-                  <LikeButton id={id} />
+                  <LikeButton id={id} title={title} />
                 </span>
                 <div className="donate">
                   <span>
@@ -258,7 +262,17 @@ const BlogSupport: FC<BlogSupportProps> = ({ id }) => {
                 </div>
               </div>
 
-              <a onClick={() => handleCopyAddress()}>
+              <a
+                onClick={(event) => {
+                  handleCopyAddress();
+                  event.preventDefault();
+                  gtagEvent({
+                    action: 'click_link',
+                    category: 'internal_link',
+                    label: 'copy_address',
+                  });
+                }}
+              >
                 <div className="ether" />
               </a>
 
@@ -266,6 +280,13 @@ const BlogSupport: FC<BlogSupportProps> = ({ id }) => {
                 href="https://www.paypal.com/donate/?hosted_button_id=PDSXCAVYMLW2G"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() =>
+                  gtagEvent({
+                    action: 'click_link',
+                    category: 'external_link',
+                    label: 'paypal.com',
+                  })
+                }
               >
                 <div className="paypal" />
               </a>

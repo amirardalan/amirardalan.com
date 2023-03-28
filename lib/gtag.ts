@@ -14,7 +14,7 @@ export const pageview = (url: URL) => {
   }
 };
 
-export const event = ({
+export const gtagEvent = ({
   action,
   category,
   label,

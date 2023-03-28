@@ -2,6 +2,7 @@ import { FC, useState, useEffect, Key } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { css, useTheme, Theme } from '@emotion/react';
+import { gtagEvent } from '@/lib/gtag';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
 import GitHubButton from 'react-github-btn';
 import CloseButton from '@/components/CloseButton';
@@ -206,7 +207,16 @@ const Navigation: FC = () => {
           </Link>
         );
       })}
-      <div css={styleGhButton}>
+      <div
+        css={styleGhButton}
+        onClick={() =>
+          gtagEvent({
+            action: 'click',
+            category: 'external_link',
+            label: `github.com/amirardalan/amirardalan.com`,
+          })
+        }
+      >
         <GitHubButton
           href="https://github.com/amirardalan/amirardalan.com"
           data-color-scheme={theme.gh}
