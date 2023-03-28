@@ -128,7 +128,7 @@ export const aboutContent = {
   },
   bio: {
     subheading: `Hey there, I'm Amir! 👋`,
-    content: `I design and build web apps with a focus on performance and accessibility. I use this blog to learn in public, share tutorials, and document my journey as a developer.`,
+    content: `As a web developer and designer, I'm passionate about sharing my knowledge and experience through tutorials and documenting my development journey on this blog. I believe that learning in public benefits the web development community, and I hope to help others grow and thrive in the field.`,
     items: [
       {
         path: '/resume',
@@ -174,22 +174,21 @@ export const aboutContent = {
   experience: {
     title: 'Experience',
     items: [
-      "I've written code for the web since the early 2000's and worked for awesome brands including; Nike, Columbia Sportswear, and KEEN Footwear.",
-      'I have real-world experience with fullstack application development, user interface design, web accessibility, ecommerce, and rapid front-end prototyping in Agile environments.',
+      "With over two decades of experience in web development, I've had the privilege of working with iconic brands like Nike, Columbia Sportswear, and KEEN Footwear.",
+      "My expertise spans full stack development, UI design, web accessibility, ecommerce, and rapid prototyping. I'm passionate about pushing the boundaries of web technologies and user experience in a world where humans and machines are increasingly connected.",
     ],
   },
   availability: {
     title: 'Current Project',
     text: 'Software Engineer II @',
     text2: 'Nike Innovation Center',
-    title2: 'Summary:',
+    title2: 'Key Principles:',
     location: 'Remote or in-office in Portland, Ore. area.',
     link: 'https://lebronjamesinnovationcenter.nike.com/',
     items: [
       '• Building tools that power the future of Nike design and manufacturing',
-      '• Collaborating with a team of talented engineers and designers',
-      '• Pushing the boundaries of web technologies and user experience',
       '• Focusing on end-users and their needs so they can better serve our athletes',
+      '• Challenging conventional thinking in web technologies and user experience',
     ],
   },
   contact: {

@@ -118,8 +118,19 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
       '.availability': {
         color: 'var(--color-heading)',
         '.subheading': {
-          marginTop: '2rem',
-          fontFamily: 'var(--font-primary) !important',
+          h4: {
+            color: 'var(--color-gray)',
+          },
+          marginTop: '1.5rem',
+          li: {
+            fontFamily: 'var(--font-primary)',
+            borderBottom: '1px solid var(--color-accent-gray)',
+            paddingBottom: '.5rem',
+            '&:first-of-type, &:last-of-type': {
+              padding: 0,
+              borderBottom: 'none',
+            },
+          },
         },
       },
       '@media(max-width: 768px)': {
