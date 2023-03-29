@@ -10,8 +10,6 @@ type BlogStatsProps = {
 };
 
 const BlogStats: FC<BlogStatsProps> = ({ feed, filteredPosts }) => {
-  console.log(feed);
-
   const filterActive = filteredPosts.length < feed.length;
   const postCount = filterActive ? filteredPosts.length : feed.length;
   const postsText = postCount === 1 ? 'post' : 'posts';
