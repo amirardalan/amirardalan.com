@@ -17,7 +17,11 @@ import { useThemeContext } from '@/hooks/useThemeContext';
 import { Assistant, JetBrains_Mono, PT_Serif } from 'next/font/google';
 const fontPrimary = JetBrains_Mono({ subsets: ['latin'], weight: ['400'] });
 const fontSecondary = Assistant({ subsets: ['latin'], weight: ['700', '800'] });
-const fontTertiary = PT_Serif({ subsets: ['latin'], weight: ['400'] });
+const fontTertiary = PT_Serif({
+  subsets: ['latin'],
+  weight: ['400'],
+  style: ['normal', 'italic'],
+});
 
 const App = ({ Component, pageProps }: AppProps<{ session: Session }>) => {
   const [theme, toggleTheme] = useThemeContext();
