@@ -1,8 +1,5 @@
+import { FC } from 'react';
 import { Global } from '@emotion/react';
-
-const fontPrimary = '"JetBrains Mono", Menlo, Monaco, "Courier New", monospace';
-const fontSecondary = '"Assistant", Helvetica, Arial, sans-serif';
-const fontTertiary = '"PT Serif", "Times New Roman", Times, serif';
 
 const light = '#e4e9f8';
 const lightAccent = '#d8dff0';
@@ -24,75 +21,19 @@ const sunrise =
   'linear-gradient(to bottom,#515690 0%,#3e5a8d 50%,#0e656a 100%)';
 const sunset = 'linear-gradient(to bottom,#515690 0%,#51477c 50%,#5b2978 100%)';
 
-export function GlobalStyles() {
+type GlobalStylesProps = {
+  fontPrimary: string;
+  fontSecondary: string;
+  fontTertiary: string;
+};
+
+const GlobalStyles: FC<GlobalStylesProps> = ({
+  fontPrimary,
+  fontSecondary,
+  fontTertiary,
+}) => {
   return (
     <>
-      <Global
-        styles={{
-          '@font-face': {
-            fontFamily: 'Assistant',
-            fontStyle: 'normal',
-            fontWeight: 800,
-            fontDisplay: 'swap',
-            src: 'url("/fonts/assistant-v15-latin-800.woff2") format("woff2")',
-          },
-        }}
-      />
-      <Global
-        styles={{
-          '@font-face': {
-            fontFamily: 'Assistant',
-            fontStyle: 'normal',
-            fontWeight: 700,
-            fontDisplay: 'swap',
-            src: 'url("/fonts/assistant-v15-latin-700.woff2") format("woff2")',
-          },
-        }}
-      />
-      <Global
-        styles={{
-          '@font-face': {
-            fontFamily: 'JetBrains Mono',
-            fontStyle: 'normal',
-            fontWeight: 400,
-            fontDisplay: 'swap',
-            src: 'url("/fonts/jetbrains-mono-v11-latin-regular.woff2") format("woff2")',
-          },
-        }}
-      />
-      <Global
-        styles={{
-          '@font-face': {
-            fontFamily: 'PT Serif',
-            fontStyle: 'normal',
-            fontWeight: 400,
-            fontDisplay: 'swap',
-            src: 'url("/fonts/pt-serif-v16-latin-regular.woff2") format("woff2")',
-          },
-        }}
-      />
-      <Global
-        styles={{
-          '@font-face': {
-            fontFamily: 'PT Serif',
-            fontStyle: 'normal',
-            fontWeight: 700,
-            fontDisplay: 'swap',
-            src: 'url("/fonts/pt-serif-v16-latin-700.woff2") format("woff2")',
-          },
-        }}
-      />
-      <Global
-        styles={{
-          '@font-face': {
-            fontFamily: 'PT Serif',
-            fontStyle: 'italic',
-            fontWeight: 400,
-            fontDisplay: 'swap',
-            src: 'url("/fonts/pt-serif-v16-latin-italic.woff2") format("woff2")',
-          },
-        }}
-      />
       <Global
         styles={{
           'body, body[data-theme="light"], body[data-theme="dark"]': {
@@ -579,4 +520,6 @@ export function GlobalStyles() {
       />
     </>
   );
-}
+};
+
+export default GlobalStyles;
