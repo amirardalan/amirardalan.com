@@ -118,10 +118,9 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
       },
       '.availability': {
         color: 'var(--color-heading)',
+        fontSize: 18,
+        fontFamily: 'var(--font-secondary)',
         '.subheading': {
-          h4: {
-            color: 'var(--color-gray)',
-          },
           marginTop: '1.5rem',
           li: {
             fontFamily: 'var(--font-primary)',

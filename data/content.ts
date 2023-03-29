@@ -128,7 +128,7 @@ export const aboutContent = {
   },
   bio: {
     subheading: `Hey there, I'm Amir! 👋`,
-    content: `I'm a web developer and designer who's passionate about crafting outstanding digital experiences. This blog is a platform to document my career journey, learn in public, and share my knowledge with the web development comminity. I'm glad you're here!`,
+    content: `I'm a developer and designer who's passionate about crafting outstanding digital experiences. This blog is a platform to document my career journey, learn in public, and share my knowledge with the web development comminity. I'm glad you're here!`,
     items: [
       {
         path: '/resume',
@@ -182,13 +182,13 @@ export const aboutContent = {
     title: 'Current Project',
     text: 'Software Engineer II @',
     text2: 'Nike Innovation Center',
-    title2: 'Key Principles:',
+    title2: 'Mission Statement:',
     location: 'Remote or in-office in Portland, Ore. area.',
     link: 'https://lebronjamesinnovationcenter.nike.com/',
     items: [
-      '• Building tools that power the future of Nike design and manufacturing',
-      '• Focusing on end-users and their needs so they can better serve our athletes',
-      '• Challenging conventional thinking in web technologies and user experience',
+      '• Build tools that power the future of Nike design and manufacturing.',
+      '• Focus on designers and their needs so they can better serve our athletes.',
+      '• Challenge conventional thinking in web technologies and user experience.',
     ],
   },
   contact: {
@@ -223,9 +223,9 @@ export const timelineContent = {
   },
   items: [
     {
-      title: 'Application Developer @ Nike (via CDW)',
+      title: 'Software Engineer II @ Nike (via CDW)',
       content:
-        'Developing application prototypes and tools for Nike Innovation Center utilizing modern front-end technologies.',
+        'Developing digital prototypes and tools for designers @ Nike LeBron James Innovation Center.',
       cName: 'event',
     },
     {
