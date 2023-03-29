@@ -1,7 +1,6 @@
 import { FC } from 'react';
 import { css } from '@emotion/react';
 import useTotalLikes from '@/hooks/useTotalLikes';
-import LoadingSpinner from '@/components/LoadingSpinner';
 import formatLikeCount from '@/utils/formatLikeCount';
 import { BlogStatsTypes } from '@/types/blog';
 
@@ -11,6 +10,8 @@ type BlogStatsProps = {
 };
 
 const BlogStats: FC<BlogStatsProps> = ({ feed, filteredPosts }) => {
+  console.log(feed);
+
   const filterActive = filteredPosts.length < feed.length;
   const postCount = filterActive ? filteredPosts.length : feed.length;
   const postsText = postCount === 1 ? 'post' : 'posts';
@@ -68,7 +69,8 @@ const BlogStats: FC<BlogStatsProps> = ({ feed, filteredPosts }) => {
         <li className="divider">/</li>
         {error || totalLikesCount === undefined || totalLikesCount === 0 ? (
           <li className="likesCount">
-            <LoadingSpinner size={15} />
+            {formatLikeCount(filteredLikesCount)}
+            <span className="text">{likesText}</span>
           </li>
         ) : (
           <li className="likesCount">
