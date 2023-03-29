@@ -5,48 +5,6 @@ const Document: NextPage<DocumentProps> = () => {
   return (
     <Html lang="en">
       <Head>
-        <link
-          rel="preload"
-          href="/fonts/assistant-v15-latin-700.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
-          href="/fonts/assistant-v15-latin-800.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
-          href="/fonts/jetbrains-mono-v11-latin-regular.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
-          href="/fonts/pt-serif-v16-latin-regular.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
-          href="/fonts/pt-serif-v16-latin-700.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
-          href="/fonts/pt-serif-v16-latin-italic.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
         <link rel="apple-touch-icon" href="/touch-192.png" />
         <link rel="manifest" href="/manifest.json" />
         <meta httpEquiv="content-type" content="text/html; charset=utf-8" />
