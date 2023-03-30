@@ -350,7 +350,7 @@ const styleBlogPost = css({
       },
       '&:before': {
         content: '""',
-        top: 22,
+        top: 20,
         left: 22,
         width: 15,
         height: 15,
