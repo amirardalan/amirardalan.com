@@ -341,17 +341,24 @@ const styleBlogPost = css({
       fontFamily: 'var(--font-primary)',
       fontSize: 13,
       color: 'var(--color-gray)',
+      lineHeight: '1.8rem',
+      '@media (max-width: 768px)': {
+        lineHeight: '1.5rem',
+      },
       '&:before, &:after': {
         position: 'absolute',
       },
       '&:before': {
         content: '""',
-        top: 16,
+        top: 22,
         left: 22,
         width: 15,
         height: 15,
         background: 'var(--icon-info) no-repeat',
         backgroundSize: 'contain',
+        '@media (max-width: 768px)': {
+          top: 19,
+        },
       },
       '&:after': {
         content: '"Note:"',
