@@ -266,7 +266,7 @@ const styleSearchPosts = css({
   },
   '.icon': {
     position: 'absolute',
-    top: 18,
+    top: 20.5,
     right: 0,
     background: 'var(--color-accent)',
     width: 35,
