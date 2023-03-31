@@ -62,10 +62,16 @@ const BlogAdmin: FC = () => {
       justifyContent: 'flex-end',
       margin: '0 .5rem .5rem 0',
     },
-    span: {
+    div: {
       fontSize: 13,
       alignSelf: 'center',
       color: 'var(--color-gray)',
+      span: {
+        '&:after': {
+          content: '"•"',
+          marginLeft: '.5rem',
+        },
+      },
       a: {
         marginLeft: '.5rem',
         textTransform: 'uppercase',
@@ -88,8 +94,8 @@ const BlogAdmin: FC = () => {
     return (
       <>
         <div css={styleAdminPanelLeft}>
-          <span>
-            Welcome, {session?.user?.name?.split(' ')[0]}! •
+          <div>
+            <span>Welcome, {session?.user?.name?.split(' ')[0]}!</span>
             <a
               onClick={() =>
                 signOut({
@@ -103,7 +109,7 @@ const BlogAdmin: FC = () => {
             >
               Sign Out
             </a>
-          </span>
+          </div>
         </div>
 
         <div css={styleAdminPanelRight}>
