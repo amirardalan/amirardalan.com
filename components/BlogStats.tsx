@@ -28,6 +28,7 @@ const BlogStats: FC<BlogStatsProps> = ({ feed, filteredPosts }) => {
     ul: {
       display: 'flex',
       alignItems: 'flex-end',
+      marginBottom: '.2rem',
     },
     '.divider': {
       color: 'var(--color-accent-gray)',
