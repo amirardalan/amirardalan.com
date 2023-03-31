@@ -7,7 +7,6 @@ const Logo: FC = () => {
 
   const styleAnimationWrapper = css({
     maxHeight: 24,
-    width: 130,
     overflow: 'hidden',
     position: 'relative',
   });
