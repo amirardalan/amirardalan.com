@@ -66,7 +66,7 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
   });
   const styleMainLeft = css({
     padding: '0 2rem 0 0',
-    animation: 'slideUpSection .8s forwards',
+    animation: 'fadeIn .8s forwards',
     '@media (max-width: 890px)': {
       flexDirection: 'column-reverse',
     },

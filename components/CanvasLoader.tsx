@@ -63,7 +63,7 @@ const CanvasLoader: FC = () => {
       <button css={styleRandomizeButton} onClick={randomizeTerrain} />
 
       <Canvas
-        css={{ animation: 'slideUpSection 1s forwards' }}
+        css={{ animation: 'fadeIn 3s forwards' }}
         gl={{ antialias: true }}
         dpr={pixelRatio}
         onCreated={({ camera }) => camera.lookAt(0, 0, 0)}
