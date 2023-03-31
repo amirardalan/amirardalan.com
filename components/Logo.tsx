@@ -39,7 +39,7 @@ const Logo: FC = () => {
         width: '8px',
         height: '8px',
         margin: '0 4px',
-        background: 'var(--color-primary)',
+        background: 'var(--color-accent-gray)',
         borderRadius: '50%',
         opacity: '0',
         animation: 'loadingFade 1s infinite',
