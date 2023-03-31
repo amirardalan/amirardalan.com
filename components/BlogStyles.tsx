@@ -163,6 +163,7 @@ const blogStyles = css({
     display: 'flex',
     '@media (max-width: 480px)': {
       flexDirection: 'row',
+      marginTop: '.5rem',
     },
   },
   '.readTime': {
@@ -180,7 +181,7 @@ const blogStyles = css({
       content: '"~ "',
     },
     '@media (max-width: 480px)': {
-      margin: '.65rem 0 0 0',
+      margin: 0,
     },
   },
   '.likeCount': {
