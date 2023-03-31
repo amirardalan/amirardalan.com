@@ -321,8 +321,7 @@ const styleBlogPost = css({
     'ul, li, a': {
       marginBottom: '1rem',
     },
-    'p, ol li': {
-      marginBottom: '2rem',
+    'ul li, ol li, p, .note': {
       a: {
         color: 'inherit',
         textDecoration: 'underline',
@@ -331,6 +330,9 @@ const styleBlogPost = css({
           color: 'var(--color-primary)',
         },
       },
+    },
+    'p,': {
+      marginBottom: '2rem',
     },
     '.note': {
       position: 'relative',
@@ -369,11 +371,11 @@ const styleBlogPost = css({
         lineHeight: '1.5rem',
         textTransform: 'uppercase',
         fontFamily: 'var(--font-secondary)',
-        fontSize: 13,
+        fontSize: 14.5,
       },
       a: {
-        fontFamily: 'var(--font-primary)',
-        fontSize: 13,
+        fontFamily: 'var(--font-secondary)',
+        fontSize: 14.5,
         lineHeight: '1.5rem',
         '@media (max-width: 768px)': {
           margin: '0 !important',
