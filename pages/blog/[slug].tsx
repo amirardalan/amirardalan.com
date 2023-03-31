@@ -321,7 +321,7 @@ const styleBlogPost = css({
     'ul, li, a': {
       marginBottom: '1rem',
     },
-    p: {
+    'p, ol li': {
       marginBottom: '2rem',
       a: {
         color: 'inherit',
@@ -338,24 +338,26 @@ const styleBlogPost = css({
       padding: '2.8rem 1.5rem 1.25rem 1.5rem',
       border: '1px solid var(--color-accent-gray)',
       borderRadius: 5,
-      fontFamily: 'var(--font-primary)',
-      fontSize: 13,
+      fontFamily: 'var(--font-secondary)',
+      fontSize: 14.5,
       color: 'var(--color-gray)',
-      lineHeight: '1.8rem',
+      lineHeight: '1.5rem',
       '@media (max-width: 768px)': {
         lineHeight: '1.5rem',
       },
       '&:before, &:after': {
         position: 'absolute',
+        lineHeight: '1.5rem',
       },
       '&:before': {
         content: '""',
-        top: 20,
+        top: 19,
         left: 22,
         width: 15,
         height: 15,
         background: 'var(--icon-info) no-repeat',
         backgroundSize: 'contain',
+        lineHeight: '1.5rem',
         '@media (max-width: 768px)': {
           top: 19,
         },
@@ -364,6 +366,7 @@ const styleBlogPost = css({
         content: '"Note:"',
         top: 14,
         left: 42,
+        lineHeight: '1.5rem',
         textTransform: 'uppercase',
         fontFamily: 'var(--font-secondary)',
         fontSize: 13,
@@ -371,6 +374,7 @@ const styleBlogPost = css({
       a: {
         fontFamily: 'var(--font-primary)',
         fontSize: 13,
+        lineHeight: '1.5rem',
         '@media (max-width: 768px)': {
           margin: '0 !important',
           padding: '0 !important',
