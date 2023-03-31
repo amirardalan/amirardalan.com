@@ -37,7 +37,7 @@ const blogStyles = css({
       marginBottom: '.5rem',
       fontFamily: 'var(--font-secondary)',
       fontSize: 30,
-      fontWeight: 800,
+      fontWeight: 700,
       lineHeight: '2.2rem',
       a: {
         color: 'var(--color-heading)',
@@ -51,7 +51,7 @@ const blogStyles = css({
     '.blogHeading': {
       fontFamily: 'var(--font-secondary)',
       fontSize: 40,
-      fontWeight: 800,
+      fontWeight: 700,
       textDecoration: 'none',
       '@media(max-width: 1024px)': {
         fontSize: 30,
@@ -71,7 +71,8 @@ const blogStyles = css({
     p: {
       marginBottom: '2rem',
       fontFamily: 'var(--font-tertiary)',
-      fontSize: 17,
+      color: 'var(--color-gray)',
+      fontSize: 18,
     },
     main: {
       display: 'flex',
@@ -80,6 +81,7 @@ const blogStyles = css({
     '&.postTeaser': {
       p: {
         margin: '.5rem 0 2.5rem',
+        fontStyle: 'italic',
         lineHeight: '1.4rem',
         '@media(max-width: 768px)': {
           fontSize: 15,
@@ -131,7 +133,7 @@ const blogStyles = css({
         content: '"|"',
         position: 'absolute',
         fontFamily: 'var(--font-secondary)',
-        fontWeight: 800,
+        fontWeight: 700,
         fontSize: 24,
         lineHeight: '2rem',
         left: -20,
@@ -159,7 +161,6 @@ const blogStyles = css({
   },
   '.timeAndLikes': {
     display: 'flex',
-    alignItems: 'flex-end',
     '@media (max-width: 480px)': {
       flexDirection: 'row',
     },
@@ -167,15 +168,17 @@ const blogStyles = css({
   '.readTime': {
     margin: '0 0 0 1rem',
     maxWidth: 'min-content',
+    maxHeight: 20,
     whiteSpace: 'nowrap',
-    padding: '.15rem .5rem .08rem .5rem',
-    lineHeight: '.8rem',
-    border: '1px solid var(--color-gray)',
-    color: 'var(--color-gray)',
+    padding: '0 .5rem',
     backgroundColor: 'transparent',
+    border: '1px solid var(--color-accent-gray)',
     borderRadius: 10,
     textTransform: 'uppercase',
     fontSize: 11,
+    '&:before': {
+      content: '"~ "',
+    },
     '@media (max-width: 480px)': {
       margin: '.65rem 0 0 0',
     },

@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
 import { css } from '@emotion/react';
 import { useRouteStatus } from '@/hooks/useLoadingIndicator';
-import { logo } from '@/data/content';
 
 const Logo: FC = () => {
   const isLoading = useRouteStatus();
@@ -17,7 +16,6 @@ const Logo: FC = () => {
     flexDirection: 'row',
   });
   const styleLogo = css({
-    margin: '.08rem .4rem 0 0',
     background: 'var(--logo) no-repeat',
     backgroundSize: 'contain',
     height: 24,
@@ -25,29 +23,6 @@ const Logo: FC = () => {
   });
   const styleWordMark = css({
     textAlign: 'left',
-  });
-  const styleTitle = css({
-    display: 'block',
-    fontWeight: 700,
-    fontSize: 14,
-    letterSpacing: 0.6,
-    color: 'var(--color-heading)',
-    lineHeight: '.95rem',
-    textTransform: 'uppercase',
-    animation: isLoading
-      ? 'slideDown .15s reverse forwards'
-      : 'slideDown .5s forwards',
-  });
-  const styleTitleSub = css({
-    color: 'var(--color-gray)',
-    fontFamily: 'var(--font-primary)',
-    fontSize: 8,
-    fontWeight: 'normal',
-    letterSpacing: 0.1,
-    textTransform: 'uppercase',
-    animation: isLoading
-      ? 'slideUp .15s reverse forwards'
-      : 'slideUp .5s forwards',
   });
   const styleLoaderWrapper = css({
     display: 'flex',
@@ -64,7 +39,7 @@ const Logo: FC = () => {
         width: '8px',
         height: '8px',
         margin: '0 4px',
-        background: 'var(--color-heading)',
+        background: 'var(--color-primary)',
         borderRadius: '50%',
         opacity: '0',
         animation: 'loadingFade 1s infinite',
@@ -96,12 +71,7 @@ const Logo: FC = () => {
     return (
       <div css={styleLogoWrapper}>
         <div css={styleLogo} />
-        <div css={styleWordMark}>
-          <div css={styleTitle}>{logo.title}</div>
-          <div aria-label={logo.subtitle} css={styleTitleSub}>
-            {logo.subtitle}
-          </div>
-        </div>
+        <div css={styleWordMark}></div>
       </div>
     );
   };

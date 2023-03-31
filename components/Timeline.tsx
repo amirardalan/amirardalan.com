@@ -193,8 +193,8 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
         marginBottom: '4rem',
         padding: '2.5rem',
         background: 'var(--color-accent)',
-        fontSize: 12,
-        fontFamily: 'var(--font-primary)',
+        fontSize: 14,
+        fontFamily: 'var(--font-secondary)',
         span: {
           color: 'var(--color-gray)',
         },

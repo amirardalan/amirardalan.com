@@ -32,7 +32,7 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
       marginBottom: '.8rem',
       padding: '.25rem .6rem .2rem .65rem',
       lineHeight: '.8rem',
-      border: '1px solid var(--color-gray)',
+      border: '1px solid var(--color-accent-gray)',
       color: 'var(--color-gray)',
       backgroundColor: 'transparent',
       borderRadius: 10,

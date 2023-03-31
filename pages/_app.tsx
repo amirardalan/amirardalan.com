@@ -14,9 +14,12 @@ import { themeLight, themeDark } from '@/styles/theme';
 import GlobalStyles from '@/styles/global';
 import { useThemeContext } from '@/hooks/useThemeContext';
 
-import { Assistant, JetBrains_Mono, PT_Serif } from 'next/font/google';
+import { Titillium_Web, JetBrains_Mono, PT_Serif } from 'next/font/google';
 const fontPrimary = JetBrains_Mono({ subsets: ['latin'], weight: ['400'] });
-const fontSecondary = Assistant({ subsets: ['latin'], weight: ['700', '800'] });
+const fontSecondary = Titillium_Web({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+});
 const fontTertiary = PT_Serif({
   subsets: ['latin'],
   weight: ['400'],

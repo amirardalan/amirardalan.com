@@ -38,6 +38,7 @@ const BlogAdmin: FC = () => {
     width: 'auto',
     display: 'flex',
     padding: '.5rem 4rem',
+    fontFamily: 'var(--font-secondary)',
     backgroundColor: 'var(--color-accent)',
     borderBottom: '1px solid var(--color-accent-gray)',
     justifyContent: 'space-between',
@@ -61,10 +62,16 @@ const BlogAdmin: FC = () => {
       justifyContent: 'flex-end',
       margin: '0 .5rem .5rem 0',
     },
-    span: {
-      fontSize: 11,
+    div: {
+      fontSize: 13,
       alignSelf: 'center',
       color: 'var(--color-gray)',
+      span: {
+        '&:after': {
+          content: '"•"',
+          marginLeft: '.5rem',
+        },
+      },
       a: {
         marginLeft: '.5rem',
         textTransform: 'uppercase',
@@ -87,8 +94,8 @@ const BlogAdmin: FC = () => {
     return (
       <>
         <div css={styleAdminPanelLeft}>
-          <span>
-            Welcome, {session?.user?.name?.split(' ')[0]}! •
+          <div>
+            <span>Welcome, {session?.user?.name?.split(' ')[0]}!</span>
             <a
               onClick={() =>
                 signOut({
@@ -102,7 +109,7 @@ const BlogAdmin: FC = () => {
             >
               Sign Out
             </a>
-          </span>
+          </div>
         </div>
 
         <div css={styleAdminPanelRight}>
@@ -214,8 +221,8 @@ const BlogAdmin: FC = () => {
               border: '1px solid var(--color-accent)',
               borderRadius: 6,
               color: 'var(--color-bg)',
-              fontSize: 12,
-              fontFamily: 'var(--font-primary)',
+              fontSize: 13,
+              fontFamily: 'var(--font-secondary)',
               fontWeight: 'normal',
               textTransform: 'uppercase',
               textAlign: 'center',
@@ -266,7 +273,7 @@ const BlogAdmin: FC = () => {
                 textTransform: 'uppercase',
                 '.confirmLink': {
                   color: 'var(--color-heading)',
-                  fontFamily: 'var(--font-primary)',
+                  fontFamily: 'var(--font-secondary)',
                   fontSize: 12,
                   fontWeight: 'bold',
                   textTransform: 'uppercase',
