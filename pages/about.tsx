@@ -72,14 +72,6 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
             },
           },
         },
-        em: {
-          color: 'var(--color-select)',
-          marginBottom: '1rem',
-          display: 'inline-block',
-          fontFamily: 'var(--font-tertiary)',
-          fontSize: 17,
-          maxWidth: 450,
-        },
       },
       h3: {
         fontFamily: 'var(--font-secondary)',
@@ -96,7 +88,8 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
       },
       '.skills': {
         li: {
-          fontSize: 13,
+          fontSize: 14,
+          fontFamily: 'var(--font-secondary)',
           '&:first-of-type': {
             '&:before': {
               content: '" "',
@@ -108,7 +101,7 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
         },
       },
       '.experience': {
-        fontFamily: 'var(--font-tertiary)',
+        fontFamily: 'var(--font-secondary)',
         li: {
           marginBottom: '1.2rem',
           '@media(min-width: 769px)': {
@@ -123,7 +116,7 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
         '.subheading': {
           marginTop: '1.5rem',
           li: {
-            fontFamily: 'var(--font-primary)',
+            fontFamily: 'var(--font-secondary)',
             borderBottom: '1px solid var(--color-accent-gray)',
             paddingBottom: '.5rem',
             '&:first-of-type, &:last-of-type': {

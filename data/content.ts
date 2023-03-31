@@ -1,11 +1,5 @@
 import { themeLight, themeDark } from '@/styles/theme';
 
-export const logo = {
-  title: 'Amir Ardalan',
-  subtitle: 'Developer & Designer',
-  alt: 'Amir Ardalan Logo',
-};
-
 export const homeContent = {
   meta: {
     title: 'Amir Ardalan – Developer & designer',

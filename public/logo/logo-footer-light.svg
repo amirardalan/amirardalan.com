@@ -1,1 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="134.015" height="135" viewBox="0 0 134.015 135"><defs><clipPath id="b"><rect width="134.015" height="135"/></clipPath></defs><g id="a" clip-path="url(#b)"><g transform="translate(0 -2.76)"><path d="M83.972,98.659-35.355-20.668l14.687-14.687L98.659,83.972Z" transform="translate(35.355 38.189)" fill="#e4e9f8"/><path d="M119.328,134.015,0,14.687,14.687,0,134.015,119.328Z" transform="translate(134.015 2.834) rotate(90)" fill="#e4e9f8"/><path d="M20.563,0h0a0,0,0,0,1,0,0V20.563a0,0,0,0,1,0,0H0a0,0,0,0,1,0,0v0A20.563,20.563,0,0,1,20.563,0Z" transform="translate(67.515 0) rotate(47)" fill="#e4e9f8"/><path d="M20.563,0h0a0,0,0,0,1,0,0V20.563a0,0,0,0,1,0,0H0a0,0,0,0,1,0,0v0A20.563,20.563,0,0,1,20.563,0Z" transform="translate(67.007 140.93) rotate(-135)" fill="#e4e9f8"/></g></g></svg>
+<svg width="135" height="135" viewBox="0 0 135 135" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M118.424 135L0 16.5759L14.5759 2L133 120.424L118.424 135Z" fill="#E4E9F8"/>
+<path d="M1.04472e-06 120.424L118.424 2L133 16.5759L14.5759 135L1.04472e-06 120.424Z" fill="#E4E9F8"/>
+<rect x="66.6821" y="2" width="19.2449" height="19.2449" transform="rotate(45 66.6821 2)" fill="#E4E9F8"/>
+<rect x="66.6821" y="107.678" width="19.2449" height="19.2449" transform="rotate(45 66.6821 107.678)" fill="#E4E9F8"/>
+</svg>

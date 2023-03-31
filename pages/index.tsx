@@ -98,7 +98,7 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
       lineHeight: '100%',
       fontFamily: 'var(--font-secondary)',
       fontSize: 'calc(3.5vw + 3.5vh)',
-      fontWeight: 800,
+      fontWeight: 700,
       WebkitMarqueeIncrement: '0vw',
     },
   });

@@ -239,7 +239,7 @@ const styleBlogPost = css({
       margin: '0 0 .8rem',
       textDecoration: 'none',
       lineHeight: '2.8rem',
-      fontWeight: 800,
+      fontWeight: 700,
       '@media(max-width: 768px)': {
         fontSize: 32,
         margin: '0 0 .5rem',

@@ -129,6 +129,9 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
               },
             },
           },
+          html: {
+            scrollBehavior: 'smooth',
+          },
           'html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video':
             {
               margin: 0,
@@ -261,7 +264,7 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
               fontFamily: 'var(font-secondary)',
               fontSize: 40,
               WebkitMarqueeIncrement: '0vw',
-              fontWeight: 800,
+              fontWeight: 700,
               textAlign: 'left',
             },
             '@media(max-width: 1024px)': {
@@ -289,6 +292,7 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
             alignItems: 'center',
             lineHeight: '1.5rem',
             fontSize: 15,
+            fontFamily: 'var(--font-primary)',
             fontWeight: 400,
             background: 'var(--color-heading)',
             border: '1px solid transparent',

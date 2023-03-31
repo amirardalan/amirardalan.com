@@ -38,6 +38,7 @@ const BlogAdmin: FC = () => {
     width: 'auto',
     display: 'flex',
     padding: '.5rem 4rem',
+    fontFamily: 'var(--font-secondary)',
     backgroundColor: 'var(--color-accent)',
     borderBottom: '1px solid var(--color-accent-gray)',
     justifyContent: 'space-between',
@@ -62,7 +63,7 @@ const BlogAdmin: FC = () => {
       margin: '0 .5rem .5rem 0',
     },
     span: {
-      fontSize: 11,
+      fontSize: 13,
       alignSelf: 'center',
       color: 'var(--color-gray)',
       a: {
@@ -214,8 +215,8 @@ const BlogAdmin: FC = () => {
               border: '1px solid var(--color-accent)',
               borderRadius: 6,
               color: 'var(--color-bg)',
-              fontSize: 12,
-              fontFamily: 'var(--font-primary)',
+              fontSize: 13,
+              fontFamily: 'var(--font-secondary)',
               fontWeight: 'normal',
               textTransform: 'uppercase',
               textAlign: 'center',
@@ -266,7 +267,7 @@ const BlogAdmin: FC = () => {
                 textTransform: 'uppercase',
                 '.confirmLink': {
                   color: 'var(--color-heading)',
-                  fontFamily: 'var(--font-primary)',
+                  fontFamily: 'var(--font-secondary)',
                   fontSize: 12,
                   fontWeight: 'bold',
                   textTransform: 'uppercase',
