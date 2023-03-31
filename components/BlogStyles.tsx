@@ -214,12 +214,13 @@ const blogStyles = css({
     margin: '0.5rem 0',
     padding: '0.5rem',
     webkitAppearance: 'none',
-    color: 'var(--color-gray)',
+    color: 'var(--color-gray) !important',
     appearance: 'none',
     backgroundColor: 'var(--color-accent)',
     border: '2px solid var(--color-accent)',
     borderRadius: '0.25rem',
-    fontSize: 16,
+    fontFamily: 'var(--font-secondary)',
+    fontSize: 17,
     '&:disabled': {
       backgroundColor: 'var(--color-bg)',
       WebkitTextFillColor: 'var(--color-accent-gray)',
@@ -229,7 +230,7 @@ const blogStyles = css({
       margin: '0.5rem 0 0 0',
     },
   },
-  'input::placeholder': {
+  'input::placeholder, textarea::placeholder': {
     color: 'var(--color-gray)',
     opacity: '0.5',
   },

@@ -203,6 +203,7 @@ const BlogAdmin: FC = () => {
                 },
               },
               '.dropdownLabel': {
+                fontFamily: 'var(--font-secondary)',
                 marginRight: '2rem',
                 span: {
                   marginRight: '.5rem',
@@ -215,7 +216,7 @@ const BlogAdmin: FC = () => {
             '.buttonCompact': {
               minWidth: 80,
               marginRight: '.25rem',
-              padding: '.45rem 1rem',
+              height: 30,
               display: 'inline-block',
               backgroundColor: 'var(--color-heading)',
               border: '1px solid var(--color-accent)',
@@ -275,7 +276,6 @@ const BlogAdmin: FC = () => {
                   color: 'var(--color-heading)',
                   fontFamily: 'var(--font-secondary)',
                   fontSize: 12,
-                  fontWeight: 'bold',
                   textTransform: 'uppercase',
                   cursor: 'pointer',
                   textDecoration: 'none',
