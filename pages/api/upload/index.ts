@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import multer from 'multer';
 import { UploadApiResponse, v2 as cloudinary } from 'cloudinary';
 
-const upload = multer({ dest: 'uploads/' });
+const upload = multer();
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_NAME,
@@ -16,34 +16,32 @@ export const config = {
   },
 };
 
-const uploadImageHandler = (
+const uploadImageHandler = async (
   req: NextApiRequest & { file: any },
   res: NextApiResponse<any>
 ) => {
   try {
-    upload.single('image')(req as any, res as any, async (err) => {
-      if (err) {
-        console.error(err);
-        return res.status(500).json({
-          success: false,
-          message: 'Error uploading image',
-        });
-      }
-
-      const file = req.file.path;
-      console.log('imageFile: ', file);
-
-      const result: UploadApiResponse = await cloudinary.uploader.upload(file, {
-        folder: 'blog-images',
+    await new Promise<void>((resolve, reject) => {
+      upload.single('image')(req as any, res as any, (err) => {
+        if (err) reject(err);
+        resolve();
       });
+    });
 
-      res.status(200).json({
-        success: true,
-        data: {
-          url: result.secure_url,
-          publicId: result.public_id,
-        },
-      });
+    const file = req.file.path;
+    console.log('imageFile: ', file);
+
+    const result: UploadApiResponse = await cloudinary.uploader.upload(file, {
+      folder: 'blog-images',
+    });
+
+    res.status(200).json({
+      success: true,
+      data: {
+        url: result.secure_url,
+        publicId: result.public_id,
+      },
+      message: 'File uploaded successfully',
     });
   } catch (err) {
     console.error(err);
