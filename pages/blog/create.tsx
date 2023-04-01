@@ -4,6 +4,7 @@ import Router from 'next/router';
 
 import { useSession } from 'next-auth/react';
 import { useFetchStatus } from '@/hooks/useLoadingIndicator';
+import { uploadImage } from '@/lib/blog';
 
 import LoadingTriangle from '@/components/LoadingTriangle';
 import Container from '@/components/Container';
@@ -11,6 +12,7 @@ import BlogStyles from '@/components/BlogStyles';
 import Dropdown from '@/components/Dropdown';
 import Checkbox from '@/components/Checkbox';
 import BlogPostControls from '@/components/BlogPostControls';
+import BlogImageUpload from '@/components/BlogImageUpload';
 
 import generateSlug from '@/utils/generateSlug';
 import { adminContent, breadcrumbContent } from '@/data/content';
@@ -39,6 +41,20 @@ const Draft: FC<DraftProps> = ({ admin, breadcrumb }) => {
 
   const [fetchStatus, setFetchStatus] = useFetchStatus();
   const isFetching = fetchStatus;
+
+  const [isUploading, setIsUploading] = useState(false);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+  const handleUpload = async (blob: Blob): Promise<string> => {
+    const file = new File([blob], 'filename.jpg', { type: blob.type });
+    const imageUrl = await uploadImage(file, setFetchStatus);
+    if (imageUrl) {
+      const markdown = `\n![Uploaded image](${imageUrl})`;
+      setContent(content + markdown);
+      return imageUrl;
+    }
+    return '';
+  };
 
   const handleDeletion = () => {
     setFetchStatus(true);
@@ -125,6 +141,11 @@ const Draft: FC<DraftProps> = ({ admin, breadcrumb }) => {
               placeholder="Content"
               rows={18}
               value={content}
+              ref={textareaRef}
+            />
+            <BlogImageUpload
+              handleUpload={handleUpload}
+              textareaRef={textareaRef}
             />
 
             <div className="postOptions">

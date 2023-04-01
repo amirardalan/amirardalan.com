@@ -20,7 +20,6 @@ import { blogPostContent, adminContent } from '@/data/content';
 import { PostProps } from '@/types/post';
 import { AdminControlsTypes } from '@/types/admin';
 import { BlogNavigationTypes } from '@/types/blog';
-import { inherits } from 'util';
 
 const BlogPostControls = dynamic(
   () => import('@/components/BlogPostControls'),

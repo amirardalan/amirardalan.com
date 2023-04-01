@@ -45,6 +45,25 @@ export async function deletePost(
   });
 }
 
+// Upload Image
+export async function uploadImage(
+  imageFile: File,
+  setFetchStatus: (active: boolean) => void
+): Promise<string> {
+  console.log('imageFile:', imageFile);
+  setFetchStatus(true);
+  const formData = new FormData();
+  formData.append('image', imageFile);
+  console.log('formData:', formData);
+  const response = await fetch('/api/upload', {
+    method: 'POST',
+    body: formData,
+  });
+  const data = await response.json();
+  setFetchStatus(false);
+  return data.url;
+}
+
 // Like Post
 export async function likePost(id: number, liked: boolean): Promise<void> {
   const method = liked ? 'DELETE' : 'PUT';
