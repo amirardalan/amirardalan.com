@@ -50,11 +50,9 @@ export async function uploadImage(
   imageFile: File,
   setFetchStatus: (active: boolean) => void
 ): Promise<string> {
-  console.log('imageFile:', imageFile);
   setFetchStatus(true);
   const formData = new FormData();
   formData.append('image', imageFile);
-  console.log('formData:', formData);
   const response = await fetch('/api/upload', {
     method: 'POST',
     body: formData,

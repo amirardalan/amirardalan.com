@@ -42,7 +42,6 @@ const Draft: FC<DraftProps> = ({ admin, breadcrumb }) => {
   const [fetchStatus, setFetchStatus] = useFetchStatus();
   const isFetching = fetchStatus;
 
-  const [isUploading, setIsUploading] = useState(false);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   const handleUpload = async (blob: Blob): Promise<string> => {
