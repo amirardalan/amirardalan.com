@@ -32,10 +32,11 @@ const uploadImageHandler = async (
             .split('.')
             .slice(0, -1)
             .join('.');
-          const publicId = `${fileNameWithoutExtension}_${uuidv4().substr(
-            0,
-            5
-          )}`;
+          const randomString = [...Array(5)]
+            .map(() => Math.floor(Math.random() * 26) + 97)
+            .map((charCode) => String.fromCharCode(charCode))
+            .join('');
+          const publicId = `${fileNameWithoutExtension}_${randomString}`;
           const stream = cloudinary.uploader.upload_stream(
             {
               folder: 'Blog',

@@ -51,19 +51,14 @@ interface UploadImageParams {
 }
 
 // Upload Image
-export async function uploadImage(
-  { file, fileName }: UploadImageParams,
-  setFetchStatus: (active: boolean) => void
-): Promise<string> {
-  setFetchStatus(true);
+export async function uploadImage(file: File): Promise<string> {
   const formData = new FormData();
-  formData.append('file', file, fileName);
+  formData.append('image', file, file.name);
   const response = await fetch('/api/upload', {
     method: 'POST',
     body: formData,
   });
   const data = await response.json();
-  setFetchStatus(false);
   return data.url;
 }
 
