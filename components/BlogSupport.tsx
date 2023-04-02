@@ -153,7 +153,7 @@ const BlogSupport: FC<BlogSupportProps> = ({ id, title }) => {
             flexDirection: 'row',
             justifyContent: 'space-between',
             position: 'absolute',
-            top: -26,
+            top: -28,
             left: -25,
             width: '100%',
             alignItems: 'center',
@@ -248,7 +248,7 @@ const BlogSupport: FC<BlogSupportProps> = ({ id, title }) => {
               <div className="ethAddressCopied">
                 <div className="qrCode">
                   <Image
-                    src="https://res.cloudinary.com/amir-ardalan/image/upload/v1666919421/Blog/amirardalan-eth-qr_qf4nym.png"
+                    src="/eth-qr.png"
                     width={131}
                     height={131}
                     alt="amirardalan.eth QR Code"

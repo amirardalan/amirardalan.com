@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import multer from 'multer';
 import { v2 as cloudinary } from 'cloudinary';
+import { v4 as uuidv4 } from 'uuid';
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_NAME,
@@ -16,58 +17,55 @@ export const config = {
   },
 };
 
-let responseSent = false; // define the variable outside of the function
-
 const uploadImageHandler = async (
   req: NextApiRequest & { file: any },
   res: NextApiResponse<any>
 ) => {
   try {
-    await new Promise<void>((resolve, reject) => {
+    const data = await new Promise((resolve, reject) => {
       upload.single('image')(req as any, res as any, (err) => {
         if (err) {
           reject(err);
         } else {
-          resolve();
+          const fileBuffer = req.file.buffer;
+          const fileNameWithoutExtension = req.file.originalname
+            .split('.')
+            .slice(0, -1)
+            .join('.');
+          const publicId = `${fileNameWithoutExtension}_${uuidv4().substr(
+            0,
+            5
+          )}`;
+          const stream = cloudinary.uploader.upload_stream(
+            {
+              folder: 'Blog',
+              public_id: publicId,
+              unique_filename: false,
+            },
+            (error: any, result: any) => {
+              if (error) {
+                console.error(error);
+                reject(error);
+              } else {
+                resolve({
+                  success: true,
+                  data: {
+                    url: result.secure_url,
+                    publicId: result.public_id,
+                  },
+                  message: 'File uploaded successfully',
+                });
+              }
+            }
+          );
+          stream.end(fileBuffer);
         }
       });
     });
-
-    const fileBuffer = req.file.buffer;
-
-    const stream = cloudinary.uploader.upload_stream(
-      { folder: 'Blog' },
-      (error: any, result: any) => {
-        if (responseSent) {
-          return;
-        }
-
-        if (error) {
-          console.error(error);
-          res
-            .status(500)
-            .json({ success: false, message: 'Error uploading image' });
-        } else {
-          responseSent = true;
-          res.status(200).json({
-            success: true,
-            data: {
-              url: result.secure_url,
-              publicId: result.public_id,
-            },
-            message: 'File uploaded successfully',
-          });
-        }
-      }
-    );
-    stream.end(fileBuffer);
-  } catch (err) {
-    console.error(err);
-    if (!responseSent) {
-      res
-        .status(500)
-        .json({ success: false, message: 'Error uploading image' });
-    }
+    res.status(200).json(data);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, message: 'Error uploading image' });
   }
 };
 

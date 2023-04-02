@@ -44,15 +44,15 @@ const Draft: FC<DraftProps> = ({ admin, breadcrumb }) => {
 
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
-  const handleUpload = async (blob: Blob): Promise<string> => {
-    const file = new File([blob], 'filename.jpg', { type: blob.type });
-    const imageUrl = await uploadImage(file, setFetchStatus);
-    if (imageUrl) {
-      const markdown = `\n![Uploaded image](${imageUrl})`;
-      setContent(content + markdown);
-      return imageUrl;
-    }
-    return '';
+  const handleUpload = async (file: File): Promise<string> => {
+    const formData = new FormData();
+    formData.append('image', file, file.name);
+    const response = await fetch('/api/upload', {
+      method: 'POST',
+      body: formData,
+    });
+    const data = await response.json();
+    return data.url;
   };
 
   const handleDeletion = () => {

@@ -45,14 +45,19 @@ export async function deletePost(
   });
 }
 
+interface UploadImageParams {
+  file: File;
+  fileName: string;
+}
+
 // Upload Image
 export async function uploadImage(
-  imageFile: File,
+  { file, fileName }: UploadImageParams,
   setFetchStatus: (active: boolean) => void
 ): Promise<string> {
   setFetchStatus(true);
   const formData = new FormData();
-  formData.append('image', imageFile);
+  formData.append('file', file, fileName);
   const response = await fetch('/api/upload', {
     method: 'POST',
     body: formData,
