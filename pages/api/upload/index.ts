@@ -62,7 +62,15 @@ const uploadImageHandler = async (
         }
       });
     });
-    res.status(200).json(data);
+    const { url } = (data as { success: boolean; data: { url: string } }).data;
+    res.status(200).json({
+      success: true,
+      data: {
+        url: url,
+        markdownUrl: `![Alt Text](${url})`,
+      },
+      message: 'File uploaded successfully',
+    });
   } catch (error) {
     console.error(error);
     res.status(500).json({ success: false, message: 'Error uploading image' });
