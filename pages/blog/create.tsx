@@ -45,14 +45,10 @@ const Draft: FC<DraftProps> = ({ admin, breadcrumb }) => {
   const [markdownContent, setMarkdownContent] = useState('');
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
 
-  const handleInsertUrl = (response: any) => {
+  const handleInsertUrl = (response: string) => {
     if (textAreaRef.current) {
-      textAreaRef.current.value += JSON.stringify(response).replace(
-        /['"]+/g,
-        ''
-      );
+      textAreaRef.current.value += response;
     }
-    console.log(response);
   };
 
   const handleDeletion = () => {

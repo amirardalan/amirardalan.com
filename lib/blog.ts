@@ -60,9 +60,9 @@ export const uploadImage = async (file: File): Promise<string> => {
   }
 
   const data = await response.json();
-  const markdownUrl = data.markdownUrl;
+  const res = data.markdownUrl;
 
-  return markdownUrl;
+  return res;
 };
 
 // Like Post
