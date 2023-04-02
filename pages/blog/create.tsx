@@ -106,7 +106,7 @@ const Draft: FC<DraftProps> = ({ admin, breadcrumb }) => {
         </nav>
 
         <div>
-          <form onSubmit={submitData}>
+          <form onSubmit={submitData} encType="multipart/form-data">
             <input
               autoFocus
               onChange={(e) => setTitle(e.target.value)}

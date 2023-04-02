@@ -16,6 +16,8 @@ export const config = {
   },
 };
 
+let responseSent = false; // define the variable outside of the function
+
 const uploadImageHandler = async (
   req: NextApiRequest & { file: any },
   res: NextApiResponse<any>
@@ -23,8 +25,11 @@ const uploadImageHandler = async (
   try {
     await new Promise<void>((resolve, reject) => {
       upload.single('image')(req as any, res as any, (err) => {
-        if (err) reject(err);
-        resolve();
+        if (err) {
+          reject(err);
+        } else {
+          resolve();
+        }
       });
     });
 
@@ -33,13 +38,17 @@ const uploadImageHandler = async (
     const stream = cloudinary.uploader.upload_stream(
       { folder: 'Blog' },
       (error: any, result: any) => {
+        if (responseSent) {
+          return;
+        }
+
         if (error) {
           console.error(error);
           res
             .status(500)
             .json({ success: false, message: 'Error uploading image' });
-          return;
         } else {
+          responseSent = true;
           res.status(200).json({
             success: true,
             data: {
@@ -48,15 +57,17 @@ const uploadImageHandler = async (
             },
             message: 'File uploaded successfully',
           });
-          return;
         }
       }
     );
     stream.end(fileBuffer);
   } catch (err) {
     console.error(err);
-    res.status(500).json({ success: false, message: 'Error uploading image' });
-    return;
+    if (!responseSent) {
+      res
+        .status(500)
+        .json({ success: false, message: 'Error uploading image' });
+    }
   }
 };
 

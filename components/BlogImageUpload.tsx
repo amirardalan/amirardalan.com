@@ -31,7 +31,7 @@ const BlogImageUpload: FC<BlogImageUploadProps> = ({
   };
 
   return (
-    <form encType="multipart/form-data">
+    <div>
       <input type="file" accept="image/*" onChange={handleFileChange} />
       <button
         onClick={handleUploadClick}
@@ -39,7 +39,7 @@ const BlogImageUpload: FC<BlogImageUploadProps> = ({
       >
         {isUploading ? 'Uploading...' : 'Upload'}
       </button>
-    </form>
+    </div>
   );
 };
 
