@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import multer from 'multer';
-import { UploadApiResponse, v2 as cloudinary } from 'cloudinary';
+import { v2 as cloudinary } from 'cloudinary';
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_NAME,
@@ -38,6 +38,7 @@ const uploadImageHandler = async (
           res
             .status(500)
             .json({ success: false, message: 'Error uploading image' });
+          return;
         } else {
           res.status(200).json({
             success: true,
@@ -47,6 +48,7 @@ const uploadImageHandler = async (
             },
             message: 'File uploaded successfully',
           });
+          return;
         }
       }
     );
@@ -54,6 +56,7 @@ const uploadImageHandler = async (
   } catch (err) {
     console.error(err);
     res.status(500).json({ success: false, message: 'Error uploading image' });
+    return;
   }
 };
 
