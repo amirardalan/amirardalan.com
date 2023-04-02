@@ -1,10 +1,8 @@
 import { FC, useState } from 'react';
 import { css } from '@emotion/react';
+import { uploadImage } from '@/lib/blog';
 
-interface BlogImageUploadProps {
-  handleUpload: (file: File) => Promise<string>;
-  textareaRef: React.RefObject<HTMLTextAreaElement>;
-}
+interface BlogImageUploadProps {}
 
 const styleImageUploader = css({
   fontFamily: 'var(--font-secondary)',
@@ -14,10 +12,7 @@ const styleImageUploader = css({
   },
 });
 
-const BlogImageUpload: FC<BlogImageUploadProps> = ({
-  handleUpload,
-  textareaRef,
-}) => {
+const BlogImageUpload: FC<BlogImageUploadProps> = ({}) => {
   const [selectedFile, setSelectedFile] = useState<{
     file: File | null;
     name: string | null;
@@ -33,15 +28,14 @@ const BlogImageUpload: FC<BlogImageUploadProps> = ({
     }
   };
 
-  const handleUploadClick = async () => {
+  const handleImageUpload = async (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    event.preventDefault();
     if (selectedFile.file) {
       setIsUploading(true);
-      const imageUrl = await handleUpload(selectedFile.file);
+      await uploadImage(selectedFile.file);
       setIsUploading(false);
-      if (imageUrl && textareaRef.current) {
-        const markdown = `\n![Uploaded image](${imageUrl})`;
-        textareaRef.current.value = textareaRef.current.value + markdown;
-      }
     }
   };
 
@@ -52,7 +46,7 @@ const BlogImageUpload: FC<BlogImageUploadProps> = ({
         <input type="file" accept="image/*" onChange={handleFileChange} />
         <button
           className="buttonCompact"
-          onClick={handleUploadClick}
+          onClick={handleImageUpload}
           disabled={!selectedFile || isUploading}
         >
           {isUploading ? 'Uploading...' : 'Upload'}

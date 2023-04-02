@@ -4,7 +4,6 @@ import Router from 'next/router';
 
 import { useSession } from 'next-auth/react';
 import { useFetchStatus } from '@/hooks/useLoadingIndicator';
-import { uploadImage } from '@/lib/blog';
 
 import LoadingTriangle from '@/components/LoadingTriangle';
 import Container from '@/components/Container';
@@ -41,8 +40,6 @@ const Draft: FC<DraftProps> = ({ admin, breadcrumb }) => {
 
   const [fetchStatus, setFetchStatus] = useFetchStatus();
   const isFetching = fetchStatus;
-
-  const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   const handleDeletion = () => {
     setFetchStatus(true);
@@ -129,12 +126,8 @@ const Draft: FC<DraftProps> = ({ admin, breadcrumb }) => {
               placeholder="Content"
               rows={18}
               value={content}
-              ref={textareaRef}
             />
-            <BlogImageUpload
-              handleUpload={uploadImage}
-              textareaRef={textareaRef}
-            />
+            <BlogImageUpload />
 
             <div className="postOptions">
               <Dropdown
