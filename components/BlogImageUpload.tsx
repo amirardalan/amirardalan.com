@@ -2,7 +2,10 @@ import { FC, useState } from 'react';
 import { css } from '@emotion/react';
 import { uploadImage } from '@/lib/blog';
 
-interface BlogImageUploadProps {}
+interface BlogImageUploadProps {
+  uploadImage: (file: File) => Promise<string>;
+  onUploadSuccess: (url: string) => void;
+}
 
 const styleImageUploader = css({
   fontFamily: 'var(--font-secondary)',
@@ -12,7 +15,10 @@ const styleImageUploader = css({
   },
 });
 
-const BlogImageUpload: FC<BlogImageUploadProps> = ({}) => {
+const BlogImageUpload: FC<BlogImageUploadProps> = ({
+  uploadImage,
+  onUploadSuccess,
+}) => {
   const [selectedFile, setSelectedFile] = useState<{
     file: File | null;
     name: string | null;
@@ -34,8 +40,14 @@ const BlogImageUpload: FC<BlogImageUploadProps> = ({}) => {
     event.preventDefault();
     if (selectedFile.file) {
       setIsUploading(true);
-      await uploadImage(selectedFile.file);
-      setIsUploading(false);
+      try {
+        const url = await uploadImage(selectedFile.file);
+        onUploadSuccess(url);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setIsUploading(false);
+      }
     }
   };
 

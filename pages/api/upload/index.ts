@@ -38,7 +38,7 @@ const uploadImageHandler = async (
           const altText = imageName.replace(/(\b\w)/g, (match: string) =>
             match.toUpperCase()
           );
-          const randomString = [...Array(5)]
+          const randomString = [...Array(6)]
             .map(() => Math.floor(Math.random() * 26) + 97)
             .map((charCode) => String.fromCharCode(charCode))
             .join('');
@@ -81,7 +81,6 @@ const uploadImageHandler = async (
       .replace(/\b\w/g, (match: string) => match.toUpperCase());
     const { url } = (data as { success: boolean; data: { url: string } }).data;
     const markdownUrl = `![${altText}](${url})`;
-    console.log(markdownUrl);
     res.status(200).json({
       success: true,
       data: {

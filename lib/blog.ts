@@ -51,16 +51,23 @@ interface UploadImageParams {
 }
 
 // Upload Image
-export async function uploadImage(file: File): Promise<string> {
+export const uploadImage = async (file: File): Promise<string> => {
   const formData = new FormData();
-  formData.append('image', file, file.name);
+  formData.append('image', file);
+
   const response = await fetch('/api/upload', {
     method: 'POST',
     body: formData,
   });
-  const data = await response.json();
-  return data.url;
-}
+
+  if (!response.ok) {
+    throw new Error('Failed to upload image');
+  }
+
+  const { url } = await response.json();
+
+  return url;
+};
 
 // Like Post
 export async function likePost(id: number, liked: boolean): Promise<void> {

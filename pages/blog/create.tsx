@@ -4,6 +4,7 @@ import Router from 'next/router';
 
 import { useSession } from 'next-auth/react';
 import { useFetchStatus } from '@/hooks/useLoadingIndicator';
+import { uploadImage } from '@/lib/blog';
 
 import LoadingTriangle from '@/components/LoadingTriangle';
 import Container from '@/components/Container';
@@ -40,6 +41,28 @@ const Draft: FC<DraftProps> = ({ admin, breadcrumb }) => {
 
   const [fetchStatus, setFetchStatus] = useFetchStatus();
   const isFetching = fetchStatus;
+
+  const [markdownContent, setMarkdownContent] = useState('');
+  const textAreaRef = useRef<HTMLTextAreaElement>(null);
+
+  const handleInsertUrl = (markdownUrl: string) => {
+    const start = textAreaRef.current?.selectionStart;
+    if (start != null && markdownUrl != undefined) {
+      const end = textAreaRef.current?.selectionEnd ?? 0;
+      const value = textAreaRef.current?.value;
+      const newValue =
+        value?.substring(0, start) +
+        markdownUrl +
+        value?.substring(end, value.length);
+      setContent(newValue);
+      // Move the cursor to the end of the inserted markdownUrl string
+      textAreaRef.current?.focus();
+      textAreaRef.current?.setSelectionRange(
+        start + markdownUrl.length,
+        start + markdownUrl.length
+      );
+    }
+  };
 
   const handleDeletion = () => {
     setFetchStatus(true);
@@ -122,12 +145,16 @@ const Draft: FC<DraftProps> = ({ admin, breadcrumb }) => {
             />
             <textarea
               cols={50}
-              onChange={(e) => setContent(e.target.value)}
+              onChange={(e) => setMarkdownContent(e.target.value)}
               placeholder="Content"
               rows={18}
-              value={content}
+              ref={textAreaRef}
+              value={markdownContent}
             />
-            <BlogImageUpload />
+            <BlogImageUpload
+              uploadImage={uploadImage}
+              onUploadSuccess={handleInsertUrl}
+            />
 
             <div className="postOptions">
               <Dropdown
