@@ -1,7 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import multer from 'multer';
 import { v2 as cloudinary } from 'cloudinary';
-import { v4 as uuidv4 } from 'uuid';
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_NAME,
