@@ -45,11 +45,6 @@ export async function deletePost(
   });
 }
 
-interface UploadImageParams {
-  file: File;
-  fileName: string;
-}
-
 // Upload Image
 export const uploadImage = async (file: File): Promise<string> => {
   const formData = new FormData();
@@ -64,9 +59,10 @@ export const uploadImage = async (file: File): Promise<string> => {
     throw new Error('Failed to upload image');
   }
 
-  const { url } = await response.json();
+  const data = await response.json();
+  const markdownUrl = data.markdownUrl;
 
-  return url;
+  return markdownUrl;
 };
 
 // Like Post

@@ -83,10 +83,7 @@ const uploadImageHandler = async (
     const markdownUrl = `![${altText}](${url})`;
     res.status(200).json({
       success: true,
-      data: {
-        url: url,
-        markdownUrl: markdownUrl,
-      },
+      markdownUrl: markdownUrl,
       message: 'File uploaded successfully',
     });
   } catch (error) {

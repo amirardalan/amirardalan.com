@@ -45,23 +45,14 @@ const Draft: FC<DraftProps> = ({ admin, breadcrumb }) => {
   const [markdownContent, setMarkdownContent] = useState('');
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
 
-  const handleInsertUrl = (markdownUrl: string) => {
-    const start = textAreaRef.current?.selectionStart;
-    if (start != null && markdownUrl != undefined) {
-      const end = textAreaRef.current?.selectionEnd ?? 0;
-      const value = textAreaRef.current?.value;
-      const newValue =
-        value?.substring(0, start) +
-        markdownUrl +
-        value?.substring(end, value.length);
-      setContent(newValue);
-      // Move the cursor to the end of the inserted markdownUrl string
-      textAreaRef.current?.focus();
-      textAreaRef.current?.setSelectionRange(
-        start + markdownUrl.length,
-        start + markdownUrl.length
+  const handleInsertUrl = (response: any) => {
+    if (textAreaRef.current) {
+      textAreaRef.current.value += JSON.stringify(response).replace(
+        /['"]+/g,
+        ''
       );
     }
+    console.log(response);
   };
 
   const handleDeletion = () => {

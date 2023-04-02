@@ -1,6 +1,5 @@
-import { FC, useState } from 'react';
+import { FC, useState, useRef } from 'react';
 import { css } from '@emotion/react';
-import { uploadImage } from '@/lib/blog';
 
 interface BlogImageUploadProps {
   uploadImage: (file: File) => Promise<string>;
@@ -19,29 +18,18 @@ const BlogImageUpload: FC<BlogImageUploadProps> = ({
   uploadImage,
   onUploadSuccess,
 }) => {
-  const [selectedFile, setSelectedFile] = useState<{
-    file: File | null;
-    name: string | null;
-  }>({ file: null, name: null });
+  const selectedFileRef = useRef<HTMLInputElement>(null);
   const [isUploading, setIsUploading] = useState<boolean>(false);
-
-  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (event.target.files) {
-      setSelectedFile({
-        file: event.target.files[0],
-        name: event.target.files[0].name,
-      });
-    }
-  };
 
   const handleImageUpload = async (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     event.preventDefault();
-    if (selectedFile.file) {
+    const selectedFile = selectedFileRef.current?.files?.[0];
+    if (selectedFile) {
       setIsUploading(true);
       try {
-        const url = await uploadImage(selectedFile.file);
+        const url = await uploadImage(selectedFile);
         onUploadSuccess(url);
       } catch (error) {
         console.error(error);
@@ -55,11 +43,16 @@ const BlogImageUpload: FC<BlogImageUploadProps> = ({
     <div>
       <label css={styleImageUploader}>
         Image:
-        <input type="file" accept="image/*" onChange={handleFileChange} />
+        <input
+          type="file"
+          accept="image/*"
+          onChange={() => {}}
+          ref={selectedFileRef}
+        />
         <button
           className="buttonCompact"
           onClick={handleImageUpload}
-          disabled={!selectedFile || isUploading}
+          disabled={!selectedFileRef.current || isUploading}
         >
           {isUploading ? 'Uploading...' : 'Upload'}
         </button>
