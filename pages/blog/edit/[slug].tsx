@@ -219,36 +219,39 @@ const Edit: FC<EditProps> = ({
               ref={textAreaRef}
               value={content}
             />
-            <BlogImageUpload
-              uploadImage={uploadImage}
-              onUploadSuccess={handleInsertUrl}
-            />
 
             <div className="postOptions">
-              <Dropdown
-                label="Category:"
-                value={category}
-                handleChange={(e: {
-                  target: { value: React.SetStateAction<string> };
-                }) => setCategory(e.target.value)}
-                data={categories}
+              <div className="postOptionsContainer">
+                <Dropdown
+                  label="Category:"
+                  value={category}
+                  handleChange={(e: {
+                    target: { value: React.SetStateAction<string> };
+                  }) => setCategory(e.target.value)}
+                  data={categories}
+                />
+                <div className="checkbox">
+                  <Checkbox
+                    label="Featured"
+                    title={admin.controls.checkbox.featured}
+                    value={featured}
+                    onChange={handleSetFeatured}
+                  />
+                </div>
+                <div className="checkbox">
+                  <Checkbox
+                    label="Update Date"
+                    title={admin.controls.checkbox.updateDate}
+                    value={showEdited}
+                    onChange={handleShowEdited}
+                  />
+                </div>
+              </div>
+
+              <BlogImageUpload
+                uploadImage={uploadImage}
+                onUploadSuccess={handleInsertUrl}
               />
-              <div className="checkbox">
-                <Checkbox
-                  label="Featured"
-                  title={admin.controls.checkbox.featured}
-                  value={featured}
-                  onChange={handleSetFeatured}
-                />
-              </div>
-              <div className="checkbox">
-                <Checkbox
-                  label="Update Date"
-                  title={admin.controls.checkbox.updateDate}
-                  value={showEdited}
-                  onChange={handleShowEdited}
-                />
-              </div>
             </div>
 
             <BlogPostControls
