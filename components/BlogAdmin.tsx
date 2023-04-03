@@ -113,25 +113,26 @@ const BlogAdmin: FC = () => {
         </div>
 
         <div css={styleAdminPanelRight}>
-          <Link href="/blog/create" passHref>
-            <button
-              className={`buttonCompact createBtn ${
-                isCreatePage || isLoading ? 'disabled' : null
-              }`}
-              aria-label="New Post"
-            >
-              Create
-            </button>
+          <Link
+            href="/blog/create"
+            passHref
+            aria-label="New Post"
+            className={`buttonCompact createBtn ${
+              isCreatePage || isLoading ? 'disabled' : null
+            }`}
+          >
+            Create
           </Link>
-          <Link href="/blog/drafts" passHref aria-label="Drafts">
-            <button
-              className={`buttonCompact draftsBtn ${
-                isDraftsPage || isLoading ? 'disabled' : null
-              }`}
-              data-active={isActive('/drafts')}
-            >
-              Drafts
-            </button>
+          <Link
+            href="/blog/drafts"
+            passHref
+            aria-label="Drafts"
+            className={`buttonCompact draftsBtn ${
+              isDraftsPage || isLoading ? 'disabled' : null
+            }`}
+            data-active={isActive('/drafts')}
+          >
+            Drafts
           </Link>
         </div>
       </>
@@ -224,15 +225,18 @@ const BlogAdmin: FC = () => {
               },
             },
             '.buttonCompact': {
-              minWidth: 80,
+              minWidth: 85,
               marginRight: '.25rem',
               height: 30,
-              display: 'inline-block',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              lineHeight: '1rem',
               backgroundColor: 'var(--color-heading)',
               border: '1px solid var(--color-accent)',
               borderRadius: 6,
               color: 'var(--color-bg)',
-              fontSize: 13,
+              fontSize: 12,
               fontFamily: 'var(--font-secondary)',
               fontWeight: 'normal',
               textTransform: 'uppercase',

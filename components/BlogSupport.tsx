@@ -5,13 +5,15 @@ import CloseButton from '@/components/CloseButton';
 import LikeButton from '@/components/LikeButton';
 import { donate } from '@/data/content';
 import { gtagEvent } from '@/lib/gtag';
+import BlogPostTweet from '@/components/BlogPostTweet';
 
 type BlogSupportProps = {
   id: number;
   title: string;
+  url: string;
 };
 
-const BlogSupport: FC<BlogSupportProps> = ({ id, title }) => {
+const BlogSupport: FC<BlogSupportProps> = ({ id, title, url }) => {
   const [hideModule, setHideModule] = useState(false);
   const [showOptions, setshowOptions] = useState(false);
   const handleshowOptions = () => {
@@ -63,19 +65,25 @@ const BlogSupport: FC<BlogSupportProps> = ({ id, title }) => {
       height: 160,
       width: '100%',
       overflow: 'hidden',
+      '@media(max-width: 480px)': {
+        height: 112,
+      },
     },
     '.supportContainer': {
       width: '100%',
       position: 'absolute',
       top: showOptions ? -160 : 0,
       transition: 'top .5s ease',
+      '@media(max-width: 480px)': {
+        top: showOptions ? -112 : 0,
+      },
       '.supportContent': {
         width: '100%',
         display: 'flex',
         position: 'relative',
-        padding: '3rem',
+        padding: '2.7rem',
         '@media(max-width: 480px)': {
-          padding: '3rem 2rem',
+          padding: '1.5rem 2rem',
         },
       },
       '.supportOptions': {
@@ -109,6 +117,8 @@ const BlogSupport: FC<BlogSupportProps> = ({ id, title }) => {
           },
         },
         '.paymentMethods': {
+          display: 'flex',
+          flexDirection: 'column',
           position: 'relative',
           'a:hover::before': {
             height: 32,
@@ -117,32 +127,61 @@ const BlogSupport: FC<BlogSupportProps> = ({ id, title }) => {
             left: -14,
             content: '""',
             borderLeft: '4px solid var(--color-primary)',
+            '@media (max-width: 480px)': {
+              content: 'none',
+            },
+          },
+          '.ether, .paypal': {
+            display: !addressCopied ? 'flex' : 'none',
           },
           '.ether': {
-            display: 'flex',
             background: 'var(--icon-eth) no-repeat',
             backgroundSize: 'contain',
             height: 33,
             width: 133,
             marginBottom: '1rem',
+            '@media (max-width: 480px)': {
+              width: 110,
+              marginBottom: '.2rem',
+            },
           },
           '.paypal': {
-            display: 'flex',
             background: 'var(--icon-paypal) no-repeat',
             backgroundSize: 'contain',
             height: 30,
             width: 114,
+            '@media (max-width: 480px)': {
+              width: 110,
+              marginBottom: '.5rem',
+            },
           },
           '.copyConfirmation': {
             display: 'flex',
             flexDirection: 'column',
-            marginTop: '2.4rem',
+            button: {
+              lineHeight: '1rem',
+              textAlign: 'left',
+              paddingTop: '2rem',
+              paddingBottom: '1rem',
+            },
+            p: {
+              lineHeight: '1rem',
+            },
             '@media (max-width: 980px)': {
               marginLeft: '2rem',
+              button: {
+                paddingTop: '2.8rem',
+              },
+            },
+            '@media (max-width: 480px)': {
+              button: {
+                paddingTop: '2.5rem',
+              },
             },
           },
           '.qrCode': {
-            '@media (max-width: 980px)': {
+            marginTop: 4,
+            '@media (max-width: 600px)': {
               display: 'none',
             },
           },
@@ -162,14 +201,24 @@ const BlogSupport: FC<BlogSupportProps> = ({ id, title }) => {
               fontSize: 35,
               color: 'var(--color-primary)',
               marginBottom: 5,
+              width: '100%',
             },
             '.successMessage': {
               fontSize: 12,
               fontFamily: 'var(--font-primary)',
             },
             '@media(max-width: 480px)': {
-              top: -12,
+              '.ethAddress': {
+                fontSize: 30,
+              },
+              top: -50,
+              left: -35,
             },
+          },
+          '@media (max-width: 480px)': {
+            marginTop: '1rem',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
           },
         },
       },
@@ -177,21 +226,38 @@ const BlogSupport: FC<BlogSupportProps> = ({ id, title }) => {
     '.donate': {
       display: 'flex',
       justifyContent: 'flex-start',
+      alignItems: 'center',
+      fontSize: 14,
       span: {
         marginRight: '.5rem',
+        '@media (max-width: 480px)': {
+          marginRight: 2,
+        },
+      },
+      button: {
+        display: 'flex',
+        textDecoration: 'underline',
+        '@media (max-width: 480px)': {
+          fontSize: 12,
+          lineHeight: '.9rem',
+        },
       },
     },
     '.copyContainer': {
       '.supportHeading': {
+        marginBottom: '1rem',
         display: 'flex',
         flexDirection: 'row',
-        marginBottom: '1rem',
+        '@media (max-width: 480px)': {
+          marginBottom: '.5rem',
+        },
       },
       h4: {
         fontSize: 22,
+        marginTop: '.08rem',
         marginRight: '1rem',
         '@media (max-width: 480px)': {
-          fontSize: 18,
+          fontSize: 15,
         },
       },
       p: {
@@ -229,15 +295,21 @@ const BlogSupport: FC<BlogSupportProps> = ({ id, title }) => {
                   <span>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      width="18"
-                      height="18"
+                      width="19"
+                      height="19"
                       fill="var(--color-text)"
                       viewBox="0 0 24 24"
                     >
                       <path d="M12.874 6.999c4.737-4.27-.979-4.044.116-6.999-3.781 3.817 1.41 3.902-.116 6.999zm-2.78.001c3.154-2.825-.664-3.102.087-5.099-2.642 2.787.95 2.859-.087 5.099zm8.906 2.618c-.869 0-1.961-.696-1.961-1.618h-10.039c0 .921-1.13 1.618-2 1.618v1.382h14v-1.382zm-13 2.382l2.021 12h7.959l2.02-12h-12z" />
                     </svg>
                   </span>
-                  <a onClick={handleshowOptions}>Buy me a coffee</a>
+                  <button
+                    aria-label="Buy me a coffee"
+                    onClick={handleshowOptions}
+                  >
+                    Buy me a coffee
+                  </button>
+                  <BlogPostTweet title={title} url={url} />
                 </div>
               </div>
             </div>
@@ -255,10 +327,14 @@ const BlogSupport: FC<BlogSupportProps> = ({ id, title }) => {
                   />
                 </div>
                 <div className="copyConfirmation">
-                  <p className="ethAddress">amirardalan.eth</p>
-                  <p className="successMessage">
-                    ETH address copied to clipboard ✅
-                  </p>
+                  <button
+                    aria-label="Copy ETH address"
+                    className="ethAddress"
+                    onClick={handleCopyAddress}
+                  >
+                    amirardalan.eth
+                  </button>
+                  <p className="successMessage">Copied to clipboard ✅</p>
                 </div>
               </div>
 
