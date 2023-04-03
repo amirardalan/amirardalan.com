@@ -1,5 +1,7 @@
 import { FC, useState, useRef } from 'react';
 import { css } from '@emotion/react';
+import LoadingSpinner from '@/components/LoadingSpinner';
+import CloseIcon from '@/components/CloseButton';
 
 interface BlogImageUploadProps {
   uploadImage: (file: File) => Promise<string>;
@@ -14,6 +16,10 @@ const styleImageUploader = css({
   },
 });
 
+const styleLoadingIndicator = css({
+  marginLeft: '.5rem',
+});
+
 const BlogImageUpload: FC<BlogImageUploadProps> = ({
   uploadImage,
   onUploadSuccess,
@@ -26,10 +32,20 @@ const BlogImageUpload: FC<BlogImageUploadProps> = ({
     setIsFileSelected(!!selectedFileRef.current?.value);
   };
 
-  const handleImageUpload = async (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  const handleClearImage = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
-    event.preventDefault();
+    e.preventDefault();
+    if (selectedFileRef.current) {
+      selectedFileRef.current.value = '';
+      setIsFileSelected(false);
+    }
+  };
+
+  const handleImageUpload = async (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    e.preventDefault();
     const selectedFile = selectedFileRef.current?.files?.[0];
     if (selectedFile) {
       setIsUploading(true);
@@ -40,8 +56,8 @@ const BlogImageUpload: FC<BlogImageUploadProps> = ({
         console.error(error);
       } finally {
         setIsUploading(false);
-        selectedFileRef.current.value = ''; // clear the selected file
-        setIsFileSelected(false); // set isFileSelected to false
+        handleClearImage(e);
+        setIsFileSelected(false);
       }
     }
   };
@@ -66,14 +82,22 @@ const BlogImageUpload: FC<BlogImageUploadProps> = ({
           ref={selectedFileRef}
         />
         {isFileSelected ? (
-          <button
-            className="buttonCompact"
-            onClick={handleImageUpload}
-            disabled={!selectedFileRef.current || isUploading}
-          >
-            {isUploading ? 'Uploading...' : 'Upload'}
-          </button>
+          <>
+            <button className="buttonCancel" onClick={handleClearImage}>
+              <CloseIcon width={15} height={15} />
+            </button>
+            <button
+              className="buttonCompact"
+              onClick={handleImageUpload}
+              disabled={!selectedFileRef.current || isUploading}
+            >
+              Upload
+            </button>
+          </>
         ) : null}
+        <span css={styleLoadingIndicator}>
+          {isUploading ? <LoadingSpinner size={20} /> : null}
+        </span>
       </label>
     </div>
   );

@@ -238,12 +238,17 @@ const blogStyles = css({
     display: 'none',
   },
   'input[type="file"]': {
+    maxWidth: 100,
+    paddingRight: '1rem',
     cursor: 'pointer',
     fontFamily: 'var(--font-secondary)',
   },
   '.imgIcon': {
     marginLeft: '.5rem',
     marginRight: '.1rem',
+    '@media (max-width: 600px)': {
+      marginLeft: 0,
+    },
   },
   '.imgLabel': {
     cursor: 'pointer',

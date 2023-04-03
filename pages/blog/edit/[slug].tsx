@@ -97,7 +97,6 @@ const Edit: FC<EditProps> = ({
     setShowEdited(!showEdited);
   };
 
-  const [markdownContent, setMarkdownContent] = useState('');
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
 
   const [fetchStatus, setFetchStatus] = useFetchStatus();

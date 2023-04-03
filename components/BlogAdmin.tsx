@@ -179,16 +179,17 @@ const BlogAdmin: FC = () => {
                 marginTop: '1rem',
               },
               '.postOptions': {
+                minHeight: 45,
                 display: 'flex',
                 flexDirection: 'row',
                 alignItems: 'center',
-                marginTop: '1rem',
                 fontSize: 13,
                 '.uploadImage': {
                   span: { margin: '0 .5rem 0 2rem' },
                 },
                 '@media(max-width: 600px)': {
                   flexDirection: 'column',
+                  alignItems: 'flex-start',
                   label: {
                     marginBottom: '1rem',
                   },
@@ -197,6 +198,10 @@ const BlogAdmin: FC = () => {
                   display: 'flex',
                   flexDirection: 'row',
                   alignItems: 'center',
+                  '@media(max-width: 600px)': {
+                    flexDirection: 'column',
+                    alignItems: 'flex-start',
+                  },
                 },
               },
               '.checkbox': {
@@ -262,10 +267,15 @@ const BlogAdmin: FC = () => {
                 cursor: 'default',
               },
             },
+            '.buttonCancel': {
+              marginRight: '1rem',
+              display: 'flex',
+              alignItems: 'center',
+            },
             '.postControls': {
               display: 'flex',
               flexDirection: 'row',
-              marginTop: '1rem',
+              marginTop: '.8rem',
               '&.disabled': {
                 '.buttonCompact': {
                   color: 'var(--color-bg)',

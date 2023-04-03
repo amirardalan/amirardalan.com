@@ -138,26 +138,28 @@ const Draft: FC<DraftProps> = ({ admin, breadcrumb }) => {
               ref={textAreaRef}
               value={markdownContent}
             />
-            <BlogImageUpload
-              uploadImage={uploadImage}
-              onUploadSuccess={handleInsertUrl}
-            />
 
             <div className="postOptions">
-              <Dropdown
-                label="Category:"
-                value={category}
-                handleChange={(e: {
-                  target: { value: React.SetStateAction<string> };
-                }) => setCategory(e.target.value)}
-                data={categories}
-              />
-              <div className="checkbox">
-                <Checkbox
-                  label="Featured Post"
-                  title={admin.controls.checkbox.featured}
-                  value={featured}
-                  onChange={handleSetFeatured}
+              <div className="postOptionsContainer">
+                <Dropdown
+                  label="Category:"
+                  value={category}
+                  handleChange={(e: {
+                    target: { value: React.SetStateAction<string> };
+                  }) => setCategory(e.target.value)}
+                  data={categories}
+                />
+                <div className="checkbox">
+                  <Checkbox
+                    label="Featured Post"
+                    title={admin.controls.checkbox.featured}
+                    value={featured}
+                    onChange={handleSetFeatured}
+                  />
+                </div>
+                <BlogImageUpload
+                  uploadImage={uploadImage}
+                  onUploadSuccess={handleInsertUrl}
                 />
               </div>
             </div>
