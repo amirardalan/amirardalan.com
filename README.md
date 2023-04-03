@@ -91,8 +91,10 @@ Create an [OG Image Service](https://github.com/vercel/og-image) and set this to
 
 `NEXT_PUBLIC_TIMEZONE`: Example: `America/Los_Angeles`. Set this to your local timezone for your blog posts to display the correct date and time. [Full List of IANA Timezones](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)
 
-`CLOUDINARY_NAME`: Your Cloudinary Media Library name (your-name)  
-`CLOUDINARY_API_KEY`: See Cloudinary's [Admin API reference](https://cloudinary.com/documentation/admin_api)  
+`CLOUDINARY_NAME`: Your Cloudinary Media Library name (your-name)
+
+`CLOUDINARY_API_KEY`: See Cloudinary's [Admin API reference](https://cloudinary.com/documentation/admin_api)
+
 `CLOUDINARY_API_SECRET`: See Cloudinary's [Admin API reference](https://cloudinary.com/documentation/admin_api)
 
 ---
