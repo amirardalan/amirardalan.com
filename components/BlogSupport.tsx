@@ -65,19 +65,25 @@ const BlogSupport: FC<BlogSupportProps> = ({ id, title, url }) => {
       height: 160,
       width: '100%',
       overflow: 'hidden',
+      '@media(max-width: 480px)': {
+        height: 112,
+      },
     },
     '.supportContainer': {
       width: '100%',
       position: 'absolute',
       top: showOptions ? -160 : 0,
       transition: 'top .5s ease',
+      '@media(max-width: 480px)': {
+        top: showOptions ? -112 : 0,
+      },
       '.supportContent': {
         width: '100%',
         display: 'flex',
         position: 'relative',
         padding: '2.7rem',
         '@media(max-width: 480px)': {
-          padding: '3rem 2rem',
+          padding: '1.5rem 2rem',
         },
       },
       '.supportOptions': {
@@ -111,6 +117,8 @@ const BlogSupport: FC<BlogSupportProps> = ({ id, title, url }) => {
           },
         },
         '.paymentMethods': {
+          display: 'flex',
+          flexDirection: 'column',
           position: 'relative',
           'a:hover::before': {
             height: 32,
@@ -119,6 +127,9 @@ const BlogSupport: FC<BlogSupportProps> = ({ id, title, url }) => {
             left: -14,
             content: '""',
             borderLeft: '4px solid var(--color-primary)',
+            '@media (max-width: 480px)': {
+              content: 'none',
+            },
           },
           '.ether': {
             display: 'flex',
@@ -127,6 +138,10 @@ const BlogSupport: FC<BlogSupportProps> = ({ id, title, url }) => {
             height: 33,
             width: 133,
             marginBottom: '1rem',
+            '@media (max-width: 480px)': {
+              width: 110,
+              marginBottom: '.2rem',
+            },
           },
           '.paypal': {
             display: 'flex',
@@ -134,6 +149,10 @@ const BlogSupport: FC<BlogSupportProps> = ({ id, title, url }) => {
             backgroundSize: 'contain',
             height: 30,
             width: 114,
+            '@media (max-width: 480px)': {
+              width: 110,
+              marginBottom: '.5rem',
+            },
           },
           '.copyConfirmation': {
             display: 'flex',
@@ -173,6 +192,11 @@ const BlogSupport: FC<BlogSupportProps> = ({ id, title, url }) => {
               top: -12,
             },
           },
+          '@media (max-width: 480px)': {
+            marginTop: '1rem',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+          },
         },
       },
     },
@@ -201,6 +225,9 @@ const BlogSupport: FC<BlogSupportProps> = ({ id, title, url }) => {
         marginBottom: '1rem',
         display: 'flex',
         flexDirection: 'row',
+        '@media (max-width: 480px)': {
+          marginBottom: '.5rem',
+        },
       },
       h4: {
         fontSize: 22,
