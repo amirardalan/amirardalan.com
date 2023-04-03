@@ -234,6 +234,22 @@ const blogStyles = css({
     color: 'var(--color-gray)',
     opacity: '0.5',
   },
+  'input[type="file"]::file-selector-button': {
+    display: 'none',
+  },
+  'input[type="file"]': {
+    cursor: 'pointer',
+    fontFamily: 'var(--font-secondary)',
+  },
+  '.imgIcon': {
+    marginLeft: '.5rem',
+    marginRight: '.1rem',
+  },
+  '.imgLabel': {
+    cursor: 'pointer',
+    display: 'flex',
+    alignItems: 'center',
+  },
 });
 
 const BlogLayout: FC<BlogLayoutProps> = ({ children }) => {

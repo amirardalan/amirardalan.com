@@ -193,6 +193,11 @@ const BlogAdmin: FC = () => {
                     marginBottom: '1rem',
                   },
                 },
+                '.postOptionsContainer': {
+                  display: 'flex',
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                },
               },
               '.checkbox': {
                 marginRight: '.5rem',

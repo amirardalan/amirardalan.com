@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, SetStateAction, useRef, useState } from 'react';
 import { GetServerSideProps } from 'next';
 import Router from 'next/router';
 import Link from 'next/link';
@@ -6,7 +6,7 @@ import Link from 'next/link';
 import prisma from '@/lib/prisma';
 import { useSession } from 'next-auth/react';
 
-import { deletePost } from '@/lib/blog';
+import { uploadImage } from '@/lib/blog';
 import revalidateChanges from '@/lib/revalidate';
 import { useFetchStatus } from '@/hooks/useLoadingIndicator';
 
@@ -19,6 +19,7 @@ import LoadingTriangle from '@/components/LoadingTriangle';
 
 import { adminContent, breadcrumbContent } from '@/data/content';
 import { categories } from '@/data/categories';
+import BlogImageUpload from '@/components/BlogImageUpload';
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const [editPost, getLatestPost] = await prisma.$transaction([
@@ -96,6 +97,9 @@ const Edit: FC<EditProps> = ({
     setShowEdited(!showEdited);
   };
 
+  const [markdownContent, setMarkdownContent] = useState('');
+  const textAreaRef = useRef<HTMLTextAreaElement>(null);
+
   const [fetchStatus, setFetchStatus] = useFetchStatus();
   const isFetching = fetchStatus;
   const deleted = false;
@@ -138,10 +142,6 @@ const Edit: FC<EditProps> = ({
     setFetchStatus(true);
     return Router.push(`/blog/${editSlug}`);
   };
-  const handleDeletion = () => {
-    setFetchStatus(true);
-    return deletePost(id, published, latestPost, featured, setFetchStatus);
-  };
 
   const { data: session } = useSession();
   const userHasValidSession = Boolean(session);
@@ -158,6 +158,25 @@ const Edit: FC<EditProps> = ({
       </Container>
     );
   }
+
+  const handleInsertUrl = (response: string | any[]) => {
+    if (textAreaRef.current) {
+      const { selectionStart, selectionEnd } = textAreaRef.current;
+      const newValue =
+        content.slice(0, selectionStart) +
+        response +
+        content.slice(selectionEnd, content.length);
+      setContent(newValue);
+      textAreaRef.current.setSelectionRange(
+        selectionStart + response.length,
+        selectionStart + response.length
+      );
+    }
+  };
+
+  const handleChange = (e: { target: { value: SetStateAction<string> } }) => {
+    setContent(e.target.value);
+  };
 
   if (userHasValidSession && userHasValidEmail) {
     edit = (
@@ -191,38 +210,48 @@ const Edit: FC<EditProps> = ({
               value={teaser}
             />
             <textarea
+              id="content"
+              name="content"
               cols={50}
-              onChange={(e) => setContent(e.target.value)}
+              onChange={handleChange}
               placeholder={admin.input.placeholder.content}
               rows={18}
+              ref={textAreaRef}
               value={content}
             />
 
             <div className="postOptions">
-              <Dropdown
-                label="Category:"
-                value={category}
-                handleChange={(e: {
-                  target: { value: React.SetStateAction<string> };
-                }) => setCategory(e.target.value)}
-                data={categories}
+              <div className="postOptionsContainer">
+                <Dropdown
+                  label="Category:"
+                  value={category}
+                  handleChange={(e: {
+                    target: { value: React.SetStateAction<string> };
+                  }) => setCategory(e.target.value)}
+                  data={categories}
+                />
+                <div className="checkbox">
+                  <Checkbox
+                    label="Featured"
+                    title={admin.controls.checkbox.featured}
+                    value={featured}
+                    onChange={handleSetFeatured}
+                  />
+                </div>
+                <div className="checkbox">
+                  <Checkbox
+                    label="Update Date"
+                    title={admin.controls.checkbox.updateDate}
+                    value={showEdited}
+                    onChange={handleShowEdited}
+                  />
+                </div>
+              </div>
+
+              <BlogImageUpload
+                uploadImage={uploadImage}
+                onUploadSuccess={handleInsertUrl}
               />
-              <div className="checkbox">
-                <Checkbox
-                  label="Featured"
-                  title={admin.controls.checkbox.featured}
-                  value={featured}
-                  onChange={handleSetFeatured}
-                />
-              </div>
-              <div className="checkbox">
-                <Checkbox
-                  label="Update Date"
-                  title={admin.controls.checkbox.updateDate}
-                  value={showEdited}
-                  onChange={handleShowEdited}
-                />
-              </div>
             </div>
 
             <BlogPostControls

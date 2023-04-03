@@ -4,6 +4,7 @@ import Router from 'next/router';
 
 import { useSession } from 'next-auth/react';
 import { useFetchStatus } from '@/hooks/useLoadingIndicator';
+import { uploadImage } from '@/lib/blog';
 
 import LoadingTriangle from '@/components/LoadingTriangle';
 import Container from '@/components/Container';
@@ -11,6 +12,7 @@ import BlogStyles from '@/components/BlogStyles';
 import Dropdown from '@/components/Dropdown';
 import Checkbox from '@/components/Checkbox';
 import BlogPostControls from '@/components/BlogPostControls';
+import BlogImageUpload from '@/components/BlogImageUpload';
 
 import generateSlug from '@/utils/generateSlug';
 import { adminContent, breadcrumbContent } from '@/data/content';
@@ -39,6 +41,15 @@ const Draft: FC<DraftProps> = ({ admin, breadcrumb }) => {
 
   const [fetchStatus, setFetchStatus] = useFetchStatus();
   const isFetching = fetchStatus;
+
+  const [markdownContent, setMarkdownContent] = useState('');
+  const textAreaRef = useRef<HTMLTextAreaElement>(null);
+
+  const handleInsertUrl = (response: string) => {
+    if (textAreaRef.current) {
+      textAreaRef.current.value += response;
+    }
+  };
 
   const handleDeletion = () => {
     setFetchStatus(true);
@@ -91,7 +102,7 @@ const Draft: FC<DraftProps> = ({ admin, breadcrumb }) => {
         </nav>
 
         <div>
-          <form onSubmit={submitData}>
+          <form onSubmit={submitData} encType="multipart/form-data">
             <input
               autoFocus
               onChange={(e) => setTitle(e.target.value)}
@@ -121,10 +132,15 @@ const Draft: FC<DraftProps> = ({ admin, breadcrumb }) => {
             />
             <textarea
               cols={50}
-              onChange={(e) => setContent(e.target.value)}
+              onChange={(e) => setMarkdownContent(e.target.value)}
               placeholder="Content"
               rows={18}
-              value={content}
+              ref={textAreaRef}
+              value={markdownContent}
+            />
+            <BlogImageUpload
+              uploadImage={uploadImage}
+              onUploadSuccess={handleInsertUrl}
             />
 
             <div className="postOptions">
