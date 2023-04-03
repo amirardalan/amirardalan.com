@@ -25,6 +25,7 @@ This is my personal portfolio and blog. You may find the CMS portion and some of
 - Set/Edit Title, Teaser, Slug, Content, and Category
 - Set a featured post. If no post is featured, use the latest post as a fallback.
 - Optionally suppress "Updated" date when editing
+- Upload files from your device directly to Cloudinary and a markdown URL is auto inserted into the blog post content.
 
 ---
 
@@ -58,6 +59,10 @@ GITHUB_ID=
 NEXT_PUBLIC_REVALIDATE_SECRET=
 NEXT_PUBLIC_OG_IMAGE_URL=https://ogimage.yourSite.vercel.app
 NEXT_PUBLIC_TIMEZONE=America/Los_Angeles
+
+CLOUDINARY_NAME=
+CLOUDINARY_API_KEY=
+CLOUDINARY_API_SECRET=
 ```
 
 `NEXT_PUBLIC_SITE_URL`
@@ -85,6 +90,10 @@ Generate a secret for use with Next [On-Demand Incremental Static Regeneration](
 Create an [OG Image Service](https://github.com/vercel/og-image) and set this to the URL of your service app. [Further reading](#dynamically-generate-blog-og-images)
 
 `NEXT_PUBLIC_TIMEZONE`: Example: `America/Los_Angeles`. Set this to your local timezone for your blog posts to display the correct date and time. [Full List of IANA Timezones](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)
+
+`CLOUDINARY_NAME`: Your Cloudinary Media Library name (your-name)
+`CLOUDINARY_API_KEY`: See Cloudinary's [Admin API reference](https://cloudinary.com/documentation/admin_api)
+`CLOUDINARY_API_SECRET`: See Cloudinary's [Admin API reference](https://cloudinary.com/documentation/admin_api)
 
 ---
 
