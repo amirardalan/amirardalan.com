@@ -11,9 +11,12 @@ const BlogNavigation: FC<BlogNavigationProps> = ({
   feed,
   post,
   isPublished,
+  url,
 }) => {
   const total = feed?.length;
   const current = post?.id;
+
+  console.log(post.title);
 
   const arr = feed ? feed : null;
   const arrSorted = arr?.sort(compareID);
@@ -82,7 +85,7 @@ const BlogNavigation: FC<BlogNavigationProps> = ({
 
   return (
     <div css={styleBlogNavigation}>
-      <BlogSupport id={post.id} title="title" />
+      <BlogSupport id={post.id} title={post.title} url={url} />
       <div css={styleBlogLinks}>
         {prevPost ? <ShowPrevLink /> : null}
         {nextPost ? <ShowNextLink /> : null}

@@ -5,13 +5,15 @@ import CloseButton from '@/components/CloseButton';
 import LikeButton from '@/components/LikeButton';
 import { donate } from '@/data/content';
 import { gtagEvent } from '@/lib/gtag';
+import BlogPostTweet from '@/components/BlogPostTweet';
 
 type BlogSupportProps = {
   id: number;
   title: string;
+  url: string;
 };
 
-const BlogSupport: FC<BlogSupportProps> = ({ id, title }) => {
+const BlogSupport: FC<BlogSupportProps> = ({ id, title, url }) => {
   const [hideModule, setHideModule] = useState(false);
   const [showOptions, setshowOptions] = useState(false);
   const handleshowOptions = () => {
@@ -73,7 +75,7 @@ const BlogSupport: FC<BlogSupportProps> = ({ id, title }) => {
         width: '100%',
         display: 'flex',
         position: 'relative',
-        padding: '3rem',
+        padding: '2.7rem',
         '@media(max-width: 480px)': {
           padding: '3rem 2rem',
         },
@@ -177,21 +179,35 @@ const BlogSupport: FC<BlogSupportProps> = ({ id, title }) => {
     '.donate': {
       display: 'flex',
       justifyContent: 'flex-start',
+      alignItems: 'center',
+      fontSize: 14,
       span: {
         marginRight: '.5rem',
+        '@media (max-width: 480px)': {
+          marginRight: 2,
+        },
+      },
+      button: {
+        display: 'flex',
+        textDecoration: 'underline',
+        '@media (max-width: 480px)': {
+          fontSize: 12,
+          lineHeight: '.9rem',
+        },
       },
     },
     '.copyContainer': {
       '.supportHeading': {
+        marginBottom: '1rem',
         display: 'flex',
         flexDirection: 'row',
-        marginBottom: '1rem',
       },
       h4: {
         fontSize: 22,
+        marginTop: '.08rem',
         marginRight: '1rem',
         '@media (max-width: 480px)': {
-          fontSize: 18,
+          fontSize: 15,
         },
       },
       p: {
@@ -229,15 +245,21 @@ const BlogSupport: FC<BlogSupportProps> = ({ id, title }) => {
                   <span>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      width="18"
-                      height="18"
+                      width="19"
+                      height="19"
                       fill="var(--color-text)"
                       viewBox="0 0 24 24"
                     >
                       <path d="M12.874 6.999c4.737-4.27-.979-4.044.116-6.999-3.781 3.817 1.41 3.902-.116 6.999zm-2.78.001c3.154-2.825-.664-3.102.087-5.099-2.642 2.787.95 2.859-.087 5.099zm8.906 2.618c-.869 0-1.961-.696-1.961-1.618h-10.039c0 .921-1.13 1.618-2 1.618v1.382h14v-1.382zm-13 2.382l2.021 12h7.959l2.02-12h-12z" />
                     </svg>
                   </span>
-                  <a onClick={handleshowOptions}>Buy me a coffee</a>
+                  <button
+                    aria-label="Buy me a coffee"
+                    onClick={handleshowOptions}
+                  >
+                    Buy me a coffee
+                  </button>
+                  <BlogPostTweet title={title} url={url} />
                 </div>
               </div>
             </div>

@@ -6,8 +6,10 @@ export interface BlogNavigationTypes {
     [key: number]: any;
   };
   post: {
+    title: string;
     id: number;
   };
+  url: string;
   isPublished: Boolean;
 }
 

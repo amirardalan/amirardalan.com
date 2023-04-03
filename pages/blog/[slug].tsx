@@ -95,6 +95,7 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
     : null;
   const postReadTime = calculateReadTime(post.content);
   const title = post.title;
+  const url = `${process.env.NEXT_PUBLIC_SITE_URL}/blog/${post.slug}`;
 
   const [fetchStatus, setFetchStatus] = useFetchStatus();
   const isFetching = fetchStatus;
@@ -186,7 +187,12 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
           )}
         </article>
 
-        <BlogNavigation feed={feed} post={post} isPublished={isPublished} />
+        <BlogNavigation
+          feed={feed}
+          post={post}
+          url={url}
+          isPublished={isPublished}
+        />
       </div>
     );
   };
