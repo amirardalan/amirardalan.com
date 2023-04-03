@@ -131,8 +131,10 @@ const BlogSupport: FC<BlogSupportProps> = ({ id, title, url }) => {
               content: 'none',
             },
           },
+          '.ether, .paypal': {
+            display: !addressCopied ? 'flex' : 'none',
+          },
           '.ether': {
-            display: 'flex',
             background: 'var(--icon-eth) no-repeat',
             backgroundSize: 'contain',
             height: 33,
@@ -144,7 +146,6 @@ const BlogSupport: FC<BlogSupportProps> = ({ id, title, url }) => {
             },
           },
           '.paypal': {
-            display: 'flex',
             background: 'var(--icon-paypal) no-repeat',
             backgroundSize: 'contain',
             height: 30,
@@ -157,13 +158,30 @@ const BlogSupport: FC<BlogSupportProps> = ({ id, title, url }) => {
           '.copyConfirmation': {
             display: 'flex',
             flexDirection: 'column',
-            marginTop: '2.4rem',
+            button: {
+              lineHeight: '1rem',
+              textAlign: 'left',
+              paddingTop: '2rem',
+              paddingBottom: '1rem',
+            },
+            p: {
+              lineHeight: '1rem',
+            },
             '@media (max-width: 980px)': {
               marginLeft: '2rem',
+              button: {
+                paddingTop: '2.8rem',
+              },
+            },
+            '@media (max-width: 480px)': {
+              button: {
+                paddingTop: '2.5rem',
+              },
             },
           },
           '.qrCode': {
-            '@media (max-width: 980px)': {
+            marginTop: 4,
+            '@media (max-width: 600px)': {
               display: 'none',
             },
           },
@@ -183,13 +201,18 @@ const BlogSupport: FC<BlogSupportProps> = ({ id, title, url }) => {
               fontSize: 35,
               color: 'var(--color-primary)',
               marginBottom: 5,
+              width: '100%',
             },
             '.successMessage': {
               fontSize: 12,
               fontFamily: 'var(--font-primary)',
             },
             '@media(max-width: 480px)': {
-              top: -12,
+              '.ethAddress': {
+                fontSize: 30,
+              },
+              top: -50,
+              left: -35,
             },
           },
           '@media (max-width: 480px)': {
@@ -304,10 +327,14 @@ const BlogSupport: FC<BlogSupportProps> = ({ id, title, url }) => {
                   />
                 </div>
                 <div className="copyConfirmation">
-                  <p className="ethAddress">amirardalan.eth</p>
-                  <p className="successMessage">
-                    ETH address copied to clipboard ✅
-                  </p>
+                  <button
+                    aria-label="Copy ETH address"
+                    className="ethAddress"
+                    onClick={handleCopyAddress}
+                  >
+                    amirardalan.eth
+                  </button>
+                  <p className="successMessage">Copied to clipboard ✅</p>
                 </div>
               </div>
 
