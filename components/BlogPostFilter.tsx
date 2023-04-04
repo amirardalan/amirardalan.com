@@ -84,7 +84,8 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
   const searchResults = (search: string, feed: FeedItem[]): FeedItem[] => {
     const categorySearch = search[0] === '#';
 
-    if (showPopular) {
+    if (search === '#popular' || showPopular) {
+      !showPopular ? setShowPopular(true) : null;
       return feed.filter(
         (data: FeedItem) =>
           data.likes > averageLikes &&
