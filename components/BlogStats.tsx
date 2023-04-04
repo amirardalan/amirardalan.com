@@ -13,10 +13,12 @@ const BlogStats: FC<BlogStatsProps> = ({ feed, filteredPosts }) => {
   const filterActive = filteredPosts.length < feed.length;
   const postCount = filterActive ? filteredPosts.length : feed.length;
   const postsText = postCount === 1 ? 'post' : 'posts';
-  const filteredLikesCount = filteredPosts.reduce(
-    (acc, post) => acc + (post.likes || 0),
-    0
-  );
+  const filteredLikesCount = filteredPosts.reduce((acc, post) => {
+    if (post.published) {
+      return acc + (post.likes || 0);
+    }
+    return acc;
+  }, 0);
   const { totalLikesCount, error } = useTotalLikes();
   const likesText =
     (filteredLikesCount | totalLikesCount) === 1 ? 'like' : 'likes';

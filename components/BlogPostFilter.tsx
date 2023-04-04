@@ -1,6 +1,9 @@
 import { FC, useState } from 'react';
 import Image from 'next/image';
+
 import { useTheme, css, Theme } from '@emotion/react';
+import useTotalLikes from '@/hooks/useTotalLikes';
+
 import BlogStats from '@/components/BlogStats';
 import BlogPost from '@/components/BlogPost';
 import CloseButton from '@/components/CloseButton';
@@ -33,10 +36,25 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
 
   const handleCategoryLink = (category: string) => {
     setSearch('#' + category);
+    setShowPopular(false);
     scrollToTop();
   };
 
+  const [showPopular, setShowPopular] = useState(false);
+  const handlePopularLink = (category: string) => {
+    setSearch('#' + category);
+    setShowPopular(true);
+    scrollToTop();
+  };
+
+  const handleShowAllLink = () => {
+    setShowPopular(false);
+    setSearch('');
+  };
+
   const handleClearFilters = () => {
+    setShowPopular(false);
+    handleShowAllLink();
     setSearch('');
     scrollToTop();
   };
@@ -58,77 +76,82 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
     likes: number;
   }
 
+  const { totalLikesCount, error } = useTotalLikes();
+  const averageLikes = totalLikesCount / feed.length;
+
   interface PostFeedItem extends PostProps, FeedItem {}
 
-  const searchResults = (
-    search: string,
-    feed: FeedItem[],
-    activeCategories: string[]
-  ): FeedItem[] => {
+  const searchResults = (search: string, feed: FeedItem[]): FeedItem[] => {
     const categorySearch = search[0] === '#';
-    const categoryMatch =
-      activeCategories.indexOf(search.slice(1).split(' ')[0]) > -1;
 
-    if (categorySearch) {
-      if (categoryMatch) {
-        return feed.filter(
-          (data: FeedItem) =>
-            data?.category
-              ?.toLowerCase()
-              .includes(search.slice(1).toLowerCase().split(' ')[0]) &&
-            data?.title?.toLowerCase().includes(
-              search
-                .replace(/#[a-z]+/, '')
-                .trim()
-                .toLowerCase()
-            )
-        );
-      }
-      return feed.filter((data: FeedItem) =>
-        data?.category?.toLowerCase().includes(search.slice(1).toLowerCase())
+    if (search === '#popular' || showPopular) {
+      !showPopular ? setShowPopular(true) : null;
+      return feed.filter(
+        (data: FeedItem) =>
+          data.likes > averageLikes &&
+          data?.title?.toLowerCase().includes(
+            search
+              .replace(/#[a-z]+/, '')
+              .trim()
+              .toLowerCase()
+          )
       );
     }
-    return feed.filter((data: FeedItem) =>
-      data?.title?.toLowerCase().includes(search.toLowerCase())
+
+    if (categorySearch) {
+      return feed.filter(
+        (data: FeedItem) =>
+          data?.category
+            ?.toLowerCase()
+            .includes(search.slice(1).toLowerCase().split(' ')[0]) &&
+          data?.title?.toLowerCase().includes(
+            search
+              .replace(/#[a-z]+/, '')
+              .trim()
+              .toLowerCase()
+          )
+      );
+    }
+
+    return feed.filter(
+      (data: FeedItem) =>
+        data?.category?.toLowerCase().includes(search.toLowerCase()) ||
+        data?.title?.toLowerCase().includes(search.toLowerCase())
     );
   };
 
-  const filteredPosts = searchResults(
-    search,
-    feed as PostFeedItem[],
-    activeCategories
-  );
+  const filteredPosts = searchResults(search, feed as PostFeedItem[]);
 
   const RenderPosts: Function = () => {
     if (filteredPosts.length > 0) {
-      return filteredPosts
-        .sort(compareID)
-        .reverse()
-        .map((post) => (
-          <article className="publishedPost" key={post.id}>
-            <button
-              onClick={() => handleCategoryLink(post.category)}
-              onKeyDown={() => handleCategoryLink(post.category)}
-              className="category"
-              aria-label={post.category}
-            >
-              {post.category}
-            </button>
-            <BlogPost post={post} />
-          </article>
-        ));
+      const sortedPosts = showPopular
+        ? filteredPosts.sort((a, b) => b.likes - a.likes)
+        : filteredPosts.sort(compareID).reverse();
+
+      return sortedPosts.map((post) => (
+        <article className="publishedPost" key={post.id}>
+          <button
+            onClick={() => handleCategoryLink(post.category)}
+            onKeyDown={() => handleCategoryLink(post.category)}
+            className="category"
+            aria-label={post.category}
+          >
+            {post.category}
+          </button>
+          <BlogPost post={post} />
+        </article>
+      ));
     } else {
       return (
         <span>
           {blog.search?.noresult}{' '}
           {feed.length > 0 ? (
             <button
-              onClick={() => setSearch('')}
-              onKeyDown={() => setSearch('')}
+              onClick={() => handleClearFilters()}
+              onKeyDown={() => handleClearFilters()}
               aria-label={blog.search.clear}
             >
               <CloseButton width={12} height={12} />
-              {' ' + blog.search.clear}
             </button>
           ) : null}
         </span>
@@ -158,7 +181,7 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
           onKeyDown={() => setSearch('')}
           className="clearSearch"
         >
-          <CloseButton width={25} height={25} />
+          <CloseButton width={23} height={23} />
         </button>
       );
     }
@@ -188,12 +211,26 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
         <ul>
           <li>
             <button
-              onClick={() => setSearch('')}
-              onKeyDown={() => setSearch('')}
+              onClick={() => handleShowAllLink()}
+              onKeyDown={() => handleShowAllLink()}
               className={search === '' ? 'category all active' : 'category all'}
               aria-label="All"
             >
               All
+            </button>
+          </li>
+          <li>
+            <button
+              onClick={() => handlePopularLink('popular')}
+              onKeyDown={() => handlePopularLink('popular')}
+              className={
+                search.split(' ')[0] === '#' + 'popular'
+                  ? 'category active'
+                  : 'category'
+              }
+              aria-label="Popular"
+            >
+              Popular
             </button>
           </li>
           {activeCategories.sort().map((category, index) => (
@@ -221,7 +258,14 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
           placeholder={blog.search.placeholder}
           value={search}
           aria-label={blog.search.placeholder}
-          onChange={(e) => setSearch(e.target.value)}
+          onChange={(e) => {
+            const value = e.target.value;
+            setSearch(value);
+
+            if (value === '') {
+              handleClearFilters();
+            }
+          }}
         />
         <SearchIcon />
       </div>
@@ -266,7 +310,7 @@ const styleSearchPosts = css({
   },
   '.icon': {
     position: 'absolute',
-    top: 18.5,
+    top: 18,
     right: 0,
     background: 'var(--color-accent)',
     width: 35,
@@ -275,9 +319,7 @@ const styleSearchPosts = css({
     display: 'flex',
     justifyContent: 'center',
     position: 'absolute',
-    width: 23,
-    height: 23,
-    top: 18.5,
+    top: 19,
     right: 10,
     cursor: 'pointer',
   },

@@ -11,6 +11,9 @@ const getTotalLikes: NextApiHandler = async (
 
   try {
     const totalLikes = await prisma.post.aggregate({
+      where: {
+        published: true,
+      },
       _sum: {
         likes: true,
       },

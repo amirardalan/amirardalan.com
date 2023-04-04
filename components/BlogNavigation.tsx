@@ -16,8 +16,6 @@ const BlogNavigation: FC<BlogNavigationProps> = ({
   const total = feed?.length;
   const current = post?.id;
 
-  console.log(post.title);
-
   const arr = feed ? feed : null;
   const arrSorted = arr?.sort(compareID);
 
