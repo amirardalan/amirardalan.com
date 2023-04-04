@@ -124,22 +124,23 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
 
   const RenderPosts: Function = () => {
     if (filteredPosts.length > 0) {
-      return filteredPosts
-        .sort(compareID)
-        .reverse()
-        .map((post) => (
-          <article className="publishedPost" key={post.id}>
-            <button
-              onClick={() => handleCategoryLink(post.category)}
-              onKeyDown={() => handleCategoryLink(post.category)}
-              className="category"
-              aria-label={post.category}
-            >
-              {post.category}
-            </button>
-            <BlogPost post={post} />
-          </article>
-        ));
+      const sortedPosts = showPopular
+        ? filteredPosts.sort((a, b) => b.likes - a.likes)
+        : filteredPosts.sort(compareID).reverse();
+
+      return sortedPosts.map((post) => (
+        <article className="publishedPost" key={post.id}>
+          <button
+            onClick={() => handleCategoryLink(post.category)}
+            onKeyDown={() => handleCategoryLink(post.category)}
+            className="category"
+            aria-label={post.category}
+          >
+            {post.category}
+          </button>
+          <BlogPost post={post} />
+        </article>
+      ));
     } else {
       return (
         <span>
@@ -180,7 +181,7 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
           onKeyDown={() => setSearch('')}
           className="clearSearch"
         >
-          <CloseButton width={25} height={25} />
+          <CloseButton width={23} height={23} />
         </button>
       );
     }
@@ -309,7 +310,7 @@ const styleSearchPosts = css({
   },
   '.icon': {
     position: 'absolute',
-    top: 18.5,
+    top: 18,
     right: 0,
     background: 'var(--color-accent)',
     width: 35,
@@ -318,9 +319,7 @@ const styleSearchPosts = css({
     display: 'flex',
     justifyContent: 'center',
     position: 'absolute',
-    width: 23,
-    height: 23,
-    top: 18.5,
+    top: 19,
     right: 10,
     cursor: 'pointer',
   },
