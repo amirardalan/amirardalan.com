@@ -11,7 +11,6 @@ import { MeshDistortMaterial } from '@react-three/drei';
 import { createNoise2D } from 'simplex-noise';
 
 type CanvasTerrainProps = {
-  theme: string;
   detail: number;
   height: number;
   texture: number;
@@ -79,7 +78,6 @@ const generateTerrain: GenerateTerrainFn = (
 };
 
 const CanvasTerrain: FC<CanvasTerrainProps> = ({
-  theme,
   detail,
   height,
   texture = 2,
@@ -120,7 +118,12 @@ const CanvasTerrain: FC<CanvasTerrainProps> = ({
         args={[undefined, undefined, detail - 1, detail - 1]}
         ref={ref}
       />
-      <MeshDistortMaterial distort={1} speed={0.1} wireframe color={theme} />
+      <MeshDistortMaterial
+        distort={1}
+        speed={0.1}
+        wireframe
+        emissive="#a1a4b0"
+      />
     </mesh>
   );
 };
