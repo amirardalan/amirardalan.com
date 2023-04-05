@@ -34,7 +34,7 @@ const BlogPostDelete: FC<BlogPostDeleteProps> = ({
   );
 
   return (
-    <span>
+    <span className="deleteControls">
       <button
         className="buttonCompact deleteBtn"
         onClick={handleConfirmOnClick}

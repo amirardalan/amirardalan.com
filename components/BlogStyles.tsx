@@ -255,6 +255,10 @@ const blogStyles = css({
     display: 'flex',
     alignItems: 'center',
   },
+  '.deleteControls': {
+    display: 'flex',
+    alignItems: 'baseline',
+  },
 });
 
 const BlogLayout: FC<BlogLayoutProps> = ({ children }) => {
