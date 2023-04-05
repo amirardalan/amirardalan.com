@@ -12,11 +12,8 @@ const rotate360 = keyframes`
 `;
 
 const rotateToStart = keyframes`
-  from {
-    transform: rotate(360deg);
-  }
   to {
-    transform: rotate(0deg);
+    transform: rotate(360deg);
   }
 `;
 
@@ -33,10 +30,10 @@ const Logo: FC = () => {
       css={
         isLoading
           ? css`
-              animation: ${rotate360} 1s linear infinite;
+              animation: ${rotate360} 2s infinite ease-in-out;
             `
           : css`
-              animation: ${rotateToStart} 1s ease-in;
+              animation: ${rotateToStart} 2s ease-out;
               animation-fill-mode: reverse;
             `
       }
