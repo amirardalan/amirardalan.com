@@ -1,102 +1,71 @@
 import React, { FC } from 'react';
-import { css } from '@emotion/react';
+import { css, keyframes } from '@emotion/react';
 import { useRouteStatus } from '@/hooks/useLoadingIndicator';
+
+const rotate360 = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+`;
+
+const rotateToStart = keyframes`
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+`;
 
 const Logo: FC = () => {
   const isLoading = useRouteStatus();
 
-  const styleAnimationWrapper = css({
-    maxHeight: 24,
-    overflow: 'hidden',
-    position: 'relative',
-  });
-  const styleLogoWrapper = css({
-    display: 'flex',
-    flexDirection: 'row',
-  });
-  const styleLogo = css({
-    background: 'var(--logo) no-repeat',
-    backgroundSize: 'contain',
-    height: 24,
-    width: 24,
-  });
-  const styleWordMark = css({
-    textAlign: 'left',
-  });
-  const styleLoaderWrapper = css({
-    display: 'flex',
-    flexDirection: 'row',
-    '.loader': {
-      zIndex: 10,
-      top: 9,
-      left: 32,
-      position: 'absolute',
-      display: 'flex',
-      alignItems: 'center',
-      '.loadingDot': {
-        float: 'left',
-        width: '8px',
-        height: '8px',
-        margin: '0 4px',
-        background: 'var(--color-accent-gray)',
-        borderRadius: '50%',
-        opacity: '0',
-        animation: 'loadingFade 1s infinite',
-      },
-      '.loadingDot:nth-of-type(1)': {
-        animationDelay: '0s',
-      },
-      '.loadingDot:nth-of-type(2)': {
-        animationDelay: '0.1s',
-      },
-      '.loadingDot:nth-of-type(3)': {
-        animationDelay: '0.2s',
-      },
-      '.loadingDot:nth-of-type(4)': {
-        animationDelay: '0.3s',
-      },
-      '.loadingDot:nth-of-type(5)': {
-        animationDelay: '0.4s',
-      },
-      '@keyframes loadingFade': {
-        '0%': { opacity: 0 },
-        '50%': { opacity: 0.8 },
-        '100%': { opacity: 0 },
-      },
-    },
-  });
-
-  const RenderLogo = () => {
-    return (
-      <div css={styleLogoWrapper}>
-        <div css={styleLogo} />
-        <div css={styleWordMark}></div>
-      </div>
-    );
-  };
-
-  const RenderLoading = () => {
-    if (isLoading) {
-      return (
-        <div css={styleLoaderWrapper}>
-          <div css={styleLogo} />
-          <div className="loader">
-            <div className="loadingDot" />
-            <div className="loadingDot" />
-            <div className="loadingDot" />
-            <div className="loadingDot" />
-            <div className="loadingDot" />
-          </div>
-        </div>
-      );
-    } else return null;
-  };
-
   return (
-    <div className="animationWrapper" css={styleAnimationWrapper}>
-      <RenderLogo />
-      <RenderLoading />
-    </div>
+    <svg
+      width={25}
+      height={25}
+      viewBox="0 0 135 135"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      css={
+        isLoading
+          ? css`
+              animation: ${rotate360} 1s linear infinite;
+            `
+          : css`
+              animation: ${rotateToStart} 1s ease-in;
+              animation-fill-mode: reverse;
+            `
+      }
+    >
+      <path
+        d="M118.424 135L0 16.5759L14.5759 2L133 120.424L118.424 135Z"
+        fill="var(--color-heading)"
+      />
+      <path
+        d="M1.04472e-06 120.424L118.424 2L133 16.5759L14.5759 135L1.04472e-06 120.424Z"
+        fill="var(--color-heading)"
+      />
+      <rect
+        x="66.6821"
+        y="2"
+        width="19.2449"
+        height="19.2449"
+        transform="rotate(45 66.6821 2)"
+        fill="var(--color-heading)"
+      />
+      <rect
+        x="66.6821"
+        y="107.678"
+        width="19.2449"
+        height="19.2449"
+        transform="rotate(45 66.6821 107.678)"
+        fill="var(--color-heading)"
+      />
+    </svg>
   );
 };
 

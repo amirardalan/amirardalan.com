@@ -56,6 +56,7 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
           },
           'body, body[data-theme="light"]': {
             '--color-primary': primary,
+            '--color-secondary': secondary,
             '--color-bg': light,
             '--color-text': grayAccentDark,
             '--color-heading': dark,
@@ -81,6 +82,7 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
 
           'body[data-theme="dark"]': {
             '--color-primary': secondary,
+            '--color-secondary': primary,
             '--color-bg': dark,
             '--color-text': lightDarker,
             '--color-heading': light,
