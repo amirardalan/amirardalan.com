@@ -234,7 +234,7 @@ const Navigation: FC = () => {
         <div css={styleMobileNavWrapper}>
           <Navitem />
           <div css={styleMobileNavSecondary}>
-            <Logo />
+            <Logo animate={false} />
           </div>
           <button className="closeArea" onClick={handleToggleMenu} />
         </div>

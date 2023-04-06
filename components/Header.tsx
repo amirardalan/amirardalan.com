@@ -83,7 +83,7 @@ const Header: FC<HeaderProps> = ({ toggleTheme }) => {
         <div css={styleHeader}>
           <Link href="/" aria-label="Amir Ardalan Logo" passHref>
             <button css={styleLogoButton}>
-              <Logo />
+              <Logo animate={true} />
             </button>
           </Link>
           <div className="headerRight">
