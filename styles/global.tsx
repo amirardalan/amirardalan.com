@@ -381,6 +381,11 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
                 border: '1px solid transparent',
                 color: 'var(--color-bg)',
               },
+              '&.reverse:hover': {
+                background: 'transparent',
+                border: '2px solid var(--color-heading)',
+                color: 'var(--color-heading)',
+              },
             },
             '@media(max-width: 480px)': {
               marginRight: 0,
