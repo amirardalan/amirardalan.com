@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import Link from 'next/link';
 import { css } from '@emotion/react';
 import { HomeTypes } from '@/types/home';
@@ -20,6 +20,28 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
   featuredPost,
   latestPost,
 }) => {
+  const featured: Post | null = featuredPost;
+  const latest: Post | null = latestPost;
+
+  const [showFeatured, setShowFeatured] = useState<boolean>(
+    featured ? true : false
+  );
+  const handleToggleFeatured = () => {
+    featured ? setShowFeatured(!showFeatured) : null;
+  };
+  const postTypeTitle = showFeatured ? home.featured.title : home.latest.title;
+
+  const stylePostTypeTitle = css({
+    button: {
+      color: 'var(--color-gray)',
+      textTransform: 'uppercase',
+      '&:hover': {
+        color: featured ? 'var(--color-text)' : '',
+        cursor: featured ? 'pointer' : 'default',
+      },
+    },
+  });
+
   const styleFeaturedPost = css({
     marginTop: '2.25rem',
     display: 'flex',
@@ -57,25 +79,38 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
     },
   });
 
-  const featured: Post | null = featuredPost ? featuredPost : latestPost;
-  const componentTitle = featuredPost ? home.featured.title : home.latest.title;
-
   if (featuredPost || latestPost) {
     return (
       <div css={styleFeaturedPost}>
-        <h2 aria-label={componentTitle}>{componentTitle}</h2>
+        <h2 aria-label={postTypeTitle} css={stylePostTypeTitle}>
+          <button onClick={handleToggleFeatured}>{postTypeTitle}</button>
+        </h2>
         <article>
-          <h3>
-            {featured ? (
-              <Link
-                href={`/blog/${encodeURIComponent(featured?.slug)}`}
-                aria-label={featured?.title}
-              >
-                {featured?.title}
-              </Link>
-            ) : null}
-          </h3>
-          <p>{featured?.teaser}</p>
+          {showFeatured && featured ? (
+            <>
+              <h3>
+                <Link
+                  href={`/blog/${encodeURIComponent(featured.slug)}`}
+                  aria-label={featured?.title}
+                >
+                  {featured?.title}
+                </Link>
+              </h3>
+              <p>{featured?.teaser}</p>{' '}
+            </>
+          ) : latest ? (
+            <>
+              <h3>
+                <Link
+                  href={`/blog/${encodeURIComponent(latest.slug)}`}
+                  aria-label={latest?.title}
+                >
+                  {latest?.title}
+                </Link>
+              </h3>
+              <p>{latest?.teaser}</p>{' '}
+            </>
+          ) : null}
         </article>
       </div>
     );

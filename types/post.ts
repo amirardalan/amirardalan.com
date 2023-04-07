@@ -7,7 +7,7 @@ export interface PostProps {
   title: string;
   teaser: string;
   published: boolean;
-  featured: boolean;
+  featured: string;
   showEdited: boolean;
   editedAt: Date;
   postHistory: { editedAt: Date }[];
