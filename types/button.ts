@@ -5,6 +5,7 @@ export type CtaButtonsTypes = {
     icon: string;
     target: string;
     rel: string;
+    style?: string;
   }>;
 };
 

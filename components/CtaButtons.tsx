@@ -15,7 +15,9 @@ export const CtaButtons: FC<CtaButtonsProps> = ({ items }) => {
           key={i}
           href={item.path}
           aria-label={item.title}
-          className={item.icon ? `ctaButton ${item.icon}` : 'ctaButton'}
+          className={`ctaButton ${item.icon ? `${item.icon} ` : ''}${
+            item.style === 'reverse' ? 'reverse' : ''
+          }`}
           target={item.target}
           rel={item.rel}
         >

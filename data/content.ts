@@ -27,6 +27,7 @@ export const homeContent = {
       path: '/about',
       title: 'About',
       target: '_self',
+      style: 'reverse',
     },
   ],
   featured: {

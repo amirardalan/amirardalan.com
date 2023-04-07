@@ -328,6 +328,15 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
                 },
               },
             },
+            '&.reverse': {
+              background: 'transparent',
+              border: '2px solid var(--color-heading)',
+              color: 'var(--color-heading)',
+              '&:hover': {
+                background: 'var(--color-heading)',
+                color: 'var(--color-bg)',
+              },
+            },
             '&.disabled': {
               cursor: 'pointer',
               background: 'transparent',
