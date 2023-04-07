@@ -319,8 +319,8 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
             },
             '&:hover': {
               background: 'transparent',
-              border: '2px solid var(--color-heading)',
-              color: 'var(--color-heading)',
+              border: '2px solid var(--color-primary)',
+              color: 'var(--color-primary)',
               '@media(min-width: 1025px)': {
                 '&.download:after': {
                   background: 'var(--icon-download-light) no-repeat',
@@ -333,8 +333,15 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
               border: '2px solid var(--color-heading)',
               color: 'var(--color-heading)',
               '&:hover': {
-                background: 'var(--color-heading)',
-                color: 'var(--color-bg)',
+                background: 'transparent',
+                border: '2px solid var(--color-primary)',
+                color: 'var(--color-primary)',
+                '@media(min-width: 1025px)': {
+                  '&.download:after': {
+                    background: 'var(--icon-download-light) no-repeat',
+                    backgroundSize: 'contain',
+                  },
+                },
               },
             },
             '&.disabled': {
