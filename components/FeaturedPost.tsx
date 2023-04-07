@@ -29,9 +29,8 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
       whiteSpace: 'nowrap',
       display: 'flex',
       alignItems: 'baseline',
-      marginBottom: '.8rem',
+      marginBottom: '.5rem',
       padding: '.25rem .6rem .2rem .65rem',
-      lineHeight: '.8rem',
       border: '1px solid var(--color-accent-gray)',
       color: 'var(--color-gray)',
       backgroundColor: 'transparent',
@@ -50,7 +49,6 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
       },
     },
     p: {
-      marginTop: '.4rem',
       lineHeight: '1.25rem',
       fontSize: 15,
       fontFamily: 'var(--font-tertiary)',
