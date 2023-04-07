@@ -62,6 +62,10 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
       fontSize: 11,
       fontWeight: 400,
     },
+    h3: {
+      lineHeight: '1.35rem',
+      marginBottom: '.2rem',
+    },
     'h3 a': {
       fontFamily: 'var(--font-secondary)',
       fontSize: 18,
