@@ -93,7 +93,7 @@ const CanvasTerrain: FC<CanvasTerrainProps> = ({
   const mesh = useRef<Mesh<BufferGeometry, Material | Material[]>>(null);
   useFrame(() => {
     if (mesh.current) {
-      mesh.current.rotation.y += rotation / 10000;
+      mesh.current.rotation.y += rotation / 20000;
     }
   });
 
@@ -119,10 +119,10 @@ const CanvasTerrain: FC<CanvasTerrainProps> = ({
         ref={ref}
       />
       <MeshDistortMaterial
-        distort={1}
-        speed={0.1}
+        distort={0.9}
+        speed={0.05}
         wireframe
-        emissive="#a1a4b0"
+        emissive="#8a8e9f"
       />
     </mesh>
   );
