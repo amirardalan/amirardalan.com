@@ -27,10 +27,7 @@ export const config = {
   },
 };
 
-const uploadImageHandler = async (
-  req: MulterRequest,
-  res: NextApiResponse<any>
-) => {
+const uploadImageHandler = async (req: MulterRequest, res: NextApiResponse) => {
   try {
     const data = await new Promise((resolve, reject) => {
       upload.single('image')(req as any, res as any, (err) => {
