@@ -59,6 +59,8 @@ GITHUB_ID=
 NEXT_PUBLIC_REVALIDATE_SECRET=
 NEXT_PUBLIC_OG_IMAGE_URL=https://ogimage.yourSite.vercel.app
 NEXT_PUBLIC_TIMEZONE=America/Los_Angeles
+NEXT_PUBLIC_META_TITLE=Your Site Name
+NEXT_PUBLIC_META_DESCRIPTION=Your Site Description
 
 CLOUDINARY_NAME=
 CLOUDINARY_API_KEY=
@@ -91,7 +93,11 @@ Create an [OG Image Service](https://github.com/vercel/og-image) and set this to
 
 `NEXT_PUBLIC_TIMEZONE`: Example: `America/Los_Angeles`. Set this to your local timezone for your blog posts to display the correct date and time. [Full List of IANA Timezones](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)
 
-`CLOUDINARY_NAME`: Your Cloudinary Media Library name (your-name)
+`NEXT_PUBLIC_META_TITLE`: Your site name, used for SEO and social media sharing.
+
+`NEXT_PUBLIC_META_DESCRIPTION`: Your site description, used for SEO and social media sharing.
+
+`CLOUDINARY_NAME`: Your Cloudinary Media Library name (cloud-name)
 
 `CLOUDINARY_API_KEY`: See Cloudinary's [Admin API reference](https://cloudinary.com/documentation/admin_api)
 
@@ -201,13 +207,10 @@ Retain the terseness of pure Markdown while getting the benefits of the Next/Ima
 
 ## Dynamically Generate Blog OG Images
 
-Out of the box, [Open Graph Images](https://ogp.me/) are automatically assigned from the first image in a blog post.
+This project uses [Vercel OG](https://vercel.com/docs/concepts/functions/edge-functions/og-image-generation) Image Service to dynamically generate images for blog posts.
 
-For any blog posts that do not contain an image, [this service](https://github.com/vercel/og-image) will dynamically generate one for you.
-
-1. Fork the repo and follow the README.md and CONTRIBUTING.md.
-2. Update with logos, fonts, and css that suits your blog.
-3. Deploy to vercel and set a domain name, set this to the `NEXT_PUBLIC_OG_IMAGE_URL` environment variable
+- Ensure `NEXT_PUBLIC_META_NAME` and `NEXT_PUBLIC_META_DESCRIPTION` are set in your `.env.local` file.
+- You will also need to declare a valid image path for the background of your og thumbnail in `data/metadata.ts` (image should be 1200x627).
 
 ---
 
