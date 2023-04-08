@@ -219,7 +219,7 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
       },
     },
     '@media(max-width: 768px)': {
-      paddingTop: 1.9,
+      paddingTop: 2.9,
     },
   });
 
@@ -241,11 +241,7 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
 
   return (
     <section>
-      <h2
-        css={styleTimelineHeading}
-        className="pageHeading center"
-        id="timeline"
-      >
+      <h2 css={styleTimelineHeading} className="pageHeading center">
         {timeline.meta.title}
       </h2>
       <div css={styleTimelineWrapper}>

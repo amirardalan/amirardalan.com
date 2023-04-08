@@ -20,6 +20,16 @@ type AboutPageProps = {
 };
 
 const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
+  const styleAbout = {
+    hr: {
+      borderTop: '1px dotted var(--color-accent-gray)',
+      '@media (max-width: 768px)': {
+        margin: 0,
+        paddingTop: '3rem',
+      },
+    },
+  };
+
   const styleGridWrapper = css({
     display: 'grid',
     gridTemplateColumns: 'repeat(3, 1fr)',
@@ -209,7 +219,7 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
       description={about.meta.description}
       robots="follow, index"
     >
-      <main className="about">
+      <main className="about" css={styleAbout}>
         <h1 className="pageHeading">{about.heading}</h1>
         <div css={styleGridWrapper}>
           <div className="grid">
@@ -298,6 +308,7 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
             </ul>
           </div>
         </div>
+        <hr id="timeline" />
         <Timeline timeline={timeline} />
       </main>
     </Container>
