@@ -4,7 +4,7 @@ export const homeContent = {
   meta: {
     title: 'Amir Ardalan – Developer & designer',
     description:
-      'Amir Ardalan. Fullstack developer, User Interface designer, and React enthusiast. Building modern websites. Publishing React and Next.js ideas and guides.',
+      'Software developer, UI designer, and React enthusiast. Making websites since before the internet was cool.',
   },
   typed: [
     `I craft digital experiences`,
@@ -16,7 +16,7 @@ export const homeContent = {
     `follow me on <a href="https://twitter.com/amirardalan" rel="noopener noreferrer">Twitter</a>`,
   ],
   title: 'Amir Ardalan',
-  description: `I'm a Front-end developer specializing in React, User Interface, and accessibility. I'm passionate about Next.js, TypeScript, and building outstanding digital experiences.`,
+  description: `Software developer, UI designer, and React enthusiast. Making websites since before the internet was cool.`,
   items: [
     {
       path: '/blog',
