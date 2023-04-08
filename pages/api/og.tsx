@@ -4,8 +4,8 @@ export const config = {
   runtime: 'edge',
 };
 
-const titilliumLightFontP = fetch(
-  new URL('@/public/fonts/Titillium-Light.ttf', import.meta.url)
+const titilliumRegularFontP = fetch(
+  new URL('@/public/fonts/Titillium-Regular.ttf', import.meta.url)
 ).then((res) => res.arrayBuffer());
 
 const titilliumBoldFontP = fetch(
@@ -14,25 +14,19 @@ const titilliumBoldFontP = fetch(
 
 export default async function handler(req: Request) {
   try {
-    const [titilliumLightFont, titilliumBoldFont] = await Promise.all([
-      titilliumLightFontP,
+    const [titilliumRegularFont, titilliumBoldFont] = await Promise.all([
+      titilliumRegularFontP,
       titilliumBoldFontP,
     ]);
 
     const { searchParams } = new URL(req.url);
 
-    // dynamic params
-    const metaTitle = process.env.NEXT_PUBLIC_META_TITLE || '';
     const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
     const displayUrl = siteUrl?.replace(/^https?:\/\//i, '');
 
     const image = searchParams.get('image') || `${siteUrl}/thumbnail.png`;
-    const title = searchParams.has('title')
-      ? searchParams.get('title')?.slice(0, 100)
-      : metaTitle;
-    const description = searchParams.has('description')
-      ? searchParams.get('description')?.slice(0, 100)
-      : process.env.NEXT_PUBLIC_META_DESCRIPTION;
+    const title = searchParams.get('title')?.slice(0, 100);
+    const description = searchParams.get('description');
 
     return new ImageResponse(
       (
@@ -47,11 +41,11 @@ export default async function handler(req: Request) {
           <div tw="h-full flex flex-col relative pr-80 justify-center">
             <div tw="flex flex-col text-8xl font-bold pl-20 leading-[5rem]">
               {title}
-              <div tw="flex text-4xl font-light mt-10 leading-[2.5rem]">
+              <div tw="flex text-4xl font-normal mt-10 leading-[2.5rem]">
                 {description}
               </div>
             </div>
-            <div tw="border-t-2 border-[#e4e9f8] text-3xl font-light absolute bottom-12 right-20 text-right">
+            <div tw="border-t-2 border-[#406082] text-4xl font-light absolute bottom-12 right-20 text-right">
               {displayUrl}
             </div>
           </div>
@@ -63,7 +57,7 @@ export default async function handler(req: Request) {
         fonts: [
           {
             name: 'Titillium Web',
-            data: titilliumLightFont,
+            data: titilliumRegularFont,
             style: 'normal',
             weight: 400,
           },

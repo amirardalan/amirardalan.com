@@ -3,7 +3,8 @@ import { themeLight, themeDark } from '@/styles/theme';
 export const homeContent = {
   meta: {
     title: 'Amir Ardalan – Developer & designer',
-    description: 'Software developer, UI designer, and React enthusiast.',
+    description:
+      'Developer, designer, and React enthusiast. Making websites since before the internet was cool.',
   },
   typed: [
     `I craft digital experiences`,
@@ -15,7 +16,8 @@ export const homeContent = {
     `follow me on <a href="https://twitter.com/amirardalan" rel="noopener noreferrer">Twitter</a>`,
   ],
   title: 'Amir Ardalan',
-  description: `Software developer, UI designer, and React enthusiast.`,
+  description:
+    'Developer, designer, and React enthusiast. Making websites since before the internet was cool.',
   items: [
     {
       path: '/blog',

@@ -57,10 +57,7 @@ GITHUB_SECRET=
 GITHUB_ID=
 
 NEXT_PUBLIC_REVALIDATE_SECRET=
-NEXT_PUBLIC_OG_IMAGE_URL=https://ogimage.yourSite.vercel.app
 NEXT_PUBLIC_TIMEZONE=America/Los_Angeles
-NEXT_PUBLIC_META_TITLE=Your Site Name
-NEXT_PUBLIC_META_DESCRIPTION=Your Site Description
 
 CLOUDINARY_NAME=
 CLOUDINARY_API_KEY=
@@ -88,14 +85,7 @@ Your GitHub developer app ID, [GitHub Developer App Docs](https://docs.github.co
 `NEXT_PUBLIC_REVALIDATE_SECRET`
 Generate a secret for use with Next [On-Demand Incremental Static Regeneration](https://nextjs.org/docs/basic-features/data-fetching/incremental-static-regeneration#on-demand-revalidation-beta)
 
-`NEXT_PUBLIC_OG_IMAGE_URL`
-Create an [OG Image Service](https://github.com/vercel/og-image) and set this to the URL of your service app. [Further reading](#dynamically-generate-blog-og-images)
-
 `NEXT_PUBLIC_TIMEZONE`: Example: `America/Los_Angeles`. Set this to your local timezone for your blog posts to display the correct date and time. [Full List of IANA Timezones](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)
-
-`NEXT_PUBLIC_META_TITLE`: Your site name, used for SEO and social media sharing.
-
-`NEXT_PUBLIC_META_DESCRIPTION`: Your site description, used for SEO and social media sharing.
 
 `CLOUDINARY_NAME`: Your Cloudinary Media Library name (cloud-name)
 
