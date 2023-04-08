@@ -42,7 +42,6 @@ const Draft: FC<DraftProps> = ({ admin, breadcrumb }) => {
   const [fetchStatus, setFetchStatus] = useFetchStatus();
   const isFetching = fetchStatus;
 
-  const [markdownContent, setMarkdownContent] = useState('');
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
 
   const handleInsertUrl = (response: string) => {
@@ -132,11 +131,11 @@ const Draft: FC<DraftProps> = ({ admin, breadcrumb }) => {
             />
             <textarea
               cols={50}
-              onChange={(e) => setMarkdownContent(e.target.value)}
+              onChange={(e) => setContent(e.target.value)}
               placeholder="Content"
               rows={18}
               ref={textAreaRef}
-              value={markdownContent}
+              value={content}
             />
 
             <div className="postOptions">

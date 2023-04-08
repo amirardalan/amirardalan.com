@@ -15,7 +15,7 @@ type BlogPostControlsProps = AdminControlsTypes & {
   };
   latestPost: boolean;
   publishLabel: string;
-  requiredFields: boolean | undefined;
+  requiredFields: any;
   submitClass: string;
   handleCancel: MouseEventHandler | undefined;
   handleDeletion?: () => void;
