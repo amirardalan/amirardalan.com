@@ -28,21 +28,28 @@ export default async function handler(req: Request) {
     const title = searchParams.has('title')
       ? searchParams.get('title')?.slice(0, 100)
       : metaTitle;
-    const description = searchParams.has('description');
+    const description =
+      searchParams.has('description') ||
+      process.env.NEXT_PUBLIC_META_DESCRIPTION;
 
     return new ImageResponse(
       (
         <div tw="h-full w-full flex flex-col text-[#e4e9f8]">
           <div
-            tw="h-full w-full bg-cover absolute top-0"
+            tw="h-full w-full absolute top-0"
             style={{
               backgroundImage: `url(${image})`,
               backgroundSize: 'cover',
             }}
           />
-          <div tw="flex p-20 flex-col">
-            <p tw="text-7xl font-bold">{title}</p>
-            <p tw="text-3xl font-light">{url}</p>
+          <div tw="h-full flex flex-col relative pr-80">
+            <div tw="flex flex-col text-8xl font-bold pt-12 pl-20 leading-[5rem]">
+              {title}
+              <div tw="flex text-4xl font-light mt-10">{description}</div>
+            </div>
+            <div tw="text-2xl font-light absolute bottom-12 right-20">
+              {url}
+            </div>
           </div>
         </div>
       ),
