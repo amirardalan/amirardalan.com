@@ -23,8 +23,10 @@ export default async function handler(req: Request) {
 
     // dynamic params
     const metaTitle = process.env.NEXT_PUBLIC_META_TITLE || '';
-    const url = process.env.NEXT_PUBLIC_SITE_URL;
-    const image = searchParams.get('image') || `${url}/thumbnail.png`;
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
+    const displayUrl = siteUrl?.replace(/^https?:\/\//i, '');
+
+    const image = searchParams.get('image') || `${siteUrl}/thumbnail.png`;
     const title = searchParams.has('title')
       ? searchParams.get('title')?.slice(0, 100)
       : metaTitle;
@@ -45,12 +47,12 @@ export default async function handler(req: Request) {
           <div tw="h-full flex flex-col relative pr-80 justify-center">
             <div tw="flex flex-col text-8xl font-bold pl-20 leading-[5rem]">
               {title}
-              <div tw="flex text-4xl font-light mt-10 leading-[2.2rem]">
+              <div tw="flex text-4xl font-light mt-10 leading-[2.5rem]">
                 {description}
               </div>
             </div>
-            <div tw="text-2xl font-light absolute bottom-12 right-20 text-right">
-              {url}
+            <div tw="border-t-2 border-[#e4e9f8] text-3xl font-light absolute bottom-12 right-20 text-right">
+              {displayUrl}
             </div>
           </div>
         </div>
