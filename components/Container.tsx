@@ -30,7 +30,7 @@ const Container: FC<ContainerProps> = (props) => {
     ...customMeta,
   };
 
-  const metaImage = meta.image ? meta.image : metadata.image;
+  const metaImage = metadata.image;
   const ogParams = `/api/og/simple?title=${meta.title}&image=${metaImage}&description=${meta.description}`;
 
   const [faviconTheme, setFaviconTheme] = useState(theme.active);
