@@ -24,7 +24,8 @@
       "@/lib/*": ["lib/*"],
       "@/prisma/*": ["prisma/*"],
       "@/styles/*": ["styles/*"],
-      "@/utils/*": ["utils/*"]
+      "@/utils/*": ["utils/*"],
+      "@/public/*": ["public/*"]
     },
     "incremental": true,
     "jsxImportSource": "@emotion/react"

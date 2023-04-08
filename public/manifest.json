@@ -31,9 +31,9 @@
   "description": "Amir Ardalan Thumbnail",
   "screenshots": [
     {
-      "src": "/thumbnail.jpg",
+      "src": "/thumbnail.png",
       "type": "image/png",
-      "sizes": "540x720"
+      "sizes": "1200x627"
     }
   ]
 }
