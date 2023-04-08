@@ -8,6 +8,17 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
+interface MulterRequest extends NextApiRequest {
+  file: {
+    mimetype: string;
+    size: number;
+    filename: string;
+    path: string;
+    buffer: Buffer;
+    originalname: string;
+  };
+}
+
 const upload = multer({ storage: multer.memoryStorage() });
 
 export const config = {
@@ -16,10 +27,7 @@ export const config = {
   },
 };
 
-const uploadImageHandler = async (
-  req: NextApiRequest & { file: any },
-  res: NextApiResponse<any>
-) => {
+const uploadImageHandler = async (req: MulterRequest, res: NextApiResponse) => {
   try {
     const data = await new Promise((resolve, reject) => {
       upload.single('image')(req as any, res as any, (err) => {
