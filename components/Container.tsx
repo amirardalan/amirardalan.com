@@ -30,9 +30,11 @@ const Container: FC<ContainerProps> = (props) => {
     ...customMeta,
   };
 
-  const metaImage = metadata.image;
-  const ogPath = `${process.env.NEXT_PUBLIC_SITE_URL}/api/og?title=${meta.title}&description=${meta.description}`;
-
+  const ogImage = `${
+    process.env.NEXT_PUBLIC_SITE_URL
+  }/api/og?title=${encodeURIComponent(
+    meta.title
+  )}&description=${encodeURIComponent(meta.description)}`;
   const [faviconTheme, setFaviconTheme] = useState(theme.active);
 
   let favicon = '';
@@ -88,9 +90,9 @@ const Container: FC<ContainerProps> = (props) => {
         <meta property="og:description" content={meta.description} />
         <meta property="og:title" content={meta.title} />
         <meta name="description" content={meta.description} />
-        <meta name="thumbnail" property="og:image" content={metaImage} />
-        <meta property="og:image" content={ogPath} />
-        <meta name="twitter:image" content={ogPath} />
+        <meta name="thumbnail" property="og:image" content={ogImage} />
+        <meta property="og:image" content={ogImage} />
+        <meta name="twitter:image" content={ogImage} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content={metadata.twitterHandle} />
         <meta name="twitter:title" content={meta.title} />
