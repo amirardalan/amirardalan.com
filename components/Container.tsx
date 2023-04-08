@@ -30,15 +30,18 @@ const Container: FC<ContainerProps> = (props) => {
     ...customMeta,
   };
 
-  const ogImage = `${
+  // OG Image
+  const ogTitle = meta.title.replace(/[\u2013\u2014].*$/, '');
+  const encodedOgImage = `${
     process.env.NEXT_PUBLIC_SITE_URL
   }/api/og?title=${encodeURIComponent(
-    meta.title
+    ogTitle
   )}&description=${encodeURIComponent(meta.description)}`;
+  const ogImage = encodedOgImage.replace(/&amp;/g, '&');
+
+  // Dynamic Favicon
   const [faviconTheme, setFaviconTheme] = useState(theme.active);
-
   let favicon = '';
-
   if (faviconTheme === 'dark') {
     favicon = '/favicon-dark.png';
   } else {

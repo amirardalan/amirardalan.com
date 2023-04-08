@@ -28,9 +28,9 @@ export default async function handler(req: Request) {
     const title = searchParams.has('title')
       ? searchParams.get('title')?.slice(0, 100)
       : metaTitle;
-    const description =
-      searchParams.has('description') ||
-      process.env.NEXT_PUBLIC_META_DESCRIPTION;
+    const description = searchParams.has('description')
+      ? searchParams.get('description')?.slice(0, 100)
+      : process.env.NEXT_PUBLIC_META_DESCRIPTION;
 
     return new ImageResponse(
       (
