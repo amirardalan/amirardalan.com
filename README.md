@@ -48,7 +48,6 @@ _Keep this file private, ensure `.env` remains in `.gitignore`, don't commit to 
 //.env
 
 NEXT_PUBLIC_SITE_URL=http://localhost:3000
-NEXT_PUBLIC_OG_IMAGE_URL=https://yoursite/api/og
 NEXT_PUBLIC_USER_EMAIL=you@email.com
 
 DATABASE_URL=postgresql://xxxxx
@@ -70,9 +69,6 @@ CLOUDINARY_API_SECRET=
 
 `NEXT_PUBLIC_SITE_URL`
 Leave as `http://localhost:3000` for Development, set as `https://yourDomainName.com` for Production
-
-`NEXT_PUBLIC_OG_IMAGE_URL`
-API endpoint for [Dynamically Generating Blog OG Images](#dynamically-generate-blog-og-images)
 
 `NEXT_PUBLIC_USER_EMAIL`
 Your email address, used for authentication and optionally your about or contact page.
@@ -213,7 +209,7 @@ Retain the terseness of pure Markdown while getting the benefits of the Next/Ima
 
 This project uses [Vercel OG](https://vercel.com/docs/concepts/functions/edge-functions/og-image-generation) Image Service to dynamically generate images for blog posts.
 
-- Ensure `NEXT_PUBLIC_META_NAME`, `NEXT_PUBLIC_META_DESCRIPTION`, and `NEXT_PUBLIC_OG_IMAGE_URL` are set in your `.env.local` file.
+- Ensure `NEXT_PUBLIC_META_NAME` and `NEXT_PUBLIC_META_DESCRIPTION` are set in your `.env.local` file.
 - You will also need to declare a valid image path for the background of your og thumbnail in `data/metadata.ts` (image should be 1200x627).
 
 ---
