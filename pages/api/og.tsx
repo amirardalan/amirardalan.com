@@ -38,8 +38,8 @@ export default async function handler(req: Request) {
               backgroundSize: 'cover',
             }}
           />
-          <div tw="h-full flex flex-col relative pr-80 justify-center">
-            <div tw="flex flex-col text-8xl font-bold pl-20 leading-[5rem]">
+          <div tw="h-full flex flex-col relative pr-90 justify-center">
+            <div tw="flex flex-col text-[5.5rem] font-bold pl-20 leading-[4.8rem]">
               {title}
               <div tw="flex text-4xl font-normal mt-10 leading-[2.5rem]">
                 {description}
