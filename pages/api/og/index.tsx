@@ -42,14 +42,14 @@ export default async function handler(req: Request) {
               backgroundSize: 'cover',
             }}
           />
-          <div tw="h-full flex flex-col relative pr-80">
-            <div tw="flex flex-col text-8xl font-bold pt-12 pl-20 leading-[5rem]">
+          <div tw="h-full flex flex-col relative pr-80 justify-center">
+            <div tw="flex flex-col text-8xl font-bold pl-20 leading-[5rem]">
               {title}
               <div tw="flex text-4xl font-light mt-10 leading-[2.2rem]">
                 {description}
               </div>
             </div>
-            <div tw="text-2xl font-light absolute bottom-12 right-20">
+            <div tw="text-2xl font-light absolute bottom-12 right-20 text-right">
               {url}
             </div>
           </div>
