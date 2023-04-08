@@ -31,6 +31,7 @@ const Container: FC<ContainerProps> = (props) => {
   };
 
   const metaImage = meta.image ? meta.image : metadata.image;
+  const ogParams = `/api/og/simple?title=${meta.title}&image=${metaImage}&description=${meta.description}`;
 
   const [faviconTheme, setFaviconTheme] = useState(theme.active);
 
@@ -88,14 +89,8 @@ const Container: FC<ContainerProps> = (props) => {
         <meta property="og:title" content={meta.title} />
         <meta name="description" content={meta.description} />
         <meta name="thumbnail" property="og:image" content={metaImage} />
-        <meta
-          property="og:image"
-          content={`/api/og/simple?title=${meta.title}&image=${metaImage}`}
-        />
-        <meta
-          name="twitter:image"
-          content={`/api/og/simple?title=${meta.title}&image=${metaImage}`}
-        />
+        <meta property="og:image" content={ogParams} />
+        <meta name="twitter:image" content={ogParams} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content={metadata.twitterHandle} />
         <meta name="twitter:title" content={meta.title} />

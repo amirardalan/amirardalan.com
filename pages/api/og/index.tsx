@@ -22,25 +22,28 @@ export default async function handler(req: Request) {
     const { searchParams } = new URL(req.url);
 
     // dynamic params
+    const metaTitle = process.env.NEXT_PUBLIC_META_TITLE || '';
     const url = process.env.NEXT_PUBLIC_SITE_URL;
-    const metaTitle = process.env.NEXT_PUBLIC_META_TITLE;
+    const image = searchParams.get('image') || `${url}/thumbnail.png`;
     const title = searchParams.has('title')
       ? searchParams.get('title')?.slice(0, 100)
       : metaTitle;
-    const image = searchParams.get('image') || `${url}/thumbnail.jpg`;
+    const description = searchParams.has('description');
 
     return new ImageResponse(
       (
-        <div tw="h-full w-full flex flex-col justify-center items-center bg-gray-50 p-20">
-          <p tw="text-7xl font-bold">{title}</p>
-          <p tw="text-7xl font-light">{url}</p>
-          <img
-            style={{ objectFit: 'cover' }}
-            tw="absolute top-0"
-            src={image}
-            height="627"
-            width="1200"
+        <div tw="h-full w-full flex flex-col text-[#e4e9f8]">
+          <div
+            tw="h-full w-full bg-cover absolute top-0"
+            style={{
+              backgroundImage: `url(${image})`,
+              backgroundSize: 'cover',
+            }}
           />
+          <div tw="flex p-20 flex-col">
+            <p tw="text-7xl font-bold">{title}</p>
+            <p tw="text-3xl font-light">{url}</p>
+          </div>
         </div>
       ),
       {
