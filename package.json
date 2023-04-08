@@ -15,6 +15,7 @@
     "@react-three/drei": "^9.57.3",
     "@react-three/fiber": "^8.11.9",
     "@vercel/analytics": "^0.1.11",
+    "@vercel/og": "^0.5.1",
     "cloudinary": "^1.35.0",
     "eslint-config-prettier": "^8.7.0",
     "multer": "^1.4.5-lts.1",
