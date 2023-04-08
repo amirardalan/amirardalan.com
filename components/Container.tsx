@@ -39,8 +39,6 @@ const Container: FC<ContainerProps> = (props) => {
   )}&description=${encodeURIComponent(meta.description)}`;
   const ogImage = encodedOgImage;
 
-  console.log(ogImage);
-
   // Dynamic Favicon
   const [faviconTheme, setFaviconTheme] = useState(theme.active);
   let favicon = '';
