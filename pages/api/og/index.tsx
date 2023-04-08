@@ -12,21 +12,35 @@ const titilliumBoldFontP = fetch(
   new URL('@/public/fonts/Titillium-Bold.ttf', import.meta.url)
 ).then((res) => res.arrayBuffer());
 
-export default async function handler() {
+export default async function handler(req: Request) {
   try {
     const [titilliumLightFont, titilliumBoldFont] = await Promise.all([
       titilliumLightFontP,
       titilliumBoldFontP,
     ]);
 
-    const boldText = 'Amir Ardalan';
-    const lightText = 'Cool dude.';
+    const { searchParams } = new URL(req.url);
+
+    // dynamic params
+    const url = process.env.NEXT_PUBLIC_SITE_URL;
+    const metaTitle = process.env.NEXT_PUBLIC_META_TITLE;
+    const title = searchParams.has('title')
+      ? searchParams.get('title')?.slice(0, 100)
+      : metaTitle;
+    const image = searchParams.get('image') || `${url}/thumbnail.jpg`;
 
     return new ImageResponse(
       (
         <div tw="h-full w-full flex flex-col justify-center items-center bg-gray-50 p-20">
-          <p tw="text-7xl font-bold">{boldText}</p>
-          <p tw="text-7xl font-Light">{lightText}</p>
+          <p tw="text-7xl font-bold">{title}</p>
+          <p tw="text-7xl font-light">{url}</p>
+          <img
+            style={{ objectFit: 'cover' }}
+            tw="absolute top-0"
+            src={image}
+            height="627"
+            width="1200"
+          />
         </div>
       ),
       {
