@@ -22,11 +22,25 @@ const Navigation: FC = () => {
   };
 
   useEffect(() => {
-    !isMobile ? setToggleMenu(false) : null;
+    const preventDefault = (e: Event) => {
+      e.preventDefault();
+    };
 
-    isMobile && toggleMenu
-      ? (document.body.style.overflowY = 'hidden')
-      : (document.body.style.overflowY = 'scroll');
+    if (isMobile && toggleMenu) {
+      setToggleMenu(true);
+      document.body.style.overflowY = 'hidden';
+      document.addEventListener('touchmove', preventDefault, {
+        passive: false,
+      });
+    } else {
+      setToggleMenu(false);
+      document.body.style.overflowY = 'scroll';
+      document.removeEventListener('touchmove', preventDefault);
+    }
+
+    return () => {
+      document.removeEventListener('touchmove', preventDefault);
+    };
   }, [isMobile, toggleMenu]);
 
   const styleMainNav = css({
@@ -60,7 +74,7 @@ const Navigation: FC = () => {
       transform: toggleMenu ? 'translateX(0)' : 'translateX(100%)',
       zIndex: 2,
       width: '70%',
-      height: '100vh',
+      height: '100dvh',
       padding: '3.5rem',
       background: 'var(--color-bg)',
       a: {
@@ -76,8 +90,8 @@ const Navigation: FC = () => {
       position: 'absolute',
       top: 0,
       left: 0,
-      height: '100vh',
-      width: '100vw',
+      height: '100dvh',
+      width: '100dvw',
       opacity: toggleMenu ? 0.8 : 0,
       background: 'var(--color-gradient)',
       transition: 'opacity 0.5s ease-in-out',
