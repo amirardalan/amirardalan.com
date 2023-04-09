@@ -8,10 +8,12 @@ import GitHubButton from 'react-github-btn';
 import CloseButton from '@/components/CloseButton';
 import Logo from '@/components/Logo';
 import { nav } from '@/data/navigation';
+import { useRouteStatus } from '@/hooks/useLoadingIndicator';
 
 const Navigation: FC = () => {
   const theme: Theme = useTheme();
   const router = useRouter();
+  const loading = useRouteStatus();
 
   const styleMainNav = css({
     display: 'flex',
@@ -31,8 +33,11 @@ const Navigation: FC = () => {
     display: 'flex',
     height: '100%',
     width: '100%',
+    top: 0,
+    left: 0,
     '.mobileNavPanel': {
       display: 'flex',
+      justifyContent: 'center',
       flexDirection: 'column',
       position: 'absolute',
       top: 0,
@@ -115,7 +120,7 @@ const Navigation: FC = () => {
           color: 'var(--color-primary)',
           position: 'absolute',
           content: '">"',
-          left: -10,
+          left: -12,
           '@media(max-width: 768px)': {
             left: -20,
           },
@@ -157,27 +162,18 @@ const Navigation: FC = () => {
     },
   });
 
-  const isMobile = useMediaQuery(768);
-  const [scrollDisabled, setScrollDisabled] = useState(false);
   const [toggleMenu, setToggleMenu] = useState(false);
 
   const handleToggleMenu = () => {
     setToggleMenu(!toggleMenu);
-    handleDisableScroll();
+    if (!toggleMenu) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
   };
 
-  const handleDisableScroll = () => {
-    toggleMenu ? setScrollDisabled(true) : setScrollDisabled(false);
-  };
-
-  useEffect(() => {
-    !isMobile ? setToggleMenu(false) : null;
-
-    isMobile && toggleMenu
-      ? (document.body.style.overflowY = 'hidden')
-      : (document.body.style.overflowY = 'scroll');
-  }, [isMobile, toggleMenu]);
-
+  const handleCloseMenu = () => {};
   interface NavItem {
     path: string;
     cName: string;
@@ -197,7 +193,7 @@ const Navigation: FC = () => {
           <Link
             href={item.path}
             key={index}
-            onClick={handleToggleMenu}
+            onClick={handleCloseMenu}
             className={
               isActiveNav || isBlog ? item.cName + ' active' : item.cName
             }
