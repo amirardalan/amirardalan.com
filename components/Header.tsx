@@ -26,7 +26,6 @@ const Header: FC<HeaderProps> = ({ toggleTheme }) => {
   const styleHeaderWrapper = css({
     padding: '2rem 4rem 0',
     position: 'sticky',
-    top: '-2rem',
     backgroundColor: 'var(--color-bg)',
     zIndex: 5,
     '.excludeInHeader': {

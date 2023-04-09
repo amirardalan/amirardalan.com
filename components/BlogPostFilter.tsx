@@ -6,7 +6,7 @@ import useTotalLikes from '@/hooks/useTotalLikes';
 
 import BlogStats from '@/components/BlogStats';
 import BlogPost from '@/components/BlogPost';
-import CloseButton from '@/components/CloseButton';
+import CloseIcon from '@/components/CloseIcon';
 import compareID from '@/utils/compareID';
 
 import { PostProps } from '@/types/post';
@@ -151,7 +151,7 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
               onKeyDown={() => handleClearFilters()}
               aria-label={blog.search.clear}
             >
-              <CloseButton width={12} height={12} />
+              <CloseIcon size={12} />
             </button>
           ) : null}
         </span>
@@ -181,7 +181,7 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
           onKeyDown={() => setSearch('')}
           className="clearSearch"
         >
-          <CloseButton width={23} height={23} />
+          <CloseIcon size={23} />
         </button>
       );
     }
@@ -195,7 +195,7 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
           onKeyDown={() => handleClearFilters()}
           aria-label="Clear Filter"
         >
-          <CloseButton width={12} height={12} />
+          <CloseIcon size={12} />
           <span>{' ' + blog.search.clearFilter}</span>
         </button>
       );

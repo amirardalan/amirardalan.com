@@ -1,17 +1,33 @@
-import { FC, useState, useEffect, Key } from 'react';
+import { FC, useState, Key, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { css, useTheme, Theme } from '@emotion/react';
 import { gtagEvent } from '@/lib/gtag';
-import { useMediaQuery } from '@/hooks/useMediaQuery';
 import GitHubButton from 'react-github-btn';
-import CloseButton from '@/components/CloseButton';
+import CloseIcon from '@/components/CloseIcon';
+import MenuIcon from '@/components/MenuIcon';
 import Logo from '@/components/Logo';
 import { nav } from '@/data/navigation';
+import { useMediaQuery } from '@/hooks/useMediaQuery';
 
 const Navigation: FC = () => {
   const theme: Theme = useTheme();
   const router = useRouter();
+
+  const isMobile = useMediaQuery(768);
+  const [toggleMenu, setToggleMenu] = useState(false);
+
+  const handleToggleMenu = () => {
+    setToggleMenu(!toggleMenu);
+  };
+
+  useEffect(() => {
+    !isMobile ? setToggleMenu(false) : null;
+
+    isMobile && toggleMenu
+      ? (document.body.style.overflowY = 'hidden')
+      : (document.body.style.overflowY = 'scroll');
+  }, [isMobile, toggleMenu]);
 
   const styleMainNav = css({
     display: 'flex',
@@ -26,72 +42,55 @@ const Navigation: FC = () => {
       display: 'none',
     },
   });
+
   const styleMobileNavWrapper = css({
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-around',
-    position: 'absolute',
-    height: '105vh',
-    width: '75vw',
-    padding: '3.5rem',
-    background: 'var(--color-bg)',
+    position: 'fixed',
+    height: '100%',
+    width: '100%',
     top: 0,
-    right: 0,
-    a: {
-      content: '""',
-      display: 'inline',
-      borderBottom: '1px solid var(--color-accent-gray)',
-      width: '100%',
-      height: '100%',
+    left: 0,
+    pointerEvents: toggleMenu ? 'auto' : 'none',
+    '.mobileNavPanel': {
+      display: 'flex',
+      justifyContent: 'center',
+      flexDirection: 'column',
+      position: 'absolute',
+      top: 0,
+      right: 0,
+      transform: toggleMenu ? 'translateX(0)' : 'translateX(100%)',
+      zIndex: 2,
+      width: '70%',
+      height: '100vh',
+      padding: '3.5rem',
+      background: 'var(--color-bg)',
+      a: {
+        content: '""',
+        borderBottom: '1px solid var(--color-accent)',
+        width: '100%',
+        height: '100%',
+      },
+      transition: 'transform 0.5s ease-in-out',
     },
     '.closeArea': {
-      opacity: '.80',
-      height: '100%',
-      width: 200,
-      background: 'var(--color-gradient)',
+      zIndex: 1,
       position: 'absolute',
-      left: -200,
       top: 0,
+      left: 0,
+      height: '100vh',
+      width: '100vw',
+      opacity: toggleMenu ? 0.8 : 0,
+      background: 'var(--color-gradient)',
+      transition: 'opacity 0.5s ease-in-out',
     },
     '@media(min-width: 769px)': {
       display: 'none',
     },
-    '@media (max-width: 768px) and (max-height: 600px)': {
-      width: '33vw',
-      '.closeArea': {
-        width: 500,
-        left: -500,
-      },
-      alignItems: 'right',
-    },
   });
+
   const styleMobileNavButton = css({
-    display: 'none',
-    '@media(max-width: 768px)': {
-      display: 'flex',
-    },
-    zIndex: 1,
+    display: 'flex',
+    zIndex: 3,
     marginLeft: '2rem',
-    '.menuOpen': {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      height: 28,
-      width: 28,
-      textTransform: 'uppercase',
-      textAlign: 'center',
-      fontSize: 9,
-      boxShadow: 'inset 0 0 0 1px var(--color-primary)',
-      borderRadius: 20,
-      '&:active': {
-        background: 'var(--color-primary)',
-        color: 'var(--color-bg)',
-      },
-    },
-    '.menuClose': {
-      display: 'flex',
-      animation: 'spin 1s forwards',
-    },
   });
 
   const styleNavIcon = css({
@@ -99,7 +98,7 @@ const Navigation: FC = () => {
     width: 16,
   });
 
-  const styleNavitem = css({
+  const styleNavItems = css({
     position: 'relative',
     display: 'flex',
     alignItems: 'center',
@@ -116,7 +115,7 @@ const Navigation: FC = () => {
           color: 'var(--color-primary)',
           position: 'absolute',
           content: '">"',
-          left: -10,
+          left: -12,
           '@media(max-width: 768px)': {
             left: -20,
           },
@@ -133,6 +132,7 @@ const Navigation: FC = () => {
     },
   });
   const styleMobileNavSecondary = css({
+    marginTop: '3rem',
     fontFamily: 'var(--font-secondary)',
     position: 'relative',
     a: {
@@ -156,28 +156,6 @@ const Navigation: FC = () => {
       marginLeft: '2rem',
     },
   });
-
-  const isMobile = useMediaQuery(768);
-  const [scrollDisabled, setScrollDisabled] = useState(false);
-  const [toggleMenu, setToggleMenu] = useState(false);
-
-  const handleToggleMenu = () => {
-    setToggleMenu(!toggleMenu);
-    handleDisableScroll();
-  };
-
-  const handleDisableScroll = () => {
-    toggleMenu ? setScrollDisabled(true) : setScrollDisabled(false);
-  };
-
-  useEffect(() => {
-    !isMobile ? setToggleMenu(false) : null;
-
-    isMobile && toggleMenu
-      ? (document.body.style.overflowY = 'hidden')
-      : (document.body.style.overflowY = 'scroll');
-  }, [isMobile, toggleMenu]);
-
   interface NavItem {
     path: string;
     cName: string;
@@ -186,8 +164,8 @@ const Navigation: FC = () => {
     title: string;
   }
 
-  const Navitem = () => (
-    <nav css={styleNavitem}>
+  const NavItems = () => (
+    <nav css={styleNavItems}>
       {nav.map((item: NavItem, index: Key) => {
         const isActiveNav = router.asPath === item.path;
         const isBlog =
@@ -228,45 +206,33 @@ const Navigation: FC = () => {
     </nav>
   );
 
-  const NavMobileMenu = () => {
-    if (toggleMenu) {
-      return (
-        <div css={styleMobileNavWrapper}>
-          <Navitem />
-          <div css={styleMobileNavSecondary}>
-            <Logo animate={false} />
-          </div>
-          <button className="closeArea" onClick={handleToggleMenu} />
-        </div>
-      );
-    } else return null;
-  };
-
-  const NavMenuControl = () => {
-    if (toggleMenu) {
-      return (
-        <div className="menuClose">
-          <CloseButton width={28} height={28} />
-        </div>
-      );
-    } else return <div className="menuOpen">•••</div>;
-  };
-
   return (
     <>
-      <div css={styleMainNav}>
-        <Navitem />
-      </div>
-      <button
-        css={styleMobileNavButton}
-        onClick={handleToggleMenu}
-        className={toggleMenu ? 'open' : ''}
-        aria-label="Navigation Menu"
-        aria-expanded={toggleMenu}
-      >
-        <NavMenuControl />
-      </button>
-      <NavMobileMenu />
+      {!isMobile ? (
+        <div css={styleMainNav}>
+          <NavItems />
+        </div>
+      ) : (
+        <>
+          <button
+            css={styleMobileNavButton}
+            onClick={handleToggleMenu}
+            aria-label="Navigation Menu"
+            aria-expanded={toggleMenu}
+          >
+            {toggleMenu ? <CloseIcon size={28} /> : <MenuIcon size={28} />}
+          </button>
+          <div css={styleMobileNavWrapper}>
+            <button className="closeArea" onClick={handleToggleMenu} />
+            <div className="mobileNavPanel">
+              <NavItems />
+              <div css={styleMobileNavSecondary}>
+                <Logo animate={false} />
+              </div>
+            </div>
+          </div>
+        </>
+      )}
     </>
   );
 };

@@ -1,7 +1,7 @@
 import { FC, useState } from 'react';
 import Image from 'next/image';
 import { css } from '@emotion/react';
-import CloseButton from '@/components/CloseButton';
+import CloseButton from '@/components/CloseIcon';
 import LikeButton from '@/components/LikeButton';
 import { donate } from '@/data/content';
 import { gtagEvent } from '@/lib/gtag';
@@ -279,7 +279,7 @@ const BlogSupport: FC<BlogSupportProps> = ({ id, title, url }) => {
   return (
     <div css={styleSupportModule}>
       <button className="closeBtn" onClick={handleHideModule}>
-        <CloseButton width={20} height={20} />
+        <CloseButton size={20} />
       </button>
 
       <div className="animationWrapper">
