@@ -24,7 +24,9 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
   const featured: Post | null = featuredPost;
   const ANIMATION_TIME = 350; //in milliseconds
 
-  const [showFeatured, setShowFeatured] = useState<boolean>(!featured);
+  const [showFeatured, setShowFeatured] = useState<boolean>(
+    featured ? true : false
+  );
   const [animate, setAnimate] = useState<boolean>(false);
 
   const handlePostToggle = () => {
