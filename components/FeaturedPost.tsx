@@ -39,11 +39,11 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
 
   const stylePostToggle = css({
     display: 'flex',
-    justifyContent: 'space-between',
-    minWidth: 120,
+    justifyContent: 'start',
+    minWidth: 'fit-content',
     maxWidth: 'min-content',
     marginBottom: '.8rem',
-    padding: '.25rem .6rem .2rem .3rem',
+    padding: '.22rem .45rem .2rem .3rem',
     border: '1px solid var(--color-accent-gray)',
     color: 'var(--color-gray)',
     backgroundColor: 'transparent',
@@ -66,10 +66,10 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
     display: 'flex',
     flexDirection: 'column',
     h2: {
-      whiteSpace: 'nowrap',
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'baseline',
+      marginLeft: '.25rem',
       fontFamily: 'var(--font-primary)',
       textTransform: 'uppercase',
       fontSize: 11,
