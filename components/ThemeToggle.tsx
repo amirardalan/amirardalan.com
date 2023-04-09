@@ -19,7 +19,7 @@ const ThemeToggle: FC<ThemeToggleProps> = ({ toggleTheme }) => {
   };
   useEffect(() => {
     if (activeTheme !== null) {
-      document.body.dataset.theme = activeTheme;
+      document.documentElement.dataset.theme = activeTheme;
       window.localStorage.setItem('theme', activeTheme);
     }
   }, [activeTheme]);

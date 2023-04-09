@@ -20,7 +20,7 @@ export const themeLight = {
 export const themeDark = {
   active: 'dark',
   favicon: '/favicon-dark.png',
-  star: 'light',
+  gh: 'light',
   icons: {
     github: '/icons/github-dark.svg',
     twitter: '/icons/twitter-dark.svg',

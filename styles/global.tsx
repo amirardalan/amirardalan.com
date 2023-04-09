@@ -36,7 +36,7 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
     <>
       <Global
         styles={{
-          'body, body[data-theme="light"], body[data-theme="dark"]': {
+          'html[data-theme="light"], html[data-theme="dark"]': {
             overflow: 'overlay',
             '--font-primary': fontPrimary,
             '--font-secondary': fontSecondary,
@@ -54,7 +54,8 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
             '--icon-copy': 'url(/icons/copy-light.svg)',
             '--icon-check': 'url(/icons/check-light.svg)',
           },
-          'body, body[data-theme="light"]': {
+          'html[data-theme="light"]': {
+            '--color-scheme': 'light',
             '--color-primary': primary,
             '--color-secondary': secondary,
             '--color-bg': light,
@@ -80,7 +81,8 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
             '--icon-warning': 'url(/icons/warning-dark.svg)',
           },
 
-          'body[data-theme="dark"]': {
+          'html[data-theme="dark"]': {
+            '--color-scheme': 'dark',
             '--color-primary': secondary,
             '--color-secondary': primary,
             '--color-bg': dark,
@@ -107,6 +109,7 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
           },
           html: {
             scrollBehavior: 'smooth',
+            colorScheme: 'var(--color-scheme)',
           },
           'html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video':
             {
