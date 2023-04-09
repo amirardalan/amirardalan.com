@@ -84,7 +84,7 @@ const BlogImageUpload: FC<BlogImageUploadProps> = ({
         {isFileSelected ? (
           <>
             <button className="buttonCancel" onClick={handleClearImage}>
-              <CloseIcon width={15} height={15} />
+              <CloseIcon size={15} />
             </button>
             <button
               className="buttonCompact"

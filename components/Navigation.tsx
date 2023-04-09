@@ -177,7 +177,7 @@ const Navigation: FC = () => {
           <Link
             href={item.path}
             key={index}
-            onClick={handleCloseMenu}
+            onClick={handleToggleMenu}
             className={
               isActiveNav || isBlog ? item.cName + ' active' : item.cName
             }

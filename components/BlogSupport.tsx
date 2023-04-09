@@ -279,7 +279,7 @@ const BlogSupport: FC<BlogSupportProps> = ({ id, title, url }) => {
   return (
     <div css={styleSupportModule}>
       <button className="closeBtn" onClick={handleHideModule}>
-        <CloseButton width={20} height={20} />
+        <CloseButton size={20} />
       </button>
 
       <div className="animationWrapper">
