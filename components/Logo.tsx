@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { css, keyframes } from '@emotion/react';
+import { css } from '@emotion/react';
 import { useRouteStatus } from '@/hooks/useLoadingIndicator';
 
 type LogoProps = {
@@ -9,18 +9,18 @@ type LogoProps = {
 const Logo: FC<LogoProps> = ({ animate }) => {
   const isLoading = useRouteStatus();
 
-  const rotate360 = keyframes`
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-  `;
-  const rotateToStart = keyframes`
-    to { transform: rotate(360deg); }
-  `;
   const animationStyle = css({
     animation: isLoading
-      ? `${rotate360} 2s infinite ease-in-out`
-      : `${rotateToStart} 2s ease-out`,
+      ? 'rotate360 2s infinite ease-in-out'
+      : 'rotateToStart 2s ease-out',
     animationFillMode: isLoading ? 'none' : 'reverse',
+    '@keyframes rotate360': {
+      '0%': { transform: 'rotate(0deg)' },
+      '100%': { transform: 'rotate(360deg)' },
+    },
+    '@keyframes rotateToStart': {
+      '100%': { transform: 'rotate(360deg)' },
+    },
   });
 
   return (
