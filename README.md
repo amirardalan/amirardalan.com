@@ -197,10 +197,10 @@ Retain the terseness of pure Markdown while getting the benefits of the Next/Ima
 
 ## Dynamically Generate Blog OG Images
 
-This project uses [Vercel OG](https://vercel.com/docs/concepts/functions/edge-functions/og-image-generation) Image Service to dynamically generate images for blog posts.
+This project uses [Vercel OG](https://vercel.com/docs/concepts/functions/edge-functions/og-image-generation) Image Service to dynamically generate images for blog posts. If the first line of a blog post is an image, it will be used as the background image. Otherwise, the Open Graph API route will dynamically generate an image based on the blog post title, description, and a thumbnail.png background image.
 
 - Ensure `NEXT_PUBLIC_SITE_URL` is set in your `.env.local` file.
-- You will also need to add your own og background image in the `public` folder. Then declare a valid image path for the background of your og thumbnail in `data/metadata.ts` (image should be 1200x627).
+- You will also need to add your own `thumbnail.png` background image in the `public` folder (`1200x627`).
 - See `pages/api/og.tsx` and `components/Container.tsx` for the full image generation functionality.
 
 ---
