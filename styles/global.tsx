@@ -37,7 +37,6 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
       <Global
         styles={{
           'html[data-theme="light"], html[data-theme="dark"]': {
-            overflow: 'overlay',
             '--font-primary': fontPrimary,
             '--font-secondary': fontSecondary,
             '--font-tertiary': fontTertiary,
