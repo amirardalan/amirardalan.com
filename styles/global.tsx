@@ -513,10 +513,6 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
               strokeDashoffset: '-124',
             },
           },
-          '@keyframes spin': {
-            from: { transform: 'rotate(0deg)' },
-            to: { transform: 'rotate(180deg)' },
-          },
         }}
       />
     </>

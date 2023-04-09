@@ -59,6 +59,10 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
     '.icon': {
       animation: animate ? `rotate ${ANIMATION_TIME}ms ease-out` : '',
     },
+    '@keyframes rotate': {
+      from: { transform: 'rotate(0deg)' },
+      to: { transform: 'rotate(180deg)' },
+    },
   });
 
   const styleFeaturedPost = css({
