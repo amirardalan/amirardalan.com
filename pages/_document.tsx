@@ -33,11 +33,12 @@ const Document: NextPage<DocumentProps> = () => {
                 return window.localStorage.getItem('theme')
               }
               return window.matchMedia('(prefers-color-scheme: dark)').matches
-              ? 'dark'
-              : 'light'
+                ? 'dark'
+                : 'light'
             }
-            document.body.dataset.theme = getUserPreference();
-            document.documentElement.dataset.theme = getUserPreference();
+            document.body.dataset.theme 
+              = document.documentElement.dataset.theme 
+              = getUserPreference();
           `,
           }}
         />
