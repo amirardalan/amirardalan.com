@@ -27,50 +27,50 @@ const Navigation: FC = () => {
     },
   });
   const styleMobileNavWrapper = css({
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-around',
     position: 'absolute',
-    height: '105vh',
-    width: '75vw',
-    padding: '3.5rem',
-    background: 'var(--color-bg)',
-    top: 0,
-    right: 0,
-    a: {
-      content: '""',
-      display: 'inline',
-      borderBottom: '1px solid var(--color-accent-gray)',
-      width: '100%',
-      height: '100%',
+    display: 'flex',
+    height: '100%',
+    width: '100%',
+    '.mobileNavPanel': {
+      display: 'flex',
+      flexDirection: 'column',
+      position: 'absolute',
+      top: 0,
+      right: 0,
+      zIndex: 2,
+      width: '70vw',
+      height: '100vh',
+      padding: '3.5rem',
+      background: 'var(--color-bg)',
+      a: {
+        content: '""',
+        display: 'inline',
+        borderBottom: '1px solid var(--color-accent)',
+        width: '100%',
+        height: '100%',
+      },
     },
     '.closeArea': {
-      opacity: '.80',
-      height: '100%',
-      width: 200,
-      background: 'var(--color-gradient)',
+      zIndex: 1,
       position: 'absolute',
-      left: -200,
       top: 0,
+      left: 0,
+      height: '100vh',
+      width: '100vw',
+      opacity: '.80',
+      background: 'var(--color-gradient)',
     },
     '@media(min-width: 769px)': {
       display: 'none',
     },
-    '@media (max-width: 768px) and (max-height: 600px)': {
-      width: '33vw',
-      '.closeArea': {
-        width: 500,
-        left: -500,
-      },
-      alignItems: 'right',
-    },
   });
+
   const styleMobileNavButton = css({
     display: 'none',
     '@media(max-width: 768px)': {
       display: 'flex',
     },
-    zIndex: 1,
+    zIndex: 3,
     marginLeft: '2rem',
     '.menuOpen': {
       display: 'flex',
@@ -90,7 +90,6 @@ const Navigation: FC = () => {
     },
     '.menuClose': {
       display: 'flex',
-      animation: 'spin 1s forwards',
     },
   });
 
@@ -133,6 +132,7 @@ const Navigation: FC = () => {
     },
   });
   const styleMobileNavSecondary = css({
+    marginTop: '3rem',
     fontFamily: 'var(--font-secondary)',
     position: 'relative',
     a: {
@@ -232,25 +232,23 @@ const Navigation: FC = () => {
     if (toggleMenu) {
       return (
         <div css={styleMobileNavWrapper}>
-          <Navitem />
-          <div css={styleMobileNavSecondary}>
-            <Logo animate={false} />
-          </div>
           <button className="closeArea" onClick={handleToggleMenu} />
+          <div className="mobileNavPanel">
+            <Navitem />
+            <div css={styleMobileNavSecondary}>
+              <Logo animate={false} />
+            </div>
+          </div>
         </div>
       );
     } else return null;
   };
 
-  const NavMenuControl = () => {
-    if (toggleMenu) {
-      return (
-        <div className="menuClose">
-          <CloseButton width={28} height={28} />
-        </div>
-      );
-    } else return <div className="menuOpen">•••</div>;
-  };
+  const NavMenuControl = () => (
+    <div className={toggleMenu ? 'menuClose' : 'menuOpen'}>
+      {toggleMenu ? <CloseButton width={28} height={28} /> : '•••'}
+    </div>
+  );
 
   return (
     <>
