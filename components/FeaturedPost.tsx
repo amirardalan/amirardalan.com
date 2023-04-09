@@ -69,7 +69,7 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'baseline',
-      marginLeft: '.25rem',
+      marginLeft: '.3rem',
       fontFamily: 'var(--font-primary)',
       textTransform: 'uppercase',
       fontSize: 11,
