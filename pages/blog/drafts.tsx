@@ -9,9 +9,9 @@ import LoadingTriangle from '@/components/LoadingTriangle';
 import Container from '@/components/Container';
 import BlogStyles from '@/components/BlogStyles';
 import BlogPost from '@/components/BlogPost';
+import compareID from '@/utils/compareID';
 
 import { adminContent, breadcrumbContent } from '@/data/content';
-
 import { PostProps } from '@/types/post';
 
 type DraftsProps = {
@@ -48,9 +48,11 @@ const Drafts = ({ drafts, admin, breadcrumb }: DraftsProps) => {
 
   const [draftsList, setDraftsList] = useState<JSX.Element[]>([]);
 
+  const sortedDrafts = drafts.sort(compareID).reverse();
+
   useEffect(() => {
     const newDraftsList: JSX.Element[] = [];
-    drafts.forEach((post: PostProps) => {
+    sortedDrafts.forEach((post: PostProps) => {
       const postElement = (
         <div key={post.id} className="postDraft">
           <BlogPost post={post} />
@@ -63,7 +65,7 @@ const Drafts = ({ drafts, admin, breadcrumb }: DraftsProps) => {
       newDraftsList.push(postElement);
     });
     setDraftsList(newDraftsList);
-  }, [drafts]);
+  }, [drafts, sortedDrafts]);
 
   const RenderDrafts = () => {
     if (isLoggedIn && drafts.length < 1) {

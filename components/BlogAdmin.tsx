@@ -322,11 +322,12 @@ const BlogAdmin: FC = () => {
               },
             },
             '.postDraft': {
-              margin: '1rem 0 .5rem',
-              padding: '1.8rem',
+              margin: '.5rem 0 .5rem',
+              padding: '1rem',
               display: 'flex',
               justifyContent: 'space-between',
               border: '1px solid var(--color-accent)',
+              borderRadius: 6,
               '.draftInfo': {
                 display: 'flex',
                 flexDirection: 'column',
@@ -347,8 +348,19 @@ const BlogAdmin: FC = () => {
               },
               '.blog.postTeaser': {
                 margin: '0 .5rem 0 0',
+                h2: {
+                  margin: '0 0 .25rem 0',
+                  fontSize: 20,
+                },
+                '.dateAndReadTime': {
+                  fontSize: 11,
+                  '.readTime': {
+                    fontSize: 10,
+                  },
+                },
                 'p.teaser': {
-                  marginBottom: 0,
+                  margin: '.3rem 0 0 0',
+                  fontSize: 14,
                 },
               },
             },
