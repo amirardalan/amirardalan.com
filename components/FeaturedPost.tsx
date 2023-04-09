@@ -39,11 +39,12 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
 
   const stylePostToggle = css({
     display: 'flex',
+    alignItems: 'center',
     justifyContent: 'start',
     minWidth: 'fit-content',
     maxWidth: 'min-content',
     marginBottom: '.8rem',
-    padding: '.22rem .45rem .2rem .3rem',
+    padding: '.24rem .7rem .2rem .5rem',
     border: '1px solid var(--color-accent-gray)',
     color: 'var(--color-gray)',
     backgroundColor: 'transparent',
