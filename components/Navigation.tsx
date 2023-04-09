@@ -4,7 +4,8 @@ import { useRouter } from 'next/router';
 import { css, useTheme, Theme } from '@emotion/react';
 import { gtagEvent } from '@/lib/gtag';
 import GitHubButton from 'react-github-btn';
-import CloseButton from '@/components/CloseButton';
+import CloseIcon from '@/components/CloseIcon';
+import MenuIcon from '@/components/MenuIcon';
 import Logo from '@/components/Logo';
 import { nav } from '@/data/navigation';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
@@ -45,22 +46,22 @@ const Navigation: FC = () => {
   });
 
   const styleMobileNavWrapper = css({
-    position: 'absolute',
-    display: 'flex',
+    position: 'fixed',
     height: '100%',
     width: '100%',
     top: 0,
     left: 0,
+    pointerEvents: toggleMenu ? 'auto' : 'none',
     '.mobileNavPanel': {
       display: 'flex',
       justifyContent: 'center',
       flexDirection: 'column',
       position: 'absolute',
       top: 0,
-      right: toggleMenu ? 0 : '-70vw', // slide in from the right
-      transition: 'all 0.5s ease-in-out',
+      right: 0,
+      transform: toggleMenu ? 'translateX(0)' : 'translateX(100%)',
       zIndex: 2,
-      width: '70vw',
+      width: '70%',
       height: '100vh',
       padding: '3.5rem',
       background: 'var(--color-bg)',
@@ -70,6 +71,8 @@ const Navigation: FC = () => {
         width: '100%',
         height: '100%',
       },
+      opacity: toggleMenu ? '1' : '0',
+      transition: 'opacity 0.5s ease-in-out, transform 0.5s ease-in-out',
     },
     '.closeArea': {
       zIndex: 1,
@@ -78,8 +81,7 @@ const Navigation: FC = () => {
       left: 0,
       height: '100vh',
       width: '100vw',
-      opacity: toggleMenu ? '.8' : '0', // fade in from 0 opacity
-      transition: 'opacity 0.5s ease-in-out',
+      opacity: toggleMenu ? '.8' : '0',
       background: 'var(--color-gradient)',
     },
     '@media(min-width: 769px)': {
@@ -88,31 +90,9 @@ const Navigation: FC = () => {
   });
 
   const styleMobileNavButton = css({
-    display: 'none',
-    '@media(max-width: 768px)': {
-      display: 'flex',
-    },
+    display: 'flex',
     zIndex: 3,
     marginLeft: '2rem',
-    '.menuOpen': {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      height: 28,
-      width: 28,
-      textTransform: 'uppercase',
-      textAlign: 'center',
-      fontSize: 9,
-      boxShadow: 'inset 0 0 0 1px var(--color-primary)',
-      borderRadius: 20,
-      '&:active': {
-        background: 'var(--color-primary)',
-        color: 'var(--color-bg)',
-      },
-    },
-    '.menuClose': {
-      display: 'flex',
-    },
   });
 
   const styleNavIcon = css({
@@ -120,7 +100,7 @@ const Navigation: FC = () => {
     width: 16,
   });
 
-  const styleNavitem = css({
+  const styleNavItems = css({
     position: 'relative',
     display: 'flex',
     alignItems: 'center',
@@ -186,8 +166,8 @@ const Navigation: FC = () => {
     title: string;
   }
 
-  const Navitem = () => (
-    <nav css={styleNavitem}>
+  const NavItems = () => (
+    <nav css={styleNavItems}>
       {nav.map((item: NavItem, index: Key) => {
         const isActiveNav = router.asPath === item.path;
         const isBlog =
@@ -229,31 +209,23 @@ const Navigation: FC = () => {
   );
 
   const NavMobileMenu = () => {
-    if (toggleMenu) {
-      return (
-        <div css={styleMobileNavWrapper}>
-          <button className="closeArea" onClick={handleToggleMenu} />
-          <div className="mobileNavPanel">
-            <Navitem />
-            <div css={styleMobileNavSecondary}>
-              <Logo animate={false} />
-            </div>
+    return (
+      <div css={styleMobileNavWrapper}>
+        <button className="closeArea" onClick={handleToggleMenu} />
+        <div className="mobileNavPanel">
+          <NavItems />
+          <div css={styleMobileNavSecondary}>
+            <Logo animate={false} />
           </div>
         </div>
-      );
-    } else return null;
+      </div>
+    );
   };
-
-  const NavMenuControl = () => (
-    <div className={toggleMenu ? 'menuClose' : 'menuOpen'}>
-      {toggleMenu ? <CloseButton width={28} height={28} /> : '•••'}
-    </div>
-  );
 
   return (
     <>
       <div css={styleMainNav}>
-        <Navitem />
+        <NavItems />
       </div>
       <button
         css={styleMobileNavButton}
@@ -261,7 +233,7 @@ const Navigation: FC = () => {
         aria-label="Navigation Menu"
         aria-expanded={toggleMenu}
       >
-        <NavMenuControl />
+        {toggleMenu ? <CloseIcon size={28} /> : <MenuIcon size={28} />}
       </button>
       <NavMobileMenu />
     </>

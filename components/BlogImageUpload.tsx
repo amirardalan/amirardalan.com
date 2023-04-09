@@ -1,7 +1,7 @@
 import { FC, useState, useRef } from 'react';
 import { css } from '@emotion/react';
 import LoadingSpinner from '@/components/LoadingSpinner';
-import CloseIcon from '@/components/CloseButton';
+import CloseIcon from '@/components/CloseIcon';
 
 interface BlogImageUploadProps {
   uploadImage: (file: File) => Promise<string>;

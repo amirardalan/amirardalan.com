@@ -1,7 +1,7 @@
 import { FC, useState } from 'react';
 import Image from 'next/image';
 import { css } from '@emotion/react';
-import CloseButton from '@/components/CloseButton';
+import CloseButton from '@/components/CloseIcon';
 import LikeButton from '@/components/LikeButton';
 import { donate } from '@/data/content';
 import { gtagEvent } from '@/lib/gtag';
