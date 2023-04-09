@@ -1,19 +1,39 @@
-import { FC, useState, useEffect, Key } from 'react';
+import { FC, useState, Key, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { css, useTheme, Theme } from '@emotion/react';
 import { gtagEvent } from '@/lib/gtag';
-import { useMediaQuery } from '@/hooks/useMediaQuery';
 import GitHubButton from 'react-github-btn';
 import CloseButton from '@/components/CloseButton';
 import Logo from '@/components/Logo';
 import { nav } from '@/data/navigation';
-import { useRouteStatus } from '@/hooks/useLoadingIndicator';
+import { useMediaQuery } from '@/hooks/useMediaQuery';
 
 const Navigation: FC = () => {
   const theme: Theme = useTheme();
   const router = useRouter();
-  const loading = useRouteStatus();
+
+  const isMobile = useMediaQuery(768);
+  const [toggleMenu, setToggleMenu] = useState(false);
+
+  const handleToggleMenu = () => {
+    setToggleMenu(!toggleMenu);
+    if (!toggleMenu) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+  };
+
+  useEffect(() => {
+    !isMobile ? setToggleMenu(false) : null;
+
+    isMobile && toggleMenu
+      ? (document.body.style.overflowY = 'hidden')
+      : (document.body.style.overflowY = 'scroll');
+  }, [isMobile, toggleMenu]);
+
+  const handleCloseMenu = () => {};
 
   const styleMainNav = css({
     display: 'flex',
@@ -28,6 +48,7 @@ const Navigation: FC = () => {
       display: 'none',
     },
   });
+
   const styleMobileNavWrapper = css({
     position: 'absolute',
     display: 'flex',
@@ -41,7 +62,8 @@ const Navigation: FC = () => {
       flexDirection: 'column',
       position: 'absolute',
       top: 0,
-      right: 0,
+      right: toggleMenu ? 0 : '-70vw', // slide in from the right
+      transition: 'all 0.5s ease-in-out',
       zIndex: 2,
       width: '70vw',
       height: '100vh',
@@ -49,7 +71,6 @@ const Navigation: FC = () => {
       background: 'var(--color-bg)',
       a: {
         content: '""',
-        display: 'inline',
         borderBottom: '1px solid var(--color-accent)',
         width: '100%',
         height: '100%',
@@ -62,7 +83,8 @@ const Navigation: FC = () => {
       left: 0,
       height: '100vh',
       width: '100vw',
-      opacity: '.80',
+      opacity: toggleMenu ? '.8' : '0', // fade in from 0 opacity
+      transition: 'opacity 0.5s ease-in-out',
       background: 'var(--color-gradient)',
     },
     '@media(min-width: 769px)': {
@@ -161,19 +183,6 @@ const Navigation: FC = () => {
       marginLeft: '2rem',
     },
   });
-
-  const [toggleMenu, setToggleMenu] = useState(false);
-
-  const handleToggleMenu = () => {
-    setToggleMenu(!toggleMenu);
-    if (!toggleMenu) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-  };
-
-  const handleCloseMenu = () => {};
   interface NavItem {
     path: string;
     cName: string;
@@ -254,7 +263,6 @@ const Navigation: FC = () => {
       <button
         css={styleMobileNavButton}
         onClick={handleToggleMenu}
-        className={toggleMenu ? 'open' : ''}
         aria-label="Navigation Menu"
         aria-expanded={toggleMenu}
       >
