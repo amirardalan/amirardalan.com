@@ -25,11 +25,9 @@ const Navigation: FC = () => {
     !isMobile ? setToggleMenu(false) : null;
 
     isMobile && toggleMenu
-      ? (document.body.style.overflow = 'hidden')
-      : (document.body.style.overflow = 'scroll');
+      ? (document.body.style.overflowY = 'hidden')
+      : (document.body.style.overflowY = 'scroll');
   }, [isMobile, toggleMenu]);
-
-  const handleCloseMenu = () => {};
 
   const styleMainNav = css({
     display: 'flex',
