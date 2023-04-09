@@ -20,18 +20,24 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
   featuredPost,
   latestPost,
 }) => {
-  const featured: Post | null = featuredPost;
   const latest: Post | null = latestPost;
+  const featured: Post | null = featuredPost;
+  const ANIMATION_TIME = 350; //in milliseconds
 
-  const [animate, setAnimate] = useState<boolean>(false);
   const [showFeatured, setShowFeatured] = useState<boolean>(!featured);
-  const handleToggleFeatured = () => {
-    setAnimate(!animate);
+  const [animate, setAnimate] = useState<boolean>(false);
+
+  const handlePostToggle = () => {
+    setAnimate(true);
     featured ? setShowFeatured(!showFeatured) : null;
+    setTimeout(() => {
+      setAnimate(false);
+    }, ANIMATION_TIME);
   };
+
   const postTypeTitle = showFeatured ? home.featured.title : home.latest.title;
 
-  const stylePostTypeTitle = css({
+  const stylePostToggle = css({
     display: 'flex',
     justifyContent: 'space-between',
     minWidth: 120,
@@ -51,7 +57,7 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
       },
     },
     '.icon': {
-      animation: 'rotate .5s linear infinite',
+      animation: animate ? `rotate ${ANIMATION_TIME}ms ease-out` : '',
     },
   });
 
@@ -99,7 +105,7 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
   if (featuredPost || latestPost) {
     return (
       <div css={styleFeaturedPost}>
-        <button onClick={handleToggleFeatured} css={stylePostTypeTitle}>
+        <button onClick={handlePostToggle} css={stylePostToggle}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="14"
