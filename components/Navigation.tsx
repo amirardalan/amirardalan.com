@@ -71,8 +71,7 @@ const Navigation: FC = () => {
         width: '100%',
         height: '100%',
       },
-      opacity: toggleMenu ? '1' : '0',
-      transition: 'opacity 0.5s ease-in-out, transform 0.5s ease-in-out',
+      transition: 'transform 0.5s ease-in-out',
     },
     '.closeArea': {
       zIndex: 1,
@@ -81,8 +80,9 @@ const Navigation: FC = () => {
       left: 0,
       height: '100vh',
       width: '100vw',
-      opacity: toggleMenu ? '.8' : '0',
+      opacity: toggleMenu ? 0.8 : 0,
       background: 'var(--color-gradient)',
+      transition: 'opacity 0.5s ease-in-out',
     },
     '@media(min-width: 769px)': {
       display: 'none',
@@ -208,34 +208,33 @@ const Navigation: FC = () => {
     </nav>
   );
 
-  const NavMobileMenu = () => {
-    return (
-      <div css={styleMobileNavWrapper}>
-        <button className="closeArea" onClick={handleToggleMenu} />
-        <div className="mobileNavPanel">
-          <NavItems />
-          <div css={styleMobileNavSecondary}>
-            <Logo animate={false} />
-          </div>
-        </div>
-      </div>
-    );
-  };
-
   return (
     <>
-      <div css={styleMainNav}>
-        <NavItems />
-      </div>
-      <button
-        css={styleMobileNavButton}
-        onClick={handleToggleMenu}
-        aria-label="Navigation Menu"
-        aria-expanded={toggleMenu}
-      >
-        {toggleMenu ? <CloseIcon size={28} /> : <MenuIcon size={28} />}
-      </button>
-      <NavMobileMenu />
+      {!isMobile ? (
+        <div css={styleMainNav}>
+          <NavItems />
+        </div>
+      ) : (
+        <>
+          <button
+            css={styleMobileNavButton}
+            onClick={handleToggleMenu}
+            aria-label="Navigation Menu"
+            aria-expanded={toggleMenu}
+          >
+            {toggleMenu ? <CloseIcon size={28} /> : <MenuIcon size={28} />}
+          </button>
+          <div css={styleMobileNavWrapper}>
+            <button className="closeArea" onClick={handleToggleMenu} />
+            <div className="mobileNavPanel">
+              <NavItems />
+              <div css={styleMobileNavSecondary}>
+                <Logo animate={false} />
+              </div>
+            </div>
+          </div>
+        </>
+      )}
     </>
   );
 };

@@ -199,8 +199,9 @@ Retain the terseness of pure Markdown while getting the benefits of the Next/Ima
 
 This project uses [Vercel OG](https://vercel.com/docs/concepts/functions/edge-functions/og-image-generation) Image Service to dynamically generate images for blog posts.
 
-- Ensure `NEXT_PUBLIC_META_NAME` and `NEXT_PUBLIC_META_DESCRIPTION` are set in your `.env.local` file.
-- You will also need to declare a valid image path for the background of your og thumbnail in `data/metadata.ts` (image should be 1200x627).
+- Ensure `NEXT_PUBLIC_SITE_URL` is set in your `.env.local` file.
+- You will also need to add your own og background image in the `public` folder. Then declare a valid image path for the background of your og thumbnail in `data/metadata.ts` (image should be 1200x627).
+- See `pages/api/og.tsx` and `components/Container.tsx` for the full image generation functionality.
 
 ---
 
