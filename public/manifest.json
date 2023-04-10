@@ -23,15 +23,15 @@
     {
       "name": "Amir Ardalan Blog",
       "short_name": "Amir",
-      "description": "Front-end developer, UI designer, and React enthusiast.",
+      "description": "Developer, designer, and React enthusiast. Making websites since before the internet was cool.",
       "url": "amirardalan.com",
-      "icons": [{ "src": "/touch-192.png", "sizes": "192x192" }]
+      "icons": [{ "src": "/pwa-icon.png", "sizes": "192x192" }]
     }
   ],
   "description": "Amir Ardalan Thumbnail",
   "screenshots": [
     {
-      "src": "/thumbnail.png",
+      "src": "https://amirardalan.com/api/og?title=Amir%20Ardalan%20&amp;description=Developer%2C%20designer%2C%20and%20React%20enthusiast.%20Making%20websites%20since%20before%20the%20internet%20was%20cool.",
       "type": "image/png",
       "sizes": "1200x627"
     }
