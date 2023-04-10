@@ -45,6 +45,20 @@ const BlogMarkdown: FC<BlogMarkdownProps> = ({ markdown }) => {
       '@media(max-width: 768px)': {
         fontSize: 14,
       },
+      '::-webkit-scrollbar': {
+        width: 16,
+        height: '8px',
+      },
+      '::-webkit-scrollbar-thumb': {
+        border: '4px solid var(--color-gray-dark)',
+        width: 8,
+        backgroundClip: 'padding-box',
+        borderRadius: 10,
+        WebkitBoxShadow: 'none',
+        '&:hover': {
+          border: '4px solid var(--color-disabled)',
+        },
+      },
     },
     '.copyCode': {
       position: 'relative',

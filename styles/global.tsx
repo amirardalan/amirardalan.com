@@ -165,6 +165,32 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
             verticalAlign: 'middle',
             caretColor: 'var(--color-heading)',
           },
+          textarea: {
+            '::-webkit-scrollbar-track': {
+              backgroundColor: 'transparent',
+              WebkitBoxShadow: 'none',
+              borderRadius: 10,
+            },
+            '::-webkit-scrollbar-track-piece': {
+              display: 'none',
+            },
+            '::-webkit-scrollbar': {
+              backgroundColor: 'transparent',
+              width: 16,
+              height: '8px',
+            },
+            '::-webkit-scrollbar-thumb': {
+              border: '4px solid rgba(0, 0, 0, 0)',
+              width: 8,
+              backgroundClip: 'padding-box',
+              borderRadius: 10,
+              WebkitBoxShadow: 'none',
+              backgroundColor: 'var(--color-accent-gray)',
+              '&:hover': {
+                backgroundColor: 'var(--color-disabled)',
+              },
+            },
+          },
           // Base
           'html, body': {
             backgroundColor: 'var(--color-bg)',
