@@ -31,7 +31,7 @@
   "description": "Amir Ardalan Thumbnail",
   "screenshots": [
     {
-      "src": "https://amirardalan.com/api/og?title=Amir%20Ardalan%20&amp;description=Developer%2C%20designer%2C%20and%20React%20enthusiast.%20Making%20websites%20since%20before%20the%20internet%20was%20cool.",
+      "src": "/thumbnail.png",
       "type": "image/png",
       "sizes": "1200x627"
     }
