@@ -493,7 +493,7 @@ export const errorContent = {
       title: 'Page Not Found – Amir Ardalan',
     },
     title: '404',
-    text: `Page not found`,
+    text: `🤔 Page not found`,
     link: {
       path: '/',
       title: 'Return Home',
@@ -506,7 +506,7 @@ export const errorContent = {
       title: 'Internal Server Error – Amir Ardalan',
     },
     title: '500',
-    text: `Internal server error`,
+    text: `😵 Internal server error`,
     link: {
       path: '/',
       title: 'Return Home',

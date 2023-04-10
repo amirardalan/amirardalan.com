@@ -12,7 +12,11 @@ type ErrorProps = { error: ErrorTypes };
 
 const Error404: NextPage<ErrorProps> = ({ error }) => {
   return (
-    <Container title={error.title} description={error.title} robots="noindex">
+    <Container
+      title={error.meta.title}
+      description={error.title}
+      robots="noindex"
+    >
       <ErrorLayout error={error} />
     </Container>
   );

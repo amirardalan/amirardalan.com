@@ -96,8 +96,13 @@ const ErrorLayout: FC<ErrorProps> = ({ error }) => {
         </div>
       </div>
       <div css={styleHomeButton}>
-        <Link href={error.link.path} aria-label={error.link.title} passHref>
-          <button className="ctaButton">{error.link.title}</button>
+        <Link
+          className="ctaButton"
+          href={error.link.path}
+          aria-label={error.link.title}
+          passHref
+        >
+          {error.link.title}
         </Link>
       </div>
     </main>
