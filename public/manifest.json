@@ -6,10 +6,16 @@
       "src": "/touch-192.png",
       "type": "image/png",
       "sizes": "192x192",
-      "purpose": "any maskable"
+      "purpose": "maskable"
     },
     {
       "src": "/touch-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/pwa-icon.png",
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "any maskable"
@@ -25,7 +31,7 @@
       "short_name": "Amir",
       "description": "Developer, designer, and React enthusiast. Making websites since before the internet was cool.",
       "url": "amirardalan.com",
-      "icons": [{ "src": "/pwa-icon.png", "sizes": "192x192" }]
+      "icons": [{ "src": "/pwa-icon.png", "sizes": "512x512" }]
     }
   ],
   "description": "Amir Ardalan Thumbnail",
