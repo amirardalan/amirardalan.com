@@ -10,6 +10,7 @@ import Container from '@/components/Container';
 import BlogStyles from '@/components/BlogStyles';
 import BlogPost from '@/components/BlogPost';
 import compareID from '@/utils/compareID';
+import Dropdown from '@/components/Dropdown';
 
 import { adminContent, breadcrumbContent } from '@/data/content';
 import { PostProps } from '@/types/post';
@@ -47,8 +48,12 @@ const Drafts = ({ drafts, admin, breadcrumb }: DraftsProps) => {
   };
 
   const [draftsList, setDraftsList] = useState<JSX.Element[]>([]);
+  const [sortOrder, setSortOrder] = useState<string>('newest');
 
-  const sortedDrafts = drafts.sort(compareID).reverse();
+  const sortedDrafts = drafts.sort(compareID);
+  if (sortOrder === 'newest') {
+    sortedDrafts.reverse();
+  }
 
   useEffect(() => {
     const newDraftsList: JSX.Element[] = [];
@@ -65,7 +70,7 @@ const Drafts = ({ drafts, admin, breadcrumb }: DraftsProps) => {
       newDraftsList.push(postElement);
     });
     setDraftsList(newDraftsList);
-  }, [drafts, sortedDrafts]);
+  }, [drafts, sortOrder, sortedDrafts]);
 
   const RenderDrafts = () => {
     if (isLoggedIn && drafts.length < 1) {
@@ -82,8 +87,18 @@ const Drafts = ({ drafts, admin, breadcrumb }: DraftsProps) => {
     } else if (isLoggedIn) {
       return (
         <>
-          <Breadcrumbs />
           <div className="drafts">
+            <div className="draftsControls">
+              <Breadcrumbs />
+              <div className="draftSort">
+                <Dropdown
+                  label="Sort by:"
+                  value={sortOrder}
+                  handleChange={(event) => setSortOrder(event.target.value)}
+                  data={['newest', 'oldest']}
+                />
+              </div>
+            </div>
             <main>{draftsList}</main>
           </div>
         </>
