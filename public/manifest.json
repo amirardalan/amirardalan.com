@@ -19,6 +19,13 @@
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "any maskable"
+    },
+    {
+      "src": "/pwa-icon-win.png",
+      "type": "image/png",
+      "sizes": "270x270",
+      "purpose": "any maskable",
+      "platform": "windows"
     }
   ],
   "start_url": "amirardalan.com",
@@ -31,7 +38,7 @@
       "short_name": "Amir",
       "description": "Developer, designer, and React enthusiast. Making websites since before the internet was cool.",
       "url": "amirardalan.com",
-      "icons": [{ "src": "/pwa-icon.png", "sizes": "512x512" }]
+      "icons": [{ "src": "/touch-512.png", "sizes": "512x512" }]
     }
   ],
   "description": "Amir Ardalan Thumbnail",
