@@ -174,7 +174,22 @@ const BlogAdmin: FC = () => {
             '.blog.admin': {
               width: '100%',
               '.drafts': {
-                marginTop: '1rem',
+                '.draftsControls': {
+                  display: 'flex',
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                  marginBottom: '1rem',
+                },
+                '.draftSort': {
+                  label: {
+                    fontFamily: 'var(--font-primary)',
+                    fontSize: 13,
+                    margin: 0,
+                  },
+                  display: 'flex',
+                  flexDirection: 'row',
+                  justifyContent: 'end',
+                },
               },
               form: {
                 marginTop: '1rem',
