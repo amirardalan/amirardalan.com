@@ -6,26 +6,27 @@
       "src": "/pwa-icon-mac.png",
       "type": "image/png",
       "sizes": "512x512",
-      "purpose": "any maskable",
+      "purpose": "any",
       "platform": "macos"
     },
     {
-      "src": "/pwa-icon-win.png",
+      "src": "/touch-512.png",
       "type": "image/png",
-      "sizes": "270x270",
-      "purpose": "any maskable",
+      "sizes": "512x512",
+      "purpose": "maskable",
+      "platform": "web"
+    },
+    {
+      "src": "/touch-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "maskable",
       "platform": "windows"
     },
     {
       "src": "/touch-192.png",
       "type": "image/png",
       "sizes": "192x192",
-      "purpose": "maskable"
-    },
-    {
-      "src": "/touch-512.png",
-      "type": "image/png",
-      "sizes": "512x512",
       "purpose": "maskable"
     }
   ],
