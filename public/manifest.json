@@ -3,6 +3,20 @@
   "name": "Amir Ardalan – Developer & designer",
   "icons": [
     {
+      "src": "/pwa-icon-mac.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable",
+      "media": "macos"
+    },
+    {
+      "src": "/pwa-icon-win.png",
+      "type": "image/png",
+      "sizes": "217x217",
+      "purpose": "maskable",
+      "platform": "windows"
+    },
+    {
       "src": "/touch-192.png",
       "type": "image/png",
       "sizes": "192x192",
@@ -13,19 +27,6 @@
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "maskable"
-    },
-    {
-      "src": "/pwa-icon.png",
-      "type": "image/png",
-      "sizes": "512x512",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "/pwa-icon-mac.png",
-      "type": "image/png",
-      "sizes": "512x512",
-      "purpose": "any maskable",
-      "media": "macos"
     }
   ],
   "start_url": "amirardalan.com",
