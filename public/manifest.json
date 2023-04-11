@@ -7,7 +7,7 @@
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "any maskable",
-      "media": "macos"
+      "platform": "macos"
     },
     {
       "src": "/pwa-icon-win.png",
