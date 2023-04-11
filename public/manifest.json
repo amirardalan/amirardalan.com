@@ -21,24 +21,26 @@
       "purpose": "any maskable"
     },
     {
-      "src": "/pwa-icon-win.png",
-      "type": "image/png",
-      "sizes": "270x270",
-      "purpose": "any maskable",
-      "platform": "windows"
-    },
-    {
       "src": "/pwa-icon-mac.png",
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "any maskable",
-      "platform": "mac"
+      "media": "macos"
     }
   ],
   "start_url": "amirardalan.com",
   "background_color": "#e4e9f8",
   "display": "standalone",
   "scope": "/",
+  "shortcuts": [
+    {
+      "name": "Amir Ardalan Blog",
+      "short_name": "Amir",
+      "description": "Developer, designer, and React enthusiast. Making websites since before the internet was cool.",
+      "url": "amirardalan.com",
+      "icons": [{ "src": "/pwa-icon.png", "sizes": "512x512" }]
+    }
+  ],
   "description": "Amir Ardalan Thumbnail",
   "screenshots": [
     {
