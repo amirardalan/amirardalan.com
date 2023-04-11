@@ -3,18 +3,18 @@
   "name": "Amir Ardalan – Developer & designer",
   "icons": [
     {
-      "src": "/pwa-icon-win.png",
-      "type": "image/png",
-      "sizes": "217x217",
-      "purpose": "maskable",
-      "platform": "windows"
-    },
-    {
       "src": "/pwa-icon-mac.png",
       "type": "image/png",
       "sizes": "512x512",
-      "purpose": "any",
+      "purpose": "any maskable",
       "platform": "macos"
+    },
+    {
+      "src": "/pwa-icon-win.png",
+      "type": "image/png",
+      "sizes": "270x270",
+      "purpose": "any maskable",
+      "platform": "windows"
     },
     {
       "src": "/touch-192.png",
