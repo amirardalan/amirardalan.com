@@ -94,6 +94,12 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
       fontSize: 18,
       fontWeight: 700,
       color: 'var(--color-text)',
+      '&:hover': {
+        color: 'var(--color-primary)',
+        '@media(max-width: 768px)': {
+          color: 'var(--color-text)',
+        },
+      },
 
       '@media(max-width: 480px)': {
         fontSize: 16,
