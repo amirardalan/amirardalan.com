@@ -51,6 +51,9 @@ const Navigation: FC = () => {
     a: {
       margin: '0 1.5rem',
       color: 'var(--color-heading)',
+      '&:hover': {
+        color: 'var(--color-primary)',
+      },
     },
     '@media(max-width: 768px)': {
       display: 'none',
