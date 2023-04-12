@@ -11,9 +11,17 @@ type BlogSupportProps = {
   id: number;
   title: string;
   url: string;
+  liked: boolean;
+  handleLike: () => Promise<void>;
 };
 
-const BlogSupport: FC<BlogSupportProps> = ({ id, title, url }) => {
+const BlogSupport: FC<BlogSupportProps> = ({
+  id,
+  title,
+  url,
+  liked,
+  handleLike,
+}) => {
   const [hideModule, setHideModule] = useState(false);
   const [showOptions, setshowOptions] = useState(false);
   const handleshowOptions = () => {
@@ -237,6 +245,9 @@ const BlogSupport: FC<BlogSupportProps> = ({ id, title, url }) => {
       button: {
         display: 'flex',
         textDecoration: 'underline',
+        '&:last-of-type': {
+          marginLeft: '1.5rem',
+        },
         '@media (max-width: 480px)': {
           fontSize: 12,
           lineHeight: '.9rem',
@@ -289,7 +300,7 @@ const BlogSupport: FC<BlogSupportProps> = ({ id, title, url }) => {
               <div className="copyContainer">
                 <span className="supportHeading">
                   <h4>Did you enjoy this post?</h4>
-                  <LikeButton id={id} title={title} />
+                  <LikeButton liked={liked} handleLike={handleLike} />
                 </span>
                 <div className="donate">
                   <span>
@@ -304,12 +315,18 @@ const BlogSupport: FC<BlogSupportProps> = ({ id, title, url }) => {
                     </svg>
                   </span>
                   <button
-                    aria-label="Buy me a coffee"
                     onClick={handleshowOptions}
+                    title="Buy me a coffee"
+                    aria-label="Buy me a coffee"
                   >
                     Buy me a coffee
                   </button>
-                  <BlogPostTweet title={title} url={url} />
+                  <BlogPostTweet
+                    title={title}
+                    url={url}
+                    text={true}
+                    size={19}
+                  />
                 </div>
               </div>
             </div>

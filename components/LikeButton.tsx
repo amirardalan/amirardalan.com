@@ -1,36 +1,19 @@
-import { FC, useState, useEffect } from 'react';
-import { likePost } from '@/lib/blog';
+import { FC } from 'react';
 import LikeIcon from '@/components/LikeIcon';
-import { gtagEvent } from '@/lib/gtag';
 
 type LikeProps = {
-  id: number;
-  title: string;
+  liked: boolean;
+  handleLike: () => Promise<void>;
 };
 
-const LikeButton: FC<LikeProps> = ({ id, title }) => {
-  const [liked, setLiked] = useState(false);
-
-  const handleLike = async () => {
-    setLiked(!liked);
-    await likePost(id, liked);
-    localStorage.setItem(`liked_${id}`, (!liked).toString());
-    gtagEvent({
-      action: 'like',
-      category: 'post',
-      label: `Post ${title} (ID: ${id})`,
-    });
-  };
-
-  useEffect(() => {
-    const likedStatus = localStorage.getItem(`liked_${id}`);
-    if (likedStatus === 'true') {
-      setLiked(true);
-    }
-  }, [id]);
-
+const LikeButton: FC<LikeProps> = ({ liked, handleLike }) => {
   return (
-    <button onClick={handleLike}>
+    <button
+      onClick={handleLike}
+      aria-label="Like this post"
+      title="Like this post"
+      className="buttonHover"
+    >
       <LikeIcon active={!liked} />
     </button>
   );

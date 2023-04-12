@@ -67,6 +67,6 @@ export const uploadImage = async (file: File): Promise<string> => {
 
 // Like Post
 export async function likePost(id: number, liked: boolean): Promise<void> {
-  const method = liked ? 'DELETE' : 'PUT';
+  const method = liked ? 'PUT' : 'DELETE';
   await fetch(`/api/likes/update/${id}`, { method });
 }
