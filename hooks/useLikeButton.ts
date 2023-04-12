@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 
 type LikeButton = [boolean, () => Promise<void>];
 
-export const useLikeButton = (id: number): LikeButton => {
+export const useLikeButton = (id: number, title: string): LikeButton => {
   const [liked, setLiked] = useState(false);
 
   const handleLike = async () => {
@@ -14,7 +14,7 @@ export const useLikeButton = (id: number): LikeButton => {
     gtagEvent({
       action: 'like',
       category: 'post',
-      label: `Post (ID: ${id})`,
+      label: `Post: ${title} (ID: ${id})`,
     });
   };
 

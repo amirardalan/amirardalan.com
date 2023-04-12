@@ -245,6 +245,9 @@ const BlogSupport: FC<BlogSupportProps> = ({
       button: {
         display: 'flex',
         textDecoration: 'underline',
+        '&:last-of-type': {
+          marginLeft: '1.5rem',
+        },
         '@media (max-width: 480px)': {
           fontSize: 12,
           lineHeight: '.9rem',
@@ -312,12 +315,18 @@ const BlogSupport: FC<BlogSupportProps> = ({
                     </svg>
                   </span>
                   <button
-                    aria-label="Buy me a coffee"
                     onClick={handleshowOptions}
+                    title="Buy me a coffee"
+                    aria-label="Buy me a coffee"
                   >
                     Buy me a coffee
                   </button>
-                  <BlogPostTweet title={title} url={url} />
+                  <BlogPostTweet
+                    title={title}
+                    url={url}
+                    text={true}
+                    size={19}
+                  />
                 </div>
               </div>
             </div>

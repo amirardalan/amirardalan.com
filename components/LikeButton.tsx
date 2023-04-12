@@ -8,7 +8,12 @@ type LikeProps = {
 
 const LikeButton: FC<LikeProps> = ({ liked, handleLike }) => {
   return (
-    <button onClick={handleLike}>
+    <button
+      onClick={handleLike}
+      aria-label="Like this post"
+      title="Like this post"
+      className="buttonHover"
+    >
       <LikeIcon active={!liked} />
     </button>
   );

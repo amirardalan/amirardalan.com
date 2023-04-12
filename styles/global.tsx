@@ -447,6 +447,27 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
             overflow: 'hidden',
             alignSelf: 'flex-end',
           },
+          '.buttonHover': {
+            position: 'relative',
+            zIndex: 1,
+            ':not(:first-of-type)': {
+              marginLeft: '1.5rem',
+            },
+            '&:hover::after': {
+              top: '-38%',
+              left: '-42%',
+              position: 'absolute',
+              content: '" "',
+              backgroundColor: 'var(--color-accent)',
+              borderRadius: 100,
+              padding: 22,
+              cursor: 'pointer',
+              zIndex: -1,
+              '@media(max-width: 1024px)': {
+                display: 'none',
+              },
+            },
+          },
           '@keyframes fadeIn': {
             '0%': {
               opacity: 0,

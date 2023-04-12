@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 import { GetStaticProps, GetStaticPaths } from 'next';
 import dynamic from 'next/dynamic';
 
@@ -22,6 +22,7 @@ import { PostProps } from '@/types/post';
 import { AdminControlsTypes } from '@/types/admin';
 import { BlogNavigationTypes } from '@/types/blog';
 import LikeButton from '@/components/LikeButton';
+import BlogPostTweet from '@/components/BlogPostTweet';
 
 const BlogPostControls = dynamic(
   () => import('@/components/BlogPostControls'),
@@ -102,7 +103,7 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
   const [fetchStatus, setFetchStatus] = useFetchStatus();
   const isFetching = fetchStatus;
 
-  const [liked, handleLike] = useLikeButton(post.id);
+  const [liked, handleLike] = useLikeButton(post.id, post.title);
 
   // Set OG Image for blog posts. Use first image from post, otherwise dynamically generate one.
   const metaImage = post.content
@@ -173,7 +174,19 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
             </span>
           </div>
 
-          <LikeButton liked={liked} handleLike={handleLike} />
+          <div className="likeAndShare">
+            <div className="buttonHover">
+              <LikeButton liked={liked} handleLike={handleLike} />
+            </div>
+            <div className="buttonHover">
+              <BlogPostTweet
+                title={post.title}
+                url={url}
+                text={false}
+                size={25}
+              />
+            </div>
+          </div>
 
           <Markdown markdown={post} />
 
@@ -224,9 +237,8 @@ export default BlogPost;
 
 const styleBlogPost = css({
   '.postDetails': {
-    marginBottom: '5rem',
+    marginBottom: '3.5rem',
     '.author': {
-      // marginTop: '1rem',
       '&:after': {
         margin: '0 .5rem',
         content: '"•"',
@@ -245,6 +257,13 @@ const styleBlogPost = css({
     },
     '@media(max-width: 480px)': {
       flexDirection: 'column',
+    },
+  },
+  '.likeAndShare': {
+    display: 'flex',
+    marginBottom: '2rem',
+    '@media(max-width: 1024px)': {
+      marginBottom: '1rem',
     },
   },
   '.postFull': {
