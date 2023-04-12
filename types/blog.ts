@@ -11,6 +11,8 @@ export interface BlogNavigationTypes {
   };
   url: string;
   isPublished: Boolean;
+  liked: boolean;
+  handleLike: () => Promise<void>;
 }
 
 export interface BlogStatsTypes {

@@ -12,6 +12,8 @@ const BlogNavigation: FC<BlogNavigationProps> = ({
   post,
   isPublished,
   url,
+  liked,
+  handleLike,
 }) => {
   const total = feed?.length;
   const current = post?.id;
@@ -83,7 +85,13 @@ const BlogNavigation: FC<BlogNavigationProps> = ({
 
   return (
     <div css={styleBlogNavigation}>
-      <BlogSupport id={post.id} title={post.title} url={url} />
+      <BlogSupport
+        id={post.id}
+        title={post.title}
+        url={url}
+        liked={liked}
+        handleLike={handleLike}
+      />
       <div css={styleBlogLinks}>
         {prevPost ? <ShowPrevLink /> : null}
         {nextPost ? <ShowNextLink /> : null}

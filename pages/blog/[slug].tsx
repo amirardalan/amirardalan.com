@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { GetStaticProps, GetStaticPaths } from 'next';
 import dynamic from 'next/dynamic';
 
@@ -6,6 +6,7 @@ import prisma from '@/lib/prisma';
 import { useSession } from 'next-auth/react';
 import { css } from '@emotion/react';
 import { useFetchStatus } from '@/hooks/useLoadingIndicator';
+import { useLikeButton } from '@/hooks/useLikeButton';
 
 import Container from '@/components/Container';
 import BlogStyles from '@/components/BlogStyles';
@@ -20,6 +21,7 @@ import { blogPostContent, adminContent } from '@/data/content';
 import { PostProps } from '@/types/post';
 import { AdminControlsTypes } from '@/types/admin';
 import { BlogNavigationTypes } from '@/types/blog';
+import LikeButton from '@/components/LikeButton';
 
 const BlogPostControls = dynamic(
   () => import('@/components/BlogPostControls'),
@@ -100,6 +102,8 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
   const [fetchStatus, setFetchStatus] = useFetchStatus();
   const isFetching = fetchStatus;
 
+  const [liked, handleLike] = useLikeButton(post.id);
+
   // Set OG Image for blog posts. Use first image from post, otherwise dynamically generate one.
   const metaImage = post.content
     .replace(/`([^`]*)/g, '')
@@ -169,6 +173,8 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
             </span>
           </div>
 
+          <LikeButton liked={liked} handleLike={handleLike} />
+
           <Markdown markdown={post} />
 
           {userHasValidSession && (
@@ -192,6 +198,8 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
           post={post}
           url={url}
           isPublished={isPublished}
+          liked={liked}
+          handleLike={handleLike}
         />
       </div>
     );

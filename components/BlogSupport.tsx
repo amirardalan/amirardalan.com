@@ -11,9 +11,17 @@ type BlogSupportProps = {
   id: number;
   title: string;
   url: string;
+  liked: boolean;
+  handleLike: () => Promise<void>;
 };
 
-const BlogSupport: FC<BlogSupportProps> = ({ id, title, url }) => {
+const BlogSupport: FC<BlogSupportProps> = ({
+  id,
+  title,
+  url,
+  liked,
+  handleLike,
+}) => {
   const [hideModule, setHideModule] = useState(false);
   const [showOptions, setshowOptions] = useState(false);
   const handleshowOptions = () => {
@@ -289,7 +297,7 @@ const BlogSupport: FC<BlogSupportProps> = ({ id, title, url }) => {
               <div className="copyContainer">
                 <span className="supportHeading">
                   <h4>Did you enjoy this post?</h4>
-                  <LikeButton id={id} title={title} />
+                  <LikeButton liked={liked} handleLike={handleLike} />
                 </span>
                 <div className="donate">
                   <span>
