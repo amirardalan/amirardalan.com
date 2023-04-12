@@ -82,6 +82,29 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
       fontSize: 11,
       fontWeight: 400,
     },
+    '.featuredContainer': {
+      position: 'relative',
+      height: 50,
+    },
+    '.featured, .latest': {
+      whiteSpace: 'nowrap',
+      overflow: 'hidden',
+      textOverflow: 'ellipsis',
+      maxWidth: '100%',
+      height: 50,
+      position: 'absolute',
+      top: '0',
+      left: '0',
+      transition: 'transform .5s ease-in-out, opacity .5s ease-in-out',
+    },
+    '.featured': {
+      transform: `translateY(${showFeatured ? '0' : '100%'})`,
+      opacity: `${showFeatured ? '1' : '0'}`,
+    },
+    '.latest': {
+      transform: `translateY(${showFeatured ? '-100%' : '0'})`,
+      opacity: `${showFeatured ? '0' : '1'}`,
+    },
     'h3, p': {
       whiteSpace: 'nowrap',
       overflow: 'hidden',
@@ -132,31 +155,30 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
           <h2 aria-label={postTypeTitle}>{postTypeTitle}</h2>
         </button>
         <article>
-          {showFeatured && featured ? (
-            <>
+          <div className="animationWrapper featuredContainer">
+            <div className="featured">
               <h3>
                 <Link
-                  href={`/blog/${encodeURIComponent(featured.slug)}`}
+                  href={`/blog/${encodeURIComponent(featured?.slug ?? '')}`}
                   aria-label={featured?.title}
                 >
                   {featured?.title}
                 </Link>
               </h3>
-              <p>{featured?.teaser}</p>{' '}
-            </>
-          ) : latest ? (
-            <>
+              <p>{featured?.teaser}</p>
+            </div>
+            <div className="latest">
               <h3>
                 <Link
-                  href={`/blog/${encodeURIComponent(latest.slug)}`}
+                  href={`/blog/${encodeURIComponent(latest?.slug ?? '')}`}
                   aria-label={latest?.title}
                 >
                   {latest?.title}
                 </Link>
               </h3>
-              <p>{latest?.teaser}</p>{' '}
-            </>
-          ) : null}
+              <p>{latest?.teaser}</p>
+            </div>
+          </div>
         </article>
       </div>
     );

@@ -455,22 +455,6 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
               opacity: 1,
             },
           },
-          '@keyframes slideUpSection': {
-            '0%': {
-              transform: 'translate3d(0, 100%, 0)',
-            },
-            '100%': {
-              transform: 'translate3d(0, 0, 0)',
-            },
-          },
-          '@keyframes slideDownSection': {
-            '0%': {
-              transform: 'translate3d(0, 0, 0)',
-            },
-            '100%': {
-              transform: 'translate3d(0, 100%, 0)',
-            },
-          },
           '@keyframes slideUp': {
             '0%': {
               opacity: 0,

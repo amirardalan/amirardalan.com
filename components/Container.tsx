@@ -83,6 +83,7 @@ const Container: FC<ContainerProps> = (props) => {
         <link rel="icon" href={favicon} />
 
         <meta name="robots" content={meta.robots} />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
           property="og:url"
           content={`${process.env.NEXT_PUBLIC_SITE_URL}${router.asPath}`}
@@ -100,6 +101,7 @@ const Container: FC<ContainerProps> = (props) => {
         <meta name="twitter:title" content={meta.title} />
         <meta name="twitter:description" content={meta.description} />
         <meta name="twitter:image:alt" content={meta.title} />
+
         {meta.date && (
           <meta property="article:published_time" content={meta.date} />
         )}
