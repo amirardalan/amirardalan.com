@@ -30,7 +30,7 @@
       "purpose": "maskable"
     }
   ],
-  "start_url": "amirardalan.com",
+  "start_url": "/",
   "background_color": "#e4e9f8",
   "display": "standalone",
   "scope": "/",
@@ -39,7 +39,7 @@
       "name": "Amir Ardalan Blog",
       "short_name": "Amir",
       "description": "Developer, designer, and React enthusiast. Making websites since before the internet was cool.",
-      "url": "amirardalan.com"
+      "url": "/"
     }
   ],
   "description": "Amir Ardalan Thumbnail",
