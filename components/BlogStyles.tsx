@@ -135,7 +135,7 @@ const blogStyles = css({
         fontFamily: 'var(--font-secondary)',
         fontWeight: 700,
         fontSize: 24,
-        lineHeight: '2rem',
+        lineHeight: '1.9rem',
         left: -20,
         color: 'var(--color-primary)',
         '@media (max-width: 1024px)': {
