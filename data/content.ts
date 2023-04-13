@@ -281,7 +281,7 @@ export const timelineContent = {
     {
       title: 'Frontend Dev @ Dealer Spike',
       content:
-        'HTML, CSS, and JavaScript and design in Adobe Photoshop. Created web experiences with a focus on SEO for powersports dealerships across US and Canada.',
+        'HTML, CSS, and JavaScript and design. Created web experiences with a focus on SEO for powersports dealerships across US and Canada.',
       cName: 'event',
     },
     {
