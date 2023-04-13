@@ -7,10 +7,10 @@ type MenuIconProps = {
 const MenuIcon: FC<MenuIconProps> = ({ size }) => {
   return (
     <svg
-      clip-rule="evenodd"
-      fill-rule="evenodd"
-      stroke-linejoin="round"
-      stroke-miterlimit="2"
+      clipRule="evenodd"
+      fillRule="evenodd"
+      strokeLinejoin="round"
+      strokeMiterlimit="2"
       viewBox="2 2 20 20"
       xmlns="http://www.w3.org/2000/svg"
       width={size}
