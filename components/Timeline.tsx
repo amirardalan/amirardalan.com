@@ -62,7 +62,7 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
           h3: {
             marginBottom: '.5rem',
             fontFamily: 'var(--font-secondary)',
-            fontSize: 16,
+            fontSize: 17,
             fontWeight: 700,
             lineHeight: '1.2rem',
           },
@@ -176,7 +176,7 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
       '.date': {
         fontFamily: 'var(--font-secondary)',
         color: 'var(--color-primary)',
-        fontSize: 22,
+        fontSize: 25,
         fontWeight: 900,
         lineHeight: '.5rem',
         '@media(max-width: 768px)': {
