@@ -31,7 +31,7 @@ const TwitterShareButton: FC<TwitterShareButtonProps> = ({
     const tweetUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(
       url
     )}&text=${encodeURIComponent(title)}`;
-    window.open(tweetUrl, '_blank', 'width=550,height=420');
+    window.open(tweetUrl, '_blank');
   };
 
   return (
