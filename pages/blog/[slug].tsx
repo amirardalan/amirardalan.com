@@ -110,9 +110,7 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
     .replace(/`([^`]*)/g, '')
     .match(/!\[.*?\]\((.*?)\)/)
     ? post.content.match(/!\[.*?\]\((.*?)\)/)?.[1]
-    : `${process.env.NEXT_PUBLIC_OG_IMAGE_URL}/${encodeURIComponent(
-        post.title
-      ).replace(/\./g, '%2E')}?fontSize=150px`;
+    : null;
 
   const RenderBlogPost = () => {
     return (

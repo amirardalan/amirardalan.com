@@ -9,7 +9,7 @@ type ContainerProps = {
   children: ReactNode;
   title?: string;
   description?: string;
-  image?: string;
+  image?: string | null;
   type?: string;
   robots?: string;
   date?: string;
@@ -40,12 +40,9 @@ const Container: FC<ContainerProps> = (props) => {
 
   // Dynamic Favicon
   const [faviconTheme, setFaviconTheme] = useState(theme.active);
-  let favicon = '';
-  if (faviconTheme === 'dark') {
-    favicon = '/favicon-dark.png';
-  } else {
-    favicon = '/favicon-light.png';
-  }
+
+  const favicon =
+    faviconTheme === 'dark' ? '/favicon-dark.png' : '/favicon-light.png';
 
   useEffect(() => {
     const usesDarkMode =
