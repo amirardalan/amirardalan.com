@@ -290,7 +290,6 @@ const BlogAdmin: FC = () => {
                 border: '1px solid var(--color-gray)',
                 color: 'var(--color-gray)',
                 fontSize: 10,
-                minWidth: 100,
                 height: 25,
               },
             },

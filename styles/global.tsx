@@ -14,7 +14,8 @@ const grayDark = '#606071';
 const grayAccentLight = '#b7b7c9';
 const grayAccentDark = '#494a5c';
 const buttonDisabled = '#9e9eb6';
-const warning = '#e64358';
+const warningLight = '#e64358';
+const warningDark = '#de5063';
 const codeHighlight = '#37394e';
 const avatar = '#281483';
 const sunrise =
@@ -43,7 +44,6 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
             '--color-light': lightAccent,
             '--color-dark': darkAccent,
             '--color-gray-dark': grayDark,
-            '--color-warning': warning,
             '--color-disabled': buttonDisabled,
             '--color-avatar': avatar,
             '--color-select': grayAccentLight,
@@ -64,6 +64,7 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
             '--color-accent-gray': grayAccentLight,
             '--color-accent': lightAccent,
             '--color-accent-darker': lightDarker,
+            '--color-warning': warningLight,
             '--color-gradient': sunset,
             '--page-bg': lightDarker,
             '--code-bg': darkAccent,
@@ -91,6 +92,7 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
             '--color-accent-gray': grayAccentDark,
             '--color-accent': darkAccent,
             '--color-accent-darker': darker,
+            '--color-warning': warningDark,
             '--color-gradient': sunrise,
             '--page-bg': darkAccent,
             '--code-bg': darkAccent,

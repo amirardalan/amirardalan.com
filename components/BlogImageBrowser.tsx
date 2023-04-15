@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { css } from '@emotion/react';
 import CloseIcon from '@/components/CloseIcon';
 import { convertUrlToMarkdown } from '@/utils/convertUrlToMarkdown';
-import { deleteImage } from '@/lib/cloudinary';
+import { deleteImage } from '@/lib/image';
 import { useState } from 'react';
 import LoadingTriangle from '@/components/LoadingTriangle';
 
@@ -58,6 +58,8 @@ const styleModal = css({
     display: 'flex',
     flexDirection: 'column',
     '.imgThumb': {
+      height: IMAGE_SIZE,
+      width: IMAGE_SIZE,
       position: 'relative',
       overflow: 'hidden',
       img: {
@@ -83,17 +85,22 @@ const styleModal = css({
     '.imgDetails': {
       display: 'flex',
       alignItems: 'flex-start',
+      justifyContent: 'flex-start',
     },
-    '.imgName': {
-      fontSize: 11,
+    '.imgText': {
       maxWidth: IMAGE_SIZE - 20,
+      marginLeft: '.4rem',
+      color: 'var(--color-text)',
+      fontSize: 11,
+      fontWeight: 700,
+      fontFamily: 'var(--font-secondary)',
       whiteSpace: 'nowrap',
       overflow: 'hidden',
       textOverflow: 'ellipsis',
+      '&.delete': {
+        color: 'var(--color-warning)',
+      },
     },
-  },
-  '.delete': {
-    marginRight: '.33rem',
   },
 });
 
@@ -170,23 +177,21 @@ const BlogImageBrowser = ({
                         setSelectedImage(public_id);
                       }}
                     >
-                      <CloseIcon size={12} color="var(--color-gray)" />
+                      <CloseIcon size={10} color="var(--color-warning)" />
                     </button>
                     {showDeleteConfirm && selectedImage === public_id ? (
-                      <div>
-                        •{' '}
-                        <button
-                          onClick={(e) => {
-                            e.preventDefault();
-                            handleImageDelete(public_id);
-                          }}
-                        >
-                          delete
-                        </button>
-                      </div>
+                      <button
+                        className="imgText delete"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleImageDelete(public_id);
+                        }}
+                      >
+                        delete
+                      </button>
                     ) : (
                       <button
-                        className="imgName"
+                        className="imgText"
                         onClick={() => handleSelectImage(image)}
                       >
                         {imageName}

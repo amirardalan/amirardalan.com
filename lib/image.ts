@@ -3,7 +3,7 @@ export const uploadImage = async (file: File): Promise<string> => {
   const formData = new FormData();
   formData.append('image', file);
 
-  const response = await fetch('/api/cloudinary/upload', {
+  const response = await fetch('/api/image/upload', {
     method: 'POST',
     body: formData,
   });
@@ -20,7 +20,7 @@ export const uploadImage = async (file: File): Promise<string> => {
 
 // Browse Images
 export const browseImages = async (): Promise<string[]> => {
-  const response = await fetch('/api/cloudinary/browse', {
+  const response = await fetch('/api/image/browse', {
     method: 'GET',
   });
 
@@ -36,7 +36,7 @@ export const browseImages = async (): Promise<string[]> => {
 
 // Delete Image
 export const deleteImage = async (public_id: string): Promise<void> => {
-  const response = await fetch(`/api/cloudinary/delete`, {
+  const response = await fetch(`/api/image/delete`, {
     method: 'DELETE',
     body: JSON.stringify({ public_id }),
     headers: {

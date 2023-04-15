@@ -1,6 +1,6 @@
 import { FC, useState, useRef } from 'react';
 import { css } from '@emotion/react';
-import { uploadImage, browseImages } from '@/lib/cloudinary';
+import { uploadImage, browseImages } from '@/lib/image';
 import LoadingSpinner from '@/components/LoadingSpinner';
 import CloseIcon from '@/components/CloseIcon';
 import BlogImageBrowser from '@/components/BlogImageBrowser';
@@ -162,7 +162,7 @@ const BlogImageControls: FC<BlogImageControlsProps> = ({
             </>
           ) : null}
           <button className="buttonCompact small" onClick={handleOpenModal}>
-            Browse Images
+            Image Library
           </button>
           <span css={styleLoadingIndicator}>
             {isUploading ? <LoadingSpinner size={20} /> : null}
