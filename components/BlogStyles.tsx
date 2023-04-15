@@ -234,26 +234,6 @@ const blogStyles = css({
     color: 'var(--color-gray)',
     opacity: '0.5',
   },
-  'input[type="file"]::file-selector-button': {
-    display: 'none',
-  },
-  'input[type="file"]': {
-    maxWidth: 100,
-    paddingRight: '1rem',
-    cursor: 'pointer',
-    fontFamily: 'var(--font-secondary)',
-  },
-  '.imgIcon': {
-    margin: '.1rem .1rem 0 .5rem',
-    '@media (max-width: 600px)': {
-      marginLeft: 0,
-    },
-  },
-  '.imgLabel': {
-    cursor: 'pointer',
-    display: 'flex',
-    alignItems: 'center',
-  },
   '.deleteControls': {
     display: 'flex',
     alignItems: 'baseline',

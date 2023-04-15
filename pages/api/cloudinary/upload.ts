@@ -37,6 +37,7 @@ const uploadImageHandler = async (req: MulterRequest, res: NextApiResponse) => {
           const fileBuffer = req.file.buffer;
           const fileName = req.file.originalname;
           const nameWithoutExtension = fileName
+            .replace(/\s+/g, '_')
             .split('.')
             .slice(0, -1)
             .join('.');

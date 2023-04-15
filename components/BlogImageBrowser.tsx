@@ -13,6 +13,8 @@ type BlogImageBrowserProps = {
   loading: boolean;
 };
 
+const IMAGE_SIZE = 120;
+
 const styleModal = css({
   height: '100%',
   width: '100%',
@@ -28,14 +30,26 @@ const styleModal = css({
     height: '70vh',
   },
   '.modalContent': {
+    boxShadow: '0 0 10px 0 rgba(0, 0, 0, 0.2)',
+    border: '3px solid var(--color-accent)',
+    position: 'relative',
+    maxWidth: '90vw',
+    margin: '2rem auto',
+    backgroundColor: 'var(--color-bg)',
+    padding: '3rem 1rem',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
   },
+  '.close': {
+    position: 'absolute',
+    top: -10,
+    left: -10,
+  },
   '.imgGrid': {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(3, 1fr)',
+    display: 'flex',
+    flexWrap: 'wrap',
     gap: '1rem',
   },
   '.imgContainer': {
@@ -44,6 +58,14 @@ const styleModal = css({
     img: {
       cursor: 'pointer',
       marginBottom: '.25rem',
+    },
+    '.imgThumb': {
+      overflow: 'hidden',
+      img: {
+        maxHeight: IMAGE_SIZE,
+        maxWidth: IMAGE_SIZE,
+        objectFit: 'cover',
+      },
     },
     '.imgDetails': {
       display: 'flex',
@@ -94,8 +116,8 @@ const BlogImageBrowser = ({
         </div>
       ) : (
         <div className="modalContent">
-          <button onClick={() => setShowModal(false)}>
-            <CloseIcon size={30} />
+          <button className="close" onClick={() => setShowModal(false)}>
+            <CloseIcon size={23} />
           </button>
           <div className="imgGrid">
             {images.map((image, index) => {
@@ -113,14 +135,16 @@ const BlogImageBrowser = ({
               }
               return (
                 <div key={index} className="imgContainer">
-                  <Image
-                    src={image}
-                    width={256}
-                    height={138}
-                    alt={imageName}
-                    aria-label={imageName}
-                    onClick={() => handleSelectImage(image)}
-                  />
+                  <div className="imgThumb">
+                    <Image
+                      src={image}
+                      width={IMAGE_SIZE}
+                      height={IMAGE_SIZE}
+                      alt={imageName}
+                      aria-label={imageName}
+                      onClick={() => handleSelectImage(image)}
+                    />
+                  </div>
                   <div className="imgDetails">
                     <button
                       className="delete"
