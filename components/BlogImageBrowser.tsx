@@ -31,8 +31,21 @@ const styleModal = css({
     gap: '1rem',
   },
   '.imgContainer': {
+    display: 'flex',
+    flexDirection: 'column',
     img: {
       cursor: 'pointer',
+      marginBottom: '.25rem',
+    },
+    '.imgDetails': {
+      display: 'flex',
+      // justifyContent: 'space-between',
+    },
+  },
+  '.delete': {
+    marginRight: '.5rem',
+    svg: {
+      marginTop: '.2rem',
     },
   },
 });
@@ -57,6 +70,9 @@ const BlogImageBrowser = ({
       console.error(error);
     }
   };
+
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   return (
     <div css={styleModal}>
@@ -88,7 +104,41 @@ const BlogImageBrowser = ({
                   aria-label={imageName}
                   onClick={() => handleClick(image)}
                 />
-                <span onClick={() => handleImageDelete(public_id)}>Delete</span>
+                <div className="imgDetails">
+                  <button
+                    className="delete"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setShowDeleteConfirm(!showDeleteConfirm);
+                      setSelectedImage(public_id);
+                    }}
+                  >
+                    <CloseIcon size={12} />
+                  </button>
+                  {showDeleteConfirm && selectedImage === public_id ? (
+                    <span>
+                      <button
+                        onClick={(e) => {
+                          e.preventDefault();
+                          setShowDeleteConfirm(false);
+                        }}
+                      >
+                        cancel
+                      </button>{' '}
+                      •{' '}
+                      <button
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleImageDelete(public_id);
+                        }}
+                      >
+                        delete
+                      </button>
+                    </span>
+                  ) : (
+                    <span>{imageName}</span>
+                  )}
+                </div>
               </div>
             );
           })}
