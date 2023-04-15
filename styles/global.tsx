@@ -167,7 +167,7 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
             verticalAlign: 'middle',
             caretColor: 'var(--color-heading)',
           },
-          textarea: {
+          'textarea, .modalContent': {
             '::-webkit-scrollbar-track': {
               backgroundColor: 'transparent',
               WebkitBoxShadow: 'none',

@@ -23,31 +23,52 @@ const styleModal = css({
   left: 0,
   zIndex: 5,
   backdropFilter: 'blur(8px)',
+  '@media (max-width: 600px)': {
+    top: 75,
+  },
   '.loading': {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     height: '70vh',
   },
-  '.modalContent': {
-    boxShadow: '0 0 10px 0 rgba(0, 0, 0, 0.2)',
-    border: '3px solid var(--color-accent)',
-    borderRadius: 5,
+  '.modal': {
     position: 'relative',
-    width: '90vw',
-    maxWidth: 702,
-    margin: '4rem auto',
-    backgroundColor: 'var(--color-bg)',
-    padding: '1.5rem 1rem .75rem 1rem',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
+    margin: '4rem auto',
+    width: '90vw',
+    maxWidth: 618,
+    '@media (max-width: 480px)': {
+      margin: '1rem auto',
+    },
   },
-  '.close': {
-    position: 'absolute',
-    top: -7,
-    left: -7,
+  '.modalContent': {
+    maxHeight: '90vh',
+    overflowY: 'scroll',
+    boxShadow: '0 0 10px 0 rgba(0, 0, 0, 0.2)',
+    border: '3px solid var(--color-accent)',
+    borderRadius: 5,
+    backgroundColor: 'var(--color-bg)',
+    padding: '2rem 1rem 2rem 2rem',
+    '@media (max-width: 480px)': {
+      padding: '1rem .5rem 1rem 1rem',
+    },
+  },
+  '.modalHeader': {
+    fontFamily: 'var(--font-secondary)',
+    fontSize: 20,
+    display: 'flex',
+    flexDirection: 'row',
+    alignSelf: 'flex-start',
+    marginBottom: '1rem',
+    '.close': {
+      marginRight: '.5rem',
+      display: 'flex',
+      alignSelf: 'center',
+    },
   },
   '.imgGrid': {
     display: 'flex',
@@ -136,71 +157,76 @@ const BlogImageBrowser = ({
           <LoadingTriangle color="var(--color-text)" />
         </div>
       ) : (
-        <div className="modalContent">
-          <button className="close" onClick={() => setShowModal(false)}>
-            <CloseIcon size={18} />
-          </button>
-          <div className="imgGrid">
-            {[...images].reverse().map((image, index) => {
-              const public_id = `Blog/${image
-                ?.split('/')
-                .pop()
-                ?.split('.')
-                .slice(0, -1)
-                .join('.')}`;
-              const imageName =
-                image?.split('/').pop()?.split('_').slice(0, -1).join(' ') ??
-                'Blog Image';
-              if (public_id === deletedImage) {
-                return null;
-              }
-              return (
-                <div key={index} className="imgContainer">
-                  <div
-                    className="imgThumb"
-                    onClick={() => handleSelectImage(image)}
-                  >
-                    <Image
-                      src={image}
-                      width={IMAGE_SIZE}
-                      height={IMAGE_SIZE}
-                      alt={imageName}
-                      aria-label={imageName}
-                    />
-                  </div>
-                  <div className="imgDetails">
-                    <button
-                      className="delete"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        setShowDeleteConfirm(!showDeleteConfirm);
-                        setSelectedImage(public_id);
-                      }}
+        <div className="modal">
+          <div className="modalHeader">
+            <button className="close" onClick={() => setShowModal(false)}>
+              <CloseIcon size={20} />
+            </button>
+            <h4>Media Library</h4>
+          </div>
+          <div className="modalContent">
+            <div className="imgGrid">
+              {[...images].reverse().map((image, index) => {
+                const public_id = `Blog/${image
+                  ?.split('/')
+                  .pop()
+                  ?.split('.')
+                  .slice(0, -1)
+                  .join('.')}`;
+                const imageName =
+                  image?.split('/').pop()?.split('_').slice(0, -1).join(' ') ??
+                  'Blog Image';
+                if (public_id === deletedImage) {
+                  return null;
+                }
+                return (
+                  <div key={index} className="imgContainer">
+                    <div
+                      className="imgThumb"
+                      onClick={() => handleSelectImage(image)}
                     >
-                      <CloseIcon size={10} color="var(--color-warning)" />
-                    </button>
-                    {showDeleteConfirm && selectedImage === public_id ? (
+                      <Image
+                        src={image}
+                        width={IMAGE_SIZE}
+                        height={IMAGE_SIZE}
+                        alt={imageName}
+                        aria-label={imageName}
+                      />
+                    </div>
+                    <div className="imgDetails">
                       <button
-                        className="imgText delete"
+                        className="delete"
                         onClick={(e) => {
                           e.preventDefault();
-                          handleImageDelete(public_id);
+                          setShowDeleteConfirm(!showDeleteConfirm);
+                          setSelectedImage(public_id);
                         }}
                       >
-                        delete
+                        <CloseIcon size={9} color="var(--color-gray)" />
                       </button>
-                    ) : (
-                      <button
-                        className="imgText"
-                        onClick={() => handleSelectImage(image)}
-                      >
-                        {imageName}
-                      </button>
-                    )}
+                      {showDeleteConfirm && selectedImage === public_id ? (
+                        <button
+                          className="imgText delete"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            handleImageDelete(public_id);
+                          }}
+                        >
+                          delete
+                        </button>
+                      ) : (
+                        <button
+                          className="imgText"
+                          onClick={() => handleSelectImage(image)}
+                        >
+                          {imageName}
+                        </button>
+                      )}
+                    </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
         </div>
       )}
