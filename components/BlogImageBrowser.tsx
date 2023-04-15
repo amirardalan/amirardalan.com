@@ -47,13 +47,17 @@ const styleModal = css({
     },
     '.imgDetails': {
       display: 'flex',
+      alignItems: 'center',
     },
   },
   '.delete': {
     marginRight: '.5rem',
     svg: {
-      marginTop: '.2rem',
+      marginTop: '.25rem',
     },
+  },
+  '.cancel': {
+    color: 'var(--color-text)',
   },
 });
 
@@ -65,7 +69,7 @@ const BlogImageBrowser = ({
 }: BlogImageBrowserProps) => {
   const [deletedImage, setDeletedImage] = useState('');
 
-  const handleClick = (url: string) => {
+  const handleSelectImage = (url: string) => {
     handleInsertImage(convertUrlToMarkdown(url));
     setShowModal(false);
   };
@@ -115,7 +119,7 @@ const BlogImageBrowser = ({
                     height={138}
                     alt={imageName}
                     aria-label={imageName}
-                    onClick={() => handleClick(image)}
+                    onClick={() => handleSelectImage(image)}
                   />
                   <div className="imgDetails">
                     <button
@@ -126,11 +130,12 @@ const BlogImageBrowser = ({
                         setSelectedImage(public_id);
                       }}
                     >
-                      <CloseIcon size={12} />
+                      <CloseIcon size={13} color="var(--color-gray)" />
                     </button>
                     {showDeleteConfirm && selectedImage === public_id ? (
-                      <span>
+                      <div>
                         <button
+                          className="cancel"
                           onClick={(e) => {
                             e.preventDefault();
                             setShowDeleteConfirm(false);
@@ -147,9 +152,14 @@ const BlogImageBrowser = ({
                         >
                           delete
                         </button>
-                      </span>
+                      </div>
                     ) : (
-                      <span>{imageName}</span>
+                      <button
+                        className="imgName"
+                        onClick={() => handleSelectImage(image)}
+                      >
+                        {imageName}
+                      </button>
                     )}
                   </div>
                 </div>
