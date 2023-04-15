@@ -45,26 +45,6 @@ export async function deletePost(
   });
 }
 
-// Upload Image
-export const uploadImage = async (file: File): Promise<string> => {
-  const formData = new FormData();
-  formData.append('image', file);
-
-  const response = await fetch('/api/upload', {
-    method: 'POST',
-    body: formData,
-  });
-
-  if (!response.ok) {
-    throw new Error('Failed to upload image');
-  }
-
-  const data = await response.json();
-  const res = data.markdownUrl;
-
-  return res;
-};
-
 // Like Post
 export async function likePost(id: number, liked: boolean): Promise<void> {
   const method = liked ? 'PUT' : 'DELETE';

@@ -6,7 +6,7 @@ import Link from 'next/link';
 import prisma from '@/lib/prisma';
 import { useSession } from 'next-auth/react';
 
-import { uploadImage } from '@/lib/blog';
+import { uploadImage } from '@/lib/cloudinary';
 import revalidateChanges from '@/lib/revalidate';
 import { useFetchStatus } from '@/hooks/useLoadingIndicator';
 
