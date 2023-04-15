@@ -73,6 +73,7 @@ const BlogImageControls: FC<BlogImageControlsProps> = ({
     e.preventDefault();
     try {
       const images = await browseImages();
+      console.log(images);
       setImages(images);
       setShowModal(true);
     } catch (error) {
