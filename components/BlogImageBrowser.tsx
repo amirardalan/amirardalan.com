@@ -13,7 +13,7 @@ type BlogImageBrowserProps = {
   loading: boolean;
 };
 
-const IMAGE_SIZE = 120;
+const IMAGE_SIZE = 100;
 
 const styleModal = css({
   height: '100%',
@@ -32,11 +32,13 @@ const styleModal = css({
   '.modalContent': {
     boxShadow: '0 0 10px 0 rgba(0, 0, 0, 0.2)',
     border: '3px solid var(--color-accent)',
+    borderRadius: 5,
     position: 'relative',
-    maxWidth: '90vw',
-    margin: '2rem auto',
+    width: '90vw',
+    maxWidth: 702,
+    margin: '4rem auto',
     backgroundColor: 'var(--color-bg)',
-    padding: '3rem 1rem',
+    padding: '1.5rem 1rem .75rem 1rem',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -44,42 +46,54 @@ const styleModal = css({
   },
   '.close': {
     position: 'absolute',
-    top: -10,
-    left: -10,
+    top: -7,
+    left: -7,
   },
   '.imgGrid': {
     display: 'flex',
     flexWrap: 'wrap',
-    gap: '1rem',
+    gap: 12,
   },
   '.imgContainer': {
     display: 'flex',
     flexDirection: 'column',
-    img: {
-      cursor: 'pointer',
-      marginBottom: '.25rem',
-    },
     '.imgThumb': {
+      position: 'relative',
       overflow: 'hidden',
       img: {
+        border: '2px solid var(--color-accent)',
         maxHeight: IMAGE_SIZE,
         maxWidth: IMAGE_SIZE,
         objectFit: 'cover',
+        zIndex: -1,
+      },
+      '&:hover::after': {
+        height: IMAGE_SIZE,
+        width: IMAGE_SIZE,
+        content: '""',
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        backgroundColor: 'var(--color-dark)',
+        cursor: 'pointer',
+        opacity: 0.3,
+        zIndex: 1,
       },
     },
     '.imgDetails': {
       display: 'flex',
-      alignItems: 'center',
+      alignItems: 'flex-start',
+    },
+    '.imgName': {
+      fontSize: 11,
+      maxWidth: IMAGE_SIZE - 20,
+      whiteSpace: 'nowrap',
+      overflow: 'hidden',
+      textOverflow: 'ellipsis',
     },
   },
   '.delete': {
-    marginRight: '.5rem',
-    svg: {
-      marginTop: '.25rem',
-    },
-  },
-  '.cancel': {
-    color: 'var(--color-text)',
+    marginRight: '.33rem',
   },
 });
 
@@ -117,10 +131,10 @@ const BlogImageBrowser = ({
       ) : (
         <div className="modalContent">
           <button className="close" onClick={() => setShowModal(false)}>
-            <CloseIcon size={23} />
+            <CloseIcon size={18} />
           </button>
           <div className="imgGrid">
-            {images.map((image, index) => {
+            {[...images].reverse().map((image, index) => {
               const public_id = `Blog/${image
                 ?.split('/')
                 .pop()
@@ -135,14 +149,16 @@ const BlogImageBrowser = ({
               }
               return (
                 <div key={index} className="imgContainer">
-                  <div className="imgThumb">
+                  <div
+                    className="imgThumb"
+                    onClick={() => handleSelectImage(image)}
+                  >
                     <Image
                       src={image}
                       width={IMAGE_SIZE}
                       height={IMAGE_SIZE}
                       alt={imageName}
                       aria-label={imageName}
-                      onClick={() => handleSelectImage(image)}
                     />
                   </div>
                   <div className="imgDetails">
@@ -154,19 +170,10 @@ const BlogImageBrowser = ({
                         setSelectedImage(public_id);
                       }}
                     >
-                      <CloseIcon size={13} color="var(--color-gray)" />
+                      <CloseIcon size={12} color="var(--color-gray)" />
                     </button>
                     {showDeleteConfirm && selectedImage === public_id ? (
                       <div>
-                        <button
-                          className="cancel"
-                          onClick={(e) => {
-                            e.preventDefault();
-                            setShowDeleteConfirm(false);
-                          }}
-                        >
-                          cancel
-                        </button>{' '}
                         •{' '}
                         <button
                           onClick={(e) => {
