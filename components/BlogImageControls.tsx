@@ -32,6 +32,7 @@ const BlogImageControls: FC<BlogImageControlsProps> = ({
   const [isFileSelected, setIsFileSelected] = useState<boolean>(false);
   const [showModal, setShowModal] = useState<boolean>(false);
   const [images, setImages] = useState<string[]>([]);
+  const [loading, setLoading] = useState(false);
 
   const handleFileSelect = () => {
     setIsFileSelected(!!selectedFileRef.current?.value);
@@ -71,13 +72,15 @@ const BlogImageControls: FC<BlogImageControlsProps> = ({
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const images = await browseImages();
-      console.log(images);
       setImages(images);
       setShowModal(true);
     } catch (error) {
       console.error(error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -88,6 +91,7 @@ const BlogImageControls: FC<BlogImageControlsProps> = ({
           images={images}
           setShowModal={setShowModal}
           handleInsertImage={handleInsertImage}
+          loading={loading}
         />
       ) : null}
       <div css={styleImageUploader}>

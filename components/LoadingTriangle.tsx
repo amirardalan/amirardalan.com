@@ -1,11 +1,15 @@
 import { FC } from 'react';
 
-const LoadingTriangle: FC = () => {
+type LoadingTriangleProps = {
+  color?: string;
+};
+
+const LoadingTriangle: FC<LoadingTriangleProps> = ({ color }) => {
   return (
     <div
       className="loader triangle"
       css={{
-        '--path': 'var(--color-accent)',
+        '--path': color ?? 'var(--color-accent)',
         '--dot': 'var(--color-primary)',
         '--duration': '2s',
         width: '48px',
