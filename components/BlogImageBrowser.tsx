@@ -3,6 +3,7 @@ import { css } from '@emotion/react';
 import CloseIcon from '@/components/CloseIcon';
 import { convertUrlToMarkdown } from '@/utils/convertUrlToMarkdown';
 import { deleteImage } from '@/lib/cloudinary';
+import { useState } from 'react';
 
 type BlogImageBrowserProps = {
   images: string[];
@@ -41,13 +42,20 @@ const BlogImageBrowser = ({
   setShowModal,
   handleInsertImage,
 }: BlogImageBrowserProps) => {
+  const [deletedImage, setDeletedImage] = useState('');
+
   const handleClick = (url: string) => {
     handleInsertImage(convertUrlToMarkdown(url));
     setShowModal(false);
   };
 
-  const handleImageDelete = (public_id: string) => {
-    deleteImage(public_id);
+  const handleImageDelete = async (public_id: string) => {
+    try {
+      await deleteImage(public_id);
+      setDeletedImage(public_id);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -67,6 +75,9 @@ const BlogImageBrowser = ({
             const imageName =
               image?.split('/').pop()?.split('_').slice(0, -1).join(' ') ??
               'Blog Image';
+            if (public_id === deletedImage) {
+              return null;
+            }
             return (
               <div key={index} className="imgContainer">
                 <Image
