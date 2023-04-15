@@ -37,39 +37,33 @@ const uploadImageHandler = async (req: MulterRequest, res: NextApiResponse) => {
           const fileBuffer = req.file.buffer;
           const fileName = req.file.originalname;
           const nameWithoutExtension = fileName
+            .replace(/\s+/g, '_')
             .split('.')
             .slice(0, -1)
             .join('.');
-          const imageName = nameWithoutExtension
-            .split('_')[0]
-            .replace(/[-_]/g, ' ');
-          const altText = imageName.replace(/(\b\w)/g, (match: string) =>
-            match.toUpperCase()
-          );
           const randomString = [...Array(6)]
             .map(() => Math.floor(Math.random() * 26) + 97)
             .map((charCode) => String.fromCharCode(charCode))
             .join('');
           const publicId = `${nameWithoutExtension}_${randomString}`;
+          const uploadOptions = {
+            folder: 'Blog',
+            public_id: publicId,
+            unique_filename: false,
+            overwrite: false,
+          };
           const stream = cloudinary.uploader.upload_stream(
-            {
-              folder: 'Blog',
-              public_id: publicId,
-              unique_filename: false,
-            },
+            uploadOptions,
             (error: any, result: any) => {
               if (error) {
                 console.error(error);
                 reject(error);
               } else {
-                const { secure_url, public_id } = result;
-                const markdownUrl = `![${altText}](${secure_url})`;
+                const { secure_url } = result;
                 resolve({
                   success: true,
                   data: {
                     url: secure_url,
-                    publicId: public_id,
-                    markdownUrl: markdownUrl,
                   },
                   message: 'File uploaded successfully',
                 });
@@ -80,18 +74,10 @@ const uploadImageHandler = async (req: MulterRequest, res: NextApiResponse) => {
         }
       });
     });
-    const publicId = (data as { success: boolean; data: { publicId: string } })
-      .data.publicId;
-    const altText = publicId
-      .replace(/^.*\//, '')
-      .split('_')[0]
-      .replace(/[-_]/g, ' ')
-      .replace(/\b\w/g, (match: string) => match.toUpperCase());
     const { url } = (data as { success: boolean; data: { url: string } }).data;
-    const markdownUrl = `![${altText}](${url})`;
     res.status(200).json({
       success: true,
-      markdownUrl: markdownUrl,
+      url: url,
       message: 'File uploaded successfully',
     });
   } catch (error) {

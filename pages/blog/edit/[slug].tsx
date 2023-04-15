@@ -6,7 +6,6 @@ import Link from 'next/link';
 import prisma from '@/lib/prisma';
 import { useSession } from 'next-auth/react';
 
-import { uploadImage } from '@/lib/blog';
 import revalidateChanges from '@/lib/revalidate';
 import { useFetchStatus } from '@/hooks/useLoadingIndicator';
 
@@ -17,9 +16,10 @@ import Dropdown from '@/components/Dropdown';
 import Checkbox from '@/components/Checkbox';
 import LoadingTriangle from '@/components/LoadingTriangle';
 
+import { convertUrlToMarkdown } from '@/utils/convertUrlToMarkdown';
 import { adminContent, breadcrumbContent } from '@/data/content';
 import { categories } from '@/data/categories';
-import BlogImageUpload from '@/components/BlogImageUpload';
+import BlogImageControls from '@/components/BlogImageControls';
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const [editPost, getLatestPost] = await prisma.$transaction([
@@ -99,6 +99,21 @@ const Edit: FC<EditProps> = ({
 
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
 
+  const handleInsertImage = (markdownUrl: string) => {
+    if (textAreaRef.current) {
+      const { selectionStart, selectionEnd } = textAreaRef.current;
+      const newValue =
+        content.slice(0, selectionStart) +
+        markdownUrl +
+        content.slice(selectionEnd, content.length);
+      setContent(newValue);
+      textAreaRef.current.setSelectionRange(
+        selectionStart + markdownUrl.length,
+        selectionStart + markdownUrl.length
+      );
+    }
+  };
+
   const [fetchStatus, setFetchStatus] = useFetchStatus();
   const isFetching = fetchStatus;
   const deleted = false;
@@ -157,21 +172,6 @@ const Edit: FC<EditProps> = ({
       </Container>
     );
   }
-
-  const handleInsertUrl = (response: string | any[]) => {
-    if (textAreaRef.current) {
-      const { selectionStart, selectionEnd } = textAreaRef.current;
-      const newValue =
-        content.slice(0, selectionStart) +
-        response +
-        content.slice(selectionEnd, content.length);
-      setContent(newValue);
-      textAreaRef.current.setSelectionRange(
-        selectionStart + response.length,
-        selectionStart + response.length
-      );
-    }
-  };
 
   const handleChange = (e: { target: { value: SetStateAction<string> } }) => {
     setContent(e.target.value);
@@ -247,9 +247,11 @@ const Edit: FC<EditProps> = ({
                 </div>
               </div>
 
-              <BlogImageUpload
-                uploadImage={uploadImage}
-                onUploadSuccess={handleInsertUrl}
+              <BlogImageControls
+                onUploadSuccess={(response) =>
+                  handleInsertImage(convertUrlToMarkdown(response))
+                }
+                handleInsertImage={handleInsertImage}
               />
             </div>
 

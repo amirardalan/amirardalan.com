@@ -4,7 +4,6 @@ import Router from 'next/router';
 
 import { useSession } from 'next-auth/react';
 import { useFetchStatus } from '@/hooks/useLoadingIndicator';
-import { uploadImage } from '@/lib/blog';
 
 import LoadingTriangle from '@/components/LoadingTriangle';
 import Container from '@/components/Container';
@@ -12,8 +11,9 @@ import BlogStyles from '@/components/BlogStyles';
 import Dropdown from '@/components/Dropdown';
 import Checkbox from '@/components/Checkbox';
 import BlogPostControls from '@/components/BlogPostControls';
-import BlogImageUpload from '@/components/BlogImageUpload';
+import BlogImageControls from '@/components/BlogImageControls';
 
+import { convertUrlToMarkdown } from '@/utils/convertUrlToMarkdown';
 import generateSlug from '@/utils/generateSlug';
 import { adminContent, breadcrumbContent } from '@/data/content';
 import { categories } from '@/data/categories';
@@ -44,9 +44,18 @@ const Draft: FC<DraftProps> = ({ admin, breadcrumb }) => {
 
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
 
-  const handleInsertUrl = (response: string) => {
+  const handleInsertImage = (markdownUrl: string) => {
     if (textAreaRef.current) {
-      textAreaRef.current.value += response;
+      const { selectionStart, selectionEnd } = textAreaRef.current;
+      const newValue =
+        content.slice(0, selectionStart) +
+        markdownUrl +
+        content.slice(selectionEnd, content.length);
+      setContent(newValue);
+      textAreaRef.current.setSelectionRange(
+        selectionStart + markdownUrl.length,
+        selectionStart + markdownUrl.length
+      );
     }
   };
 
@@ -156,9 +165,11 @@ const Draft: FC<DraftProps> = ({ admin, breadcrumb }) => {
                     onChange={handleSetFeatured}
                   />
                 </div>
-                <BlogImageUpload
-                  uploadImage={uploadImage}
-                  onUploadSuccess={handleInsertUrl}
+                <BlogImageControls
+                  onUploadSuccess={(response) =>
+                    handleInsertImage(convertUrlToMarkdown(response))
+                  }
+                  handleInsertImage={handleInsertImage}
                 />
               </div>
             </div>

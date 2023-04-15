@@ -25,7 +25,8 @@ This is my personal portfolio and blog. You may find the CMS portion and some of
 - Set/Edit Title, Teaser, Slug, Content, and Category
 - Set a featured post. If no post is featured, use the latest post as a fallback.
 - Optionally suppress "Updated" date when editing
-- Upload files from your device directly to Cloudinary and a markdown URL is auto inserted into the blog post content.
+- Upload images to Cloudinary and a markdown URL is auto inserted into the blog post content.
+- Browse your Cloudinary Media Library and delete or insert images into blog posts
 
 ---
 
