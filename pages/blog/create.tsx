@@ -13,7 +13,7 @@ import Checkbox from '@/components/Checkbox';
 import BlogPostControls from '@/components/BlogPostControls';
 import BlogImageControls from '@/components/BlogImageControls';
 
-import insertMarkdownImage from '@/utils/insertMarkdownImage';
+import { convertUrlToMarkdown } from '@/utils/convertUrlToMarkdown';
 import generateSlug from '@/utils/generateSlug';
 import { adminContent, breadcrumbContent } from '@/data/content';
 import { categories } from '@/data/categories';
@@ -167,8 +167,9 @@ const Draft: FC<DraftProps> = ({ admin, breadcrumb }) => {
                 </div>
                 <BlogImageControls
                   onUploadSuccess={(response) =>
-                    insertMarkdownImage(response, handleInsertImage)
+                    handleInsertImage(convertUrlToMarkdown(response))
                   }
+                  handleInsertImage={handleInsertImage}
                 />
               </div>
             </div>

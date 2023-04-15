@@ -16,7 +16,7 @@ import Dropdown from '@/components/Dropdown';
 import Checkbox from '@/components/Checkbox';
 import LoadingTriangle from '@/components/LoadingTriangle';
 
-import insertMarkdownImage from '@/utils/insertMarkdownImage';
+import { convertUrlToMarkdown } from '@/utils/convertUrlToMarkdown';
 import { adminContent, breadcrumbContent } from '@/data/content';
 import { categories } from '@/data/categories';
 import BlogImageControls from '@/components/BlogImageControls';
@@ -249,8 +249,9 @@ const Edit: FC<EditProps> = ({
 
               <BlogImageControls
                 onUploadSuccess={(response) =>
-                  insertMarkdownImage(response, handleInsertImage)
+                  handleInsertImage(convertUrlToMarkdown(response))
                 }
+                handleInsertImage={handleInsertImage}
               />
             </div>
 
