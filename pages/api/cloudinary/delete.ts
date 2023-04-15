@@ -7,25 +7,19 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-const browseImagesHandler = async (
+const deleteImageHandler = async (
   req: NextApiRequest,
   res: NextApiResponse
 ) => {
   try {
-    const options = {
-      type: 'upload',
-      prefix: 'Blog/',
-      max_results: 500,
-      context: true,
-    };
-    const result = await cloudinary.api.resources(options);
-
-    // console.log(result);
+    const public_id = req.body.public_id;
+    const result = await cloudinary.uploader.destroy(public_id);
+    console.log(public_id);
     res.status(200).json(result);
-  } catch (error) {
+  } catch (error: any) {
     console.error(error);
-    res.status(500).json({ message: 'Failed to browse images' });
+    res.status(500).json({ message: 'Failed to delete image' });
   }
 };
 
-export default browseImagesHandler;
+export default deleteImageHandler;

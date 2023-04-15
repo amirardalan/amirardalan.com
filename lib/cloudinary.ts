@@ -19,7 +19,6 @@ export const uploadImage = async (file: File): Promise<string> => {
 };
 
 // Browse Images
-
 export const browseImages = async (): Promise<string[]> => {
   const response = await fetch('/api/cloudinary/browse', {
     method: 'GET',
@@ -33,4 +32,19 @@ export const browseImages = async (): Promise<string[]> => {
   const res = data.resources.map((resource: any) => resource.secure_url);
 
   return res;
+};
+
+// Delete Image
+export const deleteImage = async (public_id: string): Promise<void> => {
+  const response = await fetch(`/api/cloudinary/delete`, {
+    method: 'DELETE',
+    body: JSON.stringify({ public_id }),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error('Failed to delete image');
+  }
 };

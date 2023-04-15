@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { css } from '@emotion/react';
 import CloseIcon from '@/components/CloseIcon';
 import { convertUrlToMarkdown } from '@/utils/convertUrlToMarkdown';
+import { deleteImage } from '@/lib/cloudinary';
 
 type BlogImageBrowserProps = {
   images: string[];
@@ -28,7 +29,11 @@ const styleModal = css({
     gridTemplateColumns: 'repeat(3, 1fr)',
     gap: '1rem',
   },
-  '.imgContainer': {},
+  '.imgContainer': {
+    img: {
+      cursor: 'pointer',
+    },
+  },
 });
 
 const BlogImageBrowser = ({
@@ -41,6 +46,10 @@ const BlogImageBrowser = ({
     setShowModal(false);
   };
 
+  const handleImageDelete = (public_id: string) => {
+    deleteImage(public_id);
+  };
+
   return (
     <div css={styleModal}>
       <div className="modalContent">
@@ -49,6 +58,12 @@ const BlogImageBrowser = ({
         </button>
         <div className="imgGrid">
           {images.map((image, index) => {
+            const public_id = `Blog/${image
+              ?.split('/')
+              .pop()
+              ?.split('.')
+              .slice(0, -1)
+              .join('.')}`;
             const imageName =
               image?.split('/').pop()?.split('_').slice(0, -1).join(' ') ??
               'Blog Image';
@@ -62,6 +77,7 @@ const BlogImageBrowser = ({
                   aria-label={imageName}
                   onClick={() => handleClick(image)}
                 />
+                <span onClick={() => handleImageDelete(public_id)}>Delete</span>
               </div>
             );
           })}

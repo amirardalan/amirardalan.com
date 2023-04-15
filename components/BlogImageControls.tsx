@@ -81,6 +81,10 @@ const BlogImageControls: FC<BlogImageControlsProps> = ({
     }
   };
 
+  const onImageDeleted = () => {
+    console.log('image deleted');
+  };
+
   return (
     <>
       {showModal ? (
