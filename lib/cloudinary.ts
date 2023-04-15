@@ -13,7 +13,7 @@ export const uploadImage = async (file: File): Promise<string> => {
   }
 
   const data = await response.json();
-  const res = data.markdownUrl;
+  const res = data.url;
 
   return res;
 };

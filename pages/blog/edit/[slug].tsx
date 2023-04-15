@@ -247,10 +247,7 @@ const Edit: FC<EditProps> = ({
                 </div>
               </div>
 
-              <BlogImageUpload
-                uploadImage={uploadImage}
-                onUploadSuccess={handleInsertUrl}
-              />
+              <BlogImageUpload onUploadSuccess={handleInsertUrl} />
             </div>
 
             <BlogPostControls
