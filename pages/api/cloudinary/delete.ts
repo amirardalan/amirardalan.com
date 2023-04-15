@@ -14,7 +14,6 @@ const deleteImageHandler = async (
   try {
     const public_id = req.body.public_id;
     const result = await cloudinary.uploader.destroy(public_id);
-    console.log(public_id);
     res.status(200).json(result);
   } catch (error: any) {
     console.error(error);
