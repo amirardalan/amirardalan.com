@@ -3,12 +3,13 @@ import { css } from '@emotion/react';
 import LoadingSpinner from '@/components/LoadingSpinner';
 import CloseIcon from '@/components/CloseIcon';
 
-interface BlogImageUploadProps {
+interface BlogImageControlsProps {
   uploadImage: (file: File) => Promise<string>;
   onUploadSuccess: (url: string) => void;
 }
 
 const styleImageUploader = css({
+  display: 'flex',
   fontFamily: 'var(--font-secondary)',
   fontSize: 13,
   input: {
@@ -20,7 +21,7 @@ const styleLoadingIndicator = css({
   marginLeft: '.5rem',
 });
 
-const BlogImageUpload: FC<BlogImageUploadProps> = ({
+const BlogImageControls: FC<BlogImageControlsProps> = ({
   uploadImage,
   onUploadSuccess,
 }) => {
@@ -62,6 +63,13 @@ const BlogImageUpload: FC<BlogImageUploadProps> = ({
     }
   };
 
+  const handleBrowseImages = async (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    e.preventDefault();
+    console.log('browse images');
+  };
+
   return (
     <div css={styleImageUploader}>
       <label className="imgLabel">
@@ -99,8 +107,11 @@ const BlogImageUpload: FC<BlogImageUploadProps> = ({
           {isUploading ? <LoadingSpinner size={20} /> : null}
         </span>
       </label>
+      <button className="buttonCompact small" onClick={handleBrowseImages}>
+        Browse Images
+      </button>
     </div>
   );
 };
 
-export default BlogImageUpload;
+export default BlogImageControls;

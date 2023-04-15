@@ -12,7 +12,7 @@ import BlogStyles from '@/components/BlogStyles';
 import Dropdown from '@/components/Dropdown';
 import Checkbox from '@/components/Checkbox';
 import BlogPostControls from '@/components/BlogPostControls';
-import BlogImageUpload from '@/components/BlogImageUpload';
+import BlogImageUpload from '@/components/BlogImageControls';
 
 import generateSlug from '@/utils/generateSlug';
 import { adminContent, breadcrumbContent } from '@/data/content';

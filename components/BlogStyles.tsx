@@ -244,7 +244,7 @@ const blogStyles = css({
     fontFamily: 'var(--font-secondary)',
   },
   '.imgIcon': {
-    margin: '.2rem .1rem 0 .5rem',
+    margin: '.1rem .1rem 0 .5rem',
     '@media (max-width: 600px)': {
       marginLeft: 0,
     },

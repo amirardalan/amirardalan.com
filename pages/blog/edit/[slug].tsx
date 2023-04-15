@@ -19,7 +19,7 @@ import LoadingTriangle from '@/components/LoadingTriangle';
 
 import { adminContent, breadcrumbContent } from '@/data/content';
 import { categories } from '@/data/categories';
-import BlogImageUpload from '@/components/BlogImageUpload';
+import BlogImageUpload from '@/components/BlogImageControls';
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const [editPost, getLatestPost] = await prisma.$transaction([

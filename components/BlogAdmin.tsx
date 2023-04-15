@@ -285,6 +285,14 @@ const BlogAdmin: FC = () => {
                 backgroundColor: 'var(--color-disabled)',
                 cursor: 'default',
               },
+              '&.small': {
+                backgroundColor: 'transparent',
+                border: '1px solid var(--color-gray)',
+                color: 'var(--color-gray)',
+                fontSize: 10,
+                minWidth: 100,
+                height: 25,
+              },
             },
             '.buttonCancel': {
               marginRight: '1rem',
