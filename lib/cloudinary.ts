@@ -30,7 +30,7 @@ export const browseImages = async (): Promise<string[]> => {
   }
 
   const data = await response.json();
-  const res = data.markdownUrl;
+  const res = data.resources.map((resource: any) => resource.secure_url);
 
   return res;
 };

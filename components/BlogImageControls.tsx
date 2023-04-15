@@ -1,10 +1,10 @@
 import { FC, useState, useRef } from 'react';
 import { css } from '@emotion/react';
+import { uploadImage, browseImages } from '@/lib/cloudinary';
 import LoadingSpinner from '@/components/LoadingSpinner';
 import CloseIcon from '@/components/CloseIcon';
 
 interface BlogImageControlsProps {
-  uploadImage: (file: File) => Promise<string>;
   onUploadSuccess: (url: string) => void;
 }
 
@@ -21,10 +21,7 @@ const styleLoadingIndicator = css({
   marginLeft: '.5rem',
 });
 
-const BlogImageControls: FC<BlogImageControlsProps> = ({
-  uploadImage,
-  onUploadSuccess,
-}) => {
+const BlogImageControls: FC<BlogImageControlsProps> = ({ onUploadSuccess }) => {
   const selectedFileRef = useRef<HTMLInputElement>(null);
   const [isUploading, setIsUploading] = useState<boolean>(false);
   const [isFileSelected, setIsFileSelected] = useState<boolean>(false);
@@ -67,7 +64,12 @@ const BlogImageControls: FC<BlogImageControlsProps> = ({
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     e.preventDefault();
-    console.log('browse images');
+    try {
+      const images = await browseImages();
+      console.log(images);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (

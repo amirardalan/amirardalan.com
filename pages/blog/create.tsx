@@ -4,7 +4,6 @@ import Router from 'next/router';
 
 import { useSession } from 'next-auth/react';
 import { useFetchStatus } from '@/hooks/useLoadingIndicator';
-import { uploadImage } from '@/lib/cloudinary';
 
 import LoadingTriangle from '@/components/LoadingTriangle';
 import Container from '@/components/Container';
@@ -156,10 +155,7 @@ const Draft: FC<DraftProps> = ({ admin, breadcrumb }) => {
                     onChange={handleSetFeatured}
                   />
                 </div>
-                <BlogImageUpload
-                  uploadImage={uploadImage}
-                  onUploadSuccess={handleInsertUrl}
-                />
+                <BlogImageUpload onUploadSuccess={handleInsertUrl} />
               </div>
             </div>
 
