@@ -505,10 +505,9 @@ const styleBlogPost = css({
           border: '1px solid var(--color-gray)',
           borderRadius: '50%',
           color: 'var(--color-gray)',
-          fontFamily: 'var(--font-gray)',
+          fontFamily: 'var(--font-primary)',
           fontSize: '.7rem',
-          fontWeight: 'bold',
-          lineHeight: '1.2rem',
+          lineHeight: '1.3rem',
           textAlign: 'center',
           '@media not all and (min-resolution:.001dpcm)': {
             '@supports (-webkit-appearance:none)': {

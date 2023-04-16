@@ -1,4 +1,4 @@
-import React, { type FC, useState } from 'react';
+import { type FC, useState } from 'react';
 import generateSlug from '@/utils/generateSlug';
 import { css } from '@emotion/react';
 
@@ -30,8 +30,8 @@ const TableOfContents: FC<TableOfContentsProps> = ({ markdown }) => {
       },
     },
     'ol.tableOfContents': {
-      marginTop: '1rem',
-      marginBottom: 0,
+      margin: '1rem 0 0 0',
+
       li: {
         margin: '.3rem 0 0 2rem',
         lineheight: '.1rem !important',
