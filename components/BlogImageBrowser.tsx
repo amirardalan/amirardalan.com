@@ -69,6 +69,9 @@ const styleModal = css({
       display: 'flex',
       alignSelf: 'center',
     },
+    h4: {
+      marginLeft: '.4rem',
+    },
   },
   '.imgGrid': {
     display: 'flex',
@@ -165,7 +168,7 @@ const BlogImageBrowser = ({
             <button className="close" onClick={() => setShowModal(false)}>
               <CloseIcon size={20} />
             </button>
-            <h4>Media Library</h4>
+            <h4>Image Library</h4>
           </div>
           <div className="modalContent">
             <div className="imgGrid">
