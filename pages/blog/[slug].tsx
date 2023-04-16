@@ -240,7 +240,7 @@ const styleBlogPost = css({
       '&:after': {
         margin: '0 .5rem',
         content: '"•"',
-        '@media(max-width: 480px)': {
+        '@media(max-width: 600px)': {
           content: 'none',
         },
       },
@@ -249,6 +249,7 @@ const styleBlogPost = css({
         fontSize: 15,
         fontWeight: 700,
       },
+      marginBottom: '.25rem',
     },
     '@media(max-width: 1024px)': {
       marginBottom: '2rem',
@@ -275,7 +276,7 @@ const styleBlogPost = css({
         margin: '0 0 .5rem',
         lineHeight: '2.2rem',
       },
-      '@media(max-width: 480px)': {
+      '@media(max-width: 600px)': {
         fontSize: 28,
         lineHeight: '2.2rem',
       },
