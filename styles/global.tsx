@@ -457,7 +457,7 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
             },
             '&:hover::after': {
               top: '-38%',
-              left: '-42%',
+              left: '-41.5%',
               position: 'absolute',
               content: '" "',
               backgroundColor: 'var(--color-accent)',
