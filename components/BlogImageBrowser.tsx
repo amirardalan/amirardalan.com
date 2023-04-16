@@ -84,33 +84,35 @@ const styleModal = css({
       position: 'relative',
       overflow: 'hidden',
       img: {
-        border: '2px solid var(--color-accent)',
-        maxHeight: IMAGE_SIZE,
-        maxWidth: IMAGE_SIZE,
+        boxShadow: 'inset 0 0 0 2px transparent',
         objectFit: 'cover',
         zIndex: -1,
+        '&:hover': {
+          boxShadow: 'inset 0 0 0 2px var(--color-primary)',
+          zIndex: 2,
+        },
       },
       '&:hover::after': {
+        border: '2px solid var(--color-primary)',
+        pointerEvents: 'none',
         height: IMAGE_SIZE,
         width: IMAGE_SIZE,
         content: '""',
         position: 'absolute',
         top: 0,
         left: 0,
-        backgroundColor: 'var(--color-dark)',
-        cursor: 'pointer',
-        opacity: 0.3,
-        zIndex: 1,
+        backgroundColor: 'rgba(0, 0, 0, .25)',
       },
     },
     '.imgDetails': {
+      maxWidth: IMAGE_SIZE,
+      overflow: 'hidden',
       display: 'flex',
       alignItems: 'flex-start',
-      justifyContent: 'flex-start',
     },
     '.imgText': {
-      maxWidth: IMAGE_SIZE - 20,
       marginLeft: '.4rem',
+      maxWidth: IMAGE_SIZE - 20,
       color: 'var(--color-text)',
       fontSize: 11,
       fontWeight: 700,
@@ -119,6 +121,7 @@ const styleModal = css({
       overflow: 'hidden',
       textOverflow: 'ellipsis',
       '&.delete': {
+        minWidth: 'fit-content',
         color: 'var(--color-warning)',
       },
     },
@@ -181,7 +184,7 @@ const BlogImageBrowser = ({
                 }
                 return (
                   <div key={index} className="imgContainer">
-                    <div
+                    <button
                       className="imgThumb"
                       onClick={() => handleSelectImage(image)}
                     >
@@ -192,7 +195,7 @@ const BlogImageBrowser = ({
                         alt={imageName}
                         aria-label={imageName}
                       />
-                    </div>
+                    </button>
                     <div className="imgDetails">
                       <button
                         className="delete"
@@ -214,14 +217,14 @@ const BlogImageBrowser = ({
                         >
                           delete
                         </button>
-                      ) : (
-                        <button
-                          className="imgText"
-                          onClick={() => handleSelectImage(image)}
-                        >
-                          {imageName}
-                        </button>
-                      )}
+                      ) : null}
+
+                      <button
+                        className="imgText"
+                        onClick={() => handleSelectImage(image)}
+                      >
+                        {imageName}
+                      </button>
                     </div>
                   </div>
                 );

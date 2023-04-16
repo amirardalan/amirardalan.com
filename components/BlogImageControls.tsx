@@ -143,15 +143,13 @@ const BlogImageControls: FC<BlogImageControlsProps> = ({
             onChange={handleFileSelect}
             ref={selectedFileRef}
           />
-          {isFileSelected ? (
-            <button className="buttonCancel" onClick={handleClearImage}>
-              <CloseIcon size={15} />
-            </button>
-          ) : null}
         </label>
         <div className="imgButtons">
           {isFileSelected ? (
             <>
+              <button className="buttonCancel" onClick={handleClearImage}>
+                <CloseIcon size={15} />
+              </button>
               <button
                 className="buttonCompact small"
                 onClick={handleImageUpload}
@@ -160,10 +158,11 @@ const BlogImageControls: FC<BlogImageControlsProps> = ({
                 Upload
               </button>
             </>
-          ) : null}
-          <button className="buttonCompact small" onClick={handleOpenModal}>
-            Image Library
-          </button>
+          ) : (
+            <button className="buttonCompact small" onClick={handleOpenModal}>
+              Image Library
+            </button>
+          )}
           <span css={styleLoadingIndicator}>
             {isUploading ? <LoadingSpinner size={20} /> : null}
           </span>
