@@ -23,6 +23,7 @@ import { AdminControlsTypes } from '@/types/admin';
 import { BlogNavigationTypes } from '@/types/blog';
 import LikeButton from '@/components/LikeButton';
 import BlogPostTweet from '@/components/BlogPostTweet';
+import TableOfContents from '@/components/TableOfContents';
 
 const BlogPostControls = dynamic(
   () => import('@/components/BlogPostControls'),
@@ -135,7 +136,6 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
           </div>
           <h1 aria-label={`${title}`}>{title}</h1>
           <p className="teaser">{post.teaser}</p>
-
           <div
             className="postDetails"
             aria-label={
@@ -171,7 +171,6 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
               </span>
             </span>
           </div>
-
           <div className="likeAndShare">
             <div className="buttonHover">
               <LikeButton liked={liked} handleLike={handleLike} />
@@ -186,8 +185,9 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
             </div>
           </div>
 
-          <Markdown markdown={post} />
+          <TableOfContents markdown={post.content} />
 
+          <Markdown markdown={post} />
           {userHasValidSession && (
             <BlogPostControls
               admin={admin}
@@ -373,13 +373,13 @@ const styleBlogPost = css({
       fontFamily: 'var(--font-secondary)',
       fontSize: 14.5,
       color: 'var(--color-gray)',
-      lineHeight: '1.5rem',
+      lineHeight: '2rem',
       '@media (max-width: 768px)': {
-        lineHeight: '1.5rem',
+        lineHeight: '2rem',
       },
       '&:before, &:after': {
         position: 'absolute',
-        lineHeight: '1.5rem',
+        lineHeight: '2rem',
       },
       '&:before': {
         content: '""',
@@ -389,7 +389,7 @@ const styleBlogPost = css({
         height: 15,
         background: 'var(--icon-info) no-repeat',
         backgroundSize: 'contain',
-        lineHeight: '1.5rem',
+        lineHeight: '2rem',
         '@media (max-width: 768px)': {
           top: 19,
         },
@@ -406,12 +406,6 @@ const styleBlogPost = css({
       a: {
         fontFamily: 'var(--font-secondary)',
         fontSize: 14.5,
-        lineHeight: '1.5rem',
-        '@media (max-width: 768px)': {
-          margin: '0 !important',
-          padding: '0 !important',
-          lineHeight: '.5rem !important',
-        },
       },
       code: {
         fontSize: 13,
@@ -435,6 +429,17 @@ const styleBlogPost = css({
         '&:after': {
           content: '"Warning:"',
           color: 'var(--color-warning)',
+        },
+      },
+      '&.contents': {
+        padding: '1rem 1.25rem',
+        '&::before': {
+          display: 'none',
+          content: '""',
+          background: 'none',
+        },
+        '&:after': {
+          content: '""',
         },
       },
     },
@@ -492,18 +497,18 @@ const styleBlogPost = css({
         position: 'relative',
         '&::before': {
           content: 'counter(counter)',
-          width: '1.5rem',
-          height: '1.5rem',
+          width: '1.3rem',
+          height: '1.3rem',
           position: 'absolute',
-          top: '.2rem',
+          top: '.35rem',
           left: '-2rem',
-          border: '1px solid var(--color-primary)',
+          border: '1px solid var(--color-gray)',
           borderRadius: '50%',
-          color: 'var(--color-primary)',
-          fontFamily: 'var(--font-primary)',
-          fontSize: '.8rem',
-          fontWeight: 'normal',
-          lineHeight: '1.4rem',
+          color: 'var(--color-gray)',
+          fontFamily: 'var(--font-gray)',
+          fontSize: '.7rem',
+          fontWeight: 'bold',
+          lineHeight: '1.2rem',
           textAlign: 'center',
           '@media not all and (min-resolution:.001dpcm)': {
             '@supports (-webkit-appearance:none)': {
@@ -511,6 +516,9 @@ const styleBlogPost = css({
             },
           },
         },
+      },
+      '@media (max-width: 480px)': {
+        marginLeft: '.1rem',
       },
     },
   },
