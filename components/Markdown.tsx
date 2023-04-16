@@ -4,7 +4,7 @@ import { css } from '@emotion/react';
 
 import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
-import generateSlug from '@/utils/generateSlug';
+import { generateSlug } from '@/utils/generateSlug';
 import rangeParser from 'parse-numeric-range';
 
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
@@ -301,9 +301,12 @@ const BlogMarkdown: FC<BlogMarkdownProps> = ({ markdown }) => {
       return <a href={anchor.href}>{anchor.children}</a>;
     },
     h3: (props: H3Props) => {
+      console.log(props);
+
       const children = Array.isArray(props.children)
         ? props.children
         : [props.children];
+
       const heading = children
         .flatMap((element) =>
           typeof element === 'string'
@@ -311,7 +314,12 @@ const BlogMarkdown: FC<BlogMarkdownProps> = ({ markdown }) => {
             : element?.type !== undefined &&
               typeof element.props.children === 'string'
             ? element.props.children
-            : []
+            : typeof element === 'object' && element.props?.children?.flatMap
+            ? element.props.children.flatMap((child: object) => {
+                if (typeof child === 'string') return child;
+                return '';
+              })
+            : ''
         )
         .join('');
 

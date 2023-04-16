@@ -1,5 +1,5 @@
 import { type FC, useState } from 'react';
-import generateSlug from '@/utils/generateSlug';
+import { generateSlug } from '@/utils/generateSlug';
 import { css } from '@emotion/react';
 
 type TableOfContentsProps = {

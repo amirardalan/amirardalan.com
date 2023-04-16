@@ -1,6 +1,6 @@
 // Generate a lowercase, hyphen-separated slug and strip invalid chars
 
-const generateSlug = (str: string) => {
+export const generateSlug = (str: string) => {
   str = str?.replace(/^\s+|\s+$/g, '');
   str = str?.toLowerCase();
   const from = 'àáãäâèéëêìíïîòóöôùúüûñç·/_,:;';
@@ -17,5 +17,3 @@ const generateSlug = (str: string) => {
 
   return str;
 };
-
-export default generateSlug;

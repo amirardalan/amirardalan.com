@@ -14,7 +14,7 @@ import BlogPostControls from '@/components/BlogPostControls';
 import BlogImageControls from '@/components/BlogImageControls';
 
 import { convertUrlToMarkdown } from '@/utils/convertUrlToMarkdown';
-import generateSlug from '@/utils/generateSlug';
+import { generateSlug } from '@/utils/generateSlug';
 import { adminContent, breadcrumbContent } from '@/data/content';
 import { categories } from '@/data/categories';
 
