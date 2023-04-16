@@ -301,8 +301,6 @@ const BlogMarkdown: FC<BlogMarkdownProps> = ({ markdown }) => {
       return <a href={anchor.href}>{anchor.children}</a>;
     },
     h3: (props: H3Props) => {
-      console.log(props);
-
       const children = Array.isArray(props.children)
         ? props.children
         : [props.children];

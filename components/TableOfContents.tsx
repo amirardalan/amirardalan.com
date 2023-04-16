@@ -25,6 +25,7 @@ const TableOfContents: FC<TableOfContentsProps> = ({ markdown }) => {
       fontWeight: 700,
       color: 'var(--color-text)',
       marginBottom: showTOC ? '1rem' : 0,
+      lineHeight: '1rem',
       '.icon': {
         marginRight: '1rem',
       },
@@ -34,7 +35,6 @@ const TableOfContents: FC<TableOfContentsProps> = ({ markdown }) => {
 
       li: {
         margin: '.3rem 0 0 2rem',
-        lineheight: '.1rem !important',
       },
     },
   });
