@@ -40,31 +40,35 @@ const TableOfContents: FC<TableOfContentsProps> = ({ markdown }) => {
   });
 
   return (
-    <div css={styleTOC}>
-      <div className="note contents">
-        <button onClick={handleShowTOC} aria-label="Table of Contents">
-          <summary>
-            <span className="icon">{showTOC ? '▽ ' : '▷ '}</span> Table of
-            Contents:
-          </summary>
-        </button>
-        {showTOC ? (
-          <ol className="tableOfContents">
-            {headings?.map((heading) => {
-              const headingText = heading.replace('### ', '');
-              const headingID = generateSlug(headingText);
-              return (
-                <li key={headingID}>
-                  <a className="tocLink" href={`#${headingID}`}>
-                    {headingText}
-                  </a>
-                </li>
-              );
-            })}
-          </ol>
-        ) : null}
-      </div>
-    </div>
+    <>
+      {headings ? (
+        <div css={styleTOC}>
+          <div className="note contents">
+            <button onClick={handleShowTOC} aria-label="Table of Contents">
+              <summary>
+                <span className="icon">{showTOC ? '▽ ' : '▷ '}</span> Table of
+                Contents:
+              </summary>
+            </button>
+            {showTOC ? (
+              <ol className="tableOfContents">
+                {headings?.map((heading) => {
+                  const headingText = heading.replace('### ', '');
+                  const headingID = generateSlug(headingText);
+                  return (
+                    <li key={headingID}>
+                      <a className="tocLink" href={`#${headingID}`}>
+                        {headingText}
+                      </a>
+                    </li>
+                  );
+                })}
+              </ol>
+            ) : null}
+          </div>
+        </div>
+      ) : null}
+    </>
   );
 };
 
