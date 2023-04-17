@@ -1,5 +1,4 @@
 import { FC, ReactNode, useEffect, useState } from 'react';
-import { decode } from 'html-entities';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import { useTheme, Theme } from '@emotion/react';
@@ -31,15 +30,12 @@ const Container: FC<ContainerProps> = (props) => {
   };
 
   // OG Image
-  const decodedOgTitle = decode(meta.title);
-  const encodedOgTitle = encodeURIComponent(decodedOgTitle);
-
-  const encodedDescription = encodeURIComponent(meta.description);
-  const encodedOgImage =
-    `${process.env.NEXT_PUBLIC_SITE_URL}/api/og?title=${encodedOgTitle}&description=${encodedDescription}`.replace(
-      /&amp;/g,
-      '&'
-    );
+  const ogTitle = meta.title.replace(/[\u2013\u2014].*$/, '');
+  const encodedOgImage = `${
+    process.env.NEXT_PUBLIC_SITE_URL
+  }/api/og?title=${encodeURIComponent(
+    ogTitle
+  )}&description=${encodeURIComponent(meta.description)}`;
   const ogImage = meta.image ? meta.image : encodedOgImage;
 
   // Dynamic Favicon
