@@ -71,7 +71,8 @@ export const blogPostContent = {
 export const aboutContent = {
   meta: {
     title: 'About – Amir Ardalan',
-    description: `Amir Ardalan's bio, mission statement, skills, stack, experience, availability, and career timeline.`,
+    description:
+      'Bio, mission statement, skills, stack, experience, availability, and career timeline.',
     github: 'GitHub',
     twitter: 'Twitter',
     linkedin: 'LinkedIn',
