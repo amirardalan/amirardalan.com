@@ -30,8 +30,13 @@ const Container: FC<ContainerProps> = (props) => {
   };
 
   // OG Image
+
+  // Remove emdash and hyphen because I use them in my meta titles
+  // but don't want them to display in OG images
   const ogTitle = meta.title.replace(/[\u2013\u2014].*$/, '');
+  // Replace apostrophes with smart apostrophes so they are parsed correctly
   const ogDescription = meta.description.replace(/\u0027/g, '\u2019');
+
   const encodedOgImage = `${
     process.env.NEXT_PUBLIC_SITE_URL
   }/api/og?title=${encodeURIComponent(
@@ -39,12 +44,10 @@ const Container: FC<ContainerProps> = (props) => {
   )}&description=${encodeURIComponent(ogDescription)}`;
   const ogImage = meta.image ? meta.image : encodedOgImage;
 
-  // Dynamic Favicon
+  // Dynamic (light and dark mode) Favicon
   const [faviconTheme, setFaviconTheme] = useState(theme.active);
-
   const favicon =
     faviconTheme === 'dark' ? '/favicon-dark.png' : '/favicon-light.png';
-
   useEffect(() => {
     const usesDarkMode =
       window.matchMedia('(prefers-color-scheme: dark)').matches || false;
