@@ -219,7 +219,7 @@ const blogStyles = css({
     backgroundColor: 'var(--color-accent)',
     border: '2px solid var(--color-accent)',
     borderRadius: '0.25rem',
-    fontFamily: 'var(--font-secondary)',
+    fontFamily: 'var(--font-primary)',
     fontSize: 17,
     '&:disabled': {
       backgroundColor: 'var(--color-bg)',
