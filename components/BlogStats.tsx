@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { css } from '@emotion/react';
 import useTotalLikes from '@/hooks/useTotalLikes';
-import formatLikeCount from '@/utils/formatLikeCount';
+import formatNumberCount from '@/utils/formatNumberCount';
 import { BlogStatsTypes } from '@/types/blog';
 
 type BlogStatsProps = {
@@ -70,12 +70,12 @@ const BlogStats: FC<BlogStatsProps> = ({ feed, filteredPosts }) => {
         <li className="divider">/</li>
         {error || totalLikesCount === undefined || totalLikesCount === 0 ? (
           <li className="likesCount">
-            {formatLikeCount(filteredLikesCount)}
+            {formatNumberCount(filteredLikesCount)}
             <span className="text">{likesText}</span>
           </li>
         ) : (
           <li className="likesCount">
-            {formatLikeCount(
+            {formatNumberCount(
               filterActive ? filteredLikesCount : totalLikesCount
             )}
             <span className="text">{likesText}</span>
