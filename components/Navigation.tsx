@@ -78,7 +78,7 @@ const Navigation: FC = () => {
       height: '100dvh',
       padding: '3.5rem',
       background: 'var(--color-bg)',
-      a: {
+      'a.link': {
         content: '""',
         borderBottom: '1px solid var(--color-accent)',
         width: '100%',
@@ -218,9 +218,9 @@ const Navigation: FC = () => {
             href={item.path}
             key={index}
             onClick={handleToggleMenu}
-            className={
+            className={`link ${
               isActiveNav || isBlog ? item.cName + ' active' : item.cName
-            }
+            }`}
             aria-label={item.aria}
           >
             {item.icon ? <div css={styleNavIcon}></div> : item.title}
