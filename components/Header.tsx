@@ -53,7 +53,7 @@ const Header: FC<HeaderProps> = ({ toggleTheme }) => {
     a: { textDecoration: 'none' },
     '.headerRight': {
       display: 'flex',
-      width: 452.5,
+      width: 'fit-content',
       flexDirection: 'row',
       alignItems: 'center',
       opacity: 0,
@@ -83,7 +83,7 @@ const Header: FC<HeaderProps> = ({ toggleTheme }) => {
         <div css={styleHeader}>
           <Link href="/" aria-label="Amir Ardalan Logo" passHref>
             <button css={styleLogoButton}>
-              <Logo animate={true} />
+              <Logo animate={true} size={25} color="var(--color-heading)" />
             </button>
           </Link>
           <div className="headerRight">

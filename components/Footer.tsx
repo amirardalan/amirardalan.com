@@ -2,6 +2,7 @@ import { FC, Key } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { css, useTheme, Theme } from '@emotion/react';
+import Logo from '@/components/Logo';
 import { footer } from '@/data/content';
 import { nav } from '@/data/navigation';
 
@@ -84,11 +85,6 @@ const Footer: FC<FooterProps> = () => {
   });
   const styleFooterLogo = css({
     display: 'flex',
-    padding: '4rem 0 3rem 0',
-    background: 'var(--logo-footer) no-repeat',
-    backgroundSize: 'contain',
-    height: 75,
-    width: 75,
     '@media(max-width: 768px)': {
       padding: 0,
     },
@@ -165,7 +161,9 @@ const Footer: FC<FooterProps> = () => {
     <footer css={styleFooterWrapper}>
       <div css={styleFooter}>
         <div className="grid">
-          <div css={styleFooterLogo} />
+          <div css={styleFooterLogo}>
+            <Logo animate={false} size={75} color="var(--color-bg)" />
+          </div>
         </div>
         <div css={styleFooterNav} className="grid">
           <h4>{footer.headings.nav}</h4>
