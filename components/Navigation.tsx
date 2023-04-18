@@ -167,6 +167,7 @@ const Navigation: FC = () => {
     justifyContent: 'flex-start',
     alignSelf: 'left',
     '.githubButton': {
+      borderBottom: 'none',
       width: 'fit-content',
       display: 'flex',
       alignItems: 'center',
@@ -183,12 +184,14 @@ const Navigation: FC = () => {
         fontSize: 12,
         width: 'auto',
         margin: 0,
-        '&:hover': {
-          color: 'var(--color-bg)',
-        },
       },
-      '&:hover': {
-        backgroundColor: 'var(--color-primary)',
+      '@media(min-width: 1025px)': {
+        '&:hover': {
+          a: {
+            color: 'var(--color-bg)',
+          },
+          backgroundColor: 'var(--color-primary)',
+        },
       },
       '@media (max-width: 768px)': {
         marginTop: '1.5rem',
