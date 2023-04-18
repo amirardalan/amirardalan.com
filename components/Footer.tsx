@@ -2,12 +2,16 @@ import { FC, Key } from 'react';
 import Link from 'next/link';
 import { css } from '@emotion/react';
 import Logo from '@/components/Logo';
+import usePageViews from '@/hooks/usePageViews';
 import { footer } from '@/data/content';
 import { nav } from '@/data/navigation';
+import formatNumberCount from '@/utils/formatNumberCount';
 
 type FooterProps = {};
 
 const Footer: FC<FooterProps> = () => {
+  const { pageviewsCount } = usePageViews();
+
   const styleFooterWrapper = css({
     position: 'relative',
     marginTop: '6rem',
@@ -192,7 +196,8 @@ const Footer: FC<FooterProps> = () => {
         <div>
           {footer.copyright.text}
           {new Date().getFullYear() + ' '}
-          {footer.copyright.name}
+          {footer.copyright.name} •{' '}
+          {`${formatNumberCount(pageviewsCount)} views`}
         </div>
       </div>
     </footer>

@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import useLikeCount from '@/hooks/useLikeCount';
-import formatLikeCount from '@/utils/formatLikeCount';
+import formatNumberCount from '@/utils/formatNumberCount';
 
 type LikeCountProps = {
   id: number;
@@ -12,7 +12,7 @@ const Like: FC<LikeCountProps> = ({ id, likes }) => {
 
   return (
     <span>
-      • {formatLikeCount(likeCount || likes)}{' '}
+      • {formatNumberCount(likeCount || likes)}{' '}
       {likeCount === 1 ? 'like' : 'likes'}
     </span>
   );
