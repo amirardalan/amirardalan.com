@@ -1,7 +1,6 @@
 import { FC, Key } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
-import { css, useTheme, Theme } from '@emotion/react';
+import { css } from '@emotion/react';
 import Logo from '@/components/Logo';
 import { footer } from '@/data/content';
 import { nav } from '@/data/navigation';
@@ -9,9 +8,6 @@ import { nav } from '@/data/navigation';
 type FooterProps = {};
 
 const Footer: FC<FooterProps> = () => {
-  const theme: Theme = useTheme();
-  const isDarkTheme = theme.active === 'dark';
-
   const styleFooterWrapper = css({
     position: 'relative',
     marginTop: '6rem',
@@ -60,11 +56,6 @@ const Footer: FC<FooterProps> = () => {
         boxShadow: '0 0 0 2px var(--color-accent-gray)',
         '&:focus:not(:focus-visible)': { boxShadow: 'none' },
       },
-      '.icon': {
-        marginLeft: '.2rem',
-        lineHeight: 0,
-        alignSelf: 'center',
-      },
       '@media(max-width: 480px)': {
         marginBottom: '1.5rem',
       },
@@ -81,6 +72,11 @@ const Footer: FC<FooterProps> = () => {
       '@media(max-width: 600px)': {
         width: '100%',
       },
+    },
+    '.icon': {
+      display: 'flex',
+      alignSelf: 'center',
+      margin: '.05rem 0 0 .15rem',
     },
   });
   const styleFooterLogo = css({
@@ -117,10 +113,6 @@ const Footer: FC<FooterProps> = () => {
     title: string;
     path: string;
     cName: string;
-    icon: {
-      dark: string;
-      light: string;
-    };
   }
 
   const generateFooterLinks = (footerLinks: FooterLinks) => {
@@ -137,13 +129,17 @@ const Footer: FC<FooterProps> = () => {
           >
             {item.title}
             <span className="icon">
-              <Image
-                src={isDarkTheme ? item.icon?.dark : item.icon?.light}
-                height={15.5}
-                width={15.5}
-                alt={item.title}
-                aria-label={item.title}
-              />
+              <span className="icon">
+                <svg
+                  width="15"
+                  height="13"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="var(--color-bg)"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M14 4h-13v18h20v-11h1v12h-22v-20h14v1zm10 5h-1v-6.293l-11.646 11.647-.708-.708 11.647-11.646h-6.293v-1h8v8z" />
+                </svg>
+              </span>
             </span>
           </a>
         </li>

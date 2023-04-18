@@ -612,7 +612,7 @@ export const footer = {
   ],
   copyright: {
     text: 'Copyright © ',
-    name: '— Amir Ardalan',
+    name: '— Amir Ardalan • 98% human / 2% AI',
   },
 };
 

@@ -163,15 +163,15 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
     if (search.length === 0) {
       return (
         <div className="icon">
-          <Image
-            src={theme?.icons?.search || ''}
-            height="23"
-            width="23"
-            priority
-            alt={blog.search.placeholder}
-            aria-label={blog.search.placeholder}
-            draggable={false}
-          />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="var(--color-gray)"
+          >
+            <path d="M23.809 21.646l-6.205-6.205c1.167-1.605 1.857-3.579 1.857-5.711 0-5.365-4.365-9.73-9.731-9.73-5.365 0-9.73 4.365-9.73 9.73 0 5.366 4.365 9.73 9.73 9.73 2.034 0 3.923-.627 5.487-1.698l6.238 6.238 2.354-2.354zm-20.955-11.916c0-3.792 3.085-6.877 6.877-6.877s6.877 3.085 6.877 6.877-3.085 6.877-6.877 6.877c-3.793 0-6.877-3.085-6.877-6.877z" />
+          </svg>
         </div>
       );
     } else {
@@ -181,7 +181,7 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
           onKeyDown={() => setSearch('')}
           className="clearSearch"
         >
-          <CloseIcon size={23} />
+          <CloseIcon size={21} />
         </button>
       );
     }
@@ -310,17 +310,15 @@ const styleSearchPosts = css({
   },
   '.icon': {
     position: 'absolute',
-    top: 18,
-    right: 0,
-    background: 'var(--color-accent)',
-    width: 35,
+    top: 21,
+    right: 14,
   },
   '.clearSearch': {
     display: 'flex',
     justifyContent: 'center',
     position: 'absolute',
-    top: 19,
-    right: 10,
+    top: 20,
+    right: 12,
     cursor: 'pointer',
   },
 });

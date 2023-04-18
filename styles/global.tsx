@@ -72,10 +72,6 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
             '--icon-eth': 'url(/icons/eth-light.svg)',
             '--icon-info': 'url(/icons/note-dark.svg)',
             '--icon-arrow': 'url(/icons/arrow-dark.svg)',
-            '--icon-pin': 'url(/icons/pin-dark.svg)',
-            '--icon-folder': 'url(/icons/folder-dark.svg)',
-            '--icon-external': 'url(/icons/external-link-light.svg)',
-            '--icon-clipboard': 'url(/icons/clipboard-dark.svg)',
             '--icon-warning': 'url(/icons/warning-dark.svg)',
           },
 
@@ -98,10 +94,6 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
             '--icon-eth': 'url(/icons/eth-dark.svg)',
             '--icon-info': 'url(/icons/note-light.svg)',
             '--icon-arrow': 'url(/icons/arrow-light.svg)',
-            '--icon-pin': 'url(/icons/pin-light.svg)',
-            '--icon-folder': 'url(/icons/folder-light.svg)',
-            '--icon-external': 'url(/icons/external-link-dark.svg)',
-            '--icon-clipboard': 'url(/icons/clipboard-light.svg)',
             '--icon-warning': 'url(/icons/warning-light.svg)',
           },
           html: {
@@ -356,7 +348,7 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
               },
             },
             '&.download:after, &.clipboard:after': {
-              marginLeft: 4,
+              marginLeft: 8,
               content: '""',
               display: 'inline-block',
               width: 18,
@@ -371,7 +363,7 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
             },
             '&.clipboard': {
               '&:after': {
-                background: 'var(--icon-clipboard) no-repeat',
+                background: 'var(--icon-copy) no-repeat',
                 backgroundSize: 'contain',
               },
             },
