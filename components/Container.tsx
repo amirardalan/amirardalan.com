@@ -82,7 +82,7 @@ const Container: FC<ContainerProps> = (props) => {
         />
         <link rel="icon" href={favicon} />
         <meta name="robots" content={meta.robots} />
-        console.log(meta.robots)
+
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
           property="og:url"

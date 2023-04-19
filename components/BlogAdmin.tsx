@@ -374,12 +374,6 @@ const BlogAdmin: FC = () => {
                   margin: '0 0 .25rem 0',
                   fontSize: 20,
                 },
-                '.dateAndReadTime': {
-                  fontSize: 11,
-                  '.readTime': {
-                    fontSize: 10,
-                  },
-                },
                 'p.teaser': {
                   margin: '.3rem 0 0 0',
                   fontSize: 14,

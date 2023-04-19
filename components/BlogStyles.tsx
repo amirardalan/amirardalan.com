@@ -60,6 +60,9 @@ const blogStyles = css({
     'h1, h2': {
       display: 'inline-block',
       fontSize: 40,
+      '@media(max-width: 1024px)': {
+        fontSize: 32,
+      },
     },
     h2: {
       margin: 0,
@@ -102,13 +105,57 @@ const blogStyles = css({
   },
   '.postDetails': {
     display: 'flex',
-    flexDirection: 'row',
+    flexDirection: 'column',
+    '.info': {
+      display: 'flex',
+      flexDirection: 'row',
+      marginBottom: '.25rem',
+      '@media(max-width: 600px)': {
+        flexDirection: 'column',
+      },
+    },
+    '.author': {
+      '&:after': {
+        margin: '0 .5rem',
+        content: '"•"',
+        '@media(max-width: 600px)': {
+          content: 'none',
+        },
+      },
+      '@media(max-width: 600px)': {
+        marginBottom: '.25rem',
+      },
+    },
     color: 'var(--color-gray)',
     fontSize: 13,
     lineHeight: '1.2rem',
     '@media (max-width: 600px)': {
       flexDirection: 'column',
       alignItems: 'flex-start',
+    },
+    '@media(max-width: 480px)': {
+      flexDirection: 'column',
+    },
+    '.postStats': {
+      display: 'flex',
+      flexDirection: 'row',
+      marginBottom: '1.25rem',
+      '@media(max-width: 480px)': {
+        flexDirection: 'column',
+      },
+    },
+    '.blogListDetails': {
+      display: 'flex',
+      flexDirection: 'row',
+      time: {
+        marginRight: '.5rem',
+      },
+      '@media(max-width: 480px)': {
+        flexDirection: 'column',
+        '.readTime': {
+          marginTop: '.5rem',
+        },
+      },
     },
   },
   '.postTeaser': {
@@ -146,28 +193,8 @@ const blogStyles = css({
       },
     },
   },
-  '.dateAndReadTime': {
-    display: 'flex',
-    justifyContent: 'center',
-    marginTop: '.05rem',
-    '@media(max-width: 480px)': {
-      flexDirection: 'column',
-    },
-    '@media(max-width: 350px)': {
-      'time:after': {
-        content: '""',
-      },
-    },
-  },
-  '.timeAndLikes': {
-    display: 'flex',
-    '@media (max-width: 480px)': {
-      flexDirection: 'row',
-      marginTop: '.5rem',
-    },
-  },
   '.readTime': {
-    margin: '0 0 0 1rem',
+    margin: '0 1rem 0 .5rem',
     maxWidth: 'min-content',
     maxHeight: 20,
     whiteSpace: 'nowrap',
@@ -181,11 +208,8 @@ const blogStyles = css({
       content: '"~ "',
     },
     '@media (max-width: 480px)': {
-      margin: 0,
+      margin: '.5rem 0 0',
     },
-  },
-  '.likeCount': {
-    marginLeft: '.5rem',
   },
   li: {
     '&::marker': {

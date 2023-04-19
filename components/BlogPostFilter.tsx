@@ -303,19 +303,19 @@ const styleSearchPosts = css({
   position: 'relative',
   caretColor: 'var(--color-gray)',
   'input.search': {
-    fontSize: 14,
+    fontSize: '1rem',
     marginBottom: 0,
   },
   '.icon': {
     position: 'absolute',
-    top: 18,
+    top: 19,
     right: 14,
   },
   '.clearSearch': {
     display: 'flex',
     justifyContent: 'center',
     position: 'absolute',
-    top: 16,
+    top: 17,
     right: 12,
     cursor: 'pointer',
   },
