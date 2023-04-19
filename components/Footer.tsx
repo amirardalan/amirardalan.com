@@ -4,7 +4,7 @@ import { css } from '@emotion/react';
 import Logo from '@/components/Logo';
 import { footer } from '@/data/content';
 import { nav } from '@/data/navigation';
-import PageViews from '@/components/PageViews';
+import Pageviews from '@/components/Pageviews';
 
 type FooterProps = {};
 
@@ -193,7 +193,7 @@ const Footer: FC<FooterProps> = () => {
         <div>
           {footer.copyright.text}
           {new Date().getFullYear() + ' '}
-          {footer.copyright.name} • <PageViews />
+          {footer.copyright.name} • <Pageviews />
         </div>
       </div>
     </footer>
