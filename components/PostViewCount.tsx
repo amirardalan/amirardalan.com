@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import usePostviews from '@/hooks/usePostviews';
+import usePostViewCount from '@/hooks/usePostViewCount';
 import formatNumber from '@/utils/formatNumber';
 
 type PostViewCountProps = {
@@ -7,7 +7,7 @@ type PostViewCountProps = {
 };
 
 const PostViewCount: FC<PostViewCountProps> = ({ slug }) => {
-  const { postviews } = usePostviews(slug);
+  const { postviews } = usePostViewCount(slug);
 
   const views = postviews ? postviews : 0;
 
