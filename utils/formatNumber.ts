@@ -1,6 +1,6 @@
 // Format Number Count - (eg: 1.2K, 2M)
 
-const formatNumberCount = (likeCount: number): string => {
+const formatNumber = (likeCount: number): string => {
   if (likeCount < 1000) {
     return likeCount.toString();
   } else if (likeCount < 1000000) {
@@ -10,4 +10,4 @@ const formatNumberCount = (likeCount: number): string => {
   }
 };
 
-export default formatNumberCount;
+export default formatNumber;

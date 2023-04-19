@@ -1,20 +1,19 @@
 import { FC } from 'react';
-import usePostviewsCount from '@/hooks/usePostviews';
-import formatNumberCount from '@/utils/formatNumberCount';
+import usePostviews from '@/hooks/usePostviews';
+import formatNumber from '@/utils/formatNumber';
 
 type PostViewsProps = {
   slug: string;
 };
 
 const PostViews: FC<PostViewsProps> = ({ slug }) => {
-  const { postviewsCount } = usePostviewsCount(slug);
+  const { postviews } = usePostviews(slug);
 
-  const views = postviewsCount ? postviewsCount : 0;
+  const views = postviews ? postviews : 0;
 
   return (
     <span>
-      • {formatNumberCount(Number(views))}{' '}
-      {postviewsCount === 1 ? 'view' : 'views'}
+      • {formatNumber(Number(views))} {postviews === 1 ? 'view' : 'views'}
     </span>
   );
 };

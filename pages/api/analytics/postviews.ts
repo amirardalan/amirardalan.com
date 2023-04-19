@@ -55,9 +55,9 @@ export default async function handler(
       requestBody,
     });
 
-    const postviewsCount = data?.rows?.[0]?.metricValues?.[0]?.value ?? 0;
+    const postviews = data?.rows?.[0]?.metricValues?.[0]?.value ?? 0;
 
-    res.status(200).json(postviewsCount);
+    res.status(200).json(postviews);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Failed to retrieve pageviews count' });

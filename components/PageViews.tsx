@@ -1,15 +1,15 @@
 import type { FC } from 'react';
-import usePageviewsCount from '@/hooks/usePageviews';
-import formatNumberCount from '@/utils/formatNumberCount';
+import usePageviews from '@/hooks/usePageviews';
+import formatNumber from '@/utils/formatNumber';
 
 type PageViewsProps = {};
 
 const PageViews: FC<PageViewsProps> = () => {
-  const { pageviewsCount } = usePageviewsCount();
+  const { pageviews } = usePageviews();
 
-  const views = pageviewsCount ? pageviewsCount : 0;
+  const views = pageviews ? pageviews : 0;
 
-  return <span>{`${formatNumberCount(Number(views))} views`}</span>;
+  return <span>{`${formatNumber(Number(views))} views`}</span>;
 };
 
 export default PageViews;

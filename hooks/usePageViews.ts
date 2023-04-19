@@ -1,8 +1,8 @@
 import useSWR from 'swr';
 import fetcher from '@/lib/fetcher';
 
-const usePageviewsCount = () => {
-  const { data: pageviewsCount, error } = useSWR(
+const usePageviews = () => {
+  const { data: pageviews, error } = useSWR(
     '/api/analytics/pageviews',
     fetcher,
     {
@@ -17,9 +17,9 @@ const usePageviewsCount = () => {
   );
 
   return {
-    pageviewsCount,
+    pageviews,
     error,
   };
 };
 
-export default usePageviewsCount;
+export default usePageviews;
