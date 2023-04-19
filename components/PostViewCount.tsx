@@ -2,11 +2,11 @@ import { FC } from 'react';
 import usePostviews from '@/hooks/usePostviews';
 import formatNumber from '@/utils/formatNumber';
 
-type PostViewsProps = {
+type PostViewCountProps = {
   slug: string;
 };
 
-const PostViews: FC<PostViewsProps> = ({ slug }) => {
+const PostViewCount: FC<PostViewCountProps> = ({ slug }) => {
   const { postviews } = usePostviews(slug);
 
   const views = postviews ? postviews : 0;
@@ -18,4 +18,4 @@ const PostViews: FC<PostViewsProps> = ({ slug }) => {
   );
 };
 
-export default PostViews;
+export default PostViewCount;

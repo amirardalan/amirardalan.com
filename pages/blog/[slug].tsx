@@ -24,7 +24,7 @@ import { BlogNavigationTypes } from '@/types/blog';
 import LikeButton from '@/components/LikeButton';
 import BlogPostTweet from '@/components/BlogPostTweet';
 import TableOfContents from '@/components/TableOfContents';
-import PostViews from '@/components/PostViews';
+import PostViewCount from '@/components/PostViewCount';
 
 const BlogPostControls = dynamic(
   () => import('@/components/BlogPostControls'),
@@ -170,7 +170,7 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
             <div className="postStats">
               <span>
                 <LikeCount id={post.id} likes={post.likes} />
-                <PostViews slug={post.slug} />
+                <PostViewCount slug={post.slug} />
               </span>
               <span className="readTime">{postReadTime}</span>
             </div>
