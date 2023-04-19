@@ -1,12 +1,12 @@
 import useSWR from 'swr';
 import fetcher from '@/lib/fetcher';
 
-const usePageviewsCount = () => {
-  const { data: pageviewsCount, error } = useSWR(
-    '/api/analytics/pageviews',
+const usePostviewsCount = (slug: string) => {
+  const { data: postviewsCount, error } = useSWR(
+    `/api/analytics/postviews?slug=${slug}`,
     fetcher,
     {
-      refreshInterval: 3600000,
+      refreshInterval: 300000,
       revalidateOnFocus: false,
       shouldRetryOnError: false,
       revalidateOnMount: true,
@@ -17,9 +17,9 @@ const usePageviewsCount = () => {
   );
 
   return {
-    pageviewsCount,
+    postviewsCount,
     error,
   };
 };
 
-export default usePageviewsCount;
+export default usePostviewsCount;

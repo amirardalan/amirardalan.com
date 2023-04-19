@@ -18,8 +18,15 @@ export default async function handler(
   res: NextApiResponse
 ) {
   try {
+    const { slug } = req.query;
+
     const requestBody = {
       property: `properties/${process.env.GOOGLE_ANALYTICS_API_PROPERTY_ID}`,
+      dimensions: [
+        {
+          name: 'pagePath',
+        },
+      ],
       dateRanges: [
         {
           startDate: '2000-01-01',
@@ -32,6 +39,15 @@ export default async function handler(
           expression: 'sessions',
         },
       ],
+      dimensionFilter: {
+        filter: {
+          fieldName: 'pagePath',
+          stringFilter: {
+            value: `/blog/${slug}`,
+            matchType: 'EXACT',
+          },
+        },
+      },
     };
 
     const { data } = await ga4Analytics.properties.runReport({
@@ -39,9 +55,9 @@ export default async function handler(
       requestBody,
     });
 
-    const pageviewsCount = data?.rows?.[0]?.metricValues?.[0]?.value ?? 0;
+    const postviewsCount = data?.rows?.[0]?.metricValues?.[0]?.value ?? 0;
 
-    res.status(200).json({ pageviews: pageviewsCount });
+    res.status(200).json(postviewsCount);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Failed to retrieve pageviews count' });

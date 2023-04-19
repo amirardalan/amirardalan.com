@@ -24,6 +24,7 @@ import { BlogNavigationTypes } from '@/types/blog';
 import LikeButton from '@/components/LikeButton';
 import BlogPostTweet from '@/components/BlogPostTweet';
 import TableOfContents from '@/components/TableOfContents';
+import PostViews from '@/components/PostViews';
 
 const BlogPostControls = dynamic(
   () => import('@/components/BlogPostControls'),
@@ -144,33 +145,37 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
                 : `${publishDate} • ${postReadTime}`
             }
           >
-            <span className="author">
-              By <span>{post?.author?.name || 'Unknown author'}</span>
-            </span>
-            <span className="dateAndReadTime">
-              {showEdited ? (
-                <time dateTime={post.editedAt.toString()}>
-                  Updated: {editDate}
-                </time>
-              ) : (
-                <time
-                  dateTime={
-                    post.postHistory[0]?.editedAt.toString() ||
-                    post.publishedAt.toString()
-                  }
-                >
-                  {prevEditDate ? 'Updated: ' : null}
-                  {prevEditDate || publishDate}
-                </time>
-              )}
-              <span className="timeAndLikes">
-                <span className="readTime">{postReadTime}</span>
-                <span className="likeCount">
-                  <LikeCount id={post.id} likes={post.likes} />
-                </span>
+            <div className="info">
+              <span className="author">
+                By {post?.author?.name || 'Unknown author'}
               </span>
-            </span>
+              <span className="date">
+                {showEdited ? (
+                  <time dateTime={post.editedAt.toString()}>
+                    Updated: {editDate}
+                  </time>
+                ) : (
+                  <time
+                    dateTime={
+                      post.postHistory[0]?.editedAt.toString() ||
+                      post.publishedAt.toString()
+                    }
+                  >
+                    {prevEditDate ? 'Updated: ' : null}
+                    {prevEditDate || publishDate}
+                  </time>
+                )}
+              </span>
+            </div>
+            <div className="postStats">
+              <span>
+                <LikeCount id={post.id} likes={post.likes} />
+                <PostViews slug={post.slug} />
+              </span>
+              <span className="readTime">{postReadTime}</span>
+            </div>
           </div>
+
           <div className="likeAndShare">
             <div className="buttonHover">
               <LikeButton liked={liked} handleLike={handleLike} />
@@ -234,30 +239,6 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
 export default BlogPost;
 
 const styleBlogPost = css({
-  '.postDetails': {
-    marginBottom: '3.5rem',
-    '.author': {
-      '&:after': {
-        margin: '0 .5rem',
-        content: '"•"',
-        '@media(max-width: 600px)': {
-          content: 'none',
-        },
-      },
-      span: {
-        fontFamily: 'var(--font-secondary)',
-        fontSize: 15,
-        fontWeight: 700,
-      },
-      marginBottom: '.25rem',
-    },
-    '@media(max-width: 1024px)': {
-      marginBottom: '2rem',
-    },
-    '@media(max-width: 480px)': {
-      flexDirection: 'column',
-    },
-  },
   '.likeAndShare': {
     display: 'flex',
     marginBottom: '2rem',
