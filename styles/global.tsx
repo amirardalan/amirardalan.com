@@ -235,6 +235,7 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
           },
           'button, input, textarea': {
             fontFamily: 'var(--font-primary)',
+            fontSize: 13,
           },
           button: {
             background: 'transparent',

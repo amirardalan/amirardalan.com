@@ -1,7 +1,6 @@
 import { FC, useState } from 'react';
-import Image from 'next/image';
 
-import { useTheme, css, Theme } from '@emotion/react';
+import { css } from '@emotion/react';
 import useTotalLikes from '@/hooks/useTotalLikes';
 
 import BlogStats from '@/components/BlogStats';
@@ -26,8 +25,6 @@ type BlogPostFilterProps = {
 };
 
 const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
-  const theme: Theme = useTheme();
-
   const [search, setSearch] = useState('');
 
   const scrollToTop = () => {
@@ -76,7 +73,7 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
     likes: number;
   }
 
-  const { totalLikesCount, error } = useTotalLikes();
+  const { totalLikesCount } = useTotalLikes();
   const averageLikes = totalLikesCount / feed.length;
 
   interface PostFeedItem extends PostProps, FeedItem {}
@@ -181,7 +178,7 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
           onKeyDown={() => setSearch('')}
           className="clearSearch"
         >
-          <CloseIcon size={21} />
+          <CloseIcon size={22} />
         </button>
       );
     }
@@ -254,6 +251,7 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
 
       <div css={styleSearchPosts}>
         <input
+          className="search"
           type="text"
           placeholder={blog.search.placeholder}
           value={search}
@@ -304,20 +302,20 @@ const styleSearchPosts = css({
   display: 'flex',
   position: 'relative',
   caretColor: 'var(--color-gray)',
-  input: {
-    fontSize: 15,
+  'input.search': {
+    fontSize: 14,
     marginBottom: 0,
   },
   '.icon': {
     position: 'absolute',
-    top: 21,
+    top: 18,
     right: 14,
   },
   '.clearSearch': {
     display: 'flex',
     justifyContent: 'center',
     position: 'absolute',
-    top: 20,
+    top: 16,
     right: 12,
     cursor: 'pointer',
   },
