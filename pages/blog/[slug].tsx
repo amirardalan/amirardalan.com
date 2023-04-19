@@ -414,7 +414,13 @@ const styleBlogPost = css({
         },
       },
       '&.contents': {
-        padding: '1rem 1.25rem',
+        textAlign: 'left',
+        display: 'flex',
+        flexDirection: 'column',
+        padding: '1.25rem',
+        ol: {
+          margin: '1.5rem 0 0 0',
+        },
         '&::before': {
           display: 'none',
           content: '""',
