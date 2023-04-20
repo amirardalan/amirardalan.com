@@ -42,6 +42,11 @@ const TableOfContents: FC<TableOfContentsProps> = ({ markdown }) => {
           textDecorationColor: 'var(--color-primary)',
         },
       },
+      '@media (max-width: 768px)': {
+        li: {
+          margin: '.3rem 0 1rem 2rem',
+        },
+      },
     },
   });
 
