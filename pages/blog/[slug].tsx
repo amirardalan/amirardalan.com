@@ -328,14 +328,13 @@ const styleBlogPost = css({
     'p, ul, li, a': {
       fontFamily: 'var(--font-tertiary)',
       fontSize: 17,
-      lineHeight: '2rem',
     },
     'ul, li, a': {
       marginBottom: '1rem',
     },
     'ul li, ol li, p, .note': {
       a: {
-        color: 'inherit',
+        color: 'var(--color-gray)',
         textDecoration: 'underline',
         textDecorationColor: 'var(--color-primary)',
         '&:hover': {
@@ -355,7 +354,7 @@ const styleBlogPost = css({
       fontFamily: 'var(--font-secondary)',
       fontSize: 14.5,
       color: 'var(--color-gray)',
-      lineHeight: '2rem',
+      lineHeight: '1.5rem',
       '@media (max-width: 768px)': {
         lineHeight: '2rem',
       },
@@ -418,9 +417,6 @@ const styleBlogPost = css({
         alignItems: 'start',
         flexDirection: 'column',
         padding: '1.25rem',
-        ol: {
-          margin: '1.5rem 0 0 0',
-        },
         '&::before': {
           display: 'none',
           content: '""',
@@ -488,7 +484,7 @@ const styleBlogPost = css({
           width: '1.3rem',
           height: '1.3rem',
           position: 'absolute',
-          top: '.35rem',
+          top: '.1rem',
           left: '-2rem',
           border: '1px solid var(--color-gray)',
           borderRadius: '50%',
