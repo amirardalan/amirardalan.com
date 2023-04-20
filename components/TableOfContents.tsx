@@ -43,6 +43,7 @@ const TableOfContents: FC<TableOfContentsProps> = ({ markdown }) => {
         },
       },
       '@media (max-width: 768px)': {
+        margin: '1rem 0 0 0',
         li: {
           margin: '.3rem 0 1rem 2rem',
         },
