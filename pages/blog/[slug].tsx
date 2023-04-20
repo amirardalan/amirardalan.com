@@ -414,8 +414,8 @@ const styleBlogPost = css({
         },
       },
       '&.contents': {
-        textAlign: 'left',
         display: 'flex',
+        alignItems: 'start',
         flexDirection: 'column',
         padding: '1.25rem',
         ol: {
