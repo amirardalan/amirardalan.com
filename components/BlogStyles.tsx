@@ -133,6 +133,10 @@ const blogStyles = css({
       time: {
         fontSize: 12,
         fontFamily: 'var(--font-primary)',
+        '&:before': {
+          margin: '0 0.5rem',
+          content: '"•"',
+        },
       },
     },
     '.by': {
@@ -140,10 +144,6 @@ const blogStyles = css({
     },
     '.author': {
       fontWeight: 700,
-      '&:after': {
-        margin: '0 .5rem',
-        content: '"•"',
-      },
     },
     color: 'var(--color-gray)',
     fontSize: 13,
