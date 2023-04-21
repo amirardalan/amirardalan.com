@@ -63,8 +63,8 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
       animation: animate ? `rotate ${ANIMATION_TIME}ms ease-out` : '',
     },
     '@keyframes rotate': {
-      from: { transform: 'rotate(0deg)' },
-      to: { transform: 'rotate(180deg)' },
+      from: { transform: 'rotate(180deg)' },
+      to: { transform: 'rotate(0deg)' },
     },
   });
 
