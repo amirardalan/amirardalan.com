@@ -8,40 +8,38 @@ type PostViewCountProps = {
 };
 
 const PostViewCount: FC<PostViewCountProps> = ({ slug }) => {
-  const { viewCount, isValidating } = usePostViewCount(slug);
+  const { viewCount, isLoading } = usePostViewCount(slug);
   const views = viewCount ? viewCount : 0;
-  const childRef = useRef<HTMLSpanElement>(null);
+  const viewsRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
-    if (childRef.current) {
-      const childWidth = childRef.current.offsetWidth;
-      const parentElement = childRef.current.parentElement;
+    if (viewsRef.current) {
+      const viewsWidth = viewsRef.current.offsetWidth;
+      const parentElement = viewsRef.current.parentElement;
       if (parentElement) {
-        parentElement.style.width = `${childWidth}px`;
+        parentElement.style.width = `${viewsWidth}px`;
       }
     }
-  }, [viewCount, isValidating]);
+  }, [viewCount, isLoading]);
 
   const styleViews = css({
     position: 'relative',
     height: 14,
-    width: 93.63,
     overflow: 'hidden',
     marginLeft: '.5rem',
     '.views': {
       whiteSpace: 'nowrap',
-      transition: 'transform .2s ease-in-out, opacity .5s ease-in-out',
+      transition: 'transform .2s ease-in-out, opacity .2s ease-in-out',
       position: 'absolute',
-      transform: `translateY(${isValidating ? 10 : 0}px)`,
-      opacity: `${isValidating ? '0' : '1'}`,
+      transform: `translateY(${isLoading ? 10 : 0}px)`,
+      opacity: `${isLoading ? '0' : '1'}`,
     },
   });
 
   return (
     <>
-      <span>•</span>
       <div css={styleViews}>
-        <span className="views">
+        <span className="views" ref={viewsRef}>
           {formatNumber(Number(views))} {viewCount === 1 ? 'view' : 'views'}
         </span>
       </div>

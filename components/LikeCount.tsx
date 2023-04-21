@@ -10,14 +10,14 @@ type LikeCountProps = {
 
 const Like: FC<LikeCountProps> = ({ id, likes }) => {
   const { likeCount, isValidating } = useLikeCount(id);
-  const childRef = useRef<HTMLSpanElement>(null);
+  const likesRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
-    if (childRef.current) {
-      const childWidth = childRef.current.offsetWidth;
-      const parentElement = childRef.current.parentElement;
+    if (likesRef.current) {
+      const likesWidth = likesRef.current.offsetWidth;
+      const parentElement = likesRef.current.parentElement;
       if (parentElement) {
-        parentElement.style.width = `${childWidth}px`;
+        parentElement.style.width = `${likesWidth + 8}px`;
       }
     }
   }, [likeCount, isValidating]);
@@ -26,12 +26,10 @@ const Like: FC<LikeCountProps> = ({ id, likes }) => {
     position: 'relative',
     height: 14,
     overflow: 'hidden',
-    marginRight: '.5rem',
     '.likes': {
-      width: 'max-content',
-      transition: 'transform .2s ease-in-out, opacity .5s ease-in-out',
+      whiteSpace: 'nowrap',
+      transition: 'transform .2s ease-in-out, opacity .2s ease-in-out',
       position: 'absolute',
-      top: 0,
       transform: `translateY(${isValidating ? 10 : 0}px)`,
       opacity: `${isValidating ? '0' : '1'}`,
     },
@@ -40,11 +38,12 @@ const Like: FC<LikeCountProps> = ({ id, likes }) => {
   return (
     <>
       <div css={styleLikes}>
-        <span className="likes" ref={childRef}>
+        <span className="likes" ref={likesRef}>
           {formatNumber(likeCount || likes)}
           {likeCount === 1 ? ' like' : ' likes'}
         </span>
       </div>
+      <span>•</span>
     </>
   );
 };

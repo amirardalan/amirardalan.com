@@ -6,7 +6,7 @@ const useLikeCount = (id: number) => {
     `/api/likes/${id}`,
     fetcher,
     {
-      refreshInterval: 10000,
+      refreshInterval: 300000,
       revalidateOnFocus: false,
       shouldRetryOnError: false,
       revalidateOnMount: true,
