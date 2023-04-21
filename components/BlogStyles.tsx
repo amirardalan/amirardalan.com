@@ -103,27 +103,46 @@ const blogStyles = css({
       marginBottom: '1rem',
     },
   },
+  '.readTime': {
+    display: 'flex',
+    alignItems: 'center',
+    maxWidth: 'min-content',
+    whiteSpace: 'nowrap',
+    margin: '0 0 0 .5rem',
+    padding: '0 .5rem',
+    backgroundColor: 'transparent',
+    border: '1px solid var(--color-accent-gray)',
+    borderRadius: 10,
+    fontSize: 11,
+    '@media(max-width: 480px)': {
+      flexDirection: 'column',
+      margin: '.5rem 0 0 0',
+    },
+  },
   '.postDetails': {
     display: 'flex',
     flexDirection: 'column',
     '.info': {
+      borderBottom: '1px solid var(--color-accent-gray)',
+      width: 'fit-content',
+      paddingBottom: '.25rem',
+      fontSize: 13,
+      fontFamily: 'var(--font-secondary)',
       display: 'flex',
       flexDirection: 'row',
-      marginBottom: '.25rem',
-      '@media(max-width: 600px)': {
-        flexDirection: 'column',
+      time: {
+        fontSize: 12,
+        fontFamily: 'var(--font-primary)',
       },
     },
+    '.by': {
+      marginRight: '.2rem',
+    },
     '.author': {
+      fontWeight: 700,
       '&:after': {
         margin: '0 .5rem',
         content: '"•"',
-        '@media(max-width: 600px)': {
-          content: 'none',
-        },
-      },
-      '@media(max-width: 600px)': {
-        marginBottom: '.25rem',
       },
     },
     color: 'var(--color-gray)',
@@ -137,9 +156,17 @@ const blogStyles = css({
       flexDirection: 'column',
     },
     '.postStats': {
+      paddingTop: '.25rem',
+      fontSize: 11,
       display: 'flex',
+      justifyContent: 'space-between',
       flexDirection: 'row',
-      marginBottom: '1.25rem',
+      marginBottom: '1.5rem',
+      '.likesAndViews': {
+        display: 'flex',
+        flexDirection: 'row',
+        alignSelf: 'center',
+      },
       '@media(max-width: 480px)': {
         flexDirection: 'column',
       },
@@ -152,9 +179,6 @@ const blogStyles = css({
       },
       '@media(max-width: 480px)': {
         flexDirection: 'column',
-        '.readTime': {
-          marginTop: '.5rem',
-        },
       },
     },
   },
@@ -191,24 +215,6 @@ const blogStyles = css({
           fontSize: 17,
         },
       },
-    },
-  },
-  '.readTime': {
-    margin: '0 1rem 0 .5rem',
-    maxWidth: 'min-content',
-    maxHeight: 20,
-    whiteSpace: 'nowrap',
-    padding: '0 .5rem',
-    backgroundColor: 'transparent',
-    border: '1px solid var(--color-accent-gray)',
-    borderRadius: 10,
-    textTransform: 'uppercase',
-    fontSize: 11,
-    '&:before': {
-      content: '"~ "',
-    },
-    '@media (max-width: 480px)': {
-      margin: '.5rem 0 0',
     },
   },
   li: {

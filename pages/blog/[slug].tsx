@@ -146,8 +146,9 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
             }
           >
             <div className="info">
+              <span className="by">By</span>
               <span className="author">
-                By {post?.author?.name || 'Unknown author'}
+                {post?.author?.name || 'Unknown author'}
               </span>
               <span className="date">
                 {showEdited ? (
@@ -168,10 +169,10 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
               </span>
             </div>
             <div className="postStats">
-              <span>
+              <div className="likesAndViews">
                 <LikeCount id={post.id} likes={post.likes} />
                 <PostViewCount slug={post.slug} />
-              </span>
+              </div>
               <span className="readTime">{postReadTime}</span>
             </div>
           </div>
