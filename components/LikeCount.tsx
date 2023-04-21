@@ -43,7 +43,7 @@ const Like: FC<LikeCountProps> = ({ id, likes }) => {
           {likeCount === 1 ? ' like' : ' likes'}
         </span>
       </div>
-      <span>•</span>
+      <span className="divider2">•</span>
     </>
   );
 };

@@ -25,10 +25,9 @@ const BlogPost: FC<BlogPostProps> = ({ post }) => {
         aria-label={`${publishDate} • ${postReadTime}`}
       >
         <div className="blogListDetails">
-          <span>
-            <time dateTime={publishDate}>{publishDate}</time>
-            • <LikeCount id={post.id} likes={post.likes} />
-          </span>
+          <time dateTime={publishDate}>{publishDate}</time>
+          <span className="divider1">•</span>{' '}
+          <LikeCount id={post.id} likes={post.likes} />
           <span className="readTime">{postReadTime}</span>
         </div>
       </div>

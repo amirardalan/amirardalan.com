@@ -185,13 +185,21 @@ const blogStyles = css({
       },
     },
     '.blogListDetails': {
+      width: '100%',
       display: 'flex',
       flexDirection: 'row',
       time: {
         marginRight: '.5rem',
       },
-      '@media(max-width: 480px)': {
-        flexDirection: 'column',
+      '.likes': {
+        margin: '0 0.5rem',
+      },
+      '.divider2': {
+        display: 'none',
+      },
+      '.readTime': {
+        marginleft: '0.5rem',
+        maxHeight: 19,
       },
     },
   },
