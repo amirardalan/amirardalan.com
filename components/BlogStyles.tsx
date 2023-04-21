@@ -198,7 +198,7 @@ const blogStyles = css({
         display: 'none',
       },
       '.readTime': {
-        marginleft: '0.5rem',
+        margin: '0 0 0 0.5rem',
         maxHeight: 19,
       },
     },
