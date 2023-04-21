@@ -163,12 +163,10 @@ const blogStyles = css({
       flexDirection: 'row',
       marginBottom: '1.5rem',
       '.likesAndViews': {
+        width: '100%',
         display: 'flex',
         flexDirection: 'row',
         alignSelf: 'center',
-        'span:first-of-type': {
-          marginRight: '.5rem',
-        },
       },
       '.readTime': {
         backgroundColor: 'var(--color-bg)',

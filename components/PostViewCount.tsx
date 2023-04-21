@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useRef, useEffect } from 'react';
 import usePostViewCount from '@/hooks/usePostViewCount';
 import formatNumber from '@/utils/formatNumber';
 import { css } from '@emotion/react';
@@ -8,16 +8,28 @@ type PostViewCountProps = {
 };
 
 const PostViewCount: FC<PostViewCountProps> = ({ slug }) => {
-  const { postviews, isValidating } = usePostViewCount(slug);
-  const views = postviews ? postviews : 0;
+  const { viewCount, isValidating } = usePostViewCount(slug);
+  const views = viewCount ? viewCount : 0;
+  const childRef = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    if (childRef.current) {
+      const childWidth = childRef.current.offsetWidth;
+      const parentElement = childRef.current.parentElement;
+      if (parentElement) {
+        parentElement.style.width = `${childWidth}px`;
+      }
+    }
+  }, [viewCount, isValidating]);
 
   const styleViews = css({
     position: 'relative',
     height: 14,
-    width: 100,
+    width: 93.63,
     overflow: 'hidden',
     marginLeft: '.5rem',
     '.views': {
+      whiteSpace: 'nowrap',
       transition: 'transform .2s ease-in-out, opacity .5s ease-in-out',
       position: 'absolute',
       transform: `translateY(${isValidating ? 10 : 0}px)`,
@@ -30,7 +42,7 @@ const PostViewCount: FC<PostViewCountProps> = ({ slug }) => {
       <span>•</span>
       <div css={styleViews}>
         <span className="views">
-          {formatNumber(Number(views))} {postviews === 1 ? 'view' : 'views'}
+          {formatNumber(Number(views))} {viewCount === 1 ? 'view' : 'views'}
         </span>
       </div>
     </>
