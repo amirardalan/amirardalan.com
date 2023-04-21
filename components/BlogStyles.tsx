@@ -123,8 +123,8 @@ const blogStyles = css({
     display: 'flex',
     flexDirection: 'column',
     '.info': {
+      width: '100%',
       borderBottom: '1px solid var(--color-accent-gray)',
-      width: 'fit-content',
       paddingBottom: '.25rem',
       fontSize: 13,
       fontFamily: 'var(--font-secondary)',
@@ -156,8 +156,8 @@ const blogStyles = css({
       flexDirection: 'column',
     },
     '.postStats': {
+      position: 'relative',
       paddingTop: '.25rem',
-      fontSize: 11,
       display: 'flex',
       justifyContent: 'space-between',
       flexDirection: 'row',
@@ -166,8 +166,23 @@ const blogStyles = css({
         display: 'flex',
         flexDirection: 'row',
         alignSelf: 'center',
+        'span:first-of-type': {
+          marginRight: '.5rem',
+        },
       },
-      '@media(max-width: 480px)': {
+      '.readTime': {
+        backgroundColor: 'var(--color-bg)',
+        maxHeight: 'fit-content',
+        '@media (min-width: 601px)': {
+          position: 'absolute',
+          right: 0,
+          top: -11,
+        },
+        '@media (max-width: 600px)': {
+          margin: '.5rem 0 0 0',
+        },
+      },
+      '@media(max-width: 600px)': {
         flexDirection: 'column',
       },
     },
