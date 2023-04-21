@@ -1,12 +1,12 @@
 import { FC } from 'react';
 import LikeIcon from '@/components/LikeIcon';
 
-type LikeProps = {
+type LikeButtonProps = {
   liked: boolean;
   handleLike: () => Promise<void>;
 };
 
-const LikeButton: FC<LikeProps> = ({ liked, handleLike }) => {
+const LikeButton: FC<LikeButtonProps> = ({ liked, handleLike }) => {
   return (
     <button
       onClick={handleLike}

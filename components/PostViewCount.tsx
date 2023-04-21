@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useRef, useEffect } from 'react';
 import usePostViewCount from '@/hooks/usePostViewCount';
 import formatNumber from '@/utils/formatNumber';
 import { css } from '@emotion/react';
@@ -8,29 +8,39 @@ type PostViewCountProps = {
 };
 
 const PostViewCount: FC<PostViewCountProps> = ({ slug }) => {
-  const { postviews, isValidating } = usePostViewCount(slug);
-  const views = postviews ? postviews : 0;
+  const { viewCount, isLoading } = usePostViewCount(slug);
+  const views = viewCount ? viewCount : 0;
+  const viewsRef = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    if (viewsRef.current) {
+      const viewsWidth = viewsRef.current.offsetWidth;
+      const parentElement = viewsRef.current.parentElement;
+      if (parentElement) {
+        parentElement.style.width = `${viewsWidth}px`;
+      }
+    }
+  }, [viewCount, isLoading]);
 
   const styleViews = css({
     position: 'relative',
     height: 14,
-    width: 100,
     overflow: 'hidden',
     marginLeft: '.5rem',
     '.views': {
-      transition: 'transform .2s ease-in-out, opacity .5s ease-in-out',
+      whiteSpace: 'nowrap',
+      transition: 'transform .2s ease-in-out, opacity .2s ease-in-out',
       position: 'absolute',
-      transform: `translateY(${isValidating ? 10 : 0}px)`,
-      opacity: `${isValidating ? '0' : '1'}`,
+      transform: `translateY(${isLoading ? 10 : 0}px)`,
+      opacity: `${isLoading ? '0' : '1'}`,
     },
   });
 
   return (
     <>
-      <span>•</span>
       <div css={styleViews}>
-        <span className="views">
-          {formatNumber(Number(views))} {postviews === 1 ? 'view' : 'views'}
+        <span className="views" ref={viewsRef}>
+          {formatNumber(Number(views))} {viewCount === 1 ? 'view' : 'views'}
         </span>
       </div>
     </>

@@ -2,12 +2,12 @@ import useSWR from 'swr';
 import fetcher from '@/lib/fetcher';
 
 type PostViewCount = {
-  postviews: number;
-  isValidating: boolean;
+  viewCount: number;
+  isLoading: boolean;
 };
 
 const usePostViewCount = (slug: string): PostViewCount => {
-  const { data: postviews, isValidating } = useSWR(
+  const { data: viewCount, isLoading } = useSWR(
     `/api/analytics/postviews?slug=${slug}`,
     fetcher,
     {
@@ -22,8 +22,8 @@ const usePostViewCount = (slug: string): PostViewCount => {
   );
 
   return {
-    isValidating,
-    postviews,
+    isLoading,
+    viewCount,
   };
 };
 
