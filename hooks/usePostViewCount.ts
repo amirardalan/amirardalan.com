@@ -13,9 +13,9 @@ const usePostViewCount = (slug: string): PostViewCount => {
     {
       refreshInterval: 300000,
       revalidateOnFocus: false,
-      shouldRetryOnError: false,
-      revalidateOnMount: true,
-      dedupingInterval: 0,
+      shouldRetryOnError: true,
+      revalidateOnMount: false,
+      dedupingInterval: 2000,
       revalidateOnReconnect: true,
       method: 'GET',
     }
