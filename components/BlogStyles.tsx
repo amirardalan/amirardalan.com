@@ -193,6 +193,10 @@ const blogStyles = css({
       },
       '.likes': {
         margin: '0 0.5rem',
+        position: 'relative',
+        opacity: 1,
+        transition: 'none',
+        transform: 'none',
       },
       '.divider2': {
         display: 'none',
