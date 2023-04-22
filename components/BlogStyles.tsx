@@ -82,9 +82,9 @@ const blogStyles = css({
     },
     '&.postTeaser': {
       p: {
-        margin: '.5rem 0 2.5rem',
+        margin: '.3rem 0 2.5rem',
         fontStyle: 'italic',
-        lineHeight: '.9rem',
+        lineHeight: '1.2rem',
         color: 'var(--color-gray)',
         '@media(max-width: 768px)': {
           fontSize: 15,
