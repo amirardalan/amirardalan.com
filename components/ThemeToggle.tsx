@@ -1,5 +1,6 @@
 import { FC, useState, useEffect } from 'react';
 import { css } from '@emotion/react';
+import React from 'react';
 
 type ThemeToggleProps = {
   toggleTheme: () => void;
@@ -61,4 +62,4 @@ const ThemeToggle: FC<ThemeToggleProps> = ({ toggleTheme }) => {
   );
 };
 
-export default ThemeToggle;
+export default React.memo(ThemeToggle);

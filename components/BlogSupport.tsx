@@ -64,7 +64,7 @@ const BlogSupport: FC<BlogSupportProps> = ({
       borderRadius: 50,
       height: 40,
       position: 'absolute',
-      top: -0,
+      top: -15,
       right: -15,
       animation: 'spin .5s ease',
     },
