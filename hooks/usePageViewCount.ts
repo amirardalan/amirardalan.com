@@ -12,8 +12,8 @@ const usePageViewCount = (): PageViewCount => {
     fetcher,
     {
       refreshInterval: 3600000,
-      revalidateOnFocus: false,
-      shouldRetryOnError: false,
+      revalidateOnFocus: true,
+      shouldRetryOnError: true,
       revalidateOnMount: true,
       dedupingInterval: 0,
       revalidateOnReconnect: true,

@@ -1,4 +1,4 @@
-import { FC, useRef, useEffect } from 'react';
+import { FC, useRef, useEffect, useState } from 'react';
 import useLikeCount from '@/hooks/useLikeCount';
 import formatNumber from '@/utils/formatNumber';
 import { css } from '@emotion/react';
@@ -9,10 +9,14 @@ type LikeCountProps = {
 };
 
 const Like: FC<LikeCountProps> = ({ id, likes }) => {
-  const { likeCount, isValidating, isLoading } = useLikeCount(id);
+  const { likeCount, isLoading } = useLikeCount(id);
   const likesRef = useRef<HTMLSpanElement>(null);
+  const [hasFreshData, setHasFreshData] = useState(false);
 
   useEffect(() => {
+    if (likeCount && !isLoading) {
+      setHasFreshData(true);
+    }
     if (likesRef.current) {
       const likesWidth = likesRef.current.offsetWidth;
       const parentElement = likesRef.current.parentElement;
@@ -20,7 +24,7 @@ const Like: FC<LikeCountProps> = ({ id, likes }) => {
         parentElement.style.width = `${likesWidth + 8}px`;
       }
     }
-  }, [likeCount, isValidating, isLoading]);
+  }, [likeCount, isLoading]);
 
   const styleLikes = css({
     position: 'relative',
@@ -30,8 +34,8 @@ const Like: FC<LikeCountProps> = ({ id, likes }) => {
       whiteSpace: 'nowrap',
       transition: 'transform .2s ease-in-out, opacity .2s ease-in-out',
       position: 'absolute',
-      transform: `translateY(${isValidating ? 10 : 0}px)`,
-      opacity: isLoading ? 0 : 1,
+      transform: `translateY(${hasFreshData ? 0 : 10}px)`,
+      opacity: hasFreshData ? 1 : 0,
     },
   });
 
