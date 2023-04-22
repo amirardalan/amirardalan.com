@@ -203,7 +203,7 @@ const blogStyles = css({
       },
       '.readTime': {
         margin: '0 0 0 0.5rem',
-        maxHeight: 17,
+        maxHeight: 19,
       },
     },
   },
@@ -275,7 +275,7 @@ const blogStyles = css({
     border: '2px solid var(--color-accent)',
     borderRadius: '0.25rem',
     fontFamily: 'var(--font-primary)',
-    fontSize: 17,
+    fontSize: 15,
     '&:disabled': {
       backgroundColor: 'var(--color-bg)',
       WebkitTextFillColor: 'var(--color-accent-gray)',
@@ -283,6 +283,9 @@ const blogStyles = css({
     '@media (max-width: 890px)': {
       width: '100%',
       margin: '0.5rem 0 0 0',
+    },
+    '@media (max-width: 480px)': {
+      fontSize: 13,
     },
   },
   'input::placeholder, textarea::placeholder': {
