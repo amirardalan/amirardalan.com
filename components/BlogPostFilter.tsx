@@ -303,7 +303,7 @@ const styleSearchPosts = css({
   position: 'relative',
   caretColor: 'var(--color-gray)',
   'input.search': {
-    fontSize: 13,
+    fontSize: '1rem',
     marginBottom: 0,
   },
   '.icon': {
