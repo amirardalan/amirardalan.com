@@ -10,7 +10,7 @@ type BlogPostProps = {
 };
 
 const BlogPost: FC<BlogPostProps> = ({ post }) => {
-  const publishDate = formatDate(post.publishedAt);
+  const publishDate = formatDate(post.publishedAt, 'numeric');
   const postReadTime = calculateReadTime(post.content);
 
   return (

@@ -76,11 +76,11 @@ const BlogMarkdown: FC<BlogMarkdownProps> = ({ markdown }) => {
         position: 'absolute',
         top: 14,
         right: -10,
-        border: '1px solid var(--color-gray-dark)',
+        // border: '1px solid var(--color-gray-dark)',
         borderRadius: 5,
         textTransform: 'uppercase',
         fontSize: 13,
-        padding: '.05rem .3rem',
+        padding: '.1rem .4rem',
         color: 'var(--color-bg)',
         '&:after': {
           background: 'var(--icon-copy) no-repeat',

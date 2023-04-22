@@ -71,11 +71,6 @@ export default async function handler(req: Request) {
       }
     );
   } catch (e: unknown) {
-    if (e instanceof Error) {
-      console.log(`${e.message}`);
-    } else {
-      console.log(`An unknown error occurred: ${e}`);
-    }
     return new Response(`Failed to generate the image`, {
       status: 500,
     });

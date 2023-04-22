@@ -199,7 +199,7 @@ const blogStyles = css({
       },
       '.readTime': {
         margin: '0 0 0 0.5rem',
-        maxHeight: 19,
+        maxHeight: 17,
       },
     },
   },
