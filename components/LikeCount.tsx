@@ -30,10 +30,8 @@ const Like: FC<LikeCountProps> = ({ id, likes }) => {
       whiteSpace: 'nowrap',
       transition: 'transform .2s ease-in-out, opacity .2s ease-in-out',
       position: 'absolute',
-      transform: `translateY(${
-        isLoading && likeCount !== undefined ? 10 : 0
-      }px)`,
-      opacity: isLoading ? 0 : 1,
+      transform: `translateY(${isValidating ? 10 : 0}px)`,
+      opacity: isValidating ? 0 : 1,
     },
   });
 
@@ -46,8 +44,8 @@ const Like: FC<LikeCountProps> = ({ id, likes }) => {
     <>
       <div css={styleLikes}>
         <span className="likes" ref={likesRef}>
-          {likeCount !== undefined && formatNumber(likeCount)}
-          {likeCount === 1 || likeCount === undefined ? ' like' : ' likes'}
+          {formatNumber(likeCount || likes)}
+          {likeCount === 1 ? ' like' : ' likes'}
         </span>
       </div>
       <span className="divider2" css={styleDivider}>
