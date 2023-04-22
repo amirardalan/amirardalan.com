@@ -178,7 +178,7 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
           onKeyDown={() => setSearch('')}
           className="clearSearch"
         >
-          <CloseIcon size={22} />
+          <CloseIcon size={23} />
         </button>
       );
     }
@@ -303,20 +303,20 @@ const styleSearchPosts = css({
   position: 'relative',
   caretColor: 'var(--color-gray)',
   'input.search': {
-    fontSize: '1rem',
+    fontSize: 13,
     marginBottom: 0,
   },
   '.icon': {
     position: 'absolute',
-    top: 19,
-    right: 14,
+    top: 17,
+    right: 12,
   },
   '.clearSearch': {
     display: 'flex',
     justifyContent: 'center',
     position: 'absolute',
-    top: 17,
-    right: 12,
+    top: 15,
+    right: 10,
     cursor: 'pointer',
   },
 });

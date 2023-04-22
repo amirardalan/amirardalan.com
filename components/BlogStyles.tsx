@@ -84,7 +84,7 @@ const blogStyles = css({
       p: {
         margin: '.5rem 0 2.5rem',
         fontStyle: 'italic',
-        lineHeight: '1.4rem',
+        lineHeight: '.9rem',
         color: 'var(--color-gray)',
         '@media(max-width: 768px)': {
           fontSize: 15,
