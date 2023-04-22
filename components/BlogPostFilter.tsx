@@ -25,6 +25,50 @@ type BlogPostFilterProps = {
 };
 
 const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
+  const styleBlogCategoryNav = css({
+    overflow: 'scroll',
+    msOverflowStyle: 'none',
+    scrollbarWidth: 'none',
+    whiteSpace: 'nowrap',
+    minHeight: 32,
+    li: {
+      display: 'inline',
+      marginRight: '1.8rem',
+    },
+    '&::-webkit-scrollbar': {
+      display: 'none',
+    },
+    '@media (max-width: 768px)': {
+      minHeight: 32,
+      li: {
+        marginRight: '1.2rem',
+      },
+    },
+  });
+
+  const styleSearchPosts = css({
+    display: 'flex',
+    position: 'relative',
+    caretColor: 'var(--color-gray)',
+    'input.search': {
+      fontSize: '1rem',
+      marginBottom: 0,
+    },
+    '.icon': {
+      position: 'absolute',
+      top: 20,
+      right: 12,
+    },
+    '.clearSearch': {
+      display: 'flex',
+      justifyContent: 'center',
+      position: 'absolute',
+      top: 17,
+      right: 10,
+      cursor: 'pointer',
+    },
+  });
+
   const [search, setSearch] = useState('');
 
   const scrollToTop = () => {
@@ -276,47 +320,3 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
 };
 
 export default BlogPostFilter;
-
-const styleBlogCategoryNav = css({
-  overflow: 'scroll',
-  msOverflowStyle: 'none',
-  scrollbarWidth: 'none',
-  whiteSpace: 'nowrap',
-  minHeight: 32,
-  li: {
-    display: 'inline',
-    marginRight: '1.8rem',
-  },
-  '&::-webkit-scrollbar': {
-    display: 'none',
-  },
-  '@media (max-width: 768px)': {
-    minHeight: 32,
-    li: {
-      marginRight: '1.2rem',
-    },
-  },
-});
-
-const styleSearchPosts = css({
-  display: 'flex',
-  position: 'relative',
-  caretColor: 'var(--color-gray)',
-  'input.search': {
-    fontSize: '1rem',
-    marginBottom: 0,
-  },
-  '.icon': {
-    position: 'absolute',
-    top: 17,
-    right: 12,
-  },
-  '.clearSearch': {
-    display: 'flex',
-    justifyContent: 'center',
-    position: 'absolute',
-    top: 15,
-    right: 10,
-    cursor: 'pointer',
-  },
-});
