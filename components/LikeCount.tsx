@@ -9,7 +9,7 @@ type LikeCountProps = {
 };
 
 const Like: FC<LikeCountProps> = ({ id, likes }) => {
-  const { likeCount, isValidating } = useLikeCount(id);
+  const { likeCount, isValidating, isLoading } = useLikeCount(id);
   const likesRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
@@ -20,7 +20,7 @@ const Like: FC<LikeCountProps> = ({ id, likes }) => {
         parentElement.style.width = `${likesWidth + 8}px`;
       }
     }
-  }, [likeCount, isValidating]);
+  }, [likeCount, isValidating, isLoading]);
 
   const styleLikes = css({
     position: 'relative',
@@ -31,8 +31,13 @@ const Like: FC<LikeCountProps> = ({ id, likes }) => {
       transition: 'transform .2s ease-in-out, opacity .2s ease-in-out',
       position: 'absolute',
       transform: `translateY(${isValidating ? 10 : 0}px)`,
-      opacity: `${isValidating ? '0' : '1'}`,
+      opacity: isLoading ? 0 : 1,
     },
+  });
+
+  const styleDivider = css({
+    transition: 'transform 1s ease-in-out, opacity 1s ease-in-out',
+    opacity: isLoading ? 0 : 1,
   });
 
   return (
@@ -43,7 +48,9 @@ const Like: FC<LikeCountProps> = ({ id, likes }) => {
           {likeCount === 1 ? ' like' : ' likes'}
         </span>
       </div>
-      <span className="divider2">•</span>
+      <span className="divider2" css={styleDivider}>
+        •
+      </span>
     </>
   );
 };

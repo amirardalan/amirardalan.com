@@ -32,7 +32,7 @@ const PostViewCount: FC<PostViewCountProps> = ({ slug }) => {
       transition: 'transform .2s ease-in-out, opacity .2s ease-in-out',
       position: 'absolute',
       transform: `translateY(${isLoading ? 10 : 0}px)`,
-      opacity: `${isLoading ? '0' : '1'}`,
+      opacity: isLoading ? 0 : 1,
     },
   });
 
