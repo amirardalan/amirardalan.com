@@ -9,7 +9,7 @@ type LikeButton = [boolean, () => Promise<void>];
 export const useLikeButton = (id: number, title: string): LikeButton => {
   const [liked, setLiked] = useState(false);
   const { mutate } = useSWR(`/api/likes/${id}`, fetcher, {
-    refreshInterval: 10000,
+    refreshInterval: 1000,
     revalidateOnFocus: true,
     shouldRetryOnError: true,
     revalidateOnMount: true,

@@ -7,7 +7,7 @@ const useLikeCount = (id: number) => {
     isValidating,
     isLoading,
   } = useSWR(`/api/likes/${id}`, fetcher, {
-    refreshInterval: 10000,
+    refreshInterval: 1000,
     revalidateOnFocus: true,
     shouldRetryOnError: true,
     revalidateOnMount: true,
