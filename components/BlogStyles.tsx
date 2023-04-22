@@ -34,7 +34,7 @@ const blogStyles = css({
       },
     },
     '.blogListHeading': {
-      marginBottom: '.5rem',
+      marginBottom: '.65rem',
       fontFamily: 'var(--font-secondary)',
       fontSize: 30,
       fontWeight: 700,
@@ -82,7 +82,7 @@ const blogStyles = css({
     },
     '&.postTeaser': {
       p: {
-        margin: '.3rem 0 2.5rem',
+        margin: '.5rem 0 2.5rem',
         fontStyle: 'italic',
         lineHeight: '1.2rem',
         color: 'var(--color-gray)',
