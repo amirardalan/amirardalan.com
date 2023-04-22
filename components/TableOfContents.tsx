@@ -24,11 +24,12 @@ const TableOfContents: FC<TableOfContentsProps> = ({ markdown }) => {
       lineHeight: '1rem',
       '.icon': {
         paddingTop: '.25rem',
-        marginRight: '1rem',
+        marginRight: '1.1rem',
+        marginLeft: '-.1rem',
       },
     },
     'ol.tableOfContents': {
-      margin: '.25rem 0 0 0',
+      margin: '.5rem 0 0 0',
       li: {
         margin: '.3rem 0 0 2rem',
         lineHeight: 'normal',
