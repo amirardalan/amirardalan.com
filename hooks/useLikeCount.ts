@@ -7,7 +7,7 @@ const useLikeCount = (id: number) => {
     fetcher,
     {
       refreshInterval: 300000,
-      revalidateOnFocus: false,
+      revalidateOnFocus: true,
       shouldRetryOnError: true,
       revalidateOnMount: true,
       dedupingInterval: 2000,
