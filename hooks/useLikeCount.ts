@@ -10,7 +10,7 @@ const useLikeCount = (id: number) => {
     revalidateOnFocus: true,
     shouldRetryOnError: true,
     revalidateOnMount: true,
-    dedupingInterval: 1000,
+    dedupingInterval: 10000,
     revalidateOnReconnect: true,
     method: 'GET',
   });
