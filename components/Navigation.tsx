@@ -209,9 +209,12 @@ const Navigation: FC = () => {
   const NavItems = () => (
     <nav css={styleNavItems}>
       {nav.map((item: NavItem, index: Key) => {
+        const isHome = item.path === '/';
         const isActiveNav = router.asPath === item.path;
-        const isBlog =
-          router.asPath.includes('/blog/') && item.path === '/blog';
+        const isDeepLink =
+          router.asPath.startsWith(item.path) &&
+          router.asPath.split('/').length > item.path.split('/').length &&
+          !isHome;
 
         return (
           <Link
@@ -219,7 +222,7 @@ const Navigation: FC = () => {
             key={index}
             onClick={handleToggleMenu}
             className={`link ${
-              isActiveNav || isBlog ? item.cName + ' active' : item.cName
+              isActiveNav || isDeepLink ? item.cName + ' active' : item.cName
             }`}
             aria-label={item.aria}
           >
@@ -227,6 +230,7 @@ const Navigation: FC = () => {
           </Link>
         );
       })}
+
       <div css={styleGhButton}>
         <button
           className="githubButton"
