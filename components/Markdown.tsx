@@ -76,7 +76,6 @@ const BlogMarkdown: FC<BlogMarkdownProps> = ({ markdown }) => {
         position: 'absolute',
         top: 14,
         right: -10,
-        // border: '1px solid var(--color-gray-dark)',
         borderRadius: 5,
         textTransform: 'uppercase',
         fontSize: 13,
@@ -114,7 +113,6 @@ const BlogMarkdown: FC<BlogMarkdownProps> = ({ markdown }) => {
         },
       },
       '@keyframes fadeOut': {
-        // New animation keyframes for fadeOut
         from: { opacity: 1 },
         to: { opacity: 0 },
       },

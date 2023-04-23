@@ -9,6 +9,7 @@ import {
 import { useFrame } from '@react-three/fiber';
 import { MeshDistortMaterial } from '@react-three/drei';
 import { createNoise2D } from 'simplex-noise';
+import { Theme, useTheme } from '@emotion/react';
 
 type CanvasTerrainProps = {
   detail: number;
@@ -85,6 +86,7 @@ const CanvasTerrain: FC<CanvasTerrainProps> = ({
   offset = { x: 0, z: 0 },
   rotation = 1,
 }) => {
+  const theme: Theme = useTheme();
   interface PlaneGeometryRef extends PlaneGeometry {
     elementsNeedUpdate: boolean;
   }
@@ -122,7 +124,7 @@ const CanvasTerrain: FC<CanvasTerrainProps> = ({
         distort={0.9}
         speed={0.05}
         wireframe
-        emissive="#8a8e9f"
+        emissive={theme.canvas}
       />
     </mesh>
   );

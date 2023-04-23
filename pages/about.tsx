@@ -68,8 +68,8 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
         '.divider': {
           borderBottom: '2px dotted var(--color-light)',
           opacity: '.2',
-          paddingBottom: '1.8rem',
-          marginBottom: '2.2rem',
+          paddingBottom: '1rem',
+          marginBottom: '1.5rem',
         },
         '.ctaButton': {
           background: 'var(--color-light)',
@@ -182,6 +182,14 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
       marginRight: '1.5rem',
       '&:last-of-type': {
         marginRight: 0,
+      },
+    },
+    svg: {
+      fill: 'var(--color-heading)',
+      '@media (min-width: 769px)': {
+        '&:hover': {
+          fill: 'var(--color-primary)',
+        },
       },
     },
   });
