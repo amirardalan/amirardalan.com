@@ -209,9 +209,15 @@ const Navigation: FC = () => {
   const NavItems = () => (
     <nav css={styleNavItems}>
       {nav.map((item: NavItem, index: Key) => {
-        const isActiveNav = router.asPath === item.path;
+        const isActiveNav = router.asPath === item.path.split('#')[0];
         const isBlog =
           router.asPath.includes('/blog/') && item.path === '/blog';
+        const pathname = router.pathname;
+        const hash = router.asPath.split('#')[1];
+        const pageName = pathname.split('/').pop() ?? '';
+
+        const isCurrentPage =
+          item.path.split('#')[0].endsWith(pageName) || hash === pageName;
 
         return (
           <Link
@@ -219,7 +225,9 @@ const Navigation: FC = () => {
             key={index}
             onClick={handleToggleMenu}
             className={`link ${
-              isActiveNav || isBlog ? item.cName + ' active' : item.cName
+              isActiveNav || isBlog || isCurrentPage
+                ? item.cName + ' active'
+                : item.cName
             }`}
             aria-label={item.aria}
           >
