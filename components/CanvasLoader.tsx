@@ -3,17 +3,6 @@ import { css } from '@emotion/react';
 import { Canvas } from '@react-three/fiber';
 import CanvasTerrain from '@/components/CanvasTerrain';
 
-// Console Tag
-console.log(`
- █████  ███    ███ ██ ██████  
-██   ██ ████  ████ ██ ██   ██ 
-███████ ██ ████ ██ ██ ██████  
-██   ██ ██  ██  ██ ██ ██   ██ 
-██   ██ ██      ██ ██ ██   ██ 
------------------------------
-Design & Code by Amir Ardalan
-`);
-
 const styleRandomizeButton = css({
   zIndex: 4,
   position: 'absolute',

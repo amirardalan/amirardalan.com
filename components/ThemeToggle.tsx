@@ -6,6 +6,16 @@ type ThemeToggleProps = {
   toggleTheme: () => void;
 };
 
+console.log(`
+ █████  ███    ███ ██ ██████  
+██   ██ ████  ████ ██ ██   ██ 
+███████ ██ ████ ██ ██ ██████  
+██   ██ ██  ██  ██ ██ ██   ██ 
+██   ██ ██      ██ ██ ██   ██ 
+<--------------------------->
+Design & Code by Amir Ardalan
+`);
+
 const ThemeToggle: FC<ThemeToggleProps> = ({ toggleTheme }) => {
   const [activeTheme, setActiveTheme] = useState(
     document.body.dataset.theme ?? 'light'
