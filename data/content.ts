@@ -112,7 +112,7 @@ export const aboutContent = {
     items: [
       {
         path: '/resume',
-        title: 'Resume (PDF)',
+        title: 'Download Resume',
         rel: 'noopener noreferrer',
         target: '_blank',
         icon: 'download',
