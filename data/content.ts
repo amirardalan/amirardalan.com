@@ -170,7 +170,7 @@ export const aboutContent = {
   experience: {
     title: 'Experience',
     items: [
-      "With over two decades of experience in web development, I've had the privilege of working with iconic brands like Nike, Columbia Sportswear, and KEEN Footwear.",
+      "With over a decade of experience in web development, I've had the privilege of working with iconic brands like Nike, Columbia Sportswear, and KEEN Footwear.",
       "My expertise spans full stack development, UI design, web accessibility, ecommerce, and rapid prototyping. I'm passionate about pushing the boundaries of web technologies and user experience in a world where humans and machines are increasingly connected.",
     ],
   },
