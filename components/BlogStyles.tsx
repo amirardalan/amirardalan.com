@@ -202,8 +202,13 @@ const blogStyles = css({
         display: 'none',
       },
       '.readTime': {
-        margin: '0 0 0 0.5rem',
+        margin: '0 0 0 0.8rem',
         maxHeight: 19,
+        lineHeight: '.8rem',
+        '@media (max-width: 768px)': {
+          lineHeight: '1.1rem',
+          fontSize: 10,
+        },
       },
     },
   },
