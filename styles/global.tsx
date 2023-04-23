@@ -153,7 +153,7 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
           },
           'input, textarea, select': {
             verticalAlign: 'middle',
-            caretColor: 'var(--color-heading)',
+            caretColor: 'var(--color-primary)',
           },
           'textarea, .modalContent': {
             '::-webkit-scrollbar-track': {
