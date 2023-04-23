@@ -108,11 +108,6 @@ const Navigation: FC = () => {
     marginLeft: '2rem',
   });
 
-  const styleNavIcon = css({
-    height: 16,
-    width: 16,
-  });
-
   const styleNavItems = css({
     position: 'relative',
     display: 'flex',
@@ -226,7 +221,7 @@ const Navigation: FC = () => {
             }`}
             aria-label={item.aria}
           >
-            {item.icon ? <div css={styleNavIcon}></div> : item.title}
+            {item.title}
           </Link>
         );
       })}
