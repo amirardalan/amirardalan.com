@@ -19,7 +19,7 @@ const warningDark = '#de5063';
 const codeHighlight = '#202022';
 const avatar = '#412485';
 const sunrise =
-  'linear-gradient(to bottom,#4e2ba2  0%, #3a2372 50%,#311c61 100%)';
+  'linear-gradient(to bottom,#4e2ba2 0%, #3a2372 50%,#311c61 100%)';
 const sunset = 'linear-gradient(to bottom,#328aa7 0%,#1c4d78 50%,#00425f 100%)';
 
 type GlobalStylesProps = {
