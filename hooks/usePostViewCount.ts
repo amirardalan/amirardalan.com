@@ -8,7 +8,7 @@ type PostViewCount = {
 
 const usePostViewCount = (slug: string): PostViewCount => {
   const { data: viewCount, isLoading } = useSWR(
-    `/api/analytics/postviews?slug=${slug}`,
+    `/api/views/postviews?slug=${slug}`,
     fetcher,
     {
       refreshInterval: 300000,

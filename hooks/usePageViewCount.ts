@@ -7,19 +7,15 @@ type PageViewCount = {
 };
 
 const usePageViewCount = (): PageViewCount => {
-  const { data: pageviews, error } = useSWR(
-    '/api/analytics/pageviews',
-    fetcher,
-    {
-      refreshInterval: 3600000,
-      revalidateOnFocus: true,
-      shouldRetryOnError: true,
-      revalidateOnMount: true,
-      dedupingInterval: 0,
-      revalidateOnReconnect: true,
-      method: 'GET',
-    }
-  );
+  const { data: pageviews, error } = useSWR('/api/views/pageviews', fetcher, {
+    refreshInterval: 3600000,
+    revalidateOnFocus: true,
+    shouldRetryOnError: true,
+    revalidateOnMount: true,
+    dedupingInterval: 0,
+    revalidateOnReconnect: true,
+    method: 'GET',
+  });
 
   return {
     pageviews,
