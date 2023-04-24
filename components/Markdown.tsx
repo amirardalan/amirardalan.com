@@ -50,13 +50,13 @@ const BlogMarkdown: FC<BlogMarkdownProps> = ({ markdown }) => {
         height: '8px',
       },
       '::-webkit-scrollbar-thumb': {
-        border: '4px solid var(--color-gray-dark)',
+        border: '4px solid var(--code-highlight)',
         width: 8,
         backgroundClip: 'padding-box',
         borderRadius: 10,
         WebkitBoxShadow: 'none',
         '&:hover': {
-          border: '4px solid var(--color-disabled)',
+          border: '4px solid var(--color-gray-dark)',
         },
       },
     },
