@@ -16,7 +16,7 @@ const grayAccentDark = '#29292c';
 const buttonDisabled = '#b8b8b8';
 const warningLight = '#e64358';
 const warningDark = '#de5063';
-const codeHighlight = '#202022';
+const codeHighlight = '#29292c';
 const avatar = '#412485';
 const gradientLight =
   'linear-gradient(to bottom,#205382 0%, #373b7b 50%,#3a1b5c 100%)';
