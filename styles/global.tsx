@@ -18,10 +18,8 @@ const warningLight = '#e64358';
 const warningDark = '#de5063';
 const codeHighlight = '#202022';
 const avatar = '#412485';
-const sunrise =
-  'linear-gradient(to bottom,#4e2ba2 0%, #3a2372 50%,#311c61 100%)';
-const sunset = 'linear-gradient(to bottom,#328aa7 0%,#1c4d78 50%,#00425f 100%)';
-
+const gradient =
+  'linear-gradient(to bottom,#205382 0%, #373b7b 50%,#3a1b5c 100%)';
 type GlobalStylesProps = {
   fontPrimary: string;
   fontSecondary: string;
@@ -48,6 +46,7 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
             '--color-avatar': avatar,
             '--color-select': grayAccentLight,
             '--code-highlight': codeHighlight,
+            '--color-gradient': gradient,
             '--icon-download-dark': 'url(/icons/download-dark.svg)',
             '--icon-download-light': 'url(/icons/download-light.svg)',
             '--icon-copy': 'url(/icons/copy-light.svg)',
@@ -65,7 +64,6 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
             '--color-accent': lightAccent,
             '--color-accent-darker': lightDarker,
             '--color-warning': warningLight,
-            '--color-gradient': sunset,
             '--page-bg': lightDarker,
             '--code-bg': darkAccent,
             '--icon-paypal': 'url(/icons/paypal-light.svg)',
@@ -85,7 +83,6 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
             '--color-accent': darkAccent,
             '--color-accent-darker': darker,
             '--color-warning': warningDark,
-            '--color-gradient': sunrise,
             '--page-bg': darkAccent,
             '--code-bg': darkAccent,
             '--icon-paypal': 'url(/icons/paypal-dark.svg)',
