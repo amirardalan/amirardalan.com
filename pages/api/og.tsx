@@ -45,7 +45,7 @@ export default async function handler(req: Request) {
                 {description}
               </div>
             </div>
-            <div tw="border-t-2 border-[#634da5] text-4xl font-light absolute bottom-12 right-20 text-right">
+            <div tw="border-t-2 border-[#386B9E] text-4xl font-light absolute bottom-12 right-20 text-right">
               {displayUrl}
             </div>
           </div>
