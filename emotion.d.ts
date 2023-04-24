@@ -6,8 +6,5 @@ declare module '@emotion/react' {
     favicon?: string;
     canvas?: string;
     gh?: string;
-    icons: {
-      [key: string]: string;
-    };
   }
 }

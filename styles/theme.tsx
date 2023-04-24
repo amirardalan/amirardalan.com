@@ -2,33 +2,12 @@ export const themeLight = {
   active: 'light',
   favicon: '/favicon-light.png',
   gh: 'dark',
-  icons: {
-    github: '/icons/github-light.svg',
-    twitter: '/icons/twitter-light.svg',
-    linkedin: '/icons/linkedin-light.svg',
-    codepen: '/icons/codepen-light.svg',
-    download: '/icons/download-light.svg',
-    external: '/icons/external-link-light.svg',
-    externalAlt: '/icons/external-link-dark.svg',
-    error: '/icons/error-dark.svg',
-    info: '/icons/info-dark.svg',
-    close: '/icons/close-light.svg',
-  },
+  canvas: '#978fac',
 };
 
 export const themeDark = {
   active: 'dark',
   favicon: '/favicon-dark.png',
   gh: 'light',
-  icons: {
-    github: '/icons/github-dark.svg',
-    twitter: '/icons/twitter-dark.svg',
-    linkedin: '/icons/linkedin-dark.svg',
-    codepen: '/icons/codepen-dark.svg',
-    download: '/icons/download-dark.svg',
-    external: '/icons/external-link-dark.svg',
-    error: '/icons/error-light.svg',
-    info: '/icons/info-light.svg',
-    close: '/icons/close-dark.svg',
-  },
+  canvas: '#978fac',
 };

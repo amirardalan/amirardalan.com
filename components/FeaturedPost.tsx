@@ -77,6 +77,7 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
       justifyContent: 'center',
       alignItems: 'baseline',
       marginLeft: '.3rem',
+      color: 'var(--color-gray)',
       fontFamily: 'var(--font-primary)',
       textTransform: 'uppercase',
       fontSize: 11,
@@ -116,14 +117,11 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
       fontFamily: 'var(--font-secondary)',
       fontSize: 18,
       fontWeight: 700,
-      color: 'var(--color-text)',
-      '&:hover': {
-        color: 'var(--color-primary)',
-        '@media(max-width: 768px)': {
-          color: 'var(--color-text)',
+      '@media (min-width: 1025px)': {
+        '&:hover': {
+          color: 'var(--color-primary)',
         },
       },
-
       '@media(max-width: 480px)': {
         fontSize: 16,
       },

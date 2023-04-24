@@ -88,37 +88,21 @@ export const aboutContent = {
         path: 'https://github.com/amirardalan',
         title: 'GitHub',
         cName: 'iconGithub icon',
-        icon: {
-          light: themeLight.icons.github,
-          dark: themeDark.icons.github,
-        },
-      },
-      {
-        path: 'https://codepen.io/amirardalan/collections/public',
-        title: 'CodePen',
-        cName: 'iconCodePen icon',
-        icon: {
-          light: themeLight.icons.codepen,
-          dark: themeDark.icons.codepen,
-        },
       },
       {
         path: 'https://twitter.com/amirardalan',
         title: 'Twitter',
         cName: 'iconTwitter icon',
-        icon: {
-          light: themeLight.icons.twitter,
-          dark: themeDark.icons.twitter,
-        },
       },
       {
         path: 'https://linkedin.com/in/amirardalan',
         title: 'LinkedIn',
         cName: 'iconLinkedin icon',
-        icon: {
-          light: themeLight.icons.linkedin,
-          dark: themeDark.icons.linkedin,
-        },
+      },
+      {
+        path: 'https://codepen.io/amirardalan/collections/public',
+        title: 'CodePen',
+        cName: 'iconCodePen icon',
       },
     ],
   },
@@ -128,7 +112,7 @@ export const aboutContent = {
     items: [
       {
         path: '/resume',
-        title: 'Resume (PDF)',
+        title: 'Download Resume',
         rel: 'noopener noreferrer',
         target: '_blank',
         icon: 'download',
@@ -200,10 +184,6 @@ export const aboutContent = {
         rel: 'noopener noreferrer',
         target: '_blank',
         handle: '@amirardalan',
-        icon: {
-          light: themeLight.icons.external,
-          dark: themeDark.icons.external,
-        },
       },
     ],
   },
@@ -530,84 +510,44 @@ export const footer = {
     {
       path: 'https://nextjs.org/',
       title: 'Next.js',
-      icon: {
-        light: themeLight.icons.external,
-        dark: themeDark.icons.external,
-      },
     },
     {
       path: 'https://next-auth.js.org/',
       title: 'NextAuth.js',
-      icon: {
-        light: themeLight.icons.external,
-        dark: themeDark.icons.external,
-      },
     },
     {
       path: 'https://vercel.com/',
       title: 'Vercel',
-      icon: {
-        light: themeLight.icons.external,
-        dark: themeDark.icons.external,
-      },
     },
     {
       path: 'https://www.prisma.io/',
       title: 'Prisma',
-      icon: {
-        light: themeLight.icons.external,
-        dark: themeDark.icons.external,
-      },
     },
     {
       path: 'https://supabase.com/',
       title: 'Supabase',
-      icon: {
-        light: themeLight.icons.external,
-        dark: themeDark.icons.external,
-      },
     },
     {
       path: 'https://threejs.org/',
       title: 'Three.js',
-      icon: {
-        light: themeLight.icons.external,
-        dark: themeDark.icons.external,
-      },
     },
   ],
   social: [
     {
       path: 'https://github.com/amirardalan',
       title: 'GitHub',
-      icon: {
-        light: themeLight.icons.external,
-        dark: themeDark.icons.external,
-      },
     },
     {
       path: 'https://twitter.com/amirardalan',
       title: 'Twitter',
-      icon: {
-        light: themeLight.icons.external,
-        dark: themeDark.icons.external,
-      },
     },
     {
       path: 'https://linkedin.com/in/amirardalan',
       title: 'LinkedIn',
-      icon: {
-        light: themeLight.icons.external,
-        dark: themeDark.icons.external,
-      },
     },
     {
       path: '/resume',
       title: 'Resume',
-      icon: {
-        light: themeLight.icons.download,
-        dark: themeDark.icons.download,
-      },
     },
   ],
   copyright: {

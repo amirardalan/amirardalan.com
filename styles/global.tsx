@@ -1,27 +1,27 @@
 import { FC } from 'react';
 import { Global } from '@emotion/react';
 
-const light = '#e4e9f8';
-const lightAccent = '#d8dff0';
-const lightDarker = '#d5d9ee';
-const dark = '#262738';
-const darkAccent = '#2f3044';
-const darker = '#191a22';
-const primary = '#7e37a4';
-const secondary = '#3dffc5';
-const grayLight = '#b0bccc';
-const grayDark = '#606071';
-const grayAccentLight = '#b7b7c9';
-const grayAccentDark = '#494a5c';
-const buttonDisabled = '#9e9eb6';
+const light = '#f7f7f7';
+const lightAccent = '#eeeeee';
+const lightDarker = '#d9d9d9';
+const dark = '#171719';
+const darkAccent = '#1e1e21';
+const darker = '#101010';
+const primary = '#005e87';
+const secondary = '#a587ff';
+const grayLight = '#cacaca';
+const grayDark = '#575757';
+const grayAccentLight = '#cecece';
+const grayAccentDark = '#29292c';
+const buttonDisabled = '#b8b8b8';
 const warningLight = '#e64358';
 const warningDark = '#de5063';
-const codeHighlight = '#37394e';
-const avatar = '#281483';
-const sunrise =
-  'linear-gradient(to bottom,#515690 0%, #194464 50%,#0e656a 100%)';
-const sunset = 'linear-gradient(to bottom,#515690 0%,#51477c 50%,#5b2978 100%)';
-
+const codeHighlight = '#202022';
+const avatar = '#412485';
+const gradientLight =
+  'linear-gradient(to bottom,#205382 0%, #373b7b 50%,#3a1b5c 100%)';
+const gradientDark =
+  'linear-gradient(to bottom,#3a1b5c 0%, #373b7b 50%,#205382 100%)';
 type GlobalStylesProps = {
   fontPrimary: string;
   fontSecondary: string;
@@ -65,14 +65,12 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
             '--color-accent': lightAccent,
             '--color-accent-darker': lightDarker,
             '--color-warning': warningLight,
-            '--color-gradient': sunset,
+            '--color-gradient': gradientDark,
             '--page-bg': lightDarker,
             '--code-bg': darkAccent,
             '--icon-paypal': 'url(/icons/paypal-light.svg)',
             '--icon-eth': 'url(/icons/eth-light.svg)',
             '--icon-info': 'url(/icons/note-dark.svg)',
-            '--icon-arrow': 'url(/icons/arrow-dark.svg)',
-            '--icon-warning': 'url(/icons/warning-dark.svg)',
           },
 
           'html[data-theme="dark"]': {
@@ -87,14 +85,12 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
             '--color-accent': darkAccent,
             '--color-accent-darker': darker,
             '--color-warning': warningDark,
-            '--color-gradient': sunrise,
+            '--color-gradient': gradientLight,
             '--page-bg': darkAccent,
             '--code-bg': darkAccent,
             '--icon-paypal': 'url(/icons/paypal-dark.svg)',
             '--icon-eth': 'url(/icons/eth-dark.svg)',
             '--icon-info': 'url(/icons/note-light.svg)',
-            '--icon-arrow': 'url(/icons/arrow-light.svg)',
-            '--icon-warning': 'url(/icons/warning-light.svg)',
           },
           html: {
             scrollBehavior: 'smooth',

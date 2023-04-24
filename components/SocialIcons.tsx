@@ -1,15 +1,22 @@
 import { FC, Key } from 'react';
-import Image from 'next/image';
-import { useTheme, Theme } from '@emotion/react';
+import Icon from '@/components/Icon';
 import { SocialIconsTypes } from '@/types/icons';
+import IconTwitter from '@/components/IconTwitter';
+import IconGithub from '@/components/IconGithub';
+import IconCodepen from '@/components/IconCodepen';
+import IconLinkedin from '@/components/IconLinkedin';
 
 type SocialiconsProps = {
   about: object & SocialIconsTypes;
 };
 
 const SocialIcons: FC<SocialiconsProps> = ({ about }) => {
-  const theme: Theme = useTheme();
-  const isDarkTheme: boolean = theme.active === 'dark';
+  const iconComponentMap: Record<string, any> = {
+    Twitter: <IconTwitter size={48} />,
+    GitHub: <IconGithub size={48} />,
+    CodePen: <IconCodepen size={48} />,
+    LinkedIn: <IconLinkedin size={48} />,
+  };
 
   const GenerateSocialIcons: Function = (
     items: Array<{
@@ -25,6 +32,7 @@ const SocialIcons: FC<SocialiconsProps> = ({ about }) => {
     }>
   ) => {
     return items.map((item, i: Key) => {
+      const iconComponent = iconComponentMap[item.title];
       return (
         <a
           key={i}
@@ -34,14 +42,7 @@ const SocialIcons: FC<SocialiconsProps> = ({ about }) => {
           title={item.title}
           aria-label={item.title}
         >
-          <Image
-            src={isDarkTheme ? item.icon.dark : item.icon.light}
-            height="48"
-            width="48"
-            alt={item.title}
-            aria-label={item.title}
-            priority
-          />
+          <Icon title={item.title} icon={iconComponent} />
         </a>
       );
     });
