@@ -31,7 +31,7 @@
     }
   ],
   "start_url": "/",
-  "background_color": "#e4e9f8",
+  "background_color": "#f7f7f7",
   "display": "standalone",
   "scope": "/",
   "shortcuts": [
