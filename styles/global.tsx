@@ -71,7 +71,6 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
             '--icon-paypal': 'url(/icons/paypal-light.svg)',
             '--icon-eth': 'url(/icons/eth-light.svg)',
             '--icon-info': 'url(/icons/note-dark.svg)',
-            '--icon-arrow': 'url(/icons/arrow-dark.svg)',
           },
 
           'html[data-theme="dark"]': {
@@ -92,7 +91,6 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
             '--icon-paypal': 'url(/icons/paypal-dark.svg)',
             '--icon-eth': 'url(/icons/eth-dark.svg)',
             '--icon-info': 'url(/icons/note-light.svg)',
-            '--icon-arrow': 'url(/icons/arrow-light.svg)',
           },
           html: {
             scrollBehavior: 'smooth',
