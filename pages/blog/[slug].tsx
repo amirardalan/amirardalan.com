@@ -335,11 +335,12 @@ const styleBlogPost = css({
     },
     'ul li, ol li, p, .note': {
       a: {
-        color: 'var(--color-gray)',
+        color: 'var(--color-primary)',
         textDecoration: 'underline',
         textDecorationColor: 'var(--color-primary)',
         '&:hover': {
           color: 'var(--color-primary)',
+          textDecoration: 'none',
         },
       },
     },

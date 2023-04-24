@@ -37,12 +37,6 @@ const TableOfContents: FC<TableOfContentsProps> = ({ markdown }) => {
           top: '.2rem',
         },
       },
-      'a.tocLink': {
-        textDecorationColor: 'var(--color-gray)',
-        '&:hover': {
-          textDecorationColor: 'var(--color-primary)',
-        },
-      },
       '@media (max-width: 768px)': {
         margin: '1rem 0 0 0',
         li: {

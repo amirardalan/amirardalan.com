@@ -96,6 +96,9 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
           fontFamily: 'var(--font-secondary)',
         },
       },
+      'a:hover': {
+        textDecoration: 'none',
+      },
       '.skills': {
         li: {
           fontSize: 14,

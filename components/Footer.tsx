@@ -45,7 +45,7 @@ const Footer: FC<FooterProps> = () => {
       },
     },
     a: {
-      marginBottom: '.8rem',
+      marginBottom: '.5rem',
       display: 'flex',
       flexDirection: 'row',
       width: 'fit-content',
@@ -53,9 +53,15 @@ const Footer: FC<FooterProps> = () => {
       alignItems: 'center',
       textDecoration: 'none',
       color: 'var(--color-bg)',
+      borderBottom: '1px solid transparent',
       '&:focus': {
         boxShadow: '0 0 0 2px var(--color-accent-gray)',
         '&:focus:not(:focus-visible)': { boxShadow: 'none' },
+      },
+      '@media (min-width: 1025px)': {
+        '&:hover': {
+          borderBottom: '1px solid var(--color-bg)',
+        },
       },
       '@media(max-width: 480px)': {
         marginBottom: '1.5rem',
