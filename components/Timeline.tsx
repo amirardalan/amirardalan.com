@@ -174,10 +174,10 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
         },
       },
       '.date': {
-        fontFamily: 'var(--font-secondary)',
-        color: 'var(--color-primary)',
+        fontFamily: 'var(--font-primary)',
+        color: 'var(--color-text)',
         fontSize: 25,
-        fontWeight: 900,
+        fontWeight: 400,
         lineHeight: '.5rem',
         '@media(max-width: 768px)': {
           paddingTop: '.2rem',

@@ -66,7 +66,7 @@ const BlogMarkdown: FC<BlogMarkdownProps> = ({ markdown }) => {
         position: 'absolute',
         bottom: 10,
         right: -10,
-        color: 'var(--color-disabled)',
+        color: 'var(--color-gray)',
         textAlign: 'right',
         fontSize: 12,
       },

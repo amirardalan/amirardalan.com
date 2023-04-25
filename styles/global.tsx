@@ -1,25 +1,25 @@
 import { FC } from 'react';
 import { Global } from '@emotion/react';
 
-const light = '#f7f7f7';
-const lightAccent = '#eeeeee';
+const light = '#eae7f3';
+const lightAccent = '#e2deeb';
 const lightDarker = '#ccc8d8';
 const dark = '#161620';
 const darkAccent = '#1b1b25';
 const darker = '#111116';
-const primary = '#005e87';
-const secondary = '#a587ff';
-const grayLight = '#7d7891';
-const grayDark = '#72707e';
-const grayAccentLight = '#c1becb';
-const grayAccentDark = '#312e49';
+const primary = '#007896';
+const secondary = '#ff8787';
+const grayLight = '#9590a6';
+const grayDark = '#7d7c86';
+const grayAccentLight = '#cfcdd6';
+const grayAccentDark = '#3c3b48';
 const buttonDisabled = '#b7b4bb';
 const warningLight = '#e64358';
 const warningDark = '#de5063';
-const codeHighlight = '#272735';
+const codeHighlight = '#242430';
 const avatar = '#412485';
 const gradientLight =
-  'linear-gradient(to bottom,#205382 0%, #373b7b 50%,#3a1b5c 100%)';
+  'linear-gradient(to bottom, #321D4A 0%, #311A36 50%,#482335 100%)';
 const gradientDark =
   'linear-gradient(to bottom,#3a1b5c 0%, #373b7b 50%,#205382 100%)';
 type GlobalStylesProps = {
@@ -431,7 +431,6 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
           },
           '.animationWrapper': {
             width: '100%',
-            overflow: 'hidden',
             alignSelf: 'flex-end',
           },
           '.buttonHover': {
