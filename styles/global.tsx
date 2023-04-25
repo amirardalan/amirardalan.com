@@ -430,6 +430,7 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
             color: 'var(--color-heading)',
           },
           '.animationWrapper': {
+            overflow: 'hidden',
             width: '100%',
             alignSelf: 'flex-end',
           },
