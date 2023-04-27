@@ -3,7 +3,7 @@
   "name": "Amir Ardalan – Developer & designer",
   "icons": [
     {
-      "src": "/pwa-icon-mac.png",
+      "src": "/pwa-icon.png",
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "any",
