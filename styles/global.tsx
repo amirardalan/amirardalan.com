@@ -1,22 +1,22 @@
 import { FC } from 'react';
 import { Global } from '@emotion/react';
 
-const light = '#eae7f3';
-const lightAccent = '#e2deeb';
-const lightDarker = '#ccc8d8';
-const dark = '#161620';
-const darkAccent = '#1b1b25';
+const light = '#f5f5f5';
+const lightAccent = '#e8e8e8';
+const lightDarker = '#cecbd9';
+const dark = '#191922';
+const darkAccent = '#1e1e27';
 const darker = '#111116';
 const primary = '#007896';
 const secondary = '#ff8787';
-const grayLight = '#9590a6';
-const grayDark = '#7d7c86';
-const grayAccentLight = '#cfcdd6';
-const grayAccentDark = '#3c3b48';
-const buttonDisabled = '#b7b4bb';
+const grayLight = '#8d8999';
+const grayDark = '#8b8b8b';
+const grayAccentLight = '#d5d5d5';
+const grayAccentDark = '#32313a';
+const buttonDisabled = '#bbbbbb';
 const warningLight = '#e64358';
 const warningDark = '#de5063';
-const codeHighlight = '#242430';
+const codeHighlight = '#272732';
 const avatar = '#412485';
 const gradientLight =
   'linear-gradient(to bottom, #321D4A 0%, #311A36 50%,#482335 100%)';
