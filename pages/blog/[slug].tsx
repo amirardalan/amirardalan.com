@@ -187,6 +187,7 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
                 url={url}
                 text={false}
                 size={25}
+                color={'var(--color-heading)'}
               />
             </div>
           </div>

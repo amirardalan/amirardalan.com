@@ -326,6 +326,7 @@ const BlogSupport: FC<BlogSupportProps> = ({
                     url={url}
                     text={true}
                     size={19}
+                    color={'var(--color-text)'}
                   />
                 </div>
               </div>
