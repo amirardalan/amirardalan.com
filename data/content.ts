@@ -107,7 +107,7 @@ export const aboutContent = {
     ],
   },
   bio: {
-    subheading: `Hey there, I'm Amir 👋👨‍💻`,
+    subheading: `Hey there, I'm Amir 👋`,
     content: `I'm a developer and designer who's passionate about crafting outstanding digital experiences. This blog is a platform to document my career journey, learn in public, and share my knowledge with the web development comminity.`,
     items: [
       {
@@ -141,8 +141,8 @@ export const aboutContent = {
     items: [
       'Node.js',
       'Three.js',
-      'Prisma',
-      'Postgres',
+      'Prisma ORM',
+      'PostgreSQL',
       'Git',
       'SWR',
       'SEO',
