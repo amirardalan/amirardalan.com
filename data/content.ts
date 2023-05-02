@@ -349,7 +349,7 @@ export const usesContent = {
   - Self-built PC
   ##### Specs:
   - 3.8GHz 6-Core Intel i7 3930K
-  - 32GB RAM
+  - 32GB Corsair Vengeance DDR3 RAM
   - 2x 500GB SSD
   - Geforce GTX 1080 Founders Edition
   - Motu Audio Express
@@ -382,6 +382,7 @@ export const usesContent = {
   - [Prisma](https://marketplace.visualstudio.com/items?itemName=Prisma.prisma)
   - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
   - [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)
+  - [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
   ##### Game Dev Extensions:
   - [Lua](https://marketplace.visualstudio.com/items?itemName=sumneko.lua)
   - [Lua linter](https://marketplace.visualstudio.com/items?itemName=dcr30.lualinter)
