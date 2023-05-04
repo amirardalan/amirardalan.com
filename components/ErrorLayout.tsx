@@ -14,7 +14,7 @@ const ErrorLayout: FC<ErrorProps> = ({ error }) => {
     position: 'relative',
     display: 'flex',
     flexDirection: 'column',
-    backgroundColor: 'var(--page-bg)',
+    backgroundColor: 'var(--color-accent)',
   });
 
   const styleErrorContainer = css({
