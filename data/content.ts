@@ -82,7 +82,7 @@ export const aboutContent = {
     img: '/avatar/amir-ardalan.jpg',
   },
   social: {
-    title: 'Follow me',
+    title: 'Follow Me',
     items: [
       {
         path: 'https://github.com/amirardalan',
@@ -172,7 +172,7 @@ export const aboutContent = {
     ],
   },
   contact: {
-    title: "Let's talk",
+    title: "Let's Talk",
     email: {
       title: 'Show Email Address',
     },
