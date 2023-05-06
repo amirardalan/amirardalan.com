@@ -7,7 +7,7 @@
       <rect width="114" height="30"/>
     </clipPath>
   </defs>
-  <g id="paypal-light" clip-path="url(#clip-paypal-light)">
+  <g id="paypal-light" clipPath="url(#clip-paypal-light)">
     <rect id="PP_Light" width="114" height="30" fill="url(#pattern)"/>
   </g>
 </svg>
