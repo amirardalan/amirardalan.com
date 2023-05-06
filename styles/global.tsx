@@ -4,24 +4,24 @@ import { Global } from '@emotion/react';
 const light = '#f5f5f5';
 const lightAccent = '#e8e8e8';
 const lightDarker = '#cecbd9';
-const dark = '#191922';
-const darkAccent = '#1e1e27';
+const dark = '#111112';
+const darkAccent = '#17171a';
 const darker = '#111116';
-const primary = '#007896';
-const secondary = '#ff8787';
-const grayLight = '#9a97a2';
-const grayDark = '#6c6c6c';
+const primary = '#1b43d2';
+const secondary = '#87ffff';
+const grayLight = '#9997a2';
+const grayDark = '#69676e';
 const grayAccentLight = '#d5d5d5';
 const grayAccentDark = '#32313a';
 const buttonDisabled = '#bbbbbb';
 const warningLight = '#e64358';
 const warningDark = '#de5063';
-const codeHighlight = '#272732';
+const codeHighlight = '#222126';
 const avatar = '#412485';
 const gradientLight =
-  'linear-gradient(to bottom, #321D4A 0%, #311A36 50%,#482335 100%)';
+  'linear-gradient(to bottom, #22456f 0%, #1e4163 50%,#1c5d6b 100%)';
 const gradientDark =
-  'linear-gradient(to bottom,#3a1b5c 0%, #373b7b 50%,#205382 100%)';
+  'linear-gradient(to bottom,#1c5d6b 0%, #1e4163 50%,#22456f 100%)';
 type GlobalStylesProps = {
   fontPrimary: string;
   fontSecondary: string;
