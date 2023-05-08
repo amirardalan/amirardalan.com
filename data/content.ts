@@ -445,6 +445,7 @@ export const usesContent = {
   #### Design
   - [Figma](https://www.figma.com/)
   - [Aseprite](https://www.aseprite.org/)
+  - [Blockbench](https://www.blockbench.net/)
   
   #### Communication
   - [Slack](https://slack.com/)
