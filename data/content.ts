@@ -350,7 +350,7 @@ export const usesContent = {
   ##### Specs:
   - 3.8GHz 6-Core Intel i7 3930K
   - 32GB Corsair Vengeance DDR3 RAM
-  - 2x 500GB SSD
+  - Samsung 850 Evo 500GB SSD
   - Geforce GTX 1080 Founders Edition
   - Motu Audio Express
   - 2x KRK VXT 8
