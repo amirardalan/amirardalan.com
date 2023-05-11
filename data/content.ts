@@ -126,11 +126,11 @@ export const aboutContent = {
     title: 'Proficiencies',
     items: [
       'Fullstack Dev',
-      'React',
-      'Next.js',
       'TypeScript',
       'JavaScript',
       'HTML & CSS',
+      'React / Next',
+      'Vue / Nuxt',
       'Tailwind CSS',
       'Responsive UI',
       'Performance',
