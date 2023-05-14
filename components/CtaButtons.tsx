@@ -2,6 +2,7 @@ import { FC, useState } from 'react';
 import Link from 'next/link';
 import { css } from '@emotion/react';
 import { ContactButtonTypes, CtaButtonsTypes } from '@/types/button';
+import { gtagEvent } from '@/lib/gtag';
 
 type CtaButtonsProps = {
   items: CtaButtonsTypes['items'];
@@ -32,9 +33,6 @@ type ContactButtonProps = ContactButtonTypes;
 
 export const ContactButton: FC<ContactButtonProps> = ({ content }) => {
   const [showEmail, setShowEmail] = useState(false);
-  const showEmailOnclick = () => {
-    setShowEmail(true);
-  };
   const [emailCopied, setEmailCopied] = useState(false);
 
   const handleCopyToClipboard = () => {
@@ -70,10 +68,19 @@ export const ContactButton: FC<ContactButtonProps> = ({ content }) => {
     },
   });
 
+  const handleShowEmail = () => {
+    setShowEmail(true);
+    gtagEvent({
+      action: 'click',
+      category: 'cta',
+      label: `Show Email Address`,
+    });
+  };
+
   return (
     <span css={styleAboutCtaWrapper}>
       <button
-        onClick={showEmail ? handleCopyToClipboard : showEmailOnclick}
+        onClick={showEmail ? handleCopyToClipboard : handleShowEmail}
         className={
           showEmail ? 'ctaButton clipboard disabled' : 'ctaButton email'
         }
