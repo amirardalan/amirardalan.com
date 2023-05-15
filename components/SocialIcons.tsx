@@ -5,6 +5,7 @@ import IconTwitter from '@/components/IconTwitter';
 import IconGithub from '@/components/IconGithub';
 import IconCodepen from '@/components/IconCodepen';
 import IconLinkedin from '@/components/IconLinkedin';
+import { gtagEvent } from '@/lib/gtag';
 
 type SocialiconsProps = {
   about: object & SocialIconsTypes;
@@ -31,19 +32,28 @@ const SocialIcons: FC<SocialiconsProps> = ({ about }) => {
       };
     }>
   ) => {
+    const handleSocialIconClick = () => {
+      gtagEvent({
+        action: 'click',
+        category: 'external_link',
+        label: `Click Social Icon`,
+      });
+    };
+
     return items.map((item, i: Key) => {
       const iconComponent = iconComponentMap[item.title];
       return (
-        <a
-          key={i}
-          href={item.path}
-          target="_blank"
-          rel="noreferrer noopener"
-          title={item.title}
-          aria-label={item.title}
-        >
-          <Icon title={item.title} icon={iconComponent} />
-        </a>
+        <button key={i} onClick={handleSocialIconClick}>
+          <a
+            href={item.path}
+            target="_blank"
+            rel="noreferrer noopener"
+            title={item.title}
+            aria-label={item.title}
+          >
+            <Icon title={item.title} icon={iconComponent} />
+          </a>
+        </button>
       );
     });
   };

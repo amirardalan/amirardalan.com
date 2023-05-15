@@ -181,7 +181,7 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
   const styleSocialIcons = css({
     display: 'flex',
     flexDirection: 'row',
-    a: {
+    button: {
       marginRight: '1.5rem',
       '&:last-of-type': {
         marginRight: 0,
