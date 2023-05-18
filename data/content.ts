@@ -374,6 +374,7 @@ export const usesContent = {
   #### IDE
   - [VS Code](https://code.visualstudio.com/)
   ##### Web App Extensions:
+  - [GitHub Copilot](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot)
   - [Tokyo Night](https://marketplace.visualstudio.com/items?itemName=enkia.tokyo-night)
   - [Material Icon Theme](https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme)
   - [Tailwind CSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss)
@@ -428,6 +429,7 @@ export const usesContent = {
   ---
   #### AI
   - [ChatGPT](https://chat.openai.com/chat)
+  - [GitHub Copilot](https://copilot.github.com/)
 
   ---
   #### Game Dev
