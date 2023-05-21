@@ -1,5 +1,3 @@
-import { themeLight, themeDark } from '@/styles/theme';
-
 export const homeContent = {
   meta: {
     title: 'Amir Ardalan – Developer & designer',
