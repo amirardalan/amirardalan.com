@@ -211,7 +211,7 @@ export const timelineContent = {
       cName: 'date',
     },
     {
-      title: 'Fullstack Developer, Writer',
+      title: 'Freelancer and Blogger',
       content:
         'Building, maintaining open-source amirardalan.com Next.js blog & CMS. Writing about front-end code, devops, and tech.',
       cName: 'event',
