@@ -218,8 +218,8 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
     } else {
       return (
         <button
-          onClick={() => setSearch('')}
-          onKeyDown={() => setSearch('')}
+          onClick={() => handleClearFilters()}
+          onKeyDown={() => handleClearFilters()}
           className="clearSearch"
         >
           <CloseIcon size={23} />
