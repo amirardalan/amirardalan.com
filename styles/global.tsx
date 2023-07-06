@@ -71,6 +71,7 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
             '--icon-paypal': 'url(/icons/paypal-light.svg)',
             '--icon-eth': 'url(/icons/eth-light.svg)',
             '--icon-info': 'url(/icons/note-dark.svg)',
+            '--icon-warning': 'url(/icons/warning-dark.svg)',
           },
 
           'html[data-theme="dark"]': {
@@ -84,13 +85,14 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
             '--color-accent-gray': grayAccentDark,
             '--color-accent': darkAccent,
             '--color-accent-darker': darker,
-            '--color-warning': warningDark,
+            '--color-`w`arning': warningDark,
             '--color-gradient': gradientLight,
             '--page-bg': darkAccent,
             '--code-bg': darkAccent,
             '--icon-paypal': 'url(/icons/paypal-dark.svg)',
             '--icon-eth': 'url(/icons/eth-dark.svg)',
             '--icon-info': 'url(/icons/note-light.svg)',
+            '--icon-warning': 'url(/icons/warning-dark.svg)',
           },
           html: {
             scrollBehavior: 'smooth',
