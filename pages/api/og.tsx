@@ -30,7 +30,7 @@ export default async function handler(req: Request) {
 
     return new ImageResponse(
       (
-        <div tw="h-full w-full flex flex-col text-[#e4e9f8]">
+        <div tw="h-full w-full flex flex-col text-[#cecee6]">
           <div
             tw="h-full w-full absolute top-0"
             style={{
