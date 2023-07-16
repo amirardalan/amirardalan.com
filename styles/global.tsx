@@ -9,11 +9,11 @@ const darkAccent = '#1e1d2f';
 const darker = '#141321';
 const primary = '#3a3893';
 const secondary = '#7ee0a0';
-const grayLight = '#9f99b8';
+const grayLight = '#999db8';
 const grayDark = '#505264';
 const grayAccentLight = '#aeaabd';
 const grayAccentDark = '#2a293c';
-const buttonDisabled = '#9995bc';
+const buttonDisabled = '#505264';
 const warningLight = '#e64358';
 const warningDark = '#de5063';
 const codeHighlight = '#28253b';
@@ -152,6 +152,9 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
           'input, textarea, select': {
             verticalAlign: 'middle',
             caretColor: 'var(--color-primary)',
+          },
+          'form input:disabled': {
+            WebkitTextFillColor: 'var(--color-gray) !important',
           },
           'textarea, .modalContent': {
             '::-webkit-scrollbar-track': {
