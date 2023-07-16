@@ -3,20 +3,20 @@ import { Global } from '@emotion/react';
 
 const light = '#cecee6';
 const lightAccent = '#c5c5de';
-const lightDarker = '#b7b3c5';
+const lightDarker = '#79748d';
 const dark = '#191827';
 const darkAccent = '#1e1d2f';
 const darker = '#141321';
 const primary = '#3a3893';
 const secondary = '#7ee0a0';
-const grayLight = '#827f8f';
+const grayLight = '#9f99b8';
 const grayDark = '#505264';
 const grayAccentLight = '#aeaabd';
 const grayAccentDark = '#2a293c';
 const buttonDisabled = '#9995bc';
 const warningLight = '#e64358';
 const warningDark = '#de5063';
-const codeHighlight = '#312e4a';
+const codeHighlight = '#28253b';
 const avatar = '#412485';
 const gradientLight =
   'linear-gradient(to bottom, #22536f 0%, #291e63 50%,#1c276b 100%)';
