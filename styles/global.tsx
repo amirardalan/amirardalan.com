@@ -1,27 +1,27 @@
 import { FC } from 'react';
 import { Global } from '@emotion/react';
 
-const light = '#f5f5f5';
-const lightAccent = '#e8e8e8';
-const lightDarker = '#cecbd9';
-const dark = '#111112';
-const darkAccent = '#17171a';
-const darker = '#111116';
-const primary = '#007893';
-const secondary = '#87ffff';
-const grayLight = '#9997a2';
-const grayDark = '#69676e';
-const grayAccentLight = '#d5d5d5';
-const grayAccentDark = '#32313a';
-const buttonDisabled = '#bbbbbb';
+const light = '#cecee6';
+const lightAccent = '#b9b9d5';
+const lightDarker = '#b7b3c5';
+const dark = '#1c1a31';
+const darkAccent = '#24223c';
+const darker = '#141321';
+const primary = '#3a3893';
+const secondary = '#7ee0a0';
+const grayLight = '#827f8f';
+const grayDark = '#565064';
+const grayAccentLight = '#a598ae';
+const grayAccentDark = '#352c3e';
+const buttonDisabled = '#9995bc';
 const warningLight = '#e64358';
 const warningDark = '#de5063';
-const codeHighlight = '#222126';
+const codeHighlight = '#312e4a';
 const avatar = '#412485';
 const gradientLight =
-  'linear-gradient(to bottom, #22456f 0%, #1e4163 50%,#1c5d6b 100%)';
+  'linear-gradient(to bottom, #22536f 0%, #291e63 50%,#1c276b 100%)';
 const gradientDark =
-  'linear-gradient(to bottom,#1c5d6b 0%, #1e4163 50%,#22456f 100%)';
+  'linear-gradient(to bottom,#1c276b 0%, #291e63 50%,#22536f 100%)';
 type GlobalStylesProps = {
   fontPrimary: string;
   fontSecondary: string;
