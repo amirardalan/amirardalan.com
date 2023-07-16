@@ -163,7 +163,7 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
 
   const filteredPosts = searchResults(search, feed as PostFeedItem[]);
 
-  const RenderPosts: Function = () => {
+  const RenderPosts: any = () => {
     if (filteredPosts.length > 0) {
       const sortedPosts = showPopular
         ? filteredPosts.sort((a, b) => b.likes - a.likes)
@@ -200,7 +200,7 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
     }
   };
 
-  const SearchIcon: Function = () => {
+  const SearchIcon = () => {
     if (search.length === 0) {
       return (
         <div className="icon">
@@ -228,7 +228,7 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
     }
   };
 
-  const ClearFilters: Function = () => {
+  const ClearFilters = () => {
     if (search[0] === '#' && filteredPosts.length > 0) {
       return (
         <button
