@@ -28,6 +28,9 @@ export const getStaticProps: GetStaticProps = async () => {
 type DraftProps = DraftTypes;
 
 const Draft: FC<DraftProps> = ({ admin, breadcrumb }) => {
+  const { data: session } = useSession();
+  const author = session?.user?.email;
+
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [slug, setSlug] = useState('');
@@ -73,7 +76,7 @@ const Draft: FC<DraftProps> = ({ admin, breadcrumb }) => {
     e.preventDefault();
     setFetchStatus(true);
     try {
-      const body = { title, slug, teaser, content, category, featured };
+      const body = { title, content, slug, teaser, author, category, featured };
       await fetch('/api/post', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -98,7 +101,6 @@ const Draft: FC<DraftProps> = ({ admin, breadcrumb }) => {
     }, 100);
   });
 
-  const { data: session } = useSession();
   let create = null;
 
   if (session && session?.user?.email == process.env.NEXT_PUBLIC_USER_EMAIL) {
