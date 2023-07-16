@@ -85,7 +85,7 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
             '--color-accent-gray': grayAccentDark,
             '--color-accent': darkAccent,
             '--color-accent-darker': darker,
-            '--color-`w`arning': warningDark,
+            '--color-warning': warningDark,
             '--color-gradient': gradientLight,
             '--page-bg': darkAccent,
             '--code-bg': darkAccent,
