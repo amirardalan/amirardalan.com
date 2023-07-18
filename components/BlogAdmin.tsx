@@ -170,6 +170,9 @@ const BlogAdmin: FC = () => {
               padding: '1rem',
               background: 'var(--color-accent)',
               fontSize: 13,
+              a: {
+                margin: '0 .5rem',
+              },
             },
             '.blog.admin': {
               width: '100%',
