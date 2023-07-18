@@ -26,7 +26,7 @@ export const getStaticProps: GetStaticProps = async () => {
         select: { title: true, teaser: true, slug: true },
       }),
       prisma.post.findFirst({
-        where: { featured: false, published: true },
+        where: { published: true },
         orderBy: { publishedAt: 'desc' },
         select: { title: true, teaser: true, slug: true },
       }),

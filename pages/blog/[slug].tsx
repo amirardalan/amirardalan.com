@@ -86,7 +86,7 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
     (session && session?.user?.email === process.env.NEXT_PUBLIC_USER_EMAIL);
 
   const isFeatured = post.featured;
-  const latestPostID = feed[feed?.length - 1].id;
+  const latestPostID = feed.length > 1 ? feed[feed?.length - 1].id : feed[0];
   const latestPost = latestPostID === post.id;
 
   const isEdited =
