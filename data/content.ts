@@ -616,8 +616,8 @@ export const adminContent = {
       title: 'Drafts – Amir Ardalan',
     },
     notice: `Unpublished Draft`,
-    empty: `No drafts. Nice and tidy! Perhaps `,
-    empty2: ' try writing ',
-    empty3: ' one?',
+    empty: `No drafts. Nice and tidy! Perhaps`,
+    empty2: 'try writing',
+    empty3: 'one?',
   },
 };
