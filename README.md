@@ -212,7 +212,7 @@ This project uses [Vercel OG](https://vercel.com/docs/concepts/functions/edge-fu
 - Currently blog categories are manually set in `data/categories.ts`
 - For blog image hosting, I recommend Cloudinary's Free [Digital Asset Manager](https://cloudinary.com/documentation/digital_asset_management_overview)
 - This project is the culmination of thousands of hours of work. It's primarily open-source for educational purposes. If you intend to use parts of the code, please create your own design and content!
-- If you have any questions, reach out to me on [Twitter](https://twitter.com/amirardalan)!
+- If you have any questions, reach out to me on [X](https://x.com/amirardalan)!
 
 ---
 

@@ -3,7 +3,7 @@ export interface AboutTypes {
     title: string;
     description: string;
     github: string;
-    twitter: string;
+    x: string;
     linkedin: string;
   };
   heading: string;

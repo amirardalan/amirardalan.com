@@ -11,7 +11,7 @@ export const homeContent = {
     `browse my <a href="/about#timeline">work history</a>`,
     `check out the <a href="/uses">tools I use</a>`,
     `delve into my <a href="https://github.com/amirardalan" rel="noopener noreferrer">GitHub</a>`,
-    `follow me on <a href="https://twitter.com/amirardalan" rel="noopener noreferrer">Twitter</a>`,
+    `follow me on <a href="https://x.com/amirardalan" rel="noopener noreferrer">X</a>`,
   ],
   title: 'Amir Ardalan',
   description:
@@ -63,7 +63,7 @@ export const blogPostContent = {
   title: {
     draft: 'Draft –',
   },
-  twitterUrl: 'https://twitter.com/amirardalan',
+  xUrl: 'https://x.com/amirardalan',
 };
 
 export const aboutContent = {
@@ -71,7 +71,7 @@ export const aboutContent = {
     title: 'About – Amir Ardalan',
     description: `Amir Ardalan's bio, mission statement, skills, stack, experience, availability, and career timeline.`,
     github: 'GitHub',
-    twitter: 'Twitter',
+    x: 'X',
     linkedin: 'LinkedIn',
   },
   heading: 'About',
@@ -88,9 +88,9 @@ export const aboutContent = {
         cName: 'iconGithub icon',
       },
       {
-        path: 'https://twitter.com/amirardalan',
-        title: 'Twitter',
-        cName: 'iconTwitter icon',
+        path: 'https://x.com/amirardalan',
+        title: 'X',
+        cName: 'iconX icon',
       },
       {
         path: 'https://linkedin.com/in/amirardalan',
@@ -177,8 +177,8 @@ export const aboutContent = {
     copiedToClipboard: 'Copied to clipboard ✅',
     items: [
       {
-        path: 'https://twitter.com/messages/compose?recipient_id=23831468',
-        title: 'Twitter',
+        path: 'https://x.com/messages/compose?recipient_id=23831468',
+        title: 'X',
         rel: 'noopener noreferrer',
         target: '_blank',
         handle: '@amirardalan',
@@ -540,8 +540,8 @@ export const footer = {
       title: 'GitHub',
     },
     {
-      path: 'https://twitter.com/amirardalan',
-      title: 'Twitter',
+      path: 'https://x.com/amirardalan',
+      title: 'X',
     },
     {
       path: 'https://linkedin.com/in/amirardalan',
