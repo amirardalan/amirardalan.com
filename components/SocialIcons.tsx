@@ -1,7 +1,7 @@
 import { FC, Key } from 'react';
 import Icon from '@/components/Icon';
 import { SocialIconsTypes } from '@/types/icons';
-import IconTwitter from '@/components/IconTwitter';
+import IconX from '@/components/IconX';
 import IconGithub from '@/components/IconGithub';
 import IconCodepen from '@/components/IconCodepen';
 import IconLinkedin from '@/components/IconLinkedin';
@@ -13,7 +13,7 @@ type SocialiconsProps = {
 
 const SocialIcons: FC<SocialiconsProps> = ({ about }) => {
   const iconComponentMap: Record<string, any> = {
-    Twitter: <IconTwitter size={48} />,
+    X: <IconX size={48} />,
     GitHub: <IconGithub size={48} />,
     CodePen: <IconCodepen size={48} />,
     LinkedIn: <IconLinkedin size={48} />,

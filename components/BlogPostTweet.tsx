@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { css } from '@emotion/react';
 
-type TwitterShareButtonProps = {
+type XshareButtonProps = {
   title: string;
   url: string;
   text: boolean;
@@ -9,12 +9,12 @@ type TwitterShareButtonProps = {
   color: string;
 };
 
-const styleTwitterButton = css({
+const styleXButton = css({
   display: 'flex',
   alignItems: 'center',
 });
 
-const styleTwitterText = css({
+const styleXText = css({
   marginLeft: 10,
   textDecoration: 'underline',
   '@media (max-width: 480px)': {
@@ -22,15 +22,15 @@ const styleTwitterText = css({
   },
 });
 
-const TwitterShareButton: FC<TwitterShareButtonProps> = ({
+const XShareButton: FC<XshareButtonProps> = ({
   title,
   url,
   text,
   size,
   color,
 }) => {
-  const handleTwitterShare = () => {
-    const tweetUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(
+  const handleXShare = () => {
+    const tweetUrl = `https://x.com/intent/tweet?url=${encodeURIComponent(
       url
     )}&text=${encodeURIComponent(title)}`;
     window.open(tweetUrl, '_blank');
@@ -38,10 +38,10 @@ const TwitterShareButton: FC<TwitterShareButtonProps> = ({
 
   return (
     <button
-      onClick={handleTwitterShare}
-      css={styleTwitterButton}
-      title="Share on Twitter"
-      aria-label="Share on Twitter"
+      onClick={handleXShare}
+      css={styleXButton}
+      title="Share on X"
+      aria-label="Share on X"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -50,11 +50,14 @@ const TwitterShareButton: FC<TwitterShareButtonProps> = ({
         viewBox="0 0 24 24"
         fill={color}
       >
-        <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
+        <path
+          xmlns="http://www.w3.org/2000/svg"
+          d="M0.0583996 0L9.32452 12.3803L0 22.4461H2.09874L10.2625 13.6332L16.8584 22.4461H24L14.2123 9.36956L22.8916 0H20.7929L13.2747 8.11632L7.2 0H0.0583996ZM3.14469 1.54462H6.42551L20.9133 20.9015H17.6325L3.14469 1.54462Z"
+        />
       </svg>
-      {text ? <span css={styleTwitterText}>Share on Twitter</span> : null}
+      {text ? <span css={styleXText}>Share on X</span> : null}
     </button>
   );
 };
 
-export default TwitterShareButton;
+export default XShareButton;

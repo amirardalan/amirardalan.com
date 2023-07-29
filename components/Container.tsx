@@ -95,12 +95,12 @@ const Container: FC<ContainerProps> = (props) => {
         <meta name="description" content={meta.description} />
         <meta name="thumbnail" property="og:image" content={ogImage} />
         <meta property="og:image" content={ogImage} />
-        <meta name="twitter:image" content={ogImage} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content={metadata.twitterHandle} />
-        <meta name="twitter:title" content={meta.title} />
-        <meta name="twitter:description" content={meta.description} />
-        <meta name="twitter:image:alt" content={meta.title} />
+        <meta name="x:image" content={ogImage} />
+        <meta name="x:card" content="summary_large_image" />
+        <meta name="x:site" content={metadata.xHandle} />
+        <meta name="x:title" content={meta.title} />
+        <meta name="x:description" content={meta.description} />
+        <meta name="x:image:alt" content={meta.title} />
         {meta.date && (
           <meta property="article:published_time" content={meta.date} />
         )}
