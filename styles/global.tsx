@@ -3,7 +3,7 @@ import { Global } from '@emotion/react';
 
 const light = '#cecee6';
 const lightAccent = '#c5c5de';
-const lightDarker = '#79748d';
+const lightDarker = '#9b96af';
 const dark = '#191827';
 const darkAccent = '#1e1d2f';
 const darker = '#141321';

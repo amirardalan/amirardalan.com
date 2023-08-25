@@ -160,13 +160,13 @@ export const aboutContent = {
     title: 'Current Project',
     text: 'Software Engineer II @',
     text2: 'Nike Innovation Center',
-    title2: 'Mission Statement:',
+    title2: 'Mission:',
     location: 'Remote or in-office in Portland, Ore. area.',
     link: 'https://lebronjamesinnovationcenter.nike.com/',
     items: [
-      '• Build tools that power the future of Nike design and manufacturing.',
-      '• Focus on designers and their needs so they can better serve our athletes.',
-      '• Challenge conventional thinking in web technologies and user experience.',
+      '• Develop fullstack digital prototypes.',
+      '• Build high quality user interfaces.',
+      '• Push the boundaries of modern web tech.',
     ],
   },
   contact: {
