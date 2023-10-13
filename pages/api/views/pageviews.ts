@@ -22,7 +22,7 @@ export default async function handler(
       property: `properties/${process.env.GOOGLE_ANALYTICS_API_PROPERTY_ID}`,
       dateRanges: [
         {
-          startDate: '2005-01-02',
+          startDate: '2015-08-14',
           endDate: 'today',
         },
       ],

@@ -29,7 +29,7 @@ export default async function handler(
       ],
       dateRanges: [
         {
-          startDate: '2005-01-02',
+          startDate: '2015-08-14',
           endDate: 'today',
         },
       ],
