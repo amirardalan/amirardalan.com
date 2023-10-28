@@ -355,16 +355,16 @@ export const usesContent = {
   - Microsoft Windows 10
   ---
   #### Phone
-  - iPhone 11 Pro (Space Gray)
+  - iPhone 15 Pro (White Titanium)
   ##### Specs:
-  - 512GB Storage
+  - 256GB Storage
   ##### Case:
-  - TORRAS Silicon Series (black)
+  - TORRAS Shockproof (grey)
   ---
   #### Headphones
   - [Beyerdynamic DT770Pro 80ohm](https://north-america.beyerdynamic.com/dt-770-pro.html)
   - [Sennheiser HD25-1 II](https://en-us.sennheiser.com/on-ear-dj-headphone-hd25)
-  - [Apple AirPods Pro](https://www.apple.com/airpods-pro/)
+  - [Apple AirPods Pro 2nd Gen - USB-C](https://www.apple.com/airpods-pro/)
   `,
   },
   tools: {
@@ -391,11 +391,11 @@ export const usesContent = {
   #### Browser
   - [Google Chrome](https://www.google.com/chrome/)
   - [Firefox Developer Edition](https://www.mozilla.org/en-US/firefox/developer/)
-  ##### Add-ons:
-  - [React Developer Tools](https://addons.mozilla.org/en-US/firefox/addon/react-devtools/)
-  - [Lighthouse](https://addons.mozilla.org/en-US/firefox/addon/google-lighthouse/)
-  - [uBlock Origin](https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/)
-  - [GA Debug](https://addons.mozilla.org/en-US/firefox/addon/ga-debugger/)
+  ##### Extensions (Chrome):
+  - [React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi)
+  - [uBlock Origin](https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm)
+  - [Google Analytics Debugger](https://chrome.google.com/webstore/detail/google-analytics-debugger/jnkmfdileelhofjcijamephohjechhna)
+  - [Stylebot](https://chrome.google.com/webstore/detail/stylebot/oiaejidbmkiecgbjeifoejpgmdaleoha)
 
   `,
   },
