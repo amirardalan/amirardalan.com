@@ -117,13 +117,23 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000)
 
-### Generate and Run a Static Test Build
+### (optional) Generate and Run a Static Test Build
 
 Create a local copy of a production build (useful for testing [on-demand ISR](https://nextjs.org/docs/basic-features/data-fetching/incremental-static-regeneration#on-demand-revalidation-beta), `pages/sitemap.xml.tsx` configuration), and [Lighthouse](https://developer.chrome.com/docs/lighthouse/overview/) performance:
 
 ```bash
 npm run test
 ```
+
+### GitHub OAuth
+
+By default this application uses GitHub oAuth for authentication. You can easily swap this out for another provider by updating the `pages/api/auth/[...nextauth].ts` file.
+
+#### Create a GitHub Developer App
+
+- [Create a GitHub Developer App](https://docs.github.com/en/developers/apps/building-oauth-apps/creating-an-oauth-app)
+- Set the Homepage URL to `http://localhost:3000`
+- Set the Authorization callback URL to `http://localhost:3000/api/auth`
 
 ---
 
