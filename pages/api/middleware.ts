@@ -1,7 +1,13 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
+type RateLimitOptions = {
+  handler: (req: NextApiRequest, res: NextApiResponse) => Promise<void>;
+  limit: number;
+  period: number;
+};
+
 // /api/middleware
-const rateLimit = (handler: any, limit: number, period: number) => {
+const rateLimit = ({ handler, limit, period }: RateLimitOptions) => {
   const lastCalledTimes = new Map<string, number>();
   const counters = new Map<string, number>();
   let blocked = false;
