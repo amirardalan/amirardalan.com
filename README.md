@@ -135,9 +135,7 @@ By default this application uses GitHub oAuth for authentication. You can easily
 - Set the Homepage URL to `http://localhost:3000`
 - Set the Authorization callback URL to `http://localhost:3000/api/auth`
 
----
-
-## Prisma ORM:
+### Configure Prisma
 
 [Prisma](https://www.prisma.io/) is a middleware that connects your Next.js application to an external database. Prisma has [powerful queries](https://www.prisma.io/docs/concepts/components/prisma-client/relation-queries) that make accessing and passing data to props simple.
 
@@ -155,6 +153,14 @@ npx prisma studio
 ```
 
 Open [http://localhost:5555/](http://localhost:5555/)
+
+### Configure OG Meta Blog Images
+
+This project uses [Vercel OG](https://vercel.com/docs/concepts/functions/edge-functions/og-image-generation) Image Service to dynamically generate images for blog posts. If the first line of a blog post is an image, it will be used as the background image. Otherwise, the Open Graph API route will dynamically generate an image based on the blog post title, description, and a thumbnail.png background image.
+
+- Ensure `NEXT_PUBLIC_SITE_URL` is set in your `.env.local` file.
+- You will also need to add your own `thumbnail.png` background image in the `public` folder (`1200x627`).
+- See `pages/api/og.tsx` and `components/Container.tsx` for the full image generation functionality.
 
 ---
 
@@ -203,16 +209,6 @@ Retain the terseness of pure Markdown while getting the benefits of the Next/Ima
 
 - Out of the box configuration of iframe embeds within markdown.
 - Uses [Rehype Raw](https://github.com/rehypejs/rehype-raw). Disable if using this code in a way where you may not be able to trust the markdown.
-
----
-
-## Dynamically Generate Blog OG Images
-
-This project uses [Vercel OG](https://vercel.com/docs/concepts/functions/edge-functions/og-image-generation) Image Service to dynamically generate images for blog posts. If the first line of a blog post is an image, it will be used as the background image. Otherwise, the Open Graph API route will dynamically generate an image based on the blog post title, description, and a thumbnail.png background image.
-
-- Ensure `NEXT_PUBLIC_SITE_URL` is set in your `.env.local` file.
-- You will also need to add your own `thumbnail.png` background image in the `public` folder (`1200x627`).
-- See `pages/api/og.tsx` and `components/Container.tsx` for the full image generation functionality.
 
 ---
 
