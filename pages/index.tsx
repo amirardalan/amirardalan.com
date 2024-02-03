@@ -12,7 +12,7 @@ import { HomeTypes } from '@/types/home';
 import { CtaButtonsTypes } from '@/types/button';
 
 const CanvasLoader = dynamic(() => import('@/components/CanvasLoader'), {
-  ssr: true,
+  ssr: false,
 });
 
 import { GetStaticProps } from 'next';
