@@ -51,7 +51,7 @@ _Keep this file private, ensure `.env` remains in `.gitignore`, don't commit to 
 NEXT_PUBLIC_SITE_URL=http://localhost:3000
 NEXT_PUBLIC_USER_EMAIL=you@email.com
 
-DATABASE_URL=postgresql://xxxxx
+DATABASE_URL=postgres://postgres.[DB_ADDRESS]:[YOUR_PASSWORD]@[DB_SERVER]:[DB_PORT]/postgres
 
 NEXT_AUTH_SECRET=
 GITHUB_SECRET=
