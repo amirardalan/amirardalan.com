@@ -336,42 +336,38 @@ export const usesContent = {
   devices: {
     content: `### Devices
   #### Laptop
-  - 2016 13" MacBook Pro (silver)
+  - 13" MacBook Pro
   ##### Specs:
-  - 3.3GHz Dual-Core Intel i7
+  - 3.3GHz i7
   - 16GB RAM
-  - 500GB Flash Storage
-  - MacOS Monterey
   ---
   #### Desktop
-  - Self-built PC
+  - Custom PC
   ##### Specs:
-  - 3.8GHz 6-Core Intel i7 3930K
-  - 32GB Corsair Vengeance DDR3 RAM
-  - Samsung 850 Evo 500GB SSD
-  - Geforce GTX 1080 Founders Edition
+  - Intel i7-14700KF 5.6GHz
+  - Deepcool LT720
+  - Asus ROG STRIX Z790-A GAMING WIFI II
+  - Gigabyte RTX 4090 AERO OC 24GB
+  - Corsair Vengeance DDR5-6400 CL32 64GB
+  - Corsair RM1000x SHIFT 1000W
+  - WD Black SN850X 4TB NVME
+  - NZXT H7 Flow
+  - ARCTIC P14 PST 72.8 CFM 140mm
+  - Alienware AW3423DW 34.2" 175Hz
+  ---
+  #### Audio
   - Motu Audio Express
-  - 2x KRK VXT 8
-  - Microsoft Windows 10
-  ---
-  #### Phone
-  - iPhone 15 Pro (White Titanium)
-  ##### Specs:
-  - 256GB Storage
-  ##### Case:
-  - TORRAS Shockproof (grey)
-  ---
-  #### Headphones
-  - [Beyerdynamic DT770Pro 80ohm](https://north-america.beyerdynamic.com/dt-770-pro.html)
-  - [Sennheiser HD25-1 II](https://en-us.sennheiser.com/on-ear-dj-headphone-hd25)
-  - [Apple AirPods Pro 2nd Gen - USB-C](https://www.apple.com/airpods-pro/)
+  - KRK VXT 8
+  - Beyerdynamic DT770Pro
+  - Sennheiser HD25-1 II
+  - Apple AirPods Pro (2nd Gen USB-C)
   `,
   },
   tools: {
     content: `### Tools
   #### IDE
   - [VS Code](https://code.visualstudio.com/)
-  ##### Web App Extensions:
+  ##### VS Code Extensions:
   - [GitHub Copilot](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot)
   - [Tokyo Night](https://marketplace.visualstudio.com/items?itemName=enkia.tokyo-night)
   - [Material Icon Theme](https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme)
@@ -382,15 +378,10 @@ export const usesContent = {
   - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
   - [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)
   - [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
-  ##### Game Dev Extensions:
-  - [Lua](https://marketplace.visualstudio.com/items?itemName=sumneko.lua)
-  - [Lua linter](https://marketplace.visualstudio.com/items?itemName=dcr30.lualinter)
-  - [Playdate](https://marketplace.visualstudio.com/items?itemName=Orta.playdate)
 
   ---
   #### Browser
   - [Google Chrome](https://www.google.com/chrome/)
-  - [Firefox Developer Edition](https://www.mozilla.org/en-US/firefox/developer/)
   ##### Extensions (Chrome):
   - [React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi)
   - [uBlock Origin](https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm)
@@ -402,7 +393,7 @@ export const usesContent = {
   stack: {
     content: `### Stack
 
-  #### Web App
+  #### Web
   - [Next.js](https://nextjs.org/)
   - [TypeScript](https://www.typescriptlang.org/)
   - [Emotion](https://emotion.sh/docs/introduction)
@@ -419,6 +410,7 @@ export const usesContent = {
   ---
   #### CLI
   - Terminal (~ZSH)
+  - Powershell 7
   - [Powerlevel10k](https://github.com/romkatv/powerlevel10k)
   - [GitHub CLI](https://cli.github.com/)
   - [Vercel CLI](https://vercel.com/cli)
@@ -428,11 +420,6 @@ export const usesContent = {
   #### AI
   - [ChatGPT](https://chat.openai.com/chat)
   - [GitHub Copilot](https://copilot.github.com/)
-
-  ---
-  #### Game Dev
-  - [Lua](https://www.lua.org/)
-  - [Playdate SDK](https://play.date/dev/)
 
   `,
   },
@@ -445,26 +432,20 @@ export const usesContent = {
   #### Design
   - [Figma](https://www.figma.com/)
   - [Aseprite](https://www.aseprite.org/)
-  - [Blockbench](https://www.blockbench.net/)
-  
-  #### Communication
-  - [Slack](https://slack.com/)
-  - [Zoom](https://zoom.us/)
-  - [Discord](https://discord.com/)
   
   #### Music & Podcasts
   - [YouTube Music](https://music.youtube.com)
-  - [Google Podcasts](https://podcasts.google.com/)
+  - [Apple Podcasts](https://www.apple.com/apple-podcasts/)
 
   ---
 
   #### Testing
-  ##### iOS:
+  ##### React/JS:
+  - [Jest](https://jestjs.io/)
+  - [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
+  ##### iOS/Safari:
   - [Xcode Simulator](https://developer.apple.com/xcode/)
-  ##### Android:
-  - [Browser Stack](https://www.browserstack.com/)
-  ##### Playdate:
-  - [Playdate Simulator](https://play.date/dev/)
+  
   `,
   },
 };
