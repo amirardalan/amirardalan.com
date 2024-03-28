@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  swcMinify: false,
   async redirects() {
     return [
       {
@@ -17,8 +16,12 @@ const nextConfig = {
     ];
   },
   images: {
-    domains: [
-      'res.cloudinary.com', // Cloudinary
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+        port: '',
+      },
     ],
   },
 };
