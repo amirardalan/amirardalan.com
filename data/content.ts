@@ -1,6 +1,6 @@
 export const homeContent = {
   meta: {
-    title: 'Amir Ardalan – Developer & designer',
+    title: 'Amir Ardalan – Software Engineer & Designer',
     description:
       'Developer, designer, and React enthusiast. Making websites since before the internet was cool.',
   },
@@ -106,7 +106,7 @@ export const aboutContent = {
   },
   bio: {
     subheading: `Hey there, I'm Amir 👋`,
-    content: `I'm a developer/designer who's passionate about crafting outstanding digital experiences. This blog is a platform to document my career journey, learn in public, and share my knowledge with the web development community.`,
+    content: `I'm a Software Engineer & Designer who's passionate about crafting outstanding digital experiences. This blog is a platform to document my career journey, learn in public, and share my knowledge with the web development community.`,
     items: [
       {
         path: '/resume',
