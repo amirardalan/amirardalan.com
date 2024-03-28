@@ -18,6 +18,7 @@
     "@supabase/supabase-js": "^2.39.3",
     "@vercel/analytics": "^0.1.11",
     "@vercel/og": "^0.5.1",
+    "@vercel/speed-insights": "^1.0.10",
     "cloudinary": "^1.35.0",
     "eslint-config-prettier": "^8.7.0",
     "google-auth-library": "^8.7.0",

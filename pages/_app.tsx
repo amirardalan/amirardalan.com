@@ -6,6 +6,7 @@ import { SessionProvider } from 'next-auth/react';
 
 import { Analytics } from '@vercel/analytics/react';
 import useGtag from '@/hooks/useGtag';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 import Header from '@/components/Header';
 
@@ -44,6 +45,7 @@ const App = ({ Component, pageProps }: AppProps<{ session: Session }>) => {
           <Header toggleTheme={toggleTheme} />
           <Component {...pageProps} />
           <Analytics />
+          <SpeedInsights />
         </ThemeProvider>
       </SessionProvider>
     </React.StrictMode>
