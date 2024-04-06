@@ -1,6 +1,6 @@
 import { FC, ReactElement, useState } from 'react';
 import Image from 'next/image';
-import { css } from '@emotion/react';
+import { css, Theme, useTheme } from '@emotion/react';
 
 import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
@@ -8,7 +8,7 @@ import { generateSlug } from '@/utils/generateSlug';
 import rangeParser from 'parse-numeric-range';
 
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { oneDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import { oneDark, oneLight } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 
 import tsx from 'react-syntax-highlighter/dist/cjs/languages/prism/tsx';
 import typescript from 'react-syntax-highlighter/dist/cjs/languages/prism/typescript';
@@ -31,7 +31,9 @@ import { MarkdownTypes } from '@/types/markdown';
 type BlogMarkdownProps = MarkdownTypes;
 
 const BlogMarkdown: FC<BlogMarkdownProps> = ({ markdown }) => {
-  const syntaxTheme = oneDark;
+
+  const theme: Theme = useTheme();
+  const syntaxTheme = theme.active === 'dark' ? oneDark : oneLight;
 
   const styleMarkdown = css({
     '.codeStyle, pre, code, code span': {
@@ -50,13 +52,13 @@ const BlogMarkdown: FC<BlogMarkdownProps> = ({ markdown }) => {
         height: '8px',
       },
       '::-webkit-scrollbar-thumb': {
-        border: '4px solid var(--code-highlight)',
+        border: '4px solid var(--code-scrollbar)',
         width: 8,
         backgroundClip: 'padding-box',
         borderRadius: 10,
         WebkitBoxShadow: 'none',
         '&:hover': {
-          border: '4px solid var(--color-gray-dark)',
+          border: '4px solid var(--code-scrollbar-hover)',
         },
       },
     },
@@ -66,11 +68,12 @@ const BlogMarkdown: FC<BlogMarkdownProps> = ({ markdown }) => {
         position: 'absolute',
         bottom: 10,
         right: -10,
-        color: 'var(--color-gray)',
+        color: 'var(--code-scrollbar)',
         textAlign: 'right',
         fontSize: 12,
       },
       button: {
+        border: '1px solid var(--code-scrollbar-hover)',
         backgroundColor: 'var(--code-highlight)',
         zIndex: 1,
         position: 'absolute',
@@ -79,14 +82,12 @@ const BlogMarkdown: FC<BlogMarkdownProps> = ({ markdown }) => {
         borderRadius: 5,
         textTransform: 'uppercase',
         fontSize: 13,
-        padding: '.1rem .4rem',
+        padding: '.4rem .4rem',
+        width: 28,
+        height: 28,
         color: 'var(--color-bg)',
-        '&:after': {
-          background: 'var(--icon-copy) no-repeat',
-          backgroundSize: 'contain',
-        },
         '&:hover': {
-          backgroundColor: 'var(--color-gray-dark)',
+          border: '1px solid var(--code-scrollbar)',
         },
         '&:not(:hover)': {
           opacity: 0,
@@ -94,16 +95,8 @@ const BlogMarkdown: FC<BlogMarkdownProps> = ({ markdown }) => {
           animationFillMode: 'forwards',
         },
       },
-      '&.active button:after, button:after': {
-        marginTop: 4,
-        display: 'inline-block',
-        content: '""',
-        height: 15,
-        width: 15,
-      },
-      '&.active button:after': {
-        background: 'var(--icon-check) no-repeat',
-        backgroundSize: 'contain',
+      '.copyCheck': {
+        color: 'var(--color-primary)',
       },
       '&:hover': {
         button: {
@@ -346,11 +339,17 @@ const BlogMarkdown: FC<BlogMarkdownProps> = ({ markdown }) => {
       );
 
       return (
-        <div className={codeCopied ? 'copyCode active' : 'copyCode'}>
+        <div className="copyCode">
           <button
             onClick={() => handleCopyCode(codeChunk)}
             aria-label="Copy code to clipboard"
-          />
+          >
+            {codeCopied 
+              ? <svg xmlns="http://www.w3.org/2000/svg" width={14} height={14} viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z" fill="var(--color-primary)"/></svg>
+              : <svg clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" width={14} height={14} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m6 19v2c0 .621.52 1 1 1h2v-1.5h-1.5v-1.5zm7.5 3h-3.5v-1.5h3.5zm4.5 0h-3.5v-1.5h3.5zm4-3h-1.5v1.5h-1.5v1.5h2c.478 0 1-.379 1-1zm-1.5-1v-3.363h1.5v3.363zm0-4.363v-3.637h1.5v3.637zm-13-3.637v3.637h-1.5v-3.637zm11.5-4v1.5h1.5v1.5h1.5v-2c0-.478-.379-1-1-1zm-10 0h-2c-.62 0-1 .519-1 1v2h1.5v-1.5h1.5zm4.5 1.5h-3.5v-1.5h3.5zm3-1.5v-2.5h-13v13h2.5v-1.863h1.5v3.363h-4.5c-.48 0-1-.379-1-1v-14c0-.481.38-1 1-1h14c.621 0 1 .522 1 1v4.5h-3.5v-1.5z" fill-rule="nonzero" fill="var(--color-primary)" /></svg>
+            }
+
+          </button>
           <span className="language">{language}</span>
           <pre {...pre}></pre>
         </div>

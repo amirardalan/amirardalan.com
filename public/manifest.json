@@ -1,6 +1,6 @@
 {
   "short_name": "Amir Ardalan",
-  "name": "Amir Ardalan – Developer & designer",
+  "name": "Amir Ardalan – Design Engineer",
   "icons": [
     {
       "src": "/pwa-icon.png",
@@ -31,14 +31,14 @@
     }
   ],
   "start_url": "/",
-  "background_color": "#f7f7f7",
+  "background_color": "#edf1f5",
   "display": "standalone",
   "scope": "/",
   "shortcuts": [
     {
       "name": "Amir Ardalan Blog",
       "short_name": "Amir",
-      "description": "Developer, designer, and React enthusiast. Making websites since before the internet was cool.",
+      "description": "Software Engineer & UI Designer with 10+ years of experience creating innovative digital solutions.",
       "url": "/"
     }
   ],

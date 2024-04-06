@@ -1,27 +1,35 @@
 import { FC } from 'react';
 import { Global } from '@emotion/react';
 
-const light = '#cecee6';
-const lightAccent = '#c5c5de';
+const light = '#edf1f5';
+const lightAccent = '#dfdfe6';
 const lightDarker = '#9b96af';
-const dark = '#191827';
-const darkAccent = '#1e1d2f';
-const darker = '#141321';
-const primary = '#3a3893';
-const secondary = '#7ee0a0';
-const grayLight = '#999db8';
-const grayDark = '#505264';
-const grayAccentLight = '#aeaabd';
-const grayAccentDark = '#2a293c';
+const dark = '#000000';
+const darkAccent = '#070707';
+const darker = '#26202e';
+const primary = '#5919ee';
+const secondary = '#67fff2';
+const grayLight = '#cdcfda';
+const grayDark = '#3f414e';
+const grayAccentLight = '#b9b5c7';
+const grayAccentDark = '#24242c';
 const buttonDisabled = '#505264';
 const warningLight = '#e64358';
 const warningDark = '#de5063';
-const codeHighlight = '#28253b';
 const avatar = '#412485';
 const gradientLight =
-  'linear-gradient(to bottom, #22536f 0%, #291e63 50%,#1c276b 100%)';
+  'linear-gradient(to bottom, #3d1c33 0%, #331c5c 50%,#3b3196 100%)';
 const gradientDark =
-  'linear-gradient(to bottom,#1c276b 0%, #291e63 50%,#22536f 100%)';
+  'linear-gradient(to bottom,#45275e 0%, #243363 50%,#106d8a 100%)';
+const codeBgDark = '#101016';
+const codeBgLight = '#ffffff';
+const codeHighlightDark = '#1c1c22';
+const codeHighlightLight = '#e8e7ec';
+const codeScrollbarDark = '#54545f';
+const codeScrollbarLight = '#a5a9b4';
+const codeScrollbarHoverDark = '#2f2f38';
+const codeScrollbarHoverLight = '#d4dadf';
+  
 type GlobalStylesProps = {
   fontPrimary: string;
   fontSecondary: string;
@@ -47,7 +55,6 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
             '--color-disabled': buttonDisabled,
             '--color-avatar': avatar,
             '--color-select': grayAccentLight,
-            '--code-highlight': codeHighlight,
             '--icon-download-dark': 'url(/icons/download-dark.svg)',
             '--icon-download-light': 'url(/icons/download-light.svg)',
             '--icon-copy': 'url(/icons/copy-light.svg)',
@@ -67,7 +74,10 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
             '--color-warning': warningLight,
             '--color-gradient': gradientDark,
             '--page-bg': lightDarker,
-            '--code-bg': darkAccent,
+            '--code-bg': codeBgLight,
+            '--code-highlight': codeHighlightLight,
+            '--code-scrollbar': codeScrollbarLight,
+            '--code-scrollbar-hover': codeScrollbarHoverLight,
             '--icon-paypal': 'url(/icons/paypal-light.svg)',
             '--icon-eth': 'url(/icons/eth-light.svg)',
             '--icon-info': 'url(/icons/note-dark.svg)',
@@ -88,7 +98,10 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
             '--color-warning': warningDark,
             '--color-gradient': gradientLight,
             '--page-bg': darkAccent,
-            '--code-bg': darkAccent,
+            '--code-bg': codeBgDark,
+            '--code-highlight': codeHighlightDark,
+            '--code-scrollbar': codeScrollbarDark,
+            '--code-scrollbar-hover': codeScrollbarHoverDark,
             '--icon-paypal': 'url(/icons/paypal-dark.svg)',
             '--icon-eth': 'url(/icons/eth-dark.svg)',
             '--icon-info': 'url(/icons/note-light.svg)',
