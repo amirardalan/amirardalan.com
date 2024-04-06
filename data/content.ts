@@ -1,8 +1,9 @@
+const metaDescription = `Software Engineer & UI Designer with 10+ years of experience creating innovative digital solutions.`;
+
 export const homeContent = {
   meta: {
-    title: 'Amir Ardalan – Developer & designer',
-    description:
-      'Developer, designer, and React enthusiast. Making websites since before the internet was cool.',
+    title: 'Amir Ardalan – Design Engineer',
+    description: metaDescription,
   },
   typed: [
     `I craft digital experiences`,
@@ -14,8 +15,7 @@ export const homeContent = {
     `follow me on <a href="https://x.com/amirardalan" rel="noopener noreferrer">X</a>`,
   ],
   title: 'Amir Ardalan',
-  description:
-    'Developer, designer, and React enthusiast. Making websites since before the internet was cool.',
+  description: metaDescription,
   items: [
     {
       path: '/blog',

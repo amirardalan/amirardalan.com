@@ -2,6 +2,6 @@ export const metadata = {
   name: 'Amir Ardalan',
   title: 'Amir Ardalan – Developer & Designer',
   description:
-    'Developer, designer, and React enthusiast. Making websites since before the internet was cool.',
+    'Software Engineer & UI Designer with 10+ years of experience creating innovative digital solutions.',
   xHandle: '@amirardalan',
 };
