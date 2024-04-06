@@ -106,7 +106,7 @@ export const aboutContent = {
   },
   bio: {
     subheading: `Hey there, I'm Amir 👋`,
-    content: `I'm a developer/designer who's passionate about crafting outstanding digital experiences. This blog is a platform to document my career journey, learn in public, and share my knowledge with the web development community.`,
+    content: `I'm a Design Engineer driven by a passion for creating exceptional digital experiences. I utilize this blog as a platform to chronicle my adventures in code, technology, and entrepreneurship.`,
     items: [
       {
         path: '/resume',
@@ -157,15 +157,15 @@ export const aboutContent = {
     ],
   },
   availability: {
-    title: 'Current Project',
+    title: 'Current Project:',
     text: 'Software Engineer II @',
-    text2: 'Nike Innovation Center',
+    text2: 'Nike',
     title2: 'Mission:',
-    location: 'Remote or in-office in Portland, Ore. area.',
+    location: 'Remote / onsite in Portland, OR Metro Area',
     link: 'https://lebronjamesinnovationcenter.nike.com/',
     items: [
-      '• Develop fullstack digital prototypes.',
-      '• Build high quality user interfaces.',
+      '• Develop user-focused digital prototypes.',
+      '• Deliver cutting-edge user interfaces.',
       '• Push the boundaries of modern web tech.',
     ],
   },
