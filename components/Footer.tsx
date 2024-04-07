@@ -93,6 +93,7 @@ const Footer: FC<FooterProps> = () => {
     },
   });
   const styleCopyright = css({
+    textTransform: 'uppercase',
     marginTop: '2rem',
     fontFamily: 'var(--font-primary)',
     fontSize: 10,

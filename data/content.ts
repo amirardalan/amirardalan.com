@@ -495,10 +495,6 @@ export const footer = {
       title: 'Next.js',
     },
     {
-      path: 'https://next-auth.js.org/',
-      title: 'NextAuth.js',
-    },
-    {
       path: 'https://vercel.com/',
       title: 'Vercel',
     },
@@ -517,16 +513,20 @@ export const footer = {
   ],
   social: [
     {
+      path: 'https://x.com/amirardalan',
+      title: '𝕏',
+    },
+    {
       path: 'https://github.com/amirardalan',
       title: 'GitHub',
     },
     {
-      path: 'https://x.com/amirardalan',
-      title: 'X',
-    },
-    {
       path: 'https://linkedin.com/in/amirardalan',
       title: 'LinkedIn',
+    },
+    {
+      path: 'mailto:hi@amirardalan.com',
+      title: 'Email',
     },
     {
       path: '/resume',
@@ -534,8 +534,8 @@ export const footer = {
     },
   ],
   copyright: {
-    text: 'Copyright © ',
-    name: '— Amir Ardalan',
+    text: '© ',
+    name: 'Amir Ardalan (Design+Code)',
   },
 };
 
