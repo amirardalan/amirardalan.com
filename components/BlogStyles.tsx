@@ -92,7 +92,7 @@ const blogStyles = css({
     },
     '&.postTeaser': {
       p: {
-        margin: '.5rem 0 2.5rem',
+        margin: '0 0 1rem',
         fontStyle: 'italic',
         lineHeight: '1.2rem',
         color: 'var(--color-gray)',
@@ -110,7 +110,7 @@ const blogStyles = css({
     marginTop: '2rem',
     '.publishedPost': {
       display: 'block',
-      marginBottom: '1rem',
+      marginBottom: '1.5rem',
     },
   },
   '.readTime': {
@@ -130,6 +130,7 @@ const blogStyles = css({
     },
   },
   '.postDetails': {
+    marginBottom: '.25rem',
     display: 'flex',
     flexDirection: 'column',
     '.info': {

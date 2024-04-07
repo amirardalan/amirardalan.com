@@ -15,11 +15,6 @@ const BlogPost: FC<BlogPostProps> = ({ post }) => {
 
   return (
     <div className="blog postTeaser">
-      <h2 className="blogListHeading">
-        <Link href={`/blog/${post.slug}`} aria-label={post.title}>
-          {post.title}
-        </Link>
-      </h2>
       <div
         className="postDetails"
         aria-label={`${publishDate} • ${postReadTime}`}
@@ -31,6 +26,11 @@ const BlogPost: FC<BlogPostProps> = ({ post }) => {
           <span className="readTime">{postReadTime}</span>
         </div>
       </div>
+      <h2 className="blogListHeading">
+        <Link href={`/blog/${post.slug}`} aria-label={post.title}>
+          {post.title}
+        </Link>
+      </h2>
       <p className="teaser">{post.teaser}</p>
     </div>
   );
