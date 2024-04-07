@@ -360,10 +360,10 @@ const BlogMarkdown: FC<BlogMarkdownProps> = ({ markdown }) => {
               </svg>
             ) : (
               <svg
-                clip-rule="evenodd"
-                fill-rule="evenodd"
-                stroke-linejoin="round"
-                stroke-miterlimit="2"
+                clipRule="evenodd"
+                fillRule="evenodd"
+                strokeLinejoin="round"
+                strokeMiterlimit="2"
                 width={14}
                 height={14}
                 viewBox="0 0 24 24"
