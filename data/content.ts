@@ -192,7 +192,7 @@ export const timelineContent = {
     title: 'Timeline',
   },
   fullStory: {
-    text: 'Read the full story',
+    text: 'Read the full story...',
     link: '/blog/2021-a-dev-odyssey',
   },
   items: [

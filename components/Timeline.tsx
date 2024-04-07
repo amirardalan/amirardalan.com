@@ -24,7 +24,8 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
     paddingTop: '2rem',
     position: 'relative',
     '.readMoreLink': {
-      marginTop: '2rem',
+      fontSize: 20,
+      marginTop: '4.5rem',
       display: 'flex',
       justifyContent: 'center',
       fontFamily: 'var(--font-secondary)',
@@ -83,12 +84,12 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
           right: -4.1,
           width: 4,
           animation: 'growUp .5s',
-          background: 'var(--color-dark)',
+          background: 'var(--color-text)',
         },
         '&.active': {
           '.scrollHighlight': {
             height: '100%',
-            background: 'var(--color-dark)',
+            background: 'var(--color-text)',
             animation: 'growDown .5s',
           },
         },
@@ -98,6 +99,7 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
           right: -19.5,
           content: '"•"',
           fontSize: 77,
+          color: 'var(--color-text)',
           '@media(max-width: 768px)': {
             top: -43.5,
             right: -18,
@@ -174,8 +176,8 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
       },
       '.date': {
         fontFamily: 'var(--font-primary)',
-        color: 'var(--color-text)',
-        fontSize: 25,
+        color: 'var(--color-primary)',
+        fontSize: 20,
         fontWeight: 400,
         lineHeight: '.5rem',
         '@media(max-width: 768px)': {
