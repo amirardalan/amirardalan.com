@@ -22,7 +22,7 @@ type AboutPageProps = {
 const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
   const styleAbout = {
     hr: {
-      borderTop: '1px dotted var(--color-accent-gray)',
+      borderTop: 'none',
       '@media (max-width: 768px)': {
         margin: 0,
         paddingTop: '3rem',
@@ -45,7 +45,8 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
       display: 'flex',
       justifyContent: 'center',
       backgroundColor: 'var(--color-bg)',
-      background: 'var(--color-accent)',
+      border: '1px solid var(--color-accent-gray)',
+      borderRadius: 10,
       padding: '2rem',
       lineHeight: '1.8rem',
       '&:first-of-type': {

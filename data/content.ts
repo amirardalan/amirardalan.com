@@ -271,7 +271,7 @@ export const timelineContent = {
       cName: 'date',
     },
     {
-      title: 'Freelancer @ Self Employed',
+      title: 'Freelancer / Consultant',
       content:
         'Managed all aspects of business with 30+ clients. Developed websites using HTML, CSS, and JavaScript. Utilized CSS3, Boostrap, jQuery, and Wordpress.',
       cName: 'event',
@@ -283,7 +283,7 @@ export const timelineContent = {
       cName: 'event',
     },
     {
-      content: '2005',
+      content: '2006',
       cName: 'date',
     },
     {
@@ -535,7 +535,7 @@ export const footer = {
   ],
   copyright: {
     text: '© ',
-    name: 'Amir Ardalan (Design & Code)',
+    name: 'Amir Ardalan',
   },
 };
 

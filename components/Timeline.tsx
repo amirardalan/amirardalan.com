@@ -83,16 +83,13 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
           right: -4.1,
           width: 4,
           animation: 'growUp .5s',
-          background: 'var(--color-primary)',
+          background: 'var(--color-dark)',
         },
         '&.active': {
           '.scrollHighlight': {
             height: '100%',
-            background: 'var(--color-primary)',
+            background: 'var(--color-dark)',
             animation: 'growDown .5s',
-          },
-          '&:after': {
-            color: 'var(--color-primary)',
           },
         },
         '&:after': {
@@ -101,7 +98,6 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
           right: -19.5,
           content: '"•"',
           fontSize: 77,
-          color: 'var(--color-primary)',
           '@media(max-width: 768px)': {
             top: -43.5,
             right: -18,
@@ -109,10 +105,12 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
           },
         },
         '.event': {
+          borderTopRightRadius: 0,
           '&:before': {
+            top: 9,
             right: -22,
             borderLeft: '12px solid transparent',
-            borderRight: '20px solid var(--color-accent)',
+            borderRight: '20px solid var(--color-accent-gray)',
             transform: 'rotateY(0deg) rotate(270deg)',
             '@media(max-width: 480px)': {
               border: 'none',
@@ -137,10 +135,11 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
         justifySelf: 'flex-start',
         '.event': {
           position: 'relative',
+          borderTopLeftRadius: 0,
           '&:before': {
             zIndex: 3,
             left: -22,
-            borderLeft: '20px solid var(--color-accent)',
+            borderLeft: '20px solid var(--color-accent-gray)',
             borderRight: '12px solid transparent',
             transform: 'rotateY(0deg) rotate(90deg)',
             '@media(max-width: 480px)': {
@@ -150,7 +149,7 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
           '&:after': {
             zIndex: 2,
             position: 'absolute',
-            top: 12,
+            top: 9,
             left: -23,
             content: '""',
             borderLeft: '20px solid var(--color-accent-gray)',
@@ -192,7 +191,8 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
         position: 'relative',
         marginBottom: '4rem',
         padding: '2.5rem',
-        background: 'var(--color-accent)',
+        border: '1px solid var(--color-accent-gray)',
+        borderRadius: 5,
         fontSize: 14,
         fontFamily: 'var(--font-secondary)',
         span: {
@@ -210,10 +210,10 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
           padding: '1.5rem',
         },
         '@media(max-width: 480px)': {
+          border: 'none',
           marginTop: 0,
           marginBottom: '4rem',
           padding: '0 1rem 0 0',
-          background: 'none',
           fontSize: 12,
         },
       },

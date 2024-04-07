@@ -22,7 +22,7 @@ export const theme = {
   secondary: '#67fff2',
   grayLight: '#cdcfda',
   grayDark: '#3f414e',
-  grayAccentLight: '#b9b5c7',
+  grayAccentLight: '#d0ceda',
   grayAccentDark: '#24242c',
   // Inputs
   textInputLight: '#e7e6eb',
