@@ -54,6 +54,7 @@ const blogStyles = css({
         textDecoration: 'none',
       },
       '@media(max-width: 1024px)': {
+        marginBottom: 0,
         fontSize: 24,
         lineHeight: '1.8rem',
       },
@@ -92,13 +93,15 @@ const blogStyles = css({
     },
     '&.postTeaser': {
       p: {
-        margin: '.5rem 0 2.5rem',
+        margin: '0 0 1rem',
         fontStyle: 'italic',
         lineHeight: '1.2rem',
         color: 'var(--color-gray)',
+        '@media(max-width: 1024px)': {
+          margin: '.4rem 0 0',
+        },
         '@media(max-width: 768px)': {
           fontSize: 15,
-          margin: '.5rem 0 1.8rem',
         },
       },
     },
@@ -110,7 +113,7 @@ const blogStyles = css({
     marginTop: '2rem',
     '.publishedPost': {
       display: 'block',
-      marginBottom: '1rem',
+      marginBottom: '1.5rem',
     },
   },
   '.readTime': {
@@ -130,6 +133,7 @@ const blogStyles = css({
     },
   },
   '.postDetails': {
+    marginBottom: '.25rem',
     display: 'flex',
     flexDirection: 'column',
     '.info': {
