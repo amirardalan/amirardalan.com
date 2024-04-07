@@ -535,7 +535,7 @@ export const footer = {
   ],
   copyright: {
     text: '© ',
-    name: 'Amir Ardalan (Design+Code)',
+    name: 'Amir Ardalan (Design & Code)',
   },
 };
 
