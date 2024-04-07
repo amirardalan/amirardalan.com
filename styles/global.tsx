@@ -13,7 +13,11 @@ const grayLight = '#cdcfda';
 const grayDark = '#3f414e';
 const grayAccentLight = '#b9b5c7';
 const grayAccentDark = '#24242c';
-const buttonDisabled = '#505264';
+
+const textInputLight = '#e7e6eb';
+const textInputDark = '#0f0f12';
+
+const buttonDisabled = '#5a5b65';
 const warningLight = '#e64358';
 const warningDark = '#de5063';
 const avatar = '#412485';
@@ -29,7 +33,7 @@ const codeScrollbarDark = '#54545f';
 const codeScrollbarLight = '#a5a9b4';
 const codeScrollbarHoverDark = '#2f2f38';
 const codeScrollbarHoverLight = '#d4dadf';
-  
+
 type GlobalStylesProps = {
   fontPrimary: string;
   fontSecondary: string;
@@ -71,6 +75,7 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
             '--color-accent-gray': grayAccentLight,
             '--color-accent': lightAccent,
             '--color-accent-darker': lightDarker,
+            '--color-text-input': textInputLight,
             '--color-warning': warningLight,
             '--color-gradient': gradientDark,
             '--page-bg': lightDarker,
@@ -95,6 +100,7 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
             '--color-accent-gray': grayAccentDark,
             '--color-accent': darkAccent,
             '--color-accent-darker': darker,
+            '--color-text-input': textInputDark,
             '--color-warning': warningDark,
             '--color-gradient': gradientLight,
             '--page-bg': darkAccent,

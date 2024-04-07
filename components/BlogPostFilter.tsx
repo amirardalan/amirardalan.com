@@ -50,10 +50,6 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
     display: 'flex',
     position: 'relative',
     caretColor: 'var(--color-gray)',
-    'input.search': {
-      fontSize: '1rem',
-      marginBottom: 0,
-    },
     '.icon': {
       position: 'absolute',
       top: 20,
