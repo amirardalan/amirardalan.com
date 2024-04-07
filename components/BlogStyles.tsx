@@ -255,9 +255,7 @@ const blogStyles = css({
         left: -20,
         color: 'var(--color-primary)',
         '@media (max-width: 1024px)': {
-          top: -2,
-          left: -15,
-          fontSize: 17,
+          display: 'none',
         },
       },
     },
