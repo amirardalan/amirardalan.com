@@ -3,7 +3,7 @@ import { Global } from '@emotion/react';
 
 const light = '#edf1f5';
 const lightAccent = '#dfdfe6';
-const lightDarker = '#9b96af';
+const lightDarker = '#aca9b7';
 const dark = '#000000';
 const darkAccent = '#070707';
 const darker = '#26202e';
@@ -25,13 +25,15 @@ const gradientLight =
   'linear-gradient(to bottom, #3d1c33 0%, #331c5c 50%,#3b3196 100%)';
 const gradientDark =
   'linear-gradient(to bottom,#45275e 0%, #243363 50%,#106d8a 100%)';
-const codeBgDark = '#101016';
-const codeBgLight = '#ffffff';
-const codeHighlightDark = '#1c1c22';
-const codeHighlightLight = '#e8e7ec';
+
+const codeBgDark = '#08080a';
+const codeHighlightDark = '#101016';
 const codeScrollbarDark = '#54545f';
-const codeScrollbarLight = '#a5a9b4';
 const codeScrollbarHoverDark = '#2f2f38';
+
+const codeBgLight = '#f4f8fc';
+const codeHighlightLight = '#e4eaef';
+const codeScrollbarLight = '#a5a9b4';
 const codeScrollbarHoverLight = '#d4dadf';
 
 type GlobalStylesProps = {
