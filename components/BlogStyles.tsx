@@ -54,6 +54,7 @@ const blogStyles = css({
         textDecoration: 'none',
       },
       '@media(max-width: 1024px)': {
+        marginBottom: 0,
         fontSize: 24,
         lineHeight: '1.8rem',
       },
@@ -96,9 +97,11 @@ const blogStyles = css({
         fontStyle: 'italic',
         lineHeight: '1.2rem',
         color: 'var(--color-gray)',
+        '@media(max-width: 1024px)': {
+          margin: '.4rem 0 0',
+        },
         '@media(max-width: 768px)': {
           fontSize: 15,
-          margin: '.5rem 0 1.8rem',
         },
       },
     },
