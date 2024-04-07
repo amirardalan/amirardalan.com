@@ -1,40 +1,6 @@
 import { FC } from 'react';
 import { Global } from '@emotion/react';
-
-const light = '#edf1f5';
-const lightAccent = '#dfdfe6';
-const lightDarker = '#aca9b7';
-const dark = '#000000';
-const darkAccent = '#070707';
-const darker = '#26202e';
-const primary = '#5919ee';
-const secondary = '#67fff2';
-const grayLight = '#cdcfda';
-const grayDark = '#3f414e';
-const grayAccentLight = '#b9b5c7';
-const grayAccentDark = '#24242c';
-
-const textInputLight = '#e7e6eb';
-const textInputDark = '#0f0f12';
-
-const buttonDisabled = '#5a5b65';
-const warningLight = '#e64358';
-const warningDark = '#de5063';
-const avatar = '#412485';
-const gradientLight =
-  'linear-gradient(to bottom, #3d1c33 0%, #331c5c 50%,#3b3196 100%)';
-const gradientDark =
-  'linear-gradient(to bottom,#45275e 0%, #243363 50%,#106d8a 100%)';
-
-const codeBgDark = '#0f0f16';
-const codeHighlightDark = '#16161f';
-const codeScrollbarDark = '#54545f';
-const codeScrollbarHoverDark = '#2f2f38';
-
-const codeBgLight = '#f4f8fc';
-const codeHighlightLight = '#e4eaef';
-const codeScrollbarLight = '#a5a9b4';
-const codeScrollbarHoverLight = '#d4dadf';
+import { theme } from '@/styles/theme';
 
 type GlobalStylesProps = {
   fontPrimary: string;
@@ -51,73 +17,99 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
     <>
       <Global
         styles={{
+          // Shared Theme Vars
           'html[data-theme="light"], html[data-theme="dark"]': {
+            // Fonts
             '--font-primary': fontPrimary,
             '--font-secondary': fontSecondary,
             '--font-tertiary': fontTertiary,
-            '--color-light': lightAccent,
-            '--color-dark': darkAccent,
-            '--color-gray-dark': grayDark,
-            '--color-disabled': buttonDisabled,
-            '--color-avatar': avatar,
-            '--color-select': grayAccentLight,
+            '--color-light': theme.lightAccent,
+            '--color-dark': theme.darkAccent,
+            '--color-gray-dark': theme.grayDark,
+            '--color-disabled': theme.buttonDisabled,
+            '--color-avatar': theme.avatar,
+            '--color-select': theme.grayAccentLight,
             '--icon-download-dark': 'url(/icons/download-dark.svg)',
             '--icon-download-light': 'url(/icons/download-light.svg)',
             '--icon-copy': 'url(/icons/copy-light.svg)',
             '--icon-check': 'url(/icons/check-light.svg)',
           },
+          // Light Theme Vars
           'html[data-theme="light"]': {
             '--color-scheme': 'light',
-            '--color-primary': primary,
-            '--color-secondary': secondary,
-            '--color-bg': light,
-            '--color-text': grayAccentDark,
-            '--color-heading': dark,
-            '--color-gray': grayDark,
-            '--color-accent-gray': grayAccentLight,
-            '--color-accent': lightAccent,
-            '--color-accent-darker': lightDarker,
-            '--color-text-input': textInputLight,
-            '--color-warning': warningLight,
-            '--color-gradient': gradientDark,
-            '--page-bg': lightDarker,
-            '--code-bg': codeBgLight,
-            '--code-highlight': codeHighlightLight,
-            '--code-scrollbar': codeScrollbarLight,
-            '--code-scrollbar-hover': codeScrollbarHoverLight,
+            '--color-primary': theme.primary,
+            '--color-secondary': theme.secondary,
+            '--color-bg': theme.light,
+            '--color-text': theme.grayAccentDark,
+            '--color-heading': theme.dark,
+            '--color-gray': theme.grayDark,
+            '--color-accent-gray': theme.grayAccentLight,
+            '--color-accent': theme.lightAccent,
+            '--color-accent-darker': theme.lightDarker,
+            '--color-text-input': theme.textInputLight,
+            '--color-warning': theme.warningLight,
+            '--color-gradient': theme.gradientDark,
+            '--page-bg': theme.lightDarker,
+            '--code-bg': theme.codeBgLight,
+            '--code-highlight': theme.codeHighlightLight,
+            '--code-scrollbar': theme.codeScrollbarLight,
+            '--code-scrollbar-hover': theme.codeScrollbarHoverLight,
             '--icon-paypal': 'url(/icons/paypal-light.svg)',
             '--icon-eth': 'url(/icons/eth-light.svg)',
             '--icon-info': 'url(/icons/note-dark.svg)',
             '--icon-warning': 'url(/icons/warning-dark.svg)',
           },
-
+          // Dark Theme Vars
           'html[data-theme="dark"]': {
             '--color-scheme': 'dark',
-            '--color-primary': secondary,
-            '--color-secondary': primary,
-            '--color-bg': dark,
-            '--color-text': lightDarker,
-            '--color-heading': light,
-            '--color-gray': grayLight,
-            '--color-accent-gray': grayAccentDark,
-            '--color-accent': darkAccent,
-            '--color-accent-darker': darker,
-            '--color-text-input': textInputDark,
-            '--color-warning': warningDark,
-            '--color-gradient': gradientLight,
-            '--page-bg': darkAccent,
-            '--code-bg': codeBgDark,
-            '--code-highlight': codeHighlightDark,
-            '--code-scrollbar': codeScrollbarDark,
-            '--code-scrollbar-hover': codeScrollbarHoverDark,
+            '--color-primary': theme.secondary,
+            '--color-secondary': theme.primary,
+            '--color-bg': theme.dark,
+            '--color-text': theme.lightDarker,
+            '--color-heading': theme.light,
+            '--color-gray': theme.grayLight,
+            '--color-accent-gray': theme.grayAccentDark,
+            '--color-accent': theme.darkAccent,
+            '--color-accent-darker': theme.darker,
+            '--color-text-input': theme.textInputDark,
+            '--color-warning': theme.warningDark,
+            '--color-gradient': theme.gradientLight,
+            '--page-bg': theme.darkAccent,
+            '--code-bg': theme.codeBgDark,
+            '--code-highlight': theme.codeHighlightDark,
+            '--code-scrollbar': theme.codeScrollbarDark,
+            '--code-scrollbar-hover': theme.codeScrollbarHoverDark,
             '--icon-paypal': 'url(/icons/paypal-dark.svg)',
             '--icon-eth': 'url(/icons/eth-dark.svg)',
             '--icon-info': 'url(/icons/note-light.svg)',
             '--icon-warning': 'url(/icons/warning-dark.svg)',
           },
+          // Base
+          'html, body': {
+            backgroundColor: 'var(--color-bg)',
+            fontFamily: 'var(--font-primary)',
+            color: 'var(--color-text)',
+            WebkitTextSizeAdjust: '100%',
+          },
           html: {
             scrollBehavior: 'smooth',
             colorScheme: 'var(--color-scheme)',
+          },
+          '*': {
+            margin: 0,
+            padding: 0,
+            boxSizing: 'border-box',
+            '&:before, &:after': {
+              boxSizing: 'border-box',
+            },
+            '&:focus': {
+              boxShadow: '0 0 0 2px var(--color-primary)',
+              outline: 'none',
+              '@media(max-width: 480px)': {
+                boxShadow: 'none',
+              },
+            },
+            '&:focus:not(:focus-visible)': { boxShadow: 'none' },
           },
           'html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video':
             {
@@ -202,29 +194,6 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
                 backgroundColor: 'var(--color-disabled)',
               },
             },
-          },
-          // Base
-          'html, body': {
-            backgroundColor: 'var(--color-bg)',
-            fontFamily: 'var(--font-primary)',
-            color: 'var(--color-text)',
-            WebkitTextSizeAdjust: '100%',
-          },
-          '*': {
-            margin: 0,
-            padding: 0,
-            boxSizing: 'border-box',
-            '&:before, &:after': {
-              boxSizing: 'border-box',
-            },
-            '&:focus': {
-              boxShadow: '0 0 0 2px var(--color-primary)',
-              outline: 'none',
-              '@media(max-width: 480px)': {
-                boxShadow: 'none',
-              },
-            },
-            '&:focus:not(:focus-visible)': { boxShadow: 'none' },
           },
           title: {
             margin: 0,
