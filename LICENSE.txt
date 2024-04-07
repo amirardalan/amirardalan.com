@@ -2,12 +2,12 @@ Copyright © 2022-2024 Amir Ardalan - All Rights Reserved
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to use the code contained in this repository as inspiration for their own projects, subject to the following conditions:
 
-1. You may use the source code as a starting point and/or inspiration for your own project.¹
-2. You may not directly copy the source code or design of the website.
+1. You may use the source code as a starting point and/or inspiration for your own project.
+2. You may not directly copy the source code or design of the website.¹
 3. You may not use any personal content belonging to the author, including but not limited to content.ts, manifest.json or blog posts.
 4. You may not use any proprietary media assets belonging to the author, including but not limited to the logo, images, icons, videos, and the like.
 5. If you do use this code as inspiration for your own project, crediting the author is appreciated but not required.
 
-¹ "Design" includes, but is not limited to, color pallete, fonts, general layout, CSS code
+¹ "design" includes, but is not limited to, color pallete, fonts, general layout, CSS code
 
 THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
