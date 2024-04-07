@@ -26,8 +26,8 @@ const gradientLight =
 const gradientDark =
   'linear-gradient(to bottom,#45275e 0%, #243363 50%,#106d8a 100%)';
 
-const codeBgDark = '#08080a';
-const codeHighlightDark = '#101016';
+const codeBgDark = '#0f0f16';
+const codeHighlightDark = '#16161f';
 const codeScrollbarDark = '#54545f';
 const codeScrollbarHoverDark = '#2f2f38';
 

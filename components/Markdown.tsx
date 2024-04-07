@@ -75,6 +75,7 @@ const BlogMarkdown: FC<BlogMarkdownProps> = ({ markdown }) => {
         fontSize: 12,
       },
       button: {
+        background: 'var(--code-bg)',
         border: '1px solid var(--code-scrollbar-hover)',
         zIndex: 1,
         position: 'absolute',
