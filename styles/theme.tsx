@@ -7,21 +7,21 @@ export const themeLight = {
 export const themeDark = {
   active: 'dark',
   favicon: '/favicon-dark.png',
-  canvas: '#867f9d',
+  canvas: '#8e919e',
 };
 
 export const theme = {
   // Elements
   light: '#edf1f5',
   lightAccent: '#e5e4ea',
-  lightDarker: '#aca9b7',
+  lightDarker: '#9794a3',
   dark: '#000000',
-  darkAccent: '#16161b',
-  darker: '#26202e',
-  primary: '#5919ee',
+  darkAccent: '#16171b',
+  darker: '#494754',
+  primary: '#7200d6',
   secondary: '#67fff2',
-  grayLight: '#cdcfda',
-  grayDark: '#3f414e',
+  grayLight: '#adb0c3',
+  grayDark: '#717380',
   grayAccentLight: '#d0ceda',
   grayAccentDark: '#24242c',
   // Inputs
@@ -32,9 +32,9 @@ export const theme = {
   warningLight: '#e64358',
   warningDark: '#de5063',
   gradientLight:
-    'linear-gradient(to bottom, #3d1c33 0%, #331c5c 50%,#3b3196 100%)',
+    'linear-gradient(to bottom, #317d96 0%, #2a3683 50%, #272046 100%)',
   gradientDark:
-    'linear-gradient(to bottom,#45275e 0%, #243363 50%,#106d8a 100%)',
+    'linear-gradient(to bottom,#3b3196 0%, #331c5c 50%,#3d1c33 100%)',
   // Code (Dark)
   codeBgDark: '#0f0f16',
   codeHighlightDark: '#16161f',

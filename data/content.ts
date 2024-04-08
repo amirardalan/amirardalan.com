@@ -15,6 +15,7 @@ export const homeContent = {
     `follow me on <a href="https://x.com/amirardalan" rel="noopener noreferrer">X</a>`,
   ],
   title: 'Amir Ardalan',
+  subTitle: 'Design / Code / Words',
   description: metaDescription,
   items: [
     {
@@ -152,8 +153,8 @@ export const aboutContent = {
   experience: {
     title: 'Experience',
     items: [
-      "With over a decade of experience in web development, I've had the privilege of working with iconic brands like Nike, Columbia Sportswear, and KEEN Footwear.",
-      "My expertise spans full stack development, UI design, web accessibility, ecommerce, and rapid prototyping. I'm passionate about pushing the boundaries of web technologies and user experience in a world where humans and machines are increasingly connected.",
+      "With over a decade of experience in web development, ecommerce, and enterprise software, I've had the privilege of working with iconic brands like Nike, Columbia Sportswear, and KEEN Footwear.",
+      'My unique skill set encompasses Frontend Engineering, UI/UX, Design Systems, Accessibility, SEO, and Rapid Prototyping. I speak the languages of design and code, enabling me to seamlessly bridge the gap between UI/UX and technical teams.',
     ],
   },
   availability: {
@@ -164,9 +165,9 @@ export const aboutContent = {
     location: 'Remote / onsite in Portland, OR Metro Area',
     link: 'https://lebronjamesinnovationcenter.nike.com/',
     items: [
-      '• Develop user-focused digital prototypes.',
-      '• Deliver cutting-edge user interfaces.',
-      '• Push the boundaries of modern web tech.',
+      '• Develop user-focused prototypes and software.',
+      '• Deliver industry-leading user experiences.',
+      '• Act as a connector for UI/UX and dev teams.',
     ],
   },
   contact: {
