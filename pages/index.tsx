@@ -77,13 +77,17 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
     '.subTitle': {
       color: 'var(--color-accent-lighter)',
       fontFamily: 'var(--font-tertiary)',
+      fontWeight: 400,
       fontStyle: 'italic',
+      fontSize: 32,
       textTransform: 'uppercase',
       letterSpacing: 5,
-      fontSize: 18,
-      marginTop: '.5rem',
+      marginTop: '.25rem',
       '@media(max-width: 768px)': {
-        fontSize: 12,
+        fontSize: 22,
+      },
+      '@media(max-width: 480px)': {
+        fontSize: 18,
       },
     },
   });

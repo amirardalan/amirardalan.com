@@ -1,7 +1,7 @@
 const appTitle = 'Amir Ardalan';
 const subTitle = 'Design Engineer';
 const metaDescription = `Software Engineer & UI Designer with 10+ years of experience creating innovative digital solutions.`;
-const slogan = 'DESIGN / CODE / IDEAS';
+const slogan = 'Design Engineer';
 
 const emailAddress = 'hi@amirardalan.com';
 const linkGitHub = 'https://github.com/amirardalan';
