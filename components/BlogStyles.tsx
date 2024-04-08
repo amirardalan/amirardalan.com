@@ -113,7 +113,7 @@ const blogStyles = css({
     marginTop: '2rem',
     '.publishedPost': {
       display: 'block',
-      marginBottom: '1.5rem',
+      marginBottom: '2.75rem',
     },
   },
   '.readTime': {
