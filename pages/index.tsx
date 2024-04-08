@@ -82,6 +82,9 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
       letterSpacing: 5,
       fontSize: 18,
       marginTop: '.5rem',
+      '@media(max-width: 768px)': {
+        fontSize: 12,
+      },
     },
   });
   const styleContent = css({
