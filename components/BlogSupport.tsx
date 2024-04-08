@@ -172,7 +172,7 @@ const BlogSupport: FC<BlogSupportProps> = ({
           '@media (max-width: 480px)': {
             marginTop: '1rem',
             flexDirection: 'row',
-            justifyContent: 'space-between',
+            justifyContent: 'space-around',
           },
         },
       },
