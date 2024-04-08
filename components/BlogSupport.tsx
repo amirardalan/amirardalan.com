@@ -215,6 +215,9 @@ const BlogSupport: FC<BlogSupportProps> = ({
         fontSize: 28,
         marginTop: '.08rem',
         marginRight: '1rem',
+        '@media (max-width: 768px)': {
+          fontSize: 22,
+        },
         '@media (max-width: 480px)': {
           fontSize: 15,
         },
@@ -247,7 +250,7 @@ const BlogSupport: FC<BlogSupportProps> = ({
             <div className="left">
               <div className="copyContainer">
                 <span className="supportHeading">
-                  <h4>Enjoy this post?</h4>
+                  <h4>Enjoy this post? Show some love:</h4>
                   <LikeButton liked={liked} handleLike={handleLike} />
                 </span>
                 <div className="donate">
