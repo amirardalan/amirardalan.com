@@ -4,19 +4,19 @@ export const config = {
   runtime: 'edge',
 };
 
-const besleyRegularFontP = fetch(
-  new URL('@/public/fonts/Besley-Regular.ttf', import.meta.url)
+const titilliumRegularFontP = fetch(
+  new URL('@/public/fonts/Titillium-Regular.ttf', import.meta.url)
 ).then((res) => res.arrayBuffer());
 
-const besleyBoldFontP = fetch(
-  new URL('@/public/fonts/Besley-Bold.ttf', import.meta.url)
+const titilliumBoldFontP = fetch(
+  new URL('@/public/fonts/Titillium-Bold.ttf', import.meta.url)
 ).then((res) => res.arrayBuffer());
 
 export default async function handler(req: Request) {
   try {
-    const [besleyRegularFont, besleyBoldFont] = await Promise.all([
-      besleyRegularFontP,
-      besleyBoldFontP,
+    const [titilliumRegularFont, titilliumBoldFont] = await Promise.all([
+      titilliumRegularFontP,
+      titilliumBoldFontP,
     ]);
 
     const { searchParams } = new URL(req.url);
@@ -56,14 +56,14 @@ export default async function handler(req: Request) {
         height: 627,
         fonts: [
           {
-            name: 'Besley Web',
-            data: besleyRegularFont,
+            name: 'Titillium Web',
+            data: titilliumRegularFont,
             style: 'normal',
             weight: 400,
           },
           {
-            name: 'Besley Web',
-            data: besleyBoldFont,
+            name: 'Titillium Web',
+            data: titilliumBoldFont,
             style: 'normal',
             weight: 700,
           },
