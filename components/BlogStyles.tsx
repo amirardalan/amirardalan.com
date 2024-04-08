@@ -44,7 +44,7 @@ const blogStyles = css({
       },
     },
     '.blogListHeading': {
-      marginBottom: '.65rem',
+      margin: '.4rem 0 .8rem',
       fontFamily: 'var(--font-secondary)',
       fontSize: 30,
       fontWeight: 700,
@@ -137,27 +137,24 @@ const blogStyles = css({
     display: 'flex',
     flexDirection: 'column',
     '.info': {
+      fontSize: 14,
       width: '100%',
       borderBottom: '1px solid var(--color-accent-gray)',
-      paddingBottom: '.25rem',
-      fontSize: 13,
       fontFamily: 'var(--font-secondary)',
       display: 'flex',
       flexDirection: 'row',
+      a: {
+        paddingLeft: '.25rem',
+        fontFamily: 'var(--font-secondary)',
+        fontSize: 14,
+      },
       time: {
-        fontSize: 12,
         fontFamily: 'var(--font-primary)',
         '&:before': {
           margin: '0 0.5rem',
           content: '"•"',
         },
       },
-    },
-    '.by': {
-      marginRight: '.2rem',
-    },
-    '.author': {
-      fontWeight: 700,
     },
     color: 'var(--color-gray)',
     fontSize: 13,
@@ -171,12 +168,13 @@ const blogStyles = css({
     },
     '.postStats': {
       position: 'relative',
-      paddingTop: '.25rem',
+      paddingTop: '.5rem',
       display: 'flex',
       justifyContent: 'space-between',
       flexDirection: 'row',
       marginBottom: '1.5rem',
       '.likesAndViews': {
+        marginTop: '.5rem',
         width: '100%',
         display: 'flex',
         flexDirection: 'row',
@@ -251,7 +249,7 @@ const blogStyles = css({
         fontWeight: 700,
         fontSize: 24,
         lineHeight: '1.9rem',
-        top: 23,
+        top: 29,
         left: -20,
         color: 'var(--color-primary)',
         '@media (max-width: 1024px)': {

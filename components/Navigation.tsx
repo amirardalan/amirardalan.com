@@ -143,7 +143,6 @@ const Navigation: FC = () => {
   });
   const styleMobileNavSecondary = css({
     marginTop: '3rem',
-    fontFamily: 'var(--font-secondary)',
     position: 'relative',
     a: {
       display: 'block',

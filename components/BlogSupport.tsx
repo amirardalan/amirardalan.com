@@ -139,7 +139,7 @@ const BlogSupport: FC<BlogSupportProps> = ({
             },
           },
           '.paymentName': {
-            marginLeft: '.5rem',
+            marginLeft: '1rem',
             verticalAlign: 'top',
             '@media (max-width: 480px)': {
               marginLeft: '.5rem',
@@ -181,7 +181,7 @@ const BlogSupport: FC<BlogSupportProps> = ({
       display: 'flex',
       justifyContent: 'flex-start',
       alignItems: 'center',
-      fontSize: 14,
+      fontSize: 16,
       span: {
         marginRight: '.5rem',
         '@media (max-width: 480px)': {
@@ -210,9 +210,14 @@ const BlogSupport: FC<BlogSupportProps> = ({
         },
       },
       h4: {
-        fontSize: 22,
+        fontFamily: 'var(--font-secondary)',
+        fontWeight: 400,
+        fontSize: 28,
         marginTop: '.08rem',
         marginRight: '1rem',
+        '@media (max-width: 768px)': {
+          fontSize: 22,
+        },
         '@media (max-width: 480px)': {
           fontSize: 15,
         },
@@ -245,7 +250,7 @@ const BlogSupport: FC<BlogSupportProps> = ({
             <div className="left">
               <div className="copyContainer">
                 <span className="supportHeading">
-                  <h4>Did you enjoy this post?</h4>
+                  <h4>Enjoy this post? Show some love:</h4>
                   <LikeButton liked={liked} handleLike={handleLike} />
                 </span>
                 <div className="donate">

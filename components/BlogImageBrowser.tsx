@@ -58,7 +58,7 @@ const styleModal = css({
     },
   },
   '.modalHeader': {
-    fontFamily: 'var(--font-secondary)',
+    fontFamily: 'var(--font-primary)',
     fontSize: 20,
     display: 'flex',
     flexDirection: 'row',
@@ -119,7 +119,7 @@ const styleModal = css({
       color: 'var(--color-text)',
       fontSize: 11,
       fontWeight: 700,
-      fontFamily: 'var(--font-secondary)',
+      fontFamily: 'var(--font-primary)',
       whiteSpace: 'nowrap',
       overflow: 'hidden',
       textOverflow: 'ellipsis',

@@ -146,10 +146,15 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
             }
           >
             <div className="info">
-              <span className="by">By</span>
-              <span className="author">
-                {post?.author?.name || 'Unknown author'}
-              </span>
+              By
+              <a
+                href="https://x.com/amirardalan"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="@amirardalan on x.com"
+              >
+                {post?.author?.name || 'Unknown'}
+              </a>
               <span className="date">
                 {showEdited ? (
                   <time dateTime={post.editedAt.toString()}>
@@ -243,10 +248,7 @@ export default BlogPost;
 const styleBlogPost = css({
   '.likeAndShare': {
     display: 'flex',
-    marginBottom: '2rem',
-    '@media(max-width: 1024px)': {
-      marginBottom: '1rem',
-    },
+    marginBottom: '1rem',
   },
   '.postFull': {
     h1: {
@@ -354,7 +356,7 @@ const styleBlogPost = css({
       padding: '2.8rem 1.5rem 1.25rem 1.5rem',
       border: '1px solid var(--color-accent-gray)',
       borderRadius: 5,
-      fontFamily: 'var(--font-secondary)',
+      fontFamily: 'var(--font-primary)',
       fontSize: 14.5,
       color: 'var(--color-gray)',
       lineHeight: '1.5rem',
@@ -380,11 +382,12 @@ const styleBlogPost = css({
       },
       '&:after': {
         content: '"Note:"',
-        top: 14,
-        left: 42,
+        top: 15,
+        left: 43,
         lineHeight: '1.5rem',
         textTransform: 'uppercase',
-        fontFamily: 'var(--font-secondary)',
+        fontFamily: 'var(--font-primary)',
+        fontWeight: 400,
         fontSize: 14.5,
       },
       a: {
@@ -419,7 +422,7 @@ const styleBlogPost = css({
         display: 'flex',
         alignItems: 'start',
         flexDirection: 'column',
-        padding: '1.25rem',
+        padding: '.25rem 1rem .25rem 1rem',
         '&::before': {
           display: 'none',
           content: '""',

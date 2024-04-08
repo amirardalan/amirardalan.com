@@ -38,7 +38,7 @@ const BlogAdmin: FC = () => {
     width: 'auto',
     display: 'flex',
     padding: '.5rem 4rem',
-    fontFamily: 'var(--font-secondary)',
+    fontFamily: 'var(--font-primary)',
     backgroundColor: 'var(--color-accent)',
     borderBottom: '1px solid var(--color-accent-gray)',
     justifyContent: 'space-between',
@@ -232,7 +232,7 @@ const BlogAdmin: FC = () => {
                 },
               },
               '.dropdownLabel': {
-                fontFamily: 'var(--font-secondary)',
+                fontFamily: 'var(--font-primary)',
                 marginRight: '2rem',
                 span: {
                   marginRight: '.5rem',
@@ -255,7 +255,7 @@ const BlogAdmin: FC = () => {
               borderRadius: 6,
               color: 'var(--color-bg)',
               fontSize: 12,
-              fontFamily: 'var(--font-secondary)',
+              fontFamily: 'var(--font-primary)',
               fontWeight: 'normal',
               textTransform: 'uppercase',
               textAlign: 'center',
@@ -318,7 +318,7 @@ const BlogAdmin: FC = () => {
                 textTransform: 'uppercase',
                 '.confirmLink': {
                   color: 'var(--color-heading)',
-                  fontFamily: 'var(--font-secondary)',
+                  fontFamily: 'var(--font-primary)',
                   fontSize: 12,
                   textTransform: 'uppercase',
                   cursor: 'pointer',

@@ -121,7 +121,7 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
     'h3 a': {
       lineHeight: '1.25rem',
       fontFamily: 'var(--font-secondary)',
-      fontSize: 18,
+      fontSize: 20,
       fontWeight: 700,
       '@media (min-width: 1025px)': {
         '&:hover': {
