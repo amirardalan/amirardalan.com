@@ -1,7 +1,7 @@
 const appTitle = 'Amir Ardalan';
-const subTitle = 'Design Engineer';
+const appDesc = 'Design Engineer';
 const metaDescription = `Software Engineer & UI Designer with 10+ years of experience creating innovative digital solutions.`;
-const slogan = 'Design Engineer';
+const slogan = 'Design & Code';
 
 const emailAddress = 'hi@amirardalan.com';
 const linkGitHub = 'https://github.com/amirardalan';
@@ -11,7 +11,7 @@ const linkCodePen = 'https://codepen.io/amirardalan/collections/public';
 
 export const homeContent = {
   meta: {
-    title: `${appTitle} – ${subTitle}`,
+    title: `${appTitle} – ${appDesc}`,
     description: metaDescription,
   },
   typed: [
@@ -116,7 +116,7 @@ export const aboutContent = {
   },
   bio: {
     subheading: `Hello, I'm Amir 👋`,
-    content: `I'm a ${subTitle} driven by a passion for creating exceptional digital experiences. I utilize this blog as a platform to chronicle my adventures in code, technology, and entrepreneurship.`,
+    content: `I'm a ${appDesc} driven by a passion for creating exceptional digital experiences. I utilize this blog as a platform to chronicle my adventures in code, technology, and entrepreneurship.`,
     items: [
       {
         path: '/resume',
