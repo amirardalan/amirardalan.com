@@ -348,7 +348,7 @@ const BlogAdmin: FC = () => {
             },
             '.postDraft': {
               margin: '.5rem 0 .5rem',
-              padding: '1rem',
+              padding: '1rem 1rem 0 1rem',
               display: 'flex',
               justifyContent: 'space-between',
               border: '1px solid var(--color-accent)',
@@ -374,11 +374,9 @@ const BlogAdmin: FC = () => {
               '.blog.postTeaser': {
                 margin: '0 .5rem 0 0',
                 h2: {
-                  margin: '0 0 .25rem 0',
                   fontSize: 20,
                 },
                 'p.teaser': {
-                  margin: '.3rem 0 0 0',
                   fontSize: 14,
                 },
               },
