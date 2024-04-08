@@ -1,6 +1,6 @@
 const appTitle = 'Amir Ardalan';
 const appDesc = 'Design Engineer';
-const metaDescription = `Software Engineer & UI Designer with 10+ years of experience creating innovative digital solutions.`;
+const metaDescription = `Design Engineer with 10+ years of experience crafting innovative user interfaces and elegant code solutions.`;
 const slogan = 'Design & Code';
 
 const emailAddress = 'hi@amirardalan.com';
@@ -116,7 +116,7 @@ export const aboutContent = {
   },
   bio: {
     subheading: `Hello, I'm Amir 👋`,
-    content: `I'm a ${appDesc} driven by a passion for creating exceptional digital experiences. I utilize this blog as a platform to chronicle my adventures in code, technology, and entrepreneurship.`,
+    content: `${metaDescription} I operate at the intersection of design and code, with a focus on frontend engineering, UI/UX design, and component-oriented design systems .`,
     items: [
       {
         path: '/resume',
