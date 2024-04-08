@@ -6,8 +6,7 @@
     "dev": "next dev",
     "test": "next build && next start",
     "build": "next build",
-    "start": "next start",
-    "postinstall": "prisma generate"
+    "start": "next start"
   },
   "dependencies": {
     "@emotion/react": "^11.10.6",
