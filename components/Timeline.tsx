@@ -59,7 +59,7 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
       '&:nth-of-type(even), &:nth-of-type(odd)': {
         '.event': {
           maxWidth: 400,
-          boxShadow: '-2px 2px 0 var(--color-accent-gray)',
+          boxShadow: '-2px 2px 0 var(--color-accent)',
           h3: {
             marginBottom: '.5rem',
             fontFamily: 'var(--font-secondary)',
@@ -77,7 +77,7 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
         zIndex: 2,
         position: 'relative',
         justifySelf: 'flex-end',
-        borderRight: '4px solid var(--color-accent-gray)',
+        borderRight: '4px solid var(--color-accent)',
         '.scrollHighlight': {
           position: 'absolute',
           top: 0,
@@ -112,7 +112,7 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
             top: 9,
             right: -22,
             borderLeft: '12px solid transparent',
-            borderRight: '20px solid var(--color-accent-gray)',
+            borderRight: '20px solid var(--color-accent)',
             transform: 'rotateY(0deg) rotate(270deg)',
             '@media(max-width: 480px)': {
               border: 'none',
@@ -141,7 +141,7 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
           '&:before': {
             zIndex: 3,
             left: -22,
-            borderLeft: '20px solid var(--color-accent-gray)',
+            borderLeft: '20px solid var(--color-accent)',
             borderRight: '12px solid transparent',
             transform: 'rotateY(0deg) rotate(90deg)',
             '@media(max-width: 480px)': {
@@ -154,7 +154,7 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
             top: 9,
             left: -23,
             content: '""',
-            borderLeft: '20px solid var(--color-accent-gray)',
+            borderLeft: '20px solid var(--color-accent)',
             borderRight: '12px solid transparent',
             borderBottom: '12px solid transparent',
             transform: 'rotateY(0deg) rotate(90deg)',
@@ -193,7 +193,7 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
         position: 'relative',
         marginBottom: '4rem',
         padding: '2.5rem',
-        border: '1px solid var(--color-accent-gray)',
+        border: '1px solid var(--color-accent)',
         borderRadius: 5,
         fontSize: 14,
         fontFamily: 'var(--font-secondary)',

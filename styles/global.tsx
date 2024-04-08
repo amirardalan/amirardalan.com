@@ -379,6 +379,7 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
             display: 'flex',
             flexDirection: 'row',
             alignItems: 'center',
+            borderRadius: 5,
             '&:before': {
               content: '""',
               marginRight: '.4rem',

@@ -13,10 +13,10 @@ export const themeDark = {
 export const theme = {
   // Elements
   light: '#edf1f5',
-  lightAccent: '#dfdfe6',
+  lightAccent: '#e5e4ea',
   lightDarker: '#aca9b7',
   dark: '#000000',
-  darkAccent: '#070707',
+  darkAccent: '#16161b',
   darker: '#26202e',
   primary: '#5919ee',
   secondary: '#67fff2',
