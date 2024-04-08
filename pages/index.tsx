@@ -47,6 +47,7 @@ type HomeProps = {
   home: HomeTypes & {
     typed: string;
     title: string;
+    subTitle: string;
     items: CtaButtonsTypes['items'];
     meta: {
       title: string;
@@ -72,6 +73,22 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
     },
     '@media (max-width: 480px)': {
       padding: 0,
+    },
+    '.subTitle': {
+      color: 'var(--color-accent-lighter)',
+      fontFamily: 'var(--font-tertiary)',
+      fontWeight: 400,
+      fontStyle: 'italic',
+      fontSize: 32,
+      textTransform: 'uppercase',
+      letterSpacing: 5,
+      marginTop: '.25rem',
+      '@media(max-width: 768px)': {
+        fontSize: 22,
+      },
+      '@media(max-width: 480px)': {
+        fontSize: 18,
+      },
     },
   });
   const styleContent = css({
@@ -131,6 +148,7 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
                 <TypingAnimation data={home.typed} />
               </span>
               <h1>{home.title}</h1>
+              <h2 className="subTitle">{home.subTitle}</h2>
             </div>
             <div css={styleCtaButtons}>
               <CtaButtons items={home.items} />

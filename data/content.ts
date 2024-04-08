@@ -1,8 +1,17 @@
-const metaDescription = `Software Engineer & UI Designer with 10+ years of experience creating innovative digital solutions.`;
+const appTitle = 'Amir Ardalan';
+const appDesc = 'Design Engineer';
+const metaDescription = `Design Engineer with 10+ years of experience crafting innovative user interfaces and elegant code solutions.`;
+const slogan = 'Design & Code';
+
+const emailAddress = 'hi@amirardalan.com';
+const linkGitHub = 'https://github.com/amirardalan';
+const linkX = 'https://x.com/amirardalan';
+const linkLinkedIn = 'https://linkedin.com/in/amirardalan';
+const linkCodePen = 'https://codepen.io/amirardalan/collections/public';
 
 export const homeContent = {
   meta: {
-    title: 'Amir Ardalan – Design Engineer',
+    title: `${appTitle} – ${appDesc}`,
     description: metaDescription,
   },
   typed: [
@@ -11,10 +20,11 @@ export const homeContent = {
     `learn a bit <a href="/about">about me</a>`,
     `browse my <a href="/about#timeline">work history</a>`,
     `check out the <a href="/uses">tools I use</a>`,
-    `delve into my <a href="https://github.com/amirardalan" rel="noopener noreferrer">GitHub</a>`,
-    `follow me on <a href="https://x.com/amirardalan" rel="noopener noreferrer">X</a>`,
+    `delve into my <a href=${linkGitHub} rel="noopener noreferrer">GitHub</a>`,
+    `follow me on <a href=${linkX} rel="noopener noreferrer">X</a>`,
   ],
-  title: 'Amir Ardalan',
+  title: `${appTitle}`,
+  subTitle: slogan,
   description: metaDescription,
   items: [
     {
@@ -40,7 +50,7 @@ export const homeContent = {
 export const blogContent = {
   heading: 'Blog',
   meta: {
-    title: 'Blog – Amir Ardalan',
+    title: `Blog – ${appTitle}`,
     description:
       'Thoughts on web development, design, and technology. Detailed guides for React, Next.js, TypeScript, and Markdown projects.',
   },
@@ -58,55 +68,55 @@ export const blogContent = {
 
 export const blogPostContent = {
   meta: {
-    title: ' – Amir Ardalan',
+    title: ` – ${appTitle}`,
   },
   title: {
     draft: 'Draft –',
   },
-  xUrl: 'https://x.com/amirardalan',
+  xUrl: `${linkX}`,
 };
 
 export const aboutContent = {
   meta: {
-    title: 'About – Amir Ardalan',
-    description: `Amir Ardalan's bio, mission statement, skills, stack, experience, availability, and career timeline.`,
+    title: `About – ${appTitle}`,
+    description: `${appTitle}'s bio, mission statement, skills, stack, experience, availability, and career timeline.`,
     github: 'GitHub',
     x: 'X',
     linkedin: 'LinkedIn',
   },
   heading: 'About',
   avatar: {
-    title: 'Amir Ardalan',
+    title: `${appTitle}`,
     img: '/avatar/amir-ardalan.jpg',
   },
   social: {
     title: 'Social',
     items: [
       {
-        path: 'https://github.com/amirardalan',
+        path: `${linkGitHub}`,
         title: 'GitHub',
         cName: 'iconGithub icon',
       },
       {
-        path: 'https://x.com/amirardalan',
+        path: `${linkX}`,
         title: 'X',
         cName: 'iconX icon',
       },
       {
-        path: 'https://linkedin.com/in/amirardalan',
+        path: `${linkLinkedIn}`,
         title: 'LinkedIn',
         cName: 'iconLinkedin icon',
       },
       {
-        path: 'https://codepen.io/amirardalan/collections/public',
+        path: `${linkCodePen}`,
         title: 'CodePen',
         cName: 'iconCodePen icon',
       },
     ],
   },
   bio: {
-    subheading: `Hey there, I'm Amir 👋`,
-    content: `I'm a Design Engineer driven by a passion for creating exceptional digital experiences. I utilize this blog as a platform to chronicle my adventures in code, technology, and entrepreneurship.`,
+    subheading: `Hello, I'm Amir 👋`,
+    content: `${metaDescription} I operate at the intersection of design and code, with a focus on frontend engineering, UI/UX design, and component-oriented design systems .`,
     items: [
       {
         path: '/resume',
@@ -152,8 +162,8 @@ export const aboutContent = {
   experience: {
     title: 'Experience',
     items: [
-      "With over a decade of experience in web development, I've had the privilege of working with iconic brands like Nike, Columbia Sportswear, and KEEN Footwear.",
-      "My expertise spans full stack development, UI design, web accessibility, ecommerce, and rapid prototyping. I'm passionate about pushing the boundaries of web technologies and user experience in a world where humans and machines are increasingly connected.",
+      "With over a decade of experience in web development, ecommerce, and enterprise software, I've had the privilege of working with iconic brands like Nike, Columbia Sportswear, and KEEN Footwear.",
+      'My unique skill set encompasses Frontend Engineering, UI/UX, Design Systems, Accessibility, SEO, and Rapid Prototyping. I speak the languages of design and code, enabling me to seamlessly bridge the gap between UI/UX and technical teams.',
     ],
   },
   availability: {
@@ -164,9 +174,9 @@ export const aboutContent = {
     location: 'Remote / onsite in Portland, OR Metro Area',
     link: 'https://lebronjamesinnovationcenter.nike.com/',
     items: [
-      '• Develop user-focused digital prototypes.',
-      '• Deliver cutting-edge user interfaces.',
-      '• Push the boundaries of modern web tech.',
+      '• Develop user-focused prototypes and software.',
+      '• Deliver industry-leading user experiences.',
+      '• Act as a connector for UI/UX and dev teams.',
     ],
   },
   contact: {
@@ -320,7 +330,7 @@ export const timelineContent = {
 
 export const thanksContent = {
   meta: {
-    title: 'Thank You – Amir Ardalan',
+    title: `Thank You – ${appTitle}`,
     description: 'Your contribution is greatly appreciated!',
   },
   heading: 'Thank You.',
@@ -329,7 +339,7 @@ export const thanksContent = {
 
 export const usesContent = {
   meta: {
-    title: 'Uses – Amir Ardalan',
+    title: `Uses – ${appTitle}`,
     description: 'A list of gear, tools, and software I use.',
   },
   heading: 'Uses',
@@ -453,7 +463,7 @@ export const usesContent = {
 export const errorContent = {
   notFound: {
     meta: {
-      title: 'Page Not Found – Amir Ardalan',
+      title: `Page Not Found – ${appTitle}`,
     },
     title: '404',
     text: `🤔 Page not found`,
@@ -466,7 +476,7 @@ export const errorContent = {
   },
   internalServerError: {
     meta: {
-      title: 'Internal Server Error – Amir Ardalan',
+      title: `Internal Server Error – ${appTitle}`,
     },
     title: '500',
     text: `😵 Internal server error`,
@@ -481,7 +491,7 @@ export const errorContent = {
 
 export const footer = {
   logo: {
-    alt: 'Amir Ardalan Logo',
+    alt: `${appTitle} Logo`,
   },
   headings: {
     nav: 'Explore',
@@ -513,19 +523,19 @@ export const footer = {
   ],
   social: [
     {
-      path: 'https://x.com/amirardalan',
+      path: `${linkX}`,
       title: '𝕏',
     },
     {
-      path: 'https://github.com/amirardalan',
+      path: `${linkGitHub}`,
       title: 'GitHub',
     },
     {
-      path: 'https://linkedin.com/in/amirardalan',
+      path: `${linkLinkedIn}`,
       title: 'LinkedIn',
     },
     {
-      path: 'mailto:hi@amirardalan.com',
+      path: `mailto:${emailAddress}`,
       title: 'Email',
     },
     {
@@ -535,7 +545,7 @@ export const footer = {
   ],
   copyright: {
     text: '© ',
-    name: 'Amir Ardalan • DESIGN / CODE / WORDS',
+    name: `${appTitle} • ${slogan}`,
   },
 };
 
@@ -549,7 +559,7 @@ export const breadcrumbContent = {
 // Admin
 export const adminContent = {
   meta: {
-    title: ' – Amir Ardalan',
+    title: ` – ${appTitle}`,
   },
   controls: {
     publish: 'Publish',
@@ -580,12 +590,12 @@ export const adminContent = {
   },
   create: {
     meta: {
-      title: 'Create – Amir Ardalan',
+      title: `Create – ${appTitle}`,
     },
   },
   drafts: {
     meta: {
-      title: 'Drafts – Amir Ardalan',
+      title: `Drafts – ${appTitle}`,
     },
     notice: `Unpublished Draft`,
     empty: `No drafts. Nice and tidy! Perhaps`,

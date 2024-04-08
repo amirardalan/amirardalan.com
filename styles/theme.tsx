@@ -1,27 +1,27 @@
 export const themeLight = {
   active: 'light',
   favicon: '/favicon-light.png',
-  canvas: '#867f9d',
+  canvas: '#8e919e',
 };
 
 export const themeDark = {
   active: 'dark',
   favicon: '/favicon-dark.png',
-  canvas: '#867f9d',
+  canvas: '#8e919e',
 };
 
 export const theme = {
   // Elements
   light: '#edf1f5',
   lightAccent: '#e5e4ea',
-  lightDarker: '#aca9b7',
+  lightDarker: '#9794a3',
   dark: '#000000',
-  darkAccent: '#16161b',
-  darker: '#26202e',
-  primary: '#5919ee',
+  darkAccent: '#16171b',
+  darker: '#494754',
+  primary: '#6000d6',
   secondary: '#67fff2',
-  grayLight: '#cdcfda',
-  grayDark: '#3f414e',
+  grayLight: '#adb0c3',
+  grayDark: '#717380',
   grayAccentLight: '#d0ceda',
   grayAccentDark: '#24242c',
   // Inputs
