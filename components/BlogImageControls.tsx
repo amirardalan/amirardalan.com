@@ -13,7 +13,7 @@ interface BlogImageControlsProps {
 const styleImageUploader = css({
   display: 'flex',
   justifyContent: 'flex-end',
-  fontFamily: 'var(--font-secondary)',
+  fontFamily: 'var(--font-primary)',
   fontSize: 13,
   input: {
     marginLeft: '.5rem',
@@ -25,7 +25,7 @@ const styleImageUploader = css({
     maxWidth: 100,
     paddingRight: '1rem',
     cursor: 'pointer',
-    fontFamily: 'var(--font-secondary)',
+    fontFamily: 'var(--font-primary)',
   },
   '.imgIcon': {
     margin: '.1rem .1rem 0 .5rem',

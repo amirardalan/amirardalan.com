@@ -68,14 +68,15 @@ const Footer: FC<FooterProps> = () => {
       },
     },
     h4: {
+      fontFamily: 'var(--font-primary)',
       marginBottom: '1rem',
       paddingBottom: '1rem',
       lineHeight: '1rem',
       borderBottom: '2px solid var(--color-bg)',
       textTransform: 'uppercase',
-      letterSpacing: '.1rem',
+      letterSpacing: 5,
       fontSize: 12,
-      fontWeight: 700,
+      fontWeight: 400,
       '@media(max-width: 600px)': {
         width: '100%',
       },

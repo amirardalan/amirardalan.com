@@ -85,7 +85,11 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
         },
       },
       h3: {
-        fontFamily: 'var(--font-secondary)',
+        fontFamily: 'var(--font-primary)',
+        fontWeight: 400,
+        fontSize: 14,
+        letterSpacing: 5,
+        textTransform: 'uppercase',
       },
       ul: {
         width: '100%',
@@ -103,7 +107,7 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
       '.skills': {
         li: {
           fontSize: 14,
-          fontFamily: 'var(--font-secondary)',
+          fontFamily: 'var(--font-primary)',
           '&:first-of-type': {
             '&:before': {
               content: '" "',
@@ -115,7 +119,7 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
         },
       },
       '.experience': {
-        fontFamily: 'var(--font-secondary)',
+        fontFamily: 'var(--font-tertiary)',
         li: {
           marginBottom: '1.2rem',
           '@media(min-width: 769px)': {
@@ -125,12 +129,13 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
       },
       '.availability': {
         color: 'var(--color-heading)',
-        fontSize: 18,
+        fontSize: 16,
+        fontWeight: 700,
         fontFamily: 'var(--font-secondary)',
         '.subheading': {
           marginTop: '1.5rem',
           li: {
-            fontFamily: 'var(--font-secondary)',
+            fontFamily: 'var(--font-primary)',
             borderBottom: '1px solid var(--color-accent-gray)',
             paddingBottom: '.5rem',
             '&:first-of-type, &:last-of-type': {
@@ -199,9 +204,12 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
   });
   const styleAvailability = css({
     h4: {
-      fontFamily: 'var(--font-secondary)',
+      fontFamily: 'var(--font-primary)',
       fontStyle: 'normal',
-      fontSize: 16,
+      fontSize: 12,
+      fontWeight: 400,
+      textTransform: 'uppercase',
+      letterSpacing: 2,
       color: 'var(--color-text)',
       marginBottom: '1rem',
     },

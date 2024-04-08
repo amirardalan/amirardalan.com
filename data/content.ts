@@ -157,10 +157,10 @@ export const aboutContent = {
     ],
   },
   availability: {
-    title: 'Current Project:',
+    title: 'Current Project',
     text: 'Software Engineer II @',
     text2: 'Nike',
-    title2: 'Mission:',
+    title2: 'Summary:',
     location: 'Remote / onsite in Portland, OR Metro Area',
     link: 'https://lebronjamesinnovationcenter.nike.com/',
     items: [
@@ -197,7 +197,7 @@ export const timelineContent = {
   },
   items: [
     {
-      title: 'Software Engineer II @ Nike (via CDW)',
+      title: 'Software Engineer II @ Nike',
       content:
         'Developing digital prototypes and tools for designers @ Nike LeBron James Innovation Center.',
       cName: 'event',
@@ -535,7 +535,7 @@ export const footer = {
   ],
   copyright: {
     text: '© ',
-    name: 'Amir Ardalan',
+    name: 'Amir Ardalan • DESIGN / CODE / WORDS',
   },
 };
 
