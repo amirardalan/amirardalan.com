@@ -128,7 +128,7 @@ const BlogSupport: FC<BlogSupportProps> = ({
             },
           },
           '.cashapp': {
-            marginBottom: '1rem',
+            marginBottom: '1.5rem',
             '@media (max-width: 480px)': {
               marginBottom: '.2rem',
             },
