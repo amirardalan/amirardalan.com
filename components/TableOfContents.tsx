@@ -57,7 +57,7 @@ const TableOfContents: FC<TableOfContentsProps> = ({ markdown }) => {
         a: {
           textDecoration: 'none !important',
         },
-        margin: '.3rem 0 0 2rem',
+        margin: '.4rem 0 .4rem 2rem',
         lineHeight: 'normal',
         '&::before': {
           border: '1px solid var(--color-accent-lighter)',
@@ -66,9 +66,9 @@ const TableOfContents: FC<TableOfContentsProps> = ({ markdown }) => {
         },
       },
       '@media (max-width: 768px)': {
-        margin: '1rem 0 0 0',
+        margin: '.5rem 0 .5rem 0',
         li: {
-          margin: '.3rem 0 1rem 2rem',
+          margin: '.3rem 0 .5rem 2rem',
         },
       },
     },
