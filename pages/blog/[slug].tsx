@@ -146,32 +146,34 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
             }
           >
             <div className="info">
-              By
-              <a
-                href="https://x.com/amirardalan"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="@amirardalan on x.com"
-              >
-                {post?.author?.name || 'Unknown'}
-              </a>
-              <span className="date">
-                {showEdited ? (
-                  <time dateTime={post.editedAt.toString()}>
-                    Updated: {editDate}
-                  </time>
-                ) : (
-                  <time
-                    dateTime={
-                      post.postHistory[0]?.editedAt.toString() ||
-                      post.publishedAt.toString()
-                    }
-                  >
-                    {prevEditDate ? 'Updated: ' : null}
-                    {prevEditDate || publishDate}
-                  </time>
-                )}
-              </span>
+              <div className="authorAndDate">
+                By
+                <a
+                  href="https://x.com/amirardalan"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="@amirardalan on x.com"
+                >
+                  {post?.author?.name || 'Unknown'}
+                </a>
+                <span className="date">
+                  {showEdited ? (
+                    <time dateTime={post.editedAt.toString()}>
+                      Updated: {editDate}
+                    </time>
+                  ) : (
+                    <time
+                      dateTime={
+                        post.postHistory[0]?.editedAt.toString() ||
+                        post.publishedAt.toString()
+                      }
+                    >
+                      {prevEditDate ? 'Updated: ' : null}
+                      {prevEditDate || publishDate}
+                    </time>
+                  )}
+                </span>
+              </div>
             </div>
             <div className="postStats">
               <div className="likesAndViews">
@@ -249,6 +251,9 @@ const styleBlogPost = css({
   '.likeAndShare': {
     display: 'flex',
     marginBottom: '1rem',
+    '@media (max-width: 480px)': {
+      marginBottom: '.5rem',
+    },
   },
   '.postFull': {
     h1: {

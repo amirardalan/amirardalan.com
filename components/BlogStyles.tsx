@@ -137,22 +137,43 @@ const blogStyles = css({
     display: 'flex',
     flexDirection: 'column',
     '.info': {
-      fontSize: 14,
+      fontSize: 16,
       width: '100%',
       borderBottom: '1px solid var(--color-accent-gray)',
       fontFamily: 'var(--font-secondary)',
       display: 'flex',
       flexDirection: 'row',
+      '.authorAndDate': {
+        marginBottom: '1rem',
+        '@media (max-width: 480px)': {
+          marginBottom: '.5rem',
+        },
+      },
       a: {
+        margin: 0,
         paddingLeft: '.25rem',
         fontFamily: 'var(--font-secondary)',
-        fontSize: 14,
+        fontSize: 16,
       },
       time: {
         fontFamily: 'var(--font-primary)',
+        fontSize: 14,
         '&:before': {
           margin: '0 0.5rem',
           content: '"•"',
+        },
+      },
+      '@media(max-width: 480px)': {
+        fontSize: 13,
+        a: {
+          fontSize: 13,
+        },
+        time: {
+          fontSize: 11,
+          '&:before': {
+            margin: '0 0.25rem',
+            content: '"•"',
+          },
         },
       },
     },
@@ -173,12 +194,17 @@ const blogStyles = css({
       justifyContent: 'space-between',
       flexDirection: 'row',
       marginBottom: '1.5rem',
+      '@media (max-width: 480px)': {
+        marginBottom: '1.5rem',
+      },
       '.likesAndViews': {
-        marginTop: '.5rem',
         width: '100%',
         display: 'flex',
         flexDirection: 'row',
         alignSelf: 'center',
+        '@media (max-width: 480px)': {
+          marginBottom: '.5rem',
+        },
       },
       '.readTime': {
         backgroundColor: 'var(--color-bg)',
