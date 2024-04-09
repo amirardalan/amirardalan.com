@@ -53,9 +53,13 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
         display: 'flex',
         justifyContent: 'space-between',
         h2: {
+          paddingRight: '1rem',
           fontSize: 32,
           display: 'flex',
           alignItems: 'flex-end',
+          '@media (max-width: 480px)': {
+            fontSize: 22,
+          },
         },
       },
       '&:first-of-type': {
@@ -63,13 +67,13 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
         background: 'var(--color-gradient)',
         padding: '2rem',
         '.bioSubHeading': {
+          lineHeight: '1.2',
           margin: '1rem 0',
           color: 'var(--color-light)',
-          lineHeight: '1.2rem',
         },
         '.blurb': {
           margin: '.5rem 0 1.5rem',
-          fontSize: 22,
+          fontSize: 20,
           fontFamily: 'var(--font-tertiary)',
           fontStyle: 'italic',
           color: 'var(--color-gray-static)',

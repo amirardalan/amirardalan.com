@@ -115,7 +115,7 @@ export const aboutContent = {
     ],
   },
   bio: {
-    subheading: `Hello, I'm Amir 👋`,
+    subheading: `Hey, I'm Amir 👋`,
     content: metaDescription,
     items: [
       {
@@ -214,7 +214,7 @@ export const timelineContent = {
       cName: 'date',
     },
     {
-      title: 'Freelancer and Blogger',
+      title: 'Freelancer & Consultant',
       content:
         'Building, maintaining open-source amirardalan.com Next.js blog & CMS. Writing about front-end code, devops, and tech.',
       cName: 'event',
@@ -274,7 +274,7 @@ export const timelineContent = {
       cName: 'date',
     },
     {
-      title: 'Freelancer / Consultant',
+      title: 'Freelancer & Consultant',
       content:
         'Managed all aspects of business with 30+ clients. Developed websites using HTML, CSS, and JavaScript. Utilized CSS3, Boostrap, jQuery, and Wordpress.',
       cName: 'event',

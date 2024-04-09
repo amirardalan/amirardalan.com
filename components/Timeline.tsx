@@ -62,10 +62,9 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
           boxShadow: '-2px 2px 0 var(--color-accent)',
           h3: {
             marginBottom: '.5rem',
-            fontFamily: 'var(--font-primary)',
-            textDecoration: 'underline',
+            fontFamily: 'var(--font-secondary)',
             fontSize: 14,
-            fontWeight: 400,
+            fontWeight: 700,
             textTransform: 'uppercase',
             lineHeight: '1.2rem',
           },
