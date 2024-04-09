@@ -28,10 +28,24 @@ const TableOfContents: FC<TableOfContentsProps> = ({ markdown }) => {
         marginLeft: '-.1rem',
       },
     },
+    button: {
+      'svg, .tocTitle': {
+        color: 'var(--color-gray)',
+        fill: 'var(--color-gray)',
+      },
+      '&:hover': {
+        '.tocTitle': {
+          color: 'var(--color-primary)',
+        },
+        svg: {
+          fill: 'var(--color-primary)',
+        },
+      },
+    },
     '.tocTitle': {
       fontSize: 14,
       fontWeight: 400,
-      textDecoration: 'underline',
+      marginTop: '.1rem',
     },
     'ol.tableOfContents': {
       margin: '.5rem 0 1rem 0',
@@ -40,9 +54,14 @@ const TableOfContents: FC<TableOfContentsProps> = ({ markdown }) => {
         padding: 0,
       },
       li: {
+        a: {
+          textDecoration: 'none !important',
+        },
         margin: '.3rem 0 0 2rem',
         lineHeight: 'normal',
         '&::before': {
+          border: '1px solid var(--color-accent-lighter)',
+          color: 'var(--color-accent-lighter)',
           top: '.2rem',
         },
       },
@@ -66,7 +85,6 @@ const TableOfContents: FC<TableOfContentsProps> = ({ markdown }) => {
                   <svg
                     height={24}
                     width={24}
-                    fill="var(--color-gray)"
                     clipRule="evenodd"
                     fillRule="evenodd"
                     strokeLinejoin="round"

@@ -62,9 +62,15 @@ const BlogNavigation: FC<BlogNavigationProps> = ({
 
   const styleBlogNavigation = css({
     marginTop: '4rem',
-    fontFamily: 'var(--font-primary)',
+    fontFamily: 'var(--font-secondary)',
     fontSize: 18,
     lineHeight: '1.3rem',
+    a: {
+      textDecoration: 'none',
+      '&:hover': {
+        textDecoration: 'underline',
+      },
+    },
   });
   const styleBlogLinks = css({
     display: 'flex',
