@@ -387,10 +387,13 @@ const BlogAdmin: FC = () => {
           }}
         />
       ) : null}
-
-      <div css={styleAnimationWrapper}>
-        <nav css={styleAdminPanel}>{isLoggedIn ? <AdminPanel /> : null}</nav>
-      </div>
+      {isLoggedIn && (
+        <div css={styleAnimationWrapper}>
+          <nav css={styleAdminPanel}>
+            <AdminPanel />
+          </nav>
+        </div>
+      )}
     </>
   );
 };
