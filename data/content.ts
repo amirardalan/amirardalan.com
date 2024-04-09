@@ -242,7 +242,7 @@ export const timelineContent = {
     {
       title: 'Lead UI Engineer @ KEEN Footwear',
       content:
-        'Developed new Salesforce Commerce Cloud Ecommerce websites for KEEN Footwear and Chrome Industries. Collaborated with BASIC® Agency.',
+        'Developed new Salesforce Commerce Cloud Ecommerce websites for KEEN Footwear and Chrome Industries. Collaborated with BASIC/DEPT®.',
       cName: 'event',
     },
     {
@@ -538,7 +538,7 @@ export const footer = {
   ],
   copyright: {
     text: '© ',
-    name: `${appTitle} • ${slogan}`,
+    name: `${appTitle}`,
   },
 };
 

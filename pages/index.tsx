@@ -75,14 +75,14 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
       padding: 0,
     },
     '.subTitle': {
-      color: 'var(--color-accent-lighter)',
+      color: 'var(--color-gray)',
       fontFamily: 'var(--font-tertiary)',
       fontWeight: 400,
       fontStyle: 'italic',
       fontSize: 18,
       textTransform: 'uppercase',
       letterSpacing: 5,
-      marginTop: '.25rem',
+      marginTop: '1rem',
       '@media(max-width: 768px)': {
         fontSize: 11,
       },

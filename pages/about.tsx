@@ -45,7 +45,7 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
       display: 'flex',
       justifyContent: 'center',
       backgroundColor: 'var(--color-bg)',
-      border: '1px solid var(--color-accent)',
+      border: '1px solid var(--color-accent-lighter)',
       borderRadius: 10,
       padding: '2rem',
       lineHeight: '1.8rem',

@@ -13,8 +13,8 @@ export const themeDark = {
 export const theme = {
   // Elements
   light: '#edf1f5',
-  lightAccent: '#e5e4ea',
-  lightDarker: '#9794a3',
+  lightAccent: '#e4e7ed',
+  lightDarker: '#c0bccf',
   dark: '#000000',
   darkAccent: '#16171b',
   darker: '#494754',

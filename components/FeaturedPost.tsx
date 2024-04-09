@@ -103,8 +103,6 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
       position: 'absolute',
       top: '0',
       left: '0',
-      borderLeft: '4px solid var(--color-accent)',
-      paddingLeft: '1rem',
       transition: 'transform .5s ease-in-out, opacity .5s ease-in-out',
     },
     '.featured': {
@@ -140,7 +138,6 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
       lineHeight: '1.25rem',
       fontSize: 15,
       fontFamily: 'var(--font-tertiary)',
-      fontStyle: 'italic',
       color: 'var(--color-gray)',
     },
   });

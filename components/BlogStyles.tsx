@@ -10,13 +10,20 @@ const blogStyles = css({
     maxWidth: 768,
     margin: '0 auto',
     '.search': {
-      background: 'none',
-      border: '1px solid var(--color-accent-gray)',
+      fontFamily: 'var(--font-secondary)',
+      color: 'var(--color-text)',
+      background: 'var(--color-accent)',
+      border: '1px solid transparent',
       padding: '.6rem',
       fontSize: 16,
+      '&::placeholder': {
+        color: 'var(--color-gray) !important',
+        fontFamily: 'var(--font-secondary)',
+      },
       '&:focus': {
         outline: 'var(--color-primary)',
         borderColor: 'var(--color-primary)',
+        boxShadow: '1px solid var(--color-primary)',
       },
     },
     '.categoryWrapper': {
@@ -44,7 +51,7 @@ const blogStyles = css({
       },
     },
     '.blogListHeading': {
-      margin: '.4rem 0 .8rem',
+      margin: '0 0 .4rem',
       fontFamily: 'var(--font-secondary)',
       fontSize: 30,
       fontWeight: 700,
@@ -94,7 +101,6 @@ const blogStyles = css({
     '&.postTeaser': {
       p: {
         margin: '0 0 1rem',
-        fontStyle: 'italic',
         lineHeight: '1.2rem',
         color: 'var(--color-gray)',
         '@media(max-width: 1024px)': {
@@ -275,7 +281,7 @@ const blogStyles = css({
         fontWeight: 700,
         fontSize: 24,
         lineHeight: '1.9rem',
-        top: 30.5,
+        top: 25,
         left: -18,
         color: 'var(--color-primary)',
         '@media (max-width: 1024px)': {

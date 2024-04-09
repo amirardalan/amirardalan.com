@@ -59,7 +59,8 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
       '&:nth-of-type(even), &:nth-of-type(odd)': {
         '.event': {
           maxWidth: 400,
-          boxShadow: '-2px 2px 0 var(--color-accent)',
+          boxShadow: '-2px 2px 0 var(--color-accent-lighter)',
+          background: 'var(--color-accent)',
           h3: {
             marginBottom: '.5rem',
             fontFamily: 'var(--font-secondary)',
@@ -141,6 +142,7 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
           borderTopLeftRadius: 0,
           '&:before': {
             zIndex: 3,
+            top: 9,
             left: -22,
             borderLeft: '20px solid var(--color-accent)',
             borderRight: '12px solid transparent',
@@ -152,10 +154,10 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
           '&:after': {
             zIndex: 2,
             position: 'absolute',
-            top: 9,
+            top: 10,
             left: -23,
             content: '""',
-            borderLeft: '20px solid var(--color-accent)',
+            borderLeft: '20px solid var(--color-accent-lighter)',
             borderRight: '12px solid transparent',
             borderBottom: '12px solid transparent',
             transform: 'rotateY(0deg) rotate(90deg)',
