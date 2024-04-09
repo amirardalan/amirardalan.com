@@ -59,7 +59,7 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
       display: 'flex',
       justifyContent: 'center',
       position: 'absolute',
-      top: 17,
+      top: 17.5,
       right: 10,
       cursor: 'pointer',
     },

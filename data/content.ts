@@ -145,19 +145,19 @@ export const aboutContent = {
   stack: {
     items: [
       'Next.js',
-      'Three.js',
+      'Figma',
       'Prisma ORM',
       'PostgreSQL',
       'SWR / ISR',
       'Responsive',
-      'SEO',
+      'Three.js',
     ],
   },
   experience: {
     title: 'Experience',
     items: [
       "I've collaborated with industry-leading people at iconic brands including Nike, BASIC/DEPT®, Columbia Sportswear, and KEEN Footwear.",
-      `From freelance to in-house, and agency roles, I have a wide range of experience designing and building innovative digital products and experiences.`,
+      `I operate as a connector between design and engineering teams, with specializations in Front-end development and UI/UX design.`,
     ],
   },
   availability: {
