@@ -79,15 +79,12 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
       fontFamily: 'var(--font-tertiary)',
       fontWeight: 400,
       fontStyle: 'italic',
-      fontSize: 32,
+      fontSize: 18,
       textTransform: 'uppercase',
       letterSpacing: 5,
       marginTop: '.25rem',
       '@media(max-width: 768px)': {
-        fontSize: 22,
-      },
-      '@media(max-width: 480px)': {
-        fontSize: 18,
+        fontSize: 11,
       },
     },
   });
