@@ -49,6 +49,15 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
       borderRadius: 10,
       padding: '2rem',
       lineHeight: '1.8rem',
+      '.bioHeader': {
+        display: 'flex',
+        justifyContent: 'space-between',
+        h2: {
+          fontSize: 32,
+          display: 'flex',
+          alignItems: 'flex-end',
+        },
+      },
       '&:first-of-type': {
         border: 'transparent',
         background: 'var(--color-gradient)',
@@ -59,9 +68,11 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
           lineHeight: '1.2rem',
         },
         '.blurb': {
+          margin: '.5rem 0 1.5rem',
+          fontSize: 22,
           fontFamily: 'var(--font-tertiary)',
           fontStyle: 'italic',
-          color: 'var(--color-light)',
+          color: 'var(--color-gray-static)',
           '@media(max-width: 768px)': {
             fontSize: 18,
           },
@@ -244,12 +255,14 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
         <div css={styleGridWrapper}>
           <div className="grid">
             <div css={styleBioItems}>
-              <div className="avatar">
-                <Avatar height={90} width={90} avatar={about.avatar} />
+              <div className="bioHeader">
+                <h2 aria-label={about.bio.subheading} className="bioSubHeading">
+                  {about.bio.subheading}
+                </h2>
+                <div className="avatar">
+                  <Avatar height={85} width={85} avatar={about.avatar} />
+                </div>
               </div>
-              <h2 aria-label={about.bio.subheading} className="bioSubHeading">
-                {about.bio.subheading}
-              </h2>
               <p className="blurb">{about.bio.content}</p>
               <div className="divider" />
               <CtaButtons items={about.bio.items} />
@@ -286,7 +299,7 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
                   {about.availability.title}
                 </h3>
               </li>
-              <li>
+              <li className="jobTitle">
                 {about.availability.text}{' '}
                 <a
                   target="_blank"

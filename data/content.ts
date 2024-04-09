@@ -1,6 +1,6 @@
 const appTitle = 'Amir Ardalan';
 const appDesc = 'Design Engineer';
-const metaDescription = `Design Engineer with 10+ years of experience crafting innovative user interfaces and elegant code solutions.`;
+const metaDescription = `Design Engineer with 10+ years of experience crafting outstanding digital products.`;
 const slogan = 'Design & Code';
 
 const emailAddress = 'hi@amirardalan.com';
@@ -90,13 +90,8 @@ export const aboutContent = {
     img: '/avatar/amir-ardalan.jpg',
   },
   social: {
-    title: 'Social',
+    title: 'Follow Me',
     items: [
-      {
-        path: `${linkGitHub}`,
-        title: 'GitHub',
-        cName: 'iconGithub icon',
-      },
       {
         path: `${linkX}`,
         title: 'X',
@@ -108,6 +103,11 @@ export const aboutContent = {
         cName: 'iconLinkedin icon',
       },
       {
+        path: `${linkGitHub}`,
+        title: 'GitHub',
+        cName: 'iconGithub icon',
+      },
+      {
         path: `${linkCodePen}`,
         title: 'CodePen',
         cName: 'iconCodePen icon',
@@ -116,7 +116,7 @@ export const aboutContent = {
   },
   bio: {
     subheading: `Hello, I'm Amir 👋`,
-    content: `${metaDescription} I operate at the intersection of design and code, with a focus on frontend engineering, UI/UX design, and component-oriented design systems .`,
+    content: metaDescription,
     items: [
       {
         path: '/resume',
@@ -133,44 +133,37 @@ export const aboutContent = {
   skills: {
     title: 'Proficiencies',
     items: [
-      'Fullstack Dev',
+      'Frontend SWE',
       'TypeScript',
-      'JavaScript',
-      'HTML & CSS',
+      'HTML + CSS',
+      'REST APIs',
       'React',
-      'Next.js',
-      'Tailwind CSS',
-      'Responsive UI',
-      'Performance',
-      'Accessibility',
+      'Git',
+      'Tailwind',
     ],
   },
   stack: {
     items: [
-      'Node.js',
+      'Next.js',
       'Three.js',
       'Prisma ORM',
       'PostgreSQL',
-      'Git',
-      'SWR',
+      'SWR / ISR',
+      'Responsive',
       'SEO',
-      'RESTful APIs',
-      'Vercel',
-      'Supabase',
     ],
   },
   experience: {
     title: 'Experience',
     items: [
-      "With over a decade of experience in web development, ecommerce, and enterprise software, I've had the privilege of working with iconic brands like Nike, Columbia Sportswear, and KEEN Footwear.",
-      'My unique skill set encompasses Frontend Engineering, UI/UX, Design Systems, Accessibility, SEO, and Rapid Prototyping. I speak the languages of design and code, enabling me to seamlessly bridge the gap between UI/UX and technical teams.',
+      "I've collaborated with industry-leading people at iconic brands including Nike, BASIC/DEPT®, Columbia Sportswear, and KEEN Footwear.",
+      `From freelance to in-house, and agency roles, I have a wide range of experience designing and building innovative digital products and experiences.`,
     ],
   },
   availability: {
     title: 'Current Project',
     text: 'Software Engineer II @',
     text2: 'Nike',
-    title2: 'Summary:',
     location: 'Remote / onsite in Portland, OR Metro Area',
     link: 'https://lebronjamesinnovationcenter.nike.com/',
     items: [
@@ -180,7 +173,7 @@ export const aboutContent = {
     ],
   },
   contact: {
-    title: 'Contact',
+    title: `Let's Chat`,
     email: {
       title: 'Show Email Address',
     },
