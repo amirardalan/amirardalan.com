@@ -130,7 +130,7 @@ const blogStyles = css({
     margin: '0 0 0 .5rem',
     padding: '0 .5rem',
     backgroundColor: 'transparent',
-    border: '1px solid var(--color-accent)',
+    border: '1px solid var(--color-accent-lighter)',
     borderRadius: 10,
     fontSize: 11,
     '@media(max-width: 480px)': {
