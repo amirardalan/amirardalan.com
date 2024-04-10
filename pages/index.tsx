@@ -5,7 +5,7 @@ import { css } from '@emotion/react';
 import Container from '@/components/Container';
 import TypingAnimation from '@/components/TypingAnimation';
 import FeaturedPost from '@/components/FeaturedPost';
-import { CtaButtons } from '@/components/CtaButtons';
+import CtaButtons from '@/components/CtaButtons';
 
 import { homeContent } from '@/data/content';
 import { HomeTypes } from '@/types/home';

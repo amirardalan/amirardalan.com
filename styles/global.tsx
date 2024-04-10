@@ -243,20 +243,17 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
             padding: '0 4rem',
             position: 'relative',
             '.pageHeading': {
+              fontSize: 20,
+              fontWeight: 400,
               marginBottom: '1rem',
               fontFamily: 'var(font-secondary)',
-              fontSize: 40,
+              color: 'var(--color-gray)',
               WebkitMarqueeIncrement: '0vw',
-              fontWeight: 700,
               textAlign: 'left',
             },
             '@media(max-width: 1024px)': {
               marginTop: 0,
               padding: '0 2.5rem',
-              '.pageHeading': {
-                marginBottom: '1.5rem',
-                fontSize: 30,
-              },
             },
             '@media (max-width: 600px)': {
               marginTop: '.5rem',

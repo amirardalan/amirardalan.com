@@ -3,6 +3,7 @@ import { css } from '@emotion/react';
 import useTotalLikes from '@/hooks/useTotalLikes';
 import formatNumber from '@/utils/formatNumber';
 import { BlogStatsTypes } from '@/types/blog';
+import { blogContent } from '@/data/content';
 
 type BlogStatsProps = {
   feed: BlogStatsTypes[];
@@ -67,7 +68,7 @@ const BlogStats: FC<BlogStatsProps> = ({ feed, filteredPosts }) => {
 
   return (
     <div css={styleBlogStatsWrapper}>
-      <h1 className="blogHeading">Blog</h1>
+      <h1 className="pageHeading">{blogContent.heading}</h1>
       <ul>
         <li className="postsCount">
           {postCount}

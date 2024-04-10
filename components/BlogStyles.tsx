@@ -68,16 +68,7 @@ const blogStyles = css({
         lineHeight: '1.8rem',
       },
     },
-    '.blogHeading': {
-      fontFamily: 'var(--font-secondary)',
-      fontSize: 40,
-      fontWeight: 700,
-      textDecoration: 'none',
-      '@media(max-width: 1024px)': {
-        fontSize: 30,
-      },
-    },
-    'h1, h2': {
+    '.postFull h1, h2': {
       display: 'inline-block',
       fontSize: 40,
       '@media(max-width: 1024px)': {

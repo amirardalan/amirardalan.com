@@ -46,5 +46,5 @@ export const theme = {
   codeScrollbarLight: '#a5a9b4',
   codeScrollbarHoverLight: '#d4dadf',
   // Speciality
-  avatar: '#412485',
+  avatar: '#24306e',
 };

@@ -47,7 +47,7 @@ export const homeContent = {
 };
 
 export const blogContent = {
-  heading: 'Blog',
+  heading: 'Blog Articles',
   meta: {
     title: `Blog – ${appTitle}`,
     description:
@@ -83,7 +83,7 @@ export const aboutContent = {
     x: 'X',
     linkedin: 'LinkedIn',
   },
-  heading: 'About',
+  heading: 'About — Amir Ardalan',
   avatar: {
     title: `${appTitle}`,
     img: '/avatar/amir-ardalan.jpg',
@@ -113,6 +113,9 @@ export const aboutContent = {
       },
     ],
   },
+  resume: {
+    title: 'Download Resume',
+  },
   bio: {
     subheading: `Hey, I'm Amir 👋`,
     content: metaDescription,
@@ -126,9 +129,6 @@ export const aboutContent = {
       },
     ],
   },
-  resume: {
-    title: 'Resume',
-  },
   skills: {
     title: 'Proficiencies',
     items: [
@@ -137,7 +137,7 @@ export const aboutContent = {
       'HTML + CSS',
       'REST APIs',
       'React',
-      'Git',
+      'UI/UX ',
       'Tailwind',
     ],
   },
@@ -145,17 +145,17 @@ export const aboutContent = {
     items: [
       'Next.js',
       'Figma',
-      'Prisma ORM',
-      'PostgreSQL',
+      'Prisma',
+      'Postgre',
       'SWR / ISR',
-      'Responsive',
       'Three.js',
+      'Git',
     ],
   },
-  experience: {
-    title: 'Experience',
+  intro: {
     items: [
-      "I've collaborated with industry-leading people at iconic brands including Nike, BASIC/DEPT®, Columbia Sportswear, and KEEN Footwear.",
+      `I'm a Design Engineer with 10+ years of experience crafting outstanding digital products.`,
+      `I've collaborated with industry-leading people at iconic brands including Nike, BASIC/DEPT®, Columbia Sportswear, SOREL, and KEEN Footwear`,
       `I operate as a connector between design and engineering teams, with specializations in Front-end development and UI/UX design.`,
     ],
   },
@@ -191,7 +191,7 @@ export const aboutContent = {
 
 export const timelineContent = {
   meta: {
-    title: 'Timeline',
+    title: 'Career Timeline',
   },
   fullStory: {
     text: 'Read the full story...',
@@ -527,12 +527,12 @@ export const footer = {
       title: 'LinkedIn',
     },
     {
-      path: `mailto:${emailAddress}`,
-      title: 'Email',
-    },
-    {
       path: '/resume',
       title: 'Resume',
+    },
+    {
+      path: `mailto:${emailAddress}`,
+      title: 'Email',
     },
   ],
   copyright: {
