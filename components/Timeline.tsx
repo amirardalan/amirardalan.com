@@ -24,8 +24,8 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
     paddingTop: '2rem',
     position: 'relative',
     '.readMoreLink': {
-      fontSize: 20,
-      marginTop: '5.5rem',
+      fontSize: 28,
+      marginTop: '5.8rem',
       display: 'flex',
       justifyContent: 'center',
       fontFamily: 'var(--font-secondary)',
@@ -33,6 +33,10 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
       '&.active': {
         animation: 'slideUp 1s',
         opacity: 1,
+      },
+      '@media (max-width: 480px)': {
+        marginTop: '3.8rem',
+        fontSize: 22,
       },
     },
     '@keyframes growDown': {
@@ -179,9 +183,11 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
         },
       },
       '.date': {
-        fontFamily: 'var(--font-primary)',
         color: 'var(--color-primary)',
-        fontSize: 20,
+        textTransform: 'uppercase',
+        letterSpacing: 5,
+        fontFamily: 'var(--font-primary)',
+        fontSize: 16,
         fontWeight: 400,
         lineHeight: '.5rem',
         '@media(max-width: 768px)': {
