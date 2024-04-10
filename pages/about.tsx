@@ -4,65 +4,63 @@ import { css } from '@emotion/react';
 
 import Container from '@/components/Container';
 import Avatar from '@/components/Avatar';
-import { CtaButtons, ContactButton } from '@/components/CtaButtons';
+import CtaButtons from '@/components/CtaButtons';
 import SocialIcons from '@/components/SocialIcons';
 import Timeline from '@/components/Timeline';
 
 import { aboutContent, timelineContent } from '@/data/content';
 import { AboutTypes, TimelineContentTypes } from '@/types/about';
-import { CtaButtonsTypes, ContactButtonTypes } from '@/types/button';
+import { CtaButtonsTypes } from '@/types/button';
 import { SocialIconsTypes } from '@/types/icons';
 import { TimelineTypes } from '@/types/about';
 
 type AboutPageProps = {
-  about: AboutTypes & SocialIconsTypes & CtaButtonsTypes & ContactButtonTypes;
+  about: AboutTypes & SocialIconsTypes & CtaButtonsTypes;
   timeline: TimelineTypes & TimelineContentTypes;
 };
 
 const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
   const styleAbout = {
     margin: '0 auto',
-    maxWidth: 1920,
+    maxWidth: 768,
     hr: {
       borderTop: 'none',
+      margin: 0,
+      paddingTop: '3rem',
+    },
+    '.aboutIntro': {
+      fontFamily: 'var(--font-tertiary)',
+      fontSize: 32,
+      lineHeight: '3rem',
+      margin: '3rem 0 5rem',
+      li: {
+        color: 'var(--color-heading)',
+        marginBottom: '3rem',
+      },
       '@media (max-width: 768px)': {
-        margin: 0,
-        paddingTop: '3rem',
+        fontSize: 24,
+        lineHeight: '2.25rem',
+        margin: '2rem 0 3rem',
+        li: {
+          marginBottom: '2rem',
+        },
       },
     },
   };
 
   const styleGridWrapper = css({
     display: 'grid',
-    gridTemplateColumns: 'repeat(3, 1fr)',
+    gridTemplateColumns: 'repeat(2, 1fr)',
     gap: '1rem',
     gridAutoRows: 'minmax(100px, auto)',
-    '@media(max-width: 1280px)': {
-      gridTemplateColumns: 'repeat(2, 1fr)',
-    },
-    '@media(max-width: 768px)': {
+    '@media (max-width: 768px)': {
       gridTemplateColumns: 'repeat(1, 1fr)',
     },
     '.grid': {
       display: 'flex',
       justifyContent: 'center',
-      backgroundColor: 'var(--color-bg)',
       borderRadius: 10,
-      padding: '2rem',
       lineHeight: '1.8rem',
-      '.bioHeader': {
-        display: 'flex',
-        justifyContent: 'space-between',
-        h2: {
-          paddingRight: '1rem',
-          fontSize: 32,
-          display: 'flex',
-          alignItems: 'flex-end',
-          '@media (max-width: 480px)': {
-            fontSize: 22,
-          },
-        },
-      },
       '&:first-of-type': {
         border: 'transparent',
         background: 'var(--color-gradient)',
@@ -99,49 +97,22 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
             },
           },
         },
+        svg: {
+          fill: 'var(--color-light)',
+          '&:hover': {
+            fill: 'var(--color-gray-static)',
+          },
+        },
       },
       h3: {
         fontFamily: 'var(--font-primary)',
         fontWeight: 400,
-        fontSize: 14,
+        fontSize: 16,
         letterSpacing: 5,
         textTransform: 'uppercase',
       },
-      ul: {
-        width: '100%',
-      },
-      'ul li': {
-        color: 'var(--color-gray)',
-        strong: {
-          color: 'var(--color-heading)',
-          fontFamily: 'var(--font-secondary)',
-        },
-      },
       'a:hover': {
         textDecoration: 'none',
-      },
-      '.skills': {
-        li: {
-          fontSize: 14,
-          fontFamily: 'var(--font-tertiary)',
-          '&:first-of-type': {
-            '&:before': {
-              content: '" "',
-            },
-          },
-          '&:before': {
-            content: '"• "',
-          },
-        },
-      },
-      '.experience': {
-        fontFamily: 'var(--font-tertiary)',
-        li: {
-          marginBottom: '1.2rem',
-          '@media(min-width: 769px)': {
-            fontSize: 16,
-          },
-        },
       },
       '.availability': {
         color: 'var(--color-heading)',
@@ -151,6 +122,7 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
           marginTop: '1.5rem',
         },
       },
+
       '@media(max-width: 768px)': {
         background: 'none',
         border: 'none',
@@ -161,38 +133,18 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
         },
       },
     },
-    'h2, h3': {
-      fontWeight: 700,
-    },
-    h2: {
-      color: 'var(--color-heading)',
-      fontSize: 24,
-      paddingBottom: '.25rem',
-    },
     h3: {
-      marginBottom: '1.5rem',
-      paddingBottom: '1rem',
+      marginBottom: '.5rem',
+      paddingBottom: '.5rem',
       fontSize: 24,
-      color: 'var(--color-heading)',
-      borderBottom: '2px solid var(--color-primary)',
+      color: 'var(--color-gray)',
+      borderBottom: '2px solid var(--color-text)',
     },
-  });
-  const styleBioItems = css({
-    li: {
-      marginBottom: '1rem',
-      '&:last-of-type': {
-        marginBottom: 0,
-      },
-    },
-  });
-  const styleSocialIconsWrapper = css({
-    width: '100%',
-    display: 'flex',
-    flexDirection: 'column',
   });
   const styleSocialIcons = css({
     display: 'flex',
     flexDirection: 'row',
+    marginBottom: '2rem',
     button: {
       marginRight: '1.5rem',
       '&:last-of-type': {
@@ -208,32 +160,8 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
       },
     },
   });
-  const styleAvailability = css({
-    h4: {
-      fontFamily: 'var(--font-primary)',
-      fontStyle: 'normal',
-      fontSize: 12,
-      fontWeight: 400,
-      textTransform: 'uppercase',
-      letterSpacing: 2,
-      color: 'var(--color-text)',
-      marginBottom: '1rem',
-    },
-    li: {
-      fontFamily: 'var(--font-tertiary)',
-      fontStyle: 'normal',
-      fontSize: 13,
-      fontWeight: 400,
-      lineHeight: '1.2rem',
-      marginBottom: '.5rem',
-    },
-  });
 
-  interface Items {
-    map: Function;
-  }
-
-  const generateListItems = (items: Items) => {
+  const generateListItems = (items: string[]) => {
     return items.map((item: string, i: Key) => {
       return <li key={i}>{item}</li>;
     });
@@ -247,87 +175,23 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
     >
       <main className="about" css={styleAbout}>
         <h1 className="pageHeading">{about.heading}</h1>
+        <div className="aboutIntro">
+          {generateListItems(aboutContent.intro.items)}
+        </div>
+
         <div css={styleGridWrapper}>
           <div className="grid">
-            <div css={styleBioItems}>
-              <div className="bioHeader">
-                <h2 aria-label={about.bio.subheading} className="bioSubHeading">
-                  {about.bio.subheading}
-                </h2>
-                <div className="avatar">
-                  <Avatar height={85} width={85} avatar={about.avatar} />
-                </div>
-              </div>
-              <p className="blurb">{about.bio.content}</p>
-              <div className="divider" />
-              <CtaButtons items={about.bio.items} />
-            </div>
-          </div>
-          <div className="grid">
-            <ul className="experience">
-              <li>
-                <h3 aria-label={about.experience.title}>
-                  {about.experience.title}
-                </h3>
-              </li>
-              {generateListItems(about.experience.items)}
-            </ul>
-          </div>
-          <div className="grid">
-            <ul className="skills">
-              <li>
-                <h3 aria-label={about.skills.title}>{about.skills.title}</h3>
-              </li>
-              {generateListItems(about.skills.items)}
-            </ul>
-            <ul className="skills">
-              <li>
-                <h3 aria-hidden="true">&nbsp;</h3>
-              </li>
-              {generateListItems(about.stack.items)}
-            </ul>
-          </div>
-          <div className="grid">
-            <ul className="availability">
-              <li>
-                <h3 aria-label={about.availability.title}>
-                  {about.availability.title}
-                </h3>
-              </li>
-              <li className="jobTitle">
-                {about.availability.text}{' '}
-                <a
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href={about.availability.link}
-                >
-                  {about.availability.text2}
-                </a>
-                .
-              </li>
-            </ul>
-          </div>
-          <div className="grid">
-            <div css={styleSocialIconsWrapper}>
-              <ul>
-                <li>
-                  <h3>{about.social.title}</h3>
-                </li>
-                <li css={styleSocialIcons}>
-                  <SocialIcons about={about} />
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div className="grid" id="contact">
             <ul>
-              <li>
-                <h3 aria-label={about.contact.title}>{about.contact.title}</h3>
+              <li css={styleSocialIcons}>
+                <SocialIcons about={about} />
               </li>
               <li>
-                <ContactButton content={about} />
+                <CtaButtons items={about.bio.items} />
               </li>
             </ul>
+          </div>
+          <div className="grid">
+            <Avatar height={200} width={200} avatar={about.avatar} />
           </div>
         </div>
         <hr id="timeline" />

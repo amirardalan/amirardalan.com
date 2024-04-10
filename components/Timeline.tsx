@@ -15,7 +15,7 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
   });
 
   const styleTimelineHeading = css({
-    marginTop: '2.5rem',
+    marginTop: '2.8rem',
     '@media (max-width: 768px)': {
       marginTop: 0,
     },
@@ -25,7 +25,7 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
     position: 'relative',
     '.readMoreLink': {
       fontSize: 20,
-      marginTop: '4.5rem',
+      marginTop: '5.5rem',
       display: 'flex',
       justifyContent: 'center',
       fontFamily: 'var(--font-secondary)',
@@ -58,7 +58,7 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
     '.timeline': {
       '&:nth-of-type(even), &:nth-of-type(odd)': {
         '.event': {
-          maxWidth: 400,
+          maxWidth: 345,
           boxShadow: '-2px 2px 0 var(--color-accent-lighter)',
           background: 'var(--color-accent)',
           h3: {
@@ -196,7 +196,7 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
       '.event': {
         position: 'relative',
         marginBottom: '4rem',
-        padding: '2.5rem',
+        padding: '2rem',
         border: '1px solid var(--color-accent)',
         borderRadius: 5,
         fontSize: 14,
