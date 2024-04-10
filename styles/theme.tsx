@@ -28,7 +28,7 @@ export const theme = {
   textInputLight: '#e7e6eb',
   textInputDark: '#0f0f12',
   // Buttons
-  buttonDisabled: '#5a5b65',
+  buttonDisabled: '#6a6a77',
   warningLight: '#e64358',
   warningDark: '#de5063',
   gradientLight:

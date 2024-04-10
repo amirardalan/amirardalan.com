@@ -40,7 +40,7 @@ const BlogAdmin: FC = () => {
     padding: '.5rem 4rem',
     fontFamily: 'var(--font-primary)',
     backgroundColor: 'var(--color-accent)',
-    borderBottom: '1px solid var(--color-accent-gray)',
+    borderBottom: '1px solid var(--color-accent-lighter)',
     justifyContent: 'space-between',
     marginTop: '-3rem',
     animation: 'adminPanelSlideDown .5s forwards',

@@ -16,12 +16,14 @@ const blogStyles = css({
       border: '2px solid transparent',
       padding: '.6rem',
       fontSize: 16,
+      outline: 'none',
       '&::placeholder': {
         color: 'var(--color-gray) !important',
         fontFamily: 'var(--font-secondary)',
       },
       '&:focus': {
-        outline: 'var(--color-primary)',
+        border: '2px solid var(--color-primary)',
+        outline: 'none',
         borderColor: 'var(--color-primary)',
         boxShadow: '2px solid var(--color-primary)',
       },
@@ -324,12 +326,15 @@ const blogStyles = css({
     color: 'var(--color-gray) !important',
     appearance: 'none',
     backgroundColor: 'var(--color-bg)',
-    border: '2px solid var(--color-accent-gray)',
+    border: '2px solid var(--color-accent-lighter)',
+    outline: 'none',
+    boxShadow: 'none',
     borderRadius: '0.25rem',
     fontFamily: 'var(--font-primary)',
     fontSize: 15,
+    caretColor: 'var(--color-text)',
     '&:focus': {
-      border: '2px solid var(--color-accent-gray)',
+      border: '2px solid var(--color-gray)',
     },
     '&:placeholder:disabled': 'red !important',
     '&:disabled': {
