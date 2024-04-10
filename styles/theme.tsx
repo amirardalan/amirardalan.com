@@ -22,8 +22,8 @@ export const theme = {
   secondary: '#67fff2',
   grayLight: '#adb0c3',
   grayDark: '#717380',
-  grayAccentLight: '#d0ceda',
-  grayAccentDark: '#24242c',
+  grayAccentLight: '#9f9cab',
+  grayAccentDark: '#6b6b80',
   // Inputs
   textInputLight: '#e7e6eb',
   textInputDark: '#0f0f12',

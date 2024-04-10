@@ -130,7 +130,7 @@ const blogStyles = css({
     margin: '0 0 0 .5rem',
     padding: '0 .5rem',
     backgroundColor: 'transparent',
-    border: '1px solid var(--color-accent-gray)',
+    border: '1px solid var(--color-accent)',
     borderRadius: 10,
     fontSize: 11,
     '@media(max-width: 480px)': {
@@ -145,7 +145,7 @@ const blogStyles = css({
     '.info': {
       fontSize: 16,
       width: '100%',
-      borderBottom: '1px solid var(--color-accent-gray)',
+      borderBottom: '1px solid var(--color-accent)',
       fontFamily: 'var(--font-secondary)',
       display: 'flex',
       flexDirection: 'row',
@@ -160,6 +160,9 @@ const blogStyles = css({
         paddingLeft: '.25rem',
         fontFamily: 'var(--font-secondary)',
         fontSize: 16,
+        '&:hover': {
+          textDecoration: 'none',
+        },
       },
       time: {
         fontFamily: 'var(--font-primary)',
@@ -229,6 +232,7 @@ const blogStyles = css({
       },
     },
     '.blogListDetails': {
+      color: 'var(--color-accent-gray)',
       width: '100%',
       display: 'flex',
       flexDirection: 'row',

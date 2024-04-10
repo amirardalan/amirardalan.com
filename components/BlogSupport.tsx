@@ -42,8 +42,9 @@ const BlogSupport: FC<BlogSupportProps> = ({
     width: '100%',
     position: 'relative',
     marginBottom: '3.5rem',
-    border: '1px solid var(--color-accent-gray)',
+    border: '1px solid var(--color-accent)',
     borderRadius: '5px',
+    color: 'var(--color-gray)',
     '.closeBtn': {
       zIndex: 3,
       display: showOptions ? 'inline-block' : 'none',
@@ -88,29 +89,6 @@ const BlogSupport: FC<BlogSupportProps> = ({
         margin: '2.5rem',
         '@media (max-width: 480px)': {
           margin: '1.6rem 2rem',
-        },
-        '.optionsHeading': {
-          h4: {
-            textTransform: 'uppercase',
-            fontFamily: 'var(--font-primary)',
-            fontWeight: 'normal',
-            textAlign: 'center',
-            position: 'relative',
-            background: 'var(--color-bg)',
-            marginTop: '.2rem',
-            padding: '0 .75rem',
-            height: '100%',
-            width: '100%',
-            '&:after': {
-              zIndex: -1,
-              content: '""',
-              width: '200%',
-              position: 'absolute',
-              left: '-50%',
-              top: 10,
-              borderTop: '1px solid var(--color-accent-gray)',
-            },
-          },
         },
         '.paymentMethods': {
           display: 'flex',

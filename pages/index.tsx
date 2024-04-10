@@ -79,14 +79,15 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
       fontFamily: 'var(--font-tertiary)',
       fontWeight: 400,
       fontStyle: 'italic',
-      fontSize: 27,
+      fontSize: 24,
       maxWidth: 'fit-content',
       letterSpacing: 1,
-      '@media(max-width: 1024px)': {
-        fontSize: 18,
+      marginTop: '1rem',
+      '@media(max-width: 1245px)': {
+        fontSize: 20,
       },
       '@media(max-width: 768px)': {
-        fontSize: 14,
+        fontSize: 15,
       },
     },
   });
@@ -98,8 +99,9 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
       },
     },
     '.intro, .typed': {
+      color: 'var(--color-accent-gray)',
       display: 'block',
-      margin: '2rem 0',
+      margin: '2rem 0 5rem 0',
     },
     '.typed': {
       '&:before': {
@@ -122,7 +124,7 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
   const styleCtaButtons = css({
     display: 'flex',
     flexDirection: 'row',
-    marginBottom: '6rem',
+    marginBottom: '2rem',
     '@media (max-width: 480px)': {
       marginBottom: '1rem',
     },

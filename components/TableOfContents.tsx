@@ -60,8 +60,8 @@ const TableOfContents: FC<TableOfContentsProps> = ({ markdown }) => {
         margin: '.4rem 0 .4rem 2rem',
         lineHeight: 'normal',
         '&::before': {
-          border: '1px solid var(--color-accent-lighter)',
-          color: 'var(--color-accent-lighter)',
+          border: '1px solid var(--color-accent-gray)',
+          color: 'var(--color-accent-gray)',
           top: '.2rem',
         },
       },

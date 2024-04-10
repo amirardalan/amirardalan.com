@@ -45,16 +45,16 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
     justifyContent: 'start',
     minWidth: 'fit-content',
     maxWidth: 'min-content',
-    marginBottom: '.8rem',
+    marginBottom: '1rem',
     padding: '.24rem .7rem .2rem .5rem',
-    border: '1px solid var(--color-accent-lighter)',
+    border: '1px solid var(--color-accent-gray)',
     backgroundColor: 'transparent',
     borderRadius: 10,
     h3: {
-      color: 'var(--color-gray)',
+      color: 'var(--color-accent-gray)',
     },
     '.icon': {
-      fill: 'var(--color-accent-lighter)',
+      fill: 'var(--color-accent-gray)',
       animation: animate ? `rotate ${ANIMATION_TIME}ms ease-out` : '',
     },
     '@media (min-width: 1025px)': {
@@ -85,7 +85,7 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
       alignItems: 'baseline',
       marginLeft: '.3rem',
       fontFamily: 'var(--font-primary)',
-      color: 'var(--color-gray)',
+      color: 'var(--color-accent-gray)',
       textTransform: 'uppercase',
       fontSize: 11,
       fontWeight: 400,
@@ -130,15 +130,18 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
         },
       },
       '@media(max-width: 480px)': {
-        fontSize: 16,
+        fontSize: 18,
       },
     },
     p: {
-      marginTop: '.25rem',
+      marginTop: '.4rem',
       lineHeight: '1.25rem',
       fontSize: 15,
       fontFamily: 'var(--font-tertiary)',
       color: 'var(--color-gray)',
+      '@media (max-width: 480px)': {
+        marginTop: '.25rem',
+      },
     },
   });
 
