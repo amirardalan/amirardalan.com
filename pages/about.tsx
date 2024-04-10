@@ -53,7 +53,7 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
     gridTemplateColumns: 'repeat(2, 1fr)',
     gap: '1rem',
     gridAutoRows: 'minmax(100px, auto)',
-    '@media (max-width: 768px)': {
+    '@media (max-width: 480px)': {
       gridTemplateColumns: 'repeat(1, 1fr)',
     },
     '.grid': {

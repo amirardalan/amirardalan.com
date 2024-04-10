@@ -83,7 +83,7 @@ export const aboutContent = {
     x: 'X',
     linkedin: 'LinkedIn',
   },
-  heading: 'Amir Ardalan — Design Engineer',
+  heading: 'About — Amir Ardalan',
   avatar: {
     title: `${appTitle}`,
     img: '/avatar/amir-ardalan.jpg',
@@ -155,7 +155,7 @@ export const aboutContent = {
   intro: {
     items: [
       `I'm a Design Engineer with 10+ years of experience crafting outstanding digital products.`,
-      `I've collaborated with industry-leading people at iconic brands including Nike, BASIC/DEPT®, Columbia Sportswear, and KEEN Footwear.`,
+      `I've collaborated with industry-leading people at iconic brands including Nike, BASIC/DEPT®, Columbia Sportswear, SOREL, Mountain Hardwear, KEEN Footwear, and Chrome Industries.`,
       `I operate as a connector between design and engineering teams, with specializations in Front-end development and UI/UX design.`,
     ],
   },
@@ -527,12 +527,12 @@ export const footer = {
       title: 'LinkedIn',
     },
     {
-      path: `mailto:${emailAddress}`,
-      title: 'Email',
-    },
-    {
       path: '/resume',
       title: 'Resume',
+    },
+    {
+      path: `mailto:${emailAddress}`,
+      title: 'Email',
     },
   ],
   copyright: {
