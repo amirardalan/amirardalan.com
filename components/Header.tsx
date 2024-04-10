@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { css } from '@emotion/react';
 import Navigation from '@/components/Navigation';
 import Logo from '@/components/Logo';
+import { appTitle } from '@/data/content';
 
 const ThemeToggle = dynamic(() => import('@/components/ThemeToggle'), {
   ssr: false,
@@ -81,7 +82,7 @@ const Header: FC<HeaderProps> = ({ toggleTheme }) => {
       <BlogAdmin />
       <header css={styleHeaderWrapper}>
         <div css={styleHeader}>
-          <Link href="/" aria-label="Amir Ardalan Logo" passHref>
+          <Link href="/" aria-label={`${appTitle} Ardalan Logo`} passHref>
             <button css={styleLogoButton}>
               <Logo animate={true} size={25} color="var(--color-heading)" />
             </button>

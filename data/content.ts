@@ -1,4 +1,4 @@
-const appTitle = 'Amir Ardalan';
+export const appTitle = 'Amir Ardalan';
 const appDesc = 'Design Engineer';
 const metaDescription = `Design Engineer with 10+ years of experience crafting outstanding digital products.`;
 
@@ -47,7 +47,7 @@ export const homeContent = {
 };
 
 export const blogContent = {
-  heading: 'Blog Articles',
+  heading: `Blog — ${appTitle}`,
   meta: {
     title: `Blog – ${appTitle}`,
     description:
@@ -83,7 +83,7 @@ export const aboutContent = {
     x: 'X',
     linkedin: 'LinkedIn',
   },
-  heading: 'About — Amir Ardalan',
+  heading: `About — ${appTitle}`,
   avatar: {
     title: `${appTitle}`,
     img: '/avatar/amir-ardalan.jpg',

@@ -33,14 +33,27 @@ const BlogStats: FC<BlogStatsProps> = ({ feed, filteredPosts }) => {
       alignItems: 'flex-end',
       marginBottom: '.2rem',
     },
+    '.blogStats': {
+      marginBottom: '1.25rem',
+      '@media (max-width: 1024px)': {
+        marginBottom: '1rem',
+      },
+    },
     '.postsCount, .likesCount': {
       color: 'var(--color-gray)',
       '.text': {
         color: 'var(--color-accent-gray)',
       },
+      '@media (max-width: 480px)': {
+        fontSize: 12,
+      },
+    },
+    '.likesCount': {
+      marginLeft: '.75rem',
     },
     '.divider': {
       color: 'var(--color-accent-lighter)',
+      marginLeft: '.75rem',
     },
     li: {
       lineHeight: '1rem',
@@ -69,7 +82,7 @@ const BlogStats: FC<BlogStatsProps> = ({ feed, filteredPosts }) => {
   return (
     <div css={styleBlogStatsWrapper}>
       <h1 className="pageHeading">{blogContent.heading}</h1>
-      <ul>
+      <ul className="blogStats">
         <li className="postsCount">
           {postCount}
           <span className="text">{postsText}</span>
