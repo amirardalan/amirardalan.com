@@ -264,6 +264,16 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
             </div>
           </div>
           <div className="grid">
+            <ul className="experience">
+              <li>
+                <h3 aria-label={about.experience.title}>
+                  {about.experience.title}
+                </h3>
+              </li>
+              {generateListItems(about.experience.items)}
+            </ul>
+          </div>
+          <div className="grid">
             <ul className="skills">
               <li>
                 <h3 aria-label={about.skills.title}>{about.skills.title}</h3>
@@ -275,16 +285,6 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
                 <h3 aria-hidden="true">&nbsp;</h3>
               </li>
               {generateListItems(about.stack.items)}
-            </ul>
-          </div>
-          <div className="grid">
-            <ul className="experience">
-              <li>
-                <h3 aria-label={about.experience.title}>
-                  {about.experience.title}
-                </h3>
-              </li>
-              {generateListItems(about.experience.items)}
             </ul>
           </div>
           <div className="grid">
