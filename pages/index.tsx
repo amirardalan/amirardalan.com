@@ -79,12 +79,14 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
       fontFamily: 'var(--font-tertiary)',
       fontWeight: 400,
       fontStyle: 'italic',
-      fontSize: 18,
-      textTransform: 'uppercase',
-      letterSpacing: 5,
-      marginTop: '1rem',
+      fontSize: 27,
+      maxWidth: 'fit-content',
+      letterSpacing: 1,
+      '@media(max-width: 1024px)': {
+        fontSize: 18,
+      },
       '@media(max-width: 768px)': {
-        fontSize: 11,
+        fontSize: 14,
       },
     },
   });
@@ -111,15 +113,19 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
     h1: {
       lineHeight: '100%',
       fontFamily: 'var(--font-secondary)',
-      fontSize: 'calc(3.5vw + 3.5vh)',
+      fontSize: 'calc(3.6vw + 3.6vh)',
       fontWeight: 700,
+      textTransform: 'uppercase',
       WebkitMarqueeIncrement: '0vw',
     },
   });
   const styleCtaButtons = css({
     display: 'flex',
     flexDirection: 'row',
-    marginBottom: '1rem',
+    marginBottom: '6rem',
+    '@media (max-width: 480px)': {
+      marginBottom: '1rem',
+    },
   });
   const styleMainRight = css({
     position: 'relative',

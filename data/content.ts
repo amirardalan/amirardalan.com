@@ -1,7 +1,7 @@
 const appTitle = 'Amir Ardalan';
 const appDesc = 'Design Engineer';
 const metaDescription = `Design Engineer with 10+ years of experience crafting outstanding digital products.`;
-const slogan = 'Design / Code / Words';
+const subheading = `A Design Engineer's journey.`;
 
 const emailAddress = 'hi@amirardalan.com';
 const linkGitHub = 'https://github.com/amirardalan';
@@ -24,7 +24,7 @@ export const homeContent = {
     `follow me on <a href=${linkX} rel="noopener noreferrer">X</a>`,
   ],
   title: `${appTitle}`,
-  subTitle: slogan,
+  subTitle: subheading,
   description: metaDescription,
   items: [
     {

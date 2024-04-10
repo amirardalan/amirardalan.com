@@ -13,7 +13,7 @@ const blogStyles = css({
       fontFamily: 'var(--font-secondary)',
       color: 'var(--color-text)',
       background: 'var(--color-accent)',
-      border: '1px solid transparent',
+      border: '2px solid transparent',
       padding: '.6rem',
       fontSize: 16,
       '&::placeholder': {
@@ -23,7 +23,7 @@ const blogStyles = css({
       '&:focus': {
         outline: 'var(--color-primary)',
         borderColor: 'var(--color-primary)',
-        boxShadow: '1px solid var(--color-primary)',
+        boxShadow: '2px solid var(--color-primary)',
       },
     },
     '.categoryWrapper': {
@@ -320,12 +320,12 @@ const blogStyles = css({
     color: 'var(--color-gray) !important',
     appearance: 'none',
     backgroundColor: 'var(--color-bg)',
-    border: '1px solid var(--color-accent-gray)',
+    border: '2px solid var(--color-accent-gray)',
     borderRadius: '0.25rem',
     fontFamily: 'var(--font-primary)',
     fontSize: 15,
     '&:focus': {
-      border: '1px solid var(--color-accent-gray)',
+      border: '2px solid var(--color-accent-gray)',
     },
     '&:placeholder:disabled': 'red !important',
     '&:disabled': {
