@@ -160,7 +160,7 @@ export const aboutContent = {
     ],
   },
   availability: {
-    title: 'Current Project',
+    title: 'Current Role',
     text: 'Software Engineer II @',
     text2: 'Nike',
     location: 'Remote / onsite in Portland, OR Metro Area',

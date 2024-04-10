@@ -47,11 +47,11 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
     maxWidth: 'min-content',
     marginBottom: '1.15rem',
     padding: '.24rem .7rem .2rem .5rem',
-    border: '1px solid var(--color-accent-gray)',
+    border: '1px solid var(--color-accent-lighter)',
     backgroundColor: 'transparent',
     borderRadius: 10,
     h3: {
-      color: 'var(--color-accent-gray)',
+      color: 'var(--color-accent-lighter)',
     },
     '.icon': {
       fill: 'var(--color-accent-gray)',

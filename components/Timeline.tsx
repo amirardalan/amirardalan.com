@@ -15,7 +15,7 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
   });
 
   const styleTimelineHeading = css({
-    marginTop: '4rem',
+    marginTop: '2.5rem',
     '@media (max-width: 768px)': {
       marginTop: 0,
     },
@@ -71,6 +71,7 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
           },
           '@media(max-width: 480px)': {
             boxShadow: 'none',
+            background: 'none',
           },
         },
       },

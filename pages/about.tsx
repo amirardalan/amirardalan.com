@@ -21,6 +21,8 @@ type AboutPageProps = {
 
 const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
   const styleAbout = {
+    margin: '0 auto',
+    maxWidth: 1920,
     hr: {
       borderTop: 'none',
       '@media (max-width: 768px)': {
@@ -45,7 +47,6 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
       display: 'flex',
       justifyContent: 'center',
       backgroundColor: 'var(--color-bg)',
-      border: '2px solid var(--color-accent)',
       borderRadius: 10,
       padding: '2rem',
       lineHeight: '1.8rem',
@@ -122,7 +123,7 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
       '.skills': {
         li: {
           fontSize: 14,
-          fontFamily: 'var(--font-primary)',
+          fontFamily: 'var(--font-tertiary)',
           '&:first-of-type': {
             '&:before': {
               content: '" "',
@@ -144,20 +145,10 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
       },
       '.availability': {
         color: 'var(--color-heading)',
-        fontSize: 16,
-        fontWeight: 700,
+        fontSize: 20,
         fontFamily: 'var(--font-secondary)',
         '.subheading': {
           marginTop: '1.5rem',
-          li: {
-            fontFamily: 'var(--font-primary)',
-            borderBottom: '1px solid var(--color-accent-gray)',
-            paddingBottom: '.5rem',
-            '&:first-of-type, &:last-of-type': {
-              padding: 0,
-              borderBottom: 'none',
-            },
-          },
         },
       },
       '@media(max-width: 768px)': {
@@ -314,12 +305,6 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
                 </a>
                 .
               </li>
-              <ul css={styleAvailability} className="subheading">
-                <li>
-                  <h4>{about.availability.title2}</h4>
-                </li>
-                {generateListItems(about.availability.items)}
-              </ul>
             </ul>
           </div>
           <div className="grid">
