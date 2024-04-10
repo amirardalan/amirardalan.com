@@ -42,7 +42,7 @@ const BlogSupport: FC<BlogSupportProps> = ({
     width: '100%',
     position: 'relative',
     marginBottom: '3.5rem',
-    border: '1px solid var(--color-accent)',
+    border: '1px solid var(--color-accent-lighter)',
     borderRadius: '5px',
     color: 'var(--color-gray)',
     '.closeBtn': {

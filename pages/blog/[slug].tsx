@@ -359,7 +359,7 @@ const styleBlogPost = css({
       position: 'relative',
       marginBottom: '2.2rem',
       padding: '2.8rem 1.5rem 1.25rem 1.5rem',
-      border: '1px solid var(--color-accent)',
+      border: '1px solid var(--color-accent-lighter)',
       borderRadius: 5,
       fontFamily: 'var(--font-primary)',
       fontSize: 14.5,

@@ -138,7 +138,7 @@ const blogStyles = css({
     '.info': {
       fontSize: 16,
       width: '100%',
-      borderBottom: '1px solid var(--color-accent)',
+      borderBottom: '1px solid var(--color-accent-lighter)',
       fontFamily: 'var(--font-secondary)',
       display: 'flex',
       flexDirection: 'row',

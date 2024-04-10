@@ -84,7 +84,7 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
     '.intro, .typed': {
       color: 'var(--color-accent-gray)',
       display: 'block',
-      margin: '2rem 0 4rem',
+      margin: '2rem 0',
     },
     '.typed': {
       fontSize: 18,
@@ -97,7 +97,7 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
       },
     },
     h1: {
-      marginBottom: '2rem',
+      marginBottom: '4rem',
       lineHeight: '100%',
       fontFamily: 'var(--font-secondary)',
       fontSize: 'calc(3.4vw + 3.4vh)',

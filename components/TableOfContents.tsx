@@ -33,12 +33,14 @@ const TableOfContents: FC<TableOfContentsProps> = ({ markdown }) => {
         color: 'var(--color-gray)',
         fill: 'var(--color-gray)',
       },
-      '&:hover': {
-        '.tocTitle': {
-          color: 'var(--color-primary)',
-        },
-        svg: {
-          fill: 'var(--color-primary)',
+      '@media (min-width: 1025px)': {
+        '&:hover': {
+          '.tocTitle': {
+            color: 'var(--color-primary)',
+          },
+          svg: {
+            fill: 'var(--color-primary)',
+          },
         },
       },
     },
@@ -48,17 +50,14 @@ const TableOfContents: FC<TableOfContentsProps> = ({ markdown }) => {
       marginTop: '.1rem',
     },
     'ol.tableOfContents': {
-      margin: '.5rem 0 1rem 0',
+      margin: '1rem 0 .25rem',
       a: {
         margin: 0,
         padding: 0,
       },
       li: {
-        a: {
-          textDecoration: 'none !important',
-        },
-        margin: '.4rem 0 .4rem 2rem',
         lineHeight: 'normal',
+        marginBottom: '.4rem',
         '&::before': {
           border: '1px solid var(--color-accent-gray)',
           color: 'var(--color-accent-gray)',
