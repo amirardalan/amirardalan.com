@@ -32,8 +32,14 @@ const BlogStats: FC<BlogStatsProps> = ({ feed, filteredPosts }) => {
       alignItems: 'flex-end',
       marginBottom: '.2rem',
     },
+    '.postsCount, .likesCount': {
+      color: 'var(--color-gray)',
+      '.text': {
+        color: 'var(--color-accent-gray)',
+      },
+    },
     '.divider': {
-      color: 'var(--color-accent-gray)',
+      color: 'var(--color-accent-lighter)',
     },
     li: {
       lineHeight: '1rem',

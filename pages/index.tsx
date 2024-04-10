@@ -47,7 +47,6 @@ type HomeProps = {
   home: HomeTypes & {
     typed: string;
     title: string;
-    subTitle: string;
     items: CtaButtonsTypes['items'];
     meta: {
       title: string;
@@ -74,22 +73,6 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
     '@media (max-width: 480px)': {
       padding: 0,
     },
-    '.subTitle': {
-      color: 'var(--color-gray)',
-      fontFamily: 'var(--font-tertiary)',
-      fontWeight: 400,
-      fontStyle: 'italic',
-      fontSize: 24,
-      maxWidth: 'fit-content',
-      letterSpacing: 1,
-      marginTop: '1rem',
-      '@media(max-width: 1245px)': {
-        fontSize: 20,
-      },
-      '@media(max-width: 768px)': {
-        fontSize: 15,
-      },
-    },
   });
   const styleContent = css({
     '.titleWrapper': {
@@ -101,9 +84,10 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
     '.intro, .typed': {
       color: 'var(--color-accent-gray)',
       display: 'block',
-      margin: '2rem 0 5rem 0',
+      margin: '2rem 0 4rem',
     },
     '.typed': {
+      fontSize: 18,
       '&:before': {
         content: '"> ~ % "',
         color: 'var(--color-primary)',
@@ -113,18 +97,20 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
       },
     },
     h1: {
+      marginBottom: '2rem',
       lineHeight: '100%',
       fontFamily: 'var(--font-secondary)',
-      fontSize: 'calc(3.6vw + 3.6vh)',
+      fontSize: 'calc(3.4vw + 3.4vh)',
       fontWeight: 700,
-      textTransform: 'uppercase',
       WebkitMarqueeIncrement: '0vw',
+      '@media (max-width: 768px)': {
+        fontSize: 'calc(5.4vw + 5.4vh)',
+      },
     },
   });
   const styleCtaButtons = css({
     display: 'flex',
     flexDirection: 'row',
-    marginBottom: '2rem',
     '@media (max-width: 480px)': {
       marginBottom: '1rem',
     },
@@ -153,10 +139,9 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
                 <TypingAnimation data={home.typed} />
               </span>
               <h1>{home.title}</h1>
-              <h2 className="subTitle">{home.subTitle}</h2>
-            </div>
-            <div css={styleCtaButtons}>
-              <CtaButtons items={home.items} />
+              <div css={styleCtaButtons}>
+                <CtaButtons items={home.items} />
+              </div>
             </div>
             <FeaturedPost
               home={home}

@@ -1,7 +1,6 @@
 const appTitle = 'Amir Ardalan';
 const appDesc = 'Design Engineer';
 const metaDescription = `Design Engineer with 10+ years of experience crafting outstanding digital products.`;
-const subheading = `The portfolio of a Design Engineer.`;
 
 const emailAddress = 'hi@amirardalan.com';
 const linkGitHub = 'https://github.com/amirardalan';
@@ -15,16 +14,16 @@ export const homeContent = {
     description: metaDescription,
   },
   typed: [
-    `I craft digital experiences`,
+    `portfolio of design engineer:`,
+    `i craft digital experiences`,
+    `follow me on x: <a href=${linkX} rel="noopener noreferrer">@amirardalan</a>`,
     `peruse my <a href="/blog">blog posts</a>`,
     `learn a bit <a href="/about">about me</a>`,
-    `browse my <a href="/about#timeline">work history</a>`,
-    `check out the <a href="/uses">tools I use</a>`,
-    `delve into my <a href=${linkGitHub} rel="noopener noreferrer">GitHub</a>`,
-    `follow me on <a href=${linkX} rel="noopener noreferrer">X</a>`,
+    `browse my career <a href="/about#timeline">timeline</a>`,
+    `check out the <a href="/uses">tools i use</a>`,
+    `delve into my <a href=${linkGitHub} rel="noopener noreferrer">github</a>`,
   ],
   title: `${appTitle}`,
-  subTitle: subheading,
   description: metaDescription,
   items: [
     {
