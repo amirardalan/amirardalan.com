@@ -225,7 +225,7 @@ export const timelineContent = {
     {
       title: 'Built amirardalan.com Blog & CMS',
       content:
-        'Building, maintaining open-source Next.js blog & CMS. Began Writing about front-end code, devops, and tech.',
+        'Building, maintaining a Next.js Blog & CMS in TypeScript. Began blogging about React, Markdown, and my personal career journey.',
       cName: 'event',
     },
     {
@@ -245,13 +245,13 @@ export const timelineContent = {
     {
       title: 'Application Engineer @ DemandPDX',
       content:
-        'Delivered Frontend code in an agency environment for many clients including Hanna Andersson and Leatherman.',
+        'Delivered Salesforce Commerce Cloud code in an agency environment for many clients including Hanna Andersson and Leatherman.',
       cName: 'event',
     },
     {
       title: 'Lead UI Engineer @ KEEN Footwear',
       content:
-        'Collaborated with BASIC/DEPT® to design and build KEEN Footwear and Chrome Industries Ecommerce experiences.',
+        'Collaborated with BASIC/DEPT® to design and build KEEN Footwear and Chrome Industries Salesforce Commerce Cloud experiences.',
       cName: 'event',
     },
     {
@@ -265,13 +265,13 @@ export const timelineContent = {
     {
       title: 'Web Dev I @ Columbia Sportswear',
       content:
-        'Got my first taste of Agile Scrum on a large development team. Developed Frontend code for Columbia, SOREL, and Mountain Hardwear.',
+        'My first experience with Agile Scrum. Developed Salesforce Commerce Cloud code for Columbia, SOREL, and Mountain Hardwear.',
       cName: 'event',
     },
     {
       title: 'Frontend Dev @ Dealer Spike',
       content:
-        'Build websites for Powersports dealerships across the USA and Canada using HTML, CSS, and JavaScript and Photoshop.',
+        'Built websites for Powersports dealerships across the USA and Canada using HTML, CSS, and jQuery. Designed in Photoshop.',
       cName: 'event',
     },
     {
@@ -283,15 +283,15 @@ export const timelineContent = {
       cName: 'date',
     },
     {
-      title: 'Freelancer & Consultant',
+      title: 'Freelance Web Design',
       content:
-        'Ren a freelance business with 30+ clients. Developed websites using HTML, CSS, JS and Flash.',
+        'Started a freelance business that eventually served ~30 clients. Developed small to medium size websites using HTML, CSS, JS and Flash.',
       cName: 'event',
     },
     {
       title: 'UI Designer @ Selliken Systems',
       content:
-        'Worked on the HomeQuest real estate property search tool. Used Adobe Photoshop and Google Maps API.',
+        'Worked on the HomeQuest real estate property search tool. Designed UI in Adobe Photoshop and produced animations in Flash.',
       cName: 'event',
     },
     {
@@ -324,7 +324,7 @@ export const timelineContent = {
     {
       title: 'First Computer',
       content:
-        'My family got a Compaq Presario CDS 524. I Read Microsoft Encarta and played "Where In the World is Carmen San Diego" and "X-Wing".',
+        'My family got a Compaq Presario CDS 524. I read lots of Microsoft Encarta and played "WitWi Carmen San Diego" and "X-Wing".',
       cName: 'event',
     },
   ],
