@@ -161,7 +161,7 @@ const Navigation: FC = () => {
     justifyContent: 'flex-start',
     alignSelf: 'left',
     '.xLogo': {
-      fontSize: 12,
+      fontSize: 13,
       color: 'var(--color-bg)',
       marginRight: 5,
     },
