@@ -4,7 +4,7 @@ const metaDescription = `Design Engineer with 10+ years of experience crafting o
 
 const emailAddress = 'hi@amirardalan.com';
 const linkGitHub = 'https://github.com/amirardalan';
-const linkX = 'https://x.com/amirardalan';
+const linkX = 'https://x.com/intent/follow?screen_name=amirardalan';
 const linkLinkedIn = 'https://linkedin.com/in/amirardalan';
 const linkCodePen = 'https://codepen.io/amirardalan/collections/public';
 
