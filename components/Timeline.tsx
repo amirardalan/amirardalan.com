@@ -11,7 +11,7 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
   const { ref, inView } = useInView({
     threshold: 1,
     rootMargin: '0% 0% -33% 0%',
-    triggerOnce: true,
+    triggerOnce: false,
   });
 
   const styleTimelineHeading = css({
@@ -29,15 +29,24 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
       display: 'flex',
       justifyContent: 'center',
       fontFamily: 'var(--font-secondary)',
-      opacity: 0,
       '&.active': {
-        animation: 'slideUp 1s',
-        opacity: 1,
+        animation: 'fadeIn 1s forwards',
+      },
+      '&:not(.active)': {
+        animation: 'fadeOut .5s forwards',
       },
       '@media (max-width: 480px)': {
         marginTop: '3.8rem',
         fontSize: 22,
       },
+    },
+    '@keyframes fadeIn': {
+      from: { opacity: 0 },
+      to: { opacity: 1 },
+    },
+    '@keyframes fadeOut': {
+      from: { opacity: 1 },
+      to: { opacity: 0 },
     },
     '@keyframes growDown': {
       from: {
