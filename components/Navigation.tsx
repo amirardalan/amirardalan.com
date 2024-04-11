@@ -161,9 +161,7 @@ const Navigation: FC = () => {
     justifyContent: 'flex-start',
     alignSelf: 'left',
     '.xLogo': {
-      fontSize: 13,
-      color: 'var(--color-bg)',
-      marginRight: 5,
+      margin: '2.5px 1px 0 0',
     },
     '.button': {
       borderBottom: 'none',
@@ -172,7 +170,7 @@ const Navigation: FC = () => {
       alignItems: 'center',
       backgroundColor: 'var(--color-heading)',
       padding: '.05rem .3rem',
-      borderRadius: '4px',
+      borderRadius: '5px',
       textDecoration: 'none',
       svg: {
         marginRight: '.25rem',
@@ -243,7 +241,17 @@ const Navigation: FC = () => {
             })
           }
         >
-          <span className="xLogo">𝕏</span>
+          <span className="xLogo">
+            <svg
+              width="12"
+              height="12"
+              viewBox="0 0 24 24"
+              fill="var(--color-bg)"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M0.0583996 0L9.32452 12.3803L0 22.4461H2.09874L10.2625 13.6332L16.8584 22.4461H24L14.2123 9.36956L22.8916 0H20.7929L13.2747 8.11632L7.2 0H0.0583996ZM3.14469 1.54462H6.42551L20.9133 20.9015H17.6325L3.14469 1.54462Z" />
+            </svg>
+          </span>
           <a
             href="https://twitter.com/intent/follow?screen_name=amirardalan"
             target="_blank"
