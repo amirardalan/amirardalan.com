@@ -199,29 +199,39 @@ export const timelineContent = {
   },
   items: [
     {
+      content: 'Present',
+      cName: 'date',
+    },
+    {
+      title: 'Software Engineer II @ Nike',
+      content:
+        'Working with Nike Global Technology teams building enterprise tools and software using React.',
+      cName: 'event',
+    },
+    {
       title: 'Software Engineer II @ Nike',
       content:
         'Developing digital prototypes and tools for designers @ Nike LeBron James Innovation Center.',
       cName: 'event',
     },
     {
-      content: 'Present',
-      cName: 'date',
-    },
-    {
       content: '2022',
       cName: 'date',
     },
     {
-      title: 'Freelancer & Consultant',
+      content: '2021',
+      cName: 'date',
+    },
+    {
+      title: 'Built amirardalan.com Blog & CMS',
       content:
-        'Building, maintaining open-source amirardalan.com Next.js blog & CMS. Writing about front-end code, devops, and tech.',
+        'Building, maintaining open-source Next.js blog & CMS. Began Writing about front-end code, devops, and tech.',
       cName: 'event',
     },
     {
-      title: 'Freelance + React Learning',
+      title: 'Journey into React and Modern Dev',
       content:
-        'Deep-dive into React, improving JavaScript skills, and honing user interface design capabilities.',
+        'Pivoted away from Salesforce Commerce Cloud and into React, Next.js, TypeScript, and modern web development.',
       cName: 'event',
     },
     {
@@ -235,13 +245,13 @@ export const timelineContent = {
     {
       title: 'Application Engineer @ DemandPDX',
       content:
-        'Fullstack Development in an agency environment for many clients including Hanna Andersson and Leatherman.',
+        'Delivered Frontend code in an agency environment for many clients including Hanna Andersson and Leatherman.',
       cName: 'event',
     },
     {
       title: 'Lead UI Engineer @ KEEN Footwear',
       content:
-        'Developed new Salesforce Commerce Cloud Ecommerce websites for KEEN Footwear and Chrome Industries. Collaborated with BASIC/DEPT®.',
+        'Collaborated with BASIC/DEPT® to design and build KEEN Footwear and Chrome Industries Ecommerce experiences.',
       cName: 'event',
     },
     {
@@ -255,13 +265,13 @@ export const timelineContent = {
     {
       title: 'Web Dev I @ Columbia Sportswear',
       content:
-        'Developed Frontend code for Columbia, SOREL, and Mountain Hardwear. Implemented localized content and content modules for international sales.',
+        'Got my first taste of Agile Scrum on a large development team. Developed Frontend code for Columbia, SOREL, and Mountain Hardwear.',
       cName: 'event',
     },
     {
       title: 'Frontend Dev @ Dealer Spike',
       content:
-        'HTML, CSS, and JavaScript and design. Created web experiences with a focus on SEO for powersports dealerships across US and Canada.',
+        'Build websites for Powersports dealerships across the USA and Canada using HTML, CSS, and JavaScript and Photoshop.',
       cName: 'event',
     },
     {
@@ -275,13 +285,13 @@ export const timelineContent = {
     {
       title: 'Freelancer & Consultant',
       content:
-        'Managed all aspects of business with 30+ clients. Developed websites using HTML, CSS, and JavaScript. Utilized CSS3, Boostrap, jQuery, and Wordpress.',
+        'Ren a freelance business with 30+ clients. Developed websites using HTML, CSS, JS and Flash.',
       cName: 'event',
     },
     {
       title: 'UI Designer @ Selliken Systems',
       content:
-        'Worked on the HomeQuest real estate property search tool. Designed using Adobe Photoshop and Illustrator.',
+        'Worked on the HomeQuest real estate property search tool. Used Adobe Photoshop and Google Maps API.',
       cName: 'event',
     },
     {
@@ -293,14 +303,14 @@ export const timelineContent = {
       cName: 'date',
     },
     {
-      title: 'Learning @ Southridge High School',
-      content: `Began designing and animating Macromedia Flash websites and coding in ActionScript in my school's TV Studio.`,
+      title: 'Web Design @ Southridge High School',
+      content: `Created Macromedia Flash websites in my school's TV Studio. Took an intro to Web Design course sophomore year.`,
       cName: 'event',
     },
     {
-      title: 'Learning @ Southridge High School',
+      title: 'HTML & CSS in Geocities',
       content:
-        'Wrote my first lines of HTML and CSS using Yahoo! Geocities. Fell in love with web development. Took HTML/CSS Web Design course sophomore year.',
+        'Learned the basics of HTML/CSS in Yahoo! Geocities. I realized the joy of creating a website that anyone in the world could view.',
       cName: 'event',
     },
     {
@@ -314,7 +324,7 @@ export const timelineContent = {
     {
       title: 'First Computer',
       content:
-        'Got a Compaq Presario CDS 524. Read Microsoft Encarta and played "Where In the World is Carmen San Diego" and "X-Wing".',
+        'My family got a Compaq Presario CDS 524. I Read Microsoft Encarta and played "Where In the World is Carmen San Diego" and "X-Wing".',
       cName: 'event',
     },
   ],
