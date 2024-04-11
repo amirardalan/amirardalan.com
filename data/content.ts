@@ -154,9 +154,9 @@ export const aboutContent = {
   },
   intro: {
     items: [
-      `I'm a Design Engineer with 10+ years of experience crafting outstanding digital products.`,
-      `I've collaborated with industry-leading people at iconic brands including Nike, BASIC/DEPT®, Columbia Sportswear, SOREL, and KEEN Footwear`,
-      `I operate as a connector between design and engineering teams, with specializations in Front-end development and UI/UX design.`,
+      `I'm a Design Engineer with 10+ years of experience.`,
+      `I've collaborated with industry-leading brands including Nike, BASIC/DEPT®, Columbia Sportswear, SOREL, Chrome Industries, and KEEN Footwear.`,
+      `With expertise in both Front-end development and UI/UX design, I'm able to seamlesly bridge the gap between form and function.`,
     ],
   },
   availability: {
@@ -165,11 +165,6 @@ export const aboutContent = {
     text2: 'Nike',
     location: 'Remote / onsite in Portland, OR Metro Area',
     link: 'https://lebronjamesinnovationcenter.nike.com/',
-    items: [
-      '• Develop user-focused prototypes and software.',
-      '• Deliver industry-leading user experiences.',
-      '• Act as a connector for UI/UX and dev teams.',
-    ],
   },
   contact: {
     title: `Let's Chat`,

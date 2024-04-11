@@ -32,7 +32,7 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
       fontFamily: 'var(--font-tertiary)',
       fontSize: 32,
       lineHeight: '3rem',
-      margin: '3rem 0 5rem',
+      margin: '3.6rem 0 6.5rem',
       li: {
         color: 'var(--color-heading)',
         marginBottom: '3rem',
