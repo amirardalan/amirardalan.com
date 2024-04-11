@@ -185,18 +185,16 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
       '.date': {
         color: 'var(--color-primary)',
         textTransform: 'uppercase',
-        letterSpacing: 5,
+        letterSpacing: 2,
         fontFamily: 'var(--font-primary)',
         fontSize: 16,
         fontWeight: 400,
         lineHeight: '.5rem',
         '@media(max-width: 768px)': {
           paddingTop: '.2rem',
-          fontSize: 24,
         },
         '@media(max-width: 480px)': {
           paddingTop: '.9rem',
-          fontSize: 20,
         },
       },
       '.event': {
