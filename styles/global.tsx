@@ -343,8 +343,14 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
             '&.download': {
               mixBlendMode: 'screen',
               '&:after': {
-                background: 'var(--icon-download-dark) no-repeat',
+                background: 'var(--icon-download-light) no-repeat',
                 backgroundSize: 'contain',
+              },
+              '&:hover': {
+                '&:after': {
+                  background: 'var(--icon-download-light) no-repeat',
+                  backgroundSize: 'contain',
+                },
               },
             },
             '&.clipboard': {

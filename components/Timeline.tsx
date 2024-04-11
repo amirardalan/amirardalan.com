@@ -24,8 +24,8 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
     paddingTop: '2rem',
     position: 'relative',
     '.readMoreLink': {
-      fontSize: 28,
-      marginTop: '5.8rem',
+      fontSize: 24,
+      marginTop: '6rem',
       display: 'flex',
       justifyContent: 'center',
       fontFamily: 'var(--font-secondary)',
@@ -37,7 +37,7 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
       },
       '@media (max-width: 480px)': {
         marginTop: '3.8rem',
-        fontSize: 22,
+        fontSize: 18,
       },
     },
     '@keyframes fadeIn': {

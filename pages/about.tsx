@@ -13,6 +13,7 @@ import { AboutTypes, TimelineContentTypes } from '@/types/about';
 import { CtaButtonsTypes } from '@/types/button';
 import { SocialIconsTypes } from '@/types/icons';
 import { TimelineTypes } from '@/types/about';
+import ContactButton from '@/components/ContactButton';
 
 type AboutPageProps = {
   about: AboutTypes & SocialIconsTypes & CtaButtonsTypes;
@@ -20,7 +21,7 @@ type AboutPageProps = {
 };
 
 const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
-  const styleAbout = {
+  const styleAboutIntro = {
     margin: '0 auto',
     maxWidth: 768,
     hr: {
@@ -40,35 +41,41 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
       '@media (max-width: 768px)': {
         fontSize: 24,
         lineHeight: '2.25rem',
-        margin: '2rem 0 3rem',
+        margin: '2rem 0 3.5rem',
         li: {
           marginBottom: '2rem',
         },
       },
     },
+    '.contact': {
+      marginBottom: '7.5rem',
+      '@media (max-width: 768px)': {
+        marginBottom: '5rem',
+      },
+    },
   };
 
-  const styleGridWrapper = css({
-    display: 'grid',
-    gridTemplateColumns: 'repeat(2, 1fr)',
-    gap: '1rem',
-    gridAutoRows: 'minmax(100px, auto)',
-    '@media (max-width: 480px)': {
-      gridTemplateColumns: 'repeat(1, 1fr)',
-    },
-    '.grid': {
-      display: 'flex',
-      justifyContent: 'center',
-      borderRadius: 10,
-      lineHeight: '1.8rem',
-      '&:first-of-type': {
+  const styleAboutModules = css({
+    display: 'flex',
+    justifyContent: 'space-between',
+    '.module': {
+      width: '100%',
+      '.social': {
+        borderRadius: 10,
+        lineHeight: '1.8rem',
         border: 'transparent',
         background: 'var(--color-gradient)',
-        padding: '2rem',
-        '.bioSubHeading': {
-          lineHeight: '1.2',
-          margin: '1rem 0',
-          color: 'var(--color-light)',
+        padding: '2rem 3rem 2.5rem',
+        button: {
+          width: '100%',
+          margin: '0 auto',
+          marginRight: '8%',
+          '&:last-of-type': {
+            marginRight: 0,
+          },
+        },
+        '@media (max-width: 768px)': {
+          padding: '1.5rem 2rem 1.5rem',
         },
         '.blurb': {
           margin: '.5rem 0 1.5rem',
@@ -80,21 +87,20 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
             fontSize: 18,
           },
         },
-        '.divider': {
-          borderBottom: '2px dotted var(--color-light)',
-          opacity: '.2',
-          paddingBottom: '1rem',
-          marginBottom: '1.5rem',
-        },
         '.ctaButton': {
-          background: 'var(--color-light)',
-          color: 'var(--color-dark)',
+          background: 'transparent',
+          border: '2px solid var(--color-light)',
+          color: 'var(--color-light)',
           '@media(min-width: 1025px)': {
             '&:hover': {
               background: 'transparent',
               border: '2px solid var(--color-light)',
               color: 'var(--color-light)',
             },
+          },
+          '&:hover': {
+            border: '2px solid var(--color-gray-static)',
+            color: 'var(--color-gray-static)',
           },
         },
         svg: {
@@ -104,41 +110,16 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
           },
         },
       },
-      h3: {
-        fontFamily: 'var(--font-primary)',
-        fontWeight: 400,
-        fontSize: 16,
-        letterSpacing: 5,
-        textTransform: 'uppercase',
-      },
-      'a:hover': {
-        textDecoration: 'none',
-      },
-      '.availability': {
-        color: 'var(--color-heading)',
-        fontSize: 20,
-        fontFamily: 'var(--font-secondary)',
-        '.subheading': {
-          marginTop: '1.5rem',
-        },
-      },
-
-      '@media(max-width: 768px)': {
-        background: 'none',
-        border: 'none',
-        padding: 0,
-        margin: '1rem 0',
-        '.availability .subheading': {
-          marginTop: '1.5rem',
-        },
+      '.avatar': {
+        display: 'flex',
+        justifyContent: 'center',
       },
     },
-    h3: {
-      marginBottom: '.5rem',
-      paddingBottom: '.5rem',
-      fontSize: 24,
-      color: 'var(--color-gray)',
-      borderBottom: '2px solid var(--color-text)',
+    '@media(max-width: 768px)': {
+      flexDirection: 'column',
+      '.avatar': {
+        marginTop: '3rem',
+      },
     },
   });
   const styleSocialIcons = css({
@@ -173,15 +154,17 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
       description={about.meta.description}
       robots="follow, index"
     >
-      <main className="about" css={styleAbout}>
+      <main className="about" css={styleAboutIntro}>
         <h1 className="pageHeading">{about.heading}</h1>
         <div className="aboutIntro">
           {generateListItems(aboutContent.intro.items)}
         </div>
 
-        <div css={styleGridWrapper}>
-          <div className="grid">
-            <ul>
+        <ContactButton />
+
+        <div css={styleAboutModules}>
+          <div className="module">
+            <ul className="social">
               <li css={styleSocialIcons}>
                 <SocialIcons about={about} />
               </li>
@@ -190,8 +173,10 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
               </li>
             </ul>
           </div>
-          <div className="grid">
-            <Avatar height={200} width={200} avatar={about.avatar} />
+          <div className="module">
+            <div className="avatar">
+              <Avatar height={199} width={199} avatar={about.avatar} />
+            </div>
           </div>
         </div>
         <hr id="timeline" />

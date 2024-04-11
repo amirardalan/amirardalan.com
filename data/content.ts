@@ -154,9 +154,9 @@ export const aboutContent = {
   },
   intro: {
     items: [
-      `I'm a Design Engineer with 10+ years of experience.`,
-      `I've collaborated with industry-leading brands including Nike, BASIC/DEPT®, Columbia Sportswear, SOREL, Chrome Industries, and KEEN Footwear.`,
-      `Combining Front-end Engineering and UI/UX Design enables me to deliver premium digital products with thoughtfully crafted form and function.`,
+      `I'm Design Engineer with 10+ years of experience.`,
+      `I've collaborated with industry-leading brands including Nike, BASIC/DEPT®, Columbia Sportswear, SOREL, and KEEN Footwear.`,
+      `Combining Front-end engineering and UI/UX design skills enables me to deliver digital products with thoughtfully crafted form and function.`,
     ],
   },
   availability: {
