@@ -17,7 +17,7 @@ const ContactButton: FC<ContactButtonProps> = () => {
       backgroundColor: 'var(--color-heading)',
       color: 'var(--color-bg)',
       cursor: 'pointer',
-      transition: 'background-color .5s',
+      transition: 'background-color .2s',
       border: '2px solid transparent',
       '&:hover': {
         color: 'var(--color-heading)',
