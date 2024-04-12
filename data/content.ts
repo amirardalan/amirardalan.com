@@ -21,7 +21,7 @@ export const homeContent = {
     `follow me on x: <a href=${linkX} rel="noopener noreferrer">@amirardalan</a>`,
     `delve into my <a href=${linkGitHub} rel="noopener noreferrer">github</a>`,
     `browse my career <a href="/about#timeline">timeline</a>`,
-    `check out the <a href="/uses">tools i use</a>`,
+    `check out the <a href="/uses">tools</a> i use`,
   ],
   title: `${appTitle}`,
   description: metaDescription,

@@ -170,7 +170,7 @@ const Navigation: FC = () => {
     alignSelf: 'left',
     '.navSocial': {
       '&.x': {
-        marginRight: '1.25rem',
+        marginRight: '1.5rem',
       },
       svg: {
         fill: 'var(--color-heading)',
