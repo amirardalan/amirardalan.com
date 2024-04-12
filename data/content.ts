@@ -127,7 +127,7 @@ export const aboutContent = {
         target: '_blank',
       },
       {
-        path: `mailto: ${process.env.GOOGLE_CLIENT_EMAIL}?subject=Hello!&body=Hi Amir,`,
+        path: `mailto: ${process.env.NEXT_PUBLIC_USER_EMAIL}?subject=Hello!&body=Hi Amir,`,
         title: 'Email',
         rel: 'noopener noreferrer',
         target: '_blank',
