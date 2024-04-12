@@ -45,15 +45,28 @@ const Navigation: FC = () => {
     display: 'flex',
     alignItems: 'center',
     marginRight: '2rem',
-    fontSize: 14,
+    fontFamily: 'var(--font-secondary)',
+    fontSize: 12,
+    textTransform: 'uppercase',
     a: {
       margin: '0 1.5rem',
       color: 'var(--color-heading)',
       '&:hover': {
         color: 'var(--color-primary)',
       },
+      '&.active::before': {
+        fontFamily: 'var(--font-primary)',
+        color: 'var(--color-primary)',
+        position: 'absolute',
+        content: '">"',
+        top: 2,
+        left: -12,
+        '@media (max-width: 768px)': {
+          left: -20,
+        },
+      },
     },
-    '@media(max-width: 768px)': {
+    '@media (max-width: 768px)': {
       display: 'none',
     },
   });
@@ -97,7 +110,7 @@ const Navigation: FC = () => {
       background: 'var(--color-gradient)',
       transition: 'opacity 0.5s ease-in-out',
     },
-    '@media(min-width: 769px)': {
+    '@media (min-width: 769px)': {
       display: 'none',
     },
   });
@@ -121,18 +134,10 @@ const Navigation: FC = () => {
       position: 'relative',
       color: 'var(--color-heading)',
       '&.active': {
-        '&::before': {
-          color: 'var(--color-primary)',
-          position: 'absolute',
-          content: '">"',
-          left: -12,
-          '@media(max-width: 768px)': {
-            left: -20,
-          },
-        },
+        color: 'var(--color-primary)',
       },
     },
-    '@media(max-width: 768px)': {
+    '@media (max-width: 768px)': {
       flexDirection: 'column',
       lineHeight: '3.4rem',
     },
@@ -142,7 +147,7 @@ const Navigation: FC = () => {
     },
   });
   const styleMobileNavSecondary = css({
-    marginTop: '3rem',
+    marginTop: '4rem',
     position: 'relative',
     a: {
       display: 'block',
@@ -150,48 +155,39 @@ const Navigation: FC = () => {
       color: 'var(--color-gray)',
       animation: 'slideUp .4s ease',
     },
+    svg: {
+      fill: 'var(--color-accent-lighter)',
+    },
     '@media (max-width: 768px) and (max-height: 600px)': {
       display: 'none',
     },
   });
   const styleButton = css({
-    margin: '0 1.5rem',
+    margin: '.25rem 1.5rem',
     display: 'flex',
     width: '100%',
     justifyContent: 'flex-start',
     alignSelf: 'left',
-    '.xLogo': {
-      margin: '2.5px 1px 0 0',
-    },
-    '.button': {
-      borderBottom: 'none',
-      width: 'fit-content',
-      display: 'flex',
-      alignItems: 'center',
-      backgroundColor: 'var(--color-heading)',
-      padding: '.05rem .3rem',
-      borderRadius: '5px',
-      textDecoration: 'none',
+    '.navSocial': {
+      '&.x': {
+        marginRight: '1.25rem',
+      },
       svg: {
-        marginRight: '.25rem',
+        fill: 'var(--color-heading)',
       },
-      a: {
-        borderBottom: 'none',
-        color: 'var(--color-bg)',
-        fontSize: 12,
-        width: 'auto',
-        margin: 0,
-      },
-      '@media(min-width: 1025px)': {
-        '&:hover': {
-          a: {
-            color: 'var(--color-bg)',
-          },
-          backgroundColor: 'var(--color-primary)',
+      margin: '2.5px 1px 0 0',
+      '&:hover': {
+        svg: {
+          fill: 'var(--color-primary)',
         },
       },
-      '@media (max-width: 768px)': {
-        marginTop: '1.5rem',
+    },
+    '@media (max-width: 768px)': {
+      margin: '1rem 1.5rem 0',
+      '.navSocial:hover': {
+        svg: {
+          fill: 'var(--color-heading)',
+        },
       },
     },
   });
@@ -202,6 +198,15 @@ const Navigation: FC = () => {
     icon: boolean;
     title: string;
   }
+
+  const handleOpenLink = (url: string) => {
+    gtagEvent({
+      action: 'click',
+      category: 'external_link',
+      label: url,
+    });
+    window.open(url, '_blank', 'noopener noreferrer');
+  };
 
   const NavItems = () => (
     <nav css={styleNavItems}>
@@ -230,35 +235,32 @@ const Navigation: FC = () => {
 
       <div css={styleButton}>
         <button
-          className="button"
-          title="follow on x (twitter)"
-          aria-label="follow on x (twitter)"
-          onClick={() =>
-            gtagEvent({
-              action: 'click',
-              category: 'external_link',
-              label: `x.com/amirardalan`,
-            })
-          }
+          className="navSocial x"
+          onClick={() => handleOpenLink('https://x.com/amirardalan')}
+          rel="noreferrer noopener"
         >
-          <span className="xLogo">
-            <svg
-              width="12"
-              height="12"
-              viewBox="0 0 24 24"
-              fill="var(--color-bg)"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M0.0583996 0L9.32452 12.3803L0 22.4461H2.09874L10.2625 13.6332L16.8584 22.4461H24L14.2123 9.36956L22.8916 0H20.7929L13.2747 8.11632L7.2 0H0.0583996ZM3.14469 1.54462H6.42551L20.9133 20.9015H17.6325L3.14469 1.54462Z" />
-            </svg>
-          </span>
-          <a
-            href="https://twitter.com/intent/follow?screen_name=amirardalan"
-            target="_blank"
-            rel="noopener noreferrer"
+          <svg
+            width="13"
+            height="13"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            @amirardalan
-          </a>
+            <path d="M0.0583996 0L9.32452 12.3803L0 22.4461H2.09874L10.2625 13.6332L16.8584 22.4461H24L14.2123 9.36956L22.8916 0H20.7929L13.2747 8.11632L7.2 0H0.0583996ZM3.14469 1.54462H6.42551L20.9133 20.9015H17.6325L3.14469 1.54462Z" />
+          </svg>
+        </button>
+        <button
+          className="navSocial gh"
+          onClick={() => handleOpenLink('https://github.com/amirardalan')}
+          rel="noreferrer noopener"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+          >
+            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+          </svg>
         </button>
       </div>
     </nav>

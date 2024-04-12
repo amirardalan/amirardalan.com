@@ -38,7 +38,7 @@ const ThemeToggle: FC<ThemeToggleProps> = ({ toggleTheme }) => {
   const styleToggleTrack = css({
     zIndex: 3,
     width: 42,
-    height: 26,
+    height: 25,
     background: 'var(--color-heading)',
     position: 'relative',
     border: 'none',
@@ -47,11 +47,11 @@ const ThemeToggle: FC<ThemeToggleProps> = ({ toggleTheme }) => {
   });
   const styleToggleSlider = css({
     background: 'var(--color-accent)',
-    height: 22,
-    width: 22,
+    height: 21,
+    width: 21,
     position: 'relative',
-    marginLeft: activeTheme === 'dark' ? 2 : 18,
-    marginRight: activeTheme === 'light' ? 21 : 1,
+    marginLeft: activeTheme === 'dark' ? 2 : 19,
+    marginRight: activeTheme === 'light' ? 21 : 0,
     borderRadius: 25,
     transition: '.2s linear',
     '&:active': {

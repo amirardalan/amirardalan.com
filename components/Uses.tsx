@@ -2,7 +2,7 @@ import { FC } from 'react';
 import Markdown from '@/components/Markdown';
 import { UsesTypes } from '@/types/uses';
 
-const styleUsesMarkdown = {
+const styleUsesMarkdown: any = {
   display: 'grid',
   gridTemplateColumns: 'repeat(4, 1fr)',
   gap: '4rem',
@@ -10,10 +10,14 @@ const styleUsesMarkdown = {
   lineHeight: '1.8rem',
   hr: {
     margin: '2rem 0',
+    borderColor: 'var(--color-accent-lighter)',
   },
   'ul li, a': {
     color: 'var(--color-gray)',
     fontSize: 12,
+    '&:hover': {
+      textDecoration: 'none',
+    },
   },
   'h3, h4, h5, h6': {
     fontFamily: 'var(--font-secondary)',
@@ -21,19 +25,24 @@ const styleUsesMarkdown = {
   },
   h3: {
     a: {
-      fontSize: 16,
+      fontSize: 12,
       fontWeight: 300,
       fontFamily: 'var(--font-primary)',
       textDecoration: 'none',
+      textTransform: 'uppercase',
     },
     paddingBottom: '1rem',
     marginBottom: '2rem',
-    fontSize: 22,
+    letterSpacing: 5,
     borderBottom: '3px solid var(--color-primary)',
   },
   h4: {
+    color: 'var(--color-gray)',
     width: 'fit-content',
     fontSize: 18,
+    fontWeight: 400,
+    textTransform: 'uppercase',
+    marginBottom: '.5rem',
   },
   h5: {
     fontSize: 12,

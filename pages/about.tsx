@@ -13,7 +13,6 @@ import { AboutTypes, TimelineContentTypes } from '@/types/about';
 import { CtaButtonsTypes } from '@/types/button';
 import { SocialIconsTypes } from '@/types/icons';
 import { TimelineTypes } from '@/types/about';
-import ContactButton from '@/components/ContactButton';
 
 type AboutPageProps = {
   about: AboutTypes & SocialIconsTypes & CtaButtonsTypes;
@@ -58,87 +57,95 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
   const styleAboutModules = css({
     display: 'flex',
     justifyContent: 'space-between',
+    '.cta': {
+      display: 'flex',
+      a: {
+        marginBottom: 0,
+      },
+    },
     '.module': {
+      borderTop: '1px solid var(--color-accent-lighter)',
+      borderBottom: '1px solid var(--color-accent-lighter)',
+      padding: '4rem 2.5rem',
       width: '100%',
-      '.social': {
-        borderRadius: 10,
-        lineHeight: '1.8rem',
-        border: 'transparent',
-        background: 'var(--color-gradient)',
-        padding: '2rem 3rem 2.5rem',
-        button: {
+      '.moduleWrapper': {
+        display: 'flex',
+        justifyContent: 'space-between',
+        '.moduleRight': {
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'space-between',
           width: '100%',
-          margin: '0 auto',
-          marginRight: '8%',
+        },
+        '@media (max-width: 600px)': {
+          flexDirection: 'column',
+        },
+      },
+      '.social': {
+        display: 'flex',
+        justifyContent: 'end',
+        button: {
+          display: 'flex',
+          justifyContent: 'start',
+          alignItems: 'center',
+          marginRight: '20%',
           '&:last-of-type': {
             marginRight: 0,
           },
         },
-        '@media (max-width: 768px)': {
-          padding: '1.5rem 2rem 1.5rem',
-        },
-        '.blurb': {
-          margin: '.5rem 0 1.5rem',
-          fontSize: 20,
-          fontFamily: 'var(--font-tertiary)',
-          fontStyle: 'italic',
-          color: 'var(--color-gray-static)',
-          '@media(max-width: 768px)': {
-            fontSize: 18,
-          },
-        },
         '.ctaButton': {
+          fontSize: 15,
           background: 'transparent',
-          border: '2px solid var(--color-light)',
-          color: 'var(--color-light)',
-          '@media(min-width: 1025px)': {
-            '&:hover': {
-              background: 'transparent',
-              border: '2px solid var(--color-light)',
-              color: 'var(--color-light)',
+          border: '1px solid var(--color-text)',
+          color: 'var(--color-headline)',
+          '&:hover': {
+            '@media (min-width: 1025px)': {
+              background: 'var(--color-text)',
+              border: '1px solid var(--color-headline)',
+              color: 'var(--color-bg)',
             },
           },
-          '&:hover': {
-            border: '2px solid var(--color-gray-static)',
-            color: 'var(--color-gray-static)',
-          },
         },
-        svg: {
-          fill: 'var(--color-light)',
-          '&:hover': {
-            fill: 'var(--color-gray-static)',
+        '@media (max-width: 600px)': {
+          marginTop: '1.5rem',
+          justifyContent: 'center',
+          'a:first-of-type': {
+            marginRight: '.5rem',
+          },
+          '.ctaButton': {
+            fontSize: 12,
           },
         },
       },
-      '.avatar': {
+      '.moduleLeft': {
         display: 'flex',
         justifyContent: 'center',
-      },
-    },
-    '@media(max-width: 768px)': {
-      flexDirection: 'column',
-      '.avatar': {
-        marginTop: '3rem',
       },
     },
   });
   const styleSocialIcons = css({
     display: 'flex',
-    flexDirection: 'row',
-    marginBottom: '2rem',
+    justifyContent: 'end',
     button: {
       marginRight: '1.5rem',
       '&:last-of-type': {
         marginRight: 0,
       },
+      '@media (max-width: 480px)': {
+        marginRight: '1rem',
+      },
     },
     svg: {
-      fill: 'var(--color-heading)',
+      fill: 'var(--color-text)',
       '@media (min-width: 769px)': {
         '&:hover': {
-          fill: 'var(--color-primary)',
+          fill: 'var(--color-accent-lighter)',
         },
       },
+    },
+    '@media (max-width: 600px)': {
+      marginTop: '1.5rem',
+      justifyContent: 'center',
     },
   });
 
@@ -160,25 +167,26 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
           {generateListItems(aboutContent.intro.items)}
         </div>
 
-        <ContactButton />
-
         <div css={styleAboutModules}>
           <div className="module">
-            <ul className="social">
-              <li css={styleSocialIcons}>
-                <SocialIcons about={about} />
-              </li>
-              <li>
-                <CtaButtons items={about.bio.items} />
-              </li>
-            </ul>
-          </div>
-          <div className="module">
-            <div className="avatar">
-              <Avatar height={199} width={199} avatar={about.avatar} />
+            <div className="moduleWrapper">
+              <div className="moduleLeft">
+                <Avatar height={120} width={120} avatar={about.avatar} />
+              </div>
+              <div className="moduleRight">
+                <div css={styleSocialIcons} className="socialIcons">
+                  <SocialIcons about={about} />
+                </div>
+                <div className="social">
+                  <div className="cta">
+                    <CtaButtons items={about.bio.items} />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+
         <hr id="timeline" />
         <Timeline timeline={timeline} />
       </main>

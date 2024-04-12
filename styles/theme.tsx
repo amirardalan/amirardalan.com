@@ -1,20 +1,20 @@
 export const themeLight = {
   active: 'light',
   favicon: '/favicon-light.png',
-  canvas: '#868896',
+  canvas: '#9294a1',
 };
 
 export const themeDark = {
   active: 'dark',
   favicon: '/favicon-dark.png',
-  canvas: '#797b88',
+  canvas: '#757784',
 };
 
 export const theme = {
   // Elements
   light: '#edf1f5',
   lightAccent: '#e4e7ed',
-  lightDarker: '#c0bccf',
+  lightDarker: '#babcc9',
   dark: '#000000',
   darkAccent: '#16171b',
   darker: '#494754',
@@ -22,7 +22,7 @@ export const theme = {
   secondary: '#67fff2',
   grayLight: '#adb0c3',
   grayDark: '#717380',
-  grayAccentLight: '#817e8b',
+  grayAccentLight: '#9f9eac',
   grayAccentDark: '#6b6b80',
   // Inputs
   textInputLight: '#e7e6eb',
@@ -41,9 +41,9 @@ export const theme = {
   codeScrollbarDark: '#54545f',
   codeScrollbarHoverDark: '#2f2f38',
   // Code (Light)
-  codeBgLight: '#f4f8fc',
-  codeHighlightLight: '#e4eaef',
-  codeScrollbarLight: '#a5a9b4',
+  codeBgLight: '#e4e7ed',
+  codeHighlightLight: '#dadce3',
+  codeScrollbarLight: '#bec2ce',
   codeScrollbarHoverLight: '#d4dadf',
   // Speciality
   avatar: '#24306e',

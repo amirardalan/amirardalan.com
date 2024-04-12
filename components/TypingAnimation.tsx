@@ -13,6 +13,7 @@ interface Options {
   backSpeed: number;
   backDelay: number;
   loop: boolean;
+  fadeOut: boolean;
 }
 
 const TypingAnimation: FC<TypingAnimationProps> = ({ data }) => {
@@ -22,7 +23,8 @@ const TypingAnimation: FC<TypingAnimationProps> = ({ data }) => {
       cursorChar: '▌',
       startDelay: 500,
       typeSpeed: 90,
-      backSpeed: 30,
+      backSpeed: 0,
+      fadeOut: true,
       backDelay: 4800,
       loop: true,
     };

@@ -9,7 +9,7 @@ const ContactButton: FC<ContactButtonProps> = () => {
     justifyContent: 'center',
     '.button': {
       fontFamily: 'var(--font-secondary)',
-      fontSize: 20,
+      fontSize: 18,
       letterSpacing: 2,
       textTransform: 'uppercase',
       padding: '.6rem 2rem',
@@ -18,11 +18,11 @@ const ContactButton: FC<ContactButtonProps> = () => {
       color: 'var(--color-bg)',
       cursor: 'pointer',
       transition: 'background-color .2s',
-      border: '2px solid transparent',
+      border: '1px solid transparent',
       '&:hover': {
         color: 'var(--color-heading)',
         backgroundColor: 'transparent',
-        border: '2px solid var(--color-heading)',
+        border: '1px solid var(--color-heading)',
       },
     },
   });
@@ -38,7 +38,7 @@ const ContactButton: FC<ContactButtonProps> = () => {
           )
         }
       >
-        Get in Touch
+        {`Get in Touch`}
       </button>
     </div>
   );

@@ -272,11 +272,12 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
             alignItems: 'center',
             lineHeight: '1.5rem',
             fontSize: 15,
-            fontFamily: 'var(--font-primary)',
+            fontFamily: 'var(--font-secondary)',
+            letterSpacing: 1,
             fontWeight: 400,
             background: 'var(--color-heading)',
             border: '1px solid transparent',
-            borderRadius: 10,
+            borderRadius: 50,
             color: 'var(--color-bg)',
             textTransform: 'uppercase',
             textDecoration: 'none',
@@ -297,7 +298,7 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
             },
             '&:hover': {
               background: 'transparent',
-              border: '2px solid var(--color-primary)',
+              border: '1px solid var(--color-primary)',
               color: 'var(--color-primary)',
               '@media(min-width: 1025px)': {
                 '&.download:after': {
@@ -308,11 +309,11 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
             },
             '&.reverse': {
               background: 'transparent',
-              border: '2px solid var(--color-heading)',
+              border: '1px solid var(--color-heading)',
               color: 'var(--color-heading)',
               '&:hover': {
                 background: 'transparent',
-                border: '2px solid var(--color-primary)',
+                border: '1px solid var(--color-primary)',
                 color: 'var(--color-primary)',
                 '@media(min-width: 1025px)': {
                   '&.download:after': {
@@ -326,9 +327,9 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
               cursor: 'pointer',
               background: 'transparent',
               color: 'var(--color-heading)',
-              border: '2px solid var(--color-accent-gray)',
+              border: '1px solid var(--color-accent-gray)',
               '&:hover': {
-                border: '2px solid var(--color-accent-gray)',
+                border: '1px solid var(--color-accent-gray)',
                 background: 'transparent',
                 color: 'var(--color-heading)',
               },
@@ -367,7 +368,7 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
               },
               '&.reverse:hover': {
                 background: 'transparent',
-                border: '2px solid var(--color-heading)',
+                border: '1px solid var(--color-heading)',
                 color: 'var(--color-heading)',
               },
             },

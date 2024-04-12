@@ -357,7 +357,7 @@ const styleBlogPost = css({
     },
     '.note': {
       position: 'relative',
-      marginBottom: '2.2rem',
+      margin: '3rem 0',
       padding: '2.8rem 1.5rem 1.25rem 1.5rem',
       border: '1px solid var(--color-accent-lighter)',
       borderRadius: 5,
@@ -365,9 +365,6 @@ const styleBlogPost = css({
       fontSize: 14.5,
       color: 'var(--color-gray)',
       lineHeight: '1.5rem',
-      '@media (max-width: 768px)': {
-        lineHeight: '2rem',
-      },
       '&:before, &:after': {
         position: 'absolute',
         lineHeight: '2rem',
@@ -424,10 +421,12 @@ const styleBlogPost = css({
         },
       },
       '&.contents': {
+        margin: '1.5rem 0 2rem',
+        border: 'none',
         display: 'flex',
         alignItems: 'start',
         flexDirection: 'column',
-        padding: '.25rem 1rem .25rem 1rem',
+        padding: '.25rem 0',
         '&::before': {
           display: 'none',
           content: '""',
@@ -435,6 +434,13 @@ const styleBlogPost = css({
         },
         '&:after': {
           content: '""',
+        },
+      },
+      '@media (max-width: 768px)': {
+        fontSize: 11,
+        lineHeight: '1.4rem',
+        a: {
+          fontSize: 12,
         },
       },
     },

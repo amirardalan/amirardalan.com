@@ -138,6 +138,7 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
       lineHeight: '1.25rem',
       fontSize: 15,
       fontFamily: 'var(--font-tertiary)',
+      fontStyle: 'italic',
       color: 'var(--color-gray)',
       '@media (max-width: 480px)': {
         marginTop: '.25rem',

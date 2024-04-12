@@ -13,7 +13,6 @@ const TableOfContents: FC<TableOfContentsProps> = ({ markdown }) => {
   const handleShowTOC = () => setShowTOC(!showTOC);
 
   const styleTOC = css({
-    paddingTop: '1rem',
     summary: {
       display: 'flex',
       alignItems: 'center',
@@ -47,10 +46,9 @@ const TableOfContents: FC<TableOfContentsProps> = ({ markdown }) => {
     '.tocTitle': {
       fontSize: 14,
       fontWeight: 400,
-      marginTop: '.1rem',
     },
     'ol.tableOfContents': {
-      margin: '1rem 0 .25rem',
+      margin: '.85rem 0 .25rem',
       a: {
         margin: 0,
         padding: 0,
@@ -65,9 +63,9 @@ const TableOfContents: FC<TableOfContentsProps> = ({ markdown }) => {
         },
       },
       '@media (max-width: 768px)': {
-        margin: '.5rem 0 .5rem 0',
         li: {
           margin: '.3rem 0 .5rem 2rem',
+          paddingLeft: 0,
         },
       },
     },
@@ -97,7 +95,7 @@ const TableOfContents: FC<TableOfContentsProps> = ({ markdown }) => {
                     />
                   </svg>
                 </span>{' '}
-                <h4 className="tocTitle">Table of Contents:</h4>
+                <h4 className="tocTitle">Table of Contents</h4>
               </summary>
             </button>
             {showTOC ? (

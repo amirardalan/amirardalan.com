@@ -88,6 +88,7 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
     },
     '.typed': {
       fontSize: 18,
+      fontWeight: 400,
       '&:before': {
         content: '"> ~ % "',
         color: 'var(--color-primary)',
@@ -97,14 +98,14 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
       },
     },
     h1: {
-      marginBottom: '4rem',
+      marginBottom: '2rem',
       lineHeight: '100%',
       fontFamily: 'var(--font-secondary)',
       fontSize: 'calc(3.4vw + 3.4vh)',
       fontWeight: 700,
       WebkitMarqueeIncrement: '0vw',
       '@media (max-width: 768px)': {
-        fontSize: 'calc(5.4vw + 5.4vh)',
+        fontSize: 'calc(5.2vw + 5.2vh)',
       },
     },
   });

@@ -12,8 +12,8 @@ const blogStyles = css({
     '.search': {
       fontFamily: 'var(--font-secondary)',
       color: 'var(--color-text)',
-      background: 'var(--color-accent)',
-      border: '2px solid transparent',
+      background: 'transparent',
+      border: '1px solid var(--color-accent-lighter)',
       padding: '.6rem',
       fontSize: 16,
       outline: 'none',
@@ -22,7 +22,7 @@ const blogStyles = css({
         fontFamily: 'var(--font-secondary)',
       },
       '&:focus': {
-        border: '2px solid var(--color-primary)',
+        border: '1px solid var(--color-primary)',
         outline: 'none',
         borderColor: 'var(--color-primary)',
         boxShadow: '2px solid var(--color-primary)',
@@ -96,6 +96,7 @@ const blogStyles = css({
         margin: '0 0 1rem',
         lineHeight: '1.2rem',
         color: 'var(--color-gray)',
+        fontStyle: 'italic',
         '@media(max-width: 1024px)': {
           margin: '.4rem 0 0',
         },
@@ -317,7 +318,7 @@ const blogStyles = css({
     color: 'var(--color-gray) !important',
     appearance: 'none',
     backgroundColor: 'var(--color-bg)',
-    border: '2px solid var(--color-accent-lighter)',
+    border: '1px solid var(--color-accent-lighter)',
     outline: 'none',
     boxShadow: 'none',
     borderRadius: '0.25rem',
@@ -325,7 +326,7 @@ const blogStyles = css({
     fontSize: 15,
     caretColor: 'var(--color-text)',
     '&:focus': {
-      border: '2px solid var(--color-gray)',
+      border: '1px solid var(--color-gray)',
     },
     '&:placeholder:disabled': 'red !important',
     '&:disabled': {

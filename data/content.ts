@@ -4,7 +4,7 @@ const metaDescription = `Design Engineer with 10+ years of experience crafting o
 
 const emailAddress = 'hi@amirardalan.com';
 const linkGitHub = 'https://github.com/amirardalan';
-const linkX = 'https://x.com/intent/follow?screen_name=amirardalan';
+const linkX = 'https://x.com/amirardalan';
 const linkLinkedIn = 'https://linkedin.com/in/amirardalan';
 const linkCodePen = 'https://codepen.io/amirardalan/collections/public';
 
@@ -14,14 +14,14 @@ export const homeContent = {
     description: metaDescription,
   },
   typed: [
-    `portfolio of design engineer:`,
-    `i craft digital experiences`,
+    `i'm a design engineer`,
+    `design - code - writing`,
+    `peruse my <a href="/blog">blog</a> posts`,
+    `learn a bit <a href="/about">about</a> me`,
     `follow me on x: <a href=${linkX} rel="noopener noreferrer">@amirardalan</a>`,
-    `peruse my <a href="/blog">blog posts</a>`,
-    `learn a bit <a href="/about">about me</a>`,
+    `delve into my <a href=${linkGitHub} rel="noopener noreferrer">github</a>`,
     `browse my career <a href="/about#timeline">timeline</a>`,
     `check out the <a href="/uses">tools i use</a>`,
-    `delve into my <a href=${linkGitHub} rel="noopener noreferrer">github</a>`,
   ],
   title: `${appTitle}`,
   description: metaDescription,
@@ -97,14 +97,14 @@ export const aboutContent = {
         cName: 'iconX icon',
       },
       {
-        path: `${linkLinkedIn}`,
-        title: 'LinkedIn',
-        cName: 'iconLinkedin icon',
-      },
-      {
         path: `${linkGitHub}`,
         title: 'GitHub',
         cName: 'iconGithub icon',
+      },
+      {
+        path: `${linkLinkedIn}`,
+        title: 'LinkedIn',
+        cName: 'iconLinkedin icon',
       },
       {
         path: `${linkCodePen}`,
@@ -122,10 +122,13 @@ export const aboutContent = {
     items: [
       {
         path: '/resume',
-        title: 'Download Resume',
+        title: 'Resume',
         rel: 'noopener noreferrer',
         target: '_blank',
-        icon: 'download',
+      },
+      {
+        path: '/contact',
+        title: 'Email',
       },
     ],
   },
@@ -339,7 +342,7 @@ export const usesContent = {
     title: `Uses – ${appTitle}`,
     description: 'A list of gear, tools, and software I use.',
   },
-  heading: 'Uses',
+  heading: `Uses – ${appTitle}`,
   devices: {
     content: `### Devices
   #### Laptop
@@ -426,6 +429,7 @@ export const usesContent = {
   ---
   #### AI
   - [ChatGPT](https://chat.openai.com/chat)
+  - [Grok](https://grok.x.ai/)
   - [GitHub Copilot](https://copilot.github.com/)
 
   `,
@@ -433,14 +437,15 @@ export const usesContent = {
   software: {
     content: `### Software
   
-  #### Markdown
+  #### Writing
   - [iA Writer](https://ia.net/writer)
 
   #### Design
   - [Figma](https://www.figma.com/)
   - [Aseprite](https://www.aseprite.org/)
   
-  #### Music & Podcasts
+  #### Listening
+  - [TIDAL](https://tidal.com/)
   - [YouTube Music](https://music.youtube.com)
   - [Apple Podcasts](https://www.apple.com/apple-podcasts/)
 
@@ -521,7 +526,7 @@ export const footer = {
   social: [
     {
       path: `${linkX}`,
-      title: '𝕏',
+      title: 'X',
     },
     {
       path: `${linkGitHub}`,
