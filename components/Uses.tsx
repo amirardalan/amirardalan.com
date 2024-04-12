@@ -39,8 +39,9 @@ const styleUsesMarkdown: any = {
   h4: {
     color: 'var(--color-gray)',
     width: 'fit-content',
-    fontSize: 18,
-    fontWeight: 400,
+    fontSize: 16,
+    fontWeight: 700,
+    letterSpacing: 2,
     textTransform: 'uppercase',
     marginBottom: '.5rem',
   },

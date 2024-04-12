@@ -348,7 +348,7 @@ export const usesContent = {
   devices: {
     content: `### Devices
   #### Laptop
-  - 13" MacBook Pro
+  - 2016 13" MacBook Pro
   ##### Specs:
   - 3.3GHz i7
   - 16GB RAM
@@ -372,7 +372,7 @@ export const usesContent = {
   - KRK VXT 8
   - Beyerdynamic DT770Pro
   - Sennheiser HD25-1 II
-  - Apple AirPods Pro (2nd Gen USB-C)
+  - Apple AirPods Pro
   `,
   },
   tools: {
@@ -398,7 +398,6 @@ export const usesContent = {
   - [React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi)
   - [uBlock Origin](https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm)
   - [Google Analytics Debugger](https://chrome.google.com/webstore/detail/google-analytics-debugger/jnkmfdileelhofjcijamephohjechhna)
-  - [Stylebot](https://chrome.google.com/webstore/detail/stylebot/oiaejidbmkiecgbjeifoejpgmdaleoha)
 
   `,
   },
@@ -421,8 +420,8 @@ export const usesContent = {
 
   ---
   #### CLI
-  - Terminal (~ZSH)
-  - Powershell 7
+  - macOS: Terminal (~ZSH)
+  - Win: Powershell 7
   - [Powerlevel10k](https://github.com/romkatv/powerlevel10k)
   - [GitHub CLI](https://cli.github.com/)
   - [Vercel CLI](https://vercel.com/cli)
