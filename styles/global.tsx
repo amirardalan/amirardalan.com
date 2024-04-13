@@ -303,6 +303,7 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
               background: 'transparent',
               border: '1px solid var(--color-primary)',
               color: 'var(--color-primary)',
+              textDecoration: 'none',
               '@media(min-width: 1025px)': {
                 '&.download:after': {
                   background: 'var(--icon-download-light) no-repeat',
