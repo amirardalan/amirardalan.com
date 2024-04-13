@@ -202,7 +202,7 @@ const blogStyles = css({
         fontFamily: 'var(--font-secondary)',
         fontWeight: 700,
         fontSize: 24,
-        lineHeight: '1.9rem',
+        lineHeight: '1.2rem',
         top: 25,
         left: -18,
         color: 'var(--color-primary)',
