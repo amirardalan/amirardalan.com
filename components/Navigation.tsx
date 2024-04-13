@@ -3,9 +3,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { css } from '@emotion/react';
 import { gtagEvent } from '@/lib/gtag';
-import CloseIcon from '@/components/CloseIcon';
 import MenuIcon from '@/components/MenuIcon';
-import Logo from '@/components/Logo';
 import { nav } from '@/data/navigation';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
 
