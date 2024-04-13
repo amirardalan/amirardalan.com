@@ -13,15 +13,16 @@ const Logo: FC<LogoProps> = ({ animate, size, color }) => {
 
   const animationStyle = css({
     animation: isLoading
-      ? 'rotate360 2s infinite ease-in-out'
-      : 'rotateToStart 2s ease-out',
-    animationFillMode: isLoading ? 'none' : 'reverse',
-    '@keyframes rotate360': {
-      '0%': { transform: 'rotate(0deg)' },
-      '100%': { transform: 'rotate(360deg)' },
+      ? 'opacityPulse 2s infinite ease-in-out'
+      : 'fadeIn 1s forwards',
+    '@keyframes opacityPulse': {
+      '0%': { opacity: 1 },
+      '50%': { opacity: 0.05 },
+      '100%': { opacity: 1 },
     },
-    '@keyframes rotateToStart': {
-      '100%': { transform: 'rotate(360deg)' },
+    '@keyframes fadeIn': {
+      '0%': { opacity: 0.05 },
+      '100%': { opacity: 1 },
     },
   });
 
