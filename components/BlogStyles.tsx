@@ -79,7 +79,6 @@ const blogStyles = css({
       margin: 0,
       lineHeight: '2.5rem',
       cursor: 'pointer',
-      textDecoration: 'underline',
       '&:hover': { textDecoration: 'none' },
     },
     p: {
@@ -117,46 +116,28 @@ const blogStyles = css({
     },
   },
   '.readTime': {
-    display: 'flex',
-    alignItems: 'center',
-    maxWidth: 'min-content',
     whiteSpace: 'nowrap',
-    margin: '0 0 0 .5rem',
-    padding: '0 .5rem',
-    backgroundColor: 'transparent',
-    border: '1px solid var(--color-accent-lighter)',
-    borderRadius: 10,
-    fontSize: 11,
-    '@media(max-width: 480px)': {
-      flexDirection: 'column',
-      margin: '.5rem 0 0 0',
-    },
   },
   '.postDetails': {
     marginBottom: '.25rem',
     display: 'flex',
     flexDirection: 'column',
     '.info': {
-      fontSize: 16,
+      marginBottom: '.5rem',
+      fontSize: 14,
+      textTransform: 'uppercase',
       width: '100%',
       borderBottom: '1px solid var(--color-accent-lighter)',
-      fontFamily: 'var(--font-secondary)',
       display: 'flex',
       flexDirection: 'row',
       '.authorAndDate': {
-        marginBottom: '1rem',
-        '@media (max-width: 480px)': {
-          marginBottom: '.5rem',
-        },
+        marginBottom: '.5rem',
       },
       a: {
         margin: 0,
         paddingLeft: '.25rem',
-        fontFamily: 'var(--font-secondary)',
-        fontSize: 16,
-        '&:hover': {
-          textDecoration: 'none',
-        },
+        fontFamily: 'var(--font-primary)',
+        fontSize: 14,
       },
       time: {
         fontFamily: 'var(--font-primary)',
@@ -172,7 +153,7 @@ const blogStyles = css({
           fontSize: 13,
         },
         time: {
-          fontSize: 11,
+          fontSize: 12,
           '&:before': {
             margin: '0 0.25rem',
             content: '"•"',
@@ -182,7 +163,6 @@ const blogStyles = css({
     },
     color: 'var(--color-gray)',
     fontSize: 13,
-    lineHeight: '1.2rem',
     '@media (max-width: 600px)': {
       flexDirection: 'column',
       alignItems: 'flex-start',
@@ -190,68 +170,12 @@ const blogStyles = css({
     '@media(max-width: 480px)': {
       flexDirection: 'column',
     },
-    '.postStats': {
-      position: 'relative',
-      paddingTop: '.5rem',
+    '.blogListDetails': {
       display: 'flex',
       justifyContent: 'space-between',
-      flexDirection: 'row',
-      marginBottom: '1.5rem',
-      '@media (max-width: 480px)': {
-        marginBottom: '1.5rem',
-      },
-      '.likesAndViews': {
-        width: '100%',
-        display: 'flex',
-        flexDirection: 'row',
-        alignSelf: 'center',
-        '@media (max-width: 480px)': {
-          marginBottom: '.5rem',
-        },
-      },
-      '.readTime': {
-        backgroundColor: 'var(--color-bg)',
-        maxHeight: 'fit-content',
-        '@media (min-width: 601px)': {
-          position: 'absolute',
-          right: 0,
-          top: -11,
-        },
-        '@media (max-width: 600px)': {
-          margin: '.5rem 0 0 0',
-        },
-      },
-      '@media(max-width: 600px)': {
-        flexDirection: 'column',
-      },
-    },
-    '.blogListDetails': {
-      color: 'var(--color-accent-gray)',
       width: '100%',
-      display: 'flex',
-      flexDirection: 'row',
-      time: {
-        marginRight: '.5rem',
-      },
-      '.likes': {
-        margin: '0 0.5rem',
-        position: 'relative',
-        opacity: 1,
-        transition: 'none',
-        transform: 'none',
-      },
-      '.divider2': {
-        display: 'none',
-      },
-      '.readTime': {
-        margin: '0 0 0 0.8rem',
-        maxHeight: 19,
-        lineHeight: '.8rem',
-        '@media (max-width: 768px)': {
-          lineHeight: '1.1rem',
-          fontSize: 10,
-        },
-      },
+      margin: 0,
+      padding: 0,
     },
   },
   '.postTeaser': {

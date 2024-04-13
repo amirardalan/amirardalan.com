@@ -13,6 +13,13 @@ const TableOfContents: FC<TableOfContentsProps> = ({ markdown }) => {
   const handleShowTOC = () => setShowTOC(!showTOC);
 
   const styleTOC = css({
+    '.toc': {
+      a: {
+        fontFamily: 'var(--font-primary)',
+        fontSize: 14,
+        lineHeight: '1.5rem',
+      },
+    },
     summary: {
       display: 'flex',
       alignItems: 'center',
@@ -48,8 +55,9 @@ const TableOfContents: FC<TableOfContentsProps> = ({ markdown }) => {
       fontWeight: 400,
     },
     'ol.tableOfContents': {
-      margin: '.85rem 0 .25rem',
+      margin: '.85rem 0 3.5rem',
       a: {
+        fontFamily: 'var(--font-primary)',
         margin: 0,
         padding: 0,
       },
@@ -75,7 +83,7 @@ const TableOfContents: FC<TableOfContentsProps> = ({ markdown }) => {
     <>
       {headings ? (
         <div css={styleTOC}>
-          <div className="note contents">
+          <div className="toc">
             <button onClick={handleShowTOC} aria-label="Table of Contents">
               <summary>
                 <span className="icon">

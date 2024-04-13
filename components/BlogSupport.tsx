@@ -168,7 +168,6 @@ const BlogSupport: FC<BlogSupportProps> = ({
       },
       button: {
         display: 'flex',
-        textDecoration: 'underline',
         '&:last-of-type': {
           marginLeft: '1.5rem',
         },

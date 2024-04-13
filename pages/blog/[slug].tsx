@@ -13,7 +13,6 @@ import BlogStyles from '@/components/BlogStyles';
 import LoadingTriangle from '@/components/LoadingTriangle';
 import BlogNavigation from '@/components/BlogNavigation';
 import Markdown from '@/components/Markdown';
-import LikeCount from '@/components/LikeCount';
 
 import calculateReadTime from '@/utils/calculateReadTime';
 import formatDate from '@/utils/formatDate';
@@ -24,7 +23,7 @@ import { BlogNavigationTypes } from '@/types/blog';
 import LikeButton from '@/components/LikeButton';
 import BlogPostTweet from '@/components/BlogPostTweet';
 import TableOfContents from '@/components/TableOfContents';
-import PostViewCount from '@/components/PostViewCount';
+import BlogPostStats from '@/components/BlogPostStats';
 
 const BlogPostControls = dynamic(
   () => import('@/components/BlogPostControls'),
@@ -175,31 +174,26 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
                 </span>
               </div>
             </div>
-            <div className="postStats">
-              <div className="likesAndViews">
-                <LikeCount id={post.id} likes={post.likes} />
-                <PostViewCount slug={post.slug} />
+            <BlogPostStats post={post} />
+          </div>
+
+          <div className="readerControls">
+            <TableOfContents markdown={post.content} />
+            <div className="likeAndShare">
+              <div className="buttonHover">
+                <LikeButton liked={liked} handleLike={handleLike} />
               </div>
-              <span className="readTime">{postReadTime}</span>
+              <div className="buttonHover">
+                <BlogPostTweet
+                  title={post.title}
+                  url={url}
+                  text={false}
+                  size={24}
+                  color={'var(--color-heading)'}
+                />
+              </div>
             </div>
           </div>
-
-          <div className="likeAndShare">
-            <div className="buttonHover">
-              <LikeButton liked={liked} handleLike={handleLike} />
-            </div>
-            <div className="buttonHover">
-              <BlogPostTweet
-                title={post.title}
-                url={url}
-                text={false}
-                size={24}
-                color={'var(--color-heading)'}
-              />
-            </div>
-          </div>
-
-          <TableOfContents markdown={post.content} />
 
           <Markdown markdown={post} />
           {userHasValidSession && (
@@ -250,10 +244,7 @@ export default BlogPost;
 const styleBlogPost = css({
   '.likeAndShare': {
     display: 'flex',
-    marginBottom: '1rem',
-    '@media (max-width: 480px)': {
-      marginBottom: '.5rem',
-    },
+    margin: '.25rem 0 0 0',
   },
   '.postFull': {
     h1: {
@@ -261,9 +252,11 @@ const styleBlogPost = css({
       textDecoration: 'none',
       lineHeight: '2.8rem',
       fontWeight: 700,
+      '@media(max-width: 1024px)': {
+        margin: '0 0 .5rem',
+      },
       '@media(max-width: 768px)': {
         fontSize: 32,
-        margin: '0 0 .5rem',
         lineHeight: '2.2rem',
       },
       '@media(max-width: 600px)': {
@@ -275,6 +268,7 @@ const styleBlogPost = css({
       marginBottom: '3.5rem',
       fontFamily: 'var(--font-tertiary)',
       fontSize: 22,
+      fontStyle: 'italic',
       lineHeight: '1.5rem',
       color: 'var(--color-gray)',
       '@media(max-width: 1024px)': {
@@ -283,6 +277,15 @@ const styleBlogPost = css({
       },
       '@media(max-width: 480px)': {
         marginBottom: '1.25rem',
+      },
+    },
+    '.readerControls': {
+      display: 'flex',
+      alignItems: 'start',
+      justifyContent: 'space-between',
+      margin: '1.5rem 0',
+      '@media (max-width: 768px)': {
+        marginTop: '2rem 0 .5rem',
       },
     },
     'h3, h3 code': {
@@ -344,11 +347,9 @@ const styleBlogPost = css({
     'ul li, ol li, p, .note': {
       a: {
         color: 'var(--color-primary)',
-        textDecoration: 'underline',
         textDecorationColor: 'var(--color-primary)',
         '&:hover': {
           color: 'var(--color-primary)',
-          textDecoration: 'none',
         },
       },
     },
@@ -420,23 +421,8 @@ const styleBlogPost = css({
           color: 'var(--color-warning)',
         },
       },
-      '&.contents': {
-        margin: '1.5rem 0 2rem',
-        border: 'none',
-        display: 'flex',
-        alignItems: 'start',
-        flexDirection: 'column',
-        padding: '.25rem 0',
-        '&::before': {
-          display: 'none',
-          content: '""',
-          background: 'none',
-        },
-        '&:after': {
-          content: '""',
-        },
-      },
       '@media (max-width: 768px)': {
+        marginTop: '1.5rem',
         fontSize: 11,
         lineHeight: '1.4rem',
         a: {

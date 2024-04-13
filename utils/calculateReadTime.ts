@@ -5,7 +5,7 @@ const calculateReadTime = (content: string) => {
   const words = content.trim().split(/\s+/).length;
   const time = Math.ceil(words / wpm);
   const readTime = time + ' ' + 'min read';
-  return `~ ${readTime}`;
+  return readTime;
 };
 
 export default calculateReadTime;

@@ -1,9 +1,9 @@
 import type { FC } from 'react';
+import type { PostProps } from '@/types/post';
 import Link from 'next/link';
-import LikeCount from '@/components/LikeCount';
+import BlogPostStats from '@/components/BlogPostStats';
 import formatDate from '@/utils/formatDate';
 import calculateReadTime from '@/utils/calculateReadTime';
-import type { PostProps } from '@/types/post';
 
 type BlogPostProps = {
   post: PostProps;
@@ -11,7 +11,7 @@ type BlogPostProps = {
 
 const BlogPost: FC<BlogPostProps> = ({ post }) => {
   const publishDate = formatDate(post.publishedAt, 'numeric');
-  const postReadTime = calculateReadTime(post.content);
+  const postReadTime: string = calculateReadTime(post.content);
 
   return (
     <div className="blog postTeaser">
@@ -20,10 +20,7 @@ const BlogPost: FC<BlogPostProps> = ({ post }) => {
         aria-label={`${publishDate} • ${postReadTime}`}
       >
         <div className="blogListDetails">
-          <time dateTime={publishDate}>{publishDate}</time>
-          <span className="divider1">•</span>{' '}
-          <LikeCount id={post.id} likes={post.likes} />
-          <span className="readTime">{postReadTime}</span>
+          <BlogPostStats post={post} />
         </div>
       </div>
       <h2 className="blogListHeading">

@@ -209,7 +209,10 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
             verticalAlign: 'baseline',
             background: 'transparent',
             color: 'var(--color-primary)',
-            textDecoration: 'underline',
+            textDecoration: 'none',
+            '&:hover': {
+              textDecoration: 'underline',
+            },
           },
           p: {
             margin: 0,

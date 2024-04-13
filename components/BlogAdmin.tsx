@@ -75,10 +75,6 @@ const BlogAdmin: FC = () => {
       a: {
         marginLeft: '.5rem',
         textTransform: 'uppercase',
-        textDecoration: 'none',
-        '&:hover': {
-          textDecoration: 'underline',
-        },
       },
     },
   });
@@ -151,7 +147,6 @@ const BlogAdmin: FC = () => {
               color: 'var(--color-gray)',
               fontSize: 13,
               a: {
-                textDecoration: 'none',
                 '&::after': {
                   content: '"/"',
                   margin: '0 .5rem',
@@ -259,7 +254,6 @@ const BlogAdmin: FC = () => {
               fontWeight: 'normal',
               textTransform: 'uppercase',
               textAlign: 'center',
-              textDecoration: 'none',
               cursor: 'pointer',
               '&.inProgress': {
                 backgroundColor: 'var(--color-disabled)',
@@ -278,7 +272,6 @@ const BlogAdmin: FC = () => {
               '&.deleteBtn': {
                 backgroundColor: 'var(--color-warning)',
                 color: 'var(--color-light)',
-                textDecoration: 'none',
               },
               '&.saveBtn, &.updateBtn, &.cancelBtn': {
                 marginRight: '.25rem',

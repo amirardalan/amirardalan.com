@@ -16,7 +16,6 @@ const styleXButton = css({
 
 const styleXText = css({
   marginLeft: 10,
-  textDecoration: 'underline',
   '@media (max-width: 480px)': {
     marginLeft: 5,
   },
