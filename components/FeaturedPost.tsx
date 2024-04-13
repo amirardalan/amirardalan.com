@@ -126,7 +126,7 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
       fontWeight: 700,
       '@media (min-width: 1025px)': {
         '&:hover': {
-          textDecoration: 'none',
+          textDecoration: 'underline',
         },
       },
       '@media(max-width: 480px)': {
@@ -134,14 +134,14 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
       },
     },
     p: {
-      marginTop: '.25rem',
+      marginTop: '.15rem',
       lineHeight: '1.25rem',
       fontSize: 15,
       fontFamily: 'var(--font-tertiary)',
       fontStyle: 'italic',
       color: 'var(--color-gray)',
       '@media (max-width: 480px)': {
-        marginTop: '.25rem',
+        marginTop: '.15rem',
       },
     },
   });

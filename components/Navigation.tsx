@@ -148,22 +148,6 @@ const Navigation: FC = () => {
       lineHeight: '3rem',
     },
   });
-  const styleMobileNavSecondary = css({
-    marginBottom: '2rem',
-    position: 'relative',
-    a: {
-      display: 'block',
-      marginBottom: '.5rem',
-      color: 'var(--color-gray)',
-      animation: 'slideUp .4s ease',
-    },
-    svg: {
-      fill: 'var(--color-accent)',
-    },
-    '@media (max-width: 768px) and (max-height: 600px)': {
-      display: 'none',
-    },
-  });
   const styleButton = css({
     margin: '.25rem 1.5rem',
     display: 'flex',
@@ -282,14 +266,27 @@ const Navigation: FC = () => {
             aria-label="Navigation Menu"
             aria-expanded={toggleMenu}
           >
-            {toggleMenu ? <CloseIcon size={28} /> : <MenuIcon size={28} />}
+            {toggleMenu ? (
+              <svg
+                height={28}
+                width={28}
+                clipRule="evenodd"
+                fillRule="evenodd"
+                strokeLinejoin="round"
+                strokeMiterlimit="2"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="var(--color-primary)"
+              >
+                <path d="m12 10.93 5.719-5.72c.146-.146.339-.219.531-.219.404 0 .75.324.75.749 0 .193-.073.385-.219.532l-5.72 5.719 5.719 5.719c.147.147.22.339.22.531 0 .427-.349.75-.75.75-.192 0-.385-.073-.531-.219l-5.719-5.719-5.719 5.719c-.146.146-.339.219-.531.219-.401 0-.75-.323-.75-.75 0-.192.073-.384.22-.531l5.719-5.719-5.72-5.719c-.146-.147-.219-.339-.219-.532 0-.425.346-.749.75-.749.192 0 .385.073.531.219z" />
+              </svg>
+            ) : (
+              <MenuIcon size={28} />
+            )}
           </button>
           <div css={styleMobileNavWrapper}>
             <button className="closeArea" onClick={handleToggleMenu} />
             <div className="mobileNavPanel">
-              <div css={styleMobileNavSecondary}>
-                <Logo animate={false} size={40} color="var(--color-heading)" />
-              </div>
               <NavItems />
             </div>
           </div>
