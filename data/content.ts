@@ -15,7 +15,6 @@ export const homeContent = {
   },
   typed: [
     `i'm a design engineer`,
-    `design - code - writing`,
     `peruse my <a href="/blog">blog</a> posts`,
     `learn a bit <a href="/about">about</a> me`,
     `follow me on x: <a href=${linkX} rel="noopener noreferrer">@amirardalan</a>`,
