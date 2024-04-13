@@ -272,21 +272,15 @@ const styleBlogPost = css({
       lineHeight: '1.5rem',
       color: 'var(--color-gray)',
       '@media(max-width: 1024px)': {
-        marginBottom: '2rem',
+        marginBottom: '3rem',
         fontSize: 18,
-      },
-      '@media(max-width: 480px)': {
-        marginBottom: '1.25rem',
       },
     },
     '.readerControls': {
       display: 'flex',
       alignItems: 'start',
       justifyContent: 'space-between',
-      margin: '1.5rem 0',
-      '@media (max-width: 768px)': {
-        marginTop: '2rem 0 .5rem',
-      },
+      margin: '2rem 0',
     },
     'h3, h3 code': {
       fontSize: 28,
