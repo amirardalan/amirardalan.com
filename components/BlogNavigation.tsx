@@ -67,6 +67,9 @@ const BlogNavigation: FC<BlogNavigationProps> = ({
     lineHeight: '1.3rem',
     a: {
       textDecoration: 'none',
+      '&:hover': {
+        textDecoration: 'underline',
+      },
     },
   });
   const styleBlogLinks = css({

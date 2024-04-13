@@ -94,15 +94,17 @@ const BlogSupport: FC<BlogSupportProps> = ({
           display: 'flex',
           flexDirection: 'column',
           position: 'relative',
-          'a:hover::before': {
-            height: 32,
-            width: 4,
-            position: 'absolute',
-            left: -14,
-            content: '""',
-            borderLeft: '4px solid var(--color-primary)',
-            '@media (max-width: 480px)': {
-              content: 'none',
+          'a:hover': {
+            '&:before': {
+              height: 32,
+              width: 4,
+              position: 'absolute',
+              left: -14,
+              content: '""',
+              borderLeft: '4px solid var(--color-primary)',
+              '@media (max-width: 480px)': {
+                content: 'none',
+              },
             },
           },
           '.cashapp, .paypal': {
@@ -186,6 +188,9 @@ const BlogSupport: FC<BlogSupportProps> = ({
       },
     },
     '.copyContainer': {
+      'button:hover': {
+        textDecoration: 'underline',
+      },
       '.supportHeading': {
         marginBottom: '1rem',
         display: 'flex',
