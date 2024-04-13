@@ -28,7 +28,8 @@ const Header: FC<HeaderProps> = ({ toggleTheme }) => {
     padding: '2rem 4rem 0',
     position: 'sticky',
     top: '-2rem',
-    backgroundColor: 'var(--color-bg)',
+    backgroundColor: 'var(--color-bg-opaque)',
+    backdropFilter: 'blur(10px)',
     zIndex: 5,
     '.excludeInHeader': {
       display: 'none',
@@ -82,7 +83,7 @@ const Header: FC<HeaderProps> = ({ toggleTheme }) => {
       <BlogAdmin />
       <header css={styleHeaderWrapper}>
         <div css={styleHeader}>
-          <Link href="/" aria-label={`${appTitle} Ardalan Logo`} passHref>
+          <Link href="/" aria-label={`${appTitle} Logo`} passHref>
             <button css={styleLogoButton}>
               <Logo animate={true} size={25} color="var(--color-heading)" />
             </button>

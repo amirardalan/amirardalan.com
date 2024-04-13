@@ -88,7 +88,7 @@ const BlogSupport: FC<BlogSupportProps> = ({
         flexDirection: 'column',
         margin: '2.5rem',
         '@media (max-width: 480px)': {
-          margin: '1.6rem 2rem',
+          margin: '1.8rem 2rem',
         },
         '.paymentMethods': {
           display: 'flex',
@@ -103,6 +103,14 @@ const BlogSupport: FC<BlogSupportProps> = ({
             borderLeft: '4px solid var(--color-primary)',
             '@media (max-width: 480px)': {
               content: 'none',
+            },
+          },
+          '.cashapp, .paypal': {
+            display: 'flex',
+            flexDirection: 'row',
+            span: {
+              display: 'flex',
+              alignItems: 'center',
             },
           },
           '.cashapp': {

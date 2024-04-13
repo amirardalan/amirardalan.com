@@ -13,9 +13,11 @@ export const themeDark = {
 export const theme = {
   // Elements
   light: '#edf1f5',
+  lightOpaque: 'rgba(237, 241, 245, 0.75)',
   lightAccent: '#e4e7ed',
   lightDarker: '#babcc9',
   dark: '#000000',
+  darkOpaque: 'rgba(0, 0, 0, 0.75)',
   darkAccent: '#16171b',
   darker: '#494754',
   primary: '#6000d6',
