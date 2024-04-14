@@ -166,7 +166,6 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
         },
         'h3, h3 code': {
           fontSize: HEADING_FONT_SIZE,
-          lineHeight: '1.8rem',
           '@media(max-width: 768px)': {
             fontSize: 24,
           },
@@ -193,8 +192,8 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
                 color: 'var(--color-accent-gray)',
                 position: 'absolute',
                 textAlign: 'center',
-                top: 0,
-                left: -22,
+                top: 5,
+                left: -25,
                 fontSize: HEADING_FONT_SIZE,
               },
             },

@@ -139,7 +139,7 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
       fill: 'var(--color-text)',
       '@media (min-width: 769px)': {
         '&:hover': {
-          fill: 'var(--color-accent-lighter)',
+          fill: 'var(--color-primary)',
         },
       },
     },
