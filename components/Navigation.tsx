@@ -44,7 +44,7 @@ const Navigation: FC = () => {
     alignItems: 'center',
     marginRight: '2rem',
     fontFamily: 'var(--font-secondary)',
-    fontSize: 12,
+    fontSize: 14,
     textTransform: 'uppercase',
     a: {
       margin: '0 1.5rem',
@@ -56,8 +56,9 @@ const Navigation: FC = () => {
         fontFamily: 'var(--font-primary)',
         color: 'var(--color-primary)',
         position: 'absolute',
+        fontSize: 10,
         content: '">"',
-        top: 2,
+        top: 2.25,
         left: -12,
         '@media (max-width: 768px)': {
           left: -20,

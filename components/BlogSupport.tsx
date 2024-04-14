@@ -240,7 +240,7 @@ const BlogSupport: FC<BlogSupportProps> = ({
             <div className="left">
               <div className="copyContainer">
                 <span className="supportHeading">
-                  <h4>Enjoy this post? Show some love:</h4>
+                  <h4>Did you enjoy this post?</h4>
                   <LikeButton liked={liked} handleLike={handleLike} />
                 </span>
                 <div className="donate">

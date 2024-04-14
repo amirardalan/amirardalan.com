@@ -333,7 +333,9 @@ const styleBlogPost = css({
     },
     'p, ul, li, a': {
       fontFamily: 'var(--font-tertiary)',
-      fontSize: 17,
+      fontSize: 18,
+      lineHeight: '2rem',
+      letterSpacing: '.01rem',
     },
     'ul, li, a': {
       marginBottom: '1rem',

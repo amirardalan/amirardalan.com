@@ -15,7 +15,6 @@ const TableOfContents: FC<TableOfContentsProps> = ({ markdown }) => {
   const styleTOC = css({
     '.toc': {
       a: {
-        fontFamily: 'var(--font-primary)',
         fontSize: 14,
         lineHeight: '1.5rem',
       },
@@ -23,7 +22,6 @@ const TableOfContents: FC<TableOfContentsProps> = ({ markdown }) => {
     summary: {
       display: 'flex',
       alignItems: 'center',
-      fontFamily: 'var(--font-primary)',
       textTransform: 'uppercase',
       fontSize: 14,
       color: 'var(--color-text)',
@@ -51,13 +49,13 @@ const TableOfContents: FC<TableOfContentsProps> = ({ markdown }) => {
       },
     },
     '.tocTitle': {
-      fontSize: 14,
+      fontSize: 12,
       fontWeight: 400,
     },
     'ol.tableOfContents': {
       margin: '.85rem 0 3.5rem',
       a: {
-        fontFamily: 'var(--font-primary)',
+        fontFamily: 'var(--font-secondary)',
         margin: 0,
         padding: 0,
       },
