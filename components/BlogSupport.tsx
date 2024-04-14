@@ -108,6 +108,7 @@ const BlogSupport: FC<BlogSupportProps> = ({
               borderLeft: '4px solid var(--color-primary)',
               '@media (max-width: 480px)': {
                 content: 'none',
+                textDecoration: 'none',
               },
             },
           },
