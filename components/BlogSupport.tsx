@@ -191,6 +191,9 @@ const BlogSupport: FC<BlogSupportProps> = ({
         marginBottom: '1rem',
         display: 'flex',
         flexDirection: 'row',
+        'button::after': {
+          marginLeft: '.2rem',
+        },
         '@media (max-width: 480px)': {
           marginBottom: '.5rem',
         },
