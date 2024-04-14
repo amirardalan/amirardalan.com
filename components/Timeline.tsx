@@ -118,9 +118,8 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
           fontSize: 50,
           color: 'var(--color-text)',
           '@media(max-width: 768px)': {
-            top: -43.5,
-            right: -18,
-            fontSize: 70,
+            position: 'absolute',
+            top: -36,
           },
         },
         '.event': {
@@ -144,7 +143,7 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
           padding: '0',
           '.date': {
             marginRight: '1rem',
-            marginTop: '-.6rem',
+            marginTop: '-.2rem',
           },
         },
       },
@@ -188,7 +187,7 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
           padding: 0,
           '.date': {
             marginLeft: '1rem',
-            marginTop: '-.65rem',
+            marginTop: '-.2rem',
           },
         },
       },
@@ -199,12 +198,6 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
         fontFamily: 'var(--font-secondary)',
         fontSize: 18,
         lineHeight: '.5rem',
-        '@media(max-width: 768px)': {
-          paddingTop: '.2rem',
-        },
-        '@media(max-width: 480px)': {
-          paddingTop: '.9rem',
-        },
       },
       '.event': {
         position: 'relative',
@@ -230,15 +223,11 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
         },
         '@media(max-width: 480px)': {
           border: 'none',
-          marginTop: 0,
           marginBottom: '4rem',
           padding: '0 1rem 0 0',
           fontSize: 14,
         },
       },
-    },
-    '@media(max-width: 768px)': {
-      paddingTop: 2.9,
     },
   });
 
