@@ -193,7 +193,7 @@ const blogStyles = css({
     },
     '&:hover': {
       '&::before': {
-        content: '"❯"',
+        content: '"❭"',
         position: 'absolute',
         fontFamily: 'var(--font-secondary)',
         fontWeight: 700,
