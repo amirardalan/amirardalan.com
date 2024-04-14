@@ -10,7 +10,7 @@ type TimelineProps = TimelineTypes;
 const Timeline: FC<TimelineProps> = ({ timeline }) => {
   const { ref, inView } = useInView({
     threshold: 1,
-    rootMargin: '0% 0% -10% 0%',
+    rootMargin: '0% 0% -32% 0%',
     triggerOnce: false,
   });
 
@@ -25,8 +25,8 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
     position: 'relative',
     '.readMoreLink': {
       fontSize: 24,
-      marginTop: '6rem',
-      paddingBottom: '2.8rem',
+      marginTop: '7rem',
+      paddingBottom: '2rem',
       display: 'flex',
       justifyContent: 'center',
       fontFamily: 'var(--font-secondary)',
@@ -73,12 +73,13 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
       '&:nth-of-type(even), &:nth-of-type(odd)': {
         '.event': {
           maxWidth: 345,
-          boxShadow: '-2px 2px 0 var(--color-accent-lighter)',
+          boxShadow: '-1px 1px 0 var(--color-accent-lighter)',
           background: 'var(--color-accent)',
           h3: {
             marginBottom: '.5rem',
             fontFamily: 'var(--font-secondary)',
-            fontSize: 16,
+            fontSize: 15,
+            letterSpacing: 1,
             fontWeight: 700,
             textTransform: 'uppercase',
           },
@@ -93,12 +94,12 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
         zIndex: 2,
         position: 'relative',
         justifySelf: 'flex-end',
-        borderRight: '4px solid var(--color-accent)',
+        borderRight: '1px solid var(--color-accent-lighter)',
         '.scrollHighlight': {
           position: 'absolute',
           top: 0,
-          right: -4.1,
-          width: 4,
+          right: -1,
+          width: 1,
           animation: 'growUp .5s',
           background: 'var(--color-text)',
         },
@@ -111,10 +112,10 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
         },
         '&:after': {
           position: 'absolute',
-          top: -52.5,
-          right: -19.5,
+          top: -35,
+          right: -12,
           content: '"•"',
-          fontSize: 77,
+          fontSize: 50,
           color: 'var(--color-text)',
           '@media(max-width: 768px)': {
             top: -43.5,
@@ -194,8 +195,8 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
       '.date': {
         color: 'var(--color-primary)',
         textTransform: 'uppercase',
-        letterSpacing: 2,
-        fontFamily: 'var(--font-primary)',
+        letterSpacing: 5,
+        fontFamily: 'var(--font-secondary)',
         fontSize: 18,
         lineHeight: '.5rem',
         '@media(max-width: 768px)': {

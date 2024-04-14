@@ -302,14 +302,14 @@ export const timelineContent = {
       cName: 'date',
     },
     {
-      title: 'Web Design @ Southridge High School',
+      title: 'Web Design @ Southridge High',
       content: `Created Macromedia Flash websites in my school's TV Studio. Took an intro to Web Design course sophomore year.`,
       cName: 'event',
     },
     {
       title: 'HTML & CSS in Geocities',
       content:
-        'Learned the basics of HTML/CSS in Yahoo! Geocities. I realized the joy of creating a website that anyone in the world could view.',
+        'Learned the basics of HTML/CSS in Yahoo! Geocities. I realized the joy of creating a personal website that anyone in the world could view.',
       cName: 'event',
     },
     {
@@ -323,7 +323,7 @@ export const timelineContent = {
     {
       title: 'First Computer',
       content:
-        'My family got a Compaq Presario CDS 524. I read lots of Microsoft Encarta and played "WitWi Carmen San Diego" and "X-Wing".',
+        'My family got a Compaq Presario CDS 524. I read lots of Microsoft Encarta and played "Where in the World is Carmen San Diego" and "X-Wing".',
       cName: 'event',
     },
   ],

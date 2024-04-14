@@ -68,15 +68,15 @@ const Footer: FC<FooterProps> = () => {
       },
     },
     h4: {
-      fontFamily: 'var(--font-primary)',
+      fontFamily: 'var(--font-secondary)',
+      fontWeight: 400,
+      textTransform: 'uppercase',
+      letterSpacing: 4,
+      fontSize: 14,
+      borderBottom: '1px solid var(--color-bg)',
       marginBottom: '1rem',
       paddingBottom: '1rem',
       lineHeight: '1rem',
-      borderBottom: '2px solid var(--color-bg)',
-      textTransform: 'uppercase',
-      letterSpacing: 5,
-      fontSize: 12,
-      fontWeight: 400,
       '@media(max-width: 600px)': {
         width: '100%',
       },
@@ -96,8 +96,9 @@ const Footer: FC<FooterProps> = () => {
   const styleCopyright = css({
     textTransform: 'uppercase',
     marginTop: '2rem',
-    fontFamily: 'var(--font-primary)',
-    fontSize: 10,
+    fontFamily: 'var(--font-secondary)',
+    fontSize: 11,
+    letterSpacing: 2,
     color: 'var(--color-bg)',
     lineHeight: '1.2rem',
     display: 'flex',
@@ -201,7 +202,7 @@ const Footer: FC<FooterProps> = () => {
         <div>
           {footer.copyright.text}
           {new Date().getFullYear() + ' '}
-          {footer.copyright.name} • <SiteViewCount />
+          {footer.copyright.name} — <SiteViewCount />
         </div>
       </div>
     </footer>
