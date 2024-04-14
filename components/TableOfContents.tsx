@@ -18,6 +18,9 @@ const TableOfContents: FC<TableOfContentsProps> = ({ markdown }) => {
         fontSize: 14,
         lineHeight: '1.5rem',
       },
+      h4: {
+        marginTop: 2,
+      },
     },
     summary: {
       display: 'flex',

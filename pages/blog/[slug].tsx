@@ -114,6 +114,290 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
     : null;
 
   const RenderBlogPost = () => {
+    const HEADING_FONT_SIZE = 32;
+
+    const styleBlogPost = css({
+      '.likeAndShare': {
+        display: 'flex',
+        margin: '.25rem 0 0 0',
+      },
+      '.postFull': {
+        'h1, h2': {
+          display: 'inline-block',
+          fontSize: 50,
+        },
+        h1: {
+          margin: '0 0 .8rem',
+          textDecoration: 'none',
+          lineHeight: '3.4rem',
+          fontWeight: 700,
+          '@media(max-width: 1024px)': {
+            margin: '0 0 .5rem',
+          },
+          '@media(max-width: 768px)': {
+            fontSize: 42,
+            lineHeight: '2.8rem',
+          },
+          '@media(max-width: 600px)': {
+            fontSize: 32,
+            lineHeight: '2.2rem',
+          },
+        },
+        '.teaser': {
+          marginBottom: '3.5rem',
+          fontFamily: 'var(--font-tertiary)',
+          fontSize: 22,
+          fontStyle: 'italic',
+          lineHeight: '1.5rem',
+          color: 'var(--color-gray)',
+          '@media(max-width: 1024px)': {
+            marginBottom: '3rem',
+            fontSize: 18,
+          },
+        },
+        '.readerControls': {
+          display: 'flex',
+          alignItems: 'start',
+          justifyContent: 'space-between',
+          margin: '2rem 0',
+        },
+        'h3, h3 code': {
+          fontSize: HEADING_FONT_SIZE,
+          lineHeight: '1.8rem',
+          '@media(max-width: 768px)': {
+            fontSize: 24,
+          },
+        },
+        h3: {
+          scrollMarginTop: '4rem',
+          margin: '1rem 0 1.5rem',
+          padding: 0,
+          display: 'inline-block',
+          fontWeight: 700,
+          '& code': {
+            fontFamily: 'var(--font-secondary)',
+            background: 'transparent',
+          },
+          a: {
+            fontFamily: 'var(--font-secondary)',
+            textDecoration: 'none',
+            color: 'var(--color-heading)',
+            fontSize: HEADING_FONT_SIZE,
+            '&:hover': {
+              '&::before': {
+                fontWeight: 400,
+                content: '"#"',
+                color: 'var(--color-accent-gray)',
+                position: 'absolute',
+                textAlign: 'center',
+                top: 0,
+                left: -22,
+                fontSize: HEADING_FONT_SIZE,
+              },
+            },
+            '@media (max-width: 768px)': {
+              fontSize: 24,
+            },
+          },
+          '@media(hover: none)': {
+            a: {
+              pointerEvents: 'none',
+              '&:hover:before': {
+                content: '""',
+              },
+            },
+          },
+        },
+        'h1, h2, h3, h3, h4, h5, h6': {
+          position: 'relative',
+        },
+        'p, ul, li, a': {
+          fontFamily: 'var(--font-tertiary)',
+          fontSize: 18,
+          lineHeight: '2rem',
+          letterSpacing: '.01rem',
+        },
+        'ul, li, a': {
+          marginBottom: '1rem',
+        },
+        'ul li, ol li, p, .note': {
+          a: {
+            color: 'var(--color-primary)',
+            textDecorationColor: 'var(--color-primary)',
+            '&:hover': {
+              color: 'var(--color-primary)',
+            },
+          },
+        },
+        'p,': {
+          marginBottom: '2rem',
+        },
+        '.note': {
+          position: 'relative',
+          margin: '3rem 0',
+          padding: '2.8rem 1.5rem 1.25rem 1.5rem',
+          border: '1px solid var(--color-accent-lighter)',
+          borderRadius: 5,
+          fontFamily: 'var(--font-secondary)',
+          fontSize: 14.5,
+          color: 'var(--color-gray)',
+          lineHeight: '1.5rem',
+          '&:before, &:after': {
+            position: 'absolute',
+            lineHeight: '2rem',
+          },
+          '&:before': {
+            content: '""',
+            top: 19,
+            left: 22,
+            width: 15,
+            height: 15,
+            background: 'var(--icon-info) no-repeat',
+            backgroundSize: 'contain',
+            lineHeight: '2rem',
+            '@media (max-width: 768px)': {
+              top: 19,
+            },
+          },
+          '&:after': {
+            content: '"Note:"',
+            top: 15,
+            left: 43,
+            lineHeight: '1.5rem',
+            textTransform: 'uppercase',
+            fontFamily: 'var(--font-primary)',
+            fontWeight: 400,
+            fontSize: 14.5,
+          },
+          a: {
+            fontFamily: 'var(--font-secondary)',
+            fontSize: 14.5,
+          },
+          code: {
+            fontSize: 13,
+            '@media (max-width: 768px)': {
+              padding: '.05rem .05rem !important',
+              margin: '0 !important',
+              lineHeight: '.5rem !important',
+            },
+          },
+          '&.tip': {
+            '&:after': {
+              content: '"Tip:"',
+            },
+          },
+          '&.example': {
+            '&:after': {
+              content: '"Example:"',
+            },
+          },
+          '&.warn': {
+            '&:after': {
+              content: '"Warning:"',
+              color: 'var(--color-warning)',
+            },
+          },
+          '@media (max-width: 768px)': {
+            marginTop: '1.5rem',
+            fontSize: 11,
+            lineHeight: '1.4rem',
+            a: {
+              fontSize: 12,
+            },
+          },
+        },
+        blockquote: {
+          margin: '2.5rem -1.5rem',
+          padding: '0 2rem',
+          borderLeft: '8px solid var(--color-primary)',
+          color: 'var(--color-gray)',
+          'p, a': {
+            marginBottom: 0,
+            fontSize: 20,
+            fontStyle: 'italic',
+          },
+          '& blockquote': {
+            marginLeft: '1rem',
+            borderLeft: '8px solid var(--color-gray)',
+          },
+        },
+        ul: {
+          marginBottom: '2rem',
+        },
+        'ul li': {
+          listStyle: 'outside',
+          margin: '0 0 .5rem 1rem',
+          paddingLeft: '.5rem',
+          '&.task-list-item': {
+            fontFamily: 'var(--font-primary)',
+            fontSize: 15,
+            fontWeight: 'bold',
+          },
+          'input[type="checkbox"]': {
+            marginTop: '-.1rem',
+          },
+          '@media (max-width: 480px)': {
+            marginLeft: '1.5rem',
+          },
+        },
+        'ul.contains-task-list': {
+          li: {
+            '&:first-of-type': {
+              fontFamily: 'var(font-secondary)',
+            },
+            listStyle: 'none',
+            margin: 0,
+            padding: 0,
+          },
+        },
+        ol: {
+          counterReset: 'counter',
+          margin: '2rem 0',
+          li: {
+            counterIncrement: 'counter',
+            marginLeft: '2rem',
+            paddingLeft: '.5rem',
+            position: 'relative',
+            '&::before': {
+              content: 'counter(counter)',
+              width: '1.3rem',
+              height: '1.3rem',
+              position: 'absolute',
+              top: '.1rem',
+              left: '-2rem',
+              border: '1px solid var(--color-gray)',
+              borderRadius: '50%',
+              color: 'var(--color-gray)',
+              fontFamily: 'var(--font-primary)',
+              fontSize: '.7rem',
+              lineHeight: '1.3rem',
+              textAlign: 'center',
+              '@media not all and (min-resolution:.001dpcm)': {
+                '@supports (-webkit-appearance:none)': {
+                  paddingLeft: '.1rem',
+                },
+              },
+            },
+          },
+          '@media (max-width: 480px)': {
+            marginLeft: '.1rem',
+          },
+        },
+      },
+      '.postImgWrapper': {
+        paddingBottom: '2rem',
+        img: {
+          width: '100%',
+          height: 'auto',
+        },
+      },
+      '.caption, .caption a': {
+        fontFamily: 'var(--font-primary)',
+        fontSize: 12,
+        color: 'var(--color-gray)',
+      },
+    });
+
     return (
       <div className={isPublished ? 'blog' : 'blog admin'} css={styleBlogPost}>
         {!isPublished ? (
@@ -240,280 +524,3 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
 };
 
 export default BlogPost;
-
-const styleBlogPost = css({
-  '.likeAndShare': {
-    display: 'flex',
-    margin: '.25rem 0 0 0',
-  },
-  '.postFull': {
-    h1: {
-      margin: '0 0 .8rem',
-      textDecoration: 'none',
-      lineHeight: '2.8rem',
-      fontWeight: 700,
-      '@media(max-width: 1024px)': {
-        margin: '0 0 .5rem',
-      },
-      '@media(max-width: 768px)': {
-        fontSize: 32,
-        lineHeight: '2.2rem',
-      },
-      '@media(max-width: 600px)': {
-        fontSize: 28,
-        lineHeight: '2.2rem',
-      },
-    },
-    '.teaser': {
-      marginBottom: '3.5rem',
-      fontFamily: 'var(--font-tertiary)',
-      fontSize: 22,
-      fontStyle: 'italic',
-      lineHeight: '1.5rem',
-      color: 'var(--color-gray)',
-      '@media(max-width: 1024px)': {
-        marginBottom: '3rem',
-        fontSize: 18,
-      },
-    },
-    '.readerControls': {
-      display: 'flex',
-      alignItems: 'start',
-      justifyContent: 'space-between',
-      margin: '2rem 0',
-    },
-    'h3, h3 code': {
-      fontSize: 28,
-      lineHeight: '1.8rem',
-      '@media(max-width: 768px)': {
-        fontSize: 24,
-      },
-    },
-    h3: {
-      scrollMarginTop: '4rem',
-      margin: '1rem 0 1.5rem',
-      padding: 0,
-      display: 'inline-block',
-      fontWeight: 700,
-      '& code': {
-        fontFamily: 'var(--font-secondary)',
-        background: 'transparent',
-      },
-      a: {
-        fontFamily: 'var(--font-secondary)',
-        textDecoration: 'none',
-        color: 'var(--color-heading)',
-        fontSize: 28,
-        '&:hover': {
-          '&::before': {
-            content: '"#"',
-            color: 'var(--color-accent-gray)',
-            position: 'absolute',
-            textAlign: 'center',
-            top: 0,
-            left: -22,
-            fontSize: 28,
-          },
-        },
-        '@media (max-width: 768px)': {
-          fontSize: 24,
-        },
-      },
-      '@media(hover: none)': {
-        a: {
-          pointerEvents: 'none',
-          '&:hover:before': {
-            content: '""',
-          },
-        },
-      },
-    },
-    'h1, h2, h3, h3, h4, h5, h6': {
-      position: 'relative',
-    },
-    'p, ul, li, a': {
-      fontFamily: 'var(--font-tertiary)',
-      fontSize: 18,
-      lineHeight: '2rem',
-      letterSpacing: '.01rem',
-    },
-    'ul, li, a': {
-      marginBottom: '1rem',
-    },
-    'ul li, ol li, p, .note': {
-      a: {
-        color: 'var(--color-primary)',
-        textDecorationColor: 'var(--color-primary)',
-        '&:hover': {
-          color: 'var(--color-primary)',
-        },
-      },
-    },
-    'p,': {
-      marginBottom: '2rem',
-    },
-    '.note': {
-      position: 'relative',
-      margin: '3rem 0',
-      padding: '2.8rem 1.5rem 1.25rem 1.5rem',
-      border: '1px solid var(--color-accent-lighter)',
-      borderRadius: 5,
-      fontFamily: 'var(--font-secondary)',
-      fontSize: 14.5,
-      color: 'var(--color-gray)',
-      lineHeight: '1.5rem',
-      '&:before, &:after': {
-        position: 'absolute',
-        lineHeight: '2rem',
-      },
-      '&:before': {
-        content: '""',
-        top: 19,
-        left: 22,
-        width: 15,
-        height: 15,
-        background: 'var(--icon-info) no-repeat',
-        backgroundSize: 'contain',
-        lineHeight: '2rem',
-        '@media (max-width: 768px)': {
-          top: 19,
-        },
-      },
-      '&:after': {
-        content: '"Note:"',
-        top: 15,
-        left: 43,
-        lineHeight: '1.5rem',
-        textTransform: 'uppercase',
-        fontFamily: 'var(--font-primary)',
-        fontWeight: 400,
-        fontSize: 14.5,
-      },
-      a: {
-        fontFamily: 'var(--font-secondary)',
-        fontSize: 14.5,
-      },
-      code: {
-        fontSize: 13,
-        '@media (max-width: 768px)': {
-          padding: '.05rem .05rem !important',
-          margin: '0 !important',
-          lineHeight: '.5rem !important',
-        },
-      },
-      '&.tip': {
-        '&:after': {
-          content: '"Tip:"',
-        },
-      },
-      '&.example': {
-        '&:after': {
-          content: '"Example:"',
-        },
-      },
-      '&.warn': {
-        '&:after': {
-          content: '"Warning:"',
-          color: 'var(--color-warning)',
-        },
-      },
-      '@media (max-width: 768px)': {
-        marginTop: '1.5rem',
-        fontSize: 11,
-        lineHeight: '1.4rem',
-        a: {
-          fontSize: 12,
-        },
-      },
-    },
-    blockquote: {
-      margin: '2.5rem -1.5rem',
-      padding: '0 2rem',
-      borderLeft: '8px solid var(--color-primary)',
-      color: 'var(--color-gray)',
-      'p, a': {
-        marginBottom: 0,
-        fontSize: 20,
-        fontStyle: 'italic',
-      },
-      '& blockquote': {
-        marginLeft: '1rem',
-        borderLeft: '8px solid var(--color-gray)',
-      },
-    },
-    ul: {
-      marginBottom: '2rem',
-    },
-    'ul li': {
-      listStyle: 'outside',
-      margin: '0 0 .5rem 1rem',
-      paddingLeft: '.5rem',
-      '&.task-list-item': {
-        fontFamily: 'var(--font-primary)',
-        fontSize: 15,
-        fontWeight: 'bold',
-      },
-      'input[type="checkbox"]': {
-        marginTop: '-.1rem',
-      },
-      '@media (max-width: 480px)': {
-        marginLeft: '1.5rem',
-      },
-    },
-    'ul.contains-task-list': {
-      li: {
-        '&:first-of-type': {
-          fontFamily: 'var(font-secondary)',
-        },
-        listStyle: 'none',
-        margin: 0,
-        padding: 0,
-      },
-    },
-    ol: {
-      counterReset: 'counter',
-      margin: '2rem 0',
-      li: {
-        counterIncrement: 'counter',
-        marginLeft: '2rem',
-        paddingLeft: '.5rem',
-        position: 'relative',
-        '&::before': {
-          content: 'counter(counter)',
-          width: '1.3rem',
-          height: '1.3rem',
-          position: 'absolute',
-          top: '.1rem',
-          left: '-2rem',
-          border: '1px solid var(--color-gray)',
-          borderRadius: '50%',
-          color: 'var(--color-gray)',
-          fontFamily: 'var(--font-primary)',
-          fontSize: '.7rem',
-          lineHeight: '1.3rem',
-          textAlign: 'center',
-          '@media not all and (min-resolution:.001dpcm)': {
-            '@supports (-webkit-appearance:none)': {
-              paddingLeft: '.1rem',
-            },
-          },
-        },
-      },
-      '@media (max-width: 480px)': {
-        marginLeft: '.1rem',
-      },
-    },
-  },
-  '.postImgWrapper': {
-    paddingBottom: '2rem',
-    img: {
-      width: '100%',
-      height: 'auto',
-    },
-  },
-  '.caption, .caption a': {
-    fontFamily: 'var(--font-primary)',
-    fontSize: 12,
-    color: 'var(--color-gray)',
-  },
-});

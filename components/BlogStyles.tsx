@@ -68,13 +68,6 @@ const blogStyles = css({
         lineHeight: '1.8rem',
       },
     },
-    '.postFull h1, h2': {
-      display: 'inline-block',
-      fontSize: 40,
-      '@media(max-width: 1024px)': {
-        fontSize: 32,
-      },
-    },
     h2: {
       margin: 0,
       lineHeight: '2.5rem',
@@ -131,7 +124,7 @@ const blogStyles = css({
       display: 'flex',
       flexDirection: 'row',
       '.authorAndDate': {
-        marginBottom: '.5rem',
+        marginBottom: '.1rem',
       },
       a: {
         margin: 0,
