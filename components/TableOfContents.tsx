@@ -90,8 +90,8 @@ const TableOfContents: FC<TableOfContentsProps> = ({ markdown }) => {
                   <svg
                     clipRule="evenodd"
                     fillRule="evenodd"
-                    stroke-linejoin="round"
-                    stroke-miterlimit="2"
+                    strokeLinejoin="round"
+                    strokeMiterlimit="2"
                     viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg"
                     height={24}
