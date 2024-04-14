@@ -356,7 +356,7 @@ const styleBlogPost = css({
       padding: '2.8rem 1.5rem 1.25rem 1.5rem',
       border: '1px solid var(--color-accent-lighter)',
       borderRadius: 5,
-      fontFamily: 'var(--font-primary)',
+      fontFamily: 'var(--font-secondary)',
       fontSize: 14.5,
       color: 'var(--color-gray)',
       lineHeight: '1.5rem',
