@@ -56,11 +56,9 @@ const TableOfContents: FC<TableOfContentsProps> = ({ markdown }) => {
       fontWeight: 400,
     },
     'ol.tableOfContents': {
-      margin: '.85rem 0 3.5rem',
+      margin: '1rem 0 0 0',
       a: {
         fontFamily: 'var(--font-secondary)',
-        margin: 0,
-        padding: 0,
       },
       li: {
         lineHeight: 'normal',

@@ -39,7 +39,7 @@ export const theme = {
     'linear-gradient(to bottom,#45275e 0%, #243363 50%,#106d8a 100%)',
   // Code (Dark)
   codeBgDark: '#131317',
-  codeHighlightDark: '#18181c',
+  codeHighlightDark: '#1b1b1f',
   codeScrollbarDark: '#54545f',
   codeScrollbarHoverDark: '#2f2f38',
   // Code (Light)
