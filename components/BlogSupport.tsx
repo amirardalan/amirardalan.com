@@ -55,6 +55,7 @@ const BlogSupport: FC<BlogSupportProps> = ({
       border: '10px solid var(--color-bg)',
       borderRadius: 50,
       height: 40,
+      width: 40,
       position: 'absolute',
       top: -15,
       right: -15,
