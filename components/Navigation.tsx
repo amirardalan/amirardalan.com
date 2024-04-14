@@ -57,9 +57,9 @@ const Navigation: FC = () => {
         color: 'var(--color-primary)',
         position: 'absolute',
         fontSize: 10,
-        content: '">"',
-        top: 2.25,
-        left: -12,
+        content: '"❯"',
+        top: 2,
+        left: -10,
         '@media (max-width: 768px)': {
           left: -20,
         },

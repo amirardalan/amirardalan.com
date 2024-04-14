@@ -53,9 +53,9 @@ const blogStyles = css({
       },
     },
     '.blogListHeading': {
-      margin: '0 0 .4rem',
+      margin: '.4rem 0 .5rem',
       fontFamily: 'var(--font-secondary)',
-      fontSize: 30,
+      fontSize: 34,
       fontWeight: 700,
       lineHeight: '2.2rem',
       a: {
@@ -64,7 +64,7 @@ const blogStyles = css({
       },
       '@media(max-width: 1024px)': {
         marginBottom: 0,
-        fontSize: 24,
+        fontSize: 30,
         lineHeight: '1.8rem',
       },
     },
@@ -105,7 +105,10 @@ const blogStyles = css({
     marginTop: '2rem',
     '.publishedPost': {
       display: 'block',
-      marginBottom: '2.75rem',
+      marginBottom: '2.2rem',
+      '@media (max-width: 768px)': {
+        marginBottom: '1.75rem',
+      },
     },
   },
   '.readTime': {

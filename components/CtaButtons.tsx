@@ -9,7 +9,10 @@ type CtaButtonsProps = {
 
 const styleCtaButton = css({
   '&:not(:only-of-type):not(:last-of-type)': {
-    marginRight: '.6rem',
+    marginRight: 20,
+    '@media (max-width: 768px)': {
+      marginRight: 10,
+    },
   },
   '.ctaButton': {
     display: 'flex',
@@ -19,7 +22,6 @@ const styleCtaButton = css({
     lineHeight: '1.3rem',
     minWidth: 128,
     minHeight: 42,
-    maxWidth: 'fit-content',
 
     background: 'var(--color-heading)',
     border: '1px solid transparent',
@@ -74,10 +76,6 @@ const styleCtaButton = css({
       },
     },
     '@media(max-width: 480px)': {
-      marginRight: 0,
-      '.home &: nth-of-type(1)': {
-        marginRight: 10,
-      },
       width: '100%',
     },
   },

@@ -151,7 +151,7 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
           lineHeight: '1.5rem',
           color: 'var(--color-gray)',
           '@media(max-width: 1024px)': {
-            marginBottom: '3rem',
+            marginBottom: '2.8rem',
             fontSize: 18,
           },
         },
@@ -214,7 +214,7 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
         'p, ul, li, a': {
           fontFamily: 'var(--font-tertiary)',
           fontSize: 18,
-          lineHeight: '2rem',
+          lineHeight: '1.8rem',
           letterSpacing: '.01rem',
         },
         'ul, li, a': {
@@ -298,8 +298,10 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
             },
           },
           '@media (max-width: 768px)': {
+            code: {
+              fontSize: 12,
+            },
             marginTop: '1.5rem',
-            fontSize: 11,
             lineHeight: '1.4rem',
             a: {
               fontSize: 12,
@@ -324,7 +326,12 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
         ul: {
           marginBottom: '2rem',
         },
+        'ul li, ul li a': {
+          fontFamily: 'var(--font-secondary)',
+          lineHeight: '1.5rem',
+        },
         'ul li': {
+          color: 'var(--color-gray)',
           listStyle: 'outside',
           margin: '0 0 .5rem 1rem',
           paddingLeft: '.5rem',

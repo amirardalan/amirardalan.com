@@ -97,9 +97,6 @@ const BlogMarkdown: FC<BlogMarkdownProps> = ({ markdown }) => {
           animationFillMode: 'forwards',
         },
       },
-      '.copyCheck': {
-        color: 'var(--color-primary)',
-      },
       '&:hover': {
         button: {
           opacity: 0,

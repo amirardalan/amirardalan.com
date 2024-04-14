@@ -101,7 +101,7 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
       marginBottom: '2rem',
       lineHeight: '100%',
       fontFamily: 'var(--font-secondary)',
-      fontSize: 'calc(3.4vw + 3.4vh)',
+      fontSize: 'calc(3.6vw + 3.6vh)',
       fontWeight: 700,
       textTransform: 'uppercase',
       WebkitMarqueeIncrement: '0vw',
