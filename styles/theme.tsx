@@ -38,8 +38,8 @@ export const theme = {
   gradientDark:
     'linear-gradient(to bottom,#45275e 0%, #243363 50%,#106d8a 100%)',
   // Code (Dark)
-  codeBgDark: '#0f0f16',
-  codeHighlightDark: '#16161f',
+  codeBgDark: '#131317',
+  codeHighlightDark: '#18181c',
   codeScrollbarDark: '#54545f',
   codeScrollbarHoverDark: '#2f2f38',
   // Code (Light)

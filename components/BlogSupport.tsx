@@ -78,7 +78,7 @@ const BlogSupport: FC<BlogSupportProps> = ({
         width: '100%',
         display: 'flex',
         position: 'relative',
-        padding: '2.7rem',
+        padding: '2.9rem',
         '@media(max-width: 480px)': {
           padding: '1.5rem 2rem',
         },

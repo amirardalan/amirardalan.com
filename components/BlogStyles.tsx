@@ -214,7 +214,7 @@ const blogStyles = css({
   },
   li: {
     '&::marker': {
-      color: 'var(--color-primary)',
+      color: 'var(--color-gray)',
     },
   },
   table: {
