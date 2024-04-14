@@ -156,9 +156,12 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
           },
         },
         '.readerControls': {
-          display: 'flex',
-          alignItems: 'start',
-          justifyContent: 'space-between',
+          position: 'relative',
+          '.likeAndShare': {
+            position: 'absolute',
+            top: 0,
+            right: 0,
+          },
           margin: '2rem 0',
         },
         'h3, h3 code': {

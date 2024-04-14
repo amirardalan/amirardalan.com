@@ -1,4 +1,4 @@
-import { type FC, useState } from 'react';
+import { type FC, useState, useRef, useEffect } from 'react';
 import { generateSlug } from '@/utils/generateSlug';
 import { css } from '@emotion/react';
 
@@ -12,7 +12,29 @@ const TableOfContents: FC<TableOfContentsProps> = ({ markdown }) => {
   const [showTOC, setShowTOC] = useState(false);
   const handleShowTOC = () => setShowTOC(!showTOC);
 
+  const [maxHeight, setMaxHeight] = useState('0px');
+
+  const ref = useRef(null);
+
+  useEffect(() => {
+    if (showTOC && ref.current) {
+      setMaxHeight(`${(ref.current as HTMLElement).scrollHeight}px`);
+    } else {
+      setMaxHeight('0px');
+    }
+  }, [showTOC]);
+
   const styleTOC = css({
+    ol: {
+      transition: 'max-height 0.5s ease, visibility 0.5s',
+      maxHeight: maxHeight,
+      overflow: 'hidden',
+      visibility: 'hidden',
+    },
+    'ol.open': {
+      maxHeight: maxHeight,
+      visibility: 'visible',
+    },
     '.toc': {
       a: {
         fontSize: 14,
@@ -59,6 +81,7 @@ const TableOfContents: FC<TableOfContentsProps> = ({ markdown }) => {
       margin: '.8rem 0 0 0',
       a: {
         fontFamily: 'var(--font-secondary)',
+        fontSize: 16,
       },
       li: {
         lineHeight: 'normal',
@@ -70,6 +93,9 @@ const TableOfContents: FC<TableOfContentsProps> = ({ markdown }) => {
         },
       },
       '@media (max-width: 768px)': {
+        a: {
+          fontSize: 13,
+        },
         li: {
           margin: '.3rem 0 .5rem 2rem',
           paddingLeft: 0,
@@ -105,21 +131,22 @@ const TableOfContents: FC<TableOfContentsProps> = ({ markdown }) => {
                 <h4 className="tocTitle">Table of Contents</h4>
               </summary>
             </button>
-            {showTOC ? (
-              <ol className="tableOfContents">
-                {headings?.map((heading) => {
-                  const headingText = heading.replace('### ', '');
-                  const headingID = generateSlug(headingText);
-                  return (
-                    <li key={headingID}>
-                      <a className="tocLink" href={`#${headingID}`}>
-                        {headingText}
-                      </a>
-                    </li>
-                  );
-                })}
-              </ol>
-            ) : null}
+            <ol
+              ref={ref}
+              className={`tableOfContents ${showTOC ? 'open' : 'closed'}`}
+            >
+              {headings?.map((heading) => {
+                const headingText = heading.replace('### ', '');
+                const headingID = generateSlug(headingText);
+                return (
+                  <li key={headingID}>
+                    <a className="tocLink" href={`#${headingID}`}>
+                      {headingText}
+                    </a>
+                  </li>
+                );
+              })}
+            </ol>
           </div>
         </div>
       ) : null}
