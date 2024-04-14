@@ -1,4 +1,5 @@
 import { FC, useRef, useEffect } from 'react';
+import LoadingSkeleton from '@/components/LoadingSkeleton';
 import useLikeCount from '@/hooks/useLikeCount';
 import formatNumber from '@/utils/formatNumber';
 import { css } from '@emotion/react';
@@ -42,15 +43,21 @@ const Like: FC<LikeCountProps> = ({ id, likes }) => {
 
   return (
     <>
-      <div css={styleLikes}>
-        <span className="likes" ref={likesRef}>
-          {formatNumber(likeCount || likes)}
-          {likeCount === 1 ? ' like' : ' likes'}
-        </span>
-      </div>
-      <span className="divider2" css={styleDivider}>
-        •
-      </span>
+      {isLoading ? (
+        <LoadingSkeleton width={50} height={15} />
+      ) : (
+        <>
+          <div css={styleLikes}>
+            <span className="likes" ref={likesRef}>
+              {formatNumber(likeCount || likes)}
+              {likeCount === 1 ? ' like' : ' likes'}
+            </span>
+          </div>
+          <span className="divider2" css={styleDivider}>
+            •
+          </span>
+        </>
+      )}
     </>
   );
 };
