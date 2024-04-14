@@ -193,14 +193,14 @@ const blogStyles = css({
     },
     '&:hover': {
       '&::before': {
-        content: '"|"',
+        content: '"❯"',
         position: 'absolute',
         fontFamily: 'var(--font-secondary)',
         fontWeight: 700,
         fontSize: 24,
         lineHeight: '1.2rem',
-        top: 25,
-        left: -18,
+        top: 29,
+        left: -20,
         color: 'var(--color-primary)',
         '@media (max-width: 1024px)': {
           display: 'none',
