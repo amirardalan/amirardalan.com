@@ -10,7 +10,7 @@ type TimelineProps = TimelineTypes;
 const Timeline: FC<TimelineProps> = ({ timeline }) => {
   const { ref, inView } = useInView({
     threshold: 1,
-    rootMargin: '0% 0% -33% 0%',
+    rootMargin: '0% 0% -10% 0%',
     triggerOnce: false,
   });
 
@@ -26,6 +26,7 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
     '.readMoreLink': {
       fontSize: 24,
       marginTop: '6rem',
+      paddingBottom: '2.8rem',
       display: 'flex',
       justifyContent: 'center',
       fontFamily: 'var(--font-secondary)',
@@ -77,10 +78,9 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
           h3: {
             marginBottom: '.5rem',
             fontFamily: 'var(--font-secondary)',
-            fontSize: 14,
+            fontSize: 16,
             fontWeight: 700,
             textTransform: 'uppercase',
-            lineHeight: '1.2rem',
           },
           '@media(max-width: 480px)': {
             boxShadow: 'none',
@@ -196,8 +196,7 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
         textTransform: 'uppercase',
         letterSpacing: 2,
         fontFamily: 'var(--font-primary)',
-        fontSize: 16,
-        fontWeight: 400,
+        fontSize: 18,
         lineHeight: '.5rem',
         '@media(max-width: 768px)': {
           paddingTop: '.2rem',
@@ -233,7 +232,7 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
           marginTop: 0,
           marginBottom: '4rem',
           padding: '0 1rem 0 0',
-          fontSize: 12,
+          fontSize: 14,
         },
       },
     },
