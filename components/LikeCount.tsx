@@ -1,8 +1,8 @@
 import { FC, useRef, useEffect } from 'react';
+import LoadingSkeleton from '@/components/LoadingSkeleton';
 import useLikeCount from '@/hooks/useLikeCount';
 import formatNumber from '@/utils/formatNumber';
 import { css } from '@emotion/react';
-import LoadingSkeleton from '@/components/LoadingSkeleton';
 
 type LikeCountProps = {
   id: number;
@@ -41,20 +41,23 @@ const Like: FC<LikeCountProps> = ({ id, likes }) => {
     opacity: isLoading ? 0 : 1,
   });
 
-  console.log(isLoading);
-
   return (
     <>
-      <div css={styleLikes}>
-        {isLoading ? (
-          <LoadingSkeleton width={50} height={15} />
-        ) : (
-          <LoadingSkeleton width={50} height={15} />
-        )}
-      </div>
-      <span className="divider2" css={styleDivider}>
-        •
-      </span>
+      {isLoading ? (
+        <LoadingSkeleton width={50} height={15} />
+      ) : (
+        <>
+          <div css={styleLikes}>
+            <span className="likes" ref={likesRef}>
+              {formatNumber(likeCount || likes)}
+              {likeCount === 1 ? ' like' : ' likes'}
+            </span>
+          </div>
+          <span className="divider2" css={styleDivider}>
+            •
+          </span>
+        </>
+      )}
     </>
   );
 };

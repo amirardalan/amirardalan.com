@@ -1,4 +1,5 @@
 import { FC, useRef, useEffect } from 'react';
+import LoadingSkeleton from '@/components/LoadingSkeleton';
 import usePostViewCount from '@/hooks/usePostViewCount';
 import formatNumber from '@/utils/formatNumber';
 import { css } from '@emotion/react';
@@ -38,11 +39,15 @@ const PostViewCount: FC<PostViewCountProps> = ({ slug }) => {
 
   return (
     <>
-      <div css={styleViews}>
-        <span className="views" ref={viewsRef}>
-          {formatNumber(Number(views))} {viewCount === 1 ? 'view' : 'views'}
-        </span>
-      </div>
+      {isLoading ? (
+        <LoadingSkeleton width={50} height={15} />
+      ) : (
+        <div css={styleViews}>
+          <span className="views" ref={viewsRef}>
+            {formatNumber(Number(views))} {viewCount === 1 ? 'view' : 'views'}
+          </span>
+        </div>
+      )}
     </>
   );
 };
