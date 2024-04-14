@@ -39,6 +39,9 @@ const BlogSupport: FC<BlogSupportProps> = ({
   };
 
   const styleSupportModule = css({
+    svg: {
+      marginRight: '.5rem',
+    },
     width: '100%',
     position: 'relative',
     marginBottom: '3.5rem',
@@ -129,9 +132,6 @@ const BlogSupport: FC<BlogSupportProps> = ({
           '.paymentName': {
             marginLeft: '1rem',
             verticalAlign: 'top',
-            '@media (max-width: 480px)': {
-              marginLeft: '.5rem',
-            },
           },
           '.copyConfirmation': {
             display: 'flex',
@@ -170,19 +170,13 @@ const BlogSupport: FC<BlogSupportProps> = ({
       justifyContent: 'flex-start',
       alignItems: 'center',
       fontSize: 16,
-      span: {
-        marginRight: '.5rem',
-        '@media (max-width: 480px)': {
-          marginRight: 2,
-        },
-      },
       button: {
         display: 'flex',
         '&:last-of-type': {
           marginLeft: '1.5rem',
         },
         '@media (max-width: 480px)': {
-          fontSize: 12,
+          fontSize: 14,
           lineHeight: '.9rem',
         },
       },
@@ -207,9 +201,6 @@ const BlogSupport: FC<BlogSupportProps> = ({
         marginRight: '1rem',
         '@media (max-width: 768px)': {
           fontSize: 22,
-        },
-        '@media (max-width: 480px)': {
-          fontSize: 15,
         },
       },
       p: {
