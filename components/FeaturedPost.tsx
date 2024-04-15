@@ -46,10 +46,10 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
     minWidth: 'fit-content',
     maxWidth: 'min-content',
     marginBottom: '1.15rem',
-    padding: '.1rem .5rem .2rem .25rem',
+    padding: '.1rem .7rem .1rem .5rem',
     border: '1px solid var(--color-accent-lighter)',
     backgroundColor: 'transparent',
-    borderRadius: 10,
+    borderRadius: 20,
     letterSpacing: 1,
     h3: {
       color: 'var(--color-accent-lighter)',
@@ -83,8 +83,8 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
     h4: {
       display: 'flex',
       justifyContent: 'center',
-      alignItems: 'baseline',
       marginLeft: '.3rem',
+      lineHeight: '1.2rem',
       fontFamily: 'var(--font-secondary)',
       color: 'var(--color-accent-gray)',
       textTransform: 'uppercase',
