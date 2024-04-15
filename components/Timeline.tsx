@@ -67,7 +67,7 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
     display: 'grid',
     gridTemplateColumns: 'repeat(2, 1fr)',
     overflow: 'hidden',
-    paddingTop: 7.5,
+    paddingTop: 6,
     fontFamily: 'var(--font-tertiary)',
     '.timeline': {
       '&:nth-of-type(even), &:nth-of-type(odd)': {
@@ -94,12 +94,12 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
         zIndex: 2,
         position: 'relative',
         justifySelf: 'flex-end',
-        borderRight: '1px solid var(--color-accent-lighter)',
+        borderRight: '2px solid var(--color-accent-lighter)',
         '.scrollHighlight': {
           position: 'absolute',
           top: 0,
           right: -1,
-          width: 1,
+          width: 2,
           animation: 'growUp .5s',
           background: 'var(--color-text)',
         },

@@ -93,19 +93,6 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
             marginRight: 0,
           },
         },
-        '.ctaButton': {
-          fontSize: 15,
-          background: 'transparent',
-          border: '1px solid var(--color-text)',
-          color: 'var(--color-headline)',
-          '&:hover': {
-            '@media (min-width: 1025px)': {
-              background: 'var(--color-text)',
-              border: '1px solid var(--color-headline)',
-              color: 'var(--color-bg)',
-            },
-          },
-        },
         '@media (max-width: 600px)': {
           marginTop: '1.5rem',
           justifyContent: 'center',

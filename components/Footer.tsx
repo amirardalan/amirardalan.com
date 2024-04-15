@@ -73,7 +73,7 @@ const Footer: FC<FooterProps> = () => {
       textTransform: 'uppercase',
       letterSpacing: 4,
       fontSize: 14,
-      borderBottom: '3px solid var(--color-bg)',
+      borderBottom: '2px solid var(--color-bg)',
       marginBottom: '1rem',
       paddingBottom: '1rem',
       lineHeight: '1rem',

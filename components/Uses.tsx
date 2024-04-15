@@ -42,7 +42,7 @@ const styleUsesMarkdown: any = {
     paddingBottom: '1rem',
     marginBottom: '2rem',
     letterSpacing: 4,
-    borderBottom: '3px solid var(--color-primary)',
+    borderBottom: '2px solid var(--color-primary)',
   },
   h4: {
     color: 'var(--color-heading)',

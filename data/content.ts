@@ -124,12 +124,14 @@ export const aboutContent = {
         title: 'Resume',
         rel: 'noopener noreferrer',
         target: '_blank',
+        style: 'reverse'
       },
       {
         path: `mailto: ${process.env.NEXT_PUBLIC_USER_EMAIL}?subject=Hello!&body=Hi Amir,`,
         title: 'Email',
         rel: 'noopener noreferrer',
         target: '_blank',
+        style: 'reverse'
       },
     ],
   },
