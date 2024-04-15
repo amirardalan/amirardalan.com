@@ -12,28 +12,14 @@ const TableOfContents: FC<TableOfContentsProps> = ({ markdown }) => {
   const [showTOC, setShowTOC] = useState(false);
   const handleShowTOC = () => setShowTOC(!showTOC);
 
-  const [maxHeight, setMaxHeight] = useState('0px');
-
-  const ref = useRef(null);
-
-  useEffect(() => {
-    if (showTOC && ref.current) {
-      setMaxHeight(`${(ref.current as HTMLElement).scrollHeight}px`);
-    } else {
-      setMaxHeight('0px');
-    }
-  }, [showTOC]);
-
   const styleTOC = css({
     ol: {
-      transition: 'max-height 0.5s ease, visibility 0.5s',
-      maxHeight: maxHeight,
-      overflow: 'hidden',
-      visibility: 'hidden',
+      display: 'none',
+      margin: 0,
     },
     'ol.open': {
-      maxHeight: maxHeight,
-      visibility: 'visible',
+      display: 'flex',
+      flexDirection: 'column',
     },
     '.toc': {
       a: {
@@ -78,7 +64,7 @@ const TableOfContents: FC<TableOfContentsProps> = ({ markdown }) => {
       fontWeight: 400,
     },
     'ol.tableOfContents': {
-      margin: '.8rem 0 0 0',
+      margin: '.5rem 0 0 0',
       a: {
         fontFamily: 'var(--font-secondary)',
         fontSize: 16,
@@ -97,7 +83,6 @@ const TableOfContents: FC<TableOfContentsProps> = ({ markdown }) => {
           fontSize: 13,
         },
         li: {
-          margin: '.3rem 0 .5rem 2rem',
           paddingLeft: 0,
         },
       },
@@ -106,7 +91,7 @@ const TableOfContents: FC<TableOfContentsProps> = ({ markdown }) => {
 
   return (
     <>
-      {headings ? (
+      {headings && (
         <div css={styleTOC}>
           <div className="toc">
             <button onClick={handleShowTOC} aria-label="Table of Contents">
@@ -131,10 +116,7 @@ const TableOfContents: FC<TableOfContentsProps> = ({ markdown }) => {
                 <h4 className="tocTitle">Table of Contents</h4>
               </summary>
             </button>
-            <ol
-              ref={ref}
-              className={`tableOfContents ${showTOC ? 'open' : 'closed'}`}
-            >
+            <ol className={`tableOfContents ${showTOC ? 'open' : 'closed'}`}>
               {headings?.map((heading) => {
                 const headingText = heading.replace('### ', '');
                 const headingID = generateSlug(headingText);
@@ -149,7 +131,7 @@ const TableOfContents: FC<TableOfContentsProps> = ({ markdown }) => {
             </ol>
           </div>
         </div>
-      ) : null}
+      )}
     </>
   );
 };

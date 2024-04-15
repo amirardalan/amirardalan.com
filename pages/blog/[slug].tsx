@@ -144,25 +144,24 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
           },
         },
         '.teaser': {
-          marginBottom: '3.5rem',
+          marginBottom: '2.8rem',
           fontFamily: 'var(--font-tertiary)',
           fontSize: 22,
           fontStyle: 'italic',
           lineHeight: '1.5rem',
           color: 'var(--color-gray)',
           '@media(max-width: 1024px)': {
-            marginBottom: '2.8rem',
             fontSize: 18,
           },
         },
         '.readerControls': {
           position: 'relative',
+          margin: '2rem 0',
           '.likeAndShare': {
             position: 'absolute',
             top: 0,
             right: 0,
           },
-          margin: '2rem 0',
         },
         'h3, h3 code': {
           fontSize: HEADING_FONT_SIZE,
@@ -313,7 +312,7 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
         blockquote: {
           margin: '2.5rem -1.5rem',
           padding: '0 2rem',
-          borderLeft: '8px solid var(--color-primary)',
+          borderLeft: '3px solid var(--color-gray)',
           color: 'var(--color-gray)',
           'p, a': {
             marginBottom: 0,
@@ -322,7 +321,7 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
           },
           '& blockquote': {
             marginLeft: '1rem',
-            borderLeft: '8px solid var(--color-gray)',
+            borderLeft: '3px solid var(--color-accent-lighter)',
           },
         },
         ul: {
@@ -401,32 +400,23 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
         },
       },
       '.caption, .caption a': {
-        fontFamily: 'var(--font-primary)',
-        fontSize: 12,
+        paddingTop: '.25rem',
+        fontFamily: 'var(--font-secondary)',
+        fontSize: 10,
+        letterSpacing: 1,
+        textTransform: 'uppercase',
         color: 'var(--color-gray)',
       },
     });
 
     return (
       <div className={isPublished ? 'blog' : 'blog admin'} css={styleBlogPost}>
-        {!isPublished ? (
+        {!isPublished && (
           <div className="draftNotification warn">{admin.drafts.notice}</div>
-        ) : null}
+        )}
 
         <article className="post postFull">
-          <div className="categoryWrapper">
-            {isFeatured ? (
-              <div
-                className="category featured full"
-                aria-label="Featured Post"
-              >
-                Featured
-              </div>
-            ) : null}
-            <div className="category full" aria-label={post.category}>
-              {post.category}
-            </div>
-          </div>
+          <BlogPostStats post={post} isFeatured={isFeatured} />
           <h1 aria-label={`${title}`}>{title}</h1>
           <p className="teaser">{post.teaser}</p>
           <div
@@ -467,7 +457,6 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
                 </span>
               </div>
             </div>
-            <BlogPostStats post={post} />
           </div>
 
           <div className="readerControls">

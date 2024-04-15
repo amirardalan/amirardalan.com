@@ -170,14 +170,6 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
 
       return sortedPosts.map((post) => (
         <article className="publishedPost" key={post.id}>
-          <button
-            onClick={() => handleCategoryLink(post.category)}
-            onKeyDown={() => handleCategoryLink(post.category)}
-            className="category"
-            aria-label={post.category}
-          >
-            {post.category}
-          </button>
           <BlogPost post={post} />
         </article>
       ));

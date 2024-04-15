@@ -7,32 +7,62 @@ import { css } from '@emotion/react';
 
 type BlogPostStatsProps = {
   post: PostProps;
+  isFeatured?: boolean;
 };
 
 const styleBlogPostStats = css({
+  fontFamily: 'var(--font-secondary)',
+  color: 'var(--color-gray)',
+  letterSpacing: 1,
   display: 'flex',
   justifyContent: 'space-between',
   flexDirection: 'row',
   width: '100%',
   textTransform: 'uppercase',
-  fontSize: 11,
+  fontSize: 12,
+  paddingBottom: '.5rem',
+  marginBottom: '.25rem',
+  '.featured': {
+    marginRight: '.5rem',
+    display: 'flex',
+    '&::after': {
+      paddingLeft: '.5rem',
+      content: '"•"',
+      display: 'inline',
+    },
+  },
+  '.postCategory': {
+    '&::before': {
+      content: '"#"',
+    },
+    '&::after': {
+      content: '"•"',
+      margin: '0 0.8rem',
+    },
+  },
   '.likesAndViews': {
     width: '100%',
     display: 'flex',
-    alignSelf: 'center',
+    justifyContent: 'end',
   },
 });
 
-const BlogPostStats: FC<BlogPostStatsProps> = ({ post }) => {
+const BlogPostStats: FC<BlogPostStatsProps> = ({ post, isFeatured }) => {
   const postReadTime = calculateReadTime(post.content);
 
   return (
     <div css={styleBlogPostStats}>
-      <div className="likesAndViews">
-        <LikeCount id={post.id} likes={post.likes} />
-        <PostViewCount slug={post.slug} />
-      </div>
+      {isFeatured && (
+        <div className="featured" aria-label="Featured Post">
+          Featured
+        </div>
+      )}
+      <span className="postCategory">{post.category}</span>
       <span className="readTime">{postReadTime}</span>
+      <div className="likesAndViews">
+        <PostViewCount slug={post.slug} />
+        <LikeCount id={post.id} likes={post.likes} />
+      </div>
     </div>
   );
 };
