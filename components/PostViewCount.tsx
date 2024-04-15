@@ -40,7 +40,7 @@ const PostViewCount: FC<PostViewCountProps> = ({ slug }) => {
   return (
     <>
       {isLoading ? (
-        <LoadingSkeleton width={50} height={15} />
+        <LoadingSkeleton width={50} height={14} />
       ) : (
         <div css={styleViews}>
           <span className="views" ref={viewsRef}>
