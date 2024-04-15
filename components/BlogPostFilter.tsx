@@ -52,18 +52,18 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
     caretColor: 'var(--color-gray)',
     '.icon': {
       position: 'absolute',
-      top: 22,
+      top: 19,
       right: 12,
     },
     '.clearSearch': {
       display: 'flex',
       justifyContent: 'center',
       position: 'absolute',
-      top: 19,
-      right: 12,
+      top: 16.5,
+      right: 10,
       cursor: 'pointer',
       '@media (max-width: 768px)': {
-        top: 20,
+        top: 17,
       },
     },
   });
@@ -191,7 +191,14 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
               onKeyDown={() => handleClearFilters()}
               aria-label={blog.search.clear}
             >
-              <CloseIcon size={12} />
+              <button
+                onClick={() => handleClearFilters()}
+                onKeyDown={() => handleClearFilters()}
+                aria-label="Clear Filter"
+              >
+                <CloseIcon size={12} />
+                <span>{' ' + blog.search.clear}</span>
+              </button>
             </button>
           ) : null}
         </span>

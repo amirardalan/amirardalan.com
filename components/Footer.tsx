@@ -98,7 +98,7 @@ const Footer: FC<FooterProps> = () => {
     marginTop: '2rem',
     fontFamily: 'var(--font-secondary)',
     fontSize: 11,
-    letterSpacing: 2,
+    letterSpacing: 1,
     color: 'var(--color-bg)',
     lineHeight: '1.2rem',
     display: 'flex',
