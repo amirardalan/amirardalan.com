@@ -18,7 +18,7 @@ const Like: FC<LikeCountProps> = ({ id, likes }) => {
       const likesWidth = likesRef.current.offsetWidth;
       const parentElement = likesRef.current.parentElement;
       if (parentElement) {
-        parentElement.style.width = `${likesWidth + 8}px`;
+        parentElement.style.width = `${likesWidth}px`;
       }
     }
   }, [likeCount, isValidating, isLoading]);
@@ -44,7 +44,7 @@ const Like: FC<LikeCountProps> = ({ id, likes }) => {
   return (
     <>
       {isLoading ? (
-        <LoadingSkeleton width={50} height={14} />
+        <LoadingSkeleton width={60} height={14} />
       ) : (
         <>
           <div css={styleLikes}>
@@ -53,9 +53,6 @@ const Like: FC<LikeCountProps> = ({ id, likes }) => {
               {likeCount === 1 ? ' like' : ' likes'}
             </span>
           </div>
-          <span className="divider2" css={styleDivider}>
-            •
-          </span>
         </>
       )}
     </>

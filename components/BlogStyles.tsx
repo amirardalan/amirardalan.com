@@ -85,12 +85,12 @@ const blogStyles = css({
     },
     '&.postTeaser': {
       p: {
-        margin: '0 0 1rem',
-        lineHeight: '1.2rem',
+        margin: '.5rem 0 1rem',
         color: 'var(--color-gray)',
         fontStyle: 'italic',
+        lineHeight: '1.25rem',
         '@media(max-width: 1024px)': {
-          margin: '.4rem 0 0',
+          margin: '.8rem 0 0',
         },
         '@media(max-width: 768px)': {
           fontSize: 15,
@@ -105,9 +105,9 @@ const blogStyles = css({
     marginTop: '2rem',
     '.publishedPost': {
       display: 'block',
-      marginBottom: '2.2rem',
+      marginBottom: '4rem',
       '@media (max-width: 768px)': {
-        marginBottom: '1.75rem',
+        marginBottom: '3rem',
       },
     },
   },
@@ -119,15 +119,23 @@ const blogStyles = css({
     display: 'flex',
     flexDirection: 'column',
     '.info': {
-      marginBottom: '.5rem',
       fontSize: 14,
       textTransform: 'uppercase',
       width: '100%',
       borderBottom: '1px solid var(--color-accent-lighter)',
+      paddingBottom: '.5rem',
       display: 'flex',
       flexDirection: 'row',
       '.authorAndDate': {
         marginBottom: '.1rem',
+      },
+      '.authorAndDate, .authorAndDate a, .authorAndDate span time': {
+        fontFamily: 'var(--font-secondary)',
+        letterSpacing: 1,
+        fontSize: 13,
+        '@media(max-width: 360px)': {
+          fontSize: 11,
+        },
       },
       a: {
         margin: 0,
@@ -139,7 +147,7 @@ const blogStyles = css({
         fontFamily: 'var(--font-primary)',
         fontSize: 14,
         '&:before': {
-          margin: '0 0.5rem',
+          margin: '0 0.8rem',
           content: '"•"',
         },
       },
@@ -199,7 +207,7 @@ const blogStyles = css({
         fontWeight: 700,
         fontSize: 24,
         lineHeight: '1.2rem',
-        top: 29,
+        top: 42,
         left: -20,
         color: 'var(--color-primary)',
         '@media (max-width: 1024px)': {

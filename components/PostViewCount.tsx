@@ -27,20 +27,23 @@ const PostViewCount: FC<PostViewCountProps> = ({ slug }) => {
     position: 'relative',
     height: 14,
     overflow: 'hidden',
-    marginLeft: '.5rem',
     '.views': {
       whiteSpace: 'nowrap',
       transition: 'transform .2s ease-in-out, opacity .2s ease-in-out',
       position: 'absolute',
       transform: `translateY(${isLoading ? 10 : 0}px)`,
       opacity: isLoading ? 0 : 1,
+      '&:after': {
+        content: '"•"',
+        margin: '0 0.8rem',
+      },
     },
   });
 
   return (
     <>
       {isLoading ? (
-        <LoadingSkeleton width={50} height={14} />
+        <LoadingSkeleton width={60} height={14} />
       ) : (
         <div css={styleViews}>
           <span className="views" ref={viewsRef}>

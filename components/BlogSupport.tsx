@@ -99,6 +99,7 @@ const BlogSupport: FC<BlogSupportProps> = ({
           flexDirection: 'column',
           position: 'relative',
           'a:hover': {
+            textDecoration: 'none',
             '&:before': {
               height: 32,
               width: 4,
