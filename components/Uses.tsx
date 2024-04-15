@@ -12,9 +12,12 @@ const styleUsesMarkdown: any = {
     margin: '2rem 0',
     borderColor: 'var(--color-accent-lighter)',
   },
+  'ul li': {
+    fontFamily: 'var(--font-secondary)',
+    fontSize: 14,
+  },
   'ul li, a': {
     color: 'var(--color-gray)',
-    fontSize: 12,
     '&:hover': {
       textDecoration: 'none',
     },
@@ -25,19 +28,22 @@ const styleUsesMarkdown: any = {
   },
   h3: {
     a: {
-      fontSize: 12,
-      fontWeight: 300,
-      fontFamily: 'var(--font-primary)',
+      pointerEvents: 'none',
+      cursor: 'default',
+      fontSize: 20,
+      fontWeight: 400,
+      fontFamily: 'var(--font-secondary)',
+      letterSpacing: 4,
       textDecoration: 'none',
       textTransform: 'uppercase',
     },
     paddingBottom: '1rem',
     marginBottom: '2rem',
-    letterSpacing: 5,
+    letterSpacing: 4,
     borderBottom: '3px solid var(--color-primary)',
   },
   h4: {
-    color: 'var(--color-gray)',
+    color: 'var(--color-heading)',
     width: 'fit-content',
     fontSize: 16,
     fontWeight: 700,
