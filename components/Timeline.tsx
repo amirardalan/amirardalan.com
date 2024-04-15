@@ -98,7 +98,7 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
         '.scrollHighlight': {
           position: 'absolute',
           top: 0,
-          right: -1,
+          right: -2,
           width: 2,
           animation: 'growUp .5s',
           background: 'var(--color-text)',
@@ -113,7 +113,7 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
         '&:after': {
           position: 'absolute',
           top: -35,
-          right: -12,
+          right: -12.5,
           content: '"•"',
           fontSize: 50,
           color: 'var(--color-text)',
@@ -228,6 +228,9 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
           fontSize: 14,
         },
       },
+    },
+    '@media (max-width: 768px)': {
+      paddingTop: 7,
     },
   });
 
