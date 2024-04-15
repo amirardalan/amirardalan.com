@@ -13,11 +13,12 @@ const styleUsesMarkdown: any = {
     borderColor: 'var(--color-accent-lighter)',
   },
   'ul li': {
+    color: 'var(--color-gray)',
     fontFamily: 'var(--font-secondary)',
     fontSize: 14,
   },
-  'ul li, a': {
-    color: 'var(--color-gray)',
+  'ul li a': {
+    color: 'var(--color-primary)',
     '&:hover': {
       textDecoration: 'none',
     },
@@ -30,6 +31,7 @@ const styleUsesMarkdown: any = {
     a: {
       pointerEvents: 'none',
       cursor: 'default',
+      color: 'var(--color-heading)',
       fontSize: 20,
       fontWeight: 400,
       fontFamily: 'var(--font-secondary)',

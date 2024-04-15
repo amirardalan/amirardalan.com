@@ -377,26 +377,26 @@ export const usesContent = {
   tools: {
     content: `### Tools
   #### IDE
-  - [VS Code](https://code.visualstudio.com/)
+  - VS COde
   ##### VS Code Extensions:
-  - [GitHub Copilot](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot)
-  - [Tokyo Night](https://marketplace.visualstudio.com/items?itemName=enkia.tokyo-night)
-  - [Material Icon Theme](https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme)
-  - [Tailwind CSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss)
-  - [CSS-in-JS](https://marketplace.visualstudio.com/items?itemName=paulmolluzzo.convert-css-in-js)
-  - [vscode-styled-components](https://marketplace.visualstudio.com/items?itemName=styled-components.vscode-styled-components)
-  - [Prisma](https://marketplace.visualstudio.com/items?itemName=Prisma.prisma)
-  - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
-  - [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)
-  - [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+  - GitHub Copilot
+  - Tokyo Night
+  - Material Icon Theme
+  - Tailwind CSS IntelliSense
+  - CSS-in-JS
+  - vscode-styled-components
+  - Prisma
+  - ESLint
+  - GitLens
+  - Prettier
 
   ---
   #### Browser
-  - [Google Chrome](https://www.google.com/chrome/)
+  - Google Chrome
   ##### Extensions (Chrome):
-  - [React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi)
-  - [uBlock Origin](https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm)
-  - [Google Analytics Debugger](https://chrome.google.com/webstore/detail/google-analytics-debugger/jnkmfdileelhofjcijamephohjechhna)
+  - React Developer Tools
+  - uBlock Origin
+  - Google Analytics Debugger
 
   `,
   },
@@ -404,33 +404,33 @@ export const usesContent = {
     content: `### Stack
 
   #### Web
-  - [Next.js](https://nextjs.org/)
-  - [TypeScript](https://www.typescriptlang.org/)
-  - [Emotion](https://emotion.sh/docs/introduction)
-  - [Tailwind CSS](https://tailwindcss.com/)
-  - [PostgreSQL](https://www.postgresql.org/)
-  - [Supabase](https://supabase.com)
-  - [Prisma](https://www.prisma.io/)
-  - [SWR](https://swr.vercel.app/)
-  - [React Markdown](https://remarkjs.github.io/react-markdown/)
-  - [React Syntax Highlighter](https://react-syntax-highlighter.github.io/react-syntax-highlighter/demo/)
-  - [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
-  - [Vercel](https://vercel.com)
+  - Next.js
+  - TypeScript
+  - Emotion
+  - Tailwind CSS
+  - PostgreSQL
+  - Supabase
+  - Prisma
+  - SWR
+  - React Markdown
+  - React Syntax Highlighter
+  - React Testing Library
+  - Vercel
 
   ---
   #### CLI
   - macOS: Terminal (~ZSH)
   - Win: Powershell 7
-  - [Powerlevel10k](https://github.com/romkatv/powerlevel10k)
-  - [GitHub CLI](https://cli.github.com/)
-  - [Vercel CLI](https://vercel.com/cli)
-  - [Supabase CLI](https://supabase.com/docs/reference/cli)
+  - Powerlevel10k
+  - GitHub CLI
+  - Vercel CLI
+  - Supabase CLI
 
   ---
   #### AI
-  - [ChatGPT](https://chat.openai.com/chat)
-  - [Grok](https://grok.x.ai/)
-  - [GitHub Copilot](https://copilot.github.com/)
+  - ChatGPT
+  - Grok
+  - GitHub Copilot
 
   `,
   },
@@ -438,25 +438,25 @@ export const usesContent = {
     content: `### Software
   
   #### Writing
-  - [iA Writer](https://ia.net/writer)
+  - iA Writer
 
   #### Design
-  - [Figma](https://www.figma.com/)
-  - [Aseprite](https://www.aseprite.org/)
+  - Figma
+  - Aseprite
   
   #### Listening
-  - [TIDAL](https://tidal.com/)
-  - [YouTube Music](https://music.youtube.com)
-  - [Apple Podcasts](https://www.apple.com/apple-podcasts/)
+  - TIDAL
+  - YouTube Music
+  - Apple Podcasts
 
   ---
 
   #### Testing
   ##### React/JS:
-  - [Jest](https://jestjs.io/)
-  - [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
+  - Jest
+  - React Testing Library
   ##### iOS/Safari:
-  - [Xcode Simulator](https://developer.apple.com/xcode/)
+  - Xcode Simulator
   
   `,
   },
