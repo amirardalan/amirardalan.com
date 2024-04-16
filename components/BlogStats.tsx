@@ -27,7 +27,7 @@ const BlogStats: FC<BlogStatsProps> = ({ feed, filteredPosts }) => {
   const styleBlogStatsWrapper = css({
     display: 'flex',
     justifyContent: 'space-between',
-    marginBottom: '1rem',
+    marginBottom: '2rem',
     ul: {
       display: 'flex',
       alignItems: 'flex-end',

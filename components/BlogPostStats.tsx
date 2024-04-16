@@ -21,15 +21,9 @@ const styleBlogPostStats = css({
   textTransform: 'uppercase',
   fontSize: 12,
   paddingBottom: '.5rem',
-  marginBottom: '.25rem',
   '.featured': {
     marginRight: '.5rem',
     display: 'flex',
-    '&::after': {
-      paddingLeft: '.5rem',
-      content: '"•"',
-      display: 'inline',
-    },
   },
   '.postCategory': {
     '&::before': {
@@ -37,7 +31,7 @@ const styleBlogPostStats = css({
     },
     '&::after': {
       content: '"•"',
-      margin: '0 0.8rem',
+      margin: '0 0.5rem',
     },
   },
   '.likesAndViews': {
@@ -51,7 +45,7 @@ const BlogPostStats: FC<BlogPostStatsProps> = ({ post, isFeatured }) => {
   const postReadTime = calculateReadTime(post.content);
 
   return (
-    <div css={styleBlogPostStats}>
+    <div css={styleBlogPostStats} className="blogPostStats">
       {isFeatured && (
         <div className="featured" aria-label="Featured Post">
           Featured

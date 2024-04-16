@@ -53,7 +53,7 @@ const blogStyles = css({
       },
     },
     '.blogListHeading': {
-      margin: '.4rem 0 .5rem',
+      margin: '.4rem 0 .6rem',
       fontFamily: 'var(--font-secondary)',
       fontSize: 34,
       fontWeight: 700,
@@ -65,6 +65,9 @@ const blogStyles = css({
       '@media(max-width: 1024px)': {
         marginBottom: 0,
         fontSize: 30,
+      },
+      '@media(max-width: 768px)': {
+        fontSize: 28,
         lineHeight: '1.8rem',
       },
     },
@@ -102,10 +105,9 @@ const blogStyles = css({
     },
   },
   '.post': {
-    marginTop: '2rem',
     '.publishedPost': {
       display: 'block',
-      marginBottom: '4rem',
+      marginBottom: '3.5rem',
       '@media (max-width: 768px)': {
         marginBottom: '3rem',
       },
@@ -118,53 +120,6 @@ const blogStyles = css({
     marginBottom: '.25rem',
     display: 'flex',
     flexDirection: 'column',
-    '.info': {
-      fontSize: 14,
-      textTransform: 'uppercase',
-      width: '100%',
-      borderBottom: '1px solid var(--color-accent-lighter)',
-      paddingBottom: '.5rem',
-      display: 'flex',
-      flexDirection: 'row',
-      '.authorAndDate': {
-        marginBottom: '.1rem',
-      },
-      '.authorAndDate, .authorAndDate a, .authorAndDate span time': {
-        fontFamily: 'var(--font-secondary)',
-        letterSpacing: 1,
-        fontSize: 13,
-        '@media(max-width: 360px)': {
-          fontSize: 11,
-        },
-      },
-      a: {
-        margin: 0,
-        paddingLeft: '.25rem',
-        fontFamily: 'var(--font-primary)',
-        fontSize: 14,
-      },
-      time: {
-        fontFamily: 'var(--font-primary)',
-        fontSize: 14,
-        '&:before': {
-          margin: '0 0.8rem',
-          content: '"•"',
-        },
-      },
-      '@media(max-width: 480px)': {
-        fontSize: 13,
-        a: {
-          fontSize: 13,
-        },
-        time: {
-          fontSize: 12,
-          '&:before': {
-            margin: '0 0.25rem',
-            content: '"•"',
-          },
-        },
-      },
-    },
     color: 'var(--color-gray)',
     fontSize: 13,
     '@media (max-width: 600px)': {
@@ -207,7 +162,7 @@ const blogStyles = css({
         fontWeight: 700,
         fontSize: 24,
         lineHeight: '1.2rem',
-        top: 42,
+        top: 38,
         left: -20,
         color: 'var(--color-primary)',
         '@media (max-width: 1024px)': {

@@ -47,6 +47,7 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
   });
 
   const styleSearchPosts = css({
+    marginBottom: '3rem',
     display: 'flex',
     position: 'relative',
     caretColor: 'var(--color-gray)',

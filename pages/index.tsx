@@ -47,6 +47,7 @@ type HomeProps = {
   home: HomeTypes & {
     typed: string;
     title: string;
+    subTitle: string;
     items: CtaButtonsTypes['items'];
     meta: {
       title: string;
@@ -76,25 +77,13 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
   });
   const styleContent = css({
     '.titleWrapper': {
-      marginBottom: '3rem',
+      marginBottom: '2.8rem',
+      '@media(max-width: 1024px)': {
+        marginTop: '4rem',
+      },
       '@media(max-width: 480px)': {
+        marginTop: '2rem',
         marginBottom: '2rem',
-      },
-    },
-    '.intro, .typed': {
-      color: 'var(--color-accent-gray)',
-      display: 'block',
-      margin: '2rem 0',
-    },
-    '.typed': {
-      fontSize: 18,
-      fontWeight: 400,
-      '&:before': {
-        content: '"> ~ % "',
-        color: 'var(--color-primary)',
-      },
-      '@media(max-width: 480px)': {
-        fontSize: 13,
       },
     },
     h1: {
@@ -107,6 +96,22 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
       WebkitMarqueeIncrement: '0vw',
       '@media (max-width: 768px)': {
         fontSize: 'calc(5.2vw + 5.2vh)',
+      },
+    },
+    '.intro, .typed': {
+      color: 'var(--color-accent-gray)',
+      display: 'block',
+      marginBottom: '2.5rem',
+    },
+    '.typed': {
+      fontSize: 18,
+      fontWeight: 400,
+      '&:before': {
+        content: '"> ~ % "',
+        color: 'var(--color-primary)',
+      },
+      '@media(max-width: 480px)': {
+        fontSize: 13,
       },
     },
   });
@@ -137,10 +142,10 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
         <div css={styleMainLeft} className="animationWrapper">
           <div css={styleContent}>
             <div className="titleWrapper">
+              <h1>{home.title}</h1>
               <span className="typed" aria-hidden="true">
                 <TypingAnimation data={home.typed} />
               </span>
-              <h1>{home.title}</h1>
               <div css={styleCtaButtons}>
                 <CtaButtons items={home.items} />
               </div>

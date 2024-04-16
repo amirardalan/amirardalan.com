@@ -14,7 +14,8 @@ export const homeContent = {
     description: metaDescription,
   },
   typed: [
-    `i'm a design engineer`,
+    `--design engineer`,
+    `--form + function`,
     `peruse my <a href="/blog">blog</a> posts`,
     `learn a bit <a href="/about">about</a> me`,
     `follow me on x: <a href=${linkX} rel="noopener noreferrer">@amirardalan</a>`,
@@ -23,6 +24,7 @@ export const homeContent = {
     `check out the <a href="/uses">tools</a> i use`,
   ],
   title: `${appTitle}`,
+  subTitle: appDesc,
   description: metaDescription,
   items: [
     {
@@ -124,14 +126,14 @@ export const aboutContent = {
         title: 'Resume',
         rel: 'noopener noreferrer',
         target: '_blank',
-        style: 'reverse'
+        style: 'reverse',
       },
       {
         path: `mailto: ${process.env.NEXT_PUBLIC_USER_EMAIL}?subject=Hello!&body=Hi Amir,`,
         title: 'Email',
         rel: 'noopener noreferrer',
         target: '_blank',
-        style: 'reverse'
+        style: 'reverse',
       },
     ],
   },

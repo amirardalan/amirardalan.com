@@ -13,6 +13,10 @@ const TableOfContents: FC<TableOfContentsProps> = ({ markdown }) => {
   const handleShowTOC = () => setShowTOC(!showTOC);
 
   const styleTOC = css({
+    '.noTocSpacer': {
+      height: 30,
+      width: '100%',
+    },
     ol: {
       display: 'none',
       margin: 0,
@@ -64,7 +68,7 @@ const TableOfContents: FC<TableOfContentsProps> = ({ markdown }) => {
       fontWeight: 400,
     },
     'ol.tableOfContents': {
-      margin: '.5rem 0 0 0',
+      margin: '0.5rem 0 0 0',
       a: {
         fontFamily: 'var(--font-secondary)',
         fontSize: 16,
@@ -90,49 +94,49 @@ const TableOfContents: FC<TableOfContentsProps> = ({ markdown }) => {
   });
 
   return (
-    <>
-      {headings && (
-        <div css={styleTOC}>
-          <div className="toc">
-            <button onClick={handleShowTOC} aria-label="Table of Contents">
-              <summary>
-                <span className="icon">
-                  <svg
-                    clipRule="evenodd"
-                    fillRule="evenodd"
-                    strokeLinejoin="round"
-                    strokeMiterlimit="2"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                    height={24}
-                    width={24}
-                  >
-                    <path
-                      d="m3.3 15.4c.717 0 1.3.583 1.3 1.3s-.583 1.3-1.3 1.3-1.3-.583-1.3-1.3.583-1.3 1.3-1.3zm2.7 1.85c0-.414.336-.75.75-.75h14.5c.414 0 .75.336.75.75s-.336.75-.75.75h-14.5c-.414 0-.75-.336-.75-.75zm-2.7-6.55c.717 0 1.3.583 1.3 1.3s-.583 1.3-1.3 1.3-1.3-.583-1.3-1.3.583-1.3 1.3-1.3zm2.7 1.3c0-.414.336-.75.75-.75h14.5c.414 0 .75.336.75.75s-.336.75-.75.75h-14.5c-.414 0-.75-.336-.75-.75zm-2.7-6c.717 0 1.3.583 1.3 1.3s-.583 1.3-1.3 1.3-1.3-.583-1.3-1.3.583-1.3 1.3-1.3zm2.7.75c0-.414.336-.75.75-.75h14.5c.414 0 .75.336.75.75s-.336.75-.75.75h-14.5c-.414 0-.75-.336-.75-.75z"
-                      fillRule="nonzero"
-                    />
-                  </svg>
-                </span>{' '}
-                <h4 className="tocTitle">Table of Contents</h4>
-              </summary>
-            </button>
-            <ol className={`tableOfContents ${showTOC ? 'open' : 'closed'}`}>
-              {headings?.map((heading) => {
-                const headingText = heading.replace('### ', '');
-                const headingID = generateSlug(headingText);
-                return (
-                  <li key={headingID}>
-                    <a className="tocLink" href={`#${headingID}`}>
-                      {headingText}
-                    </a>
-                  </li>
-                );
-              })}
-            </ol>
-          </div>
+    <div css={styleTOC}>
+      {headings ? (
+        <div className="toc">
+          <button onClick={handleShowTOC} aria-label="Table of Contents">
+            <summary>
+              <span className="icon">
+                <svg
+                  clipRule="evenodd"
+                  fillRule="evenodd"
+                  strokeLinejoin="round"
+                  strokeMiterlimit="2"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                  height={24}
+                  width={24}
+                >
+                  <path
+                    d="m3.3 15.4c.717 0 1.3.583 1.3 1.3s-.583 1.3-1.3 1.3-1.3-.583-1.3-1.3.583-1.3 1.3-1.3zm2.7 1.85c0-.414.336-.75.75-.75h14.5c.414 0 .75.336.75.75s-.336.75-.75.75h-14.5c-.414 0-.75-.336-.75-.75zm-2.7-6.55c.717 0 1.3.583 1.3 1.3s-.583 1.3-1.3 1.3-1.3-.583-1.3-1.3.583-1.3 1.3-1.3zm2.7 1.3c0-.414.336-.75.75-.75h14.5c.414 0 .75.336.75.75s-.336.75-.75.75h-14.5c-.414 0-.75-.336-.75-.75zm-2.7-6c.717 0 1.3.583 1.3 1.3s-.583 1.3-1.3 1.3-1.3-.583-1.3-1.3.583-1.3 1.3-1.3zm2.7.75c0-.414.336-.75.75-.75h14.5c.414 0 .75.336.75.75s-.336.75-.75.75h-14.5c-.414 0-.75-.336-.75-.75z"
+                    fillRule="nonzero"
+                  />
+                </svg>
+              </span>{' '}
+              <h4 className="tocTitle">Table of Contents</h4>
+            </summary>
+          </button>
+          <ol className={`tableOfContents ${showTOC ? 'open' : 'closed'}`}>
+            {headings?.map((heading) => {
+              const headingText = heading.replace('### ', '');
+              const headingID = generateSlug(headingText);
+              return (
+                <li key={headingID}>
+                  <a className="tocLink" href={`#${headingID}`}>
+                    {headingText}
+                  </a>
+                </li>
+              );
+            })}
+          </ol>
         </div>
+      ) : (
+        <div className="noTocSpacer"></div>
       )}
-    </>
+    </div>
   );
 };
 

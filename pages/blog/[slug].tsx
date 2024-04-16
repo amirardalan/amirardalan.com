@@ -122,6 +122,12 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
         margin: '.25rem 0 0 0',
       },
       '.postFull': {
+        '.blogPostStats': {
+          marginBottom: '2rem',
+          '@media (max-width: 768px)': {
+            marginBottom: '1.5rem',
+          },
+        },
         'h1, h2': {
           display: 'inline-block',
           fontSize: 50,
@@ -144,7 +150,6 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
           },
         },
         '.teaser': {
-          marginBottom: '2.8rem',
           fontFamily: 'var(--font-tertiary)',
           fontSize: 22,
           fontStyle: 'italic',
@@ -154,13 +159,64 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
             fontSize: 18,
           },
         },
+        '.info': {
+          margin: '.5rem 0 3rem',
+          fontSize: 13,
+          textTransform: 'uppercase',
+          width: '100%',
+          display: 'flex',
+          flexDirection: 'row',
+          '@media (max-width: 768px)': {
+            marginBottom: 0,
+            paddingBottom: '2rem',
+          },
+          '@media(max-width: 480px)': {
+            fontSize: 13,
+            a: {
+              fontSize: 13,
+            },
+            time: {
+              fontSize: 12,
+              '&:before': {
+                margin: '0 0.25rem',
+                content: '"•"',
+              },
+            },
+          },
+          '.authorAndDate, .authorAndDate a, .authorAndDate span time': {
+            fontFamily: 'var(--font-secondary)',
+            letterSpacing: 1,
+            fontSize: 13,
+            '@media(max-width: 360px)': {
+              fontSize: 11,
+            },
+          },
+          a: {
+            margin: 0,
+            paddingLeft: '.25rem',
+            fontFamily: 'var(--font-primary)',
+            fontSize: 14,
+          },
+          time: {
+            fontFamily: 'var(--font-primary)',
+            fontSize: 14,
+            '&:before': {
+              margin: '0 0.5rem',
+              content: '"•"',
+            },
+          },
+        },
         '.readerControls': {
           position: 'relative',
-          margin: '2rem 0',
+          margin: '.5rem 0 2rem',
           '.likeAndShare': {
             position: 'absolute',
             top: 0,
             right: 0,
+          },
+          ol: {
+            margin: 0,
+            paddingTop: '.5rem',
           },
         },
         'h3, h3 code': {
@@ -236,11 +292,10 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
         '.note': {
           position: 'relative',
           margin: '3rem 0',
-          padding: '2.8rem 1.5rem 1.25rem 1.5rem',
+          padding: '2.8rem 1.5rem 1rem 1.5rem',
           border: '1px solid var(--color-accent-lighter)',
           borderRadius: 5,
           fontFamily: 'var(--font-secondary)',
-          fontSize: 14.5,
           color: 'var(--color-gray)',
           lineHeight: '1.5rem',
           '&:before, &:after': {
@@ -251,8 +306,8 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
             content: '""',
             top: 19,
             left: 22,
-            width: 15,
-            height: 15,
+            width: 14,
+            height: 14,
             background: 'var(--icon-info) no-repeat',
             backgroundSize: 'contain',
             lineHeight: '2rem',
@@ -262,11 +317,12 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
           },
           '&:after': {
             content: '"Note:"',
-            top: 15,
+            top: 13,
             left: 43,
+            letterSpacing: 1,
             lineHeight: '1.5rem',
             textTransform: 'uppercase',
-            fontFamily: 'var(--font-primary)',
+            fontFamily: 'var(--font-secondary)',
             fontWeight: 400,
             fontSize: 14.5,
           },
@@ -304,9 +360,6 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
             },
             marginTop: '1.5rem',
             lineHeight: '1.4rem',
-            a: {
-              fontSize: 12,
-            },
           },
         },
         blockquote: {
@@ -361,11 +414,18 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
         ol: {
           counterReset: 'counter',
           margin: '2rem 0',
+          fontFamily: 'var(--font-secondary)',
           li: {
+            color: 'var(--color-gray)',
+            fontFamily: 'var(--font-secondary)',
+            lineHeight: '1.4rem',
             counterIncrement: 'counter',
             marginLeft: '2rem',
             paddingLeft: '.5rem',
             position: 'relative',
+            strong: {
+              color: 'var(--color-text)',
+            },
             '&::before': {
               content: 'counter(counter)',
               width: '1.3rem',

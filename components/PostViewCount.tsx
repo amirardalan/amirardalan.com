@@ -35,7 +35,7 @@ const PostViewCount: FC<PostViewCountProps> = ({ slug }) => {
       opacity: isLoading ? 0 : 1,
       '&:after': {
         content: '"•"',
-        margin: '0 0.8rem',
+        margin: '0 0.5rem',
       },
     },
   });

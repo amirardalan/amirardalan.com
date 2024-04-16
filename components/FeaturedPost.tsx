@@ -39,6 +39,9 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
 
   const postTypeTitle = showFeatured ? home.featured.title : home.latest.title;
 
+  // style vars
+  const hoverColor = 'var(--color-text)';
+
   const stylePostToggle = css({
     display: 'flex',
     alignItems: 'center',
@@ -61,12 +64,12 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
     '@media (min-width: 1025px)': {
       '&:hover': {
         backgroundColor: 'transparent',
-        border: '1px solid var(--color-primary)',
+        border: `1px solid ${hoverColor}`,
         h4: {
-          color: 'var(--color-primary)',
+          color: hoverColor,
         },
         svg: {
-          fill: 'var(--color-primary)',
+          fill: hoverColor,
         },
       },
     },
@@ -77,7 +80,7 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
   });
 
   const styleFeaturedPost = css({
-    marginTop: '3rem',
+    marginTop: '4rem',
     display: 'flex',
     flexDirection: 'column',
     h4: {
