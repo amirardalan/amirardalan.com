@@ -123,7 +123,7 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
       },
       '.postFull': {
         '.blogPostStats': {
-          marginBottom: '2rem',
+          margin: '4rem 0 1.5rem',
           '@media (max-width: 768px)': {
             marginBottom: '1.5rem',
           },

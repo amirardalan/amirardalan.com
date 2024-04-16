@@ -163,7 +163,6 @@ const BlogAdmin: FC = () => {
               },
             },
             '.draftNotification': {
-              marginBottom: '2rem',
               padding: '1rem',
               background: 'var(--color-accent)',
               fontSize: 13,
