@@ -60,11 +60,11 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
       display: 'flex',
       justifyContent: 'center',
       position: 'absolute',
-      top: 16.5,
+      top: 18,
       right: 10,
       cursor: 'pointer',
       '@media (max-width: 768px)': {
-        top: 17,
+        top: 18,
       },
     },
   });
@@ -221,7 +221,7 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
           onKeyDown={() => handleClearFilters()}
           className="clearSearch"
         >
-          <CloseIcon size={23} />
+          <CloseIcon size={20} />
         </button>
       );
     }

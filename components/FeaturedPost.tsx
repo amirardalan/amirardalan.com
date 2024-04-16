@@ -83,6 +83,9 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
     marginTop: '4rem',
     display: 'flex',
     flexDirection: 'column',
+    a: {
+      color: 'var(--color-text)',
+    },
     h4: {
       display: 'flex',
       justifyContent: 'center',

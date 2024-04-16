@@ -22,10 +22,8 @@ const blogStyles = css({
         fontFamily: 'var(--font-secondary)',
       },
       '&:focus': {
-        border: '1px solid var(--color-primary)',
         outline: 'none',
         borderColor: 'var(--color-primary)',
-        boxShadow: '2px solid var(--color-primary)',
       },
     },
     '.categoryWrapper': {
@@ -211,7 +209,6 @@ const blogStyles = css({
     '&:focus': {
       border: '1px solid var(--color-gray)',
     },
-    '&:placeholder:disabled': 'red !important',
     '&:disabled': {
       backgroundColor: 'var(--color-bg)',
       WebkitTextFillColor: 'var(--color-accent-gray)',

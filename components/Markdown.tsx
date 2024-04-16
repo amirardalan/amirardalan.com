@@ -142,7 +142,6 @@ const BlogMarkdown: FC<BlogMarkdownProps> = ({ markdown }) => {
       backgroundColor: 'var(--color-accent)',
       padding: '.1rem .3rem',
       wordWrap: 'break-word',
-      color: 'var(--color-primary)',
       borderRadius: 5,
       '&::before, &::after': {
         content: '"`"',
@@ -157,7 +156,7 @@ const BlogMarkdown: FC<BlogMarkdownProps> = ({ markdown }) => {
       '&::before, &::after': { content: 'none' },
     },
     'h3 code': {
-      color: 'inherit',
+      color: 'var(--color-gray)',
     },
     'span.linenumber': {
       display: 'none !important',

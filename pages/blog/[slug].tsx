@@ -279,8 +279,8 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
         },
         'ul li, ol li, p, .note': {
           a: {
-            color: 'var(--color-primary)',
-            textDecorationColor: 'var(--color-primary)',
+            color: 'var(--color-text)',
+            textDecoration: 'underline',
             '&:hover': {
               color: 'var(--color-primary)',
             },
@@ -415,17 +415,14 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
           counterReset: 'counter',
           margin: '2rem 0',
           fontFamily: 'var(--font-secondary)',
+          color: 'var(--color-gray)',
           li: {
-            color: 'var(--color-gray)',
             fontFamily: 'var(--font-secondary)',
             lineHeight: '1.4rem',
             counterIncrement: 'counter',
             marginLeft: '2rem',
             paddingLeft: '.5rem',
             position: 'relative',
-            strong: {
-              color: 'var(--color-text)',
-            },
             '&::before': {
               content: 'counter(counter)',
               width: '1.3rem',
