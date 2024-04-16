@@ -104,13 +104,20 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
       marginBottom: '2.5rem',
     },
     '.typed': {
-      fontSize: 18,
+      fontSize: 30,
       fontWeight: 400,
+      overflow: 'hidden',
       '&:before': {
         content: '"> ~ % "',
         color: 'var(--color-primary)',
       },
-      '@media(max-width: 480px)': {
+      '@media(max-width: 1600px)': {
+        fontSize: 20,
+      },
+      '@media(max-width: 768px)': {
+        fontSize: 18,
+      },
+      '@media(max-width: 360px)': {
         fontSize: 13,
       },
     },
