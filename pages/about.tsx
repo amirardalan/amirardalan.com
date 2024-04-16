@@ -40,7 +40,7 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
       '@media (max-width: 768px)': {
         fontSize: 24,
         lineHeight: '2.25rem',
-        margin: '2rem 0 3.5rem',
+        margin: '3rem 0 3.5rem',
         li: {
           marginBottom: '2rem',
         },
