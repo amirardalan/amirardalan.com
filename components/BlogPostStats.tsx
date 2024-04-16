@@ -24,6 +24,9 @@ const styleBlogPostStats = css({
   '.featured': {
     marginRight: '.5rem',
     display: 'flex',
+    '@media (max-width: 360px)': {
+      display: 'none',
+    },
   },
   '.postCategory': {
     '&::before': {
