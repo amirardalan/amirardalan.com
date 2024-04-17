@@ -17,7 +17,7 @@ const CanvasLoader = dynamic(() => import('@/components/CanvasLoader'), {
 });
 
 import { GetStaticProps } from 'next';
-const prisma = new PrismaClient()
+const prisma = new PrismaClient();
 
 export const getStaticProps: GetStaticProps = async () => {
   try {
@@ -102,7 +102,10 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
     '.intro, .typed': {
       color: 'var(--color-accent-gray)',
       display: 'block',
-      marginBottom: '2.5rem',
+      marginBottom: '3.5rem',
+      '@media(max-width: 768px)': {
+        marginBottom: '2.5rem',
+      },
     },
     '.typed': {
       fontSize: 30,
@@ -112,8 +115,8 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
         content: '"> ~ % "',
         color: 'var(--color-primary)',
       },
-      '@media(max-width: 1600px)': {
-        fontSize: 20,
+      '@media(max-width: 1720px)': {
+        fontSize: 21,
       },
       '@media(max-width: 768px)': {
         fontSize: 18,
