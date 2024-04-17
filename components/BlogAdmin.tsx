@@ -39,9 +39,8 @@ const BlogAdmin: FC = () => {
     display: 'flex',
     padding: '.5rem 4rem',
     fontFamily: 'var(--font-secondary)',
-    textTransform: 'uppercase',
     backgroundColor: 'var(--color-accent)',
-    borderBottom: '1px solid var(--color-accent-lighter)',
+    borderBottom: '1px solid var(--color-accent-gray)',
     justifyContent: 'space-between',
     marginTop: '-3rem',
     animation: 'adminPanelSlideDown .5s forwards',
@@ -76,6 +75,10 @@ const BlogAdmin: FC = () => {
       a: {
         marginLeft: '.5rem',
         textTransform: 'uppercase',
+        textDecoration: 'none',
+        '&:hover': {
+          textDecoration: 'underline',
+        },
       },
     },
   });
@@ -148,6 +151,7 @@ const BlogAdmin: FC = () => {
               color: 'var(--color-gray)',
               fontSize: 13,
               a: {
+                textDecoration: 'none',
                 '&::after': {
                   content: '"/"',
                   margin: '0 .5rem',
@@ -228,7 +232,7 @@ const BlogAdmin: FC = () => {
                 },
               },
               '.dropdownLabel': {
-                fontFamily: 'var(--font-primary)',
+                fontFamily: 'var(--font-secondary)',
                 marginRight: '2rem',
                 span: {
                   marginRight: '.5rem',
@@ -248,13 +252,14 @@ const BlogAdmin: FC = () => {
               lineHeight: '1rem',
               backgroundColor: 'var(--color-heading)',
               border: '1px solid var(--color-accent)',
-              borderRadius: 10,
+              borderRadius: 6,
               color: 'var(--color-bg)',
               fontSize: 12,
               fontFamily: 'var(--font-secondary)',
               fontWeight: 'normal',
               textTransform: 'uppercase',
               textAlign: 'center',
+              textDecoration: 'none',
               cursor: 'pointer',
               '&.inProgress': {
                 backgroundColor: 'var(--color-disabled)',
@@ -273,6 +278,7 @@ const BlogAdmin: FC = () => {
               '&.deleteBtn': {
                 backgroundColor: 'var(--color-warning)',
                 color: 'var(--color-light)',
+                textDecoration: 'none',
               },
               '&.saveBtn, &.updateBtn, &.cancelBtn': {
                 marginRight: '.25rem',
@@ -312,7 +318,7 @@ const BlogAdmin: FC = () => {
                 textTransform: 'uppercase',
                 '.confirmLink': {
                   color: 'var(--color-heading)',
-                  fontFamily: 'var(--font-primary)',
+                  fontFamily: 'var(--font-secondary)',
                   fontSize: 12,
                   textTransform: 'uppercase',
                   cursor: 'pointer',
@@ -342,7 +348,7 @@ const BlogAdmin: FC = () => {
             },
             '.postDraft': {
               margin: '.5rem 0 .5rem',
-              padding: '1rem 1rem 0 1rem',
+              padding: '1rem',
               display: 'flex',
               justifyContent: 'space-between',
               border: '1px solid var(--color-accent)',
@@ -368,9 +374,11 @@ const BlogAdmin: FC = () => {
               '.blog.postTeaser': {
                 margin: '0 .5rem 0 0',
                 h2: {
+                  margin: '0 0 .25rem 0',
                   fontSize: 20,
                 },
                 'p.teaser': {
+                  margin: '.3rem 0 0 0',
                   fontSize: 14,
                 },
               },
@@ -381,13 +389,10 @@ const BlogAdmin: FC = () => {
           }}
         />
       ) : null}
-      {isLoggedIn && (
-        <div css={styleAnimationWrapper}>
-          <nav css={styleAdminPanel}>
-            <AdminPanel />
-          </nav>
-        </div>
-      )}
+
+      <div css={styleAnimationWrapper}>
+        <nav css={styleAdminPanel}>{isLoggedIn ? <AdminPanel /> : null}</nav>
+      </div>
     </>
   );
 };
