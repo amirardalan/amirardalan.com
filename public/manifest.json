@@ -31,12 +31,12 @@
     }
   ],
   "start_url": "/",
-  "background_color": "#edf1f5",
+  "background_color": "#000",
   "display": "standalone",
   "scope": "/",
   "shortcuts": [
     {
-      "name": "Amir Ardalan Blog",
+      "name": "Amir Ardalan",
       "short_name": "Amir",
       "description": "Software Engineer & UI Designer with 10+ years of experience creating innovative digital solutions.",
       "url": "/"
