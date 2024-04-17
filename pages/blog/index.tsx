@@ -1,5 +1,5 @@
 import { GetStaticProps } from 'next';
-import prisma from '@/lib/prisma';
+import { PrismaClient } from '@prisma/client';
 
 import Container from '@/components/Container';
 import BlogStyles from '@/components/BlogStyles';
@@ -7,6 +7,8 @@ import BlogPostFilter from '@/components/BlogPostFilter';
 import { PostProps } from '@/types/post';
 
 import { blogContent } from '@/data/content';
+
+const prisma = new PrismaClient();
 
 type BlogProps = {
   blog: {

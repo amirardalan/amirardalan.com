@@ -1,5 +1,7 @@
 import { NextApiHandler, NextApiRequest, NextApiResponse } from 'next';
-import prisma from '@/lib/prisma';
+import { PrismaClient } from '@prisma/client';
+
+const prisma = new PrismaClient();
 
 // DELETE /api/post/:id
 const deletePostHandler: NextApiHandler = async (

@@ -1,5 +1,7 @@
 import { GetServerSideProps } from 'next';
-import prisma from '@/lib/prisma';
+import { PrismaClient } from '@prisma/client';
+
+const prisma = new PrismaClient();
 
 // Dynamically Generate sitemap.xml
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {

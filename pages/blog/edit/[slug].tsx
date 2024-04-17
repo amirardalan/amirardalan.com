@@ -3,7 +3,7 @@ import { GetServerSideProps } from 'next';
 import Router from 'next/router';
 import Link from 'next/link';
 
-import prisma from '@/lib/prisma';
+import { PrismaClient } from '@prisma/client';
 import { useSession } from 'next-auth/react';
 
 import revalidateChanges from '@/lib/revalidate';
@@ -20,6 +20,8 @@ import { convertUrlToMarkdown } from '@/utils/convertUrlToMarkdown';
 import { adminContent, breadcrumbContent } from '@/data/content';
 import { categories } from '@/data/categories';
 import BlogImageControls from '@/components/BlogImageControls';
+
+const prisma = new PrismaClient();
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const [editPost, getLatestPost] = await prisma.$transaction([

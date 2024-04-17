@@ -1,5 +1,7 @@
 import { NextApiHandler, NextApiRequest, NextApiResponse } from 'next';
-import prisma from '@/lib/prisma';
+import { PrismaClient } from '@prisma/client';
+
+const prisma = new PrismaClient();
 
 // POST /api/post
 const postHandler: NextApiHandler = async (
