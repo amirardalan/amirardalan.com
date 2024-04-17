@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { GetStaticProps, GetStaticPaths } from 'next';
 import dynamic from 'next/dynamic';
 
-import prisma from '@/lib/prisma';
+import { PrismaClient } from '@prisma/client';
 import { useSession } from 'next-auth/react';
 import { css } from '@emotion/react';
 import { useFetchStatus } from '@/hooks/useLoadingIndicator';
@@ -24,6 +24,8 @@ import LikeButton from '@/components/LikeButton';
 import BlogPostTweet from '@/components/BlogPostTweet';
 import TableOfContents from '@/components/TableOfContents';
 import BlogPostStats from '@/components/BlogPostStats';
+
+const prisma = new PrismaClient();
 
 const BlogPostControls = dynamic(
   () => import('@/components/BlogPostControls'),

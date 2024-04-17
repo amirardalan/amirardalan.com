@@ -1,5 +1,6 @@
 import { NextPage } from 'next';
 import dynamic from 'next/dynamic';
+import { PrismaClient } from '@prisma/client';
 import { css } from '@emotion/react';
 
 import Container from '@/components/Container';
@@ -16,7 +17,7 @@ const CanvasLoader = dynamic(() => import('@/components/CanvasLoader'), {
 });
 
 import { GetStaticProps } from 'next';
-import prisma from '@/lib/prisma';
+const prisma = new PrismaClient()
 
 export const getStaticProps: GetStaticProps = async () => {
   try {

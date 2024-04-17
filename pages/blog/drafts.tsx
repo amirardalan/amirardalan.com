@@ -1,9 +1,9 @@
-import { FC, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { GetServerSideProps } from 'next';
 import Link from 'next/link';
 
+import { PrismaClient } from '@prisma/client';
 import { useSession, getSession } from 'next-auth/react';
-import prisma from '@/lib/prisma';
 
 import LoadingTriangle from '@/components/LoadingTriangle';
 import Container from '@/components/Container';
@@ -14,6 +14,8 @@ import Dropdown from '@/components/Dropdown';
 
 import { adminContent, breadcrumbContent } from '@/data/content';
 import { PostProps } from '@/types/post';
+
+const prisma = new PrismaClient();
 
 type DraftsProps = {
   drafts: PostProps[];
