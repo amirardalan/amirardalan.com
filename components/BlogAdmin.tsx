@@ -40,7 +40,7 @@ const BlogAdmin: FC = () => {
     padding: '.5rem 4rem',
     fontFamily: 'var(--font-secondary)',
     backgroundColor: 'var(--color-accent)',
-    borderBottom: '1px solid var(--color-accent-gray)',
+    borderBottom: '1px solid var(--color-accent-lighter)',
     justifyContent: 'space-between',
     marginTop: '-3rem',
     animation: 'adminPanelSlideDown .5s forwards',
@@ -48,7 +48,6 @@ const BlogAdmin: FC = () => {
       padding: '.5rem 2.5rem',
     },
     '@media (max-width: 600px)': {
-      flexDirection: 'column',
       padding: '.5rem 1rem',
     },
     '@keyframes adminPanelSlideDown': {
@@ -60,9 +59,11 @@ const BlogAdmin: FC = () => {
     display: 'flex',
     '@media(max-width: 600px)': {
       justifyContent: 'flex-end',
-      margin: '0 .5rem .5rem 0',
+      margin: '0 .5rem 0 0',
     },
     div: {
+      display: 'flex',
+      justifyContent: 'start',
       fontSize: 13,
       alignSelf: 'center',
       color: 'var(--color-gray)',
@@ -70,14 +71,24 @@ const BlogAdmin: FC = () => {
         '&:after': {
           content: '"•"',
           marginLeft: '.5rem',
+          '@media(max-width: 400px)': {
+            display: 'none',
+          },
         },
       },
       a: {
         marginLeft: '.5rem',
         textTransform: 'uppercase',
         textDecoration: 'none',
+        whiteSpace: 'nowrap',
         '&:hover': {
           textDecoration: 'underline',
+        },
+      },
+      '@media (max-width: 400px)': {
+        flexDirection: 'column',
+        a: {
+          marginLeft: 0,
         },
       },
     },
