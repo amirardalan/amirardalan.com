@@ -28,11 +28,9 @@ const BlogPost: FC<BlogPostProps> = ({ post }) => {
         className="postDetails"
         aria-label={`${publishDate} • ${postReadTime}`}
       >
-        {isDraft ? null : (
-          <div className="blogListDetails">
-            <BlogPostStats post={post} />
-          </div>
-        )}
+        <div className="blogListDetails">
+          {!isDraft && <BlogPostStats post={post} />}
+        </div>
       </div>
       <h2 className="blogListHeading">
         <Link href={`/blog/${post.slug}`} aria-label={post.title}>

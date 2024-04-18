@@ -177,6 +177,9 @@ const BlogAdmin: FC = () => {
             '.blog.admin': {
               width: '100%',
               '.drafts': {
+                '.postDetails': {
+                  display: 'none',
+                },
                 '.draftsControls': {
                   display: 'flex',
                   flexDirection: 'row',
@@ -192,6 +195,16 @@ const BlogAdmin: FC = () => {
                   display: 'flex',
                   flexDirection: 'row',
                   justifyContent: 'end',
+                },
+                '.postTeaser': {
+                  'a:hover': {
+                    color: 'var(--color-primary)',
+                  },
+                  '&:hover': {
+                    '::before': {
+                      display: 'none',
+                    },
+                  },
                 },
               },
               form: {

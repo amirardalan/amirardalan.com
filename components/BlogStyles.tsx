@@ -128,6 +128,7 @@ const blogStyles = css({
       flexDirection: 'column',
     },
     '.blogListDetails': {
+      height: 22,
       display: 'flex',
       justifyContent: 'space-between',
       width: '100%',
