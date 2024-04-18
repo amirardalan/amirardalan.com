@@ -17,10 +17,10 @@ const Photo: FC<PhotoProps> = ({ avatar, height, width }) => {
   const styleAvatarTint = css({
     zIndex: 2,
     position: 'absolute',
-    width: `${width}px`,
-    height: `${height}px`,
+    width: width,
+    height: height,
     background: 'var(--color-avatar)',
-    borderRadius: `${clip}px`,
+    borderRadius: clip,
     opacity: 0.15,
   });
 
