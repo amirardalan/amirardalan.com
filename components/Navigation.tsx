@@ -154,13 +154,14 @@ const Navigation: FC = () => {
     justifyContent: 'flex-start',
     alignSelf: 'left',
     '.navSocial': {
+      display: 'flex',
+      alignItems: 'center',
       '&.x': {
         marginRight: '1.5rem',
       },
       svg: {
         fill: 'var(--color-heading)',
       },
-      margin: '2.5px 1px 0 0',
       '&:hover': {
         svg: {
           fill: 'var(--color-primary)',
