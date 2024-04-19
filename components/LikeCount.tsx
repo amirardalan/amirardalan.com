@@ -10,7 +10,8 @@ type LikeCountProps = {
 };
 
 const Like: FC<LikeCountProps> = ({ id, likes }) => {
-  const { likeCount, isValidating, isLoading } = useLikeCount(id);
+  const { likeCount: rawLikeCount, isValidating, isLoading } = useLikeCount(id);
+  const likeCount = typeof rawLikeCount === 'number' ? rawLikeCount : 0;
   const likesRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
