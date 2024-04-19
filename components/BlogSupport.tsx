@@ -1,5 +1,4 @@
 import { FC, useState } from 'react';
-import Image from 'next/image';
 import { css } from '@emotion/react';
 import CloseButton from '@/components/CloseIcon';
 import LikeButton from '@/components/LikeButton';
@@ -50,7 +49,9 @@ const BlogSupport: FC<BlogSupportProps> = ({
     color: 'var(--color-gray)',
     '.closeBtn': {
       zIndex: 3,
-      display: showOptions ? 'inline-block' : 'none',
+      opacity: showOptions ? '1' : '0',
+      transition: 'opacity 0.4s ease-in-out',
+      pointerEvents: showOptions ? 'inherit' : 'none',
       cursor: 'pointer',
       border: '10px solid var(--color-bg)',
       borderRadius: 50,
@@ -59,7 +60,6 @@ const BlogSupport: FC<BlogSupportProps> = ({
       position: 'absolute',
       top: -15,
       right: -15,
-      animation: 'spin .5s ease',
     },
     '.animationWrapper': {
       position: 'relative',
