@@ -152,10 +152,10 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
         <div css={styleMainLeft} className="animationWrapper">
           <div css={styleContent}>
             <div className="titleWrapper">
-              <h1>{home.title}</h1>
               <span className="typed" aria-hidden="true">
                 <TypingAnimation data={home.typed} />
               </span>
+              <h1>{home.title}</h1>
               <div css={styleCtaButtons}>
                 <CtaButtons items={home.items} />
               </div>
