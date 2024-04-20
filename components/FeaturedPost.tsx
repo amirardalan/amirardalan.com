@@ -123,6 +123,7 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
       overflow: 'hidden',
       textOverflow: 'ellipsis',
       maxWidth: '100%',
+      lineHeight: '1.5rem',
     },
     'h3 a': {
       lineHeight: '1.25rem',
