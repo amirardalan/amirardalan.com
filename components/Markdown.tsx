@@ -116,7 +116,7 @@ const BlogMarkdown: FC<BlogMarkdownProps> = ({ markdown }) => {
     '.codeStyle': {
       padding: '1.5rem 0 1.5rem 1.5rem !important',
       overflow: 'scroll',
-      borderRadius: 5,
+      borderRadius: 10,
       background: 'transparent !important',
       backgroundColor: 'var(--code-bg) !important',
       code: {
@@ -135,6 +135,8 @@ const BlogMarkdown: FC<BlogMarkdownProps> = ({ markdown }) => {
       },
       '@media(max-width: 768px)': {
         borderRadius: '0 !important',
+        borderLeft: 'none',
+        borderRight: 'none',
       },
     },
     code: {

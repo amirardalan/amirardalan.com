@@ -38,15 +38,15 @@ export const theme = {
   gradientDark:
     'linear-gradient(to bottom, #3d1c33 0%, #331c5c 50%,#3b3196 100%)',
   // Code (Dark)
-  codeBgDark: '#131317',
-  codeHighlightDark: '#1b1b1f',
-  codeScrollbarDark: '#54545f',
-  codeScrollbarHoverDark: '#2f2f38',
+  codeBgDark: '#0b0b0e',
+  codeHighlightDark: '#18181c',
+  codeScrollbarDark: '#2f2f38',
+  codeScrollbarHoverDark: '#54545f',
   // Code (Light)
-  codeBgLight: '#e4e7ed',
-  codeHighlightLight: '#dadce3',
-  codeScrollbarLight: '#bec2ce',
-  codeScrollbarHoverLight: '#d4dadf',
+  codeBgLight: '#e4e8f0',
+  codeHighlightLight: '#dcdfe8',
+  codeScrollbarLight: '#e0e2f1',
+  codeScrollbarHoverLight: '#bec2ce',
   // Speciality
   avatar: '#24306e',
 };
