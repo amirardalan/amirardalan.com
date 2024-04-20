@@ -65,7 +65,7 @@ const BlogStats: FC<BlogStatsProps> = ({ feed, filteredPosts }) => {
         marginLeft: '.25rem',
       },
       '@media(max-width: 1024px)': {
-        marginBottom: '.25rem',
+        marginBottom: '.3rem',
       },
       '&:first-of-type': {
         marginLeft: 0,
