@@ -21,6 +21,14 @@ const styleBlogPostStats = css({
   textTransform: 'uppercase',
   fontSize: 12,
   paddingBottom: '.5rem',
+  '.postStatsDivider': {
+    borderBottom: '1px solid var(--color-accent-lighter)',
+    width: '100%',
+    display: 'flex',
+    alignSelf: 'center',
+    justifyContent: 'center',
+    margin: '.1rem 1rem 0 1rem',
+  },
   '.featured': {
     marginRight: '.5rem',
     display: 'flex',
@@ -38,7 +46,7 @@ const styleBlogPostStats = css({
     },
   },
   '.likesAndViews': {
-    width: '100%',
+    width: 'fit-content',
     display: 'flex',
     justifyContent: 'end',
   },
@@ -56,6 +64,7 @@ const BlogPostStats: FC<BlogPostStatsProps> = ({ post, isFeatured }) => {
       )}
       <span className="postCategory">{post.category}</span>
       <span className="readTime">{postReadTime}</span>
+      <div className="postStatsDivider"></div>
       <div className="likesAndViews">
         <PostViewCount slug={post.slug} />
         <LikeCount id={post.id} likes={post.likes} />
