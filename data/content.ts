@@ -381,7 +381,7 @@ export const usesContent = {
   tools: {
     content: `### Tools
   #### IDE
-  - VS COde
+  - VS Code
   ##### VS Code Extensions:
   - GitHub Copilot
   - Tokyo Night
