@@ -45,7 +45,7 @@ export const theme = {
   // Code (Light)
   codeBgLight: '#e4e8f0',
   codeHighlightLight: '#dcdfe8',
-  codeScrollbarLight: '#e0e2f1',
+  codeScrollbarLight: '#d2d6e1',
   codeScrollbarHoverLight: '#bec2ce',
   // Speciality
   avatar: '#24306e',
