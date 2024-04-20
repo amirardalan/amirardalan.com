@@ -53,7 +53,6 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
     border: '1px solid var(--color-accent-lighter)',
     backgroundColor: 'transparent',
     borderRadius: 20,
-    letterSpacing: 1,
     h3: {
       color: 'var(--color-accent-lighter)',
     },
@@ -153,8 +152,8 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
         <button onClick={handlePostToggle} css={stylePostToggle}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="14"
-            height="14"
+            width="13"
+            height="13"
             viewBox="0 0 24 24"
             className="icon"
           >

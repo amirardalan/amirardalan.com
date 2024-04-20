@@ -190,8 +190,7 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
           },
           '.authorAndDate, .authorAndDate a, .authorAndDate span time': {
             fontFamily: 'var(--font-secondary)',
-            letterSpacing: 1,
-            fontSize: 13,
+            fontSize: 12,
             '@media(max-width: 360px)': {
               fontSize: 11,
             },
@@ -252,8 +251,8 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
                 color: 'var(--color-accent-gray)',
                 position: 'absolute',
                 textAlign: 'center',
-                top: 5,
-                left: -25,
+                top: 11,
+                left: -28,
                 fontSize: HEADING_FONT_SIZE,
               },
             },
@@ -277,7 +276,6 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
           fontFamily: 'var(--font-tertiary)',
           fontSize: 18,
           lineHeight: '1.8rem',
-          letterSpacing: '.01rem',
         },
         'ul, li, a': {
           marginBottom: '1rem',
@@ -385,17 +383,11 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
         ul: {
           marginBottom: '2rem',
         },
-        'ul li, ul li a': {
-          fontFamily: 'var(--font-secondary)',
-          lineHeight: '1.5rem',
-        },
         'ul li': {
-          color: 'var(--color-gray)',
           listStyle: 'outside',
           margin: '0 0 .5rem 1rem',
           paddingLeft: '.5rem',
           '&.task-list-item': {
-            fontFamily: 'var(--font-primary)',
             fontSize: 15,
             fontWeight: 'bold',
           },
@@ -419,11 +411,7 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
         ol: {
           counterReset: 'counter',
           margin: '2rem 0',
-          fontFamily: 'var(--font-secondary)',
-          color: 'var(--color-gray)',
           li: {
-            fontFamily: 'var(--font-secondary)',
-            lineHeight: '1.4rem',
             counterIncrement: 'counter',
             marginLeft: '2rem',
             paddingLeft: '.5rem',
@@ -433,7 +421,7 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
               width: '1.3rem',
               height: '1.3rem',
               position: 'absolute',
-              top: '.1rem',
+              top: '.25rem',
               left: '-2rem',
               border: '1px solid var(--color-gray)',
               borderRadius: '50%',

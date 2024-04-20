@@ -56,10 +56,10 @@ const TableOfContents: FC<TableOfContentsProps> = ({ markdown }) => {
       '@media (min-width: 1025px)': {
         '&:hover': {
           '.tocTitle': {
-            color: 'var(--color-primary)',
+            color: 'var(--color-text)',
           },
           svg: {
-            fill: 'var(--color-primary)',
+            fill: 'var(--color-text)',
           },
         },
       },
@@ -81,6 +81,15 @@ const TableOfContents: FC<TableOfContentsProps> = ({ markdown }) => {
           border: '1px solid var(--color-accent-gray)',
           color: 'var(--color-accent-gray)',
           top: '.2rem',
+        },
+        '@media (min-width: 1025px)': {
+          a: {
+            textDecoration: 'none',
+            '&:hover': {
+              color: 'var(--color-text)',
+              textDecoration: 'underline',
+            },
+          },
         },
       },
       '@media (max-width: 768px)': {

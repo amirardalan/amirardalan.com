@@ -78,8 +78,7 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
           h3: {
             marginBottom: '.5rem',
             fontFamily: 'var(--font-secondary)',
-            fontSize: 12,
-            letterSpacing: 1,
+            fontSize: 14,
             fontWeight: 700,
             textTransform: 'uppercase',
           },
@@ -196,9 +195,8 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
       '.date': {
         color: 'var(--color-primary)',
         textTransform: 'uppercase',
-        letterSpacing: 5,
         fontFamily: 'var(--font-secondary)',
-        fontSize: 16,
+        fontSize: 18,
         lineHeight: '.5rem',
       },
       '.event': {

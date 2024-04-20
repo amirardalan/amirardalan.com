@@ -155,9 +155,6 @@ const BlogMarkdown: FC<BlogMarkdownProps> = ({ markdown }) => {
       fontFamily: 'var(--font-primary) !important',
       '&::before, &::after': { content: 'none' },
     },
-    'h3 code': {
-      color: 'var(--color-gray)',
-    },
     'span.linenumber': {
       display: 'none !important',
     },

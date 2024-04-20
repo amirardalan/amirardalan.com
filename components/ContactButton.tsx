@@ -10,7 +10,6 @@ const ContactButton: FC<ContactButtonProps> = () => {
     '.button': {
       fontFamily: 'var(--font-secondary)',
       fontSize: 18,
-      letterSpacing: 2,
       textTransform: 'uppercase',
       padding: '.6rem 2rem',
       borderRadius: 50,

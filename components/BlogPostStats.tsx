@@ -13,7 +13,6 @@ type BlogPostStatsProps = {
 const styleBlogPostStats = css({
   fontFamily: 'var(--font-secondary)',
   color: 'var(--color-gray)',
-  letterSpacing: 1,
   display: 'flex',
   justifyContent: 'space-between',
   flexDirection: 'row',
