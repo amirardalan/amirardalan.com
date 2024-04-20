@@ -24,7 +24,7 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
     paddingTop: '2rem',
     position: 'relative',
     '.readMoreLink': {
-      fontSize: 24,
+      fontSize: 20,
       marginTop: '7rem',
       paddingBottom: '2rem',
       display: 'flex',
@@ -111,11 +111,12 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
           },
         },
         '&:after': {
+          fontFamily: 'var(--font-primary)',
           position: 'absolute',
-          top: -35,
-          right: -12.5,
+          top: -31.5,
+          right: -15.25,
           content: '"•"',
-          fontSize: 50,
+          fontSize: 48,
           color: 'var(--color-text)',
           '@media(max-width: 768px)': {
             position: 'absolute',
