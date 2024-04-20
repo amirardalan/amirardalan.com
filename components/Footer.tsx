@@ -67,7 +67,7 @@ const Footer: FC<FooterProps> = () => {
         fontSize: 14,
       },
       '@media(max-width: 480px)': {
-        marginBottom: '1.5rem',
+        marginBottom: '.8rem',
       },
     },
     h4: {
