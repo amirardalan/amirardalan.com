@@ -32,8 +32,8 @@ const blogStyles = css({
     },
     '.category': {
       marginBottom: '.5rem',
-      fontFamily: 'var(--font-primary)',
-      fontSize: 12,
+      fontFamily: 'var(--font-secondary)',
+      fontSize: 11,
       textTransform: 'uppercase',
       color: 'var(--color-primary)',
       textDecoration: 'none',
@@ -151,17 +151,19 @@ const blogStyles = css({
         textDecoration: 'none',
         border: 'none',
       },
+      '@media (min-width: 1025px)': {
+        '&:hover': {
+          h2: {
+            textDecoration: 'underline',
+          },
+          '.postStatsDivider': {
+            borderColor: 'var(--color-accent-gray)',
+            transition: 'border-color 0.5s ease-in-out',
+          },
+        },
+      },
       '@media (max-width: 768px)': {
         fontSize: 28,
-      },
-    },
-    '&:hover': {
-      h2: {
-        textDecoration: 'underline',
-      },
-      '.postStatsDivider': {
-        borderColor: 'var(--color-accent-gray)',
-        transition: 'border-color 0.5s ease-in-out',
       },
     },
   },

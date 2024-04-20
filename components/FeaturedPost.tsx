@@ -49,7 +49,7 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
     minWidth: 'fit-content',
     maxWidth: 'min-content',
     marginBottom: '1.15rem',
-    padding: '.1rem .7rem .1rem .5rem',
+    padding: '.02rem .7rem .1rem .5rem',
     border: '1px solid var(--color-accent-lighter)',
     backgroundColor: 'transparent',
     borderRadius: 20,

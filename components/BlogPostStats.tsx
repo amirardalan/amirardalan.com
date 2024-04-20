@@ -19,7 +19,7 @@ const styleBlogPostStats = css({
   flexDirection: 'row',
   width: '100%',
   textTransform: 'uppercase',
-  fontSize: 12,
+  fontSize: 11,
   paddingBottom: '.5rem',
   '.postStatsDivider': {
     transition: 'border-color 0.25s ease-in-out',
