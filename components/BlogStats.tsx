@@ -25,6 +25,8 @@ const BlogStats: FC<BlogStatsProps> = ({ feed, filteredPosts }) => {
     (filteredLikesCount | totalLikesCount) === 1 ? 'like' : 'likes';
 
   const styleBlogStatsWrapper = css({
+    fontFamily: 'var(--font-secondary)',
+    textTransform: 'uppercase',
     display: 'flex',
     justifyContent: 'space-between',
     marginBottom: '2rem',

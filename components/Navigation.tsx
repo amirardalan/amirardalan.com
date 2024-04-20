@@ -44,25 +44,13 @@ const Navigation: FC = () => {
     alignItems: 'center',
     marginRight: '2rem',
     fontFamily: 'var(--font-secondary)',
-    fontSize: 14,
+    fontSize: 13,
     textTransform: 'uppercase',
     a: {
       margin: '0 1.5rem',
       color: 'var(--color-heading)',
       '&:hover': {
         color: 'var(--color-primary)',
-      },
-      '&.active::before': {
-        fontFamily: 'var(--font-primary)',
-        color: 'var(--color-primary)',
-        position: 'absolute',
-        fontSize: 10,
-        content: '"❯"',
-        top: 2,
-        left: -10,
-        '@media (max-width: 768px)': {
-          left: -20,
-        },
       },
     },
     '@media (max-width: 768px)': {

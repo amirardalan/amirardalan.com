@@ -93,7 +93,6 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
       fontFamily: 'var(--font-secondary)',
       fontSize: 'calc(3.6vw + 3.6vh)',
       fontWeight: 700,
-      textTransform: 'uppercase',
       WebkitMarqueeIncrement: '0vw',
       '@media (max-width: 768px)': {
         fontSize: 'calc(5.2vw + 5.2vh)',
@@ -108,7 +107,7 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
       },
     },
     '.typed': {
-      fontSize: 30,
+      fontSize: 26,
       fontWeight: 400,
       overflow: 'hidden',
       '&:before': {
@@ -116,7 +115,7 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
         color: 'var(--color-primary)',
       },
       '@media(max-width: 1720px)': {
-        fontSize: 21,
+        fontSize: 20,
       },
       '@media(max-width: 768px)': {
         fontSize: 18,
@@ -153,10 +152,10 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
         <div css={styleMainLeft} className="animationWrapper">
           <div css={styleContent}>
             <div className="titleWrapper">
-              <h1>{home.title}</h1>
               <span className="typed" aria-hidden="true">
                 <TypingAnimation data={home.typed} />
               </span>
+              <h1>{home.title}</h1>
               <div css={styleCtaButtons}>
                 <CtaButtons items={home.items} />
               </div>

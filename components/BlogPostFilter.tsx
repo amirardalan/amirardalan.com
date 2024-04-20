@@ -33,7 +33,7 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
     minHeight: 32,
     li: {
       display: 'inline',
-      marginRight: '1.8rem',
+      marginRight: '1.25rem',
     },
     '&::-webkit-scrollbar': {
       display: 'none',

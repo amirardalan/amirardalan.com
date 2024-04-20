@@ -38,6 +38,9 @@ const BlogSupport: FC<BlogSupportProps> = ({
   };
 
   const styleSupportModule = css({
+    '.buttonHover:hover::after': {
+      top: '-35%',
+    },
     svg: {
       marginRight: '.5rem',
     },
@@ -82,7 +85,7 @@ const BlogSupport: FC<BlogSupportProps> = ({
         width: '100%',
         display: 'flex',
         position: 'relative',
-        padding: '2.9rem',
+        padding: '2.7rem',
         '@media(max-width: 480px)': {
           padding: '1.5rem 2rem',
         },

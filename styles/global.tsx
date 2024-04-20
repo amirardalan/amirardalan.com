@@ -250,6 +250,7 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
             '.pageHeading': {
               fontSize: 20,
               fontWeight: 400,
+              textTransform: 'initial',
               marginBottom: '1rem',
               fontFamily: 'var(font-secondary)',
               color: 'var(--color-gray)',

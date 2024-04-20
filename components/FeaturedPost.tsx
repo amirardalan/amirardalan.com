@@ -49,7 +49,7 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
     minWidth: 'fit-content',
     maxWidth: 'min-content',
     marginBottom: '1.15rem',
-    padding: '.1rem .7rem .1rem .5rem',
+    padding: '0 .4rem 0 .25rem',
     border: '1px solid var(--color-accent-lighter)',
     backgroundColor: 'transparent',
     borderRadius: 20,
@@ -90,11 +90,10 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
       display: 'flex',
       justifyContent: 'center',
       marginLeft: '.3rem',
-      lineHeight: '1.2rem',
       fontFamily: 'var(--font-secondary)',
       color: 'var(--color-accent-gray)',
       textTransform: 'uppercase',
-      fontSize: 12,
+      fontSize: 10,
       fontWeight: 400,
     },
     '.featuredContainer': {
@@ -141,15 +140,10 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
       },
     },
     p: {
-      marginTop: '.15rem',
-      lineHeight: '1.25rem',
-      fontSize: 15,
+      fontSize: 16,
       fontFamily: 'var(--font-tertiary)',
       fontStyle: 'italic',
       color: 'var(--color-gray)',
-      '@media (max-width: 480px)': {
-        marginTop: '.15rem',
-      },
     },
   });
 

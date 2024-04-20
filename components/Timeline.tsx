@@ -24,7 +24,7 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
     paddingTop: '2rem',
     position: 'relative',
     '.readMoreLink': {
-      fontSize: 24,
+      fontSize: 20,
       marginTop: '7rem',
       paddingBottom: '2rem',
       display: 'flex',
@@ -78,7 +78,7 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
           h3: {
             marginBottom: '.5rem',
             fontFamily: 'var(--font-secondary)',
-            fontSize: 15,
+            fontSize: 12,
             letterSpacing: 1,
             fontWeight: 700,
             textTransform: 'uppercase',
@@ -111,11 +111,12 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
           },
         },
         '&:after': {
+          fontFamily: 'var(--font-primary)',
           position: 'absolute',
-          top: -35,
-          right: -12.5,
+          top: -31.5,
+          right: -15.25,
           content: '"•"',
-          fontSize: 50,
+          fontSize: 48,
           color: 'var(--color-text)',
           '@media(max-width: 768px)': {
             position: 'absolute',
@@ -196,7 +197,7 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
         textTransform: 'uppercase',
         letterSpacing: 5,
         fontFamily: 'var(--font-secondary)',
-        fontSize: 18,
+        fontSize: 16,
         lineHeight: '.5rem',
       },
       '.event': {
@@ -205,7 +206,8 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
         padding: '2rem',
         border: '1px solid var(--color-accent)',
         borderRadius: 10,
-        fontSize: 14,
+        fontSize: 13,
+        lineHeight: '1.15rem',
         fontFamily: 'var(--font-secondary)',
         span: {
           color: 'var(--color-gray)',
