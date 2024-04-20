@@ -28,7 +28,7 @@ const styleBlogPostStats = css({
     display: 'flex',
     alignSelf: 'center',
     justifyContent: 'center',
-    margin: '.4rem 1rem 0 1rem',
+    margin: '.1rem 1rem 0 1rem',
   },
   '.featured': {
     marginRight: '.5rem',

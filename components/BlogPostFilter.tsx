@@ -53,19 +53,16 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
     caretColor: 'var(--color-gray)',
     '.icon': {
       position: 'absolute',
-      top: 19,
+      top: 22,
       right: 12,
     },
     '.clearSearch': {
       display: 'flex',
       justifyContent: 'center',
       position: 'absolute',
-      top: 18,
-      right: 10,
+      top: 21,
+      right: 14,
       cursor: 'pointer',
-      '@media (max-width: 768px)': {
-        top: 18,
-      },
     },
   });
 
