@@ -151,19 +151,19 @@ const blogStyles = css({
         textDecoration: 'none',
         border: 'none',
       },
-      '@media (min-width: 1025px)': {
-        '&:hover': {
-          h2: {
-            textDecoration: 'underline',
-          },
-          '.postStatsDivider': {
-            borderColor: 'var(--color-accent-gray)',
-            transition: 'border-color 0.5s ease-in-out',
-          },
-        },
-      },
       '@media (max-width: 768px)': {
         fontSize: 28,
+      },
+    },
+    '@media (min-width: 1025px)': {
+      '&:hover': {
+        h2: {
+          textDecoration: 'underline',
+        },
+        '.postStatsDivider': {
+          borderColor: 'var(--color-accent-gray)',
+          transition: 'border-color 0.5s ease-in-out',
+        },
       },
     },
   },
