@@ -120,7 +120,8 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
           color: 'var(--color-text)',
           '@media(max-width: 768px)': {
             position: 'absolute',
-            top: -36,
+            right: -15.8,
+            top: -32.8,
           },
         },
         '.event': {
@@ -207,7 +208,7 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
         border: '1px solid var(--color-accent)',
         borderRadius: 10,
         fontSize: 13,
-        lineHeight: '1.15rem',
+        lineHeight: '1rem',
         fontFamily: 'var(--font-secondary)',
         span: {
           color: 'var(--color-gray)',
@@ -227,7 +228,6 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
           border: 'none',
           marginBottom: '4rem',
           padding: '0 1rem 0 0',
-          fontSize: 14,
         },
       },
     },
