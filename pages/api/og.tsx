@@ -4,19 +4,19 @@ export const config = {
   runtime: 'edge',
 };
 
-const BarlowRegularFontP = fetch(
-  new URL('@/public/fonts/Barlow-Regular.ttf', import.meta.url)
+const SairaRegularFontP = fetch(
+  new URL('@/public/fonts/Saira-Regular.ttf', import.meta.url)
 ).then((res) => res.arrayBuffer());
 
-const BarlowBoldFontP = fetch(
-  new URL('@/public/fonts/Barlow-Bold.ttf', import.meta.url)
+const SairaBoldFontP = fetch(
+  new URL('@/public/fonts/Saira-Bold.ttf', import.meta.url)
 ).then((res) => res.arrayBuffer());
 
 export default async function handler(req: Request) {
   try {
-    const [BarlowRegularFont, BarlowBoldFont] = await Promise.all([
-      BarlowRegularFontP,
-      BarlowBoldFontP,
+    const [SairaRegularFont, SairaBoldFont] = await Promise.all([
+      SairaRegularFontP,
+      SairaBoldFontP,
     ]);
 
     const { searchParams } = new URL(req.url);
@@ -56,14 +56,14 @@ export default async function handler(req: Request) {
         height: 627,
         fonts: [
           {
-            name: 'Barlow Web',
-            data: BarlowRegularFont,
+            name: 'Saira',
+            data: SairaRegularFont,
             style: 'normal',
             weight: 400,
           },
           {
-            name: 'Barlow Web',
-            data: BarlowBoldFont,
+            name: 'Saira',
+            data: SairaBoldFont,
             style: 'normal',
             weight: 700,
           },
