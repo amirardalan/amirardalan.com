@@ -126,13 +126,16 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
       '.postFull': {
         '.blogPostStats': {
           margin: '4rem 0 1.5rem',
+          '.postStatsDivider': {
+            margin: '.1rem 1rem 0 1rem',
+          },
           '@media (max-width: 768px)': {
             margin: '1.5rem 0 2rem',
           },
         },
         'h1, h2': {
           display: 'inline-block',
-          fontSize: 50,
+          fontSize: 42,
         },
         h1: {
           margin: '0 0 .8rem',
@@ -322,11 +325,11 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
             top: 13,
             left: 43,
             letterSpacing: 1,
-            lineHeight: '1.5rem',
+            lineHeight: '1.65rem',
             textTransform: 'uppercase',
             fontFamily: 'var(--font-secondary)',
             fontWeight: 400,
-            fontSize: 14.5,
+            fontSize: 12,
           },
           a: {
             fontFamily: 'var(--font-secondary)',

@@ -15,17 +15,13 @@ import { themeLight, themeDark } from '@/styles/theme';
 import GlobalStyles from '@/styles/global';
 import { useThemeContext } from '@/hooks/useThemeContext';
 
-import {
-  JetBrains_Mono,
-  PT_Serif,
-  Barlow_Semi_Condensed,
-} from 'next/font/google';
+import { JetBrains_Mono, Noto_Serif, Saira } from 'next/font/google';
 const fontPrimary = JetBrains_Mono({ subsets: ['latin'], weight: ['400'] });
-const fontSecondary = Barlow_Semi_Condensed({
+const fontSecondary = Saira({
   subsets: ['latin'],
   weight: ['400', '700'],
 });
-const fontTertiary = PT_Serif({
+const fontTertiary = Noto_Serif({
   subsets: ['latin'],
   weight: ['400'],
   style: ['normal', 'italic'],

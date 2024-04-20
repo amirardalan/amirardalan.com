@@ -141,15 +141,10 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
       },
     },
     p: {
-      marginTop: '.15rem',
-      lineHeight: '1.25rem',
-      fontSize: 15,
+      fontSize: 16,
       fontFamily: 'var(--font-tertiary)',
       fontStyle: 'italic',
       color: 'var(--color-gray)',
-      '@media (max-width: 480px)': {
-        marginTop: '.15rem',
-      },
     },
   });
 

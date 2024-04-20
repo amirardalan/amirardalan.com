@@ -22,12 +22,13 @@ const styleBlogPostStats = css({
   fontSize: 12,
   paddingBottom: '.5rem',
   '.postStatsDivider': {
-    borderBottom: '1px solid var(--color-accent-lighter)',
+    transition: 'border-color 0.25s ease-in-out',
+    borderBottom: '1px solid var(--color-accent)',
     width: '100%',
     display: 'flex',
     alignSelf: 'center',
     justifyContent: 'center',
-    margin: '.1rem 1rem 0 1rem',
+    margin: '.4rem 1rem 0 1rem',
   },
   '.featured': {
     marginRight: '.5rem',
@@ -37,10 +38,12 @@ const styleBlogPostStats = css({
     },
   },
   '.postCategory': {
+    color: 'var(--color-primary)',
     '&::before': {
       content: '"#"',
     },
     '&::after': {
+      color: 'var(--color-gray)',
       content: '"•"',
       margin: '0 0.5rem',
     },

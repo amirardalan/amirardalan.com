@@ -13,6 +13,7 @@ const TableOfContents: FC<TableOfContentsProps> = ({ markdown }) => {
   const handleShowTOC = () => setShowTOC(!showTOC);
 
   const styleTOC = css({
+    fontFamily: 'var(--font-secondary)',
     '.noTocSpacer': {
       height: 30,
       width: '100%',

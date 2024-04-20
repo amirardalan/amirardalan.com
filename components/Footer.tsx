@@ -63,6 +63,9 @@ const Footer: FC<FooterProps> = () => {
           borderBottom: '1px solid var(--color-bg)',
         },
       },
+      '@media(max-width: 768px)': {
+        fontSize: 14,
+      },
       '@media(max-width: 480px)': {
         marginBottom: '1.5rem',
       },
