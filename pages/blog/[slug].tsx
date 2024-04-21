@@ -132,6 +132,9 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
             lineHeight: '1.1rem',
             fontFamily: 'var(--font-secondary)',
             fontSize: 11,
+            '&:hover': {
+              textDecoration: 'none',
+            },
           },
           '.postStatsDivider': {
             margin: '.1rem 1rem 0 1rem',
