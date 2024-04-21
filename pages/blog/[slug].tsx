@@ -126,6 +126,13 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
       '.postFull': {
         '.blogPostStats': {
           margin: '4rem 0 1.5rem',
+          a: {
+            margin: 0,
+            padding: 0,
+            lineHeight: '1.1rem',
+            fontFamily: 'var(--font-secondary)',
+            fontSize: 11,
+          },
           '.postStatsDivider': {
             margin: '.1rem 1rem 0 1rem',
           },

@@ -37,12 +37,7 @@ const styleBlogPostStats = css({
       display: 'none',
     },
   },
-  'a.postCategory': {
-    margin: 0,
-    padding: 0,
-    lineHeight: '1.1rem',
-    fontFamily: 'var(--font-secondary)',
-    fontSize: 11,
+  postCategory: {
     color: 'var(--color-primary)',
     '&:hover': {
       textDecoration: 'none',
