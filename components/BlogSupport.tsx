@@ -48,7 +48,7 @@ const BlogSupport: FC<BlogSupportProps> = ({
     position: 'relative',
     marginBottom: '3.5rem',
     border: '1px solid var(--color-accent-lighter)',
-    borderRadius: '5px',
+    borderRadius: 10,
     color: 'var(--color-gray)',
     '.closeBtn': {
       zIndex: 3,
@@ -93,7 +93,7 @@ const BlogSupport: FC<BlogSupportProps> = ({
       '.supportOptions': {
         display: 'flex',
         flexDirection: 'column',
-        margin: '2.5rem',
+        margin: '2rem 2.5rem',
         '@media (max-width: 480px)': {
           margin: '1.8rem 2rem',
         },
@@ -101,20 +101,23 @@ const BlogSupport: FC<BlogSupportProps> = ({
           display: 'flex',
           flexDirection: 'column',
           position: 'relative',
-          'a:hover': {
-            textDecoration: 'none',
-            '&:before': {
-              height: 32,
-              width: 4,
-              position: 'absolute',
-              left: -14,
-              content: '""',
-              borderLeft: '4px solid var(--color-primary)',
-              '@media (max-width: 480px)': {
-                content: 'none',
-                textDecoration: 'none',
+          a: {
+            fontSize: 20,
+            '&:hover': {
+              textDecoration: 'none',
+              '&:before': {
+                height: 32,
+                width: 4,
+                position: 'absolute',
+                left: -14,
+                content: '""',
+                borderLeft: '4px solid var(--color-primary)',
+                '@media (max-width: 480px)': {
+                  content: 'none',
+                  textDecoration: 'none',
+                },
               },
-            },
+            }
           },
           '.cashapp, .paypal': {
             display: 'flex',
@@ -192,7 +195,7 @@ const BlogSupport: FC<BlogSupportProps> = ({
         textDecoration: 'underline',
       },
       '.supportHeading': {
-        marginBottom: '1rem',
+        marginBottom: '1.5rem',
         display: 'flex',
         flexDirection: 'row',
         'button::after': {

@@ -61,7 +61,7 @@ const BlogNavigation: FC<BlogNavigationProps> = ({
   );
 
   const styleBlogNavigation = css({
-    marginTop: '4rem',
+    margin: '4rem 0',
     fontFamily: 'var(--font-secondary)',
     fontSize: 15,
     lineHeight: '1.3rem',

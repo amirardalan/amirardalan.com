@@ -116,8 +116,8 @@ const BlogMarkdown: FC<BlogMarkdownProps> = ({ markdown }) => {
     '.codeStyle': {
       padding: '1.5rem 0 1.5rem 1.5rem !important',
       overflow: 'scroll',
-      borderRadius: 10,
       background: 'transparent !important',
+      borderRadius: '10px !important',
       backgroundColor: 'var(--code-bg) !important',
       code: {
         paddingRight: '1.2rem',

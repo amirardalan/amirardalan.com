@@ -304,7 +304,7 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
           margin: '3rem 0',
           padding: '2.8rem 1.5rem 1rem 1.5rem',
           border: '1px solid var(--color-accent-lighter)',
-          borderRadius: 5,
+          borderRadius: 10,
           fontFamily: 'var(--font-secondary)',
           color: 'var(--color-gray)',
           lineHeight: '1.5rem',
