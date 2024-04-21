@@ -47,7 +47,7 @@ const styleUsesMarkdown: any = {
     color: 'var(--color-heading)',
     width: 'fit-content',
     fontSize: 13,
-    fontWeight: 700,
+    fontWeight: 600,
     letterSpacing: 2,
     textTransform: 'uppercase',
     marginBottom: '.5rem',

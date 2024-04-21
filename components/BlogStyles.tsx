@@ -54,7 +54,7 @@ const blogStyles = css({
       margin: '.4rem 0 .6rem',
       fontFamily: 'var(--font-secondary)',
       fontSize: 28,
-      fontWeight: 700,
+      fontWeight: 600,
       lineHeight: '2.2rem',
       a: {
         color: 'var(--color-heading)',

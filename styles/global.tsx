@@ -201,7 +201,7 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
           'h1, h2, h3': {
             color: 'var(--color-heading)',
             fontFamily: 'var(--font-secondary)',
-            fontWeight: 700,
+            fontWeight: 600,
           },
           a: {
             cursor: 'pointer',

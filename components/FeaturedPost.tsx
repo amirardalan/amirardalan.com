@@ -129,7 +129,7 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
       lineHeight: '1.25rem',
       fontFamily: 'var(--font-secondary)',
       fontSize: 20,
-      fontWeight: 700,
+      fontWeight: 600,
       '@media (min-width: 1025px)': {
         '&:hover': {
           textDecoration: 'underline',

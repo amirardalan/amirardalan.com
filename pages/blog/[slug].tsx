@@ -148,7 +148,7 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
           margin: '0 0 .8rem',
           textDecoration: 'none',
           lineHeight: '3.4rem',
-          fontWeight: 700,
+          fontWeight: 600,
           '@media(max-width: 1024px)': {
             margin: '0 0 .5rem',
           },
@@ -241,7 +241,7 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
           margin: '1rem 0 1.5rem',
           padding: 0,
           display: 'inline-block',
-          fontWeight: 700,
+          fontWeight: 600,
           '& code': {
             fontFamily: 'var(--font-secondary)',
             background: 'transparent',

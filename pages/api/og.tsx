@@ -65,7 +65,7 @@ export default async function handler(req: Request) {
             name: 'Saira',
             data: SairaBoldFont,
             style: 'normal',
-            weight: 700,
+            weight: 600,
           },
         ],
       }

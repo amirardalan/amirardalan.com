@@ -37,7 +37,7 @@ const ErrorLayout: FC<ErrorProps> = ({ error }) => {
     h1: {
       alignSelf: 'center',
       fontSize: 70,
-      fontWeight: 700,
+      fontWeight: 600,
     },
     h2: {
       alignSelf: 'center',

@@ -79,7 +79,7 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
             marginBottom: '.5rem',
             fontFamily: 'var(--font-secondary)',
             fontSize: 14,
-            fontWeight: 700,
+            fontWeight: 600,
             textTransform: 'uppercase',
           },
           '@media(max-width: 480px)': {
