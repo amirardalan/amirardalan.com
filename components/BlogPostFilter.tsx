@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 
 import { css } from '@emotion/react';
 import useTotalLikes from '@/hooks/useTotalLikes';
@@ -10,6 +10,7 @@ import compareID from '@/utils/compareID';
 
 import { PostProps } from '@/types/post';
 import { BlogStatsTypes } from '@/types/blog';
+import { useRouter } from 'next/router';
 
 type BlogPostFilterProps = {
   blog: {
@@ -25,6 +26,8 @@ type BlogPostFilterProps = {
 };
 
 const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
+  const router = useRouter();
+
   const styleBlogCategoryNav = css({
     overflow: 'scroll',
     msOverflowStyle: 'none',
@@ -76,6 +79,10 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
     setSearch('#' + category);
     setShowPopular(false);
     scrollToTop();
+    router.push({
+      pathname: router.pathname,
+      query: { ...router.query, category: category },
+    });
   };
 
   const [showPopular, setShowPopular] = useState(false);
@@ -95,6 +102,10 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
     handleShowAllLink();
     setSearch('');
     scrollToTop();
+    router.push({
+      pathname: router.pathname,
+      query: {},
+    });
   };
 
   interface CategoryItem {
@@ -159,6 +170,12 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
   };
 
   const filteredPosts = searchResults(search, feed as PostFeedItem[]);
+
+  useEffect(() => {
+    if (router.query.category) {
+      setSearch('#' + router.query.category);
+    }
+  }, [router.query]);
 
   const RenderPosts: any = () => {
     if (filteredPosts.length > 0) {

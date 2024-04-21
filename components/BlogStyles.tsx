@@ -115,6 +115,11 @@ const blogStyles = css({
   },
   '.readTime': {
     whiteSpace: 'nowrap',
+    '&::before': {
+      color: 'var(--color-gray)',
+      content: '"•"',
+      margin: '0 0.5rem',
+    },
   },
   '.postDetails': {
     marginBottom: '.25rem',

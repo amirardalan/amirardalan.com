@@ -4,6 +4,7 @@ import LikeCount from '@/components/LikeCount';
 import calculateReadTime from '@/utils/calculateReadTime';
 import { PostProps } from '@/types/post';
 import { css } from '@emotion/react';
+import Link from 'next/link';
 
 type BlogPostStatsProps = {
   post: PostProps;
@@ -36,15 +37,18 @@ const styleBlogPostStats = css({
       display: 'none',
     },
   },
-  '.postCategory': {
+  'a.postCategory': {
+    margin: 0,
+    padding: 0,
+    lineHeight: '1.1rem',
+    fontFamily: 'var(--font-secondary)',
+    fontSize: 11,
     color: 'var(--color-primary)',
+    '&:hover': {
+      textDecoration: 'none',
+    },
     '&::before': {
       content: '"#"',
-    },
-    '&::after': {
-      color: 'var(--color-gray)',
-      content: '"•"',
-      margin: '0 0.5rem',
     },
   },
   '.likesAndViews': {
@@ -64,7 +68,9 @@ const BlogPostStats: FC<BlogPostStatsProps> = ({ post, isFeatured }) => {
           Featured
         </div>
       )}
-      <span className="postCategory">{post.category}</span>
+      <Link className="postCategory" href={`/blog?category=${post.category}`}>
+        {post.category}
+      </Link>
       <span className="readTime">{postReadTime}</span>
       <div className="postStatsDivider"></div>
       <div className="likesAndViews">
