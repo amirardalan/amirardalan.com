@@ -91,6 +91,7 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
         alignItems: 'center',
         flexDirection: 'row',
       },
+      marginBottom: '3rem',
     }
   });
 
