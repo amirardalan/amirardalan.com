@@ -243,7 +243,6 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
             WebkitTransformStyle: 'preserve-3d',
           },
           '.container': {
-            minHeight: '50vh',
             marginTop: '2rem',
             padding: '0 4rem',
             position: 'relative',

@@ -61,6 +61,7 @@ type HomeProps = {
 
 const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
   const styleMain = css({
+    marginBottom: '4rem',
     display: 'flex',
     '@media (max-width: 890px)': {
       flexDirection: 'column',
@@ -135,7 +136,7 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
   const styleMainRight = css({
     position: 'relative',
     background: 'var(--color-gradient)',
-    height: '72vh',
+    height: '75vh',
     '@media (max-width: 890px)': {
       height: '45vh',
       marginTop: '2rem',

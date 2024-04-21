@@ -9,12 +9,14 @@ type ErrorProps = {
 
 const ErrorLayout: FC<ErrorProps> = ({ error }) => {
   const styleErrorWrapper = css({
+    marginBottom: '4rem',
     overflow: 'hidden',
     padding: '4rem 1.5rem',
     position: 'relative',
     display: 'flex',
     flexDirection: 'column',
-    backgroundColor: 'var(--color-accent)',
+    border: '1px solid var(--color-accent-lighter)',
+    borderRadius: 10
   });
 
   const styleErrorContainer = css({
@@ -42,8 +44,8 @@ const ErrorLayout: FC<ErrorProps> = ({ error }) => {
     h2: {
       alignSelf: 'center',
       color: 'var(--color-gray)',
-      fontFamily: 'var(--font-primary)',
-      fontSize: 20,
+      fontFamily: 'var(--font-secondary)',
+      fontSize: 30,
       fontWeight: 'normal',
     },
   });
@@ -77,6 +79,8 @@ const ErrorLayout: FC<ErrorProps> = ({ error }) => {
   const styleHomeButton = css({
     display: 'flex',
     justifyContent: 'center',
+    fontFamily: 'var(--font-secondary)',
+    fontSize: 20
   });
 
   return (

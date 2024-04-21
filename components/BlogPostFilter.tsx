@@ -69,6 +69,31 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
     },
   });
 
+  const styleClearButton = css({
+    display: 'flex',
+    alignItems: 'center',
+    svg: {
+      marginRight: '.5rem',
+    },
+    '.clearButton': {
+      display: 'flex',
+      alignItems: 'center',
+      flexDirection: 'row',
+      fontFamily: 'var(--font-secondary) !important',
+      textTransform: 'uppercase',
+      fontSize: 14,
+      letterSpacing: 1,
+      '.searchNoResults': {
+        marginRight: '.5rem',
+      },
+      button: {
+        display: 'flex',
+        alignItems: 'center',
+        flexDirection: 'row',
+      },
+    }
+  });
+
   const [search, setSearch] = useState('');
 
   const scrollToTop = () => {
@@ -190,25 +215,27 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
       ));
     } else {
       return (
-        <span>
-          {blog.search?.noresult}{' '}
-          {feed.length > 0 ? (
-            <button
-              onClick={() => handleClearFilters()}
-              onKeyDown={() => handleClearFilters()}
-              aria-label={blog.search.clear}
-            >
+        <div css={styleClearButton}>
+          <span className="clearButton">
+            <span className="searchNoResults">{blog.search?.noresult}{' '}</span>
+            {feed.length > 0 ? (
               <button
                 onClick={() => handleClearFilters()}
                 onKeyDown={() => handleClearFilters()}
-                aria-label="Clear Filter"
+                aria-label={blog.search.clear}
               >
-                <CloseIcon size={12} />
-                <span>{' ' + blog.search.clear}</span>
+                <button
+                  onClick={() => handleClearFilters()}
+                  onKeyDown={() => handleClearFilters()}
+                  aria-label="Clear Filter"
+                >
+                  <CloseIcon size={12} />
+                  <span className="clearButton">{' ' + blog.search.clear}</span>
+                </button>
               </button>
-            </button>
-          ) : null}
-        </span>
+            ) : null}
+          </span>
+        </div>
       );
     }
   };
@@ -245,12 +272,13 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
     if (search[0] === '#' && filteredPosts.length > 0) {
       return (
         <button
+          css={styleClearButton}
           onClick={() => handleClearFilters()}
           onKeyDown={() => handleClearFilters()}
           aria-label="Clear Filter"
         >
           <CloseIcon size={12} />
-          <span>{' ' + blog.search.clearFilter}</span>
+          <span className="clearButton">{' ' + blog.search.clearFilter}</span>
         </button>
       );
     } else {

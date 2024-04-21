@@ -4,6 +4,7 @@ import Head from 'next/head';
 import { useTheme, Theme } from '@emotion/react';
 import Footer from '@/components/Footer';
 import { metadata } from '@/data/metadata';
+import { css } from '@emotion/react';
 
 type ContainerProps = {
   children: ReactNode;
@@ -18,6 +19,15 @@ type ContainerProps = {
 
 const Container: FC<ContainerProps> = (props) => {
   const theme: Theme = useTheme();
+
+  const styleWrapper = css({
+    display: 'flex',
+    flexDirection: 'column',
+    minHeight: '93vh',
+    '.container': {
+      flex: 1,
+    },
+  });
 
   const { children, ...customMeta } = props;
   const router = useRouter();
@@ -106,9 +116,11 @@ const Container: FC<ContainerProps> = (props) => {
         )}
       </Head>
 
-      <div className="container">{children}</div>
+      <div css={styleWrapper}>
+        <div className="container">{children}</div>
+        <Footer />
+      </div>
 
-      <Footer />
     </>
   );
 };

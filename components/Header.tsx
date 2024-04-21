@@ -20,9 +20,9 @@ type HeaderProps = {
 const Header: FC<HeaderProps> = ({ toggleTheme }) => {
   const styleToggleSkeleton = css({
     display: 'flex',
-    alignSelf: 'center',
+    alignItems: 'center',
     minHeight: 26,
-    minWidth: 42,
+    minWidth: 32,
   });
   const styleHeaderWrapper = css({
     padding: '2rem 4rem 0',

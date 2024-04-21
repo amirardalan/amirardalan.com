@@ -48,7 +48,7 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
     justifyContent: 'start',
     minWidth: 'fit-content',
     maxWidth: 'min-content',
-    marginBottom: '1.15rem',
+    marginBottom: '1.25rem',
     padding: '0 .4rem 0 .25rem',
     border: '1px solid var(--color-accent-lighter)',
     backgroundColor: 'transparent',
@@ -79,7 +79,7 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
   });
 
   const styleFeaturedPost = css({
-    marginTop: '4rem',
+    margin: '4rem 0 1.5rem',
     display: 'flex',
     flexDirection: 'column',
     a: {
