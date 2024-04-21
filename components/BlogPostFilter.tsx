@@ -70,6 +70,7 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
   });
 
   const styleClearButton = css({
+    marginBottom: '4rem',
     display: 'flex',
     alignItems: 'center',
     svg: {
@@ -91,7 +92,6 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
         alignItems: 'center',
         flexDirection: 'row',
       },
-      marginBottom: '3rem',
     }
   });
 
