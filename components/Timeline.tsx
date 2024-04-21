@@ -22,6 +22,7 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
   });
   const styleTimelineWrapper = css({
     paddingTop: '2rem',
+    paddingBottom: '6rem',
     position: 'relative',
     '.readMoreLink': {
       fontSize: 20,
