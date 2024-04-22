@@ -29,12 +29,7 @@ const XShareButton: FC<XshareButtonProps> = ({
   };
 
   return (
-    <button
-      onClick={handleXShare}
-      css={styleXButton}
-      title="Share on X"
-      aria-label="Share on X"
-    >
+    <button onClick={handleXShare} css={styleXButton} aria-label="Share on X">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width={size}

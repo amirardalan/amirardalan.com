@@ -209,7 +209,7 @@ const Navigation: FC = () => {
       })}
 
       <div css={styleButton}>
-        <Tooltip text="Follow me on X">
+        <Tooltip pos="b" text="Follow me on X">
           <button
             aria-label="Follow @amirardalan on X"
             className="navSocial x"
@@ -226,7 +226,7 @@ const Navigation: FC = () => {
             </svg>
           </button>
         </Tooltip>
-        <Tooltip text="Star on GitHub">
+        <Tooltip pos="b" text="Star on GitHub">
           <button
             className="navSocial gh"
             onClick={() =>
