@@ -105,6 +105,7 @@ const blogStyles = css({
     },
   },
   '.post': {
+    paddingBottom: '4rem',
     '.publishedPost': {
       display: 'block',
       marginBottom: '3.5rem',

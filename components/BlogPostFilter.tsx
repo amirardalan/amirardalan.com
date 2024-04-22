@@ -70,7 +70,6 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
   });
 
   const styleClearButton = css({
-    marginBottom: '4rem',
     display: 'flex',
     alignItems: 'center',
     svg: {
@@ -92,7 +91,7 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
         alignItems: 'center',
         flexDirection: 'row',
       },
-    }
+    },
   });
 
   const [search, setSearch] = useState('');
@@ -218,7 +217,7 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
       return (
         <div css={styleClearButton}>
           <span className="clearButton">
-            <span className="searchNoResults">{blog.search?.noresult}{' '}</span>
+            <span className="searchNoResults">{blog.search?.noresult} </span>
             {feed.length > 0 ? (
               <button
                 onClick={() => handleClearFilters()}
