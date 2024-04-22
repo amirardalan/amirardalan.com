@@ -60,7 +60,7 @@ const ThemeToggle: FC<ThemeToggleProps> = ({ toggleTheme }) => {
   });
 
   return (
-    <Tooltip text={`${inactiveTheme} mode`}>
+    <Tooltip pos="b" text={`${inactiveTheme} mode`}>
       <button
         aria-label={`Change to ${inactiveTheme} mode`}
         type="button"
