@@ -7,6 +7,7 @@ import Container from '@/components/Container';
 import TypingAnimation from '@/components/TypingAnimation';
 import FeaturedPost from '@/components/FeaturedPost';
 import CtaButtons from '@/components/CtaButtons';
+import Tooltip from '@/components/Tooltip';
 
 import { homeContent } from '@/data/content';
 import { HomeTypes } from '@/types/home';
@@ -17,7 +18,6 @@ const CanvasLoader = dynamic(() => import('@/components/CanvasLoader'), {
 });
 
 import { GetStaticProps } from 'next';
-import Tooltip from '@/components/Tooltip';
 const prisma = new PrismaClient();
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -69,6 +69,8 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
     },
   });
   const styleMainLeft = css({
+    width: '100%',
+    alignSelf: 'flex-end',
     padding: '0 2rem 0 0',
     animation: 'fadeIn .8s forwards',
     '@media (max-width: 890px)': {
@@ -135,6 +137,8 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
     },
   });
   const styleMainRight = css({
+    width: '100%',
+    alignSelf: 'flex-end',
     position: 'relative',
     background: 'var(--color-gradient)',
     height: '75vh',
@@ -151,7 +155,7 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
       description={home.meta.description}
     >
       <main css={styleMain} className="home">
-        <div css={styleMainLeft} className="animationWrapper">
+        <div css={styleMainLeft}>
           <div css={styleContent}>
             <div className="titleWrapper">
               <span className="typed" aria-hidden="true">
@@ -169,8 +173,8 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
             />
           </div>
         </div>
-        <div css={styleMainRight} className="animationWrapper">
-          <Tooltip pos="t" text="Click to randomize terrain">
+        <div css={styleMainRight}>
+          <Tooltip pos="cursor" text="Randomize terrain">
             <CanvasLoader />
           </Tooltip>
         </div>

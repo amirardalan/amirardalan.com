@@ -290,11 +290,6 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
             background: 'var(--color-accent-gray)',
             color: 'var(--color-heading)',
           },
-          '.animationWrapper': {
-            overflow: 'hidden',
-            width: '100%',
-            alignSelf: 'flex-end',
-          },
           '.buttonHover': {
             display: 'flex',
             alignItems: 'center',
