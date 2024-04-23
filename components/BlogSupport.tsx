@@ -4,6 +4,7 @@ import CloseButton from '@/components/CloseIcon';
 import LikeButton from '@/components/LikeButton';
 import { gtagEvent } from '@/lib/gtag';
 import BlogPostTweet from '@/components/BlogPostTweet';
+import Tooltip from '@/components/Tooltip';
 
 type BlogSupportProps = {
   id: number;
@@ -117,7 +118,7 @@ const BlogSupport: FC<BlogSupportProps> = ({
                   textDecoration: 'none',
                 },
               },
-            }
+            },
           },
           '.cashapp, .paypal': {
             display: 'flex',
@@ -244,7 +245,9 @@ const BlogSupport: FC<BlogSupportProps> = ({
               <div className="copyContainer">
                 <span className="supportHeading">
                   <h4>Did you enjoy this post?</h4>
-                  <LikeButton liked={liked} handleLike={handleLike} />
+                  <Tooltip pos="r" text={liked ? 'Unlike' : 'Like'}>
+                    <LikeButton liked={liked} handleLike={handleLike} />
+                  </Tooltip>
                 </span>
                 <div className="donate">
                   <span>

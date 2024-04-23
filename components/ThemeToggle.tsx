@@ -1,6 +1,6 @@
-import { FC, useState, useEffect } from 'react';
+import { FC, useState, useEffect, memo } from 'react';
 import { css } from '@emotion/react';
-import React from 'react';
+import Tooltip from '@/components/Tooltip';
 
 type ThemeToggleProps = {
   toggleTheme: () => void;
@@ -60,16 +60,17 @@ const ThemeToggle: FC<ThemeToggleProps> = ({ toggleTheme }) => {
   });
 
   return (
-    <button
-      aria-label={`Change to ${inactiveTheme} mode`}
-      title={`Change to ${inactiveTheme} mode`}
-      type="button"
-      onClick={themeToggled}
-      css={styleToggleTrack}
-    >
-      <div css={styleToggleSlider} />
-    </button>
+    <Tooltip pos="b" text={`${inactiveTheme} mode`}>
+      <button
+        aria-label={`Change to ${inactiveTheme} mode`}
+        type="button"
+        onClick={themeToggled}
+        css={styleToggleTrack}
+      >
+        <div css={styleToggleSlider} />
+      </button>
+    </Tooltip>
   );
 };
 
-export default React.memo(ThemeToggle);
+export default memo(ThemeToggle);

@@ -24,6 +24,7 @@ import LikeButton from '@/components/LikeButton';
 import BlogPostTweet from '@/components/BlogPostTweet';
 import TableOfContents from '@/components/TableOfContents';
 import BlogPostStats from '@/components/BlogPostStats';
+import Tooltip from '@/components/Tooltip';
 
 const prisma = new PrismaClient();
 
@@ -520,16 +521,20 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
             <TableOfContents markdown={post.content} />
             <div className="likeAndShare">
               <div className="buttonHover">
-                <LikeButton liked={liked} handleLike={handleLike} />
+                <Tooltip pos="t" text={liked ? 'Unlike' : 'Like'}>
+                  <LikeButton liked={liked} handleLike={handleLike} />
+                </Tooltip>
               </div>
               <div className="buttonHover">
-                <BlogPostTweet
-                  title={post.title}
-                  url={url}
-                  text={false}
-                  size={24}
-                  color={'var(--color-heading)'}
-                />
+                <Tooltip pos="t" text="Share on X">
+                  <BlogPostTweet
+                    title={post.title}
+                    url={url}
+                    text={false}
+                    size={23}
+                    color={'var(--color-heading)'}
+                  />
+                </Tooltip>
               </div>
             </div>
           </div>

@@ -11,7 +11,6 @@ const LikeButton: FC<LikeButtonProps> = ({ liked, handleLike }) => {
     <button
       onClick={handleLike}
       aria-label={!liked ? 'Like this post' : 'Unlike this post'}
-      title={!liked ? 'Like this post' : 'Unlike this post'}
       className="buttonHover"
     >
       <LikeIcon active={!liked} />
