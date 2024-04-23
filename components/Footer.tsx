@@ -36,12 +36,6 @@ const Footer: FC<FooterProps> = () => {
       gap: '1.5rem',
       gridTemplateColumns: 'repeat(1, 1fr)',
     },
-    '.grid': {
-      marginBottom: '1rem',
-      '@media(max-width: 890px)': {
-        marginBottom: 0,
-      },
-    },
     a: {
       marginBottom: '.5rem',
       display: 'flex',
@@ -72,8 +66,8 @@ const Footer: FC<FooterProps> = () => {
       fontFamily: 'var(--font-secondary)',
       fontWeight: 400,
       textTransform: 'uppercase',
-      letterSpacing: 1,
-      fontSize: 13,
+      letterSpacing: 2,
+      fontSize: 12,
       borderBottom: '2px solid var(--color-bg)',
       marginBottom: '1rem',
       paddingBottom: '1rem',
@@ -98,7 +92,7 @@ const Footer: FC<FooterProps> = () => {
     textTransform: 'uppercase',
     marginTop: '2rem',
     fontFamily: 'var(--font-secondary)',
-    fontSize: 11,
+    fontSize: 10,
     letterSpacing: 1,
     color: 'var(--color-bg)',
     lineHeight: '1.2rem',

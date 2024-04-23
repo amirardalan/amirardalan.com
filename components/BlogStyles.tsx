@@ -51,11 +51,8 @@ const blogStyles = css({
       },
     },
     '.blogListHeading': {
-      margin: '.4rem 0 .6rem',
       fontFamily: 'var(--font-secondary)',
-      fontSize: 28,
       fontWeight: 600,
-      lineHeight: '2.2rem',
       a: {
         color: 'var(--color-heading)',
         textDecoration: 'none',
@@ -63,12 +60,8 @@ const blogStyles = css({
         width: '100%',
       },
       '@media(max-width: 1024px)': {
-        marginBottom: 0,
-        fontSize: 30,
-      },
-      '@media(max-width: 768px)': {
-        fontSize: 28,
-        lineHeight: '1.8rem',
+        margin: '.6rem 0',
+        lineHeight: '1.4rem',
       },
     },
     h2: {
@@ -115,6 +108,9 @@ const blogStyles = css({
       },
       '@media (max-width: 768px)': {
         marginBottom: '3rem',
+        h2: {
+          fontSize: 20,
+        },
       },
     },
   },
@@ -154,7 +150,6 @@ const blogStyles = css({
       marginBottom: '.4rem',
       color: 'var(--color-heading)',
       fontSize: 32,
-      lineHeight: '2.2rem',
       textDecoration: 'none',
       a: {
         color: 'var(--color-heading)',

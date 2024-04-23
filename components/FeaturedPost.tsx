@@ -98,8 +98,11 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
     '.featuredContainer': {
       position: 'relative',
       height: 50,
+      borderLeft: '2px solid var(--color-accent-lighter)',
+      marginLeft: '.25rem',
     },
     '.featured, .latest': {
+      paddingLeft: '1.8rem',
       whiteSpace: 'nowrap',
       overflow: 'hidden',
       textOverflow: 'ellipsis',
@@ -109,6 +112,9 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
       top: '0',
       left: '0',
       transition: 'transform .5s ease-in-out, opacity .5s ease-in-out',
+      '@media (max-width: 480px)': {
+        paddingLeft: '1.5rem',
+      },
     },
     '.featured': {
       transform: `translateY(${showFeatured ? '0' : '100%'})`,
@@ -128,19 +134,21 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
     'h3 a': {
       lineHeight: '1.25rem',
       fontFamily: 'var(--font-secondary)',
-      fontSize: 20,
-      fontWeight: 600,
+      fontSize: 12,
+      letterSpacing: 1,
+      textTransform: 'uppercase',
+      fontWeight: 400,
       '@media (min-width: 1025px)': {
         '&:hover': {
           textDecoration: 'underline',
         },
       },
       '@media(max-width: 480px)': {
-        fontSize: 18,
+        fontSize: 11,
       },
     },
     p: {
-      fontSize: 16,
+      fontSize: 12,
       fontFamily: 'var(--font-tertiary)',
       fontStyle: 'italic',
       color: 'var(--color-gray)',
