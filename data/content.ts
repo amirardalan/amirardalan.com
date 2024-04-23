@@ -79,7 +79,7 @@ export const blogPostContent = {
 export const aboutContent = {
   meta: {
     title: `About – ${appTitle}`,
-    description: `${appTitle}'s bio, mission statement, skills, stack, experience, availability, and career timeline.`,
+    description: `${appTitle}'s summary and career timeline.`,
     github: 'GitHub',
     x: 'X',
     linkedin: 'LinkedIn',
@@ -114,12 +114,7 @@ export const aboutContent = {
       },
     ],
   },
-  resume: {
-    title: 'Download Resume',
-  },
   bio: {
-    subheading: `Hey, I'm Amir 👋`,
-    content: metaDescription,
     items: [
       {
         path: '/resume',
@@ -137,57 +132,11 @@ export const aboutContent = {
       },
     ],
   },
-  skills: {
-    title: 'Proficiencies',
-    items: [
-      'Frontend SWE',
-      'TypeScript',
-      'HTML + CSS',
-      'REST APIs',
-      'React',
-      'UI/UX ',
-      'Tailwind',
-    ],
-  },
-  stack: {
-    items: [
-      'Next.js',
-      'Figma',
-      'Prisma',
-      'Postgre',
-      'SWR / ISR',
-      'Three.js',
-      'Git',
-    ],
-  },
   intro: {
     items: [
       `Design Engineer with 10+ years of experience.`,
       `I've collaborated with renowned brands including Nike, BASIC/DEPT®, Columbia Sportswear, SOREL, and KEEN Footwear.`,
       `I facilitate purposeful connections between humans and machines.`,
-    ],
-  },
-  availability: {
-    title: 'Current Role',
-    text: 'Software Engineer II @',
-    text2: 'Nike',
-    location: 'Remote / onsite in Portland, OR Metro Area',
-    link: 'https://lebronjamesinnovationcenter.nike.com/',
-  },
-  contact: {
-    title: `Let's Chat`,
-    email: {
-      title: 'Show Email Address',
-    },
-    copiedToClipboard: 'Copied to clipboard ✅',
-    items: [
-      {
-        path: 'https://x.com/messages/compose?recipient_id=23831468',
-        title: 'X',
-        rel: 'noopener noreferrer',
-        target: '_blank',
-        handle: '@amirardalan',
-      },
     ],
   },
 };
