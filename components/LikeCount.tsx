@@ -40,7 +40,7 @@ const Like: FC<LikeCountProps> = ({ id, likes }) => {
   return (
     <>
       {isLoading ? (
-        <LoadingSkeleton width={60} height={14} />
+        <LoadingSkeleton width={50} height={12} />
       ) : (
         <>
           <div css={styleLikes}>
