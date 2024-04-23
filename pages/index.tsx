@@ -17,6 +17,7 @@ const CanvasLoader = dynamic(() => import('@/components/CanvasLoader'), {
 });
 
 import { GetStaticProps } from 'next';
+import Tooltip from '@/components/Tooltip';
 const prisma = new PrismaClient();
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -169,7 +170,9 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
           </div>
         </div>
         <div css={styleMainRight} className="animationWrapper">
-          <CanvasLoader />
+          <Tooltip pos="t" text="Click to randomize terrain">
+            <CanvasLoader />
+          </Tooltip>
         </div>
       </main>
     </Container>

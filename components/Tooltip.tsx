@@ -16,7 +16,8 @@ const Tooltip: FC<TooltipProps> = ({ pos, text, children }) => {
 
   const styleContainer = css({
     position: 'relative',
-    display: 'inline-block',
+    display: 'flex',
+    height: '100%',
   });
 
   const styleTooltip = css({

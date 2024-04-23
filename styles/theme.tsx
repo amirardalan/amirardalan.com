@@ -1,13 +1,13 @@
 export const themeLight = {
   active: 'light',
   favicon: '/favicon-light.png',
-  canvas: '#617090',
+  canvas: '#7a6d77',
 };
 
 export const themeDark = {
   active: 'dark',
   favicon: '/favicon-dark.png',
-  canvas: '#66837c',
+  canvas: '#7a6d77',
 };
 
 export const theme = {
