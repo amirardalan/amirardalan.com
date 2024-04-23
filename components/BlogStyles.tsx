@@ -89,9 +89,6 @@ const blogStyles = css({
         '@media(max-width: 1024px)': {
           margin: '.8rem 0 0',
         },
-        '@media(max-width: 768px)': {
-          fontSize: 15,
-        },
       },
     },
     '&.admin.create, &.admin.edit': {
