@@ -62,16 +62,24 @@ type HomeProps = {
 
 const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
   const styleMain = css({
-    marginBottom: '4rem',
+    padding: '0 6rem',
     display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    minHeight: '70vh',
     '@media (max-width: 890px)': {
       flexDirection: 'column',
+      padding: '0 2.5rem',
+    },
+    '@media (max-width: 768px)': {
+      padding: '0 2rem',
     },
   });
   const styleMainLeft = css({
-    width: '100%',
-    alignSelf: 'flex-end',
-    padding: '0 2rem 0 0',
+    zIndex: 2,
+    width: 'fit-content',
+    marginleft: '2rem',
     animation: 'fadeIn .8s forwards',
     '@media (max-width: 890px)': {
       flexDirection: 'column-reverse',
@@ -136,17 +144,6 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
       marginBottom: '1rem',
     },
   });
-  const styleMainRight = css({
-    width: '100%',
-    alignSelf: 'flex-end',
-    position: 'relative',
-    background: 'var(--color-gradient)',
-    height: '75vh',
-    '@media (max-width: 890px)': {
-      height: '45vh',
-      marginTop: '2rem',
-    },
-  });
 
   return (
     <Container
@@ -154,6 +151,9 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
       robots="follow, index"
       description={home.meta.description}
     >
+      <Tooltip pos="cursor" text="Randomize terrain">
+        <CanvasLoader />
+      </Tooltip>
       <main css={styleMain} className="home">
         <div css={styleMainLeft}>
           <div css={styleContent}>
@@ -172,11 +172,6 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
               latestPost={latestPost}
             />
           </div>
-        </div>
-        <div css={styleMainRight}>
-          <Tooltip pos="cursor" text="Randomize terrain">
-            <CanvasLoader />
-          </Tooltip>
         </div>
       </main>
     </Container>

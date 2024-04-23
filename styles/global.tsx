@@ -243,8 +243,6 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
             WebkitTransformStyle: 'preserve-3d',
           },
           '.container': {
-            marginTop: '2rem',
-            padding: '0 4rem',
             position: 'relative',
             '.pageHeading': {
               fontSize: 16,
@@ -255,14 +253,6 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
               color: 'var(--color-gray)',
               WebkitMarqueeIncrement: '0vw',
               textAlign: 'left',
-            },
-            '@media(max-width: 1024px)': {
-              marginTop: 0,
-              padding: '0 2.5rem',
-            },
-            '@media (max-width: 600px)': {
-              marginTop: '.5rem',
-              padding: '0 1.5rem',
             },
           },
           '.warn': {
@@ -289,6 +279,11 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
           '::selection': {
             background: 'var(--color-accent-gray)',
             color: 'var(--color-heading)',
+          },
+          '.animationWrapper': {
+            overflow: 'hidden',
+            width: '100%',
+            alignSelf: 'flex-end',
           },
           '.buttonHover': {
             display: 'flex',

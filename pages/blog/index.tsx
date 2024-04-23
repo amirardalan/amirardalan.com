@@ -1,5 +1,6 @@
 import { GetStaticProps } from 'next';
 import { PrismaClient } from '@prisma/client';
+import { css } from '@emotion/react';
 
 import Container from '@/components/Container';
 import BlogStyles from '@/components/BlogStyles';
@@ -46,10 +47,14 @@ export const getStaticProps: GetStaticProps<BlogProps> = async () => {
 };
 
 const Blog = ({ blog, feed }: BlogProps) => {
+  const styleBlogWrapper = css({
+    padding: '0 2rem',
+  });
+
   return (
     <Container title={blog.meta.title} description={blog.meta.description}>
       <BlogStyles>
-        <main className="blog">
+        <main className="blog" css={styleBlogWrapper}>
           <BlogPostFilter blog={blog} feed={feed} filteredPosts={[]} />
         </main>
       </BlogStyles>

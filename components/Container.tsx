@@ -21,6 +21,8 @@ const Container: FC<ContainerProps> = (props) => {
   const theme: Theme = useTheme();
 
   const styleWrapper = css({
+    overflow: 'hidden',
+    position: 'relative',
     display: 'flex',
     flexDirection: 'column',
     minHeight: '93vh',
@@ -120,7 +122,6 @@ const Container: FC<ContainerProps> = (props) => {
         <div className="container">{children}</div>
         <Footer />
       </div>
-
     </>
   );
 };

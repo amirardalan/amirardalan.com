@@ -134,8 +134,7 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
     'h3 a': {
       lineHeight: '1.25rem',
       fontFamily: 'var(--font-secondary)',
-      fontSize: 12,
-      letterSpacing: 1,
+      fontSize: 13,
       textTransform: 'uppercase',
       fontWeight: 400,
       '@media (min-width: 1025px)': {
@@ -144,7 +143,7 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
         },
       },
       '@media(max-width: 480px)': {
-        fontSize: 11,
+        fontSize: 12,
       },
     },
     p: {

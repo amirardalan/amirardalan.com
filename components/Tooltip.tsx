@@ -38,7 +38,6 @@ const Tooltip: FC<TooltipProps> = ({ pos, text, children }) => {
   const styleContainer = css({
     position: 'relative',
     display: 'flex',
-    height: '100%',
   });
 
   const styleTooltip = css({
@@ -57,7 +56,7 @@ const Tooltip: FC<TooltipProps> = ({ pos, text, children }) => {
     opacity: isHovered ? 1 : 0,
     transition: `opacity ${isHovered ? '0.3s' : '0.1s'} ease-in-out`,
     ...(pos === 't' && {
-      bottom: 45,
+      bottom: 60,
       left: '50%',
       transform: 'translateX(-50%)',
     }),
@@ -67,7 +66,7 @@ const Tooltip: FC<TooltipProps> = ({ pos, text, children }) => {
       transform: 'translateY(-50%)',
     }),
     ...(pos === 'b' && {
-      top: 35,
+      top: '120%',
       left: '50%',
       transform: 'translateX(-50%)',
     }),
@@ -84,6 +83,7 @@ const Tooltip: FC<TooltipProps> = ({ pos, text, children }) => {
       css={styleContainer}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      className="tooltipItem"
     >
       {children}
       {!isTablet && <div css={styleTooltip}>{text}</div>}
