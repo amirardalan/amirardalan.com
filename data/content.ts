@@ -129,7 +129,7 @@ export const aboutContent = {
         style: 'reverse',
       },
       {
-        path: `mailto: ${process.env.NEXT_PUBLIC_USER_EMAIL}?subject=Hello!&body=Hi Amir,`,
+        path: `mailto: ${process.env.NEXT_PUBLIC_USER_EMAIL}`,
         title: 'Email',
         rel: 'noopener noreferrer',
         target: '_blank',

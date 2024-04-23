@@ -31,10 +31,7 @@ const ContactButton: FC<ContactButtonProps> = () => {
       <button
         className="button contact"
         onClick={() =>
-          window.open(
-            `mailto:${process.env.NEXT_PUBLIC_USER_EMAIL}?subject=Project inquiry`,
-            '_blank'
-          )
+          window.open(`mailto:${process.env.NEXT_PUBLIC_USER_EMAIL}`, '_blank')
         }
       >
         {`Get in Touch`}
