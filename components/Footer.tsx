@@ -27,7 +27,6 @@ const Footer: FC<FooterProps> = () => {
     gridAutoRows: 'minmax(100px, auto)',
     flexDirection: 'column',
     fontFamily: 'var(--font-secondary)',
-    fontSize: 16,
     color: 'var(--color-bg)',
     '@media(max-width: 890px)': {
       gridTemplateColumns: 'repeat(2, 1fr)',
@@ -41,7 +40,7 @@ const Footer: FC<FooterProps> = () => {
       display: 'flex',
       flexDirection: 'row',
       width: 'fit-content',
-      fontSize: 16,
+      fontSize: 14,
       alignItems: 'center',
       textDecoration: 'none',
       color: 'var(--color-bg)',

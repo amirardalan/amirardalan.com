@@ -247,7 +247,7 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
             padding: '0 4rem',
             position: 'relative',
             '.pageHeading': {
-              fontSize: 20,
+              fontSize: 16,
               fontWeight: 400,
               textTransform: 'initial',
               marginBottom: '1rem',
