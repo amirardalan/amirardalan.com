@@ -163,8 +163,8 @@ export const aboutContent = {
   intro: {
     items: [
       `Design Engineer with 10+ years of experience.`,
-      `I've collaborated with industry-leading brands including Nike, BASIC/DEPT®, Columbia Sportswear, SOREL, and KEEN Footwear.`,
-      `I combine design and development skills to deliver digital products with thoughtfully crafted form and function.`,
+      `I've collaborated with renowned brands including Nike, BASIC/DEPT®, Columbia Sportswear, SOREL, and KEEN Footwear.`,
+      `I facilitate purposeful connections between humans and machines.`,
     ],
   },
   availability: {
