@@ -33,23 +33,23 @@ const Tooltip: FC<TooltipProps> = ({ pos, text, children }) => {
     opacity: isHovered ? 1 : 0,
     transition: `opacity ${isHovered ? '0.3s' : '0.1s'} ease-in-out`,
     ...(pos === 't' && {
-      bottom: '200%',
+      bottom: 45,
       left: '50%',
       transform: 'translateX(-50%)',
     }),
     ...(pos === 'r' && {
-      top: '40%',
-      left: '150%',
+      top: '50%',
+      left: 45,
       transform: 'translateY(-50%)',
     }),
     ...(pos === 'b' && {
-      top: '250%',
+      top: 35,
       left: '50%',
       transform: 'translateX(-50%)',
     }),
     ...(pos === 'l' && {
       top: '50%',
-      right: '250%',
+      right: 45,
       transform: 'translateY(-50%)',
     }),
   });

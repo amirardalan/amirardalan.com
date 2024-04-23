@@ -296,6 +296,9 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
             alignSelf: 'flex-end',
           },
           '.buttonHover': {
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
             position: 'relative',
             zIndex: 1,
             ':not(:first-of-type)': {

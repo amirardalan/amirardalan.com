@@ -12,6 +12,7 @@ type XshareButtonProps = {
 const styleXButton = css({
   display: 'flex',
   alignItems: 'center',
+  padding: '.1rem 0 0 .1rem',
 });
 
 const XShareButton: FC<XshareButtonProps> = ({

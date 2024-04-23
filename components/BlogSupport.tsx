@@ -94,7 +94,7 @@ const BlogSupport: FC<BlogSupportProps> = ({
       '.supportOptions': {
         display: 'flex',
         flexDirection: 'column',
-        margin: '2rem 2.5rem',
+        margin: '2.3rem 2.5rem',
         '@media (max-width: 480px)': {
           margin: '1.8rem 2rem',
         },

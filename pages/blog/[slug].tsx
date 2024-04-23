@@ -531,7 +531,7 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
                     title={post.title}
                     url={url}
                     text={false}
-                    size={23}
+                    size={21}
                     color={'var(--color-heading)'}
                   />
                 </Tooltip>

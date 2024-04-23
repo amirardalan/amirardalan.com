@@ -7,7 +7,7 @@ export const themeLight = {
 export const themeDark = {
   active: 'dark',
   favicon: '/favicon-dark.png',
-  canvas: '#617090',
+  canvas: '#66837c',
 };
 
 export const theme = {

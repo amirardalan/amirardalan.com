@@ -45,7 +45,7 @@ const Navigation: FC = () => {
     alignItems: 'center',
     marginRight: '2rem',
     fontFamily: 'var(--font-secondary)',
-    fontSize: 13,
+    fontSize: 12,
     textTransform: 'uppercase',
     a: {
       margin: '0 1.5rem',
@@ -137,7 +137,7 @@ const Navigation: FC = () => {
     },
   });
   const styleButton = css({
-    margin: '.25rem 1.5rem',
+    margin: '0 1.5rem',
     display: 'flex',
     width: '100%',
     justifyContent: 'flex-start',
