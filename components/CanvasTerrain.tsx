@@ -122,7 +122,7 @@ const CanvasTerrain: FC<CanvasTerrainProps> = ({
       />
       <MeshDistortMaterial
         distort={0.9}
-        speed={0.05}
+        speed={0.1}
         wireframe
         emissive={theme.canvas}
       />
