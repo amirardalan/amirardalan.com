@@ -76,7 +76,7 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
     display: 'flex',
     flexDirection: 'column',
     a: {
-      color: 'var(--color-text)',
+      color: 'var(--color-primary)',
     },
     h4: {
       display: 'flex',
@@ -91,7 +91,7 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
     '.featuredContainer': {
       position: 'relative',
       height: 50,
-      borderLeft: '2px solid var(--color-gray)',
+      borderLeft: '2px solid var(--color-accent-lighter)',
       marginLeft: '.25rem',
     },
     '.featured, .latest': {
