@@ -28,8 +28,9 @@ const Header: FC<HeaderProps> = ({ toggleTheme }) => {
     padding: '2rem 4rem 0',
     position: 'sticky',
     top: '-2rem',
-    backgroundColor: 'var(--color-bg-opaque)',
-    backdropFilter: 'blur(10px)',
+    backgroundColor: 'transparent',
+    // backgroundColor: 'var(--color-bg-opaque)',
+    // backdropFilter: 'blur(10px)',
     zIndex: 5,
     '.excludeInHeader': {
       display: 'none',

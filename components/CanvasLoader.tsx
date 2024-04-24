@@ -31,8 +31,8 @@ const CanvasLoader: FC = () => {
     return Math.random() * (max - min) + min;
   }
 
-  const [detail, setDetail] = useState(getRandomInt(10, 175));
-  const [height, setHeight] = useState(getRandomArbitrary(0.05, 0.3));
+  const [detail, setDetail] = useState(getRandomInt(10, 300));
+  const [height, setHeight] = useState(getRandomArbitrary(0.05, 0.1));
   const [texture, setTexture] = useState(getRandomInt(1, 3.5));
   const [scale, setScale] = useState(getRandomInt(2, 5));
   const rotation = 1;

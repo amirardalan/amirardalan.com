@@ -41,6 +41,7 @@ const Tooltip: FC<TooltipProps> = ({ pos, text, children }) => {
   });
 
   const styleTooltip = css({
+    pointerEvents: 'none',
     position: 'absolute',
     left: pos === 'cursor' ? mousePosition.x - 55 : undefined,
     top: pos === 'cursor' ? mousePosition.y + 25 : undefined,

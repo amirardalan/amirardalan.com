@@ -67,7 +67,7 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    minHeight: '60vh',
+    minHeight: '66vh',
     '@media (max-width: 890px)': {
       flexDirection: 'column',
       padding: '0 2.5rem',
