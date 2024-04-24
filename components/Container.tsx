@@ -30,6 +30,9 @@ const Container: FC<ContainerProps> = (props) => {
     '.container': {
       flex: 1,
     },
+    '@media (max-width: 768px)': {
+      paddingTop: 0,
+    },
   });
 
   const { children, ...customMeta } = props;

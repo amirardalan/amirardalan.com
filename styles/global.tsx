@@ -254,6 +254,9 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
               color: 'var(--color-gray)',
               WebkitMarqueeIncrement: '0vw',
               textAlign: 'left',
+              '@media(max-width: 768px)': {
+                marginTop: '1rem',
+              },
             },
           },
           '.warn': {

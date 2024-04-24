@@ -67,6 +67,9 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
       right: 14,
       cursor: 'pointer',
     },
+    '@media (max-width: 768px)': {
+      marginBottom: '3rem',
+    },
   });
 
   const styleClearButton = css({
