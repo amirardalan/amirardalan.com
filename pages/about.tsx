@@ -21,6 +21,7 @@ type AboutPageProps = {
 
 const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
   const styleAboutWrapper = {
+    padding: '0 4rem',
     margin: '0 auto',
     maxWidth: 768,
     hr: {

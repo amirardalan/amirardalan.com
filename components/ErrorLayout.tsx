@@ -13,7 +13,7 @@ const ErrorLayout: FC<ErrorProps> = ({ error }) => {
     margin: '1rem auto 0',
     marginBottom: '4rem',
     overflow: 'hidden',
-    padding: '4rem 1.5rem',
+    padding: '4rem',
     position: 'relative',
     display: 'flex',
     flexDirection: 'column',
