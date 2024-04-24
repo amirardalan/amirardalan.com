@@ -11,13 +11,16 @@ type FooterProps = {};
 const Footer: FC<FooterProps> = () => {
   const styleFooterWrapper = css({
     position: 'relative',
-    padding: '4rem 4rem 1rem 4rem',
     backgroundColor: 'var(--color-primary)',
-    '@media(max-width: 1024px)': {
-      padding: '3.5rem 2.5rem 1rem 2.5rem',
+    padding: '4rem 4rem 2rem',
+    '@media (max-width: 1024px)': {
+      padding: '2.5rem 2.5rem 1.5rem',
     },
-    '@media(max-width: 600px)': {
-      padding: '3rem 1.5rem 1rem 1.5rem',
+    '@media (max-width: 768px)': {
+      padding: '2.5rem 2.5rem 1.5rem',
+    },
+    '@media (max-width: 600px)': {
+      padding: '2rem 2rem 1.5rem',
     },
   });
   const styleFooter = css({

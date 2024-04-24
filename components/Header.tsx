@@ -39,7 +39,7 @@ const Header: FC<HeaderProps> = ({ toggleTheme }) => {
       top: 0,
     },
     '@media(max-width: 600px)': {
-      padding: '0 1.5rem',
+      padding: '0 2rem',
     },
   });
   const styleHeader = css({
