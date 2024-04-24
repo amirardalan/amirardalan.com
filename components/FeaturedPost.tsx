@@ -39,9 +39,6 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
 
   const postTypeTitle = showFeatured ? home.featured.title : home.latest.title;
 
-  // style vars
-  const hoverColor = 'var(--color-text)';
-
   const stylePostToggle = css({
     display: 'flex',
     alignItems: 'center',
@@ -51,24 +48,20 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
     marginBottom: '1.25rem',
     padding: '0 .4rem 0 .25rem',
     border: '1px solid var(--color-accent-lighter)',
-    backgroundColor: 'transparent',
+    backgroundColor: 'var(--color-bg)',
     borderRadius: 20,
-    h3: {
-      color: 'var(--color-accent-lighter)',
-    },
     '.icon': {
-      fill: 'var(--color-accent-gray)',
+      fill: 'var(--color-text)',
       animation: animate ? `rotate ${ANIMATION_TIME}ms ease-out` : '',
     },
     '@media (min-width: 1025px)': {
       '&:hover': {
-        backgroundColor: 'transparent',
-        border: `1px solid ${hoverColor}`,
+        border: `1px solid var(--color-primary)`,
         h4: {
-          color: hoverColor,
+          color: 'var(--color-primary)',
         },
         svg: {
-          fill: hoverColor,
+          fill: 'var(--color-primary)',
         },
       },
     },
@@ -79,7 +72,7 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
   });
 
   const styleFeaturedPost = css({
-    margin: '4rem 0 1.5rem',
+    margin: '4rem 0 0 0',
     display: 'flex',
     flexDirection: 'column',
     a: {
@@ -90,7 +83,7 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
       justifyContent: 'center',
       marginLeft: '.3rem',
       fontFamily: 'var(--font-secondary)',
-      color: 'var(--color-accent-gray)',
+      color: 'var(--color-text)',
       textTransform: 'uppercase',
       fontSize: 10,
       fontWeight: 400,
@@ -98,7 +91,7 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
     '.featuredContainer': {
       position: 'relative',
       height: 50,
-      borderLeft: '2px solid var(--color-accent-lighter)',
+      borderLeft: '2px solid var(--color-gray)',
       marginLeft: '.25rem',
     },
     '.featured, .latest': {
@@ -135,6 +128,7 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
       lineHeight: '1.25rem',
       fontFamily: 'var(--font-secondary)',
       fontSize: 13,
+
       textTransform: 'uppercase',
       fontWeight: 400,
       '@media (min-width: 1025px)': {
@@ -143,7 +137,7 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
         },
       },
       '@media(max-width: 480px)': {
-        fontSize: 12,
+        fontSize: 11,
       },
     },
     p: {
@@ -151,6 +145,9 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
       fontFamily: 'var(--font-tertiary)',
       fontStyle: 'italic',
       color: 'var(--color-gray)',
+    },
+    '@media (max-width: 768px)': {
+      margin: '4rem 0 2rem 0',
     },
   });
 

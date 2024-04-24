@@ -62,17 +62,20 @@ type HomeProps = {
 
 const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
   const styleMain = css({
-    padding: '0 6rem',
+    padding: '0 4.5rem',
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    minHeight: '70vh',
+    minHeight: '60vh',
     '@media (max-width: 890px)': {
       flexDirection: 'column',
       padding: '0 2.5rem',
     },
     '@media (max-width: 768px)': {
+      padding: '0 2.5rem',
+    },
+    '@media (max-width: 600px)': {
       padding: '0 2rem',
     },
   });
@@ -111,7 +114,6 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
       },
     },
     '.intro, .typed': {
-      color: 'var(--color-accent-gray)',
       display: 'block',
       marginBottom: '3.5rem',
       '@media(max-width: 768px)': {

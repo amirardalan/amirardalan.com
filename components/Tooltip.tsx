@@ -66,7 +66,7 @@ const Tooltip: FC<TooltipProps> = ({ pos, text, children }) => {
       transform: 'translateY(-50%)',
     }),
     ...(pos === 'b' && {
-      top: '120%',
+      top: 60,
       left: '50%',
       transform: 'translateX(-50%)',
     }),

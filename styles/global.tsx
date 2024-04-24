@@ -245,6 +245,7 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
           '.container': {
             position: 'relative',
             '.pageHeading': {
+              marginTop: '2rem',
               fontSize: 16,
               fontWeight: 400,
               textTransform: 'initial',

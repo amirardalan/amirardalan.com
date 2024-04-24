@@ -16,7 +16,7 @@ const Footer: FC<FooterProps> = () => {
     '@media(max-width: 1024px)': {
       padding: '3.5rem 2.5rem 1rem 2.5rem',
     },
-    '@media(max-width: 480px)': {
+    '@media(max-width: 600px)': {
       padding: '3rem 1.5rem 1rem 1.5rem',
     },
   });
@@ -89,7 +89,7 @@ const Footer: FC<FooterProps> = () => {
   });
   const styleCopyright = css({
     textTransform: 'uppercase',
-    marginTop: '2rem',
+    marginTop: '4rem',
     fontFamily: 'var(--font-secondary)',
     fontSize: 10,
     letterSpacing: 1,
@@ -162,7 +162,7 @@ const Footer: FC<FooterProps> = () => {
       <div css={styleFooter}>
         <div className="grid">
           <div css={styleFooterLogo}>
-            <Logo animate={false} size={75} color="var(--color-bg)" />
+            <Logo animate={false} size={60} color="var(--color-bg)" />
           </div>
         </div>
         <div css={styleFooterNav} className="grid">

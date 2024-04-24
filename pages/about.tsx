@@ -73,7 +73,6 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
         display: 'flex',
         justifyContent: 'space-between',
         '.moduleRight': {
-          maxWidth: '80%',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-between',

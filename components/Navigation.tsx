@@ -158,7 +158,7 @@ const Navigation: FC = () => {
       },
     },
     '@media (max-width: 768px)': {
-      margin: '1.5rem 1.5rem 0',
+      margin: '1.5rem 1.5rem 0 0',
       '.navSocial': {
         '.tooltipItem': {},
         '&:hover': {
