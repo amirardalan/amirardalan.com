@@ -48,7 +48,15 @@ export const getStaticProps: GetStaticProps<BlogProps> = async () => {
 
 const Blog = ({ blog, feed }: BlogProps) => {
   const styleBlogWrapper = css({
-    padding: '0 2rem',
+    '@media (max-width: 1024px)': {
+      padding: '0 2.5rem',
+    },
+    '@media (max-width: 768px)': {
+      padding: '0 2.5rem',
+    },
+    '@media (max-width: 600px)': {
+      padding: '0 2rem',
+    },
   });
 
   return (

@@ -9,6 +9,8 @@ type ErrorProps = {
 
 const ErrorLayout: FC<ErrorProps> = ({ error }) => {
   const styleErrorWrapper = css({
+    maxWidth: 1024,
+    margin: '1rem auto 0',
     marginBottom: '4rem',
     overflow: 'hidden',
     padding: '4rem 1.5rem',
@@ -16,7 +18,17 @@ const ErrorLayout: FC<ErrorProps> = ({ error }) => {
     display: 'flex',
     flexDirection: 'column',
     border: '1px solid var(--color-accent-lighter)',
-    borderRadius: 10
+    borderRadius: 10,
+    '@media (max-width: 1024px)': {
+      border: 'none',
+      padding: '0 2.5rem',
+    },
+    '@media (max-width: 768px)': {
+      padding: '0 2.5rem',
+    },
+    '@media (max-width: 600px)': {
+      padding: '0 2rem',
+    },
   });
 
   const styleErrorContainer = css({
@@ -80,7 +92,7 @@ const ErrorLayout: FC<ErrorProps> = ({ error }) => {
     display: 'flex',
     justifyContent: 'center',
     fontFamily: 'var(--font-secondary)',
-    fontSize: 20
+    fontSize: 20,
   });
 
   return (

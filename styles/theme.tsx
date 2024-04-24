@@ -1,3 +1,5 @@
+import { css } from '@emotion/react';
+
 export const themeLight = {
   active: 'light',
   favicon: '/favicon-light.png',
