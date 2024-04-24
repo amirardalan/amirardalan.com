@@ -21,6 +21,7 @@ const Container: FC<ContainerProps> = (props) => {
   const theme: Theme = useTheme();
 
   const styleWrapper = css({
+    paddingTop: '4rem',
     overflow: 'hidden',
     position: 'relative',
     display: 'flex',

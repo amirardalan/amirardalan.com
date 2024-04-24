@@ -26,11 +26,11 @@ const Header: FC<HeaderProps> = ({ toggleTheme }) => {
   });
   const styleHeaderWrapper = css({
     padding: '2rem 4rem 0',
-    position: 'sticky',
+    position: 'fixed',
+    width: '100%',
     top: '-2rem',
-    backgroundColor: 'transparent',
-    // backgroundColor: 'var(--color-bg-opaque)',
-    // backdropFilter: 'blur(10px)',
+    backgroundColor: 'var(--color-bg-opaque)',
+    backdropFilter: 'blur(10px)',
     zIndex: 5,
     '.excludeInHeader': {
       display: 'none',
@@ -44,6 +44,7 @@ const Header: FC<HeaderProps> = ({ toggleTheme }) => {
     },
   });
   const styleHeader = css({
+    background: 'transparent',
     '@keyframes fadein': {
       from: { opacity: 0 },
       to: { opacity: 1 },
