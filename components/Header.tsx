@@ -22,7 +22,7 @@ const Header: FC<HeaderProps> = ({ toggleTheme }) => {
     display: 'flex',
     alignItems: 'center',
     minHeight: 26,
-    minWidth: 32,
+    minWidth: 34,
   });
   const styleHeaderWrapper = css({
     padding: '2rem 4rem 0',
