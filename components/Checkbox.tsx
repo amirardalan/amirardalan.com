@@ -19,7 +19,7 @@ const Checkbox: FC<CheckboxProps> = ({ label, value, onChange, title }) => {
     height: 16,
     position: 'relative',
     '&::before': {
-      content: '"✕"',
+      content: '"✓"',
       fontSize: '1.2rem',
       color: 'var(--color-text)',
       position: 'absolute',

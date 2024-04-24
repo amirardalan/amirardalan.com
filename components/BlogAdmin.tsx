@@ -160,7 +160,9 @@ const BlogAdmin: FC = () => {
               flexDirection: 'row',
               alignItems: 'center',
               color: 'var(--color-gray)',
-              fontSize: 13,
+              fontFamily: 'var(--font-secondary)',
+              textTransform: 'uppercase',
+              fontSize: 12,
               a: {
                 textDecoration: 'none',
                 '&::after': {
@@ -188,10 +190,12 @@ const BlogAdmin: FC = () => {
             '.blog.admin': {
               width: '100%',
               '.drafts': {
+                marginBottom: '4rem',
                 '.postDetails': {
                   display: 'none',
                 },
                 '.draftsControls': {
+                  marginTop: '1rem',
                   display: 'flex',
                   flexDirection: 'row',
                   justifyContent: 'space-between',
@@ -199,8 +203,9 @@ const BlogAdmin: FC = () => {
                 },
                 '.draftSort': {
                   label: {
-                    fontFamily: 'var(--font-primary)',
-                    fontSize: 13,
+                    fontFamily: 'var(--font-secondary)',
+                    fontSize: 12,
+                    textTransform: 'uppercase',
                     margin: 0,
                   },
                   display: 'flex',
@@ -217,6 +222,15 @@ const BlogAdmin: FC = () => {
                     },
                   },
                 },
+                '@media (max-width: 1024px)': {
+                  padding: '0 2.5rem',
+                },
+                '@media (max-width: 768px)': {
+                  padding: '0 2.5rem',
+                },
+                '@media (max-width: 600px)': {
+                  padding: '0 2rem',
+                },
               },
               form: {
                 marginTop: '1rem',
@@ -230,13 +244,6 @@ const BlogAdmin: FC = () => {
                 '.uploadImage': {
                   span: { margin: '0 .5rem 0 2rem' },
                 },
-                '@media(max-width: 600px)': {
-                  flexDirection: 'column',
-                  alignItems: 'flex-start',
-                  label: {
-                    marginBottom: '1rem',
-                  },
-                },
                 '.postOptionsContainer': {
                   display: 'flex',
                   flexDirection: 'row',
@@ -244,6 +251,14 @@ const BlogAdmin: FC = () => {
                   '@media(max-width: 600px)': {
                     flexDirection: 'column',
                     alignItems: 'flex-start',
+                  },
+                },
+                '@media(max-width: 600px)': {
+                  marginTop: '1rem',
+                  flexDirection: 'column',
+                  alignItems: 'flex-start',
+                  label: {
+                    marginBottom: '1rem',
                   },
                 },
               },
@@ -329,6 +344,7 @@ const BlogAdmin: FC = () => {
               display: 'flex',
               flexDirection: 'row',
               marginTop: '.8rem',
+              marginBottom: '1rem',
               '&.disabled': {
                 '.buttonCompact': {
                   color: 'var(--color-bg)',
@@ -378,6 +394,8 @@ const BlogAdmin: FC = () => {
               border: '1px solid var(--color-accent)',
               borderRadius: 6,
               '.draftInfo': {
+                fontFamily: 'var(--font-secondary)',
+                textTransform: 'uppercase',
                 display: 'flex',
                 flexDirection: 'column',
                 textAlign: 'right',
@@ -396,7 +414,11 @@ const BlogAdmin: FC = () => {
                 },
               },
               '.blog.postTeaser': {
-                margin: '0 .5rem 0 0',
+                margin: 0,
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'start',
+
                 h2: {
                   margin: '0 0 .25rem 0',
                   fontSize: 20,

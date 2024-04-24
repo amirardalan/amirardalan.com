@@ -53,6 +53,7 @@ const blogStyles = css({
     '.blogListHeading': {
       fontFamily: 'var(--font-secondary)',
       fontWeight: 400,
+      lineHeight: '1.4rem',
       a: {
         color: 'var(--color-heading)',
         textDecoration: 'none',
@@ -93,6 +94,16 @@ const blogStyles = css({
     },
     '&.admin.create, &.admin.edit': {
       maxWidth: '100%',
+      padding: '0 4rem',
+      '@media (max-width: 1024px)': {
+        padding: '0 2.5rem',
+      },
+      '@media (max-width: 768px)': {
+        padding: '0 2.5rem',
+      },
+      '@media (max-width: 600px)': {
+        padding: '0 2rem',
+      },
     },
   },
   '.post': {
