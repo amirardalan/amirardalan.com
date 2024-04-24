@@ -1,26 +1,50 @@
-import type { FC, ReactNode } from 'react';
+import { FC, useState, useEffect, useRef, ReactNode } from 'react';
 import { css } from '@emotion/react';
-import { useState } from 'react';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
 
 type TooltipProps = {
-  pos?: 't' | 'r' | 'b' | 'l';
+  pos?: 't' | 'r' | 'b' | 'l' | 'cursor';
   text: string;
   children: ReactNode;
 };
 
 const Tooltip: FC<TooltipProps> = ({ pos, text, children }) => {
   const [isHovered, setIsHovered] = useState(false);
-
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const isTablet = useMediaQuery(1024);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (pos === 'cursor') {
+      const currentRef = ref.current;
+      if (currentRef) {
+        const handleMouseMove = (e: MouseEvent) => {
+          const rect = currentRef.getBoundingClientRect();
+          setMousePosition({
+            x: e.clientX - rect.left,
+            y: e.clientY - rect.top,
+          });
+        };
+
+        currentRef.addEventListener('mousemove', handleMouseMove);
+
+        return () => {
+          currentRef.removeEventListener('mousemove', handleMouseMove);
+        };
+      }
+    }
+  }, [pos, ref]);
 
   const styleContainer = css({
     position: 'relative',
-    display: 'inline-block',
+    display: 'flex',
   });
 
   const styleTooltip = css({
+    pointerEvents: 'none',
     position: 'absolute',
+    left: pos === 'cursor' ? mousePosition.x - 55 : undefined,
+    top: pos === 'cursor' ? mousePosition.y + 25 : undefined,
     padding: '0.5rem',
     backgroundColor: 'var(--color-accent)',
     fontFamily: 'var(--font-primary)',
@@ -33,7 +57,7 @@ const Tooltip: FC<TooltipProps> = ({ pos, text, children }) => {
     opacity: isHovered ? 1 : 0,
     transition: `opacity ${isHovered ? '0.3s' : '0.1s'} ease-in-out`,
     ...(pos === 't' && {
-      bottom: 45,
+      bottom: 60,
       left: '50%',
       transform: 'translateX(-50%)',
     }),
@@ -43,7 +67,7 @@ const Tooltip: FC<TooltipProps> = ({ pos, text, children }) => {
       transform: 'translateY(-50%)',
     }),
     ...(pos === 'b' && {
-      top: 35,
+      top: 60,
       left: '50%',
       transform: 'translateX(-50%)',
     }),
@@ -56,9 +80,11 @@ const Tooltip: FC<TooltipProps> = ({ pos, text, children }) => {
 
   return (
     <div
+      ref={ref}
       css={styleContainer}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      className="tooltipItem"
     >
       {children}
       {!isTablet && <div css={styleTooltip}>{text}</div>}

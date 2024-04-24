@@ -72,7 +72,7 @@ const TableOfContents: FC<TableOfContentsProps> = ({ markdown }) => {
       margin: '0.5rem 0 0 0',
       a: {
         fontFamily: 'var(--font-secondary)',
-        fontSize: 16,
+        fontSize: 14,
       },
       li: {
         lineHeight: 'normal',

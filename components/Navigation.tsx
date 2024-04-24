@@ -143,11 +143,11 @@ const Navigation: FC = () => {
     justifyContent: 'flex-start',
     alignSelf: 'left',
     '.navSocial': {
+      minWidth: 40,
       display: 'flex',
+      justifyContent: 'space-around',
       alignItems: 'center',
-      '&.x': {
-        marginRight: '1.5rem',
-      },
+      height: '100%',
       svg: {
         fill: 'var(--color-heading)',
       },
@@ -158,10 +158,12 @@ const Navigation: FC = () => {
       },
     },
     '@media (max-width: 768px)': {
-      margin: '1.5rem 1.5rem 0',
-      '.navSocial:hover': {
-        svg: {
-          fill: 'var(--color-heading)',
+      margin: '1.5rem 1.5rem 0 0',
+      '.navSocial': {
+        '&:hover': {
+          svg: {
+            fill: 'var(--color-heading)',
+          },
         },
       },
     },

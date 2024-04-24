@@ -7,6 +7,7 @@ import Container from '@/components/Container';
 import TypingAnimation from '@/components/TypingAnimation';
 import FeaturedPost from '@/components/FeaturedPost';
 import CtaButtons from '@/components/CtaButtons';
+import Tooltip from '@/components/Tooltip';
 
 import { homeContent } from '@/data/content';
 import { HomeTypes } from '@/types/home';
@@ -61,14 +62,27 @@ type HomeProps = {
 
 const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
   const styleMain = css({
-    marginBottom: '4rem',
+    padding: '0 4.5rem',
     display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    minHeight: '61.4vh',
     '@media (max-width: 890px)': {
       flexDirection: 'column',
+      padding: '0 2.5rem',
+    },
+    '@media (max-width: 768px)': {
+      padding: '0 2.5rem',
+    },
+    '@media (max-width: 600px)': {
+      padding: '0 2rem',
     },
   });
   const styleMainLeft = css({
-    padding: '0 2rem 0 0',
+    zIndex: 2,
+    width: 'fit-content',
+    marginleft: '2rem',
     animation: 'fadeIn .8s forwards',
     '@media (max-width: 890px)': {
       flexDirection: 'column-reverse',
@@ -89,18 +103,18 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
       },
     },
     h1: {
-      marginBottom: '2rem',
+      marginBottom: '6rem',
       lineHeight: '100%',
       fontFamily: 'var(--font-secondary)',
-      fontSize: 'calc(3.6vw + 3.6vh)',
-      fontWeight: 600,
+      fontSize: 'calc(4vw + 4vh)',
+      fontWeight: 400,
       WebkitMarqueeIncrement: '0vw',
       '@media (max-width: 768px)': {
         fontSize: 'calc(5.2vw + 5.2vh)',
+        marginBottom: '3rem',
       },
     },
     '.intro, .typed': {
-      color: 'var(--color-accent-gray)',
       display: 'block',
       marginBottom: '3.5rem',
       '@media(max-width: 768px)': {
@@ -133,15 +147,6 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
       marginBottom: '1rem',
     },
   });
-  const styleMainRight = css({
-    position: 'relative',
-    background: 'var(--color-gradient)',
-    height: '75vh',
-    '@media (max-width: 890px)': {
-      height: '45vh',
-      marginTop: '2rem',
-    },
-  });
 
   return (
     <Container
@@ -149,8 +154,11 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
       robots="follow, index"
       description={home.meta.description}
     >
+      <Tooltip pos="cursor" text="Randomize terrain">
+        <CanvasLoader />
+      </Tooltip>
       <main css={styleMain} className="home">
-        <div css={styleMainLeft} className="animationWrapper">
+        <div css={styleMainLeft}>
           <div css={styleContent}>
             <div className="titleWrapper">
               <span className="typed" aria-hidden="true">
@@ -167,9 +175,6 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
               latestPost={latestPost}
             />
           </div>
-        </div>
-        <div css={styleMainRight} className="animationWrapper">
-          <CanvasLoader />
         </div>
       </main>
     </Container>

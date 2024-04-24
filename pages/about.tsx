@@ -20,7 +20,8 @@ type AboutPageProps = {
 };
 
 const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
-  const styleAboutIntro = {
+  const styleAboutWrapper = {
+    padding: '0 2rem',
     margin: '0 auto',
     maxWidth: 768,
     hr: {
@@ -30,8 +31,8 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
     },
     '.aboutIntro': {
       fontFamily: 'var(--font-tertiary)',
-      fontSize: 32,
-      lineHeight: '3rem',
+      fontSize: 36,
+      lineHeight: '3.5rem',
       margin: '3.6rem 0 6.5rem',
       li: {
         color: 'var(--color-heading)',
@@ -75,7 +76,12 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-between',
-          width: '100%',
+        },
+        '.tooltipItem': {
+          marginRight: '10%',
+          '&:last-of-type': {
+            marginRight: 0,
+          },
         },
         '@media (max-width: 600px)': {
           flexDirection: 'column',
@@ -88,7 +94,6 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
           display: 'flex',
           justifyContent: 'start',
           alignItems: 'center',
-          marginRight: '20%',
           '&:last-of-type': {
             marginRight: 0,
           },
@@ -112,21 +117,15 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
   });
   const styleSocialIcons = css({
     display: 'flex',
-    justifyContent: 'end',
-    button: {
-      marginRight: '1.5rem',
-      '&:last-of-type': {
-        marginRight: 0,
-      },
-      '@media (max-width: 480px)': {
-        marginRight: '1rem',
-      },
-    },
+    justifyContent: 'space-between',
     svg: {
       fill: 'var(--color-text)',
-      '@media (min-width: 769px)': {
+      '&:hover': {
+        fill: 'var(--color-primary)',
+      },
+      '@media (max-width: 1024px)': {
         '&:hover': {
-          fill: 'var(--color-primary)',
+          fill: 'var(--color-text)',
         },
       },
     },
@@ -148,7 +147,7 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
       description={about.meta.description}
       robots="follow, index"
     >
-      <main className="about" css={styleAboutIntro}>
+      <main className="about" css={styleAboutWrapper}>
         <h1 className="pageHeading">{about.heading}</h1>
         <div className="aboutIntro">
           {generateListItems(aboutContent.intro.items)}
@@ -161,13 +160,13 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
                 <Avatar height={120} width={120} avatar={about.avatar} />
               </div>
               <div className="moduleRight">
-                <div css={styleSocialIcons} className="socialIcons">
-                  <SocialIcons about={about} />
-                </div>
                 <div className="social">
                   <div className="cta">
                     <CtaButtons items={about.bio.items} />
                   </div>
+                </div>
+                <div css={styleSocialIcons} className="socialIcons">
+                  <SocialIcons about={about} />
                 </div>
               </div>
             </div>

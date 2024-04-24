@@ -4,12 +4,10 @@ import { Canvas } from '@react-three/fiber';
 import CanvasTerrain from '@/components/CanvasTerrain';
 
 const styleRandomizeButton = css({
-  zIndex: 4,
+  zIndex: 0,
   position: 'absolute',
-  top: 0,
-  left: 0,
-  height: '100%',
-  width: '100%',
+  height: '100vh',
+  width: '100vw',
   background: 'transparent',
   border: 'none',
   outline: 'none',
@@ -33,10 +31,10 @@ const CanvasLoader: FC = () => {
     return Math.random() * (max - min) + min;
   }
 
-  const [detail, setDetail] = useState(getRandomInt(10, 175));
-  const [height, setHeight] = useState(getRandomArbitrary(0.05, 0.3));
-  const [texture, setTexture] = useState(getRandomInt(1, 3.5));
-  const [scale, setScale] = useState(getRandomInt(2, 5));
+  const [detail, setDetail] = useState(getRandomInt(10, 80));
+  const [height, setHeight] = useState(getRandomArbitrary(0.025, 0.05));
+  const [texture, setTexture] = useState(getRandomInt(1, 2));
+  const [scale, setScale] = useState(getRandomInt(2, 3.5));
   const rotation = 1;
   const offset = { x: 0, z: 0 };
 
@@ -48,9 +46,7 @@ const CanvasLoader: FC = () => {
   };
 
   return (
-    <>
-      <button css={styleRandomizeButton} onClick={randomizeTerrain} />
-
+    <button onClick={randomizeTerrain} css={styleRandomizeButton}>
       <Canvas
         css={{ animation: 'fadeIn 3s forwards' }}
         gl={{ antialias: true }}
@@ -67,7 +63,7 @@ const CanvasLoader: FC = () => {
           offset={offset}
         />
       </Canvas>
-    </>
+    </button>
   );
 };
 

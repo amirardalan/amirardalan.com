@@ -52,7 +52,7 @@ const blogStyles = css({
     },
     '.blogListHeading': {
       fontFamily: 'var(--font-secondary)',
-      fontWeight: 600,
+      fontWeight: 400,
       a: {
         color: 'var(--color-heading)',
         textDecoration: 'none',
@@ -99,12 +99,12 @@ const blogStyles = css({
     paddingBottom: '4rem',
     '.publishedPost': {
       display: 'block',
-      marginBottom: '3.5rem',
+      marginBottom: '6rem',
       h2: {
-        fontSize: 26,
+        fontSize: 28,
       },
       '@media (max-width: 768px)': {
-        marginBottom: '3rem',
+        marginBottom: '4rem',
         h2: {
           fontSize: 20,
         },

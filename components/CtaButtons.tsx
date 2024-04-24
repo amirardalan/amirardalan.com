@@ -36,9 +36,9 @@ const styleCtaButton = css({
       display: 'none',
     },
     '&:hover': {
-      background: 'transparent',
+      background: 'var(--color-primary)',
       border: '1px solid var(--color-primary)',
-      color: 'var(--color-primary)',
+      color: 'var(--color-bg)',
       textDecoration: 'none',
       '@media(min-width: 1025px)': {
         '&.download:after': {
@@ -48,11 +48,11 @@ const styleCtaButton = css({
       },
     },
     '&.reverse': {
-      background: 'transparent',
+      background: 'var(--color-bg)',
       border: '1px solid var(--color-heading)',
       color: 'var(--color-heading)',
       '&:hover': {
-        background: 'transparent',
+        background: 'var(--color-bg)',
         border: '1px solid var(--color-primary)',
         color: 'var(--color-primary)',
         '@media(min-width: 1025px)': {
