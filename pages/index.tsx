@@ -67,7 +67,7 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    minHeight: '68vh',
+    minHeight: '61.4vh',
     '@media (max-width: 890px)': {
       flexDirection: 'column',
       padding: '0 2.5rem',
@@ -103,14 +103,15 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
       },
     },
     h1: {
-      marginBottom: '2rem',
+      marginBottom: '6rem',
       lineHeight: '100%',
       fontFamily: 'var(--font-secondary)',
-      fontSize: 'calc(3.6vw + 3.6vh)',
-      fontWeight: 600,
+      fontSize: 'calc(4vw + 4vh)',
+      fontWeight: 400,
       WebkitMarqueeIncrement: '0vw',
       '@media (max-width: 768px)': {
         fontSize: 'calc(5.2vw + 5.2vh)',
+        marginBottom: '3rem',
       },
     },
     '.intro, .typed': {

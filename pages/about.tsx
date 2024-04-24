@@ -31,8 +31,8 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
     },
     '.aboutIntro': {
       fontFamily: 'var(--font-tertiary)',
-      fontSize: 32,
-      lineHeight: '3rem',
+      fontSize: 36,
+      lineHeight: '3.5rem',
       margin: '3.6rem 0 6.5rem',
       li: {
         color: 'var(--color-heading)',

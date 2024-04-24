@@ -26,8 +26,7 @@ const Header: FC<HeaderProps> = ({ toggleTheme }) => {
   });
   const styleHeaderWrapper = css({
     padding: '2rem 4rem 0',
-    position: 'fixed',
-    width: '100%',
+    position: 'sticky',
     top: '-2rem',
     backgroundColor: 'var(--color-bg-opaque)',
     backdropFilter: 'blur(10px)',
@@ -44,7 +43,6 @@ const Header: FC<HeaderProps> = ({ toggleTheme }) => {
     },
   });
   const styleHeader = css({
-    background: 'transparent',
     '@keyframes fadein': {
       from: { opacity: 0 },
       to: { opacity: 1 },

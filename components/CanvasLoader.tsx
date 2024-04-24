@@ -31,10 +31,10 @@ const CanvasLoader: FC = () => {
     return Math.random() * (max - min) + min;
   }
 
-  const [detail, setDetail] = useState(getRandomInt(10, 150));
-  const [height, setHeight] = useState(getRandomArbitrary(0.05, 0.08));
-  const [texture, setTexture] = useState(getRandomInt(1, 3.5));
-  const [scale, setScale] = useState(getRandomInt(2, 5));
+  const [detail, setDetail] = useState(getRandomInt(10, 80));
+  const [height, setHeight] = useState(getRandomArbitrary(0.025, 0.05));
+  const [texture, setTexture] = useState(getRandomInt(1, 2));
+  const [scale, setScale] = useState(getRandomInt(2, 3.5));
   const rotation = 1;
   const offset = { x: 0, z: 0 };
 
