@@ -120,7 +120,6 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
     const HEADING_FONT_SIZE = 32;
 
     const styleBlogPost = css({
-      padding: '0 4rem',
       '.likeAndShare': {
         display: 'flex',
         margin: '.25rem 0 0 0',
