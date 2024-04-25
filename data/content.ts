@@ -14,7 +14,7 @@ export const homeContent = {
     description: metaDescription,
   },
   typed: [
-    `portfolio of:`,
+    `./amir.sh`,
     `i'm a design engineer`,
     `peruse my <a href="/blog">blog</a> posts`,
     `learn a bit <a href="/about">about</a> me`,

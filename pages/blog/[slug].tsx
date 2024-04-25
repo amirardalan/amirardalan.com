@@ -117,7 +117,7 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
     : null;
 
   const RenderBlogPost = () => {
-    const HEADING_FONT_SIZE = 32;
+    const HEADING_FONT_SIZE = 34;
 
     const styleBlogPost = css({
       '.likeAndShare': {
@@ -149,7 +149,7 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
           margin: '0 0 .8rem',
           textDecoration: 'none',
           lineHeight: '3.4rem',
-          fontWeight: 600,
+          fontWeight: 400,
           '@media(max-width: 1024px)': {
             margin: '0 0 .5rem',
           },
@@ -233,16 +233,17 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
         },
         'h3, h3 code': {
           fontSize: HEADING_FONT_SIZE,
+          lineHeight: '3rem',
           '@media(max-width: 768px)': {
             fontSize: 24,
           },
         },
         h3: {
           scrollMarginTop: '4rem',
-          margin: '1rem 0 1.5rem',
+          margin: '2rem 0 3rem',
           padding: 0,
           display: 'inline-block',
-          fontWeight: 600,
+          fontWeight: 400,
           '& code': {
             fontFamily: 'var(--font-secondary)',
             background: 'transparent',
@@ -259,7 +260,7 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
                 color: 'var(--color-accent-gray)',
                 position: 'absolute',
                 textAlign: 'center',
-                top: 11,
+                top: 9,
                 left: -28,
                 fontSize: HEADING_FONT_SIZE,
               },
@@ -397,7 +398,6 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
           paddingLeft: '.5rem',
           '&.task-list-item': {
             fontSize: 15,
-            fontWeight: 'bold',
           },
           'input[type="checkbox"]': {
             marginTop: '-.1rem',

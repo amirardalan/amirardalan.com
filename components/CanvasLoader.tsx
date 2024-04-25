@@ -39,10 +39,10 @@ const CanvasLoader: FC = () => {
   const offset = { x: 0, z: 0 };
 
   const randomizeTerrain = () => {
-    setDetail(detail);
-    setHeight(height);
-    setTexture(texture);
-    setScale(scale);
+    setDetail(getRandomInt(10, 100));
+    setHeight(getRandomArbitrary(0.025, 0.2));
+    setTexture(getRandomInt(1, 2));
+    setScale(getRandomInt(2, 4));
   };
 
   return (

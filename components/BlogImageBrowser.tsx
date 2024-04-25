@@ -118,7 +118,7 @@ const styleModal = css({
       maxWidth: IMAGE_SIZE - 20,
       color: 'var(--color-text)',
       fontSize: 11,
-      fontWeight: 600,
+      fontWeight: 400,
       fontFamily: 'var(--font-secondary)',
       whiteSpace: 'nowrap',
       overflow: 'hidden',

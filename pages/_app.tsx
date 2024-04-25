@@ -19,7 +19,7 @@ import { JetBrains_Mono, Noto_Serif, Saira } from 'next/font/google';
 const fontPrimary = JetBrains_Mono({ subsets: ['latin'], weight: ['400'] });
 const fontSecondary = Saira({
   subsets: ['latin'],
-  weight: ['400', '600'],
+  weight: ['400'],
 });
 const fontTertiary = Noto_Serif({
   subsets: ['latin'],

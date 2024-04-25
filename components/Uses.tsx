@@ -56,7 +56,7 @@ const Uses: FC<UsesProps> = ({ content }) => {
       color: 'var(--color-heading)',
       width: 'fit-content',
       fontSize: 13,
-      fontWeight: 600,
+      fontWeight: 400,
       letterSpacing: 2,
       textTransform: 'uppercase',
       marginBottom: '.5rem',

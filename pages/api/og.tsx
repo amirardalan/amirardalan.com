@@ -8,15 +8,10 @@ const SairaRegularFontP = fetch(
   new URL('@/public/fonts/Saira-Regular.ttf', import.meta.url)
 ).then((res) => res.arrayBuffer());
 
-const SairaBoldFontP = fetch(
-  new URL('@/public/fonts/Saira-Bold.ttf', import.meta.url)
-).then((res) => res.arrayBuffer());
-
 export default async function handler(req: Request) {
   try {
-    const [SairaRegularFont, SairaBoldFont] = await Promise.all([
+    const [SairaRegularFont] = await Promise.all([
       SairaRegularFontP,
-      SairaBoldFontP,
     ]);
 
     const { searchParams } = new URL(req.url);
@@ -39,7 +34,7 @@ export default async function handler(req: Request) {
             }}
           />
           <div tw="h-full flex flex-col relative pr-90 justify-center">
-            <div tw="flex flex-col text-[5.8rem] font-bold pl-15 leading-[5.8rem]">
+            <div tw="flex flex-col text-[5.8rem] pl-15 leading-[5.8rem]">
               {title}
               <div tw="flex text-[2.6rem] font-normal normal-case mt-10 leading-[2.5rem]">
                 {description}
@@ -60,12 +55,6 @@ export default async function handler(req: Request) {
             data: SairaRegularFont,
             style: 'normal',
             weight: 400,
-          },
-          {
-            name: 'Saira',
-            data: SairaBoldFont,
-            style: 'normal',
-            weight: 600,
           },
         ],
       }

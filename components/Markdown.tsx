@@ -312,7 +312,7 @@ const BlogMarkdown: FC<BlogMarkdownProps> = ({ markdown }) => {
       const slug = generateSlug(heading);
 
       return (
-        <h3 id={slug}>
+        <h3 id={slug} className="blogPostHeading">
           <a href={`#${slug}`} {...props}></a>
         </h3>
       );
