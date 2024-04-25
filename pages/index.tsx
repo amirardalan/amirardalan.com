@@ -130,7 +130,7 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
         fontSize: 20,
       },
       '@media(max-width: 768px)': {
-        fontSize: 18,
+        fontSize: 16,
       },
       '@media(max-width: 360px)': {
         fontSize: 13,
