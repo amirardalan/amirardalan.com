@@ -6,92 +6,9 @@ type BlogLayoutProps = {
 };
 
 const blogStyles = css({
+  maxWidth: 768,
+  margin: '0 auto',
   '.blog': {
-    maxWidth: 768,
-    margin: '0 auto',
-    '.search': {
-      fontFamily: 'var(--font-secondary)',
-      color: 'var(--color-text)',
-      background: 'transparent',
-      border: '1px solid var(--color-accent-lighter)',
-      padding: '.6rem',
-      fontSize: 16,
-      outline: 'none',
-      '&::placeholder': {
-        color: 'var(--color-gray) !important',
-        fontFamily: 'var(--font-secondary)',
-      },
-      '&:focus': {
-        outline: 'none',
-        borderColor: 'var(--color-primary)',
-      },
-    },
-    '.categoryWrapper': {
-      display: 'flex',
-      flexDirection: 'row',
-    },
-    '.category': {
-      marginBottom: '.5rem',
-      fontFamily: 'var(--font-secondary)',
-      fontSize: 11,
-      textTransform: 'uppercase',
-      color: 'var(--color-primary)',
-      textDecoration: 'none',
-      '&.featured': {
-        marginRight: '1rem',
-      },
-      '&.active': {
-        borderBottom: '2px solid var(--color-primary)',
-      },
-      '&:before': {
-        content: '"#"',
-      },
-      '&.all, &.featured': {
-        '&:before': { content: '""' },
-      },
-    },
-    '.blogListHeading': {
-      fontFamily: 'var(--font-secondary)',
-      fontWeight: 400,
-      lineHeight: '1.4rem',
-      a: {
-        color: 'var(--color-heading)',
-        textDecoration: 'none',
-        display: 'flex',
-        width: '100%',
-      },
-      '@media(max-width: 1024px)': {
-        margin: '.6rem 0',
-        lineHeight: '1.4rem',
-      },
-    },
-    h2: {
-      margin: 0,
-      lineHeight: '2.5rem',
-      '&:hover': { textDecoration: 'none' },
-    },
-    p: {
-      marginBottom: '2rem',
-      fontFamily: 'var(--font-tertiary)',
-      fontSize: 22,
-      lineHeight: '2rem',
-    },
-    main: {
-      display: 'flex',
-      flexDirection: 'column',
-    },
-    '&.postTeaser': {
-      '.teaser': {
-        margin: '.5rem 0 1rem',
-        color: 'var(--color-gray)',
-        fontSize: 14,
-        fontStyle: 'italic',
-        lineHeight: '1.25rem',
-        '@media(max-width: 1024px)': {
-          margin: '.8rem 0 0',
-        },
-      },
-    },
     '&.admin.create, &.admin.edit': {
       maxWidth: '100%',
       padding: '0 4rem',
@@ -107,10 +24,9 @@ const blogStyles = css({
     },
   },
   '.post': {
-    paddingBottom: '4rem',
     '.publishedPost': {
       display: 'block',
-      marginBottom: '6rem',
+      marginBottom: '4.5rem',
       h2: {
         fontSize: 28,
       },
@@ -150,39 +66,6 @@ const blogStyles = css({
       width: '100%',
       margin: 0,
       padding: 0,
-    },
-  },
-  '.postTeaser': {
-    position: 'relative',
-    h2: {
-      marginBottom: '.4rem',
-      color: 'var(--color-heading)',
-      fontSize: 32,
-      textDecoration: 'none',
-      a: {
-        color: 'var(--color-heading)',
-        textDecoration: 'none',
-        border: 'none',
-        '@media (min-width: 1025px)': {
-          '&:hover': {
-            color: 'var(--color-primary)',
-          },
-        },
-      },
-      '@media (max-width: 768px)': {
-        fontSize: 28,
-      },
-      '.postStatsDivider': {
-        borderColor: 'var(--color-accent)',
-      },
-    },
-    '&:hover': {
-      '.postStatsDivider': {
-        '@media (min-width: 1025px)': {
-          borderColor: 'var(--color-accent-gray)',
-          transition: 'border-color 0.5s ease-in-out',
-        },
-      },
     },
   },
   li: {

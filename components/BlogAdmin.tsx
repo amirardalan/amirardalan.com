@@ -191,15 +191,64 @@ const BlogAdmin: FC = () => {
               width: '100%',
               '.drafts': {
                 marginBottom: '4rem',
+                '.postDraft': {
+                  marginBottom: '1rem',
+                  padding: '1.5rem',
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  border: '1px solid var(--color-accent)',
+                  borderRadius: 6,
+                  'p.teaser': {
+                    lineHeight: '1.3rem',
+                    '@media (max-width: 768px)': {
+                      fontSize: 14,
+                    },
+                  },
+                  '.draftInfo': {
+                    fontFamily: 'var(--font-secondary)',
+                    textTransform: 'uppercase',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    textAlign: 'right',
+                    '.label': {
+                      alignSelf: 'right',
+                      color: 'var(--color-gray)',
+                      fontSize: 14,
+                    },
+                    '.category': {
+                      fontSize: 10,
+                    }
+                  },
+                  '.blogListHeading': {
+                    fontSize: 22,
+                    margin: '0 0 .6rem',
+                    lineHeight: '1.2rem',
+                    '@media (max-width: 768px)': {
+                      fontSize: 18,
+                      margin: '0 0 .3rem',
+                    }
+                  },
+                  '.teaser': {
+                    fontFamily: 'var(--font-tertiary)',
+                    fontSize: 16,
+                    fontStyle: 'italic',
+                    color: 'var(--color-gray)',
+                  },
+                  '@media (max-width: 480px)': {
+                    padding: '1rem',
+                    'h2 a': {
+                      fontSize: 16,
+                    },
+                  },
+                },
                 '.postDetails': {
                   display: 'none',
                 },
                 '.draftsControls': {
-                  marginTop: '1rem',
+                  margin: '1rem 0 2rem',
                   display: 'flex',
                   flexDirection: 'row',
                   justifyContent: 'space-between',
-                  marginBottom: '1rem',
                 },
                 '.draftSort': {
                   label: {
@@ -384,49 +433,6 @@ const BlogAdmin: FC = () => {
               flexDirection: 'column',
               '.deleteControls': {
                 flexDirection: 'row',
-              },
-            },
-            '.postDraft': {
-              margin: '.5rem 0 .5rem',
-              padding: '1rem',
-              display: 'flex',
-              justifyContent: 'space-between',
-              border: '1px solid var(--color-accent)',
-              borderRadius: 6,
-              '.draftInfo': {
-                fontFamily: 'var(--font-secondary)',
-                textTransform: 'uppercase',
-                display: 'flex',
-                flexDirection: 'column',
-                textAlign: 'right',
-                '.label': {
-                  marginBottom: '.2rem',
-                  alignSelf: 'right',
-                  color: 'var(--color-gray)',
-                  fontSize: 12,
-                  fontStyle: 'italic',
-                },
-              },
-              '@media (max-width: 480px)': {
-                padding: '1rem',
-                'h2 a': {
-                  fontSize: 22,
-                },
-              },
-              '.blog.postTeaser': {
-                margin: 0,
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'start',
-
-                h2: {
-                  margin: '0 0 .25rem 0',
-                  fontSize: 20,
-                },
-                'p.teaser': {
-                  margin: '.3rem 0 0 0',
-                  fontSize: 14,
-                },
               },
             },
             '.noDrafts': {

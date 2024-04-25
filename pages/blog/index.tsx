@@ -48,6 +48,121 @@ export const getStaticProps: GetStaticProps<BlogProps> = async () => {
 
 const Blog = ({ blog, feed }: BlogProps) => {
   const styleBlogWrapper = css({
+    '.search': {
+      fontFamily: 'var(--font-secondary)',
+      color: 'var(--color-text)',
+      background: 'transparent',
+      border: '1px solid var(--color-accent-lighter)',
+      padding: '.6rem',
+      fontSize: 16,
+      outline: 'none',
+      '&::placeholder': {
+        color: 'var(--color-gray) !important',
+        fontFamily: 'var(--font-secondary)',
+      },
+      '&:focus': {
+        outline: 'none',
+        borderColor: 'var(--color-primary)',
+      },
+    },
+    '.categoryWrapper': {
+      display: 'flex',
+      flexDirection: 'row',
+    },
+    '.category': {
+      marginBottom: '.5rem',
+      fontFamily: 'var(--font-secondary)',
+      fontSize: 11,
+      textTransform: 'uppercase',
+      color: 'var(--color-primary)',
+      textDecoration: 'none',
+      '&.featured': {
+        marginRight: '1rem',
+      },
+      '&.active': {
+        borderBottom: '2px solid var(--color-primary)',
+      },
+      '&:before': {
+        content: '"#"',
+      },
+      '&.all, &.featured': {
+        '&:before': { content: '""' },
+      },
+    },
+    '.blogListHeading': {
+      fontFamily: 'var(--font-secondary)',
+      fontWeight: 400,
+      lineHeight: '1.4rem',
+      a: {
+        color: 'var(--color-heading)',
+        textDecoration: 'none',
+        display: 'flex',
+        width: '100%',
+      },
+      '@media(max-width: 1024px)': {
+        margin: '.6rem 0',
+        lineHeight: '1.4rem',
+      },
+    },
+    h2: {
+      margin: 0,
+      lineHeight: '2.5rem',
+      '&:hover': { textDecoration: 'none' },
+    },
+    p: {
+      marginBottom: '2rem',
+      fontFamily: 'var(--font-tertiary)',
+      fontSize: 22,
+      lineHeight: '2rem',
+    },
+    main: {
+      display: 'flex',
+      flexDirection: 'column',
+    },
+    '.postTeaser': {
+      position: 'relative',
+      h2: {
+        margin: '.5rem 0 .8rem',
+        color: 'var(--color-heading)',
+        fontSize: 32,
+        textDecoration: 'none',
+        a: {
+          color: 'var(--color-heading)',
+          textDecoration: 'none',
+          border: 'none',
+          '@media (min-width: 1025px)': {
+            '&:hover': {
+              color: 'var(--color-primary)',
+            },
+          },
+        },
+        '@media (max-width: 768px)': {
+          fontSize: 28,
+        },
+        '.postStatsDivider': {
+          borderColor: 'var(--color-accent)',
+        },
+      },
+      '.teaser': {
+        margin: '.5rem 0 1rem',
+        color: 'var(--color-gray)',
+        fontSize: 16,
+        fontStyle: 'italic',
+        lineHeight: '1.25rem',
+        '@media(max-width: 1024px)': {
+          margin: '.8rem 0 0',
+          fontSize: 14,
+        },
+      },
+      '&:hover': {
+        '.postStatsDivider': {
+          '@media (min-width: 1025px)': {
+            borderColor: 'var(--color-accent-gray)',
+            transition: 'border-color 0.5s ease-in-out',
+          },
+        },
+      },
+    },
     '@media (max-width: 1024px)': {
       padding: '0 2.5rem',
     },
