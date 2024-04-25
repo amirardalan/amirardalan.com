@@ -36,7 +36,7 @@ const Footer: FC<FooterProps> = () => {
     },
     '@media(max-width: 480px)': {
       gap: '1.5rem',
-      gridTemplateColumns: 'repeat(1, 1fr)',
+      gridTemplateColumns: 'repeat(2, 1fr)',
     },
     a: {
       marginBottom: '.5rem',

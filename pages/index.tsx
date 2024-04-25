@@ -67,7 +67,7 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    minHeight: '61.4vh',
+    minHeight: '63.75vh',
     '@media (max-width: 890px)': {
       flexDirection: 'column',
       padding: '0 2.5rem',
@@ -84,9 +84,6 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
     width: 'fit-content',
     marginleft: '2rem',
     animation: 'fadeIn .8s forwards',
-    '@media (max-width: 890px)': {
-      flexDirection: 'column-reverse',
-    },
     '@media (max-width: 480px)': {
       padding: 0,
     },
@@ -110,7 +107,7 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
       fontWeight: 400,
       WebkitMarqueeIncrement: '0vw',
       '@media (max-width: 768px)': {
-        fontSize: 'calc(5.2vw + 5.2vh)',
+        fontSize: 'calc(4vw + 4vh)',
         marginBottom: '3rem',
       },
     },
@@ -165,10 +162,10 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
                 <TypingAnimation data={home.typed} />
               </span>
               <h1>{home.title}</h1>
-              <div css={styleCtaButtons}>
+            </div>
+            <div css={styleCtaButtons}>
                 <CtaButtons items={home.items} />
               </div>
-            </div>
             <FeaturedPost
               home={home}
               featuredPost={featuredPost}
