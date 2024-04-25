@@ -31,18 +31,18 @@ const CanvasLoader: FC = () => {
     return Math.random() * (max - min) + min;
   }
 
-  const [detail, setDetail] = useState(getRandomInt(10, 100));
-  const [height, setHeight] = useState(getRandomArbitrary(0.025, 0.05));
+  const [detail, setDetail] = useState(getRandomInt(10, 150));
+  const [height, setHeight] = useState(getRandomArbitrary(0.025, 0.2));
   const [texture, setTexture] = useState(getRandomInt(1, 2));
-  const [scale, setScale] = useState(getRandomInt(2, 3));
+  const [scale, setScale] = useState(getRandomInt(2, 4));
   const rotation = 1;
   const offset = { x: 0, z: 0 };
 
   const randomizeTerrain = () => {
-    setDetail(getRandomInt(10, 100));
-    setHeight(getRandomArbitrary(0.05, 0.2));
-    setTexture(getRandomInt(1, 2));
-    setScale(getRandomInt(2, 4));
+    setDetail(detail);
+    setHeight(height);
+    setTexture(texture);
+    setScale(scale);
   };
 
   return (
