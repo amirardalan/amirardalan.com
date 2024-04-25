@@ -117,7 +117,7 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
     : null;
 
   const RenderBlogPost = () => {
-    const HEADING_FONT_SIZE = 34;
+    const HEADING_FONT_SIZE = 28;
 
     const styleBlogPost = css({
       '.likeAndShare': {
@@ -233,14 +233,14 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
         },
         'h3, h3 code': {
           fontSize: HEADING_FONT_SIZE,
-          lineHeight: '3rem',
+          lineHeight: '2rem',
           '@media(max-width: 768px)': {
             fontSize: 24,
           },
         },
         h3: {
           scrollMarginTop: '4rem',
-          margin: '2rem 0 3rem',
+          margin: '1rem 0 2rem 0',
           padding: 0,
           display: 'inline-block',
           fontWeight: 400,
@@ -260,7 +260,7 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
                 color: 'var(--color-accent-gray)',
                 position: 'absolute',
                 textAlign: 'center',
-                top: 9,
+                top: 2,
                 left: -28,
                 fontSize: HEADING_FONT_SIZE,
               },
