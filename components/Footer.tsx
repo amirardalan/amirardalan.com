@@ -20,7 +20,7 @@ const Footer: FC<FooterProps> = () => {
       padding: '2.5rem 2.5rem 1.5rem',
     },
     '@media (max-width: 600px)': {
-      padding: '2rem 2rem 1.5rem',
+      padding: '2.5rem 2rem 1.5rem',
     },
   });
   const styleFooter = css({

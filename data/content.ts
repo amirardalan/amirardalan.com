@@ -499,7 +499,7 @@ export const footer = {
     },
   ],
   copyright: {
-    text: '© ',
+    text: 'Design & Code © ',
     name: `${appTitle}`,
   },
 };

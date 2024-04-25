@@ -53,7 +53,7 @@ const Tooltip: FC<TooltipProps> = ({ pos, text, children }) => {
     color: 'var(--color-text)',
     borderRadius: 4,
     whiteSpace: 'nowrap',
-    zIndex: 1,
+    zIndex: 5,
     opacity: isHovered ? 1 : 0,
     transition: `opacity ${isHovered ? '0.3s' : '0.1s'} ease-in-out`,
     ...(pos === 't' && {

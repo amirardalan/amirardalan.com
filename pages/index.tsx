@@ -62,33 +62,19 @@ type HomeProps = {
 
 const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
   const styleMain = css({
-    padding: '0 4.5rem',
     display: 'flex',
+    alignItems: 'end',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center',
-    minHeight: '63.75vh',
-    '@media (max-width: 890px)': {
-      flexDirection: 'column',
-      padding: '0 2.5rem',
-    },
+    minHeight: '68.5vh',
+    paddingBottom: '6rem',
     '@media (max-width: 768px)': {
-      padding: '0 2.5rem',
-    },
-    '@media (max-width: 600px)': {
-      padding: '0 2rem',
-    },
-  });
-  const styleMainLeft = css({
-    zIndex: 2,
-    width: 'fit-content',
-    marginleft: '2rem',
-    animation: 'fadeIn .8s forwards',
-    '@media (max-width: 480px)': {
-      padding: 0,
-    },
+      paddingBottom: '2rem'
+    }
   });
   const styleContent = css({
+    padding: '0 4rem',
+    zIndex: 3,
     '.titleWrapper': {
       marginBottom: '2.8rem',
       '@media(max-width: 1024px)': {
@@ -103,38 +89,34 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
       marginBottom: '6rem',
       lineHeight: '100%',
       fontFamily: 'var(--font-secondary)',
-      fontSize: 'calc(4vw + 4vh)',
+      fontSize: 'calc(4.4vw + 4.4vh)',
       fontWeight: 400,
       WebkitMarqueeIncrement: '0vw',
       '@media (max-width: 768px)': {
-        fontSize: 'calc(4vw + 4vh)',
-        marginBottom: '3rem',
-      },
-    },
-    '.intro, .typed': {
-      display: 'block',
-      marginBottom: '3.5rem',
-      '@media(max-width: 768px)': {
-        marginBottom: '2.5rem',
+        marginBottom: '1rem',
       },
     },
     '.typed': {
       fontSize: 26,
       fontWeight: 400,
       overflow: 'hidden',
+      marginBottom: '3rem',
       '&:before': {
         content: '"> ~ % "',
         color: 'var(--color-primary)',
       },
-      '@media(max-width: 1720px)': {
-        fontSize: 20,
-      },
       '@media(max-width: 768px)': {
         fontSize: 16,
       },
-      '@media(max-width: 360px)': {
-        fontSize: 13,
-      },
+    },
+    '@media (max-width: 1024px)': {
+      padding: '0 2.5rem',
+    },
+    '@media (max-width: 768px)': {
+      padding: '0 2.5rem',
+    },
+    '@media (max-width: 600px)': {
+      padding: '0 2rem',
     },
   });
   const styleCtaButtons = css({
@@ -155,23 +137,21 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
         <CanvasLoader />
       </Tooltip>
       <main css={styleMain} className="home">
-        <div css={styleMainLeft}>
-          <div css={styleContent}>
-            <div className="titleWrapper">
-              <span className="typed" aria-hidden="true">
-                <TypingAnimation data={home.typed} />
-              </span>
-              <h1>{home.title}</h1>
+        <div css={styleContent}>
+          <div className="titleWrapper">
+            <div className="typed" aria-hidden="true">
+              <TypingAnimation data={home.typed} />
             </div>
-            <div css={styleCtaButtons}>
-                <CtaButtons items={home.items} />
-              </div>
-            <FeaturedPost
-              home={home}
-              featuredPost={featuredPost}
-              latestPost={latestPost}
-            />
+            <h1>{home.title}</h1>
           </div>
+          <div css={styleCtaButtons}>
+            <CtaButtons items={home.items} />
+          </div>
+          <FeaturedPost
+            home={home}
+            featuredPost={featuredPost}
+            latestPost={latestPost}
+          />
         </div>
       </main>
     </Container>

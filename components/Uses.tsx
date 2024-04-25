@@ -9,9 +9,6 @@ interface UsesProps {
 const Uses: FC<UsesProps> = ({ content }) => {
   const styleUsesMarkdown: any = {
     paddingTop: '2rem',
-    '@media (max-width: 768px)': {
-      paddingTop: '1rem',
-    },
     display: 'grid',
     gridTemplateColumns: 'repeat(2, 2fr)',
     gap: '4rem',
@@ -79,6 +76,9 @@ const Uses: FC<UsesProps> = ({ content }) => {
         fontSize: 14,
         lineHeight: '1.8rem',
       },
+    },
+    '@media (max-width: 768px)': {
+      paddingTop: '1rem',
     },
     '@media(max-width: 480px)': {
       gridTemplateColumns: 'repeat(1, 1fr)',

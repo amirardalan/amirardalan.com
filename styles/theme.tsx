@@ -1,15 +1,13 @@
-import { css } from '@emotion/react';
-
 export const themeLight = {
   active: 'light',
   favicon: '/favicon-light.png',
-  canvas: '#e8e8f8',
+  canvas: '#c3c7e9',
 };
 
 export const themeDark = {
   active: 'dark',
   favicon: '/favicon-dark.png',
-  canvas: '#3b3742',
+  canvas: '#383742',
 };
 
 export const theme = {
