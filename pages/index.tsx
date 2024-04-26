@@ -66,7 +66,7 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
     alignItems: 'end',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    minHeight: '63.7vh',
+    minHeight: '63.75vh',
     paddingBottom: '6rem',
     '@media (max-width: 768px)': {
       paddingBottom: '2rem'

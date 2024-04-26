@@ -40,12 +40,6 @@ const styleCtaButton = css({
       border: '1px solid var(--color-primary)',
       color: 'var(--color-bg)',
       textDecoration: 'none',
-      '@media(min-width: 1025px)': {
-        '&.download:after': {
-          background: 'var(--icon-download-light) no-repeat',
-          backgroundSize: 'contain',
-        },
-      },
     },
     '&.reverse': {
       background: 'var(--color-bg)',
@@ -55,12 +49,6 @@ const styleCtaButton = css({
         background: 'var(--color-bg)',
         border: '1px solid var(--color-primary)',
         color: 'var(--color-primary)',
-        '@media(min-width: 1025px)': {
-          '&.download:after': {
-            background: 'var(--icon-download-light) no-repeat',
-            backgroundSize: 'contain',
-          },
-        },
       },
     },
     '@media(max-width: 1024px)': {
