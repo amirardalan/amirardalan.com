@@ -17,7 +17,7 @@ export default async function handler(req: Request) {
     const { searchParams } = new URL(req.url);
 
     const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
-    const displayUrl = siteUrl?.replace(/^https?:\/\//i, '');
+    const displayUrl = 'https://amir.sh'
 
     const image = searchParams.get('image') || `${siteUrl}/thumbnail.png`;
     const title = searchParams.get('title')?.slice(0, 100);
@@ -34,13 +34,13 @@ export default async function handler(req: Request) {
             }}
           />
           <div tw="h-full flex flex-col relative pr-90 justify-center">
-            <div tw="flex flex-col text-[5.8rem] pl-15 leading-[5.8rem]">
+            <div tw="flex flex-col text-[4.5rem] pl-15 leading-[4.5rem]">
               {title}
               <div tw="flex text-[2.6rem] font-normal normal-case mt-10 leading-[2.5rem]">
                 {description}
               </div>
             </div>
-            <div tw="text-2xl uppercase font-light absolute bottom-12 right-15 text-right">
+            <div tw="text-2xl uppercase font-light absolute bottom-20 right-15 text-right">
               {displayUrl}
             </div>
           </div>
