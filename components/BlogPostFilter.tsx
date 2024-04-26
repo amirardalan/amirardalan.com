@@ -54,18 +54,42 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
     display: 'flex',
     position: 'relative',
     caretColor: 'var(--color-gray)',
+    '.search': {
+      fontFamily: 'var(--font-secondary)',
+      color: 'var(--color-text)',
+      background: 'transparent',
+      border: '1px solid var(--color-accent-lighter)',
+      padding: '.6rem',
+      outline: 'none',
+      '&::placeholder': {
+        color: 'var(--color-gray) !important',
+        fontFamily: 'var(--font-secondary)',
+      },
+      '&:focus': {
+        outline: 'none',
+        borderColor: 'var(--color-primary)',
+      },
+    },
     '.icon': {
       position: 'absolute',
       top: 18,
       right: 10,
+      '@media (max-width: 768px)': {
+        top: 16,
+        right: 10,
+      },
     },
     '.clearSearch': {
       display: 'flex',
       justifyContent: 'center',
       position: 'absolute',
-      top: 17,
+      top: 18,
       right: 10,
       cursor: 'pointer',
+      '@media (max-width: 768px)': {
+        top: 17,
+        right: 9,
+      },
     },
     '@media (max-width: 768px)': {
       marginBottom: '3rem',
@@ -250,8 +274,8 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
         <div className="icon">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="18"
-            height="18"
+            width="15"
+            height="15"
             viewBox="0 0 24 24"
             fill="var(--color-gray)"
           >
@@ -266,7 +290,7 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
           onKeyDown={() => handleClearFilters()}
           className="clearSearch"
         >
-          <CloseIcon size={20} />
+          <CloseIcon size={18} />
         </button>
       );
     }

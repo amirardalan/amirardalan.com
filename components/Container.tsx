@@ -99,7 +99,8 @@ const Container: FC<ContainerProps> = (props) => {
         <link rel="icon" href={favicon} />
         <meta name="robots" content={meta.robots} />
 
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        
         <meta
           property="og:url"
           content={`${process.env.NEXT_PUBLIC_SITE_URL}${router.asPath}`}

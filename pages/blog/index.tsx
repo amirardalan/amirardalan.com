@@ -48,23 +48,6 @@ export const getStaticProps: GetStaticProps<BlogProps> = async () => {
 
 const Blog = ({ blog, feed }: BlogProps) => {
   const styleBlogWrapper = css({
-    '.search': {
-      fontFamily: 'var(--font-secondary)',
-      color: 'var(--color-text)',
-      background: 'transparent',
-      border: '1px solid var(--color-accent-lighter)',
-      padding: '.6rem',
-      fontSize: 16,
-      outline: 'none',
-      '&::placeholder': {
-        color: 'var(--color-gray) !important',
-        fontFamily: 'var(--font-secondary)',
-      },
-      '&:focus': {
-        outline: 'none',
-        borderColor: 'var(--color-primary)',
-      },
-    },
     '.categoryWrapper': {
       display: 'flex',
       flexDirection: 'row',
