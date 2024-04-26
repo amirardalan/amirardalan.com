@@ -120,11 +120,12 @@ const CanvasTerrain: FC<CanvasTerrainProps> = ({
         args={[undefined, undefined, detail - 1, detail - 1]}
         ref={ref}
       />
+      <ambientLight />
       <MeshDistortMaterial
-        distort={0.9}
+        distort={.8}
         speed={0.1}
         wireframe
-        emissive={theme.canvas}
+        color={theme.canvas}
       />
     </mesh>
   );

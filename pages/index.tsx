@@ -66,7 +66,7 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
     alignItems: 'end',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    minHeight: '68.5vh',
+    minHeight: '63.7vh',
     paddingBottom: '6rem',
     '@media (max-width: 768px)': {
       paddingBottom: '2rem'
@@ -89,7 +89,7 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
       marginBottom: '6rem',
       lineHeight: '100%',
       fontFamily: 'var(--font-secondary)',
-      fontSize: 'calc(4.4vw + 4.4vh)',
+      fontSize: 'calc(4vw + 4vh)',
       fontWeight: 400,
       WebkitMarqueeIncrement: '0vw',
       '@media (max-width: 768px)': {
