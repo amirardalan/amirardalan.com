@@ -34,9 +34,9 @@ export default async function handler(req: Request) {
             }}
           />
           <div tw="h-full flex flex-col relative pr-90 justify-center">
-            <div tw="flex flex-col text-[4.8rem] pl-15 leading-[4rem]">
+            <div tw="flex flex-col text-[4.2rem] pl-15 leading-[3.2rem]">
               {title}
-              <div tw="flex text-[2.2rem] text-[#9f9eac] font-normal normal-case mt-8 leading-[2.4rem]">
+              <div tw="flex text-[2.2rem] text-[#9f9eac] font-normal normal-case mt-8 leading-[2rem]">
                 {description}
               </div>
             </div>
