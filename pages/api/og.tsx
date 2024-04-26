@@ -34,13 +34,13 @@ export default async function handler(req: Request) {
             }}
           />
           <div tw="h-full flex flex-col relative pr-90 justify-center">
-            <div tw="flex flex-col text-[4.5rem] pl-15 leading-[4.5rem]">
+            <div tw="flex flex-col text-[4.8rem] pl-15 leading-[4rem]">
               {title}
-              <div tw="flex text-[2.6rem] font-normal normal-case mt-10 leading-[2.5rem]">
+              <div tw="flex text-[2.2rem] text-[#9f9eac] font-normal normal-case mt-8 leading-[2.4rem]">
                 {description}
               </div>
             </div>
-            <div tw="text-2xl uppercase font-light absolute bottom-20 right-15 text-right">
+            <div tw="text-2xl text-[#9f9eac] uppercase font-light absolute bottom-20 right-15 text-right">
               {displayUrl}
             </div>
           </div>
