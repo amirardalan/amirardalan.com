@@ -7,6 +7,7 @@ import { photosContent } from '@/data/content';
 import { PhotosTypes } from '@/types/photos';
 import { fetchPhotos } from '@/lib/photos';
 import { StaticImport } from 'next/dist/shared/lib/get-img-props';
+import LoadingTriangle from '@/components/LoadingTriangle';
 
 interface Photos {
   url: string;
@@ -71,7 +72,7 @@ const Photos: FC<PhotosProps> = ({ photosText, photos }) => {
       description={photosText.meta.description}
     >
       <main css={stylePhotosPage}>
-      {!photos ? <div>Loading...</div> :
+      {!photos ? <LoadingTriangle /> :
       <>
         <h1 className="pageHeading">{photosText.meta.title}</h1>
         <div className="grid">
