@@ -15,13 +15,13 @@ import { themeLight, themeDark } from '@/styles/theme';
 import GlobalStyles from '@/styles/global';
 import { useThemeContext } from '@/hooks/useThemeContext';
 
-import { JetBrains_Mono, Noto_Serif, Saira } from 'next/font/google';
+import { JetBrains_Mono, Merriweather, Saira } from 'next/font/google';
 const fontPrimary = JetBrains_Mono({ subsets: ['latin'], weight: ['400'] });
 const fontSecondary = Saira({
   subsets: ['latin'],
   weight: ['400'],
 });
-const fontTertiary = Noto_Serif({
+const fontTertiary = Merriweather({
   subsets: ['latin'],
   weight: ['400'],
   style: ['normal', 'italic'],

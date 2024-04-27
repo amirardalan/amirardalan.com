@@ -18,7 +18,7 @@ export const homeContent = {
     `i'm a design engineer`,
     `peruse my <a href="/blog">blog</a> posts`,
     `learn a bit <a href="/about">about</a> me`,
-    `follow me <a href=${linkX} rel="noopener noreferrer">on x</a>`,
+    `follow me <a href=${linkX} rel="noopener noreferrer">on x.com</a>`,
     `check out my <a href=${linkGitHub} rel="noopener noreferrer">github</a>`,
     `view my work <a href="/about#timeline">timeline</a>`,
     `see what <a href="/uses">tools</a> i use`,
