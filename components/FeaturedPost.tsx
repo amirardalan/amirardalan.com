@@ -127,7 +127,7 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
     'h3 a': {
       lineHeight: '1.25rem',
       fontFamily: 'var(--font-secondary)',
-      fontSize: 13,
+      fontSize: 16,
 
       textTransform: 'uppercase',
       fontWeight: 400,
@@ -136,18 +136,24 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
           textDecoration: 'underline',
         },
       },
+      '@media (max-width: 768px)': {
+        fontSize: 13,
+      },
       '@media(max-width: 480px)': {
         fontSize: 11,
       },
     },
     p: {
-      fontSize: 12,
+      fontSize: 14,
       fontFamily: 'var(--font-tertiary)',
       fontStyle: 'italic',
       color: 'var(--color-gray)',
     },
     '@media (max-width: 768px)': {
       margin: '4rem 0 2rem 0',
+      p: {
+        fontSize: 12,
+      }
     },
   });
 
