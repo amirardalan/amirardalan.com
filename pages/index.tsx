@@ -106,6 +106,7 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
         color: 'var(--color-primary)',
       },
       '@media(max-width: 768px)': {
+        margin: '0 0 3rem 0',
         fontSize: 16,
       },
     },
