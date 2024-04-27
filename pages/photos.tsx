@@ -8,6 +8,7 @@ import { PhotosTypes } from '@/types/photos';
 import { fetchPhotos } from '@/lib/photos';
 import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 import LoadingTriangle from '@/components/LoadingTriangle';
+import { useMediaQuery } from '@/hooks/useMediaQuery';
 
 interface Photos {
   url: string;
@@ -20,6 +21,10 @@ type PhotosProps = {
 };
 
 const Photos: FC<PhotosProps> = ({ photosText, photos }) => {
+
+  const isTablet = useMediaQuery(1024);
+  const isMobile = useMediaQuery(768);
+  const priorityCount = isMobile ? 2 : isTablet ? 6 : 8;
 
   const stylePhotosPage = css({
     maxWidth: 1920,
@@ -84,6 +89,7 @@ const Photos: FC<PhotosProps> = ({ photosText, photos }) => {
                 width={504} 
                 height={672}
                 onContextMenu={(e) => e.preventDefault()}
+                priority={typeof index === 'number' && index < priorityCount}
                 style={{ 
                   WebkitTouchCallout: 'none', 
                   pointerEvents: 'none', 
