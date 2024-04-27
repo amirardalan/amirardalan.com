@@ -398,7 +398,6 @@ export const usesContent = {
   - Aseprite
   
   #### Listening
-  - TIDAL
   - YouTube Music
   - Apple Podcasts
 

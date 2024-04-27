@@ -100,7 +100,7 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
       fontSize: 26,
       fontWeight: 400,
       overflow: 'hidden',
-      marginBottom: '3rem',
+      margin: '6rem 0 3rem 0',
       '&:before': {
         content: '"> ~ % "',
         color: 'var(--color-primary)',
