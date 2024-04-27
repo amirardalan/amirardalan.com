@@ -7,21 +7,17 @@ import { photosContent } from '@/data/content';
 import { PhotosTypes } from '@/types/photos';
 import { fetchPhotos } from '@/lib/photos';
 import { StaticImport } from 'next/dist/shared/lib/get-img-props';
-import useSWR from 'swr';
-import Fetcher from '@/lib/fetcher';
 
+interface Photos {
+  url: string;
+}
 
 type PhotosProps = {
   photosText: PhotosTypes;
-  getPhotos: any[];
+  photos: Photos[];
 };
 
-const Photos: FC<PhotosProps> = ({ photosText, getPhotos }) => {
-
-  const { data: cloudinaryPhotos, error } = useSWR('/api/photos', Fetcher);
-
-  if (error) return <div>Failed to load photos</div>
-  if (!cloudinaryPhotos) return <div>Loading...</div>
+const Photos: FC<PhotosProps> = ({ photosText, photos }) => {
 
   const stylePhotosPage = css({
     padding: '0 4rem',
@@ -51,28 +47,31 @@ const Photos: FC<PhotosProps> = ({ photosText, getPhotos }) => {
       description={photosText.meta.description}
     >
       <main css={stylePhotosPage}>
+      {!photos ? <div>Loading...</div> :
+      <>
         <h1 className="pageHeading">{photosText.meta.title}</h1>
         <div className="grid">
-          {getPhotos.map((photo: { url: string | StaticImport; }, index: Key | null | undefined) => (
+          {photos.map((photo: { url: string | StaticImport; }, index: Key | null | undefined) => (
             <div key={index} className="gridItem">
               <Image src={photo.url} alt={`Photo ${Number(index) + 1}`} width={504} height={672} />
             </div>
           ))}
         </div>
+        </>}
       </main>
     </Container>
   )
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const getPhotos = await fetchPhotos();
-  const photosText = photosContent;
+  const photos = await fetchPhotos();
 
   return {
     props: {
-      photosText,
-      getPhotos,
+      photosText: photosContent,
+      photos,
     },
+    revalidate: 1,
   };
 }
 

@@ -1,17 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { v2 as cloudinary } from 'cloudinary';
-
-cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_NAME,
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET,
-});
+import cloudinary from '@/lib/cloudinaryConfig';
 
 const photosHandler = async (req: NextApiRequest, res: NextApiResponse) => {
-  if (req.method === 'POST') {
-    // Handle POST request
-    // ...
-  } else if (req.method === 'GET') {
+  if (req.method === 'GET') {
     // Handle GET request
     try {
       const options = {
@@ -27,11 +18,15 @@ const photosHandler = async (req: NextApiRequest, res: NextApiResponse) => {
       console.error(error);
       res.status(500).json({ message: 'Failed to browse images' });
     }
+  } else if (req.method === 'POST') {
+    // Handle POST request from Cloudinary webhook
+    console.log('A new photo was uploaded to Cloudinary');
+    res.status(200).json({ message: 'Webhook received' });
   } else {
     // Handle any other HTTP method
-    res.setHeader('Allow', ['POST', 'GET']);
+    res.setHeader('Allow', ['GET', 'POST']);
     res.status(405).end(`Method ${req.method} Not Allowed`);
   }
-};
+}
 
 export default photosHandler;
