@@ -20,14 +20,31 @@ type PhotosProps = {
 const Photos: FC<PhotosProps> = ({ photosText, photos }) => {
 
   const stylePhotosPage = css({
+    maxWidth: 1920,
     padding: '0 4rem',
     margin: '0 auto',
     '.grid': {
-      marginTop: '2rem',
+      margin: '2rem 0 4rem',
       display: 'grid',
-      gridTemplateColumns: 'repeat(auto-fill, minmax(504px, 1fr))',
-      gap: '2rem',
+      gridTemplateColumns: 'repeat(4, 1fr)',
+      gap: '1rem',
       '.gridItem': {
+        position: 'relative',
+        overflow: 'hidden',
+        'img': {
+          display: 'block',
+          width: '100%',
+          height: 'auto',
+        },
+      },
+      '@media (max-width: 1920px)': {
+        gridTemplateColumns: 'repeat(3, 1fr)',
+      },
+      '@media (max-width: 1024px)': {
+        gridTemplateColumns: 'repeat(2, 1fr)',
+      },
+      '@media (max-width: 768px)': {
+        gridTemplateColumns: 'repeat(1, 1fr)',
       },
     },
     '@media (max-width: 1024px)': {

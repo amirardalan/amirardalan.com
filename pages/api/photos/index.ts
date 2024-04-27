@@ -3,7 +3,6 @@ import cloudinary from '@/lib/cloudinaryConfig';
 
 const photosHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === 'GET') {
-    // Handle GET request
     try {
       const options = {
         type: 'upload',
@@ -19,11 +18,8 @@ const photosHandler = async (req: NextApiRequest, res: NextApiResponse) => {
       res.status(500).json({ message: 'Failed to browse images' });
     }
   } else if (req.method === 'POST') {
-    // Handle POST request from Cloudinary webhook
-    console.log('A new photo was uploaded to Cloudinary');
     res.status(200).json({ message: 'Webhook received' });
   } else {
-    // Handle any other HTTP method
     res.setHeader('Allow', ['GET', 'POST']);
     res.status(405).end(`Method ${req.method} Not Allowed`);
   }
