@@ -10,6 +10,7 @@ import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 
 interface Photos {
   url: string;
+  created_at: string;
 }
 
 type PhotosProps = {
@@ -24,7 +25,7 @@ const Photos: FC<PhotosProps> = ({ photosText, photos }) => {
     padding: '0 4rem',
     margin: '0 auto',
     '.grid': {
-      margin: '2rem 0 4rem',
+      margin: '2rem 0 6rem',
       display: 'grid',
       gridTemplateColumns: 'repeat(4, 1fr)',
       gap: '1rem',
@@ -37,14 +38,16 @@ const Photos: FC<PhotosProps> = ({ photosText, photos }) => {
           height: 'auto',
         },
       },
-      '@media (max-width: 1920px)': {
+      '@media (max-width: 1600px)': {
         gridTemplateColumns: 'repeat(3, 1fr)',
       },
       '@media (max-width: 1024px)': {
         gridTemplateColumns: 'repeat(2, 1fr)',
+        margin: '2rem 0 4rem',
       },
       '@media (max-width: 768px)': {
         gridTemplateColumns: 'repeat(1, 1fr)',
+        margin: '2rem 0 3rem',
       },
     },
     '@media (max-width: 1024px)': {
@@ -58,6 +61,10 @@ const Photos: FC<PhotosProps> = ({ photosText, photos }) => {
     },
   })
 
+  const sortPhotos = (photos: Photos[]) => {
+    return photos.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
+  }
+
   return (
     <Container
       title={photosText.meta.title}
@@ -68,9 +75,15 @@ const Photos: FC<PhotosProps> = ({ photosText, photos }) => {
       <>
         <h1 className="pageHeading">{photosText.meta.title}</h1>
         <div className="grid">
-          {photos.map((photo: { url: string | StaticImport; }, index: Key | null | undefined) => (
+          {sortPhotos(photos).map((photo: { url: string | StaticImport; }, index: Key | null | undefined) => (
             <div key={index} className="gridItem">
-              <Image src={photo.url} alt={`Photo ${Number(index) + 1}`} width={504} height={672} />
+              <Image 
+                src={photo.url} 
+                alt={`Photo ${Number(index) + 1}`} 
+                width={504} 
+                height={672}
+                onContextMenu={(e) => e.preventDefault()}
+              />
             </div>
           ))}
         </div>
