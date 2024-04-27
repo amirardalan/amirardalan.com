@@ -110,13 +110,13 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
       },
     },
     '@media (max-width: 1024px)': {
-      padding: '0 2.5rem',
+      padding: '0 0 0 2.5rem',
     },
     '@media (max-width: 768px)': {
-      padding: '0 2.5rem',
+      padding: '0 0 0 2.5rem',
     },
     '@media (max-width: 600px)': {
-      padding: '0 2rem',
+      padding: '0 0 0 2rem',
     },
   });
   const styleCtaButtons = css({
