@@ -29,11 +29,11 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
   const router = useRouter();
 
   const styleBlogCategoryNav = css({
+    lineHeight: '1rem',
     overflow: 'scroll',
     msOverflowStyle: 'none',
     scrollbarWidth: 'none',
     whiteSpace: 'nowrap',
-    minHeight: 32,
     li: {
       display: 'inline',
       marginRight: '1.25rem',
@@ -42,7 +42,6 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
       display: 'none',
     },
     '@media (max-width: 768px)': {
-      minHeight: 32,
       li: {
         marginRight: '1.2rem',
       },

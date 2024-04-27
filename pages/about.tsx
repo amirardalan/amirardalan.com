@@ -31,11 +31,11 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
     '.aboutIntro': {
       fontFamily: 'var(--font-tertiary)',
       fontSize: 32,
-      lineHeight: '3.4rem',
-      margin: '3.6rem 0 6rem',
+      lineHeight: '3.25rem',
+      margin: '3rem 0 6rem',
       li: {
         color: 'var(--color-heading)',
-        marginBottom: '3rem',
+        marginBottom: '2.5rem',
       },
       '@media (max-width: 768px)': {
         fontSize: 24,

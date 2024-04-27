@@ -26,7 +26,7 @@ const Photos: FC<PhotosProps> = ({ photosText, photos }) => {
     padding: '0 4rem',
     margin: '0 auto',
     '.grid': {
-      margin: '2rem 0 6rem',
+      margin: '4rem 0 6rem',
       display: 'grid',
       gridTemplateColumns: 'repeat(4, 1fr)',
       gap: '1rem',
