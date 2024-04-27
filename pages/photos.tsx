@@ -84,6 +84,12 @@ const Photos: FC<PhotosProps> = ({ photosText, photos }) => {
                 width={504} 
                 height={672}
                 onContextMenu={(e) => e.preventDefault()}
+                style={{ 
+                  WebkitTouchCallout: 'none', 
+                  pointerEvents: 'none', 
+                  userSelect: 'none', 
+                  outline: 'none',
+                }}
               />
             </div>
           ))}
