@@ -28,6 +28,10 @@ This is my personal portfolio and blog. You may find the CMS portion and some of
 - Upload images to Cloudinary and a markdown URL is auto inserted into the blog post content.
 - Browse your Cloudinary Media Library and delete or insert images into blog posts
 
+### Other Features
+
+- Automated Photo gallery using Cloudinary Webhooks
+
 ---
 
 ## Setup:
@@ -209,6 +213,16 @@ Retain the terseness of pure Markdown while getting the benefits of the Next/Ima
 
 - Out of the box configuration of iframe embeds within markdown.
 - Uses [Rehype Raw](https://github.com/rehypejs/rehype-raw). Disable if using this code in a way where you may not be able to trust the markdown.
+
+---
+
+## Other Features
+
+### Photo Gallery
+
+- Create a folder named `Photos` in your Cloudinary Media Library and images to automatically populate the `/photos` page gallery.
+- Uses Next revalidation to automatically rebuild the Photos page using a Cloudinary Webhook pointed to `https://example-domain.com/api/photos` with Notification Types: `Upload` and `Delete`.
+- Uploading or Deleting an image from your Cloudinary `Photos` folder will revalidate the photos page on the next photos page request.
 
 ---
 
