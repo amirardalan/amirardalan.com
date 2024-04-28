@@ -10,7 +10,7 @@ const nextConfig = {
       },
       {
         source: '/resume',
-        destination: 'https://s3.us-west-2.amazonaws.com/amirardalan.com/amir-ardalan-resume.pdf',
+        destination: process.env.RESUME_URL,
         permanent: true,
       },
     ];
