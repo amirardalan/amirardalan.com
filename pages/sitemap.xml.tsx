@@ -26,6 +26,10 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
     <loc>${baseUrl}/blog</loc>
     <priority>1.0</priority>
   </url>
+    <url>
+    <loc>${baseUrl}/photos</loc>
+    <priority>1.0</priority>
+  </url>
   <url>
     <loc>${baseUrl}/uses</loc>
     <priority>1.0</priority>
