@@ -14,12 +14,12 @@ export const homeContent = {
     description: metaDescription,
   },
   typed: [
-    `./amir.sh`,
+    `./amir.sh --welcome`,
     `learn a bit <a href="/about">about</a> me`,
     `peruse my <a href="/blog">blog</a> posts`,
-    `browse my work <a href="/about#timeline">timeline</a>`,
-    `view my <a href="/photos">photo</a> gallery`,
-    `see what <a href="/uses">tools</a> i use`,
+    `traverse my <a href="/about#timeline">timeline</a>`,
+    `browse my <a href="/photos">photo</a> gallery`,
+    `view my <a href="/uses">toolbox</a>`,
     `follow me <a href=${linkX} rel="noopener noreferrer">on x.com</a>`,
     `explore my <a href=${linkGitHub} rel="noopener noreferrer">github</a>`,
   ],
@@ -381,9 +381,8 @@ export const usesContent = {
 
   ---
   #### AI
-  - ChatGPT
-  - Grok
   - GitHub Copilot
+  - xAI Grok
 
   `,
   },
