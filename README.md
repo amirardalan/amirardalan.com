@@ -221,8 +221,8 @@ Retain the terseness of pure Markdown while getting the benefits of the Next/Ima
 ### Photo Gallery
 
 - Create a folder named `Photos` in your Cloudinary Media Library and images to automatically populate the `/photos` page gallery.
-- Uses Next revalidation to automatically rebuild the Photos page using a Cloudinary Webhook pointed to `https://example-domain.com/api/photos` with Notification Types: `Upload` and `Delete`.
-- Uploading or Deleting an image from your Cloudinary `Photos` folder will revalidate the photos page on the next photos page request.
+- Uses Next revalidation to automatically rebuild the Photos page using a Cloudinary Webhook pointed to `https://your-domain.com/api/photos` with Notification Types: `Upload` and `Delete`.
+- Uploading or Deleting an image from your Cloudinary `Photos` folder will revalidate the photos page on the next request.
 
 ---
 
