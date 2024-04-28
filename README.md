@@ -228,6 +228,7 @@ Retain the terseness of pure Markdown while getting the benefits of the Next/Ima
 
 ## Additional Notes
 
+- **IMPORTANT:** Currently, you must manually hardcode your site's pages in `sitemap.xml.tsx`. Blog page urls are dynamically generated. All other static Next pages need to be manually added in.
 - Most static content can be edited in `data/content.ts`
 - Currently blog categories are manually set in `data/categories.ts`
 - For blog image hosting, I recommend Cloudinary's Free [Digital Asset Manager](https://cloudinary.com/documentation/digital_asset_management_overview)
