@@ -418,7 +418,8 @@ export const usesContent = {
 export const photosContent = {
   meta: {
     title: `Photos — ${appTitle}`,
-    description: 'Captured moments in time.',
+    description:
+      'Photo gallery of Amir Ardalan. Primarily portrait shots captured on an iPhone.',
   },
   heading: `Photos — ${appTitle}`,
 };
