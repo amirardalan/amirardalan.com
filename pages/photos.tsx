@@ -21,7 +21,6 @@ type PhotosProps = {
 };
 
 const Photos: FC<PhotosProps> = ({ photosText, photos }) => {
-
   const isTablet = useMediaQuery(1024);
   const isMobile = useMediaQuery(768);
   const priorityCount = isMobile ? 2 : isTablet ? 6 : 8;
@@ -36,9 +35,10 @@ const Photos: FC<PhotosProps> = ({ photosText, photos }) => {
       gridTemplateColumns: 'repeat(4, 1fr)',
       gap: '1rem',
       '.gridItem': {
+        backgroundColor: 'var(--color-accent)',
         position: 'relative',
         overflow: 'hidden',
-        'img': {
+        img: {
           display: 'block',
           width: '100%',
           height: 'auto',
@@ -65,11 +65,14 @@ const Photos: FC<PhotosProps> = ({ photosText, photos }) => {
     '@media (max-width: 600px)': {
       padding: '0 2rem',
     },
-  })
+  });
 
   const sortPhotos = (photos: Photos[]) => {
-    return photos.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
-  }
+    return photos.sort(
+      (a, b) =>
+        new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+    );
+  };
 
   return (
     <Container
@@ -77,33 +80,43 @@ const Photos: FC<PhotosProps> = ({ photosText, photos }) => {
       description={photosText.meta.description}
     >
       <main css={stylePhotosPage}>
-      {!photos ? <LoadingTriangle /> :
-      <>
-        <h1 className="pageHeading">{photosText.meta.title}</h1>
-        <div className="grid">
-          {sortPhotos(photos).map((photo: { url: string | StaticImport; }, index: Key | null | undefined) => (
-            <div key={index} className="gridItem">
-              <Image 
-                src={photo.url} 
-                alt={`Photo ${Number(index) + 1}`} 
-                width={504} 
-                height={672}
-                onContextMenu={(e) => e.preventDefault()}
-                priority={typeof index === 'number' && index < priorityCount}
-                style={{ 
-                  WebkitTouchCallout: 'none', 
-                  pointerEvents: 'none', 
-                  userSelect: 'none', 
-                  outline: 'none',
-                }}
-              />
+        {!photos ? (
+          <LoadingTriangle />
+        ) : (
+          <>
+            <h1 className="pageHeading">{photosText.meta.title}</h1>
+            <div className="grid">
+              {sortPhotos(photos).map(
+                (
+                  photo: { url: string | StaticImport },
+                  index: Key | null | undefined
+                ) => (
+                  <div key={index} className="gridItem">
+                    <Image
+                      src={photo.url}
+                      alt={`Photo ${Number(index) + 1}`}
+                      width={504}
+                      height={672}
+                      onContextMenu={(e) => e.preventDefault()}
+                      priority={
+                        typeof index === 'number' && index < priorityCount
+                      }
+                      style={{
+                        WebkitTouchCallout: 'none',
+                        pointerEvents: 'none',
+                        userSelect: 'none',
+                        outline: 'none',
+                      }}
+                    />
+                  </div>
+                )
+              )}
             </div>
-          ))}
-        </div>
-        </>}
+          </>
+        )}
       </main>
     </Container>
-  )
+  );
 };
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -116,6 +129,6 @@ export const getStaticProps: GetStaticProps = async () => {
     },
     revalidate: 1,
   };
-}
+};
 
 export default Photos;
