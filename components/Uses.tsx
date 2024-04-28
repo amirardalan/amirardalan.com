@@ -8,9 +8,8 @@ interface UsesProps {
 
 const Uses: FC<UsesProps> = ({ content }) => {
   const styleUsesMarkdown: any = {
-    paddingTop: '2rem',
     display: 'grid',
-    gridTemplateColumns: 'repeat(2, 2fr)',
+    gridTemplateColumns: 'repeat(4, 2fr)',
     gap: '4rem',
     gridAutoRows: 'minmax(100px, auto)',
     lineHeight: '1.8rem',
@@ -66,7 +65,7 @@ const Uses: FC<UsesProps> = ({ content }) => {
         marginRight: '.25rem',
       },
     },
-    '@media(max-width: 1024px)': {
+    '@media(max-width: 1440px)': {
       gridTemplateColumns: 'repeat(2, 1fr)',
       gap: '2rem',
       h3: {

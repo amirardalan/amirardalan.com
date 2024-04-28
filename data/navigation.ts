@@ -8,14 +8,6 @@ export const nav = [
     icon: false,
   },
   {
-    title: 'Blog',
-    path: '/blog',
-    exact: '',
-    cName: 'blogNav',
-    aria: 'Blog',
-    icon: false,
-  },
-  {
     title: 'About',
     path: '/about',
     exact: '',
@@ -24,11 +16,19 @@ export const nav = [
     icon: false,
   },
   {
-    title: 'Timeline',
-    path: '/about#timeline',
+    title: 'Blog',
+    path: '/blog',
     exact: '',
-    cName: 'excludeInHeader',
-    aria: 'Career Timeline',
+    cName: 'blogNav',
+    aria: 'Blog',
+    icon: false,
+  },
+  {
+    title: 'Photos',
+    path: '/photos',
+    exact: '',
+    cName: 'photosNav',
+    aria: 'Photos',
     icon: false,
   },
   {

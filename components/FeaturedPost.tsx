@@ -93,9 +93,12 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
       height: 50,
       borderLeft: '2px solid var(--color-accent-lighter)',
       marginLeft: '.25rem',
+      '@media (max-width: 768px)': {
+        borderLeft: 'none',
+        marginLeft: 0,
+      }
     },
     '.featured, .latest': {
-      paddingLeft: '1.8rem',
       whiteSpace: 'nowrap',
       overflow: 'hidden',
       textOverflow: 'ellipsis',
@@ -105,9 +108,9 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
       top: '0',
       left: '0',
       transition: 'transform .5s ease-in-out, opacity .5s ease-in-out',
-      '@media (max-width: 480px)': {
-        paddingLeft: '1.5rem',
-      },
+      '@media (min-width: 768px)': {
+        paddingLeft: '1.8rem',
+      }
     },
     '.featured': {
       transform: `translateY(${showFeatured ? '0' : '100%'})`,
@@ -138,9 +141,6 @@ const FeaturedPost: FC<FeaturedPostProps> = ({
       },
       '@media (max-width: 768px)': {
         fontSize: 13,
-      },
-      '@media(max-width: 480px)': {
-        fontSize: 11,
       },
     },
     p: {

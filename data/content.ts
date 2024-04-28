@@ -10,17 +10,18 @@ const linkCodePen = 'https://codepen.io/amirardalan/collections/public';
 
 export const homeContent = {
   meta: {
-    title: `${appTitle} – ${appDesc}`,
+    title: `${appTitle} — ${appDesc}`,
     description: metaDescription,
   },
   typed: [
     `./amir.sh`,
     `i'm a design engineer`,
-    `peruse my <a href="/blog">blog</a> posts`,
-    `learn a bit <a href="/about">about</a> me`,
     `follow me <a href=${linkX} rel="noopener noreferrer">on x.com</a>`,
-    `check out my <a href=${linkGitHub} rel="noopener noreferrer">github</a>`,
-    `view my work <a href="/about#timeline">timeline</a>`,
+    `learn a bit <a href="/about">about</a> me`,
+    `peruse my <a href="/blog">blog</a> posts`,
+    `explore my <a href=${linkGitHub} rel="noopener noreferrer">github</a>`,
+    `browse my work <a href="/about#timeline">timeline</a>`,
+    `view my <a href="/photos">photo</a> gallery`,
     `see what <a href="/uses">tools</a> i use`,
   ],
   title: `${appTitle}`,
@@ -50,7 +51,7 @@ export const homeContent = {
 export const blogContent = {
   heading: `Blog — ${appTitle}`,
   meta: {
-    title: `Blog – ${appTitle}`,
+    title: `Blog — ${appTitle}`,
     description:
       'Thoughts on web development, design, and technology. Detailed guides for React, Next.js, TypeScript, and Markdown projects.',
   },
@@ -68,17 +69,17 @@ export const blogContent = {
 
 export const blogPostContent = {
   meta: {
-    title: ` – ${appTitle}`,
+    title: ` — ${appTitle}`,
   },
   title: {
-    draft: 'Draft –',
+    draft: 'Draft —',
   },
   xUrl: `${linkX}`,
 };
 
 export const aboutContent = {
   meta: {
-    title: `About – ${appTitle}`,
+    title: `About — ${appTitle}`,
     description: `${appTitle}'s summary and career timeline.`,
     github: 'GitHub',
     x: 'X',
@@ -284,7 +285,7 @@ export const timelineContent = {
 
 export const thanksContent = {
   meta: {
-    title: `Thank You – ${appTitle}`,
+    title: `Thank You — ${appTitle}`,
     description: 'Your contribution is greatly appreciated!',
   },
   heading: 'Thank You.',
@@ -293,10 +294,10 @@ export const thanksContent = {
 
 export const usesContent = {
   meta: {
-    title: `Uses – ${appTitle}`,
+    title: `Uses — ${appTitle}`,
     description: 'A list of gear, tools, and software I use.',
   },
-  heading: `Uses – ${appTitle}`,
+  heading: `Uses — ${appTitle}`,
   devices: {
     content: `### Devices
   #### Laptop
@@ -398,7 +399,6 @@ export const usesContent = {
   - Aseprite
   
   #### Listening
-  - TIDAL
   - YouTube Music
   - Apple Podcasts
 
@@ -415,10 +415,18 @@ export const usesContent = {
   },
 };
 
+export const photosContent = {
+  meta: {
+    title: `Photos — ${appTitle}`,
+    description: 'Captured moments in time.',
+  },
+  heading: `Photos — ${appTitle}`,
+};
+
 export const errorContent = {
   notFound: {
     meta: {
-      title: `Page Not Found – ${appTitle}`,
+      title: `Page Not Found — ${appTitle}`,
     },
     title: '404',
     text: `🚫 Page not found`,
@@ -431,7 +439,7 @@ export const errorContent = {
   },
   internalServerError: {
     meta: {
-      title: `Internal Server Error – ${appTitle}`,
+      title: `Internal Server Error — ${appTitle}`,
     },
     title: '500',
     text: `⚠️ Internal server error`,
@@ -514,7 +522,7 @@ export const breadcrumbContent = {
 // Admin
 export const adminContent = {
   meta: {
-    title: ` – ${appTitle}`,
+    title: ` — ${appTitle}`,
   },
   controls: {
     publish: 'Publish',
@@ -545,12 +553,12 @@ export const adminContent = {
   },
   create: {
     meta: {
-      title: `Create – ${appTitle}`,
+      title: `Create — ${appTitle}`,
     },
   },
   drafts: {
     meta: {
-      title: `Drafts – ${appTitle}`,
+      title: `Drafts — ${appTitle}`,
     },
     notice: `Unpublished Draft`,
     empty: `No drafts. Nice and tidy! Perhaps`,

@@ -66,6 +66,7 @@ const Navigation: FC = () => {
     top: 0,
     left: 0,
     fontFamily: 'var(--font-secondary)',
+    fontSize: 14,
     textTransform: 'uppercase',
     pointerEvents: toggleMenu ? 'auto' : 'none',
     '.mobileNavPanel': {

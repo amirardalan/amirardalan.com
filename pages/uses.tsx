@@ -16,9 +16,10 @@ interface UsesPageProps {
 
 const UsesPage: NextPage<UsesPageProps> = ({ uses }) => {
   const styleUsesPage = css({
-    maxWidth: 768,
+    maxWidth: 1920,
+    padding: '2rem 4rem 6rem 4rem',
     margin: '0 auto',
-    padding: '0 0 6rem 0',
+
     '@media (max-width: 1024px)': {
       padding: '0 2.5rem',
     },
