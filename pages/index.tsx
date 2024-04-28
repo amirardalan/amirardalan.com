@@ -66,11 +66,11 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
     alignItems: 'end',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    minHeight: '63.75vh',
+    minHeight: '82vh',
     paddingBottom: '6rem',
     '@media (max-width: 768px)': {
-      paddingBottom: '2rem'
-    }
+      paddingBottom: '2rem',
+    },
   });
   const styleContent = css({
     padding: '0 4rem',
@@ -86,7 +86,7 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
       },
     },
     h1: {
-      marginBottom: '6rem',
+      marginBottom: '1.5rem',
       lineHeight: '100%',
       fontFamily: 'var(--font-secondary)',
       fontSize: 'calc(4vw + 4vh)',
@@ -96,8 +96,18 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
         marginBottom: '1rem',
       },
     },
+    h2: {
+      color: 'var(--color-gray)',
+      textTransform: 'uppercase',
+      fontSize: 'calc(.8vw + .8vh)',
+      letterSpacing: 'calc(.5vw + .5vh)',
+      marginBottom: '6rem',
+      '@media (max-width: 768px)': {
+        marginBottom: '4rem',
+      },
+    },
     '.typed': {
-      fontSize: 26,
+      fontSize: 28,
       fontWeight: 400,
       overflow: 'hidden',
       margin: '6rem 0 3rem 0',
@@ -143,7 +153,10 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
             <div className="typed" aria-hidden="true">
               <TypingAnimation data={home.typed} />
             </div>
-            <h1>{home.title}</h1>
+            <div>
+              <h1>{home.title}</h1>
+              <h2>{home.subTitle}</h2>
+            </div>
           </div>
           <div css={styleCtaButtons}>
             <CtaButtons items={home.items} />

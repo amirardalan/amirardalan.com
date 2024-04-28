@@ -20,8 +20,8 @@ export const theme = {
   darkOpaque: 'rgba(0, 0, 0, 0.75)',
   darkAccent: '#16171b',
   darker: '#494754',
-  primary: '#5908ef',
-  secondary: '#7cffff',
+  primary: '#1164ff',
+  secondary: '#ff8757',
   grayLight: '#adb0c3',
   grayDark: '#717380',
   grayAccentLight: '#9f9eac',
@@ -34,9 +34,9 @@ export const theme = {
   warningLight: '#e64358',
   warningDark: '#de5063',
   gradientLight:
-    'linear-gradient(to bottom, #3d1c33 0%, #331c5c 50%,#3b3196 100%)',
+    'linear-gradient(to bottom, #642e1b 0%, #260a68 50%,#001f4e 100%)',
   gradientDark:
-    'linear-gradient(to bottom, #3d1c33 0%, #331c5c 50%,#3b3196 100%)',
+    'linear-gradient(to bottom, #003686 0%, #260a68 50%,#581d08 100%)',
   // Code (Dark)
   codeBgDark: '#0b0b0e',
   codeHighlightDark: '#18181c',

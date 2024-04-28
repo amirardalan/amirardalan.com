@@ -12,7 +12,7 @@ const Footer: FC<FooterProps> = () => {
   const styleFooterWrapper = css({
     position: 'relative',
     backgroundColor: 'var(--color-primary)',
-    padding: '4rem 4rem 2rem',
+    padding: '4rem 4rem 1.5rem',
     '@media (max-width: 1024px)': {
       padding: '2.5rem 2.5rem 1.5rem',
     },
@@ -104,7 +104,7 @@ const Footer: FC<FooterProps> = () => {
       color: 'var(--color-bg)',
     },
     '@media(max-width: 768px)': {
-      marginTop: '1.5rem',
+      marginTop: '3rem',
     },
   });
   const styleFooterNav = css({
