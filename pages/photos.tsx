@@ -45,8 +45,9 @@ const Photos: FC<PhotosProps> = ({ photosText, photos }) => {
       gridTemplateColumns: 'repeat(4, 1fr)',
       gap: '1rem',
       '.gridItem': {
-        background:
-          'linear-gradient(-45deg, var(--color-bg) 0%, var(--color-accent) 25%, var(--color-bg) 50%, var(--color-accent) 75%, var(--color-bg) 100%)',
+        background: !isLoaded
+          ? 'linear-gradient(-45deg, var(--color-bg) 0%, var(--color-accent) 25%, var(--color-bg) 50%, var(--color-accent) 75%, var(--color-bg) 100%)'
+          : 'var(--color-accent)',
         backgroundSize: '400% 300%',
         animation: `skeleton 4s linear infinite`,
         '@keyframes skeleton': {
