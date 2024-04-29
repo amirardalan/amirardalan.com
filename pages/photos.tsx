@@ -1,4 +1,4 @@
-import { FC, Key, useState } from 'react';
+import { FC, Key } from 'react';
 import { GetStaticProps } from 'next';
 import Image from 'next/image';
 import { css } from '@emotion/react';
@@ -9,7 +9,6 @@ import { fetchPhotos } from '@/lib/photos';
 import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 import LoadingTriangle from '@/components/LoadingTriangle';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
-import LoadingSpinner from '@/components/LoadingSpinner';
 
 interface Photos {
   url: string;
@@ -26,42 +25,40 @@ const Photos: FC<PhotosProps> = ({ photosText, photos }) => {
   const isMobile = useMediaQuery(768);
   const priorityCount = isMobile ? 2 : isTablet ? 6 : 8;
 
-  const IMG_WIDTH = 1008;
-  const IMG_HEIGHT = 1334;
-
-  const sortPhotos = (photos: Photos[]) => {
-    return photos.sort(
-      (a, b) =>
-        new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
-    );
-  };
-
-  const [isLoading, setIsLoading] = useState(true);
-
   const stylePhotosPage = css({
     maxWidth: 1920,
     padding: '0 4rem',
     margin: '0 auto',
+    '.photo': {
+      WebkitTouchCallout: 'none',
+      pointerEvents: 'none',
+      userSelect: 'none',
+      outline: 'none',
+    },
     '.grid': {
       margin: '4rem 0 6rem',
       display: 'grid',
       gridTemplateColumns: 'repeat(4, 1fr)',
       gap: '1rem',
       '.gridItem': {
-        backgroundColor: 'var(--color-accent)',
+        background:
+          'linear-gradient(-90deg, var(--color-accent-lighter) 0%, var(--color-accent) 25%, var(--color-accent-lighter) 50%, var(--color-accent) 75%, var(--color-bg) 100%)',
+        backgroundSize: '400% 100%',
+        animation: `skeleton 4s linear infinite`,
+        '@keyframes skeleton': {
+          '0%': {
+            backgroundPosition: '0 0',
+          },
+          '100%': {
+            backgroundPosition: '400% 0',
+          },
+        },
         position: 'relative',
         overflow: 'hidden',
         img: {
           display: 'block',
           width: '100%',
           height: 'auto',
-        },
-        '.imageWrapper': {
-          position: 'relative',
-          overflow: 'hidden',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
         },
       },
       '@media (max-width: 1600px)': {
@@ -87,6 +84,13 @@ const Photos: FC<PhotosProps> = ({ photosText, photos }) => {
     },
   });
 
+  const sortPhotos = (photos: Photos[]) => {
+    return photos.sort(
+      (a, b) =>
+        new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+    );
+  };
+
   return (
     <Container
       title={photosText.meta.title}
@@ -103,33 +107,24 @@ const Photos: FC<PhotosProps> = ({ photosText, photos }) => {
                 (
                   photo: { url: string | StaticImport },
                   index: Key | null | undefined
-                ) => {
-                  return (
-                    <div key={index} className="gridItem">
-                      <div className="imageWrapper">
-                        <Image
-                          src={photo.url}
-                          alt={`Photo ${Number(index) + 1}`}
-                          width={IMG_WIDTH}
-                          height={IMG_HEIGHT}
-                          onContextMenu={(e) => e.preventDefault()}
-                          priority={
-                            typeof index === 'number' && index < priorityCount
-                          }
-                          quality={90}
-                          style={{
-                            WebkitTouchCallout: 'none',
-                            pointerEvents: 'none',
-                            userSelect: 'none',
-                            outline: 'none',
-                          }}
-                          onLoad={() => setIsLoading(false)}
-                        />
-                        {isLoading && <LoadingSpinner size={35} />}
-                      </div>
-                    </div>
-                  );
-                }
+                ) => (
+                  <div key={index} className="gridItem">
+                    <Image
+                      src={photo.url}
+                      alt={`Photo ${Number(index) + 1} of ${
+                        photos.length
+                      } by Amir Ardalan`}
+                      width={504}
+                      height={672}
+                      onContextMenu={(e) => e.preventDefault()}
+                      priority={
+                        typeof index === 'number' && index < priorityCount
+                      }
+                      quality={100}
+                      className="photo"
+                    />
+                  </div>
+                )
               )}
             </div>
           </>
