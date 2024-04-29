@@ -2,9 +2,10 @@ import { FC } from 'react';
 
 type LoadingSpinnerProps = {
   size: number;
+  color?: string;
 };
 
-const LoadingSpinner: FC<LoadingSpinnerProps> = ({ size }) => {
+const LoadingSpinner: FC<LoadingSpinnerProps> = ({ size, color }) => {
   return (
     <svg
       viewBox="0 0 50 50"
@@ -20,7 +21,7 @@ const LoadingSpinner: FC<LoadingSpinnerProps> = ({ size }) => {
         height: size,
         marginRight: 5,
         '& .path': {
-          stroke: 'var(--color-disabled)',
+          stroke: color ? color : 'var(--color-disabled)',
           strokeLinecap: 'round',
           animation: 'dash 1.5s ease-in-out infinite',
         },

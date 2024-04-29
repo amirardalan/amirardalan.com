@@ -1,4 +1,4 @@
-import { FC, Key } from 'react';
+import { FC, Key, useState } from 'react';
 import { GetStaticProps } from 'next';
 import Image from 'next/image';
 import { css } from '@emotion/react';
@@ -9,6 +9,7 @@ import { fetchPhotos } from '@/lib/photos';
 import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 import LoadingTriangle from '@/components/LoadingTriangle';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
+import LoadingSpinner from '@/components/LoadingSpinner';
 
 interface Photos {
   url: string;
@@ -24,6 +25,18 @@ const Photos: FC<PhotosProps> = ({ photosText, photos }) => {
   const isTablet = useMediaQuery(1024);
   const isMobile = useMediaQuery(768);
   const priorityCount = isMobile ? 2 : isTablet ? 6 : 8;
+
+  const IMG_WIDTH = 1008;
+  const IMG_HEIGHT = 1334;
+
+  const sortPhotos = (photos: Photos[]) => {
+    return photos.sort(
+      (a, b) =>
+        new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+    );
+  };
+
+  const [isLoading, setIsLoading] = useState(true);
 
   const stylePhotosPage = css({
     maxWidth: 1920,
@@ -42,6 +55,13 @@ const Photos: FC<PhotosProps> = ({ photosText, photos }) => {
           display: 'block',
           width: '100%',
           height: 'auto',
+        },
+        '.imageWrapper': {
+          position: 'relative',
+          overflow: 'hidden',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
         },
       },
       '@media (max-width: 1600px)': {
@@ -67,13 +87,6 @@ const Photos: FC<PhotosProps> = ({ photosText, photos }) => {
     },
   });
 
-  const sortPhotos = (photos: Photos[]) => {
-    return photos.sort(
-      (a, b) =>
-        new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
-    );
-  };
-
   return (
     <Container
       title={photosText.meta.title}
@@ -90,27 +103,33 @@ const Photos: FC<PhotosProps> = ({ photosText, photos }) => {
                 (
                   photo: { url: string | StaticImport },
                   index: Key | null | undefined
-                ) => (
-                  <div key={index} className="gridItem">
-                    <Image
-                      src={photo.url}
-                      alt={`Photo ${Number(index) + 1}`}
-                      width={1008}
-                      height={1344}
-                      onContextMenu={(e) => e.preventDefault()}
-                      priority={
-                        typeof index === 'number' && index < priorityCount
-                      }
-                      quality={100}
-                      style={{
-                        WebkitTouchCallout: 'none',
-                        pointerEvents: 'none',
-                        userSelect: 'none',
-                        outline: 'none',
-                      }}
-                    />
-                  </div>
-                )
+                ) => {
+                  return (
+                    <div key={index} className="gridItem">
+                      <div className="imageWrapper">
+                        <Image
+                          src={photo.url}
+                          alt={`Photo ${Number(index) + 1}`}
+                          width={IMG_WIDTH}
+                          height={IMG_HEIGHT}
+                          onContextMenu={(e) => e.preventDefault()}
+                          priority={
+                            typeof index === 'number' && index < priorityCount
+                          }
+                          quality={90}
+                          style={{
+                            WebkitTouchCallout: 'none',
+                            pointerEvents: 'none',
+                            userSelect: 'none',
+                            outline: 'none',
+                          }}
+                          onLoad={() => setIsLoading(false)}
+                        />
+                        {isLoading && <LoadingSpinner size={35} />}
+                      </div>
+                    </div>
+                  );
+                }
               )}
             </div>
           </>
