@@ -42,15 +42,15 @@ const Photos: FC<PhotosProps> = ({ photosText, photos }) => {
       gap: '1rem',
       '.gridItem': {
         background:
-          'linear-gradient(-90deg, var(--color-accent-lighter) 0%, var(--color-accent) 25%, var(--color-accent-lighter) 50%, var(--color-accent) 75%, var(--color-bg) 100%)',
-        backgroundSize: '400% 100%',
+          'linear-gradient(-45deg, var(--color-bg) 0%, var(--color-accent) 25%, var(--color-bg) 50%, var(--color-accent) 75%, var(--color-bg) 100%)',
+        backgroundSize: '400% 220%',
         animation: `skeleton 4s linear infinite`,
         '@keyframes skeleton': {
           '0%': {
-            backgroundPosition: '0 0',
+            backgroundPosition: '-300% 0',
           },
           '100%': {
-            backgroundPosition: '400% 0',
+            backgroundPosition: '100% 0',
           },
         },
         position: 'relative',
@@ -114,8 +114,8 @@ const Photos: FC<PhotosProps> = ({ photosText, photos }) => {
                       alt={`Photo ${Number(index) + 1} of ${
                         photos.length
                       } by Amir Ardalan`}
-                      width={504}
-                      height={672}
+                      width={1008}
+                      height={1344}
                       onContextMenu={(e) => e.preventDefault()}
                       priority={
                         typeof index === 'number' && index < priorityCount
