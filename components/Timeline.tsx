@@ -15,7 +15,6 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
   });
 
   const styleTimelineHeading = css({
-    marginTop: '2.8rem',
     paddingBottom: '1.5rem',
     '@media (max-width: 768px)': {
       marginTop: 0,
@@ -101,12 +100,18 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
           width: 2,
           animation: 'growUp .8s',
           background: 'var(--color-text)',
+          '@media (max-width: 1024px)': {
+            animation: 'growUp .5s',
+          },
         },
         '&.active': {
           '.scrollHighlight': {
             height: '100%',
             background: 'var(--color-text)',
             animation: 'growDown 1s',
+            '@media (max-width: 1024px)': {
+              animation: 'growUp .5s',
+            },
           },
         },
         '&:after': {

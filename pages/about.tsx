@@ -30,7 +30,7 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
     },
     '.aboutIntro': {
       fontFamily: 'var(--font-tertiary)',
-      fontSize: 32,
+      fontSize: 30,
       lineHeight: '3.25rem',
       margin: '3rem 0 6rem',
       li: {
@@ -38,7 +38,7 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
         marginBottom: '2.5rem',
       },
       '@media (max-width: 768px)': {
-        fontSize: 24,
+        fontSize: 22,
         lineHeight: '2.25rem',
         margin: '3rem 0 3.5rem',
         li: {
@@ -60,6 +60,12 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
     },
     '@media (max-width: 600px)': {
       padding: '0 2rem',
+    },
+    '#timeline': {
+      marginBottom: '2.8rem',
+      '@media (max-width: 768px)': {
+        marginBottom: 0,
+      },
     },
   };
 
