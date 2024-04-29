@@ -95,12 +95,13 @@ const Photos: FC<PhotosProps> = ({ photosText, photos }) => {
                     <Image
                       src={photo.url}
                       alt={`Photo ${Number(index) + 1}`}
-                      width={504}
-                      height={672}
+                      width={1008}
+                      height={1344}
                       onContextMenu={(e) => e.preventDefault()}
                       priority={
                         typeof index === 'number' && index < priorityCount
                       }
+                      quality={100}
                       style={{
                         WebkitTouchCallout: 'none',
                         pointerEvents: 'none',
