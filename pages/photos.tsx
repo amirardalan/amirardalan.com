@@ -1,4 +1,4 @@
-import { FC, Key } from 'react';
+import { FC, Key, useState } from 'react';
 import { GetStaticProps } from 'next';
 import Image from 'next/image';
 import { css } from '@emotion/react';
@@ -25,6 +25,8 @@ const Photos: FC<PhotosProps> = ({ photosText, photos }) => {
   const isMobile = useMediaQuery(768);
   const priorityCount = isMobile ? 2 : isTablet ? 6 : 8;
 
+  const [isLoaded, setIsLoaded] = useState(false);
+
   const stylePhotosPage = css({
     maxWidth: 1920,
     padding: '0 4rem',
@@ -34,6 +36,8 @@ const Photos: FC<PhotosProps> = ({ photosText, photos }) => {
       pointerEvents: 'none',
       userSelect: 'none',
       outline: 'none',
+      opacity: !isLoaded ? 0 : 1,
+      transition: 'opacity 1s',
     },
     '.grid': {
       margin: '4rem 0 6rem',
@@ -43,7 +47,7 @@ const Photos: FC<PhotosProps> = ({ photosText, photos }) => {
       '.gridItem': {
         background:
           'linear-gradient(-45deg, var(--color-bg) 0%, var(--color-accent) 25%, var(--color-bg) 50%, var(--color-accent) 75%, var(--color-bg) 100%)',
-        backgroundSize: '400% 220%',
+        backgroundSize: '400% 300%',
         animation: `skeleton 4s linear infinite`,
         '@keyframes skeleton': {
           '0%': {
@@ -122,6 +126,7 @@ const Photos: FC<PhotosProps> = ({ photosText, photos }) => {
                       }
                       quality={100}
                       className="photo"
+                      onLoad={() => setIsLoaded(true)}
                     />
                   </div>
                 )
