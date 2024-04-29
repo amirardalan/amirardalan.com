@@ -110,7 +110,7 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
             background: 'var(--color-text)',
             animation: 'growDown 1s',
             '@media (max-width: 1024px)': {
-              animation: 'growUp .5s',
+              animation: 'growDown .5s',
             },
           },
         },
