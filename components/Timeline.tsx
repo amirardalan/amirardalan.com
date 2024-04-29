@@ -16,6 +16,7 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
 
   const styleTimelineHeading = css({
     marginTop: '2.8rem',
+    paddingBottom: '1.5rem',
     '@media (max-width: 768px)': {
       marginTop: 0,
     },
@@ -26,11 +27,12 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
     position: 'relative',
     '.readMoreLink': {
       fontSize: 20,
-      marginTop: '7rem',
+      marginTop: '4rem',
       paddingBottom: '2rem',
       display: 'flex',
       justifyContent: 'center',
-      fontFamily: 'var(--font-secondary)',
+      fontFamily: 'var(--font-tertiary)',
+      fontStyle: 'italic',
       '&.active': {
         animation: 'fadeIn 1s forwards',
       },
@@ -74,14 +76,11 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
       '&:nth-of-type(even), &:nth-of-type(odd)': {
         '.event': {
           maxWidth: 345,
-          boxShadow: '-1px 1px 0 var(--color-accent-lighter)',
-          background: 'var(--color-accent)',
           h3: {
             marginBottom: '.5rem',
             fontFamily: 'var(--font-secondary)',
-            fontSize: 14,
+            fontSize: 15,
             fontWeight: 400,
-            textTransform: 'uppercase',
           },
           '@media(max-width: 480px)': {
             boxShadow: 'none',
@@ -94,27 +93,27 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
         zIndex: 2,
         position: 'relative',
         justifySelf: 'flex-end',
-        borderRight: '2px solid var(--color-accent-lighter)',
+        borderRight: '2px solid var(--color-accent)',
         '.scrollHighlight': {
           position: 'absolute',
           top: 0,
           right: -2,
           width: 2,
-          animation: 'growUp .5s',
+          animation: 'growUp .8s',
           background: 'var(--color-text)',
         },
         '&.active': {
           '.scrollHighlight': {
             height: '100%',
             background: 'var(--color-text)',
-            animation: 'growDown .5s',
+            animation: 'growDown 1s',
           },
         },
         '&:after': {
           fontFamily: 'var(--font-primary)',
           position: 'absolute',
-          top: -31.5,
-          right: -15.25,
+          top: -32,
+          right: -15.5,
           content: '"•"',
           fontSize: 48,
           color: 'var(--color-text)',
@@ -173,7 +172,6 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
             top: 10,
             left: -23,
             content: '""',
-            borderLeft: '20px solid var(--color-accent-lighter)',
             borderRight: '12px solid transparent',
             borderBottom: '12px solid transparent',
             transform: 'rotateY(0deg) rotate(90deg)',
@@ -195,12 +193,17 @@ const Timeline: FC<TimelineProps> = ({ timeline }) => {
       },
       '.date': {
         color: 'var(--color-primary)',
-        textTransform: 'uppercase',
-        fontFamily: 'var(--font-secondary)',
-        fontSize: 18,
+        fontFamily: 'var(--font-tertiary)',
+        fontStyle: 'italic',
+        fontSize: 24,
+        letterSpacing: 2,
         lineHeight: '.5rem',
+        '@media (max-width: 768px)': {
+          fontSize: 18,
+        },
       },
       '.event': {
+        backgroundColor: 'var(--color-accent)',
         position: 'relative',
         marginBottom: '4rem',
         padding: '2rem',

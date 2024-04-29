@@ -7,10 +7,8 @@ type TimelineEntryProps = {
   content: string;
 };
 
-const TimelineEntry: FC<TimelineEntryProps> = (props) => {
-  const { cName, title, content } = props;
-
-  const { ref, inView } = useInView({
+const TimelineEntry: FC<TimelineEntryProps> = ({ cName, title, content }) => {
+  const [ref, inView] = useInView({
     rootMargin: '60% 0% -60% 0%',
   });
 

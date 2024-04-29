@@ -175,13 +175,13 @@ export const timelineContent = {
       cName: 'date',
     },
     {
-      title: 'Built amir.sh Blog & CMS',
+      title: 'Built open-source Blog & CMS',
       content:
         'Building, maintaining a Next.js Blog & CMS in TypeScript. Began blogging about React, Markdown, and my personal career journey.',
       cName: 'event',
     },
     {
-      title: 'Journey into React and Modern Dev',
+      title: 'Journey into React and TypeScript',
       content:
         'Pivoted away from Salesforce Commerce Cloud and into React, Next.js, TypeScript, and modern web development.',
       cName: 'event',
