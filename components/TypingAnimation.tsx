@@ -25,7 +25,7 @@ const TypingAnimation: FC<TypingAnimationProps> = ({ data }) => {
       typeSpeed: 90,
       backSpeed: 0,
       fadeOut: true,
-      backDelay: 4800,
+      backDelay: 1000,
       loop: true,
     };
     const typed = new Typed('.typingAnimation', options);
