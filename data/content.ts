@@ -324,7 +324,7 @@ export const usesContent = {
   - KRK VXT 8
   - Beyerdynamic DT770Pro
   - Sennheiser HD25-1 II
-  - Apple AirPods Pro
+  - Apple AirPods Pro (2nd gen.)
   `,
   },
   tools: {
@@ -336,7 +336,6 @@ export const usesContent = {
   - Tokyo Night
   - Material Icon Theme
   - Tailwind CSS IntelliSense
-  - CSS-in-JS
   - vscode-styled-components
   - Prisma
   - ESLint
@@ -365,10 +364,11 @@ export const usesContent = {
   - Supabase
   - Prisma
   - SWR
-  - React Markdown
+  - React-Markdown
   - React Syntax Highlighter
   - React Testing Library
   - Vercel
+  - Cloudinary
 
   ---
   #### CLI
@@ -395,6 +395,7 @@ export const usesContent = {
   #### Design
   - Figma
   - Aseprite
+  - Excalidraw
   
   #### Listening
   - YouTube Music
