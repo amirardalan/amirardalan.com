@@ -21,7 +21,7 @@ export const theme = {
   darkAccent: '#16171b',
   darker: '#494754',
   primary: '#1164ff',
-  secondary: '#ff8757',
+  secondary: '#00fbff',
   grayLight: '#adb0c3',
   grayDark: '#717380',
   grayAccentLight: '#9f9eac',
