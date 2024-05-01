@@ -483,7 +483,9 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
         )}
 
         <article className="post postFull">
-          <BlogPostStats post={post} isFeatured={isFeatured} />
+          {!userHasValidSession && (
+            <BlogPostStats post={post} isFeatured={isFeatured} />
+          )}
           <h1 aria-label={`${title}`}>{title}</h1>
           <p className="teaser">{post.teaser}</p>
           <div
