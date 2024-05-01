@@ -15,14 +15,12 @@ const photosHandler = async (req: NextApiRequest, res: NextApiResponse) => {
       res.status(200).json(result);
     } catch (error) {
       console.error(error);
-      res.status(500).json({ message: 'Failed to browse images' });
+      res.status(500).json({ message: 'Failed to get images' });
     }
-  } else if (req.method === 'POST') {
-    res.status(200).json({ message: 'Webhook received' });
   } else {
-    res.setHeader('Allow', ['GET', 'POST']);
+    res.setHeader('Allow', ['GET']);
     res.status(405).end(`Method ${req.method} Not Allowed`);
   }
-}
+};
 
 export default photosHandler;

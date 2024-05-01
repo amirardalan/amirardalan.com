@@ -6,7 +6,6 @@ import Container from '@/components/Container';
 import { photosContent } from '@/data/content';
 import { PhotosTypes } from '@/types/photos';
 import { fetchPhotos } from '@/lib/photos';
-import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 import LoadingTriangle from '@/components/LoadingTriangle';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
 
@@ -109,10 +108,7 @@ const Photos: FC<PhotosProps> = ({ photosText, photos }) => {
             <h1 className="pageHeading">{photosText.meta.title}</h1>
             <div className="grid">
               {sortPhotos(photos).map(
-                (
-                  photo: { url: string | StaticImport },
-                  index: Key | null | undefined
-                ) => (
+                (photo: { url: string }, index: Key | null | undefined) => (
                   <div key={index} className="gridItem">
                     <Image
                       src={photo.url}
