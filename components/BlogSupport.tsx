@@ -96,7 +96,7 @@ const BlogSupport: FC<BlogSupportProps> = ({
         flexDirection: 'column',
         margin: '2.3rem 2.5rem',
         '@media (max-width: 480px)': {
-          margin: '1.8rem 2rem',
+          margin: '.5rem 2rem',
         },
         '.paymentMethods': {
           display: 'flex',
@@ -118,6 +118,9 @@ const BlogSupport: FC<BlogSupportProps> = ({
                   textDecoration: 'none',
                 },
               },
+            },
+            '@media (max-width: 480px)': {
+              fontSize: 14,
             },
           },
           '.cashapp, .paypal': {
@@ -142,6 +145,9 @@ const BlogSupport: FC<BlogSupportProps> = ({
           '.paymentName': {
             marginLeft: '1rem',
             verticalAlign: 'top',
+            '@media (max-width: 480px)': {
+              marginLeft: 0,
+            },
           },
           '.copyConfirmation': {
             display: 'flex',

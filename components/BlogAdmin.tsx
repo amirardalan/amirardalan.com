@@ -180,6 +180,7 @@ const BlogAdmin: FC = () => {
               },
             },
             '.draftNotification': {
+              marginBottom: '2rem',
               padding: '1rem',
               background: 'var(--color-accent)',
               fontSize: 13,
@@ -217,7 +218,7 @@ const BlogAdmin: FC = () => {
                     },
                     '.category': {
                       fontSize: 10,
-                    }
+                    },
                   },
                   '.blogListHeading': {
                     fontSize: 22,
@@ -226,7 +227,7 @@ const BlogAdmin: FC = () => {
                     '@media (max-width: 768px)': {
                       fontSize: 18,
                       margin: '0 0 .3rem',
-                    }
+                    },
                   },
                   '.teaser': {
                     fontFamily: 'var(--font-tertiary)',

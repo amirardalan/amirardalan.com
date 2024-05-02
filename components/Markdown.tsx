@@ -140,7 +140,8 @@ const BlogMarkdown: FC<BlogMarkdownProps> = ({ markdown }) => {
       },
     },
     code: {
-      fontSize: 14,
+      fontSize: 16,
+      color: 'var(--color-gray)',
       backgroundColor: 'var(--color-accent)',
       padding: '.1rem .3rem',
       wordWrap: 'break-word',
