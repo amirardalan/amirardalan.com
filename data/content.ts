@@ -18,7 +18,7 @@ export const homeContent = {
     `learn a bit <a href="/about">about</a> me^3000`,
     `peruse my <a href="/blog">blog</a> posts^3000`,
     `traverse my <a href="/about#timeline">timeline</a>^3000`,
-    `browse my <a href="/photos">photo</a> gallery^3000`,
+    `browse my <a href="/photos">photo</a>^3000`,
     `view my <a href="/uses">toolbox</a>^3000`,
     `follow me <a href=${linkX} rel="noopener noreferrer">on x.com</a>^3000`,
     `explore my <a href=${linkGitHub} rel="noopener noreferrer">github</a>^3000`,
