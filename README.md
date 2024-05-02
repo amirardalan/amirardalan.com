@@ -55,7 +55,8 @@ _Keep this file private, ensure `.env` remains in `.gitignore`, don't commit to 
 NEXT_PUBLIC_SITE_URL=http://localhost:3000
 NEXT_PUBLIC_USER_EMAIL=you@email.com
 
-DATABASE_URL=postgres://postgres.[DB_ADDRESS]:[YOUR_PASSWORD]@[DB_SERVER]:[DB_PORT]/postgres
+DATABASE_URL=postgres://postgres.[DB_ADDRESS]:[YOUR_PASSWORD]@[DB_SERVER]:6543/postgres?pgbouncer=true&connection_limit=1
+DIRECT_URL=postgres://postgres.[DB_ADDRESS]:[YOUR_PASSWORD]@[DB_SERVER]:5432/postgres
 
 NEXT_AUTH_SECRET=
 GITHUB_SECRET=
@@ -76,7 +77,10 @@ Leave as `http://localhost:3000` for Development, set as `https://yourDomainName
 Your email address, used for authentication and optionally your about or contact page.
 
 `DATABASE_URL`
-The URL for your PostgreSQL database
+[Supabase](https://supabase.com/docs/guides/database/connecting-to-postgres) postgres database connection string.
+
+`DIRECT_URL`
+[Supabase](https://supabase.com/docs/guides/database/connecting-to-postgres) direct postgres database connection string.
 
 `NEXT_AUTH_SECRET`
 [Generate a secret](https://next-auth.js.org/configuration/options#nextauth_secret) for Next Auth
