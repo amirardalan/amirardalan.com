@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import cloudinary from '@/lib/cloudinaryConfig';
+import cloudinary from '@/lib/cloudinary';
 
 const deleteImageHandler = async (
   req: NextApiRequest,

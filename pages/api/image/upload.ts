@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import multer from 'multer';
-import cloudinary from '@/lib/cloudinaryConfig';
+import cloudinary from '@/lib/cloudinary';
 
 interface MulterRequest extends NextApiRequest {
   file: {

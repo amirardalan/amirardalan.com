@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import cloudinary from '@/lib/cloudinaryConfig';
+import cloudinary from '@/lib/cloudinary';
 
 const photosHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === 'GET') {
