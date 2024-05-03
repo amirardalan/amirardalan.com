@@ -45,7 +45,7 @@ const Checkbox: FC<CheckboxProps> = ({ label, value, onChange, title }) => {
   });
 
   const styleCheckboxLabel = css({
-    fontFamily: 'var(--font-primary)',
+    fontFamily: 'var(--font-secondary)',
     display: 'flex',
     alignItems: 'center',
   });

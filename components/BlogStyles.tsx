@@ -6,11 +6,11 @@ type BlogLayoutProps = {
 };
 
 const blogStyles = css({
-  maxWidth: 768,
-  margin: '0 auto',
   '.blog': {
+    maxWidth: 768,
+    margin: '0 auto',
     '&.admin.create, &.admin.edit': {
-      maxWidth: '100%',
+      maxWidth: 1024,
       padding: '0 4rem',
       '@media (max-width: 1024px)': {
         padding: '0 2.5rem',

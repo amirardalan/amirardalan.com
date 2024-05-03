@@ -58,8 +58,9 @@ const styleModal = css({
     },
   },
   '.modalHeader': {
-    fontFamily: 'var(--font-primary)',
+    fontFamily: 'var(--font-secondary)',
     fontSize: 20,
+    fontWeight: 400,
     display: 'flex',
     flexDirection: 'row',
     alignSelf: 'flex-start',

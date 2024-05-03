@@ -51,13 +51,13 @@ const BlogPostControls: FC<BlogPostControlsProps> = ({
   };
 
   const RenderEditButton = () => {
-    if (!isCreatePage) {
-      return (
+    return (
+      isCreatePage && (
         <button className="buttonCompact cancelBtn" onClick={handleCancel}>
           {admin.controls.cancel}
         </button>
-      );
-    } else return null;
+      )
+    );
   };
 
   const RenderDeleteButton = () => {
@@ -72,7 +72,7 @@ const BlogPostControls: FC<BlogPostControlsProps> = ({
   };
 
   const RenderLoadingSpinner = () => {
-    return isFetching ? <LoadingSpinner size={30} /> : null;
+    return isFetching && <LoadingSpinner size={30} />;
   };
 
   // Create & Edit Page Controls
