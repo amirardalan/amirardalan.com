@@ -149,6 +149,14 @@ const Edit: FC<EditProps> = ({
 
       const newSlug = data.slug;
       await Router.push(`/blog/${newSlug}`);
+
+      revalidateChanges(
+        published,
+        latestPost,
+        featured,
+        deleted,
+        setFetchStatus
+      );
     } catch (error) {
       console.error(error);
     }
