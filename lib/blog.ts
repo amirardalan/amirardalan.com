@@ -25,9 +25,16 @@ export async function editPost(
   setFetchStatus: (active: boolean) => void
 ): Promise<void> {
   setFetchStatus(true);
-  await fetch(`/blog/edit/${slug}`, { method: 'PUT' }).then(() => {
-    Router.push(`/blog/edit/${slug}`);
-  });
+  const response = await fetch(`/blog/edit/${slug}`, { method: 'PUT' });
+
+  if (response.ok) {
+    const data = await response.json();
+    const newSlug = data.slug;
+    Router.push(`/blog/edit/${newSlug}`);
+  } else {
+    console.error('Failed to edit post');
+  }
+  setFetchStatus(false);
 }
 
 // Delete Post
