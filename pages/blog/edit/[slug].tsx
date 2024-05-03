@@ -135,19 +135,20 @@ const Edit: FC<EditProps> = ({
         editFeatured,
         showEdited,
       };
-      await fetch('/api/update', {
+      const res = await fetch('/api/update', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
-      }).then(() =>
-        revalidateChanges(
-          published,
-          latestPost,
-          featured,
-          deleted,
-          setFetchStatus
-        )
-      );
+      });
+
+      const data = await res.json();
+
+      if (!data || typeof data.slug !== 'string') {
+        throw new Error('Unexpected response data');
+      }
+
+      const newSlug = data.slug;
+      await Router.push(`/blog/${newSlug}`);
     } catch (error) {
       console.error(error);
     }
