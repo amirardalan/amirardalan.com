@@ -3,7 +3,7 @@ import revalidateChanges from '@/lib/revalidate';
 import { signatureHelper } from '@/lib/signatureHelper';
 
 const secretKey = process.env.CLOUDINARY_API_SECRET || '';
-const signatureHeader = 'x-cloudinary-signature';
+const signatureHeader = 'x-cld-signature';
 
 const photosHandler = signatureHelper(
   secretKey,
