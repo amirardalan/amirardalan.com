@@ -1,13 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import revalidateChanges from '@/lib/revalidate';
-import { signatureHelper } from '@/lib/signatureHelper';
-
-const secretKey = process.env.CLOUDINARY_API_SECRET || '';
-const signatureHeader = 'x-cld-signature';
+import { signatureHelper } from '@/lib/cloudinary-signature';
 
 const photosHandler = signatureHelper(
-  secretKey,
-  signatureHeader,
   async (req: NextApiRequest, res: NextApiResponse) => {
     console.log('Received a request:', req.method, req.url);
     console.log('Request body:', req.body);

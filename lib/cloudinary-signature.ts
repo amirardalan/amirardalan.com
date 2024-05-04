@@ -2,13 +2,16 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import crypto from 'crypto';
 
 export const signatureHelper = (
-  secretKey: string,
-  signatureHeader: string,
   handler: (req: NextApiRequest, res: NextApiResponse) => void
 ) => {
+  const secretKey = process.env.CLOUDINARY_API_SECRET || '';
+  const signatureHeader = 'x-cld-signature';
+
   return async function (req: NextApiRequest, res: NextApiResponse) {
     const receivedSignature = req.headers[signatureHeader];
-    const { notification_type, timestamp } = req.body;
+    let { notification_type, timestamp } = req.body;
+
+    timestamp = Math.floor(new Date(timestamp).getTime() / 1000);
 
     const payload = `notification_type=${notification_type}&timestamp=${timestamp}`;
 
