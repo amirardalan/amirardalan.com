@@ -9,13 +9,12 @@ export const signatureHelper = (
   return async function (req: NextApiRequest, res: NextApiResponse) {
     const receivedSignature = req.headers[signatureHeader];
 
-    const sortedPayload = Object.keys(req.body)
-      .sort()
-      .map((key) => `${key}=${req.body[key]}`)
-      .join('&');
+    const { notification_type, notification_url, timestamp } = req.body;
+
+    const payload = `${notification_type}${notification_url}${timestamp}`;
 
     const hmac = crypto.createHmac('sha256', secretKey);
-    const signature = hmac.update(sortedPayload).digest('hex');
+    const signature = hmac.update(payload).digest('hex');
 
     if (receivedSignature !== signature) {
       res.status(401).json({ message: 'Invalid signature' });
