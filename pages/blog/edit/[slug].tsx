@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { PrismaClient } from '@prisma/client';
 import { useSession } from 'next-auth/react';
 
-import revalidateBlog from '@/lib/revalidate-blog';
+import revalidateBlog from '@/lib/blog-revalidate';
 import { useFetchStatus } from '@/hooks/useLoadingIndicator';
 
 import Container from '@/components/Container';

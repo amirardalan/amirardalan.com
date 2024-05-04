@@ -1,5 +1,5 @@
 import Router from 'next/router';
-import revalidateBlog from '@/lib/revalidate-blog';
+import revalidateBlog from '@/lib/blog-revalidate';
 
 // Publish/Unpublish Post
 export async function publishPost(
