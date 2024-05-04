@@ -16,6 +16,14 @@ export const signatureHelper = (
     const hmac = crypto.createHmac('sha256', secretKey);
     const signature = hmac.update(payload).digest('hex');
 
+    console.log('Signature Header:', signatureHeader);
+    console.log('Notification Type:', notification_type);
+    console.log('Notification URL:', notification_url);
+    console.log('Timestamp:', timestamp);
+    console.log('Payload:', payload);
+    console.log('Signature:', signature);
+    console.log('Received Signature:', receivedSignature);
+
     if (receivedSignature !== signature) {
       res.status(401).json({ message: 'Invalid signature' });
       return;

@@ -2,12 +2,6 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import revalidateChanges from '@/lib/revalidate';
 import { signatureHelper } from '@/lib/signatureHelper';
 
-export const config = {
-  api: {
-    bodyParser: true,
-  },
-};
-
 const secretKey = process.env.CLOUDINARY_API_SECRET || '';
 const signatureHeader = 'x-cloudinary-signature';
 
