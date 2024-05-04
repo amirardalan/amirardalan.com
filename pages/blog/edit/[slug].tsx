@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { PrismaClient } from '@prisma/client';
 import { useSession } from 'next-auth/react';
 
-import revalidateChanges from '@/lib/revalidate';
+import revalidateBlog from '@/lib/revalidate-blog';
 import { useFetchStatus } from '@/hooks/useLoadingIndicator';
 
 import Container from '@/components/Container';
@@ -150,13 +150,7 @@ const Edit: FC<EditProps> = ({
       const newSlug = data.slug;
       await Router.push(`/blog/${newSlug}`);
 
-      revalidateChanges(
-        published,
-        latestPost,
-        featured,
-        deleted,
-        setFetchStatus
-      );
+      revalidateBlog(published, latestPost, featured, deleted, setFetchStatus);
     } catch (error) {
       console.error(error);
     }

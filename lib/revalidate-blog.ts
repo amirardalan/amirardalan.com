@@ -1,6 +1,6 @@
 import Router from 'next/router';
 
-const revalidateChanges = (
+const revalidateBlog = (
   published: boolean,
   latestPost: boolean,
   featured: boolean,
@@ -42,4 +42,4 @@ const revalidateChanges = (
     });
 };
 
-export default revalidateChanges;
+export default revalidateBlog;

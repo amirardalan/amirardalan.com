@@ -1,5 +1,5 @@
 import Router from 'next/router';
-import revalidateChanges from '@/lib/revalidate';
+import revalidateBlog from '@/lib/revalidate-blog';
 
 // Publish/Unpublish Post
 export async function publishPost(
@@ -15,7 +15,7 @@ export async function publishPost(
     `/api/publish/${id}?published=${published}&featured=${featured}`,
     { method: 'PUT' }
   ).then(() => {
-    revalidateChanges(published, latestPost, featured, deleted, setFetchStatus);
+    revalidateBlog(published, latestPost, featured, deleted, setFetchStatus);
   });
 }
 
@@ -41,7 +41,7 @@ export async function deletePost(
   const deleted = true;
 
   await fetch(`/api/post/${id}`, { method: 'DELETE' }).then(() => {
-    revalidateChanges(published, latestPost, featured, deleted, setFetchStatus);
+    revalidateBlog(published, latestPost, featured, deleted, setFetchStatus);
   });
 }
 
