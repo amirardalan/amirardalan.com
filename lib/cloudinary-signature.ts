@@ -7,21 +7,21 @@ export const signatureHelper = (
   const secret = process.env.CLOUDINARY_API_SECRET!;
 
   return async function (req: NextApiRequest, res: NextApiResponse) {
-    const signature = req.headers['x-cld-signature'];
-    const timestamp = req.headers['x-cld-timestamp'];
-    let { notification_type } = req.body;
+    const receivedSignature = req.headers['x-cld-signature'];
+    const receivedTimestamp = req.headers['x-cld-timestamp'];
+    const requestBody = JSON.stringify(req.body);
 
-    const payload = `${secret}.${notification_type}.${timestamp}`;
+    const payload = `${requestBody}${receivedTimestamp}${secret}`;
 
     const hmac = crypto.createHmac('sha1', secret);
     const calculatedSignature = hmac.update(payload).digest('hex');
 
-    console.log('Received Signature:', signature);
-    console.log('Received Timestamp:', timestamp);
+    console.log('Received Signature:', receivedSignature);
+    console.log('Received Timestamp:', receivedTimestamp);
     console.log('Payload:', payload);
     console.log('Calculated Signature:', calculatedSignature);
 
-    if (signature !== calculatedSignature) {
+    if (receivedSignature !== calculatedSignature) {
       res.status(401).json({ message: 'Invalid signature' });
       return;
     }
