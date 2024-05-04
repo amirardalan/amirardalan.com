@@ -1,8 +1,9 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { signatureHelper } from '@/lib/cloudinary-signature';
+import { revalidatePhotos } from '@/lib/photos-revalidate';
 
-const photosHandler = signatureHelper(
-  async (req: NextApiRequest, res: NextApiResponse) => {
+const photosHandler = revalidatePhotos(
+  signatureHelper(async (req: NextApiRequest, res: NextApiResponse) => {
     console.log('Received a request:', req.method, req.url);
     console.log('Request body:', req.body);
 
@@ -10,7 +11,6 @@ const photosHandler = signatureHelper(
       const { notification_type } = req.body;
 
       if (notification_type === 'upload' || notification_type === 'delete') {
-        res.revalidate('/photos');
         res.status(200).json({ message: 'Revalidation triggered' });
       } else {
         res.status(400).json({
@@ -20,7 +20,7 @@ const photosHandler = signatureHelper(
     } else {
       res.status(405).json({ message: 'Method Not Allowed' });
     }
-  }
+  })
 );
 
 export default photosHandler;
