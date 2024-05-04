@@ -12,7 +12,7 @@ export const signatureHelper = (
 
     const payload = timestamp + notification_type;
 
-    const hmac = crypto.createHmac('sha256', secretKey);
+    const hmac = crypto.createHmac('sha1', secretKey);
     const signature = hmac.update(payload).digest('hex');
 
     console.log('Signature Header:', signatureHeader);
