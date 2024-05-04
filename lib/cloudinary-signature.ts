@@ -13,13 +13,10 @@ export const signatureHelper = (
 
     const payload = `${requestBody}${receivedTimestamp}${secret}`;
 
-    const hmac = crypto.createHmac('sha1', secret);
-    const calculatedSignature = hmac.update(payload).digest('hex');
-
-    console.log('Received Signature:', receivedSignature);
-    console.log('Received Timestamp:', receivedTimestamp);
-    console.log('Payload:', payload);
-    console.log('Calculated Signature:', calculatedSignature);
+    const calculatedSignature = crypto
+      .createHash('sha1')
+      .update(payload)
+      .digest('hex');
 
     if (receivedSignature !== calculatedSignature) {
       res.status(401).json({ message: 'Invalid signature' });
