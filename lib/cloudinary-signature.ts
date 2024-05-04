@@ -20,10 +20,11 @@ export const signatureHelper = (
 
     console.log('Received Signature:', receivedSignature);
     console.log('Received Timestamp:', receivedTimestamp);
-    console.log('Payload:', payload);
+    console.log('Received Signature Type:', typeof receivedSignature);
+    console.log('Calculated Signature Type:', typeof calculatedSignature);
     console.log('Calculated Signature:', calculatedSignature);
 
-    if (receivedSignature !== calculatedSignature) {
+    if (String(receivedSignature) !== String(calculatedSignature)) {
       res.status(401).json({ message: 'Invalid signature' });
       return;
     }
