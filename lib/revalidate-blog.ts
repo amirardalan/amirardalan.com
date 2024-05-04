@@ -7,7 +7,7 @@ const revalidateBlog = (
   deleted: boolean,
   setFetchStatus: Function
 ) => {
-  const REVALIDATE_SECRET = process.env.NEXT_PUBLIC_REVALIDATE_SECRET;
+  const REVALIDATE_SECRET = process.env.REVALIDATE_SECRET;
   const isEditPage = Router.asPath.includes('/blog/edit/');
   const revalidatePath = isEditPage
     ? Router.asPath.replace('/edit', '')

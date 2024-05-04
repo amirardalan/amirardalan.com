@@ -5,7 +5,7 @@ const revalidateHandler: NextApiHandler = async (
   req: NextApiRequest,
   res: NextApiResponse
 ) => {
-  if (req.query.secret !== `${process.env.NEXT_PUBLIC_REVALIDATE_SECRET}`) {
+  if (req.query.secret !== `${process.env.REVALIDATE_SECRET}`) {
     return res.status(401).json({ message: 'Invalid token' });
   }
 
