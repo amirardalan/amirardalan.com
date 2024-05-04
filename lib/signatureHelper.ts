@@ -8,19 +8,16 @@ export const signatureHelper = (
 ) => {
   return async function (req: NextApiRequest, res: NextApiResponse) {
     const receivedSignature = req.headers[signatureHeader];
-
     const { notification_type, timestamp } = req.body;
 
-    const payload = `${notification_type}${timestamp}`;
+    const payload = timestamp + notification_type;
 
     const hmac = crypto.createHmac('sha256', secretKey);
     const signature = hmac.update(payload).digest('hex');
 
     console.log('Signature Header:', signatureHeader);
-    console.log('Notification Type:', notification_type);
-    console.log('Timestamp:', timestamp);
     console.log('Payload:', payload);
-    console.log('Signature:', signature);
+    console.log('Calculated Signature:', signature);
     console.log('Received Signature:', receivedSignature);
 
     if (receivedSignature !== signature) {
