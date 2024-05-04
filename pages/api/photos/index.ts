@@ -19,9 +19,16 @@ const photosHandler = async (req: NextApiRequest, res: NextApiResponse) => {
       res.status(500).json({ message: 'Failed to get images' });
     }
   } else if (req.method === 'POST') {
-    revalidateChanges('photos');
+    const { notification_type } = req.body;
 
-    res.status(200).json({ message: 'Revalidation triggered' });
+    if (notification_type === 'upload' || notification_type === 'delete') {
+      revalidateChanges('photos');
+      res.status(200).json({ message: 'Revalidation triggered' });
+    } else {
+      res.status(400).json({
+        message: `Unsupported notification type: ${notification_type}`,
+      });
+    }
   } else {
     res.setHeader('Allow', ['GET', 'POST']);
     res.status(405).end(`Method ${req.method} Not Allowed`);
