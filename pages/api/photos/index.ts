@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import cloudinary from '@/lib/cloudinary';
+import revalidateChanges from '@/lib/revalidate';
 
 const photosHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === 'GET') {
@@ -17,8 +18,12 @@ const photosHandler = async (req: NextApiRequest, res: NextApiResponse) => {
       console.error(error);
       res.status(500).json({ message: 'Failed to get images' });
     }
+  } else if (req.method === 'POST') {
+    revalidateChanges('photos');
+
+    res.status(200).json({ message: 'Revalidation triggered' });
   } else {
-    res.setHeader('Allow', ['GET']);
+    res.setHeader('Allow', ['GET', 'POST']);
     res.status(405).end(`Method ${req.method} Not Allowed`);
   }
 };

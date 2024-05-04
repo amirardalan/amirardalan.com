@@ -151,11 +151,12 @@ const Edit: FC<EditProps> = ({
       await Router.push(`/blog/${newSlug}`);
 
       revalidateChanges(
+        'blog',
+        setFetchStatus,
         published,
         latestPost,
         featured,
-        deleted,
-        setFetchStatus
+        deleted
       );
     } catch (error) {
       console.error(error);

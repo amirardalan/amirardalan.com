@@ -62,7 +62,7 @@ NEXT_AUTH_SECRET=
 GITHUB_SECRET=
 GITHUB_ID=
 
-NEXT_PUBLIC_REVALIDATE_SECRET=
+REVALIDATE_SECRET=
 NEXT_PUBLIC_TIMEZONE=America/Los_Angeles
 
 CLOUDINARY_NAME=
@@ -91,7 +91,7 @@ For GitHub oAuth with Next Auth, see [GitHub Developer App Docs](https://docs.gi
 `GITHUB_ID`
 Your GitHub developer app ID, [GitHub Developer App Docs](https://docs.github.com/en/developers/apps/getting-started-with-apps/setting-up-your-development-environment-to-create-a-github-app)
 
-`NEXT_PUBLIC_REVALIDATE_SECRET`
+`REVALIDATE_SECRET`
 Generate a secret for use with Next [On-Demand Incremental Static Regeneration](https://nextjs.org/docs/basic-features/data-fetching/incremental-static-regeneration#on-demand-revalidation-beta)
 
 `NEXT_PUBLIC_TIMEZONE`: Example: `America/Los_Angeles`. Set this to your local timezone for your blog posts to display the correct date and time. [Full List of IANA Timezones](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)

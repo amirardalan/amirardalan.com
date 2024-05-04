@@ -144,7 +144,6 @@ export const getStaticProps: GetStaticProps = async () => {
       photosText: photosContent,
       photos,
     },
-    revalidate: 1,
   };
 };
 
