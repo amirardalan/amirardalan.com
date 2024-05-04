@@ -1,14 +1,17 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
 export const revalidatePhotos = (
-  requestHandler: (req: NextApiRequest, res: NextApiResponse) => void
+  requestHandler: (req: NextApiRequest, res: NextApiResponse) => Promise<void>
 ) => {
-  const secret = process.env.REVALIDATE_SECRET;
-
   return async function (req: NextApiRequest, res: NextApiResponse) {
     try {
+      const baseUrl =
+        process.env.VERCEL_ENV === 'preview'
+          ? process.env.VERCEL_URL
+          : process.env.NEXT_PUBLIC_SITE_URL;
+
       const revalidateRes = await fetch(
-        `/api/revalidate?secret=${secret}&path=/photos`
+        `${baseUrl}/api/revalidate?secret=${process.env.REVALIDATE_SECRET}&path=/photos`
       );
 
       if (!revalidateRes.ok) {
@@ -24,6 +27,9 @@ export const revalidatePhotos = (
       return;
     }
 
-    requestHandler(req, res);
+    await requestHandler(req, res);
+
+    // Add a success response
+    res.status(200).json({ message: 'Successfully revalidated /photos' });
   };
 };

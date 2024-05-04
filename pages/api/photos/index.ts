@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { signatureHelper } from '@/lib/cloudinary-signature';
-import { revalidatePhotos } from '@/lib/photos-revalidate';
+import { revalidatePhotos } from '@/lib/revalidate';
 
 const photosHandler = revalidatePhotos(
   signatureHelper(async (req: NextApiRequest, res: NextApiResponse) => {
