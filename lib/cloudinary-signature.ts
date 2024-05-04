@@ -2,32 +2,34 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import crypto from 'crypto';
 
 export const signatureHelper = (
-  handler: (req: NextApiRequest, res: NextApiResponse) => void
+  requestHandler: (req: NextApiRequest, res: NextApiResponse) => void
 ) => {
-  const secretKey = process.env.CLOUDINARY_API_SECRET || '';
-  const signatureHeader = 'x-cld-signature';
+  const cloudinarySecretKey = process.env.CLOUDINARY_API_SECRET!;
+  const headerSignature = 'x-cld-signature';
+  const headerTimestamp = 'x-cld-timestamp';
 
   return async function (req: NextApiRequest, res: NextApiResponse) {
-    const receivedSignature = req.headers[signatureHeader];
-    let { notification_type, timestamp } = req.body;
-
-    timestamp = Math.floor(new Date(timestamp).getTime() / 1000);
+    const signature = req.headers[headerSignature];
+    const timestamp = req.headers[headerTimestamp];
+    let { notification_type } = req.body;
 
     const payload = `notification_type=${notification_type}&timestamp=${timestamp}`;
 
-    const hmac = crypto.createHmac('sha1', secretKey);
-    const signature = hmac.update(payload).digest('hex');
+    const hmac = crypto.createHmac('sha1', cloudinarySecretKey);
+    const calculatedSignature = hmac.update(payload).digest('hex');
 
-    console.log('Signature Header:', signatureHeader);
+    console.log('Signature Header:', headerSignature);
+    console.log('Timestamp Header:', headerTimestamp);
+    console.log('Received Signature:', signature);
+    console.log('Received Timestamp:', timestamp);
     console.log('Payload:', payload);
-    console.log('Calculated Signature:', signature);
-    console.log('Received Signature:', receivedSignature);
+    console.log('Calculated Signature:', calculatedSignature);
 
-    if (receivedSignature !== signature) {
+    if (signature !== calculatedSignature) {
       res.status(401).json({ message: 'Invalid signature' });
       return;
     }
 
-    handler(req, res);
+    requestHandler(req, res);
   };
 };
