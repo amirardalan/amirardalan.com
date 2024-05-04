@@ -15,14 +15,7 @@ export async function publishPost(
     `/api/publish/${id}?published=${published}&featured=${featured}`,
     { method: 'PUT' }
   ).then(() => {
-    revalidateChanges(
-      'blog',
-      setFetchStatus,
-      published,
-      latestPost,
-      featured,
-      deleted
-    );
+    revalidateChanges(published, latestPost, featured, deleted, setFetchStatus);
   });
 }
 
@@ -48,14 +41,7 @@ export async function deletePost(
   const deleted = true;
 
   await fetch(`/api/post/${id}`, { method: 'DELETE' }).then(() => {
-    revalidateChanges(
-      'blog',
-      setFetchStatus,
-      published,
-      latestPost,
-      featured,
-      deleted
-    );
+    revalidateChanges(published, latestPost, featured, deleted, setFetchStatus);
   });
 }
 

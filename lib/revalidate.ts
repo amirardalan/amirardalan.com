@@ -1,45 +1,34 @@
 import Router from 'next/router';
 
 const revalidateChanges = (
-  pageType: 'blog' | 'photos',
-  setFetchStatus?: Function,
-  published?: boolean,
-  latestPost?: boolean,
-  featured?: boolean,
-  deleted?: boolean
+  published: boolean,
+  latestPost: boolean,
+  featured: boolean,
+  deleted: boolean,
+  setFetchStatus: Function
 ) => {
-  const REVALIDATE_SECRET = process.env.REVALIDATE_SECRET;
-  const isEditPage = Router.asPath.includes(`/${pageType}/edit/`);
+  const REVALIDATE_SECRET = process.env.NEXT_PUBLIC_REVALIDATE_SECRET;
+  const isEditPage = Router.asPath.includes('/blog/edit/');
   const revalidatePath = isEditPage
     ? Router.asPath.replace('/edit', '')
     : Router.asPath;
 
-  const fetchRequests = [];
-
-  if (pageType === 'blog') {
-    const post = fetch(
-      `/api/revalidate?secret=${REVALIDATE_SECRET}&path=${revalidatePath}`
-    );
-    fetchRequests.push(post);
-
-    if (featured || latestPost) {
-      const home = fetch(`/api/revalidate?secret=${REVALIDATE_SECRET}&path=/`);
-      fetchRequests.push(home);
-    }
-  }
-
-  const page = fetch(
-    `/api/revalidate?secret=${REVALIDATE_SECRET}&path=/${pageType}`
+  const post = fetch(
+    `/api/revalidate?secret=${REVALIDATE_SECRET}&path=${revalidatePath}`
   );
-  fetchRequests.push(page);
+  const blog = fetch(`/api/revalidate?secret=${REVALIDATE_SECRET}&path=/blog`);
+  const home =
+    featured || latestPost
+      ? fetch(`/api/revalidate?secret=${REVALIDATE_SECRET}&path=/`)
+      : Promise.resolve();
 
-  setFetchStatus && setFetchStatus(true);
+  setFetchStatus(true);
 
-  Promise.all(fetchRequests)
+  Promise.all([post, blog, home])
     .then(() => {
       // Deleted Posts
       if (deleted && published) {
-        Router.push(`/${pageType}`);
+        Router.push('/blog');
         return;
       } else if (deleted) {
         Router.push('/blog/drafts');

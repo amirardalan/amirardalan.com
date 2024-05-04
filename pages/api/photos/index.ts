@@ -1,5 +1,4 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import revalidateChanges from '@/lib/revalidate';
 import { signatureHelper } from '@/lib/cloudinary-signature';
 
 const photosHandler = signatureHelper(
@@ -11,7 +10,7 @@ const photosHandler = signatureHelper(
       const { notification_type } = req.body;
 
       if (notification_type === 'upload' || notification_type === 'delete') {
-        revalidateChanges('photos');
+        // Revalidate the Photos page from the server
         res.status(200).json({ message: 'Revalidation triggered' });
       } else {
         res.status(400).json({
