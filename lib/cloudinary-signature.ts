@@ -18,12 +18,6 @@ export const signatureHelper = (
       .update(payload)
       .digest('hex');
 
-    console.log('Received Signature:', receivedSignature);
-    console.log('Received Timestamp:', receivedTimestamp);
-    console.log('Received Signature Type:', typeof receivedSignature);
-    console.log('Calculated Signature Type:', typeof calculatedSignature);
-    console.log('Calculated Signature:', calculatedSignature);
-
     if (String(receivedSignature) !== String(calculatedSignature)) {
       res.status(401).json({ message: 'Invalid signature' });
       return;

@@ -4,9 +4,6 @@ import { revalidatePhotos } from '@/lib/revalidate';
 
 const photosHandler = revalidatePhotos(
   signatureHelper(async (req: NextApiRequest, res: NextApiResponse) => {
-    console.log('Received a request:', req.method, req.url);
-    console.log('Request body:', req.body);
-
     if (req.method === 'POST') {
       const { notification_type } = req.body;
 
