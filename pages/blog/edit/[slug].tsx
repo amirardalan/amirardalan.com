@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { PrismaClient } from '@prisma/client';
 import { useSession } from 'next-auth/react';
 
-import revalidateBlog from '@/lib/blog-revalidate';
+import { revalidateBlog } from '@/lib/revalidate';
 import { useFetchStatus } from '@/hooks/useLoadingIndicator';
 
 import Container from '@/components/Container';
@@ -20,6 +20,7 @@ import { convertUrlToMarkdown } from '@/utils/convertUrlToMarkdown';
 import { adminContent, breadcrumbContent } from '@/data/content';
 import { categories } from '@/data/categories';
 import BlogImageControls from '@/components/BlogImageControls';
+import { handlePostRouting } from '@/lib/blog-routing';
 
 const prisma = new PrismaClient();
 
@@ -141,18 +142,22 @@ const Edit: FC<EditProps> = ({
         body: JSON.stringify(body),
       });
 
-      const data = await res.json();
-
-      if (!data || typeof data.slug !== 'string') {
-        throw new Error('Unexpected response data');
+      if (res.status !== 200) {
+        throw new Error(await res.text());
       }
 
-      const newSlug = data.slug;
-      await Router.push(`/blog/${newSlug}`);
-
-      revalidateBlog(published, latestPost, featured, deleted, setFetchStatus);
+      const postPath = `/blog/${slug}`;
+      const revalidateHome = featured || editFeatured;
+      try {
+        await revalidateBlog(postPath, revalidateHome);
+        await handlePostRouting(postPath, published, deleted);
+      } catch (error) {
+        console.error('Revalidation or routing failed:', error);
+      }
     } catch (error) {
-      console.error(error);
+      console.error('An error occurred:', error);
+    } finally {
+      setFetchStatus(false);
     }
   };
 

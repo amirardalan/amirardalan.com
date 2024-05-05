@@ -1,9 +1,11 @@
 import Router from 'next/router';
-import revalidateBlog from '@/lib/blog-revalidate';
+import { revalidateBlog } from '@/lib/revalidate';
+import { handlePostRouting } from '@/lib/blog-routing';
 
 // Publish/Unpublish Post
 export async function publishPost(
   id: number,
+  slug: string,
   published: boolean,
   featured: boolean,
   latestPost: boolean,
@@ -11,23 +13,42 @@ export async function publishPost(
   setFetchStatus: (active: boolean) => void
 ): Promise<void> {
   setFetchStatus(true);
-  await fetch(
-    `/api/publish/${id}?published=${published}&featured=${featured}`,
-    { method: 'PUT' }
-  ).then(() => {
-    revalidateBlog(published, latestPost, featured, deleted, setFetchStatus);
-  });
+  const postPath = `/blog/${slug}`;
+  const revalidateHome = featured || latestPost;
+  try {
+    await fetch(
+      `/api/publish/${id}?published=${published}&featured=${featured}`,
+      { method: 'PUT' }
+    ).then(async () => {
+      try {
+        await revalidateBlog(postPath, revalidateHome);
+        await handlePostRouting(postPath, published, deleted);
+      } catch (error) {
+        console.error('Revalidation failed:', error);
+      }
+    });
+  } catch (error) {
+    console.error(error);
+  } finally {
+    setFetchStatus(false);
+  }
 }
 
-// Open Edit Page
+// Edit Post
 export async function editPost(
   slug: string,
   setFetchStatus: (active: boolean) => void
 ): Promise<void> {
   setFetchStatus(true);
-  await fetch(`/blog/edit/${slug}`, { method: 'PUT' }).then(() => {
-    Router.push(`/blog/edit/${slug}`);
-  });
+  const postPath = `/blog/edit/${slug}`;
+  try {
+    await fetch(`/blog/edit/${slug}`, { method: 'PUT' });
+    await Router.push(postPath);
+  } catch (error) {
+    console.error(error);
+  } finally {
+    setFetchStatus(false);
+  }
 }
 
 // Delete Post
@@ -39,10 +60,25 @@ export async function deletePost(
   setFetchStatus: (active: boolean) => void
 ): Promise<void> {
   const deleted = true;
-
-  await fetch(`/api/post/${id}`, { method: 'DELETE' }).then(() => {
-    revalidateBlog(published, latestPost, featured, deleted, setFetchStatus);
-  });
+  setFetchStatus(true);
+  const postPath = `/blog/${id}`;
+  const revalidateHome = featured || latestPost;
+  try {
+    if (published) {
+      await fetch(`/api/post/${id}`, { method: 'DELETE' }).then(async () => {
+        try {
+          await revalidateBlog(postPath, revalidateHome);
+          await handlePostRouting(postPath, published, deleted);
+        } catch (error) {
+          console.error('Revalidation failed:', error);
+        }
+      });
+    }
+  } catch (error) {
+    console.error(error);
+  } finally {
+    setFetchStatus(false);
+  }
 }
 
 // Like Post

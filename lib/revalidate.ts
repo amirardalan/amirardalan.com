@@ -29,7 +29,28 @@ export const revalidatePhotos = (
 
     await requestHandler(req, res);
 
-    // Add a success response
     res.status(200).json({ message: 'Successfully revalidated /photos' });
   };
+};
+
+export const revalidateBlog = async (
+  postPath: string,
+  revalidateHome: boolean
+): Promise<void> => {
+  try {
+    await fetch(
+      `${process.env.NEXT_PUBLIC_SITE_URL}/api/revalidate?secret=${process.env.REVALIDATE_SECRET}&path=${postPath}`
+    );
+    await fetch(
+      `${process.env.NEXT_PUBLIC_SITE_URL}/api/revalidate?secret=${process.env.REVALIDATE_SECRET}&path=/blog`
+    );
+
+    if (revalidateHome) {
+      await fetch(
+        `${process.env.NEXT_PUBLIC_SITE_URL}/api/revalidate?secret=${process.env.REVALIDATE_SECRET}&path=/`
+      );
+    }
+  } catch (error) {
+    console.error('Failed to revalidate:', error);
+  }
 };
