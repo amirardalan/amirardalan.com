@@ -263,6 +263,7 @@ const BlogAdmin: FC = () => {
                   justifyContent: 'end',
                 },
                 '.postTeaser': {
+                  margin: 0,
                   'a:hover': {
                     color: 'var(--color-primary)',
                   },

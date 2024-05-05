@@ -98,6 +98,7 @@ const BlogPostControls: FC<BlogPostControlsProps> = ({
           onClick={() =>
             publishPost(
               post.id,
+              post.slug,
               post.published,
               latestPost,
               post.featured,
