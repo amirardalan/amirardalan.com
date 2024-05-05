@@ -39,17 +39,8 @@ export const revalidateBlog = async (
 ): Promise<void> => {
   try {
     await fetch(
-      `${process.env.NEXT_PUBLIC_SITE_URL}/api/revalidate?secret=${process.env.REVALIDATE_SECRET}&path=${postPath}`
+      `${process.env.NEXT_PUBLIC_SITE_URL}/api/post/revalidate?path=${postPath}&revalidateHome=${revalidateHome}`
     );
-    await fetch(
-      `${process.env.NEXT_PUBLIC_SITE_URL}/api/revalidate?secret=${process.env.REVALIDATE_SECRET}&path=/blog`
-    );
-
-    if (revalidateHome) {
-      await fetch(
-        `${process.env.NEXT_PUBLIC_SITE_URL}/api/revalidate?secret=${process.env.REVALIDATE_SECRET}&path=/`
-      );
-    }
   } catch (error) {
     console.error('Failed to revalidate:', error);
   }
