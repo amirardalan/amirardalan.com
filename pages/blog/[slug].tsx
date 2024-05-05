@@ -530,24 +530,26 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
 
           <div className="readerControls">
             <TableOfContents markdown={post.content} />
-            <div className="likeAndShare">
-              <div className="buttonHover">
-                <Tooltip pos="t" text={liked ? 'Unlike' : 'Like'}>
-                  <LikeButton liked={liked} handleLike={handleLike} />
-                </Tooltip>
+            {!userHasValidSession && (
+              <div className="likeAndShare">
+                <div className="buttonHover">
+                  <Tooltip pos="t" text={liked ? 'Unlike' : 'Like'}>
+                    <LikeButton liked={liked} handleLike={handleLike} />
+                  </Tooltip>
+                </div>
+                <div className="buttonHover">
+                  <Tooltip pos="t" text="Share on X">
+                    <BlogPostTweet
+                      title={post.title}
+                      url={url}
+                      text={false}
+                      size={21}
+                      color={'var(--color-heading)'}
+                    />
+                  </Tooltip>
+                </div>
               </div>
-              <div className="buttonHover">
-                <Tooltip pos="t" text="Share on X">
-                  <BlogPostTweet
-                    title={post.title}
-                    url={url}
-                    text={false}
-                    size={21}
-                    color={'var(--color-heading)'}
-                  />
-                </Tooltip>
-              </div>
-            </div>
+            )}
           </div>
 
           <Markdown markdown={post} />
