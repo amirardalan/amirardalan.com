@@ -345,10 +345,18 @@ export const usesContent = {
   ---
   #### Browser
   - Google Chrome
-  ##### Extensions (Chrome):
+  ##### Chrome Extensions:
   - React Developer Tools
   - uBlock Origin
   - Google Analytics Debugger
+
+  ---
+  #### Testing
+  ##### React/JS:
+  - Jest
+  - React Testing Library
+  ##### iOS/Safari:
+  - Xcode Simulator
 
   `,
   },
@@ -392,23 +400,16 @@ export const usesContent = {
   #### Writing
   - iA Writer
 
+  ---
   #### Design
   - Figma
   - Aseprite
   - Excalidraw
   
+  ---
   #### Listening
   - YouTube Music
   - Apple Podcasts
-
-  ---
-
-  #### Testing
-  ##### React/JS:
-  - Jest
-  - React Testing Library
-  ##### iOS/Safari:
-  - Xcode Simulator
   
   `,
   },
