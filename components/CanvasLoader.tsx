@@ -21,28 +21,38 @@ const CanvasLoader: FC = () => {
     setPixelRatio(window.devicePixelRatio);
   }, [setPixelRatio]);
 
-  function getRandomInt(min: number, max: number) {
+  const getRandomInt = (min: number, max: number) => {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min) + min);
-  }
+  };
 
-  function getRandomArbitrary(min: number, max: number) {
+  const getRandomArbitrary = (min: number, max: number) => {
     return Math.random() * (max - min) + min;
-  }
+  };
 
-  const [detail, setDetail] = useState(getRandomInt(10, 150));
-  const [height, setHeight] = useState(getRandomArbitrary(0.025, 0.2));
-  const [texture, setTexture] = useState(getRandomInt(1, 2));
-  const [scale, setScale] = useState(getRandomInt(2, 4));
-  const rotation = 1;
+  const MIN_DETAIL = 10;
+  const MAX_DETAIL = 200;
+  const MIN_HEIGHT = 0.05;
+  const MAX_HEIGHT = 0.25;
+  const MIN_TEXTURE = 1;
+  const MAX_TEXTURE = 3;
+
+  const [detail, setDetail] = useState(getRandomInt(MIN_DETAIL, MAX_DETAIL));
+  const [height, setHeight] = useState(
+    getRandomArbitrary(MIN_HEIGHT, MAX_HEIGHT)
+  );
+  const [texture, setTexture] = useState(
+    getRandomInt(MIN_TEXTURE, MAX_TEXTURE)
+  );
+  const scale = 3;
+  const rotation = 0.5;
   const offset = { x: 0, z: 0 };
 
   const randomizeTerrain = () => {
-    setDetail(getRandomInt(10, 100));
-    setHeight(getRandomArbitrary(0.025, 0.2));
-    setTexture(getRandomInt(1, 2));
-    setScale(getRandomInt(2, 4));
+    setDetail(getRandomInt(MIN_DETAIL, MAX_DETAIL));
+    setHeight(getRandomArbitrary(MIN_HEIGHT, MAX_HEIGHT));
+    setTexture(getRandomInt(MIN_TEXTURE, MAX_TEXTURE));
   };
 
   return (

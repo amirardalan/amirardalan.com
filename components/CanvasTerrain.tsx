@@ -81,10 +81,10 @@ const generateTerrain: GenerateTerrainFn = (
 const CanvasTerrain: FC<CanvasTerrainProps> = ({
   detail,
   height,
-  texture = 2,
-  scale = 2,
+  texture,
+  scale,
   offset = { x: 0, z: 0 },
-  rotation = 1,
+  rotation,
 }) => {
   const theme: Theme = useTheme();
   interface PlaneGeometryRef extends PlaneGeometry {
@@ -122,8 +122,8 @@ const CanvasTerrain: FC<CanvasTerrainProps> = ({
       />
       <ambientLight />
       <MeshDistortMaterial
-        distort={.8}
-        speed={0.1}
+        distort={0.8}
+        speed={0.05}
         wireframe
         color={theme.canvas}
       />
