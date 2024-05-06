@@ -77,7 +77,7 @@ interface BlogPostProps extends AdminControlsTypes, BlogNavigationTypes {
 
 const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
   const { data: session } = useSession();
-  const userHasValidSession = Boolean(session);
+  const isLoggedIn = Boolean(session);
 
   const isPublished: Boolean = post.published;
   const publishLabel = isPublished
@@ -483,9 +483,7 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
         )}
 
         <article className="post postFull">
-          {!userHasValidSession && (
-            <BlogPostStats post={post} isFeatured={isFeatured} />
-          )}
+          {!isLoggedIn && <BlogPostStats post={post} isFeatured={isFeatured} />}
           <h1 aria-label={`${title}`}>{title}</h1>
           <p className="teaser">{post.teaser}</p>
           <div
@@ -530,7 +528,7 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
 
           <div className="readerControls">
             <TableOfContents markdown={post.content} />
-            {!userHasValidSession && (
+            {!isLoggedIn && (
               <div className="likeAndShare">
                 <div className="buttonHover">
                   <Tooltip pos="t" text={liked ? 'Unlike' : 'Like'}>
@@ -553,7 +551,7 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
           </div>
 
           <Markdown markdown={post} />
-          {userHasValidSession && (
+          {isLoggedIn && (
             <BlogPostControls
               admin={admin}
               post={post}
@@ -576,6 +574,7 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
           isPublished={isPublished}
           liked={liked}
           handleLike={handleLike}
+          isLoggedIn={isLoggedIn}
         />
       </div>
     );

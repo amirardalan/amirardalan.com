@@ -5,7 +5,9 @@ import BlogSupport from '@/components/BlogSupport';
 import compareID from '@/utils/compareID';
 import { BlogNavigationTypes } from '@/types/blog';
 
-type BlogNavigationProps = BlogNavigationTypes;
+interface BlogNavigationProps extends BlogNavigationTypes {
+  isLoggedIn: boolean;
+}
 
 const BlogNavigation: FC<BlogNavigationProps> = ({
   feed,
@@ -14,6 +16,7 @@ const BlogNavigation: FC<BlogNavigationProps> = ({
   url,
   liked,
   handleLike,
+  isLoggedIn,
 }) => {
   const total = feed?.length;
   const current = post?.id;
@@ -91,13 +94,15 @@ const BlogNavigation: FC<BlogNavigationProps> = ({
 
   return (
     <div css={styleBlogNavigation}>
-      <BlogSupport
-        id={post.id}
-        title={post.title}
-        url={url}
-        liked={liked}
-        handleLike={handleLike}
-      />
+      {!isLoggedIn && (
+        <BlogSupport
+          id={post.id}
+          title={post.title}
+          url={url}
+          liked={liked}
+          handleLike={handleLike}
+        />
+      )}
       <div css={styleBlogLinks}>
         {prevPost ? <ShowPrevLink /> : null}
         {nextPost ? <ShowNextLink /> : null}
