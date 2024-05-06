@@ -285,10 +285,10 @@ export const timelineContent = {
 export const thanksContent = {
   meta: {
     title: `Thank You — ${appTitle}`,
-    description: 'Your contribution is greatly appreciated!',
+    description: 'Thanks for your contribution.',
   },
   heading: 'Thank You.',
-  copy: 'Your contribution to the project is greatly appreciated!',
+  copy: `Your support means the world to me, and I am immensely grateful for your contribution. This project is the result of countless hours of passion and dedication, and I'm thrilled to share it with you. I look forward to creating more in the future. —Amir`,
 };
 
 export const usesContent = {
