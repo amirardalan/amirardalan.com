@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import Link from 'next/link';
+import { Line } from '@react-three/drei';
 
 type ThanksContent = {
   heading: string;
@@ -13,6 +14,15 @@ type ThanksProps = {
 const styleThanksWrapper = {
   maxWidth: 768,
   margin: '0 auto',
+  '@media (max-width: 1024px)': {
+    padding: '0 2.5rem',
+  },
+  '@media (max-width: 768px)': {
+    padding: '0 2.5rem',
+  },
+  '@media (max-width: 600px)': {
+    padding: '0 2rem',
+  },
 };
 
 const styleThanks = {
@@ -22,9 +32,12 @@ const styleThanks = {
     fontSize: 30,
     fontStyle: 'italic',
     lineHeight: 1.6,
+    '@media (max-width: 768px)': {
+      fontSize: 20,
+    },
   },
   '.homeLink': {
-    marginTop: '4rem',
+    margin: '4rem 0',
     fontFamily: 'var(--font-secondary)',
     fontSize: 18,
   },
