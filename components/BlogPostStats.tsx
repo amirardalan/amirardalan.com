@@ -24,8 +24,10 @@ const styleBlogPostStats = css({
   paddingBottom: '.5rem',
   '@media (max-width: 480px)': {
     flexDirection: 'column',
-    '.statsLeft': {
-      borderBottom: '1px solid var(--color-accent)',
+    '.likesAndViews': {
+      marginTop: '.25rem',
+      lineHeight: '.9rem',
+      flexDirection: 'row-reverse',
     },
   },
   '.postStatsDivider': {

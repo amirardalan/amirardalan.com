@@ -36,6 +36,9 @@ const Like: FC<LikeCountProps> = ({ id, likes }) => {
       transform: `translateY(${isValidating || isLoading ? 10 : 0}px)`,
       opacity: isValidating || isLoading ? 0 : 1,
     },
+    '@media (max-width: 480px)': {
+      marginRight: '.5rem',
+    },
   });
 
   return (

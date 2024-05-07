@@ -37,6 +37,16 @@ const PostViewCount: FC<PostViewCountProps> = ({ slug }) => {
         content: '"/"',
         margin: '0 0.5rem',
       },
+      '@media (max-width: 480px)': {
+        '&:after': {
+          content: '""',
+          margin: 0,
+        },
+        '&:before': {
+          content: '"/"',
+          marginRight: '.5rem',
+        },
+      },
     },
   });
 
