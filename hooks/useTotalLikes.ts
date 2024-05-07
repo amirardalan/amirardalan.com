@@ -3,7 +3,6 @@ import fetcher from '@/lib/fetcher';
 
 type TotalLikes = {
   totalLikesCount: number;
-  error: any;
 };
 
 const useTotalLikes = (): TotalLikes => {
@@ -23,7 +22,6 @@ const useTotalLikes = (): TotalLikes => {
 
   return {
     totalLikesCount: totalLikesCount ?? 0,
-    error,
   };
 };
 

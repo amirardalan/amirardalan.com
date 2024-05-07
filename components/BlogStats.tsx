@@ -20,9 +20,13 @@ const BlogStats: FC<BlogStatsProps> = ({ feed, filteredPosts }) => {
     }
     return acc;
   }, 0);
-  const { totalLikesCount, error } = useTotalLikes();
+  const { totalLikesCount } = useTotalLikes();
   const likesText =
     (filteredLikesCount | totalLikesCount) === 1 ? 'like' : 'likes';
+
+  const likesCount = filterActive ? filteredLikesCount : totalLikesCount;
+  const formattedLikesCount =
+    likesCount || typeof likesCount === 'number' ? formatNumber(likesCount) : 0;
 
   const styleBlogStatsWrapper = css({
     fontFamily: 'var(--font-secondary)',
@@ -90,17 +94,10 @@ const BlogStats: FC<BlogStatsProps> = ({ feed, filteredPosts }) => {
           <span className="text">{postsText}</span>
         </li>
         <li className="divider">/</li>
-        {error || totalLikesCount === undefined || totalLikesCount === 0 ? (
-          <li className="likesCount">
-            {formatNumber(filteredLikesCount)}
-            <span className="text">{likesText}</span>
-          </li>
-        ) : (
-          <li className="likesCount">
-            {formatNumber(filterActive ? filteredLikesCount : totalLikesCount)}
-            <span className="text">{likesText}</span>
-          </li>
-        )}
+        <li className="likesCount">
+          {formattedLikesCount}
+          <span className="text">{likesText}</span>
+        </li>
       </ul>
     </div>
   );
