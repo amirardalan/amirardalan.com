@@ -243,7 +243,7 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
           padding: 0,
           display: 'inline-block',
           fontWeight: 400,
-          lineHeight: '2.6rem',
+          lineHeight: '2.5rem',
           '& code': {
             fontFamily: 'var(--font-secondary)',
             background: 'transparent',
@@ -253,20 +253,22 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
             textDecoration: 'none',
             color: 'var(--color-heading)',
             fontSize: HEADING_FONT_SIZE,
-            '&:hover': {
-              '&::before': {
-                fontWeight: 400,
-                content: '"#"',
-                color: 'var(--color-accent-gray)',
-                position: 'absolute',
-                textAlign: 'center',
-                top: 4,
-                left: -28,
-                fontSize: HEADING_FONT_SIZE,
+            '@media (min-width: 1025px)': {
+              '&:hover': {
+                '&::before': {
+                  fontWeight: 400,
+                  content: '"#"',
+                  color: 'var(--color-accent-gray)',
+                  position: 'absolute',
+                  textAlign: 'center',
+                  top: 4,
+                  left: -28,
+                  fontSize: HEADING_FONT_SIZE,
+                },
               },
             },
             '@media (max-width: 768px)': {
-              fontSize: 24,
+              fontSize: 26,
             },
           },
           '@media(hover: none)': {
@@ -340,7 +342,8 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
           },
           a: {
             fontFamily: 'var(--font-secondary)',
-            fontSize: 14.5,
+            fontSize: 16,
+            lineHeight: '1rem',
           },
           code: {
             fontSize: 13,
