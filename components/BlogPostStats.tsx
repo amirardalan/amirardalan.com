@@ -10,6 +10,7 @@ import formatDate from '@/utils/formatDate';
 type BlogPostStatsProps = {
   post: PostProps;
   isFeatured?: boolean;
+  showDate?: boolean;
 };
 
 const styleBlogPostStats = css({
@@ -62,7 +63,11 @@ const styleBlogPostStats = css({
   },
 });
 
-const BlogPostStats: FC<BlogPostStatsProps> = ({ post, isFeatured }) => {
+const BlogPostStats: FC<BlogPostStatsProps> = ({
+  post,
+  isFeatured,
+  showDate,
+}) => {
   const postReadTime = calculateReadTime(post.content);
   const postDate = formatDate(post.publishedAt, 'numeric');
 
@@ -78,7 +83,7 @@ const BlogPostStats: FC<BlogPostStatsProps> = ({ post, isFeatured }) => {
           {post.category}
         </Link>
         <span className="readTime">{postReadTime}</span>
-        <span className="postDate">{postDate}</span>
+        {showDate && <span className="postDate">{postDate}</span>}
       </div>
       <div className="postStatsDivider"></div>
       <div className="statsRight">

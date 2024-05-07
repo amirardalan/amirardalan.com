@@ -29,7 +29,7 @@ const BlogPost: FC<BlogPostProps> = ({ post }) => {
         aria-label={`${publishDate} • ${postReadTime}`}
       >
         <div className="blogListDetails">
-          {!isDraft && <BlogPostStats post={post} />}
+          {!isDraft && <BlogPostStats post={post} showDate={true} />}
         </div>
       </div>
       <div className="blogListHeading">
