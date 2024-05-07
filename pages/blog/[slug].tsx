@@ -154,19 +154,15 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
             margin: '0 0 .5rem',
           },
           '@media(max-width: 768px)': {
-            fontSize: 42,
-            lineHeight: '2.8rem',
-          },
-          '@media(max-width: 600px)': {
-            fontSize: 32,
-            lineHeight: '2.2rem',
+            fontSize: 36,
+            lineHeight: '3rem',
           },
         },
         '.teaser': {
           fontFamily: 'var(--font-tertiary)',
           fontSize: 22,
           fontStyle: 'italic',
-          lineHeight: '1.5rem',
+          lineHeight: '1.8rem',
           color: 'var(--color-gray)',
           '@media(max-width: 1024px)': {
             fontSize: 18,
@@ -233,9 +229,6 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
         },
         'h3, h3 code': {
           fontSize: HEADING_FONT_SIZE,
-          '@media(max-width: 768px)': {
-            fontSize: 24,
-          },
         },
         h3: {
           scrollMarginTop: '4rem',
@@ -244,6 +237,9 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
           display: 'inline-block',
           fontWeight: 400,
           lineHeight: '2.5rem',
+          '@media (max-width: 480px)': {
+            lineHeight: '2rem',
+          },
           '& code': {
             fontFamily: 'var(--font-secondary)',
             background: 'transparent',
@@ -268,7 +264,7 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
               },
             },
             '@media (max-width: 768px)': {
-              fontSize: 26,
+              fontSize: 28,
             },
           },
           '@media(hover: none)': {
