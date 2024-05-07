@@ -45,8 +45,8 @@ const Like: FC<LikeCountProps> = ({ id, likes }) => {
         <>
           <div css={styleLikes}>
             <span className="likes" ref={likesRef}>
-              {formatNumber(likeCount)}
-              {likeCount === 1 ? ' like' : ' likes'}
+              {formatNumber(likeCount || likes)}
+              {likeCount || likes === 1 ? ' like' : ' likes'}
             </span>
           </div>
         </>

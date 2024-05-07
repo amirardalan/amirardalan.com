@@ -1,10 +1,6 @@
 // Format Number Count - (eg: 1.2K, 2M)
 
 const formatNumber = (num: number): string => {
-  if (!num || num === 0) {
-    return '0';
-  }
-
   if (num < 1000) {
     return num.toString();
   } else if (num < 1000000) {

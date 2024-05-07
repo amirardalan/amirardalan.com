@@ -14,16 +14,15 @@ const BlogStats: FC<BlogStatsProps> = ({ feed, filteredPosts }) => {
   const filterActive = filteredPosts.length < feed.length;
   const postCount = filterActive ? filteredPosts.length : feed.length;
   const postsText = postCount === 1 ? 'post' : 'posts';
-  const filteredLikes = filteredPosts.reduce((acc, post) => {
+  const filteredLikesCount = filteredPosts.reduce((acc, post) => {
     if (post.published) {
       return acc + (post.likes || 0);
     }
     return acc;
   }, 0);
   const { totalLikesCount, error } = useTotalLikes();
-  const totalLikes = totalLikesCount.likes;
   const likesText =
-    (filteredLikes | totalLikesCount.likes) === 1 ? 'like' : 'likes';
+    (filteredLikesCount | totalLikesCount) === 1 ? 'like' : 'likes';
 
   const styleBlogStatsWrapper = css({
     fontFamily: 'var(--font-secondary)',
@@ -91,14 +90,14 @@ const BlogStats: FC<BlogStatsProps> = ({ feed, filteredPosts }) => {
           <span className="text">{postsText}</span>
         </li>
         <li className="divider">/</li>
-        {error || !totalLikes || totalLikes === 0 ? (
+        {error || totalLikesCount === undefined || totalLikesCount === 0 ? (
           <li className="likesCount">
-            {!filteredLikes ? formatNumber(filteredLikes) : '0'}
+            {formatNumber(filteredLikesCount)}
             <span className="text">{likesText}</span>
           </li>
         ) : (
           <li className="likesCount">
-            {formatNumber(filterActive ? filteredLikes : totalLikes)}
+            {formatNumber(filterActive ? filteredLikesCount : totalLikesCount)}
             <span className="text">{likesText}</span>
           </li>
         )}
