@@ -178,7 +178,7 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
   }
 
   const { totalLikesCount } = useTotalLikes();
-  const averageLikes = totalLikesCount / feed.length;
+  const averageLikes = totalLikesCount.likes / feed.length;
 
   interface PostFeedItem extends PostProps, FeedItem {}
 

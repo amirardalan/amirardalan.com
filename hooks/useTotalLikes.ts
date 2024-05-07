@@ -2,7 +2,7 @@ import useSWR from 'swr';
 import fetcher from '@/lib/fetcher';
 
 type TotalLikes = {
-  totalLikesCount: number;
+  totalLikesCount: { likes: number };
   error: any;
 };
 

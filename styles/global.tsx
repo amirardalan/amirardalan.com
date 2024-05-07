@@ -157,7 +157,7 @@ const GlobalStyles: FC<GlobalStylesProps> = ({
             height: 1,
             border: 0,
             borderTop: '1px solid var(--color-accent-gray)',
-            margin: '4rem 0 1.5em 0',
+            margin: '4rem 0 4em 0',
             padding: 0,
           },
           'input, textarea, select': {

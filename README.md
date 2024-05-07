@@ -232,12 +232,14 @@ Retain the terseness of pure Markdown while getting the benefits of the Next/Ima
 
 ## Additional Notes
 
-- **IMPORTANT:** Currently, you must manually hardcode your site's pages in `sitemap.xml.tsx`. Blog page urls are dynamically generated. All other static Next pages need to be manually added in.
+- Take a look at `next.config.js`. You probably want to modify this file for use with your own app (redirects, whitelisted domains, etc.).
+- Comment the environment conditional in `lib/fetcher.ts` to suppress post likes fetcher from making excessive DB calls while developing.
+- Currently, you must manually hardcode your site's pages in `sitemap.xml.tsx`. Blog page urls are dynamically generated. All other static Next pages need to be manually added in.
 - Most static content can be edited in `data/content.ts`
 - Currently blog categories are manually set in `data/categories.ts`
 - For blog image hosting, I recommend Cloudinary's Free [Digital Asset Manager](https://cloudinary.com/documentation/digital_asset_management_overview)
 - This project is the culmination of thousands of hours of work. It's primarily open-source for educational purposes. If you intend to use parts of the code, please create your own design and content!
-- If you have any questions, reach out to me on [X](https://x.com/amirardalan)!
+- If you have any questions, reach out to me on x: [@amirardalan](https://x.com/amirardalan).
 
 ---
 

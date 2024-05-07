@@ -117,7 +117,7 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
     : null;
 
   const RenderBlogPost = () => {
-    const HEADING_FONT_SIZE = 28;
+    const HEADING_FONT_SIZE = 32;
 
     const styleBlogPost = css({
       '.likeAndShare': {
@@ -233,7 +233,6 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
         },
         'h3, h3 code': {
           fontSize: HEADING_FONT_SIZE,
-          lineHeight: '2rem',
           '@media(max-width: 768px)': {
             fontSize: 24,
           },
@@ -244,6 +243,7 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
           padding: 0,
           display: 'inline-block',
           fontWeight: 400,
+          lineHeight: '2.6rem',
           '& code': {
             fontFamily: 'var(--font-secondary)',
             background: 'transparent',
@@ -260,7 +260,7 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
                 color: 'var(--color-accent-gray)',
                 position: 'absolute',
                 textAlign: 'center',
-                top: 2,
+                top: 4,
                 left: -28,
                 fontSize: HEADING_FONT_SIZE,
               },
@@ -284,7 +284,7 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
         'p, ul, li, a': {
           fontFamily: 'var(--font-tertiary)',
           fontSize: 18,
-          lineHeight: '1.8rem',
+          lineHeight: '2rem',
         },
         'ul, li, a': {
           marginBottom: '1rem',
@@ -394,7 +394,7 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
         },
         'ul li': {
           listStyle: 'outside',
-          margin: '0 0 .5rem 1rem',
+          margin: '0 0 1rem 1rem',
           paddingLeft: '.5rem',
           '&.task-list-item': {
             fontSize: 15,
