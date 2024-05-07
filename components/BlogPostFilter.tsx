@@ -245,7 +245,7 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
         <div css={styleClearButton}>
           <span className="clearButton">
             <span className="searchNoResults">{blog.search?.noresult} </span>
-            {feed.length > 0 ? (
+            {feed.length > 0 && (
               <button
                 onClick={() => handleClearFilters()}
                 onKeyDown={() => handleClearFilters()}
@@ -260,7 +260,7 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
                   <span className="clearButton">{' ' + blog.search.clear}</span>
                 </button>
               </button>
-            ) : null}
+            )}
           </span>
         </div>
       );

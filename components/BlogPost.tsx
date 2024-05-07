@@ -32,11 +32,13 @@ const BlogPost: FC<BlogPostProps> = ({ post }) => {
           {!isDraft && <BlogPostStats post={post} />}
         </div>
       </div>
-      <h2 className="blogListHeading">
-        <Link href={`/blog/${post.slug}`} aria-label={post.title}>
-          {post.title}
-        </Link>
-      </h2>
+      <div className="blogListHeading">
+        <h2>
+          <Link href={`/blog/${post.slug}`} aria-label={post.title}>
+            {post.title}
+          </Link>
+        </h2>
+      </div>
       <p className="teaser">{post.teaser}</p>
     </div>
   );

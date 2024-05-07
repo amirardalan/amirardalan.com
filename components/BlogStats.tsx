@@ -26,7 +26,7 @@ const BlogStats: FC<BlogStatsProps> = ({ feed, filteredPosts }) => {
 
   const likesCount = filterActive ? filteredLikesCount : totalLikesCount;
   const formattedLikesCount =
-    likesCount || typeof likesCount === 'number' ? formatNumber(likesCount) : 0;
+    likesCount && typeof likesCount === 'number' ? formatNumber(likesCount) : 0;
 
   const styleBlogStatsWrapper = css({
     fontFamily: 'var(--font-secondary)',

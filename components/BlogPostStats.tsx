@@ -5,6 +5,7 @@ import calculateReadTime from '@/utils/calculateReadTime';
 import { PostProps } from '@/types/post';
 import { css } from '@emotion/react';
 import Link from 'next/link';
+import formatDate from '@/utils/formatDate';
 
 type BlogPostStatsProps = {
   post: PostProps;
@@ -21,6 +22,12 @@ const styleBlogPostStats = css({
   textTransform: 'uppercase',
   fontSize: 11,
   paddingBottom: '.5rem',
+  '@media (max-width: 480px)': {
+    flexDirection: 'column',
+    '.statsLeft': {
+      borderBottom: '1px solid var(--color-accent)',
+    },
+  },
   '.postStatsDivider': {
     transition: 'border-color 0.25s ease-in-out',
     borderBottom: '1px solid var(--color-accent)',
@@ -29,21 +36,21 @@ const styleBlogPostStats = css({
     alignSelf: 'center',
     justifyContent: 'center',
     margin: '.2rem 1rem 0 1rem',
+    '@media (max-width: 480px)': {
+      display: 'none',
+    },
   },
   '.featured': {
     marginRight: '.5rem',
     display: 'flex',
-    '@media (max-width: 360px)': {
+    '@media (max-width: 480px)': {
       display: 'none',
     },
   },
-  postCategory: {
-    color: 'var(--color-primary)',
-    '&:hover': {
-      textDecoration: 'none',
-    },
+  '.postDate': {
     '&::before': {
-      content: '"#"',
+      content: '"•"',
+      margin: '0 .5rem',
     },
   },
   '.likesAndViews': {
@@ -55,6 +62,7 @@ const styleBlogPostStats = css({
 
 const BlogPostStats: FC<BlogPostStatsProps> = ({ post, isFeatured }) => {
   const postReadTime = calculateReadTime(post.content);
+  const postDate = formatDate(post.publishedAt, 'numeric');
 
   return (
     <div css={styleBlogPostStats} className="blogPostStats">
@@ -63,14 +71,19 @@ const BlogPostStats: FC<BlogPostStatsProps> = ({ post, isFeatured }) => {
           Featured
         </div>
       )}
-      <Link className="postCategory" href={`/blog?category=${post.category}`}>
-        {post.category}
-      </Link>
-      <span className="readTime">{postReadTime}</span>
+      <div className="statsLeft">
+        <Link className="postCategory" href={`/blog?category=${post.category}`}>
+          {post.category}
+        </Link>
+        <span className="readTime">{postReadTime}</span>
+        <span className="postDate">{postDate}</span>
+      </div>
       <div className="postStatsDivider"></div>
-      <div className="likesAndViews">
-        <PostViewCount slug={post.slug} />
-        <LikeCount id={post.id} likes={post.likes} />
+      <div className="statsRight">
+        <div className="likesAndViews">
+          <PostViewCount slug={post.slug} />
+          <LikeCount id={post.id} likes={post.likes} />
+        </div>
       </div>
     </div>
   );

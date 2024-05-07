@@ -34,7 +34,7 @@ const PostViewCount: FC<PostViewCountProps> = ({ slug }) => {
       transform: `translateY(${isLoading ? 10 : 0}px)`,
       opacity: isLoading ? 0 : 1,
       '&:after': {
-        content: '"•"',
+        content: '"/"',
         margin: '0 0.5rem',
       },
     },

@@ -75,22 +75,16 @@ const Blog = ({ blog, feed }: BlogProps) => {
     '.blogListHeading': {
       fontFamily: 'var(--font-secondary)',
       fontWeight: 400,
-      lineHeight: '1.4rem',
+      lineHeight: '2.2rem',
       a: {
         color: 'var(--color-heading)',
         textDecoration: 'none',
         display: 'flex',
         width: '100%',
       },
-      '@media(max-width: 1024px)': {
-        margin: '.6rem 0',
-        lineHeight: '1.4rem',
+      '@media (max-width: 768px)': {
+        lineHeight: '1.6rem',
       },
-    },
-    h2: {
-      margin: 0,
-      lineHeight: '2.5rem',
-      '&:hover': { textDecoration: 'none' },
     },
     p: {
       marginBottom: '2rem',
@@ -104,7 +98,7 @@ const Blog = ({ blog, feed }: BlogProps) => {
     },
     '.postTeaser': {
       position: 'relative',
-      h2: {
+      '.blogListHeading': {
         margin: '.5rem 0 .8rem',
         color: 'var(--color-heading)',
         fontSize: 32,
@@ -115,7 +109,7 @@ const Blog = ({ blog, feed }: BlogProps) => {
           border: 'none',
           '@media (min-width: 1025px)': {
             '&:hover': {
-              color: 'var(--color-primary)',
+              textDecoration: 'underline',
             },
           },
         },
@@ -133,7 +127,8 @@ const Blog = ({ blog, feed }: BlogProps) => {
         fontStyle: 'italic',
         lineHeight: '1.25rem',
         '@media(max-width: 1024px)': {
-          margin: '.8rem 0 0',
+          margin: 0,
+          padding: 0,
           fontSize: 14,
         },
       },

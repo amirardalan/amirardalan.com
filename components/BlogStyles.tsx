@@ -66,6 +66,9 @@ const blogStyles = css({
       width: '100%',
       margin: 0,
       padding: 0,
+      '@media (max-width: 480px)': {
+        height: 'auto',
+      },
     },
   },
   li: {
