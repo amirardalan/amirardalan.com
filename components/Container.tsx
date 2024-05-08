@@ -68,13 +68,13 @@ const Container: FC<ContainerProps> = (props) => {
     const usesDarkMode =
       window.matchMedia('(prefers-color-scheme: dark)').matches || false;
 
-    function switchIcon(usesDarkMode: boolean) {
+    const switchIcon = (usesDarkMode: boolean) => {
       if (usesDarkMode) {
         setFaviconTheme('dark');
       } else {
         setFaviconTheme('light');
       }
-    }
+    };
 
     window
       .matchMedia('(prefers-color-scheme: dark)')
@@ -99,8 +99,11 @@ const Container: FC<ContainerProps> = (props) => {
         <link rel="icon" href={favicon} />
         <meta name="robots" content={meta.robots} />
 
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-        
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1"
+        />
+
         <meta
           property="og:url"
           content={`${process.env.NEXT_PUBLIC_SITE_URL}${router.asPath}`}
