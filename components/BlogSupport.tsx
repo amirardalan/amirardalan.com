@@ -120,6 +120,7 @@ const BlogSupport: FC<BlogSupportProps> = ({
               },
             },
             '@media (max-width: 480px)': {
+              marginTop: '1.4rem',
               fontSize: 14,
             },
           },
@@ -174,7 +175,7 @@ const BlogSupport: FC<BlogSupportProps> = ({
             },
           },
           '@media (max-width: 480px)': {
-            marginTop: '1rem',
+            marginTop: '.75rem',
             flexDirection: 'row',
             justifyContent: 'space-around',
           },
@@ -188,11 +189,16 @@ const BlogSupport: FC<BlogSupportProps> = ({
       fontSize: 16,
       button: {
         display: 'flex',
+        textAlign: 'left',
         '&:last-of-type': {
           marginLeft: '1.5rem',
         },
         '@media (max-width: 480px)': {
           fontSize: 14,
+          lineHeight: '.9rem',
+        },
+        '@media (max-width: 400px)': {
+          fontSize: 12,
           lineHeight: '.9rem',
         },
       },
@@ -209,6 +215,7 @@ const BlogSupport: FC<BlogSupportProps> = ({
           marginLeft: '.2rem',
         },
         '@media (max-width: 480px)': {
+          marginTop: '.25rem',
           marginBottom: '.5rem',
         },
       },
@@ -220,6 +227,12 @@ const BlogSupport: FC<BlogSupportProps> = ({
         marginRight: '1rem',
         '@media (max-width: 768px)': {
           fontSize: 22,
+        },
+        '@media (max-width: 480px)': {
+          fontSize: 18,
+        },
+        '@media (max-width: 400px)': {
+          fontSize: 14,
         },
       },
       p: {
@@ -269,7 +282,6 @@ const BlogSupport: FC<BlogSupportProps> = ({
                   </span>
                   <button
                     onClick={handleshowOptions}
-                    title="Buy me a coffee"
                     aria-label="Buy me a coffee"
                   >
                     Buy me a coffee
