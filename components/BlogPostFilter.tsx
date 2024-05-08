@@ -29,6 +29,7 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
   const router = useRouter();
 
   const styleBlogCategoryNav = css({
+    minHeight: 28,
     lineHeight: '1rem',
     overflow: 'scroll',
     msOverflowStyle: 'none',
@@ -73,10 +74,6 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
       position: 'absolute',
       top: 18,
       right: 10,
-      '@media (max-width: 768px)': {
-        top: 16,
-        right: 10,
-      },
     },
     '.clearSearch': {
       display: 'flex',
@@ -85,10 +82,6 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
       top: 18,
       right: 10,
       cursor: 'pointer',
-      '@media (max-width: 768px)': {
-        top: 17,
-        right: 9,
-      },
     },
     '@media (max-width: 768px)': {
       marginBottom: '3rem',
