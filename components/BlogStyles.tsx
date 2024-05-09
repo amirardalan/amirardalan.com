@@ -26,7 +26,7 @@ const blogStyles = css({
   '.post': {
     '.publishedPost': {
       display: 'block',
-      marginBottom: '4.5rem',
+      marginBottom: '5rem',
       h2: {
         fontSize: 28,
       },

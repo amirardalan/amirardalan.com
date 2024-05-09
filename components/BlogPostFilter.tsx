@@ -29,7 +29,8 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
   const router = useRouter();
 
   const styleBlogCategoryNav = css({
-    minHeight: 30,
+    paddingTop: '.5rem',
+    minHeight: 36,
     lineHeight: '1rem',
     overflow: 'scroll',
     msOverflowStyle: 'none',
@@ -50,7 +51,7 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
   });
 
   const styleSearchPosts = css({
-    marginBottom: '4rem',
+    marginBottom: '5rem',
     display: 'flex',
     position: 'relative',
     caretColor: 'var(--color-gray)',
@@ -90,7 +91,7 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
       },
     },
     '@media (max-width: 768px)': {
-      marginBottom: '3rem',
+      marginBottom: '4rem',
     },
   });
 

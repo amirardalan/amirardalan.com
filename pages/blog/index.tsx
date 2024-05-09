@@ -48,6 +48,12 @@ export const getStaticProps: GetStaticProps<BlogProps> = async () => {
 
 const Blog = ({ blog, feed }: BlogProps) => {
   const styleBlogWrapper = css({
+    '.post': {
+      marginBottom: '6rem',
+      '@media (max-width: 768px)': {
+        marginBottom: '5rem',
+      },
+    },
     '.categoryWrapper': {
       display: 'flex',
       flexDirection: 'row',
