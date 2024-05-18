@@ -6,9 +6,9 @@ export const revalidatePhotos = (
   return async function (req: NextApiRequest, res: NextApiResponse) {
     try {
       const baseUrl =
-        process.env.VERCEL_ENV === 'preview'
-          ? process.env.VERCEL_URL
-          : process.env.NEXT_PUBLIC_SITE_URL;
+        process.env.VERCEL_REGION === null
+          ? process.env.NEXT_PUBLIC_SITE_URL
+          : `https://${process.env.VERCEL_URL}`;
 
       const revalidateRes = await fetch(
         `${baseUrl}/api/revalidate?secret=${process.env.REVALIDATE_SECRET}&path=/photos`
@@ -31,17 +31,4 @@ export const revalidatePhotos = (
 
     res.status(200).json({ message: 'Successfully revalidated /photos' });
   };
-};
-
-export const revalidateBlog = async (
-  postPath: string,
-  revalidateHome: boolean
-): Promise<void> => {
-  try {
-    await fetch(
-      `${process.env.NEXT_PUBLIC_SITE_URL}/api/post/revalidate?path=${postPath}&revalidateHome=${revalidateHome}`
-    );
-  } catch (error) {
-    console.error('Failed to revalidate:', error);
-  }
 };
