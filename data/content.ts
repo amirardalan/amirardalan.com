@@ -300,16 +300,21 @@ export const usesContent = {
   devices: {
     content: `### Devices
   #### Laptop
-  - 2016 13" MacBook Pro
+  - 14" MacBook Pro
+  - Nov 2023
+  - Silver
   ##### Specs:
-  - 3.3GHz i7
-  - 16GB RAM
+  - M3 Pro
+  - 12-core CPU
+  - 18-core GPU
+  - 36GB RAM
+  - 1TB SSD
   ---
   #### Desktop
   - Custom PC
   ##### Specs:
   - Intel i7-14700KF 5.6GHz
-  - Deepcool LT720
+  - Deepcool LT720 AIO
   - Asus ROG STRIX Z790-A GAMING WIFI II
   - Gigabyte RTX 4090 AERO OC 24GB
   - Corsair Vengeance DDR5-6400 CL32 64GB
