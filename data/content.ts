@@ -349,6 +349,7 @@ export const usesContent = {
 
   ---
   #### Browser
+  - Arc
   - Google Chrome
   ##### Chrome Extensions:
   - React Developer Tools
