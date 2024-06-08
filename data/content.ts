@@ -300,8 +300,7 @@ export const usesContent = {
   devices: {
     content: `### Devices
   #### Laptop
-  - 14" MacBook Pro
-  - Nov 2023
+  - 14" M3 MacBook Pro
   - Silver
   ##### Specs:
   - M3 Pro
@@ -350,11 +349,10 @@ export const usesContent = {
   ---
   #### Browser
   - Arc
-  - Google Chrome
   ##### Chrome Extensions:
   - React Developer Tools
   - uBlock Origin
-  - Google Analytics Debugger
+  - Stylebot
 
   ---
   #### Testing
@@ -369,7 +367,7 @@ export const usesContent = {
   stack: {
     content: `### Stack
 
-  #### Web
+  #### Web Dev
   - Next.js
   - TypeScript
   - Emotion
@@ -385,10 +383,11 @@ export const usesContent = {
   - Cloudinary
 
   ---
-  #### CLI
-  - macOS: Terminal (~ZSH)
+  #### Shell
+  - macOS: iTerm 2
   - Win: Powershell 7
   - Powerlevel10k
+  ##### CLI
   - GitHub CLI
   - Vercel CLI
   - Supabase CLI
@@ -407,10 +406,28 @@ export const usesContent = {
   - iA Writer
 
   ---
-  #### Design
+  #### Design / Photo
   - Figma
+  - Adobe Lightroom
   - Aseprite
   - Excalidraw
+
+  ---
+  #### Music Production
+  - Ableton Live 12
+  ##### VSTs:
+  - Synapse Audio Dune 3
+  - Serum by Xfer Records
+  - Waves API 2500
+  - Waves C1 Compressor
+  - Waves H-Delay
+  - Waves L2 Ultramaximizer
+  - Waves Renaissance Bass
+  - Waves TrueVerb
+  - FabFilter Pro-Q 2
+  - Valhalla Super Massive
+  - Valhalla VintageVerb
+  - Sonic Academy Kick 2
   
   ---
   #### Listening
