@@ -13,7 +13,6 @@ const Uses: FC<UsesProps> = ({ content }) => {
     gap: '4rem',
     gridAutoRows: 'minmax(100px, auto)',
     lineHeight: '1.8rem',
-    marginBottom: '3.5rem',
     hr: {
       margin: '2rem 0',
       borderColor: 'var(--color-accent-lighter)',
@@ -79,6 +78,7 @@ const Uses: FC<UsesProps> = ({ content }) => {
     },
     '@media (max-width: 768px)': {
       paddingTop: '1rem',
+      paddingBottom: '3.5rem',
     },
     '@media(max-width: 480px)': {
       gridTemplateColumns: 'repeat(1, 1fr)',
