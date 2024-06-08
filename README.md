@@ -107,7 +107,7 @@ Generate a secret for use with Next [On-Demand Incremental Static Regeneration](
 ### Install Dependencies
 
 ```bash
-npm install
+bun install
 ```
 
 ### Configure Prettier
@@ -120,7 +120,7 @@ If you'd like to contribute to this project or use Prettier with your fork, down
 ### Start the Development Server
 
 ```bash
-npm run dev
+bun run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000)
@@ -130,7 +130,7 @@ Open [http://localhost:3000](http://localhost:3000)
 Create a local copy of a production build (useful for testing [on-demand ISR](https://nextjs.org/docs/basic-features/data-fetching/incremental-static-regeneration#on-demand-revalidation-beta), `pages/sitemap.xml.tsx` configuration), and [Lighthouse](https://developer.chrome.com/docs/lighthouse/overview/) performance:
 
 ```bash
-npm run test
+bun run test
 ```
 
 ### GitHub OAuth
