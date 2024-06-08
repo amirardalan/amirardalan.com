@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
-export const revalidatePhotos = (
+const revalidatePhotos = (
   requestHandler: (req: NextApiRequest, res: NextApiResponse) => Promise<void>
 ) => {
   return async function (req: NextApiRequest, res: NextApiResponse) {
@@ -32,3 +32,5 @@ export const revalidatePhotos = (
     res.status(200).json({ message: 'Successfully revalidated /photos' });
   };
 };
+
+export default revalidatePhotos;
