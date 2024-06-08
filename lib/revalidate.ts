@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
-const revalidatePhotos = (
+export const revalidatePhotos = (
   requestHandler: (req: NextApiRequest, res: NextApiResponse) => Promise<void>
 ) => {
   return async function (req: NextApiRequest, res: NextApiResponse) {
@@ -33,4 +33,15 @@ const revalidatePhotos = (
   };
 };
 
-export default revalidatePhotos;
+export const revalidateBlog = async (
+  postPath: string,
+  revalidateHome: boolean
+): Promise<void> => {
+  try {
+    await fetch(
+      `${process.env.NEXT_PUBLIC_SITE_URL}/api/post/revalidate?path=${postPath}&revalidateHome=${revalidateHome}`
+    );
+  } catch (error) {
+    console.error('Failed to revalidate:', error);
+  }
+};
