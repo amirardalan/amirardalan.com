@@ -13,6 +13,7 @@ const Uses: FC<UsesProps> = ({ content }) => {
     gap: '4rem',
     gridAutoRows: 'minmax(100px, auto)',
     lineHeight: '1.8rem',
+    marginBottom: '3.5rem',
     hr: {
       margin: '2rem 0',
       borderColor: 'var(--color-accent-lighter)',
