@@ -324,11 +324,17 @@ export const usesContent = {
   - Alienware AW3423DW 34.2" 175Hz
   ---
   #### Audio
+  ##### Interface
   - Motu Audio Express
+  ##### Monitors
   - KRK VXT 8
+  ##### Headphones
   - Beyerdynamic DT770Pro
   - Sennheiser HD25-1 II
   - Apple AirPods Pro (2nd gen.)
+  ##### MIDI Controllers
+  - Korg nanoKONTROL 1
+  - Korg nanoPAD 1
   `,
   },
   tools: {
