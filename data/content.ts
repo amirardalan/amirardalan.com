@@ -354,7 +354,7 @@ export const usesContent = {
 
   ---
   #### Browser
-  - Arc
+  - Brave
   ##### Chrome Extensions:
   - React Developer Tools
   - uBlock Origin
