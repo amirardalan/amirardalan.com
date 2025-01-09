@@ -354,7 +354,7 @@ export const usesContent = {
 
   ---
   #### Browser
-  - Brave
+  - Firefox
   ##### Chrome Extensions:
   - React Developer Tools
   - uBlock Origin
@@ -390,7 +390,7 @@ export const usesContent = {
 
   ---
   #### Shell
-  - macOS: iTerm 2
+  - macOS: Ghostty
   - Win: Powershell 7
   - Powerlevel10k
   ##### CLI
