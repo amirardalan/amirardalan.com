@@ -1,6 +1,6 @@
-# Startup
+# amir.sh
 
-This is a [Next.js](https://nextjs.org/) App Router project with TypeScript, Tailwind, CLSX, and Prettier.
+Personal website built with my [Startup](https://github.com/amirardalan/startup) project.
 
 ### Features
 
