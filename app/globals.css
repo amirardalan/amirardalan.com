@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-sans: 'Inter', sans-serif;
+  --font-serif: 'Playwrite US Modern', serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --color-dark: rgb(0, 0, 0);
+  --color-light: rgb(255, 255, 255);
+  --color-primary: rgb(0, 195, 162);
+  --color-secondary: rgb(214, 210, 221);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-light: rgb(255, 255, 255);
+    --color-dark: rgb(0, 0, 0);
+  }
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+  }
+  body {
+    background-color: var(--color-light);
+    .dark & {
+      background-color: var(--color-dark);
+    }
+  }
+  ::selection {
+    color: var(--color-primary);
+    background-color: var(--color-secondary);
+  }
+  a {
+    color: var(--color-primary);
+  }
+}
+
+@layer components {
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
