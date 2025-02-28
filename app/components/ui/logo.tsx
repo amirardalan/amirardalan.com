@@ -15,7 +15,7 @@ export default function Logo({ fontSize }: LogoProps) {
             'font-serif italic text-dark dark:text-light'
           )}
         >
-          Startup
+          amir.sh
         </h1>
       </Link>
     </div>

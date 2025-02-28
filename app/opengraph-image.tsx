@@ -3,7 +3,7 @@ import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 
 // Image metadata
-export const alt = 'Startup';
+export const alt = 'Amir Ardalan';
 export const size = {
   width: 1200,
   height: 630,
@@ -34,7 +34,7 @@ export default async function Image() {
         <div tw="flex p-8">
           <div tw="flex flex-col md:flex-row w-full md:items-center justify-between p-8">
             <h2 tw="flex flex-col text-[124px] text-white text-left">
-              <span>Startup()</span>
+              <span>Amir Ardalan</span>
             </h2>
             <div tw="w-132 ml-6 flex">
               <h3 tw="text-4xl text-gray-400 leading-10">

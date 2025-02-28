@@ -38,7 +38,7 @@ export async function generateMetadata(): Promise<Metadata> {
       : `• ${pathname.slice(1).charAt(0).toUpperCase()}${pathname.slice(2)}`;
 
   return {
-    title: `Startup ${title}`,
+    title: `amir.sh ${title}`,
     description:
       'A Next.js App Router starter project with TypeScript, Tailwind, NextAuth, Prettier, and Dark Mode.',
     icons: {
