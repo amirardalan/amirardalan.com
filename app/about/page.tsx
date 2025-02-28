@@ -9,8 +9,15 @@ export default function About() {
           About
         </h2>
         <p className="text-dark dark:text-light">
-          A Next.js App Router starter project with TypeScript, Tailwind,
-          NextAuth, Prettier, and Dark Mode.
+          Design Engineer with 10+ years of experience based in Portland, OR.
+        </p>
+        <p className="text-dark dark:text-light">
+          I've collaborated with renowned brands including Nike, BASIC/DEPT®,
+          Columbia Sportswear, SOREL, and KEEN Footwear.
+        </p>
+        <p className="text-dark dark:text-light">
+          I combine form and function to create innovative digital products that
+          delight users and drive results.
         </p>
         <span className="mt-2 flex flex-row">
           <p className="text-dark dark:text-light">Built and maintained by</p>
