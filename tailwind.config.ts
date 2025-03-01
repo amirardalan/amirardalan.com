@@ -5,7 +5,7 @@ const config: Config = {
   theme: {
     fontFamily: {
       sans: ['Inter', 'system-ui'],
-      serif: ['Playwrite US Modern', 'serif'],
+      serif: ['Mr Dafoe', 'serif'],
       mono: ['JetBrains Mono', 'monospace'],
     },
     extend: {

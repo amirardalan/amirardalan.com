@@ -11,11 +11,11 @@ export default function Logo({ fontSize }: LogoProps) {
       <Link href="/">
         <h1
           className={clsx(
-            fontSize ?? 'text-xxl',
+            fontSize ?? 'text-4xl',
             'font-serif italic text-dark dark:text-light'
           )}
         >
-          amir.sh
+          Amir Ardalan
         </h1>
       </Link>
     </div>

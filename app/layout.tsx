@@ -12,13 +12,13 @@ import LightIcon from '@/public/images/favicon-light.png';
 import Header from '@/components/ui/header';
 import Footer from '@/components/ui/footer';
 
-import { Inter, JetBrains_Mono, Playwrite_US_Modern } from 'next/font/google';
+import { Inter, JetBrains_Mono, Mr_Dafoe } from 'next/font/google';
 
 const sans = Inter({
   subsets: ['latin'],
   display: 'swap',
 });
-const serif = Playwrite_US_Modern({
+const serif = Mr_Dafoe({
   weight: ['400'],
   style: ['normal'],
   display: 'swap',
