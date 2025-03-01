@@ -11,6 +11,7 @@ export default async function Account() {
           <h2 className="mb-6 border-b-2 border-solid border-gray-300 pb-4 text-xxl text-dark dark:border-gray-600 dark:text-light">
             Account
           </h2>
+
           <div className="flex flex-row items-center">
             <div className="h-6 w-6">
               <Avatar />
