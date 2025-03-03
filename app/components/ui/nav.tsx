@@ -20,6 +20,9 @@ export default function Navigation() {
         <Link href="/">
           <span className={getNavItemClass('/')}>Home</span>
         </Link>
+        <Link href="/blog">
+          <span className={getNavItemClass('/blog')}>Blog</span>
+        </Link>
         <Link href="/about">
           <span className={getNavItemClass('/about')}>About</span>
         </Link>
