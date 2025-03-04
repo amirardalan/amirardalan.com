@@ -340,7 +340,7 @@ export const usesContent = {
   tools: {
     content: `### Tools
   #### IDE
-  - VS Code
+  - Zed / VS Code
   ##### VS Code Extensions:
   - GitHub Copilot
   - Tokyo Night
@@ -354,7 +354,7 @@ export const usesContent = {
 
   ---
   #### Browser
-  - Firefox
+  - Safari / Brave
   ##### Chrome Extensions:
   - React Developer Tools
   - uBlock Origin
@@ -407,7 +407,7 @@ export const usesContent = {
   },
   software: {
     content: `### Software
-  
+
   #### Writing
   - iA Writer
 
@@ -434,12 +434,12 @@ export const usesContent = {
   - Valhalla Super Massive
   - Valhalla VintageVerb
   - Sonic Academy Kick 2
-  
+
   ---
   #### Listening
   - YouTube Music
   - Apple Podcasts
-  
+
   `,
   },
 };
