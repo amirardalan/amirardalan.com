@@ -11,6 +11,7 @@
     "format": "prettier --write ."
   },
   "dependencies": {
+    "@mdx-js/mdx": "^3.1.0",
     "clsx": "^2.1.1",
     "js-cookie": "^3.0.5",
     "next": "15.1.4",
