@@ -8,14 +8,14 @@ export default function About() {
         <h2 className="mb-6 border-b-2 border-solid border-gray-300 pb-4 text-xxl text-dark dark:border-gray-600 dark:text-light">
           About
         </h2>
-        <p className="text-dark dark:text-light">
+        <p className="mb-4 text-dark dark:text-light">
           Design Engineer with 10+ years of experience based in Portland, OR.
         </p>
-        <p className="text-dark dark:text-light">
-          I've collaborated with renowned brands including Nike, BASIC/DEPT®,
-          Columbia Sportswear, SOREL, and KEEN Footwear.
+        <p className="mb-4 text-dark dark:text-light">
+          I&apos;ve collaborated with renowned brands including Nike,
+          BASIC/DEPT®, Columbia Sportswear, SOREL, and KEEN Footwear.
         </p>
-        <p className="text-dark dark:text-light">
+        <p className="mb-10 text-dark dark:text-light">
           I combine form and function to create innovative digital products that
           delight users and drive results.
         </p>
