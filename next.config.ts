@@ -1,4 +1,7 @@
-module.exports = {
+import { NextConfig } from 'next';
+import withMDX from '@next/mdx';
+
+const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
@@ -7,4 +10,12 @@ module.exports = {
       },
     ],
   },
+  reactStrictMode: true,
 };
+
+export default withMDX({
+  extension: /\.mdx?$/,
+  options: {
+    // Add MDX options here
+  },
+})(nextConfig);
