@@ -12,7 +12,7 @@ export default function Logo({ fontSize }: LogoProps) {
         <h1
           className={clsx(
             fontSize ?? 'text-4xl',
-            'font-serif italic text-dark dark:text-light'
+            'font-serif text-dark dark:text-light'
           )}
         >
           Amir Ardalan
