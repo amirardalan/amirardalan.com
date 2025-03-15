@@ -7,7 +7,7 @@ export default function PageContent() {
     <div className="mt-12 flex flex-col items-center">
       <div className="mb-6 flex w-full justify-center">
         <Image
-          src="/images/avatar.png"
+          src="/images/logo.png"
           alt="Logo"
           width={225}
           height={225}
