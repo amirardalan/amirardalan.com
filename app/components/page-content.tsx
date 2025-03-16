@@ -9,8 +9,8 @@ export default function PageContent() {
         <Image
           src="/images/logo.png"
           alt="Logo"
-          width={225}
-          height={225}
+          width={125}
+          height={125}
           className="flex justify-center rounded-full"
           priority={true}
         />
