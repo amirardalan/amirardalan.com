@@ -414,6 +414,8 @@ export const usesContent = {
   #### Writing
   - iA Writer
 
+  #### Notes
+  - Obsidian
   ---
   #### Design / Photo
   - Figma
@@ -440,7 +442,7 @@ export const usesContent = {
 
   ---
   #### Listening
-  - YouTube Music
+  - Apple Music
   - Apple Podcasts
 
   `,
