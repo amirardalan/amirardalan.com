@@ -322,6 +322,8 @@ export const usesContent = {
   - NZXT H7 Flow
   - ARCTIC P14 PST 72.8 CFM 140mm
   - Alienware AW3423DW 34.2" 175Hz
+  - Logitech G 502X Lightspeed
+  - Keychron K2 HE
   ---
   #### Audio
   ##### Interface
