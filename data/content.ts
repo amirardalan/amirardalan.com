@@ -321,6 +321,7 @@ export const usesContent = {
   - WD Black SN850X 4TB NVME
   - NZXT H7 Flow
   - ARCTIC P14 PST 72.8 CFM 140mm
+    ##### Peripherals
   - Alienware AW3423DW 34.2" 175Hz
   - Logitech G 502X Lightspeed
   - Keychron K2 HE
