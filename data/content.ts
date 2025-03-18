@@ -314,7 +314,7 @@ export const usesContent = {
   ##### Specs:
   - Intel i7-14700KF 5.6GHz
   - Deepcool LT720 AIO
-  - Asus ROG STRIX Z790-A GAMING WIFI II
+  - MSI PRO Z790-A MAX Wifi
   - Gigabyte RTX 4090 AERO OC 24GB
   - Corsair Vengeance DDR5-6400 CL32 64GB
   - Corsair RM1000x SHIFT 1000W
