@@ -5,7 +5,7 @@ const config: Config = {
   theme: {
     fontFamily: {
       sans: ['Inter', 'system-ui'],
-      serif: ['DM Serif Text', 'serif'],
+      serif: ['Prata', 'serif'],
       mono: ['JetBrains Mono', 'monospace'],
     },
     extend: {
