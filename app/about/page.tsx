@@ -5,10 +5,10 @@ export default function About() {
   return (
     <main>
       <div className="mt-8">
-        <h2 className="my-10 border-b-2 border-solid border-gray-300 pb-4 text-xxl text-dark dark:border-gray-600 dark:text-light">
+        <h2 className="mt-6 border-b-2 border-solid border-gray-300 pb-4 text-xxl text-dark dark:border-gray-600 dark:text-light">
           About
         </h2>
-        <div className="mb-10 max-w-7xl font-serif text-3xl leading-relaxed">
+        <div className="my-10 max-w-7xl font-serif text-3xl leading-relaxed">
           <p className="mb-6 text-dark dark:text-light">
             Design Engineer with 10+ years of experience based in Portland, OR.
           </p>
