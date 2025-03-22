@@ -5,6 +5,7 @@ Personal website built with my [Startup](https://github.com/amirardalan/startup)
 ### Features
 
 - Autentication with [Auth.js](https://authjs.dev/getting-started/installation?framework=next-js)
+- Postgres database with [Supabase](https://supabase.com/docs/guides/database/overview)
 - State management with [Zustand](https://github.com/pmndrs/zustand)
 - Light, Dark, and System Theme toggle
 - Prettier code formatting with [Tailwind plugin](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier)
