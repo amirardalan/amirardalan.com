@@ -43,6 +43,7 @@ const App = ({ Component, pageProps }: AppProps<{ session: Session }>) => {
         />
         <ThemeProvider theme={themeMode}>
           <Header toggleTheme={toggleTheme} />
+          {/* @ts-ignore */}
           <Component {...pageProps} />
           <Analytics />
           <SpeedInsights />

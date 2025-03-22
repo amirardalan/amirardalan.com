@@ -227,6 +227,7 @@ const BlogMarkdown: FC<BlogMarkdownProps> = ({ markdown }) => {
       };
 
       return hasLang ? (
+        // @ts-ignore
         <SyntaxHighlighter
           style={syntaxTheme}
           language={hasLang[1]}

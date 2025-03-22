@@ -264,7 +264,7 @@ const Edit: FC<EditProps> = ({
                 handleInsertImage={handleInsertImage}
               />
             </div>
-
+            {/* @ts-ignore */}
             <BlogPostControls
               admin={admin}
               post={{ id, slug, published, featured }}

@@ -9,7 +9,7 @@ import type { PostProps } from '@/types/post';
 
 const BlogPostStats = dynamic(() => import('@/components/BlogPostStats'), {
   ssr: false,
-});
+}) as any;
 
 type BlogPostProps = {
   post: PostProps;

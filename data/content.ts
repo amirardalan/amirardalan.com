@@ -1,6 +1,6 @@
 export const appTitle = 'Amir Ardalan';
-const appDesc = 'Design Engineer';
-const metaDescription = `Design Engineer with 10+ years of experience based in Portland, OR.`;
+const appDesc = 'Frontend Engineer';
+const metaDescription = `Frontend Engineer with 10+ years of experience based in Portland, OR.`;
 
 const emailAddress = 'hi@amirardalan.com';
 const linkGitHub = 'https://github.com/amirardalan';
@@ -134,7 +134,7 @@ export const aboutContent = {
   },
   intro: {
     items: [
-      `Design Engineer with 10+ years of experience based in Portland, OR.`,
+      `Frontend Engineer with 10+ years of experience based in Portland, OR.`,
       `I've collaborated with renowned brands including Nike, BASIC/DEPT®, Columbia Sportswear, SOREL, and KEEN Footwear.`,
       `I combine form and function to create innovative digital products that delight users and drive results.`,
     ],

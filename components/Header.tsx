@@ -8,10 +8,10 @@ import { appTitle } from '@/data/content';
 
 const ThemeToggle = dynamic(() => import('@/components/ThemeToggle'), {
   ssr: false,
-});
+}) as any;
 const BlogAdmin = dynamic(() => import('@/components/BlogAdmin'), {
   ssr: true,
-});
+}) as any;
 
 type HeaderProps = {
   toggleTheme: () => void;
