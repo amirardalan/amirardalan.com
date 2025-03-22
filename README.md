@@ -36,6 +36,9 @@ AUTH_GITHUB_SECRET=<GitHub Client Secret>
 
 NEXTAUTH_URL=http://localhost:3000
 NEXTAUTH_SECRET=<Next Auth Secret>
+
+DATABASE_URL=<Supabase URL>
+DATABASE_API_KEY=<Supabase API Key>
 ```
 
 And finally, generate a Next Auth secret which will automatically overwrite the placeholder in the `.env.local` file:
