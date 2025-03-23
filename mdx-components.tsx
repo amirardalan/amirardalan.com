@@ -81,6 +81,16 @@ const components = {
     const codeHTML = highlight(children as string);
     return <code dangerouslySetInnerHTML={{ __html: codeHTML }} {...props} />;
   },
+  pre: ({ children, ...props }: ComponentPropsWithoutRef<'pre'>) => {
+    return (
+      <pre
+        className="mb-4 mt-6 overflow-auto rounded-lg bg-gray-800 p-4 dark:bg-black"
+        {...props}
+      >
+        {children}
+      </pre>
+    );
+  },
   Table: ({ data }: { data: { headers: string[]; rows: string[][] } }) => (
     <table>
       <thead>
