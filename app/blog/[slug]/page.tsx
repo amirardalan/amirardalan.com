@@ -1,4 +1,5 @@
 import { createClient } from '@/utils/supabase/server';
+import { compileMDX } from 'next-mdx-remote/rsc';
 
 export default async function BlogPost({
   params: paramsPromise,
@@ -17,6 +18,10 @@ export default async function BlogPost({
     return <p>Post not found</p>;
   }
 
+  const { content: MdxContent } = await compileMDX({
+    source: post.content,
+  });
+
   return (
     <article className="text-dark dark:text-light">
       <h3>By {post.author?.name}</h3>
@@ -28,7 +33,7 @@ export default async function BlogPost({
         })}
       </time>
       <h2>{post.title}</h2>
-      <p>{post.content}</p>
+      {MdxContent}
     </article>
   );
 }
