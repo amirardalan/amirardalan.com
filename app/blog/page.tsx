@@ -1,8 +1,14 @@
 import { createClient } from '@/utils/supabase/server';
 
+// Enable on-demand revalidation
+export const revalidate = false; // Only revalidate on-demand
+
 export default async function Blog() {
   const supabase = await createClient();
-  const { data: posts } = await supabase.from('Post').select();
+  const { data: posts } = await supabase
+    .from('Post')
+    .select('id, title, slug')
+    .order('publishedAt', { ascending: false });
 
   return (
     <main>
