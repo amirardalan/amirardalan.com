@@ -1,5 +1,5 @@
 'use client';
-import Tooltip from '@/components/util/tooltip';
+import Tooltip from '@/components/util/Tooltip';
 
 export default function About() {
   return (

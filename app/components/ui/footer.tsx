@@ -1,5 +1,5 @@
-import Nav from '@/components/ui/nav';
-import Logo from '@/components/ui/logo';
+import Nav from '@/components/ui/Navigation';
+import Logo from '@/components/ui/Logo';
 
 export default function Footer() {
   return (

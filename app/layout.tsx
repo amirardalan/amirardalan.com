@@ -9,8 +9,8 @@ import '@/app/globals.css';
 import DarkIcon from '@/public/images/favicon-dark.png';
 import LightIcon from '@/public/images/favicon-light.png';
 
-import Header from '@/components/ui/header';
-import Footer from '@/components/ui/footer';
+import Header from '@/components/ui/Header';
+import Footer from '@/components/ui/Footer';
 
 import { Inter, Prata, JetBrains_Mono } from 'next/font/google';
 
@@ -79,7 +79,7 @@ export default async function RootLayout({
             'dark:bg-dark': theme === 'dark',
           })}
         >
-          <div className="container mx-auto flex min-h-screen w-full flex-col p-4 px-4 py-8 lg:p-8">
+          <div className="flex min-h-screen flex-col p-4 lg:p-8">
             <Header />
             <div className="flex-grow overflow-auto">{children}</div>
             <Footer />

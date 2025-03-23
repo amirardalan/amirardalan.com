@@ -1,9 +1,9 @@
 import { auth } from '@/auth';
-import ThemeMenu from '@/components/theme/theme-menu';
-import AuthMenu from '@/components/auth/menu';
-import Logo from '@/components/ui/logo';
+import ThemeMenu from '@/components/theme/ThemeMenu';
+import AuthMenu from '@/components/auth/AuthMenu';
+import Logo from '@/components/ui/Logo';
 import Link from 'next/link';
-import HeaderExternalLinks from '@/components/ui/header-external-links';
+import HeaderExternalLinks from '@/components/ui/HeaderExternalLinks';
 
 export default async function Header() {
   const session = await auth();

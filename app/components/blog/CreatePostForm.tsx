@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import Button from '@/components/ui/button';
+import Button from '@/components/ui/Button';
 import categories from '@/app/blog/categories.json';
 
 interface CreatePostFormProps {
@@ -13,6 +13,8 @@ interface Category {
   id: string;
   name: string;
 }
+
+// TODO: Replace hardcoded colors with theme colors from globals.css
 
 export default function CreatePostForm({ userId }: CreatePostFormProps) {
   const router = useRouter();
@@ -49,8 +51,6 @@ export default function CreatePostForm({ userId }: CreatePostFormProps) {
         const errorData = await response.json();
         throw new Error(errorData.message || 'Failed to create post');
       }
-
-      const data = await response.json();
 
       // Trigger revalidation of blog pages
       await fetch('/api/revalidate/post', {

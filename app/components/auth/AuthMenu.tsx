@@ -1,7 +1,7 @@
 import { auth } from '@/auth';
 
-import SignInButton from '@/components/auth/signin-button';
-import SignOutButton from '@/components/auth/signout-button';
+import SignInButton from '@/components/auth/SigninButton';
+import SignOutButton from '@/components/auth/SignoutButton';
 
 export default async function AuthMenu() {
   const session = await auth();

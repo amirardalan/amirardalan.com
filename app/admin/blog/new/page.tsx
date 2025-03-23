@@ -1,6 +1,6 @@
 import { auth } from '@/auth';
 import { redirect } from 'next/navigation';
-import CreatePostForm from '@/app/components/blog/CreatePostForm';
+import CreatePostForm from '@/components/blog/CreatePostForm';
 
 export default async function NewBlogPost() {
   // Check if user is authenticated

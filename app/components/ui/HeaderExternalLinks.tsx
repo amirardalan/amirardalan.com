@@ -1,7 +1,7 @@
 'use client';
 
-import GitHubIcon from '@/components/icons/github';
-import Tooltip from '@/components/util/tooltip';
+import GitHubIcon from '@/components/icons/IconGithub';
+import Tooltip from '@/components/util/Tooltip';
 import { useTheme } from '@/app/store/theme';
 
 export default function HeaderExternalLinks() {

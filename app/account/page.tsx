@@ -1,6 +1,6 @@
 import { auth } from '@/auth';
-import Avatar from '@/components/auth/avatar';
-import SignedOut from '@/app/components/auth/signed-out';
+import Avatar from '@/components/auth/Avatar';
+import SignedOut from '@/components/auth/SignedOut';
 
 export default async function Account() {
   const session = await auth();

@@ -1,5 +1,5 @@
 import { auth } from '@/auth';
-import SignedOut from '@/app/components/auth/signed-out';
+import SignedOut from '@/components/auth/SignedOut';
 
 export default async function AdminLayout({
   children,
