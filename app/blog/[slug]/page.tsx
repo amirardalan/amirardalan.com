@@ -1,6 +1,6 @@
 import { createClient } from '@/utils/supabase/server';
 import { compileMDX } from 'next-mdx-remote/rsc';
-import { useMDXComponents } from '@/mdx-components';
+import MDXContent from '@/components/blog/MDXContent';
 
 export default async function BlogPost({
   params: paramsPromise,
@@ -19,9 +19,8 @@ export default async function BlogPost({
     return <p>Post not found</p>;
   }
 
-  const { content: MdxContent } = await compileMDX({
+  const { content } = await compileMDX({
     source: post.content,
-    components: useMDXComponents(),
     options: {
       parseFrontmatter: false,
       mdxOptions: {
@@ -41,7 +40,7 @@ export default async function BlogPost({
         })}
       </time>
       <h2>{post.title}</h2>
-      {MdxContent}
+      <MDXContent>{content}</MDXContent>
     </article>
   );
 }
