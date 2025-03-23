@@ -1,5 +1,6 @@
 import { createClient, createStaticClient } from '@/utils/supabase/server';
 import { compileMDX } from 'next-mdx-remote/rsc';
+import { useMDXComponents } from '@/mdx-components';
 import MDXContent from '@/components/blog/MDXContent';
 
 // This enables static generation while allowing revalidation
@@ -24,15 +25,14 @@ export default async function BlogPost({
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  // Await the params before using them
-  const params = await paramsPromise;
+  const { slug } = await paramsPromise;
 
   // Use the regular client for request-scoped operations
   const supabase = await createClient();
   const { data: post } = await supabase
     .from('Post')
     .select('*, author:users(name)')
-    .eq('slug', params.slug)
+    .eq('slug', slug)
     .single();
 
   if (!post) {
@@ -46,6 +46,7 @@ export default async function BlogPost({
 
   const { content } = await compileMDX({
     source: post.content,
+    components: useMDXComponents(),
     options: {
       parseFrontmatter: false,
       mdxOptions: {
