@@ -23,6 +23,7 @@ export default function CreatePostForm({ userId }: CreatePostFormProps) {
   const [excerpt, setExcerpt] = useState('');
   const [content, setContent] = useState('');
   const [category, setCategory] = useState('');
+  const [published, setPublished] = useState(false); // Add published state
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -44,6 +45,7 @@ export default function CreatePostForm({ userId }: CreatePostFormProps) {
           content,
           category,
           userId,
+          published, // Include published status
         }),
       });
 
@@ -62,8 +64,12 @@ export default function CreatePostForm({ userId }: CreatePostFormProps) {
         body: JSON.stringify({ slug }),
       });
 
-      // Redirect to the newly created post
-      router.push(`/blog/${slug}`);
+      // Redirect to the appropriate location based on published status
+      if (published) {
+        router.push(`/blog/${slug}`);
+      } else {
+        router.push('/admin/blog/drafts');
+      }
     } catch (err) {
       setError((err as Error).message);
     } finally {
@@ -183,6 +189,20 @@ export default function CreatePostForm({ userId }: CreatePostFormProps) {
           rows={15}
           className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-black shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
         />
+      </div>
+
+      {/* Add published checkbox */}
+      <div className="flex items-center">
+        <input
+          type="checkbox"
+          id="published"
+          checked={published}
+          onChange={(e) => setPublished(e.target.checked)}
+          className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+        />
+        <label htmlFor="published" className="ml-2 block font-medium">
+          Publish immediately
+        </label>
       </div>
 
       <div className="flex justify-end">

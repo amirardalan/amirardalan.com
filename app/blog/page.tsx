@@ -8,6 +8,7 @@ export default async function Blog() {
   const { data: posts } = await supabase
     .from('Post')
     .select('id, title, slug')
+    .eq('published', true) // Only select published posts
     .order('publishedAt', { ascending: false });
 
   return (
@@ -17,13 +18,17 @@ export default async function Blog() {
           Blog
         </h2>
         <div className="text-dark dark:text-light">
-          <ul>
-            {posts?.map((post) => (
-              <li key={post.id}>
-                <a href={`/blog/${post.slug}`}>{post.title}</a>
-              </li>
-            ))}
-          </ul>
+          {posts && posts.length > 0 ? (
+            <ul>
+              {posts.map((post) => (
+                <li key={post.id}>
+                  <a href={`/blog/${post.slug}`}>{post.title}</a>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p>No published posts yet.</p>
+          )}
         </div>
       </div>
     </main>
