@@ -32,6 +32,9 @@ export default function Navigation() {
         <Link href="/account">
           <span className={getNavItemClass('/account')}>Account</span>
         </Link>
+        <Link href="/admin">
+          <span className={getNavItemClass('/admin')}>Admin</span>
+        </Link>
       </div>
     </nav>
   );

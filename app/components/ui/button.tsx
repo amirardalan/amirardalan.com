@@ -2,6 +2,7 @@ type ButtonProps = {
   onClick?: () => void;
   type?: 'button' | 'submit';
   text: string;
+  disabled?: boolean;
 };
 
 export default function Button({ onClick, type, text }: ButtonProps) {

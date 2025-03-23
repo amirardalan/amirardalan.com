@@ -7,7 +7,6 @@ export default function Toggle() {
 
   const handleToggle = () => {
     setIsChecked(!isChecked);
-    console.log(isChecked ? 'off' : 'on');
   };
 
   return (
