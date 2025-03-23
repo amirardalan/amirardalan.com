@@ -3,9 +3,15 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Button from '@/components/ui/button';
+import categories from '@/app/blog/categories.json';
 
 interface CreatePostFormProps {
   userId: string;
+}
+
+interface Category {
+  id: string;
+  name: string;
 }
 
 export default function CreatePostForm({ userId }: CreatePostFormProps) {
@@ -14,6 +20,7 @@ export default function CreatePostForm({ userId }: CreatePostFormProps) {
   const [slug, setSlug] = useState('');
   const [excerpt, setExcerpt] = useState('');
   const [content, setContent] = useState('');
+  const [category, setCategory] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -33,6 +40,7 @@ export default function CreatePostForm({ userId }: CreatePostFormProps) {
           slug,
           excerpt,
           content,
+          category,
           userId,
         }),
       });
@@ -112,18 +120,41 @@ export default function CreatePostForm({ userId }: CreatePostFormProps) {
         />
       </div>
 
-      <div>
-        <label htmlFor="slug" className="block font-medium">
-          Slug
-        </label>
-        <input
-          type="text"
-          id="slug"
-          value={slug}
-          onChange={(e) => setSlug(e.target.value)}
-          required
-          className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-black shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
-        />
+      <div className="flex flex-row">
+        <div className="w-full pr-4">
+          <label htmlFor="slug" className="block font-medium">
+            Slug
+          </label>
+          <input
+            type="text"
+            id="slug"
+            value={slug}
+            onChange={(e) => setSlug(e.target.value)}
+            required
+            className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-black shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+          />
+        </div>
+        <div>
+          <label htmlFor="category" className="block font-medium">
+            Category
+          </label>
+          <select
+            id="category"
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+            required
+            className="mt-1 block rounded-md border border-gray-300 px-3 py-2 text-black shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+          >
+            <option value="" disabled>
+              Select a category
+            </option>
+            {categories.map((cat: Category) => (
+              <option key={cat.id} value={cat.id}>
+                {cat.name}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
 
       <div>
