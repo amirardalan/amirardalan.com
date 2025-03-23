@@ -1,5 +1,5 @@
 'use client';
-import Tooltip from '@/components/util/Tooltip';
+import Tooltip from '@/components/ui/Tooltip';
 import { useState } from 'react';
 
 export default function Toggle() {

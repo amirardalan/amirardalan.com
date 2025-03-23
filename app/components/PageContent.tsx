@@ -1,6 +1,6 @@
 'use client';
 import Image from 'next/image';
-import Tooltip from '@/components/util/Tooltip';
+import Tooltip from '@/components/ui/Tooltip';
 
 export default function PageContent() {
   return (

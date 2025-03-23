@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
-import Tooltip from '@/components/util/Tooltip';
+import Tooltip from '@/components/ui/Tooltip';
 import { useTheme } from '@/store/theme';
 import { Theme } from '@/types/theme';
 import MoonIcon from '@/components/icons/IconMoon';
