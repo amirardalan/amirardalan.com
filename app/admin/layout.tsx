@@ -1,5 +1,5 @@
 import { auth } from '@/auth';
-import { redirect } from 'next/navigation';
+import SignedOut from '@/app/components/auth/signed-out';
 
 export default async function AdminLayout({
   children,
@@ -9,9 +9,9 @@ export default async function AdminLayout({
   // Check if user is authenticated
   const session = await auth();
 
-  // Redirect to sign-in if not authenticated
+  // Show SignedOut component if not authenticated
   if (!session?.user) {
-    redirect('/api/auth/signin?callbackUrl=/admin');
+    return <SignedOut callbackUrl="/admin" message="to access admin panel." />;
   }
 
   return (
