@@ -127,7 +127,7 @@ export default function CreatePostForm({ userId }: CreatePostFormProps) {
       </div>
 
       <div className="flex flex-row">
-        <div className="w-full pr-4">
+        <div className="w-full">
           <label htmlFor="slug" className="block font-medium">
             Slug
           </label>
@@ -139,27 +139,6 @@ export default function CreatePostForm({ userId }: CreatePostFormProps) {
             required
             className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-black shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
           />
-        </div>
-        <div>
-          <label htmlFor="category" className="block font-medium">
-            Category
-          </label>
-          <select
-            id="category"
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
-            required
-            className="mt-1 block rounded-md border border-gray-300 px-3 py-2 text-black shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
-          >
-            <option value="" disabled>
-              Select a category
-            </option>
-            {categories.map((cat: Category) => (
-              <option key={cat.id} value={cat.id}>
-                {cat.name}
-              </option>
-            ))}
-          </select>
         </div>
       </div>
 
@@ -192,25 +171,53 @@ export default function CreatePostForm({ userId }: CreatePostFormProps) {
       </div>
 
       {/* Add published checkbox */}
-      <div className="flex items-center">
-        <input
-          type="checkbox"
-          id="published"
-          checked={published}
-          onChange={(e) => setPublished(e.target.checked)}
-          className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
-        />
-        <label htmlFor="published" className="ml-2 block font-medium">
-          Publish immediately
-        </label>
-      </div>
+      <div className="flex w-full flex-row justify-between">
+        <div className="flex items-center">
+          <div className="flex items-center">
+            <label htmlFor="category" className="mr-2 block font-medium">
+              Category:
+            </label>
+            <select
+              id="category"
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+              required
+              className="mt-1 block rounded-md border border-gray-300 px-3 py-2 text-black shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+            >
+              <option value="" disabled>
+                Select a category
+              </option>
+              {categories.map((cat: Category) => (
+                <option key={cat.id} value={cat.id}>
+                  {cat.name}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
 
-      <div className="flex justify-end">
-        <Button
-          type="submit"
-          text={isSubmitting ? 'Creating...' : 'Create Post'}
-          disabled={isSubmitting}
-        />
+        <div className="flex flex-row items-center">
+          <div className="mr-4 flex items-center">
+            <input
+              type="checkbox"
+              id="published"
+              checked={published}
+              onChange={(e) => setPublished(e.target.checked)}
+              className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+            />
+            <label htmlFor="published" className="ml-2 block font-medium">
+              Publish
+            </label>
+          </div>
+
+          <div>
+            <Button
+              type="submit"
+              text={isSubmitting ? 'Creating...' : 'Create Post'}
+              disabled={isSubmitting}
+            />
+          </div>
+        </div>
       </div>
     </form>
   );
