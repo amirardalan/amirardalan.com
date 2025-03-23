@@ -79,7 +79,7 @@ export default async function RootLayout({
             'dark:bg-dark': theme === 'dark',
           })}
         >
-          <div className="flex min-h-screen flex-col p-4 lg:p-8">
+          <div className="container mx-auto flex min-h-screen w-full flex-col p-4 px-4 py-8 lg:p-8">
             <Header />
             <div className="flex-grow overflow-auto">{children}</div>
             <Footer />

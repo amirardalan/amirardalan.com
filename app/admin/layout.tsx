@@ -14,5 +14,5 @@ export default async function AdminLayout({
     return <SignedOut callbackUrl="/admin" message="to access admin panel." />;
   }
 
-  return <main className="container mx-auto px-4 py-8">{children}</main>;
+  return <main className="container mx-auto w-full px-4 py-8">{children}</main>;
 }
