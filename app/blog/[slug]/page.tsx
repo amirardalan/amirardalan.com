@@ -1,7 +1,6 @@
 import { createClient, createStaticClient } from '@/utils/supabase/server';
 import { compileMDX } from 'next-mdx-remote/rsc';
-import { useMDXComponents } from '@/mdx-components';
-import MDXContent from '@/components/blog/MDXContent';
+import { components } from '@/mdx-components';
 
 // This enables static generation while allowing revalidation
 export const revalidate = false; // Only revalidate on-demand
@@ -17,6 +16,22 @@ export async function generateStaticParams() {
       slug: post.slug,
     })) || []
   );
+}
+
+// Separate server function for MDX compilation
+async function compilePostContent(content: string) {
+  const { content: compiledContent } = await compileMDX({
+    source: content,
+    components,
+    options: {
+      parseFrontmatter: false,
+      mdxOptions: {
+        development: false,
+      },
+    },
+  });
+
+  return compiledContent;
 }
 
 // Update the component to properly await params
@@ -44,16 +59,8 @@ export default async function BlogPost({
     return <p>Post content is empty</p>;
   }
 
-  const { content } = await compileMDX({
-    source: post.content,
-    components: useMDXComponents(),
-    options: {
-      parseFrontmatter: false,
-      mdxOptions: {
-        development: false,
-      },
-    },
-  });
+  // Compile MDX content
+  const content = await compilePostContent(post.content);
 
   return (
     <article className="text-dark dark:text-light">
@@ -66,7 +73,7 @@ export default async function BlogPost({
         })}
       </time>
       <h2>{post.title}</h2>
-      <MDXContent>{content}</MDXContent>
+      <div className="mdx-content">{content}</div>
     </article>
   );
 }

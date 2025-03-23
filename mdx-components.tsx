@@ -9,7 +9,8 @@ type ListItemProps = ComponentPropsWithoutRef<'li'>;
 type AnchorProps = ComponentPropsWithoutRef<'a'>;
 type BlockquoteProps = ComponentPropsWithoutRef<'blockquote'>;
 
-const components = {
+// Export components directly so they can be imported in server components
+export const components = {
   h1: (props: HeadingProps) => (
     <h1 className="mb-0 pt-12 font-medium" {...props} />
   ),
