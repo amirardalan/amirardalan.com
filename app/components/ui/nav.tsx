@@ -8,8 +8,15 @@ export default function Navigation() {
   const pathname = usePathname();
 
   const getNavItemClass = (href: string, isLast?: boolean) => {
+    if (href === '/') {
+      return clsx('text-gray-400', {
+        'text-primary dark:text-primary': pathname === href,
+        'mr-6': !isLast,
+      });
+    }
     return clsx('text-gray-400', {
-      'text-primary dark:text-primary': pathname === href,
+      'text-primary dark:text-primary':
+        pathname === href || pathname.startsWith(`${href}/`),
       'mr-6': !isLast,
     });
   };
