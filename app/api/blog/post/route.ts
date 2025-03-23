@@ -43,8 +43,6 @@ export async function POST(request: NextRequest) {
       .eq('email', session.user.email)
       .single();
 
-    console.log(user?.email, 'email in api');
-
     if (userError || !user) {
       return NextResponse.json({ message: 'User not found' }, { status: 404 });
     }

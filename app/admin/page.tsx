@@ -22,6 +22,27 @@ export default function AdminDashboard() {
             Create New Post
           </Link>
         </div>
+
+        <div className="rounded-lg border border-gray-200 p-6 shadow-md dark:border-gray-700">
+          <h3 className="mb-3 text-lg font-medium text-dark dark:text-light">
+            Drafts
+          </h3>
+          <p className="mb-4 text-gray-600 dark:text-gray-300">
+            Manage your draft posts
+          </p>
+          <Link
+            href="/admin/blog/drafts"
+            className="inline-block rounded bg-yellow-600 px-4 py-2 text-white hover:bg-yellow-700"
+          >
+            View Drafts
+          </Link>
+          <Link
+            href="/admin/blog/new?draft=true"
+            className="mt-2 inline-block rounded bg-green-600 px-4 py-2 text-white hover:bg-green-700"
+          >
+            Create New Draft
+          </Link>
+        </div>
       </div>
     </div>
   );

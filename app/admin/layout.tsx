@@ -9,8 +9,6 @@ export default async function AdminLayout({
   // Check if user is authenticated
   const session = await auth();
 
-  console.log(session?.user, 'admin layout');
-
   // Redirect to sign-in if not authenticated
   if (!session?.user) {
     redirect('/api/auth/signin?callbackUrl=/admin');
