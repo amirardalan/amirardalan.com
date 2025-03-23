@@ -12,6 +12,7 @@ export default function CreatePostForm({ userId }: CreatePostFormProps) {
   const router = useRouter();
   const [title, setTitle] = useState('');
   const [slug, setSlug] = useState('');
+  const [excerpt, setExcerpt] = useState('');
   const [content, setContent] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -30,6 +31,7 @@ export default function CreatePostForm({ userId }: CreatePostFormProps) {
         body: JSON.stringify({
           title,
           slug,
+          excerpt,
           content,
           userId,
         }),
@@ -59,6 +61,10 @@ export default function CreatePostForm({ userId }: CreatePostFormProps) {
     } finally {
       setIsSubmitting(false);
     }
+  };
+
+  const handleExcerptChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setExcerpt(e.target.value);
   };
 
   // Generate slug from title
@@ -115,6 +121,20 @@ export default function CreatePostForm({ userId }: CreatePostFormProps) {
           id="slug"
           value={slug}
           onChange={(e) => setSlug(e.target.value)}
+          required
+          className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-black shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+        />
+      </div>
+
+      <div>
+        <label htmlFor="excerpt" className="block font-medium">
+          Excerpt
+        </label>
+        <input
+          type="text"
+          id="Excerpt"
+          value={excerpt}
+          onChange={handleExcerptChange}
           required
           className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-black shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
         />

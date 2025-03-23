@@ -73,6 +73,7 @@ export default async function BlogPost({
         })}
       </time>
       <h2>{post.title}</h2>
+      <p>{post.excerpt ?? ''}</p>
       <div className="mdx-content">{content}</div>
     </article>
   );

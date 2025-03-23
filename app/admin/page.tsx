@@ -6,6 +6,7 @@ export default function AdminDashboard() {
       <h2 className="mb-6 border-b-2 border-solid border-gray-300 pb-4 text-xxl text-dark dark:border-gray-600 dark:text-light">
         Admin Dashboard
       </h2>
+
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         <div className="rounded-lg border border-gray-200 p-6 shadow-md dark:border-gray-700">
           <h3 className="mb-3 text-lg font-medium text-dark dark:text-light">
@@ -30,7 +31,7 @@ export default function AdminDashboard() {
             Manage your draft posts
           </p>
           <Link
-            href="/admin/drafts"
+            href="/admin/blog/drafts"
             className="mr-4 inline-block rounded bg-yellow-600 px-4 py-2 text-white hover:bg-yellow-700"
           >
             View Drafts
