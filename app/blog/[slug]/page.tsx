@@ -64,6 +64,7 @@ export default async function BlogPost({
 
   return (
     <article className="text-dark dark:text-light">
+      <p className="text-green-400">#{post.category ?? 'uncategorized'}</p>
       <h3>By {post.author?.name || 'Unknown Author'}</h3>
       <time>
         {new Date(post.publishedAt || Date.now()).toLocaleDateString('en-US', {
