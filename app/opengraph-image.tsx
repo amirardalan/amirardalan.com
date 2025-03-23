@@ -15,10 +15,10 @@ export const contentType = 'image/png';
 export default async function Image() {
   // Font loading, process.cwd() is Next.js project directory
   const interSemiBold = await readFile(
-    join(process.cwd(), 'assets/inter-v18-latin-regular.ttf')
+    join(process.cwd(), 'assets/fonts/inter-v18-latin-regular.ttf')
   );
   const dmSerif = await readFile(
-    join(process.cwd(), 'assets/dm-serif-text-v12-latin-regular.ttf')
+    join(process.cwd(), 'assets/fonts/dm-serif-text-v12-latin-regular.ttf')
   );
 
   return new ImageResponse(
