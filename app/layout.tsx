@@ -40,8 +40,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
   return {
     title: `amir.sh ${title}`,
-    description:
-      'A Next.js App Router starter project with TypeScript, Tailwind, NextAuth, Prettier, and Dark Mode.',
+    description: 'The portfolio and blog of Engineer and Designer Amir Ardalan',
     icons: {
       icon: [
         {

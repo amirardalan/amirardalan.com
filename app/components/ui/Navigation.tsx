@@ -9,13 +9,13 @@ export default function Navigation() {
 
   const getNavItemClass = (href: string, isLast?: boolean) => {
     if (href === '/') {
-      return clsx('text-gray-400', {
-        'text-primary dark:text-primary': pathname === href,
+      return clsx('text-zinc-400', {
+        'text-zinc-600 dark:text-zinc-200': pathname === href,
         'mr-6': !isLast,
       });
     }
-    return clsx('text-gray-400', {
-      'text-primary dark:text-primary':
+    return clsx('text-zinc-400', {
+      'text-zinc-600 dark:text-zinc-200':
         pathname === href || pathname.startsWith(`${href}/`),
       'mr-6': !isLast,
     });

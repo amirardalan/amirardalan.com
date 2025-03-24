@@ -8,13 +8,10 @@
   --font-serif: 'Prata', serif;
   --font-mono: 'JetBrains Mono', monospace;
 
-  /* Theme */
-  --color-dark: rgb(31, 19, 10);
-  --color-light: rgb(255, 255, 255);
-  --color-primary: rgb(157, 112, 235);
-  --color-secondary: rgb(214, 210, 221);
-  --color-gray-light: rgb(231, 224, 222);
-  --color-gray-dark: rgb(76, 72, 68);
+  /* Colors */
+  --color-light: oklch(0.985 0 0);
+  --color-dark: oklch(0.141 0.005 285.823);
+  --color-primary: oklch(0.627 0.265 303.9);
 
   /* Syntax Highlighting */
   --sh-class: #2d5e9d;
@@ -43,9 +40,6 @@
   ::selection {
     color: var(--color-primary);
     background-color: var(--color-secondary);
-  }
-  a {
-    color: var(--color-primary);
   }
 }
 

@@ -13,9 +13,6 @@ const config: Config = {
         light: 'var(--color-light)',
         dark: 'var(--color-dark)',
         primary: 'var(--color-primary)',
-        secondary: 'var(--color-secondary)',
-        accent: 'var(--color-accent)',
-        accentLight: 'var(--color-accent-light)',
       },
       fontSize: {
         xs: '.85rem',
