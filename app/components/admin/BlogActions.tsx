@@ -7,7 +7,7 @@ export default function BlogActions() {
         <h3 className="mb-3 text-lg font-medium text-dark dark:text-light">
           Blog Management
         </h3>
-        <p className="mb-4 text-zinc-600 dark:text-zinc-300">
+        <p className="mb-4 text-xs text-zinc-600 dark:text-zinc-300">
           Compose a new blog post
         </p>
         <Link
@@ -22,7 +22,7 @@ export default function BlogActions() {
         <h3 className="mb-3 text-lg font-medium text-dark dark:text-light">
           Drafts
         </h3>
-        <p className="mb-4 text-zinc-600 dark:text-zinc-300">
+        <p className="mb-4 text-xs text-zinc-600 dark:text-zinc-300">
           Manage unpublished drafts
         </p>
         <Link
@@ -37,7 +37,7 @@ export default function BlogActions() {
         <h3 className="mb-3 text-lg font-medium text-dark dark:text-light">
           Published Posts
         </h3>
-        <p className="mb-4 text-zinc-600 dark:text-zinc-300">
+        <p className="mb-4 text-xs text-zinc-600 dark:text-zinc-300">
           Manage published content
         </p>
         <Link

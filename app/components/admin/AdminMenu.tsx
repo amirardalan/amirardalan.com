@@ -12,12 +12,12 @@ export default function AdminMenu() {
 
     return clsx(
       'hover:underline',
-      isActive && 'underline text-zinc-600 dark:text-zinc-300'
+      isActive && 'underline text-zinc-800 dark:text-zinc-300'
     );
   };
 
   return (
-    <nav className="flex flex-wrap space-x-4 rounded-lg bg-zinc-200 p-4 text-zinc-400 dark:bg-zinc-800 dark:text-zinc-400">
+    <nav className="flex flex-wrap space-x-4 rounded-lg bg-zinc-200 p-4 text-zinc-500 dark:bg-zinc-800 dark:text-zinc-400">
       <Link href="/admin" className={getLinkClass('/admin')}>
         Dashboard
       </Link>
@@ -35,6 +35,10 @@ export default function AdminMenu() {
         className={getLinkClass('/admin/blog/published')}
       >
         Published
+      </Link>
+      <span>|</span>
+      <Link href="/account" className={getLinkClass('/account')}>
+        Account
       </Link>
     </nav>
   );
