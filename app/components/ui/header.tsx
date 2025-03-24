@@ -9,7 +9,7 @@ export default async function Header() {
   const session = await auth();
 
   return (
-    <div className="flex flex-row items-center justify-between">
+    <div className="flex flex-row items-center justify-between py-8">
       <div className="min-w-40 font-mono text-xxs uppercase text-dark dark:text-light">
         {session ? (
           <>
