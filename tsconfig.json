@@ -27,7 +27,8 @@
       "@/lib/*": ["./app/lib/*"],
       "@/utils/*": ["./app/utils/*"],
       "@/store/*": ["./app/store/*"],
-      "@/types/*": ["./app/types/*"]
+      "@/types/*": ["./app/types/*"],
+      "@/public/*": ["./public/*"]
     },
     "target": "ES2017"
   },
