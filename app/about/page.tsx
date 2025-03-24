@@ -36,6 +36,19 @@ export default function About() {
             </Tooltip>
           </div>
           <div className="flex flex-row">
+            <p className="text-zinc-400 dark:text-zinc-500">github:</p>
+            <Tooltip text="github.com" pos="r">
+              <a
+                href="https://github.com/amirardalan"
+                rel="noopener noreferrer"
+                target="_blank"
+                className="ml-1 text-primary"
+              >
+                @amirardalan
+              </a>
+            </Tooltip>
+          </div>
+          <div className="flex flex-row">
             <p className="text-zinc-400 dark:text-zinc-500">linkedin:</p>
             <Tooltip text="linkedin.com" pos="r">
               <a

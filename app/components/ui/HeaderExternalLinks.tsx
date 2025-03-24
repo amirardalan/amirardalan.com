@@ -19,7 +19,7 @@ export default function HeaderExternalLinks() {
 
   return (
     <div className="mr-4 mt-1">
-      <Tooltip text="⭐ Star on GitHub" pos="b">
+      <Tooltip text="⭐ Star on GitHub" pos="l">
         <button onClick={handleClick}>
           <GitHubIcon fill={fill} />
         </button>

@@ -16,17 +16,7 @@ export default function PageContent() {
         />
       </div>
       <div className="text-s mt-5 font-sans text-gray-600 dark:text-gray-500">
-        Portfolio of
-        <Tooltip text="GitHub" pos="b">
-          <a
-            href="https://github.com/amirardalan"
-            rel="noopener noreferrer"
-            target="_blank"
-            className="ml-1 text-primary"
-          >
-            @amirardalan
-          </a>
-        </Tooltip>
+        Frontend Engineer & UI/UX Expert
       </div>
     </div>
   );

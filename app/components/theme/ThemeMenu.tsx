@@ -50,14 +50,14 @@ export default function ThemeMenu() {
 
   return (
     <div className="relative flex align-middle" ref={menuRef}>
-      <Tooltip pos="b" text="Change theme">
+      <Tooltip pos="l" text="Change theme">
         <button className="m-0 p-0" onClick={() => setMenuOpen(!menuOpen)}>
           {effectiveTheme === 'dark' ? <MoonIcon /> : <SunIcon />}
         </button>
       </Tooltip>
       {menuOpen && (
-        <div className="absolute right-0 z-40 mt-10 w-24 rounded-md bg-white shadow-lg dark:bg-zinc-800 dark:text-light">
-          {(['light', 'dark', 'system'] as Theme[]).map((t, index, array) => (
+        <div className="absolute right-0 z-40 mt-8 w-24 rounded-md bg-white shadow-lg dark:bg-zinc-800 dark:text-light">
+          {(['system', 'light', 'dark'] as Theme[]).map((t, index, array) => (
             <button
               key={t}
               className={`flex w-full items-center justify-between px-4 py-2 text-left text-xs hover:bg-zinc-100 dark:text-light dark:hover:bg-zinc-700 ${index === 0 ? 'rounded-t-md' : ''} ${index === array.length - 1 ? 'rounded-b-md' : 'border-b border-zinc-200 dark:border-zinc-700'} `}
