@@ -13,7 +13,7 @@ import Header from '@/components/ui/Header';
 import Footer from '@/components/ui/Footer';
 
 import { Inter, Prata, JetBrains_Mono } from 'next/font/google';
-import { ToastProvider } from './context/ToastContext';
+import { ToastProvider } from '@/components/ui/ToastContext';
 
 const sans = Inter({
   subsets: ['latin'],

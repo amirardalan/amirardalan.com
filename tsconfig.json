@@ -21,6 +21,7 @@
     "paths": {
       "@/*": ["./*"],
       "@/app": ["./app/*"],
+      "@/data/*": ["./app/data/*"],
       "@/api/*": ["./app/api/*"],
       "@/components/*": ["./app/components/*"],
       "@/hooks/*": ["./app/hooks/*"],

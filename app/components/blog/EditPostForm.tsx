@@ -3,8 +3,8 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Button from '@/components/ui/Button';
-import categories from '@/app/blog/categories.json';
-import { useToast } from '@/app/context/ToastContext';
+import categories from '@/data/categories.json';
+import { useToast } from '@/components/ui/ToastContext';
 
 interface EditPostFormProps {
   post: any;
