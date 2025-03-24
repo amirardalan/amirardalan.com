@@ -20,7 +20,7 @@ export default async function PublishedPosts() {
     .order('publishedAt', { ascending: false });
 
   return (
-    <>
+    <div className="mt-8">
       <h2 className="mb-6 border-b-2 border-solid border-gray-300 pb-4 text-xxl text-dark dark:border-gray-600 dark:text-light">
         Published Posts
       </h2>
@@ -50,6 +50,6 @@ export default async function PublishedPosts() {
           <p>No published posts available.</p>
         )}
       </div>
-    </>
+    </div>
   );
 }
