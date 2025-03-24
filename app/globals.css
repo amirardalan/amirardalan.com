@@ -3,14 +3,18 @@
 @tailwind utilities;
 
 :root {
+  /* Typopgrahy */
   --font-sans: 'Inter', sans-serif;
   --font-serif: 'Prata', serif;
   --font-mono: 'JetBrains Mono', monospace;
 
-  --color-dark: rgb(0, 0, 0);
+  /* Theme */
+  --color-dark: rgb(31, 19, 10);
   --color-light: rgb(255, 255, 255);
-  --color-primary: rgb(136, 67, 255);
+  --color-primary: rgb(157, 112, 235);
   --color-secondary: rgb(214, 210, 221);
+  --color-gray-light: rgb(231, 224, 222);
+  --color-gray-dark: rgb(76, 72, 68);
 
   /* Syntax Highlighting */
   --sh-class: #2d5e9d;
@@ -30,8 +34,10 @@
   }
   body {
     background-color: var(--color-light);
+    color: var(--color-gray-dark);
     .dark & {
       background-color: var(--color-dark);
+      color: var(--color-gray-light);
     }
   }
   ::selection {
