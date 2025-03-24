@@ -231,14 +231,14 @@ export default function EditPostForm({ post, userId }: EditPostFormProps) {
         <div className="flex space-x-2">
           {/* Only show delete button for draft posts */}
           {!post.published && (
-            <button
+            <Button
               type="button"
               onClick={handleDeleteClick}
+              text={isDeleting ? 'Deleting...' : 'Delete'}
               disabled={isDeleting || isSubmitting}
-              className="rounded bg-red-600 px-4 py-2 text-sm font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 disabled:opacity-50"
-            >
-              {isDeleting ? 'Deleting...' : 'Delete'}
-            </button>
+              variant="danger"
+              color={'red-500'}
+            />
           )}
           <Button
             type="submit"
@@ -260,21 +260,19 @@ export default function EditPostForm({ post, userId }: EditPostFormProps) {
               undone.
             </p>
             <div className="flex justify-end space-x-3">
-              <button
+              <Button
                 type="button"
                 onClick={handleCancelDelete}
-                className="rounded-md bg-gray-200 px-4 py-2 text-sm font-medium text-gray-800 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600"
-              >
-                Cancel
-              </button>
-              <button
+                text="Cancel"
+                variant="secondary"
+              />
+              <Button
                 type="button"
                 onClick={handleConfirmDelete}
+                text={isDeleting ? 'Deleting...' : 'Delete Post'}
                 disabled={isDeleting}
-                className="rounded-md bg-red-600 px-4 py-2 text-sm font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 disabled:opacity-50"
-              >
-                {isDeleting ? 'Deleting...' : 'Delete Post'}
-              </button>
+                variant="danger"
+              />
             </div>
           </div>
         </div>
