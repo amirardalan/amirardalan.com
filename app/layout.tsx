@@ -81,7 +81,9 @@ export default async function RootLayout({
         >
           <div className="flex min-h-screen flex-col p-4 lg:p-8">
             <Header />
-            <div className="flex-grow overflow-auto">{children}</div>
+            <div className="container mx-auto w-full max-w-[768px] flex-grow overflow-auto px-4 py-8">
+              {children}
+            </div>
             <Footer />
           </div>
         </body>
