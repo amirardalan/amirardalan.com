@@ -6,7 +6,7 @@ export default function Footer() {
     <footer className="flex flex-row py-8 text-left text-sm text-gray-400">
       <div className="mr-6 flex flex-row items-center text-gray-400">
         <span className="mr-4">&copy;{new Date().getFullYear()}</span>
-        <Logo fontSize="text-sxs" />
+        <Logo fontSize={'text-xs'} logoText={'Amir Ardalan'} />
       </div>
       <span className="text-gray-300 dark:text-gray-600">•</span>
       <div className="ml-6">

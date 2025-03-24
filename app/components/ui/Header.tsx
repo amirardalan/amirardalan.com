@@ -20,7 +20,7 @@ export default async function Header() {
           'Welcome, Guest'
         )}
       </div>
-      <Logo />
+      <Logo fontSize={'text-4xl'} logoText={'Amir Ardalan'} />
       <div className="flex min-w-40 justify-end">
         <HeaderExternalLinks />
         <div className="mr-6 mt-1 flex items-center align-middle">
