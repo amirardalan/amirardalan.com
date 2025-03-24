@@ -22,7 +22,7 @@ export default function PageContent() {
             href="https://github.com/amirardalan"
             rel="noopener noreferrer"
             target="_blank"
-            className="ml-1"
+            className="ml-1 text-primary"
           >
             @amirardalan
           </a>

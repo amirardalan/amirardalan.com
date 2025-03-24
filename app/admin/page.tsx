@@ -8,7 +8,7 @@ export default function AdminDashboard() {
       </h2>
 
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-        <div className="rounded-lg border border-gray-200 p-6 shadow-md dark:border-gray-700">
+        <div className="rounded-lg border border-gray-200 p-6 dark:border-gray-700">
           <h3 className="mb-3 text-lg font-medium text-dark dark:text-light">
             Blog Management
           </h3>
@@ -23,7 +23,7 @@ export default function AdminDashboard() {
           </Link>
         </div>
 
-        <div className="rounded-lg border border-gray-200 p-6 shadow-md dark:border-gray-700">
+        <div className="rounded-lg border border-gray-200 p-6 dark:border-gray-700">
           <h3 className="mb-3 text-lg font-medium text-dark dark:text-light">
             Drafts
           </h3>
@@ -38,7 +38,7 @@ export default function AdminDashboard() {
           </Link>
         </div>
 
-        <div className="rounded-lg border border-gray-200 p-6 shadow-md dark:border-gray-700">
+        <div className="rounded-lg border border-gray-200 p-6 dark:border-gray-700">
           <h3 className="mb-3 text-lg font-medium text-dark dark:text-light">
             Published Posts
           </h3>

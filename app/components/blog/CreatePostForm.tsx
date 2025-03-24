@@ -132,7 +132,7 @@ export default function CreatePostForm({ userId }: CreatePostFormProps) {
           value={title}
           onChange={handleTitleChange}
           required
-          className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-black shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+          className="mt-1 block w-full rounded-md border border-zinc-300 px-3 py-2 text-zinc-950 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
         />
       </div>
 
@@ -147,7 +147,7 @@ export default function CreatePostForm({ userId }: CreatePostFormProps) {
             value={slug}
             onChange={(e) => setSlug(e.target.value)}
             required
-            className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-black shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+            className="mt-1 block w-full rounded-md border border-zinc-300 px-3 py-2 text-zinc-950 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
           />
         </div>
       </div>
@@ -162,7 +162,7 @@ export default function CreatePostForm({ userId }: CreatePostFormProps) {
           value={excerpt}
           onChange={handleExcerptChange}
           required
-          className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-black shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+          className="mt-1 block w-full rounded-md border border-zinc-300 px-3 py-2 text-zinc-950 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
         />
       </div>
 
@@ -176,7 +176,7 @@ export default function CreatePostForm({ userId }: CreatePostFormProps) {
           onChange={(e) => setContent(e.target.value)}
           required
           rows={15}
-          className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-black shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+          className="mt-1 block w-full rounded-md border border-zinc-300 px-3 py-2 text-zinc-950 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
         />
       </div>
 
@@ -192,7 +192,7 @@ export default function CreatePostForm({ userId }: CreatePostFormProps) {
               value={category}
               onChange={(e) => setCategory(e.target.value)}
               required
-              className="mt-1 block rounded-md border border-gray-300 px-3 py-2 text-black shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+              className="mt-1 block rounded-md border border-zinc-300 px-3 py-2 text-zinc-950 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
             >
               <option value="" disabled>
                 Select a category
@@ -213,7 +213,7 @@ export default function CreatePostForm({ userId }: CreatePostFormProps) {
               id="published"
               checked={published}
               onChange={(e) => setPublished(e.target.checked)}
-              className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+              className="h-4 w-4 rounded border-zinc-300 text-blue-600 focus:ring-blue-500"
             />
             <label htmlFor="published" className="ml-2 block font-medium">
               Publish

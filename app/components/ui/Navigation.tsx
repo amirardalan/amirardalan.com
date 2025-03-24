@@ -8,15 +8,9 @@ export default function Navigation() {
   const pathname = usePathname();
 
   const getNavItemClass = (href: string, isLast?: boolean) => {
-    if (href === '/') {
-      return clsx('text-zinc-400', {
-        'text-zinc-600 dark:text-zinc-200': pathname === href,
-        'mr-6': !isLast,
-      });
-    }
     return clsx('text-zinc-400', {
       'text-zinc-600 dark:text-zinc-200':
-        pathname === href || pathname.startsWith(`${href}/`),
+        pathname === href || (href !== '/' && pathname.startsWith(`${href}/`)),
       'mr-6': !isLast,
     });
   };

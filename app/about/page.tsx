@@ -22,13 +22,15 @@ export default function About() {
           </p>
         </div>
         <span className="mt-2 flex flex-row">
-          <p className="text-dark dark:text-light">Built and maintained by</p>
+          <p className="text-zinc-400 dark:text-zinc-500">
+            Built and maintained by
+          </p>
           <Tooltip text="x.com" pos="b">
             <a
               href="https://x.com/amirardalan"
               rel="noopener noreferrer"
               target="_blank"
-              className="ml-1"
+              className="ml-1 text-primary"
             >
               @amirardalan
             </a>

@@ -14,13 +14,17 @@ export default async function Header() {
         {session ? (
           <>
             Welcome,&nbsp;
-            <Link href="/account">{session?.user?.name?.split(' ')[0]}</Link>
+            <Link href="/account" className="text-primary">
+              {session?.user?.name?.split(' ')[0]}
+            </Link>
           </>
         ) : (
           'Welcome, Guest'
         )}
       </div>
-      <Logo fontSize={'text-4xl'} logoText={'Amir Ardalan'} />
+      <Link href="/">
+        <Logo fontSize={'text-4xl'} logoText={'Amir Ardalan'} />
+      </Link>
       <div className="flex min-w-40 justify-end">
         <HeaderExternalLinks />
         <div className="mr-6 mt-1 flex items-center align-middle">
