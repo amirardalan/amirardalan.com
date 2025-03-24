@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Button from '@/components/ui/Button';
 import categories from '@/app/blog/categories.json';
+import { useToast } from '@/app/context/ToastContext';
 
 interface EditPostFormProps {
   post: any;
@@ -17,6 +18,7 @@ interface Category {
 
 export default function EditPostForm({ post, userId }: EditPostFormProps) {
   const router = useRouter();
+  const { showToast } = useToast();
   const [title, setTitle] = useState(post.title || '');
   const [slug, setSlug] = useState(post.slug || '');
   const [excerpt, setExcerpt] = useState(post.excerpt || '');
@@ -54,24 +56,32 @@ export default function EditPostForm({ post, userId }: EditPostFormProps) {
         throw new Error(errorData.message || 'Failed to update post');
       }
 
-      // Trigger revalidation of blog pages
-      await fetch('/api/revalidate/post', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'x-revalidate-token': process.env.NEXT_PUBLIC_REVALIDATE_TOKEN || '',
-        },
-        body: JSON.stringify({ slug }),
-      });
+      // Show success toast
+      showToast('Post updated successfully!', 'success');
 
-      // Redirect to the appropriate location based on published status
-      if (published) {
-        router.push(`/blog/${slug}`);
-      } else {
-        router.push('/admin/blog/drafts');
-      }
+      // Add a small delay to allow the user to see the toast before redirecting
+      setTimeout(async () => {
+        // Trigger revalidation of blog pages
+        await fetch('/api/revalidate/post', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-revalidate-token':
+              process.env.NEXT_PUBLIC_REVALIDATE_TOKEN || '',
+          },
+          body: JSON.stringify({ slug }),
+        });
+
+        // Redirect to the appropriate location based on published status
+        if (published) {
+          router.push(`/blog/${slug}`);
+        } else {
+          router.push('/admin/blog/drafts');
+        }
+      }, 1500);
     } catch (err) {
       setError((err as Error).message);
+      showToast((err as Error).message, 'error');
     } finally {
       setIsSubmitting(false);
     }
