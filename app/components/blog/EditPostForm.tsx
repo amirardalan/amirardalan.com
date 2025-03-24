@@ -26,7 +26,9 @@ export default function EditPostForm({ post, userId }: EditPostFormProps) {
   const [category, setCategory] = useState(post.category || '');
   const [published, setPublished] = useState(post.published || false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -89,6 +91,50 @@ export default function EditPostForm({ post, userId }: EditPostFormProps) {
 
   const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value);
+  };
+
+  const handleDeleteClick = () => {
+    setShowDeleteModal(true);
+  };
+
+  const handleCancelDelete = () => {
+    setShowDeleteModal(false);
+  };
+
+  const handleConfirmDelete = async () => {
+    setIsDeleting(true);
+    setError(null);
+
+    try {
+      const response = await fetch(`/api/blog/post/${post.id}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ userId }), // Ensure userId is correctly passed
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Failed to delete post');
+      }
+
+      // Show success toast
+      showToast('Post deleted successfully!', 'success');
+
+      // Close the modal
+      setShowDeleteModal(false);
+
+      // Add a small delay to allow the user to see the toast before redirecting
+      setTimeout(() => {
+        router.push('/admin/blog/drafts');
+      }, 1500);
+    } catch (err) {
+      setError((err as Error).message);
+      showToast((err as Error).message, 'error');
+    } finally {
+      setIsDeleting(false);
+    }
   };
 
   return (
@@ -185,29 +231,71 @@ export default function EditPostForm({ post, userId }: EditPostFormProps) {
           </div>
         </div>
 
-        <div className="flex flex-row items-center">
-          <div className="mr-4 flex items-center">
-            <input
-              type="checkbox"
-              id="published"
-              checked={published}
-              onChange={(e) => setPublished(e.target.checked)}
-              className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
-            />
-            <label htmlFor="published" className="ml-2 block font-medium">
-              Publish
-            </label>
-          </div>
+        <div className="flex flex-row items-center"></div>
+        <div className="mr-4 flex items-center">
+          <input
+            type="checkbox"
+            id="published"
+            checked={published}
+            onChange={(e) => setPublished(e.target.checked)}
+            className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+          />
+          <label htmlFor="published" className="ml-2 block font-medium">
+            Publish
+          </label>
+        </div>
 
-          <div>
-            <Button
-              type="submit"
-              text={isSubmitting ? 'Saving...' : 'Save Post'}
-              disabled={isSubmitting}
-            />
-          </div>
+        <div className="flex space-x-2">
+          {/* Only show delete button for draft posts */}
+          {!post.published && (
+            <button
+              type="button"
+              onClick={handleDeleteClick}
+              disabled={isDeleting || isSubmitting}
+              className="rounded bg-red-600 px-4 py-2 text-sm font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 disabled:opacity-50"
+            >
+              {isDeleting ? 'Deleting...' : 'Delete'}
+            </button>
+          )}
+          <Button
+            type="submit"
+            text={isSubmitting ? 'Saving...' : 'Save Post'}
+            disabled={isSubmitting || isDeleting}
+          />
         </div>
       </div>
+
+      {/* Delete Confirmation Modal */}
+      {showDeleteModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="w-full max-w-md rounded-lg bg-white p-6 shadow-xl dark:bg-gray-800">
+            <h3 className="mb-4 text-lg font-medium text-gray-900 dark:text-white">
+              Confirm Deletion
+            </h3>
+            <p className="mb-6 text-sm text-gray-700 dark:text-gray-300">
+              Are you sure you want to delete this post? This action cannot be
+              undone.
+            </p>
+            <div className="flex justify-end space-x-3">
+              <button
+                type="button"
+                onClick={handleCancelDelete}
+                className="rounded-md bg-gray-200 px-4 py-2 text-sm font-medium text-gray-800 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                onClick={handleConfirmDelete}
+                disabled={isDeleting}
+                className="rounded-md bg-red-600 px-4 py-2 text-sm font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 disabled:opacity-50"
+              >
+                {isDeleting ? 'Deleting...' : 'Delete Post'}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </form>
   );
 }
