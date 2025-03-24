@@ -13,12 +13,8 @@ export const contentType = 'image/png';
 
 // Image generation
 export default async function Image() {
-  // Font loading, process.cwd() is Next.js project directory
-  const interSemiBold = await readFile(
-    join(process.cwd(), 'assets/fonts/inter-v18-latin-regular.ttf')
-  );
   const dmSerif = await readFile(
-    join(process.cwd(), 'assets/fonts/dm-serif-text-v12-latin-regular.ttf')
+    join(process.cwd(), 'public/fonts/dm-serif-text-v12-latin-regular.ttf')
   );
 
   return new ImageResponse(
@@ -36,8 +32,8 @@ export default async function Image() {
       >
         <div tw="flex p-8">
           <div tw="flex flex-col md:flex-row w-full md:items-center justify-between p-8">
-            <h2 tw="flex flex-col serif text-[124px] text-white text-left">
-              <span>Amir Ardalan</span>
+            <h2 tw="flex flex-col text-[124px] text-white text-left">
+              <span>Site</span>
             </h2>
             <div tw="w-132 ml-6 flex">
               <h3 tw="text-4xl text-gray-400 leading-10">
@@ -57,12 +53,6 @@ export default async function Image() {
       // size config to also set the ImageResponse's width and height.
       ...size,
       fonts: [
-        {
-          name: 'Inter',
-          data: interSemiBold,
-          style: 'normal',
-          weight: 400,
-        },
         {
           name: 'DM Serif Text',
           data: dmSerif,
