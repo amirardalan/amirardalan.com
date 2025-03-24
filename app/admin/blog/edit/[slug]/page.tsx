@@ -4,16 +4,20 @@ import { createClient } from '@/utils/supabase/server';
 import EditPostForm from '@/components/blog/EditPostForm';
 
 export default async function EditBlogPost({
-  params,
+  params: paramsPromise,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
   // Check if user is authenticated
   const session = await auth();
 
+  // Await params before using it
+  const params = await paramsPromise;
+  const { slug } = params;
+
   // Redirect to sign-in if not authenticated
   if (!session?.user) {
-    redirect(`/api/auth/signin?callbackUrl=/admin/blog/edit/${params.slug}`);
+    redirect(`/api/auth/signin?callbackUrl=/admin/blog/edit/${slug}`);
   }
 
   // Fetch the post data
@@ -21,7 +25,7 @@ export default async function EditBlogPost({
   const { data: post, error } = await supabase
     .from('Post')
     .select('*')
-    .eq('slug', params.slug)
+    .eq('slug', slug)
     .single();
 
   if (error || !post) {
