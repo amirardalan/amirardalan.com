@@ -28,6 +28,7 @@
       "@/lib/*": ["./app/lib/*"],
       "@/utils/*": ["./app/utils/*"],
       "@/store/*": ["./app/store/*"],
+      "@/config/*": ["./app/config/*"],
       "@/types/*": ["./app/types/*"],
       "@/public/*": ["./public/*"]
     },
