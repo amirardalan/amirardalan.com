@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import Button from '@/components/ui/Button';
 import categories from '@/data/categories.json';
 import { useToast } from '@/components/ui/ToastContext';
+import { BlogClient } from '@/lib/api/blog-client';
 
 interface EditPostFormProps {
   post: any;
@@ -36,12 +37,8 @@ export default function EditPostForm({ post, userId }: EditPostFormProps) {
     setError(null);
 
     try {
-      const response = await fetch('/api/blog/post/update', {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
+      const { post: updatedPost, error: updateError } =
+        await BlogClient.updatePost({
           id: post.id,
           title,
           slug,
@@ -50,12 +47,10 @@ export default function EditPostForm({ post, userId }: EditPostFormProps) {
           category,
           userId,
           published,
-        }),
-      });
+        });
 
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || 'Failed to update post');
+      if (updateError) {
+        throw new Error(updateError);
       }
 
       // Show success toast
@@ -64,15 +59,7 @@ export default function EditPostForm({ post, userId }: EditPostFormProps) {
       // Add a small delay to allow the user to see the toast before redirecting
       setTimeout(async () => {
         // Trigger revalidation of blog pages
-        await fetch('/api/revalidate/post', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'x-revalidate-token':
-              process.env.NEXT_PUBLIC_REVALIDATE_TOKEN || '',
-          },
-          body: JSON.stringify({ slug }),
-        });
+        await BlogClient.revalidatePost(slug);
 
         // Redirect to the appropriate location based on published status
         if (published) {
@@ -106,17 +93,13 @@ export default function EditPostForm({ post, userId }: EditPostFormProps) {
     setError(null);
 
     try {
-      const response = await fetch(`/api/blog/post/${post.id}`, {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ userId }), // Ensure userId is correctly passed
-      });
+      const { success, error: deleteError } = await BlogClient.deletePost(
+        post.id,
+        userId
+      );
 
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || 'Failed to delete post');
+      if (!success) {
+        throw new Error(deleteError || 'Failed to delete post');
       }
 
       // Show success toast
