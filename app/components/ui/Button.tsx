@@ -8,6 +8,7 @@ interface ButtonProps {
   disabled?: boolean;
   variant?: 'primary' | 'secondary' | 'danger';
   color?: string;
+  size?: 'default' | 'large';
 }
 
 export default function Button({
@@ -17,41 +18,42 @@ export default function Button({
   disabled = false,
   variant = 'primary',
   color,
+  size = 'default',
 }: ButtonProps) {
-  const baseClasses =
-    'rounded-lg px-4 py-2 font-mono text-sm text-xxs font-medium uppercase focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50';
+  const buttonClasses = clsx(
+    // Base
+    'rounded-lg font-mono font-medium uppercase focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 flex items-center justify-center',
+    // Size-specific
+    size === 'default' ? 'text-sm text-xxs' : 'text-base min-w-[120px]',
+    // Spacing
+    {
+      // Primary / Danger
+      'px-4 py-2': size === 'default' && variant !== 'secondary',
+      'px-6 py-3': size === 'large' && variant !== 'secondary',
 
-  let colorClasses = '';
-
-  // Determine color classes based on variant and/or custom color
-  if (color) {
-    // Use the custom color if provided
-    colorClasses = `bg-${color} hover:bg-${color}/80 focus:ring-${color}/50 text-white`;
-  } else {
-    // Default colors based on variant
-    switch (variant) {
-      case 'danger':
-        colorClasses =
-          'bg-red-600 hover:bg-red-700 focus:ring-red-500 text-white';
-        break;
-      case 'secondary':
-        // Ghost button style - transparent with border
-        colorClasses =
-          'bg-transparent border border-dark dark:border-light text-dark dark:text-light hover:bg-gray-100 dark:hover:bg-gray-800 focus:ring-gray-500';
-        break;
-      default: // primary
-        colorClasses =
-          'bg-dark dark:bg-light text-white dark:text-dark hover:bg-gray-800 dark:hover:bg-gray-200 focus:ring-gray-500';
-        break;
+      // Secondary
+      'px-[15px] py-[7px]': size === 'default' && variant === 'secondary',
+      'px-[23px] py-[11px]': size === 'large' && variant === 'secondary',
+    },
+    {
+      // Custom color
+      [`bg-${color} focus:ring-${color}/50 text-white`]: !!color,
+      // Variant-specific colors
+      'bg-red-600 focus:ring-red-500 text-white':
+        variant === 'danger' && !color,
+      'bg-transparent border border-dark dark:border-light text-dark dark:text-light focus:ring-gray-500':
+        variant === 'secondary' && !color,
+      'bg-dark dark:bg-light text-white dark:text-dark focus:ring-gray-500':
+        variant === 'primary' && !color,
     }
-  }
+  );
 
   return (
     <button
       type={type}
       onClick={onClick}
       disabled={disabled}
-      className={`${baseClasses} ${colorClasses}`}
+      className={buttonClasses}
     >
       {text}
     </button>
