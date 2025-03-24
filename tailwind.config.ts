@@ -25,9 +25,6 @@ const config: Config = {
       gridTemplateRows: {
         layout: 'auto 1fr auto',
       },
-      height: {
-        '80vh': '80vh',
-      },
     },
   },
   darkMode: 'selector',

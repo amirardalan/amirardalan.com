@@ -4,7 +4,7 @@ import Tooltip from '@/components/ui/Tooltip';
 
 export default function PageContent() {
   return (
-    <div className="mt-12 flex flex-col items-center">
+    <div className="mt-8 flex flex-col items-center">
       <div className="mb-6 flex w-full justify-center">
         <Image
           src="/images/logo.png"
