@@ -9,7 +9,7 @@
 
   --color-dark: rgb(0, 0, 0);
   --color-light: rgb(255, 255, 255);
-  --color-primary: rgb(0, 195, 162);
+  --color-primary: rgb(136, 67, 255);
   --color-secondary: rgb(214, 210, 221);
 
   /* Syntax Highlighting */
@@ -22,13 +22,6 @@
   --sh-string: #00a99a;
   --sh-keyword: #f47067;
   --sh-comment: #a19595;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-light: rgb(255, 255, 255);
-    --color-dark: rgb(0, 0, 0);
-  }
 }
 
 @layer base {
