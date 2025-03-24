@@ -1,8 +1,10 @@
-type GitHubIconProps = {
-  fill: string;
-};
+'use client';
+import { useTheme } from '@/app/store/theme';
 
-export default function gitHubIcon({ fill }: GitHubIconProps) {
+export default function gitHubIcon() {
+  const { effectiveTheme } = useTheme();
+  const fill =
+    effectiveTheme === 'dark' ? 'var(--color-light)' : 'var(--color-dark)';
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

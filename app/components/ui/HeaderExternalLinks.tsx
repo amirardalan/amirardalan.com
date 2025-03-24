@@ -2,13 +2,8 @@
 
 import GitHubIcon from '@/components/icons/IconGithub';
 import Tooltip from '@/components/ui/Tooltip';
-import { useTheme } from '@/app/store/theme';
 
 export default function HeaderExternalLinks() {
-  const { effectiveTheme } = useTheme();
-  const fill =
-    effectiveTheme === 'dark' ? 'var(--color-light)' : 'var(--color-dark)';
-
   const handleClick = () => {
     window.open(
       'https://github.com/amirardalan/site',
@@ -21,7 +16,7 @@ export default function HeaderExternalLinks() {
     <div className="mr-4 mt-1">
       <Tooltip text="⭐ Star on GitHub" pos="l">
         <button onClick={handleClick}>
-          <GitHubIcon fill={fill} />
+          <GitHubIcon />
         </button>
       </Tooltip>
     </div>

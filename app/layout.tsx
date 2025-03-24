@@ -82,7 +82,7 @@ export default async function RootLayout({
           <ToastProvider>
             <div className="flex min-h-screen flex-col px-4 pt-4 lg:px-8 lg:pt-8">
               <Header />
-              <div className="container mx-auto w-full max-w-[768px] flex-grow overflow-auto px-4 py-8">
+              <div className="container mx-auto max-w-[768px] flex-grow overflow-auto overflow-x-hidden px-4 py-8">
                 {children}
               </div>
               <Footer />

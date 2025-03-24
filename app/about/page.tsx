@@ -1,6 +1,8 @@
 'use client';
+
 import PageHeading from '../components/ui/PageHeading';
 import Tooltip from '@/components/ui/Tooltip';
+import IconWave from '@/components/icons/IconWave';
 
 export default function About() {
   return (
@@ -21,6 +23,11 @@ export default function About() {
             that delight users and drive results.
           </p>
         </div>
+
+        <div className="my-4 flex justify-center">
+          <IconWave />
+        </div>
+
         <div className="mt-2 flex flex-col">
           <div className="flex flex-row">
             <p className="text-zinc-400 dark:text-zinc-500">x:</p>
