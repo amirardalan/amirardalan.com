@@ -1,4 +1,5 @@
 import { createClient } from '@/utils/supabase/server';
+import PageHeading from '@/components/ui/PageHeading';
 
 // Enable on-demand revalidation
 export const revalidate = false; // Only revalidate on-demand
@@ -14,9 +15,7 @@ export default async function Blog() {
   return (
     <main>
       <div className="mt-8">
-        <h2 className="mb-6 border-b-2 border-solid border-zinc-500 pb-4 text-xxl text-dark dark:text-light">
-          Blog
-        </h2>
+        <PageHeading title={'Blog'} />
         <div className="text-dark dark:text-light">
           {posts && posts.length > 0 ? (
             <ul>

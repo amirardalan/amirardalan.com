@@ -41,7 +41,7 @@ export default function Tooltip({ pos, text, children }: TooltipProps) {
     >
       {children}
       <div
-        className={`absolute z-30 whitespace-nowrap rounded bg-gray-800 px-2 py-1 font-mono text-xxs uppercase text-white shadow-md transition-opacity duration-300 ${
+        className={`absolute z-30 whitespace-nowrap rounded bg-zinc-800 px-2 py-1 font-mono text-xxs uppercase text-white shadow-md transition-opacity duration-300 ${
           isHovered
             ? 'pointer-events-auto opacity-100'
             : 'pointer-events-none opacity-0'

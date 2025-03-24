@@ -1,13 +1,12 @@
 'use client';
+import PageHeading from '../components/ui/PageHeading';
 import Tooltip from '@/components/ui/Tooltip';
 
 export default function About() {
   return (
     <main>
       <div className="mt-8">
-        <h2 className="mt-6 border-b-2 border-solid border-zinc-500 pb-4 text-xxl text-dark dark:text-light">
-          About
-        </h2>
+        <PageHeading title={'About'} />
         <div className="my-10 max-w-7xl font-serif text-3xl leading-relaxed">
           <p className="mb-6 text-dark dark:text-light">
             Design Engineer with 10+ years of experience based in Portland, OR.
