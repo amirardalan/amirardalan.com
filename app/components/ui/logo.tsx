@@ -10,7 +10,7 @@ export default function Logo({ fontSize, logoText }: LogoProps) {
     <span
       className={clsx(
         fontSize,
-        'font-serif leading-none tracking-wide text-dark dark:text-light'
+        'align-text-bottom font-serif leading-none tracking-wide text-dark dark:text-light'
       )}
     >
       {logoText}
