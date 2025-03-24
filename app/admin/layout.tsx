@@ -16,7 +16,7 @@ export default async function AdminLayout({
   }
 
   return (
-    <div className="container mx-auto w-full px-4 py-8">
+    <div className="container mx-auto w-full px-4 pt-4 lg:px-8 lg:pt-8">
       <div className="mb-6">
         <AdminMenu />
       </div>

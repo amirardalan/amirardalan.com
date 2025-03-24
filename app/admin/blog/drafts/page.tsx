@@ -1,6 +1,7 @@
 import { createClient } from '@/utils/supabase/server';
 import { auth } from '@/auth';
 import { redirect } from 'next/navigation';
+import PageHeading from '@/components/ui/PageHeading';
 import Link from 'next/link';
 
 export default async function Drafts() {
@@ -21,9 +22,7 @@ export default async function Drafts() {
 
   return (
     <div className="mt-8">
-      <h2 className="mb-6 border-b-2 border-solid border-gray-300 pb-4 text-xxl text-dark dark:border-gray-600 dark:text-light">
-        Unpublished Drafts
-      </h2>
+      <PageHeading title={'Unpublished Drafts'} />
       <div className="text-dark dark:text-light">
         {drafts && drafts.length > 0 ? (
           <ul>
