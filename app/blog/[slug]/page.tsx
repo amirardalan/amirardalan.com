@@ -1,6 +1,8 @@
 import { createClient, createStaticClient } from '@/utils/supabase/server';
 import { compileMDX } from 'next-mdx-remote/rsc';
 import { components } from '@/mdx-components';
+import { auth } from '@/auth';
+import Link from 'next/link';
 
 // This enables static generation while allowing revalidation
 export const revalidate = false; // Only revalidate on-demand
@@ -41,6 +43,7 @@ export default async function BlogPost({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await paramsPromise;
+  const session = await auth();
 
   // Use the regular client for request-scoped operations
   const supabase = await createClient();
@@ -64,6 +67,16 @@ export default async function BlogPost({
 
   return (
     <article className="text-dark dark:text-light">
+      {session?.user && (
+        <div className="mb-4 text-right">
+          <Link
+            href={`/admin/blog/edit/${post.slug}`}
+            className="rounded bg-blue-600 px-3 py-1 text-sm text-white hover:bg-blue-700"
+          >
+            Edit Post
+          </Link>
+        </div>
+      )}
       <p className="text-green-400">#{post.category ?? 'uncategorized'}</p>
       <h3>By {post.author?.name || 'Unknown Author'}</h3>
       <time>
@@ -73,6 +86,11 @@ export default async function BlogPost({
           day: 'numeric',
         })}
       </time>
+      {!post.published && (
+        <div className="my-2 inline-block rounded bg-yellow-200 px-2 py-1 text-sm text-yellow-800 dark:bg-yellow-800 dark:text-yellow-200">
+          Draft
+        </div>
+      )}
       <h2>{post.title}</h2>
       <p>{post.excerpt ?? ''}</p>
       <div className="mdx-content">{content}</div>
