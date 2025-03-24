@@ -93,7 +93,7 @@ export default async function BlogPost({
       )}
       <h2>{post.title}</h2>
       <p>{post.excerpt ?? ''}</p>
-      <div className="mdx-content">{content}</div>
+      <div className="mdx-content text-dark dark:text-light">{content}</div>
     </article>
   );
 }

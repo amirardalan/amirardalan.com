@@ -12,42 +12,45 @@ type BlockquoteProps = ComponentPropsWithoutRef<'blockquote'>;
 // Export components directly so they can be imported in server components
 export const components = {
   h1: (props: HeadingProps) => (
-    <h1 className="mb-0 pt-12 font-medium" {...props} />
+    <h1
+      className="mb-0 pt-12 font-medium text-dark dark:text-light"
+      {...props}
+    />
   ),
   h2: (props: HeadingProps) => (
     <h2
-      className="mb-3 mt-8 font-medium text-gray-800 dark:text-zinc-200"
+      className="mb-3 mt-8 font-medium text-dark dark:text-light"
       {...props}
     />
   ),
   h3: (props: HeadingProps) => (
     <h3
-      className="mb-3 mt-8 font-medium text-gray-800 dark:text-zinc-200"
+      className="mb-3 mt-8 font-medium text-dark dark:text-light"
       {...props}
     />
   ),
   h4: (props: HeadingProps) => <h4 className="font-medium" {...props} />,
   p: (props: ParagraphProps) => (
-    <p className="leading-snug text-gray-800 dark:text-zinc-300" {...props} />
+    <p className="leading-snug text-dark dark:text-light" {...props} />
   ),
   ol: (props: ListProps) => (
     <ol
-      className="list-decimal space-y-2 pl-5 text-gray-800 dark:text-zinc-300"
+      className="list-decimal space-y-2 pl-5 text-dark dark:text-light"
       {...props}
     />
   ),
   ul: (props: ListProps) => (
     <ul
-      className="list-disc space-y-1 pl-5 text-gray-800 dark:text-zinc-300"
+      className="list-disc space-y-1 pl-5 text-dark dark:text-light"
       {...props}
     />
   ),
   li: (props: ListItemProps) => <li className="pl-1" {...props} />,
   em: (props: ComponentPropsWithoutRef<'em'>) => (
-    <em className="font-medium" {...props} />
+    <em className="font-medium text-dark dark:text-light" {...props} />
   ),
   strong: (props: ComponentPropsWithoutRef<'strong'>) => (
-    <strong className="font-medium" {...props} />
+    <strong className="font-medium text-dark dark:text-light" {...props} />
   ),
   a: ({ href, children, ...props }: AnchorProps) => {
     const className =
@@ -114,7 +117,7 @@ export const components = {
   ),
   blockquote: (props: BlockquoteProps) => (
     <blockquote
-      className="border-l-3 ml-[0.075em] border-gray-300 pl-4 text-gray-700 dark:border-zinc-600 dark:text-zinc-300"
+      className="border-l-3 ml-[0.075em] border-gray-300 pl-4 text-dark dark:border-zinc-600 dark:text-light"
       {...props}
     />
   ),
