@@ -13,13 +13,13 @@ export default function AdminDashboard() {
             Blog Management
           </h3>
           <p className="mb-4 text-gray-600 dark:text-gray-300">
-            Create and manage blog posts
+            Compose a new blog post
           </p>
           <Link
             href="/admin/blog/new"
             className="inline-block rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
           >
-            Create New Post
+            Create Post
           </Link>
         </div>
 
@@ -28,7 +28,7 @@ export default function AdminDashboard() {
             Drafts
           </h3>
           <p className="mb-4 text-gray-600 dark:text-gray-300">
-            Manage saved drafts
+            Manage unpublished drafts
           </p>
           <Link
             href="/admin/blog/drafts"
@@ -49,7 +49,7 @@ export default function AdminDashboard() {
             href="/admin/blog/published"
             className="inline-block rounded bg-green-600 px-4 py-2 text-white hover:bg-green-700"
           >
-            View Published
+            View Posts
           </Link>
         </div>
       </div>
