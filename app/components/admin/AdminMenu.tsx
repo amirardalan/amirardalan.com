@@ -19,7 +19,7 @@ export default function AdminMenu() {
   };
 
   return (
-    <nav className="flex items-center justify-between rounded-lg bg-zinc-200 px-4 py-3 font-mono text-xs uppercase text-zinc-500 dark:bg-zinc-800 dark:text-zinc-400">
+    <nav className="leading-2 flex items-center justify-between rounded-lg bg-zinc-200 px-4 py-3 text-xs uppercase text-zinc-500 dark:bg-zinc-800 dark:text-zinc-400">
       <div className="flex flex-wrap space-x-4">
         <IconBlogControls />
         <Link href="/admin" className={getLinkClass('/admin')}>

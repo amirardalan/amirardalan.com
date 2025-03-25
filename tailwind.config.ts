@@ -4,7 +4,7 @@ const config: Config = {
   content: ['./app/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
     fontFamily: {
-      sans: ['Inter', 'system-ui'],
+      sans: ['Jura', 'system-ui'],
       serif: ['Prata', 'serif'],
       mono: ['JetBrains Mono', 'monospace'],
     },
@@ -16,7 +16,7 @@ const config: Config = {
       },
       fontSize: {
         xs: '.85rem',
-        xxs: '.675rem',
+        xxs: '.75rem',
         xxl: '1.7rem',
       },
       gridTemplateRows: {

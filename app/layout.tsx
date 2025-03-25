@@ -12,9 +12,10 @@ import LightIcon from '@/public/images/favicon-light.png';
 import Header from '@/components/ui/Header';
 import Footer from '@/components/ui/Footer';
 
-import { Inter, Prata, JetBrains_Mono } from 'next/font/google';
+import { Jura, Prata, JetBrains_Mono } from 'next/font/google';
 
-const sans = Inter({
+const sans = Jura({
+  weight: ['400', '500', '600'],
   subsets: ['latin'],
   display: 'swap',
 });
@@ -73,10 +74,14 @@ export default async function RootLayout({
         className={clsx(sans.className, serif.className, mono.className, theme)}
       >
         <body
-          className={clsx('font-sans', 'grid h-screen grid-rows-layout', {
-            'bg-light': theme === 'light',
-            'dark:bg-dark': theme === 'dark',
-          })}
+          className={clsx(
+            'font-sans font-medium',
+            'grid h-screen grid-rows-layout',
+            {
+              'bg-light': theme === 'light',
+              'dark:bg-dark': theme === 'dark',
+            }
+          )}
         >
           <div className="flex min-h-screen flex-col px-6 pt-6 lg:px-10 lg:pt-10">
             <Header />

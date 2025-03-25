@@ -8,7 +8,7 @@ export default function BlogActions() {
           Create New Post
         </h3>
         <p className="mb-4 text-xs text-zinc-600 dark:text-zinc-300">
-          Compose a new blog post
+          Write a new post
         </p>
         <Link
           href="/admin/blog/new"
@@ -23,7 +23,7 @@ export default function BlogActions() {
           Manage Drafts
         </h3>
         <p className="mb-4 text-xs text-zinc-600 dark:text-zinc-300">
-          Manage unpublished drafts
+          Manage draft posts
         </p>
         <Link
           href="/admin/blog/drafts"
@@ -38,7 +38,7 @@ export default function BlogActions() {
           Published Posts
         </h3>
         <p className="mb-4 text-xs text-zinc-600 dark:text-zinc-300">
-          Manage published content
+          Manage published posts
         </p>
         <Link
           href="/admin/blog/published"
