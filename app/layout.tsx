@@ -13,7 +13,6 @@ import Header from '@/components/ui/Header';
 import Footer from '@/components/ui/Footer';
 
 import { Inter, Prata, JetBrains_Mono } from 'next/font/google';
-import { ToastProvider } from '@/components/ui/ToastContext';
 
 const sans = Inter({
   subsets: ['latin'],
@@ -79,15 +78,11 @@ export default async function RootLayout({
             'dark:bg-dark': theme === 'dark',
           })}
         >
-          <ToastProvider>
-            <div className="flex min-h-screen flex-col px-4 pt-4 lg:px-8 lg:pt-8">
-              <Header />
-              <div className="container mx-auto max-w-[768px] flex-grow overflow-auto overflow-x-hidden px-4 py-8">
-                {children}
-              </div>
-              <Footer />
-            </div>
-          </ToastProvider>
+          <div className="flex min-h-screen flex-col px-4 pt-4 lg:px-8 lg:pt-8">
+            <Header />
+            <div className="h-screen">{children}</div>
+            <Footer />
+          </div>
         </body>
       </html>
     </SessionProvider>

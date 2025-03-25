@@ -9,7 +9,7 @@ export default async function Header() {
       <Link href="/" className="mt-2">
         <Logo fontSize={'text-4xl'} logoText={'Amir Ardalan'} />
       </Link>
-      <div className="flex flex-1 justify-end">
+      <div className="flex items-center">
         <HeaderControls />
         <AuthMenu />
       </div>

@@ -1,12 +1,13 @@
 'use client';
 
-import PageHeading from '../components/ui/PageHeading';
+import PageHeading from '@/components/ui/PageHeading';
+import Container from '@/components/content/Container';
 import Tooltip from '@/components/ui/Tooltip';
 import IconWave from '@/components/icons/IconWave';
 
 export default function About() {
   return (
-    <main>
+    <Container>
       <div className="mt-8">
         <PageHeading title={'About'} />
         <div className="my-10 max-w-7xl font-serif text-3xl leading-relaxed">
@@ -83,6 +84,6 @@ export default function About() {
           </div>
         </div>
       </div>
-    </main>
+    </Container>
   );
 }

@@ -27,7 +27,7 @@ export default function Button({
     // Base
     'rounded-lg font-mono font-medium uppercase focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 flex items-center justify-center',
     // Size-specific
-    size === 'default' ? 'text-xs' : 'min-w-[120px] text-lg',
+    size === 'default' ? 'h-[35px] text-xs' : 'min-w-[120px] text-lg',
     // Spacing
     {
       // Primary / Danger

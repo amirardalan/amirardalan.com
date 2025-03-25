@@ -1,26 +1,28 @@
 import { auth } from '@/auth';
 import SignedOut from '@/components/auth/SignedOut';
+import Container from '@/components/content/Container';
 import AdminMenu from '@/components/admin/AdminMenu';
+import { ToastProvider } from '@/components/ui/ToastContext';
 
 export default async function AdminLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  // Check if user is authenticated
   const session = await auth();
 
-  // Show SignedOut component if not authenticated
   if (!session?.user) {
     return <SignedOut callbackUrl="/admin" message="to access admin panel." />;
   }
 
   return (
-    <div className="container mx-auto w-full px-4 pt-4 lg:px-8 lg:pt-8">
-      <div className="mb-6">
-        <AdminMenu />
-      </div>
-      <main>{children}</main>
-    </div>
+    <ToastProvider>
+      <Container>
+        <div className="mb-6">
+          <AdminMenu />
+        </div>
+        <div>{children}</div>
+      </Container>
+    </ToastProvider>
   );
 }

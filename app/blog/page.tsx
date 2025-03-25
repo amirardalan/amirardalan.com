@@ -1,5 +1,6 @@
 import { createClient } from '@/utils/supabase/server';
 import PageHeading from '@/components/ui/PageHeading';
+import Container from '@/components/content/Container';
 
 // Enable on-demand revalidation
 export const revalidate = false; // Only revalidate on-demand
@@ -13,7 +14,7 @@ export default async function Blog() {
     .order('publishedAt', { ascending: false });
 
   return (
-    <main>
+    <Container>
       <div className="mt-8">
         <PageHeading title={'Blog'} />
         <div className="text-dark dark:text-light">
@@ -30,6 +31,6 @@ export default async function Blog() {
           )}
         </div>
       </div>
-    </main>
+    </Container>
   );
 }
