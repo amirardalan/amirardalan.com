@@ -30,11 +30,22 @@ export default function EditPostForm({ post, userId }: EditPostFormProps) {
   const [isDeleting, setIsDeleting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [lastSubmitTime, setLastSubmitTime] = useState<number>(0);
+  const SUBMISSION_COOLDOWN = 3000; // 3 seconds between submissions
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Check if we're within the cooldown period
+    const now = Date.now();
+    if (now - lastSubmitTime < SUBMISSION_COOLDOWN) {
+      showToast('Please wait before submitting again', 'warning');
+      return;
+    }
+
     setIsSubmitting(true);
     setError(null);
+    setLastSubmitTime(now);
 
     try {
       const { post: updatedPost, error: updateError } =

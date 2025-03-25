@@ -2,7 +2,7 @@
 
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
-type ToastType = 'success' | 'error' | 'info';
+type ToastType = 'success' | 'error' | 'warning' | 'info';
 
 interface Toast {
   id: number;
@@ -53,6 +53,20 @@ export function useToast() {
   return context;
 }
 
+function getToastClass(type: ToastType): string {
+  switch (type) {
+    case 'success':
+      return 'bg-green-500 text-light';
+    case 'error':
+      return 'bg-red-500 text-light';
+    case 'warning':
+      return 'bg-yellow-800 text-light';
+    case 'info':
+    default:
+      return 'bg-blue-500 text-light';
+  }
+}
+
 function ToastContainer() {
   const { toasts, hideToast } = useToast();
 
@@ -61,13 +75,9 @@ function ToastContainer() {
       {toasts.map((toast) => (
         <div
           key={toast.id}
-          className={`rounded-md px-4 py-3 shadow-md transition-all duration-300 ${
-            toast.type === 'success'
-              ? 'bg-green-500 text-white'
-              : toast.type === 'error'
-                ? 'bg-red-500 text-white'
-                : 'bg-blue-500 text-white'
-          }`}
+          className={`rounded-md px-4 py-3 shadow-md transition-all duration-300 ${getToastClass(
+            toast.type
+          )}`}
         >
           <div className="flex items-center justify-between">
             <p>{toast.message}</p>
