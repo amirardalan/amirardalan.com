@@ -3,40 +3,27 @@
 @tailwind utilities;
 
 :root {
-  /* Typography */
+  /* Typopgrahy */
   --font-sans: 'Jura', sans-serif;
   --font-serif: 'Prata', serif;
   --font-mono: 'JetBrains Mono', monospace;
 
-  /* Base Syntax Highlighting */
+  /* Colors */
+  --color-light: oklch(0.985 0 0);
+  --color-dark: oklch(0.141 0.005 285.823);
+  --color-primary: oklch(56.13% 0.2417 261.86);
+  --color-primary-dark: oklch(89.6% 0.152531 196.844);
+
+  /* Syntax Highlighting */
   --sh-class: #2d5e9d;
   --sh-identifier: #66788d;
   --sh-sign: #8996a3;
+  --sh-property: #0550ae;
   --sh-entity: #249a97;
   --sh-jsxliterals: #6266d1;
   --sh-string: #00a99a;
   --sh-keyword: #f47067;
   --sh-comment: #a19595;
-
-  /* Static Colors */
-  --color-light: oklch(0.985 0 0);
-  --color-dark: oklch(0.141 0.005 285.823);
-  --color-primary-light: oklch(56.13% 0.2417 261.86);
-  --color-primary-dark: oklch(89.6% 0.152531 196.844);
-
-  /* Theme: Light (default) */
-  --color-bg: oklch(0.985 0 0);
-  --color-primary: oklch(56.13% 0.2417 261.86);
-  /* Light Syntax overrides */
-  --sh-property: #6dae05;
-}
-
-/* Dark theme overrides */
-.dark {
-  --color-bg: var(--color-dark);
-  --color-primary: var(--color-primary-dark);
-  /* Dark Syntax overrides */
-  --sh-property: #f26813;
 }
 
 @layer base {
@@ -44,11 +31,19 @@
     font-family: var(--font-sans);
   }
   body {
-    background-color: var(--color-bg);
+    background-color: var(--color-light);
+    .dark & {
+      background-color: var(--color-dark);
+      --color-primary: var(--color-primary-dark);
+    }
   }
 }
 
 @layer components {
+  .dark & {
+    background-color: var(--color-dark);
+    --color-primary: var(--color-primary-dark);
+  }
 }
 
 @layer utilities {
