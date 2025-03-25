@@ -83,7 +83,7 @@ export default async function RootLayout({
             }
           )}
         >
-          <div className="flex min-h-screen flex-col px-6 pt-6 lg:px-10 lg:pt-10">
+          <div className="flex min-h-screen flex-col px-6 pt-4 lg:px-10 lg:pt-8">
             <Header />
             <div className="h-screen">{children}</div>
             <Footer />
