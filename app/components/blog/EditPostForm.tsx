@@ -116,6 +116,9 @@ export default function EditPostForm({ post, userId }: EditPostFormProps) {
       // Show success toast
       showToast('Post deleted successfully!', 'success');
 
+      // Trigger revalidation for the blog index
+      await BlogClient.revalidateBlogIndex();
+
       // Close the modal
       setShowDeleteModal(false);
 

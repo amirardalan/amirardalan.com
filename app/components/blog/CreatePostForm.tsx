@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import Button from '@/components/ui/Button';
 import categories from '@/data/categories.json';
 import { useToast } from '@/components/ui/ToastContext';
+import { BlogClient } from '@/lib/api/blog-client';
 
 interface CreatePostFormProps {
   userId: string;
@@ -61,16 +62,8 @@ export default function CreatePostForm({ userId }: CreatePostFormProps) {
 
       // Add a small delay to allow the user to see the toast before redirecting
       setTimeout(async () => {
-        // Trigger revalidation of blog pages
-        await fetch('/api/revalidate/post', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'x-revalidate-token':
-              process.env.NEXT_PUBLIC_REVALIDATE_TOKEN || '',
-          },
-          body: JSON.stringify({ slug }),
-        });
+        // Trigger revalidation for the blog index
+        await BlogClient.revalidateBlogIndex();
 
         // Redirect to the appropriate location based on published status
         if (published) {

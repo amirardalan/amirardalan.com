@@ -2,8 +2,8 @@ import { BlogService } from '@/app/lib/services/blog-service';
 import PageHeading from '@/components/ui/PageHeading';
 import Container from '@/components/content/Container';
 
-// Enable on-demand revalidation
-export const revalidate = false; // Only revalidate on-demand
+// Disable automatic revalidation; use on-demand revalidation with revalidateTag
+export const revalidate = false;
 
 export default async function Blog() {
   const posts = await BlogService.getPublishedPosts();

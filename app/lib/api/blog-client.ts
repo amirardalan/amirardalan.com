@@ -83,13 +83,31 @@ export const BlogClient = {
 
   async revalidatePost(slug: string): Promise<boolean> {
     try {
-      const response = await fetch('/api/revalidate/post', {
+      const response = await fetch('/api/revalidate', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'x-revalidate-token': process.env.NEXT_PUBLIC_REVALIDATE_TOKEN || '',
         },
-        body: JSON.stringify({ slug }),
+        body: JSON.stringify({ tag: `post-${slug}` }),
+      });
+
+      return response.ok;
+    } catch (err) {
+      console.error('Revalidation error:', err);
+      return false;
+    }
+  },
+
+  async revalidateBlogIndex(): Promise<boolean> {
+    try {
+      const response = await fetch('/api/revalidate', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-revalidate-token': process.env.NEXT_PUBLIC_REVALIDATE_TOKEN || '',
+        },
+        body: JSON.stringify({ tag: 'blog-index' }),
       });
 
       return response.ok;

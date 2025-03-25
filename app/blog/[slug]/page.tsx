@@ -6,11 +6,11 @@ import Container from '@/components/content/Container';
 import Link from 'next/link';
 import { BlogService } from '@/app/lib/services/blog-service';
 
-// This enables static generation while allowing revalidation
-export const revalidate = false; // Only revalidate on-demand
+// Disable automatic revalidation; use on-demand revalidation with revalidateTag
+export const revalidate = false;
 
 // This function generates all possible slug values at build time
-export async function generateStaticParams() {
+export const generateStaticParams = async () => {
   // Use the static client for generating paths
   const supabase = createStaticClient();
   const { data: posts } = await supabase.from('Post').select('slug');
@@ -20,7 +20,7 @@ export async function generateStaticParams() {
       slug: post.slug,
     })) || []
   );
-}
+};
 
 // Separate server function for MDX compilation
 async function compilePostContent(content: string) {
