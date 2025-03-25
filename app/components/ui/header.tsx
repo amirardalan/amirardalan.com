@@ -10,15 +10,13 @@ export default async function Header() {
   return (
     <div className="flex flex-row items-center justify-between">
       <div className="min-w-40 font-mono text-xxs uppercase text-dark dark:text-light">
-        {session ? (
+        {session && (
           <>
             Welcome,&nbsp;
             <Link href="/account" className="text-primary">
               {session?.user?.name?.split(' ')[0]}
             </Link>
           </>
-        ) : (
-          'Welcome, Guest'
         )}
       </div>
       <Link href="/" className="mt-2">
