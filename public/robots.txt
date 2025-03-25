@@ -1,1 +1,4 @@
+User-agent: *
+Disallow: /admin
+Disallow: /api
 Allow: /api/og/*
