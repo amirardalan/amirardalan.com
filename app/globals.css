@@ -40,9 +40,10 @@
 }
 
 @layer components {
-  .dark & {
-    background-color: var(--color-dark);
-    --color-primary: var(--color-primary-dark);
+  .mdx-content {
+    .dark & {
+      --sh-property: #f23c73;
+    }
   }
 }
 
