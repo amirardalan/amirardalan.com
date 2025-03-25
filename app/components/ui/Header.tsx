@@ -7,7 +7,7 @@ export default async function Header() {
   return (
     <div className="flex flex-row justify-between">
       <Link href="/" className="mt-2">
-        <Logo fontSize={'text-4xl'} logoText={'Amir Ardalan'} />
+        <Logo size={35} />
       </Link>
       <div className="flex items-center">
         <HeaderControls />
