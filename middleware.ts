@@ -4,6 +4,7 @@ import type { NextRequest } from 'next/server';
 export { auth } from '@/auth';
 
 export function middleware(request: NextRequest) {
+  // Add custom header to all requests
   const requestHeaders = new Headers(request.headers);
   requestHeaders.set('x-next-pathname', request.nextUrl.pathname);
 
