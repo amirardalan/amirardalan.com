@@ -36,7 +36,7 @@ export default async function Image() {
               <span>Site</span>
             </h2>
             <div tw="w-132 ml-6 flex">
-              <h3 tw="text-4xl text-gray-400 leading-10">
+              <h3 tw="text-4xl text-zinc-500 leading-10">
                 <span>
                   A Next.js App Router starter project with TypeScript,
                   Tailwind, NextAuth, Prettier, and Dark Mode.

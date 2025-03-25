@@ -38,7 +38,7 @@ export default async function Drafts() {
                   >
                     {draft.title}
                   </Link>
-                  <span className="ml-2 text-sm text-gray-500">[Draft]</span>
+                  <span className="ml-2 text-sm text-zinc-500">[Draft]</span>
                 </div>
                 <Link
                   href={`/admin/blog/edit/${draft.slug}`}

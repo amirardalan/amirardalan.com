@@ -55,7 +55,10 @@ export default function TypingAnimation() {
           text-decoration: none;
         }
       `}</style>
-      <span className="typed font-mono text-dark dark:text-light" />
+      <h3 className="font-mono text-dark dark:text-light">
+        <span className="mr-4 text-primary">{'> ~ %'}</span>
+        <span className="typed" />
+      </h3>
     </>
   );
 }

@@ -31,7 +31,7 @@ export default function About() {
 
         <div className="mt-2 flex flex-col">
           <div className="flex flex-row">
-            <p className="text-zinc-400 dark:text-zinc-500">x:</p>
+            <p className="text-zinc-500 dark:text-zinc-500">x:</p>
             <Tooltip text="x.com" pos="r">
               <a
                 href="https://x.com/amirardalan"
@@ -44,7 +44,7 @@ export default function About() {
             </Tooltip>
           </div>
           <div className="flex flex-row">
-            <p className="text-zinc-400 dark:text-zinc-500">github:</p>
+            <p className="text-zinc-500 dark:text-zinc-500">github:</p>
             <Tooltip text="github.com" pos="r">
               <a
                 href="https://github.com/amirardalan"
@@ -57,7 +57,7 @@ export default function About() {
             </Tooltip>
           </div>
           <div className="flex flex-row">
-            <p className="text-zinc-400 dark:text-zinc-500">linkedin:</p>
+            <p className="text-zinc-500 dark:text-zinc-500">linkedin:</p>
             <Tooltip text="linkedin.com" pos="r">
               <a
                 href="https://linkedin.com/in/amirardalan"
@@ -70,7 +70,7 @@ export default function About() {
             </Tooltip>
           </div>
           <div className="flex flex-row">
-            <p className="text-zinc-400 dark:text-zinc-500">resume:</p>
+            <p className="text-zinc-500 dark:text-zinc-500">resume:</p>
             <Tooltip text="resume" pos="r">
               <a
                 href="https://amir.sh/resume"

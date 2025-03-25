@@ -8,13 +8,15 @@ export default function PageContent() {
   return (
     <div className="flex w-full flex-col">
       <div className="items-left mt-12 flex justify-start space-x-2 text-left text-3xl">
-        <span className="text-primary">{'> ~ %'}</span>
         <TypingAnimation />
       </div>
       <div className="mt-8 flex flex-col">
-        <div className="mt-5 text-gray-600 dark:text-gray-500">
+        <h1 className="text-8xl tracking-wide text-dark dark:text-light">
+          Amir Ardalan
+        </h1>
+        <h2 className="mt-5 text-xl text-zinc-500">
           Frontend Engineer & UI/UX Designer
-        </div>
+        </h2>
         <div className="mt-8 flex space-x-4">
           <Link href="/blog">
             <Button text="Blog" variant="primary" size="large" />

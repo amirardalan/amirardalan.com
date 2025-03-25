@@ -252,10 +252,10 @@ export default function EditPostForm({ post, userId }: EditPostFormProps) {
       {showDeleteModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
           <div className="w-full max-w-md rounded-lg bg-white p-6 shadow-xl dark:bg-gray-800">
-            <h3 className="mb-4 text-lg font-medium text-gray-900 dark:text-white">
+            <h3 className="mb-4 text-lg font-medium text-zinc-900 dark:text-white">
               Confirm Deletion
             </h3>
-            <p className="mb-6 text-sm text-gray-700 dark:text-gray-300">
+            <p className="mb-6 text-sm text-zinc-700 dark:text-zinc-300">
               Are you sure you want to delete this post? This action cannot be
               undone.
             </p>
