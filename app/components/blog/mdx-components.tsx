@@ -88,7 +88,7 @@ export const components = {
   pre: ({ children, ...props }: ComponentPropsWithoutRef<'pre'>) => {
     return (
       <pre
-        className="mb-4 mt-6 overflow-auto rounded-lg bg-gray-800 p-4 dark:bg-black"
+        className="mb-4 mt-6 overflow-auto rounded-lg bg-zinc-200 p-4 dark:bg-zinc-800"
         {...props}
       >
         {children}

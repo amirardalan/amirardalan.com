@@ -1,6 +1,6 @@
 import { createClient, createStaticClient } from '@/utils/supabase/server';
 import { compileMDX } from 'next-mdx-remote/rsc';
-import { components } from '@/mdx-components';
+import { components } from '@/app/components/blog/mdx-components';
 import { auth } from '@/auth';
 import Container from '@/components/content/Container';
 import Link from 'next/link';

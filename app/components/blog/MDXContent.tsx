@@ -1,6 +1,6 @@
 'use client';
 
-import { useMDXComponents } from '@/mdx-components';
+import { useMDXComponents } from '@/app/components/blog/mdx-components';
 import { MDXProvider } from '@mdx-js/react';
 import { ReactNode } from 'react';
 
