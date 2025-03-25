@@ -49,10 +49,7 @@ export default function AdminMenu() {
         <Link href="/admin/account" className={getLinkClass('/admin/account')}>
           Account
         </Link>
-        <Link
-          href="/api/auth/signout?callbackUrl=/&redirect=false"
-          className={getLinkClass('/api/auth/signout')}
-        >
+        <Link href="/api/auth/signout?callbackUrl=/&redirect=false">
           Sign Out
         </Link>
       </div>
