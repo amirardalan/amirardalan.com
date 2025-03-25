@@ -13,7 +13,7 @@ export default async function Header() {
         {session && (
           <>
             Welcome,&nbsp;
-            <Link href="/account" className="text-primary">
+            <Link href="/admin/account" className="text-primary">
               {session?.user?.name?.split(' ')[0]}
             </Link>
           </>

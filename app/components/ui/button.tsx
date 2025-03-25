@@ -1,9 +1,11 @@
 import React from 'react';
 import clsx from 'clsx';
+import Link from 'next/link';
 
 interface ButtonProps {
   text: string;
   onClick?: () => void;
+  url?: string;
   type?: 'button' | 'submit' | 'reset';
   disabled?: boolean;
   variant?: 'primary' | 'secondary' | 'danger';
@@ -14,6 +16,7 @@ interface ButtonProps {
 export default function Button({
   text,
   onClick,
+  url,
   type = 'button',
   disabled = false,
   variant = 'primary',
@@ -47,6 +50,14 @@ export default function Button({
         variant === 'primary' && !color,
     }
   );
+
+  if (url) {
+    return (
+      <Link href={url} className={buttonClasses}>
+        {text}
+      </Link>
+    );
+  }
 
   return (
     <button
