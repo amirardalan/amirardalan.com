@@ -41,22 +41,20 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: `${title} Amir Ardalan`,
     description: 'The portfolio and blog of Engineer and Designer Amir Ardalan',
-    icons: {
-      icon: [
-        {
-          rel: 'icon',
-          media: '(prefers-color-scheme: light)',
-          type: 'image/png',
-          url: LightIcon.src,
-        },
-        {
-          rel: 'icon',
-          media: '(prefers-color-scheme: dark)',
-          type: 'image/png',
-          url: DarkIcon.src,
-        },
-      ],
-    },
+    icons: [
+      {
+        rel: 'icon',
+        media: '(prefers-color-scheme: light)',
+        type: 'image/png',
+        url: LightIcon.src,
+      },
+      {
+        rel: 'icon',
+        media: '(prefers-color-scheme: dark)',
+        type: 'image/png',
+        url: DarkIcon.src,
+      },
+    ],
   };
 }
 
