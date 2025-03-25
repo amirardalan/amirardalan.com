@@ -14,7 +14,7 @@ export default function HomeContent() {
         <h1 className="text-8xl tracking-wide text-dark dark:text-light">
           Amir Ardalan
         </h1>
-        <h2 className="my-5 text-2xl uppercase tracking-widest text-zinc-500">
+        <h2 className="my-5 text-2xl uppercase tracking-widest text-zinc-400 dark:text-zinc-500">
           Frontend Engineer & UI/UX Designer
         </h2>
         <div className="mt-8 flex space-x-4">
