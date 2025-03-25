@@ -37,7 +37,7 @@ export default function AdminMenu() {
         Published
       </Link>
       <span>|</span>
-      <Link href="/account" className={getLinkClass('/account')}>
+      <Link href="/admin/account" className={getLinkClass('/admin/account')}>
         Account
       </Link>
     </nav>

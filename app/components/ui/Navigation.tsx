@@ -16,7 +16,7 @@ export default function Navigation() {
   };
 
   return (
-    <nav className={clsx('flex justify-end')}>
+    <nav>
       <div className={clsx('flex flex-row')}>
         <Link href="/">
           <span className={getNavItemClass('/')}>Home</span>
@@ -29,12 +29,6 @@ export default function Navigation() {
         </Link>
         <Link href="/uses">
           <span className={getNavItemClass('/uses')}>Uses</span>
-        </Link>
-        <Link href="/account">
-          <span className={getNavItemClass('/account')}>Account</span>
-        </Link>
-        <Link href="/admin">
-          <span className={getNavItemClass('/admin')}>Admin</span>
         </Link>
       </div>
     </nav>

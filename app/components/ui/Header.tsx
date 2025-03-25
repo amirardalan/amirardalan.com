@@ -1,9 +1,8 @@
 import { auth } from '@/auth';
-import ThemeMenu from '@/components/theme/ThemeMenu';
 import AuthMenu from '@/components/auth/AuthMenu';
 import Logo from '@/components/ui/Logo';
 import Link from 'next/link';
-import HeaderExternalLinks from '@/components/ui/HeaderExternalLinks';
+import HeaderControls from '@/app/components/ui/HeaderControls';
 
 export default async function Header() {
   const session = await auth();
@@ -22,17 +21,12 @@ export default async function Header() {
           'Welcome, Guest'
         )}
       </div>
-      <Link href="/">
+      <Link href="/" className="mt-2">
         <Logo fontSize={'text-4xl'} logoText={'Amir Ardalan'} />
       </Link>
-      <div className="flex min-w-40 justify-end">
-        <HeaderExternalLinks />
-        <div className="mr-6 mt-1 flex items-center align-middle">
-          <ThemeMenu />
-        </div>
-        <div>
-          <AuthMenu />
-        </div>
+      <div className="flex">
+        <HeaderControls />
+        <AuthMenu />
       </div>
     </div>
   );
