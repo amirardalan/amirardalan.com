@@ -36,10 +36,10 @@ export async function generateMetadata(): Promise<Metadata> {
   const title =
     pathname === '/'
       ? ''
-      : `• ${pathname.slice(1).charAt(0).toUpperCase()}${pathname.slice(2)}`;
+      : `${pathname.slice(1).charAt(0).toUpperCase()}${pathname.slice(2)} —`;
 
   return {
-    title: `amir.sh ${title}`,
+    title: `${title} Amir Ardalan`,
     description: 'The portfolio and blog of Engineer and Designer Amir Ardalan',
     icons: {
       icon: [
