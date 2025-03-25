@@ -1,4 +1,4 @@
-import { createClient } from '@/utils/supabase/server';
+import { BlogService } from '@/app/lib/services/blog-service';
 import PageHeading from '@/components/ui/PageHeading';
 import Container from '@/components/content/Container';
 
@@ -6,12 +6,7 @@ import Container from '@/components/content/Container';
 export const revalidate = false; // Only revalidate on-demand
 
 export default async function Blog() {
-  const supabase = await createClient();
-  const { data: posts } = await supabase
-    .from('Post')
-    .select('id, title, slug')
-    .eq('published', true) // Only select published posts
-    .order('publishedAt', { ascending: false });
+  const posts = await BlogService.getPublishedPosts();
 
   return (
     <Container>
