@@ -11,6 +11,9 @@ export interface Post {
   authorId: string;
   publishedAt?: string;
   editedAt?: string;
+  author?: {
+    name: string;
+  };
 }
 
 export interface PostCreateInput {
@@ -201,5 +204,20 @@ export const BlogService = {
       .single();
 
     return data?.authorId === userId;
+  },
+
+  async getPostBySlugWithAuthor(slug: string): Promise<Post | null> {
+    const supabase = await createClient();
+    const { data, error } = await supabase
+      .from('Post')
+      .select('*, author:users(name)')
+      .eq('slug', slug)
+      .single();
+
+    if (error || !data) {
+      return null;
+    }
+
+    return data as Post;
   },
 };

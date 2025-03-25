@@ -1,7 +1,7 @@
 import { auth } from '@/auth';
 import { redirect } from 'next/navigation';
-import { createClient } from '@/utils/supabase/server';
 import EditPostForm from '@/components/blog/EditPostForm';
+import { BlogService } from '@/app/lib/services/blog-service';
 
 export default async function EditBlogPost({
   params: paramsPromise,
@@ -20,15 +20,10 @@ export default async function EditBlogPost({
     redirect(`/api/auth/signin?callbackUrl=/admin/blog/edit/${slug}`);
   }
 
-  // Fetch the post data
-  const supabase = await createClient();
-  const { data: post, error } = await supabase
-    .from('Post')
-    .select('*')
-    .eq('slug', slug)
-    .single();
+  // Fetch the post data using BlogService instead of direct Supabase calls
+  const post = await BlogService.getPostBySlug(slug);
 
-  if (error || !post) {
+  if (!post) {
     return (
       <div className="mt-8 text-center text-dark dark:text-light">
         <h2 className="mb-6 text-xxl">Post Not Found</h2>

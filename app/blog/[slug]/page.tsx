@@ -1,9 +1,10 @@
-import { createClient, createStaticClient } from '@/utils/supabase/server';
+import { createStaticClient } from '@/utils/supabase/server';
 import { compileMDX } from 'next-mdx-remote/rsc';
 import { components } from '@/app/components/blog/mdx-components';
 import { auth } from '@/auth';
 import Container from '@/components/content/Container';
 import Link from 'next/link';
+import { BlogService } from '@/app/lib/services/blog-service';
 
 // This enables static generation while allowing revalidation
 export const revalidate = false; // Only revalidate on-demand
@@ -46,13 +47,8 @@ export default async function BlogPost({
   const { slug } = await paramsPromise;
   const session = await auth();
 
-  // Use the regular client for request-scoped operations
-  const supabase = await createClient();
-  const { data: post } = await supabase
-    .from('Post')
-    .select('*, author:users(name)')
-    .eq('slug', slug)
-    .single();
+  // Use BlogService instead of direct database calls
+  const post = await BlogService.getPostBySlugWithAuthor(slug);
 
   if (!post) {
     return <p>Post not found</p>;
