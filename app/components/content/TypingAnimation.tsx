@@ -20,8 +20,8 @@ const data = {
     `learn a bit <a href="/about" className="text-primary">about</a> me^3000`,
     `peruse my <a href="/blog" className="text-primary">blog</a> posts^3000`,
     `view my <a href="/uses" className="text-primary">toolbox</a>^3000`,
-    `follow me <a href="https://x.com/amirardalan" rel="noopener noreferrer" className="text-primary">on x.com</a>^3000`,
-    `explore my <a href="https://github.com/amirardalan" rel="noopener noreferrer" className="text-primary">github</a>^3000`,
+    `follow me on <a href="https://x.com/amirardalan" target="_blank" rel="noopener noreferrer" className="text-primary">x.com</a>^3000`,
+    `explore my <a href="https://github.com/amirardalan" target="_blank" rel="noopener noreferrer" className="text-primary">github</a>^3000`,
   ],
 };
 
