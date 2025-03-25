@@ -3,7 +3,7 @@ import Logo from '@/components/ui/Logo';
 
 export default function Footer() {
   return (
-    <footer className="flex flex-row py-8 text-left text-sm text-gray-400">
+    <footer className="flex flex-row py-6 text-left text-sm text-gray-400 lg:py-8">
       <div className="mr-6 flex flex-row items-center text-gray-400">
         <span className="mr-4">&copy;{new Date().getFullYear()}</span>
         <Logo size={20} /> <span className="ml-4">Amir Ardalan</span>
