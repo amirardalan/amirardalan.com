@@ -6,7 +6,7 @@ export default function SignInButton() {
     <form
       action={async () => {
         'use server';
-        await signIn('github');
+        await signIn('github', { callbackUrl: '/admin' });
       }}
     >
       <Button type="submit" text="Sign In" />
