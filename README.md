@@ -39,6 +39,10 @@ NEXTAUTH_SECRET=<Next Auth Secret>
 
 DATABASE_URL=<Supabase URL>
 DATABASE_API_KEY=<Supabase API Key>
+
+// Whitelist email addresses and/or domains (comma separated)
+ALLOWED_EMAILS=you@example.com,team@example.com
+ALLOWED_EMAIL_DOMAINS=example.com,test.com
 ```
 
 And finally, generate a Next Auth secret which will automatically overwrite the placeholder in the `.env.local` file:
