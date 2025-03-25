@@ -2,6 +2,7 @@ import { createClient, createStaticClient } from '@/utils/supabase/server';
 import { compileMDX } from 'next-mdx-remote/rsc';
 import { components } from '@/mdx-components';
 import { auth } from '@/auth';
+import Container from '@/components/content/Container';
 import Link from 'next/link';
 
 // This enables static generation while allowing revalidation
@@ -66,34 +67,39 @@ export default async function BlogPost({
   const content = await compilePostContent(post.content);
 
   return (
-    <article className="text-dark dark:text-light">
-      {session?.user && (
-        <div className="mb-4 text-right">
-          <Link
-            href={`/admin/blog/edit/${post.slug}`}
-            className="rounded bg-blue-600 px-3 py-1 text-sm text-white hover:bg-blue-700"
-          >
-            Edit Post
-          </Link>
-        </div>
-      )}
-      <p className="text-primary">#{post.category ?? 'uncategorized'}</p>
-      <h3>By {post.author?.name || 'Unknown Author'}</h3>
-      <time>
-        {new Date(post.publishedAt || Date.now()).toLocaleDateString('en-US', {
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric',
-        })}
-      </time>
-      {!post.published && (
-        <div className="my-2 inline-block rounded bg-yellow-200 px-2 py-1 text-sm text-yellow-800 dark:bg-yellow-800 dark:text-yellow-200">
-          Draft
-        </div>
-      )}
-      <h2>{post.title}</h2>
-      <p>{post.excerpt ?? ''}</p>
-      <div className="mdx-content text-dark dark:text-light">{content}</div>
-    </article>
+    <Container>
+      <article className="text-dark dark:text-light">
+        {session?.user && (
+          <div className="mb-4 text-right">
+            <Link
+              href={`/admin/blog/edit/${post.slug}`}
+              className="rounded bg-blue-600 px-3 py-1 text-sm text-white hover:bg-blue-700"
+            >
+              Edit Post
+            </Link>
+          </div>
+        )}
+        <p className="text-primary">#{post.category ?? 'uncategorized'}</p>
+        <h3>By {post.author?.name || 'Unknown Author'}</h3>
+        <time>
+          {new Date(post.publishedAt || Date.now()).toLocaleDateString(
+            'en-US',
+            {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+            }
+          )}
+        </time>
+        {!post.published && (
+          <div className="my-2 inline-block rounded bg-yellow-200 px-2 py-1 text-sm text-yellow-800 dark:bg-yellow-800 dark:text-yellow-200">
+            Draft
+          </div>
+        )}
+        <h2>{post.title}</h2>
+        <p>{post.excerpt ?? ''}</p>
+        <div className="mdx-content text-dark dark:text-light">{content}</div>
+      </article>
+    </Container>
   );
 }
