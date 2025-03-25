@@ -50,7 +50,7 @@ export default function ThemeMenu() {
 
   return (
     <div className="relative flex align-middle" ref={menuRef}>
-      <Tooltip pos="l" text="Change theme">
+      <Tooltip pos="b" text="Change theme">
         <button className="m-0 p-0" onClick={() => setMenuOpen(!menuOpen)}>
           {effectiveTheme === 'dark' ? <MoonIcon /> : <SunIcon />}
         </button>
