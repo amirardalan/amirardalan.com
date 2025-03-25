@@ -14,7 +14,7 @@ export default async function NewBlogPost() {
 
   return (
     <div className="mt-8">
-      <PageHeading title={'Create New Blog Post'} />
+      <PageHeading title={'New Post'} />
 
       <CreatePostForm userId={session.user?.id || ''} />
     </div>

@@ -22,7 +22,7 @@ export default async function Drafts() {
 
   return (
     <div className="mt-8">
-      <PageHeading title={'Unpublished Drafts'} />
+      <PageHeading title={'Drafts'} />
       <div className="text-dark dark:text-light">
         {drafts && drafts.length > 0 ? (
           <ul>

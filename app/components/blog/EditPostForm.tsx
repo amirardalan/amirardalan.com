@@ -177,7 +177,7 @@ export default function EditPostForm({ post, userId }: EditPostFormProps) {
 
       <div>
         <label htmlFor="content" className="block font-medium">
-          Content (MDX)
+          Content (Markdown)
         </label>
         <textarea
           id="content"

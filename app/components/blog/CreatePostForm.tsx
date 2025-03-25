@@ -168,7 +168,7 @@ export default function CreatePostForm({ userId }: CreatePostFormProps) {
 
       <div>
         <label htmlFor="content" className="block font-medium">
-          Content (MDX)
+          Content (Markdown)
         </label>
         <textarea
           id="content"

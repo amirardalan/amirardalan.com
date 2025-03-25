@@ -5,7 +5,7 @@ export default function BlogActions() {
     <div className="mb-6 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
       <div className="rounded-lg border border-zinc-200 p-6 dark:border-zinc-700">
         <h3 className="mb-3 text-lg font-medium text-dark dark:text-light">
-          Blog Management
+          Create New Post
         </h3>
         <p className="mb-4 text-xs text-zinc-600 dark:text-zinc-300">
           Compose a new blog post
@@ -20,7 +20,7 @@ export default function BlogActions() {
 
       <div className="rounded-lg border border-zinc-200 p-6 dark:border-zinc-700">
         <h3 className="mb-3 text-lg font-medium text-dark dark:text-light">
-          Drafts
+          Manage Drafts
         </h3>
         <p className="mb-4 text-xs text-zinc-600 dark:text-zinc-300">
           Manage unpublished drafts
