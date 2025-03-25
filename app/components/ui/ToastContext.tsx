@@ -60,7 +60,7 @@ function getToastClass(type: ToastType): string {
     case 'error':
       return 'bg-red-500 text-light';
     case 'warning':
-      return 'bg-yellow-800 text-light';
+      return 'bg-amber-500 text-light';
     case 'info':
     default:
       return 'bg-blue-500 text-light';
