@@ -12,16 +12,16 @@ export default function About() {
         <PageHeading title={'About'} />
         <div className="my-10 max-w-7xl font-serif text-3xl leading-relaxed">
           <p className="mb-6 text-dark dark:text-light">
-            Frontend Engineer with 10+ years of experience based in Portland,
-            OR.
+            Based in Portland, OR.
           </p>
           <p className="mb-6 text-dark dark:text-light">
-            I&apos;ve collaborated with renowned brands including Nike,
-            BASIC/DEPT®, Columbia Sportswear, SOREL, and KEEN Footwear.
+            I’ve shaped digital solutions blending code and design for Nike's
+            LeBron James Innovation Center, Columbia Sportswear, and KEEN
+            Footwear with BASIC/DEPT®.
           </p>
           <p className="mb-6 text-dark dark:text-light">
-            I combine form and function to create innovative digital products
-            that delight users and drive results.
+            I craft intuitive, innovative products that elevate user experiences
+            and drive results.
           </p>
         </div>
 
