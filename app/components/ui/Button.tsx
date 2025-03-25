@@ -25,7 +25,7 @@ export default function Button({
 }: ButtonProps) {
   const buttonClasses = clsx(
     // Base
-    'rounded-lg font-mono font-medium uppercase focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 flex items-center justify-center',
+    'rounded-lg font-mono font-medium uppercase focus:outline-none disabled:opacity-50 flex items-center justify-center',
     // Size-specific
     size === 'default' ? 'h-[35px] text-xs' : 'min-w-[120px] text-lg',
     // Spacing
@@ -40,13 +40,12 @@ export default function Button({
     },
     {
       // Custom color
-      [`bg-${color} focus:ring-${color}/50 text-white`]: !!color,
+      [`bg-${color} text-white`]: !!color,
       // Variant-specific colors
-      'bg-red-600 focus:ring-red-500 text-white':
-        variant === 'danger' && !color,
-      'bg-transparent border border-dark dark:border-light text-dark dark:text-light focus:ring-gray-500':
+      'bg-red-600 text-white': variant === 'danger' && !color,
+      'bg-transparent border border-dark dark:border-light text-dark dark:text-light':
         variant === 'secondary' && !color,
-      'bg-dark dark:bg-light text-white dark:text-dark focus:ring-gray-500':
+      'bg-dark dark:bg-light text-white dark:text-dark':
         variant === 'primary' && !color,
     }
   );
