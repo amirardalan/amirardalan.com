@@ -15,15 +15,15 @@
   --color-primary-dark: oklch(89.6% 0.152531 196.844);
 
   /* Syntax Highlighting */
-  --sh-class: #2d5e9d;
-  --sh-identifier: #66788d;
-  --sh-sign: #8996a3;
-  --sh-property: #0550ae;
-  --sh-entity: #249a97;
-  --sh-jsxliterals: #6266d1;
-  --sh-string: #00a99a;
-  --sh-keyword: #f47067;
-  --sh-comment: #a19595;
+  --sh-class: oklch(0.48 0.11 255.81);
+  --sh-identifier: oklch(0.57 0.04 252.45);
+  --sh-sign: oklch(0.67 0.02 248.19);
+  --sh-property: oklch(0.45 0.16 258.18);
+  --sh-entity: oklch(0.62 0.1 192.31);
+  --sh-jsxliterals: oklch(0.56 0.16 278.23);
+  --sh-string: oklch(0.66 0.12 183.82);
+  --sh-keyword: oklch(0.7 0.16 26.07);
+  --sh-comment: oklch(0.68 0.01 17.51);
 }
 
 @layer base {
@@ -40,9 +40,9 @@
 }
 
 @layer components {
-  .mdx-content {
-    .dark & {
-      --sh-property: #f23c73;
+  .dark {
+    .mdx-content {
+      --sh-property: oklch(0.64 0.22 8.3);
     }
   }
 }
