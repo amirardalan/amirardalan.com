@@ -155,7 +155,7 @@ export default function EditPostForm({ post, userId }: EditPostFormProps) {
           value={title}
           onChange={handleTitleChange}
           required
-          className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-black shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+          className="mt-1 block w-full rounded-md border border-zinc-300 bg-zinc-100 px-3 py-2 text-zinc-950 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 dark:border-zinc-500 dark:bg-zinc-800 dark:text-light"
         />
       </div>
 
@@ -170,7 +170,7 @@ export default function EditPostForm({ post, userId }: EditPostFormProps) {
             value={slug}
             onChange={(e) => setSlug(e.target.value)}
             required
-            className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-black shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+            className="mt-1 block w-full rounded-md border border-zinc-300 bg-zinc-100 px-3 py-2 text-zinc-950 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 dark:border-zinc-500 dark:bg-zinc-800 dark:text-light"
           />
         </div>
       </div>
@@ -185,7 +185,7 @@ export default function EditPostForm({ post, userId }: EditPostFormProps) {
           value={excerpt}
           onChange={(e) => setExcerpt(e.target.value)}
           required
-          className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-black shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+          className="mt-1 block w-full rounded-md border border-zinc-300 bg-zinc-100 px-3 py-2 text-zinc-950 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 dark:border-zinc-500 dark:bg-zinc-800 dark:text-light"
         />
       </div>
 
@@ -199,7 +199,7 @@ export default function EditPostForm({ post, userId }: EditPostFormProps) {
           onChange={(e) => setContent(e.target.value)}
           required
           rows={15}
-          className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-black shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+          className="mt-1 block w-full rounded-md border border-zinc-300 bg-zinc-100 px-3 py-2 text-zinc-950 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 dark:border-zinc-500 dark:bg-zinc-800 dark:text-light"
         />
       </div>
 
@@ -214,7 +214,7 @@ export default function EditPostForm({ post, userId }: EditPostFormProps) {
               value={category}
               onChange={(e) => setCategory(e.target.value)}
               required
-              className="mt-1 block rounded-md border border-gray-300 px-3 py-2 text-black shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+              className="mt-1 block rounded-md border border-zinc-300 bg-zinc-100 px-3 py-2 text-zinc-950 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 dark:border-zinc-500 dark:bg-zinc-800 dark:text-light"
             >
               <option value="" disabled>
                 Select a category
@@ -235,9 +235,12 @@ export default function EditPostForm({ post, userId }: EditPostFormProps) {
             id="published"
             checked={published}
             onChange={(e) => setPublished(e.target.checked)}
-            className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+            className="h-4 w-4 cursor-pointer rounded border-zinc-300 text-blue-600 focus:ring-blue-500"
           />
-          <label htmlFor="published" className="ml-2 block font-medium">
+          <label
+            htmlFor="published"
+            className="ml-2 block cursor-pointer font-medium"
+          >
             Publish
           </label>
         </div>
