@@ -49,10 +49,12 @@ export default async function EditBlogPost({
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const { slug } = params;
-  const title = `Edit Post: ${slug.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase())} — Amir Ardalan`;
+  const { slug } = await params;
+  const title = `Edit Post: ${slug
+    .replace(/-/g, ' ')
+    .replace(/\b\w/g, (c) => c.toUpperCase())} — Amir Ardalan`;
 
   return {
     title,
