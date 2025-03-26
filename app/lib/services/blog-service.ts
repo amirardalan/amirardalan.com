@@ -76,7 +76,7 @@ export const BlogService = {
     const supabase = await createClient();
     const { data } = await supabase
       .from('Post')
-      .select('id, title, slug')
+      .select('id, title, excerpt, slug')
       .eq('published', true)
       .order('publishedAt', { ascending: false });
 

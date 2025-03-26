@@ -2,7 +2,7 @@ import { BlogService } from '@/app/lib/services/blog-service';
 import PageHeading from '@/components/ui/PageHeading';
 import Container from '@/components/content/Container';
 import { cache } from 'react';
-import SearchBlogPosts from '@/components/blog/SearchBlogPosts';
+import BlogPosts from '@/components/blog/BlogPosts';
 
 // Enable caching with a specific tag for on-demand revalidation
 export const revalidate = false;
@@ -20,7 +20,7 @@ export default async function Blog() {
       <div className="mt-8">
         <PageHeading title={'Blog'} />
         <div className="text-dark dark:text-light">
-          <SearchBlogPosts posts={posts} />
+          <BlogPosts posts={posts} />
         </div>
       </div>
     </Container>
