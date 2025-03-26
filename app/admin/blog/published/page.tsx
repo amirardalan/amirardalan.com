@@ -2,9 +2,14 @@ import { createClient } from '@/utils/supabase/server';
 import { auth } from '@/auth';
 import { redirect } from 'next/navigation';
 import AdminPageHeading from '@/app/components/admin/AdminPageHeading';
+import SearchInput from '@/app/components/admin/SearchInput';
 import Link from 'next/link';
 
-export default async function PublishedPosts() {
+export default async function PublishedPosts({
+  searchParams,
+}: {
+  searchParams: { query?: string };
+}) {
   // Check if user is authenticated
   const session = await auth();
 
@@ -14,15 +19,25 @@ export default async function PublishedPosts() {
   }
 
   const supabase = await createClient();
+  const query = (await searchParams)?.query || '';
   const { data: posts } = await supabase
     .from('Post')
     .select('id, title, slug')
     .eq('published', true) // Only select published posts
+    .ilike('title', `%${query}%`) // Filter by search query
     .order('publishedAt', { ascending: false });
+
+  const totalResults = posts?.length || 0;
 
   return (
     <div className="mt-8">
       <AdminPageHeading title={'Published Posts'} />
+      <SearchInput
+        name="query"
+        placeholder="Search posts..."
+        defaultValue={query}
+        totalResults={totalResults}
+      />
       <div className="text-dark dark:text-light">
         {posts && posts.length > 0 ? (
           <ul>

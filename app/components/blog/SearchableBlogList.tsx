@@ -27,8 +27,25 @@ export default function SearchableBlogList({ posts }: { posts: BlogPost[] }) {
         placeholder="Search posts..."
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
-        className="mb-8 w-full rounded-lg border-2 border-zinc-300 bg-zinc-100 p-2 text-dark outline-none dark:border-zinc-700 dark:bg-zinc-800 dark:text-light"
+        className="mb-2 w-full rounded-lg border-2 border-zinc-300 bg-zinc-100 p-2 text-dark outline-none dark:border-zinc-700 dark:bg-zinc-800 dark:text-light"
       />
+      <div className="mb-4 flex items-center justify-between">
+        {searchTerm && (
+          <p className="text-sm text-dark dark:text-light">
+            {filteredPosts.length} result{filteredPosts.length !== 1 ? 's' : ''}
+          </p>
+        )}
+        {searchTerm && (
+          <button
+            onClick={handleClearFilters}
+            title="Clear filters"
+            className="flex items-center"
+          >
+            <IconClose />
+            <span className="pl-1">Clear Filters</span>
+          </button>
+        )}
+      </div>
       {filteredPosts.length > 0 ? (
         <ul>
           {filteredPosts.map((post) => (
@@ -38,19 +55,7 @@ export default function SearchableBlogList({ posts }: { posts: BlogPost[] }) {
           ))}
         </ul>
       ) : (
-        <div className="flex w-full items-center justify-between">
-          <p className="text-dark dark:text-light">
-            No posts match your search.
-          </p>
-          <button
-            onClick={handleClearFilters}
-            title="Clear filters"
-            className="flex items-center"
-          >
-            <IconClose />
-            <span className="pl-1">Clear Filters</span>
-          </button>
-        </div>
+        <p className="text-dark dark:text-light">No posts match your search.</p>
       )}
     </div>
   );

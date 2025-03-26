@@ -2,6 +2,7 @@ import { createClient } from '@/utils/supabase/server';
 import { auth } from '@/auth';
 import { redirect } from 'next/navigation';
 import AdminPageHeading from '@/app/components/admin/AdminPageHeading';
+import SearchInput from '@/app/components/admin/SearchInput';
 import Link from 'next/link';
 
 export function generateMetadata() {
@@ -11,7 +12,11 @@ export function generateMetadata() {
   };
 }
 
-export default async function Drafts() {
+export default async function Drafts({
+  searchParams,
+}: {
+  searchParams: { query?: string };
+}) {
   // Check if user is authenticated
   const session = await auth();
 
@@ -21,15 +26,25 @@ export default async function Drafts() {
   }
 
   const supabase = await createClient();
+  const query = (await searchParams)?.query || '';
   const { data: drafts } = await supabase
     .from('Post')
     .select('id, title, slug')
     .eq('published', false) // Only select unpublished posts
+    .ilike('title', `%${query}%`) // Filter by search query
     .order('editedAt', { ascending: false });
+
+  const totalResults = drafts?.length || 0;
 
   return (
     <div className="mt-8">
       <AdminPageHeading title={'Drafts'} />
+      <SearchInput
+        name="query"
+        placeholder="Search drafts..."
+        defaultValue={query}
+        totalResults={totalResults}
+      />
       <div className="text-dark dark:text-light">
         {drafts && drafts.length > 0 ? (
           <ul>
