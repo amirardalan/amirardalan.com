@@ -1,7 +1,7 @@
 import { createClient } from '@/utils/supabase/server';
 import { auth } from '@/auth';
 import { redirect } from 'next/navigation';
-import PageHeading from '@/app/components/ui/PageHeading';
+import AdminPageHeading from '@/app/components/admin/AdminPageHeading';
 import Link from 'next/link';
 
 export function generateMetadata() {
@@ -29,7 +29,7 @@ export default async function Drafts() {
 
   return (
     <div className="mt-8">
-      <PageHeading title={'Drafts'} />
+      <AdminPageHeading title={'Drafts'} />
       <div className="text-dark dark:text-light">
         {drafts && drafts.length > 0 ? (
           <ul>

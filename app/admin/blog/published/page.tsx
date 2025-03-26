@@ -1,7 +1,7 @@
 import { createClient } from '@/utils/supabase/server';
 import { auth } from '@/auth';
 import { redirect } from 'next/navigation';
-import PageHeading from '@/app/components/ui/PageHeading';
+import AdminPageHeading from '@/app/components/admin/AdminPageHeading';
 import Link from 'next/link';
 
 export default async function PublishedPosts() {
@@ -22,7 +22,7 @@ export default async function PublishedPosts() {
 
   return (
     <div className="mt-8">
-      <PageHeading title={'Published Posts'} />
+      <AdminPageHeading title={'Published Posts'} />
       <div className="text-dark dark:text-light">
         {posts && posts.length > 0 ? (
           <ul>

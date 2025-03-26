@@ -1,6 +1,6 @@
 import { auth } from '@/auth';
 import { redirect } from 'next/navigation';
-import PageHeading from '@/app/components/ui/PageHeading';
+import AdminPageHeading from '@/app/components/admin/AdminPageHeading';
 import CreatePostForm from '@/components/blog/CreatePostForm';
 
 export default async function NewBlogPost() {
@@ -14,7 +14,7 @@ export default async function NewBlogPost() {
 
   return (
     <div className="mt-8">
-      <PageHeading title={'New Post'} />
+      <AdminPageHeading title={'New Post'} />
 
       <CreatePostForm userId={session.user?.id || ''} />
     </div>

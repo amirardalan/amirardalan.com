@@ -2,6 +2,7 @@ import { auth } from '@/auth';
 import { redirect } from 'next/navigation';
 import EditPostForm from '@/components/blog/EditPostForm';
 import { BlogService } from '@/app/lib/services/blog-service';
+import AdminPageHeading from '@/app/components/admin/AdminPageHeading';
 
 export default async function EditBlogPost({
   params: paramsPromise,
@@ -37,9 +38,7 @@ export default async function EditBlogPost({
 
   return (
     <div className="mt-8">
-      <h2 className="text-me mb-6 pb-4 text-dark dark:text-light">
-        Edit Blog Post
-      </h2>
+      <AdminPageHeading title={'Edit Post'} />
 
       <EditPostForm post={post} userId={session.user?.id || ''} />
     </div>

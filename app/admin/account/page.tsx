@@ -1,5 +1,5 @@
 import { auth } from '@/auth';
-import PageHeading from '@/app/components/ui/PageHeading';
+import AdminPageHeading from '@/app/components/admin/AdminPageHeading';
 import Avatar from '@/components/auth/Avatar';
 import SignedOut from '@/components/auth/SignedOut';
 import { ObfuscatedEmail } from '@/components/ui/ObfuscatedEmail';
@@ -20,7 +20,7 @@ export default async function Account() {
 
   return (
     <div className="mt-8">
-      <PageHeading title={'Account'} />
+      <AdminPageHeading title={'Account'} />
       <div className="flex w-full flex-row items-center justify-between">
         <div className="flex">
           <div className="h-6 w-6">
