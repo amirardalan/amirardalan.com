@@ -3,19 +3,19 @@
 import { useState, useRef } from 'react';
 import IconClose from '@/components/icons/IconClose';
 
-interface SearchInputProps {
+interface AdminSearchProps {
   name: string;
   placeholder: string;
   defaultValue?: string;
   totalResults: number;
 }
 
-export default function SearchInput({
+export default function AdminSearch({
   name,
   placeholder,
   defaultValue = '',
   totalResults,
-}: SearchInputProps) {
+}: AdminSearchProps) {
   const [searchTerm, setSearchTerm] = useState(defaultValue);
   const [searchExecuted, setSearchExecuted] = useState(!!defaultValue);
   const [isLoading, setIsLoading] = useState(false);

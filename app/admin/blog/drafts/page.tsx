@@ -1,8 +1,8 @@
 import { createClient } from '@/utils/supabase/server';
 import { auth } from '@/auth';
 import { redirect } from 'next/navigation';
-import AdminPageHeading from '@/app/components/admin/AdminPageHeading';
-import SearchInput from '@/app/components/admin/SearchInput';
+import AdminPageHeading from '@/components/admin/AdminPageHeading';
+import SearchInput from '@/components/admin/AdminSearch';
 import Link from 'next/link';
 
 export function generateMetadata() {

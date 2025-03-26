@@ -9,7 +9,7 @@ interface BlogPost {
   slug: string;
 }
 
-export default function SearchableBlogList({ posts }: { posts: BlogPost[] }) {
+export default function SearchBlogList({ posts }: { posts: BlogPost[] }) {
   const [searchTerm, setSearchTerm] = useState('');
 
   const filteredPosts = posts.filter((post) =>

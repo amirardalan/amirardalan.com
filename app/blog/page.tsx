@@ -1,8 +1,8 @@
 import { BlogService } from '@/app/lib/services/blog-service';
-import PageHeading from '@/app/components/ui/PageHeading';
+import PageHeading from '@/components/ui/PageHeading';
 import Container from '@/components/content/Container';
 import { cache } from 'react';
-import SearchableBlogList from '@/app/components/blog/SearchableBlogList';
+import SearchBlogPosts from '@/components/blog/SearchBlogPosts';
 
 // Enable caching with a specific tag for on-demand revalidation
 export const revalidate = false;
@@ -20,7 +20,7 @@ export default async function Blog() {
       <div className="mt-8">
         <PageHeading title={'Blog'} />
         <div className="text-dark dark:text-light">
-          <SearchableBlogList posts={posts} />
+          <SearchBlogPosts posts={posts} />
         </div>
       </div>
     </Container>
