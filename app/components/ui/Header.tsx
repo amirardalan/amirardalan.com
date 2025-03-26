@@ -9,7 +9,8 @@ export default async function Header() {
       <Link href="/" className="mt-2">
         <Logo size={35} />
       </Link>
-      <div className="flex items-center">
+      <div className="flex w-full max-w-screen-xl items-center justify-end space-x-4">
+        {/* Ensure proper alignment */}
         <HeaderControls />
         <AuthMenu />
       </div>

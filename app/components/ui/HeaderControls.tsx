@@ -14,7 +14,7 @@ export default function HeaderExternalLinks() {
   };
 
   return (
-    <div className="mr-4 mt-1.5 flex items-center space-x-6">
+    <div className="mt-1.5 flex items-center space-x-6">
       <Tooltip text="Star on GitHub" pos="b">
         <button onClick={handleClick}>
           <GitHubIcon />
