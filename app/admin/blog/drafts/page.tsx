@@ -1,9 +1,9 @@
-import { createClient } from '@/utils/supabase/server';
 import { auth } from '@/auth';
 import { redirect } from 'next/navigation';
 import AdminPageHeading from '@/components/admin/AdminPageHeading';
 import SearchInput from '@/components/admin/AdminSearch';
 import Link from 'next/link';
+import { BlogService } from '@/app/lib/services/blog-service';
 
 export function generateMetadata() {
   return {
@@ -25,16 +25,13 @@ export default async function Drafts({
     redirect('/api/auth/signin?callbackUrl=/admin/blog/drafts');
   }
 
-  const supabase = await createClient();
   const query = (await searchParams)?.query || '';
-  const { data: drafts } = await supabase
-    .from('Post')
-    .select('id, title, slug')
-    .eq('published', false) // Only select unpublished posts
-    .ilike('title', `%${query}%`) // Filter by search query
-    .order('editedAt', { ascending: false });
+  const drafts = await BlogService.getDrafts();
+  const filteredDrafts = drafts.filter((draft) =>
+    draft.title.toLowerCase().includes(query.toLowerCase())
+  );
 
-  const totalResults = drafts?.length || 0;
+  const totalResults = filteredDrafts.length;
 
   return (
     <div className="mt-8">
@@ -46,9 +43,9 @@ export default async function Drafts({
         totalResults={totalResults}
       />
       <div className="text-dark dark:text-light">
-        {drafts && drafts.length > 0 ? (
+        {filteredDrafts.length > 0 ? (
           <ul>
-            {drafts.map((draft) => (
+            {filteredDrafts.map((draft) => (
               <li
                 key={draft.id}
                 className="my-4 flex items-center justify-between"

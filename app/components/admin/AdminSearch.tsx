@@ -42,7 +42,7 @@ export default function AdminSearch({
   return (
     <form
       method="get"
-      className="mb-8"
+      className="mb-4"
       onSubmit={(e) => {
         handleSubmit(e);
         setTimeout(() => setIsLoading(false), 500); // Simulate loading completion
@@ -67,13 +67,11 @@ export default function AdminSearch({
           <button
             type="button"
             onClick={handleClearFilters}
-            title="Clear filters"
+            title="Clear Search"
             className="flex items-center"
           >
             <IconClose />
-            <span className="pl-1 text-dark dark:text-light">
-              Clear Filters
-            </span>
+            <span className="pl-1 text-dark dark:text-light">Clear Search</span>
           </button>
         </div>
       )}

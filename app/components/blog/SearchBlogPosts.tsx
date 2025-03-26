@@ -38,11 +38,11 @@ export default function SearchBlogList({ posts }: { posts: BlogPost[] }) {
         {searchTerm && (
           <button
             onClick={handleClearFilters}
-            title="Clear filters"
+            title="Clear Search"
             className="flex items-center"
           >
             <IconClose />
-            <span className="pl-1">Clear Filters</span>
+            <span className="pl-1">Clear Search</span>
           </button>
         )}
       </div>

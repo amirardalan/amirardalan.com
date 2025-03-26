@@ -1,9 +1,9 @@
-import { createClient } from '@/utils/supabase/server';
 import { auth } from '@/auth';
 import { redirect } from 'next/navigation';
 import AdminPageHeading from '@/components/admin/AdminPageHeading';
 import SearchInput from '@/components/admin/AdminSearch';
 import Link from 'next/link';
+import { BlogService } from '@/app/lib/services/blog-service';
 
 export default async function PublishedPosts({
   searchParams,
@@ -18,16 +18,13 @@ export default async function PublishedPosts({
     redirect('/api/auth/signin?callbackUrl=/admin/blog/published');
   }
 
-  const supabase = await createClient();
   const query = (await searchParams)?.query || '';
-  const { data: posts } = await supabase
-    .from('Post')
-    .select('id, title, slug')
-    .eq('published', true) // Only select published posts
-    .ilike('title', `%${query}%`) // Filter by search query
-    .order('publishedAt', { ascending: false });
+  const posts = await BlogService.getPublishedPosts();
+  const filteredPosts = posts.filter((post) =>
+    post.title.toLowerCase().includes(query.toLowerCase())
+  );
 
-  const totalResults = posts?.length || 0;
+  const totalResults = filteredPosts.length;
 
   return (
     <div className="mt-8">
@@ -39,9 +36,9 @@ export default async function PublishedPosts({
         totalResults={totalResults}
       />
       <div className="text-dark dark:text-light">
-        {posts && posts.length > 0 ? (
+        {filteredPosts.length > 0 ? (
           <ul>
-            {posts.map((post) => (
+            {filteredPosts.map((post) => (
               <li
                 key={post.id}
                 className="my-4 flex items-center justify-between"
