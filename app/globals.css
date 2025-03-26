@@ -28,6 +28,10 @@
 }
 
 @layer base {
+  ::selection {
+    background-color: var(--color-primary);
+    color: var(--color-text);
+  }
   html {
     font-family: var(--font-sans);
   }
@@ -38,10 +42,6 @@
       --color-primary: var(--color-primary-dark);
       --color-selection-text: var(--color-dark);
     }
-  }
-  ::selection {
-    background-color: var(--color-primary);
-    color: var(--color-text);
   }
 }
 

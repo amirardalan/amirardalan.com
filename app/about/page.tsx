@@ -37,7 +37,7 @@ export default function About() {
                 href="https://x.com/amirardalan"
                 rel="noopener noreferrer"
                 target="_blank"
-                className="ml-1 text-primary"
+                className="ml-1 text-zinc-200 hover:text-primary"
               >
                 @amirardalan
               </a>
@@ -50,7 +50,7 @@ export default function About() {
                 href="https://github.com/amirardalan"
                 rel="noopener noreferrer"
                 target="_blank"
-                className="ml-1 text-primary"
+                className="ml-1 text-zinc-200 hover:text-primary"
               >
                 @amirardalan
               </a>
@@ -63,7 +63,7 @@ export default function About() {
                 href="https://linkedin.com/in/amirardalan"
                 rel="noopener noreferrer"
                 target="_blank"
-                className="ml-1 text-primary"
+                className="ml-1 text-zinc-200 hover:text-primary"
               >
                 /in/amirardalan
               </a>
@@ -76,7 +76,7 @@ export default function About() {
                 href="https://amir.sh/resume"
                 rel="noopener noreferrer"
                 target="_blank"
-                className="ml-1 text-primary"
+                className="ml-1 text-zinc-200 hover:text-primary"
               >
                 download
               </a>
