@@ -6,7 +6,7 @@ import TypingAnimation from '@/components/content/TypingAnimation';
 
 export default function HomeContent() {
   return (
-    <div className="flex w-full flex-col">
+    <div className="flex h-[70vh] w-full flex-col items-start justify-end">
       <div className="items-left mb-16 flex justify-start space-x-2 text-left text-3xl">
         <TypingAnimation />
       </div>
