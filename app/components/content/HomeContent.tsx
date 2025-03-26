@@ -6,11 +6,11 @@ import TypingAnimation from '@/components/content/TypingAnimation';
 
 export default function HomeContent() {
   return (
-    <div className="flex h-[70vh] w-full flex-col items-start justify-end">
+    <div className="pointer-events-none z-20 flex h-[85vh] w-full flex-col items-start pt-20">
       <div className="items-left mb-16 flex justify-start space-x-2 text-left text-3xl">
         <TypingAnimation />
       </div>
-      <div className="mt-8 flex flex-col">
+      <div className="pointer-events-auto mt-8 flex flex-col">
         <h1 className="text-8xl tracking-wide text-dark dark:text-light">
           Amir Ardalan
         </h1>

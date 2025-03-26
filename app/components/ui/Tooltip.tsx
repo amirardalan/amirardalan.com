@@ -58,7 +58,10 @@ export default function Tooltip({ pos, text, children }: TooltipProps) {
         }`}
         style={
           pos === 'cursor'
-            ? { top: mousePosition.y, left: mousePosition.x }
+            ? {
+                top: mousePosition.y + 20, // Add vertical offset to move below the cursor
+                left: mousePosition.x - (ref.current?.offsetWidth || 0) / 2, // Center horizontally
+              }
             : {}
         }
       >
