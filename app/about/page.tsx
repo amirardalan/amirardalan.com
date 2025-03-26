@@ -10,14 +10,14 @@ export default function About() {
     <Container>
       <div className="mt-8">
         <PageHeading title={'About'} />
-        <div className="my-10 max-w-7xl font-serif text-3xl leading-relaxed">
+        <div className="mb-10 max-w-7xl font-serif text-3xl leading-relaxed">
           <p className="mb-6 text-dark dark:text-light">
             Based in Portland, OR.
           </p>
           <p className="mb-6 text-dark dark:text-light">
-            I’ve shaped digital solutions blending code and design for Nike's
-            LeBron James Innovation Center, Columbia Sportswear, and KEEN
-            Footwear with BASIC/DEPT®.
+            I&apos;ve shaped digital solutions blending code and design for
+            Nike&apos;s LeBron James Innovation Center, Columbia Sportswear, and
+            KEEN Footwear with BASIC/DEPT®.
           </p>
           <p className="mb-6 text-dark dark:text-light">
             I craft intuitive, innovative products that elevate user experiences
