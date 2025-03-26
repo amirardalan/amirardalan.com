@@ -87,8 +87,8 @@ export default function CanvasTerrain({
   rotation,
 }: CanvasTerrainProps) {
   const theme = useTheme();
-  const lightColor = '#D3D3D3'; // Hex code for light theme
-  const darkColor = '#313131'; // Hex code for dark theme
+  const lightColor = '#ACACAC'; // Hex code for light theme
+  const darkColor = '#1F1F1F'; // Hex code for dark theme
   const canvasColor = theme.effectiveTheme === 'dark' ? darkColor : lightColor;
 
   interface PlaneGeometryRef extends PlaneGeometry {
@@ -124,8 +124,8 @@ export default function CanvasTerrain({
         args={[undefined, undefined, detail - 1, detail - 1]}
         ref={ref}
       />
-      <ambientLight intensity={1.5} /> {/* Increased intensity */}
-      <directionalLight position={[5, 5, 5]} intensity={3} />{' '}
+      <ambientLight intensity={3} /> {/* Increased intensity */}
+      <directionalLight position={[10, 20, 5]} intensity={3} />{' '}
       <MeshDistortMaterial
         distort={0.8}
         speed={0.05}
