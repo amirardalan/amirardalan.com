@@ -22,7 +22,7 @@ export default function SearchableBlogList({ posts }: { posts: BlogPost[] }) {
         placeholder="Search posts..."
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
-        className="mb-8 w-full rounded-lg bg-zinc-300 p-2 text-dark outline-none dark:bg-zinc-800 dark:text-light"
+        className="mb-8 w-full rounded-lg border-2 border-zinc-300 bg-zinc-100 p-2 text-dark outline-none dark:border-zinc-700 dark:bg-zinc-800 dark:text-light"
       />
       {filteredPosts.length > 0 ? (
         <ul>
