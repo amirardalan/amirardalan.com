@@ -1,8 +1,8 @@
-import React, { FC, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Canvas } from '@react-three/fiber';
 import CanvasTerrain from '@/components/content/CanvasTerrain';
 
-const CanvasLoader: FC = () => {
+export default function CanvasLoader() {
   const [pixelRatio, setPixelRatio] = useState(1);
 
   useEffect(() => {
@@ -65,6 +65,4 @@ const CanvasLoader: FC = () => {
       </Canvas>
     </button>
   );
-};
-
-export default React.memo(CanvasLoader);
+}

@@ -1,4 +1,4 @@
-import { FC, useLayoutEffect, useRef } from 'react';
+import { useLayoutEffect, useRef } from 'react';
 import {
   BufferAttribute,
   PlaneGeometry,
@@ -78,17 +78,17 @@ const generateTerrain: GenerateTerrainFn = (
   return result;
 };
 
-const CanvasTerrain: FC<CanvasTerrainProps> = ({
+export default function CanvasTerrain({
   detail,
   height,
   texture,
   scale,
   offset = { x: 0, z: 0 },
   rotation,
-}) => {
+}: CanvasTerrainProps) {
   const theme = useTheme();
-  const lightColor = '#FFFFFF'; // Hex code for light theme
-  const darkColor = '#757575'; // Hex code for dark theme
+  const lightColor = '#D3D3D3'; // Hex code for light theme
+  const darkColor = '#313131'; // Hex code for dark theme
   const canvasColor = theme.effectiveTheme === 'dark' ? darkColor : lightColor;
 
   interface PlaneGeometryRef extends PlaneGeometry {
@@ -124,7 +124,8 @@ const CanvasTerrain: FC<CanvasTerrainProps> = ({
         args={[undefined, undefined, detail - 1, detail - 1]}
         ref={ref}
       />
-      <ambientLight />
+      <ambientLight intensity={1.5} /> {/* Increased intensity */}
+      <directionalLight position={[5, 5, 5]} intensity={3} />{' '}
       <MeshDistortMaterial
         distort={0.8}
         speed={0.05}
@@ -133,6 +134,4 @@ const CanvasTerrain: FC<CanvasTerrainProps> = ({
       />
     </mesh>
   );
-};
-
-export default CanvasTerrain;
+}
