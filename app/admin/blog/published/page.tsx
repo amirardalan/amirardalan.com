@@ -1,10 +1,15 @@
-import { createClient } from '@/utils/supabase/server';
 import { auth } from '@/auth';
 import { redirect } from 'next/navigation';
-import AdminPageHeading from '@/app/components/admin/AdminPageHeading';
+import AdminPageHeading from '@/components/admin/AdminPageHeading';
+import SearchInput from '@/components/admin/AdminSearch';
 import Link from 'next/link';
+import { BlogService } from '@/app/lib/services/blog-service';
 
-export default async function PublishedPosts() {
+export default async function PublishedPosts({
+  searchParams,
+}: {
+  searchParams: { query?: string };
+}) {
   // Check if user is authenticated
   const session = await auth();
 
@@ -13,20 +18,27 @@ export default async function PublishedPosts() {
     redirect('/api/auth/signin?callbackUrl=/admin/blog/published');
   }
 
-  const supabase = await createClient();
-  const { data: posts } = await supabase
-    .from('Post')
-    .select('id, title, slug')
-    .eq('published', true) // Only select published posts
-    .order('publishedAt', { ascending: false });
+  const query = (await searchParams)?.query || '';
+  const posts = await BlogService.getPublishedPosts();
+  const filteredPosts = posts.filter((post) =>
+    post.title.toLowerCase().includes(query.toLowerCase())
+  );
+
+  const totalResults = filteredPosts.length;
 
   return (
     <div className="mt-8">
       <AdminPageHeading title={'Published Posts'} />
+      <SearchInput
+        name="query"
+        placeholder="Search posts..."
+        defaultValue={query}
+        totalResults={totalResults}
+      />
       <div className="text-dark dark:text-light">
-        {posts && posts.length > 0 ? (
+        {filteredPosts.length > 0 ? (
           <ul>
-            {posts.map((post) => (
+            {filteredPosts.map((post) => (
               <li
                 key={post.id}
                 className="my-4 flex items-center justify-between"
