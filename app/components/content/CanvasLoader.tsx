@@ -52,7 +52,7 @@ export default function CanvasLoader() {
         gl={{ antialias: true }}
         dpr={pixelRatio}
         onCreated={({ camera }) => camera.lookAt(0, 0, 0)}
-        camera={{ position: [0.8, 0.4, 0.4] }}
+        camera={{ position: [0.4, 0.4, 0.4] }}
       >
         <CanvasTerrain
           detail={detail}
