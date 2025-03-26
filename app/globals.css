@@ -30,7 +30,7 @@
 @layer base {
   ::selection {
     background-color: var(--color-primary);
-    color: var(--color-text);
+    color: var(--color-selection-text);
   }
   html {
     font-family: var(--font-sans);
@@ -40,7 +40,7 @@
     .dark & {
       background-color: var(--color-dark);
       --color-primary: var(--color-primary-dark);
-      --color-selection-text: var(--color-dark);
+      --color-selection-text: oklch(0.141 0.005 285.823);
     }
   }
 }
