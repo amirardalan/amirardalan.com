@@ -1,6 +1,6 @@
 import { createStaticClient } from '@/utils/supabase/server';
 import { compileMDX } from 'next-mdx-remote/rsc';
-import { components } from '@/app/components/blog/mdx-components';
+import { components } from '@/app/components/blog/MDXComponents';
 import { auth } from '@/auth';
 import Container from '@/components/content/Container';
 import Link from 'next/link';
@@ -47,7 +47,15 @@ export default async function BlogPost({
   const { slug } = await paramsPromise;
   const session = await auth();
 
-  // Use BlogService instead of direct database calls
+  // Fetch all published posts
+  const posts = await BlogService.getPublishedPosts();
+
+  // Find the current post and determine adjacent posts
+  const currentIndex = posts.findIndex((post) => post.slug === slug);
+  const prev = currentIndex > 0 ? posts[currentIndex - 1] : null;
+  const next = currentIndex < posts.length - 1 ? posts[currentIndex + 1] : null;
+
+  // Fetch the current post details
   const post = await BlogService.getPostBySlugWithAuthor(slug);
 
   if (!post) {
@@ -96,6 +104,30 @@ export default async function BlogPost({
         <p>{post.excerpt ?? ''}</p>
         <div className="mdx-content text-dark dark:text-light">{content}</div>
       </article>
+
+      {/* Previous/Next Post Links */}
+      <div className="mt-8 flex justify-between text-sm">
+        {prev ? (
+          <Link
+            href={`/blog/${prev.slug}`}
+            className="text-primary hover:underline"
+          >
+            ← {prev.title}
+          </Link>
+        ) : (
+          <span />
+        )}
+        {next ? (
+          <Link
+            href={`/blog/${next.slug}`}
+            className="text-primary hover:underline"
+          >
+            {next.title} →
+          </Link>
+        ) : (
+          <span />
+        )}
+      </div>
     </Container>
   );
 }

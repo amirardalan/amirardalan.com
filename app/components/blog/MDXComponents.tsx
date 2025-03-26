@@ -54,7 +54,7 @@ export const components = {
   ),
   a: ({ href, children, ...props }: AnchorProps) => {
     const className =
-      'text-blue-500 hover:text-blue-700 dark:text-zinc-400 hover:dark:text-zinc-300 dark:underline dark:underline-offset-2 dark:decoration-zinc-800';
+      'text-primary hover:underline dark:text-zinc-400 hover:dark:text-zinc-300 dark:underline dark:underline-offset-2 dark:decoration-zinc-800';
     if (href?.startsWith('/')) {
       return (
         <Link href={href} className={className} {...props}>
