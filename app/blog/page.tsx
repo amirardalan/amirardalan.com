@@ -1,29 +1,26 @@
 import { BlogService } from '@/app/lib/services/blog-service';
 import PageHeading from '@/app/components/ui/PageHeading';
 import Container from '@/components/content/Container';
+import { cache } from 'react';
+import SearchableBlogList from '@/app/components/blog/SearchableBlogList';
 
-// Disable automatic revalidation; use on-demand revalidation with revalidateTag
+// Enable caching with a specific tag for on-demand revalidation
 export const revalidate = false;
 
+// Cache the fetch logic to ensure static behavior
+const getCachedPosts = cache(async () => {
+  return await BlogService.getPublishedPosts();
+});
+
 export default async function Blog() {
-  const posts = await BlogService.getPublishedPosts();
+  const posts = await getCachedPosts();
 
   return (
     <Container>
       <div className="mt-8">
         <PageHeading title={'Blog'} />
         <div className="text-dark dark:text-light">
-          {posts && posts.length > 0 ? (
-            <ul>
-              {posts.map((post) => (
-                <li key={post.id}>
-                  <a href={`/blog/${post.slug}`}>{post.title}</a>
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p>No published posts yet.</p>
-          )}
+          <SearchableBlogList posts={posts} />
         </div>
       </div>
     </Container>
