@@ -1,6 +1,6 @@
 import AdminPageHeading from '@/components/admin/AdminPageHeading';
-import BlogActions from '@/components/admin/BlogActions';
-import BlogStats from '@/components/admin/BlogStats';
+import AdminActions from '@/components/admin/AdminActions';
+import AdminStats from '@/components/admin/AdminStats';
 
 export default function AdminDashboard() {
   return (
@@ -8,8 +8,8 @@ export default function AdminDashboard() {
       <div className="flex">
         <AdminPageHeading title={'Admin Dashboard'} />
       </div>
-      <BlogActions />
-      <BlogStats />
+      <AdminActions />
+      <AdminStats />
     </div>
   );
 }
