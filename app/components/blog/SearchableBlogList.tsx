@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import IconClose from '@/components/icons/IconClose';
 
 interface BlogPost {
   id: string;
@@ -14,6 +15,10 @@ export default function SearchableBlogList({ posts }: { posts: BlogPost[] }) {
   const filteredPosts = posts.filter((post) =>
     post.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  const handleClearFilters = () => {
+    setSearchTerm('');
+  };
 
   return (
     <div>
@@ -33,7 +38,19 @@ export default function SearchableBlogList({ posts }: { posts: BlogPost[] }) {
           ))}
         </ul>
       ) : (
-        <p className="text-dark dark:text-light">No posts match your search.</p>
+        <div className="flex w-full items-center justify-between">
+          <p className="text-dark dark:text-light">
+            No posts match your search.
+          </p>
+          <button
+            onClick={handleClearFilters}
+            title="Clear filters"
+            className="flex items-center"
+          >
+            <IconClose />
+            <span className="pl-1">Clear Filters</span>
+          </button>
+        </div>
       )}
     </div>
   );
