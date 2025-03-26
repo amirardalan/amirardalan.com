@@ -8,7 +8,7 @@ export default function Navigation() {
   const pathname = usePathname();
 
   const getNavItemClass = (href: string, isLast?: boolean) => {
-    return clsx('text-zinc-400', {
+    return clsx({
       'text-zinc-950 dark:text-zinc-50':
         pathname === href || (href !== '/' && pathname.startsWith(`${href}/`)),
       'mr-6': !isLast,
