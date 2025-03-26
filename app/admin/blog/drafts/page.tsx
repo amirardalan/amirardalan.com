@@ -4,6 +4,13 @@ import { redirect } from 'next/navigation';
 import PageHeading from '@/components/ui/PageHeading';
 import Link from 'next/link';
 
+export function generateMetadata() {
+  return {
+    title: 'Drafts — Amir Ardalan',
+    description: 'View and manage draft blog posts in the admin panel.',
+  };
+}
+
 export default async function Drafts() {
   // Check if user is authenticated
   const session = await auth();

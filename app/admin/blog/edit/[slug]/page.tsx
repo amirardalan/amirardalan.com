@@ -45,3 +45,17 @@ export default async function EditBlogPost({
     </div>
   );
 }
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const { slug } = params;
+  const title = `Edit Post: ${slug.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase())} — Amir Ardalan`;
+
+  return {
+    title,
+    description: `Edit the blog post titled "${slug}" in the admin panel.`,
+  };
+}

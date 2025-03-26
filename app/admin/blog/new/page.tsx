@@ -20,3 +20,10 @@ export default async function NewBlogPost() {
     </div>
   );
 }
+
+export function generateMetadata() {
+  return {
+    title: 'New Post — Amir Ardalan',
+    description: 'Create a new blog post in the admin panel.',
+  };
+}

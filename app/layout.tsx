@@ -33,13 +33,19 @@ const mono = JetBrains_Mono({
 
 export async function generateMetadata(): Promise<Metadata> {
   const pathname = (await headers()).get('x-next-pathname') as string;
-  const title =
-    pathname === '/'
-      ? ''
-      : `${pathname.slice(1).charAt(0).toUpperCase()}${pathname.slice(2)} —`;
+
+  let title = '';
+  if (pathname === '/') {
+    title = 'Amir Ardalan';
+  } else if (pathname.startsWith('/blog/')) {
+    const slug = pathname.split('/blog/')[1];
+    title = `${slug.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase())} — Amir Ardalan`;
+  } else {
+    title = `${pathname.slice(1).charAt(0).toUpperCase()}${pathname.slice(2)} — Amir Ardalan`;
+  }
 
   return {
-    title: `${title} Amir Ardalan`,
+    title,
     description: 'The portfolio and blog of Engineer and Designer Amir Ardalan',
     icons: [
       {

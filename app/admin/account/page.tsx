@@ -4,6 +4,13 @@ import Avatar from '@/components/auth/Avatar';
 import SignedOut from '@/components/auth/SignedOut';
 import { ObfuscatedEmail } from '@/components/ui/ObfuscatedEmail';
 
+export function generateMetadata() {
+  return {
+    title: 'Account — Amir Ardalan',
+    description: 'View and manage your account details.',
+  };
+}
+
 export default async function Account() {
   const session = await auth();
 
