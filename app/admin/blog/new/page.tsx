@@ -1,6 +1,6 @@
 import { auth } from '@/auth';
 import { redirect } from 'next/navigation';
-import PageHeading from '@/components/ui/PageHeading';
+import PageHeading from '@/app/components/ui/PageHeading';
 import CreatePostForm from '@/components/blog/CreatePostForm';
 
 export default async function NewBlogPost() {

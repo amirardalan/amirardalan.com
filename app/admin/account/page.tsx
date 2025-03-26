@@ -1,5 +1,5 @@
 import { auth } from '@/auth';
-import PageHeading from '@/components/ui/PageHeading';
+import PageHeading from '@/app/components/ui/PageHeading';
 import Avatar from '@/components/auth/Avatar';
 import SignedOut from '@/components/auth/SignedOut';
 import { ObfuscatedEmail } from '@/components/ui/ObfuscatedEmail';

@@ -1,5 +1,5 @@
 import { BlogService } from '@/app/lib/services/blog-service';
-import PageHeading from '@/components/ui/PageHeading';
+import PageHeading from '@/app/components/ui/PageHeading';
 import Container from '@/components/content/Container';
 
 // Disable automatic revalidation; use on-demand revalidation with revalidateTag

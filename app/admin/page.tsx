@@ -1,14 +1,12 @@
-import PageHeading from '@/components/ui/PageHeading';
-import User from '@/components/admin/User';
+import AdminPageHeading from '@/components/admin/AdminPageHeading';
 import BlogActions from '@/components/admin/BlogActions';
 import BlogStats from '@/components/admin/BlogStats';
 
 export default function AdminDashboard() {
   return (
     <div className="mt-8">
-      <div className="flex justify-between">
-        <PageHeading title={'Admin Dashboard'} />
-        <User />
+      <div className="flex">
+        <AdminPageHeading title={'Admin Dashboard'} />
       </div>
       <BlogActions />
       <BlogStats />

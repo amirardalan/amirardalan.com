@@ -1,7 +1,7 @@
 import { createClient } from '@/utils/supabase/server';
 import { auth } from '@/auth';
 import { redirect } from 'next/navigation';
-import PageHeading from '@/components/ui/PageHeading';
+import PageHeading from '@/app/components/ui/PageHeading';
 import Link from 'next/link';
 
 export default async function PublishedPosts() {
