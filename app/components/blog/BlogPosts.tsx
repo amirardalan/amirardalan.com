@@ -3,12 +3,15 @@
 import { useState } from 'react';
 import IconClose from '@/components/icons/IconClose';
 import clsx from 'clsx';
+import { formatDate } from '@/utils/format-date';
 
 interface BlogPost {
   id: string;
   title: string;
   slug: string;
-  excerpt?: string;
+  excerpt: string;
+  publishedAt: string;
+  editedAt: string;
 }
 
 export default function BlogPosts({ posts }: { posts: BlogPost[] }) {
@@ -57,6 +60,9 @@ export default function BlogPosts({ posts }: { posts: BlogPost[] }) {
                 <p className="text-xs text-zinc-500 dark:text-zinc-400">
                   {post.excerpt}
                 </p>
+                <time className="text-dark dark:text-light">
+                  {formatDate(post.publishedAt)}
+                </time>
               </a>
             </li>
           ))}
