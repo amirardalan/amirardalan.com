@@ -69,7 +69,7 @@ export default async function Drafts({
             ))}
           </ul>
         ) : (
-          <p>No draft posts available.</p>
+          <p>No drafts match your search.</p>
         )}
       </div>
     </div>

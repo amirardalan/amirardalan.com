@@ -71,7 +71,9 @@ export default function BlogPosts({ posts }: { posts: BlogPost[] }) {
           ))}
         </ul>
       ) : (
-        <p className="text-dark dark:text-light">No posts match your search.</p>
+        <p className="pt-6 text-dark dark:text-light">
+          No posts match your search.
+        </p>
       )}
     </div>
   );
