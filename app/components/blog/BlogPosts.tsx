@@ -54,16 +54,19 @@ export default function BlogPosts({ posts }: { posts: BlogPost[] }) {
       {filteredPosts.length > 0 ? (
         <ul className={clsx('pt-6', searchTerm && 'pt-2')}>
           {filteredPosts.map((post) => (
-            <li key={post.id} className="pb-4 text-2xl last:pb-0">
+            <li
+              key={post.id}
+              className="flex w-full justify-between pb-4 text-2xl last:pb-0"
+            >
               <a href={`/blog/${post.slug}`}>
                 <h2 className="hover:text-primary">{post.title}</h2>
                 <p className="text-xs text-zinc-500 dark:text-zinc-400">
                   {post.excerpt}
                 </p>
-                <time className="text-dark dark:text-light">
-                  {formatDate(post.publishedAt)}
-                </time>
               </a>
+              <time className="text-xs text-zinc-500 dark:text-zinc-400">
+                {formatDate(post.publishedAt)}
+              </time>
             </li>
           ))}
         </ul>
