@@ -30,7 +30,7 @@ export async function PUT(request: NextRequest) {
 
     // Check if the post exists
     const { data: existingPost, error: fetchError } = await supabase
-      .from('Post')
+      .from('post')
       .select('id, slug, published')
       .eq('id', id)
       .single();
@@ -42,7 +42,7 @@ export async function PUT(request: NextRequest) {
     // Check if the new slug already exists for a different post
     if (slug !== existingPost.slug) {
       const { data: slugCheck } = await supabase
-        .from('Post')
+        .from('post')
         .select('id')
         .eq('slug', slug)
         .neq('id', id)
@@ -58,7 +58,7 @@ export async function PUT(request: NextRequest) {
 
     // Update the post
     const { data, error } = await supabase
-      .from('Post')
+      .from('post')
       .update({
         title,
         slug,

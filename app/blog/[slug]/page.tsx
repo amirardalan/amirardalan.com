@@ -14,7 +14,7 @@ export const revalidate = false;
 export const generateStaticParams = async () => {
   // Use the static client for generating paths
   const supabase = createStaticClient();
-  const { data: posts } = await supabase.from('Post').select('slug');
+  const { data: posts } = await supabase.from('post').select('slug');
 
   return (
     posts?.map((post) => ({

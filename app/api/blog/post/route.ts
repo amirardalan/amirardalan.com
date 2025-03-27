@@ -49,7 +49,7 @@ export async function POST(request: NextRequest) {
 
     // Check if slug already exists
     const { data: existingPost } = await supabase
-      .from('Post')
+      .from('post')
       .select('slug')
       .eq('slug', slug)
       .single();
@@ -63,7 +63,7 @@ export async function POST(request: NextRequest) {
 
     // Insert new post
     const { data, error } = await supabase
-      .from('Post')
+      .from('post')
       .insert({
         title,
         slug,

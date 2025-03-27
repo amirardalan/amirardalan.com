@@ -34,7 +34,7 @@ export const BlogService = {
   async getPostBySlug(slug: string): Promise<Post | null> {
     const supabase = await createClient();
     const { data, error } = await supabase
-      .from('Post')
+      .from('post')
       .select('*')
       .eq('slug', slug)
       .single();
@@ -49,7 +49,7 @@ export const BlogService = {
   async getPostById(id: string): Promise<Post | null> {
     const supabase = await createClient();
     const { data, error } = await supabase
-      .from('Post')
+      .from('post')
       .select('*')
       .eq('id', id)
       .single();
@@ -64,7 +64,7 @@ export const BlogService = {
   async getDrafts(): Promise<Post[]> {
     const supabase = await createClient();
     const { data } = await supabase
-      .from('Post')
+      .from('post')
       .select('id, title, slug')
       .eq('published', false)
       .order('editedAt', { ascending: false });
@@ -75,7 +75,7 @@ export const BlogService = {
   async getPublishedPosts(): Promise<Post[]> {
     const supabase = await createClient();
     const { data } = await supabase
-      .from('Post')
+      .from('post')
       .select('id, publishedAt, editedAt, title, excerpt, slug, content')
       .eq('published', true)
       .order('publishedAt', { ascending: false });
@@ -97,7 +97,7 @@ export const BlogService = {
     };
 
     const { data, error } = await supabase
-      .from('Post')
+      .from('post')
       .insert([newPost])
       .select()
       .single();
@@ -116,7 +116,7 @@ export const BlogService = {
 
     // Check if post exists and user is authorized
     const { data: existingPost } = await supabase
-      .from('Post')
+      .from('post')
       .select('authorId, published, publishedAt')
       .eq('id', postData.id)
       .single();
@@ -142,7 +142,7 @@ export const BlogService = {
     };
 
     const { data, error } = await supabase
-      .from('Post')
+      .from('post')
       .update(updates)
       .eq('id', postData.id)
       .select()
@@ -163,7 +163,7 @@ export const BlogService = {
 
     // Fetch the post to verify it exists and check authorization
     const { data: post, error: fetchError } = await supabase
-      .from('Post')
+      .from('post')
       .select('*')
       .eq('id', id)
       .single();
@@ -184,7 +184,7 @@ export const BlogService = {
 
     // Delete the post
     const { error: deleteError } = await supabase
-      .from('Post')
+      .from('post')
       .delete()
       .eq('id', id);
 
@@ -198,7 +198,7 @@ export const BlogService = {
   async verifyAuthor(postId: string, userId: string): Promise<boolean> {
     const supabase = await createClient();
     const { data } = await supabase
-      .from('Post')
+      .from('post')
       .select('authorId')
       .eq('id', postId)
       .single();
@@ -209,7 +209,7 @@ export const BlogService = {
   async getPostBySlugWithAuthor(slug: string): Promise<Post | null> {
     const supabase = await createClient();
     const { data, error } = await supabase
-      .from('Post')
+      .from('post')
       .select('*, author:users(name)')
       .eq('slug', slug)
       .single();
