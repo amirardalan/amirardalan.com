@@ -1,14 +1,19 @@
 'use client';
 
 import { useState } from 'react';
-import IconClose from '@/components/icons/IconClose';
 import clsx from 'clsx';
+import { formatDate } from '@/utils/format-date';
+import IconClose from '@/components/icons/IconClose';
+import calculateReadTime from '@/utils/calculate-readtime';
 
 interface BlogPost {
   id: string;
   title: string;
+  content: string;
   slug: string;
-  excerpt?: string;
+  excerpt: string;
+  publishedAt: string;
+  editedAt: string;
 }
 
 export default function BlogPosts({ posts }: { posts: BlogPost[] }) {
@@ -51,18 +56,31 @@ export default function BlogPosts({ posts }: { posts: BlogPost[] }) {
       {filteredPosts.length > 0 ? (
         <ul className={clsx('pt-6', searchTerm && 'pt-2')}>
           {filteredPosts.map((post) => (
-            <li key={post.id} className="pb-4 text-2xl last:pb-0">
-              <a href={`/blog/${post.slug}`}>
+            <li
+              key={post.id}
+              className="flex w-full justify-between pb-8 text-2xl last:pb-0"
+            >
+              <a className="w-full" href={`/blog/${post.slug}`}>
                 <h2 className="hover:text-primary">{post.title}</h2>
                 <p className="text-xs text-zinc-500 dark:text-zinc-400">
                   {post.excerpt}
                 </p>
               </a>
+              <div className="flex min-w-fit flex-col items-end text-xs">
+                <time className="text-zinc-500 dark:text-zinc-400">
+                  {formatDate(post.publishedAt)}
+                </time>
+                <span className="text-zinc-400 dark:text-zinc-500">
+                  {calculateReadTime(post.content)}
+                </span>
+              </div>
             </li>
           ))}
         </ul>
       ) : (
-        <p className="text-dark dark:text-light">No posts match your search.</p>
+        <p className="pt-6 text-dark dark:text-light">
+          No posts match your search.
+        </p>
       )}
     </div>
   );

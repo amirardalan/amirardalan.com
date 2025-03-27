@@ -5,6 +5,7 @@ import { auth } from '@/auth';
 import Container from '@/components/content/Container';
 import Link from 'next/link';
 import { BlogService } from '@/app/lib/services/blog-service';
+import { formatDate } from '@/utils/format-date';
 
 // Disable automatic revalidation; use on-demand revalidation with revalidateTag
 export const revalidate = false;
@@ -85,16 +86,7 @@ export default async function BlogPost({
         )}
         <p className="text-primary">#{post.category ?? 'uncategorized'}</p>
         <h3>By {post.author?.name || 'Unknown Author'}</h3>
-        <time>
-          {new Date(post.publishedAt || Date.now()).toLocaleDateString(
-            'en-US',
-            {
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric',
-            }
-          )}
-        </time>
+        <time>{formatDate(post.publishedAt)}</time>
         {!post.published && (
           <div className="my-2 inline-block rounded bg-yellow-200 px-2 py-1 text-sm text-yellow-800 dark:bg-yellow-800 dark:text-yellow-200">
             Draft

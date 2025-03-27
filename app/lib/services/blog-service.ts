@@ -9,9 +9,9 @@ export interface Post {
   category: string;
   published: boolean;
   authorId: string;
-  publishedAt?: string;
-  editedAt?: string;
-  author?: {
+  publishedAt: string;
+  editedAt: string;
+  author: {
     name: string;
   };
 }
@@ -76,7 +76,7 @@ export const BlogService = {
     const supabase = await createClient();
     const { data } = await supabase
       .from('Post')
-      .select('id, title, excerpt, slug')
+      .select('id, publishedAt, editedAt, title, excerpt, slug, content')
       .eq('published', true)
       .order('publishedAt', { ascending: false });
 

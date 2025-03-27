@@ -58,7 +58,7 @@ export default async function PublishedPosts({
             ))}
           </ul>
         ) : (
-          <p>No published posts available.</p>
+          <p>No posts match your search.</p>
         )}
       </div>
     </div>
