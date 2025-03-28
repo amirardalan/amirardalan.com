@@ -2,15 +2,13 @@ import { NextResponse } from 'next/server';
 import { db } from '@/db/connector';
 import { posts } from '@/db/schema';
 import { eq } from 'drizzle-orm';
+import { NextRequest } from 'next/server';
 import { revalidatePath } from 'next/cache';
 
-export async function PUT(
-  req: Request,
-  { params }: { params: { id: string } }
-) {
+export async function PUT(request: NextRequest) {
   try {
-    const body = await req.json();
-    const { title, slug, excerpt, content, category, published } = body;
+    const data = await request.json();
+    const { title, slug, excerpt, content, category, published } = data;
 
     await db
       .update(posts)
@@ -23,9 +21,8 @@ export async function PUT(
         published,
         updated_at: new Date(),
       })
-      .where(eq(posts.id, parseInt(params.id, 10)));
+      .where(eq(posts.id, parseInt(content.params.id, 10)));
 
-    // Trigger revalidation for the blog page and the specific post page
     revalidatePath('/blog');
     revalidatePath(`/blog/${slug}`);
 
@@ -38,21 +35,27 @@ export async function PUT(
   }
 }
 
-export async function DELETE(
-  req: Request,
-  { params }: { params: { id: string } }
-) {
+export async function DELETE(request: NextRequest) {
   try {
+    const { searchParams } = new URL(request.url);
+    const id = searchParams.get('id');
+
+    if (!id) {
+      return NextResponse.json(
+        { error: 'Post ID is required' },
+        { status: 400 }
+      );
+    }
+
     const post = await db
       .select({ slug: posts.slug })
       .from(posts)
-      .where(eq(posts.id, parseInt(params.id, 10)))
+      .where(eq(posts.id, parseInt(id, 10)))
       .limit(1);
 
     if (post.length) {
-      await db.delete(posts).where(eq(posts.id, parseInt(params.id, 10)));
+      await db.delete(posts).where(eq(posts.id, parseInt(id, 10)));
 
-      // Trigger revalidation for the blog page and the specific post page
       revalidatePath('/blog');
       revalidatePath(`/blog/${post[0].slug}`);
 
