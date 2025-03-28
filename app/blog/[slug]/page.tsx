@@ -9,6 +9,9 @@ import { eq } from 'drizzle-orm';
 import { formatDate } from '@/utils/format-date';
 import { notFound } from 'next/navigation';
 
+// Set revalidate to false for on-demand revalidation only
+export const revalidate = false;
+
 // Allow fallback to true to enable on-demand ISR
 export const dynamicParams = true;
 
@@ -21,6 +24,36 @@ export async function generateStaticParams() {
   return publishedPosts.map((post) => ({
     slug: post.slug,
   }));
+}
+
+// Generate metadata with tag-based revalidation support
+export async function generateMetadata({
+  params: paramsPromise,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await paramsPromise;
+
+  const post = await db
+    .select({ title: posts.title, excerpt: posts.excerpt })
+    .from(posts)
+    .where(eq(posts.slug, slug))
+    .limit(1);
+
+  if (!post.length) {
+    return {
+      title: 'Post Not Found',
+      description: 'The requested blog post could not be found.',
+    };
+  }
+
+  return {
+    title: `${post[0].title} — Amir Ardalan`,
+    description: post[0].excerpt || 'Read this article on the blog',
+    alternates: {
+      canonical: `/blog/${slug}`,
+    },
+  };
 }
 
 async function compilePostContent(content: string) {

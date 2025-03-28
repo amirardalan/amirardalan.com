@@ -106,7 +106,7 @@ export async function DELETE(
 
     // Get the post slug before deletion for revalidation
     const post = await db
-      .select({ slug: posts.slug })
+      .select({ slug: posts.slug, published: posts.published })
       .from(posts)
       .where(eq(posts.id, parseInt(id, 10)))
       .limit(1);
@@ -116,19 +116,22 @@ export async function DELETE(
     }
 
     const slug = post[0].slug;
+    const wasPublished = post[0].published;
 
     // Delete the post
     await db.delete(posts).where(eq(posts.id, parseInt(id, 10)));
 
-    console.log('Post deleted:', { id, slug });
+    console.log('Post deleted:', { id, slug, wasPublished });
 
     // Revalidation strategy
     // 1. Always revalidate the blog listing page
     await revalidatePath('/blog');
     await revalidateTag('blog-posts');
 
-    // 2. Revalidate the specific post page
-    await revalidatePath(`/blog/${slug}`);
+    // 2. Revalidate the specific post page if it was published
+    if (wasPublished) {
+      await revalidatePath(`/blog/${slug}`);
+    }
 
     // 3. Call the revalidation API
     try {

@@ -18,7 +18,7 @@ const getCachedPosts = cache(async () => {
     .orderBy(desc(posts.created_at));
 });
 
-// Set revalidation to false to use on-demand revalidation only
+// Setting revalidate to false for on-demand revalidation only
 export const revalidate = false;
 
 // Add tag-based revalidation support
@@ -33,6 +33,7 @@ export const generateMetadata = () => {
 };
 
 export default async function Blog() {
+  // Get posts with cached function for better performance
   const posts: BlogPost[] = await getCachedPosts();
 
   return (

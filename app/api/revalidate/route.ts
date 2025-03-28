@@ -16,23 +16,32 @@ export async function POST(req: NextRequest) {
 
     console.log('Revalidation request:', { path, slug, tag });
 
+    const revalidated = [];
+
     if (path) {
       // Revalidate the specified path
       await revalidatePath(path);
+      revalidated.push(`path: ${path}`);
     }
 
     if (slug) {
       // Revalidate a specific blog post page
       await revalidatePath(`/blog/${slug}`);
+      revalidated.push(`slug: /blog/${slug}`);
     }
 
     if (tag) {
       // Revalidate content by tag
       await revalidateTag(tag);
+      revalidated.push(`tag: ${tag}`);
     }
 
-    console.log('Revalidation successful:', { path, slug, tag });
-    return NextResponse.json({ revalidated: true, now: Date.now() });
+    console.log('Revalidation successful:', revalidated.join(', '));
+    return NextResponse.json({
+      revalidated: true,
+      items: revalidated,
+      timestamp: new Date().toISOString(),
+    });
   } catch (err) {
     console.error('Revalidation error:', err);
     return NextResponse.json(
