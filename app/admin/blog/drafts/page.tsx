@@ -58,7 +58,9 @@ export default async function Drafts({
                   >
                     {draft.title}
                   </Link>
-                  <span className="ml-2 text-sm text-zinc-500">[Draft]</span>
+                  <span className="ml-2 text-sm text-zinc-500">
+                    [Draft by {draft.user_name}] {/* Show user's name */}
+                  </span>
                 </div>
                 <Link
                   href={`/admin/blog/edit/${draft.slug}`}

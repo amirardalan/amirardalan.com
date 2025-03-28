@@ -1,8 +1,9 @@
 import { auth } from '@/auth';
 import { db } from '@/app/db/connector';
-import { posts } from '@/app/db/schema';
+import { posts, users } from '@/app/db/schema';
 import { eq } from 'drizzle-orm';
 import { redirect } from 'next/navigation';
+import { getUserIdByEmail } from '@/auth';
 
 import AdminPageHeading from '@/app/components/admin/AdminPageHeading';
 import EditPostForm from '@/components/blog/EditPostForm';
@@ -21,9 +22,28 @@ export default async function EditBlogPost({
     redirect(`/api/auth/signin?callbackUrl=/admin/blog/edit/${slug}`);
   }
 
+  const userId = await getUserIdByEmail(session.user.email!); // Fetch user ID
+
+  if (!userId) {
+    throw new Error('User ID not found for the authenticated user.');
+  }
+
   const post = await db
-    .select()
+    .select({
+      id: posts.id,
+      title: posts.title,
+      content: posts.content,
+      excerpt: posts.excerpt,
+      slug: posts.slug,
+      category: posts.category,
+      published: posts.published,
+      created_at: posts.created_at,
+      updated_at: posts.updated_at,
+      user_id: posts.user_id, // Include user_id
+      author_name: users.name, // Fetch author's name
+    })
     .from(posts)
+    .leftJoin(users, eq(posts.user_id, users.id)) // Join with users table
     .where(eq(posts.slug, slug))
     .limit(1);
 

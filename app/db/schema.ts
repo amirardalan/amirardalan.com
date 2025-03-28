@@ -19,7 +19,9 @@ export const users = pgTable('users', {
 
 export const posts = pgTable('posts', {
   id: serial('id').primaryKey(),
-  author: text('author'),
+  user_id: integer('user_id')
+    .notNull()
+    .references(() => users.id),
   title: text('title').notNull(),
   content: text('content').notNull(),
   created_at: timestamp('created_at').defaultNow().notNull(),

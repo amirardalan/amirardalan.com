@@ -2,6 +2,7 @@ import { auth } from '@/auth';
 import { redirect } from 'next/navigation';
 import AdminPageHeading from '@/app/components/admin/AdminPageHeading';
 import CreatePostForm from '@/app/components/blog/NewPostForm';
+import { getUserIdByEmail } from '@/auth';
 
 export default async function NewBlogPost() {
   // Check if user is authenticated
@@ -12,11 +13,16 @@ export default async function NewBlogPost() {
     redirect('/api/auth/signin?callbackUrl=/admin/blog/new');
   }
 
+  const userId = await getUserIdByEmail(session.user.email!); // Fetch user ID
+
+  if (!userId) {
+    throw new Error('User ID not found for the authenticated user.');
+  }
+
   return (
     <div className="mt-8">
       <AdminPageHeading title={'New Post'} />
-
-      <CreatePostForm author={session.user?.name || ''} />
+      <CreatePostForm userId={userId} /> {/* Pass user_id */}
     </div>
   );
 }

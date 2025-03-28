@@ -48,6 +48,7 @@ export default function EditPostForm({ post }: EditPostFormProps) {
           content,
           category,
           published,
+          user_id: post.user_id, // Ensure user_id is sent
         }),
       });
 

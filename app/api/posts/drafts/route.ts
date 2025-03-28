@@ -1,13 +1,20 @@
 import { NextResponse } from 'next/server';
 import { db } from '@/app/db/connector';
-import { posts } from '@/app/db/schema';
+import { posts, users } from '@/app/db/schema';
 import { eq, desc } from 'drizzle-orm';
 
 export async function GET() {
   try {
     const drafts = await db
-      .select()
+      .select({
+        id: posts.id,
+        title: posts.title,
+        slug: posts.slug,
+        updated_at: posts.updated_at,
+        user_name: users.name, // Include the user's name
+      })
       .from(posts)
+      .leftJoin(users, eq(posts.user_id, users.id)) // Join with users table
       .where(eq(posts.published, false))
       .orderBy(desc(posts.updated_at));
 

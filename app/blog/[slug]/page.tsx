@@ -50,9 +50,10 @@ export default async function BlogPost({
       created_at: posts.created_at,
       updated_at: posts.updated_at,
       show_updated: posts.show_updated,
-      author: posts.author,
+      author_name: users.name, // Fetch author's name
     })
     .from(posts)
+    .leftJoin(users, eq(posts.user_id, users.id)) // Join with users table
     .where(eq(posts.slug, slug))
     .limit(1);
 
@@ -76,7 +77,8 @@ export default async function BlogPost({
           </div>
         )}
         <p className="text-primary">#{post[0].category ?? 'uncategorized'}</p>
-        <h3>By {post[0].author || session?.user?.name || 'Unknown Author'}</h3>
+        <h3>By {post[0].author_name || 'Unknown Author'}</h3>{' '}
+        {/* Use author_name */}
         <time>{formatDate(post[0].created_at)}</time>
         {!post[0].published && (
           <div className="my-2 inline-block rounded bg-yellow-200 px-2 py-1 text-sm text-yellow-800 dark:bg-yellow-800 dark:text-yellow-200">
