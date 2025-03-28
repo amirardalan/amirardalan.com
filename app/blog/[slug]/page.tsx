@@ -8,7 +8,8 @@ import Link from 'next/link';
 import { eq } from 'drizzle-orm';
 import { formatDate } from '@/utils/format-date';
 
-export const dynamicParams = true; // Allow dynamic params for this route
+export const dynamicParams = true;
+export const revalidate = 'on-demand';
 
 export const generateStaticParams = async () => {
   const slugs = await db.select({ slug: posts.slug }).from(posts);
