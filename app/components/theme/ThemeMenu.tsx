@@ -4,8 +4,8 @@ import { useRouter } from 'next/navigation';
 import Tooltip from '@/components/ui/Tooltip';
 import { useTheme } from '@/store/theme';
 import { Theme } from '@/types/theme';
-import MoonIcon from '@/components/icons/IconMoon';
-import SunIcon from '@/components/icons/IconSun';
+import IconMoon from '@/components/icons/IconMoon';
+import IconSun from '@/components/icons/IconSun';
 
 export default function ThemeMenu() {
   const router = useRouter();
@@ -52,7 +52,7 @@ export default function ThemeMenu() {
     <div className="relative flex align-middle" ref={menuRef}>
       <Tooltip pos="b" text="Change theme">
         <button className="m-0 p-0" onClick={() => setMenuOpen(!menuOpen)}>
-          {effectiveTheme === 'dark' ? <MoonIcon /> : <SunIcon />}
+          {effectiveTheme === 'dark' ? <IconMoon /> : <IconSun />}
         </button>
       </Tooltip>
       {menuOpen && (

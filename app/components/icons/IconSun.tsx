@@ -1,4 +1,4 @@
-export default function SunIcon() {
+export default function IconSun() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
