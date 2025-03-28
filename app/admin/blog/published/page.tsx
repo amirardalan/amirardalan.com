@@ -10,7 +10,7 @@ import { eq, desc } from 'drizzle-orm';
 export default async function PublishedPosts({
   searchParams,
 }: {
-  searchParams: { query?: string };
+  searchParams: Promise<{ query?: string }>;
 }) {
   const session = await auth();
 
@@ -18,7 +18,8 @@ export default async function PublishedPosts({
     redirect('/api/auth/signin?callbackUrl=/admin/blog/published');
   }
 
-  const query = (await searchParams)?.query || '';
+  const params = await searchParams;
+  const query = params?.query || '';
   const allPosts = await db
     .select()
     .from(posts)
