@@ -1,4 +1,4 @@
-import { db } from '@/app/db/db';
+import { db } from '@/app/db/connector';
 import { posts, users } from '@/app/db/schema';
 import { compileMDX } from 'next-mdx-remote/rsc';
 import { components } from '@/app/components/blog/MDXComponents';

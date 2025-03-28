@@ -3,7 +3,7 @@ import { redirect } from 'next/navigation';
 import AdminPageHeading from '@/components/admin/AdminPageHeading';
 import SearchInput from '@/components/admin/AdminSearch';
 import Link from 'next/link';
-import { db } from '@/app/db/db';
+import { db } from '@/app/db/connector';
 import { posts } from '@/app/db/schema';
 import { eq } from 'drizzle-orm';
 
