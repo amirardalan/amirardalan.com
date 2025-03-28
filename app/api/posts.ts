@@ -14,14 +14,11 @@ export default async function handler(
         excerpt,
         content,
         category,
-        author_id,
+        author,
         published,
         created_at,
         updated_at,
       } = req.body;
-
-      // Debugging: Log the incoming payload
-      console.log('Incoming Payload:', req.body);
 
       // Insert the post into the database
       const result = await db.insert(posts).values({
@@ -30,14 +27,11 @@ export default async function handler(
         excerpt,
         content,
         category,
-        author_id, // Ensure this matches the schema
+        author,
         published,
-        created_at: new Date(created_at), // Convert to Date object if necessary
-        updated_at: new Date(updated_at), // Convert to Date object if necessary
+        created_at: new Date(created_at),
+        updated_at: new Date(updated_at),
       });
-
-      // Debugging: Log the database result
-      console.log('Database Insert Result:', result);
 
       res.status(201).json({ message: 'Post created successfully' });
     } catch (error) {

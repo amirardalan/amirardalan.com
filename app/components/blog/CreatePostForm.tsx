@@ -41,11 +41,9 @@ export default function CreatePostForm({ author }: CreatePostFormProps) {
         category,
         author: author,
         published,
-        created_at: new Date().toISOString(), // Explicitly set created_at
-        updated_at: new Date().toISOString(), // Explicitly set updated_at
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString(),
       };
-
-      console.log('Payload:', payload); // Debugging: Log the payload to verify its structure
 
       const response = await fetch('/api/posts', {
         method: 'POST',
