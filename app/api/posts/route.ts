@@ -1,12 +1,9 @@
 import { NextResponse } from 'next/server';
 import { db } from '@/db/connector';
 import { posts } from '@/db/schema';
+import { revalidatePath } from 'next/cache';
 
-type RevalidateResponse = {
-  revalidate: (path: string) => Promise<void>;
-};
-
-export async function POST(req: Request, { res }: { res: RevalidateResponse }) {
+export async function POST(req: Request) {
   try {
     const body = await req.json();
     const { title, slug, excerpt, content, category, user_id, published } =
@@ -31,9 +28,12 @@ export async function POST(req: Request, { res }: { res: RevalidateResponse }) {
       updated_at: new Date(),
     });
 
-    // Only revalidate if the post is published
+    // Trigger revalidation for the blog page
+    revalidatePath('/blog');
+
+    // If the post is published, also revalidate the specific post page
     if (published) {
-      await res.revalidate('/blog');
+      revalidatePath(`/blog/${slug}`);
     }
 
     return NextResponse.json({ message: 'Post created successfully.' });

@@ -2,14 +2,11 @@ import { NextResponse } from 'next/server';
 import { db } from '@/db/connector';
 import { posts } from '@/db/schema';
 import { eq } from 'drizzle-orm';
-
-type RevalidateResponse = {
-  revalidate: (path: string) => Promise<void>;
-};
+import { revalidatePath } from 'next/cache';
 
 export async function PUT(
   req: Request,
-  { params, res }: { params: { id: string }; res: RevalidateResponse }
+  { params }: { params: { id: string } }
 ) {
   try {
     const body = await req.json();
@@ -28,9 +25,9 @@ export async function PUT(
       })
       .where(eq(posts.id, parseInt(params.id, 10)));
 
-    // Revalidate the blog post page and the blog landing page
-    await res.revalidate(`/blog/${slug}`);
-    await res.revalidate('/blog');
+    // Trigger revalidation for the blog page and the specific post page
+    revalidatePath('/blog');
+    revalidatePath(`/blog/${slug}`);
 
     return NextResponse.json({ message: 'Post updated successfully' });
   } catch (error) {
@@ -43,7 +40,7 @@ export async function PUT(
 
 export async function DELETE(
   req: Request,
-  { params, res }: { params: { id: string }; res: RevalidateResponse }
+  { params }: { params: { id: string } }
 ) {
   try {
     const post = await db
@@ -55,9 +52,9 @@ export async function DELETE(
     if (post.length) {
       await db.delete(posts).where(eq(posts.id, parseInt(params.id, 10)));
 
-      // Revalidate the blog post page and the blog landing page
-      await res.revalidate(`/blog/${post[0].slug}`);
-      await res.revalidate('/blog');
+      // Trigger revalidation for the blog page and the specific post page
+      revalidatePath('/blog');
+      revalidatePath(`/blog/${post[0].slug}`);
 
       return NextResponse.json({ message: 'Post deleted successfully' });
     }
