@@ -7,13 +7,14 @@ import { revalidatePath } from 'next/cache';
 
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params; // Await the promise to extract the id
     const data = await request.json();
     const { title, slug, excerpt, content, category, published } = data;
 
-    if (!params.id) {
+    if (!id) {
       return NextResponse.json(
         { error: 'Post ID is required' },
         { status: 400 }
@@ -31,7 +32,7 @@ export async function PUT(
         published,
         updated_at: new Date(),
       })
-      .where(eq(posts.id, parseInt(params.id, 10)));
+      .where(eq(posts.id, parseInt(id, 10)));
 
     revalidatePath('/blog');
     revalidatePath(`/blog/${slug}`);
