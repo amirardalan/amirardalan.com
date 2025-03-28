@@ -6,8 +6,7 @@ export async function POST(req: Request) {
   try {
     const body = await req.json();
 
-    const { title, slug, excerpt, content, category, authorId, published } =
-      body;
+    const { title, slug, excerpt, content, category, author, published } = body;
 
     await db.insert(posts).values({
       title,
@@ -15,7 +14,7 @@ export async function POST(req: Request) {
       excerpt,
       content,
       category,
-      authorId,
+      author,
       published,
       created_at: new Date(),
       updated_at: new Date(),
