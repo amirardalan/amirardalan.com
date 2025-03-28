@@ -11,17 +11,10 @@ export function generateMetadata() {
   };
 }
 
-interface Draft {
-  id: string;
-  title: string;
-  slug: string;
-  user_name: string;
-}
-
 export default async function Drafts({
   searchParams,
 }: {
-  searchParams: Promise<{ query?: string }>;
+  searchParams: { query?: string };
 }) {
   const session = await auth();
 
@@ -29,13 +22,13 @@ export default async function Drafts({
     redirect('/api/auth/signin?callbackUrl=/admin/blog/drafts');
   }
 
-  const params = await searchParams;
-  const query = params?.query || '';
-  const { NEXT_PUBLIC_URL } = process.env;
-  const response = await fetch(`${NEXT_PUBLIC_URL}/api/posts/drafts`);
-  const drafts: Draft[] = await response.json();
+  const query = (await searchParams)?.query || '';
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_URL}/api/posts/drafts`
+  );
+  const drafts = await response.json();
 
-  const filteredDrafts = drafts.filter((draft) =>
+  const filteredDrafts = drafts.filter((draft: any) =>
     draft.title.toLowerCase().includes(query.toLowerCase())
   );
 
@@ -53,7 +46,7 @@ export default async function Drafts({
       <div className="text-dark dark:text-light">
         {filteredDrafts.length > 0 ? (
           <ul>
-            {filteredDrafts.map((draft) => (
+            {filteredDrafts.map((draft: any) => (
               <li
                 key={draft.id}
                 className="my-4 flex items-center justify-between"

@@ -5,10 +5,20 @@ import { eq } from 'drizzle-orm';
 import { NextRequest } from 'next/server';
 import { revalidatePath } from 'next/cache';
 
-export async function PUT(request: NextRequest) {
+export async function PUT(
+  request: NextRequest,
+  { params }: { params: { id: string } }
+) {
   try {
     const data = await request.json();
     const { title, slug, excerpt, content, category, published } = data;
+
+    if (!params.id) {
+      return NextResponse.json(
+        { error: 'Post ID is required' },
+        { status: 400 }
+      );
+    }
 
     await db
       .update(posts)
@@ -21,7 +31,7 @@ export async function PUT(request: NextRequest) {
         published,
         updated_at: new Date(),
       })
-      .where(eq(posts.id, parseInt(content.params.id, 10)));
+      .where(eq(posts.id, parseInt(params.id, 10)));
 
     revalidatePath('/blog');
     revalidatePath(`/blog/${slug}`);
