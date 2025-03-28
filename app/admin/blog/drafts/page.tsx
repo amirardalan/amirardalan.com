@@ -24,7 +24,7 @@ export default async function Drafts({
 
   const query = (await searchParams)?.query || '';
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_APP_URL}/api/posts/drafts`
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/posts/drafts`
   );
   const drafts = await response.json();
 

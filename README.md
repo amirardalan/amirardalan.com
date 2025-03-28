@@ -31,16 +31,18 @@ Then, set up your [GitHub oAuth App](https://authjs.dev/getting-started/provider
 
 ```
 // .env.local
+NEXT_PUBLIC_BASE_URL=http://localhost:3000
+NEXT_PUBLIC_TIMEZONE=America/Los_Angeles
+
 AUTH_GITHUB_ID=<GitHub Client ID>
 AUTH_GITHUB_SECRET=<GitHub Client Secret>
 
 NEXTAUTH_URL=http://localhost:3000
 NEXTAUTH_SECRET=<Next Auth Secret>
 
-DATABASE_URL=<Supabase URL>
+DATABASE_URL=<Supabase Transaction Pooler URL>
 DATABASE_API_KEY=<Supabase API Key>
 
-// Whitelist email addresses and/or domains (comma separated)
 ALLOWED_EMAILS=you@example.com,team@example.com
 ALLOWED_EMAIL_DOMAINS=example.com,test.com
 ```
