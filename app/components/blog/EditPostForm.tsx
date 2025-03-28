@@ -6,6 +6,7 @@ import Button from '@/components/ui/Button';
 import categories from '@/data/categories.json';
 import { useToast } from '@/components/ui/ToastContext';
 import { BlogPost } from '@/types/blog';
+import Modal from '@/components/ui/Modal';
 
 interface EditPostFormProps {
   post: BlogPost;
@@ -48,7 +49,7 @@ export default function EditPostForm({ post }: EditPostFormProps) {
           content,
           category,
           published,
-          user_id: post.user_id, // Ensure user_id is sent
+          user_id: post.user_id,
         }),
       });
 
@@ -235,34 +236,15 @@ export default function EditPostForm({ post }: EditPostFormProps) {
       </div>
 
       {/* Delete Confirmation Modal */}
-      {showDeleteModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="w-full max-w-md rounded-lg bg-white p-6 shadow-xl dark:bg-gray-800">
-            <h3 className="mb-4 text-lg font-medium text-zinc-900 dark:text-white">
-              Confirm Deletion
-            </h3>
-            <p className="mb-6 text-sm text-zinc-700 dark:text-zinc-300">
-              Are you sure you want to delete this post? This action cannot be
-              undone.
-            </p>
-            <div className="flex justify-end space-x-3">
-              <Button
-                type="button"
-                onClick={handleCancelDelete}
-                text="Cancel"
-                variant="secondary"
-              />
-              <Button
-                type="button"
-                onClick={handleConfirmDelete}
-                text={isDeleting ? 'Deleting...' : 'Delete Post'}
-                disabled={isDeleting}
-                variant="danger"
-              />
-            </div>
-          </div>
-        </div>
-      )}
+      <Modal
+        isOpen={showDeleteModal}
+        title="Confirm Deletion"
+        message="Are you sure you want to delete this post? This action cannot be undone."
+        onCancel={handleCancelDelete}
+        onConfirm={handleConfirmDelete}
+        confirmText={isDeleting ? 'Deleting...' : 'Delete Post'}
+        confirmDisabled={isDeleting}
+      />
     </form>
   );
 }
