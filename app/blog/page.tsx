@@ -9,7 +9,7 @@ import Container from '@/components/content/Container';
 import BlogPosts from '@/components/blog/BlogPosts';
 import { BlogPost } from '@/types/blog';
 
-// Cache the posts fetch to improve performance
+// Cache the posts fetch to improve performance and tag for revalidation
 const getCachedPosts = cache(async () => {
   return db
     .select()
@@ -18,8 +18,19 @@ const getCachedPosts = cache(async () => {
     .orderBy(desc(posts.created_at));
 });
 
-// Add export for revalidation timing
-export const revalidate = false; // Use false to rely only on on-demand revalidation
+// Set revalidation to false to use on-demand revalidation only
+export const revalidate = false;
+
+// Add tag-based revalidation support
+export const generateMetadata = () => {
+  return {
+    title: 'Blog — Amir Ardalan',
+    description: 'Articles on web development, design, and technology',
+    alternates: {
+      canonical: '/blog',
+    },
+  };
+};
 
 export default async function Blog() {
   const posts: BlogPost[] = await getCachedPosts();
