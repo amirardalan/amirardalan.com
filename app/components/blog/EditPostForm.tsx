@@ -5,10 +5,10 @@ import { useRouter } from 'next/navigation';
 import Button from '@/components/ui/Button';
 import categories from '@/data/categories.json';
 import { useToast } from '@/components/ui/ToastContext';
+import { BlogPost } from '@/types/blog';
 
 interface EditPostFormProps {
-  post: any;
-  userId: string;
+  post: BlogPost;
 }
 
 interface Category {
@@ -16,7 +16,7 @@ interface Category {
   name: string;
 }
 
-export default function EditPostForm({ post, userId }: EditPostFormProps) {
+export default function EditPostForm({ post }: EditPostFormProps) {
   const router = useRouter();
   const { showToast } = useToast();
   const [title, setTitle] = useState(post.title || '');

@@ -1,10 +1,11 @@
 import { auth } from '@/auth';
-import { redirect } from 'next/navigation';
-import EditPostForm from '@/components/blog/EditPostForm';
 import { db } from '@/app/db/connector';
 import { posts } from '@/app/db/schema';
 import { eq } from 'drizzle-orm';
+import { redirect } from 'next/navigation';
+
 import AdminPageHeading from '@/app/components/admin/AdminPageHeading';
+import EditPostForm from '@/components/blog/EditPostForm';
 
 export default async function EditBlogPost({
   params: paramsPromise,
@@ -41,7 +42,7 @@ export default async function EditBlogPost({
   return (
     <div className="mt-8">
       <AdminPageHeading title={'Edit Post'} />
-      <EditPostForm post={post[0]} userId={session.user?.id || ''} />
+      <EditPostForm post={post[0]} />
     </div>
   );
 }
