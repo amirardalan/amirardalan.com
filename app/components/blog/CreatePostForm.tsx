@@ -61,9 +61,7 @@ export default function CreatePostForm({ author }: CreatePostFormProps) {
 
       showToast('Post created successfully!', 'success');
 
-      setTimeout(() => {
-        router.push(published ? `/blog/${slug}` : '/admin/blog/drafts');
-      }, 1500);
+      router.push(published ? `/blog/${slug}` : '/admin/blog/drafts');
     } catch (err) {
       setError((err as Error).message);
       showToast((err as Error).message, 'error');

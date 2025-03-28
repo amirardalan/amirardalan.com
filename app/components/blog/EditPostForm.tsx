@@ -57,9 +57,7 @@ export default function EditPostForm({ post, userId }: EditPostFormProps) {
 
       showToast('Post updated successfully!', 'success');
 
-      setTimeout(() => {
-        router.push(published ? `/blog/${slug}` : '/admin/blog/drafts');
-      }, 1500);
+      router.push(published ? `/blog/${slug}` : '/admin/blog/drafts');
     } catch (err) {
       setError((err as Error).message);
       showToast((err as Error).message, 'error');
@@ -95,9 +93,7 @@ export default function EditPostForm({ post, userId }: EditPostFormProps) {
 
       showToast('Post deleted successfully!', 'success');
 
-      setTimeout(() => {
-        router.push('/admin/blog/drafts');
-      }, 1500);
+      router.push('/admin/blog/drafts');
     } catch (err) {
       setError((err as Error).message);
       showToast((err as Error).message, 'error');
