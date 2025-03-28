@@ -1,5 +1,5 @@
-import { db } from '@/db';
-import { posts, users } from '@/schema';
+import { db } from '@/app/db/db';
+import { posts, users } from '@/app/db/schema';
 import { compileMDX } from 'next-mdx-remote/rsc';
 import { components } from '@/app/components/blog/MDXComponents';
 import { auth } from '@/auth';

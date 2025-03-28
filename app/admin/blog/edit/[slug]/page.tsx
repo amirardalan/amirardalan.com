@@ -1,8 +1,8 @@
 import { auth } from '@/auth';
 import { redirect } from 'next/navigation';
 import EditPostForm from '@/components/blog/EditPostForm';
-import { db } from '@/db';
-import { posts } from '@/schema';
+import { db } from '@/app/db/db';
+import { posts } from '@/app/db/schema';
 import { eq } from 'drizzle-orm';
 import AdminPageHeading from '@/app/components/admin/AdminPageHeading';
 

@@ -3,8 +3,8 @@ import { redirect } from 'next/navigation';
 import AdminPageHeading from '@/components/admin/AdminPageHeading';
 import SearchInput from '@/components/admin/AdminSearch';
 import Link from 'next/link';
-import { db } from '@/db';
-import { posts } from '@/schema';
+import { db } from '@/app/db/db';
+import { posts } from '@/app/db/schema';
 import { eq } from 'drizzle-orm';
 
 export function generateMetadata() {

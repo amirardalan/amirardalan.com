@@ -1,5 +1,5 @@
-import { db } from '@/db';
-import { posts } from '@/schema';
+import { db } from '@/app/db/db';
+import { posts } from '@/app/db/schema';
 import PageHeading from '@/components/ui/PageHeading';
 import Container from '@/components/content/Container';
 import { cache } from 'react';

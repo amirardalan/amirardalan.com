@@ -1,13 +1,17 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-// Middleware function to handle requests
 export function middleware(request: NextRequest) {
-  // Pass through the request without modifications
-  return NextResponse.next();
+  const pathname = request.nextUrl.pathname;
+
+  // Clone the response and set the custom header
+  const response = NextResponse.next();
+  response.headers.set('x-next-pathname', pathname);
+
+  return response;
 }
 
-// Configuration to match all paths
+// Specify the paths where the middleware should run
 export const config = {
-  matcher: '/:path*',
+  matcher: '/:path*', // Apply middleware to all routes
 };
