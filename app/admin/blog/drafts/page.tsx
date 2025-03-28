@@ -59,7 +59,8 @@ export default async function Drafts({
                     {draft.title}
                   </Link>
                   <span className="ml-2 text-sm text-zinc-500">
-                    [Draft by {draft.user_name}] {/* Show user's name */}
+                    {/* TODO: Make this a toggle in Admin Preferences */}
+                    [Draft by {draft.user_name}]
                   </span>
                 </div>
                 <Link

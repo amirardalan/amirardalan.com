@@ -4,10 +4,10 @@ export type BlogPost = {
   content: string;
   excerpt: string | null;
   slug: string;
-  category: string | null;
+  category?: string | null;
   published: boolean | null;
   created_at: Date;
-  updated_at: Date;
+  updated_at?: Date;
   user_id: number;
-  author_name: string | null;
+  author_name?: string | null;
 };

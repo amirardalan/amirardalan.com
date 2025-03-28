@@ -10,7 +10,7 @@ export default function AdminMenu() {
 
   const getLinkClass = (href: string) => {
     const isActive =
-      pathname === href || (href !== '/admin' && pathname.startsWith(href));
+      pathname === href || (href !== '/admin' && pathname?.startsWith(href));
 
     return clsx(
       'hover:underline',

@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export default function AuthError() {
   const searchParams = useSearchParams();
-  const error = searchParams.get('error');
+  const error = searchParams?.get('error');
 
   return (
     <div className="flex h-[80vh] flex-col items-center justify-center text-dark dark:text-light">

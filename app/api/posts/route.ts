@@ -5,8 +5,6 @@ import { posts } from '@/app/db/schema';
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-
-    // Ensure user_id is included in the payload
     const { title, slug, excerpt, content, category, user_id, published } =
       body;
 
@@ -17,14 +15,13 @@ export async function POST(req: Request) {
       );
     }
 
-    // Insert the new post into the database
     await db.insert(posts).values({
       title,
       slug,
       excerpt,
       content,
       category,
-      user_id, // Store user_id
+      user_id,
       published,
       created_at: new Date(),
       updated_at: new Date(),

@@ -9,20 +9,17 @@ import Container from '@/components/content/Container';
 import BlogPosts from '@/components/blog/BlogPosts';
 import { BlogPost } from '@/types/blog';
 
-// Disable revalidation for static caching
 export const revalidate = false;
 
-// Cache the fetch logic to ensure static behavior
 const getCachedPosts = cache(async () => {
   return db
     .select()
     .from(posts)
     .where(eq(posts.published, true))
-    .orderBy(desc(posts.created_at)); // Ensure created_at is correctly handled
+    .orderBy(desc(posts.created_at));
 });
 
 export default async function Blog() {
-  // Fetch posts from the database
   const posts: BlogPost[] = await getCachedPosts();
 
   return (

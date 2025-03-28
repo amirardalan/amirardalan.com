@@ -22,7 +22,7 @@ export default async function EditBlogPost({
     redirect(`/api/auth/signin?callbackUrl=/admin/blog/edit/${slug}`);
   }
 
-  const userId = await getUserIdByEmail(session.user.email!); // Fetch user ID
+  const userId = await getUserIdByEmail(session.user.email!);
 
   if (!userId) {
     throw new Error('User ID not found for the authenticated user.');
@@ -39,11 +39,11 @@ export default async function EditBlogPost({
       published: posts.published,
       created_at: posts.created_at,
       updated_at: posts.updated_at,
-      user_id: posts.user_id, // Include user_id
-      author_name: users.name, // Fetch author's name
+      user_id: posts.user_id,
+      author_name: users.name,
     })
     .from(posts)
-    .leftJoin(users, eq(posts.user_id, users.id)) // Join with users table
+    .leftJoin(users, eq(posts.user_id, users.id))
     .where(eq(posts.slug, slug))
     .limit(1);
 

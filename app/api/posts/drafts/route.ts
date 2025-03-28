@@ -11,10 +11,10 @@ export async function GET() {
         title: posts.title,
         slug: posts.slug,
         updated_at: posts.updated_at,
-        user_name: users.name, // Include the user's name
+        user_name: users.name,
       })
       .from(posts)
-      .leftJoin(users, eq(posts.user_id, users.id)) // Join with users table
+      .leftJoin(users, eq(posts.user_id, users.id))
       .where(eq(posts.published, false))
       .orderBy(desc(posts.updated_at));
 
