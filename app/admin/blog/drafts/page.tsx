@@ -14,7 +14,7 @@ export function generateMetadata() {
 export default async function Drafts({
   searchParams,
 }: {
-  searchParams: { query?: string };
+  searchParams: Promise<{ query?: string }>;
 }) {
   const session = await auth();
 
@@ -22,7 +22,7 @@ export default async function Drafts({
     redirect('/api/auth/signin?callbackUrl=/admin/blog/drafts');
   }
 
-  const query = (await searchParams)?.query || '';
+  const { query = '' } = await searchParams; // Await the promise to extract the query
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_URL}/api/posts/drafts`
   );
