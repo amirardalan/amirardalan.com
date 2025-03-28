@@ -5,8 +5,6 @@ import { useRouter } from 'next/navigation';
 import Button from '@/components/ui/Button';
 import categories from '@/data/categories.json';
 import { useToast } from '@/components/ui/ToastContext';
-import { db } from '@/app/db/db';
-import { posts } from '@/app/db/schema';
 
 interface CreatePostFormProps {
   userId: string;
@@ -35,17 +33,25 @@ export default function CreatePostForm({ userId }: CreatePostFormProps) {
     setError(null);
 
     try {
-      await db.insert(posts).values({
-        title,
-        slug,
-        excerpt,
-        content,
-        category,
-        authorId: parseInt(userId, 10),
-        published,
-        created_at: new Date(),
-        updated_at: new Date(),
+      const response = await fetch('/api/posts', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          title,
+          slug,
+          excerpt,
+          content,
+          category,
+          authorId: parseInt(userId, 10),
+          published,
+        }),
       });
+
+      if (!response.ok) {
+        throw new Error(await response.text());
+      }
 
       showToast('Post created successfully!', 'success');
 

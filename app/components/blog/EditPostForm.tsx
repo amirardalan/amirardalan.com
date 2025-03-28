@@ -5,9 +5,6 @@ import { useRouter } from 'next/navigation';
 import Button from '@/components/ui/Button';
 import categories from '@/data/categories.json';
 import { useToast } from '@/components/ui/ToastContext';
-import { db } from '@/app/db/db';
-import { posts } from '@/app/db/schema';
-import { eq } from 'drizzle-orm';
 
 interface EditPostFormProps {
   post: any;
@@ -39,18 +36,24 @@ export default function EditPostForm({ post, userId }: EditPostFormProps) {
     setError(null);
 
     try {
-      await db
-        .update(posts)
-        .set({
+      const response = await fetch(`/api/posts/${post.id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
           title,
           slug,
           excerpt,
           content,
           category,
           published,
-          updated_at: new Date(),
-        })
-        .where(eq(posts.id, post.id));
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(await response.text());
+      }
 
       showToast('Post updated successfully!', 'success');
 
@@ -82,7 +85,13 @@ export default function EditPostForm({ post, userId }: EditPostFormProps) {
     setError(null);
 
     try {
-      await db.delete(posts).where(eq(posts.id, post.id));
+      const response = await fetch(`/api/posts/${post.id}`, {
+        method: 'DELETE',
+      });
+
+      if (!response.ok) {
+        throw new Error(await response.text());
+      }
 
       showToast('Post deleted successfully!', 'success');
 

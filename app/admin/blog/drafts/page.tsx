@@ -3,9 +3,6 @@ import { redirect } from 'next/navigation';
 import AdminPageHeading from '@/components/admin/AdminPageHeading';
 import SearchInput from '@/components/admin/AdminSearch';
 import Link from 'next/link';
-import { db } from '@/app/db/db';
-import { posts } from '@/app/db/schema';
-import { eq } from 'drizzle-orm';
 
 export function generateMetadata() {
   return {
@@ -26,13 +23,12 @@ export default async function Drafts({
   }
 
   const query = (await searchParams)?.query || '';
-  const drafts = await db
-    .select()
-    .from(posts)
-    .where(eq(posts.published, false))
-    .orderBy(posts.editedAt, 'desc');
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_APP_URL}/api/posts/drafts`
+  );
+  const drafts = await response.json();
 
-  const filteredDrafts = drafts.filter((draft) =>
+  const filteredDrafts = drafts.filter((draft: any) =>
     draft.title.toLowerCase().includes(query.toLowerCase())
   );
 
@@ -50,7 +46,7 @@ export default async function Drafts({
       <div className="text-dark dark:text-light">
         {filteredDrafts.length > 0 ? (
           <ul>
-            {filteredDrafts.map((draft) => (
+            {filteredDrafts.map((draft: any) => (
               <li
                 key={draft.id}
                 className="my-4 flex items-center justify-between"
