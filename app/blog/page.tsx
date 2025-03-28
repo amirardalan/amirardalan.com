@@ -9,8 +9,6 @@ import Container from '@/components/content/Container';
 import BlogPosts from '@/components/blog/BlogPosts';
 import { BlogPost } from '@/types/blog';
 
-export const revalidate = 'on-demand';
-
 const getCachedPosts = cache(async () => {
   return db
     .select()

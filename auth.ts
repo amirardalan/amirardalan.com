@@ -32,8 +32,6 @@ export async function getUserIdByEmail(email: string): Promise<number | null> {
     .where(eq(users.email, email))
     .limit(1);
 
-  console.log('Fetched user ID:', user.length ? user[0].id : null); // Debug log
-
   return user.length ? user[0].id : null;
 }
 
