@@ -6,7 +6,7 @@ import Button from '@/components/ui/Button';
 import categories from '@/data/categories.json';
 import { useToast } from '@/components/ui/ToastContext';
 
-interface CreatePostFormProps {
+interface NewPostFormProps {
   author: string;
 }
 
@@ -15,7 +15,7 @@ interface Category {
   name: string;
 }
 
-export default function CreatePostForm({ author }: CreatePostFormProps) {
+export default function NewPostForm({ author }: NewPostFormProps) {
   const router = useRouter();
   const { showToast } = useToast();
   const [title, setTitle] = useState('');

@@ -1,7 +1,7 @@
 import { auth } from '@/auth';
 import { redirect } from 'next/navigation';
 import AdminPageHeading from '@/app/components/admin/AdminPageHeading';
-import CreatePostForm from '@/components/blog/CreatePostForm';
+import CreatePostForm from '@/app/components/blog/NewPostForm';
 
 export default async function NewBlogPost() {
   // Check if user is authenticated
