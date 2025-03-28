@@ -1,24 +1,13 @@
 import { cache } from 'react';
 
-import { db } from '@/app/db/connector';
+import { db } from '@/db/connector';
 import { posts } from '@/app/db/schema';
 import { eq, desc } from 'drizzle-orm';
 
 import PageHeading from '@/components/ui/PageHeading';
 import Container from '@/components/content/Container';
 import BlogPosts from '@/components/blog/BlogPosts';
-
-type BlogPost = {
-  id: number;
-  authorId: number;
-  title: string;
-  content: string;
-  created_at: Date;
-  updated_at: Date;
-  showUpdated: boolean | null;
-  category: string | null;
-  slug: string | null;
-};
+import { BlogPost } from '@/types/blog';
 
 // Disable revalidation for static caching
 export const revalidate = false;
@@ -29,19 +18,12 @@ const getCachedPosts = cache(async () => {
     .select()
     .from(posts)
     .where(eq(posts.published, true))
-    .orderBy(desc(posts.created_at));
+    .orderBy(desc(posts.created_at)); // Ensure created_at is correctly handled
 });
 
 export default async function Blog() {
-  const posts = (await getCachedPosts()).map(
-    (post): BlogPost => ({
-      ...post,
-      content: post.content ?? '', // Ensure content is always a string
-      updated_at: post.updated_at
-        ? post.updated_at.toISOString()
-        : post.created_at.toISOString(),
-    })
-  );
+  // Fetch posts from the database
+  const posts: BlogPost[] = await getCachedPosts();
 
   return (
     <Container>

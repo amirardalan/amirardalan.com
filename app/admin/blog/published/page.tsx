@@ -5,7 +5,7 @@ import SearchInput from '@/components/admin/AdminSearch';
 import Link from 'next/link';
 import { db } from '@/app/db/connector';
 import { posts } from '@/app/db/schema';
-import { eq } from 'drizzle-orm';
+import { eq, desc } from 'drizzle-orm';
 
 export default async function PublishedPosts({
   searchParams,
@@ -23,7 +23,7 @@ export default async function PublishedPosts({
     .select()
     .from(posts)
     .where(eq(posts.published, true))
-    .orderBy(posts.publishedAt, 'desc');
+    .orderBy(desc(posts.created_at));
 
   const filteredPosts = allPosts.filter((post) =>
     post.title.toLowerCase().includes(query.toLowerCase())

@@ -7,7 +7,7 @@ import categories from '@/data/categories.json';
 import { useToast } from '@/components/ui/ToastContext';
 
 interface CreatePostFormProps {
-  userId: string;
+  user_id: string;
 }
 
 interface Category {
@@ -15,7 +15,7 @@ interface Category {
   name: string;
 }
 
-export default function CreatePostForm({ userId }: CreatePostFormProps) {
+export default function CreatePostForm({ user_id }: CreatePostFormProps) {
   const router = useRouter();
   const { showToast } = useToast();
   const [title, setTitle] = useState('');
@@ -33,20 +33,26 @@ export default function CreatePostForm({ userId }: CreatePostFormProps) {
     setError(null);
 
     try {
+      const payload = {
+        title,
+        slug,
+        excerpt,
+        content,
+        category,
+        author_id: user_id, // Ensure this matches the schema type
+        published,
+        created_at: new Date().toISOString(), // Explicitly set created_at
+        updated_at: new Date().toISOString(), // Explicitly set updated_at
+      };
+
+      console.log('Payload:', payload); // Debugging: Log the payload to verify its structure
+
       const response = await fetch('/api/posts', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          title,
-          slug,
-          excerpt,
-          content,
-          category,
-          authorId: parseInt(userId, 10),
-          published,
-        }),
+        body: JSON.stringify(payload),
       });
 
       if (!response.ok) {
