@@ -1,7 +1,9 @@
 import { auth } from '@/auth';
 import { redirect } from 'next/navigation';
 import EditPostForm from '@/components/blog/EditPostForm';
-import { BlogService } from '@/app/lib/services/blog-service';
+import { db } from '@/db';
+import { posts } from '@/schema';
+import { eq } from 'drizzle-orm';
 import AdminPageHeading from '@/app/components/admin/AdminPageHeading';
 
 export default async function EditBlogPost({
@@ -9,22 +11,22 @@ export default async function EditBlogPost({
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  // Check if user is authenticated
   const session = await auth();
 
-  // Await params before using it
   const params = await paramsPromise;
   const { slug } = params;
 
-  // Redirect to sign-in if not authenticated
   if (!session?.user) {
     redirect(`/api/auth/signin?callbackUrl=/admin/blog/edit/${slug}`);
   }
 
-  // Fetch the post data using BlogService instead of direct Supabase calls
-  const post = await BlogService.getPostBySlug(slug);
+  const post = await db
+    .select()
+    .from(posts)
+    .where(eq(posts.slug, slug))
+    .limit(1);
 
-  if (!post) {
+  if (!post.length) {
     return (
       <div className="mt-8 text-center text-dark dark:text-light">
         <h2 className="mb-6 text-xxl">Post Not Found</h2>
@@ -39,8 +41,7 @@ export default async function EditBlogPost({
   return (
     <div className="mt-8">
       <AdminPageHeading title={'Edit Post'} />
-
-      <EditPostForm post={post} userId={session.user?.id || ''} />
+      <EditPostForm post={post[0]} userId={session.user?.id || ''} />
     </div>
   );
 }

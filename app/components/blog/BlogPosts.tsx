@@ -7,7 +7,7 @@ import IconClose from '@/components/icons/IconClose';
 import calculateReadTime from '@/utils/calculate-readtime';
 
 interface BlogPost {
-  id: string;
+  id: number;
   title: string;
   content: string;
   slug: string;

@@ -3,7 +3,9 @@ import { redirect } from 'next/navigation';
 import AdminPageHeading from '@/components/admin/AdminPageHeading';
 import SearchInput from '@/components/admin/AdminSearch';
 import Link from 'next/link';
-import { BlogService } from '@/app/lib/services/blog-service';
+import { db } from '@/db';
+import { posts } from '@/schema';
+import { eq } from 'drizzle-orm';
 
 export function generateMetadata() {
   return {
@@ -17,16 +19,19 @@ export default async function Drafts({
 }: {
   searchParams: { query?: string };
 }) {
-  // Check if user is authenticated
   const session = await auth();
 
-  // Redirect to sign-in if not authenticated
   if (!session?.user) {
     redirect('/api/auth/signin?callbackUrl=/admin/blog/drafts');
   }
 
   const query = (await searchParams)?.query || '';
-  const drafts = await BlogService.getDrafts();
+  const drafts = await db
+    .select()
+    .from(posts)
+    .where(eq(posts.published, false))
+    .orderBy(posts.editedAt, 'desc');
+
   const filteredDrafts = drafts.filter((draft) =>
     draft.title.toLowerCase().includes(query.toLowerCase())
   );
