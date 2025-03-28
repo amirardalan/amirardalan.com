@@ -7,7 +7,7 @@ import categories from '@/data/categories.json';
 import { useToast } from '@/components/ui/ToastContext';
 
 interface CreatePostFormProps {
-  user_id: string;
+  author: string;
 }
 
 interface Category {
@@ -15,7 +15,7 @@ interface Category {
   name: string;
 }
 
-export default function CreatePostForm({ user_id }: CreatePostFormProps) {
+export default function CreatePostForm({ author }: CreatePostFormProps) {
   const router = useRouter();
   const { showToast } = useToast();
   const [title, setTitle] = useState('');
@@ -39,7 +39,7 @@ export default function CreatePostForm({ user_id }: CreatePostFormProps) {
         excerpt,
         content,
         category,
-        author_id: user_id, // Ensure this matches the schema type
+        author: author,
         published,
         created_at: new Date().toISOString(), // Explicitly set created_at
         updated_at: new Date().toISOString(), // Explicitly set updated_at

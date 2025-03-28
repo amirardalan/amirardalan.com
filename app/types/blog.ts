@@ -1,13 +1,13 @@
 export type BlogPost = {
   id: number;
   slug: string;
-  authorId: number;
+  author_id: number;
   title: string;
   excerpt: string;
   content: string;
   published: boolean;
-  created_at: string; // Ensure this matches the format being sent
-  updated_at: string; // Ensure this matches the format being sent
+  created_at: string;
+  updated_at: string;
   showUpdated: boolean;
   category: string | null;
   featured: boolean | null;

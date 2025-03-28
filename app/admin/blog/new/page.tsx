@@ -16,7 +16,7 @@ export default async function NewBlogPost() {
     <div className="mt-8">
       <AdminPageHeading title={'New Post'} />
 
-      <CreatePostForm userId={session.user?.id || ''} />
+      <CreatePostForm author={session.user?.name || ''} />
     </div>
   );
 }
