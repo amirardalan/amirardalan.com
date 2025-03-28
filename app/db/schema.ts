@@ -11,7 +11,7 @@ import {
 export const users = pgTable('users', {
   id: serial('id').primaryKey(),
   name: text('name'),
-  email: varchar('email', { length: 256 }).notNull(),
+  email: text('email').notNull(),
   email_verified: timestamp('email_verified'),
   created_at: timestamp('created_at').defaultNow().notNull(),
   updated_at: timestamp('updated_at').defaultNow().notNull(),
@@ -30,5 +30,5 @@ export const posts = pgTable('posts', {
   featured: boolean('featured'),
   likes: integer('likes'),
   published: boolean('published'),
-  slug: varchar('slug', { length: 256 }).notNull(),
+  slug: text('slug').notNull(),
 });

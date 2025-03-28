@@ -1,15 +1,15 @@
 export type BlogPost = {
   id: number;
-  slug: string;
-  author: string;
+  author: string | null;
   title: string;
-  excerpt: string;
   content: string;
-  published: boolean;
-  created_at: string;
-  updated_at?: string;
-  show_updated?: boolean;
-  category?: string | null;
-  featured?: boolean | null;
-  likes?: number | null;
+  created_at: Date;
+  updated_at: Date;
+  show_updated: boolean | null;
+  category: string | null;
+  excerpt: string | null;
+  featured: boolean | null;
+  likes: number | null;
+  published: boolean | null;
+  slug: string;
 };
