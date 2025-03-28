@@ -5,11 +5,11 @@ import { useRouter } from 'next/navigation';
 import Button from '@/components/ui/Button';
 import categories from '@/data/categories.json';
 import { useToast } from '@/components/ui/ToastContext';
-import { BlogClient } from '@/lib/api/blog-client';
+import { BlogPost } from '@/types/blog';
+import Modal from '@/components/ui/Modal';
 
 interface EditPostFormProps {
-  post: any;
-  userId: string;
+  post: BlogPost;
 }
 
 interface Category {
@@ -17,7 +17,7 @@ interface Category {
   name: string;
 }
 
-export default function EditPostForm({ post, userId }: EditPostFormProps) {
+export default function EditPostForm({ post }: EditPostFormProps) {
   const router = useRouter();
   const { showToast } = useToast();
   const [title, setTitle] = useState(post.title || '');
@@ -30,55 +30,36 @@ export default function EditPostForm({ post, userId }: EditPostFormProps) {
   const [isDeleting, setIsDeleting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
-  const [lastSubmitTime, setLastSubmitTime] = useState<number>(0);
-  const SUBMISSION_COOLDOWN = 3000; // 3 seconds between submissions
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    // Check if we're within the cooldown period
-    const now = Date.now();
-    if (now - lastSubmitTime < SUBMISSION_COOLDOWN) {
-      showToast('Please wait before submitting again', 'warning');
-      return;
-    }
-
     setIsSubmitting(true);
     setError(null);
-    setLastSubmitTime(now);
 
     try {
-      const { post: updatedPost, error: updateError } =
-        await BlogClient.updatePost({
-          id: post.id,
+      const response = await fetch(`/api/posts/${post.id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
           title,
           slug,
           excerpt,
           content,
           category,
-          userId,
           published,
-        });
+          user_id: post.user_id,
+        }),
+      });
 
-      if (updateError) {
-        throw new Error(updateError);
+      if (!response.ok) {
+        throw new Error(await response.text());
       }
 
-      // Show success toast
       showToast('Post updated successfully!', 'success');
 
-      // Add a small delay to allow the user to see the toast before redirecting
-      setTimeout(async () => {
-        // Trigger revalidation of blog pages
-        await BlogClient.revalidatePost(slug);
-
-        // Redirect to the appropriate location based on published status
-        if (published) {
-          router.push(`/blog/${slug}`);
-        } else {
-          router.push('/admin/blog/drafts');
-        }
-      }, 1500);
+      router.push(published ? `/blog/${slug}` : '/admin/blog/drafts');
     } catch (err) {
       setError((err as Error).message);
       showToast((err as Error).message, 'error');
@@ -104,28 +85,17 @@ export default function EditPostForm({ post, userId }: EditPostFormProps) {
     setError(null);
 
     try {
-      const { success, error: deleteError } = await BlogClient.deletePost(
-        post.id,
-        userId
-      );
+      const response = await fetch(`/api/posts/${post.id}`, {
+        method: 'DELETE',
+      });
 
-      if (!success) {
-        throw new Error(deleteError || 'Failed to delete post');
+      if (!response.ok) {
+        throw new Error(await response.text());
       }
 
-      // Show success toast
       showToast('Post deleted successfully!', 'success');
 
-      // Trigger revalidation for the blog index
-      await BlogClient.revalidateBlogIndex();
-
-      // Close the modal
-      setShowDeleteModal(false);
-
-      // Add a small delay to allow the user to see the toast before redirecting
-      setTimeout(() => {
-        router.push('/admin/blog/drafts');
-      }, 1500);
+      router.push('/admin/blog/drafts');
     } catch (err) {
       setError((err as Error).message);
       showToast((err as Error).message, 'error');
@@ -266,34 +236,15 @@ export default function EditPostForm({ post, userId }: EditPostFormProps) {
       </div>
 
       {/* Delete Confirmation Modal */}
-      {showDeleteModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="w-full max-w-md rounded-lg bg-white p-6 shadow-xl dark:bg-gray-800">
-            <h3 className="mb-4 text-lg font-medium text-zinc-900 dark:text-white">
-              Confirm Deletion
-            </h3>
-            <p className="mb-6 text-sm text-zinc-700 dark:text-zinc-300">
-              Are you sure you want to delete this post? This action cannot be
-              undone.
-            </p>
-            <div className="flex justify-end space-x-3">
-              <Button
-                type="button"
-                onClick={handleCancelDelete}
-                text="Cancel"
-                variant="secondary"
-              />
-              <Button
-                type="button"
-                onClick={handleConfirmDelete}
-                text={isDeleting ? 'Deleting...' : 'Delete Post'}
-                disabled={isDeleting}
-                variant="danger"
-              />
-            </div>
-          </div>
-        </div>
-      )}
+      <Modal
+        isOpen={showDeleteModal}
+        title="Confirm Deletion"
+        message="Are you sure you want to delete this post? This action cannot be undone."
+        onCancel={handleCancelDelete}
+        onConfirm={handleConfirmDelete}
+        confirmText={isDeleting ? 'Deleting...' : 'Delete Post'}
+        confirmDisabled={isDeleting}
+      />
     </form>
   );
 }

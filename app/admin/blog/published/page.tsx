@@ -3,24 +3,29 @@ import { redirect } from 'next/navigation';
 import AdminPageHeading from '@/components/admin/AdminPageHeading';
 import SearchInput from '@/components/admin/AdminSearch';
 import Link from 'next/link';
-import { BlogService } from '@/app/lib/services/blog-service';
+import { db } from '@/db/connector';
+import { posts } from '@/db/schema';
+import { eq, desc } from 'drizzle-orm';
 
 export default async function PublishedPosts({
   searchParams,
 }: {
   searchParams: { query?: string };
 }) {
-  // Check if user is authenticated
   const session = await auth();
 
-  // Redirect to sign-in if not authenticated
   if (!session?.user) {
     redirect('/api/auth/signin?callbackUrl=/admin/blog/published');
   }
 
   const query = (await searchParams)?.query || '';
-  const posts = await BlogService.getPublishedPosts();
-  const filteredPosts = posts.filter((post) =>
+  const allPosts = await db
+    .select()
+    .from(posts)
+    .where(eq(posts.published, true))
+    .orderBy(desc(posts.created_at));
+
+  const filteredPosts = allPosts.filter((post) =>
     post.title.toLowerCase().includes(query.toLowerCase())
   );
 

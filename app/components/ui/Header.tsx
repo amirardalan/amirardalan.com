@@ -1,7 +1,7 @@
 import AuthMenu from '@/components/auth/AuthMenu';
 import Logo from '@/components/ui/Logo';
 import Link from 'next/link';
-import HeaderControls from '@/app/components/ui/HeaderControls';
+import HeaderControls from '@/components/ui/HeaderControls';
 
 export default async function Header() {
   return (

@@ -1,5 +1,5 @@
 'use client';
-import { useTheme } from '@/app/store/theme';
+import { useTheme } from '@/store/theme';
 
 export default function IconShow() {
   const { effectiveTheme } = useTheme();

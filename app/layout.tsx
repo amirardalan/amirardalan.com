@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { headers } from 'next/headers';
 import { SessionProvider } from 'next-auth/react';
 
-import { getTheme } from '@/app/utils/get-theme';
+import { getTheme } from '@/utils/get-theme';
 import clsx from 'clsx';
 import '@/app/globals.css';
 

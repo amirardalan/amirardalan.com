@@ -1,20 +1,18 @@
 'use client';
+
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { useActiveLink } from '@/hooks/useActiveLink';
 import clsx from 'clsx';
 import IconBlogControls from '@/components/icons/IconBlogControls';
 import IconAccount from '@/components/icons/IconAccount';
 
 export default function AdminMenu() {
-  const pathname = usePathname();
+  const { isActive } = useActiveLink();
 
   const getLinkClass = (href: string) => {
-    const isActive =
-      pathname === href || (href !== '/admin' && pathname.startsWith(href));
-
     return clsx(
       'hover:underline',
-      isActive && 'underline text-zinc-800 dark:text-zinc-300'
+      isActive(href) && 'underline text-zinc-800 dark:text-zinc-300'
     );
   };
 

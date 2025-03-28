@@ -3,7 +3,6 @@ import { redirect } from 'next/navigation';
 import AdminPageHeading from '@/components/admin/AdminPageHeading';
 import SearchInput from '@/components/admin/AdminSearch';
 import Link from 'next/link';
-import { BlogService } from '@/app/lib/services/blog-service';
 
 export function generateMetadata() {
   return {
@@ -17,17 +16,19 @@ export default async function Drafts({
 }: {
   searchParams: { query?: string };
 }) {
-  // Check if user is authenticated
   const session = await auth();
 
-  // Redirect to sign-in if not authenticated
   if (!session?.user) {
     redirect('/api/auth/signin?callbackUrl=/admin/blog/drafts');
   }
 
   const query = (await searchParams)?.query || '';
-  const drafts = await BlogService.getDrafts();
-  const filteredDrafts = drafts.filter((draft) =>
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_APP_URL}/api/posts/drafts`
+  );
+  const drafts = await response.json();
+
+  const filteredDrafts = drafts.filter((draft: any) =>
     draft.title.toLowerCase().includes(query.toLowerCase())
   );
 
@@ -45,7 +46,7 @@ export default async function Drafts({
       <div className="text-dark dark:text-light">
         {filteredDrafts.length > 0 ? (
           <ul>
-            {filteredDrafts.map((draft) => (
+            {filteredDrafts.map((draft: any) => (
               <li
                 key={draft.id}
                 className="my-4 flex items-center justify-between"
@@ -57,7 +58,10 @@ export default async function Drafts({
                   >
                     {draft.title}
                   </Link>
-                  <span className="ml-2 text-sm text-zinc-500">[Draft]</span>
+                  <span className="ml-2 text-sm text-zinc-500">
+                    {/* TODO: Make this a toggle in Admin Preferences */}
+                    [Draft by {draft.user_name}]
+                  </span>
                 </div>
                 <Link
                   href={`/admin/blog/edit/${draft.slug}`}

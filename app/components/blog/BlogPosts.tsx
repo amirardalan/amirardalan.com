@@ -5,16 +5,7 @@ import clsx from 'clsx';
 import { formatDate } from '@/utils/format-date';
 import IconClose from '@/components/icons/IconClose';
 import calculateReadTime from '@/utils/calculate-readtime';
-
-interface BlogPost {
-  id: string;
-  title: string;
-  content: string;
-  slug: string;
-  excerpt: string;
-  publishedAt: string;
-  editedAt: string;
-}
+import { BlogPost } from '@/types/blog';
 
 export default function BlogPosts({ posts }: { posts: BlogPost[] }) {
   const [searchTerm, setSearchTerm] = useState('');
@@ -68,7 +59,7 @@ export default function BlogPosts({ posts }: { posts: BlogPost[] }) {
               </a>
               <div className="flex min-w-fit flex-col items-end text-xs">
                 <time className="text-zinc-500 dark:text-zinc-400">
-                  {formatDate(post.publishedAt)}
+                  {formatDate(post.created_at)}
                 </time>
                 <span className="text-zinc-400 dark:text-zinc-500">
                   {calculateReadTime(post.content)}
