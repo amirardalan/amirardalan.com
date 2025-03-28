@@ -3,8 +3,8 @@ import { redirect } from 'next/navigation';
 import AdminPageHeading from '@/components/admin/AdminPageHeading';
 import SearchInput from '@/components/admin/AdminSearch';
 import Link from 'next/link';
-import { db } from '@/app/db/connector';
-import { posts } from '@/app/db/schema';
+import { db } from '@/db/connector';
+import { posts } from '@/db/schema';
 import { eq, desc } from 'drizzle-orm';
 
 export default async function PublishedPosts({

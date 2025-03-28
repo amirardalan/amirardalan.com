@@ -1,7 +1,7 @@
 import { auth } from '@/auth';
 import { redirect } from 'next/navigation';
-import AdminPageHeading from '@/app/components/admin/AdminPageHeading';
-import CreatePostForm from '@/app/components/blog/NewPostForm';
+import AdminPageHeading from '@/components/admin/AdminPageHeading';
+import CreatePostForm from '@/components/blog/NewPostForm';
 import { getUserIdByEmail } from '@/auth';
 
 export default async function NewBlogPost() {

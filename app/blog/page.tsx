@@ -1,7 +1,7 @@
 import { cache } from 'react';
 
 import { db } from '@/db/connector';
-import { posts } from '@/app/db/schema';
+import { posts } from '@/db/schema';
 import { eq, desc } from 'drizzle-orm';
 
 import PageHeading from '@/components/ui/PageHeading';

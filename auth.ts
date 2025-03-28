@@ -1,7 +1,7 @@
 import NextAuth from 'next-auth';
 import GitHub from 'next-auth/providers/github';
-import { db } from '@/app/db/connector';
-import { users } from '@/app/db/schema';
+import { db } from '@/db/connector';
+import { users } from '@/db/schema';
 import { eq } from 'drizzle-orm';
 
 /**

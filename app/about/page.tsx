@@ -1,6 +1,6 @@
 'use client';
 
-import PageHeading from '@/app/components/ui/PageHeading';
+import PageHeading from '@/components/ui/PageHeading';
 import Container from '@/components/content/Container';
 import Tooltip from '@/components/ui/Tooltip';
 import IconWave from '@/components/icons/IconWave';

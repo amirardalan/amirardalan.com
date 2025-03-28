@@ -1,7 +1,7 @@
-import { db } from '@/app/db/connector';
-import { posts, users } from '@/app/db/schema';
+import { db } from '@/db/connector';
+import { posts, users } from '@/db/schema';
 import { compileMDX } from 'next-mdx-remote/rsc';
-import { components } from '@/app/components/blog/MDXComponents';
+import { components } from '@/components/blog/MDXComponents';
 import { auth } from '@/auth';
 import Container from '@/components/content/Container';
 import Link from 'next/link';

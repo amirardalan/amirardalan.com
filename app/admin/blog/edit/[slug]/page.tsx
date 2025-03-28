@@ -1,11 +1,11 @@
 import { auth } from '@/auth';
-import { db } from '@/app/db/connector';
-import { posts, users } from '@/app/db/schema';
+import { db } from '@/db/connector';
+import { posts, users } from '@/db/schema';
 import { eq } from 'drizzle-orm';
 import { redirect } from 'next/navigation';
 import { getUserIdByEmail } from '@/auth';
 
-import AdminPageHeading from '@/app/components/admin/AdminPageHeading';
+import AdminPageHeading from '@/components/admin/AdminPageHeading';
 import EditPostForm from '@/components/blog/EditPostForm';
 
 export default async function EditBlogPost({
