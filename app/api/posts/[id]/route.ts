@@ -3,9 +3,13 @@ import { db } from '@/db/connector';
 import { posts } from '@/db/schema';
 import { eq } from 'drizzle-orm';
 
+type RevalidateResponse = {
+  revalidate: (path: string) => Promise<void>;
+};
+
 export async function PUT(
   req: Request,
-  { params }: { params: { id: string } }
+  { params, res }: { params: { id: string }; res: RevalidateResponse }
 ) {
   try {
     const body = await req.json();
@@ -24,6 +28,10 @@ export async function PUT(
       })
       .where(eq(posts.id, parseInt(params.id, 10)));
 
+    // Revalidate the blog post page and the blog landing page
+    await res.revalidate(`/blog/${slug}`);
+    await res.revalidate('/blog');
+
     return NextResponse.json({ message: 'Post updated successfully' });
   } catch (error) {
     return NextResponse.json(
@@ -35,12 +43,26 @@ export async function PUT(
 
 export async function DELETE(
   req: Request,
-  { params }: { params: { id: string } }
+  { params, res }: { params: { id: string }; res: RevalidateResponse }
 ) {
   try {
-    await db.delete(posts).where(eq(posts.id, parseInt(params.id, 10)));
+    const post = await db
+      .select({ slug: posts.slug })
+      .from(posts)
+      .where(eq(posts.id, parseInt(params.id, 10)))
+      .limit(1);
 
-    return NextResponse.json({ message: 'Post deleted successfully' });
+    if (post.length) {
+      await db.delete(posts).where(eq(posts.id, parseInt(params.id, 10)));
+
+      // Revalidate the blog post page and the blog landing page
+      await res.revalidate(`/blog/${post[0].slug}`);
+      await res.revalidate('/blog');
+
+      return NextResponse.json({ message: 'Post deleted successfully' });
+    }
+
+    return NextResponse.json({ error: 'Post not found' }, { status: 404 });
   } catch (error) {
     return NextResponse.json(
       { error: (error as Error).message },

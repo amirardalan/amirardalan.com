@@ -8,7 +8,7 @@ import Link from 'next/link';
 import { eq } from 'drizzle-orm';
 import { formatDate } from '@/utils/format-date';
 
-export const revalidate = false;
+export const revalidate = 60; // Enable ISR with a 60-second cache duration
 
 export const generateStaticParams = async () => {
   const slugs = await db.select({ slug: posts.slug }).from(posts);

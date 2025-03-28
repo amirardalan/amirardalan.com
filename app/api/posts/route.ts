@@ -2,7 +2,11 @@ import { NextResponse } from 'next/server';
 import { db } from '@/db/connector';
 import { posts } from '@/db/schema';
 
-export async function POST(req: Request) {
+type RevalidateResponse = {
+  revalidate: (path: string) => Promise<void>;
+};
+
+export async function POST(req: Request, { res }: { res: RevalidateResponse }) {
   try {
     const body = await req.json();
     const { title, slug, excerpt, content, category, user_id, published } =
@@ -26,6 +30,11 @@ export async function POST(req: Request) {
       created_at: new Date(),
       updated_at: new Date(),
     });
+
+    // Only revalidate if the post is published
+    if (published) {
+      await res.revalidate('/blog');
+    }
 
     return NextResponse.json({ message: 'Post created successfully.' });
   } catch (error) {
