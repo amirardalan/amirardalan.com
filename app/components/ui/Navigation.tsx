@@ -1,18 +1,15 @@
 'use client';
 
-import { usePathname } from 'next/navigation';
+import { useActiveLink } from '@/hooks/useActiveLink';
 import Link from 'next/link';
 import clsx from 'clsx';
 
 export default function Navigation() {
-  const pathname = usePathname();
+  const { isActive } = useActiveLink();
 
   const getNavItemClass = (href: string, isLast?: boolean) => {
-    const currentPath = pathname ?? '/';
     return clsx({
-      'text-zinc-950 dark:text-zinc-50':
-        currentPath === href ||
-        (href !== '/' && currentPath.startsWith(`${href}/`)),
+      'text-zinc-950 dark:text-zinc-50': isActive(href),
       'mr-6': !isLast,
     });
   };
