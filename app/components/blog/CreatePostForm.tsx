@@ -5,7 +5,8 @@ import { useRouter } from 'next/navigation';
 import Button from '@/components/ui/Button';
 import categories from '@/data/categories.json';
 import { useToast } from '@/components/ui/ToastContext';
-import { BlogClient } from '@/lib/api/blog-client';
+import { db } from '@/db';
+import { posts } from '@/schema';
 
 interface CreatePostFormProps {
   userId: string;
@@ -16,8 +17,6 @@ interface Category {
   name: string;
 }
 
-// TODO: Replace hardcoded colors with theme colors from globals.css
-
 export default function CreatePostForm({ userId }: CreatePostFormProps) {
   const router = useRouter();
   const { showToast } = useToast();
@@ -26,7 +25,7 @@ export default function CreatePostForm({ userId }: CreatePostFormProps) {
   const [excerpt, setExcerpt] = useState('');
   const [content, setContent] = useState('');
   const [category, setCategory] = useState('');
-  const [published, setPublished] = useState(false); // Add published state
+  const [published, setPublished] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -36,41 +35,22 @@ export default function CreatePostForm({ userId }: CreatePostFormProps) {
     setError(null);
 
     try {
-      const response = await fetch('/api/blog/post', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          title,
-          slug,
-          excerpt,
-          content,
-          category,
-          userId,
-          published, // Include published status
-        }),
+      await db.insert(posts).values({
+        title,
+        slug,
+        excerpt,
+        content,
+        category,
+        authorId: parseInt(userId, 10),
+        published,
+        created_at: new Date(),
+        updated_at: new Date(),
       });
 
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || 'Failed to create post');
-      }
-
-      // Show success toast
       showToast('Post created successfully!', 'success');
 
-      // Add a small delay to allow the user to see the toast before redirecting
-      setTimeout(async () => {
-        // Trigger revalidation for the blog index
-        await BlogClient.revalidateBlogIndex();
-
-        // Redirect to the appropriate location based on published status
-        if (published) {
-          router.push(`/blog/${slug}`);
-        } else {
-          router.push('/admin/blog/drafts');
-        }
+      setTimeout(() => {
+        router.push(published ? `/blog/${slug}` : '/admin/blog/drafts');
       }, 1500);
     } catch (err) {
       setError((err as Error).message);
@@ -80,29 +60,21 @@ export default function CreatePostForm({ userId }: CreatePostFormProps) {
     }
   };
 
-  const handleExcerptChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setExcerpt(e.target.value);
-  };
-
-  // Generate slug from title
   const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newTitle = e.target.value;
     setTitle(newTitle);
-
-    // Only auto-generate slug if user hasn't manually edited it
     if (!slug || slug === generateSlug(title)) {
       setSlug(generateSlug(newTitle));
     }
   };
 
-  const generateSlug = (text: string) => {
-    return text
+  const generateSlug = (text: string) =>
+    text
       .toLowerCase()
-      .replace(/[^\w\s-]/g, '') // Remove special chars
-      .replace(/\s+/g, '-') // Replace spaces with hyphens
-      .replace(/-+/g, '-') // Remove consecutive hyphens
+      .replace(/[^\w\s-]/g, '')
+      .replace(/\s+/g, '-')
+      .replace(/-+/g, '-')
       .trim();
-  };
 
   return (
     <form
@@ -153,7 +125,7 @@ export default function CreatePostForm({ userId }: CreatePostFormProps) {
           type="text"
           id="Excerpt"
           value={excerpt}
-          onChange={handleExcerptChange}
+          onChange={(e) => setExcerpt(e.target.value)}
           required
           className="mt-1 block w-full rounded-md border border-zinc-300 bg-zinc-100 px-3 py-2 text-zinc-950 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 dark:border-zinc-500 dark:bg-zinc-800 dark:text-light"
         />
@@ -173,7 +145,6 @@ export default function CreatePostForm({ userId }: CreatePostFormProps) {
         />
       </div>
 
-      {/* Add published checkbox */}
       <div className="flex w-full flex-row justify-between">
         <div className="flex items-center">
           <div className="flex items-center">

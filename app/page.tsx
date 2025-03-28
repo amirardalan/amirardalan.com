@@ -1,4 +1,5 @@
 'use client';
+
 import HomeContent from '@/components/content/HomeContent';
 import Tooltip from '@/components/ui/Tooltip';
 import CanvasLoader from '@/components/content/CanvasLoader';

@@ -12,8 +12,8 @@ interface BlogPost {
   content: string;
   slug: string;
   excerpt: string;
-  publishedAt: string;
-  editedAt: string;
+  created_at: string;
+  updated_at: string;
 }
 
 export default function BlogPosts({ posts }: { posts: BlogPost[] }) {

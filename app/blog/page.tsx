@@ -4,7 +4,7 @@ import PageHeading from '@/components/ui/PageHeading';
 import Container from '@/components/content/Container';
 import { cache } from 'react';
 import BlogPosts from '@/components/blog/BlogPosts';
-import { eq } from 'drizzle-orm';
+import { eq, desc } from 'drizzle-orm';
 
 // Disable revalidation for static caching
 export const revalidate = false;
@@ -15,11 +15,16 @@ const getCachedPosts = cache(async () => {
     .select()
     .from(posts)
     .where(eq(posts.published, true))
-    .orderBy(posts.created_at, 'desc');
+    .orderBy(desc(posts.created_at));
 });
 
 export default async function Blog() {
-  const posts = await getCachedPosts();
+  const posts = (await getCachedPosts()).map((post) => ({
+    ...post,
+    editedAt: post.updated_at
+      ? post.updated_at.toISOString()
+      : post.created_at.toISOString(),
+  }));
 
   return (
     <Container>

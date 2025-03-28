@@ -5,7 +5,9 @@ import { useRouter } from 'next/navigation';
 import Button from '@/components/ui/Button';
 import categories from '@/data/categories.json';
 import { useToast } from '@/components/ui/ToastContext';
-import { BlogClient } from '@/lib/api/blog-client';
+import { db } from '@/db';
+import { posts } from '@/schema';
+import { eq } from 'drizzle-orm';
 
 interface EditPostFormProps {
   post: any;
@@ -30,54 +32,30 @@ export default function EditPostForm({ post, userId }: EditPostFormProps) {
   const [isDeleting, setIsDeleting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
-  const [lastSubmitTime, setLastSubmitTime] = useState<number>(0);
-  const SUBMISSION_COOLDOWN = 3000; // 3 seconds between submissions
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    // Check if we're within the cooldown period
-    const now = Date.now();
-    if (now - lastSubmitTime < SUBMISSION_COOLDOWN) {
-      showToast('Please wait before submitting again', 'warning');
-      return;
-    }
-
     setIsSubmitting(true);
     setError(null);
-    setLastSubmitTime(now);
 
     try {
-      const { post: updatedPost, error: updateError } =
-        await BlogClient.updatePost({
-          id: post.id,
+      await db
+        .update(posts)
+        .set({
           title,
           slug,
           excerpt,
           content,
           category,
-          userId,
           published,
-        });
+          updated_at: new Date(),
+        })
+        .where(eq(posts.id, post.id));
 
-      if (updateError) {
-        throw new Error(updateError);
-      }
-
-      // Show success toast
       showToast('Post updated successfully!', 'success');
 
-      // Add a small delay to allow the user to see the toast before redirecting
-      setTimeout(async () => {
-        // Trigger revalidation of blog pages
-        await BlogClient.revalidatePost(slug);
-
-        // Redirect to the appropriate location based on published status
-        if (published) {
-          router.push(`/blog/${slug}`);
-        } else {
-          router.push('/admin/blog/drafts');
-        }
+      setTimeout(() => {
+        router.push(published ? `/blog/${slug}` : '/admin/blog/drafts');
       }, 1500);
     } catch (err) {
       setError((err as Error).message);
@@ -104,25 +82,10 @@ export default function EditPostForm({ post, userId }: EditPostFormProps) {
     setError(null);
 
     try {
-      const { success, error: deleteError } = await BlogClient.deletePost(
-        post.id,
-        userId
-      );
+      await db.delete(posts).where(eq(posts.id, post.id));
 
-      if (!success) {
-        throw new Error(deleteError || 'Failed to delete post');
-      }
-
-      // Show success toast
       showToast('Post deleted successfully!', 'success');
 
-      // Trigger revalidation for the blog index
-      await BlogClient.revalidateBlogIndex();
-
-      // Close the modal
-      setShowDeleteModal(false);
-
-      // Add a small delay to allow the user to see the toast before redirecting
       setTimeout(() => {
         router.push('/admin/blog/drafts');
       }, 1500);
