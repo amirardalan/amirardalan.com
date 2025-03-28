@@ -7,13 +7,21 @@ import Container from '@/components/content/Container';
 import Link from 'next/link';
 import { eq } from 'drizzle-orm';
 import { formatDate } from '@/utils/format-date';
+import { notFound } from 'next/navigation';
 
+// Allow fallback to true to enable on-demand ISR
 export const dynamicParams = true;
 
-export const generateStaticParams = async () => {
-  const slugs = await db.select({ slug: posts.slug }).from(posts);
-  return slugs.map((post) => ({ slug: post.slug }));
-};
+export async function generateStaticParams() {
+  const publishedPosts = await db
+    .select({ slug: posts.slug })
+    .from(posts)
+    .where(eq(posts.published, true));
+
+  return publishedPosts.map((post) => ({
+    slug: post.slug,
+  }));
+}
 
 async function compilePostContent(content: string) {
   const { content: compiledContent } = await compileMDX({
@@ -58,7 +66,7 @@ export default async function BlogPost({
     .limit(1);
 
   if (!post.length) {
-    return <p>Post not found</p>;
+    notFound();
   }
 
   const content = await compilePostContent(post[0].content);
