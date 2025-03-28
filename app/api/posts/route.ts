@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server';
-import { db } from '@/db/connector';
-import { posts } from '@/db/schema';
+import { createPost } from '@/services/posts';
 import { revalidatePath, revalidateTag } from 'next/cache';
 
 export async function POST(req: Request) {
@@ -16,23 +15,20 @@ export async function POST(req: Request) {
       );
     }
 
-    // Insert new post into database
-    const result = await db
-      .insert(posts)
-      .values({
-        title,
-        slug,
-        excerpt,
-        content,
-        category,
-        user_id,
-        published,
-        created_at: new Date(),
-        updated_at: new Date(),
-      })
-      .returning({ id: posts.id });
+    // Use the service to create a post
+    const postId = await createPost({
+      title,
+      slug,
+      excerpt,
+      content,
+      category,
+      user_id,
+      published,
+      created_at: new Date(),
+      updated_at: new Date(),
+    });
 
-    console.log('Post created:', { id: result[0]?.id, slug });
+    console.log('Post created:', { id: postId, slug });
 
     // Revalidation strategy
     // 1. Always revalidate the blog listing page
@@ -63,7 +59,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json({
       message: 'Post created successfully.',
-      id: result[0]?.id,
+      id: postId,
     });
   } catch (error) {
     console.error('Post creation error:', error);

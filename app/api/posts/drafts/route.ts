@@ -1,23 +1,12 @@
+// This file can be removed since we're now using the posts service directly
+// in the drafts page component. The code below is just for reference:
+
 import { NextResponse } from 'next/server';
-import { db } from '@/db/connector';
-import { posts, users } from '@/db/schema';
-import { eq, desc } from 'drizzle-orm';
+import { getDraftPosts } from '@/services/posts';
 
 export async function GET() {
   try {
-    const drafts = await db
-      .select({
-        id: posts.id,
-        title: posts.title,
-        slug: posts.slug,
-        updated_at: posts.updated_at,
-        user_name: users.name,
-      })
-      .from(posts)
-      .leftJoin(users, eq(posts.user_id, users.id))
-      .where(eq(posts.published, false))
-      .orderBy(desc(posts.updated_at));
-
+    const drafts = await getDraftPosts();
     return NextResponse.json(drafts);
   } catch (error) {
     return NextResponse.json(

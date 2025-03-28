@@ -31,6 +31,7 @@ Then, set up your [GitHub oAuth App](https://authjs.dev/getting-started/provider
 
 ```
 // .env.local
+NEXT_PUBLIC_URL=http://localhost:3000
 NEXT_PUBLIC_TIMEZONE=America/Los_Angeles
 
 AUTH_GITHUB_ID=<GitHub Client ID>

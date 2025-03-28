@@ -3,9 +3,7 @@ import { redirect } from 'next/navigation';
 import AdminPageHeading from '@/components/admin/AdminPageHeading';
 import SearchInput from '@/components/admin/AdminSearch';
 import Link from 'next/link';
-import { db } from '@/db/connector';
-import { posts } from '@/db/schema';
-import { eq, desc } from 'drizzle-orm';
+import { getPublishedPosts } from '@/services/posts';
 
 export default async function PublishedPosts({
   searchParams,
@@ -18,13 +16,10 @@ export default async function PublishedPosts({
     redirect('/api/auth/signin?callbackUrl=/admin/blog/published');
   }
 
-  const params = await searchParams;
-  const query = params?.query || '';
-  const allPosts = await db
-    .select()
-    .from(posts)
-    .where(eq(posts.published, true))
-    .orderBy(desc(posts.created_at));
+  const { query = '' } = await searchParams;
+
+  // Use the service to get published posts
+  const allPosts = await getPublishedPosts();
 
   const filteredPosts = allPosts.filter((post) =>
     post.title.toLowerCase().includes(query.toLowerCase())

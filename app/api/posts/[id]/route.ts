@@ -1,7 +1,5 @@
 import { NextResponse } from 'next/server';
-import { db } from '@/db/connector';
-import { posts } from '@/db/schema';
-import { eq } from 'drizzle-orm';
+import { updatePost, deletePost } from '@/services/posts';
 import { NextRequest } from 'next/server';
 import { revalidatePath, revalidateTag } from 'next/cache';
 
@@ -21,29 +19,15 @@ export async function PUT(
       );
     }
 
-    // Get the original post to check if publish status changed
-    const originalPost = await db
-      .select({ published: posts.published, slug: posts.slug })
-      .from(posts)
-      .where(eq(posts.id, parseInt(id, 10)))
-      .limit(1);
-
-    const wasPublished = originalPost[0]?.published;
-    const oldSlug = originalPost[0]?.slug;
-
-    // Update post in database
-    await db
-      .update(posts)
-      .set({
-        title,
-        slug,
-        excerpt,
-        content,
-        category,
-        published,
-        updated_at: new Date(),
-      })
-      .where(eq(posts.id, parseInt(id, 10)));
+    // Use the service to update the post
+    const { oldSlug, newSlug } = await updatePost(parseInt(id, 10), {
+      title,
+      slug,
+      excerpt,
+      content,
+      category,
+      published,
+    });
 
     console.log('Post updated:', { id, slug, published });
 
@@ -55,7 +39,7 @@ export async function PUT(
     // 2. Revalidate the specific post page (both old and new slug if changed)
     await revalidatePath(`/blog/${slug}`);
 
-    if (oldSlug && oldSlug !== slug) {
+    if (oldSlug && oldSlug !== newSlug) {
       await revalidatePath(`/blog/${oldSlug}`);
     }
 
@@ -104,22 +88,8 @@ export async function DELETE(
       );
     }
 
-    // Get the post slug before deletion for revalidation
-    const post = await db
-      .select({ slug: posts.slug, published: posts.published })
-      .from(posts)
-      .where(eq(posts.id, parseInt(id, 10)))
-      .limit(1);
-
-    if (!post.length) {
-      return NextResponse.json({ error: 'Post not found' }, { status: 404 });
-    }
-
-    const slug = post[0].slug;
-    const wasPublished = post[0].published;
-
-    // Delete the post
-    await db.delete(posts).where(eq(posts.id, parseInt(id, 10)));
+    // Use the service to delete the post
+    const { slug, wasPublished } = await deletePost(parseInt(id, 10));
 
     console.log('Post deleted:', { id, slug, wasPublished });
 
