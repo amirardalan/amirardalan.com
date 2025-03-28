@@ -31,9 +31,8 @@ export default async function Drafts({
 
   const params = await searchParams;
   const query = params?.query || '';
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/posts/drafts`
-  );
+  const { NEXT_PUBLIC_URL } = process.env;
+  const response = await fetch(`${NEXT_PUBLIC_URL}/api/posts/drafts`);
   const drafts: Draft[] = await response.json();
 
   const filteredDrafts = drafts.filter((draft) =>
