@@ -9,7 +9,7 @@ export default function Uses() {
   const computers = [
     {
       title: 'Laptop',
-      specs: [
+      items: [
         { value: '14" MacBook Pro' },
         { value: 'Silver' },
         { value: 'M3 Pro' },
@@ -22,8 +22,8 @@ export default function Uses() {
     },
     {
       title: 'Desktop',
-      specs: [
-        { label: 'Specs', value: 'Intel i7-14700KF 5.6GHz' },
+      items: [
+        { value: 'Intel i7-14700KF 5.6GHz' },
         { value: 'Deepcool LT720 AIO' },
         { value: 'MSI PRO Z790-A MAX Wifi' },
         { value: 'Gigabyte RTX 4090 AERO OC 24GB' },
@@ -39,7 +39,7 @@ export default function Uses() {
   const peripherals = [
     {
       title: 'PC',
-      specs: [
+      items: [
         { value: 'Alienware AW3423DW 34.2" 175Hz' },
         { value: 'Logitech G 502X Lightspeed' },
         { value: 'Keychron K2 HE' },
@@ -47,7 +47,7 @@ export default function Uses() {
     },
     {
       title: 'Headphones',
-      specs: [
+      items: [
         { value: 'Beyerdynamic DT770Pro' },
         { value: 'Sennheiser HD25-1 II' },
         { value: 'Apple AirPods Pro (Gen 2)' },
@@ -55,45 +55,45 @@ export default function Uses() {
     },
     {
       title: 'Interface & Monitors',
-      specs: [{ value: 'MOTU Audio Express' }, { value: 'KRK VXT8' }],
+      items: [{ value: 'MOTU Audio Express' }, { value: 'KRK VXT8' }],
     },
     {
       title: 'MIDI Controllers',
-      specs: [{ value: 'Korg nanoKONTROL 1' }, { value: 'Korg nanoPAD 1' }],
+      items: [{ value: 'Korg nanoKONTROL 1' }, { value: 'Korg nanoPAD 1' }],
     },
   ];
 
   const software = [
     {
       title: 'Writing',
-      specs: [{ value: 'iaWriter' }],
+      items: [{ value: 'iaWriter' }],
     },
     {
       title: 'Notes',
-      specs: [{ value: 'Obsidian' }],
+      items: [{ value: 'Obsidian' }],
     },
     {
       title: 'Code',
-      specs: [{ value: 'VS Code' }, { value: 'Zed' }],
+      items: [{ value: 'VS Code' }, { value: 'Zed' }],
     },
     {
       title: 'Design',
-      specs: [{ value: 'Figma' }, { value: 'Aseprite' }],
+      items: [{ value: 'Figma' }, { value: 'Aseprite' }],
     },
     {
       title: 'Music',
-      specs: [{ value: 'Ableton Live 12' }],
+      items: [{ value: 'Ableton Live 12' }],
     },
     {
       title: 'Listening',
-      specs: [{ value: 'Apple Music' }, { value: 'Apple Podcasts' }],
+      items: [{ value: 'Apple Music' }, { value: 'Apple Podcasts' }],
     },
   ];
 
   const stack = [
     {
       title: 'Web',
-      specs: [
+      items: [
         { value: 'TypeScript' },
         { value: 'Next.js' },
         { value: 'Tailwind' },
@@ -105,7 +105,7 @@ export default function Uses() {
     },
     {
       title: 'Shell',
-      specs: [
+      items: [
         { value: 'Ghostty' },
         { value: 'Powerlevel10k' },
         { label: 'CLI', value: 'GitHub CLI' },
@@ -129,18 +129,18 @@ export default function Uses() {
         </div>
 
         <section className="mb-12">
-          <h2 className="mb-8 border-b-2 border-primary pb-8 text-xl uppercase text-dark dark:text-light">
+          <h2 className="mb-8 border-b-2 border-primary pb-4 text-xl uppercase text-dark dark:text-light">
             Computers
           </h2>
           <UsesItemGrid columns={2}>
             {computers.map((item, index) => (
-              <UsesItemCard key={index} title={item.title} specs={item.specs} />
+              <UsesItemCard key={index} title={item.title} items={item.items} />
             ))}
           </UsesItemGrid>
         </section>
 
         <section className="mb-12">
-          <h2 className="mb-8 border-b-2 border-primary pb-8 text-xl uppercase text-dark dark:text-light">
+          <h2 className="mb-8 border-b-2 border-primary pb-4 text-xl uppercase text-dark dark:text-light">
             Peripherals
           </h2>
           <UsesItemGrid columns={2}>
@@ -148,14 +148,14 @@ export default function Uses() {
               <UsesItemCard
                 key={`periph-${index}`}
                 title={item.title}
-                specs={item.specs}
+                items={item.items}
               />
             ))}
           </UsesItemGrid>
         </section>
 
         <section className="mb-12">
-          <h2 className="mb-8 border-b-2 border-primary pb-8 text-xl uppercase text-dark dark:text-light">
+          <h2 className="mb-8 border-b-2 border-primary pb-4 text-xl uppercase text-dark dark:text-light">
             Software
           </h2>
           <UsesItemGrid columns={2}>
@@ -163,14 +163,14 @@ export default function Uses() {
               <UsesItemCard
                 key={`software-${index}`}
                 title={item.title}
-                specs={item.specs}
+                items={item.items}
               />
             ))}
           </UsesItemGrid>
         </section>
 
         <section className="mb-12">
-          <h2 className="mb-8 border-b-2 border-primary pb-8 text-xl uppercase text-dark dark:text-light">
+          <h2 className="mb-8 border-b-2 border-primary pb-4 text-xl uppercase text-dark dark:text-light">
             Stack
           </h2>
           <UsesItemGrid columns={2}>
@@ -178,7 +178,7 @@ export default function Uses() {
               <UsesItemCard
                 key={`stack-${index}`}
                 title={item.title}
-                specs={item.specs}
+                items={item.items}
               />
             ))}
           </UsesItemGrid>

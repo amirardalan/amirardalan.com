@@ -1,4 +1,4 @@
-type Spec = {
+type Item = {
   label?: string;
   value: string;
 };
@@ -6,33 +6,33 @@ type Spec = {
 export type UsesItemCardProps = {
   title?: string;
   subtitle?: string;
-  specs?: Spec[];
+  items?: Item[];
   className?: string;
 };
 
 const UsesItemCard = ({
   title,
   subtitle,
-  specs,
+  items,
   className = '',
 }: UsesItemCardProps) => {
   return (
     <div className={`mb-6 ${className}`}>
       {title && <h3 className="mb-2 text-dark dark:text-light">{title}</h3>}
       {subtitle && <p className="text-dark dark:text-light">{subtitle}</p>}
-      {specs && specs.length > 0 && (
+      {items && items.length > 0 && (
         <>
-          {specs[0].label && (
+          {items[0].label && (
             <span className="flex pt-1 text-zinc-500 dark:text-zinc-400">
-              {specs[0].label}:
+              {items[0].label}:
             </span>
           )}
-          {specs.map((spec, index) => (
+          {items.map((item, index) => (
             <p
               key={index}
               className="flex pt-1 text-zinc-500 dark:text-zinc-400"
             >
-              {spec.value}
+              {item.value}
             </p>
           ))}
         </>
