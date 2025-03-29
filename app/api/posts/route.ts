@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
-import { db } from '@/db/connector';
-import { posts } from '@/db/schema';
+import { createPost } from '@/services/posts';
+import { revalidatePath, revalidateTag } from 'next/cache';
 
 export async function POST(req: Request) {
   try {
@@ -15,7 +15,8 @@ export async function POST(req: Request) {
       );
     }
 
-    await db.insert(posts).values({
+    // Use the service to create a post
+    const postId = await createPost({
       title,
       slug,
       excerpt,
@@ -27,8 +28,41 @@ export async function POST(req: Request) {
       updated_at: new Date(),
     });
 
-    return NextResponse.json({ message: 'Post created successfully.' });
+    console.log('Post created:', { id: postId, slug });
+
+    // Revalidation strategy
+    // 1. Always revalidate the blog listing page
+    await revalidatePath('/blog');
+    await revalidateTag('blog-posts');
+
+    // 2. If published, revalidate the specific post page
+    if (published) {
+      await revalidatePath(`/blog/${slug}`);
+    }
+
+    // 3. Call revalidate API for additional paths if needed
+    try {
+      await fetch(`${process.env.NEXT_PUBLIC_URL}/api/revalidate`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          token: process.env.REVALIDATION_TOKEN,
+          path: '/blog',
+          slug: published ? slug : null,
+        }),
+      });
+    } catch (revalidateErr) {
+      console.error('Revalidation API error:', revalidateErr);
+    }
+
+    return NextResponse.json({
+      message: 'Post created successfully.',
+      id: postId,
+    });
   } catch (error) {
+    console.error('Post creation error:', error);
     return NextResponse.json(
       { error: (error as Error).message },
       { status: 500 }

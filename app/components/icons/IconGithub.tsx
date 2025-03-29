@@ -1,7 +1,7 @@
 'use client';
 import { useTheme } from '@/store/theme';
 
-export default function gitHubIcon() {
+export default function IconGithub() {
   const { effectiveTheme } = useTheme();
   const fill =
     effectiveTheme === 'dark' ? 'var(--color-light)' : 'var(--color-dark)';

@@ -3,6 +3,7 @@ import { redirect } from 'next/navigation';
 import AdminPageHeading from '@/components/admin/AdminPageHeading';
 import SearchInput from '@/components/admin/AdminSearch';
 import Link from 'next/link';
+import { getDraftPosts } from '@/services/posts';
 
 export function generateMetadata() {
   return {
@@ -14,7 +15,7 @@ export function generateMetadata() {
 export default async function Drafts({
   searchParams,
 }: {
-  searchParams: { query?: string };
+  searchParams: Promise<{ query?: string }>;
 }) {
   const session = await auth();
 
@@ -22,13 +23,12 @@ export default async function Drafts({
     redirect('/api/auth/signin?callbackUrl=/admin/blog/drafts');
   }
 
-  const query = (await searchParams)?.query || '';
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/posts/drafts`
-  );
-  const drafts = await response.json();
+  const { query = '' } = await searchParams;
 
-  const filteredDrafts = drafts.filter((draft: any) =>
+  // Use the service function instead of direct DB query
+  const drafts = await getDraftPosts();
+
+  const filteredDrafts = drafts.filter((draft) =>
     draft.title.toLowerCase().includes(query.toLowerCase())
   );
 
@@ -46,7 +46,7 @@ export default async function Drafts({
       <div className="text-dark dark:text-light">
         {filteredDrafts.length > 0 ? (
           <ul>
-            {filteredDrafts.map((draft: any) => (
+            {filteredDrafts.map((draft) => (
               <li
                 key={draft.id}
                 className="my-4 flex items-center justify-between"
@@ -59,7 +59,6 @@ export default async function Drafts({
                     {draft.title}
                   </Link>
                   <span className="ml-2 text-sm text-zinc-500">
-                    {/* TODO: Make this a toggle in Admin Preferences */}
                     [Draft by {draft.user_name}]
                   </span>
                 </div>

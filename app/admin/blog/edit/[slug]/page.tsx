@@ -1,9 +1,7 @@
 import { auth } from '@/auth';
-import { db } from '@/db/connector';
-import { posts, users } from '@/db/schema';
-import { eq } from 'drizzle-orm';
 import { redirect } from 'next/navigation';
 import { getUserIdByEmail } from '@/auth';
+import { getPostBySlug } from '@/services/posts';
 
 import AdminPageHeading from '@/components/admin/AdminPageHeading';
 import EditPostForm from '@/components/blog/EditPostForm';
@@ -28,26 +26,10 @@ export default async function EditBlogPost({
     throw new Error('User ID not found for the authenticated user.');
   }
 
-  const post = await db
-    .select({
-      id: posts.id,
-      title: posts.title,
-      content: posts.content,
-      excerpt: posts.excerpt,
-      slug: posts.slug,
-      category: posts.category,
-      published: posts.published,
-      created_at: posts.created_at,
-      updated_at: posts.updated_at,
-      user_id: posts.user_id,
-      author_name: users.name,
-    })
-    .from(posts)
-    .leftJoin(users, eq(posts.user_id, users.id))
-    .where(eq(posts.slug, slug))
-    .limit(1);
+  // Use the service to get the post
+  const post = await getPostBySlug(slug);
 
-  if (!post.length) {
+  if (!post) {
     return (
       <div className="mt-8 text-center text-dark dark:text-light">
         <h2 className="mb-6 text-xxl">Post Not Found</h2>
@@ -62,7 +44,7 @@ export default async function EditBlogPost({
   return (
     <div className="mt-8">
       <AdminPageHeading title={'Edit Post'} />
-      <EditPostForm post={post[0]} />
+      <EditPostForm post={post} />
     </div>
   );
 }

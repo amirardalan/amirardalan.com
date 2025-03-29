@@ -15,11 +15,12 @@ import Footer from '@/components/ui/Footer';
 import { Jura, Prata, JetBrains_Mono } from 'next/font/google';
 
 const sans = Jura({
-  weight: ['400', '500', '600'],
   subsets: ['latin'],
+  weight: ['400', '500', '600'],
   display: 'swap',
 });
 const serif = Prata({
+  subsets: ['latin'],
   weight: ['400'],
   style: ['normal'],
   display: 'swap',

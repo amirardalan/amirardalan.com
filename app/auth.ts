@@ -1,8 +1,6 @@
 import NextAuth from 'next-auth';
 import GitHub from 'next-auth/providers/github';
-import { db } from '@/db/connector';
-import { users } from '@/db/schema';
-import { eq } from 'drizzle-orm';
+import { getUserIdByEmail, userExists, createUser } from '@/services/users';
 
 /**
  * Check if an email is authorized based on environment variables
@@ -24,16 +22,7 @@ export function isAuthorizedEmail(email: string | null | undefined): boolean {
   return false;
 }
 
-// Fetch the user's ID from the database using their email
-export async function getUserIdByEmail(email: string): Promise<number | null> {
-  const user = await db
-    .select({ id: users.id })
-    .from(users)
-    .where(eq(users.email, email))
-    .limit(1);
-
-  return user.length ? user[0].id : null;
-}
+export { getUserIdByEmail };
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [GitHub],
@@ -45,20 +34,11 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       }
 
       // Check if the user already exists in the database
-      const existingUser = await db
-        .select({ id: users.id })
-        .from(users)
-        .where(eq(users.email, user.email!))
-        .limit(1);
+      const exists = await userExists(user.email!);
 
       // If the user does not exist, insert them into the database
-      if (!existingUser.length) {
-        await db.insert(users).values({
-          name: user.name || 'Unknown User',
-          email: user.email!,
-          created_at: new Date(),
-          updated_at: new Date(),
-        });
+      if (!exists) {
+        await createUser(user.name || 'Unknown User', user.email!);
       }
 
       return true;

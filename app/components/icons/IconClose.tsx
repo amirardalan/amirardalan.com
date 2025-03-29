@@ -1,4 +1,4 @@
-export default function iconClose() {
+export default function IconClose() {
   return (
     <svg
       clipRule="evenodd"

@@ -2,7 +2,7 @@ import { auth } from '@/auth';
 import { redirect } from 'next/navigation';
 import AdminPageHeading from '@/components/admin/AdminPageHeading';
 import CreatePostForm from '@/components/blog/NewPostForm';
-import { getUserIdByEmail } from '@/auth';
+import { getUserIdByEmail } from '@/services/users';
 
 export default async function NewBlogPost() {
   const session = await auth();
@@ -11,6 +11,7 @@ export default async function NewBlogPost() {
     redirect('/api/auth/signin?callbackUrl=/admin/blog/new');
   }
 
+  // Use service to get user ID
   const userId = await getUserIdByEmail(session.user.email!);
 
   if (!userId) {
