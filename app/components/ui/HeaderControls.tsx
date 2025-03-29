@@ -2,7 +2,7 @@
 
 import IconGithub from '@/components/icons/IconGithub';
 import Tooltip from '@/components/ui/Tooltip';
-import ThemeMenu from '@/components/theme/ThemeMenu';
+import ThemeMenu from '@/components/ui/ThemeMenu';
 
 export default function HeaderExternalLinks() {
   const handleClick = () => {
