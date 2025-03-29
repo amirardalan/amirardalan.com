@@ -161,7 +161,7 @@ export default function Uses() {
           <UsesItemGrid columns={2}>
             {software.map((item, index) => (
               <UsesItemCard
-                key={`soft-${index}`}
+                key={`software-${index}`}
                 title={item.title}
                 specs={item.specs}
               />
@@ -176,7 +176,7 @@ export default function Uses() {
           <UsesItemGrid columns={2}>
             {stack.map((item, index) => (
               <UsesItemCard
-                key={`soft-${index}`}
+                key={`stack-${index}`}
                 title={item.title}
                 specs={item.specs}
               />
