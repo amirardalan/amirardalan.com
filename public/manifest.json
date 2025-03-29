@@ -1,0 +1,53 @@
+{
+  "short_name": "Amir Ardalan",
+  "name": "Amir Ardalan – Frontend Engineer",
+  "icons": [
+    {
+      "src": "/icons/pwa-icon.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any",
+      "platform": "macos"
+    },
+    {
+      "src": "/icons/touch-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "maskable",
+      "platform": "web"
+    },
+    {
+      "src": "/icons/touch-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "maskable",
+      "platform": "windows"
+    },
+    {
+      "src": "/icons/touch-192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "maskable"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "oklch(0.141 0.005 285.823)",
+  "display": "standalone",
+  "scope": "/",
+  "shortcuts": [
+    {
+      "name": "Amir Ardalan",
+      "short_name": "Amir",
+      "description": "Frontend Engineer & UI Designer with 10+ years of experience creating innovative digital solutions.",
+      "url": "/"
+    }
+  ],
+  "description": "Amir Ardalan Thumbnail",
+  "screenshots": [
+    {
+      "src": "/thumbnail.png",
+      "type": "image/png",
+      "sizes": "1200x627"
+    }
+  ]
+}
