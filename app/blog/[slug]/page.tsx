@@ -1,4 +1,8 @@
-import { getAllPublishedSlugs, getPostBySlug } from '@/services/posts';
+import {
+  getAllPublishedSlugs,
+  getPostBySlug,
+  getAdjacentPosts,
+} from '@/services/posts';
 import { compileMDX } from 'next-mdx-remote/rsc';
 import { components } from '@/components/blog/MDXComponents';
 import { auth } from '@/auth';
@@ -71,6 +75,7 @@ export default async function BlogPost({
     notFound();
   }
 
+  const adjacentPosts = await getAdjacentPosts(slug);
   const content = await compilePostContent(post.content);
 
   return (
@@ -97,6 +102,46 @@ export default async function BlogPost({
         <h2>{post.title}</h2>
         <p>{post.excerpt ?? ''}</p>
         <div className="mdx-content text-dark dark:text-light">{content}</div>
+        {/* Blog Navigation */}
+        {(adjacentPosts.previous || adjacentPosts.next) && (
+          <nav className="mt-10 border-t border-gray-200 pt-6 dark:border-gray-700">
+            <div className="flex justify-between">
+              <div>
+                {adjacentPosts.previous && (
+                  <Link
+                    href={`/blog/${adjacentPosts.previous.slug}`}
+                    className="group flex items-center space-x-2 hover:text-primary"
+                  >
+                    <span aria-hidden="true">&larr;</span>
+                    <span
+                      className="max-w-[15rem] truncate"
+                      title={adjacentPosts.previous.title}
+                    >
+                      {adjacentPosts.previous.title}
+                    </span>
+                  </Link>
+                )}
+              </div>
+
+              <div>
+                {adjacentPosts.next && (
+                  <Link
+                    href={`/blog/${adjacentPosts.next.slug}`}
+                    className="group flex items-center space-x-2 text-right hover:text-primary"
+                  >
+                    <span
+                      className="max-w-[15rem] truncate"
+                      title={adjacentPosts.next.title}
+                    >
+                      {adjacentPosts.next.title}
+                    </span>
+                    <span aria-hidden="true">&rarr;</span>
+                  </Link>
+                )}
+              </div>
+            </div>
+          </nav>
+        )}
       </article>
     </Container>
   );
