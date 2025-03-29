@@ -1,8 +1,8 @@
-import { getPublishedPosts } from '@/services/posts';
+import { getPublishedPosts } from '@/src/db/queries/posts';
 import PageHeading from '@/components/ui/PageHeading';
 import Container from '@/components/content/Container';
 import BlogPosts from '@/components/blog/BlogPosts';
-import { BlogPost } from '@/types/blog';
+import { BlogPost } from '@/src/types/blog';
 
 // Setting revalidate to false for on-demand revalidation only
 export const revalidate = false;

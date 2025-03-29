@@ -1,8 +1,8 @@
-import { auth } from '@/auth';
+import { auth } from '@/src/auth/auth';
 import { redirect } from 'next/navigation';
 import AdminPageHeading from '@/components/admin/AdminPageHeading';
 import CreatePostForm from '@/components/blog/NewPostForm';
-import { getUserIdByEmail } from '@/services/users';
+import { getUserIdByEmail } from '@/src/db/queries/users';
 
 export default async function NewBlogPost() {
   const session = await auth();

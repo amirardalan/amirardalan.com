@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { createPost } from '@/services/posts';
+import { createPost } from '@/src/db/queries/posts';
 import { revalidatePath, revalidateTag } from 'next/cache';
 
 export async function POST(req: Request) {

@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { updatePost, deletePost } from '@/services/posts';
+import { updatePost, deletePost } from '@/src/db/queries/posts';
 import { NextRequest } from 'next/server';
 import { revalidatePath, revalidateTag } from 'next/cache';
 

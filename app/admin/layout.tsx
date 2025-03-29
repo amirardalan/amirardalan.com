@@ -1,4 +1,4 @@
-import { auth } from '@/auth';
+import { auth } from '@/src/auth/auth';
 import SignedOut from '@/components/auth/SignedOut';
 import Container from '@/components/content/Container';
 import AdminMenu from '@/components/admin/AdminMenu';

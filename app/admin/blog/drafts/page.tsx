@@ -1,9 +1,9 @@
-import { auth } from '@/auth';
+import { auth } from '@/src/auth/auth';
 import { redirect } from 'next/navigation';
 import AdminPageHeading from '@/components/admin/AdminPageHeading';
 import SearchInput from '@/components/admin/AdminSearch';
 import Link from 'next/link';
-import { getDraftPosts } from '@/services/posts';
+import { getDraftPosts } from '@/src/db/queries/posts';
 
 export function generateMetadata() {
   return {

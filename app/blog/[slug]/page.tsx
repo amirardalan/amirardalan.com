@@ -2,13 +2,13 @@ import {
   getAllPublishedSlugs,
   getPostBySlug,
   getAdjacentPosts,
-} from '@/services/posts';
+} from '@/src/db/queries/posts';
 import { compileMDX } from 'next-mdx-remote/rsc';
 import { components } from '@/components/blog/MDXComponents';
-import { auth } from '@/auth';
+import { auth } from '@/src/auth/auth';
 import Container from '@/components/content/Container';
 import Link from 'next/link';
-import { formatDate } from '@/utils/format-date';
+import { formatDate } from '@/src/utils/format-date';
 import { notFound } from 'next/navigation';
 
 // Set revalidate to false for on-demand revalidation only
