@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, ReactNode } from 'react';
+import { useState, useEffect, useRef, ReactNode, useCallback } from 'react';
 
 type TooltipProps = {
   pos?: 't' | 'r' | 'b' | 'l' | 'cursor';
@@ -6,11 +6,26 @@ type TooltipProps = {
   children: ReactNode;
 };
 
+// Define position states for the cursor tooltip
+type TooltipPosition = 'bottom' | 'top' | 'left' | 'right' | 'default';
+
 export default function Tooltip({ pos, text, children }: TooltipProps) {
   const [isHovered, setIsHovered] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [tooltipPos, setTooltipPos] = useState<TooltipPosition>('default');
   const tooltipRef = useRef<HTMLDivElement>(null);
   const ref = useRef<HTMLDivElement>(null);
+  const throttleTimerRef = useRef<number | null>(null);
+
+  // Throttle mouse move updates
+  const throttledSetMousePosition = useCallback((x: number, y: number) => {
+    if (throttleTimerRef.current !== null) return;
+
+    throttleTimerRef.current = window.setTimeout(() => {
+      setMousePosition({ x, y });
+      throttleTimerRef.current = null;
+    }, 10); // Small throttle for smooth movement while preventing excessive updates
+  }, []);
 
   useEffect(() => {
     if (pos === 'cursor') {
@@ -18,60 +33,98 @@ export default function Tooltip({ pos, text, children }: TooltipProps) {
       if (currentRef) {
         const handleMouseMove = (e: MouseEvent) => {
           const rect = currentRef.getBoundingClientRect();
-          setMousePosition({
-            x: e.clientX - rect.left,
-            y: e.clientY - rect.top,
-          });
+          throttledSetMousePosition(
+            e.clientX - rect.left,
+            e.clientY - rect.top
+          );
         };
 
         currentRef.addEventListener('mousemove', handleMouseMove);
 
         return () => {
           currentRef.removeEventListener('mousemove', handleMouseMove);
+          if (throttleTimerRef.current !== null) {
+            clearTimeout(throttleTimerRef.current);
+          }
         };
       }
     }
-  }, [pos, ref]);
+  }, [pos, throttledSetMousePosition]);
 
-  const getTooltipPosition = () => {
-    if (pos !== 'cursor' || !tooltipRef.current) return {};
+  // Calculate tooltip position when mouse position changes
+  useEffect(() => {
+    if (pos !== 'cursor' || !tooltipRef.current || !ref.current || !isHovered)
+      return;
 
     const tooltipWidth = tooltipRef.current.offsetWidth;
     const tooltipHeight = tooltipRef.current.offsetHeight;
     const viewportWidth = window.innerWidth;
     const viewportHeight = window.innerHeight;
 
-    // Get absolute position of cursor in viewport
-    const containerRect = ref.current?.getBoundingClientRect() || {
-      left: 0,
-      top: 0,
-    };
+    const containerRect = ref.current.getBoundingClientRect();
     const cursorX = containerRect.left + mousePosition.x;
     const cursorY = containerRect.top + mousePosition.y;
 
-    // Default position (below cursor)
-    let top = mousePosition.y + 20;
-    let left = mousePosition.x - tooltipWidth / 2;
+    let newPos: TooltipPosition = 'default';
 
     // Check right edge
     if (cursorX + tooltipWidth / 2 > viewportWidth - 20) {
-      // Move tooltip to the left of cursor
-      left = mousePosition.x - tooltipWidth - 10;
+      newPos = 'left';
     }
-
     // Check left edge
-    if (cursorX - tooltipWidth / 2 < 20) {
-      // Move tooltip to the right of cursor
-      left = mousePosition.x + 10;
+    else if (cursorX - tooltipWidth / 2 < 20) {
+      newPos = 'right';
     }
-
     // Check bottom edge
-    if (cursorY + tooltipHeight + 20 > viewportHeight - 20) {
-      // Move tooltip to above cursor
-      top = mousePosition.y - tooltipHeight - 10;
+    else if (cursorY + tooltipHeight + 20 > viewportHeight - 20) {
+      newPos = 'top';
+    }
+    // Default position (below cursor)
+    else {
+      newPos = 'bottom';
     }
 
-    return { top, left };
+    // Only update position state if it changed
+    if (newPos !== tooltipPos) {
+      setTooltipPos(newPos);
+    }
+  }, [mousePosition, pos, isHovered, tooltipPos]);
+
+  const getTooltipPosition = () => {
+    if (pos !== 'cursor' || !tooltipRef.current) return {};
+
+    const tooltipWidth = tooltipRef.current.offsetWidth;
+    const tooltipHeight = tooltipRef.current.offsetHeight;
+
+    // Position based on the calculated tooltipPos state
+    switch (tooltipPos) {
+      case 'left':
+        return {
+          top: mousePosition.y,
+          left: mousePosition.x - tooltipWidth - 10,
+          transform: 'translateY(-50%)',
+        };
+      case 'right':
+        return {
+          top: mousePosition.y,
+          left: mousePosition.x + 10,
+          transform: 'translateY(-50%)',
+        };
+      case 'top':
+        return {
+          top: mousePosition.y - tooltipHeight - 10,
+          left: mousePosition.x,
+          transform: 'translateX(-50%)',
+        };
+      case 'bottom':
+      case 'default':
+      default:
+        return {
+          top: mousePosition.y + 20,
+          left: mousePosition.x,
+          transform: 'translateX(-50%)',
+        };
+    }
   };
 
   return (
@@ -84,7 +137,7 @@ export default function Tooltip({ pos, text, children }: TooltipProps) {
       {children}
       <div
         ref={tooltipRef}
-        className={`absolute z-30 whitespace-nowrap rounded bg-zinc-800 px-2 py-1 text-xxs uppercase text-white shadow-md transition-opacity duration-300 ${
+        className={`absolute z-30 whitespace-nowrap rounded bg-zinc-800 px-2 py-1 text-xxs uppercase text-white shadow-md ${
           isHovered
             ? 'pointer-events-auto opacity-100'
             : 'pointer-events-none opacity-0'
@@ -98,7 +151,7 @@ export default function Tooltip({ pos, text, children }: TooltipProps) {
                 : pos === 'l'
                   ? 'right-full top-1/2 mr-2 -translate-y-1/2'
                   : ''
-        }`}
+        } ${pos === 'cursor' ? 'transition-all duration-300 ease-out' : 'transition-opacity duration-300'}`}
         style={pos === 'cursor' ? getTooltipPosition() : {}}
       >
         {text}
