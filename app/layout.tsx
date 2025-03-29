@@ -86,12 +86,7 @@ export default async function RootLayout({
         >
           <div className="flex flex-col">
             <Header />
-            <main
-              className="flex flex-1"
-              style={{ flex: '1 0 auto', display: 'flex' }}
-            >
-              {children}
-            </main>
+            <main className="flex flex-1">{children}</main>
             <Footer />
           </div>
         </body>

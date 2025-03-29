@@ -20,16 +20,7 @@ export default async function Image() {
   return new ImageResponse(
     (
       // ImageResponse JSX element
-      <div
-        style={{
-          background: 'black',
-          width: '100%',
-          height: '100%',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-      >
+      <div className="flex h-full w-full items-center justify-center bg-zinc-950">
         <div tw="flex p-8">
           <div tw="flex flex-col md:flex-row w-full md:items-center justify-between p-8">
             <h2 tw="flex flex-col text-[124px] text-white text-left">
