@@ -38,7 +38,7 @@ AUTH_GITHUB_ID=<GitHub Client ID>
 AUTH_GITHUB_SECRET=<GitHub Client Secret>
 
 AUTH_SECRET=<Next Auth Secret>
-AUTH_TRUST_HOST=true // For local development only
+AUTH_TRUST_HOST=NEXT_PUBLIC_URL
 
 DATABASE_URL=<Supabase Transaction Pooler URL>
 DATABASE_API_KEY=<Supabase API Key>
