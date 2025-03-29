@@ -75,8 +75,15 @@ export default async function BlogPost({
     notFound();
   }
 
-  const adjacentPosts = await getAdjacentPosts(slug);
   const content = await compilePostContent(post.content);
+
+  // Only fetch adjacent posts if the current post is published
+  const adjacentPosts = post.published
+    ? await getAdjacentPosts(slug)
+    : { previous: null, next: null };
+
+  // Check if we're in admin view based on the referrer or user session
+  const isAdminView = session?.user && !post.published;
 
   return (
     <Container>
@@ -102,46 +109,48 @@ export default async function BlogPost({
         <h2>{post.title}</h2>
         <p>{post.excerpt ?? ''}</p>
         <div className="mdx-content text-dark dark:text-light">{content}</div>
-        {/* Blog Navigation */}
-        {(adjacentPosts.previous || adjacentPosts.next) && (
-          <nav className="mt-10 border-t border-gray-200 pt-6 dark:border-gray-700">
-            <div className="flex justify-between">
-              <div>
-                {adjacentPosts.previous && (
-                  <Link
-                    href={`/blog/${adjacentPosts.previous.slug}`}
-                    className="group flex items-center space-x-2 hover:text-primary"
-                  >
-                    <span aria-hidden="true">&larr;</span>
-                    <span
-                      className="max-w-[15rem] truncate"
-                      title={adjacentPosts.previous.title}
+        {/* Blog Navigation - Show only for published posts and not in admin view */}
+        {!isAdminView &&
+          post.published &&
+          (adjacentPosts.previous || adjacentPosts.next) && (
+            <nav className="mt-10 border-t border-gray-200 pt-6 dark:border-gray-700">
+              <div className="flex justify-between">
+                <div>
+                  {adjacentPosts.previous && (
+                    <Link
+                      href={`/blog/${adjacentPosts.previous.slug}`}
+                      className="group flex items-center space-x-2 hover:text-primary"
                     >
-                      {adjacentPosts.previous.title}
-                    </span>
-                  </Link>
-                )}
-              </div>
+                      <span aria-hidden="true">&larr;</span>
+                      <span
+                        className="max-w-[15rem] truncate"
+                        title={adjacentPosts.previous.title}
+                      >
+                        {adjacentPosts.previous.title}
+                      </span>
+                    </Link>
+                  )}
+                </div>
 
-              <div>
-                {adjacentPosts.next && (
-                  <Link
-                    href={`/blog/${adjacentPosts.next.slug}`}
-                    className="group flex items-center space-x-2 text-right hover:text-primary"
-                  >
-                    <span
-                      className="max-w-[15rem] truncate"
-                      title={adjacentPosts.next.title}
+                <div>
+                  {adjacentPosts.next && (
+                    <Link
+                      href={`/blog/${adjacentPosts.next.slug}`}
+                      className="group flex items-center space-x-2 text-right hover:text-primary"
                     >
-                      {adjacentPosts.next.title}
-                    </span>
-                    <span aria-hidden="true">&rarr;</span>
-                  </Link>
-                )}
+                      <span
+                        className="max-w-[15rem] truncate"
+                        title={adjacentPosts.next.title}
+                      >
+                        {adjacentPosts.next.title}
+                      </span>
+                      <span aria-hidden="true">&rarr;</span>
+                    </Link>
+                  )}
+                </div>
               </div>
-            </div>
-          </nav>
-        )}
+            </nav>
+          )}
       </article>
     </Container>
   );

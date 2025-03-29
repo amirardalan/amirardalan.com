@@ -1,17 +1,16 @@
-import { cache } from 'react';
 import { db } from '@/db/connector';
 import { posts, users } from '@/db/schema';
 import { eq, desc, lt, gt, and } from 'drizzle-orm';
 import { BlogPost } from '@/types/blog';
 
 // Get all published posts (for blog page)
-export const getPublishedPosts = cache(async () => {
+export const getPublishedPosts = async () => {
   return db
     .select()
     .from(posts)
     .where(eq(posts.published, true))
     .orderBy(desc(posts.created_at));
-});
+};
 
 // Get draft posts (for admin drafts page)
 export async function getDraftPosts() {
