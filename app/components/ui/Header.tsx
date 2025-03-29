@@ -1,6 +1,7 @@
-import AuthMenu from '@/components/auth/AuthMenu';
-import Logo from '@/components/ui/Logo';
 import Link from 'next/link';
+import Logo from '@/components/ui/Logo';
+import Navigation from '@/components/ui/Navigation';
+import AuthMenu from '@/components/auth/AuthMenu';
 import HeaderControls from '@/components/ui/HeaderControls';
 
 export default async function Header() {
@@ -10,7 +11,7 @@ export default async function Header() {
         <Logo size={35} />
       </Link>
       <div className="flex w-full max-w-screen-xl items-center justify-end space-x-4">
-        {/* Ensure proper alignment */}
+        <Navigation header />
         <HeaderControls />
         <AuthMenu />
       </div>
