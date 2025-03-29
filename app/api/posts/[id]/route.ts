@@ -43,24 +43,6 @@ export async function PUT(
       await revalidatePath(`/blog/${oldSlug}`);
     }
 
-    // 3. Call the revalidation API for additional revalidation
-    try {
-      await fetch(`${process.env.NEXT_PUBLIC_URL}/api/revalidate`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          token: process.env.REVALIDATION_TOKEN,
-          path: '/blog',
-          slug: slug,
-          tag: 'blog-posts',
-        }),
-      });
-    } catch (revalidateErr) {
-      console.error('Revalidation API error:', revalidateErr);
-    }
-
     return NextResponse.json({
       message: 'Post updated successfully',
       slug: slug,
@@ -101,24 +83,6 @@ export async function DELETE(
     // 2. Revalidate the specific post page if it was published
     if (wasPublished) {
       await revalidatePath(`/blog/${slug}`);
-    }
-
-    // 3. Call the revalidation API
-    try {
-      await fetch(`${process.env.NEXT_PUBLIC_URL}/api/revalidate`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          token: process.env.REVALIDATION_TOKEN,
-          path: '/blog',
-          slug: slug,
-          tag: 'blog-posts',
-        }),
-      });
-    } catch (revalidateErr) {
-      console.error('Revalidation API error:', revalidateErr);
     }
 
     return NextResponse.json({

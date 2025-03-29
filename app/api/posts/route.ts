@@ -40,23 +40,6 @@ export async function POST(req: Request) {
       await revalidatePath(`/blog/${slug}`);
     }
 
-    // 3. Call revalidate API for additional paths if needed
-    try {
-      await fetch(`${process.env.NEXT_PUBLIC_URL}/api/revalidate`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          token: process.env.REVALIDATION_TOKEN,
-          path: '/blog',
-          slug: published ? slug : null,
-        }),
-      });
-    } catch (revalidateErr) {
-      console.error('Revalidation API error:', revalidateErr);
-    }
-
     return NextResponse.json({
       message: 'Post created successfully.',
       id: postId,
