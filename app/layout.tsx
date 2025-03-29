@@ -84,9 +84,9 @@ export default async function RootLayout({
             'dark:bg-dark': theme === 'dark',
           })}
         >
-          <div className="flex flex-col">
+          <div className="flex min-h-screen flex-col">
             <Header />
-            <main className="flex flex-1">{children}</main>
+            <main className="flex flex-1 flex-grow">{children}</main>
             <Footer />
           </div>
         </body>
