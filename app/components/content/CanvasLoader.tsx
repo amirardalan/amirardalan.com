@@ -46,28 +46,26 @@ export default function CanvasLoader() {
 
   return (
     <Tooltip text="Click to randomize terrain" pos="cursor">
-      <div className="">
-        <button
-          onClick={randomizeTerrain}
-          className="absolute m-0 block h-full w-screen cursor-pointer border-none bg-transparent p-0 outline-none"
+      <button
+        onClick={randomizeTerrain}
+        className="absolute m-0 block h-full w-screen cursor-pointer border-none bg-transparent p-0 outline-none"
+      >
+        <Canvas
+          gl={{ antialias: true }}
+          dpr={pixelRatio}
+          onCreated={({ camera }) => camera.lookAt(0, 0, 0)}
+          camera={{ position: [0.4, 0.4, 0.4] }}
         >
-          <Canvas
-            gl={{ antialias: true }}
-            dpr={pixelRatio}
-            onCreated={({ camera }) => camera.lookAt(0, 0, 0)}
-            camera={{ position: [0.4, 0.4, 0.4] }}
-          >
-            <CanvasTerrain
-              detail={detail}
-              height={height}
-              texture={texture}
-              scale={scale}
-              rotation={rotation}
-              offset={offset}
-            />
-          </Canvas>
-        </button>
-      </div>
+          <CanvasTerrain
+            detail={detail}
+            height={height}
+            texture={texture}
+            scale={scale}
+            rotation={rotation}
+            offset={offset}
+          />
+        </Canvas>
+      </button>
     </Tooltip>
   );
 }
