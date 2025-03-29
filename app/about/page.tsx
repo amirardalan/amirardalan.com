@@ -25,7 +25,7 @@ export default function About() {
           </p>
         </div>
 
-        <div className="my-4 flex justify-center">
+        <div className="flex justify-center py-6">
           <IconWave />
         </div>
 

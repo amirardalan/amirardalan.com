@@ -5,7 +5,7 @@ import HeaderControls from '@/components/ui/HeaderControls';
 
 export default async function Header() {
   return (
-    <div className="flex flex-row justify-between">
+    <div className="flex flex-row justify-between px-6 pt-4 lg:px-10 lg:pt-8">
       <Link href="/" className="mt-2">
         <Logo size={35} />
       </Link>

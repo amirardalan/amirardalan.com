@@ -79,18 +79,14 @@ export default async function RootLayout({
         className={clsx(sans.className, serif.className, mono.className, theme)}
       >
         <body
-          className={clsx(
-            'font-sans font-medium',
-            'grid h-screen grid-rows-layout',
-            {
-              'bg-light': theme === 'light',
-              'dark:bg-dark': theme === 'dark',
-            }
-          )}
+          className={clsx('h-screen font-sans font-medium', {
+            'bg-light': theme === 'light',
+            'dark:bg-dark': theme === 'dark',
+          })}
         >
-          <div className="flex min-h-screen flex-col px-6 pt-4 lg:px-10 lg:pt-8">
+          <div className="flex min-h-screen flex-col">
             <Header />
-            <div className="h-screen">{children}</div>
+            <main className="flex-grow">{children}</main>
             <Footer />
           </div>
         </body>

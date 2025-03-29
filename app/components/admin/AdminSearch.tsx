@@ -42,7 +42,7 @@ export default function AdminSearch({
   return (
     <form
       method="get"
-      className="mb-4"
+      className="mb-10"
       onSubmit={(e) => {
         handleSubmit(e);
         setTimeout(() => setIsLoading(false), 500); // Simulate loading completion
