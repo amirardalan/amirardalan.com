@@ -1,23 +1,21 @@
-import { ReactNode } from 'react';
-
 type Spec = {
   label?: string;
   value: string;
 };
 
-export type ItemCardProps = {
+export type UsesItemCardProps = {
   title?: string;
   subtitle?: string;
   specs?: Spec[];
   className?: string;
 };
 
-const ItemCard = ({
+const UsesItemCard = ({
   title,
   subtitle,
   specs,
   className = '',
-}: ItemCardProps) => {
+}: UsesItemCardProps) => {
   return (
     <div className={`mb-6 ${className}`}>
       {title && <h3 className="mb-2 text-dark dark:text-light">{title}</h3>}
@@ -43,4 +41,4 @@ const ItemCard = ({
   );
 };
 
-export default ItemCard;
+export default UsesItemCard;

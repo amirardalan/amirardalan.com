@@ -1,12 +1,16 @@
 import { ReactNode } from 'react';
 
-type ItemGridProps = {
+type UsesItemGridProps = {
   children: ReactNode;
   columns?: 1 | 2 | 3;
   className?: string;
 };
 
-const ItemGrid = ({ children, columns = 2, className = '' }: ItemGridProps) => {
+const UsesItemGrid = ({
+  children,
+  columns = 1,
+  className = '',
+}: UsesItemGridProps) => {
   const gridCols = {
     1: 'grid-cols-1',
     2: 'grid-cols-1 md:grid-cols-2',
@@ -20,4 +24,4 @@ const ItemGrid = ({ children, columns = 2, className = '' }: ItemGridProps) => {
   );
 };
 
-export default ItemGrid;
+export default UsesItemGrid;
