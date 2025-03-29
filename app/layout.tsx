@@ -32,11 +32,6 @@ const mono = JetBrains_Mono({
   display: 'swap',
 });
 
-async function isHomepage(): Promise<boolean> {
-  const pathname = (await headers()).get('x-next-pathname') as string;
-  return pathname === '/';
-}
-
 export async function generateMetadata(): Promise<Metadata> {
   const pathname = (await headers()).get('x-next-pathname') as string;
 
@@ -76,7 +71,6 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const theme = await getTheme();
-  const homepage = await isHomepage();
 
   return (
     <SessionProvider>
@@ -88,7 +82,6 @@ export default async function RootLayout({
           className={clsx('font-sans font-medium', {
             'bg-light': theme === 'light',
             'dark:bg-dark': theme === 'dark',
-            'overflow-hidden': homepage,
           })}
         >
           <div className="flex min-h-screen flex-col">

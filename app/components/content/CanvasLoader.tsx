@@ -48,7 +48,7 @@ export default function CanvasLoader() {
     <Tooltip text="Randomize terrain" pos="cursor">
       <button
         onClick={randomizeTerrain}
-        className="absolute m-0 block h-full w-screen cursor-pointer border-none bg-transparent p-0 outline-none"
+        className="absolute z-0 m-0 block h-screen w-screen cursor-pointer overflow-hidden border-none bg-transparent p-0 outline-none"
       >
         <Canvas
           gl={{ antialias: true }}
