@@ -83,16 +83,8 @@ export default async function RootLayout({
             'bg-light': theme === 'light',
             'dark:bg-dark': theme === 'dark',
           })}
-          style={{
-            minHeight: '100vh',
-            display: 'flex',
-            flexDirection: 'column',
-          }}
         >
-          <div
-            className="flex flex-col"
-            style={{ minHeight: '100vh', flex: '1 0 auto' }}
-          >
+          <div className="flex flex-col">
             <Header />
             <main
               className="flex flex-1"
