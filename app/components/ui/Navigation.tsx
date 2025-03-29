@@ -9,7 +9,7 @@ export default function Navigation() {
 
   const getNavItemClass = (href: string, isLast?: boolean) => {
     return clsx({
-      'text-zinc-950 dark:text-zinc-50': isActive(href),
+      'border-b-2 border-light dark:border-dark pb-1': isActive(href),
       'mr-6': !isLast,
     });
   };

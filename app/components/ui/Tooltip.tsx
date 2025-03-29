@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, ReactNode } from 'react';
+import { useState, useEffect, useRef, ReactNode, useCallback } from 'react';
 
 type TooltipProps = {
   pos?: 't' | 'r' | 'b' | 'l' | 'cursor';
@@ -6,10 +6,28 @@ type TooltipProps = {
   children: ReactNode;
 };
 
+// Define position states for the cursor tooltip
+type TooltipPosition = 'bottom' | 'top' | 'left' | 'right' | 'default';
+
 export default function Tooltip({ pos, text, children }: TooltipProps) {
   const [isHovered, setIsHovered] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [tooltipPos, setTooltipPos] = useState<TooltipPosition>('default');
+  const tooltipRef = useRef<HTMLDivElement>(null);
   const ref = useRef<HTMLDivElement>(null);
+  const throttleTimerRef = useRef<number | null>(null);
+
+  // Throttle mouse move updates
+  const throttledSetMousePosition = useCallback((x: number, y: number) => {
+    if (throttleTimerRef.current !== null) return;
+
+    const ANIMATION_THROTTLE = 20;
+
+    throttleTimerRef.current = window.setTimeout(() => {
+      setMousePosition({ x, y });
+      throttleTimerRef.current = null;
+    }, ANIMATION_THROTTLE);
+  }, []);
 
   useEffect(() => {
     if (pos === 'cursor') {
@@ -17,20 +35,99 @@ export default function Tooltip({ pos, text, children }: TooltipProps) {
       if (currentRef) {
         const handleMouseMove = (e: MouseEvent) => {
           const rect = currentRef.getBoundingClientRect();
-          setMousePosition({
-            x: e.clientX - rect.left,
-            y: e.clientY - rect.top,
-          });
+          throttledSetMousePosition(
+            e.clientX - rect.left,
+            e.clientY - rect.top
+          );
         };
 
         currentRef.addEventListener('mousemove', handleMouseMove);
 
         return () => {
           currentRef.removeEventListener('mousemove', handleMouseMove);
+          if (throttleTimerRef.current !== null) {
+            clearTimeout(throttleTimerRef.current);
+          }
         };
       }
     }
-  }, [pos, ref]);
+  }, [pos, throttledSetMousePosition]);
+
+  // Calculate tooltip position when mouse position changes
+  useEffect(() => {
+    if (pos !== 'cursor' || !tooltipRef.current || !ref.current || !isHovered)
+      return;
+
+    const tooltipWidth = tooltipRef.current.offsetWidth;
+    const tooltipHeight = tooltipRef.current.offsetHeight;
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
+
+    const containerRect = ref.current.getBoundingClientRect();
+    const cursorX = containerRect.left + mousePosition.x;
+    const cursorY = containerRect.top + mousePosition.y;
+
+    let newPos: TooltipPosition = 'default';
+
+    // Check right edge
+    if (cursorX + tooltipWidth / 2 > viewportWidth - 20) {
+      newPos = 'left';
+    }
+    // Check left edge
+    else if (cursorX - tooltipWidth / 2 < 20) {
+      newPos = 'right';
+    }
+    // Check bottom edge
+    else if (cursorY + tooltipHeight + 20 > viewportHeight - 20) {
+      newPos = 'top';
+    }
+    // Default position (below cursor)
+    else {
+      newPos = 'bottom';
+    }
+
+    // Only update position state if it changed
+    if (newPos !== tooltipPos) {
+      setTooltipPos(newPos);
+    }
+  }, [mousePosition, pos, isHovered, tooltipPos]);
+
+  const getTooltipPosition = () => {
+    if (pos !== 'cursor' || !tooltipRef.current) return {};
+
+    const tooltipWidth = tooltipRef.current.offsetWidth;
+    const tooltipHeight = tooltipRef.current.offsetHeight;
+
+    // Position based on the calculated tooltipPos state
+    switch (tooltipPos) {
+      case 'left':
+        return {
+          top: mousePosition.y,
+          left: mousePosition.x - tooltipWidth - 10,
+          transform: 'translateY(-50%)',
+        };
+      case 'right':
+        return {
+          top: mousePosition.y,
+          left: mousePosition.x + 10,
+          transform: 'translateY(-50%)',
+        };
+      case 'top':
+        return {
+          top: mousePosition.y - tooltipHeight - 10,
+          left: mousePosition.x,
+          transform: 'translateX(-50%)',
+        };
+      case 'bottom':
+      case 'default':
+      default:
+        return {
+          top: mousePosition.y + 20,
+          left: mousePosition.x,
+          transform: 'translateX(-50%)',
+        };
+    }
+  };
 
   return (
     <div
@@ -41,7 +138,8 @@ export default function Tooltip({ pos, text, children }: TooltipProps) {
     >
       {children}
       <div
-        className={`absolute z-30 whitespace-nowrap rounded bg-zinc-800 px-2 py-1 text-xxs uppercase text-white shadow-md transition-opacity duration-300 ${
+        ref={tooltipRef}
+        className={`absolute z-30 whitespace-nowrap rounded bg-zinc-800 px-2 py-1 text-xxs uppercase text-white shadow-md ${
           isHovered
             ? 'pointer-events-auto opacity-100'
             : 'pointer-events-none opacity-0'
@@ -55,15 +153,8 @@ export default function Tooltip({ pos, text, children }: TooltipProps) {
                 : pos === 'l'
                   ? 'right-full top-1/2 mr-2 -translate-y-1/2'
                   : ''
-        }`}
-        style={
-          pos === 'cursor'
-            ? {
-                top: mousePosition.y + 20, // Add vertical offset to move below the cursor
-                left: mousePosition.x - (ref.current?.offsetWidth || 0) / 2, // Center horizontally
-              }
-            : {}
-        }
+        } ${pos === 'cursor' ? 'transition-all duration-300 ease-out' : 'transition-opacity duration-300'}`}
+        style={pos === 'cursor' ? getTooltipPosition() : {}}
       >
         {text}
       </div>

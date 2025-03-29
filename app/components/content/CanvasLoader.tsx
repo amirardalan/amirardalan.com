@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Canvas } from '@react-three/fiber';
 import CanvasTerrain from '@/components/content/CanvasTerrain';
+import Tooltip from '../ui/Tooltip';
 
 export default function CanvasLoader() {
   const [pixelRatio, setPixelRatio] = useState(1);
@@ -44,25 +45,27 @@ export default function CanvasLoader() {
   };
 
   return (
-    <button
-      onClick={randomizeTerrain}
-      className="absolute inset-0 h-screen w-screen cursor-pointer border-none bg-transparent outline-none"
-    >
-      <Canvas
-        gl={{ antialias: true }}
-        dpr={pixelRatio}
-        onCreated={({ camera }) => camera.lookAt(0, 0, 0)}
-        camera={{ position: [0.4, 0.4, 0.4] }}
+    <Tooltip text="Randomize terrain" pos="cursor">
+      <button
+        onClick={randomizeTerrain}
+        className="absolute m-0 block h-full w-screen cursor-pointer border-none bg-transparent p-0 outline-none"
       >
-        <CanvasTerrain
-          detail={detail}
-          height={height}
-          texture={texture}
-          scale={scale}
-          rotation={rotation}
-          offset={offset}
-        />
-      </Canvas>
-    </button>
+        <Canvas
+          gl={{ antialias: true }}
+          dpr={pixelRatio}
+          onCreated={({ camera }) => camera.lookAt(0, 0, 0)}
+          camera={{ position: [0.4, 0.4, 0.4] }}
+        >
+          <CanvasTerrain
+            detail={detail}
+            height={height}
+            texture={texture}
+            scale={scale}
+            rotation={rotation}
+            offset={offset}
+          />
+        </Canvas>
+      </button>
+    </Tooltip>
   );
 }
