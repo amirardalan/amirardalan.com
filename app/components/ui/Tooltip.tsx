@@ -21,10 +21,12 @@ export default function Tooltip({ pos, text, children }: TooltipProps) {
   const throttledSetMousePosition = useCallback((x: number, y: number) => {
     if (throttleTimerRef.current !== null) return;
 
+    const ANIMATION_THROTTLE = 20;
+
     throttleTimerRef.current = window.setTimeout(() => {
       setMousePosition({ x, y });
       throttleTimerRef.current = null;
-    }, 10); // Small throttle for smooth movement while preventing excessive updates
+    }, ANIMATION_THROTTLE);
   }, []);
 
   useEffect(() => {

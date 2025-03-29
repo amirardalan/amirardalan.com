@@ -45,7 +45,7 @@ export default function CanvasLoader() {
   };
 
   return (
-    <Tooltip text="Click to randomize terrain" pos="cursor">
+    <Tooltip text="Randomize terrain" pos="cursor">
       <button
         onClick={randomizeTerrain}
         className="absolute m-0 block h-full w-screen cursor-pointer border-none bg-transparent p-0 outline-none"
