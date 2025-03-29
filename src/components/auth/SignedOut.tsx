@@ -12,7 +12,7 @@ export default function SignedOut({
   unauthorized = false,
 }: SignedOutProps) {
   return (
-    <div className="flex h-[80vh] flex-row items-center justify-center text-dark dark:text-light">
+    <div className="flex h-[80vh] w-full flex-row items-center justify-center text-dark dark:text-light">
       {unauthorized ? (
         <div className="text-center">
           <p className="mb-4 text-red-600 dark:text-red-400">
