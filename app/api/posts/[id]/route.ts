@@ -1,4 +1,5 @@
 import { updatePost, deletePost } from '@/db/queries/posts';
+import { auth } from '@/auth';
 
 import { NextResponse } from 'next/server';
 import { NextRequest } from 'next/server';
@@ -8,14 +9,31 @@ export async function PUT(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  const session = await auth();
+
+  if (!session?.user) {
+    return NextResponse.json({ error: 'Unauthorized access' }, { status: 401 });
+  }
+
   try {
     const { id } = await params;
     const data = await request.json();
     const { title, slug, excerpt, content, category, published } = data;
 
-    if (!id) {
+    if (!id || !title || !slug || !content) {
       return NextResponse.json(
-        { error: 'Post ID is required' },
+        { error: 'Post ID, title, slug, and content are required.' },
+        { status: 400 }
+      );
+    }
+
+    // Validate slug format
+    if (!/^[a-z0-9-]+$/.test(slug)) {
+      return NextResponse.json(
+        {
+          error:
+            'Invalid slug format. Only lowercase letters, numbers, and hyphens are allowed.',
+        },
         { status: 400 }
       );
     }
@@ -61,6 +79,12 @@ export async function DELETE(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  const session = await auth();
+
+  if (!session?.user) {
+    return NextResponse.json({ error: 'Unauthorized access' }, { status: 401 });
+  }
+
   try {
     const { id } = await params;
 

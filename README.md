@@ -53,6 +53,15 @@ And finally, generate a Next Auth secret which will automatically overwrite the 
 npx auth secret
 ```
 
+### Database
+
+```bash
+npx drizzle-kit push
+```
+
+> [!NOTE]
+> This command will create the database tables and columns based on the schema defined in `./src/db/schema.ts` file.
+
 ### Run
 
 ```bash

@@ -9,9 +9,9 @@ export async function POST(req: Request) {
     const { title, slug, excerpt, content, category, user_id, published } =
       body;
 
-    if (!user_id) {
+    if (!title || !slug || !content || !user_id) {
       return NextResponse.json(
-        { error: 'User ID is required to create a post.' },
+        { error: 'Title, slug, content, and user ID are required.' },
         { status: 400 }
       );
     }
@@ -48,7 +48,7 @@ export async function POST(req: Request) {
   } catch (error) {
     console.error('Post creation error:', error);
     return NextResponse.json(
-      { error: (error as Error).message },
+      { error: 'An unexpected error occurred. Please try again later.' },
       { status: 500 }
     );
   }
