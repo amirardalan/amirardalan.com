@@ -53,6 +53,81 @@ export default function Tooltip({ pos, text, children }: TooltipProps) {
     }
   }, [pos, throttledSetMousePosition]);
 
+  useEffect(() => {
+    if (pos === 'cursor') {
+      const currentRef = ref.current;
+      if (currentRef) {
+        const handleMouseEnter = (e: MouseEvent) => {
+          const rect = currentRef.getBoundingClientRect();
+          throttledSetMousePosition(
+            e.clientX - rect.left,
+            e.clientY - rect.top
+          );
+          setIsHovered(true);
+        };
+
+        const handleInitialMouseMove = (e: MouseEvent) => {
+          const rect = currentRef.getBoundingClientRect();
+          throttledSetMousePosition(
+            e.clientX - rect.left,
+            e.clientY - rect.top
+          );
+          setIsHovered(true);
+          window.removeEventListener('mousemove', handleInitialMouseMove);
+        };
+
+        // Attach a one-time listener to detect the cursor's position on load
+        window.addEventListener('mousemove', handleInitialMouseMove);
+
+        currentRef.addEventListener('mouseenter', handleMouseEnter);
+
+        return () => {
+          currentRef.removeEventListener('mouseenter', handleMouseEnter);
+          window.removeEventListener('mousemove', handleInitialMouseMove);
+        };
+      }
+    }
+  }, [pos, throttledSetMousePosition]);
+
+  useEffect(() => {
+    if (pos === 'cursor') {
+      const currentRef = ref.current;
+      if (currentRef) {
+        const handleMouseEnter = (e: MouseEvent) => {
+          const rect = currentRef.getBoundingClientRect();
+          throttledSetMousePosition(
+            e.clientX - rect.left,
+            e.clientY - rect.top
+          );
+          setIsHovered(true);
+        };
+
+        // Check if the mouse is already over the element on mount
+        const rect = currentRef.getBoundingClientRect();
+        const isMouseOver =
+          rect.left <= mousePosition.x &&
+          mousePosition.x <= rect.right &&
+          rect.top <= mousePosition.y &&
+          mousePosition.y <= rect.bottom;
+
+        if (isMouseOver) {
+          handleMouseEnter(
+            new MouseEvent('mousemove', {
+              clientX: mousePosition.x,
+              clientY: mousePosition.y,
+            })
+          );
+        }
+
+        currentRef.addEventListener('mouseenter', handleMouseEnter);
+
+        return () => {
+          currentRef.removeEventListener('mouseenter', handleMouseEnter);
+        };
+      }
+    }
+  }, [pos, throttledSetMousePosition, mousePosition]);
+
   // Calculate tooltip position when mouse position changes
   useEffect(() => {
     if (pos !== 'cursor' || !tooltipRef.current || !ref.current || !isHovered)
@@ -137,27 +212,29 @@ export default function Tooltip({ pos, text, children }: TooltipProps) {
       onMouseLeave={() => setIsHovered(false)}
     >
       {children}
-      <div
-        ref={tooltipRef}
-        className={`absolute z-30 whitespace-nowrap rounded bg-zinc-800 px-2 py-1 text-xxs uppercase text-white shadow-md ${
-          isHovered
-            ? 'pointer-events-auto opacity-100'
-            : 'pointer-events-none opacity-0'
-        } ${
-          pos === 't'
-            ? '-top-8 left-1/2 -translate-x-1/2'
-            : pos === 'r'
-              ? 'left-full top-1/2 ml-2 -translate-y-1/2'
-              : pos === 'b'
-                ? 'left-1/2 top-full mt-1 -translate-x-1/2'
-                : pos === 'l'
-                  ? 'right-full top-1/2 mr-2 -translate-y-1/2'
-                  : ''
-        } ${pos === 'cursor' ? 'transition-all duration-300 ease-out' : 'transition-opacity duration-300'}`}
-        style={pos === 'cursor' ? getTooltipPosition() : {}}
-      >
-        {text}
-      </div>
+      {!(mousePosition.x === 0 && mousePosition.y === 0) && ( // Prevent rendering at (0, 0)
+        <div
+          ref={tooltipRef}
+          className={`absolute z-30 whitespace-nowrap rounded bg-zinc-800 px-2 py-1 text-xxs uppercase text-white shadow-md ${
+            isHovered
+              ? 'pointer-events-auto opacity-100'
+              : 'pointer-events-none opacity-0'
+          } ${
+            pos === 't'
+              ? '-top-8 left-1/2 -translate-x-1/2'
+              : pos === 'r'
+                ? 'left-full top-1/2 ml-2 -translate-y-1/2'
+                : pos === 'b'
+                  ? 'left-1/2 top-full mt-1 -translate-x-1/2'
+                  : pos === 'l'
+                    ? 'right-full top-1/2 mr-2 -translate-y-1/2'
+                    : ''
+          } ${pos === 'cursor' ? 'transition-all duration-300 ease-out' : 'transition-opacity duration-300'}`}
+          style={pos === 'cursor' ? getTooltipPosition() : {}}
+        >
+          {text}
+        </div>
+      )}
     </div>
   );
 }
