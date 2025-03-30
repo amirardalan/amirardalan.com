@@ -48,7 +48,7 @@ export async function POST(req: Request) {
   } catch (error) {
     console.error('Post creation error:', error);
     return NextResponse.json(
-      { error: (error as Error).message || 'Internal Server Error' },
+      { error: 'An unexpected error occurred. Please try again later.' },
       { status: 500 }
     );
   }
