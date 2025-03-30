@@ -15,7 +15,7 @@ export default function HomeContent() {
           Amir Ardalan
         </h1>
         <h2 className="my-5 text-2xl uppercase tracking-widest text-zinc-600 dark:text-zinc-400">
-          Frontend Engineer & UI/UX Designer
+          Fullstack Engineer & UI/UX Designer
         </h2>
         <div className="mt-8 flex space-x-4">
           <Link href="/blog">

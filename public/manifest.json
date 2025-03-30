@@ -1,6 +1,6 @@
 {
   "short_name": "Amir Ardalan",
-  "name": "Amir Ardalan – Frontend Engineer",
+  "name": "Amir Ardalan – Fullstack Engineer",
   "icons": [
     {
       "src": "/icons/pwa-icon.png",
@@ -38,7 +38,7 @@
     {
       "name": "Amir Ardalan",
       "short_name": "Amir",
-      "description": "Frontend Engineer & UI Designer with 10+ years of experience creating innovative digital solutions.",
+      "description": "Fullstack Engineer & UI Designer with 10+ years of experience creating innovative digital solutions.",
       "url": "/"
     }
   ],
