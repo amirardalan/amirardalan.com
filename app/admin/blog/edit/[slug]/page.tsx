@@ -16,6 +16,11 @@ export default async function EditBlogPost({
   const params = await paramsPromise;
   const { slug } = params;
 
+  // Validate slug format
+  if (!/^[a-z0-9-]+$/.test(slug)) {
+    throw new Error('Invalid slug format.');
+  }
+
   if (!session?.user) {
     redirect(`/api/auth/signin?callbackUrl=/admin/blog/edit/${slug}`);
   }
@@ -23,7 +28,7 @@ export default async function EditBlogPost({
   const userId = await getUserIdByEmail(session.user.email!);
 
   if (!userId) {
-    throw new Error('User ID not found for the authenticated user.');
+    throw new Error('An error occurred while fetching user details.');
   }
 
   // Use the service to get the post

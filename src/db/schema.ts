@@ -20,16 +20,16 @@ export const posts = pgTable('posts', {
   id: serial('id').primaryKey(),
   user_id: integer('user_id')
     .notNull()
-    .references(() => users.id),
+    .references(() => users.id, { onDelete: 'cascade' }),
   title: text('title').notNull(),
   content: text('content').notNull(),
   created_at: timestamp('created_at').defaultNow().notNull(),
   updated_at: timestamp('updated_at').defaultNow().notNull(),
-  show_updated: boolean('show_updated'),
-  category: text('category'),
+  show_updated: boolean('show_updated').default(false),
+  category: text('category').default('uncategorized'),
   excerpt: text('excerpt'),
-  featured: boolean('featured'),
-  likes: integer('likes'),
-  published: boolean('published'),
-  slug: text('slug').notNull(),
+  featured: boolean('featured').default(false),
+  likes: integer('likes').default(0),
+  published: boolean('published').default(false),
+  slug: text('slug').notNull().unique(),
 });

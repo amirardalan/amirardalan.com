@@ -75,13 +75,34 @@ export default async function BlogPost({
   const { slug } = await paramsPromise;
   const session = await auth(); // Direct server-side auth check is appropriate here
 
-  const post = await getPostBySlug(slug);
+  if (!/^[a-z0-9-]+$/.test(slug)) {
+    notFound();
+  }
+
+  let post;
+  try {
+    post = await getPostBySlug(slug);
+  } catch (error) {
+    console.error('Error fetching post by slug:', error);
+    notFound();
+  }
 
   if (!post) {
     notFound();
   }
 
-  const content = await compilePostContent(post.content);
+  // Restrict access to unpublished posts
+  if (!post.published && !session?.user) {
+    notFound();
+  }
+
+  let content;
+  try {
+    content = await compilePostContent(post.content);
+  } catch (error) {
+    console.error('Error compiling post content:', error);
+    content = '<p>Error loading content.</p>';
+  }
 
   // Only fetch adjacent posts if the current post is published
   const adjacentPosts = post.published

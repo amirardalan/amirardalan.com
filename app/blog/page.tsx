@@ -22,15 +22,23 @@ export const generateMetadata = () => {
 };
 
 export default async function Blog() {
-  // Get posts with cached function for better performance
-  const posts: BlogPost[] = await getPublishedPosts();
+  let posts: BlogPost[] = [];
+  try {
+    posts = await getPublishedPosts();
+  } catch (error) {
+    console.error('Error fetching published posts:', error);
+  }
 
   return (
     <Container>
       <div className="mt-8">
         <PageHeading title="Blog" />
         <div className="text-dark dark:text-light">
-          <BlogPosts posts={posts} />
+          {posts.length > 0 ? (
+            <BlogPosts posts={posts} />
+          ) : (
+            <p>No blog posts available at the moment.</p>
+          )}
         </div>
       </div>
     </Container>

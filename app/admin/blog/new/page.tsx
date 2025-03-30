@@ -16,7 +16,7 @@ export default async function NewBlogPost() {
   const userId = await getUserIdByEmail(session.user.email!);
 
   if (!userId) {
-    throw new Error('User ID not found for the authenticated user.');
+    throw new Error('An error occurred while fetching user details.');
   }
 
   return (
