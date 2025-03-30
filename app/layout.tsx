@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { headers } from 'next/headers';
-import { SessionProvider } from 'next-auth/react';
+import { auth } from '@/auth';
 
 import clsx from 'clsx';
 import './globals.css';
@@ -12,6 +12,7 @@ import LightIcon from '@/public/images/favicon-light.png';
 
 import Header from '@/components/ui/Header';
 import Footer from '@/components/ui/Footer';
+import { AuthProvider } from '@/components/auth/AuthProvider';
 
 const sans = Jura({
   subsets: ['latin'],
@@ -71,9 +72,10 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const theme = await getTheme();
+  const session = await auth();
 
   return (
-    <SessionProvider>
+    <AuthProvider session={session}>
       <html
         lang="en"
         className={clsx(sans.className, serif.className, mono.className, theme)}
@@ -91,6 +93,6 @@ export default async function RootLayout({
           </div>
         </body>
       </html>
-    </SessionProvider>
+    </AuthProvider>
   );
 }

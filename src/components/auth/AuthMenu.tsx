@@ -1,8 +1,10 @@
-import { auth } from '@/auth';
+'use client';
+
+import { useAuth } from '@/components/auth/AuthProvider';
 import Button from '@/components/ui/Button';
 
-export default async function AuthMenu() {
-  const session = await auth();
+export default function AuthMenu() {
+  const { session } = useAuth();
 
   return (
     <>

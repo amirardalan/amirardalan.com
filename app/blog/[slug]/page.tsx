@@ -66,13 +66,14 @@ async function compilePostContent(content: string) {
   return compiledContent;
 }
 
+// No changes needed - keeping this as a server component with direct auth() call
 export default async function BlogPost({
   params: paramsPromise,
 }: {
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await paramsPromise;
-  const session = await auth();
+  const session = await auth(); // Direct server-side auth check is appropriate here
 
   const post = await getPostBySlug(slug);
 
