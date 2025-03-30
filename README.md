@@ -59,6 +59,17 @@ npx auth secret
 bun dev
 ```
 
+### Preview
+
+To test On-demand Revalidation of blog posts and to ensure the app is in good shape to run on production it is recommended to compile a preview build.
+
+```bash
+bun preview
+```
+
+> [!NOTE]
+> This script will format the project using Prettier, check linting, and then compile a preview build.
+
 ### Drizzle Studio
 
 To interact with the postgres database locally:
