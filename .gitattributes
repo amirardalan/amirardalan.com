@@ -1,15 +1,3 @@
-* text=auto
-*.js eol=lf
-*.jsx eol=lf
-*.ts eol=lf
-*.tsx eol=lf
-*.json eol=lf
-*.css eol=lf
-*.html eol=lf
-*.md eol=lf
-*.yml eol=lf
-*.yaml eol=lf
-
 # Exclude binary files from line ending normalization
 *.png binary
 *.jpg binary
