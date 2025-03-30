@@ -116,7 +116,7 @@ export default async function BlogPost({
     <Container>
       <article className="mt-24 text-dark dark:text-light">
         {session?.user && (
-          <div className="mb-4 text-right">
+          <div className="text-right">
             <Link
               href={`/admin/blog/edit/${post.slug}`}
               className="rounded bg-blue-600 px-3 py-1 text-sm text-white hover:bg-blue-700"
@@ -125,17 +125,27 @@ export default async function BlogPost({
             </Link>
           </div>
         )}
-        <p className="text-primary">#{post.category ?? 'uncategorized'}</p>
-        <h3>By {post.author_name || 'Anonymous'}</h3>{' '}
-        <time>{formatDate(post.created_at)}</time>
+        <p className="text-xs uppercase text-primary">
+          #{post.category ?? 'uncategorized'}
+        </p>
+        <h3 className="mt-1 text-xs uppercase">
+          By {post.author_name || 'Anonymous'}
+        </h3>
+        <time className="mt-8 flex text-xs uppercase text-zinc-500 dark:text-zinc-400">
+          {formatDate(post.created_at)}
+        </time>
         {!post.published && (
           <div className="my-2 inline-block rounded bg-yellow-200 px-2 py-1 text-sm text-yellow-800 dark:bg-yellow-800 dark:text-yellow-200">
             Draft
           </div>
         )}
-        <h2>{post.title}</h2>
-        <p>{post.excerpt ?? ''}</p>
-        <div className="mdx-content text-dark dark:text-light">{content}</div>
+        <h2 className="mt-8 text-3xl">{post.title}</h2>
+        <p className="mt-1 text-lg text-zinc-500 dark:text-zinc-400">
+          {post.excerpt ?? ''}
+        </p>
+        <div className="mdx-content mt-10 text-dark dark:text-light">
+          {content}
+        </div>
         {/* Blog Navigation - Show only for published posts and not in admin view */}
         {!isAdminView &&
           post.published &&

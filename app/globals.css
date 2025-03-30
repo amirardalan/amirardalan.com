@@ -16,15 +16,15 @@
   --color-selection-text: var(--color-light);
 
   /* Syntax Highlighting */
-  --sh-class: oklch(0.48 0.11 255.81);
-  --sh-identifier: oklch(0.57 0.04 252.45);
-  --sh-sign: oklch(0.67 0.02 248.19);
-  --sh-property: oklch(0.45 0.16 258.18);
-  --sh-entity: oklch(0.62 0.1 192.31);
-  --sh-jsxliterals: oklch(0.56 0.16 278.23);
-  --sh-string: oklch(0.66 0.12 183.82);
-  --sh-keyword: oklch(0.7 0.16 26.07);
-  --sh-comment: oklch(0.68 0.01 17.51);
+  --sh-class: oklch(0.75 0.12 74.86);
+  --sh-identifier: oklch(0.84 0.02 245.68);
+  --sh-sign: oklch(0.66 0.02 243.97);
+  --sh-property: oklch(0.81 0.12 174);
+  --sh-entity: oklch(0.67 0.16 295.61);
+  --sh-jsxliterals: oklch(0.84 0.02 245.68);
+  --sh-string: oklch(0.7 0 301.39);
+  --sh-keyword: oklch(0.67 0.21 311.15);
+  --sh-comment: oklch(0.58 0.11 152.52);
 }
 
 @layer base {
@@ -48,7 +48,7 @@
 @layer components {
   .dark {
     .mdx-content {
-      --sh-property: oklch(0.64 0.22 8.3);
+      --sh-property: oklch(0.77 0.11 202.26);
     }
   }
 }
@@ -62,5 +62,29 @@
     overflow: hidden !important;
     /* Optional: prevent content shift when scrollbars are hidden */
     padding-right: 0 !important;
+  }
+  /* Custom scrollbar styles for webkit browsers */
+  .scrollbar {
+    scrollbar-width: thin; /* For Firefox */
+  }
+
+  .scrollbar::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+
+  .scrollbar::-webkit-scrollbar-track {
+    border-radius: 100vh;
+    background: oklch(0.97 0.01 87.47);
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb {
+    background: oklch(0.86 0.02 17.62);
+    border-radius: 100vh;
+    border: 3px solid oklch(0.97 0.01 111.27);
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb:hover {
+    background: oklch(0.74 0.05 333.72);
   }
 }
