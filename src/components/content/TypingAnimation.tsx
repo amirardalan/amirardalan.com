@@ -45,20 +45,9 @@ export default function TypingAnimation() {
   }, []);
 
   return (
-    <>
-      <style>{`
-        .typed-cursor {
-          color: var(--color-primary);
-        }
-        .typed a {
-          color: var(--color-primary);
-          text-decoration: none;
-        }
-      `}</style>
-      <h3 className="font-mono text-dark dark:text-light">
-        <span className="mr-4 text-primary">{'> ~ %'}</span>
-        <span className="typed" />
-      </h3>
-    </>
+    <h3 className="font-mono text-2xl text-dark dark:text-light">
+      <span className="mr-4 text-primary">{'> ~ %'}</span>
+      <span className="typed text-dark dark:text-light" />
+    </h3>
   );
 }
