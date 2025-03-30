@@ -1,7 +1,8 @@
-import { db } from '@/src/db/connector';
-import { posts, users } from '@/src/db/schema';
+import { db } from '@/db/connector';
+import { posts, users } from '@/db/schema';
 import { eq, desc, lt, gt, and } from 'drizzle-orm';
-import { BlogPost } from '@/src/types/blog';
+
+import { BlogPost } from '@/types/blog';
 
 // Get all published posts (for blog page)
 export const getPublishedPosts = async () => {

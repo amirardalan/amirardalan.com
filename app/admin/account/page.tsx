@@ -1,4 +1,5 @@
-import { auth } from '@/src/auth/auth';
+import { auth } from '@/auth';
+
 import AdminPageHeading from '@/components/admin/AdminPageHeading';
 import Avatar from '@/components/auth/Avatar';
 import SignedOut from '@/components/auth/SignedOut';

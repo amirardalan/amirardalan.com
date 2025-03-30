@@ -2,10 +2,12 @@
 
 import { useState } from 'react';
 import clsx from 'clsx';
-import { formatDate } from '@/src/utils/format-date';
 import IconClose from '@/components/icons/IconClose';
-import calculateReadTime from '@/src/utils/calculate-readtime';
-import { BlogPost } from '@/src/types/blog';
+
+import { formatDate } from '@/utils/format-date';
+import calculateReadTime from '@/utils/calculate-readtime';
+
+import { BlogPost } from '@/types/blog';
 
 export default function BlogPosts({ posts }: { posts: BlogPost[] }) {
   const [searchTerm, setSearchTerm] = useState('');

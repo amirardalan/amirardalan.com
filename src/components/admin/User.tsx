@@ -1,8 +1,11 @@
-import { auth } from '@/src/auth/auth';
+'use client';
+
+import { useAuth } from '@/components/auth/AuthProvider';
 import Link from 'next/link';
 
-export default async function User() {
-  const session = await auth();
+export default function User() {
+  const { session } = useAuth();
+
   return (
     <>
       {session && (

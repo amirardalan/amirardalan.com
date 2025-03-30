@@ -1,6 +1,6 @@
 'use client';
 
-import { useActiveLink } from '@/src/hooks/useActiveLink';
+import { useActiveLink } from '@/hooks/useActiveLink';
 import Link from 'next/link';
 import clsx from 'clsx';
 

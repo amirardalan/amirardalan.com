@@ -1,8 +1,11 @@
-import Image from 'next/image';
-import { auth } from '@/src/auth/auth';
+'use client';
 
-export default async function Avatar() {
-  const session = await auth();
+import { useAuth } from '@/components/auth/AuthProvider';
+import Image from 'next/image';
+
+export default function Avatar() {
+  const { session } = useAuth();
+
   return (
     <Image
       src={session?.user?.image ?? '/default-avatar.png'}

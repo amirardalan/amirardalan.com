@@ -1,4 +1,4 @@
-import { signIn } from '@/src/auth/auth';
+import { signIn } from '@/auth';
 
 interface SignedOutProps {
   message?: string;

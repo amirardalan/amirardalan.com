@@ -1,8 +1,8 @@
 'use client';
 
+import TypingAnimation from '@/components/content/TypingAnimation';
 import Button from '@/components/ui/Button';
 import Link from 'next/link';
-import TypingAnimation from '@/components/content/TypingAnimation';
 
 export default function HomeContent() {
   return (

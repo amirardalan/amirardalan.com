@@ -1,5 +1,5 @@
 'use client';
-import { useTheme } from '@/src/store/theme';
+import { useTheme } from '@/store/theme';
 
 export default function IconGithub() {
   const { effectiveTheme } = useTheme();

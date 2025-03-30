@@ -1,15 +1,19 @@
+import { auth } from '@/auth';
+import { notFound } from 'next/navigation';
+
 import {
   getAllPublishedSlugs,
   getPostBySlug,
   getAdjacentPosts,
-} from '@/src/db/queries/posts';
+} from '@/db/queries/posts';
+
 import { compileMDX } from 'next-mdx-remote/rsc';
 import { components } from '@/components/blog/MDXComponents';
-import { auth } from '@/src/auth/auth';
+
 import Container from '@/components/content/Container';
 import Link from 'next/link';
-import { formatDate } from '@/src/utils/format-date';
-import { notFound } from 'next/navigation';
+
+import { formatDate } from '@/utils/format-date';
 
 // Set revalidate to false for on-demand revalidation only
 export const revalidate = false;
@@ -62,13 +66,14 @@ async function compilePostContent(content: string) {
   return compiledContent;
 }
 
+// No changes needed - keeping this as a server component with direct auth() call
 export default async function BlogPost({
   params: paramsPromise,
 }: {
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await paramsPromise;
-  const session = await auth();
+  const session = await auth(); // Direct server-side auth check is appropriate here
 
   const post = await getPostBySlug(slug);
 

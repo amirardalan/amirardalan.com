@@ -1,10 +1,6 @@
 import NextAuth from 'next-auth';
 import GitHub from 'next-auth/providers/github';
-import {
-  getUserIdByEmail,
-  userExists,
-  createUser,
-} from '@/src/db/queries/users';
+import { userExists, createUser } from '@/db/queries/users';
 
 /**
  * Check if an email is authorized based on environment variables
