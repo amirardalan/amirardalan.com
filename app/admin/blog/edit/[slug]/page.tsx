@@ -1,6 +1,6 @@
 import { auth } from '@/src/auth/auth';
 import { redirect } from 'next/navigation';
-import { getUserIdByEmail } from '@/src/auth/auth';
+import { getUserIdByEmail } from '@/src/db/queries/users';
 import { getPostBySlug } from '@/src/db/queries/posts';
 
 import AdminPageHeading from '@/components/admin/AdminPageHeading';

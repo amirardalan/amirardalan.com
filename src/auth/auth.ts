@@ -26,8 +26,6 @@ export function isAuthorizedEmail(email: string | null | undefined): boolean {
   return false;
 }
 
-export { getUserIdByEmail };
-
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [GitHub],
   callbacks: {
