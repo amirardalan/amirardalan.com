@@ -6,6 +6,7 @@ import { ObfuscatedEmail } from '@/components/ui/ObfuscatedEmail';
 
 export function generateMetadata() {
   return {
+    metadataBase: new URL(`${process.env.NEXT_PUBLIC_URL}`),
     title: 'Account — Amir Ardalan',
     description: 'View and manage your account details.',
   };

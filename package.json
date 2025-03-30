@@ -4,8 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "preview": "next lint && next build && next start",
-    "format": "prettier --write ."
+    "preview": "prettier --write . && next lint && next build && next start"
   },
   "dependencies": {
     "@electric-sql/pglite": "^0.2.17",

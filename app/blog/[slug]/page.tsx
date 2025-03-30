@@ -32,6 +32,7 @@ export async function generateMetadata({
 
   if (!post) {
     return {
+      metadataBase: new URL(`${process.env.NEXT_PUBLIC_URL}`),
       title: 'Post Not Found',
       description: 'The requested blog post could not be found.',
     };

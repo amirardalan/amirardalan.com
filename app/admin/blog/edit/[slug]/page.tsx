@@ -60,6 +60,7 @@ export async function generateMetadata({
     .replace(/\b\w/g, (c) => c.toUpperCase())} — Amir Ardalan`;
 
   return {
+    metadataBase: new URL(`${process.env.NEXT_PUBLIC_URL}`),
     title,
     description: `Edit the blog post titled "${slug}" in the admin panel.`,
   };

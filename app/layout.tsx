@@ -46,6 +46,7 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 
   return {
+    metadataBase: new URL(`${process.env.NEXT_PUBLIC_URL}`),
     title,
     description: 'The portfolio and blog of Engineer and Designer Amir Ardalan',
     icons: [
