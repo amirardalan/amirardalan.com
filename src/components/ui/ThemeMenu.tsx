@@ -3,7 +3,7 @@ import { useEffect, useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import Tooltip from '@/components/ui/Tooltip';
 import { useTheme } from '@/store/theme';
-import { Theme } from '@/src/types/theme';
+import { Theme } from '@/types/theme';
 import IconMoon from '@/components/icons/IconMoon';
 import IconSun from '@/components/icons/IconSun';
 

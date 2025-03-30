@@ -13,7 +13,7 @@ import { components } from '@/components/blog/MDXComponents';
 import Container from '@/components/content/Container';
 import Link from 'next/link';
 
-import { formatDate } from '@/src/utils/format-date';
+import { formatDate } from '@/utils/format-date';
 
 // Set revalidate to false for on-demand revalidation only
 export const revalidate = false;

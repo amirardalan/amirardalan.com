@@ -1,5 +1,5 @@
-import { db } from '@/src/db/connector';
-import { users } from '@/src/db/schema';
+import { db } from '@/db/connector';
+import { users } from '@/db/schema';
 import { eq } from 'drizzle-orm';
 
 // Get a user ID by their email address

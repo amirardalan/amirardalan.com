@@ -9,7 +9,7 @@ import {
 import { useFrame } from '@react-three/fiber';
 import { MeshDistortMaterial } from '@react-three/drei';
 import { createNoise2D } from 'simplex-noise';
-import { useTheme } from '@/src/store/theme';
+import { useTheme } from '@/store/theme';
 
 type CanvasTerrainProps = {
   detail: number;
