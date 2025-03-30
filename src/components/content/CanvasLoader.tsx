@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Canvas } from '@react-three/fiber';
 
 import CanvasTerrain from '@/components/content/CanvasTerrain';
-import Tooltip from '@/components/ui/Tooltip';
+import TooltipCursor from '@/components/ui/TooltipCursor';
 
 export default function CanvasLoader() {
   const [pixelRatio, setPixelRatio] = useState(1);
@@ -46,7 +46,7 @@ export default function CanvasLoader() {
   };
 
   return (
-    <Tooltip text="Randomize terrain" pos="cursor">
+    <TooltipCursor text="Randomize terrain" pos="cursor">
       <button
         onClick={randomizeTerrain}
         className="absolute z-0 m-0 block h-screen w-screen cursor-pointer overflow-hidden border-none bg-transparent p-0 outline-none"
@@ -67,6 +67,6 @@ export default function CanvasLoader() {
           />
         </Canvas>
       </button>
-    </Tooltip>
+    </TooltipCursor>
   );
 }
