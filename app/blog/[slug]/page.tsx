@@ -139,8 +139,8 @@ export default async function BlogPost({
             Draft
           </div>
         )}
-        <h2 className="mt-8 text-xxl">{post.title}</h2>
-        <p className="text-lg text-zinc-500 dark:text-zinc-400">
+        <h2 className="mt-8 text-3xl">{post.title}</h2>
+        <p className="mt-1 text-lg text-zinc-500 dark:text-zinc-400">
           {post.excerpt ?? ''}
         </p>
         <div className="mdx-content mt-10 text-dark dark:text-light">
