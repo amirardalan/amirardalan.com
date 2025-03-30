@@ -25,6 +25,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params: paramsPromise,
 }: {
+  asdasd;
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await paramsPromise;
