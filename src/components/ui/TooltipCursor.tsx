@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef, ReactNode, useCallback } from 'react';
 
 type TooltipProps = {
-  pos?: 'cursor';
   text: string;
   children: ReactNode;
 };
@@ -9,7 +8,7 @@ type TooltipProps = {
 // Define position states for the cursor tooltip
 type TooltipPosition = 'bottom' | 'top' | 'left' | 'right' | 'default';
 
-export default function TooltipCursor({ pos, text, children }: TooltipProps) {
+export default function TooltipCursor({ text, children }: TooltipProps) {
   const [isHovered, setIsHovered] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [tooltipPos, setTooltipPos] = useState<TooltipPosition>('default');
@@ -30,108 +29,89 @@ export default function TooltipCursor({ pos, text, children }: TooltipProps) {
   }, []);
 
   useEffect(() => {
-    if (pos === 'cursor') {
-      const currentRef = ref.current;
-      if (currentRef) {
-        const handleMouseMove = (e: MouseEvent) => {
-          const rect = currentRef.getBoundingClientRect();
-          throttledSetMousePosition(
-            e.clientX - rect.left,
-            e.clientY - rect.top
-          );
-        };
-
-        currentRef.addEventListener('mousemove', handleMouseMove);
-
-        return () => {
-          currentRef.removeEventListener('mousemove', handleMouseMove);
-          if (throttleTimerRef.current !== null) {
-            clearTimeout(throttleTimerRef.current);
-          }
-        };
-      }
-    }
-  }, [pos, throttledSetMousePosition]);
-
-  useEffect(() => {
-    if (pos === 'cursor') {
-      const currentRef = ref.current;
-      if (currentRef) {
-        const handleMouseEnter = (e: MouseEvent) => {
-          const rect = currentRef.getBoundingClientRect();
-          throttledSetMousePosition(
-            e.clientX - rect.left,
-            e.clientY - rect.top
-          );
-          setIsHovered(true);
-        };
-
-        const handleInitialMouseMove = (e: MouseEvent) => {
-          const rect = currentRef.getBoundingClientRect();
-          throttledSetMousePosition(
-            e.clientX - rect.left,
-            e.clientY - rect.top
-          );
-          setIsHovered(true);
-          window.removeEventListener('mousemove', handleInitialMouseMove);
-        };
-
-        // Attach a one-time listener to detect the cursor's position on load
-        window.addEventListener('mousemove', handleInitialMouseMove);
-
-        currentRef.addEventListener('mouseenter', handleMouseEnter);
-
-        return () => {
-          currentRef.removeEventListener('mouseenter', handleMouseEnter);
-          window.removeEventListener('mousemove', handleInitialMouseMove);
-        };
-      }
-    }
-  }, [pos, throttledSetMousePosition]);
-
-  useEffect(() => {
-    if (pos === 'cursor') {
-      const currentRef = ref.current;
-      if (currentRef) {
-        const handleMouseEnter = (e: MouseEvent) => {
-          const rect = currentRef.getBoundingClientRect();
-          throttledSetMousePosition(
-            e.clientX - rect.left,
-            e.clientY - rect.top
-          );
-          setIsHovered(true);
-        };
-
-        // Check if the mouse is already over the element on mount
+    const currentRef = ref.current;
+    if (currentRef) {
+      const handleMouseMove = (e: MouseEvent) => {
         const rect = currentRef.getBoundingClientRect();
-        const isMouseOver =
-          rect.left <= mousePosition.x &&
-          mousePosition.x <= rect.right &&
-          rect.top <= mousePosition.y &&
-          mousePosition.y <= rect.bottom;
+        throttledSetMousePosition(e.clientX - rect.left, e.clientY - rect.top);
+      };
 
-        if (isMouseOver) {
-          handleMouseEnter(
-            new MouseEvent('mousemove', {
-              clientX: mousePosition.x,
-              clientY: mousePosition.y,
-            })
-          );
+      currentRef.addEventListener('mousemove', handleMouseMove);
+
+      return () => {
+        currentRef.removeEventListener('mousemove', handleMouseMove);
+        if (throttleTimerRef.current !== null) {
+          clearTimeout(throttleTimerRef.current);
         }
-
-        currentRef.addEventListener('mouseenter', handleMouseEnter);
-
-        return () => {
-          currentRef.removeEventListener('mouseenter', handleMouseEnter);
-        };
-      }
+      };
     }
-  }, [pos, throttledSetMousePosition, mousePosition]);
+  }, [throttledSetMousePosition]);
+
+  useEffect(() => {
+    const currentRef = ref.current;
+    if (currentRef) {
+      const handleMouseEnter = (e: MouseEvent) => {
+        const rect = currentRef.getBoundingClientRect();
+        throttledSetMousePosition(e.clientX - rect.left, e.clientY - rect.top);
+        setIsHovered(true);
+      };
+
+      const handleInitialMouseMove = (e: MouseEvent) => {
+        const rect = currentRef.getBoundingClientRect();
+        throttledSetMousePosition(e.clientX - rect.left, e.clientY - rect.top);
+        setIsHovered(true);
+        window.removeEventListener('mousemove', handleInitialMouseMove);
+      };
+
+      // Attach a one-time listener to detect the cursor's position on load
+      window.addEventListener('mousemove', handleInitialMouseMove);
+
+      currentRef.addEventListener('mouseenter', handleMouseEnter);
+
+      return () => {
+        currentRef.removeEventListener('mouseenter', handleMouseEnter);
+        window.removeEventListener('mousemove', handleInitialMouseMove);
+      };
+    }
+  }, [throttledSetMousePosition]);
+
+  useEffect(() => {
+    const currentRef = ref.current;
+    if (currentRef) {
+      const handleMouseEnter = (e: MouseEvent) => {
+        const rect = currentRef.getBoundingClientRect();
+        throttledSetMousePosition(e.clientX - rect.left, e.clientY - rect.top);
+        setIsHovered(true);
+      };
+
+      // Check if the mouse is already over the element on mount
+      const rect = currentRef.getBoundingClientRect();
+      const isMouseOver =
+        rect.left <= mousePosition.x &&
+        mousePosition.x <= rect.right &&
+        rect.top <= mousePosition.y &&
+        mousePosition.y <= rect.bottom;
+
+      if (isMouseOver) {
+        handleMouseEnter(
+          new MouseEvent('mousemove', {
+            clientX: mousePosition.x,
+            clientY: mousePosition.y,
+          })
+        );
+      }
+
+      currentRef.addEventListener('mouseenter', handleMouseEnter);
+
+      return () => {
+        currentRef.removeEventListener('mouseenter', handleMouseEnter);
+      };
+    }
+  }, [throttledSetMousePosition, mousePosition]);
 
   // Calculate tooltip position when mouse position changes
   useEffect(() => {
-    if (pos !== 'cursor' || !tooltipRef.current || !ref.current || !isHovered)
-      return;
+    if (!tooltipRef.current || !ref.current || !isHovered) return;
 
     const tooltipWidth = tooltipRef.current.offsetWidth;
     const tooltipHeight = tooltipRef.current.offsetHeight;
@@ -165,10 +145,10 @@ export default function TooltipCursor({ pos, text, children }: TooltipProps) {
     if (newPos !== tooltipPos) {
       setTooltipPos(newPos);
     }
-  }, [mousePosition, pos, isHovered, tooltipPos]);
+  }, [mousePosition, isHovered, tooltipPos]);
 
   const getTooltipPosition = () => {
-    if (pos !== 'cursor' || !tooltipRef.current) return {};
+    if (!tooltipRef.current) return {};
 
     const tooltipWidth = tooltipRef.current.offsetWidth;
     const tooltipHeight = tooltipRef.current.offsetHeight;
@@ -219,8 +199,8 @@ export default function TooltipCursor({ pos, text, children }: TooltipProps) {
             isHovered
               ? 'pointer-events-auto opacity-100'
               : 'pointer-events-none opacity-0'
-          } ${pos === 'cursor' ? 'transition-all duration-300 ease-out' : 'transition-opacity duration-300'}`}
-          style={pos === 'cursor' ? getTooltipPosition() : {}}
+          } ${'transition-all duration-300 ease-out'}`}
+          style={getTooltipPosition()}
         >
           {text}
         </div>
