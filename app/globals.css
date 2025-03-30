@@ -63,4 +63,28 @@
     /* Optional: prevent content shift when scrollbars are hidden */
     padding-right: 0 !important;
   }
+  /* Custom scrollbar styles for webkit browsers */
+  .scrollbar {
+    scrollbar-width: thin; /* For Firefox */
+  }
+
+  .scrollbar::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+
+  .scrollbar::-webkit-scrollbar-track {
+    border-radius: 100vh;
+    background: oklch(0.97 0.01 87.47);
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb {
+    background: oklch(0.86 0.02 17.62);
+    border-radius: 100vh;
+    border: 3px solid oklch(0.97 0.01 111.27);
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb:hover {
+    background: oklch(0.74 0.05 333.72);
+  }
 }
