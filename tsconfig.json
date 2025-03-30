@@ -20,18 +20,17 @@
     ],
     "paths": {
       "@/*": ["./*"],
-      "@/db*": ["./app/db/*"],
+      "@/public/*": ["./public/*"],
       "@/app": ["./app/*"],
-      "@/data/*": ["./app/data/*"],
       "@/api/*": ["./app/api/*"],
-      "@/components/*": ["./app/components/*"],
-      "@/hooks/*": ["./app/hooks/*"],
-      "@/services/*": ["./app/services/*"],
-      "@/utils/*": ["./app/utils/*"],
-      "@/store/*": ["./app/store/*"],
       "@/config/*": ["./app/config/*"],
-      "@/types/*": ["./app/types/*"],
-      "@/public/*": ["./public/*"]
+      "@/db*": ["./src/db/*"],
+      "@/data/*": ["./src/data/*"],
+      "@/components/*": ["./src/components/*"],
+      "@/hooks/*": ["./src/hooks/*"],
+      "@/store/*": ["./src/store/*"],
+      "@/types/*": ["./src/types/*"],
+      "@/utils/*": ["./src/utils/*"]
     },
     "target": "ES2017"
   },

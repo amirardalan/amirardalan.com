@@ -1,7 +1,10 @@
 import type { Config } from 'tailwindcss';
 
 const config: Config = {
-  content: ['./app/**/*.{js,ts,jsx,tsx,mdx}'],
+  content: [
+    './app/**/*.{js,ts,jsx,tsx,mdx}', // Scans app/
+    './src/components/**/*.{js,ts,jsx,tsx,mdx}', // Add this for components/
+  ],
   theme: {
     fontFamily: {
       sans: ['Jura', 'system-ui'],

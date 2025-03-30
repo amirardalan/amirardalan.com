@@ -2,9 +2,9 @@ import { Metadata } from 'next';
 import { headers } from 'next/headers';
 import { SessionProvider } from 'next-auth/react';
 
-import { getTheme } from '@/utils/get-theme';
+import { getTheme } from '@/src/utils/get-theme';
 import clsx from 'clsx';
-import '@/app/globals.css';
+import './globals.css';
 
 import DarkIcon from '@/public/images/favicon-dark.png';
 import LightIcon from '@/public/images/favicon-light.png';
@@ -46,6 +46,7 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 
   return {
+    metadataBase: new URL(`${process.env.NEXT_PUBLIC_URL}`),
     title,
     description: 'The portfolio and blog of Engineer and Designer Amir Ardalan',
     icons: [

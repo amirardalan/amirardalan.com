@@ -1,4 +1,4 @@
-import { auth } from '@/auth';
+import { auth } from '@/src/auth/auth';
 import AdminPageHeading from '@/components/admin/AdminPageHeading';
 import Avatar from '@/components/auth/Avatar';
 import SignedOut from '@/components/auth/SignedOut';
@@ -6,6 +6,7 @@ import { ObfuscatedEmail } from '@/components/ui/ObfuscatedEmail';
 
 export function generateMetadata() {
   return {
+    metadataBase: new URL(`${process.env.NEXT_PUBLIC_URL}`),
     title: 'Account — Amir Ardalan',
     description: 'View and manage your account details.',
   };

@@ -1,7 +1,7 @@
-import { auth } from '@/auth';
+import { auth } from '@/src/auth/auth';
 import { redirect } from 'next/navigation';
-import { getUserIdByEmail } from '@/auth';
-import { getPostBySlug } from '@/services/posts';
+import { getUserIdByEmail } from '@/src/db/queries/users';
+import { getPostBySlug } from '@/src/db/queries/posts';
 
 import AdminPageHeading from '@/components/admin/AdminPageHeading';
 import EditPostForm from '@/components/blog/EditPostForm';
@@ -60,6 +60,7 @@ export async function generateMetadata({
     .replace(/\b\w/g, (c) => c.toUpperCase())} — Amir Ardalan`;
 
   return {
+    metadataBase: new URL(`${process.env.NEXT_PUBLIC_URL}`),
     title,
     description: `Edit the blog post titled "${slug}" in the admin panel.`,
   };

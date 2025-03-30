@@ -40,8 +40,8 @@ AUTH_GITHUB_SECRET=<GitHub Client Secret>
 AUTH_SECRET=<Next Auth Secret>
 AUTH_TRUST_HOST=NEXT_PUBLIC_URL
 
-DATABASE_URL=<Supabase Transaction Pooler URL>
-DATABASE_API_KEY=<Supabase API Key>
+DB_URL=<Supabase Transaction Pooler URL>
+DB_API_KEY=<Supabase API Key>
 
 ALLOWED_EMAILS=you@example.com,team@example.com
 ALLOWED_EMAIL_DOMAINS=example.com,test.com
@@ -58,3 +58,25 @@ npx auth secret
 ```bash
 bun dev
 ```
+
+### Preview
+
+To test On-demand Revalidation of blog posts and to ensure the app is in good shape to run on production it is recommended to compile a preview build.
+
+```bash
+bun preview
+```
+
+> [!NOTE]
+> This script will format the project using Prettier, check linting, and then compile a preview build.
+
+### Drizzle Studio
+
+To interact with the postgres database locally:
+
+```bash
+npx drizzle-kit studio
+```
+
+> [!NOTE]
+> If using Brave browser you must turn Brave Shield off for `https://local.drizzle.studio/`

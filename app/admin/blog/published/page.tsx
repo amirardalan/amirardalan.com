@@ -1,9 +1,9 @@
-import { auth } from '@/auth';
+import { auth } from '@/src/auth/auth';
 import { redirect } from 'next/navigation';
 import AdminPageHeading from '@/components/admin/AdminPageHeading';
 import SearchInput from '@/components/admin/AdminSearch';
 import Link from 'next/link';
-import { getPublishedPosts } from '@/services/posts';
+import { getPublishedPosts } from '@/src/db/queries/posts';
 
 export default async function PublishedPosts({
   searchParams,

@@ -2,7 +2,7 @@
 // in the drafts page component. The code below is just for reference:
 
 import { NextResponse } from 'next/server';
-import { getDraftPosts } from '@/services/posts';
+import { getDraftPosts } from '@/src/db/queries/posts';
 
 export async function GET() {
   try {
