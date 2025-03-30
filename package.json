@@ -4,10 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "test": "next build && next start",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
+    "preview": "next lint && next build && next start",
     "format": "prettier --write ."
   },
   "dependencies": {
