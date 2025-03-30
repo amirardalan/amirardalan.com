@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import Cookies from 'js-cookie';
-import { Theme } from '@/src/types/theme';
+
+import { Theme } from '@/types/theme';
 
 type ThemeStore = {
   theme: Theme;

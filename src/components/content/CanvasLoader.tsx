@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Canvas } from '@react-three/fiber';
+
 import CanvasTerrain from '@/components/content/CanvasTerrain';
-import Tooltip from '../ui/Tooltip';
+import Tooltip from '@/components/ui/Tooltip';
 
 export default function CanvasLoader() {
   const [pixelRatio, setPixelRatio] = useState(1);

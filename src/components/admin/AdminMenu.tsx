@@ -1,8 +1,9 @@
 'use client';
 
+import { useActiveLink } from '@/hooks/useActiveLink';
 import Link from 'next/link';
-import { useActiveLink } from '@/src/hooks/useActiveLink';
 import clsx from 'clsx';
+
 import IconBlogControls from '@/components/icons/IconBlogControls';
 import IconAccount from '@/components/icons/IconAccount';
 

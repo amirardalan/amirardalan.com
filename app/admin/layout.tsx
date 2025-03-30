@@ -1,8 +1,9 @@
-import { auth } from '@/src/auth/auth';
-import SignedOut from '@/components/auth/SignedOut';
-import Container from '@/components/content/Container';
-import AdminMenu from '@/components/admin/AdminMenu';
+import { auth } from '@/auth';
+
 import { ToastProvider } from '@/components/ui/ToastContext';
+import Container from '@/components/content/Container';
+import SignedOut from '@/components/auth/SignedOut';
+import AdminMenu from '@/components/admin/AdminMenu';
 
 export default async function AdminLayout({
   children,

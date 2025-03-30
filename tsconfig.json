@@ -24,6 +24,7 @@
       "@/app": ["./app/*"],
       "@/api/*": ["./app/api/*"],
       "@/config/*": ["./app/config/*"],
+      "@/auth*": ["./src/auth/auth.ts"],
       "@/db*": ["./src/db/*"],
       "@/data/*": ["./src/data/*"],
       "@/components/*": ["./src/components/*"],

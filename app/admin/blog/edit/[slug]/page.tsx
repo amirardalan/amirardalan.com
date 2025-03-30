@@ -1,7 +1,7 @@
-import { auth } from '@/src/auth/auth';
+import { auth } from '@/auth';
 import { redirect } from 'next/navigation';
-import { getUserIdByEmail } from '@/src/db/queries/users';
-import { getPostBySlug } from '@/src/db/queries/posts';
+import { getUserIdByEmail } from '@/db/queries/users';
+import { getPostBySlug } from '@/db/queries/posts';
 
 import AdminPageHeading from '@/components/admin/AdminPageHeading';
 import EditPostForm from '@/components/blog/EditPostForm';

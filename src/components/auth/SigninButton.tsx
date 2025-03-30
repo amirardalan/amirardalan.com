@@ -1,4 +1,4 @@
-import { signIn } from '@/src/auth/auth';
+import { signIn } from '@/auth';
 import Button from '@/components/ui/Button';
 
 export default function SignInButton() {

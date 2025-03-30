@@ -1,4 +1,4 @@
-import { auth } from '@/src/auth/auth';
+import { auth } from '@/auth';
 import Button from '@/components/ui/Button';
 
 export default async function AuthMenu() {

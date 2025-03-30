@@ -1,9 +1,9 @@
 'use client';
 
-import PageHeading from '@/components/ui/PageHeading';
 import Container from '@/components/content/Container';
-import UsesItemCard from '@/components/content/UsesItemCard';
+import PageHeading from '@/components/ui/PageHeading';
 import UsesItemGrid from '@/components/content/UsesItemGrid';
+import UsesItemCard from '@/components/content/UsesItemCard';
 
 export default function Uses() {
   const computers = [

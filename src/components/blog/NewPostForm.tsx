@@ -1,10 +1,11 @@
 'use client';
 
+import { useToast } from '@/components/ui/ToastContext';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+
 import Button from '@/components/ui/Button';
 import categories from '@/data/categories.json';
-import { useToast } from '@/components/ui/ToastContext';
 
 interface NewPostFormProps {
   userId: number;

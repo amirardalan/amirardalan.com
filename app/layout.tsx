@@ -2,17 +2,16 @@ import { Metadata } from 'next';
 import { headers } from 'next/headers';
 import { SessionProvider } from 'next-auth/react';
 
-import { getTheme } from '@/src/utils/get-theme';
 import clsx from 'clsx';
 import './globals.css';
+import { getTheme } from '@/utils/get-theme';
 
+import { Jura, Prata, JetBrains_Mono } from 'next/font/google';
 import DarkIcon from '@/public/images/favicon-dark.png';
 import LightIcon from '@/public/images/favicon-light.png';
 
 import Header from '@/components/ui/Header';
 import Footer from '@/components/ui/Footer';
-
-import { Jura, Prata, JetBrains_Mono } from 'next/font/google';
 
 const sans = Jura({
   subsets: ['latin'],
