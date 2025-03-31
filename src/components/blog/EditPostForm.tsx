@@ -7,6 +7,7 @@ import { useToast } from '@/components/ui/ToastContext';
 import { BlogPost } from '@/types/blog';
 import Modal from '@/components/ui/Modal';
 import PostFormFields from '@/components/blog/PostFormFields';
+import { updatePost, deletePost } from '@/src/db/services/postService';
 
 interface EditPostFormProps {
   post: BlogPost;
@@ -34,29 +35,18 @@ export default function EditPostForm({ post }: EditPostFormProps) {
     setError(null);
 
     try {
-      const response = await fetch(`/api/posts/${post.id}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          title,
-          slug,
-          excerpt,
-          content,
-          category,
-          published,
-          show_updated: showUpdated,
-          user_id: post.user_id,
-        }),
+      await updatePost(post.id, {
+        title,
+        slug,
+        excerpt,
+        content,
+        category,
+        published,
+        show_updated: showUpdated,
+        user_id: post.user_id,
       });
 
-      if (!response.ok) {
-        throw new Error(await response.text());
-      }
-
       showToast('Post updated successfully!', 'success');
-
       router.push(published ? `/blog/${slug}` : '/admin/blog/drafts');
     } catch (err) {
       setError((err as Error).message);
@@ -79,17 +69,9 @@ export default function EditPostForm({ post }: EditPostFormProps) {
     setError(null);
 
     try {
-      const response = await fetch(`/api/posts/${post.id}`, {
-        method: 'DELETE',
-      });
-
-      if (!response.ok) {
-        throw new Error(await response.text());
-      }
+      await deletePost(post.id);
 
       showToast('Post deleted successfully!', 'success');
-
-      // Redirect based on the post's published status
       router.push(
         post.published ? '/admin/blog/published' : '/admin/blog/drafts'
       );

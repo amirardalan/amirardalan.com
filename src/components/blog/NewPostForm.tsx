@@ -3,6 +3,7 @@
 import { useToast } from '@/components/ui/ToastContext';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { createPost } from '@/src/db/services/postService';
 
 import Button from '@/components/ui/Button';
 import PostFormFields from './PostFormFields';
@@ -36,26 +37,15 @@ export default function NewPostForm({ userId }: NewPostFormProps) {
         excerpt,
         content,
         category,
-        user_id: userId, // Use user_id instead of author name
+        user_id: userId,
         published,
         created_at: new Date().toISOString(),
         updated_at: new Date().toISOString(),
       };
 
-      const response = await fetch('/api/posts', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(payload),
-      });
-
-      if (!response.ok) {
-        throw new Error(await response.text());
-      }
+      await createPost(payload);
 
       showToast('Post created successfully!', 'success');
-
       router.push(published ? `/blog/${slug}` : '/admin/blog/drafts');
     } catch (err) {
       setError((err as Error).message);
