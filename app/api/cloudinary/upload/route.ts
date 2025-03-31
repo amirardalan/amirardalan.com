@@ -62,7 +62,14 @@ export async function DELETE(req: Request) {
       );
     }
 
-    await cloudinary.uploader.destroy(publicId);
+    const result = await cloudinary.uploader.destroy(publicId);
+
+    if (result.result !== 'ok') {
+      return NextResponse.json(
+        { error: 'Failed to delete image from Cloudinary.' },
+        { status: 500 }
+      );
+    }
 
     return NextResponse.json({ success: true });
   } catch (error) {

@@ -128,7 +128,7 @@ export default function MediaGallery({ onSelect }: MediaGalleryProps) {
             onClick={() => onSelect(url)}
             onContextMenu={(e) => {
               e.preventDefault();
-              const publicId = url.split('/').pop()?.split('.')[0];
+              const publicId = url.split('/').slice(-2).join('/').split('.')[0]; // Extract publicId
               if (publicId) handleDelete(publicId);
             }}
           >
@@ -142,7 +142,11 @@ export default function MediaGallery({ onSelect }: MediaGalleryProps) {
             <button
               onClick={(e) => {
                 e.stopPropagation();
-                const publicId = url.split('/').pop()?.split('.')[0];
+                const publicId = url
+                  .split('/')
+                  .slice(-2)
+                  .join('/')
+                  .split('.')[0]; // Extract publicId
                 if (publicId) handleDelete(publicId);
               }}
               className="absolute right-0 top-0 hidden rounded bg-zinc-500 px-1 text-xxs text-white hover:bg-red-600 group-hover:block"
