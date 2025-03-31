@@ -29,6 +29,7 @@
       "@/data/*": ["./src/data/*"],
       "@/components/*": ["./src/components/*"],
       "@/hooks/*": ["./src/hooks/*"],
+      "@/lib/*": ["./src/lib/*"],
       "@/store/*": ["./src/store/*"],
       "@/types/*": ["./src/types/*"],
       "@/utils/*": ["./src/utils/*"]

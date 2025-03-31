@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 
 import Button from '@/components/ui/Button';
 import categories from '@/data/categories.json';
+import MediaGallery from './MediaGallery';
 
 interface NewPostFormProps {
   userId: number;
@@ -27,6 +28,7 @@ export default function NewPostForm({ userId }: NewPostFormProps) {
   const [published, setPublished] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [showGallery, setShowGallery] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -152,6 +154,24 @@ export default function NewPostForm({ userId }: NewPostFormProps) {
           rows={15}
           className="mt-1 block w-full rounded-md border border-zinc-300 bg-zinc-100 px-3 py-2 text-zinc-950 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 dark:border-zinc-500 dark:bg-zinc-800 dark:text-light"
         />
+      </div>
+
+      <div>
+        <button
+          type="button"
+          onClick={() => setShowGallery(true)}
+          className="mt-2 rounded bg-blue-500 px-4 py-2 text-white"
+        >
+          Add Image
+        </button>
+        {showGallery && (
+          <MediaGallery
+            onSelect={(url) => {
+              setContent((prev) => `${prev}\n![Image](${url})`);
+              setShowGallery(false);
+            }}
+          />
+        )}
       </div>
 
       <div className="flex w-full flex-row justify-between">

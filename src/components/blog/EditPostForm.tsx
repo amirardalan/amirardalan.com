@@ -7,6 +7,7 @@ import categories from '@/data/categories.json';
 import { useToast } from '@/components/ui/ToastContext';
 import { BlogPost } from '@/types/blog';
 import Modal from '@/components/ui/Modal';
+import MediaGallery from './MediaGallery';
 
 interface EditPostFormProps {
   post: BlogPost;
@@ -31,6 +32,7 @@ export default function EditPostForm({ post }: EditPostFormProps) {
   const [isDeleting, setIsDeleting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [showGallery, setShowGallery] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -176,6 +178,21 @@ export default function EditPostForm({ post }: EditPostFormProps) {
           rows={15}
           className="mt-1 block w-full rounded-md border border-zinc-300 bg-zinc-100 px-3 py-2 text-zinc-950 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 dark:border-zinc-500 dark:bg-zinc-800 dark:text-light"
         />
+        <button
+          type="button"
+          onClick={() => setShowGallery(true)}
+          className="mt-2 rounded bg-blue-500 px-4 py-2 text-white"
+        >
+          Add Image
+        </button>
+        {showGallery && (
+          <MediaGallery
+            onSelect={(url) => {
+              setContent((prev) => `${prev}\n![Image](${url})`);
+              setShowGallery(false);
+            }}
+          />
+        )}
       </div>
 
       <div className="flex w-full flex-row justify-between">
