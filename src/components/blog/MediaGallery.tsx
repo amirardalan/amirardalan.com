@@ -78,6 +78,30 @@ export default function MediaGallery({ onSelect }: MediaGalleryProps) {
     }
   };
 
+  const handleDelete = async (publicId: string) => {
+    if (!confirm('Are you sure you want to delete this image?')) return;
+
+    try {
+      const res = await fetch('/api/cloudinary/upload', {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ publicId }),
+      });
+      const data = await res.json();
+
+      if (data.success) {
+        setImages((prev) => prev.filter((url) => !url.includes(publicId)));
+        showToast('Image deleted successfully!', 'success');
+      } else {
+        console.error('Delete failed:', data.error);
+        showToast('Failed to delete image.', 'error');
+      }
+    } catch (error) {
+      console.error('Error deleting file:', error);
+      showToast('Failed to delete image.', 'error');
+    }
+  };
+
   if (loading) return <p className="text-dark dark:text-light">Loading...</p>;
 
   return (
@@ -100,16 +124,31 @@ export default function MediaGallery({ onSelect }: MediaGalleryProps) {
         {paginatedImages.map((url) => (
           <div
             key={url}
-            className="aspect-square cursor-pointer overflow-hidden"
+            className="group relative aspect-square cursor-pointer overflow-hidden"
             onClick={() => onSelect(url)}
+            onContextMenu={(e) => {
+              e.preventDefault();
+              const publicId = url.split('/').pop()?.split('.')[0]; // Extract public ID
+              if (publicId) handleDelete(publicId);
+            }}
           >
             <CldImage
               src={url}
               width="300"
               height="300"
               alt="Media"
-              className="h-full w-full object-cover"
+              className="h-full w-full object-cover transition duration-200 group-hover:brightness-75"
             />
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                const publicId = url.split('/').pop()?.split('.')[0];
+                if (publicId) handleDelete(publicId);
+              }}
+              className="absolute right-0 top-0 hidden rounded bg-zinc-500 px-1 text-xxs text-white hover:bg-red-600 group-hover:block"
+            >
+              Delete
+            </button>
           </div>
         ))}
 
