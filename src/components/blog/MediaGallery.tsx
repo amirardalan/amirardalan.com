@@ -128,7 +128,7 @@ export default function MediaGallery({ onSelect }: MediaGalleryProps) {
             onClick={() => onSelect(url)}
             onContextMenu={(e) => {
               e.preventDefault();
-              const publicId = url.split('/').pop()?.split('.')[0]; // Extract public ID
+              const publicId = url.split('/').pop()?.split('.')[0];
               if (publicId) handleDelete(publicId);
             }}
           >
