@@ -121,15 +121,8 @@ export default function PostFormFields({
           >
             Add Image
           </button>
-          {showGallery && (
-            <MediaGallery
-              onSelect={(url) => {
-                setContent(`${content}\n![Image](${url})`); // Fix: Pass the updated string directly
-                setShowGallery(false);
-              }}
-            />
-          )}
         </div>
+        {/* Removed inline MediaGallery rendering */}
 
         <div className="mr-4">
           <label htmlFor="category" className="hidden text-xs">

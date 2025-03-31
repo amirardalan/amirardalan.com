@@ -34,13 +34,23 @@ export default function MediaGallery({ onSelect }: MediaGalleryProps) {
     fetchImages();
   }, []);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <p className="text-dark dark:text-light">Loading...</p>;
 
   return (
-    <div className="grid grid-cols-3 gap-4">
+    <div className="grid grid-cols-4 gap-2">
       {images.map((url) => (
-        <div key={url} className="cursor-pointer" onClick={() => onSelect(url)}>
-          <CldImage src={url} width="300" height="200" alt="Media" />
+        <div
+          key={url}
+          className="aspect-square cursor-pointer overflow-hidden"
+          onClick={() => onSelect(url)}
+        >
+          <CldImage
+            src={url}
+            width="300"
+            height="300" // Ensure square dimensions
+            alt="Media"
+            className="h-full w-full object-cover" // Ensure the image fills the square
+          />
         </div>
       ))}
     </div>

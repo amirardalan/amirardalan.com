@@ -7,9 +7,11 @@ interface ModalProps {
   title: string;
   message: string;
   onCancel: () => void;
-  onConfirm: () => void;
+  onConfirm?: () => void; // Make optional for cases where no confirm button is needed
   confirmText?: string;
   confirmDisabled?: boolean;
+  children?: React.ReactNode;
+  buttons?: 'both' | 'cancel' | 'confirm'; // New prop to control buttons
 }
 
 export default function Modal({
@@ -20,6 +22,8 @@ export default function Modal({
   onConfirm,
   confirmText = 'Confirm',
   confirmDisabled = false,
+  children,
+  buttons = 'both',
 }: ModalProps) {
   if (!isOpen) return null;
 
@@ -32,20 +36,26 @@ export default function Modal({
         <p className="mb-6 text-sm text-zinc-700 dark:text-zinc-300">
           {message}
         </p>
+        {children && <div className="mb-6">{children}</div>}{' '}
+        {/* Render children */}
         <div className="flex justify-end space-x-3">
-          <Button
-            type="button"
-            onClick={onCancel}
-            text="Cancel"
-            variant="secondary"
-          />
-          <Button
-            type="button"
-            onClick={onConfirm}
-            text={confirmText}
-            disabled={confirmDisabled}
-            variant="danger"
-          />
+          {(buttons === 'both' || buttons === 'cancel') && (
+            <Button
+              type="button"
+              onClick={onCancel}
+              text={buttons === 'cancel' ? 'Close' : 'Cancel'}
+              variant="secondary"
+            />
+          )}
+          {buttons !== 'cancel' && (
+            <Button
+              type="button"
+              onClick={onConfirm}
+              text={confirmText}
+              disabled={confirmDisabled}
+              variant="danger"
+            />
+          )}
         </div>
       </div>
     </div>
