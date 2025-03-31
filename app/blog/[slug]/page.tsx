@@ -54,7 +54,7 @@ export async function generateMetadata({
 async function compilePostContent(content: string) {
   const { content: compiledContent } = await compileMDX({
     source: content,
-    components,
+    components, // Ensure components are server-compatible
     options: {
       parseFrontmatter: false,
       mdxOptions: {

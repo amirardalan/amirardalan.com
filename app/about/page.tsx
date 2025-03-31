@@ -5,6 +5,8 @@ import Container from '@/components/content/Container';
 import Tooltip from '@/components/ui/Tooltip';
 import IconWave from '@/components/icons/IconWave';
 
+import { CldImage } from 'next-cloudinary';
+
 export default function About() {
   return (
     <Container>
@@ -83,6 +85,7 @@ export default function About() {
             </Tooltip>
           </div>
         </div>
+        {/* Remove the CldImage test */}
       </div>
     </Container>
   );

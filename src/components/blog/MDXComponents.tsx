@@ -1,6 +1,7 @@
 import { ComponentPropsWithoutRef } from 'react';
 import Link from 'next/link';
 import { highlight } from 'sugar-high';
+import Image from 'next/image';
 
 type HeadingProps = ComponentPropsWithoutRef<'h1'>;
 type ParagraphProps = ComponentPropsWithoutRef<'p'>;
@@ -119,6 +120,17 @@ export const components = {
     <blockquote
       className="ml-[0.075em] mt-4 border-l-4 border-zinc-300 pl-4 text-dark dark:border-zinc-600 dark:text-light"
       {...props}
+    />
+  ),
+  img: (props: ComponentPropsWithoutRef<'img'>) => (
+    <Image
+      src={props.src!}
+      alt={props.alt || 'Image'}
+      width={800}
+      height={600}
+      layout="responsive"
+      priority={true} // TODO: Make this configurable based on props
+      className="my-4"
     />
   ),
 };

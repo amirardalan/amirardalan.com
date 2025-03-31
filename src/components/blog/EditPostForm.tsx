@@ -2,19 +2,18 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import Button from '@/components/ui/Button';
-import categories from '@/data/categories.json';
+import { updatePost, deletePost } from '@/src/db/services/postService';
 import { useToast } from '@/components/ui/ToastContext';
-import { BlogPost } from '@/types/blog';
+
+import PostFormFields from '@/components/blog/PostFormFields';
+import Button from '@/components/ui/Button';
 import Modal from '@/components/ui/Modal';
+import MediaGallery from '@/components/blog/MediaGallery';
+
+import { BlogPost } from '@/types/blog';
 
 interface EditPostFormProps {
   post: BlogPost;
-}
-
-interface Category {
-  id: string;
-  name: string;
 }
 
 export default function EditPostForm({ post }: EditPostFormProps) {
@@ -31,6 +30,7 @@ export default function EditPostForm({ post }: EditPostFormProps) {
   const [isDeleting, setIsDeleting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [showGallery, setShowGallery] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -38,29 +38,18 @@ export default function EditPostForm({ post }: EditPostFormProps) {
     setError(null);
 
     try {
-      const response = await fetch(`/api/posts/${post.id}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          title,
-          slug,
-          excerpt,
-          content,
-          category,
-          published,
-          show_updated: showUpdated,
-          user_id: post.user_id,
-        }),
+      await updatePost(post.id, {
+        title,
+        slug,
+        excerpt,
+        content,
+        category,
+        published,
+        show_updated: showUpdated,
+        user_id: post.user_id,
       });
 
-      if (!response.ok) {
-        throw new Error(await response.text());
-      }
-
       showToast('Post updated successfully!', 'success');
-
       router.push(published ? `/blog/${slug}` : '/admin/blog/drafts');
     } catch (err) {
       setError((err as Error).message);
@@ -68,10 +57,6 @@ export default function EditPostForm({ post }: EditPostFormProps) {
     } finally {
       setIsSubmitting(false);
     }
-  };
-
-  const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setTitle(e.target.value);
   };
 
   const handleDeleteClick = () => {
@@ -87,17 +72,9 @@ export default function EditPostForm({ post }: EditPostFormProps) {
     setError(null);
 
     try {
-      const response = await fetch(`/api/posts/${post.id}`, {
-        method: 'DELETE',
-      });
-
-      if (!response.ok) {
-        throw new Error(await response.text());
-      }
+      await deletePost(post.id);
 
       showToast('Post deleted successfully!', 'success');
-
-      // Redirect based on the post's published status
       router.push(
         post.published ? '/admin/blog/published' : '/admin/blog/drafts'
       );
@@ -110,142 +87,41 @@ export default function EditPostForm({ post }: EditPostFormProps) {
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="space-y-6 text-dark dark:text-light"
-    >
-      {error && (
-        <div className="rounded-md bg-red-50 p-4 text-red-700 dark:bg-red-900 dark:text-red-100">
-          {error}
-        </div>
-      )}
-
-      <div>
-        <label htmlFor="title" className="block font-medium">
-          Title
-        </label>
-        <input
-          type="text"
-          id="title"
-          value={title}
-          onChange={handleTitleChange}
-          required
-          className="mt-1 block w-full rounded-md border border-zinc-300 bg-zinc-100 px-3 py-2 text-zinc-950 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 dark:border-zinc-500 dark:bg-zinc-800 dark:text-light"
-        />
-      </div>
-
-      <div className="flex flex-row">
-        <div className="w-full">
-          <label htmlFor="slug" className="block font-medium">
-            Slug
-          </label>
-          <input
-            type="text"
-            id="slug"
-            value={slug}
-            onChange={(e) => setSlug(e.target.value)}
-            required
-            className="mt-1 block w-full rounded-md border border-zinc-300 bg-zinc-100 px-3 py-2 text-zinc-950 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 dark:border-zinc-500 dark:bg-zinc-800 dark:text-light"
-          />
-        </div>
-      </div>
-
-      <div>
-        <label htmlFor="excerpt" className="block font-medium">
-          Excerpt
-        </label>
-        <input
-          type="text"
-          id="excerpt"
-          value={excerpt}
-          onChange={(e) => setExcerpt(e.target.value)}
-          required
-          className="mt-1 block w-full rounded-md border border-zinc-300 bg-zinc-100 px-3 py-2 text-zinc-950 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 dark:border-zinc-500 dark:bg-zinc-800 dark:text-light"
-        />
-      </div>
-
-      <div>
-        <label htmlFor="content" className="block font-medium">
-          Content (Markdown)
-        </label>
-        <textarea
-          id="content"
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-          required
-          rows={15}
-          className="mt-1 block w-full rounded-md border border-zinc-300 bg-zinc-100 px-3 py-2 text-zinc-950 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 dark:border-zinc-500 dark:bg-zinc-800 dark:text-light"
-        />
-      </div>
-
-      <div className="flex w-full flex-row justify-between">
-        <div className="flex items-center">
-          <div className="flex items-center">
-            <label htmlFor="category" className="mr-2 block font-medium">
-              Category:
-            </label>
-            <select
-              id="category"
-              value={category}
-              onChange={(e) => setCategory(e.target.value)}
-              required
-              className="mt-1 block rounded-md border border-zinc-300 bg-zinc-100 px-3 py-2 text-zinc-950 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 dark:border-zinc-500 dark:bg-zinc-800 dark:text-light"
-            >
-              <option value="" disabled>
-                Category
-              </option>
-              {categories.map((cat: Category) => (
-                <option key={cat.id} value={cat.id}>
-                  {cat.name}
-                </option>
-              ))}
-            </select>
+    <>
+      <form
+        onSubmit={handleSubmit}
+        className="space-y-6 text-dark dark:text-light"
+      >
+        {error && (
+          <div className="rounded-md bg-red-50 p-4 text-red-700 dark:bg-red-900 dark:text-red-100">
+            {error}
           </div>
-        </div>
-
-        <div className="flex flex-row items-center">
-          <div className="mr-4 flex items-center">
-            <input
-              type="checkbox"
-              id="published"
-              checked={published}
-              onChange={(e) => setPublished(e.target.checked)}
-              className="h-4 w-4 cursor-pointer rounded border-zinc-300 text-blue-600 focus:ring-blue-500"
-            />
-            <label
-              htmlFor="published"
-              className="ml-2 block cursor-pointer text-xs"
-            >
-              Publish
-            </label>
-          </div>
-
-          <div className="flex items-center">
-            <input
-              type="checkbox"
-              id="show_updated"
-              checked={showUpdated}
-              onChange={(e) => setShowUpdated(e.target.checked)}
-              className="h-4 w-4 cursor-pointer rounded border-zinc-300 text-blue-600 focus:ring-blue-500"
-            />
-            <label
-              htmlFor="show_updated"
-              className="ml-2 block cursor-pointer text-xs"
-            >
-              Show Updated Date
-            </label>
-          </div>
-        </div>
-
+        )}
+        <PostFormFields
+          title={title}
+          setTitle={setTitle}
+          slug={slug}
+          setSlug={setSlug}
+          excerpt={excerpt}
+          setExcerpt={setExcerpt}
+          content={content}
+          setContent={setContent}
+          category={category}
+          setCategory={setCategory}
+          published={published}
+          setPublished={setPublished}
+          showGallery={showGallery}
+          setShowGallery={setShowGallery}
+          showUpdated={showUpdated}
+          setShowUpdated={setShowUpdated}
+        />
         <div className="flex space-x-2">
-          {/* Remove the condition to always show the delete button */}
           <Button
             type="button"
             onClick={handleDeleteClick}
             text={isDeleting ? 'Deleting...' : 'Delete'}
             disabled={isDeleting || isSubmitting}
             variant="danger"
-            color={'red-500'}
           />
           <Button
             type="submit"
@@ -253,9 +129,8 @@ export default function EditPostForm({ post }: EditPostFormProps) {
             disabled={isSubmitting || isDeleting}
           />
         </div>
-      </div>
+      </form>
 
-      {/* Delete Confirmation Modal */}
       <Modal
         isOpen={showDeleteModal}
         title="Confirm Deletion"
@@ -265,6 +140,21 @@ export default function EditPostForm({ post }: EditPostFormProps) {
         confirmText={isDeleting ? 'Deleting...' : 'Delete Post'}
         confirmDisabled={isDeleting}
       />
-    </form>
+
+      <Modal
+        isOpen={showGallery}
+        title="Select an Image"
+        message=""
+        onCancel={() => setShowGallery(false)}
+        buttons="cancel"
+      >
+        <MediaGallery
+          onSelect={(url) => {
+            setContent(`${content}\n![Image](${url})`);
+            setShowGallery(false);
+          }}
+        />
+      </Modal>
+    </>
   );
 }

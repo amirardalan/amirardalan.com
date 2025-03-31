@@ -1,19 +1,17 @@
 'use client';
 
-import { useToast } from '@/components/ui/ToastContext';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { createPost } from '@/src/db/services/postService';
+import { useToast } from '@/components/ui/ToastContext';
 
+import PostFormFields from '@/components/blog/PostFormFields';
 import Button from '@/components/ui/Button';
-import categories from '@/data/categories.json';
+import Modal from '@/components/ui/Modal';
+import MediaGallery from '@/components/blog/MediaGallery';
 
 interface NewPostFormProps {
   userId: number;
-}
-
-interface Category {
-  id: string;
-  name: string;
 }
 
 export default function NewPostForm({ userId }: NewPostFormProps) {
@@ -27,6 +25,8 @@ export default function NewPostForm({ userId }: NewPostFormProps) {
   const [published, setPublished] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [showGallery, setShowGallery] = useState(false);
+  const [showCancelModal, setShowCancelModal] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -40,26 +40,15 @@ export default function NewPostForm({ userId }: NewPostFormProps) {
         excerpt,
         content,
         category,
-        user_id: userId, // Use user_id instead of author name
+        user_id: userId,
         published,
         created_at: new Date().toISOString(),
         updated_at: new Date().toISOString(),
       };
 
-      const response = await fetch('/api/posts', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(payload),
-      });
-
-      if (!response.ok) {
-        throw new Error(await response.text());
-      }
+      await createPost(payload);
 
       showToast('Post created successfully!', 'success');
-
       router.push(published ? `/blog/${slug}` : '/admin/blog/drafts');
     } catch (err) {
       setError((err as Error).message);
@@ -69,142 +58,71 @@ export default function NewPostForm({ userId }: NewPostFormProps) {
     }
   };
 
-  const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newTitle = e.target.value;
-    setTitle(newTitle);
-    if (!slug || slug === generateSlug(title)) {
-      setSlug(generateSlug(newTitle));
-    }
-  };
-
-  const generateSlug = (text: string) =>
-    text
-      .toLowerCase()
-      .replace(/[^\w\s-]/g, '')
-      .replace(/\s+/g, '-')
-      .replace(/-+/g, '-')
-      .trim();
-
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="space-y-6 text-dark dark:text-light"
-    >
-      {error && (
-        <div className="rounded-md bg-red-50 p-4 text-red-700 dark:bg-red-900 dark:text-red-100">
-          {error}
-        </div>
-      )}
-
-      <div>
-        <label htmlFor="title" className="block font-medium">
-          Title
-        </label>
-        <input
-          type="text"
-          id="title"
-          value={title}
-          onChange={handleTitleChange}
-          required
-          className="mt-1 block w-full rounded-md border border-zinc-300 bg-zinc-100 px-3 py-2 text-zinc-950 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 dark:border-zinc-500 dark:bg-zinc-800 dark:text-light"
+    <>
+      <form
+        onSubmit={handleSubmit}
+        className="space-y-6 text-dark dark:text-light"
+      >
+        {error && (
+          <div className="rounded-md bg-red-50 p-4 text-red-700 dark:bg-red-900 dark:text-red-100">
+            {error}
+          </div>
+        )}
+        <PostFormFields
+          title={title}
+          setTitle={setTitle}
+          slug={slug}
+          setSlug={setSlug}
+          excerpt={excerpt}
+          setExcerpt={setExcerpt}
+          content={content}
+          setContent={setContent}
+          category={category}
+          setCategory={setCategory}
+          published={published}
+          setPublished={setPublished}
+          showGallery={showGallery}
+          setShowGallery={setShowGallery}
         />
-      </div>
-
-      <div className="flex flex-row">
-        <div className="w-full">
-          <label htmlFor="slug" className="block font-medium">
-            Slug
-          </label>
-          <input
-            type="text"
-            id="slug"
-            value={slug}
-            onChange={(e) => setSlug(e.target.value)}
-            required
-            className="mt-1 block w-full rounded-md border border-zinc-300 bg-zinc-100 px-3 py-2 text-zinc-950 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 dark:border-zinc-500 dark:bg-zinc-800 dark:text-light"
+        <div className="flex space-x-2">
+          <Button
+            type="button"
+            onClick={() => setShowCancelModal(true)}
+            text={'Discard'}
+            variant="danger"
+          />
+          <Button
+            type="submit"
+            text={isSubmitting ? 'Creating...' : 'Create Post'}
+            disabled={isSubmitting}
           />
         </div>
-      </div>
+      </form>
 
-      <div>
-        <label htmlFor="excerpt" className="block font-medium">
-          Excerpt
-        </label>
-        <input
-          type="text"
-          id="Excerpt"
-          value={excerpt}
-          onChange={(e) => setExcerpt(e.target.value)}
-          required
-          className="mt-1 block w-full rounded-md border border-zinc-300 bg-zinc-100 px-3 py-2 text-zinc-950 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 dark:border-zinc-500 dark:bg-zinc-800 dark:text-light"
+      <Modal
+        isOpen={showGallery}
+        title="Select an Image"
+        message=""
+        onCancel={() => setShowGallery(false)}
+        buttons="cancel"
+      >
+        <MediaGallery
+          onSelect={(url) => {
+            setContent(`${content}\n![Image](${url})`);
+            setShowGallery(false);
+          }}
         />
-      </div>
+      </Modal>
 
-      <div>
-        <label htmlFor="content" className="block font-medium">
-          Content (Markdown)
-        </label>
-        <textarea
-          id="content"
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-          required
-          rows={15}
-          className="mt-1 block w-full rounded-md border border-zinc-300 bg-zinc-100 px-3 py-2 text-zinc-950 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 dark:border-zinc-500 dark:bg-zinc-800 dark:text-light"
-        />
-      </div>
-
-      <div className="flex w-full flex-row justify-between">
-        <div className="flex items-center">
-          <div className="flex items-center">
-            <label htmlFor="category" className="mr-2 block font-medium">
-              Category:
-            </label>
-            <select
-              id="category"
-              value={category}
-              onChange={(e) => setCategory(e.target.value)}
-              required
-              className="mt-1 block rounded-md border border-zinc-300 bg-zinc-100 px-3 py-2 text-zinc-950 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 dark:border-zinc-500 dark:bg-zinc-800 dark:text-light"
-            >
-              <option value="" disabled>
-                Category
-              </option>
-              {categories.map((cat: Category) => (
-                <option key={cat.id} value={cat.id}>
-                  {cat.name}
-                </option>
-              ))}
-            </select>
-          </div>
-        </div>
-
-        <div className="flex flex-row items-center">
-          <div className="mr-4 flex items-center">
-            <input
-              type="checkbox"
-              id="published"
-              checked={published}
-              onChange={(e) => setPublished(e.target.checked)}
-              className="h-4 w-4 cursor-pointer rounded border-zinc-300 text-blue-600 focus:ring-blue-500"
-            />
-            <label
-              htmlFor="published"
-              className="ml-2 block cursor-pointer font-medium"
-            >
-              Publish
-            </label>
-          </div>
-
-          <div>
-            <Button
-              type="submit"
-              text={isSubmitting ? 'Creating...' : 'Create Post'}
-              disabled={isSubmitting}
-            />
-          </div>
-        </div>
-      </div>
-    </form>
+      <Modal
+        isOpen={showCancelModal}
+        title="Discard Changes"
+        message="Are you sure you want to discard your changes? This action cannot be undone."
+        onCancel={() => setShowCancelModal(false)}
+        onConfirm={() => router.push('/admin/')}
+        confirmText="Discard"
+      />
+    </>
   );
 }
