@@ -13,6 +13,18 @@ export default function MediaGallery({ onSelect }: MediaGalleryProps) {
   const [loading, setLoading] = useState(true);
   const [uploading, setUploading] = useState(false);
   const { showToast } = useToast();
+  const [currentPage, setCurrentPage] = useState(1);
+  const imagesPerPage = 12;
+
+  const totalPages = Math.ceil(images.length / imagesPerPage);
+  const paginatedImages = images.slice(
+    (currentPage - 1) * imagesPerPage,
+    currentPage * imagesPerPage
+  );
+
+  const handlePageClick = (page: number) => {
+    setCurrentPage(page);
+  };
 
   useEffect(() => {
     const fetchImages = async () => {
@@ -82,8 +94,11 @@ export default function MediaGallery({ onSelect }: MediaGalleryProps) {
           />
         </label>
       </div>
-      <div className="grid grid-cols-4 gap-2">
-        {images.map((url) => (
+      <div
+        className="grid grid-cols-4 gap-2"
+        style={{ minHeight: `${Math.ceil(imagesPerPage / 4) * 75}px` }} // Reserve space for 12 images
+      >
+        {paginatedImages.map((url) => (
           <div
             key={url}
             className="aspect-square cursor-pointer overflow-hidden"
@@ -97,6 +112,26 @@ export default function MediaGallery({ onSelect }: MediaGalleryProps) {
               className="h-full w-full object-cover" // Ensure the image fills the square
             />
           </div>
+        ))}
+        {/* Fill empty slots to maintain consistent height */}
+        {Array.from({ length: imagesPerPage - paginatedImages.length }).map(
+          (_, index) => (
+            <div
+              key={`placeholder-${index}`}
+              className="aspect-square bg-zinc-700"
+            />
+          )
+        )}
+      </div>
+      <div className="mt-4 flex justify-center space-x-2">
+        {Array.from({ length: totalPages }).map((_, index) => (
+          <button
+            key={index}
+            onClick={() => handlePageClick(index + 1)}
+            className={`h-4 w-4 rounded-full ${
+              currentPage === index + 1 ? 'bg-zinc-400' : 'bg-zinc-600'
+            }`}
+          />
         ))}
       </div>
     </div>
