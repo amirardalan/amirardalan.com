@@ -26,6 +26,7 @@ export default function EditPostForm({ post }: EditPostFormProps) {
   const [content, setContent] = useState(post.content || '');
   const [category, setCategory] = useState(post.category || '');
   const [published, setPublished] = useState(post.published || false);
+  const [showUpdated, setShowUpdated] = useState(post.show_updated || false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -49,6 +50,7 @@ export default function EditPostForm({ post }: EditPostFormProps) {
           content,
           category,
           published,
+          show_updated: showUpdated,
           user_id: post.user_id,
         }),
       });
@@ -190,7 +192,7 @@ export default function EditPostForm({ post }: EditPostFormProps) {
               className="mt-1 block rounded-md border border-zinc-300 bg-zinc-100 px-3 py-2 text-zinc-950 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 dark:border-zinc-500 dark:bg-zinc-800 dark:text-light"
             >
               <option value="" disabled>
-                Select a category
+                Category
               </option>
               {categories.map((cat: Category) => (
                 <option key={cat.id} value={cat.id}>
@@ -201,21 +203,38 @@ export default function EditPostForm({ post }: EditPostFormProps) {
           </div>
         </div>
 
-        <div className="flex flex-row items-center"></div>
-        <div className="mr-4 flex items-center">
-          <input
-            type="checkbox"
-            id="published"
-            checked={published}
-            onChange={(e) => setPublished(e.target.checked)}
-            className="h-4 w-4 cursor-pointer rounded border-zinc-300 text-blue-600 focus:ring-blue-500"
-          />
-          <label
-            htmlFor="published"
-            className="ml-2 block cursor-pointer font-medium"
-          >
-            Publish
-          </label>
+        <div className="flex flex-row items-center">
+          <div className="mr-4 flex items-center">
+            <input
+              type="checkbox"
+              id="published"
+              checked={published}
+              onChange={(e) => setPublished(e.target.checked)}
+              className="h-4 w-4 cursor-pointer rounded border-zinc-300 text-blue-600 focus:ring-blue-500"
+            />
+            <label
+              htmlFor="published"
+              className="ml-2 block cursor-pointer text-xs"
+            >
+              Publish
+            </label>
+          </div>
+
+          <div className="flex items-center">
+            <input
+              type="checkbox"
+              id="show_updated"
+              checked={showUpdated}
+              onChange={(e) => setShowUpdated(e.target.checked)}
+              className="h-4 w-4 cursor-pointer rounded border-zinc-300 text-blue-600 focus:ring-blue-500"
+            />
+            <label
+              htmlFor="show_updated"
+              className="ml-2 block cursor-pointer text-xs"
+            >
+              Show Updated Date
+            </label>
+          </div>
         </div>
 
         <div className="flex space-x-2">

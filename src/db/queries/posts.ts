@@ -107,6 +107,7 @@ export async function updatePost(id: number, postData: Partial<BlogPost>) {
       content: postData.content,
       category: postData.category,
       published: postData.published,
+      show_updated: postData.show_updated ?? false, // Ensure this is updated
       updated_at: new Date(),
     })
     .where(eq(posts.id, id));
