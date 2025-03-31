@@ -1,7 +1,7 @@
 import { ComponentPropsWithoutRef } from 'react';
 import Link from 'next/link';
 import { highlight } from 'sugar-high';
-import { CldImage } from 'next-cloudinary';
+// import { CldImage } from 'next-cloudinary';
 
 type HeadingProps = ComponentPropsWithoutRef<'h1'>;
 type ParagraphProps = ComponentPropsWithoutRef<'p'>;
@@ -96,15 +96,6 @@ export const components = {
       </pre>
     );
   },
-  img: (props: ComponentPropsWithoutRef<'img'>) => (
-    <CldImage
-      src={props.src!}
-      alt={props.alt || 'Image'}
-      width={800} // Ensure this is a number
-      height={600} // Ensure this is a number
-      {...props}
-    />
-  ),
   Table: ({ data }: { data: { headers: string[]; rows: string[][] } }) => (
     <table>
       <thead>
