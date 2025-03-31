@@ -57,7 +57,7 @@ export default function PostFormFields({
   return (
     <>
       <div>
-        <label htmlFor="title" className="block font-medium">
+        <label htmlFor="title" className="block text-xs">
           Title
         </label>
         <input
@@ -71,7 +71,7 @@ export default function PostFormFields({
       </div>
 
       <div>
-        <label htmlFor="slug" className="block font-medium">
+        <label htmlFor="slug" className="block text-xs">
           Slug
         </label>
         <input
@@ -85,7 +85,7 @@ export default function PostFormFields({
       </div>
 
       <div>
-        <label htmlFor="excerpt" className="block font-medium">
+        <label htmlFor="excerpt" className="block text-xs">
           Excerpt
         </label>
         <input
@@ -99,7 +99,7 @@ export default function PostFormFields({
       </div>
 
       <div>
-        <label htmlFor="content" className="block font-medium">
+        <label htmlFor="content" className="block text-xs">
           Content (Markdown)
         </label>
         <textarea
@@ -110,72 +110,79 @@ export default function PostFormFields({
           rows={15}
           className="mt-1 block w-full rounded-md border border-zinc-300 bg-zinc-100 px-3 py-2 text-zinc-950 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 dark:border-zinc-500 dark:bg-zinc-800 dark:text-light"
         />
-        <button
-          type="button"
-          onClick={() => setShowGallery(true)}
-          className="mt-2 rounded bg-blue-500 px-4 py-2 text-white"
-        >
-          Add Image
-        </button>
-        {showGallery && (
-          <MediaGallery
-            onSelect={(url) => {
-              setContent(`${content}\n![Image](${url})`); // Fix: Pass the updated string directly
-              setShowGallery(false);
-            }}
-          />
-        )}
       </div>
 
-      <div>
-        <label htmlFor="category" className="block font-medium">
-          Category
-        </label>
-        <select
-          id="category"
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
-          required
-          className="mt-1 block rounded-md border border-zinc-300 bg-zinc-100 px-3 py-2 text-zinc-950 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 dark:border-zinc-500 dark:bg-zinc-800 dark:text-light"
-        >
-          <option value="" disabled>
-            Select Category
-          </option>
-          {categories.map((cat) => (
-            <option key={cat.id} value={cat.id}>
-              {cat.name}
-            </option>
-          ))}
-        </select>
-      </div>
-
-      <div>
-        <input
-          type="checkbox"
-          id="published"
-          checked={published}
-          onChange={(e) => setPublished(e.target.checked)}
-          className="h-4 w-4 cursor-pointer rounded border-zinc-300 text-blue-600 focus:ring-blue-500"
-        />
-        <label htmlFor="published" className="ml-2 block font-medium">
-          Publish
-        </label>
-      </div>
-
-      {setShowUpdated && (
-        <div>
-          <input
-            type="checkbox"
-            id="show_updated"
-            checked={showUpdated}
-            onChange={(e) => setShowUpdated?.(e.target.checked)}
-            className="h-4 w-4 cursor-pointer rounded border-zinc-300 text-blue-600 focus:ring-blue-500"
-          />
-          <label htmlFor="show_updated" className="ml-2 block font-medium">
-            Show Updated Date
-          </label>
+      <div className="flex flex-row items-center">
+        <div className="mr-4">
+          <button
+            type="button"
+            onClick={() => setShowGallery(true)}
+            className="rounded bg-zinc-700 px-4 py-2 text-white"
+          >
+            Add Image
+          </button>
+          {showGallery && (
+            <MediaGallery
+              onSelect={(url) => {
+                setContent(`${content}\n![Image](${url})`); // Fix: Pass the updated string directly
+                setShowGallery(false);
+              }}
+            />
+          )}
         </div>
-      )}
+
+        <div className="mr-4">
+          <label htmlFor="category" className="hidden text-xs">
+            Category
+          </label>
+          <select
+            id="category"
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+            required
+            className="focus:zinc-500 block rounded-md border border-zinc-300 bg-zinc-100 px-3 py-2 text-zinc-950 focus:outline-none focus:ring-1 focus:ring-zinc-400 dark:border-zinc-500 dark:bg-zinc-800 dark:text-light"
+          >
+            <option value="" disabled>
+              Category
+            </option>
+            {categories.map((cat) => (
+              <option key={cat.id} value={cat.id}>
+                {cat.name}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div>
+          <div className="flex items-center">
+            <input
+              type="checkbox"
+              id="published"
+              checked={published}
+              onChange={(e) => setPublished(e.target.checked)}
+              className="zinc-400 h-4 w-4 cursor-pointer rounded border-zinc-300 focus:ring-zinc-400"
+            />
+            <label htmlFor="published" className="ml-2 block text-xs">
+              Publish
+            </label>
+          </div>
+
+          {setShowUpdated && (
+            <div className="flex items-center">
+              <input
+                type="checkbox"
+                id="show_updated"
+                checked={showUpdated}
+                onChange={(e) => setShowUpdated?.(e.target.checked)}
+                className="h-4 w-4 cursor-pointer rounded border-zinc-300 text-zinc-400 focus:ring-zinc-400"
+              />
+              <label htmlFor="show_updated" className="ml-2 block text-xs">
+                Show Updated Date
+              </label>
+            </div>
+          )}
+        </div>
+      </div>
     </>
   );
 }
