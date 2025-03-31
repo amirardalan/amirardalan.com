@@ -122,7 +122,6 @@ export default function PostFormFields({
             Add Image
           </button>
         </div>
-        {/* Removed inline MediaGallery rendering */}
 
         <div className="mr-4">
           <label htmlFor="category" className="hidden text-xs">

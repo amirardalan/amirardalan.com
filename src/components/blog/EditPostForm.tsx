@@ -146,7 +146,7 @@ export default function EditPostForm({ post }: EditPostFormProps) {
         title="Select an Image"
         message=""
         onCancel={() => setShowGallery(false)}
-        buttons="cancel" // Only show the cancel button
+        buttons="cancel"
       >
         <MediaGallery
           onSelect={(url) => {

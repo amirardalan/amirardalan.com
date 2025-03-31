@@ -26,6 +26,7 @@ export default function NewPostForm({ userId }: NewPostFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [showGallery, setShowGallery] = useState(false);
+  const [showCancelModal, setShowCancelModal] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -57,14 +58,6 @@ export default function NewPostForm({ userId }: NewPostFormProps) {
     }
   };
 
-  const generateSlug = (text: string) =>
-    text
-      .toLowerCase()
-      .replace(/[^\w\s-]/g, '')
-      .replace(/\s+/g, '-')
-      .replace(/-+/g, '-')
-      .trim();
-
   return (
     <>
       <form
@@ -92,11 +85,19 @@ export default function NewPostForm({ userId }: NewPostFormProps) {
           showGallery={showGallery}
           setShowGallery={setShowGallery}
         />
-        <Button
-          type="submit"
-          text={isSubmitting ? 'Creating...' : 'Create Post'}
-          disabled={isSubmitting}
-        />
+        <div className="flex space-x-2">
+          <Button
+            type="button"
+            onClick={() => setShowCancelModal(true)}
+            text={'Discard'}
+            variant="danger"
+          />
+          <Button
+            type="submit"
+            text={isSubmitting ? 'Creating...' : 'Create Post'}
+            disabled={isSubmitting}
+          />
+        </div>
       </form>
 
       <Modal
@@ -113,6 +114,15 @@ export default function NewPostForm({ userId }: NewPostFormProps) {
           }}
         />
       </Modal>
+
+      <Modal
+        isOpen={showCancelModal}
+        title="Discard Changes"
+        message="Are you sure you want to discard your changes? This action cannot be undone."
+        onCancel={() => setShowCancelModal(false)}
+        onConfirm={() => router.push('/admin/')}
+        confirmText="Discard"
+      />
     </>
   );
 }
