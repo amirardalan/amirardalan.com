@@ -66,7 +66,7 @@ export default function PostFormFields({
           value={title}
           onChange={handleTitleChange}
           required
-          className="mt-1 block w-full rounded-md border border-zinc-300 bg-zinc-100 px-3 py-2 text-zinc-950 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 dark:border-zinc-500 dark:bg-zinc-800 dark:text-light"
+          className="mt-1 block w-full rounded-md border border-zinc-300 bg-zinc-100 px-3 py-2 text-zinc-950 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary dark:border-zinc-500 dark:bg-zinc-800 dark:text-light"
         />
       </div>
 
@@ -80,7 +80,7 @@ export default function PostFormFields({
           value={slug}
           onChange={(e) => setSlug(e.target.value)}
           required
-          className="mt-1 block w-full rounded-md border border-zinc-300 bg-zinc-100 px-3 py-2 text-zinc-950 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 dark:border-zinc-500 dark:bg-zinc-800 dark:text-light"
+          className="mt-1 block w-full rounded-md border border-zinc-300 bg-zinc-100 px-3 py-2 text-zinc-950 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary dark:border-zinc-500 dark:bg-zinc-800 dark:text-light"
         />
       </div>
 
@@ -94,7 +94,7 @@ export default function PostFormFields({
           value={excerpt}
           onChange={(e) => setExcerpt(e.target.value)}
           required
-          className="mt-1 block w-full rounded-md border border-zinc-300 bg-zinc-100 px-3 py-2 text-zinc-950 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 dark:border-zinc-500 dark:bg-zinc-800 dark:text-light"
+          className="mt-1 block w-full rounded-md border border-zinc-300 bg-zinc-100 px-3 py-2 text-zinc-950 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary dark:border-zinc-500 dark:bg-zinc-800 dark:text-light"
         />
       </div>
 
@@ -108,7 +108,7 @@ export default function PostFormFields({
           onChange={(e) => setContent(e.target.value)}
           required
           rows={15}
-          className="mt-1 block w-full rounded-md border border-zinc-300 bg-zinc-100 px-3 py-2 text-zinc-950 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 dark:border-zinc-500 dark:bg-zinc-800 dark:text-light"
+          className="mt-1 block w-full rounded-md border border-zinc-300 bg-zinc-100 px-3 py-2 text-zinc-950 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary dark:border-zinc-500 dark:bg-zinc-800 dark:text-light"
         />
       </div>
 
@@ -132,13 +132,17 @@ export default function PostFormFields({
             value={category}
             onChange={(e) => setCategory(e.target.value)}
             required
-            className="focus:zinc-500 block rounded-md border border-zinc-300 bg-zinc-100 px-3 py-2 text-zinc-950 focus:outline-none focus:ring-1 focus:ring-zinc-400 dark:border-zinc-500 dark:bg-zinc-800 dark:text-light"
+            className="focus:zinc-500 block appearance-none rounded-md border border-zinc-300 bg-zinc-100 px-3 py-2 text-zinc-950 focus:bg-zinc-800 focus:outline-primary focus:ring-1 focus:ring-primary dark:border-zinc-500 dark:bg-zinc-800 dark:text-light"
           >
-            <option value="" disabled>
+            <option value="" disabled className="text-light">
               Category
             </option>
             {categories.map((cat) => (
-              <option key={cat.id} value={cat.id}>
+              <option
+                key={cat.id}
+                value={cat.id}
+                className="hover:bg-primary hover:text-white"
+              >
                 {cat.name}
               </option>
             ))}
