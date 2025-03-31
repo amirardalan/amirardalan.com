@@ -4,9 +4,10 @@ import { NextResponse } from 'next/server';
 
 export async function GET() {
   try {
-    const images = await getCloudinaryImages('blog'); // Fetch images from the 'blog' folder
+    // Fetch images from cloudinary 'Blog' Asset Folder
+    const images = await getCloudinaryImages('blog');
     return NextResponse.json({
-      resources: images, // Ensure the response includes a 'resources' property
+      resources: images,
     });
   } catch (error) {
     console.error('Error fetching Cloudinary images:', error);

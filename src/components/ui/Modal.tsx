@@ -7,11 +7,11 @@ interface ModalProps {
   title: string;
   message: string;
   onCancel: () => void;
-  onConfirm?: () => void; // Make optional for cases where no confirm button is needed
+  onConfirm?: () => void;
   confirmText?: string;
   confirmDisabled?: boolean;
   children?: React.ReactNode;
-  buttons?: 'both' | 'cancel' | 'confirm'; // New prop to control buttons
+  buttons?: 'both' | 'cancel' | 'confirm';
 }
 
 export default function Modal({
@@ -37,7 +37,6 @@ export default function Modal({
           {message}
         </p>
         {children && <div className="mb-6">{children}</div>}{' '}
-        {/* Render children */}
         <div className="flex justify-end space-x-3">
           {(buttons === 'both' || buttons === 'cancel') && (
             <Button

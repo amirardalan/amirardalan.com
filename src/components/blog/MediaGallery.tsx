@@ -32,16 +32,15 @@ export default function MediaGallery({ onSelect }: MediaGalleryProps) {
         const res = await fetch('/api/cloudinary/upload');
         const data = await res.json();
 
-        // Ensure resources exist and are an array
         if (data.resources && Array.isArray(data.resources)) {
           setImages(data.resources.map((img: any) => img.secure_url));
         } else {
           console.error('Invalid response format:', data);
-          setImages([]); // Set to an empty array if resources are missing
+          setImages([]);
         }
       } catch (error) {
         console.error('Error fetching images:', error);
-        setImages([]); // Set to an empty array on error
+        setImages([]);
       } finally {
         setLoading(false);
       }
@@ -66,14 +65,14 @@ export default function MediaGallery({ onSelect }: MediaGalleryProps) {
 
       if (data.url) {
         setImages((prev) => [data.url, ...prev]);
-        showToast('Image uploaded successfully!', 'success'); // Show success toast
+        showToast('Image uploaded successfully!', 'success');
       } else {
         console.error('Upload failed:', data.error);
-        showToast('Failed to upload image.', 'error'); // Show error toast
+        showToast('Failed to upload image.', 'error');
       }
     } catch (error) {
       console.error('Error uploading file:', error);
-      showToast('Failed to upload image.', 'error'); // Show error toast
+      showToast('Failed to upload image.', 'error');
     } finally {
       setUploading(false);
     }
@@ -96,24 +95,24 @@ export default function MediaGallery({ onSelect }: MediaGalleryProps) {
       </div>
       <div
         className="grid grid-cols-4 gap-2"
-        style={{ minHeight: `${Math.ceil(imagesPerPage / 4) * 75}px` }} // Reserve space for 12 images
+        style={{ minHeight: `${Math.ceil(imagesPerPage / 4) * 75}px` }}
       >
         {paginatedImages.map((url) => (
           <div
             key={url}
             className="aspect-square cursor-pointer overflow-hidden"
-            onClick={() => onSelect(url)} // User clicks to insert the image
+            onClick={() => onSelect(url)}
           >
             <CldImage
               src={url}
               width="300"
-              height="300" // Ensure square dimensions
+              height="300"
               alt="Media"
-              className="h-full w-full object-cover" // Ensure the image fills the square
+              className="h-full w-full object-cover"
             />
           </div>
         ))}
-        {/* Fill empty slots to maintain consistent height */}
+
         {Array.from({ length: imagesPerPage - paginatedImages.length }).map(
           (_, index) => (
             <div

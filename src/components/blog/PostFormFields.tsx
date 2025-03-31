@@ -1,4 +1,3 @@
-import MediaGallery from './MediaGallery';
 import categories from '@/data/categories.json';
 
 interface PostFormFieldsProps {
@@ -33,7 +32,6 @@ export default function PostFormFields({
   setCategory,
   published,
   setPublished,
-  showGallery,
   setShowGallery,
   showUpdated,
   setShowUpdated,

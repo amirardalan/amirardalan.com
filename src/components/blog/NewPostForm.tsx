@@ -105,7 +105,7 @@ export default function NewPostForm({ userId }: NewPostFormProps) {
         title="Select an Image"
         message=""
         onCancel={() => setShowGallery(false)}
-        buttons="cancel" // Only show the cancel button
+        buttons="cancel"
       >
         <MediaGallery
           onSelect={(url) => {
