@@ -95,7 +95,10 @@ export default function EditPostForm({ post }: EditPostFormProps) {
 
       showToast('Post deleted successfully!', 'success');
 
-      router.push('/admin/blog/drafts');
+      // Redirect based on the post's published status
+      router.push(
+        post.published ? '/admin/blog/published' : '/admin/blog/drafts'
+      );
     } catch (err) {
       setError((err as Error).message);
       showToast((err as Error).message, 'error');
@@ -216,17 +219,15 @@ export default function EditPostForm({ post }: EditPostFormProps) {
         </div>
 
         <div className="flex space-x-2">
-          {/* Only show delete button for draft posts */}
-          {!post.published && (
-            <Button
-              type="button"
-              onClick={handleDeleteClick}
-              text={isDeleting ? 'Deleting...' : 'Delete'}
-              disabled={isDeleting || isSubmitting}
-              variant="danger"
-              color={'red-500'}
-            />
-          )}
+          {/* Remove the condition to always show the delete button */}
+          <Button
+            type="button"
+            onClick={handleDeleteClick}
+            text={isDeleting ? 'Deleting...' : 'Delete'}
+            disabled={isDeleting || isSubmitting}
+            variant="danger"
+            color={'red-500'}
+          />
           <Button
             type="submit"
             text={isSubmitting ? 'Saving...' : 'Save Post'}

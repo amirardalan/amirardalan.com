@@ -11,13 +11,26 @@ import { BlogPost } from '@/types/blog';
 
 export default function BlogPosts({ posts }: { posts: BlogPost[] }) {
   const [searchTerm, setSearchTerm] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
+  const postsPerPage = 8;
 
   const filteredPosts = posts.filter((post) =>
     post.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
+  const paginatedPosts = filteredPosts.slice(
+    (currentPage - 1) * postsPerPage,
+    currentPage * postsPerPage
+  );
+
   const handleClearFilters = () => {
     setSearchTerm('');
+    setCurrentPage(1);
+  };
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
   };
 
   return (
@@ -46,9 +59,9 @@ export default function BlogPosts({ posts }: { posts: BlogPost[] }) {
           </button>
         )}
       </div>
-      {filteredPosts.length > 0 ? (
+      {paginatedPosts.length > 0 ? (
         <ul className={clsx('pt-6', searchTerm && 'pt-2')}>
-          {filteredPosts.map((post) => (
+          {paginatedPosts.map((post) => (
             <li
               key={post.id}
               className="flex w-full justify-between pb-8 text-2xl last:pb-0"
@@ -74,6 +87,24 @@ export default function BlogPosts({ posts }: { posts: BlogPost[] }) {
         <p className="pt-6 text-dark dark:text-light">
           No posts match your search.
         </p>
+      )}
+      {totalPages > 1 && (
+        <div className="mt-4 flex justify-center space-x-2">
+          {Array.from({ length: totalPages }, (_, index) => (
+            <button
+              key={index}
+              onClick={() => handlePageChange(index + 1)}
+              className={clsx(
+                'rounded px-3 py-1 font-mono text-xs',
+                currentPage === index + 1
+                  ? 'bg-zinc-400 text-light dark:text-dark'
+                  : 'bg-zinc-200 text-dark dark:bg-zinc-700 dark:text-light'
+              )}
+            >
+              {index + 1}
+            </button>
+          ))}
+        </div>
       )}
     </div>
   );
