@@ -49,7 +49,7 @@ export default async function EditBlogPost({
   return (
     <div className="mt-8">
       <AdminPageHeading title={'Edit Post'} />
-      <EditPostForm post={post} />
+      <EditPostForm post={{ ...post, show_updated: post.show_updated }} />
     </div>
   );
 }

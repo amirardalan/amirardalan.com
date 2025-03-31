@@ -132,7 +132,9 @@ export default async function BlogPost({
           By {post.author_name || 'Anonymous'}
         </h3>
         <time className="mt-8 flex text-xs uppercase text-zinc-500 dark:text-zinc-400">
-          {formatDate(post.created_at)}
+          {post.show_updated
+            ? `Updated: ${formatDate(post.updated_at)}`
+            : formatDate(post.created_at)}
         </time>
         {!post.published && (
           <div className="my-2 inline-block rounded bg-yellow-200 px-2 py-1 text-sm text-yellow-800 dark:bg-yellow-800 dark:text-yellow-200">

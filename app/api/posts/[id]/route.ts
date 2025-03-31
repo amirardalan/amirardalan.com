@@ -18,7 +18,8 @@ export async function PUT(
   try {
     const { id } = await params;
     const data = await request.json();
-    const { title, slug, excerpt, content, category, published } = data;
+    const { title, slug, excerpt, content, category, published, show_updated } =
+      data;
 
     if (!id || !title || !slug || !content) {
       return NextResponse.json(
@@ -46,9 +47,10 @@ export async function PUT(
       content,
       category,
       published,
+      show_updated,
     });
 
-    console.log('Post updated:', { id, slug, published });
+    console.log('Post updated:', { id, slug, published, show_updated });
 
     // Revalidation strategy
     // 1. Always revalidate the blog listing page and blog tag

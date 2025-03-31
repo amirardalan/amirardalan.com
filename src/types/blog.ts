@@ -10,4 +10,5 @@ export type BlogPost = {
   updated_at?: Date;
   user_id: number;
   author_name?: string | null;
+  show_updated?: boolean | null;
 };
