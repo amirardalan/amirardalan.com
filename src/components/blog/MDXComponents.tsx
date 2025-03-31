@@ -124,11 +124,13 @@ export const components = {
   ),
   img: (props: ComponentPropsWithoutRef<'img'>) => (
     <Image
-      src={props.src!} // Ensure the src is provided
-      alt={props.alt || 'Image'} // Provide a fallback alt text
-      width={800} // Set a default width
-      height={600} // Set a default height
-      layout="responsive" // Ensure responsive behavior
+      src={props.src!}
+      alt={props.alt || 'Image'}
+      width={800}
+      height={600}
+      layout="responsive"
+      priority={true} // TODO: Make this configurable based on props
+      className="my-4"
     />
   ),
 };
