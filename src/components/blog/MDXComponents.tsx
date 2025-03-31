@@ -1,7 +1,7 @@
 import { ComponentPropsWithoutRef } from 'react';
 import Link from 'next/link';
 import { highlight } from 'sugar-high';
-// import { CldImage } from 'next-cloudinary';
+import Image from 'next/image';
 
 type HeadingProps = ComponentPropsWithoutRef<'h1'>;
 type ParagraphProps = ComponentPropsWithoutRef<'p'>;
@@ -120,6 +120,15 @@ export const components = {
     <blockquote
       className="ml-[0.075em] mt-4 border-l-4 border-zinc-300 pl-4 text-dark dark:border-zinc-600 dark:text-light"
       {...props}
+    />
+  ),
+  img: (props: ComponentPropsWithoutRef<'img'>) => (
+    <Image
+      src={props.src!} // Ensure the src is provided
+      alt={props.alt || 'Image'} // Provide a fallback alt text
+      width={800} // Set a default width
+      height={600} // Set a default height
+      layout="responsive" // Ensure responsive behavior
     />
   ),
 };
