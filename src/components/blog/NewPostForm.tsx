@@ -1,12 +1,14 @@
 'use client';
 
-import { useToast } from '@/components/ui/ToastContext';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { createPost } from '@/src/db/services/postService';
+import { useToast } from '@/components/ui/ToastContext';
 
+import PostFormFields from '@/components/blog/PostFormFields';
 import Button from '@/components/ui/Button';
-import PostFormFields from './PostFormFields';
+import Modal from '@/components/ui/Modal';
+import MediaGallery from '@/components/blog/MediaGallery';
 
 interface NewPostFormProps {
   userId: number;
@@ -64,36 +66,53 @@ export default function NewPostForm({ userId }: NewPostFormProps) {
       .trim();
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="space-y-6 text-dark dark:text-light"
-    >
-      {error && (
-        <div className="rounded-md bg-red-50 p-4 text-red-700 dark:bg-red-900 dark:text-red-100">
-          {error}
-        </div>
-      )}
-      <PostFormFields
-        title={title}
-        setTitle={setTitle}
-        slug={slug}
-        setSlug={setSlug}
-        excerpt={excerpt}
-        setExcerpt={setExcerpt}
-        content={content}
-        setContent={setContent}
-        category={category}
-        setCategory={setCategory}
-        published={published}
-        setPublished={setPublished}
-        showGallery={showGallery}
-        setShowGallery={setShowGallery}
-      />
-      <Button
-        type="submit"
-        text={isSubmitting ? 'Creating...' : 'Create Post'}
-        disabled={isSubmitting}
-      />
-    </form>
+    <>
+      <form
+        onSubmit={handleSubmit}
+        className="space-y-6 text-dark dark:text-light"
+      >
+        {error && (
+          <div className="rounded-md bg-red-50 p-4 text-red-700 dark:bg-red-900 dark:text-red-100">
+            {error}
+          </div>
+        )}
+        <PostFormFields
+          title={title}
+          setTitle={setTitle}
+          slug={slug}
+          setSlug={setSlug}
+          excerpt={excerpt}
+          setExcerpt={setExcerpt}
+          content={content}
+          setContent={setContent}
+          category={category}
+          setCategory={setCategory}
+          published={published}
+          setPublished={setPublished}
+          showGallery={showGallery}
+          setShowGallery={setShowGallery}
+        />
+        <Button
+          type="submit"
+          text={isSubmitting ? 'Creating...' : 'Create Post'}
+          disabled={isSubmitting}
+        />
+      </form>
+
+      <Modal
+        isOpen={showGallery}
+        title="Select an Image"
+        message=""
+        onCancel={() => setShowGallery(false)}
+        buttons="cancel" // Only show the cancel button
+      >
+        <MediaGallery
+          onSelect={(url) => {
+            setContent(`${content}\n![Image](${url})`);
+            setShowGallery(false);
+          }}
+        />
+      </Modal>
+    </>
   );
 }
