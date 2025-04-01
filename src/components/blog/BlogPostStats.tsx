@@ -6,14 +6,13 @@ import Cookies from 'js-cookie';
 import { fetcher } from '@/utils/fetcher';
 
 export default function BlogPostStats({
-  slug,
   postId,
 }: {
-  slug: string;
+  slug?: string;
   postId: number;
 }) {
   const { data: stats, error } = useSWR(
-    `/api/stats?pathname=/blog/${slug}&postId=${postId}`,
+    `/api/stats?postId=${postId}`,
     fetcher,
     {
       refreshInterval: 0,
@@ -37,7 +36,7 @@ export default function BlogPostStats({
 
     try {
       mutate(
-        `/api/stats?pathname=/blog/${slug}&postId=${postId}`,
+        `/api/stats?postId=${postId}`,
         {
           ...stats,
           likes: (stats?.likes || 0) + (isLiked ? -1 : 1),
@@ -60,7 +59,7 @@ export default function BlogPostStats({
       const { likes } = await response.json();
 
       // Update the SWR cache with the server response
-      mutate(`/api/stats?pathname=/blog/${slug}&postId=${postId}`, {
+      mutate(`/api/stats?postId=${postId}`, {
         ...stats,
         likes,
       });
@@ -84,12 +83,12 @@ export default function BlogPostStats({
   };
 
   if (error) {
-    return <div>Error loading stats.</div>;
+    return <div>Error loading likes.</div>;
   }
 
   return (
     <div>
-      Views: {stats?.pageviews || 0} | Likes: {stats?.likes || 0}
+      Likes: {stats?.likes || 0}
       <button
         onClick={handleLike}
         disabled={isLiking}

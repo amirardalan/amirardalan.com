@@ -1,7 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getRedisClient } from '@/utils/redis-client';
+import { Redis } from '@upstash/redis';
 
-const redis = getRedisClient();
+if (!process.env.KV_REST_API_URL || !process.env.KV_REST_API_TOKEN) {
+  throw new Error('Upstash Redis environment variables are missing.');
+}
+
+const redis = new Redis({
+  url: process.env.KV_REST_API_URL,
+  token: process.env.KV_REST_API_TOKEN,
+});
 
 export async function POST(req: NextRequest) {
   try {

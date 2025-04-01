@@ -126,7 +126,8 @@ export default async function BlogPost({
             </Link>
           </div>
         )}
-        <BlogPostStats slug={slug} postId={post.id} />
+        {/* Updated to only pass postId */}
+        <BlogPostStats postId={post.id} />
         <p className="text-xs uppercase text-primary">
           #{post.category ?? 'uncategorized'}
         </p>
