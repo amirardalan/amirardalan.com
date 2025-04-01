@@ -6,6 +6,16 @@ import Cookies from 'js-cookie';
 import { fetcher } from '@/utils/fetcher';
 import IconLike from '@/components/icons/IconLike';
 
+// Format number with K, M abbreviations
+const formatLikesCount = (count: number): string => {
+  if (count >= 1000000) {
+    return `${(count / 1000000).toFixed(count >= 10000000 ? 0 : 1)}M`;
+  } else if (count >= 1000) {
+    return `${(count / 1000).toFixed(count >= 10000 ? 0 : 1)}K`;
+  }
+  return count.toString();
+};
+
 export default function BlogPostStats({
   postId,
 }: {
@@ -87,6 +97,10 @@ export default function BlogPostStats({
     return <div>Error loading likes.</div>;
   }
 
+  const likesCount = stats?.likes || 0;
+  const formattedCount = formatLikesCount(likesCount);
+  const likesText = likesCount === 1 ? 'Like' : 'Likes';
+
   return (
     <div className="flex items-center gap-2">
       <button
@@ -98,7 +112,9 @@ export default function BlogPostStats({
       >
         <IconLike active={isLiked} />
       </button>
-      <span>{stats?.likes || 0}</span>
+      <span>
+        {formattedCount} {likesText}
+      </span>
     </div>
   );
 }
