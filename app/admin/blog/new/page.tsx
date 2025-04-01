@@ -12,7 +12,6 @@ export default async function NewBlogPost() {
     redirect('/api/auth/signin?callbackUrl=/admin/blog/new');
   }
 
-  // Use service to get user ID
   const userId = await getUserIdByEmail(session.user.email!);
 
   if (!userId) {

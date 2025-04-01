@@ -5,8 +5,6 @@ import Container from '@/components/content/Container';
 import Tooltip from '@/components/ui/Tooltip';
 import IconWave from '@/components/icons/IconWave';
 
-import { CldImage } from 'next-cloudinary';
-
 export default function About() {
   return (
     <Container>

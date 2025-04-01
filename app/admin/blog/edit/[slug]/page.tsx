@@ -16,7 +16,6 @@ export default async function EditBlogPost({
   const params = await paramsPromise;
   const { slug } = params;
 
-  // Validate slug format
   if (!/^[a-z0-9-]+$/.test(slug)) {
     throw new Error('Invalid slug format.');
   }
@@ -31,7 +30,6 @@ export default async function EditBlogPost({
     throw new Error('An error occurred while fetching user details.');
   }
 
-  // Use the service to get the post
   const post = await getPostBySlug(slug);
 
   if (!post) {

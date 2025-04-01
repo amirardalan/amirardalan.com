@@ -16,7 +16,6 @@ export async function POST(req: Request) {
       );
     }
 
-    // Use the service to create a post
     const postId = await createPost({
       title,
       slug,

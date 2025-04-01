@@ -4,7 +4,6 @@ import { NextResponse } from 'next/server';
 
 export async function GET() {
   try {
-    // Fetch images from cloudinary 'Blog' Asset Folder
     const images = await getCloudinaryImages('blog');
     return NextResponse.json({
       resources: images,
