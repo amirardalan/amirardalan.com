@@ -13,7 +13,10 @@ export default function BlogPostStats({
 }) {
   const { data: stats, error } = useSWR(
     `/api/stats?pathname=/blog/${slug}&postId=${postId}`,
-    fetcher
+    fetcher,
+    {
+      refreshInterval: process.env.NODE_ENV === 'development' ? 60000 : 10000, // 1 minute in dev, 10 seconds in prod
+    }
   );
 
   const [isLiking, setIsLiking] = useState(false);
@@ -23,12 +26,30 @@ export default function BlogPostStats({
     setIsLiking(true);
 
     try {
-      await fetch('/api/like', {
+      // Optimistically update the UI
+      mutate(
+        `/api/stats?pathname=/blog/${slug}&postId=${postId}`,
+        { ...stats, likes: (stats?.likes || 0) + 1 },
+        false // Do not revalidate immediately
+      );
+
+      const response = await fetch('/api/like', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ postId }),
       });
-      mutate(`/api/stats?pathname=/blog/${slug}&postId=${postId}`);
+
+      if (!response.ok) {
+        throw new Error('Failed to like the post');
+      }
+
+      const { likes } = await response.json();
+
+      // Update the SWR cache with the server response
+      mutate(`/api/stats?pathname=/blog/${slug}&postId=${postId}`, {
+        ...stats,
+        likes,
+      });
     } catch (error) {
       console.error('Error liking post:', error);
     } finally {
