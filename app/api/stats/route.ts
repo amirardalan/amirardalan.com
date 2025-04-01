@@ -5,7 +5,7 @@ if (!process.env.KV_REST_API_URL || !process.env.KV_REST_API_TOKEN) {
   throw new Error('Upstash Redis environment variables are missing.');
 }
 
-const kv = new Redis({
+const redis = new Redis({
   url: process.env.KV_REST_API_URL,
   token: process.env.KV_REST_API_TOKEN,
 });
@@ -16,8 +16,10 @@ export async function GET(req: NextRequest) {
   const postId = searchParams.get('postId');
 
   try {
-    const pageviews = (await kv.get(`pageviews:${pathname}`)) || 0;
-    const likes = postId ? (await kv.get(`likes:post:${postId}`)) || 0 : null;
+    const pageviews = (await redis.get(`pageviews:${pathname}`)) || 0;
+    const likes = postId
+      ? (await redis.get(`likes:post:${postId}`)) || 0
+      : null;
 
     return NextResponse.json({ pathname, pageviews, likes });
   } catch (error) {

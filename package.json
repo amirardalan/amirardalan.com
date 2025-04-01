@@ -14,7 +14,6 @@
     "@next/mdx": "^15.2.4",
     "@react-three/drei": "^10.0.5",
     "@react-three/fiber": "^9.1.0",
-    "@vercel/kv": "^3.0.0",
     "cloudinary": "^2.6.0",
     "clsx": "^2.1.1",
     "drizzle-orm": "^0.41.0",

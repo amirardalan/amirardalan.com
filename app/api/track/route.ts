@@ -5,7 +5,7 @@ if (!process.env.KV_REST_API_URL || !process.env.KV_REST_API_TOKEN) {
   throw new Error('Upstash Redis environment variables are missing.');
 }
 
-const kv = new Redis({
+const redis = new Redis({
   url: process.env.KV_REST_API_URL,
   token: process.env.KV_REST_API_TOKEN,
 });
@@ -13,7 +13,7 @@ const kv = new Redis({
 export async function POST(req: NextRequest) {
   try {
     const { pathname } = await req.json();
-    await kv.incr(`pageviews:${pathname}`);
+    await redis.incr(`pageviews:${pathname}`);
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error('Error tracking pageview in Redis:', error);
