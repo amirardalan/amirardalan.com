@@ -17,7 +17,7 @@ export default function ClientLikeCount({ postId }: { postId: number }) {
   );
 
   if (error) {
-    return <div>Error loading likes.</div>;
+    return <div className="leading-none">Error loading likes.</div>;
   }
 
   return <LikeCount count={stats?.likes || 0} />;

@@ -12,7 +12,7 @@ export default function LikeCount({ count }: { count: number }) {
   const likesText = count === 1 ? 'Like' : 'Likes';
 
   return (
-    <div className="text-sm text-zinc-600 dark:text-zinc-400">
+    <div className="text-xs uppercase leading-none text-zinc-500 dark:text-zinc-400">
       {formattedCount} {likesText}
     </div>
   );

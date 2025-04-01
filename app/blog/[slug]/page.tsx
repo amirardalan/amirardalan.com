@@ -15,7 +15,6 @@ import Link from 'next/link';
 
 import { formatDate } from '@/utils/format-date';
 import ClientLikeCount from '@/components/blog/ClientLikeCount';
-import LikeButton from '@/components/blog/LikeButton';
 
 export const revalidate = false;
 export const dynamicParams = true;
@@ -109,11 +108,7 @@ export default async function BlogPost({
   return (
     <Container>
       <article className="mt-24 text-dark dark:text-light">
-        <div className="flex items-center justify-between">
-          <div>
-            <LikeButton postId={post.id} />
-          </div>
-
+        <div className="mb-4 flex items-center justify-between">
           {session?.user && (
             <div className="text-right">
               <Link
@@ -131,24 +126,23 @@ export default async function BlogPost({
           )}
         </div>
 
-        {/* Using a client component to fetch and show like counts */}
-        <div className="mt-4">
-          <ClientLikeCount postId={post.id} />
-        </div>
-
         <p className="text-xs uppercase text-primary">
           #{post.category ?? 'uncategorized'}
         </p>
         <h3 className="mt-1 text-xs uppercase">
           By {post.author_name || 'Anonymous'}
         </h3>
-        <time className="mt-8 flex text-xs uppercase text-zinc-500 dark:text-zinc-400">
-          {post.show_updated
-            ? `Updated: ${formatDate(post.updated_at)}`
-            : formatDate(post.created_at)}
-        </time>
+        <div className="mt-8 flex items-center leading-none">
+          <time className="mr-2 text-xs uppercase leading-none text-zinc-500 dark:text-zinc-400">
+            {post.show_updated
+              ? `Updated: ${formatDate(post.updated_at)}`
+              : formatDate(post.created_at)}
+          </time>
+          <div className="mr-2 text-xs leading-none">•</div>
+          <ClientLikeCount postId={post.id} />
+        </div>
         <h2 className="mt-8 text-3xl">{post.title}</h2>
-        <p className="mt-1 text-lg text-zinc-500 dark:text-zinc-400">
+        <p className="text-lg text-zinc-500 dark:text-zinc-400">
           {post.excerpt ?? ''}
         </p>
         <div className="mdx-content mt-10 text-dark dark:text-light">
@@ -158,7 +152,7 @@ export default async function BlogPost({
           post.published &&
           (adjacentPosts.previous || adjacentPosts.next) && (
             <nav className="mt-10 border-t border-gray-200 pt-6 dark:border-gray-700">
-              <div className="flex justify-between">
+              <div className="mb-4 flex justify-between">
                 <div>
                   {adjacentPosts.previous && (
                     <Link
