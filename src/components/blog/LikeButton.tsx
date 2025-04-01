@@ -93,7 +93,7 @@ export default function LikeButton({
         <button
           onClick={handleLike}
           disabled={isLiking}
-          className="flex items-center gap-1 rounded-full p-1 transition-all hover:bg-gray-100 disabled:opacity-50 dark:hover:bg-gray-800"
+          className="flex items-center gap-1 rounded-full p-1 transition-all hover:bg-zinc-100 disabled:opacity-50 dark:hover:bg-zinc-800"
           aria-label={isLiked ? 'Unlike post' : 'Like post'}
           title={isLiked ? 'Unlike post' : 'Like post'}
         >

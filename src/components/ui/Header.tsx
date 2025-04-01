@@ -6,7 +6,7 @@ import HeaderControls from '@/components/ui/HeaderControls';
 
 export default async function Header() {
   return (
-    <div className="fixed top-0 z-50 flex w-full flex-row justify-between bg-zinc-50/10 px-6 py-4 backdrop-blur-lg lg:px-10 lg:py-8 dark:bg-zinc-950/10">
+    <div className="fixed top-0 z-50 flex w-full flex-row justify-between bg-zinc-50/70 px-6 py-4 backdrop-blur-lg lg:px-10 lg:py-8 dark:bg-zinc-950/70">
       <Link href="/">
         <Logo size={35} />
       </Link>

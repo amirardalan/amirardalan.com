@@ -15,6 +15,7 @@ import Link from 'next/link';
 
 import { formatDate } from '@/utils/format-date';
 import ClientLikeCount from '@/components/blog/ClientLikeCount';
+import BlogSupport from '@/components/blog/BlogSupport';
 
 export const revalidate = false;
 export const dynamicParams = true;
@@ -148,6 +149,7 @@ export default async function BlogPost({
         <div className="mdx-content mt-10 text-dark dark:text-light">
           {content}
         </div>
+        <BlogSupport postId={post.id} />
         {!isAdminView &&
           post.published &&
           (adjacentPosts.previous || adjacentPosts.next) && (
