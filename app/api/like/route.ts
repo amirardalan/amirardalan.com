@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Redis } from '@upstash/redis';
-import { revalidatePath } from 'next/cache';
 
 if (!process.env.KV_REST_API_URL || !process.env.KV_REST_API_TOKEN) {
   throw new Error('Upstash Redis environment variables are missing.');
@@ -13,7 +12,7 @@ const redis = new Redis({
 
 export async function POST(req: NextRequest) {
   try {
-    const { postId } = await req.json();
+    const { postId, like } = await req.json();
 
     if (!postId) {
       return NextResponse.json(
@@ -22,16 +21,21 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Increment the likes counter in Redis
-    const newLikes = await redis.incr(`likes:post:${postId}`);
+    if (like !== false) {
+      await redis.incr(`likes:post:${postId}`);
+    } else {
+      const currentLikes =
+        ((await redis.get(`likes:post:${postId}`)) as number) || 0;
+      if (currentLikes > 0) {
+        await redis.decr(`likes:post:${postId}`);
+      }
+    }
 
-    // Trigger on-demand revalidation for the stats endpoint
-    await revalidatePath(`/api/stats?postId=${postId}`);
-    console.log(`[Revalidation] Path revalidated: /api/stats?postId=${postId}`);
+    const likes = await redis.get(`likes:post:${postId}`);
 
-    return NextResponse.json({ success: true, likes: newLikes });
+    return NextResponse.json({ success: true, likes });
   } catch (error) {
-    console.error('Error incrementing likes:', error);
+    console.error('Error updating likes:', error);
     return NextResponse.json(
       { error: 'Internal Server Error' },
       { status: 500 }

@@ -1,7 +1,8 @@
 'use client';
 
 import useSWR, { mutate } from 'swr';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import Cookies from 'js-cookie';
 import { fetcher } from '@/utils/fetcher';
 
 export default function BlogPostStats({
@@ -20,27 +21,37 @@ export default function BlogPostStats({
   );
 
   const [isLiking, setIsLiking] = useState(false);
+  const [isLiked, setIsLiked] = useState(false);
+
+  useEffect(() => {
+    const likedPosts = JSON.parse(Cookies.get('likedPosts') || '{}');
+    setIsLiked(!!likedPosts[postId]);
+  }, [postId]);
 
   const handleLike = async () => {
     if (isLiking) return;
     setIsLiking(true);
 
     try {
-      // Optimistically update the UI
       mutate(
         `/api/stats?pathname=/blog/${slug}&postId=${postId}`,
-        { ...stats, likes: (stats?.likes || 0) + 1 },
-        false // Do not revalidate immediately
+        {
+          ...stats,
+          likes: (stats?.likes || 0) + (isLiked ? -1 : 1),
+        },
+        false
       );
 
       const response = await fetch('/api/like', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ postId }),
+        body: JSON.stringify({ postId, like: !isLiked }),
       });
 
       if (!response.ok) {
-        throw new Error('Failed to like the post');
+        throw new Error(
+          isLiked ? 'Failed to unlike the post' : 'Failed to like the post'
+        );
       }
 
       const { likes } = await response.json();
@@ -50,8 +61,20 @@ export default function BlogPostStats({
         ...stats,
         likes,
       });
+
+      // Update the likedPosts cookie
+      const likedPosts = JSON.parse(Cookies.get('likedPosts') || '{}');
+      if (!isLiked) {
+        likedPosts[postId] = true;
+      } else {
+        delete likedPosts[postId];
+      }
+      Cookies.set('likedPosts', JSON.stringify(likedPosts));
+
+      // Toggle the liked state
+      setIsLiked(!isLiked);
     } catch (error) {
-      console.error('Error liking post:', error);
+      console.error('Error updating post like status:', error);
     } finally {
       setIsLiking(false);
     }
@@ -69,7 +92,7 @@ export default function BlogPostStats({
         disabled={isLiking}
         className="ml-4 rounded bg-blue-600 px-3 py-1 text-sm text-white hover:bg-blue-700 disabled:opacity-50"
       >
-        {isLiking ? 'Liking...' : 'Like'}
+        {isLiking ? 'Processing...' : isLiked ? 'Unlike' : 'Like'}
       </button>
     </div>
   );
