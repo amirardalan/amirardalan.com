@@ -15,7 +15,6 @@ export async function GET(req: NextRequest) {
   const postId = searchParams.get('postId');
 
   try {
-    // Only get likes data - no page view tracking
     const likes = postId
       ? (await redis.get(`likes:post:${postId}`)) || 0
       : null;

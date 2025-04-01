@@ -16,17 +16,13 @@ import Link from 'next/link';
 import { formatDate } from '@/utils/format-date';
 import BlogPostStats from '@/components/blog/BlogPostStats';
 
-// Set revalidate to false for on-demand revalidation only
 export const revalidate = false;
-
-// Allow fallback to true to enable on-demand ISR
 export const dynamicParams = true;
 
 export async function generateStaticParams() {
   return await getAllPublishedSlugs();
 }
 
-// Generate metadata with tag-based revalidation support
 export async function generateMetadata({
   params: paramsPromise,
 }: {
@@ -55,7 +51,7 @@ export async function generateMetadata({
 async function compilePostContent(content: string) {
   const { content: compiledContent } = await compileMDX({
     source: content,
-    components, // Ensure components are server-compatible
+    components,
     options: {
       parseFrontmatter: false,
       mdxOptions: {
@@ -67,14 +63,13 @@ async function compilePostContent(content: string) {
   return compiledContent;
 }
 
-// No changes needed - keeping this as a server component with direct auth() call
 export default async function BlogPost({
   params: paramsPromise,
 }: {
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await paramsPromise;
-  const session = await auth(); // Direct server-side auth check is appropriate here
+  const session = await auth();
 
   if (!/^[a-z0-9-]+$/.test(slug)) {
     notFound();
@@ -92,7 +87,6 @@ export default async function BlogPost({
     notFound();
   }
 
-  // Restrict access to unpublished posts
   if (!post.published && !session?.user) {
     notFound();
   }
@@ -105,12 +99,10 @@ export default async function BlogPost({
     content = '<p>Error loading content.</p>';
   }
 
-  // Only fetch adjacent posts if the current post is published
   const adjacentPosts = post.published
     ? await getAdjacentPosts(slug)
     : { previous: null, next: null };
 
-  // Check if we're in admin view based on the referrer or user session
   const isAdminView = session?.user && !post.published;
 
   return (
@@ -126,7 +118,6 @@ export default async function BlogPost({
             </Link>
           </div>
         )}
-        {/* Updated to only pass postId */}
         <BlogPostStats postId={post.id} />
         <p className="text-xs uppercase text-primary">
           #{post.category ?? 'uncategorized'}
@@ -151,7 +142,6 @@ export default async function BlogPost({
         <div className="mdx-content mt-10 text-dark dark:text-light">
           {content}
         </div>
-        {/* Blog Navigation - Show only for published posts and not in admin view */}
         {!isAdminView &&
           post.published &&
           (adjacentPosts.previous || adjacentPosts.next) && (

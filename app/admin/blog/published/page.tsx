@@ -19,7 +19,6 @@ export default async function PublishedPosts({
 
   const { query = '' } = await searchParams;
 
-  // Use the service to get published posts
   const allPosts = await getPublishedPosts();
 
   const filteredPosts = allPosts.filter((post) =>

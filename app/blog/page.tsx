@@ -6,10 +6,8 @@ import BlogPosts from '@/components/blog/BlogPosts';
 
 import { BlogPost } from '@/types/blog';
 
-// Setting revalidate to false for on-demand revalidation only
 export const revalidate = false;
 
-// Add tag-based revalidation support
 export const generateMetadata = () => {
   return {
     metadataBase: new URL(`${process.env.NEXT_PUBLIC_URL}`),

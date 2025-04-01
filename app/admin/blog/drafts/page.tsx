@@ -27,7 +27,6 @@ export default async function Drafts({
 
   const { query = '' } = await searchParams;
 
-  // Use the service function instead of direct DB query
   const drafts = await getDraftPosts();
 
   const filteredDrafts = drafts.filter((draft) =>

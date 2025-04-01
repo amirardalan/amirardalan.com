@@ -28,7 +28,6 @@ export async function PUT(
       );
     }
 
-    // Validate slug format
     if (!/^[a-z0-9-]+$/.test(slug)) {
       return NextResponse.json(
         {
@@ -39,7 +38,6 @@ export async function PUT(
       );
     }
 
-    // Use the service to update the post
     const { oldSlug, newSlug } = await updatePost(parseInt(id, 10), {
       title,
       slug,
@@ -97,7 +95,6 @@ export async function DELETE(
       );
     }
 
-    // Use the service to delete the post
     const { slug, wasPublished } = await deletePost(parseInt(id, 10));
 
     console.log('Post deleted:', { id, slug, wasPublished });
