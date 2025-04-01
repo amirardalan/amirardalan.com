@@ -16,7 +16,10 @@ export default function BlogPostStats({
     `/api/stats?pathname=/blog/${slug}&postId=${postId}`,
     fetcher,
     {
-      refreshInterval: process.env.NODE_ENV === 'development' ? 60000 : 10000, // 1 minute in dev, 10 seconds in prod
+      refreshInterval: 0,
+      revalidateOnFocus: false,
+      revalidateOnReconnect: false,
+      dedupingInterval: 600000, // 10 minutes
     }
   );
 
