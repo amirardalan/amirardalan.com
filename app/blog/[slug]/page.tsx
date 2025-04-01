@@ -14,7 +14,8 @@ import Container from '@/components/content/Container';
 import Link from 'next/link';
 
 import { formatDate } from '@/utils/format-date';
-import BlogPostStats from '@/components/blog/BlogPostStats';
+import ClientLikeCount from '@/components/blog/ClientLikeCount';
+import LikeButton from '@/components/blog/LikeButton';
 
 export const revalidate = false;
 export const dynamicParams = true;
@@ -108,7 +109,11 @@ export default async function BlogPost({
   return (
     <Container>
       <article className="mt-24 text-dark dark:text-light">
-        <div className="flex items-center justify-end">
+        <div className="flex items-center justify-between">
+          <div>
+            <LikeButton postId={post.id} />
+          </div>
+
           {session?.user && (
             <div className="text-right">
               <Link
@@ -125,7 +130,12 @@ export default async function BlogPost({
             </div>
           )}
         </div>
-        <BlogPostStats postId={post.id} />
+
+        {/* Using a client component to fetch and show like counts */}
+        <div className="mt-4">
+          <ClientLikeCount postId={post.id} />
+        </div>
+
         <p className="text-xs uppercase text-primary">
           #{post.category ?? 'uncategorized'}
         </p>

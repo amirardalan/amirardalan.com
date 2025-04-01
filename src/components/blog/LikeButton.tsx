@@ -6,17 +6,7 @@ import Cookies from 'js-cookie';
 import { fetcher } from '@/utils/fetcher';
 import IconLike from '@/components/icons/IconLike';
 
-// Format number with K, M abbreviations
-const formatLikesCount = (count: number): string => {
-  if (count >= 1000000) {
-    return `${(count / 1000000).toFixed(count >= 10000000 ? 0 : 1)}M`;
-  } else if (count >= 1000) {
-    return `${(count / 1000).toFixed(count >= 10000 ? 0 : 1)}K`;
-  }
-  return count.toString();
-};
-
-export default function BlogPostStats({
+export default function LikeButton({
   postId,
 }: {
   slug?: string;
@@ -69,7 +59,7 @@ export default function BlogPostStats({
 
       const { likes } = await response.json();
 
-      // Update the SWR cache with the server response
+      // Update all SWR caches with the same key to ensure consistency
       mutate(`/api/stats?postId=${postId}`, {
         ...stats,
         likes,
@@ -97,14 +87,9 @@ export default function BlogPostStats({
     return <div>Error loading likes.</div>;
   }
 
-  const likesCount = stats?.likes || 0;
-  const formattedCount = formatLikesCount(likesCount);
-  const likesText = likesCount === 1 ? 'Like' : 'Likes';
-
   return (
-    <div className="flex flex-col items-start gap-3">
-      {/* Like button component */}
-      <div className="flex items-center">
+    <div className="flex flex-col gap-4">
+      <div className="self-start">
         <button
           onClick={handleLike}
           disabled={isLiking}
@@ -114,11 +99,6 @@ export default function BlogPostStats({
         >
           <IconLike active={isLiked} />
         </button>
-      </div>
-
-      {/* Like count display - can be positioned elsewhere */}
-      <div className="text-sm text-zinc-600 dark:text-zinc-400">
-        {formattedCount} {likesText}
       </div>
     </div>
   );
