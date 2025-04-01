@@ -14,6 +14,7 @@ import Container from '@/components/content/Container';
 import Link from 'next/link';
 
 import { formatDate } from '@/utils/format-date';
+import BlogPostStats from '@/components/blog/BlogPostStats';
 
 // Set revalidate to false for on-demand revalidation only
 export const revalidate = false;
@@ -125,6 +126,7 @@ export default async function BlogPost({
             </Link>
           </div>
         )}
+        <BlogPostStats slug={slug} postId={post.id} />
         <p className="text-xs uppercase text-primary">
           #{post.category ?? 'uncategorized'}
         </p>
