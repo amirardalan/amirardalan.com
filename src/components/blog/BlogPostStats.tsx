@@ -4,6 +4,7 @@ import useSWR, { mutate } from 'swr';
 import { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
 import { fetcher } from '@/utils/fetcher';
+import IconLike from '@/components/icons/IconLike';
 
 export default function BlogPostStats({
   postId,
@@ -87,15 +88,17 @@ export default function BlogPostStats({
   }
 
   return (
-    <div>
-      Likes: {stats?.likes || 0}
+    <div className="flex items-center gap-2">
       <button
         onClick={handleLike}
         disabled={isLiking}
-        className="ml-4 rounded bg-blue-600 px-3 py-1 text-sm text-white hover:bg-blue-700 disabled:opacity-50"
+        className="flex items-center gap-1 rounded-full p-1 transition-all hover:bg-gray-100 disabled:opacity-50 dark:hover:bg-gray-800"
+        aria-label={isLiked ? 'Unlike post' : 'Like post'}
+        title={isLiked ? 'Unlike post' : 'Like post'}
       >
-        {isLiking ? 'Processing...' : isLiked ? 'Unlike' : 'Like'}
+        <IconLike active={isLiked} />
       </button>
+      <span>{stats?.likes || 0}</span>
     </div>
   );
 }

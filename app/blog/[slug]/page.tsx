@@ -108,16 +108,23 @@ export default async function BlogPost({
   return (
     <Container>
       <article className="mt-24 text-dark dark:text-light">
-        {session?.user && (
-          <div className="text-right">
-            <Link
-              href={`/admin/blog/edit/${post.slug}`}
-              className="rounded bg-blue-600 px-3 py-1 text-sm text-white hover:bg-blue-700"
-            >
-              Edit Post
-            </Link>
-          </div>
-        )}
+        <div className="flex items-center justify-end">
+          {session?.user && (
+            <div className="text-right">
+              <Link
+                href={`/admin/blog/edit/${post.slug}`}
+                className="inline-block rounded bg-zinc-800 px-2 py-1 text-sm text-light dark:bg-zinc-50 dark:text-dark"
+              >
+                Edit Post
+              </Link>
+            </div>
+          )}
+          {!post.published && (
+            <div className="ml-4 inline-block rounded bg-yellow-200 px-2 py-1 text-sm text-yellow-800 dark:bg-yellow-800 dark:text-yellow-200">
+              Draft
+            </div>
+          )}
+        </div>
         <BlogPostStats postId={post.id} />
         <p className="text-xs uppercase text-primary">
           #{post.category ?? 'uncategorized'}
@@ -130,11 +137,6 @@ export default async function BlogPost({
             ? `Updated: ${formatDate(post.updated_at)}`
             : formatDate(post.created_at)}
         </time>
-        {!post.published && (
-          <div className="my-2 inline-block rounded bg-yellow-200 px-2 py-1 text-sm text-yellow-800 dark:bg-yellow-800 dark:text-yellow-200">
-            Draft
-          </div>
-        )}
         <h2 className="mt-8 text-3xl">{post.title}</h2>
         <p className="mt-1 text-lg text-zinc-500 dark:text-zinc-400">
           {post.excerpt ?? ''}
