@@ -1,16 +1,21 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, ReactNode } from 'react';
 import Cookies from 'js-cookie';
 import { useLikesStore } from '@/src/store/likes';
 import IconLike from '@/components/icons/IconLike';
 
+interface LikeButtonProps {
+  postId: number;
+  children?: ReactNode;
+  showIcon?: boolean;
+}
+
 export default function LikeButton({
   postId,
-}: {
-  postId: number;
-  slug?: string;
-}) {
+  children,
+  showIcon = true,
+}: LikeButtonProps) {
   const { updateLike, fetchLikes } = useLikesStore();
   const [isLiking, setIsLiking] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
@@ -49,6 +54,21 @@ export default function LikeButton({
       setIsLiking(false);
     }
   };
+
+  if (children) {
+    return (
+      <button
+        onClick={handleLike}
+        disabled={isLiking}
+        className="flex items-center gap-2 disabled:opacity-50"
+        aria-label={isLiked ? 'Unlike post' : 'Like post'}
+        title={isLiked ? 'Unlike post' : 'Like post'}
+      >
+        {showIcon && <IconLike active={isLiked} />}
+        {children}
+      </button>
+    );
+  }
 
   return (
     <div className="flex flex-col gap-4">

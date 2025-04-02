@@ -35,10 +35,9 @@ export default function BlogSupport({ postId }: { postId: number }) {
           Did you enjoy this post?
         </p>
         <div className="ml-4 flex items-center">
-          <LikeButton postId={postId} />
-          <div className="ml-2">
+          <LikeButton postId={postId} showIcon={true}>
             <LikeCount count={count} isLoading={isLoading} />
-          </div>
+          </LikeButton>
           <ShareOnXButton />
         </div>
       </div>
