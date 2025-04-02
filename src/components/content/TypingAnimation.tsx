@@ -21,7 +21,7 @@ const data = {
     `peruse my <a href="/blog" aria-label="peruse my blog posts" className="text-primary">blog</a> posts^3000`,
     `view my <a href="/uses" aria-label="view my toolbox" className="text-primary">toolbox</a>^3000`,
     `follow me on <a href="https://x.com/amirardalan" aria-label="follow me on X" target="_blank" rel="noopener noreferrer" className="text-primary">x.com</a>^3000`,
-    `explore my <a href="https://github.com/amirardalan" aria-abel="explore my GitHub" target="_blank" rel="noopener noreferrer" className="text-primary">github</a>^3000`,
+    `explore my <a href="https://github.com/amirardalan" aria-label="explore my GitHub" target="_blank" rel="noopener noreferrer" className="text-primary">github</a>^3000`,
   ],
 };
 
