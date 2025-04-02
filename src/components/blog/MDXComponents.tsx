@@ -13,24 +13,15 @@ type BlockquoteProps = ComponentPropsWithoutRef<'blockquote'>;
 // Export components directly so they can be imported in server components
 export const components = {
   h1: (props: HeadingProps) => (
-    <h1
-      className="mb-0 pt-12 font-medium text-dark dark:text-light"
-      {...props}
-    />
+    <h1 className="mb-0 pt-12 text-dark dark:text-light" {...props} />
   ),
   h2: (props: HeadingProps) => (
-    <h2
-      className="mb-3 mt-8 font-medium text-dark dark:text-light"
-      {...props}
-    />
+    <h2 className="mb-3 mt-8 text-dark dark:text-light" {...props} />
   ),
   h3: (props: HeadingProps) => (
-    <h3
-      className="mb-4 mt-8 text-2xl font-medium text-dark dark:text-light"
-      {...props}
-    />
+    <h3 className="mb-4 mt-8 text-2xl text-dark dark:text-light" {...props} />
   ),
-  h4: (props: HeadingProps) => <h4 className="font-medium" {...props} />,
+  h4: (props: HeadingProps) => <h4 className="" {...props} />,
   p: (props: ParagraphProps) => (
     <p className="leading-snug text-dark dark:text-light" {...props} />
   ),
@@ -48,10 +39,10 @@ export const components = {
   ),
   li: (props: ListItemProps) => <li className="pl-1" {...props} />,
   em: (props: ComponentPropsWithoutRef<'em'>) => (
-    <em className="font-medium text-dark dark:text-light" {...props} />
+    <em className="text-dark dark:text-light" {...props} />
   ),
   strong: (props: ComponentPropsWithoutRef<'strong'>) => (
-    <strong className="font-medium text-dark dark:text-light" {...props} />
+    <strong className="text-dark dark:text-light" {...props} />
   ),
   a: ({ href, children, ...props }: AnchorProps) => {
     const className =
@@ -118,7 +109,7 @@ export const components = {
   ),
   blockquote: (props: BlockquoteProps) => (
     <blockquote
-      className="ml-[0.075em] mt-4 border-l-4 border-zinc-300 pl-4 text-dark dark:border-zinc-600 dark:text-light"
+      className="my-6 ml-[0.075em] border-l-4 border-zinc-300 pl-4 font-serif text-3xl text-zinc-400 dark:border-zinc-600 dark:text-zinc-500"
       {...props}
     />
   ),
