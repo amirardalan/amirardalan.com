@@ -15,9 +15,10 @@ function ShareOnXButton() {
   return (
     <button
       onClick={handleShare}
-      className="ml-6 text-zinc-500 transition-colors hover:text-zinc-800 dark:text-zinc-400 dark:hover:text-zinc-200"
+      className="ml-6 flex items-center text-zinc-500 transition-colors hover:text-zinc-800 dark:text-zinc-400 dark:hover:text-zinc-200"
     >
       <IconX size={20} />
+      <span className="ml-3 text-xs uppercase">Share on X</span>
     </button>
   );
 }
