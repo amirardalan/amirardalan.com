@@ -3,55 +3,57 @@ import { fetcher } from '@/utils/fetcher';
 
 interface LikesState {
   likes: Record<number, number>;
-  loadingStates: Record<number, boolean>;
+  error: Record<number, string>;
   initialLoadingStates: Record<number, boolean>;
-  error: Record<number, any>;
-  fetchLikes: (postId: number) => Promise<void>;
-  updateLike: (postId: number, liked: boolean) => Promise<void>;
+  lastFetchTime: Record<number, number>;
+  fetchDebounceTime: number;
+  fetchLikes: (postId: number, force?: boolean) => Promise<void>;
+  updateLike: (postId: number, like: boolean) => Promise<void>;
 }
 
 export const useLikesStore = create<LikesState>((set, get) => ({
   likes: {},
-  loadingStates: {},
-  initialLoadingStates: {},
   error: {},
+  initialLoadingStates: {},
+  lastFetchTime: {},
+  fetchDebounceTime: 30000, // 30 seconds
 
-  fetchLikes: async (postId: number) => {
+  fetchLikes: async (postId: number, force: boolean = false) => {
+    const { lastFetchTime, fetchDebounceTime } = get();
+    const now = Date.now();
+
+    // Skip fetch if we've fetched recently and not forced
+    if (
+      !force &&
+      lastFetchTime[postId] &&
+      now - lastFetchTime[postId] < fetchDebounceTime
+    ) {
+      return;
+    }
+
     set((state) => ({
       initialLoadingStates: { ...state.initialLoadingStates, [postId]: true },
-      loadingStates: { ...state.loadingStates, [postId]: true },
     }));
 
     try {
-      const data = await fetcher(`/api/stats?postId=${postId}`);
-
-      // Short delay to ensure smooth loading transitions
-      await new Promise((resolve) => setTimeout(resolve, 300));
+      const response = await fetch(`/api/like?postId=${postId}`);
+      if (!response.ok) {
+        throw new Error('Failed to fetch likes');
+      }
+      const data = await response.json();
 
       set((state) => ({
-        likes: {
-          ...state.likes,
-          [postId]: data?.likes || 0,
-        },
-        loadingStates: {
-          ...state.loadingStates,
-          [postId]: false,
-        },
+        likes: { ...state.likes, [postId]: data.likes },
         initialLoadingStates: {
           ...state.initialLoadingStates,
           [postId]: false,
         },
+        lastFetchTime: { ...state.lastFetchTime, [postId]: now },
       }));
-    } catch (error) {
+    } catch (err) {
+      console.error('Error fetching likes:', err);
       set((state) => ({
-        error: {
-          ...state.error,
-          [postId]: error,
-        },
-        loadingStates: {
-          ...state.loadingStates,
-          [postId]: false,
-        },
+        error: { ...state.error, [postId]: 'Failed to load likes' },
         initialLoadingStates: {
           ...state.initialLoadingStates,
           [postId]: false,
@@ -60,53 +62,32 @@ export const useLikesStore = create<LikesState>((set, get) => ({
     }
   },
 
-  updateLike: async (postId: number, liked: boolean) => {
-    const currentLikes = get().likes[postId] || 0;
-
-    // Optimistically update UI without setting loading state
-    set((state) => ({
-      likes: {
-        ...state.likes,
-        [postId]: liked ? currentLikes + 1 : Math.max(0, currentLikes - 1),
-      },
-    }));
-
+  updateLike: async (postId: number, like: boolean) => {
     try {
       const response = await fetch('/api/like', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ postId, like: liked }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ postId, like }),
       });
 
       if (!response.ok) {
-        throw new Error(
-          liked ? 'Failed to like post' : 'Failed to unlike post'
-        );
+        throw new Error('Failed to update like');
       }
 
-      const { likes: newLikes } = await response.json();
+      const data = await response.json();
 
       set((state) => ({
-        likes: {
-          ...state.likes,
-          [postId]: newLikes,
-        },
+        likes: { ...state.likes, [postId]: data.likes },
+        lastFetchTime: { ...state.lastFetchTime, [postId]: Date.now() },
       }));
-
-      return newLikes;
-    } catch (error) {
-      // Revert optimistic update on error
+    } catch (err) {
+      console.error('Error updating like:', err);
       set((state) => ({
-        likes: {
-          ...state.likes,
-          [postId]: currentLikes,
-        },
-        error: {
-          ...state.error,
-          [postId]: error,
-        },
+        error: { ...state.error, [postId]: 'Failed to update like' },
       }));
-      throw error;
+      throw err;
     }
   },
 }));

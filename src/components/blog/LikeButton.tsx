@@ -11,18 +11,27 @@ interface LikeButtonProps {
   showIcon?: boolean;
 }
 
+// Added debounce time to prevent multiple fetches
+const FETCH_DEBOUNCE_TIME = 30000; // 30 seconds
+
 export default function LikeButton({
   postId,
   children,
   showIcon = true,
 }: LikeButtonProps) {
-  const { updateLike, fetchLikes } = useLikesStore();
+  const { updateLike, fetchLikes, likes } = useLikesStore();
   const [isLiking, setIsLiking] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
+  const [lastFetch, setLastFetch] = useState(0);
 
   useEffect(() => {
-    fetchLikes(postId);
-  }, [fetchLikes, postId]);
+    // Fetch likes only if we haven't fetched recently
+    const now = Date.now();
+    if (now - lastFetch > FETCH_DEBOUNCE_TIME) {
+      fetchLikes(postId);
+      setLastFetch(now);
+    }
+  }, [fetchLikes, postId, lastFetch]);
 
   // Check if post is liked from cookie
   useEffect(() => {
@@ -48,6 +57,9 @@ export default function LikeButton({
 
       // Toggle the liked state
       setIsLiked(!isLiked);
+
+      // Reset the fetch timer so we don't immediately fetch again
+      setLastFetch(Date.now());
     } catch (error) {
       console.error('Error updating post like status:', error);
     } finally {
