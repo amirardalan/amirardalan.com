@@ -153,7 +153,7 @@ export default async function BlogPost({
         {!isAdminView &&
           post.published &&
           (adjacentPosts.previous || adjacentPosts.next) && (
-            <nav className="mt-10 border-t border-zinc-200 pt-6 dark:border-zinc-700">
+            <nav className="mt-10 border-t border-zinc-300 pt-6 dark:border-zinc-700">
               <div className="mb-4 flex justify-between">
                 <div>
                   {adjacentPosts.previous && (
