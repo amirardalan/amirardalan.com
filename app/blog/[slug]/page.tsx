@@ -157,14 +157,14 @@ export default async function BlogPost({
         >
           {post.excerpt ?? ''}
         </h2>
-        <div className="mt-6 text-xs uppercase">
+        <div className="mt-6 text-xs uppercase text-zinc-500 dark:text-zinc-400">
           By{' '}
           <span aria-label={`Author: ${post.author_name || 'Anonymous'}`}>
             {post.author_name || 'Anonymous'}
           </span>
         </div>
         <div
-          className="mdx-content mt-10 text-lg text-dark dark:text-light"
+          className="mdx-content text-md mt-10 text-dark dark:text-light"
           aria-labelledby="post-title"
         >
           {content}

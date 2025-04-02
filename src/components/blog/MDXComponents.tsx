@@ -23,7 +23,10 @@ export const components = {
   ),
   h4: (props: HeadingProps) => <h4 className="" {...props} />,
   p: (props: ParagraphProps) => (
-    <p className="leading-snug text-dark dark:text-light" {...props} />
+    <p
+      className="font-serif leading-normal text-dark dark:text-light"
+      {...props}
+    />
   ),
   ol: (props: ListProps) => (
     <ol
@@ -33,7 +36,7 @@ export const components = {
   ),
   ul: (props: ListProps) => (
     <ul
-      className="list-disc space-y-1 pl-5 text-dark dark:text-light"
+      className="my-8 list-disc space-y-1 pl-5 text-dark dark:text-light"
       {...props}
     />
   ),
@@ -80,7 +83,7 @@ export const components = {
   pre: ({ children, ...props }: ComponentPropsWithoutRef<'pre'>) => {
     return (
       <pre
-        className="overflow-y-none mb-4 mt-6 overflow-x-auto rounded-lg bg-zinc-100 p-4 font-mono text-sm scrollbar scrollbar-track-zinc-600 scrollbar-thumb-zinc-500 dark:bg-zinc-900"
+        className="overflow-y-none my-8 overflow-x-auto rounded-lg bg-zinc-100 p-4 font-mono text-sm scrollbar scrollbar-track-zinc-600 scrollbar-thumb-zinc-500 dark:bg-zinc-900"
         {...props}
       >
         {children}
