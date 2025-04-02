@@ -14,9 +14,17 @@ export default function HeaderExternalLinks() {
   };
 
   return (
-    <div className="mt-1.5 flex items-center space-x-6">
+    <div
+      className="mt-1.5 flex items-center space-x-6"
+      role="group"
+      aria-label="External links and site controls"
+    >
       <Tooltip text="Star on GitHub" pos="b">
-        <button onClick={handleClick}>
+        <button
+          onClick={handleClick}
+          aria-label="Visit GitHub repository"
+          className="focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+        >
           <IconGithub />
         </button>
       </Tooltip>

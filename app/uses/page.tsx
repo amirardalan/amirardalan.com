@@ -128,57 +128,77 @@ export default function Uses() {
           </p>
         </div>
 
-        <section className="mb-12">
-          <h2 className="mb-8 border-b-2 border-primary pb-4 text-xl uppercase text-dark dark:text-light">
+        <section className="mb-12" aria-labelledby="computers-heading">
+          <h2
+            id="computers-heading"
+            className="mb-8 border-b-2 border-primary pb-4 text-xl uppercase text-dark dark:text-light"
+          >
             Computers
           </h2>
-          <UsesItemGrid columns={2}>
+          <UsesItemGrid columns={2} aria-labelledby="computers-heading">
             {computers.map((item, index) => (
-              <UsesItemCard key={index} title={item.title} items={item.items} />
+              <UsesItemCard
+                key={index}
+                title={item.title}
+                items={item.items}
+                aria-label={`${item.title} specifications`}
+              />
             ))}
           </UsesItemGrid>
         </section>
 
-        <section className="mb-12">
-          <h2 className="mb-8 border-b-2 border-primary pb-4 text-xl uppercase text-dark dark:text-light">
+        <section className="mb-12" aria-labelledby="peripherals-heading">
+          <h2
+            id="peripherals-heading"
+            className="mb-8 border-b-2 border-primary pb-4 text-xl uppercase text-dark dark:text-light"
+          >
             Peripherals
           </h2>
-          <UsesItemGrid columns={2}>
+          <UsesItemGrid columns={2} aria-labelledby="peripherals-heading">
             {peripherals.map((item, index) => (
               <UsesItemCard
                 key={`periph-${index}`}
                 title={item.title}
                 items={item.items}
+                aria-label={`${item.title} peripherals`}
               />
             ))}
           </UsesItemGrid>
         </section>
 
-        <section className="mb-12">
-          <h2 className="mb-8 border-b-2 border-primary pb-4 text-xl uppercase text-dark dark:text-light">
+        <section className="mb-12" aria-labelledby="software-heading">
+          <h2
+            id="software-heading"
+            className="mb-8 border-b-2 border-primary pb-4 text-xl uppercase text-dark dark:text-light"
+          >
             Software
           </h2>
-          <UsesItemGrid columns={2}>
+          <UsesItemGrid columns={2} aria-labelledby="software-heading">
             {software.map((item, index) => (
               <UsesItemCard
                 key={`software-${index}`}
                 title={item.title}
                 items={item.items}
+                aria-label={`${item.title} software`}
               />
             ))}
           </UsesItemGrid>
         </section>
 
-        <section className="mb-12">
-          <h2 className="mb-8 border-b-2 border-primary pb-4 text-xl uppercase text-dark dark:text-light">
+        <section className="mb-12" aria-labelledby="stack-heading">
+          <h2
+            id="stack-heading"
+            className="mb-8 border-b-2 border-primary pb-4 text-xl uppercase text-dark dark:text-light"
+          >
             Stack
           </h2>
-          <UsesItemGrid columns={2}>
+          <UsesItemGrid columns={2} aria-labelledby="stack-heading">
             {stack.map((item, index) => (
               <UsesItemCard
                 key={`stack-${index}`}
                 title={item.title}
                 items={item.items}
+                aria-label={`${item.title} technology stack`}
               />
             ))}
           </UsesItemGrid>

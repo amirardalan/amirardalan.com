@@ -12,6 +12,8 @@ export default function ThemeMenu() {
   const { theme, effectiveTheme, setTheme, initializeTheme } = useTheme();
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const firstItemRef = useRef<HTMLButtonElement>(null);
 
   // Initialize theme
   useEffect(() => {
@@ -42,29 +44,71 @@ export default function ThemeMenu() {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  // Focus management for keyboard navigation
+  useEffect(() => {
+    if (menuOpen && firstItemRef.current) {
+      firstItemRef.current.focus();
+    }
+  }, [menuOpen]);
+
+  // Handle keyboard navigation
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Escape') {
+      setMenuOpen(false);
+      buttonRef.current?.focus();
+    }
+  };
+
   const handleThemeChange = (newTheme: Theme) => {
     setTheme(newTheme);
     setMenuOpen(false);
+    buttonRef.current?.focus();
     router.refresh();
   };
 
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
+  const themeLabel = effectiveTheme === 'dark' ? 'Dark mode' : 'Light mode';
+
   return (
-    <div className="relative flex align-middle" ref={menuRef}>
+    <div
+      className="relative flex align-middle"
+      ref={menuRef}
+      onKeyDown={handleKeyDown}
+    >
       <Tooltip pos="b" text="Change theme">
-        <button className="m-0 p-0" onClick={() => setMenuOpen(!menuOpen)}>
+        <button
+          className="m-0 p-0"
+          onClick={toggleMenu}
+          ref={buttonRef}
+          aria-haspopup="true"
+          aria-expanded={menuOpen}
+          aria-label={`Theme toggle, current theme: ${themeLabel}`}
+        >
           {effectiveTheme === 'dark' ? <IconMoon /> : <IconSun />}
         </button>
       </Tooltip>
       {menuOpen && (
-        <div className="absolute right-0 z-40 mt-8 w-24 rounded-md bg-white shadow-lg dark:bg-zinc-800 dark:text-light">
+        <div
+          className="absolute right-0 z-40 mt-8 w-24 rounded-md bg-white shadow-lg dark:bg-zinc-800 dark:text-light"
+          role="menu"
+          aria-orientation="vertical"
+          aria-labelledby="theme-menu-button"
+        >
           {(['system', 'light', 'dark'] as Theme[]).map((t, index, array) => (
             <button
               key={t}
+              ref={index === 0 ? firstItemRef : null}
               className={`flex w-full items-center justify-between px-4 py-2 text-left text-xs hover:bg-zinc-100 dark:text-light dark:hover:bg-zinc-700 ${index === 0 ? 'rounded-t-md' : ''} ${index === array.length - 1 ? 'rounded-b-md' : 'border-b border-zinc-200 dark:border-zinc-700'} `}
               onClick={() => handleThemeChange(t)}
+              role="menuitem"
+              aria-current={theme === t ? 'true' : 'false'}
             >
               <span>{t.charAt(0).toUpperCase() + t.slice(1)}</span>
-              {theme === t && <span>✓</span>}
+              {theme === t && <span aria-hidden="true">✓</span>}
+              {theme === t && <span className="sr-only">(selected)</span>}
             </button>
           ))}
         </div>

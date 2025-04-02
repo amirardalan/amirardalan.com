@@ -6,15 +6,29 @@ import HeaderControls from '@/components/ui/HeaderControls';
 
 export default async function Header() {
   return (
-    <div className="fixed top-0 z-50 flex w-full flex-row justify-between bg-zinc-50/70 px-6 py-4 backdrop-blur-lg lg:px-10 lg:py-8 dark:bg-zinc-950/70">
-      <Link href="/">
-        <Logo size={35} />
-      </Link>
-      <div className="flex w-full max-w-screen-xl items-center justify-end space-x-4">
-        <Navigation header />
-        <HeaderControls />
-        <AuthMenu />
+    <header
+      className="fixed top-0 z-50 w-full bg-zinc-50/70 backdrop-blur-lg lg:py-8 dark:bg-zinc-950/70"
+      role="banner"
+    >
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-primary focus:px-4 focus:py-2 focus:text-light"
+      >
+        Skip to main content
+      </a>
+
+      <div className="flex w-full flex-row justify-between px-6 py-4 lg:px-10">
+        <Link href="/" aria-label="Home">
+          <Logo size={35} title="amir.sh" />
+        </Link>
+        <div className="flex w-full max-w-screen-xl items-center justify-end space-x-4">
+          <nav aria-label="Main navigation">
+            <Navigation header />
+          </nav>
+          <HeaderControls />
+          <AuthMenu />
+        </div>
       </div>
-    </div>
+    </header>
   );
 }
