@@ -45,6 +45,10 @@ DB_API_KEY=<Supabase API Key>
 
 ALLOWED_EMAILS=you@example.com,team@example.com
 ALLOWED_EMAIL_DOMAINS=example.com,test.com
+
+KV_REST_API_TOKEN=<Upstash KV API Token>
+KV_REST_API_URL=<Upstash KV REST API URL>
+ENABLE_DEV_CACHE=true //cache redis for dev
 ```
 
 And finally, generate a Next Auth secret which will automatically overwrite the placeholder in the `.env.local` file:
