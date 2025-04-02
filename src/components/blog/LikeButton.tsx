@@ -88,7 +88,7 @@ export default function LikeButton({
         <button
           onClick={handleLike}
           disabled={isLiking}
-          className="flex items-center gap-1 rounded-full p-1"
+          className="flex items-center rounded-full"
           aria-label={isLiked ? 'Unlike post' : 'Like post'}
           title={isLiked ? 'Unlike post' : 'Like post'}
         >

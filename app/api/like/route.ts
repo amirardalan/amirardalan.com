@@ -15,6 +15,47 @@ const redis = new Redis({
 const isDev = process.env.NODE_ENV === 'development';
 const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
 
+// Helper function to check if dev-cache should be disabled
+function shouldDisableCache(req: NextRequest): boolean {
+  // Only applicable in development mode
+  if (!isDev) return false;
+
+  // Check for URL parameter
+  const { searchParams } = new URL(req.url);
+  if (
+    searchParams.has('nocache') ||
+    searchParams.get('disableCache') === 'true'
+  ) {
+    return true;
+  }
+
+  // Check for environment variable (only in dev)
+  if (process.env.DISABLE_DEV_CACHE === 'true') {
+    return true;
+  }
+
+  return false;
+}
+
+// Helper function to check if dev-cache should be enabled
+function shouldEnableCache(req: NextRequest): boolean {
+  // Only applicable in development mode
+  if (!isDev) return false;
+
+  // Check for URL parameter
+  const { searchParams } = new URL(req.url);
+  if (searchParams.get('enableCache') === 'true') {
+    return true;
+  }
+
+  // Check for environment variable (only in dev)
+  if (process.env.ENABLE_DEV_CACHE === 'true') {
+    return true;
+  }
+
+  return false;
+}
+
 export async function GET(req: NextRequest) {
   try {
     const { searchParams } = new URL(req.url);
@@ -25,6 +66,11 @@ export async function GET(req: NextRequest) {
         { error: 'postId is required' },
         { status: 400 }
       );
+    }
+
+    // Configure cache based on parameters
+    if (isDev) {
+      devCache.setUseCache(shouldEnableCache(req));
     }
 
     const cacheKey = `likes:post:${postId}`;
@@ -39,7 +85,7 @@ export async function GET(req: NextRequest) {
     const likes = (await redis.get(cacheKey)) || 0;
 
     // Cache the result in development mode
-    if (isDev) {
+    if (isDev && devCache.isEnabled()) {
       devCache.set(cacheKey, likes, CACHE_TTL);
     }
 
@@ -64,6 +110,11 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    // Configure cache based on parameters
+    if (isDev) {
+      devCache.setUseCache(shouldEnableCache(req));
+    }
+
     const cacheKey = `likes:post:${postId}`;
 
     let currentLikes;
@@ -79,8 +130,10 @@ export async function POST(req: NextRequest) {
       // Update likes count
       likes = like !== false ? currentLikes + 1 : Math.max(0, currentLikes - 1);
 
-      // Update the in-memory cache first
-      devCache.set(cacheKey, likes, CACHE_TTL);
+      // Update the in-memory cache first if enabled
+      if (devCache.isEnabled()) {
+        devCache.set(cacheKey, likes, CACHE_TTL);
+      }
 
       // In development, we can still update Redis to keep consistency with production
       if (like !== false) {
