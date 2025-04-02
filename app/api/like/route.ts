@@ -10,6 +10,30 @@ const redis = new Redis({
   token: process.env.KV_REST_API_TOKEN,
 });
 
+export async function GET(req: NextRequest) {
+  try {
+    const { searchParams } = new URL(req.url);
+    const postId = searchParams.get('postId');
+
+    if (!postId) {
+      return NextResponse.json(
+        { error: 'postId is required' },
+        { status: 400 }
+      );
+    }
+
+    const likes = (await redis.get(`likes:post:${postId}`)) || 0;
+
+    return NextResponse.json({ success: true, likes });
+  } catch (error) {
+    console.error('Error fetching likes:', error);
+    return NextResponse.json(
+      { error: 'Internal Server Error' },
+      { status: 500 }
+    );
+  }
+}
+
 export async function POST(req: NextRequest) {
   try {
     const { postId, like } = await req.json();

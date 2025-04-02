@@ -14,6 +14,8 @@
   --color-primary: oklch(56.13% 0.2417 261.86);
   --color-primary-dark: oklch(89.6% 0.152531 196.844);
   --color-selection-text: var(--color-light);
+  --color-skeleton-light: oklch(0.95 0.01 240);
+  --color-skeleton-dark: oklch(0.3 0.01 240);
 
   /* Syntax Highlighting */
   --sh-class: oklch(0.75 0.12 74.86);
@@ -86,5 +88,20 @@
 
   .scrollbar::-webkit-scrollbar-thumb:hover {
     background: oklch(0.74 0.05 333.72);
+  }
+
+  /* Loading Skeleton */
+  @keyframes pulse {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+
+  .animate-pulse {
+    animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
 }
