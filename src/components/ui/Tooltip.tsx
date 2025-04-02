@@ -1,4 +1,4 @@
-import { useState, useRef, ReactNode } from 'react';
+import { useState, useRef, ReactNode, useId, KeyboardEvent } from 'react';
 
 type TooltipProps = {
   pos?: 't' | 'r' | 'b' | 'l';
@@ -8,8 +8,19 @@ type TooltipProps = {
 
 export default function Tooltip({ pos, text, children }: TooltipProps) {
   const [isHovered, setIsHovered] = useState(false);
+  const [isFocused, setIsFocused] = useState(false);
   const tooltipRef = useRef<HTMLDivElement>(null);
   const ref = useRef<HTMLDivElement>(null);
+  const id = useId();
+  const tooltipId = `tooltip-${id}`;
+
+  const isVisible = isHovered || isFocused;
+
+  const handleKeyDown = (event: KeyboardEvent) => {
+    if (event.key === 'Escape') {
+      setIsFocused(false);
+    }
+  };
 
   return (
     <div
@@ -17,12 +28,20 @@ export default function Tooltip({ pos, text, children }: TooltipProps) {
       className="relative inline-block"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      onFocus={() => setIsFocused(true)}
+      onBlur={() => setIsFocused(false)}
+      onKeyDown={handleKeyDown}
+      tabIndex={0}
+      aria-describedby={tooltipId}
     >
       {children}
       <div
+        id={tooltipId}
         ref={tooltipRef}
+        role="tooltip"
+        aria-hidden={!isVisible}
         className={`absolute z-30 whitespace-nowrap rounded bg-zinc-800 px-2 py-1 text-xxs uppercase text-white shadow-md ${
-          isHovered
+          isVisible
             ? 'pointer-events-auto opacity-100'
             : 'pointer-events-none opacity-0'
         } ${

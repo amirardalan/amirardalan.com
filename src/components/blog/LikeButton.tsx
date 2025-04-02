@@ -1,31 +1,39 @@
 'use client';
 
-import useSWR, { mutate } from 'swr';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, ReactNode } from 'react';
 import Cookies from 'js-cookie';
-import { fetcher } from '@/utils/fetcher';
+import { useLikesStore } from '@/src/store/likes';
 import IconLike from '@/components/icons/IconLike';
+
+interface LikeButtonProps {
+  postId: number;
+  children?: ReactNode;
+  showIcon?: boolean;
+}
+
+// Added debounce time to prevent multiple fetches
+const FETCH_DEBOUNCE_TIME = 30000; // 30 seconds
 
 export default function LikeButton({
   postId,
-}: {
-  slug?: string;
-  postId: number;
-}) {
-  const { data: stats, error } = useSWR(
-    `/api/stats?postId=${postId}`,
-    fetcher,
-    {
-      refreshInterval: 0,
-      revalidateOnFocus: false,
-      revalidateOnReconnect: false,
-      dedupingInterval: 600000, // 10 minutes
-    }
-  );
-
+  children,
+  showIcon = true,
+}: LikeButtonProps) {
+  const { updateLike, fetchLikes, likes } = useLikesStore();
   const [isLiking, setIsLiking] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
+  const [lastFetch, setLastFetch] = useState(0);
 
+  useEffect(() => {
+    // Fetch likes only if we haven't fetched recently
+    const now = Date.now();
+    if (now - lastFetch > FETCH_DEBOUNCE_TIME) {
+      fetchLikes(postId);
+      setLastFetch(now);
+    }
+  }, [fetchLikes, postId, lastFetch]);
+
+  // Check if post is liked from cookie
   useEffect(() => {
     const likedPosts = JSON.parse(Cookies.get('likedPosts') || '{}');
     setIsLiked(!!likedPosts[postId]);
@@ -36,34 +44,7 @@ export default function LikeButton({
     setIsLiking(true);
 
     try {
-      mutate(
-        `/api/stats?postId=${postId}`,
-        {
-          ...stats,
-          likes: (stats?.likes || 0) + (isLiked ? -1 : 1),
-        },
-        false
-      );
-
-      const response = await fetch('/api/like', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ postId, like: !isLiked }),
-      });
-
-      if (!response.ok) {
-        throw new Error(
-          isLiked ? 'Failed to unlike the post' : 'Failed to like the post'
-        );
-      }
-
-      const { likes } = await response.json();
-
-      // Update all SWR caches with the same key to ensure consistency
-      mutate(`/api/stats?postId=${postId}`, {
-        ...stats,
-        likes,
-      });
+      await updateLike(postId, !isLiked);
 
       // Update the likedPosts cookie
       const likedPosts = JSON.parse(Cookies.get('likedPosts') || '{}');
@@ -76,6 +57,9 @@ export default function LikeButton({
 
       // Toggle the liked state
       setIsLiked(!isLiked);
+
+      // Reset the fetch timer so we don't immediately fetch again
+      setLastFetch(Date.now());
     } catch (error) {
       console.error('Error updating post like status:', error);
     } finally {
@@ -83,8 +67,19 @@ export default function LikeButton({
     }
   };
 
-  if (error) {
-    return <div>Error loading likes.</div>;
+  if (children) {
+    return (
+      <button
+        onClick={handleLike}
+        disabled={isLiking}
+        className="flex items-center gap-2 disabled:opacity-50"
+        aria-label={isLiked ? 'Unlike post' : 'Like post'}
+        title={isLiked ? 'Unlike post' : 'Like post'}
+      >
+        {showIcon && <IconLike active={isLiked} />}
+        {children}
+      </button>
+    );
   }
 
   return (
@@ -93,7 +88,7 @@ export default function LikeButton({
         <button
           onClick={handleLike}
           disabled={isLiking}
-          className="flex items-center gap-1 rounded-full p-1 transition-all hover:bg-zinc-100 disabled:opacity-50 dark:hover:bg-zinc-800"
+          className="flex items-center rounded-full"
           aria-label={isLiked ? 'Unlike post' : 'Like post'}
           title={isLiked ? 'Unlike post' : 'Like post'}
         >

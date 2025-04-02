@@ -1,24 +1,23 @@
 'use client';
 
-import useSWR from 'swr';
-import { fetcher } from '@/utils/fetcher';
+import { useEffect } from 'react';
+import { useLikesStore } from '@/src/store/likes';
 import LikeCount from './LikeCount';
 
 export default function ClientLikeCount({ postId }: { postId: number }) {
-  const { data: stats, error } = useSWR(
-    `/api/stats?postId=${postId}`,
-    fetcher,
-    {
-      refreshInterval: 0,
-      revalidateOnFocus: false,
-      revalidateOnReconnect: false,
-      dedupingInterval: 600000,
-    }
-  );
+  const { likes, initialLoadingStates, error, fetchLikes } = useLikesStore();
 
-  if (error) {
+  useEffect(() => {
+    fetchLikes(postId);
+  }, [fetchLikes, postId]);
+
+  if (error[postId]) {
     return <div className="leading-none">Error loading likes.</div>;
   }
 
-  return <LikeCount count={stats?.likes || 0} />;
+  const count = likes[postId] || 0;
+
+  const isLoading = initialLoadingStates[postId] !== false;
+
+  return <LikeCount count={count} isLoading={isLoading} />;
 }

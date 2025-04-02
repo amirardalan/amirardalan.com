@@ -14,16 +14,18 @@
   --color-primary: oklch(56.13% 0.2417 261.86);
   --color-primary-dark: oklch(89.6% 0.152531 196.844);
   --color-selection-text: var(--color-light);
+  --color-skeleton-light: oklch(0.95 0.01 240);
+  --color-skeleton-dark: oklch(0.3 0.01 240);
 
   /* Syntax Highlighting */
-  --sh-class: oklch(0.75 0.12 74.86);
-  --sh-identifier: oklch(0.84 0.02 245.68);
-  --sh-sign: oklch(0.66 0.02 243.97);
-  --sh-property: oklch(0.81 0.12 174);
-  --sh-entity: oklch(0.67 0.16 295.61);
-  --sh-jsxliterals: oklch(0.84 0.02 245.68);
-  --sh-string: oklch(0.7 0 301.39);
-  --sh-keyword: oklch(0.67 0.21 311.15);
+  --sh-class: oklch(0.62 0.18 39.22);
+  --sh-identifier: oklch(0.39 0.01 248.05);
+  --sh-sign: oklch(0.36 0.01 236.87);
+  --sh-property: oklch(0.4 0.17 278.77);
+  --sh-entity: oklch(0.53 0.2 292.87);
+  --sh-jsxliterals: oklch(0.47 0.02 244.49);
+  --sh-string: oklch(0.49 0 0);
+  --sh-keyword: oklch(0.54 0.13 257.07);
   --sh-comment: oklch(0.58 0.11 152.52);
 }
 
@@ -49,6 +51,15 @@
   .dark {
     .mdx-content {
       --sh-property: oklch(0.77 0.11 202.26);
+      --sh-class: oklch(0.75 0.12 74.86);
+      --sh-identifier: oklch(0.84 0.02 245.68);
+      --sh-sign: oklch(0.66 0.02 243.97);
+      --sh-property: oklch(0.81 0.12 174);
+      --sh-entity: oklch(0.67 0.16 295.61);
+      --sh-jsxliterals: oklch(0.84 0.02 245.68);
+      --sh-string: oklch(0.7 0 301.39);
+      --sh-keyword: oklch(0.67 0.21 311.15);
+      --sh-comment: oklch(0.58 0.11 152.52);
     }
   }
 }
@@ -86,5 +97,20 @@
 
   .scrollbar::-webkit-scrollbar-thumb:hover {
     background: oklch(0.74 0.05 333.72);
+  }
+
+  /* Loading Skeleton */
+  @keyframes pulse {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+
+  .animate-pulse {
+    animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
 }

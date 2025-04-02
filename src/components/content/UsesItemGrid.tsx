@@ -4,12 +4,14 @@ type UsesItemGridProps = {
   children: ReactNode;
   columns?: 1 | 2 | 3;
   className?: string;
+  'aria-labelledby'?: string;
 };
 
 const UsesItemGrid = ({
   children,
   columns = 1,
   className = '',
+  'aria-labelledby': ariaLabelledBy,
 }: UsesItemGridProps) => {
   const gridCols = {
     1: 'grid-cols-1',
@@ -18,7 +20,11 @@ const UsesItemGrid = ({
   };
 
   return (
-    <div className={`grid gap-6 ${gridCols[columns]} ${className}`}>
+    <div
+      className={`grid gap-6 ${gridCols[columns]} ${className}`}
+      role="list"
+      aria-labelledby={ariaLabelledBy}
+    >
       {children}
     </div>
   );

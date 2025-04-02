@@ -34,17 +34,18 @@ Then, set up your [GitHub oAuth App](https://authjs.dev/getting-started/provider
 NEXT_PUBLIC_URL=http://localhost:3000
 NEXT_PUBLIC_TIMEZONE=America/Los_Angeles
 
-AUTH_GITHUB_ID=<GitHub Client ID>
-AUTH_GITHUB_SECRET=<GitHub Client Secret>
-
 AUTH_SECRET=<Next Auth Secret>
 AUTH_TRUST_HOST=NEXT_PUBLIC_URL
+AUTH_GITHUB_ID=<GitHub Client ID>
+AUTH_GITHUB_SECRET=<GitHub Client Secret>
+ALLOWED_EMAILS=you@example.com,team@example.com
+ALLOWED_EMAIL_DOMAINS=example.com,test.com
 
 DB_URL=<Supabase Transaction Pooler URL>
 DB_API_KEY=<Supabase API Key>
-
-ALLOWED_EMAILS=you@example.com,team@example.com
-ALLOWED_EMAIL_DOMAINS=example.com,test.com
+KV_REST_API_TOKEN=<Upstash KV API Token>
+KV_REST_API_URL=<Upstash KV REST API URL>
+ENABLE_DEV_CACHE=true //cache redis for dev
 ```
 
 And finally, generate a Next Auth secret which will automatically overwrite the placeholder in the `.env.local` file:

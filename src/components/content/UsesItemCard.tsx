@@ -8,6 +8,7 @@ export type UsesItemCardProps = {
   subtitle?: string;
   items?: Item[];
   className?: string;
+  'aria-label'?: string;
 };
 
 const UsesItemCard = ({
@@ -15,27 +16,29 @@ const UsesItemCard = ({
   subtitle,
   items,
   className = '',
+  'aria-label': ariaLabel,
 }: UsesItemCardProps) => {
   return (
-    <div className={`mb-6 ${className}`}>
+    <div className={`mb-6 ${className}`} aria-label={ariaLabel} role="region">
       {title && <h3 className="mb-2 text-dark dark:text-light">{title}</h3>}
       {subtitle && <p className="text-dark dark:text-light">{subtitle}</p>}
       {items && items.length > 0 && (
-        <>
-          {items[0].label && (
-            <span className="flex pt-1 text-zinc-500 dark:text-zinc-400">
-              {items[0].label}:
-            </span>
-          )}
+        <ul className="list-none pl-0">
           {items.map((item, index) => (
-            <p
-              key={index}
-              className="flex pt-1 text-zinc-500 dark:text-zinc-400"
-            >
-              {item.value}
-            </p>
+            <li key={index} className="flex pt-1">
+              {item.label ? (
+                <span className="flex text-zinc-500 dark:text-zinc-400">
+                  <span className="sr-only">Type: </span>
+                  {item.label}: <span className="ml-1">{item.value}</span>
+                </span>
+              ) : (
+                <span className="text-zinc-500 dark:text-zinc-400">
+                  {item.value}
+                </span>
+              )}
+            </li>
           ))}
-        </>
+        </ul>
       )}
     </div>
   );
