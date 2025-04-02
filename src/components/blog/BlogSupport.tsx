@@ -30,14 +30,19 @@ export default function BlogSupport({ postId }: { postId: number }) {
 
   return (
     <div className="my-8 flex w-full items-center gap-2 rounded-xl border-[1px] border-zinc-300 p-8 dark:border-zinc-700">
-      <div className="flex flex-row items-center">
-        <p className="ml-2 text-lg text-zinc-500 dark:text-zinc-400">
-          Did you enjoy this post?
-        </p>
-        <div className="ml-4 flex items-center">
-          <LikeButton postId={postId} showIcon={true}>
-            <LikeCount count={count} isLoading={isLoading} />
-          </LikeButton>
+      <div className="flex w-full flex-row items-center justify-between">
+        <div className="flex items-center">
+          <p className="text-lg text-zinc-500 dark:text-zinc-400">
+            Enjoyed this? Like or share it!
+          </p>
+        </div>
+
+        <div className="flex items-center">
+          <div className="w-24 text-center">
+            <LikeButton postId={postId} showIcon={true}>
+              <LikeCount count={count} isLoading={isLoading} />
+            </LikeButton>
+          </div>
           <ShareOnXButton />
         </div>
       </div>
