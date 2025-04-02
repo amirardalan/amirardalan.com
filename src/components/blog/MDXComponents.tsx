@@ -3,6 +3,14 @@ import Link from 'next/link';
 import { highlight } from 'sugar-high';
 import Image from 'next/image';
 
+// Helper function to create slugs for heading anchors
+const createSlug = (text: string): string => {
+  return text
+    .toLowerCase()
+    .replace(/[^a-z0-9 ]/g, '')
+    .replace(/\s+/g, '-');
+};
+
 type HeadingProps = ComponentPropsWithoutRef<'h1'>;
 type ParagraphProps = ComponentPropsWithoutRef<'p'>;
 type ListProps = ComponentPropsWithoutRef<'ul'>;
@@ -18,9 +26,35 @@ export const components = {
   h2: (props: HeadingProps) => (
     <h2 className="mb-3 mt-8 text-dark dark:text-light" {...props} />
   ),
-  h3: (props: HeadingProps) => (
-    <h3 className="mb-4 mt-8 text-2xl text-dark dark:text-light" {...props} />
-  ),
+  h3: ({ children, ...props }: HeadingProps) => {
+    // Only process string children
+    if (typeof children !== 'string') {
+      return (
+        <h3 className="mb-4 mt-8 text-2xl text-dark dark:text-light" {...props}>
+          {children}
+        </h3>
+      );
+    }
+
+    const slug = createSlug(children);
+
+    return (
+      <h3
+        id={slug}
+        className="group relative mb-4 mt-8 text-2xl text-dark dark:text-light"
+        {...props}
+      >
+        <a
+          href={`#${slug}`}
+          className="absolute -left-4 text-primary opacity-0 transition-opacity group-hover:opacity-100"
+          aria-label={`Link to ${children}`}
+        >
+          #
+        </a>
+        {children}
+      </h3>
+    );
+  },
   h4: (props: HeadingProps) => <h4 className="" {...props} />,
   p: (props: ParagraphProps) => (
     <p
