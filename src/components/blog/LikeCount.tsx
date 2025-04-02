@@ -36,14 +36,11 @@ export default function LikeCount({
       {isLoading ? (
         <div className="flex items-center justify-start">
           <div
-            className={clsx(
-              'h-3 animate-pulse rounded-md bg-zinc-200 dark:bg-zinc-700',
-              countWidthClass
-            )}
+            className={clsx('h-3 animate-pulse rounded-md', countWidthClass)}
           ></div>
           <div
             className={clsx(
-              'ml-1 h-3 animate-pulse rounded-md bg-zinc-200 dark:bg-zinc-700',
+              'ml-1 h-3 animate-pulse rounded-md',
               textWidthClass
             )}
           ></div>

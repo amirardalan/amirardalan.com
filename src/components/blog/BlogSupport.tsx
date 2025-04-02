@@ -3,25 +3,7 @@
 import { useLikesStore } from '@/src/store/likes';
 import LikeButton from '@/components/blog/LikeButton';
 import LikeCount from '@/components/blog/LikeCount';
-import IconX from '@/components/icons/IconX';
-
-function ShareOnXButton() {
-  const handleShare = () => {
-    const url = window.location.href;
-    const shareUrl = `https://x.com/intent/tweet?url=${encodeURIComponent(url)}`;
-    window.open(shareUrl, '_blank');
-  };
-
-  return (
-    <button
-      onClick={handleShare}
-      className="ml-6 flex items-center text-zinc-500 transition-colors hover:text-zinc-800 dark:text-zinc-400 dark:hover:text-zinc-200"
-    >
-      <IconX size={20} />
-      <span className="ml-3 text-xs uppercase">Share on X</span>
-    </button>
-  );
-}
+import ShareOnXButton from '@/components/blog/ShareOnXButton';
 
 export default function BlogSupport({ postId }: { postId: number }) {
   const { likes, initialLoadingStates } = useLikesStore();
