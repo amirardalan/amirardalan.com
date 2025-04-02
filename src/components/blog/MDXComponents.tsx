@@ -26,7 +26,7 @@ export const components = {
   ),
   h3: (props: HeadingProps) => (
     <h3
-      className="mb-3 mt-8 font-medium text-dark dark:text-light"
+      className="mb-4 mt-8 text-2xl font-medium text-dark dark:text-light"
       {...props}
     />
   ),

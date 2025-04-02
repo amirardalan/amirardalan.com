@@ -152,7 +152,7 @@ export default async function BlogPost({
           {post.title}
         </h1>
         <h2
-          className="mt-1 text-lg text-zinc-500 dark:text-zinc-400"
+          className="mt-1 text-xl text-zinc-500 dark:text-zinc-400"
           id="post-excerpt"
         >
           {post.excerpt ?? ''}
@@ -164,7 +164,7 @@ export default async function BlogPost({
           </span>
         </div>
         <div
-          className="mdx-content mt-10 text-dark dark:text-light"
+          className="mdx-content mt-10 text-lg text-dark dark:text-light"
           aria-labelledby="post-title"
         >
           {content}
