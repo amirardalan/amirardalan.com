@@ -11,8 +11,10 @@ export default function ShareOnXButton() {
     <button
       onClick={handleShare}
       className="ml-6 flex items-center text-zinc-500 dark:text-zinc-400"
+      aria-label="Share on X"
+      title="Share on X"
     >
-      <IconX size={20} />
+      <IconX size={20} aria-hidden="true" />
       <span className="ml-2 text-xs uppercase">Share on X</span>
     </button>
   );
