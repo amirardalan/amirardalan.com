@@ -7,7 +7,7 @@ import HeaderControls from '@/components/ui/HeaderControls';
 export default async function Header() {
   return (
     <header
-      className="fixed top-0 z-50 w-full bg-zinc-50/70 backdrop-blur-lg lg:py-8 dark:bg-zinc-950/70"
+      className="fixed top-0 z-50 w-full bg-zinc-50/70 backdrop-blur-lg lg:py-4 dark:bg-zinc-950/70"
       role="banner"
     >
       <a
