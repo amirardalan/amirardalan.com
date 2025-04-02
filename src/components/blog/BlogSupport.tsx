@@ -3,6 +3,7 @@
 import { useLikesStore } from '@/src/store/likes';
 import LikeButton from '@/components/blog/LikeButton';
 import LikeCount from '@/components/blog/LikeCount';
+import IconX from '@/components/icons/IconX';
 
 function ShareOnXButton() {
   const handleShare = () => {
@@ -16,7 +17,7 @@ function ShareOnXButton() {
       onClick={handleShare}
       className="ml-6 text-zinc-500 transition-colors hover:text-zinc-800 dark:text-zinc-400 dark:hover:text-zinc-200"
     >
-      Share on X
+      <IconX size={20} />
     </button>
   );
 }
