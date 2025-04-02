@@ -89,7 +89,7 @@ export default function BlogPosts({ posts }: { posts: BlogPost[] }) {
         </p>
       )}
       {totalPages > 1 && (
-        <div className="mt-4 flex justify-center space-x-2">
+        <div className="my-10 flex justify-center space-x-2">
           {Array.from({ length: totalPages }, (_, index) => (
             <button
               key={index}
