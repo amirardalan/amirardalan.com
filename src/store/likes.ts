@@ -17,7 +17,6 @@ export const useLikesStore = create<LikesState>((set, get) => ({
   error: {},
 
   fetchLikes: async (postId: number) => {
-    // Always set initial loading state to true before fetching
     set((state) => ({
       initialLoadingStates: { ...state.initialLoadingStates, [postId]: true },
       loadingStates: { ...state.loadingStates, [postId]: true },
