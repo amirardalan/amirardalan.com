@@ -130,7 +130,7 @@ export const components = {
       height={600}
       layout="responsive"
       priority={true} // TODO: Make this configurable based on props
-      className="my-4"
+      className="my-6"
     />
   ),
 };

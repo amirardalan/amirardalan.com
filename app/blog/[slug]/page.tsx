@@ -130,23 +130,43 @@ export default async function BlogPost({
         <p className="text-xs uppercase text-primary">
           #{post.category ?? 'uncategorized'}
         </p>
-        <h3 className="mt-1 text-xs uppercase">
-          By {post.author_name || 'Anonymous'}
-        </h3>
-        <div className="mt-8 flex items-center leading-none">
-          <time className="mr-2 text-xs uppercase leading-none text-zinc-500 dark:text-zinc-400">
+        <div
+          className="mt-8 flex items-center leading-none"
+          aria-label="Post metadata"
+        >
+          <time
+            className="mr-2 text-xs uppercase leading-none text-zinc-500 dark:text-zinc-400"
+            title={formatDate(post.created_at)}
+            aria-label={`Posted on ${formatDate(post.created_at)}`}
+          >
             {post.show_updated
               ? `Updated: ${formatDate(post.updated_at)}`
               : formatDate(post.created_at)}
           </time>
-          <div className="mr-2 text-xs leading-none">•</div>
+          <div className="mr-2 text-xs leading-none" aria-hidden="true">
+            •
+          </div>
           <ClientLikeCount postId={post.id} />
         </div>
-        <h2 className="mt-8 text-3xl">{post.title}</h2>
-        <p className="text-lg text-zinc-500 dark:text-zinc-400">
+        <h1 className="mt-8 text-3xl" id="post-title">
+          {post.title}
+        </h1>
+        <h2
+          className="mt-1 text-lg text-zinc-500 dark:text-zinc-400"
+          id="post-excerpt"
+        >
           {post.excerpt ?? ''}
-        </p>
-        <div className="mdx-content mt-10 text-dark dark:text-light">
+        </h2>
+        <div className="mt-6 text-xs uppercase">
+          By{' '}
+          <span aria-label={`Author: ${post.author_name || 'Anonymous'}`}>
+            {post.author_name || 'Anonymous'}
+          </span>
+        </div>
+        <div
+          className="mdx-content mt-10 text-dark dark:text-light"
+          aria-labelledby="post-title"
+        >
           {content}
         </div>
         <BlogSupport postId={post.id} />
