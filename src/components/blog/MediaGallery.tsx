@@ -65,8 +65,6 @@ export default function MediaGallery({ onSelect }: MediaGalleryProps) {
   };
 
   const handleDelete = async (publicId: string) => {
-    if (!confirm('Are you sure you want to delete this image?')) return;
-
     const success = await deleteImage(publicId);
 
     if (success) {
@@ -125,9 +123,9 @@ export default function MediaGallery({ onSelect }: MediaGalleryProps) {
                   .split('.')[0]; // Extract publicId
                 if (publicId) handleDelete(publicId);
               }}
-              className="absolute right-0 top-0 hidden rounded bg-zinc-500 px-1 text-xxs text-white hover:bg-red-600 group-hover:block"
+              className="absolute right-0 top-0 hidden bg-zinc-500 px-1.5 py-0.5 text-xl leading-none text-white hover:bg-red-600 group-hover:block"
             >
-              Delete
+              ×
             </button>
           </div>
         ))}
