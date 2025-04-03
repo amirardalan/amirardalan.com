@@ -42,17 +42,24 @@ export default function MediaGallery({ onSelect }: MediaGalleryProps) {
   }, []);
 
   const handleUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
+    const files = e.target.files;
+    if (!files || files.length === 0) return;
 
     setUploading(true);
-    const uploadedUrl = await uploadImage(file);
+    const uploadedUrls: string[] = [];
 
-    if (uploadedUrl) {
-      setImages((prev) => [uploadedUrl, ...prev]);
-      showToast('Image uploaded successfully!', 'success');
-    } else {
-      showToast('Failed to upload image.', 'error');
+    for (const file of Array.from(files)) {
+      const uploadedUrl = await uploadImage(file);
+      if (uploadedUrl) {
+        uploadedUrls.push(uploadedUrl);
+      } else {
+        showToast(`Failed to upload ${file.name}.`, 'error');
+      }
+    }
+
+    if (uploadedUrls.length > 0) {
+      setImages((prev) => [...uploadedUrls, ...prev]);
+      showToast('Images uploaded successfully!', 'success');
     }
     setUploading(false);
   };
@@ -80,6 +87,7 @@ export default function MediaGallery({ onSelect }: MediaGalleryProps) {
           <input
             type="file"
             accept="image/*"
+            multiple
             onChange={handleUpload}
             className="hidden"
           />
