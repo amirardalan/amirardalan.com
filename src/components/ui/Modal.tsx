@@ -28,8 +28,14 @@ export default function Modal({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-zinc-50/80 dark:bg-zinc-950/80">
-      <div className="w-full max-w-md rounded-lg bg-light p-6 shadow-xl dark:bg-zinc-800">
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-zinc-50/80 dark:bg-zinc-950/80"
+      onClick={onCancel}
+    >
+      <div
+        className="w-full max-w-md rounded-lg bg-light p-6 shadow-xl dark:bg-zinc-800"
+        onClick={(e) => e.stopPropagation()}
+      >
         <h3 className="mb-4 text-lg font-medium text-zinc-900 dark:text-white">
           {title}
         </h3>
