@@ -15,7 +15,7 @@ export default function BlogSupport({ postId }: { postId: number }) {
       <div className="flex w-full flex-row items-center justify-between">
         <div className="flex items-center">
           <p className="text-lg text-zinc-500 dark:text-zinc-400">
-            Enjoyed this? Like or share it:
+            Did you enjoy this post? Like and share!
           </p>
         </div>
 
