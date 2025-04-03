@@ -59,6 +59,7 @@ export default function MediaGallery({ onSelect }: MediaGalleryProps) {
 
     if (uploadedUrls.length > 0) {
       setImages((prev) => [...uploadedUrls, ...prev]);
+      setCurrentPage(1); // Reset to page 1
       showToast('Images uploaded successfully!', 'success');
     }
     setUploading(false);
