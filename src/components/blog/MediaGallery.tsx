@@ -3,6 +3,11 @@
 import { useState, useEffect } from 'react';
 import { CldImage } from 'next-cloudinary';
 import { useToast } from '@/components/ui/ToastContext';
+import {
+  fetchImages,
+  uploadImage,
+  deleteImage,
+} from '@/src/db/services/image-service';
 
 interface MediaGalleryProps {
   onSelect: (url: string) => void;
@@ -27,25 +32,13 @@ export default function MediaGallery({ onSelect }: MediaGalleryProps) {
   };
 
   useEffect(() => {
-    const fetchImages = async () => {
-      try {
-        const res = await fetch('/api/cloudinary/upload');
-        const data = await res.json();
-
-        if (data.resources && Array.isArray(data.resources)) {
-          setImages(data.resources.map((img: any) => img.secure_url));
-        } else {
-          console.error('Invalid response format:', data);
-          setImages([]);
-        }
-      } catch (error) {
-        console.error('Error fetching images:', error);
-        setImages([]);
-      } finally {
-        setLoading(false);
-      }
+    const loadImages = async () => {
+      setLoading(true);
+      const fetchedImages = await fetchImages();
+      setImages(fetchedImages);
+      setLoading(false);
     };
-    fetchImages();
+    loadImages();
   }, []);
 
   const handleUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -53,51 +46,26 @@ export default function MediaGallery({ onSelect }: MediaGalleryProps) {
     if (!file) return;
 
     setUploading(true);
-    const formData = new FormData();
-    formData.append('file', file);
+    const uploadedUrl = await uploadImage(file);
 
-    try {
-      const res = await fetch('/api/cloudinary/upload', {
-        method: 'POST',
-        body: formData,
-      });
-      const data = await res.json();
-
-      if (data.url) {
-        setImages((prev) => [data.url, ...prev]);
-        showToast('Image uploaded successfully!', 'success');
-      } else {
-        console.error('Upload failed:', data.error);
-        showToast('Failed to upload image.', 'error');
-      }
-    } catch (error) {
-      console.error('Error uploading file:', error);
+    if (uploadedUrl) {
+      setImages((prev) => [uploadedUrl, ...prev]);
+      showToast('Image uploaded successfully!', 'success');
+    } else {
       showToast('Failed to upload image.', 'error');
-    } finally {
-      setUploading(false);
     }
+    setUploading(false);
   };
 
   const handleDelete = async (publicId: string) => {
     if (!confirm('Are you sure you want to delete this image?')) return;
 
-    try {
-      const res = await fetch('/api/cloudinary/upload', {
-        method: 'DELETE',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ publicId }),
-      });
-      const data = await res.json();
+    const success = await deleteImage(publicId);
 
-      if (data.success) {
-        setImages((prev) => prev.filter((url) => !url.includes(publicId)));
-        showToast('Image deleted successfully!', 'success');
-      } else {
-        console.error('Delete failed:', data.error);
-        showToast('Failed to delete image.', 'error');
-      }
-    } catch (error) {
-      console.error('Error deleting file:', error);
+    if (success) {
+      setImages((prev) => prev.filter((url) => !url.includes(publicId)));
+      showToast('Image deleted successfully!', 'success');
+    } else {
       showToast('Failed to delete image.', 'error');
     }
   };

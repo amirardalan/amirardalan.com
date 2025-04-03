@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { createPost } from '@/src/db/services/postService';
+import { createPost } from '@/src/db/services/post-service';
 import { useToast } from '@/components/ui/ToastContext';
 
 import PostFormFields from '@/components/blog/PostFormFields';
