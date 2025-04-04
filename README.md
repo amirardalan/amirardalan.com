@@ -18,6 +18,7 @@ Personal website built with my [Startup](https://github.com/amirardalan/startup)
 - Tooltip component
 - [OG Image](https://vercel.com/docs/functions/og-image-generation) metadata
 - Dynamically-generated [sitemap.xml](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap)
+- Custom [Cloudinary](https://cloudinary.com/) CMS Media Gallery
 
 ## Getting Started
 
@@ -46,6 +47,11 @@ DB_API_KEY=<Supabase API Key>
 KV_REST_API_TOKEN=<Upstash KV API Token>
 KV_REST_API_URL=<Upstash KV REST API URL>
 ENABLE_DEV_CACHE=true //cache redis for dev
+
+NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=<Cloudinary Cloud Name>
+CLOUDINARY_URL=<Cloudinary URL>
+CLOUDINARY_API_KEY=<Cloudinary API Key>
+CLOUDINARY_API_SECRET=<Cloudinary API Secret>
 ```
 
 And finally, generate a Next Auth secret which will automatically overwrite the placeholder in the `.env.local` file:
