@@ -81,7 +81,7 @@ export default function MediaGallery({ onSelect }: MediaGalleryProps) {
   return (
     <div>
       <div className="mb-4">
-        <label className="cursor-pointer rounded bg-zinc-600 px-4 py-2 text-white">
+        <label className="cursor-pointer rounded bg-zinc-600 px-4 py-2 text-xs uppercase text-white">
           {uploading ? 'Uploading...' : 'Upload Image'}
           <input
             type="file"

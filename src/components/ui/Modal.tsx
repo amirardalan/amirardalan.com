@@ -42,7 +42,7 @@ export default function Modal({
         <p className="mb-6 text-sm text-zinc-700 dark:text-zinc-300">
           {message}
         </p>
-        {children && <div className="mb-6">{children}</div>}{' '}
+        {children && <div className="mb-2">{children}</div>}{' '}
         <div className="flex justify-end space-x-3">
           {(buttons === 'both' || buttons === 'cancel') && (
             <Button
