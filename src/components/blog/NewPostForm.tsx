@@ -102,10 +102,24 @@ export default function NewPostForm({ userId }: NewPostFormProps) {
 
       <Modal
         isOpen={showGallery}
-        title="Select an Image"
+        title="Media Gallery"
         message=""
         onCancel={() => setShowGallery(false)}
         buttons="cancel"
+        leftButton={
+          <Button
+            type="button"
+            text="Upload Image"
+            onClick={() => {
+              const fileInput = document.querySelector(
+                'input[type="file"]'
+              ) as HTMLInputElement;
+              if (fileInput) {
+                fileInput.click();
+              }
+            }}
+          />
+        }
       >
         <MediaGallery
           onSelect={(url) => {

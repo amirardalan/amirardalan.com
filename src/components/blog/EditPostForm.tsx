@@ -143,10 +143,25 @@ export default function EditPostForm({ post }: EditPostFormProps) {
 
       <Modal
         isOpen={showGallery}
-        title="Select an Image"
+        title="Media Gallery"
         message=""
         onCancel={() => setShowGallery(false)}
         buttons="cancel"
+        leftButton={
+          <Button
+            type="button"
+            text="Upload Image"
+            onClick={() => {
+              // Find the file input in MediaGallery and programmatically click it
+              const fileInput = document.querySelector(
+                'input[type="file"]'
+              ) as HTMLInputElement;
+              if (fileInput) {
+                fileInput.click();
+              }
+            }}
+          />
+        }
       >
         <MediaGallery
           onSelect={(url) => {

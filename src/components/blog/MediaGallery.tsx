@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { CldImage } from 'next-cloudinary';
 import { useToast } from '@/components/ui/ToastContext';
 import {
@@ -11,15 +11,20 @@ import {
 
 interface MediaGalleryProps {
   onSelect: (url: string) => void;
+  onUploadClick?: () => void; // New prop for parent to trigger file input
 }
 
-export default function MediaGallery({ onSelect }: MediaGalleryProps) {
+export default function MediaGallery({
+  onSelect,
+  onUploadClick,
+}: MediaGalleryProps) {
   const [images, setImages] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
   const [uploading, setUploading] = useState(false);
   const { showToast } = useToast();
   const [currentPage, setCurrentPage] = useState(1);
   const imagesPerPage = 12;
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const totalPages = Math.ceil(images.length / imagesPerPage);
   const paginatedImages = images.slice(
@@ -65,6 +70,13 @@ export default function MediaGallery({ onSelect }: MediaGalleryProps) {
     setUploading(false);
   };
 
+  // Method to programmatically trigger file input click
+  const triggerFileInput = () => {
+    if (fileInputRef.current) {
+      fileInputRef.current.click();
+    }
+  };
+
   const handleDelete = async (publicId: string) => {
     const success = await deleteImage(publicId);
 
@@ -80,18 +92,14 @@ export default function MediaGallery({ onSelect }: MediaGalleryProps) {
 
   return (
     <div>
-      <div className="mb-4">
-        <label className="cursor-pointer rounded bg-zinc-600 px-4 py-2 text-xs uppercase text-white">
-          {uploading ? 'Uploading...' : 'Upload Image'}
-          <input
-            type="file"
-            accept="image/*"
-            multiple
-            onChange={handleUpload}
-            className="hidden"
-          />
-        </label>
-      </div>
+      <input
+        ref={fileInputRef}
+        type="file"
+        accept="image/*"
+        multiple
+        onChange={handleUpload}
+        className="hidden"
+      />
       <div
         className="grid grid-cols-4 gap-2"
         style={{ minHeight: `${Math.ceil(imagesPerPage / 4) * 75}px` }}

@@ -12,6 +12,7 @@ interface ModalProps {
   confirmDisabled?: boolean;
   children?: React.ReactNode;
   buttons?: 'both' | 'cancel' | 'confirm';
+  leftButton?: React.ReactNode; // New prop for custom left button
 }
 
 export default function Modal({
@@ -24,6 +25,7 @@ export default function Modal({
   confirmDisabled = false,
   children,
   buttons = 'both',
+  leftButton, // New prop
 }: ModalProps) {
   if (!isOpen) return null;
 
@@ -42,25 +44,28 @@ export default function Modal({
         <p className="mb-6 text-sm text-zinc-700 dark:text-zinc-300">
           {message}
         </p>
-        {children && <div className="mb-2">{children}</div>}{' '}
+        {children && <div className="mb-6">{children}</div>}{' '}
         <div className="flex justify-end space-x-3">
-          {(buttons === 'both' || buttons === 'cancel') && (
-            <Button
-              type="button"
-              onClick={onCancel}
-              text={buttons === 'cancel' ? 'Close' : 'Cancel'}
-              variant="secondary"
-            />
-          )}
-          {buttons !== 'cancel' && (
-            <Button
-              type="button"
-              onClick={onConfirm}
-              text={confirmText}
-              disabled={confirmDisabled}
-              variant="danger"
-            />
-          )}
+          <div>{leftButton}</div>
+          <div className="flex space-x-3">
+            {(buttons === 'both' || buttons === 'cancel') && (
+              <Button
+                type="button"
+                onClick={onCancel}
+                text={buttons === 'cancel' ? 'Close' : 'Cancel'}
+                variant="secondary"
+              />
+            )}
+            {buttons !== 'cancel' && (
+              <Button
+                type="button"
+                onClick={onConfirm}
+                text={confirmText}
+                disabled={confirmDisabled}
+                variant="danger"
+              />
+            )}
+          </div>
         </div>
       </div>
     </div>
