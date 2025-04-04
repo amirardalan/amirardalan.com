@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { updatePost, deletePost } from '@/src/db/services/post-service';
 import { useToast } from '@/components/ui/ToastContext';
@@ -31,6 +31,7 @@ export default function EditPostForm({ post }: EditPostFormProps) {
   const [error, setError] = useState<string | null>(null);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [showGallery, setShowGallery] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null!);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -150,24 +151,28 @@ export default function EditPostForm({ post }: EditPostFormProps) {
         leftButton={
           <Button
             type="button"
-            text="Upload Image"
+            text="Upload"
             onClick={() => {
-              // Find the file input in MediaGallery and programmatically click it
-              const fileInput = document.querySelector(
-                'input[type="file"]'
-              ) as HTMLInputElement;
-              if (fileInput) {
-                fileInput.click();
+              if (fileInputRef.current) {
+                fileInputRef.current.click();
               }
             }}
           />
         }
       >
+        <input
+          ref={fileInputRef}
+          type="file"
+          accept="image/*"
+          multiple
+          className="hidden"
+        />
         <MediaGallery
           onSelect={(url) => {
             setContent(`${content}\n![Image](${url})`);
             setShowGallery(false);
           }}
+          fileInputRef={fileInputRef}
         />
       </Modal>
     </>

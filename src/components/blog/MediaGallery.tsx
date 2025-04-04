@@ -11,12 +11,12 @@ import {
 
 interface MediaGalleryProps {
   onSelect: (url: string) => void;
-  onUploadClick?: () => void; // New prop for parent to trigger file input
+  fileInputRef: React.RefObject<HTMLInputElement>;
 }
 
 export default function MediaGallery({
   onSelect,
-  onUploadClick,
+  fileInputRef,
 }: MediaGalleryProps) {
   const [images, setImages] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
@@ -24,7 +24,6 @@ export default function MediaGallery({
   const { showToast } = useToast();
   const [currentPage, setCurrentPage] = useState(1);
   const imagesPerPage = 12;
-  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const totalPages = Math.ceil(images.length / imagesPerPage);
   const paginatedImages = images.slice(
@@ -68,12 +67,9 @@ export default function MediaGallery({
       showToast('Images uploaded successfully!', 'success');
     }
     setUploading(false);
-  };
 
-  // Method to programmatically trigger file input click
-  const triggerFileInput = () => {
     if (fileInputRef.current) {
-      fileInputRef.current.click();
+      fileInputRef.current.value = '';
     }
   };
 
