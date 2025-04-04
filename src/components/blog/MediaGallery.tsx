@@ -1,14 +1,23 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { CldImage } from 'next-cloudinary';
 import { useToast } from '@/components/ui/ToastContext';
+import {
+  fetchImages,
+  uploadImage,
+  deleteImage,
+} from '@/src/db/services/image-service';
 
 interface MediaGalleryProps {
   onSelect: (url: string) => void;
+  fileInputRef: React.RefObject<HTMLInputElement>;
 }
 
-export default function MediaGallery({ onSelect }: MediaGalleryProps) {
+export default function MediaGallery({
+  onSelect,
+  fileInputRef,
+}: MediaGalleryProps) {
   const [images, setImages] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
   const [uploading, setUploading] = useState(false);
@@ -27,77 +36,50 @@ export default function MediaGallery({ onSelect }: MediaGalleryProps) {
   };
 
   useEffect(() => {
-    const fetchImages = async () => {
-      try {
-        const res = await fetch('/api/cloudinary/upload');
-        const data = await res.json();
-
-        if (data.resources && Array.isArray(data.resources)) {
-          setImages(data.resources.map((img: any) => img.secure_url));
-        } else {
-          console.error('Invalid response format:', data);
-          setImages([]);
-        }
-      } catch (error) {
-        console.error('Error fetching images:', error);
-        setImages([]);
-      } finally {
-        setLoading(false);
-      }
+    const loadImages = async () => {
+      setLoading(true);
+      const fetchedImages = await fetchImages();
+      setImages(fetchedImages);
+      setLoading(false);
     };
-    fetchImages();
+    loadImages();
   }, []);
 
   const handleUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
+    const files = e.target.files;
+    if (!files || files.length === 0) return;
 
     setUploading(true);
-    const formData = new FormData();
-    formData.append('file', file);
+    const uploadedUrls: string[] = [];
 
-    try {
-      const res = await fetch('/api/cloudinary/upload', {
-        method: 'POST',
-        body: formData,
-      });
-      const data = await res.json();
-
-      if (data.url) {
-        setImages((prev) => [data.url, ...prev]);
-        showToast('Image uploaded successfully!', 'success');
+    for (const file of Array.from(files)) {
+      const uploadedUrl = await uploadImage(file);
+      if (uploadedUrl) {
+        uploadedUrls.push(uploadedUrl);
       } else {
-        console.error('Upload failed:', data.error);
-        showToast('Failed to upload image.', 'error');
+        showToast(`Failed to upload ${file.name}.`, 'error');
       }
-    } catch (error) {
-      console.error('Error uploading file:', error);
-      showToast('Failed to upload image.', 'error');
-    } finally {
-      setUploading(false);
+    }
+
+    if (uploadedUrls.length > 0) {
+      setImages((prev) => [...uploadedUrls, ...prev]);
+      setCurrentPage(1);
+      showToast('Images uploaded successfully!', 'success');
+    }
+    setUploading(false);
+
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
     }
   };
 
   const handleDelete = async (publicId: string) => {
-    if (!confirm('Are you sure you want to delete this image?')) return;
+    const success = await deleteImage(publicId);
 
-    try {
-      const res = await fetch('/api/cloudinary/upload', {
-        method: 'DELETE',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ publicId }),
-      });
-      const data = await res.json();
-
-      if (data.success) {
-        setImages((prev) => prev.filter((url) => !url.includes(publicId)));
-        showToast('Image deleted successfully!', 'success');
-      } else {
-        console.error('Delete failed:', data.error);
-        showToast('Failed to delete image.', 'error');
-      }
-    } catch (error) {
-      console.error('Error deleting file:', error);
+    if (success) {
+      setImages((prev) => prev.filter((url) => !url.includes(publicId)));
+      showToast('Image deleted successfully!', 'success');
+    } else {
       showToast('Failed to delete image.', 'error');
     }
   };
@@ -106,17 +88,14 @@ export default function MediaGallery({ onSelect }: MediaGalleryProps) {
 
   return (
     <div>
-      <div className="mb-4">
-        <label className="cursor-pointer rounded bg-zinc-600 px-4 py-2 text-white">
-          {uploading ? 'Uploading...' : 'Upload Image'}
-          <input
-            type="file"
-            accept="image/*"
-            onChange={handleUpload}
-            className="hidden"
-          />
-        </label>
-      </div>
+      <input
+        ref={fileInputRef}
+        type="file"
+        accept="image/*"
+        multiple
+        onChange={handleUpload}
+        className="hidden"
+      />
       <div
         className="grid grid-cols-4 gap-2"
         style={{ minHeight: `${Math.ceil(imagesPerPage / 4) * 75}px` }}
@@ -149,9 +128,9 @@ export default function MediaGallery({ onSelect }: MediaGalleryProps) {
                   .split('.')[0]; // Extract publicId
                 if (publicId) handleDelete(publicId);
               }}
-              className="absolute right-0 top-0 hidden rounded bg-zinc-500 px-1 text-xxs text-white hover:bg-red-600 group-hover:block"
+              className="absolute right-0 top-0 hidden bg-zinc-500 px-1.5 py-0.5 text-xl leading-none text-white hover:bg-red-600 group-hover:block"
             >
-              Delete
+              ×
             </button>
           </div>
         ))}

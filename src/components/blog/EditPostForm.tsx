@@ -1,8 +1,8 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
-import { updatePost, deletePost } from '@/src/db/services/postService';
+import { updatePost, deletePost } from '@/src/db/services/post-service';
 import { useToast } from '@/components/ui/ToastContext';
 
 import PostFormFields from '@/components/blog/PostFormFields';
@@ -31,6 +31,7 @@ export default function EditPostForm({ post }: EditPostFormProps) {
   const [error, setError] = useState<string | null>(null);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [showGallery, setShowGallery] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null!);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -143,16 +144,35 @@ export default function EditPostForm({ post }: EditPostFormProps) {
 
       <Modal
         isOpen={showGallery}
-        title="Select an Image"
+        title="Media Gallery"
         message=""
         onCancel={() => setShowGallery(false)}
         buttons="cancel"
+        leftButton={
+          <Button
+            type="button"
+            text="Upload"
+            onClick={() => {
+              if (fileInputRef.current) {
+                fileInputRef.current.click();
+              }
+            }}
+          />
+        }
       >
+        <input
+          ref={fileInputRef}
+          type="file"
+          accept="image/*"
+          multiple
+          className="hidden"
+        />
         <MediaGallery
           onSelect={(url) => {
             setContent(`${content}\n![Image](${url})`);
             setShowGallery(false);
           }}
+          fileInputRef={fileInputRef}
         />
       </Modal>
     </>

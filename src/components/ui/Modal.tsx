@@ -12,6 +12,7 @@ interface ModalProps {
   confirmDisabled?: boolean;
   children?: React.ReactNode;
   buttons?: 'both' | 'cancel' | 'confirm';
+  leftButton?: React.ReactNode; // New prop for custom left button
 }
 
 export default function Modal({
@@ -24,12 +25,19 @@ export default function Modal({
   confirmDisabled = false,
   children,
   buttons = 'both',
+  leftButton, // New prop
 }: ModalProps) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-zinc-50/80 dark:bg-zinc-950/80">
-      <div className="w-full max-w-md rounded-lg bg-light p-6 shadow-xl dark:bg-zinc-800">
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-zinc-50/80 dark:bg-zinc-950/80"
+      onClick={onCancel}
+    >
+      <div
+        className="w-full max-w-md rounded-lg bg-light p-6 shadow-xl dark:bg-zinc-800"
+        onClick={(e) => e.stopPropagation()}
+      >
         <h3 className="mb-4 text-lg font-medium text-zinc-900 dark:text-white">
           {title}
         </h3>
@@ -38,23 +46,26 @@ export default function Modal({
         </p>
         {children && <div className="mb-6">{children}</div>}{' '}
         <div className="flex justify-end space-x-3">
-          {(buttons === 'both' || buttons === 'cancel') && (
-            <Button
-              type="button"
-              onClick={onCancel}
-              text={buttons === 'cancel' ? 'Close' : 'Cancel'}
-              variant="secondary"
-            />
-          )}
-          {buttons !== 'cancel' && (
-            <Button
-              type="button"
-              onClick={onConfirm}
-              text={confirmText}
-              disabled={confirmDisabled}
-              variant="danger"
-            />
-          )}
+          <div>{leftButton}</div>
+          <div className="flex space-x-3">
+            {(buttons === 'both' || buttons === 'cancel') && (
+              <Button
+                type="button"
+                onClick={onCancel}
+                text={buttons === 'cancel' ? 'Close' : 'Cancel'}
+                variant="secondary"
+              />
+            )}
+            {buttons !== 'cancel' && (
+              <Button
+                type="button"
+                onClick={onConfirm}
+                text={confirmText}
+                disabled={confirmDisabled}
+                variant="danger"
+              />
+            )}
+          </div>
         </div>
       </div>
     </div>
