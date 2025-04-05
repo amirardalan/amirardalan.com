@@ -9,6 +9,7 @@ import PostFormFields from '@/components/blog/PostFormFields';
 import Button from '@/components/ui/Button';
 import Modal from '@/components/ui/Modal';
 import MediaGallery from '@/components/blog/MediaGallery';
+import PostFormControls from '@/components/blog/PostFormControls';
 
 interface NewPostFormProps {
   userId: number;
@@ -88,19 +89,12 @@ export default function NewPostForm({ userId }: NewPostFormProps) {
           showGallery={showGallery}
           setShowGallery={setShowGallery}
         />
-        <div className="flex space-x-2">
-          <Button
-            type="button"
-            onClick={() => setShowCancelModal(true)}
-            text={'Discard'}
-            variant="danger"
-          />
-          <Button
-            type="submit"
-            text={isSubmitting ? 'Creating...' : 'Create Post'}
-            disabled={isSubmitting}
-          />
-        </div>
+        <PostFormControls
+          isSubmitting={isSubmitting}
+          showDiscard={true}
+          onDiscard={() => setShowCancelModal(true)}
+          onSubmitText="Create Post"
+        />
       </form>
 
       <Modal
