@@ -1,4 +1,4 @@
-import { auth } from '@/auth';
+import { auth } from '@/lib/auth';
 import { ToastProvider } from '@/components/ui/ToastContext';
 
 import Container from '@/components/content/Container';

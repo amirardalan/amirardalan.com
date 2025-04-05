@@ -1,4 +1,4 @@
-import { auth } from '@/auth';
+import { auth } from '@/lib/auth';
 import { redirect } from 'next/navigation';
 import { getUserIdByEmail } from '@/db/queries/users';
 import { getPostBySlug } from '@/db/queries/posts';

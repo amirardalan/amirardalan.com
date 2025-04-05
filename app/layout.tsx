@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { headers } from 'next/headers';
-import { auth } from '@/auth';
+import { auth } from '@/lib/auth';
 
 import clsx from 'clsx';
 import './globals.css';

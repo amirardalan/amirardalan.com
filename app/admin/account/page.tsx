@@ -1,4 +1,4 @@
-import { auth } from '@/auth';
+import { auth } from '@/lib/auth';
 
 import AdminPageHeading from '@/components/admin/AdminPageHeading';
 import Avatar from '@/components/auth/Avatar';

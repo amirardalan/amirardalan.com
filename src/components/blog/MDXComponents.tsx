@@ -147,9 +147,8 @@ export const components = {
     <Image
       src={props.src!}
       alt={props.alt || 'Image'}
-      width={800}
-      height={600}
-      layout="responsive"
+      width={736}
+      height={552}
       priority={true} // TODO: Make this configurable based on props
       className="my-6"
     />

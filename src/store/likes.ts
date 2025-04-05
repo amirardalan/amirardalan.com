@@ -1,5 +1,4 @@
 import { create } from 'zustand';
-import { fetcher } from '@/utils/fetcher';
 
 interface LikesState {
   likes: Record<number, number>;

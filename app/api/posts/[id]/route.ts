@@ -1,5 +1,5 @@
 import { updatePost, deletePost } from '@/db/queries/posts';
-import { auth } from '@/auth';
+import { auth } from '@/lib/auth';
 
 import { NextResponse } from 'next/server';
 import { NextRequest } from 'next/server';
