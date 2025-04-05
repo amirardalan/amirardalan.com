@@ -103,27 +103,17 @@ export default function PostFormFields({
         />
       </div>
 
-      <div className="flex flex-row items-center">
-        <div className="mr-4">
-          <button
-            type="button"
-            onClick={() => setShowGallery(true)}
-            className="rounded bg-zinc-700 px-4 py-2 text-white"
-          >
-            Add Image
-          </button>
-        </div>
-
-        <div className="mr-4">
-          <label htmlFor="category" className="hidden text-xs">
-            Category
+      <div className="flex flex-row items-center justify-between">
+        <div className="mr-4 flex items-center text-xxs">
+          <label htmlFor="category" className="mr-2">
+            Category:
           </label>
           <select
             id="category"
             value={category}
             onChange={(e) => setCategory(e.target.value)}
             required
-            className="focus:zinc-500 block appearance-none rounded-md border border-zinc-300 bg-zinc-100 px-3 py-2 text-zinc-950 focus:bg-zinc-800 focus:outline-primary focus:ring-1 focus:ring-primary dark:border-zinc-500 dark:bg-zinc-800 dark:text-light"
+            className="focus:zinc-500 mr-4 block appearance-none rounded-md border border-zinc-300 bg-zinc-100 px-3 py-1.5 text-zinc-950 focus:bg-zinc-800 focus:outline-primary focus:ring-1 focus:ring-primary dark:border-zinc-500 dark:bg-zinc-800 dark:text-light"
           >
             <option value="" disabled className="text-light">
               Category
@@ -138,10 +128,19 @@ export default function PostFormFields({
               </option>
             ))}
           </select>
+          <div>
+            <button
+              type="button"
+              onClick={() => setShowGallery(true)}
+              className="rounded bg-zinc-700 px-4 py-2 text-xxs uppercase text-white"
+            >
+              Add Image
+            </button>
+          </div>
         </div>
 
-        <div>
-          <div className="flex items-center">
+        <div className="flex items-center">
+          <div className="mr-4 flex items-center">
             <input
               type="checkbox"
               id="published"
@@ -164,7 +163,7 @@ export default function PostFormFields({
                 className="h-4 w-4 cursor-pointer rounded border-zinc-300 text-zinc-400 focus:ring-zinc-400"
               />
               <label htmlFor="show_updated" className="ml-2 block text-xs">
-                Show Updated Date
+                Update Date
               </label>
             </div>
           )}

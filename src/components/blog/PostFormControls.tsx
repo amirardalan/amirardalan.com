@@ -24,12 +24,7 @@ export default function PostFormControls({
   disableDelete = false,
 }: PostFormControlsProps) {
   return (
-    <div className="flex space-x-2">
-      <Button
-        type="submit"
-        text={isSubmitting ? `${onSubmitText}...` : onSubmitText}
-        disabled={isSubmitting || isDeleting}
-      />
+    <div className="flex justify-end space-x-2">
       {showDelete && onDelete && onDeleteText && (
         <Button
           type="button"
@@ -47,6 +42,11 @@ export default function PostFormControls({
           variant="danger"
         />
       )}
+      <Button
+        type="submit"
+        text={isSubmitting ? `${onSubmitText}...` : onSubmitText}
+        disabled={isSubmitting || isDeleting}
+      />
     </div>
   );
 }
