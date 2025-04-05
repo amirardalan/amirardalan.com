@@ -103,7 +103,7 @@ export default function PostFormFields({
         />
       </div>
 
-      <div className="flex flex-row items-center justify-between">
+      <div className="flex flex-row items-center">
         <div className="mr-4 flex items-center text-xxs">
           <label htmlFor="category" className="mr-2">
             Category:
@@ -128,15 +128,13 @@ export default function PostFormFields({
               </option>
             ))}
           </select>
-          <div>
-            <button
-              type="button"
-              onClick={() => setShowGallery(true)}
-              className="rounded bg-zinc-700 px-4 py-2 text-xxs uppercase text-white"
-            >
-              Add Image
-            </button>
-          </div>
+          <button
+            type="button"
+            onClick={() => setShowGallery(true)}
+            className="mr-4 rounded bg-zinc-700 px-4 py-2 text-xxs uppercase text-white"
+          >
+            Add Image
+          </button>
         </div>
 
         <div className="flex items-center">
