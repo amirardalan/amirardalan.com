@@ -1,4 +1,5 @@
 import categories from '@/data/categories.json';
+import { generateSlug } from '@/utils/generate-slug';
 
 interface PostFormFieldsProps {
   title: string;
@@ -43,14 +44,6 @@ export default function PostFormFields({
       setSlug(generateSlug(newTitle));
     }
   };
-
-  const generateSlug = (text: string) =>
-    text
-      .toLowerCase()
-      .replace(/[^\w\s-]/g, '')
-      .replace(/\s+/g, '-')
-      .replace(/-+/g, '-')
-      .trim();
 
   return (
     <>

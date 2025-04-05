@@ -2,14 +2,7 @@ import { ComponentPropsWithoutRef } from 'react';
 import Link from 'next/link';
 import { highlight } from 'sugar-high';
 import Image from 'next/image';
-
-// Helper function to create slugs for heading anchors
-const createSlug = (text: string): string => {
-  return text
-    .toLowerCase()
-    .replace(/[^a-z0-9 ]/g, '')
-    .replace(/\s+/g, '-');
-};
+import { generateSlug } from '@/utils/generate-slug';
 
 type HeadingProps = ComponentPropsWithoutRef<'h1'>;
 type ParagraphProps = ComponentPropsWithoutRef<'p'>;
@@ -36,7 +29,7 @@ export const components = {
       );
     }
 
-    const slug = createSlug(children);
+    const slug = generateSlug(children);
 
     return (
       <h3
