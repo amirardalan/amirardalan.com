@@ -4,6 +4,7 @@ import { useLikesStore } from '@/src/store/likes';
 import LikeButton from '@/components/blog/LikeButton';
 import LikeCount from '@/components/blog/LikeCount';
 import ShareOnXButton from '@/components/blog/ShareOnXButton';
+import Tooltip from '../ui/Tooltip';
 
 export default function BlogSupport({ postId }: { postId: number }) {
   const { likes, initialLoadingStates } = useLikesStore();
@@ -20,12 +21,16 @@ export default function BlogSupport({ postId }: { postId: number }) {
         </div>
 
         <div className="flex items-center">
-          <div className="w-24 text-center">
-            <LikeButton postId={postId} showIcon={true}>
-              <LikeCount count={count} isLoading={isLoading} />
-            </LikeButton>
+          <div className="mr-6 flex w-24 items-center text-center">
+            <Tooltip text="Like post" pos="l">
+              <LikeButton postId={postId} showIcon={true}>
+                <LikeCount count={count} isLoading={isLoading} />
+              </LikeButton>
+            </Tooltip>
           </div>
-          <ShareOnXButton />
+          <Tooltip text="Share on X" pos="l">
+            <ShareOnXButton />
+          </Tooltip>
         </div>
       </div>
     </div>

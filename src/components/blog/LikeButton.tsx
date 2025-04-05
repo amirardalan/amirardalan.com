@@ -74,7 +74,6 @@ export default function LikeButton({
         disabled={isLiking}
         className="flex items-center gap-2 disabled:opacity-50"
         aria-label={isLiked ? 'Unlike post' : 'Like post'}
-        title={isLiked ? 'Unlike post' : 'Like post'}
       >
         {showIcon && <IconLike active={isLiked} />}
         {children}
@@ -90,7 +89,6 @@ export default function LikeButton({
           disabled={isLiking}
           className="flex items-center rounded-full"
           aria-label={isLiked ? 'Unlike post' : 'Like post'}
-          title={isLiked ? 'Unlike post' : 'Like post'}
         >
           <IconLike active={isLiked} />
         </button>
