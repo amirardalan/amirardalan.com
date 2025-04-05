@@ -39,7 +39,7 @@ export const components = {
       >
         <a
           href={`#${slug}`}
-          className="absolute -left-4 text-primary opacity-0 transition-opacity group-hover:opacity-100"
+          className="absolute -left-5 text-primary opacity-0 transition-opacity group-hover:opacity-100"
           aria-label={`Link to ${children}`}
         >
           #
@@ -143,16 +143,21 @@ export const components = {
       {...props}
     />
   ),
-  img: (props: ComponentPropsWithoutRef<'img'>) => (
-    <Image
-      src={props.src!}
-      alt={props.alt || 'Image'}
-      width={736}
-      height={552}
-      priority={true} // TODO: Make this configurable based on props
-      className="my-6"
-    />
-  ),
+  img: (props: ComponentPropsWithoutRef<'img'>) => {
+    const { src, title, alt } = props;
+    const isPriority = title?.trim().toLowerCase() === 'priority';
+
+    return (
+      <Image
+        src={src!}
+        alt={alt || 'Image'}
+        width={736}
+        height={552}
+        priority={isPriority}
+        className="my-6 h-auto w-full"
+      />
+    );
+  },
 };
 
 declare global {
