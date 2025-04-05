@@ -124,7 +124,6 @@ export default function EditPostForm({ post }: EditPostFormProps) {
           onDelete={handleDeleteClick}
           onSubmitText="Save Post"
           onDeleteText="Delete"
-          disableDelete={isSubmitting}
         />
       </form>
 

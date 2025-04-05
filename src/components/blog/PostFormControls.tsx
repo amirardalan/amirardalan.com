@@ -9,7 +9,6 @@ interface PostFormControlsProps {
   onDelete?: () => void;
   onSubmitText: string;
   onDeleteText?: string;
-  disableDelete?: boolean;
 }
 
 export default function PostFormControls({
@@ -21,7 +20,6 @@ export default function PostFormControls({
   onDelete,
   onSubmitText,
   onDeleteText,
-  disableDelete = false,
 }: PostFormControlsProps) {
   return (
     <div className="flex justify-end space-x-2">
@@ -30,7 +28,7 @@ export default function PostFormControls({
           type="button"
           onClick={onDelete}
           text={isDeleting ? 'Deleting...' : onDeleteText}
-          disabled={isDeleting || isSubmitting || disableDelete}
+          disabled={isDeleting || isSubmitting}
           variant="danger"
         />
       )}
