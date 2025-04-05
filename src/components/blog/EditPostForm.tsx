@@ -9,6 +9,7 @@ import PostFormFields from '@/components/blog/PostFormFields';
 import Button from '@/components/ui/Button';
 import Modal from '@/components/ui/Modal';
 import MediaGallery from '@/components/blog/MediaGallery';
+import PostFormControls from '@/components/blog/PostFormControls';
 
 import { BlogPost } from '@/types/blog';
 
@@ -116,20 +117,14 @@ export default function EditPostForm({ post }: EditPostFormProps) {
           showUpdated={showUpdated}
           setShowUpdated={setShowUpdated}
         />
-        <div className="flex space-x-2">
-          <Button
-            type="button"
-            onClick={handleDeleteClick}
-            text={isDeleting ? 'Deleting...' : 'Delete'}
-            disabled={isDeleting || isSubmitting}
-            variant="danger"
-          />
-          <Button
-            type="submit"
-            text={isSubmitting ? 'Saving...' : 'Save Post'}
-            disabled={isSubmitting || isDeleting}
-          />
-        </div>
+        <PostFormControls
+          isSubmitting={isSubmitting}
+          isDeleting={isDeleting}
+          showDelete={true}
+          onDelete={handleDeleteClick}
+          onSubmitText="Save Post"
+          onDeleteText="Delete"
+        />
       </form>
 
       <Modal
