@@ -13,7 +13,7 @@
     "@mdx-js/react": "^3.1.0",
     "@next/mdx": "^15.2.4",
     "@react-three/drei": "^10.0.5",
-    "@react-three/fiber": "^9.1.0",
+    "@react-three/fiber": "^9.1.1",
     "@upstash/redis": "^1.34.6",
     "cloudinary": "^2.6.0",
     "clsx": "^2.1.1",
@@ -36,7 +36,7 @@
   "devDependencies": {
     "@types/js-cookie": "^3.0.6",
     "@types/mdx": "^2.0.13",
-    "@types/node": "^20.17.28",
+    "@types/node": "^20.17.30",
     "@types/pg": "^8.11.11",
     "@types/react": "19.0.7",
     "@types/react-dom": "19.0.3",
@@ -49,7 +49,7 @@
     "prettier-plugin-tailwindcss": "^0.6.11",
     "tailwind-scrollbar": "^4.0.2",
     "tailwindcss": "^3.4.17",
-    "typescript": "^5.8.2"
+    "typescript": "^5.8.3"
   },
   "overrides": {
     "@types/react": "19.0.7",
