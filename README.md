@@ -1,6 +1,6 @@
 # amir.sh
 
-Amir Ardalan's personal website built with [Startup](https://github.com/amirardalan/startup). This is Markdown Blog and CMS written in TypeScript. Publish and edit blog posts in Next.js App Router using Supabase, Drizzle, MDX, and On-demand Revalidation.
+Amir Ardalan's personal website built with [Startup](https://github.com/amirardalan/startup). This is a Markdown Blog and CMS written in TypeScript. Publish and edit blog posts in Next.js App Router using Supabase, Drizzle, MDX, and On-demand Revalidation.
 
 ### Features
 
