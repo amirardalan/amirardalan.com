@@ -17,6 +17,9 @@
   --color-skeleton-light: oklch(0.95 0.01 240);
   --color-skeleton-dark: oklch(0.3 0.01 240);
 
+  /* Dynamic Colors */
+  --color-dynamic: var(--color-dark);
+
   /* Syntax Highlighting */
   --sh-class: oklch(0.62 0.18 39.22);
   --sh-identifier: oklch(0.39 0.01 248.05);
@@ -41,6 +44,7 @@
     background-color: var(--color-light);
     .dark & {
       background-color: var(--color-dark);
+      --color-dynamic: var(--color-light);
       --color-primary: var(--color-primary-dark);
       --color-selection-text: oklch(0.141 0.005 285.823);
     }
