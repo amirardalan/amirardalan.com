@@ -7,7 +7,7 @@ import {
   fetchImages,
   uploadImage,
   deleteImage,
-} from '@/src/services/image-service';
+} from '@/services/image-service';
 
 interface MediaGalleryProps {
   onSelect: (url: string) => void;

@@ -2,7 +2,7 @@
 
 import { useState, useEffect, ReactNode } from 'react';
 import Cookies from 'js-cookie';
-import { useLikesStore } from '@/src/store/likes';
+import { useLikesStore } from '@/store/likes';
 import IconLike from '@/components/icons/IconLike';
 
 interface LikeButtonProps {

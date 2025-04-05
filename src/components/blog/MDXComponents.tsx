@@ -1,6 +1,6 @@
 import { ComponentPropsWithoutRef } from 'react';
-import Link from 'next/link';
 import { highlight } from 'sugar-high';
+import Link from 'next/link';
 import Image from 'next/image';
 import { generateSlug } from '@/utils/generate-slug';
 

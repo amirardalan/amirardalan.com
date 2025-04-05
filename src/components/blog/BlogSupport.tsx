@@ -1,10 +1,10 @@
 'use client';
 
-import { useLikesStore } from '@/src/store/likes';
+import { useLikesStore } from '@/store/likes';
 import LikeButton from '@/components/blog/LikeButton';
 import LikeCount from '@/components/blog/LikeCount';
 import ShareOnXButton from '@/components/blog/ShareOnXButton';
-import Tooltip from '../ui/Tooltip';
+import Tooltip from '@/components/ui/Tooltip';
 
 export default function BlogSupport({ postId }: { postId: number }) {
   const { likes, initialLoadingStates } = useLikesStore();

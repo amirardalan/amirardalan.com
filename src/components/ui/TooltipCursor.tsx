@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, ReactNode, useCallback } from 'react';
-import { usePathname } from 'next/navigation'; // Import usePathname
+import { usePathname } from 'next/navigation';
 
 type TooltipProps = {
   text: string;
@@ -16,7 +16,7 @@ export default function TooltipCursor({ text, children }: TooltipProps) {
   const tooltipRef = useRef<HTMLDivElement>(null);
   const ref = useRef<HTMLDivElement>(null);
   const throttleTimerRef = useRef<number | null>(null);
-  const pathname = usePathname(); // Get the current pathname
+  const pathname = usePathname();
 
   // Throttle mouse move updates
   const throttledSetMousePosition = useCallback((x: number, y: number) => {
