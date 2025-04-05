@@ -35,6 +35,7 @@ export default function About() {
               width={125}
               height={125}
               className="rounded-full"
+              priority
             />
           </div>
           <div className="flex flex-col justify-center pl-8">
