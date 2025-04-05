@@ -104,7 +104,7 @@ export default function PostFormFields({
       </div>
 
       <div className="flex flex-row items-center">
-        <div className="mr-4 flex items-center text-xxs">
+        <div className="mr-6 flex items-center text-xxs">
           <label htmlFor="category" className="mr-2">
             Category:
           </label>
@@ -138,21 +138,8 @@ export default function PostFormFields({
         </div>
 
         <div className="flex items-center">
-          <div className="mr-4 flex items-center">
-            <input
-              type="checkbox"
-              id="published"
-              checked={published}
-              onChange={(e) => setPublished(e.target.checked)}
-              className="zinc-400 h-4 w-4 cursor-pointer rounded border-zinc-300 focus:ring-zinc-400"
-            />
-            <label htmlFor="published" className="ml-2 block text-xs">
-              Publish
-            </label>
-          </div>
-
           {setShowUpdated && (
-            <div className="flex items-center">
+            <div className="mr-6 flex items-center">
               <input
                 type="checkbox"
                 id="show_updated"
@@ -165,6 +152,18 @@ export default function PostFormFields({
               </label>
             </div>
           )}
+          <div className="flex items-center">
+            <input
+              type="checkbox"
+              id="published"
+              checked={published}
+              onChange={(e) => setPublished(e.target.checked)}
+              className="zinc-400 h-4 w-4 cursor-pointer rounded border-zinc-300 focus:ring-zinc-400"
+            />
+            <label htmlFor="published" className="ml-2 block text-xs">
+              Publish
+            </label>
+          </div>
         </div>
       </div>
     </>
