@@ -4,6 +4,7 @@ import { useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { updatePost, deletePost } from '@/services/post-service';
 import { useToast } from '@/components/ui/ToastContext';
+import { formatImage } from '@/src/utils/format-image';
 
 import PostFormFields from '@/components/blog/PostFormFields';
 import Button from '@/components/ui/Button';
@@ -164,7 +165,7 @@ export default function EditPostForm({ post }: EditPostFormProps) {
         />
         <MediaGallery
           onSelect={(url) => {
-            setContent(`${content}\n![Image](${url})`);
+            setContent(`${content}\n${formatImage(url)}`);
             setShowGallery(false);
           }}
           fileInputRef={fileInputRef}

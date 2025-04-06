@@ -11,7 +11,6 @@ type ListItemProps = ComponentPropsWithoutRef<'li'>;
 type AnchorProps = ComponentPropsWithoutRef<'a'>;
 type BlockquoteProps = ComponentPropsWithoutRef<'blockquote'>;
 
-// Export components directly so they can be imported in server components
 export const components = {
   h1: (props: HeadingProps) => (
     <h1 className="mb-0 pt-12 text-dark dark:text-light" {...props} />
@@ -20,7 +19,6 @@ export const components = {
     <h2 className="mb-3 mt-8 text-dark dark:text-light" {...props} />
   ),
   h3: ({ children, ...props }: HeadingProps) => {
-    // Only process string children
     if (typeof children !== 'string') {
       return (
         <h3 className="mb-4 mt-8 text-2xl text-dark dark:text-light" {...props}>
@@ -28,9 +26,7 @@ export const components = {
         </h3>
       );
     }
-
     const slug = generateSlug(children);
-
     return (
       <h3
         id={slug}
@@ -107,16 +103,14 @@ export const components = {
     const codeHTML = highlight(children as string);
     return <code dangerouslySetInnerHTML={{ __html: codeHTML }} {...props} />;
   },
-  pre: ({ children, ...props }: ComponentPropsWithoutRef<'pre'>) => {
-    return (
-      <pre
-        className="overflow-y-none my-8 overflow-x-auto rounded-lg bg-zinc-100 p-4 font-mono text-sm scrollbar scrollbar-track-zinc-600 scrollbar-thumb-zinc-500 dark:bg-zinc-900"
-        {...props}
-      >
-        {children}
-      </pre>
-    );
-  },
+  pre: ({ children, ...props }: ComponentPropsWithoutRef<'pre'>) => (
+    <pre
+      className="overflow-y-none my-8 overflow-x-auto rounded-lg bg-zinc-100 p-4 font-mono text-sm scrollbar scrollbar-track-zinc-600 scrollbar-thumb-zinc-500 dark:bg-zinc-900"
+      {...props}
+    >
+      {children}
+    </pre>
+  ),
   Table: ({ data }: { data: { headers: string[]; rows: string[][] } }) => (
     <table>
       <thead>
@@ -143,10 +137,9 @@ export const components = {
       {...props}
     />
   ),
-  img: (props: ComponentPropsWithoutRef<'img'>) => {
-    const { src, title, alt } = props;
+  img: (props: ComponentPropsWithoutRef<'img'> & { title?: string }) => {
+    const { src, alt, title } = props;
     const isPriority = title?.trim().toLowerCase() === 'priority';
-
     return (
       <Image
         src={src!}
@@ -158,6 +151,33 @@ export const components = {
       />
     );
   },
+  Figure: ({
+    src,
+    alt,
+    caption,
+    priority = false,
+  }: {
+    src: string;
+    alt?: string;
+    caption?: string;
+    priority?: boolean;
+  }) => (
+    <figure className="my-6">
+      <Image
+        src={src}
+        alt={alt || 'Image'}
+        width={736}
+        height={552}
+        priority={priority}
+        className="h-auto w-full"
+      />
+      {caption && (
+        <figcaption className="mt-2 text-right text-xxs uppercase text-gray-600 dark:text-gray-400">
+          {caption}
+        </figcaption>
+      )}
+    </figure>
+  ),
 };
 
 declare global {
