@@ -1,4 +1,3 @@
-import categories from '@/data/categories.json';
 import { generateSlug } from '@/utils/generate-slug';
 
 interface PostFormFieldsProps {
@@ -44,6 +43,22 @@ export default function PostFormFields({
       setSlug(generateSlug(newTitle));
     }
   };
+
+  // Hardcoded categories for now
+  const categories = [
+    {
+      id: 'code',
+      name: 'Code',
+    },
+    {
+      id: 'personal',
+      name: 'Personal',
+    },
+    {
+      id: 'tools',
+      name: 'Tools',
+    },
+  ];
 
   return (
     <>
