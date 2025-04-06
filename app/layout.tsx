@@ -37,7 +37,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
   let title = '';
   if (pathname === '/') {
-    title = 'Amir Ardalan';
+    title = 'Amir Ardalan — Fullstack Engineer & UI/UX Designer';
   } else if (pathname.startsWith('/blog/')) {
     const slug = pathname.split('/blog/')[1];
     title = `${slug.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase())} — Amir Ardalan`;
