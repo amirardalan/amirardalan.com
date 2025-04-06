@@ -24,7 +24,7 @@ export default function CanvasLoader() {
   const MIN_DETAIL = 10;
   const MAX_DETAIL = 200;
   const MIN_HEIGHT = 0.05;
-  const MAX_HEIGHT = 0.25;
+  const MAX_HEIGHT = 0.15;
   const MIN_TEXTURE = 1;
   const MAX_TEXTURE = 3;
 
