@@ -2,7 +2,7 @@
 
 import { useState, useRef } from 'react';
 import IconClose from '@/components/icons/IconClose';
-import sanitizeHtml from 'sanitize-html'; // Replace DOMPurify with sanitize-html
+import sanitizeHtml from 'sanitize-html';
 
 interface AdminSearchProps {
   name: string;
@@ -48,7 +48,7 @@ export default function AdminSearch({
       onSubmit={(e) => {
         setSearchTerm(
           sanitizeHtml(searchTerm, { allowedTags: [], allowedAttributes: {} })
-        ); // Sanitize input
+        );
         handleSubmit(e);
         setTimeout(() => setIsLoading(false), 500); // Simulate loading completion
       }}
@@ -66,7 +66,7 @@ export default function AdminSearch({
               allowedAttributes: {},
             })
           )
-        } // Sanitize input
+        }
         className="w-full rounded-lg border-2 border-zinc-300 bg-zinc-100 p-2 text-dark outline-none dark:border-zinc-700 dark:bg-zinc-800 dark:text-light"
       />
       {searchExecuted && (

@@ -31,7 +31,7 @@ export default async function Drafts({
   const sanitizedQuery = sanitizeHtml(query, {
     allowedTags: [],
     allowedAttributes: {},
-  }); // Sanitize input
+  });
 
   const drafts = await getDraftPosts();
 

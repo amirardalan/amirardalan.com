@@ -1,7 +1,7 @@
 import { auth } from '@/lib/auth';
 import { redirect } from 'next/navigation';
 import { getPublishedPosts } from '@/db/queries/posts';
-import sanitizeHtml from 'sanitize-html'; // Replace DOMPurify with sanitize-html
+import sanitizeHtml from 'sanitize-html';
 
 import AdminPageHeading from '@/components/admin/AdminPageHeading';
 import SearchInput from '@/components/admin/AdminSearch';

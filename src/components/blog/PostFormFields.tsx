@@ -1,4 +1,4 @@
-import sanitizeHtml from 'sanitize-html'; // Replace DOMPurify with sanitize-html
+import sanitizeHtml from 'sanitize-html';
 import { generateSlug } from '@/utils/generate-slug';
 
 interface PostFormFieldsProps {
@@ -41,7 +41,7 @@ export default function PostFormFields({
     const newTitle = sanitizeHtml(e.target.value, {
       allowedTags: [],
       allowedAttributes: {},
-    }); // Sanitize input
+    });
     setTitle(newTitle);
     if (!slug || slug === generateSlug(title)) {
       setSlug(generateSlug(newTitle));
@@ -95,7 +95,7 @@ export default function PostFormFields({
                 allowedAttributes: {},
               })
             )
-          } // Sanitize input
+          }
           required
           className="mt-1 block w-full rounded-md border border-zinc-300 bg-zinc-100 px-3 py-2 text-zinc-950 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary dark:border-zinc-500 dark:bg-zinc-800 dark:text-light"
         />
@@ -116,7 +116,7 @@ export default function PostFormFields({
                 allowedAttributes: {},
               })
             )
-          } // Sanitize input
+          }
           required
           className="mt-1 block w-full rounded-md border border-zinc-300 bg-zinc-100 px-3 py-2 text-zinc-950 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary dark:border-zinc-500 dark:bg-zinc-800 dark:text-light"
         />
@@ -136,7 +136,7 @@ export default function PostFormFields({
                 allowedAttributes: {},
               })
             )
-          } // Sanitize input
+          }
           required
           rows={15}
           className="mt-1 block w-full rounded-md border border-zinc-300 bg-zinc-100 px-3 py-2 text-zinc-950 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary dark:border-zinc-500 dark:bg-zinc-800 dark:text-light"

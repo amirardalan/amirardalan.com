@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { createPost } from '@/services/post-service';
 import { useToast } from '@/components/ui/ToastContext';
 import { formatImage } from '@/src/utils/format-image';
-import sanitizeHtml from 'sanitize-html'; // Replace DOMPurify with sanitize-html
+import sanitizeHtml from 'sanitize-html';
 
 import PostFormFields from '@/components/blog/PostFormFields';
 import Button from '@/components/ui/Button';
@@ -41,20 +41,20 @@ export default function NewPostForm({ userId }: NewPostFormProps) {
 
     try {
       const payload = {
-        title: sanitizeHtml(title, { allowedTags: [], allowedAttributes: {} }), // Sanitize input
-        slug: sanitizeHtml(slug, { allowedTags: [], allowedAttributes: {} }), // Sanitize input
+        title: sanitizeHtml(title, { allowedTags: [], allowedAttributes: {} }),
+        slug: sanitizeHtml(slug, { allowedTags: [], allowedAttributes: {} }),
         excerpt: sanitizeHtml(excerpt, {
           allowedTags: [],
           allowedAttributes: {},
-        }), // Sanitize input
+        }),
         content: sanitizeHtml(content, {
           allowedTags: [],
           allowedAttributes: {},
-        }), // Sanitize input
+        }),
         category: sanitizeHtml(category, {
           allowedTags: [],
           allowedAttributes: {},
-        }), // Sanitize input
+        }),
         user_id: userId,
         published,
         created_at: new Date().toISOString(),
