@@ -1,54 +1,102 @@
-import { createPost } from '@/db/queries/posts';
-
 import { NextResponse } from 'next/server';
-import { revalidatePath, revalidateTag } from 'next/cache';
+import { createPost, updatePost } from '@/src/db/queries/posts';
+import sanitizeHtml from 'sanitize-html';
+
+interface PostData {
+  title: string;
+  slug: string;
+  excerpt?: string;
+  content: string;
+  category?: string;
+  published: boolean;
+  user_id: number;
+  show_updated?: boolean;
+}
+
+function sanitizePostData(data: Partial<PostData>): PostData {
+  return {
+    title: sanitizeHtml(data.title || '', {
+      allowedTags: [],
+      allowedAttributes: {},
+    }),
+    slug: sanitizeHtml(data.slug || '', {
+      allowedTags: [],
+      allowedAttributes: {},
+    }),
+    excerpt: sanitizeHtml(data.excerpt || '', {
+      allowedTags: [],
+      allowedAttributes: {},
+    }),
+    content: sanitizeHtml(data.content || '', {
+      allowedTags: [],
+      allowedAttributes: {},
+    }),
+    category: sanitizeHtml(data.category || '', {
+      allowedTags: [],
+      allowedAttributes: {},
+    }),
+    published: data.published === true,
+    user_id: data.user_id || 0,
+    show_updated: data.show_updated === true,
+  };
+}
 
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { title, slug, excerpt, content, category, user_id, published } =
-      body;
+    const sanitizedData = sanitizePostData(body);
 
-    if (!title || !slug || !content || !user_id) {
+    if (!sanitizedData.title || !sanitizedData.slug || !sanitizedData.content) {
       return NextResponse.json(
-        { error: 'Title, slug, content, and user ID are required.' },
+        { error: 'Title, slug, and content are required.' },
         { status: 400 }
       );
     }
 
-    const postId = await createPost({
-      title,
-      slug,
-      excerpt,
-      content,
-      category,
-      user_id,
-      published,
+    const postData = {
+      ...sanitizedData,
+      excerpt: sanitizedData.excerpt || null,
       created_at: new Date(),
-      updated_at: new Date(),
-    });
+    };
 
-    console.log('Post created:', { id: postId, slug });
+    const postId = await createPost(postData);
+    return NextResponse.json({ id: postId }, { status: 201 });
+  } catch (error) {
+    return NextResponse.json(
+      { error: (error as Error).message || 'Failed to create post.' },
+      { status: 400 }
+    );
+  }
+}
 
-    // Revalidation strategy
-    // 1. Always revalidate the blog listing page
-    await revalidatePath('/blog');
-    await revalidateTag('blog-posts');
+export async function PUT(req: Request) {
+  try {
+    const body = await req.json();
+    const { id, ...data } = body;
 
-    // 2. If published, revalidate the specific post page
-    if (published) {
-      await revalidatePath(`/blog/${slug}`);
+    if (!id) {
+      return NextResponse.json(
+        { error: 'Post ID is required.' },
+        { status: 400 }
+      );
     }
 
-    return NextResponse.json({
-      message: 'Post created successfully.',
-      id: postId,
-    });
+    const sanitizedData = sanitizePostData(data);
+
+    if (!sanitizedData.title || !sanitizedData.slug || !sanitizedData.content) {
+      return NextResponse.json(
+        { error: 'Title, slug, and content are required.' },
+        { status: 400 }
+      );
+    }
+
+    const result = await updatePost(parseInt(id, 10), sanitizedData);
+
+    return NextResponse.json(result, { status: 200 });
   } catch (error) {
-    console.error('Post creation error:', error);
     return NextResponse.json(
-      { error: 'An unexpected error occurred. Please try again later.' },
-      { status: 500 }
+      { error: (error as Error).message || 'Failed to update post.' },
+      { status: 400 }
     );
   }
 }
