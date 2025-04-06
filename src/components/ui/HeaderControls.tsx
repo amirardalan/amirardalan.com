@@ -20,11 +20,7 @@ export default function HeaderExternalLinks() {
       aria-label="External links and site controls"
     >
       <Tooltip text="Star on GitHub" pos="b">
-        <button
-          onClick={handleClick}
-          aria-label="Visit GitHub repository"
-          className="focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
-        >
+        <button onClick={handleClick} aria-label="Visit GitHub repository">
           <IconGithub />
         </button>
       </Tooltip>

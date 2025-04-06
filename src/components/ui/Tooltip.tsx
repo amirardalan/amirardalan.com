@@ -22,6 +22,11 @@ export default function Tooltip({ pos, text, children }: TooltipProps) {
     }
   };
 
+  const handleClick = () => {
+    setIsHovered(false);
+    setIsFocused(false);
+  };
+
   return (
     <div
       ref={ref}
@@ -34,7 +39,7 @@ export default function Tooltip({ pos, text, children }: TooltipProps) {
       tabIndex={0}
       aria-describedby={tooltipId}
     >
-      {children}
+      <div onClick={handleClick}>{children}</div>
       <div
         id={tooltipId}
         ref={tooltipRef}
