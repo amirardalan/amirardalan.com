@@ -42,7 +42,7 @@ export default function BlogPosts({ posts }: { posts: BlogPost[] }) {
         onChange={(e) => setSearchTerm(e.target.value)}
         className="mb-2 w-full rounded-lg border-2 border-zinc-300 bg-zinc-100 p-2 text-dark outline-none dark:border-zinc-700 dark:bg-zinc-800 dark:text-light"
       />
-      <div className="flex items-center justify-between">
+      <div className="mb-4 flex items-center justify-between">
         {searchTerm && (
           <p className="text-sm text-dark dark:text-light">
             {filteredPosts.length} result{filteredPosts.length !== 1 ? 's' : ''}
@@ -66,7 +66,7 @@ export default function BlogPosts({ posts }: { posts: BlogPost[] }) {
           {paginatedPosts.map((post) => (
             <li
               key={post.id}
-              className="mb-8 flex w-full justify-between text-xl last:mb-0"
+              className="mb-10 flex w-full justify-between text-xl last:mb-0"
             >
               <a className="w-full" href={`/blog/${post.slug}`}>
                 <h2 className="hover:text-primary">{post.title}</h2>
@@ -95,7 +95,7 @@ export default function BlogPosts({ posts }: { posts: BlogPost[] }) {
         </p>
       )}
       {totalPages > 1 && (
-        <div className="my-10 flex justify-center space-x-2">
+        <div className="my-20 flex justify-center space-x-2">
           {Array.from({ length: totalPages }, (_, index) => (
             <button
               key={index}
