@@ -44,7 +44,7 @@ export default function BlogPosts({ posts }: { posts: BlogPost[] }) {
       />
       <div className="flex items-center justify-between">
         {searchTerm && (
-          <p className="text-sm text-zinc-400 dark:text-zinc-500">
+          <p className="text-sm text-dark dark:text-light">
             {filteredPosts.length} result{filteredPosts.length !== 1 ? 's' : ''}
           </p>
         )}
@@ -55,7 +55,7 @@ export default function BlogPosts({ posts }: { posts: BlogPost[] }) {
             className="flex items-center"
           >
             <IconClose />
-            <span className="pl-1 text-zinc-400 dark:text-zinc-500">
+            <span className="pl-1 text-sm text-dark dark:text-light">
               Clear Search
             </span>
           </button>
