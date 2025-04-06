@@ -96,3 +96,19 @@ npx drizzle-kit studio
 
 > [!NOTE]
 > If using Brave browser you must turn Brave Shield off for `https://local.drizzle.studio/`
+
+### Markdown Features
+
+#### Images
+
+Blog posts are written in Markdown. Markdown images will utilize the Next Image component for optimized loading. The markdown image can be passed a priority prop:
+
+```markdown
+![Alt text](https://example.com/image.png 'priority')
+```
+
+Or you can use an image wrapped in a `<figure>` tag with a caption (this also works with an optional priority prop for images above the fold):
+
+```markdown
+<Figure src="your-image-src.png" alt="Your Image Alt" caption="Your Image Caption" priority />
+```
