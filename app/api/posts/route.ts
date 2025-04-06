@@ -14,6 +14,10 @@ interface PostData {
 }
 
 function sanitizePostData(data: Partial<PostData>): PostData {
+  if (!data.user_id || typeof data.user_id !== 'number' || data.user_id <= 0) {
+    throw new Error('A valid user_id is required.');
+  }
+
   return {
     title: sanitizeHtml(data.title || '', {
       allowedTags: [],
@@ -36,7 +40,7 @@ function sanitizePostData(data: Partial<PostData>): PostData {
       allowedAttributes: {},
     }),
     published: data.published === true,
-    user_id: data.user_id || 0,
+    user_id: data.user_id,
     show_updated: data.show_updated === true,
   };
 }
