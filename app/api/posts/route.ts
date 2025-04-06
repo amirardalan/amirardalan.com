@@ -100,7 +100,7 @@ export async function PUT(req: Request) {
   } catch (error) {
     return NextResponse.json(
       { error: (error as Error).message || 'Failed to update post.' },
-      { status: 400 }
+      { status: 500 }
     );
   }
 }
