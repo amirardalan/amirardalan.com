@@ -2,6 +2,7 @@
 
 import { useState, useRef } from 'react';
 import IconClose from '@/components/icons/IconClose';
+import sanitizeHtml from 'sanitize-html';
 
 interface AdminSearchProps {
   name: string;
@@ -34,8 +35,9 @@ export default function AdminSearch({
       e.preventDefault();
       setSearchExecuted(false);
     } else {
-      setIsLoading(true); // Set loading state when the form is submitted
+      setIsLoading(true);
       setSearchExecuted(true);
+      formRef.current?.submit();
     }
   };
 
@@ -44,6 +46,9 @@ export default function AdminSearch({
       method="get"
       className="mb-10"
       onSubmit={(e) => {
+        setSearchTerm(
+          sanitizeHtml(searchTerm, { allowedTags: [], allowedAttributes: {} })
+        );
         handleSubmit(e);
         setTimeout(() => setIsLoading(false), 500); // Simulate loading completion
       }}
@@ -54,7 +59,14 @@ export default function AdminSearch({
         name={name}
         placeholder={placeholder}
         value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
+        onChange={(e) =>
+          setSearchTerm(
+            sanitizeHtml(e.target.value, {
+              allowedTags: [],
+              allowedAttributes: {},
+            })
+          )
+        }
         className="w-full rounded-lg border-2 border-zinc-300 bg-zinc-100 p-2 text-dark outline-none dark:border-zinc-700 dark:bg-zinc-800 dark:text-light"
       />
       {searchExecuted && (

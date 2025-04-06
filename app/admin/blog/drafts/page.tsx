@@ -1,6 +1,7 @@
 import { auth } from '@/lib/auth';
 import { redirect } from 'next/navigation';
 import { getDraftPosts } from '@/db/queries/posts';
+import sanitizeHtml from 'sanitize-html';
 
 import AdminPageHeading from '@/components/admin/AdminPageHeading';
 import SearchInput from '@/components/admin/AdminSearch';
@@ -27,10 +28,15 @@ export default async function Drafts({
 
   const { query = '' } = await searchParams;
 
+  const sanitizedQuery = sanitizeHtml(query, {
+    allowedTags: [],
+    allowedAttributes: {},
+  });
+
   const drafts = await getDraftPosts();
 
   const filteredDrafts = drafts.filter((draft) =>
-    draft.title.toLowerCase().includes(query.toLowerCase())
+    draft.title.toLowerCase().includes(sanitizedQuery.toLowerCase())
   );
 
   const totalResults = filteredDrafts.length;
