@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { updatePost, deletePost } from '@/services/post-service';
 import { useToast } from '@/components/ui/ToastContext';
 import { formatImage } from '@/src/utils/format-image';
+import sanitizeHtml from 'sanitize-html'; // Replace DOMPurify with sanitize-html
 
 import PostFormFields from '@/components/blog/PostFormFields';
 import Button from '@/components/ui/Button';
@@ -42,11 +43,20 @@ export default function EditPostForm({ post }: EditPostFormProps) {
 
     try {
       await updatePost(post.id, {
-        title,
-        slug,
-        excerpt,
-        content,
-        category,
+        title: sanitizeHtml(title, { allowedTags: [], allowedAttributes: {} }), // Sanitize input
+        slug: sanitizeHtml(slug, { allowedTags: [], allowedAttributes: {} }), // Sanitize input
+        excerpt: sanitizeHtml(excerpt, {
+          allowedTags: [],
+          allowedAttributes: {},
+        }), // Sanitize input
+        content: sanitizeHtml(content, {
+          allowedTags: [],
+          allowedAttributes: {},
+        }), // Sanitize input
+        category: sanitizeHtml(category, {
+          allowedTags: [],
+          allowedAttributes: {},
+        }), // Sanitize input
         published,
         show_updated: showUpdated,
         user_id: post.user_id,
