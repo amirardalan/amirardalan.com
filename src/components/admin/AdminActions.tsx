@@ -12,7 +12,7 @@ export default function AdminActions() {
         </p>
         <Link
           href="/admin/blog/new"
-          className="inline-block rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
+          className="inline-block rounded-md bg-dark px-4 py-2 text-xs uppercase text-light dark:bg-light dark:text-dark"
         >
           Create Post
         </Link>
@@ -27,7 +27,7 @@ export default function AdminActions() {
         </p>
         <Link
           href="/admin/blog/drafts"
-          className="inline-block rounded bg-yellow-600 px-4 py-2 text-white hover:bg-yellow-700"
+          className="inline-block rounded-md bg-dark px-4 py-2 text-xs uppercase text-light dark:bg-light dark:text-dark"
         >
           View Drafts
         </Link>
@@ -42,7 +42,7 @@ export default function AdminActions() {
         </p>
         <Link
           href="/admin/blog/published"
-          className="inline-block rounded bg-green-600 px-4 py-2 text-white hover:bg-green-700"
+          className="inline-block rounded-md bg-dark px-4 py-2 text-xs uppercase text-light dark:bg-light dark:text-dark"
         >
           View Posts
         </Link>

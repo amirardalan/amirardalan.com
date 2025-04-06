@@ -40,7 +40,7 @@ export default function Tooltip({ pos, text, children }: TooltipProps) {
         ref={tooltipRef}
         role="tooltip"
         aria-hidden={!isVisible}
-        className={`absolute z-30 whitespace-nowrap rounded bg-zinc-800 px-2 py-1 text-xxs uppercase text-white shadow-md ${
+        className={`absolute z-30 whitespace-nowrap rounded bg-zinc-800 px-2 py-1 text-xxs uppercase text-light shadow-md ${
           isVisible
             ? 'pointer-events-auto opacity-100'
             : 'pointer-events-none opacity-0'

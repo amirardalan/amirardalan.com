@@ -51,7 +51,7 @@ export default async function PublishedPosts({
                 </div>
                 <Link
                   href={`/admin/blog/edit/${post.slug}`}
-                  className="rounded bg-blue-600 px-3 py-1 text-sm text-white hover:bg-blue-700"
+                  className="rounded bg-blue-600 px-3 py-1 text-sm text-light hover:bg-blue-700"
                 >
                   Edit
                 </Link>

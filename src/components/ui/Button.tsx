@@ -40,12 +40,12 @@ export default function Button({
     },
     {
       // Custom color
-      [`bg-${color} text-white`]: !!color,
+      [`bg-${color} text-light`]: !!color,
       // Variant-specific colors
-      'bg-red-600 text-white': variant === 'danger' && !color,
+      'bg-red-600 text-light': variant === 'danger' && !color,
       'bg-zinc-50/70 dark:bg-zinc-950/70 border border-dark dark:border-light text-dark dark:text-light hover:border-primary hover:text-primary':
         variant === 'secondary' && !color,
-      'bg-dark dark:bg-light text-white dark:text-dark hover:bg-primary':
+      'bg-dark dark:bg-light text-light dark:text-dark hover:bg-primary':
         variant === 'primary' && !color,
     }
   );

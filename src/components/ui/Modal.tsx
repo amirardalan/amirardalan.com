@@ -38,7 +38,7 @@ export default function Modal({
         className="w-full max-w-md rounded-lg bg-light p-6 shadow-xl dark:bg-zinc-800"
         onClick={(e) => e.stopPropagation()}
       >
-        <h3 className="mb-4 text-lg font-medium text-zinc-900 dark:text-white">
+        <h3 className="mb-4 text-lg font-medium text-zinc-900 dark:text-light">
           {title}
         </h3>
         <p className="mb-6 text-sm text-zinc-700 dark:text-zinc-300">

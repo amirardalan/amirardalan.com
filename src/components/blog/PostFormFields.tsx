@@ -137,7 +137,7 @@ export default function PostFormFields({
               <option
                 key={cat.id}
                 value={cat.id}
-                className="hover:bg-primary hover:text-white"
+                className="hover:bg-primary hover:text-light"
               >
                 {cat.name}
               </option>
@@ -146,7 +146,7 @@ export default function PostFormFields({
           <button
             type="button"
             onClick={() => setShowGallery(true)}
-            className="mr-4 rounded-md bg-zinc-700 px-4 py-2 text-xxs uppercase text-white"
+            className="mr-4 rounded-md bg-zinc-700 px-4 py-2 text-xxs uppercase text-light"
           >
             Add Image
           </button>

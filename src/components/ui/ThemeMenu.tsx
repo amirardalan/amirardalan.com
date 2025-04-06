@@ -92,7 +92,7 @@ export default function ThemeMenu() {
       </Tooltip>
       {menuOpen && (
         <div
-          className="absolute right-0 z-40 mt-8 w-24 rounded-md bg-white shadow-lg dark:bg-zinc-800 dark:text-light"
+          className="absolute right-0 z-40 mt-8 w-24 rounded-md bg-light shadow-lg dark:bg-zinc-800 dark:text-light"
           role="menu"
           aria-orientation="vertical"
           aria-labelledby="theme-menu-button"

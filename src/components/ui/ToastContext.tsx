@@ -83,7 +83,7 @@ function ToastContainer() {
             <p>{toast.message}</p>
             <button
               onClick={() => hideToast(toast.id)}
-              className="ml-4 text-white"
+              className="ml-4 text-light"
             >
               ✕
             </button>

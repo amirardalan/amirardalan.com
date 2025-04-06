@@ -128,7 +128,7 @@ export default function MediaGallery({
                   .split('.')[0]; // Extract publicId
                 if (publicId) handleDelete(publicId);
               }}
-              className="absolute right-0 top-0 hidden bg-zinc-500 px-1.5 py-0.5 text-xl leading-none text-white hover:bg-red-600 group-hover:block"
+              className="absolute right-0 top-0 hidden bg-zinc-500 px-1.5 py-0.5 text-xl leading-none text-light hover:bg-red-600 group-hover:block"
             >
               ×
             </button>

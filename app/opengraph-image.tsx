@@ -23,7 +23,7 @@ export default async function Image() {
       <div tw="flex h-full w-full items-center justify-center bg-zinc-900">
         <div tw="flex p-8">
           <div tw="flex flex-col md:flex-row w-full md:items-center justify-between p-8">
-            <h2 tw="flex flex-col text-[124px] text-white text-left">
+            <h2 tw="flex flex-col text-[124px] text-light text-left">
               <span>amir.sh</span>
             </h2>
             <div tw="flex w-132 ml-6">
