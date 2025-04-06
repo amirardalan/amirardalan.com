@@ -44,7 +44,7 @@ export default function BlogPosts({ posts }: { posts: BlogPost[] }) {
       />
       <div className="flex items-center justify-between">
         {searchTerm && (
-          <p className="text-sm text-dark dark:text-light">
+          <p className="text-sm text-zinc-400 dark:text-zinc-500">
             {filteredPosts.length} result{filteredPosts.length !== 1 ? 's' : ''}
           </p>
         )}
@@ -55,7 +55,9 @@ export default function BlogPosts({ posts }: { posts: BlogPost[] }) {
             className="flex items-center"
           >
             <IconClose />
-            <span className="pl-1">Clear Search</span>
+            <span className="pl-1 text-zinc-400 dark:text-zinc-500">
+              Clear Search
+            </span>
           </button>
         )}
       </div>
@@ -64,7 +66,7 @@ export default function BlogPosts({ posts }: { posts: BlogPost[] }) {
           {paginatedPosts.map((post) => (
             <li
               key={post.id}
-              className="flex w-full justify-between pb-8 text-2xl last:pb-0"
+              className="mb-8 flex w-full justify-between text-xl last:mb-0"
             >
               <a className="w-full" href={`/blog/${post.slug}`}>
                 <h2 className="hover:text-primary">{post.title}</h2>
@@ -74,7 +76,11 @@ export default function BlogPosts({ posts }: { posts: BlogPost[] }) {
               </a>
               <div className="flex min-w-fit flex-col items-end text-xs">
                 <time className="text-zinc-500 dark:text-zinc-400">
-                  {formatDate(post.created_at)}
+                  {formatDate(
+                    post.show_updated
+                      ? post.updated_at ?? post.created_at
+                      : post.created_at
+                  )}
                 </time>
                 <span className="text-zinc-400 dark:text-zinc-500">
                   {calculateReadTime(post.content)}
