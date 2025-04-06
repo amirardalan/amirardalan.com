@@ -107,12 +107,12 @@ export default function Uses() {
       title: 'Shell',
       items: [
         { value: 'Ghostty' },
+        { value: 'Bun' },
         { value: 'Powerlevel10k' },
-        { label: 'CLI', value: 'GitHub CLI' },
+        { value: 'GitHub CLI' },
         { value: 'Vercel CLI' },
         { value: 'Supabase CLI' },
         { value: 'GitHub Copilot' },
-        { value: 'xAI Grok' },
       ],
     },
   ];
