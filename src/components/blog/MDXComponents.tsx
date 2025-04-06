@@ -19,35 +19,48 @@ export const components = {
     <h2 className="mb-3 mt-8 text-dark dark:text-light" {...props} />
   ),
   h3: ({ children, ...props }: HeadingProps) => {
-    if (typeof children !== 'string') {
+    if (typeof children !== 'string' && !Array.isArray(children)) {
       return (
         <h3 className="mb-4 mt-8 text-2xl text-dark dark:text-light" {...props}>
           {children}
         </h3>
       );
     }
-    const slug = generateSlug(children);
+    const slug = generateSlug(
+      Array.isArray(children)
+        ? children
+            .map((child) => (typeof child === 'string' ? child : ''))
+            .join('')
+        : children
+    );
     return (
-      <h3
+      <a
+        href={`#${slug}`}
+        className="group relative mb-4 mt-8 block scroll-mt-24 text-2xl text-dark dark:text-light"
         id={slug}
-        className="group relative mb-4 mt-8 text-2xl text-dark dark:text-light"
-        {...props}
+        aria-label={`Link to ${children}`}
       >
-        <a
-          href={`#${slug}`}
-          className="absolute -left-5 text-primary opacity-0 transition-opacity group-hover:opacity-100"
-          aria-label={`Link to ${children}`}
-        >
+        <span className="absolute -left-5 text-primary opacity-0 transition-opacity group-hover:opacity-100">
           #
-        </a>
-        {children}
-      </h3>
+        </span>
+        {Array.isArray(children)
+          ? children.map((child, index) =>
+              typeof child === 'string' ? (
+                child
+              ) : (
+                <code key={index} className="font-sans text-primary">
+                  {child.props.children}
+                </code>
+              )
+            )
+          : children}
+      </a>
     );
   },
   h4: (props: HeadingProps) => <h4 className="" {...props} />,
   p: (props: ParagraphProps) => (
     <p
-      className="font-serif leading-normal text-dark dark:text-light"
+      className="my-6 font-serif leading-normal text-dark dark:text-light"
       {...props}
     />
   ),
@@ -101,7 +114,13 @@ export const components = {
   },
   code: ({ children, ...props }: ComponentPropsWithoutRef<'code'>) => {
     const codeHTML = highlight(children as string);
-    return <code dangerouslySetInnerHTML={{ __html: codeHTML }} {...props} />;
+    return (
+      <code
+        dangerouslySetInnerHTML={{ __html: codeHTML }}
+        className="rounded bg-zinc-200 px-1.5 py-0.5 font-mono text-sm text-dark dark:bg-zinc-800 dark:text-light"
+        {...props}
+      />
+    );
   },
   pre: ({ children, ...props }: ComponentPropsWithoutRef<'pre'>) => (
     <pre
