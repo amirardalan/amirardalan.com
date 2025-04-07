@@ -11,4 +11,5 @@ export type BlogPost = {
   user_id: number;
   author_name?: string | null;
   show_updated?: boolean | null;
+  likes: number;
 };
