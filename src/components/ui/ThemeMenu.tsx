@@ -1,11 +1,11 @@
 'use client';
 import { useEffect, useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
-import Tooltip from '@/components/ui/Tooltip';
 import { useTheme } from '@/store/theme';
 import { Theme } from '@/types/theme';
 import IconMoon from '@/components/icons/IconMoon';
 import IconSun from '@/components/icons/IconSun';
+import Tooltip from '@/components/ui/Tooltip';
 
 export default function ThemeMenu() {
   const router = useRouter();
@@ -62,12 +62,17 @@ export default function ThemeMenu() {
   const handleThemeChange = (newTheme: Theme) => {
     setTheme(newTheme);
     setMenuOpen(false);
-    buttonRef.current?.focus();
+    buttonRef.current?.blur();
     router.refresh();
+  };
+
+  const closeTooltip = () => {
+    buttonRef.current?.blur();
   };
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
+    buttonRef.current?.blur();
   };
 
   const themeLabel = effectiveTheme === 'dark' ? 'Dark mode' : 'Light mode';
@@ -78,7 +83,7 @@ export default function ThemeMenu() {
       ref={menuRef}
       onKeyDown={handleKeyDown}
     >
-      <Tooltip pos="b" text="Change theme">
+      <Tooltip pos="b" text="Change theme" onClose={closeTooltip}>
         <button
           className="m-0 p-0"
           onClick={toggleMenu}

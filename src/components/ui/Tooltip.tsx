@@ -1,30 +1,29 @@
-import { useState, useRef, ReactNode, useId, KeyboardEvent } from 'react';
+import { useState, useRef, ReactNode, useId } from 'react';
 
 type TooltipProps = {
   pos?: 't' | 'r' | 'b' | 'l';
   text: string;
   children: ReactNode;
+  onClose?: () => void;
 };
 
-export default function Tooltip({ pos, text, children }: TooltipProps) {
+export default function Tooltip({
+  pos,
+  text,
+  children,
+  onClose,
+}: TooltipProps) {
   const [isHovered, setIsHovered] = useState(false);
-  const [isFocused, setIsFocused] = useState(false);
   const tooltipRef = useRef<HTMLDivElement>(null);
   const ref = useRef<HTMLDivElement>(null);
   const id = useId();
   const tooltipId = `tooltip-${id}`;
 
-  const isVisible = isHovered || isFocused;
+  const isVisible = isHovered;
 
-  const handleKeyDown = (event: KeyboardEvent) => {
-    if (event.key === 'Escape') {
-      setIsFocused(false);
-    }
-  };
-
-  const handleClick = () => {
+  const handleMouseLeave = () => {
     setIsHovered(false);
-    setIsFocused(false);
+    onClose?.();
   };
 
   return (
@@ -32,14 +31,11 @@ export default function Tooltip({ pos, text, children }: TooltipProps) {
       ref={ref}
       className="relative inline-block"
       onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      onFocus={() => setIsFocused(true)}
-      onBlur={() => setIsFocused(false)}
-      onKeyDown={handleKeyDown}
+      onMouseLeave={handleMouseLeave}
       tabIndex={0}
       aria-describedby={tooltipId}
     >
-      <div onClick={handleClick}>{children}</div>
+      {children}
       <div
         id={tooltipId}
         ref={tooltipRef}
