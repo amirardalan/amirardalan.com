@@ -5,7 +5,6 @@ import { useRouter } from 'next/navigation';
 import { createPost } from '@/services/post-service';
 import { useToast } from '@/components/ui/ToastContext';
 import { formatImage } from '@/src/utils/format-image';
-import sanitizeHtml from 'sanitize-html';
 
 import PostFormFields from '@/components/blog/PostFormFields';
 import Button from '@/components/ui/Button';
@@ -50,20 +49,11 @@ export default function NewPostForm({ userId }: NewPostFormProps) {
 
     try {
       const payload = {
-        title: sanitizeHtml(title, { allowedTags: [], allowedAttributes: {} }),
-        slug: sanitizeHtml(slug, { allowedTags: [], allowedAttributes: {} }),
-        excerpt: sanitizeHtml(excerpt, {
-          allowedTags: [],
-          allowedAttributes: {},
-        }),
-        content: sanitizeHtml(content, {
-          allowedTags: [],
-          allowedAttributes: {},
-        }),
-        category: sanitizeHtml(category, {
-          allowedTags: [],
-          allowedAttributes: {},
-        }),
+        title,
+        slug,
+        excerpt,
+        content,
+        category,
         user_id: userId,
         published,
         created_at: new Date().toISOString(),

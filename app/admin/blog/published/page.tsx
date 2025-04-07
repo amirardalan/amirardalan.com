@@ -1,7 +1,6 @@
 import { auth } from '@/lib/auth';
 import { redirect } from 'next/navigation';
 import { getPublishedPosts } from '@/db/queries/posts';
-import sanitizeHtml from 'sanitize-html';
 
 import AdminPageHeading from '@/components/admin/AdminPageHeading';
 import SearchInput from '@/components/admin/AdminSearch';
@@ -23,12 +22,7 @@ export default async function PublishedPosts({
   const allPosts = await getPublishedPosts();
 
   const filteredPosts = allPosts.filter((post) =>
-    post.title.toLowerCase().includes(
-      sanitizeHtml(query, {
-        allowedTags: [],
-        allowedAttributes: {},
-      }).toLowerCase()
-    )
+    post.title.toLowerCase().includes(query.toLowerCase())
   );
 
   const totalResults = filteredPosts.length;
