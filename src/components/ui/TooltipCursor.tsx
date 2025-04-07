@@ -20,7 +20,7 @@ export default function TooltipCursor({ text, children }: TooltipProps) {
   const throttledSetMousePosition = useCallback((x: number, y: number) => {
     if (throttleTimerRef.current !== null) return;
 
-    const ANIMATION_THROTTLE = 20;
+    const ANIMATION_THROTTLE = 30;
 
     throttleTimerRef.current = window.setTimeout(() => {
       setMousePosition({ x, y });
