@@ -6,7 +6,7 @@ import clsx from 'clsx';
 import './globals.css';
 import { getTheme } from '@/utils/get-theme';
 
-import { Jura, Frank_Ruhl_Libre, JetBrains_Mono } from 'next/font/google';
+import { Jura, Lora, JetBrains_Mono } from 'next/font/google';
 import DarkIcon from '@/public/images/favicon-dark.png';
 import LightIcon from '@/public/images/favicon-light.png';
 
@@ -19,10 +19,10 @@ const sans = Jura({
   weight: ['400', '500', '600'],
   display: 'swap',
 });
-const serif = Frank_Ruhl_Libre({
+const serif = Lora({
   subsets: ['latin'],
   weight: ['400'],
-  style: ['normal'],
+  style: ['normal', 'italic'],
   display: 'swap',
 });
 const mono = JetBrains_Mono({

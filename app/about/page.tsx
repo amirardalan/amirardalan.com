@@ -12,7 +12,7 @@ export default function About() {
         <div id="about-heading">
           <PageHeading title={'About'} />
         </div>
-        <section className="mb-10 max-w-7xl font-serif text-4xl leading-snug">
+        <section className="mb-10 max-w-7xl font-serif text-3xl leading-normal">
           <p className="mb-6 text-dark dark:text-light">
             Based in Portland, OR.
           </p>
