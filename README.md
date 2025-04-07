@@ -56,10 +56,16 @@ CLOUDINARY_API_KEY=<Cloudinary API Key>
 CLOUDINARY_API_SECRET=<Cloudinary API Secret>
 ```
 
-And finally, generate a Next Auth secret which will automatically overwrite the placeholder in the `.env.local` file:
+Next, generate a Next Auth secret which will automatically overwrite the placeholder in the `.env.local` file:
 
 ```bash
 npx auth secret
+```
+
+And finally, generate a CSRF secret:
+
+```bash
+openssl rand -base64 32
 ```
 
 ### Database

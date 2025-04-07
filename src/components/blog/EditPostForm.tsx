@@ -55,7 +55,7 @@ export default function EditPostForm({ post }: EditPostFormProps) {
           show_updated: showUpdated,
           user_id: post.user_id,
         },
-        csrfToken
+        await csrfToken
       );
 
       showToast('Post updated successfully!', 'success');

@@ -33,14 +33,13 @@ export default function NewPostForm({ userId }: NewPostFormProps) {
   const fileInputRef = useRef<HTMLInputElement>(
     null!
   ) as React.RefObject<HTMLInputElement>;
-  const csrfToken = generateCsrfToken();
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     setError(null);
 
     try {
+      const csrfToken = await generateCsrfToken();
       const payload = {
         title,
         slug,
