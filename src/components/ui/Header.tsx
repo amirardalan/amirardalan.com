@@ -7,7 +7,7 @@ import HeaderControls from '@/components/ui/HeaderControls';
 export default async function Header() {
   return (
     <header
-      className="animate-fade-in fixed top-0 z-50 w-full bg-zinc-50/70 backdrop-blur-lg lg:py-4 dark:bg-zinc-950/70"
+      className="animate-fade-in-top fixed top-0 z-50 w-full bg-zinc-50/70 backdrop-blur-lg lg:py-4 dark:bg-zinc-950/70"
       role="banner"
     >
       <a
