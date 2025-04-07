@@ -23,7 +23,7 @@ export default function BlogPosts({ posts }: { posts: BlogPost[] }) {
       .toLowerCase()
       .includes(searchTerm.toLowerCase());
     const matchesCategory = categoryFilter
-      ? post.category === categoryFilter
+      ? (post.category ?? '').toLowerCase() === categoryFilter.toLowerCase()
       : true;
     return matchesSearch && matchesCategory;
   });
