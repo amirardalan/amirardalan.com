@@ -32,7 +32,7 @@ export default function LikeCount({
   });
 
   return (
-    <div className="text-xs uppercase leading-none text-zinc-500 dark:text-zinc-400">
+    <div className="text-xs leading-none text-zinc-500 dark:text-zinc-400">
       {isLoading ? (
         <div className="flex items-center justify-start">
           <div

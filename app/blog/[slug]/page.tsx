@@ -127,15 +127,19 @@ export default async function BlogPost({
           )}
         </div>
 
-        <p className="text-xs uppercase text-primary">
-          #{post.category ?? 'uncategorized'}
+        <p className="text-xxs uppercase text-primary">
+          <Link
+            href={`/blog?category=${encodeURIComponent(post.category ?? 'uncategorized')}`}
+          >
+            #{post.category ?? 'uncategorized'}
+          </Link>
         </p>
         <div
           className="mt-2 flex items-center leading-none"
           aria-label="Post metadata"
         >
           <time
-            className="mr-2 text-xs uppercase leading-none text-zinc-500 dark:text-zinc-400"
+            className="mr-2 text-xs leading-none text-zinc-500 dark:text-zinc-400"
             title={formatDate(post.created_at)}
             aria-label={`Posted on ${formatDate(post.created_at)}`}
           >
@@ -157,7 +161,7 @@ export default async function BlogPost({
         >
           {post.excerpt ?? ''}
         </h2>
-        <div className="mt-8 text-xs uppercase text-zinc-500 dark:text-zinc-400">
+        <div className="text-md mt-8 text-zinc-500 dark:text-zinc-400">
           By{' '}
           <span aria-label={`Author: ${post.author_name || 'Anonymous'}`}>
             {post.author_name || 'Anonymous'}

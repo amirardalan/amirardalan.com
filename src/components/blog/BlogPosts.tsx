@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 import clsx from 'clsx';
+import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 import IconClose from '@/components/icons/IconClose';
 
 import { formatDate } from '@/utils/format-date';
@@ -12,11 +14,19 @@ import { BlogPost } from '@/types/blog';
 export default function BlogPosts({ posts }: { posts: BlogPost[] }) {
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
+  const searchParams = useSearchParams();
+  const categoryFilter = searchParams.get('category');
   const postsPerPage = 8;
 
-  const filteredPosts = posts.filter((post) =>
-    post.title.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredPosts = posts.filter((post) => {
+    const matchesSearch = post.title
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase());
+    const matchesCategory = categoryFilter
+      ? (post.category ?? '').toLowerCase() === categoryFilter.toLowerCase()
+      : true;
+    return matchesSearch && matchesCategory;
+  });
 
   const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
   const paginatedPosts = filteredPosts.slice(
@@ -33,8 +43,33 @@ export default function BlogPosts({ posts }: { posts: BlogPost[] }) {
     setCurrentPage(page);
   };
 
+  const categories = Array.from(
+    new Set(posts.map((post) => post.category ?? 'uncategorized'))
+  );
+  const allCategories = ['all', ...categories];
+
   return (
     <div>
+      <div className="scrollbar-hide mb-3 flex space-x-4 overflow-x-auto text-xxs uppercase text-primary">
+        {allCategories.map((category) => (
+          <Link
+            key={category}
+            href={
+              category === 'all'
+                ? '/blog'
+                : `/blog?category=${encodeURIComponent(category)}`
+            }
+            className={clsx(
+              categoryFilter === category ||
+                (!categoryFilter && category === 'all')
+                ? 'border-b-2 border-primary pb-0.5'
+                : ''
+            )}
+          >
+            #{category}
+          </Link>
+        ))}
+      </div>
       <input
         type="text"
         placeholder="Search posts..."
@@ -43,23 +78,28 @@ export default function BlogPosts({ posts }: { posts: BlogPost[] }) {
         className="mb-2 w-full rounded-lg border-2 border-zinc-300 bg-zinc-100 p-2 text-dark outline-none dark:border-zinc-700 dark:bg-zinc-800 dark:text-light"
       />
       <div className="mb-4 flex items-center justify-between">
-        {searchTerm && (
-          <p className="text-sm text-dark dark:text-light">
-            {filteredPosts.length} result{filteredPosts.length !== 1 ? 's' : ''}
-          </p>
-        )}
-        {searchTerm && (
-          <button
-            onClick={handleClearFilters}
-            title="Clear Search"
-            className="flex items-center"
-          >
-            <IconClose />
-            <span className="pl-1 text-sm text-dark dark:text-light">
-              Clear Search
-            </span>
-          </button>
-        )}
+        <div>
+          {searchTerm && (
+            <p className="text-sm text-dark dark:text-light">
+              {filteredPosts.length} result
+              {filteredPosts.length !== 1 ? 's' : ''}
+            </p>
+          )}
+        </div>
+        <div className="flex space-x-2">
+          {searchTerm && (
+            <button
+              onClick={handleClearFilters}
+              title="Clear Search"
+              className="flex items-center"
+            >
+              <IconClose />
+              <span className="pl-1 text-sm text-dark dark:text-light">
+                Clear Search
+              </span>
+            </button>
+          )}
+        </div>
       </div>
       {paginatedPosts.length > 0 ? (
         <ul className={clsx('pt-6', searchTerm && 'pt-2')}>
