@@ -113,6 +113,17 @@ export const components = {
     );
   },
   code: ({ children, ...props }: ComponentPropsWithoutRef<'code'>) => {
+    const isInsidePre = props.className?.includes('language-');
+    if (!isInsidePre) {
+      return (
+        <code
+          className="rounded bg-zinc-200 px-1.5 py-0.5 font-mono text-sm text-dark dark:bg-zinc-800 dark:text-light"
+          {...props}
+        >
+          {children}
+        </code>
+      );
+    }
     const codeHTML = highlight(children as string);
     return (
       <code
