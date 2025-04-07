@@ -1,14 +1,9 @@
-import { randomBytes, timingSafeEqual } from 'crypto';
+import { randomBytes } from 'crypto';
 
-const CSRF_SECRET = process.env.CSRF_SECRET || 'default_secret_key';
-
-// Generate a CSRF token using the Web Crypto API
+// Generate a CSRF token using Node.js crypto module
 export async function generateCsrfToken(): Promise<string> {
-  const array = new Uint8Array(32);
-  crypto.getRandomValues(array);
-  return Array.from(array, (byte) => byte.toString(16).padStart(2, '0')).join(
-    ''
-  );
+  const buffer = randomBytes(32);
+  return buffer.toString('hex');
 }
 
 // Validate the CSRF token using a timing-safe comparison
