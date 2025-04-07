@@ -29,7 +29,6 @@ export const posts = pgTable('posts', {
   category: text('category').default('uncategorized'),
   excerpt: text('excerpt'),
   featured: boolean('featured').default(false),
-  likes: integer('likes').default(0),
   published: boolean('published').default(false),
   slug: text('slug').notNull().unique(),
 });

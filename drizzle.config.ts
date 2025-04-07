@@ -5,6 +5,6 @@ export default defineConfig({
   dbCredentials: {
     url: process.env.DB_URL!,
   },
-  schema: '@/db/schema.ts',
-  out: '@/db/out',
+  schema: './src/db/schema.ts',
+  out: './src/db/out',
 });
