@@ -5,7 +5,6 @@ import clsx from 'clsx';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import IconClose from '@/components/icons/IconClose';
-import ClientLikeCount from '@/components/blog/ClientLikeCount';
 
 import { formatDate } from '@/utils/format-date';
 import calculateReadTime from '@/utils/calculate-readtime';
