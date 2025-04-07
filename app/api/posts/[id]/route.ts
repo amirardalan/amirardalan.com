@@ -1,6 +1,5 @@
 import { updatePost, deletePost } from '@/db/queries/posts';
 import { auth } from '@/lib/auth';
-import { validateCsrfToken } from '@/utils/csrf';
 
 import { NextResponse } from 'next/server';
 import { NextRequest } from 'next/server';
@@ -18,14 +17,7 @@ export async function PUT(
 
   try {
     const body = await request.json();
-    const { csrfToken, ...data } = body;
-
-    if (!(await validateCsrfToken(csrfToken))) {
-      return NextResponse.json(
-        { error: 'Invalid CSRF token.' },
-        { status: 403 }
-      );
-    }
+    const { ...data } = body;
 
     const { id } = await params;
     const { title, slug, excerpt, content, category, published, show_updated } =
@@ -85,10 +77,7 @@ export async function PUT(
   }
 }
 
-export async function DELETE(
-  request: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
-) {
+export async function DELETE({ params }: { params: Promise<{ id: string }> }) {
   const session = await auth();
 
   if (!session?.user) {

@@ -1,29 +1,10 @@
 import { NextResponse } from 'next/server';
 import { createPost, updatePost } from '@/src/db/queries/posts';
-import { validateCsrfToken } from '@/utils/csrf';
-
-interface PostData {
-  title: string;
-  slug: string;
-  excerpt?: string;
-  content: string;
-  category?: string;
-  published: boolean;
-  user_id: number;
-  show_updated?: boolean;
-}
 
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { csrfToken, ...data } = body;
-
-    if (!(await validateCsrfToken(csrfToken))) {
-      return NextResponse.json(
-        { error: 'Invalid CSRF token.' },
-        { status: 403 }
-      );
-    }
+    const data = body;
 
     if (!data.title || !data.slug || !data.content || !data.user_id) {
       return NextResponse.json(

@@ -5,7 +5,6 @@ import { useRouter } from 'next/navigation';
 import { createPost } from '@/services/post-service';
 import { useToast } from '@/components/ui/ToastContext';
 import { formatImage } from '@/src/utils/format-image';
-import Cookies from 'js-cookie';
 
 import PostFormFields from '@/components/blog/PostFormFields';
 import Button from '@/components/ui/Button';
@@ -30,7 +29,6 @@ export default function NewPostForm({ userId }: NewPostFormProps) {
   const [error, setError] = useState<string | null>(null);
   const [showGallery, setShowGallery] = useState(false);
   const [showCancelModal, setShowCancelModal] = useState(false);
-  const [csrfToken] = useState(() => Cookies.get('csrf-token') || '');
   const fileInputRef = useRef<HTMLInputElement>(
     null!
   ) as React.RefObject<HTMLInputElement>;
@@ -51,7 +49,6 @@ export default function NewPostForm({ userId }: NewPostFormProps) {
         published,
         created_at: new Date().toISOString(),
         updated_at: new Date().toISOString(),
-        csrfToken,
       };
 
       await createPost(payload);
@@ -72,7 +69,6 @@ export default function NewPostForm({ userId }: NewPostFormProps) {
         onSubmit={handleSubmit}
         className="space-y-6 text-dark dark:text-light"
       >
-        <input type="hidden" name="csrfToken" value={csrfToken} />
         {error && (
           <div className="rounded-md bg-red-50 p-4 text-red-700 dark:bg-red-900 dark:text-red-100">
             {error}

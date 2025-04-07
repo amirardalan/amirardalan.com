@@ -7,6 +7,7 @@ interface PostData {
   published: boolean;
   user_id: number;
   show_updated?: boolean;
+  csrfToken?: string;
 }
 
 export async function createPost(postData: PostData) {
