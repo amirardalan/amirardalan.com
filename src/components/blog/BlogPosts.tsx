@@ -70,7 +70,7 @@ export default function BlogPosts({ posts }: { posts: BlogPost[] }) {
             >
               <a className="w-full" href={`/blog/${post.slug}`}>
                 <h2 className="hover:text-primary">{post.title}</h2>
-                <p className="text-xs text-zinc-500 dark:text-zinc-400">
+                <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">
                   {post.excerpt}
                 </p>
               </a>
