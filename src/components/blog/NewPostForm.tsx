@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { createPost } from '@/services/post-service';
 import { useToast } from '@/components/ui/ToastContext';
 import { formatImage } from '@/src/utils/format-image';
+import { generateCsrfToken } from '@/lib/csrf';
 
 import PostFormFields from '@/components/blog/PostFormFields';
 import Button from '@/components/ui/Button';
@@ -32,13 +33,13 @@ export default function NewPostForm({ userId }: NewPostFormProps) {
   const fileInputRef = useRef<HTMLInputElement>(
     null!
   ) as React.RefObject<HTMLInputElement>;
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     setError(null);
 
     try {
+      const csrfToken = await generateCsrfToken();
       const payload = {
         title,
         slug,
@@ -49,9 +50,10 @@ export default function NewPostForm({ userId }: NewPostFormProps) {
         published,
         created_at: new Date().toISOString(),
         updated_at: new Date().toISOString(),
+        csrfToken,
       };
 
-      await createPost(payload);
+      await createPost(payload, csrfToken);
 
       showToast('Post created successfully!', 'success');
       router.push(published ? `/blog/${slug}` : '/admin/blog/drafts');

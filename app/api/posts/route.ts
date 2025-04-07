@@ -1,10 +1,14 @@
 import { NextResponse } from 'next/server';
 import { createPost, updatePost } from '@/src/db/queries/posts';
+import { generateCsrfToken, validateCsrfToken } from '@/lib/csrf';
 
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const data = body;
+    const { csrfToken, ...data } = body;
+
+    const serverToken = req.headers.get('x-csrf-token');
+    validateCsrfToken(csrfToken, serverToken);
 
     if (!data.title || !data.slug || !data.content || !data.user_id) {
       return NextResponse.json(
@@ -32,7 +36,10 @@ export async function POST(req: Request) {
 export async function PUT(req: Request) {
   try {
     const body = await req.json();
-    const { id, ...data } = body;
+    const { csrfToken, id, ...data } = body;
+
+    const serverToken = req.headers.get('x-csrf-token');
+    validateCsrfToken(csrfToken, serverToken);
 
     if (!id) {
       return NextResponse.json(
