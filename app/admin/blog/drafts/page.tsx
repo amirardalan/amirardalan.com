@@ -4,6 +4,7 @@ import { getDraftPosts } from '@/db/queries/posts';
 
 import AdminPageHeading from '@/components/admin/AdminPageHeading';
 import SearchInput from '@/components/admin/AdminSearch';
+import Pagination from '@/components/ui/Pagination';
 import Link from 'next/link';
 
 export function generateMetadata() {
@@ -17,7 +18,7 @@ export function generateMetadata() {
 export default async function Drafts({
   searchParams,
 }: {
-  searchParams: Promise<{ query?: string }>;
+  searchParams: { query?: string; page?: string };
 }) {
   const session = await auth();
 
@@ -25,12 +26,20 @@ export default async function Drafts({
     redirect('/api/auth/signin?callbackUrl=/admin/blog/drafts');
   }
 
-  const { query = '' } = await searchParams;
+  const query = searchParams.query || '';
+  const currentPage = Number(searchParams.page || '1');
+  const postsPerPage = 10;
 
   const drafts = await getDraftPosts();
 
   const filteredDrafts = drafts.filter((draft) =>
     draft.title.toLowerCase().includes(query.toLowerCase())
+  );
+
+  const totalPages = Math.ceil(filteredDrafts.length / postsPerPage);
+  const paginatedDrafts = filteredDrafts.slice(
+    (currentPage - 1) * postsPerPage,
+    currentPage * postsPerPage
   );
 
   const totalResults = filteredDrafts.length;
@@ -45,9 +54,9 @@ export default async function Drafts({
         totalResults={totalResults}
       />
       <div className="text-dark dark:text-light">
-        {filteredDrafts.length > 0 ? (
+        {paginatedDrafts.length > 0 ? (
           <ul>
-            {filteredDrafts.map((draft) => (
+            {paginatedDrafts.map((draft) => (
               <li
                 key={draft.id}
                 className="my-4 flex items-center justify-between"
@@ -76,6 +85,8 @@ export default async function Drafts({
           <p>No drafts match your search.</p>
         )}
       </div>
+
+      <Pagination totalPages={totalPages} className="my-10" />
     </div>
   );
 }
