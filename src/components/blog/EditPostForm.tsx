@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { updatePost, deletePost } from '@/services/post-service';
 import { useToast } from '@/components/ui/ToastContext';
 import { formatImage } from '@/src/utils/format-image';
+import { generateCsrfToken } from '@/lib/csrf';
 
 import PostFormFields from '@/components/blog/PostFormFields';
 import Button from '@/components/ui/Button';
@@ -34,6 +35,7 @@ export default function EditPostForm({ post }: EditPostFormProps) {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [showGallery, setShowGallery] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null!);
+  const csrfToken = generateCsrfToken();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -41,16 +43,20 @@ export default function EditPostForm({ post }: EditPostFormProps) {
     setError(null);
 
     try {
-      await updatePost(post.id, {
-        title,
-        slug,
-        excerpt,
-        content,
-        category,
-        published,
-        show_updated: showUpdated,
-        user_id: post.user_id,
-      });
+      await updatePost(
+        post.id,
+        {
+          title,
+          slug,
+          excerpt,
+          content,
+          category,
+          published,
+          show_updated: showUpdated,
+          user_id: post.user_id,
+        },
+        csrfToken
+      );
 
       showToast('Post updated successfully!', 'success');
       router.push(published ? `/blog/${slug}` : '/admin/blog/drafts');

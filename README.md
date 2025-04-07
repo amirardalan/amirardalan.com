@@ -42,6 +42,8 @@ AUTH_GITHUB_SECRET=<GitHub Client Secret>
 ALLOWED_EMAILS=you@example.com,team@example.com
 ALLOWED_EMAIL_DOMAINS=example.com,test.com
 
+CSRF_SECRET=<CSRF Secret>
+
 DB_URL=<Supabase Transaction Pooler URL>
 DB_API_KEY=<Supabase API Key>
 KV_REST_API_TOKEN=<Upstash KV API Token>
