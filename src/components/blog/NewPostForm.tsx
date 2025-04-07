@@ -1,10 +1,11 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { createPost } from '@/services/post-service';
 import { useToast } from '@/components/ui/ToastContext';
 import { formatImage } from '@/src/utils/format-image';
+import Cookies from 'js-cookie';
 
 import PostFormFields from '@/components/blog/PostFormFields';
 import Button from '@/components/ui/Button';
@@ -29,18 +30,10 @@ export default function NewPostForm({ userId }: NewPostFormProps) {
   const [error, setError] = useState<string | null>(null);
   const [showGallery, setShowGallery] = useState(false);
   const [showCancelModal, setShowCancelModal] = useState(false);
-  const [csrfToken, setCsrfToken] = useState('');
+  const [csrfToken] = useState(() => Cookies.get('csrf-token') || '');
   const fileInputRef = useRef<HTMLInputElement>(
     null!
   ) as React.RefObject<HTMLInputElement>;
-
-  useEffect(() => {
-    const token = document.cookie
-      .split('; ')
-      .find((row) => row.startsWith('csrf-token='))
-      ?.split('=')[1];
-    setCsrfToken(token || '');
-  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
