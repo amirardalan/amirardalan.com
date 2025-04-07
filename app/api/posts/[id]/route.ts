@@ -20,7 +20,7 @@ export async function PUT(
     const body = await request.json();
     const { csrfToken, ...data } = body;
 
-    if (!validateCsrfToken(csrfToken)) {
+    if (!(await validateCsrfToken(csrfToken))) {
       return NextResponse.json(
         { error: 'Invalid CSRF token.' },
         { status: 403 }
