@@ -131,7 +131,7 @@ export default async function BlogPost({
           #{post.category ?? 'uncategorized'}
         </p>
         <div
-          className="mt-8 flex items-center leading-none"
+          className="mt-2 flex items-center leading-none"
           aria-label="Post metadata"
         >
           <time
@@ -157,7 +157,7 @@ export default async function BlogPost({
         >
           {post.excerpt ?? ''}
         </h2>
-        <div className="mt-6 text-xs uppercase text-zinc-500 dark:text-zinc-400">
+        <div className="mt-8 text-xs uppercase text-zinc-500 dark:text-zinc-400">
           By{' '}
           <span aria-label={`Author: ${post.author_name || 'Anonymous'}`}>
             {post.author_name || 'Anonymous'}
