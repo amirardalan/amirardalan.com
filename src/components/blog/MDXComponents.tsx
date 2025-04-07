@@ -60,7 +60,7 @@ export const components = {
   h4: (props: HeadingProps) => <h4 className="" {...props} />,
   p: (props: ParagraphProps) => (
     <p
-      className="my-6 font-serif leading-normal text-dark dark:text-light"
+      className="my-6 font-serif text-lg leading-normal text-dark dark:text-light"
       {...props}
     />
   ),
