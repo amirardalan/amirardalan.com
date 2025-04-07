@@ -46,7 +46,7 @@ export default function BlogPosts({ posts }: { posts: BlogPost[] }) {
   const categories = Array.from(
     new Set(posts.map((post) => post.category ?? 'uncategorized'))
   );
-  const allCategories = ['all', ...categories];
+  const allCategories = ['all', ...categories.sort()];
 
   return (
     <div>
