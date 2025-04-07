@@ -1,16 +1,3 @@
-interface Payload {
-  title: string;
-  slug: string;
-  excerpt: string;
-  content: string;
-  category: string;
-  user_id: number;
-  csrfToken: Promise<string>;
-  published: boolean;
-  created_at: string;
-  updated_at: string;
-}
-
 interface PostData {
   title: string;
   slug: string;
