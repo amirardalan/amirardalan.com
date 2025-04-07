@@ -122,7 +122,7 @@ export default function Uses() {
       <div className="mt-8">
         <PageHeading title={'Uses'} />
 
-        <div className="mb-10 max-w-7xl font-serif text-3xl leading-relaxed">
+        <div className="mb-14 max-w-7xl font-serif text-3xl leading-relaxed">
           <p className="mb-6 text-dark dark:text-light">
             Things I use to make things...
           </p>
@@ -131,7 +131,7 @@ export default function Uses() {
         <section className="mb-12" aria-labelledby="computers-heading">
           <h2
             id="computers-heading"
-            className="mb-8 border-b-2 border-primary pb-4 text-xl uppercase text-dark dark:text-light"
+            className="mb-8 border-b-2 border-primary pb-4 text-xl text-dark dark:text-light"
           >
             Computers
           </h2>
@@ -150,7 +150,7 @@ export default function Uses() {
         <section className="mb-12" aria-labelledby="peripherals-heading">
           <h2
             id="peripherals-heading"
-            className="mb-8 border-b-2 border-primary pb-4 text-xl uppercase text-dark dark:text-light"
+            className="mb-8 border-b-2 border-primary pb-4 text-xl text-dark dark:text-light"
           >
             Peripherals
           </h2>
@@ -169,7 +169,7 @@ export default function Uses() {
         <section className="mb-12" aria-labelledby="software-heading">
           <h2
             id="software-heading"
-            className="mb-8 border-b-2 border-primary pb-4 text-xl uppercase text-dark dark:text-light"
+            className="mb-8 border-b-2 border-primary pb-4 text-xl text-dark dark:text-light"
           >
             Software
           </h2>
@@ -188,7 +188,7 @@ export default function Uses() {
         <section className="mb-12" aria-labelledby="stack-heading">
           <h2
             id="stack-heading"
-            className="mb-8 border-b-2 border-primary pb-4 text-xl uppercase text-dark dark:text-light"
+            className="mb-8 border-b-2 border-primary pb-4 text-xl text-dark dark:text-light"
           >
             Stack
           </h2>
