@@ -16,10 +16,8 @@ export async function PUT(
   }
 
   try {
-    const body = await request.json();
-    const { ...data } = body;
-
     const { id } = await params;
+    const data = await request.json();
     const { title, slug, excerpt, content, category, published, show_updated } =
       data;
 
@@ -77,7 +75,10 @@ export async function PUT(
   }
 }
 
-export async function DELETE({ params }: { params: Promise<{ id: string }> }) {
+export async function DELETE(
+  request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
+) {
   const session = await auth();
 
   if (!session?.user) {
