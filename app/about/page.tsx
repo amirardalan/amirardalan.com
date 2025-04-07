@@ -43,7 +43,7 @@ export default function About() {
               <p className="text-zinc-600 dark:text-zinc-500" id="x-link">
                 X:
               </p>
-              <Tooltip text="Visit my X profile" pos="r">
+              <Tooltip text="Follow me on X" pos="r">
                 <a
                   href="https://x.com/amirardalan"
                   rel="noopener noreferrer"
@@ -59,7 +59,7 @@ export default function About() {
               <p className="text-zinc-600 dark:text-zinc-500" id="github-link">
                 GitHub:
               </p>
-              <Tooltip text="Visit my GitHub profile" pos="r">
+              <Tooltip text="Explore my GitHub" pos="r">
                 <a
                   href="https://github.com/amirardalan"
                   rel="noopener noreferrer"
@@ -78,7 +78,7 @@ export default function About() {
               >
                 LinkedIn:
               </p>
-              <Tooltip text="Visit my LinkedIn profile" pos="r">
+              <Tooltip text="Connect on LinkedIn" pos="r">
                 <a
                   href="https://linkedin.com/in/amirardalan"
                   rel="noopener noreferrer"
