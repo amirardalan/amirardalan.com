@@ -18,7 +18,7 @@ export async function POST(req: Request) {
     const body = await req.json();
     const { csrfToken, ...data } = body;
 
-    if (!validateCsrfToken(csrfToken)) {
+    if (!(await validateCsrfToken(csrfToken))) {
       return NextResponse.json(
         { error: 'Invalid CSRF token.' },
         { status: 403 }
