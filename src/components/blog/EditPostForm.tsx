@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { updatePost, deletePost } from '@/services/post-service';
 import { useToast } from '@/components/ui/ToastContext';
 import { formatImage } from '@/src/utils/format-image';
-import sanitizeHtml from 'sanitize-html';
+import Cookies from 'js-cookie';
 
 import PostFormFields from '@/components/blog/PostFormFields';
 import Button from '@/components/ui/Button';
@@ -35,6 +35,7 @@ export default function EditPostForm({ post }: EditPostFormProps) {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [showGallery, setShowGallery] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null!);
+  const [csrfToken] = useState(() => Cookies.get('csrf-token') || '');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -43,20 +44,11 @@ export default function EditPostForm({ post }: EditPostFormProps) {
 
     try {
       await updatePost(post.id, {
-        title: sanitizeHtml(title, { allowedTags: [], allowedAttributes: {} }),
-        slug: sanitizeHtml(slug, { allowedTags: [], allowedAttributes: {} }),
-        excerpt: sanitizeHtml(excerpt, {
-          allowedTags: [],
-          allowedAttributes: {},
-        }),
-        content: sanitizeHtml(content, {
-          allowedTags: [],
-          allowedAttributes: {},
-        }),
-        category: sanitizeHtml(category, {
-          allowedTags: [],
-          allowedAttributes: {},
-        }),
+        title,
+        slug,
+        excerpt,
+        content,
+        category,
         published,
         show_updated: showUpdated,
         user_id: post.user_id,
@@ -105,6 +97,7 @@ export default function EditPostForm({ post }: EditPostFormProps) {
         onSubmit={handleSubmit}
         className="space-y-6 text-dark dark:text-light"
       >
+        <input type="hidden" name="csrfToken" value={csrfToken} />
         {error && (
           <div className="rounded-md bg-red-50 p-4 text-red-700 dark:bg-red-900 dark:text-red-100">
             {error}

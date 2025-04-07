@@ -1,4 +1,3 @@
-import sanitizeHtml from 'sanitize-html';
 import { generateSlug } from '@/utils/generate-slug';
 
 interface PostFormFieldsProps {
@@ -38,10 +37,7 @@ export default function PostFormFields({
   setShowUpdated,
 }: PostFormFieldsProps) {
   const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newTitle = sanitizeHtml(e.target.value, {
-      allowedTags: [],
-      allowedAttributes: {},
-    });
+    const newTitle = e.target.value;
     setTitle(newTitle);
     if (!slug || slug === generateSlug(title)) {
       setSlug(generateSlug(newTitle));
@@ -88,14 +84,7 @@ export default function PostFormFields({
           type="text"
           id="slug"
           value={slug}
-          onChange={(e) =>
-            setSlug(
-              sanitizeHtml(e.target.value, {
-                allowedTags: [],
-                allowedAttributes: {},
-              })
-            )
-          }
+          onChange={(e) => setSlug(e.target.value)}
           required
           className="mt-1 block w-full rounded-md border border-zinc-300 bg-zinc-100 px-3 py-2 text-zinc-950 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary dark:border-zinc-500 dark:bg-zinc-800 dark:text-light"
         />
@@ -109,14 +98,7 @@ export default function PostFormFields({
           type="text"
           id="excerpt"
           value={excerpt}
-          onChange={(e) =>
-            setExcerpt(
-              sanitizeHtml(e.target.value, {
-                allowedTags: [],
-                allowedAttributes: {},
-              })
-            )
-          }
+          onChange={(e) => setExcerpt(e.target.value)}
           required
           className="mt-1 block w-full rounded-md border border-zinc-300 bg-zinc-100 px-3 py-2 text-zinc-950 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary dark:border-zinc-500 dark:bg-zinc-800 dark:text-light"
         />
@@ -129,14 +111,7 @@ export default function PostFormFields({
         <textarea
           id="content"
           value={content}
-          onChange={(e) =>
-            setContent(
-              sanitizeHtml(e.target.value, {
-                allowedTags: [],
-                allowedAttributes: {},
-              })
-            )
-          }
+          onChange={(e) => setContent(e.target.value)}
           required
           rows={15}
           className="mt-1 block w-full rounded-md border border-zinc-300 bg-zinc-100 px-3 py-2 text-zinc-950 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary dark:border-zinc-500 dark:bg-zinc-800 dark:text-light"

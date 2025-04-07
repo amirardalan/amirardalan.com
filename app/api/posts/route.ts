@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { createPost, updatePost } from '@/src/db/queries/posts';
-import sanitizeHtml from 'sanitize-html';
+import { validateCsrfToken } from '@/utils/csrf';
 
 interface PostData {
   title: string;
@@ -13,53 +13,28 @@ interface PostData {
   show_updated?: boolean;
 }
 
-function sanitizePostData(data: Partial<PostData>): PostData {
-  if (!data.user_id || typeof data.user_id !== 'number' || data.user_id <= 0) {
-    throw new Error('A valid user_id is required.');
-  }
-
-  return {
-    title: sanitizeHtml(data.title || '', {
-      allowedTags: [],
-      allowedAttributes: {},
-    }),
-    slug: sanitizeHtml(data.slug || '', {
-      allowedTags: [],
-      allowedAttributes: {},
-    }),
-    excerpt: sanitizeHtml(data.excerpt || '', {
-      allowedTags: [],
-      allowedAttributes: {},
-    }),
-    content: sanitizeHtml(data.content || '', {
-      allowedTags: [],
-      allowedAttributes: {},
-    }),
-    category: sanitizeHtml(data.category || '', {
-      allowedTags: [],
-      allowedAttributes: {},
-    }),
-    published: data.published === true,
-    user_id: data.user_id,
-    show_updated: data.show_updated === true,
-  };
-}
-
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const sanitizedData = sanitizePostData(body);
+    const { csrfToken, ...data } = body;
 
-    if (!sanitizedData.title || !sanitizedData.slug || !sanitizedData.content) {
+    if (!(await validateCsrfToken(csrfToken))) {
       return NextResponse.json(
-        { error: 'Title, slug, and content are required.' },
+        { error: 'Invalid CSRF token.' },
+        { status: 403 }
+      );
+    }
+
+    if (!data.title || !data.slug || !data.content || !data.user_id) {
+      return NextResponse.json(
+        { error: 'Title, slug, content, and user_id are required.' },
         { status: 400 }
       );
     }
 
     const postData = {
-      ...sanitizedData,
-      excerpt: sanitizedData.excerpt || null,
+      ...data,
+      excerpt: data.excerpt || null,
       created_at: new Date(),
     };
 
@@ -85,16 +60,14 @@ export async function PUT(req: Request) {
       );
     }
 
-    const sanitizedData = sanitizePostData(data);
-
-    if (!sanitizedData.title || !sanitizedData.slug || !sanitizedData.content) {
+    if (!data.title || !data.slug || !data.content || !data.user_id) {
       return NextResponse.json(
-        { error: 'Title, slug, and content are required.' },
+        { error: 'Title, slug, content, and user_id are required.' },
         { status: 400 }
       );
     }
 
-    const result = await updatePost(parseInt(id, 10), sanitizedData);
+    const result = await updatePost(parseInt(id, 10), data);
 
     return NextResponse.json(result, { status: 200 });
   } catch (error) {

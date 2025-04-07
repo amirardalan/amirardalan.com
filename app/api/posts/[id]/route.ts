@@ -1,5 +1,6 @@
 import { updatePost, deletePost } from '@/db/queries/posts';
 import { auth } from '@/lib/auth';
+import { validateCsrfToken } from '@/utils/csrf';
 
 import { NextResponse } from 'next/server';
 import { NextRequest } from 'next/server';
@@ -16,8 +17,17 @@ export async function PUT(
   }
 
   try {
+    const body = await request.json();
+    const { csrfToken, ...data } = body;
+
+    if (!(await validateCsrfToken(csrfToken))) {
+      return NextResponse.json(
+        { error: 'Invalid CSRF token.' },
+        { status: 403 }
+      );
+    }
+
     const { id } = await params;
-    const data = await request.json();
     const { title, slug, excerpt, content, category, published, show_updated } =
       data;
 

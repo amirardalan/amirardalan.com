@@ -36,9 +36,11 @@ export const useTheme = create<ThemeStore>((set) => ({
       .matches
       ? 'dark'
       : 'light';
+
     if (savedTheme === 'system') {
       Cookies.set('x-system-theme', systemTheme);
     }
+
     const effectiveTheme = savedTheme === 'system' ? systemTheme : savedTheme;
 
     // Set theme class on document
