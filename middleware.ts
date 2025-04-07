@@ -1,12 +1,22 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
+import { generateCsrfToken } from '@/utils/csrf';
 
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
 
   // Clone the response and set the custom header
   const response = NextResponse.next();
   response.headers.set('x-next-pathname', pathname);
+
+  // Generate and set CSRF token cookie for forms
+  if (pathname.startsWith('/admin/blog')) {
+    const csrfToken = await generateCsrfToken();
+    response.cookies.set('csrf-token', csrfToken, {
+      httpOnly: true,
+      secure: true,
+    });
+  }
 
   return response;
 }

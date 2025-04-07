@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { createPost, updatePost } from '@/src/db/queries/posts';
 import sanitizeHtml from 'sanitize-html';
+import { validateCsrfToken } from '@/utils/csrf';
 
 interface PostData {
   title: string;
@@ -48,7 +49,16 @@ function sanitizePostData(data: Partial<PostData>): PostData {
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const sanitizedData = sanitizePostData(body);
+    const { csrfToken, ...data } = body;
+
+    if (!validateCsrfToken(csrfToken)) {
+      return NextResponse.json(
+        { error: 'Invalid CSRF token.' },
+        { status: 403 }
+      );
+    }
+
+    const sanitizedData = sanitizePostData(data);
 
     if (!sanitizedData.title || !sanitizedData.slug || !sanitizedData.content) {
       return NextResponse.json(

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { createPost } from '@/services/post-service';
 import { useToast } from '@/components/ui/ToastContext';
@@ -30,9 +30,18 @@ export default function NewPostForm({ userId }: NewPostFormProps) {
   const [error, setError] = useState<string | null>(null);
   const [showGallery, setShowGallery] = useState(false);
   const [showCancelModal, setShowCancelModal] = useState(false);
+  const [csrfToken, setCsrfToken] = useState('');
   const fileInputRef = useRef<HTMLInputElement>(
     null!
   ) as React.RefObject<HTMLInputElement>;
+
+  useEffect(() => {
+    const token = document.cookie
+      .split('; ')
+      .find((row) => row.startsWith('csrf-token='))
+      ?.split('=')[1];
+    setCsrfToken(token || '');
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -59,6 +68,7 @@ export default function NewPostForm({ userId }: NewPostFormProps) {
         published,
         created_at: new Date().toISOString(),
         updated_at: new Date().toISOString(),
+        csrfToken,
       };
 
       await createPost(payload);
@@ -79,6 +89,7 @@ export default function NewPostForm({ userId }: NewPostFormProps) {
         onSubmit={handleSubmit}
         className="space-y-6 text-dark dark:text-light"
       >
+        <input type="hidden" name="csrfToken" value={csrfToken} />
         {error && (
           <div className="rounded-md bg-red-50 p-4 text-red-700 dark:bg-red-900 dark:text-red-100">
             {error}

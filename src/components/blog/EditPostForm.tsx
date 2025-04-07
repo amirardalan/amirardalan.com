@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { updatePost, deletePost } from '@/services/post-service';
 import { useToast } from '@/components/ui/ToastContext';
@@ -35,6 +35,15 @@ export default function EditPostForm({ post }: EditPostFormProps) {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [showGallery, setShowGallery] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null!);
+  const [csrfToken, setCsrfToken] = useState('');
+
+  useEffect(() => {
+    const token = document.cookie
+      .split('; ')
+      .find((row) => row.startsWith('csrf-token='))
+      ?.split('=')[1];
+    setCsrfToken(token || '');
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -105,6 +114,7 @@ export default function EditPostForm({ post }: EditPostFormProps) {
         onSubmit={handleSubmit}
         className="space-y-6 text-dark dark:text-light"
       >
+        <input type="hidden" name="csrfToken" value={csrfToken} />
         {error && (
           <div className="rounded-md bg-red-50 p-4 text-red-700 dark:bg-red-900 dark:text-red-100">
             {error}
