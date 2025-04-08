@@ -12,7 +12,7 @@ export default function About() {
         <div id="about-heading">
           <PageHeading title={'About'} />
         </div>
-        <section className="mb-10 max-w-7xl font-serif text-3xl leading-normal">
+        <section className="mb-4 max-w-7xl font-serif text-xl leading-loose md:text-2xl lg:mb-10 lg:text-3xl">
           <p className="mb-6 text-dark dark:text-light">
             Based in Portland, OR.
           </p>
@@ -27,8 +27,11 @@ export default function About() {
           </p>
         </section>
 
-        <section className="flex pt-10" aria-label="Contact links">
-          <div className="flex pb-4" aria-hidden="true">
+        <section
+          className="flex flex-col pt-10 md:pt-6 lg:flex-row"
+          aria-label="Contact links"
+        >
+          <div className="mb-4 flex lg:mb-0 lg:mr-6" aria-hidden="true">
             <CldImage
               src="About/amir-avatar_e6puqu"
               alt="Amir Ardalan Avatar"
@@ -38,7 +41,7 @@ export default function About() {
               priority
             />
           </div>
-          <div className="flex flex-col justify-center pl-8">
+          <div className="flex flex-col justify-center">
             <div className="mb-2 flex flex-row items-center">
               <p className="text-zinc-600 dark:text-zinc-500" id="x-link">
                 X:
