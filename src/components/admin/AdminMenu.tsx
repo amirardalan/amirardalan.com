@@ -12,7 +12,7 @@ export default function AdminMenu() {
 
   const getLinkClass = (href: string) => {
     return clsx(
-      'text-zinc-400',
+      !isActive(href) && 'text-zinc-400 dark:text-zinc-500',
       isActive(href) && 'text-zinc-800 dark:text-zinc-300'
     );
   };
@@ -48,7 +48,10 @@ export default function AdminMenu() {
         <Link href="/admin/account" className={getLinkClass('/admin/account')}>
           Account
         </Link>
-        <Link href="/api/auth/signout?callbackUrl=/&redirect=false">
+        <Link
+          href="/api/auth/signout?callbackUrl=/&redirect=false"
+          className="text-zinc-400 dark:text-zinc-500"
+        >
           Sign Out
         </Link>
       </div>
