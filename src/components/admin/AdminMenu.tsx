@@ -12,13 +12,13 @@ export default function AdminMenu() {
 
   const getLinkClass = (href: string) => {
     return clsx(
-      'hover:underline',
-      isActive(href) && 'underline text-zinc-800 dark:text-zinc-300'
+      !isActive(href) && 'text-zinc-400 dark:text-zinc-500',
+      isActive(href) && 'text-zinc-800 dark:text-zinc-300'
     );
   };
 
   return (
-    <nav className="leading-2 mt-24 flex items-center justify-between rounded-lg bg-zinc-200 px-4 py-3 text-xs uppercase text-zinc-500 dark:bg-zinc-800 dark:text-zinc-400">
+    <nav className="leading-2 mt-24 flex items-center justify-between rounded-lg border-[1px] border-zinc-300 px-4 py-3 text-xs uppercase text-zinc-500 dark:border-zinc-700 dark:text-zinc-400">
       <div className="flex flex-wrap space-x-4">
         <IconBlogControls />
         <Link href="/admin" className={getLinkClass('/admin')}>
@@ -48,7 +48,10 @@ export default function AdminMenu() {
         <Link href="/admin/account" className={getLinkClass('/admin/account')}>
           Account
         </Link>
-        <Link href="/api/auth/signout?callbackUrl=/&redirect=false">
+        <Link
+          href="/api/auth/signout?callbackUrl=/&redirect=false"
+          className="text-zinc-400 dark:text-zinc-500"
+        >
           Sign Out
         </Link>
       </div>

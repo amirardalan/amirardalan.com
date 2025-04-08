@@ -15,7 +15,7 @@ export default function HeaderExternalLinks() {
 
   return (
     <div
-      className="mt-1.5 flex items-center space-x-6"
+      className="mt-2 flex items-center space-x-6 pr-20 md:pr-0"
       role="group"
       aria-label="External links and site controls"
     >

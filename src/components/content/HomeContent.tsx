@@ -1,5 +1,3 @@
-'use client';
-
 import TypingAnimation from '@/components/content/TypingAnimation';
 import Button from '@/components/ui/Button';
 import Link from 'next/link';
@@ -7,25 +5,25 @@ import Link from 'next/link';
 export default function HomeContent() {
   return (
     <section
-      className="animate-fade-in pointer-events-none z-20 ml-10 mt-[10%] flex w-full flex-col items-start p-20"
+      className="animate-fade-in pointer-events-none z-20 mt-[10%] flex w-full flex-col items-start p-6 md:ml-10 md:p-10 lg:p-20"
       aria-label="Home page introduction"
       role="region"
     >
       <div
-        className="items-left pointer-events-auto mb-8 flex justify-start space-x-2 text-left text-2xl"
+        className="items-left pointer-events-auto mb-4 flex justify-start space-x-2 text-left text-2xl lg:mb-8"
         aria-live="polite"
       >
         <TypingAnimation />
       </div>
       <div className="pointer-events-auto mt-8 flex flex-col">
         <h1
-          className="text-8xl tracking-wide text-dark dark:text-light"
+          className="text-5xl tracking-wide text-dark sm:text-6xl md:text-7xl lg:text-8xl 2xl:text-9xl dark:text-light"
           id="page-title"
         >
           Amir Ardalan
         </h1>
         <h2
-          className="my-5 text-2xl uppercase tracking-widest text-zinc-600 dark:text-zinc-400"
+          className="sm:text-md my-2 text-sm uppercase tracking-widest text-zinc-600 md:text-xl lg:my-5 lg:text-2xl dark:text-zinc-400"
           id="page-subtitle"
         >
           Fullstack Engineer & UI/UX Designer

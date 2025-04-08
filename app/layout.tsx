@@ -2,9 +2,9 @@ import { Metadata } from 'next';
 import { headers } from 'next/headers';
 import { auth } from '@/lib/auth';
 
-import clsx from 'clsx';
-import './globals.css';
 import { getTheme } from '@/utils/get-theme';
+import '@/app/globals.css';
+import clsx from 'clsx';
 
 import { Jura, Lora, JetBrains_Mono } from 'next/font/google';
 import DarkIcon from '@/public/images/favicon-dark.png';
@@ -13,6 +13,7 @@ import LightIcon from '@/public/images/favicon-light.png';
 import Header from '@/components/ui/Header';
 import Footer from '@/components/ui/Footer';
 import { AuthProvider } from '@/components/auth/AuthProvider';
+import MobileNavigation from '@/components/ui/MobileNavigation';
 
 const sans = Jura({
   subsets: ['latin'],
@@ -91,6 +92,7 @@ export default async function RootLayout({
             <main className="flex flex-1 flex-grow">{children}</main>
             <Footer />
           </div>
+          <MobileNavigation />
         </body>
       </html>
     </AuthProvider>

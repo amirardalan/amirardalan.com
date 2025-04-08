@@ -17,6 +17,9 @@ const config: Config = {
         dark: 'var(--color-dark)',
         primary: 'var(--color-primary)',
       },
+      backgroundImage: {
+        gradient: 'var(--color-gradient)',
+      },
       fontSize: {
         xs: '.85rem',
         xxs: '.75rem',
