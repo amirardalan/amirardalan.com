@@ -4,7 +4,7 @@ import Logo from '@/components/ui/Logo';
 export default function Footer() {
   return (
     <footer
-      className="z-10 flex flex-row bg-primary px-6 py-6 pt-4 text-sm text-light lg:px-10 lg:py-8 lg:pt-8 dark:text-dark"
+      className="z-10 flex flex-row bg-primary px-6 py-4 pt-4 text-sm text-light lg:px-10 lg:py-8 lg:pt-8 dark:text-dark"
       role="contentinfo"
     >
       <div className="mr-6 flex flex-row items-center">

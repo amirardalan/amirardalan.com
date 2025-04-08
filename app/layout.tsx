@@ -2,9 +2,9 @@ import { Metadata } from 'next';
 import { headers } from 'next/headers';
 import { auth } from '@/lib/auth';
 
-import clsx from 'clsx';
-import './globals.css';
 import { getTheme } from '@/utils/get-theme';
+import '@/app/globals.css';
+import clsx from 'clsx';
 
 import { Jura, Lora, JetBrains_Mono } from 'next/font/google';
 import DarkIcon from '@/public/images/favicon-dark.png';
