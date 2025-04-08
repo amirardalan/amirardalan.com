@@ -8,7 +8,7 @@ import AuthMenu from '@/components/auth/AuthMenu';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
 
 export default function Header() {
-  const isMobile = useMediaQuery(768);
+  const isTablet = useMediaQuery(1024);
 
   return (
     <header
@@ -24,7 +24,7 @@ export default function Header() {
 
       <div className="flex w-full flex-row items-center justify-between">
         <Link href="/" aria-label="Home">
-          <Logo size={isMobile ? 25 : 35} title="amir.sh" />
+          <Logo size={isTablet ? 25 : 35} title="amir.sh" />
         </Link>
         <div className="flex w-full max-w-screen-xl items-center justify-end space-x-4">
           <nav
