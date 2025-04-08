@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { NavLinks } from '@/components/ui/Navigation';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
+import IconMobileNav from '@/components/icons/IconMobileNav';
 
 export default function MobileNavigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -41,42 +42,7 @@ export default function MobileNavigation() {
   return (
     <>
       {/* Hamburger Button */}
-      <button
-        onClick={() => setIsOpen(true)}
-        className="fixed right-6 top-4 z-50 flex items-center p-2 text-dark sm:hidden dark:text-light"
-        aria-label="Open menu"
-        aria-expanded={isOpen}
-      >
-        <svg
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M3 12H21"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M3 6H21"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M3 18H21"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      </button>
+      <IconMobileNav isOpen={false} onClick={() => setIsOpen(true)} />
 
       {/* Mobile Navigation Panel */}
       <div
@@ -94,34 +60,11 @@ export default function MobileNavigation() {
       >
         <div className="mb-8 flex items-center justify-between">
           <h2 className="text-lg font-medium">Menu</h2>
-          <button
+          <IconMobileNav
+            isOpen={true}
             onClick={() => setIsOpen(false)}
-            className="p-2 text-dark dark:text-light"
-            aria-label="Close menu"
-          >
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M18 6L6 18"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M6 6L18 18"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </button>
+            className="static p-2"
+          />
         </div>
 
         <nav className="flex flex-1 flex-col">
