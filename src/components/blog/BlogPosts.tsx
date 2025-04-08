@@ -83,7 +83,7 @@ export default function BlogPosts({ posts }: { posts: BlogPost[] }) {
 
   return (
     <div>
-      <div className="scrollbar-hide mb-3 flex space-x-4 overflow-x-auto text-xxs uppercase text-primary">
+      <div className="scrollbar-hide mb-3 flex space-x-4 overflow-x-auto text-xxs uppercase text-dark dark:text-light">
         {allCategories.map((category) => (
           <Link
             key={category}
@@ -95,7 +95,7 @@ export default function BlogPosts({ posts }: { posts: BlogPost[] }) {
             className={clsx(
               categoryFilter === category ||
                 (!categoryFilter && category === 'all')
-                ? 'border-b-2 border-primary pb-0.5'
+                ? 'pb-0.5 text-primary'
                 : ''
             )}
           >
