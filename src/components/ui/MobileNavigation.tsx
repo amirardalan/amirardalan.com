@@ -7,7 +7,7 @@ import IconMobileNav from '@/components/icons/IconMobileNav';
 
 export default function MobileNavigation() {
   const [isOpen, setIsOpen] = useState(false);
-  const isMobile = useMediaQuery(768); // 768px is Tailwind's md breakpoint
+  const isMobile = useMediaQuery(768);
 
   // Close menu when pressing escape
   useEffect(() => {
@@ -41,10 +41,7 @@ export default function MobileNavigation() {
 
   return (
     <>
-      {/* Hamburger Button */}
       <IconMobileNav isOpen={false} onClick={() => setIsOpen(true)} />
-
-      {/* Mobile Navigation Panel */}
       <div
         className={`fixed inset-0 z-[100] cursor-pointer bg-black bg-opacity-30 backdrop-blur-sm transition-opacity ${
           isOpen ? 'opacity-100' : 'pointer-events-none opacity-0'
@@ -68,7 +65,7 @@ export default function MobileNavigation() {
         </div>
 
         <nav className="flex flex-1 flex-col">
-          <div className="flex flex-col space-y-6">
+          <div className="flex flex-col space-y-1">
             <NavLinks variant="mobile" onClick={() => setIsOpen(false)} />
           </div>
         </nav>
