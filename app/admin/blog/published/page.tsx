@@ -4,25 +4,41 @@ import { getPublishedPosts } from '@/db/queries/posts';
 
 import AdminPageHeading from '@/components/admin/AdminPageHeading';
 import SearchInput from '@/components/admin/AdminSearch';
+import Pagination from '@/components/ui/Pagination';
 import Link from 'next/link';
 
-export default async function PublishedPosts({
-  searchParams,
-}: {
-  searchParams: Promise<{ query?: string }>;
-}) {
+export function generateMetadata() {
+  return {
+    metadataBase: new URL(`${process.env.NEXT_PUBLIC_URL}`),
+    title: 'Published Posts — Amir Ardalan',
+    description: 'View and manage published blog posts in the admin panel.',
+  };
+}
+
+export default async function Published({ searchParams }: any) {
   const session = await auth();
 
   if (!session?.user) {
     redirect('/api/auth/signin?callbackUrl=/admin/blog/published');
   }
 
-  const { query = '' } = await searchParams;
+  const params = await Promise.resolve(searchParams || {});
+  const query = typeof params.query === 'string' ? params.query : '';
+  const currentPage = Number(
+    typeof params.page === 'string' ? params.page : '1'
+  );
+  const postsPerPage = 10;
 
-  const allPosts = await getPublishedPosts();
+  const posts = await getPublishedPosts();
 
-  const filteredPosts = allPosts.filter((post) =>
+  const filteredPosts = posts.filter((post) =>
     post.title.toLowerCase().includes(query.toLowerCase())
+  );
+
+  const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
+  const paginatedPosts = filteredPosts.slice(
+    (currentPage - 1) * postsPerPage,
+    currentPage * postsPerPage
   );
 
   const totalResults = filteredPosts.length;
@@ -32,14 +48,14 @@ export default async function PublishedPosts({
       <AdminPageHeading title={'Published Posts'} />
       <SearchInput
         name="query"
-        placeholder="Search posts..."
+        placeholder="Search published posts..."
         defaultValue={query}
         totalResults={totalResults}
       />
       <div className="text-dark dark:text-light">
-        {filteredPosts.length > 0 ? (
+        {paginatedPosts.length > 0 ? (
           <ul>
-            {filteredPosts.map((post) => (
+            {paginatedPosts.map((post) => (
               <li
                 key={post.id}
                 className="my-4 flex items-center justify-between"
@@ -48,6 +64,9 @@ export default async function PublishedPosts({
                   <Link href={`/blog/${post.slug}`} className="hover:underline">
                     {post.title}
                   </Link>
+                  <span className="ml-2 text-sm text-zinc-500">
+                    [Published by User {post.user_id}]
+                  </span>
                 </div>
                 <Link
                   href={`/admin/blog/edit/${post.slug}`}
@@ -62,6 +81,8 @@ export default async function PublishedPosts({
           <p>No posts match your search.</p>
         )}
       </div>
+
+      <Pagination totalPages={totalPages} className="my-10" />
     </div>
   );
 }

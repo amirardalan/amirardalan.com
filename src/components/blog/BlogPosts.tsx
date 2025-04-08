@@ -11,6 +11,39 @@ import calculateReadTime from '@/utils/calculate-readtime';
 
 import { BlogPost } from '@/types/blog';
 
+function ClientPagination({
+  currentPage,
+  totalPages,
+  onPageChange,
+  className = '',
+}: {
+  currentPage: number;
+  totalPages: number;
+  onPageChange: (page: number) => void;
+  className?: string;
+}) {
+  if (totalPages <= 1) return null;
+
+  return (
+    <div className={`flex justify-center space-x-2 ${className}`}>
+      {Array.from({ length: totalPages }, (_, index) => (
+        <button
+          key={index}
+          onClick={() => onPageChange(index + 1)}
+          className={clsx(
+            'rounded px-3 py-1 font-mono text-xs',
+            currentPage === index + 1
+              ? 'bg-zinc-400 text-light dark:text-dark'
+              : 'bg-zinc-200 text-dark dark:bg-zinc-700 dark:text-light'
+          )}
+        >
+          {index + 1}
+        </button>
+      ))}
+    </div>
+  );
+}
+
 export default function BlogPosts({ posts }: { posts: BlogPost[] }) {
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
@@ -134,24 +167,12 @@ export default function BlogPosts({ posts }: { posts: BlogPost[] }) {
           No posts match your search.
         </p>
       )}
-      {totalPages > 1 && (
-        <div className="my-20 flex justify-center space-x-2">
-          {Array.from({ length: totalPages }, (_, index) => (
-            <button
-              key={index}
-              onClick={() => handlePageChange(index + 1)}
-              className={clsx(
-                'rounded px-3 py-1 font-mono text-xs',
-                currentPage === index + 1
-                  ? 'bg-zinc-400 text-light dark:text-dark'
-                  : 'bg-zinc-200 text-dark dark:bg-zinc-700 dark:text-light'
-              )}
-            >
-              {index + 1}
-            </button>
-          ))}
-        </div>
-      )}
+      <ClientPagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={handlePageChange}
+        className="my-20"
+      />
     </div>
   );
 }
