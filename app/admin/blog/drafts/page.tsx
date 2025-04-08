@@ -15,11 +15,8 @@ export function generateMetadata() {
   };
 }
 
-export default async function Drafts({
-  searchParams,
-}: {
-  searchParams: { query?: string; page?: string };
-}) {
+export default async function Drafts(props: any) {
+  const { searchParams = {} } = props;
   const session = await auth();
 
   if (!session?.user) {

@@ -7,11 +7,16 @@ import SearchInput from '@/components/admin/AdminSearch';
 import Pagination from '@/components/ui/Pagination';
 import Link from 'next/link';
 
-export default async function PublishedPosts({
-  searchParams,
-}: {
-  searchParams: { query?: string; page?: string };
-}) {
+export function generateMetadata() {
+  return {
+    metadataBase: new URL(`${process.env.NEXT_PUBLIC_URL}`),
+    title: 'Published Posts — Amir Ardalan',
+    description: 'View and manage published blog posts in the admin panel.',
+  };
+}
+
+export default async function Published(props: any) {
+  const { searchParams = {} } = props;
   const session = await auth();
 
   if (!session?.user) {
@@ -22,9 +27,9 @@ export default async function PublishedPosts({
   const currentPage = Number(searchParams.page || '1');
   const postsPerPage = 10;
 
-  const allPosts = await getPublishedPosts();
+  const posts = await getPublishedPosts();
 
-  const filteredPosts = allPosts.filter((post) =>
+  const filteredPosts = posts.filter((post) =>
     post.title.toLowerCase().includes(query.toLowerCase())
   );
 
@@ -41,7 +46,7 @@ export default async function PublishedPosts({
       <AdminPageHeading title={'Published Posts'} />
       <SearchInput
         name="query"
-        placeholder="Search posts..."
+        placeholder="Search published posts..."
         defaultValue={query}
         totalResults={totalResults}
       />
@@ -57,6 +62,9 @@ export default async function PublishedPosts({
                   <Link href={`/blog/${post.slug}`} className="hover:underline">
                     {post.title}
                   </Link>
+                  <span className="ml-2 text-sm text-zinc-500">
+                    [Published by User {post.user_id}]
+                  </span>
                 </div>
                 <Link
                   href={`/admin/blog/edit/${post.slug}`}
