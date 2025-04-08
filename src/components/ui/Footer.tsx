@@ -12,7 +12,7 @@ export default function Footer() {
           &copy;{new Date().getFullYear()}
         </span>
         <Logo size={20} inverted />
-        <span className="ml-4">Amir Ardalan</span>
+        <span className="ml-4">amir.sh</span>
       </div>
       <span aria-hidden="true">•</span>
       <nav className="ml-6" aria-label="Footer navigation">
