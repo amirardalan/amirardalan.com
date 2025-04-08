@@ -12,13 +12,13 @@ export default function AdminMenu() {
 
   const getLinkClass = (href: string) => {
     return clsx(
-      'hover:underline',
-      isActive(href) && 'underline text-zinc-800 dark:text-zinc-300'
+      'text-zinc-400',
+      isActive(href) && 'text-zinc-800 dark:text-zinc-300'
     );
   };
 
   return (
-    <nav className="leading-2 mt-24 flex items-center justify-between rounded-lg bg-zinc-200 px-4 py-3 text-xs uppercase text-zinc-500 dark:bg-zinc-800 dark:text-zinc-400">
+    <nav className="leading-2 mt-24 flex items-center justify-between rounded-lg border-[1px] border-zinc-300 px-4 py-3 text-xs uppercase text-zinc-500 dark:border-zinc-700 dark:text-zinc-400">
       <div className="flex flex-wrap space-x-4">
         <IconBlogControls />
         <Link href="/admin" className={getLinkClass('/admin')}>

@@ -108,7 +108,7 @@ export default function BlogPosts({ posts }: { posts: BlogPost[] }) {
         placeholder="Search posts..."
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
-        className="mb-2 w-full rounded-lg border-2 border-zinc-300 bg-zinc-100 p-2 text-dark outline-none dark:border-zinc-700 dark:bg-zinc-800 dark:text-light"
+        className="mb-2 w-full rounded-lg border-[1px] border-zinc-300 bg-zinc-100 p-2 text-dark outline-none dark:border-zinc-700 dark:bg-zinc-900 dark:text-light"
       />
       <div className="mb-4 flex items-center justify-between">
         <div>

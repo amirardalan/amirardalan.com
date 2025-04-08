@@ -31,7 +31,7 @@ export default function About() {
           className="flex flex-col pt-10 md:pt-6 lg:flex-row"
           aria-label="Contact links"
         >
-          <div className="mb-4 flex lg:mb-0 lg:mr-6" aria-hidden="true">
+          <div className="mb-4 flex lg:mb-0 lg:mr-8" aria-hidden="true">
             <CldImage
               src="About/amir-avatar_e6puqu"
               alt="Amir Ardalan Avatar"

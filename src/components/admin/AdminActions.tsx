@@ -5,10 +5,10 @@ export default function AdminActions() {
     <div className="mb-6 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
       <div className="rounded-lg border border-zinc-200 p-6 dark:border-zinc-700">
         <h3 className="mb-3 text-lg font-medium text-dark dark:text-light">
-          Create New Post
+          Compose New
         </h3>
         <p className="mb-4 text-xs text-zinc-600 dark:text-zinc-300">
-          Write a new post
+          Compose a new blog post
         </p>
         <Link
           href="/admin/blog/new"
@@ -23,7 +23,7 @@ export default function AdminActions() {
           Manage Drafts
         </h3>
         <p className="mb-4 text-xs text-zinc-600 dark:text-zinc-300">
-          Manage draft posts
+          Manage unpublished draft posts
         </p>
         <Link
           href="/admin/blog/drafts"
@@ -35,10 +35,10 @@ export default function AdminActions() {
 
       <div className="rounded-lg border border-zinc-200 p-6 dark:border-zinc-700">
         <h3 className="mb-3 text-lg font-medium text-dark dark:text-light">
-          Published Posts
+          View Published
         </h3>
         <p className="mb-4 text-xs text-zinc-600 dark:text-zinc-300">
-          Manage published posts
+          Manage published blog posts
         </p>
         <Link
           href="/admin/blog/published"
