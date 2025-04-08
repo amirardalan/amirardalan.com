@@ -142,7 +142,7 @@ export default function BlogPosts({ posts }: { posts: BlogPost[] }) {
               className="mb-10 flex w-full justify-between text-xl last:mb-0"
             >
               <a className="w-full" href={`/blog/${post.slug}`}>
-                <h2 className="hover:text-primary">{post.title}</h2>
+                <h2 className="pr-12 hover:text-primary">{post.title}</h2>
                 <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">
                   {post.excerpt}
                 </p>
