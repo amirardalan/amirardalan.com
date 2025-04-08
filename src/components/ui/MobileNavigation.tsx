@@ -2,9 +2,11 @@
 
 import { useState, useEffect } from 'react';
 import { NavLinks } from '@/components/ui/Navigation';
+import { useMediaQuery } from '@/hooks/useMediaQuery';
 
 export default function MobileNavigation() {
   const [isOpen, setIsOpen] = useState(false);
+  const isMobile = useMediaQuery(640); // 640px is Tailwind's sm breakpoint
 
   // Close menu when pressing escape
   useEffect(() => {
@@ -15,6 +17,13 @@ export default function MobileNavigation() {
     window.addEventListener('keydown', handleEsc);
     return () => window.removeEventListener('keydown', handleEsc);
   }, []);
+
+  // Close menu when screen size exceeds mobile breakpoint
+  useEffect(() => {
+    if (!isMobile && isOpen) {
+      setIsOpen(false);
+    }
+  }, [isMobile, isOpen]);
 
   // Prevent body scroll when menu is open
   useEffect(() => {
