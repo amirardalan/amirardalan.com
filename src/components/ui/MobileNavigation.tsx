@@ -7,7 +7,7 @@ import IconMobileNav from '@/components/icons/IconMobileNav';
 
 export default function MobileNavigation() {
   const [isOpen, setIsOpen] = useState(false);
-  const isMobile = useMediaQuery(640); // 640px is Tailwind's sm breakpoint
+  const isMobile = useMediaQuery(768); // 768px is Tailwind's md breakpoint
 
   // Close menu when pressing escape
   useEffect(() => {

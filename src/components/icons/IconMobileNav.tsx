@@ -14,7 +14,7 @@ export default function IconMobileNav({
   return (
     <button
       onClick={onClick}
-      className={`fixed right-6 top-4 z-50 flex items-center p-2 text-dark sm:hidden dark:text-light ${className}`}
+      className={`fixed right-6 top-4 z-50 flex items-center p-2 text-dark md:hidden dark:text-light ${className}`}
       aria-label={isOpen ? 'Close menu' : 'Open menu'}
       aria-expanded={isOpen}
     >

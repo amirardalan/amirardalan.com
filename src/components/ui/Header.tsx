@@ -21,7 +21,7 @@ export default async function Header() {
           <Logo size={35} title="amir.sh" />
         </Link>
         <div className="flex w-full max-w-screen-xl items-center justify-end space-x-4">
-          <nav aria-label="Main navigation" className="hidden sm:block">
+          <nav aria-label="Main navigation" className="hidden md:block">
             <div className="flex flex-row">
               <NavLinks variant="header" />
             </div>

@@ -28,7 +28,7 @@ export default function Navigation({ header = false }: { header?: boolean }) {
   };
 
   return (
-    <nav className="hidden text-light sm:block">
+    <nav className="hidden text-light md:block">
       <div className={clsx('flex flex-row')}>
         <Link href="/">
           <span className={getNavItemClass('/')}>Home</span>
