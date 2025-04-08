@@ -43,7 +43,7 @@ export default function TypingAnimation() {
   }, []);
 
   return (
-    <h3 className="font-mono text-lg text-dark lg:text-2xl dark:text-light">
+    <h3 className="mt-8 font-mono text-lg text-xs text-dark md:text-xl lg:text-2xl dark:text-light">
       <span className="mr-4 text-primary">{'> ~ %'}</span>
       <span className="typed text-dark dark:text-light [&_a]:text-primary" />
     </h3>

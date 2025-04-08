@@ -3,7 +3,6 @@
 import IconGithub from '@/components/icons/IconGithub';
 import Tooltip from '@/components/ui/Tooltip';
 import ThemeMenu from '@/components/ui/ThemeMenu';
-import AuthMenu from '@/components/auth/AuthMenu';
 
 export default function HeaderExternalLinks() {
   const handleClick = () => {
@@ -26,7 +25,6 @@ export default function HeaderExternalLinks() {
         </button>
       </Tooltip>
       <ThemeMenu />
-      <AuthMenu />
     </div>
   );
 }

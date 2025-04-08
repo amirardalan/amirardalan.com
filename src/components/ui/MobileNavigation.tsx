@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react';
 import { NavLinks } from '@/components/ui/Navigation';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
 import IconMobileNav from '@/components/icons/IconMobileNav';
+import HeaderControls from '@/components/ui/HeaderControls';
+import AuthMenu from '@/components/auth/AuthMenu';
 
 export default function MobileNavigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -66,6 +68,10 @@ export default function MobileNavigation() {
         <nav className="flex flex-1 flex-col">
           <div className="flex flex-col space-y-1">
             <NavLinks variant="mobile" onClick={() => setIsOpen(false)} />
+          </div>
+          <div className="hidden lg:flex">
+            <HeaderControls />
+            <AuthMenu />
           </div>
         </nav>
       </div>

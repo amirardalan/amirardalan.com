@@ -5,7 +5,7 @@ import Link from 'next/link';
 export default function HomeContent() {
   return (
     <section
-      className="animate-fade-in pointer-events-none z-20 ml-10 mt-[10%] flex w-full flex-col items-start p-5 md:p-10 lg:p-20"
+      className="animate-fade-in pointer-events-none z-20 mt-[10%] flex w-full flex-col items-start p-6 md:ml-10 md:p-10 lg:p-20"
       aria-label="Home page introduction"
       role="region"
     >

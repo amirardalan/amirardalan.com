@@ -14,10 +14,12 @@ export default function Footer() {
         <Logo size={20} inverted />
         <span className="ml-4">amir.sh</span>
       </div>
-      <span aria-hidden="true">•</span>
-      <nav className="ml-6" aria-label="Footer navigation">
-        <NavLinks variant="footer" />
-      </nav>
+      <div className="hidden md:flex">
+        <span aria-hidden="true">•</span>
+        <nav className="ml-6" aria-label="Footer navigation">
+          <NavLinks variant="footer" />
+        </nav>
+      </div>
     </footer>
   );
 }

@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Logo from '@/components/ui/Logo';
 import { NavLinks } from '@/components/ui/Navigation';
 import HeaderControls from '@/components/ui/HeaderControls';
+import AuthMenu from '@/components/auth/AuthMenu';
 
 export default async function Header() {
   return (
@@ -26,7 +27,10 @@ export default async function Header() {
               <NavLinks variant="header" />
             </div>
           </nav>
-          <HeaderControls />
+          <div className="hidden md:flex">
+            <HeaderControls />
+            <AuthMenu />
+          </div>
         </div>
       </div>
     </header>
