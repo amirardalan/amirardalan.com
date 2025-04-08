@@ -9,7 +9,7 @@ export default function AuthMenu() {
   return (
     <>
       {session?.user && (
-        <div className="flex flex-row space-x-2 pl-6 text-left text-sm text-dark dark:text-light">
+        <div className="flex flex-row text-left text-sm text-dark md:ml-6 dark:text-light">
           <Button
             type="button"
             url={'/admin'}

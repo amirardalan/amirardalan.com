@@ -45,7 +45,7 @@ export default function MobileNavigation() {
     <>
       <IconMobileNav isOpen={false} onClick={() => setIsOpen(true)} />
       <div
-        className={`fixed inset-0 z-[100] cursor-pointer transition-opacity ${
+        className={`fixed inset-0 z-20 cursor-pointer transition-opacity ${
           isOpen ? 'bg-gradient opacity-70' : 'pointer-events-none opacity-0'
         }`}
         onClick={() => setIsOpen(false)}
@@ -53,7 +53,7 @@ export default function MobileNavigation() {
       />
 
       <div
-        className={`fixed inset-y-0 right-0 z-[101] flex h-[100dvh] w-[300px] transform flex-col bg-light bg-opacity-90 p-6 shadow-lg transition-transform duration-300 ease-in-out dark:bg-dark dark:bg-opacity-90 ${
+        className={`fixed inset-y-0 right-0 z-50 flex h-screen w-[300px] transform flex-col bg-light bg-opacity-90 p-6 shadow-lg transition-transform duration-300 ease-in-out dark:bg-dark dark:bg-opacity-90 ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
@@ -66,12 +66,11 @@ export default function MobileNavigation() {
         </div>
 
         <nav className="flex flex-1 flex-col">
-          <div className="flex flex-col space-y-1">
+          <div className="flex flex-col space-y-1 pl-8">
+            <div className="flex justify-start">
+              <AuthMenu />
+            </div>
             <NavLinks variant="mobile" onClick={() => setIsOpen(false)} />
-          </div>
-          <div className="hidden lg:flex">
-            <HeaderControls />
-            <AuthMenu />
           </div>
         </nav>
       </div>

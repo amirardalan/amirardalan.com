@@ -1,13 +1,18 @@
+'use client';
+
 import Link from 'next/link';
 import Logo from '@/components/ui/Logo';
 import { NavLinks } from '@/components/ui/Navigation';
 import HeaderControls from '@/components/ui/HeaderControls';
 import AuthMenu from '@/components/auth/AuthMenu';
+import { useMediaQuery } from '@/hooks/useMediaQuery';
 
-export default async function Header() {
+export default function Header() {
+  const isMobile = useMediaQuery(768);
+
   return (
     <header
-      className="animate-fade-in-top fixed top-0 z-50 w-full bg-zinc-50/70 backdrop-blur-lg lg:py-4 dark:bg-zinc-950/70"
+      className="animate-fade-in-top fixed top-0 z-20 w-full bg-zinc-50/70 px-6 py-4 backdrop-blur-lg lg:px-10 lg:py-8 dark:bg-zinc-950/70"
       role="banner"
     >
       <a
@@ -17,18 +22,21 @@ export default async function Header() {
         Skip to main content
       </a>
 
-      <div className="flex w-full flex-row justify-between px-6 py-4 lg:px-10">
+      <div className="flex w-full flex-row items-center justify-between">
         <Link href="/" aria-label="Home">
-          <Logo size={35} title="amir.sh" />
+          <Logo size={isMobile ? 25 : 35} title="amir.sh" />
         </Link>
         <div className="flex w-full max-w-screen-xl items-center justify-end space-x-4">
-          <nav aria-label="Main navigation" className="hidden md:block">
-            <div className="flex flex-row">
+          <nav
+            aria-label="Main navigation"
+            className="hidden md:flex md:items-center"
+          >
+            <div className="flex flex-row items-center">
               <NavLinks variant="header" />
             </div>
           </nav>
-          <div className="hidden md:flex">
-            <HeaderControls />
+          <HeaderControls />
+          <div className="hidden md:flex md:items-center">
             <AuthMenu />
           </div>
         </div>

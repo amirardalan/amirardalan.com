@@ -8,8 +8,8 @@ type NavVariant = 'header' | 'footer' | 'mobile';
 
 export default function Navigation({ header = false }: { header?: boolean }) {
   return (
-    <nav className="hidden text-light sm:block">
-      <div className={clsx('flex flex-row')}>
+    <nav className="hidden text-light sm:flex sm:items-center">
+      <div className={clsx('flex flex-row items-center')}>
         <NavLinks variant={header ? 'header' : 'footer'} />
       </div>
     </nav>
@@ -35,7 +35,7 @@ const getNavLinkStyles = (
         isActive,
     }),
     mobile: clsx({
-      'block w-full text-md font-medium pl-8 mt-8': true,
+      'block w-full text-md font-medium mt-8': true,
       'text-dark dark:text-light': !isActive,
       'text-primary border-none': isActive,
     }),
