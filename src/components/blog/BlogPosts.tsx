@@ -171,7 +171,7 @@ export default function BlogPosts({ posts }: { posts: BlogPost[] }) {
         currentPage={currentPage}
         totalPages={totalPages}
         onPageChange={handlePageChange}
-        className="my-20"
+        className="my-16"
       />
     </div>
   );
