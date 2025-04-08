@@ -15,16 +15,18 @@ export function generateMetadata() {
   };
 }
 
-export default async function Drafts(props: any) {
-  const { searchParams = {} } = props;
+export default async function Drafts({ searchParams }: any) {
   const session = await auth();
 
   if (!session?.user) {
     redirect('/api/auth/signin?callbackUrl=/admin/blog/drafts');
   }
 
-  const query = searchParams.query || '';
-  const currentPage = Number(searchParams.page || '1');
+  const params = await Promise.resolve(searchParams || {});
+  const query = typeof params.query === 'string' ? params.query : '';
+  const currentPage = Number(
+    typeof params.page === 'string' ? params.page : '1'
+  );
   const postsPerPage = 10;
 
   const drafts = await getDraftPosts();
