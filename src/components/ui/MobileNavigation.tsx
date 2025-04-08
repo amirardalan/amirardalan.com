@@ -43,20 +43,19 @@ export default function MobileNavigation() {
     <>
       <IconMobileNav isOpen={false} onClick={() => setIsOpen(true)} />
       <div
-        className={`fixed inset-0 z-[100] cursor-pointer bg-black bg-opacity-30 backdrop-blur-sm transition-opacity ${
-          isOpen ? 'opacity-100' : 'pointer-events-none opacity-0'
+        className={`fixed inset-0 z-[100] cursor-pointer transition-opacity ${
+          isOpen ? 'bg-gradient opacity-70' : 'pointer-events-none opacity-0'
         }`}
         onClick={() => setIsOpen(false)}
         aria-hidden="true"
       />
 
       <div
-        className={`fixed inset-y-0 right-0 z-[101] flex h-[100dvh] w-[300px] transform flex-col bg-light bg-opacity-90 p-6 shadow-lg backdrop-blur-md transition-transform duration-300 ease-in-out dark:bg-dark dark:bg-opacity-90 ${
+        className={`fixed inset-y-0 right-0 z-[101] flex h-[100dvh] w-[300px] transform flex-col bg-light bg-opacity-90 p-6 shadow-lg transition-transform duration-300 ease-in-out dark:bg-dark dark:bg-opacity-90 ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
-        <div className="mb-8 flex items-center justify-between">
-          <h2 className="text-lg font-medium">Menu</h2>
+        <div className="mb-20 flex items-center justify-between">
           <IconMobileNav
             isOpen={true}
             onClick={() => setIsOpen(false)}

@@ -17,6 +17,14 @@
   --color-skeleton-light: oklch(0.95 0.01 240);
   --color-skeleton-dark: oklch(0.3 0.01 240);
 
+  /* Gradients */
+  --color-gradient: linear-gradient(
+    to bottom,
+    oklch(0.43 0.17 35.76) 0%,
+    oklch(0.25 0.19 300.22) 50%,
+    oklch(0.28 0.15 248.05) 100%
+  );
+
   /* Dynamic Colors */
   --color-dynamic: var(--color-dark);
 
@@ -48,6 +56,12 @@
       --color-dynamic: var(--color-light);
       --color-primary: var(--color-primary-dark);
       --color-selection-text: oklch(0.141 0.005 285.823);
+      --color-gradient: linear-gradient(
+        to bottom,
+        oklch(0.4 0.16 250.13) 0%,
+        oklch(0.25 0.19 300.22) 50%,
+        oklch(0.37 0.19 36.04) 100%
+      );
     }
   }
 }
