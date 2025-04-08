@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import Logo from '@/components/ui/Logo';
-import Navigation from '@/components/ui/Navigation';
-import AuthMenu from '@/components/auth/AuthMenu';
+import { NavLinks } from '@/components/ui/Navigation';
 import HeaderControls from '@/components/ui/HeaderControls';
 
 export default async function Header() {
@@ -22,11 +21,12 @@ export default async function Header() {
           <Logo size={35} title="amir.sh" />
         </Link>
         <div className="flex w-full max-w-screen-xl items-center justify-end space-x-4">
-          <nav aria-label="Main navigation">
-            <Navigation header />
+          <nav aria-label="Main navigation" className="hidden sm:block">
+            <div className="flex flex-row">
+              <NavLinks variant="header" />
+            </div>
           </nav>
           <HeaderControls />
-          <AuthMenu />
         </div>
       </div>
     </header>

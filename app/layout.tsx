@@ -13,6 +13,7 @@ import LightIcon from '@/public/images/favicon-light.png';
 import Header from '@/components/ui/Header';
 import Footer from '@/components/ui/Footer';
 import { AuthProvider } from '@/components/auth/AuthProvider';
+import MobileNavigation from '@/components/ui/MobileNavigation';
 
 const sans = Jura({
   subsets: ['latin'],
@@ -91,6 +92,7 @@ export default async function RootLayout({
             <main className="flex flex-1 flex-grow">{children}</main>
             <Footer />
           </div>
+          <MobileNavigation />
         </body>
       </html>
     </AuthProvider>

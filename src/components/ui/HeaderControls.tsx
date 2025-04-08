@@ -3,6 +3,7 @@
 import IconGithub from '@/components/icons/IconGithub';
 import Tooltip from '@/components/ui/Tooltip';
 import ThemeMenu from '@/components/ui/ThemeMenu';
+import AuthMenu from '@/components/auth/AuthMenu';
 
 export default function HeaderExternalLinks() {
   const handleClick = () => {
@@ -15,7 +16,7 @@ export default function HeaderExternalLinks() {
 
   return (
     <div
-      className="mt-1.5 flex items-center space-x-6"
+      className="mt-1.5 flex items-center space-x-6 pr-20 md:pr-0"
       role="group"
       aria-label="External links and site controls"
     >
@@ -25,6 +26,7 @@ export default function HeaderExternalLinks() {
         </button>
       </Tooltip>
       <ThemeMenu />
+      <AuthMenu />
     </div>
   );
 }

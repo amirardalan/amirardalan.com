@@ -1,4 +1,4 @@
-import Nav from '@/components/ui/Navigation';
+import { NavLinks } from '@/components/ui/Navigation';
 import Logo from '@/components/ui/Logo';
 
 export default function Footer() {
@@ -16,7 +16,7 @@ export default function Footer() {
       </div>
       <span aria-hidden="true">•</span>
       <nav className="ml-6" aria-label="Footer navigation">
-        <Nav />
+        <NavLinks variant="footer" />
       </nav>
     </footer>
   );
