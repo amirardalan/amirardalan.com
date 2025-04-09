@@ -2,6 +2,10 @@
 
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
+interface ToastProviderProps {
+  children: ReactNode;
+}
+
 type ToastType = 'success' | 'error' | 'warning' | 'info';
 
 interface Toast {
@@ -18,7 +22,7 @@ interface ToastContextType {
 
 const ToastContext = createContext<ToastContextType | undefined>(undefined);
 
-export function ToastProvider({ children }: { children: ReactNode }) {
+export function ToastProvider({ children }: ToastProviderProps) {
   const [toasts, setToasts] = useState<Toast[]>([]);
 
   const showToast = (message: string, type: ToastType = 'info') => {

@@ -1,10 +1,14 @@
 'use client';
 
 import { useEffect } from 'react';
-import { useLikesStore } from '@/src/store/likes';
-import LikeCount from './LikeCount';
+import { useLikesStore } from '@/store/likes';
+import LikeCount from '@/components/blog/LikeCount';
 
-export default function ClientLikeCount({ postId }: { postId: number }) {
+interface ClientLikeCountProps {
+  postId: number;
+}
+
+export default function ClientLikeCount({ postId }: ClientLikeCountProps) {
   const { likes, initialLoadingStates, error, fetchLikes } = useLikesStore();
 
   useEffect(() => {

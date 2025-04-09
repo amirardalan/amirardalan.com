@@ -11,17 +11,19 @@ import calculateReadTime from '@/utils/calculate-readtime';
 
 import { BlogPost } from '@/types/blog';
 
+interface ClientPaginationProps {
+  currentPage: number;
+  totalPages: number;
+  onPageChange: (page: number) => void;
+  className?: string;
+}
+
 function ClientPagination({
   currentPage,
   totalPages,
   onPageChange,
   className = '',
-}: {
-  currentPage: number;
-  totalPages: number;
-  onPageChange: (page: number) => void;
-  className?: string;
-}) {
+}: ClientPaginationProps) {
   if (totalPages <= 1) return null;
 
   return (

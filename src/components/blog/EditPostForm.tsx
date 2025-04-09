@@ -4,7 +4,7 @@ import { useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { updatePost, deletePost } from '@/services/post-service';
 import { useToast } from '@/components/ui/ToastContext';
-import { formatImage } from '@/src/utils/format-image';
+import { formatImage } from '@/utils/format-image';
 import { generateCsrfToken } from '@/lib/csrf';
 
 import PostFormFields from '@/components/blog/PostFormFields';

@@ -21,7 +21,7 @@ export default function LikeButton({
   showIcon = true,
   showCount = true,
 }: LikeButtonProps) {
-  const { updateLike, fetchLikes, likes } = useLikesStore();
+  const { updateLike, fetchLikes } = useLikesStore();
   const [isLiking, setIsLiking] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
   const [lastFetch, setLastFetch] = useState(0);

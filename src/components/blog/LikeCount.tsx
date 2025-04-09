@@ -1,12 +1,14 @@
 import clsx from 'clsx';
 
+interface LikeCountProps {
+  count: number;
+  isLoading?: boolean;
+}
+
 export default function LikeCount({
   count,
   isLoading = false,
-}: {
-  count: number;
-  isLoading?: boolean;
-}) {
+}: LikeCountProps) {
   const formatLikesCount = (count: number): string => {
     if (count >= 1000000) {
       return `${(count / 1000000).toFixed(count >= 10000000 ? 0 : 1)}M`;

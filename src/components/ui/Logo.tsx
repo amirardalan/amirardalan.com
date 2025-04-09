@@ -1,12 +1,12 @@
 'use client';
 import { useTheme } from '@/store/theme';
 
-type LogoProps = {
+interface LogoProps {
   size: number;
   inverted?: boolean;
   title?: string;
   focusable?: boolean;
-};
+}
 
 export default function Logo({
   size,

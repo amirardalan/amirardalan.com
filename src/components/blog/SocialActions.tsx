@@ -4,7 +4,11 @@ import LikeButton from '@/components/blog/LikeButton';
 import ShareOnXButton from '@/components/blog/ShareOnXButton';
 import Tooltip from '@/components/ui/Tooltip';
 
-export default function SocialActions({ postId }: { postId: number }) {
+interface SocialActionsProps {
+  postId: number;
+}
+
+export default function SocialActions({ postId }: SocialActionsProps) {
   return (
     <div className="flex items-center gap-4">
       <Tooltip text="Like post" pos="b">

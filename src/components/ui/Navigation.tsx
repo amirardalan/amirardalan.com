@@ -4,9 +4,12 @@ import { useActiveLink } from '@/hooks/useActiveLink';
 import Link from 'next/link';
 import clsx from 'clsx';
 
+interface NavigationProps {
+  header?: boolean;
+}
 type NavVariant = 'header' | 'footer' | 'mobile';
 
-export default function Navigation({ header = false }: { header?: boolean }) {
+export default function Navigation({ header = false }: NavigationProps) {
   return (
     <nav className="hidden text-light sm:flex sm:items-center">
       <div className={clsx('flex flex-row items-center')}>

@@ -6,7 +6,11 @@ import LikeCount from '@/components/blog/LikeCount';
 import ShareOnXButton from '@/components/blog/ShareOnXButton';
 import Tooltip from '@/components/ui/Tooltip';
 
-export default function BlogSupport({ postId }: { postId: number }) {
+interface BlogSupportProps {
+  postId: number;
+}
+
+export default function BlogSupport({ postId }: BlogSupportProps) {
   const { likes, initialLoadingStates } = useLikesStore();
   const count = likes[postId] || 0;
   const isLoading = initialLoadingStates[postId] !== false;

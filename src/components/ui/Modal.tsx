@@ -25,7 +25,7 @@ export default function Modal({
   confirmDisabled = false,
   children,
   buttons = 'both',
-  leftButton, // New prop
+  leftButton,
 }: ModalProps) {
   if (!isOpen) return null;
 

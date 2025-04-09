@@ -1,10 +1,12 @@
 import IconX from '@/components/icons/IconX';
 
+interface ShareOnXButtonProps {
+  showText?: boolean;
+}
+
 export default function ShareOnXButton({
   showText = true,
-}: {
-  showText?: boolean;
-}) {
+}: ShareOnXButtonProps) {
   const handleShare = () => {
     const url = window.location.href;
     const shareUrl = `https://x.com/intent/tweet?url=${encodeURIComponent(url)}`;

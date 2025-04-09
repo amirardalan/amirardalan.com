@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import { NavLinks } from '@/components/ui/Navigation';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
 import IconMobileNav from '@/components/icons/IconMobileNav';
-import HeaderControls from '@/components/ui/HeaderControls';
 import AuthMenu from '@/components/auth/AuthMenu';
 
 export default function MobileNavigation() {

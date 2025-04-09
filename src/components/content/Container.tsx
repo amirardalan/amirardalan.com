@@ -1,6 +1,8 @@
-export default function Container({
-  children,
-}: Readonly<{ children: React.ReactNode }>) {
+interface ContainerProps {
+  children: React.ReactNode;
+}
+
+export default function Container({ children }: ContainerProps) {
   // This component is used to wrap the main content of a page
   // It is currently used on every page other than the homepage
   return (
