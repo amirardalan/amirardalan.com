@@ -35,7 +35,7 @@ const getNavLinkStyles = (
         isActive,
     }),
     mobile: clsx({
-      'block w-full text-md font-medium mt-8': true,
+      'block w-full text-md font-medium mt-6': true,
       'text-dark dark:text-light': !isActive,
       'text-primary border-none': isActive,
     }),
