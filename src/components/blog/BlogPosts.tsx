@@ -139,10 +139,10 @@ export default function BlogPosts({ posts }: { posts: BlogPost[] }) {
           {paginatedPosts.map((post) => (
             <li
               key={post.id}
-              className="mb-10 flex w-full justify-between text-xl last:mb-0"
+              className="lg:hover:before:animate-cursor-blink relative mb-10 flex w-full justify-between text-xl last:mb-0 lg:hover:before:absolute lg:hover:before:-left-4 lg:hover:before:top-[6px] lg:hover:before:h-4 lg:hover:before:w-2 lg:hover:before:rounded-sm lg:hover:before:bg-primary lg:hover:before:content-['']"
             >
               <a className="w-full" href={`/blog/${post.slug}`}>
-                <h2 className="pr-12 hover:text-primary">{post.title}</h2>
+                <h2 className="relative pr-12">{post.title}</h2>
                 <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">
                   {post.excerpt}
                 </p>
