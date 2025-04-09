@@ -183,9 +183,9 @@ export default async function BlogPost({
                   {adjacentPosts.previous && (
                     <Link
                       href={`/blog/${adjacentPosts.previous.slug}`}
-                      className="group flex items-start space-x-1 hover:text-primary"
+                      className="group flex items-center space-x-1 hover:text-primary"
                     >
-                      <span aria-hidden="true" className="mt-1 flex-shrink-0">
+                      <span aria-hidden="true" className="flex-shrink-0">
                         &larr;
                       </span>
                       <span
@@ -202,7 +202,7 @@ export default async function BlogPost({
                   {adjacentPosts.next && (
                     <Link
                       href={`/blog/${adjacentPosts.next.slug}`}
-                      className="group flex items-start justify-end space-x-1 hover:text-primary"
+                      className="group flex items-center justify-end space-x-1 hover:text-primary"
                     >
                       <span
                         className="break-words text-right"
@@ -210,7 +210,7 @@ export default async function BlogPost({
                       >
                         {adjacentPosts.next.title}
                       </span>
-                      <span aria-hidden="true" className="mt-1 flex-shrink-0">
+                      <span aria-hidden="true" className="flex-shrink-0">
                         &rarr;
                       </span>
                     </Link>
