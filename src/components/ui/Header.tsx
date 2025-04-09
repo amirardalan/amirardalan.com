@@ -12,7 +12,7 @@ export default function Header() {
 
   return (
     <header
-      className="animate-fade-in-top fixed top-0 z-20 w-full bg-zinc-50/70 px-6 py-4 backdrop-blur-lg lg:px-10 lg:py-8 dark:bg-zinc-950/70"
+      className="animate-fade-in-top fixed top-0 z-30 w-full bg-zinc-50/70 px-6 py-4 backdrop-blur-lg lg:px-10 lg:py-8 dark:bg-zinc-950/70"
       role="banner"
     >
       <a

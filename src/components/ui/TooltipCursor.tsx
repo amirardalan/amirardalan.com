@@ -162,7 +162,7 @@ export default function TooltipCursor({ text, children }: TooltipProps) {
       {!(mousePosition.x === 0 && mousePosition.y === 0) && ( // Prevent rendering at (0, 0)
         <div
           ref={tooltipRef}
-          className={`absolute z-30 whitespace-nowrap rounded bg-zinc-800 px-2 py-1 text-xxs uppercase text-white shadow-md ${
+          className={`absolute z-30 hidden whitespace-nowrap rounded bg-zinc-800 px-2 py-1 text-xxs uppercase text-white shadow-md lg:block ${
             isHovered
               ? 'pointer-events-auto opacity-100'
               : 'pointer-events-none opacity-0'

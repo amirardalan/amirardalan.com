@@ -45,7 +45,7 @@ export default function MobileNavigation() {
     <>
       <IconMobileNav isOpen={false} onClick={() => setIsOpen(true)} />
       <div
-        className={`fixed inset-0 z-20 cursor-pointer transition-opacity ${
+        className={`fixed inset-0 z-30 cursor-pointer transition-opacity ${
           isOpen ? 'bg-gradient opacity-70' : 'pointer-events-none opacity-0'
         }`}
         onClick={() => setIsOpen(false)}
