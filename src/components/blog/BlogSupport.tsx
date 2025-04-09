@@ -21,7 +21,7 @@ export default function BlogSupport({ postId }: { postId: number }) {
         </div>
 
         <div className="flex items-center">
-          <div className="mr-3 flex w-24 items-center text-center lg:mr-6">
+          <div className="mr-3 flex w-24 items-center text-center text-xs uppercase lg:mr-6">
             <Tooltip text="Like post" pos="l">
               <LikeButton postId={postId} showIcon={true}>
                 <LikeCount count={count} isLoading={isLoading} />

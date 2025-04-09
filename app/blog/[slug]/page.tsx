@@ -14,8 +14,9 @@ import Container from '@/components/content/Container';
 import Link from 'next/link';
 
 import { formatDate } from '@/utils/format-date';
-import ClientLikeCount from '@/components/blog/ClientLikeCount';
+import ClientLikeCount from '@/src/components/blog/ClientLikeCount';
 import BlogSupport from '@/components/blog/BlogSupport';
+import calculateReadTime from '@/utils/calculate-readtime';
 
 export const revalidate = false;
 export const dynamicParams = true;
@@ -127,19 +128,37 @@ export default async function BlogPost({
           )}
         </div>
 
-        <p className="text-xxs uppercase text-primary">
-          <Link
-            href={`/blog?category=${encodeURIComponent(post.category ?? 'uncategorized')}`}
-          >
-            #{post.category ?? 'uncategorized'}
-          </Link>
-        </p>
-        <div
-          className="mt-2 flex items-center leading-none"
-          aria-label="Post metadata"
+        <div className="flex items-center justify-between">
+          <span className="flex flex-row text-xxs uppercase">
+            <p className="pr-2 text-xxs uppercase text-primary">
+              <Link
+                href={`/blog?category=${encodeURIComponent(post.category ?? 'uncategorized')}`}
+              >
+                #{post.category ?? 'uncategorized'}
+              </Link>
+            </p>
+            <span className="mr-2 text-zinc-500 dark:text-zinc-400">•</span>
+            <p className="whitespace-nowrap text-zinc-500 dark:text-zinc-400">
+              {calculateReadTime(post.content)}
+            </p>
+          </span>
+          <span className="mx-4 w-full border-t-[1px] border-zinc-300 dark:border-zinc-700"></span>
+          <span className="whitespace-nowrap text-xxs uppercase">
+            <ClientLikeCount postId={post.id} />
+          </span>
+        </div>
+        <h1 className="mt-8 text-3xl lg:text-4xl" id="post-title">
+          {post.title}
+        </h1>
+        <h2
+          className="mt-1 font-serif text-xl italic text-zinc-500 dark:text-zinc-400"
+          id="post-excerpt"
         >
+          {post.excerpt ?? ''}
+        </h2>
+        <div className="mt-8 flex items-center text-sm text-zinc-500 dark:text-zinc-400">
           <time
-            className="mr-2 text-xs leading-none text-zinc-500 dark:text-zinc-400"
+            className="text-xs leading-none text-zinc-500 dark:text-zinc-400"
             title={formatDate(post.created_at)}
             aria-label={`Posted on ${formatDate(post.created_at)}`}
           >
@@ -147,22 +166,9 @@ export default async function BlogPost({
               ? `Updated: ${formatDate(post.updated_at)}`
               : formatDate(post.created_at)}
           </time>
-          <div className="mr-2 text-xs leading-none" aria-hidden="true">
+          <div className="mx-2 text-sm leading-none" aria-hidden="true">
             •
           </div>
-          <ClientLikeCount postId={post.id} />
-        </div>
-        <h1 className="mt-8 text-3xl" id="post-title">
-          {post.title}
-        </h1>
-        <h2
-          className="mt-1 text-xl text-zinc-500 dark:text-zinc-400"
-          id="post-excerpt"
-        >
-          {post.excerpt ?? ''}
-        </h2>
-        <div className="text-md mt-8 text-zinc-500 dark:text-zinc-400">
-          By{' '}
           <span aria-label={`Author: ${post.author_name || 'Anonymous'}`}>
             {post.author_name || 'Anonymous'}
           </span>
