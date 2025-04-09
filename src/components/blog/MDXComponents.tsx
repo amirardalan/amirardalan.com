@@ -36,7 +36,7 @@ export const components = {
     return (
       <a
         href={`#${slug}`}
-        className="group relative mb-4 mt-8 block scroll-mt-24 text-2xl text-dark dark:text-light"
+        className="group relative mb-4 mt-8 block scroll-mt-24 text-2xl leading-tight text-dark outline-none lg:leading-normal dark:text-light"
         id={slug}
         aria-label={`Link to ${children}`}
       >

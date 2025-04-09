@@ -178,16 +178,18 @@ export default async function BlogPost({
           post.published &&
           (adjacentPosts.previous || adjacentPosts.next) && (
             <nav className="mt-10 border-t border-zinc-300 pt-6 dark:border-zinc-700">
-              <div className="mb-4 flex justify-between">
-                <div>
+              <div className="mb-4 grid grid-cols-2 gap-4">
+                <div className="col-span-1">
                   {adjacentPosts.previous && (
                     <Link
                       href={`/blog/${adjacentPosts.previous.slug}`}
-                      className="group flex items-center space-x-2 hover:text-primary"
+                      className="group flex items-start space-x-1 hover:text-primary"
                     >
-                      <span aria-hidden="true">&larr;</span>
+                      <span aria-hidden="true" className="mt-1 flex-shrink-0">
+                        &larr;
+                      </span>
                       <span
-                        className="max-w-[15rem] truncate"
+                        className="break-words"
                         title={adjacentPosts.previous.title}
                       >
                         {adjacentPosts.previous.title}
@@ -196,19 +198,21 @@ export default async function BlogPost({
                   )}
                 </div>
 
-                <div>
+                <div className="col-span-1 text-right">
                   {adjacentPosts.next && (
                     <Link
                       href={`/blog/${adjacentPosts.next.slug}`}
-                      className="group flex items-center space-x-2 text-right hover:text-primary"
+                      className="group flex items-start justify-end space-x-1 hover:text-primary"
                     >
                       <span
-                        className="max-w-[15rem] truncate"
+                        className="break-words text-right"
                         title={adjacentPosts.next.title}
                       >
                         {adjacentPosts.next.title}
                       </span>
-                      <span aria-hidden="true">&rarr;</span>
+                      <span aria-hidden="true" className="mt-1 flex-shrink-0">
+                        &rarr;
+                      </span>
                     </Link>
                   )}
                 </div>
