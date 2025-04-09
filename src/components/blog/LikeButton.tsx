@@ -9,6 +9,7 @@ interface LikeButtonProps {
   postId: number;
   children?: ReactNode;
   showIcon?: boolean;
+  showCount?: boolean;
 }
 
 // Added debounce time to prevent multiple fetches
@@ -18,6 +19,7 @@ export default function LikeButton({
   postId,
   children,
   showIcon = true,
+  showCount = true,
 }: LikeButtonProps) {
   const { updateLike, fetchLikes, likes } = useLikesStore();
   const [isLiking, setIsLiking] = useState(false);
@@ -76,7 +78,7 @@ export default function LikeButton({
         aria-label={isLiked ? 'Unlike post' : 'Like post'}
       >
         {showIcon && <IconLike active={isLiked} />}
-        {children}
+        {showCount && children}
       </button>
     );
   }

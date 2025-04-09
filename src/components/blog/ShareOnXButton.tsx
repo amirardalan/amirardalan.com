@@ -1,6 +1,10 @@
 import IconX from '@/components/icons/IconX';
 
-export default function ShareOnXButton() {
+export default function ShareOnXButton({
+  showText = true,
+}: {
+  showText?: boolean;
+}) {
   const handleShare = () => {
     const url = window.location.href;
     const shareUrl = `https://x.com/intent/tweet?url=${encodeURIComponent(url)}`;
@@ -14,7 +18,7 @@ export default function ShareOnXButton() {
       aria-label="Share on X"
     >
       <IconX size={20} aria-hidden="true" />
-      <span className="ml-2 text-xs">Share on X</span>
+      {showText && <span className="ml-2 text-xs">Share on X</span>}
     </button>
   );
 }

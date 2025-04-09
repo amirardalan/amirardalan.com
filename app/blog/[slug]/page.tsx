@@ -16,6 +16,7 @@ import Link from 'next/link';
 import { formatDate } from '@/utils/format-date';
 import ClientLikeCount from '@/src/components/blog/ClientLikeCount';
 import BlogSupport from '@/components/blog/BlogSupport';
+import SocialActions from '@/src/components/blog/SocialActions';
 import calculateReadTime from '@/utils/calculate-readtime';
 
 export const revalidate = false;
@@ -156,21 +157,26 @@ export default async function BlogPost({
         >
           {post.excerpt ?? ''}
         </h2>
-        <div className="mt-8 flex items-center text-sm text-zinc-500 dark:text-zinc-400">
-          <time
-            className="text-xs leading-none text-zinc-500 dark:text-zinc-400"
-            title={formatDate(post.created_at)}
-            aria-label={`Posted on ${formatDate(post.created_at)}`}
-          >
-            {post.show_updated
-              ? `Updated: ${formatDate(post.updated_at)}`
-              : formatDate(post.created_at)}
-          </time>
-          <div className="mx-2 text-sm leading-none" aria-hidden="true">
-            •
+        <div className="mt-8 flex w-full items-center justify-between text-sm text-zinc-500 dark:text-zinc-400">
+          <div className="flex items-center">
+            <time
+              className="text-xs text-zinc-500 dark:text-zinc-400"
+              title={formatDate(post.created_at)}
+              aria-label={`Posted on ${formatDate(post.created_at)}`}
+            >
+              {post.show_updated
+                ? `Updated: ${formatDate(post.updated_at)}`
+                : formatDate(post.created_at)}
+            </time>
+            <div className="mx-2 text-sm" aria-hidden="true">
+              •
+            </div>
+            <span aria-label={`Author: ${post.author_name || 'Anonymous'}`}>
+              {post.author_name || 'Anonymous'}
+            </span>
           </div>
-          <span aria-label={`Author: ${post.author_name || 'Anonymous'}`}>
-            {post.author_name || 'Anonymous'}
+          <span className="flex justify-end">
+            <SocialActions postId={post.id} />
           </span>
         </div>
         <div
