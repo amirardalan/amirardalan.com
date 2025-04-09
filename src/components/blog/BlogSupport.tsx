@@ -12,16 +12,16 @@ export default function BlogSupport({ postId }: { postId: number }) {
   const isLoading = initialLoadingStates[postId] !== false;
 
   return (
-    <div className="mb-8 mt-16 flex w-full items-center gap-2 rounded-xl border-[1px] border-zinc-300 p-8 dark:border-zinc-700">
-      <div className="flex w-full flex-row items-center justify-between">
+    <div className="mb-8 mt-16 flex w-full items-center gap-2 rounded-xl border-[1px] border-zinc-300 p-5 sm:p-8 dark:border-zinc-700">
+      <div className="flex w-full flex-col items-center justify-between sm:flex-row">
         <div className="flex items-center">
-          <p className="text-lg text-zinc-500 dark:text-zinc-400">
+          <p className="mb-4 text-sm text-zinc-500 sm:mb-0 sm:text-lg dark:text-zinc-400">
             Enjoy this post? Like and share!
           </p>
         </div>
 
         <div className="flex items-center">
-          <div className="mr-6 flex w-24 items-center text-center">
+          <div className="mr-3 flex w-24 items-center text-center lg:mr-6">
             <Tooltip text="Like post" pos="l">
               <LikeButton postId={postId} showIcon={true}>
                 <LikeCount count={count} isLoading={isLoading} />

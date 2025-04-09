@@ -14,7 +14,7 @@ export default function ShareOnXButton() {
       aria-label="Share on X"
     >
       <IconX size={20} aria-hidden="true" />
-      <span className="ml-2 text-xs uppercase">Share on X</span>
+      <span className="ml-2 text-xs">Share on X</span>
     </button>
   );
 }
