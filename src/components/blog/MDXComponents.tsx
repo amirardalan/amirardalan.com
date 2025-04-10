@@ -3,6 +3,7 @@ import { highlight } from 'sugar-high';
 import Link from 'next/link';
 import Image from 'next/image';
 import { generateSlug } from '@/utils/generate-slug';
+import CopyButton from '@/components/icons/IconCopy';
 
 type HeadingProps = ComponentPropsWithoutRef<'h1'>;
 type ParagraphProps = ComponentPropsWithoutRef<'p'>;
@@ -168,14 +169,29 @@ export const components = {
       />
     );
   },
-  pre: ({ children, ...props }: ComponentPropsWithoutRef<'pre'>) => (
-    <pre
-      className="overflow-y-none line-highlight-enabled my-8 overflow-x-auto rounded-lg bg-zinc-100 p-4 font-mono text-sm scrollbar scrollbar-track-zinc-600 scrollbar-thumb-zinc-500 dark:bg-zinc-900"
-      {...props}
-    >
-      {children}
-    </pre>
-  ),
+  pre: ({ children, ...props }: ComponentPropsWithoutRef<'pre'>) => {
+    let codeText: string | null = null;
+
+    // Get the code for copying to clipboard
+    if (children && typeof children === 'object' && 'props' in children) {
+      const childrenObj = children as { props: Record<string, unknown> };
+      if (childrenObj.props && typeof childrenObj.props.children === 'string') {
+        codeText = childrenObj.props.children;
+      }
+    }
+
+    return (
+      <div className="relative">
+        <pre
+          className="overflow-y-none line-highlight-enabled my-8 overflow-x-auto rounded-lg bg-zinc-100 p-4 font-mono text-sm scrollbar scrollbar-track-zinc-600 scrollbar-thumb-zinc-500 dark:bg-zinc-900"
+          {...props}
+        >
+          {children}
+        </pre>
+        {codeText && <CopyButton text={codeText} />}
+      </div>
+    );
+  },
   Table: ({ data }: { data: { headers: string[]; rows: string[][] } }) => (
     <table>
       <thead>
