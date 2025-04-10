@@ -133,13 +133,14 @@ export const components = {
     const linesToHighlight = new Set<number>();
     if (highlightLines) {
       highlightLines.split(',').forEach((range) => {
-        if (range.includes('-')) {
-          const [start, end] = range.split('-').map(Number);
+        const trimmedRange = range.trim();
+        if (trimmedRange.includes('-')) {
+          const [start, end] = trimmedRange.split('-').map(Number);
           for (let i = start; i <= end; i++) {
             linesToHighlight.add(i);
           }
         } else {
-          linesToHighlight.add(Number(range));
+          linesToHighlight.add(Number(trimmedRange));
         }
       });
     }
