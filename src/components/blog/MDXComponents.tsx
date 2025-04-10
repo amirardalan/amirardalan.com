@@ -3,6 +3,7 @@ import { highlight } from 'sugar-high';
 import Link from 'next/link';
 import Image from 'next/image';
 import { generateSlug } from '@/utils/generate-slug';
+import CopyButton from '@/components/icons/IconCopy';
 
 type HeadingProps = ComponentPropsWithoutRef<'h1'>;
 type ParagraphProps = ComponentPropsWithoutRef<'p'>;
@@ -168,14 +169,45 @@ export const components = {
       />
     );
   },
-  pre: ({ children, ...props }: ComponentPropsWithoutRef<'pre'>) => (
-    <pre
-      className="overflow-y-none line-highlight-enabled my-8 overflow-x-auto rounded-lg bg-zinc-100 p-4 font-mono text-sm scrollbar scrollbar-track-zinc-600 scrollbar-thumb-zinc-500 dark:bg-zinc-900"
-      {...props}
-    >
-      {children}
-    </pre>
-  ),
+  pre: ({ children, ...props }: ComponentPropsWithoutRef<'pre'>) => {
+    let codeText: string | null = null;
+    let language: string | null = null;
+
+    // Get the code for copying to clipboard and extract language
+    if (children && typeof children === 'object' && 'props' in children) {
+      const childrenObj = children as { props: Record<string, unknown> };
+      if (childrenObj.props && typeof childrenObj.props.children === 'string') {
+        codeText = childrenObj.props.children;
+      }
+
+      // Extract language from className
+      if (childrenObj.props.className) {
+        const match = (childrenObj.props.className as string).match(
+          /language-([^{\s]+)/
+        );
+        if (match && match[1]) {
+          language = match[1];
+        }
+      }
+    }
+
+    return (
+      <div className="relative">
+        <pre
+          className="overflow-y-none line-highlight-enabled my-8 overflow-x-auto rounded-lg bg-zinc-100 p-4 font-mono text-sm scrollbar scrollbar-track-zinc-600 scrollbar-thumb-zinc-500 dark:bg-zinc-900"
+          {...props}
+        >
+          {children}
+        </pre>
+        {codeText && <CopyButton text={codeText} />}
+        {language && (
+          <span className="absolute bottom-2 right-2 rounded px-1.5 py-0.5 text-xxs text-zinc-500 dark:text-zinc-400">
+            {language}
+          </span>
+        )}
+      </div>
+    );
+  },
   Table: ({ data }: { data: { headers: string[]; rows: string[][] } }) => (
     <table>
       <thead>
