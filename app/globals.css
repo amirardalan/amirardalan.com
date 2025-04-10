@@ -99,6 +99,17 @@
       border-left: 2px solid var(--color-primary);
     }
   }
+
+  /* Safari line highlight horizontal scroll fix */
+  pre > code {
+    transform: translateZ(0);
+    min-width: 100%;
+    float: left;
+  }
+
+  pre > code > div {
+    display: block;
+  }
 }
 
 @layer utilities {
