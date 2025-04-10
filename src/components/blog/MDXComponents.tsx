@@ -171,12 +171,23 @@ export const components = {
   },
   pre: ({ children, ...props }: ComponentPropsWithoutRef<'pre'>) => {
     let codeText: string | null = null;
+    let language: string | null = null;
 
-    // Get the code for copying to clipboard
+    // Get the code for copying to clipboard and extract language
     if (children && typeof children === 'object' && 'props' in children) {
       const childrenObj = children as { props: Record<string, unknown> };
       if (childrenObj.props && typeof childrenObj.props.children === 'string') {
         codeText = childrenObj.props.children;
+      }
+
+      // Extract language from className
+      if (childrenObj.props.className) {
+        const match = (childrenObj.props.className as string).match(
+          /language-([^{\s]+)/
+        );
+        if (match && match[1]) {
+          language = match[1];
+        }
       }
     }
 
@@ -189,6 +200,11 @@ export const components = {
           {children}
         </pre>
         {codeText && <CopyButton text={codeText} />}
+        {language && (
+          <span className="absolute bottom-2 right-2 rounded px-1.5 py-0.5 text-xxs text-zinc-500 dark:text-zinc-400">
+            {language}
+          </span>
+        )}
       </div>
     );
   },
