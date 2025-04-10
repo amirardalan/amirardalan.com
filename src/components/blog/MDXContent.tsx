@@ -11,5 +11,9 @@ interface MDXContentProps {
 export default function MDXContent({ children }: MDXContentProps) {
   const components = useMDXComponents();
 
-  return <MDXProvider components={components}>{children}</MDXProvider>;
+  return (
+    <div className="mdx-content">
+      <MDXProvider components={components}>{children}</MDXProvider>
+    </div>
+  );
 }

@@ -124,7 +124,42 @@ export const components = {
         </code>
       );
     }
-    const codeHTML = highlight(children as string);
+
+    const className = props.className || '';
+    const match = className.match(/language-([^{\s]+)(?:\s*{(.+)})?/);
+    const highlightLines = match?.[2] || '';
+
+    // Parse the highlight line numbers
+    const linesToHighlight = new Set<number>();
+    if (highlightLines) {
+      highlightLines.split(',').forEach((range) => {
+        const trimmedRange = range.trim();
+        if (trimmedRange.includes('-')) {
+          const [start, end] = trimmedRange.split('-').map(Number);
+          for (let i = start; i <= end; i++) {
+            linesToHighlight.add(i);
+          }
+        } else {
+          linesToHighlight.add(Number(trimmedRange));
+        }
+      });
+    }
+
+    let codeHTML = highlight(children as string);
+
+    if (linesToHighlight.size > 0) {
+      const lines = codeHTML.split('\n');
+      codeHTML = lines
+        .map((line, i) => {
+          const lineNumber = i + 1;
+          const shouldHighlight = linesToHighlight.has(lineNumber);
+          return shouldHighlight
+            ? `<div class="highlight-line">${line}</div>`
+            : `<div>${line}</div>`;
+        })
+        .join('');
+    }
+
     return (
       <code
         dangerouslySetInnerHTML={{ __html: codeHTML }}
@@ -135,7 +170,7 @@ export const components = {
   },
   pre: ({ children, ...props }: ComponentPropsWithoutRef<'pre'>) => (
     <pre
-      className="overflow-y-none my-8 overflow-x-auto rounded-lg bg-zinc-100 p-4 font-mono text-sm scrollbar scrollbar-track-zinc-600 scrollbar-thumb-zinc-500 dark:bg-zinc-900"
+      className="overflow-y-none line-highlight-enabled my-8 overflow-x-auto rounded-lg bg-zinc-100 p-4 font-mono text-sm scrollbar scrollbar-track-zinc-600 scrollbar-thumb-zinc-500 dark:bg-zinc-900"
       {...props}
     >
       {children}
