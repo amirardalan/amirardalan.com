@@ -190,12 +190,12 @@ export default async function BlogPost({
           post.published &&
           (adjacentPosts.previous || adjacentPosts.next) && (
             <nav className="mt-10 border-t border-zinc-300 pt-6 dark:border-zinc-700">
-              <div className="mb-4 grid grid-cols-2 gap-4">
-                <div className="col-span-1">
+              <div className="mb-4 grid grid-cols-2 gap-6">
+                <div className="col-span-1 text-xxs lg:text-sm">
                   {adjacentPosts.previous && (
                     <Link
                       href={`/blog/${adjacentPosts.previous.slug}`}
-                      className="group flex items-center space-x-1 hover:text-primary"
+                      className="group flex items-center space-x-1 md:hover:text-primary"
                     >
                       <span aria-hidden="true" className="flex-shrink-0">
                         &larr;
@@ -210,11 +210,11 @@ export default async function BlogPost({
                   )}
                 </div>
 
-                <div className="col-span-1 text-right">
+                <div className="col-span-1 text-right text-xxs lg:text-sm">
                   {adjacentPosts.next && (
                     <Link
                       href={`/blog/${adjacentPosts.next.slug}`}
-                      className="group flex items-center justify-end space-x-1 hover:text-primary"
+                      className="group flex items-center justify-end space-x-1 md:hover:text-primary"
                     >
                       <span
                         className="break-words text-right"
