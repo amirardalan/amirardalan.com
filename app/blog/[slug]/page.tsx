@@ -111,7 +111,7 @@ export default async function BlogPost({
   return (
     <Container>
       <article className="mt-24 text-dark dark:text-light">
-        <div className="mb-4 flex items-center justify-between">
+        <div className="mb-8 flex items-center justify-between">
           {session?.user && (
             <div className="text-right">
               <Link
