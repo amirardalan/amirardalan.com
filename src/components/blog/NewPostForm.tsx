@@ -6,6 +6,7 @@ import { createPost } from '@/services/post-service';
 import { useToast } from '@/components/ui/ToastContext';
 import { formatImage } from '@/utils/format-image';
 import { generateCsrfToken } from '@/lib/csrf';
+import { useImageInsertion } from '@/hooks/useImageInsertion';
 
 import PostFormFields from '@/components/blog/PostFormFields';
 import Button from '@/components/ui/Button';
@@ -52,23 +53,6 @@ export default function NewPostForm({ userId }: NewPostFormProps) {
   const handleFormChange = useCallback(() => {
     setHasUnsavedChanges(true);
   }, []);
-
-  // Track textarea selection/cursor position for inserting images
-  const textareaRef = useRef<HTMLTextAreaElement>(null!);
-  const [cursorPosition, setCursorPosition] = useState<
-    { start: number; end: number } | undefined
-  >(undefined);
-
-  const handleTextAreaSelect = useCallback(
-    (e: React.SyntheticEvent<HTMLTextAreaElement>) => {
-      const target = e.target as HTMLTextAreaElement;
-      setCursorPosition({
-        start: target.selectionStart,
-        end: target.selectionEnd,
-      });
-    },
-    []
-  );
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -118,36 +102,13 @@ export default function NewPostForm({ userId }: NewPostFormProps) {
     clearForm();
   }, [clearForm]);
 
-  // Insert image at cursor position
-  const insertImageAtCursor = useCallback(
-    (url: string, position?: { start: number; end: number }) => {
-      const imageCode = formatImage(url);
-
-      if (position && position.start >= 0) {
-        const newContent =
-          content.substring(0, position.start) +
-          imageCode +
-          content.substring(position.end);
-
-        setContent(newContent);
-
-        // Set cursor after the inserted image code
-        setTimeout(() => {
-          if (textareaRef.current) {
-            const newPosition = position.start + imageCode.length;
-            textareaRef.current.focus();
-            textareaRef.current.setSelectionRange(newPosition, newPosition);
-          }
-        }, 0);
-      } else {
-        // Fallback to appending at the end
-        setContent(`${content}\n${imageCode}`);
-      }
-
-      setShowGallery(false);
-    },
-    [content, setContent]
-  );
+  // Use custom hook for image insertion
+  const {
+    textareaRef,
+    cursorPosition,
+    handleTextAreaSelect,
+    insertImageAtCursor,
+  } = useImageInsertion(content, setContent, () => setShowGallery(false));
 
   return (
     <>
