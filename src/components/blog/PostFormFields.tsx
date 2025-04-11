@@ -63,63 +63,67 @@ export default function PostFormFields({
   return (
     <>
       <div>
-        <label htmlFor="title" className="block text-xs">
+        <label htmlFor="title" className="hidden text-xs">
           Title
         </label>
         <input
           type="text"
           id="title"
+          placeholder="Title"
           value={title}
           onChange={handleTitleChange}
           required
-          className="mt-1 block w-full rounded-md border border-zinc-300 bg-zinc-100 px-3 py-2 text-zinc-950 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary dark:border-zinc-500 dark:bg-zinc-800 dark:text-light"
+          className="block w-full bg-zinc-100 px-10 pb-2 pt-4 text-zinc-950 focus:outline-none dark:bg-zinc-800 dark:text-light"
         />
       </div>
 
       <div>
-        <label htmlFor="slug" className="block text-xs">
+        <label htmlFor="slug" className="hidden text-xs">
           Slug
         </label>
         <input
           type="text"
           id="slug"
+          placeholder="Slug"
           value={slug}
           onChange={(e) => setSlug(e.target.value)}
           required
-          className="mt-1 block w-full rounded-md border border-zinc-300 bg-zinc-100 px-3 py-2 text-zinc-950 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary dark:border-zinc-500 dark:bg-zinc-800 dark:text-light"
+          className="block w-full bg-zinc-100 px-10 py-2 text-zinc-950 focus:outline-none dark:bg-zinc-800 dark:text-light"
         />
       </div>
 
       <div>
-        <label htmlFor="excerpt" className="block text-xs">
+        <label htmlFor="excerpt" className="hidden text-xs">
           Excerpt
         </label>
         <input
           type="text"
           id="excerpt"
           value={excerpt}
+          placeholder="Excerpt"
           onChange={(e) => setExcerpt(e.target.value)}
           required
-          className="mt-1 block w-full rounded-md border border-zinc-300 bg-zinc-100 px-3 py-2 text-zinc-950 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary dark:border-zinc-500 dark:bg-zinc-800 dark:text-light"
+          className="block w-full border-b-[1px] border-zinc-300 bg-zinc-100 px-10 pb-4 pt-2 text-zinc-950 focus:outline-none dark:border-zinc-700 dark:bg-zinc-800 dark:text-light"
         />
       </div>
 
       <div>
-        <label htmlFor="content" className="block text-xs">
-          Content (Markdown)
+        <label htmlFor="content" className="hidden text-xs">
+          Content (MDX)
         </label>
         <textarea
           id="content"
           value={content}
+          placeholder="Content (MDX)"
           onChange={(e) => setContent(e.target.value)}
           required
           rows={15}
-          className="mt-1 block w-full rounded-md border border-zinc-300 bg-zinc-100 px-3 py-2 text-zinc-950 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary dark:border-zinc-500 dark:bg-zinc-800 dark:text-light"
+          className="block w-full bg-zinc-100 px-10 pb-2 pt-4 text-zinc-950 focus:outline-none dark:bg-zinc-800 dark:text-light"
         />
       </div>
 
       <div className="flex flex-row items-center">
-        <div className="mr-6 flex items-center text-xxs">
+        <div className="mx-10 flex items-center py-4 text-xxs">
           <label htmlFor="category" className="mr-2">
             Category:
           </label>
@@ -160,7 +164,7 @@ export default function PostFormFields({
                 id="show_updated"
                 checked={showUpdated}
                 onChange={(e) => setShowUpdated?.(e.target.checked)}
-                className="h-4 w-4 cursor-pointer rounded-md border-zinc-300 text-zinc-400 focus:ring-zinc-400"
+                className="h-4 w-4 cursor-pointer border-zinc-300 text-zinc-400 focus:ring-zinc-400"
               />
               <label htmlFor="show_updated" className="ml-2 block text-xs">
                 Show Updated Date
@@ -173,7 +177,7 @@ export default function PostFormFields({
               id="published"
               checked={published}
               onChange={(e) => setPublished(e.target.checked)}
-              className="zinc-400 h-4 w-4 cursor-pointer rounded-md border-zinc-300 focus:ring-zinc-400"
+              className="zinc-400 h-4 w-4 cursor-pointer border-zinc-300 focus:ring-zinc-400"
             />
             <label htmlFor="published" className="ml-2 block text-xs">
               Publish

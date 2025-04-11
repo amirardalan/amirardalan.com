@@ -22,7 +22,7 @@ export default function PostFormControls({
   onDeleteText,
 }: PostFormControlsProps) {
   return (
-    <div className="flex justify-end space-x-2">
+    <div className="flex justify-end space-x-2 pr-10">
       {showDelete && onDelete && onDeleteText && (
         <Button
           type="button"

@@ -127,7 +127,7 @@ export default function EditPostForm({ post }: EditPostFormProps) {
       <form
         onSubmit={handleSubmit}
         onChange={handleFormChange}
-        className="space-y-6 text-dark dark:text-light"
+        className="font-mono text-dark dark:text-light"
       >
         {error && (
           <div className="rounded-md bg-red-50 p-4 text-red-700 dark:bg-red-900 dark:text-red-100">
