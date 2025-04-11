@@ -134,8 +134,8 @@ export default function PostFormFields({
           id="content"
           placeholder={content ? '' : 'Content (MDX)'}
           value={content}
-          onChange={(e: { target: { value: string } }) =>
-            setContent(e?.target?.value)
+          onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
+            setContent(e.target.value)
           }
           required
           className="block min-h-[3.5rem] w-full bg-zinc-100 px-10 pb-1 pt-5 text-zinc-950 focus:outline-none dark:bg-zinc-800 dark:text-light"
