@@ -44,7 +44,7 @@ export default async function Published({ searchParams }: any) {
   const totalResults = filteredPosts.length;
 
   return (
-    <div className="mt-8">
+    <div className="mx-10 mt-8">
       <AdminPageHeading title={'Published Posts'} />
       <SearchInput
         name="query"
@@ -65,7 +65,7 @@ export default async function Published({ searchParams }: any) {
                     {post.title}
                   </Link>
                   <span className="ml-2 text-sm text-zinc-500">
-                    [Published by User {post.user_id}]
+                    [Published by {post.user_name}]
                   </span>
                 </div>
                 <Link

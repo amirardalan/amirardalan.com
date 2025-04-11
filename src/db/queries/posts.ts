@@ -7,8 +7,22 @@ import { BlogPost } from '@/types/blog';
 // Get all published posts (for blog page)
 export const getPublishedPosts = async () => {
   return db
-    .select()
+    .select({
+      id: posts.id,
+      title: posts.title,
+      slug: posts.slug,
+      content: posts.content,
+      excerpt: posts.excerpt,
+      category: posts.category,
+      published: posts.published,
+      created_at: posts.created_at,
+      updated_at: posts.updated_at,
+      show_updated: posts.show_updated,
+      user_id: posts.user_id,
+      user_name: users.name,
+    })
     .from(posts)
+    .leftJoin(users, eq(posts.user_id, users.id))
     .where(eq(posts.published, true))
     .orderBy(desc(posts.created_at));
 };

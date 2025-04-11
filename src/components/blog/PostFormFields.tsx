@@ -128,7 +128,7 @@ export default function PostFormFields({
             value={category}
             onChange={(e) => setCategory(e.target.value)}
             required
-            className="focus:zinc-500 mr-4 block appearance-none rounded-md border border-zinc-300 bg-zinc-100 px-3 py-2 text-zinc-950 focus:bg-zinc-800 focus:outline-primary focus:ring-1 focus:ring-primary dark:border-zinc-500 dark:bg-zinc-800 dark:text-light"
+            className="mr-4 block appearance-none rounded-md border border-zinc-300 bg-zinc-100 px-3 py-2 text-zinc-950 dark:border-zinc-500 dark:bg-zinc-800 dark:text-light"
           >
             <option value="" disabled className="text-light">
               Category
