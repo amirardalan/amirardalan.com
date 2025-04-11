@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { generateSlug } from '@/utils/generate-slug';
 import CopyButton from '@/components/icons/IconCopy';
-import IconNote from '@/components/icons/IconNote';
+import Note from '@/components/blog/Note';
 
 type HeadingProps = ComponentPropsWithoutRef<'h1'>;
 type ParagraphProps = ComponentPropsWithoutRef<'p'>;
@@ -273,23 +273,7 @@ export const components = {
       )}
     </figure>
   ),
-  Note({ children }: { children: ReactNode }) {
-    return (
-      <div className="note relative flex rounded-lg border border-zinc-300 dark:border-zinc-700">
-        <div className="absolute left-4 top-2.5 text-sm uppercase">
-          <div className="flex items-center gap-2">
-            <span className="mt-1 h-6 w-6">
-              <IconNote />
-            </span>
-            Note:
-          </div>
-        </div>
-        <div className="mt-4 items-center justify-between px-8 pb-0.5 pt-2 font-sans">
-          <div className="font-sans italic text-red-500">{children}</div>
-        </div>
-      </div>
-    );
-  },
+  Note,
 };
 
 declare global {
