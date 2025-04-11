@@ -32,19 +32,26 @@ export default function UnsavedChangesHandler({
       return 'You have unsaved changes. Are you sure you want to leave?';
     };
 
+    // Function to add and remove the beforeunload listener
+    const cleanupBeforeUnloadListener = () => {
+      if (beforeUnloadHandlerRef.current) {
+        window.removeEventListener(
+          'beforeunload',
+          beforeUnloadHandlerRef.current
+        );
+      }
+    };
+
     // Only add listener if there are unsaved changes
     if (hasUnsavedChanges) {
       window.addEventListener('beforeunload', beforeUnloadHandlerRef.current);
 
       // Handle back button for browser navigation
       const handlePopState = (e: PopStateEvent) => {
-        // Store the current URL before we push a new state
-        const currentUrl = window.location.href;
-
         // Prevent navigation and show modal
         window.history.pushState(null, '', pathname);
 
-        // Store that we're trying to go back (not to a specific URL)
+        // Store that we're trying to go back
         setPendingNavigation('back');
         setShowModal(true);
       };
@@ -54,23 +61,13 @@ export default function UnsavedChangesHandler({
       window.addEventListener('popstate', handlePopState);
 
       return () => {
-        // Clean up event listeners
-        if (beforeUnloadHandlerRef.current) {
-          window.removeEventListener(
-            'beforeunload',
-            beforeUnloadHandlerRef.current
-          );
-        }
+        // Clean up all event listeners
+        cleanupBeforeUnloadListener();
         window.removeEventListener('popstate', handlePopState);
       };
-    }
-
-    // If no unsaved changes, ensure handler is removed
-    if (beforeUnloadHandlerRef.current) {
-      window.removeEventListener(
-        'beforeunload',
-        beforeUnloadHandlerRef.current
-      );
+    } else {
+      // If no unsaved changes, ensure handler is removed
+      cleanupBeforeUnloadListener();
     }
   }, [hasUnsavedChanges, pathname]);
 
