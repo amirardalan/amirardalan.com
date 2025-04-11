@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import { updatePost, deletePost } from '@/services/post-service';
 import { useToast } from '@/components/ui/ToastContext';
@@ -53,9 +53,10 @@ export default function EditPostForm({ post }: EditPostFormProps) {
     setHasUnsavedChanges(formChanged);
   }, [title, slug, excerpt, content, category, published, showUpdated, post]);
 
-  const handleFormChange = () => {
+  // Wrap with useCallback to avoid unnecessary re-creation
+  const handleFormChange = useCallback(() => {
     setHasUnsavedChanges(true);
-  };
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -117,9 +118,9 @@ export default function EditPostForm({ post }: EditPostFormProps) {
     }
   };
 
-  const discardChanges = () => {
+  const discardChanges = useCallback(() => {
     setHasUnsavedChanges(false);
-  };
+  }, []);
 
   return (
     <>

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import { createPost } from '@/services/post-service';
 import { useToast } from '@/components/ui/ToastContext';
@@ -49,9 +49,10 @@ export default function NewPostForm({ userId }: NewPostFormProps) {
     setHasUnsavedChanges(formChanged);
   }, [title, slug, excerpt, content, category, published]);
 
-  const handleFormChange = () => {
+  // Wrap with useCallback to avoid unnecessary re-creation
+  const handleFormChange = useCallback(() => {
     setHasUnsavedChanges(true);
-  };
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -86,9 +87,20 @@ export default function NewPostForm({ userId }: NewPostFormProps) {
     }
   };
 
-  const discardChanges = () => {
+  // Also optimize the clear form functionality
+  const clearForm = useCallback(() => {
+    setTitle('');
+    setSlug('');
+    setExcerpt('');
+    setContent('');
+    setCategory('');
+    setPublished(false);
     setHasUnsavedChanges(false);
-  };
+  }, []);
+
+  const discardChanges = useCallback(() => {
+    clearForm();
+  }, [clearForm]);
 
   return (
     <>
@@ -166,7 +178,7 @@ export default function NewPostForm({ userId }: NewPostFormProps) {
         message="Are you sure you want to discard your changes? This action cannot be undone."
         onCancel={() => setShowCancelModal(false)}
         onConfirm={() => {
-          setHasUnsavedChanges(false);
+          clearForm();
           router.push('/admin/');
         }}
         confirmText="Discard"
