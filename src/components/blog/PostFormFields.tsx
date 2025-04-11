@@ -1,4 +1,5 @@
 import { generateSlug } from '@/utils/generate-slug';
+import ResponsiveTextarea from '@/components/blog/ResponsiveTextarea';
 
 interface PostFormFieldsProps {
   title: string;
@@ -111,13 +112,14 @@ export default function PostFormFields({
         <label htmlFor="content" className="hidden text-xs">
           Content (MDX)
         </label>
-        <textarea
+        <ResponsiveTextarea
           id="content"
           value={content}
           placeholder="Content (MDX)"
-          onChange={(e) => setContent(e.target.value)}
+          onChange={(e: { target: { value: string } }) =>
+            setContent(e?.target?.value)
+          }
           required
-          rows={15}
           className="block w-full bg-zinc-100 px-10 pb-2 pt-4 text-zinc-950 focus:outline-none dark:bg-zinc-800 dark:text-light"
         />
       </div>
