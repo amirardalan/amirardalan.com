@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { createPost } from '@/services/post-service';
 import { useToast } from '@/components/ui/ToastContext';
@@ -12,6 +12,7 @@ import Button from '@/components/ui/Button';
 import Modal from '@/components/ui/Modal';
 import MediaGallery from '@/components/blog/MediaGallery';
 import PostFormControls from '@/components/blog/PostFormControls';
+import UnsavedChangesHandler from '@/components/ui/UnsavedChangesHandler';
 
 interface NewPostFormProps {
   userId: number;
@@ -30,9 +31,28 @@ export default function NewPostForm({ userId }: NewPostFormProps) {
   const [error, setError] = useState<string | null>(null);
   const [showGallery, setShowGallery] = useState(false);
   const [showCancelModal, setShowCancelModal] = useState(false);
+  const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(
     null!
   ) as React.RefObject<HTMLInputElement>;
+
+  // Track form changes
+  useEffect(() => {
+    const formChanged =
+      title !== '' ||
+      slug !== '' ||
+      excerpt !== '' ||
+      content !== '' ||
+      category !== '' ||
+      published !== false;
+
+    setHasUnsavedChanges(formChanged);
+  }, [title, slug, excerpt, content, category, published]);
+
+  const handleFormChange = () => {
+    setHasUnsavedChanges(true);
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -56,6 +76,7 @@ export default function NewPostForm({ userId }: NewPostFormProps) {
       await createPost(payload, csrfToken);
 
       showToast('Post created successfully!', 'success');
+      setHasUnsavedChanges(false); // Mark changes as saved before navigation
       router.push(published ? `/blog/${slug}` : '/admin/blog/drafts');
     } catch (err) {
       setError((err as Error).message);
@@ -65,10 +86,15 @@ export default function NewPostForm({ userId }: NewPostFormProps) {
     }
   };
 
+  const discardChanges = () => {
+    setHasUnsavedChanges(false);
+  };
+
   return (
     <>
       <form
         onSubmit={handleSubmit}
+        onChange={handleFormChange}
         className="space-y-6 text-dark dark:text-light"
       >
         {error && (
@@ -139,8 +165,17 @@ export default function NewPostForm({ userId }: NewPostFormProps) {
         title="Discard Changes"
         message="Are you sure you want to discard your changes? This action cannot be undone."
         onCancel={() => setShowCancelModal(false)}
-        onConfirm={() => router.push('/admin/')}
+        onConfirm={() => {
+          setHasUnsavedChanges(false);
+          router.push('/admin/');
+        }}
         confirmText="Discard"
+      />
+
+      {/* Handle navigation away from the page */}
+      <UnsavedChangesHandler
+        hasUnsavedChanges={hasUnsavedChanges}
+        onDiscard={discardChanges}
       />
     </>
   );

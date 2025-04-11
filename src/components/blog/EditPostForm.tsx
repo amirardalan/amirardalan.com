@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { updatePost, deletePost } from '@/services/post-service';
 import { useToast } from '@/components/ui/ToastContext';
@@ -12,6 +12,7 @@ import Button from '@/components/ui/Button';
 import Modal from '@/components/ui/Modal';
 import MediaGallery from '@/components/blog/MediaGallery';
 import PostFormControls from '@/components/blog/PostFormControls';
+import UnsavedChangesHandler from '@/components/ui/UnsavedChangesHandler';
 
 import { BlogPost } from '@/types/blog';
 
@@ -34,8 +35,27 @@ export default function EditPostForm({ post }: EditPostFormProps) {
   const [error, setError] = useState<string | null>(null);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [showGallery, setShowGallery] = useState(false);
+  const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null!);
   const csrfToken = generateCsrfToken();
+
+  // Track form changes to detect unsaved changes
+  useEffect(() => {
+    const formChanged =
+      title !== (post.title || '') ||
+      slug !== (post.slug || '') ||
+      excerpt !== (post.excerpt || '') ||
+      content !== (post.content || '') ||
+      category !== (post.category || '') ||
+      published !== (post.published || false) ||
+      showUpdated !== (post.show_updated || false);
+
+    setHasUnsavedChanges(formChanged);
+  }, [title, slug, excerpt, content, category, published, showUpdated, post]);
+
+  const handleFormChange = () => {
+    setHasUnsavedChanges(true);
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -59,6 +79,7 @@ export default function EditPostForm({ post }: EditPostFormProps) {
       );
 
       showToast('Post updated successfully!', 'success');
+      setHasUnsavedChanges(false); // Mark changes as saved
       router.push(published ? `/blog/${slug}` : '/admin/blog/drafts');
     } catch (err) {
       setError((err as Error).message);
@@ -84,6 +105,7 @@ export default function EditPostForm({ post }: EditPostFormProps) {
       await deletePost(post.id);
 
       showToast('Post deleted successfully!', 'success');
+      setHasUnsavedChanges(false); // No need to prompt about unsaved changes
       router.push(
         post.published ? '/admin/blog/published' : '/admin/blog/drafts'
       );
@@ -95,10 +117,15 @@ export default function EditPostForm({ post }: EditPostFormProps) {
     }
   };
 
+  const discardChanges = () => {
+    setHasUnsavedChanges(false);
+  };
+
   return (
     <>
       <form
         onSubmit={handleSubmit}
+        onChange={handleFormChange}
         className="space-y-6 text-dark dark:text-light"
       >
         {error && (
@@ -177,6 +204,12 @@ export default function EditPostForm({ post }: EditPostFormProps) {
           fileInputRef={fileInputRef}
         />
       </Modal>
+
+      {/* Handle navigation away from the page */}
+      <UnsavedChangesHandler
+        hasUnsavedChanges={hasUnsavedChanges}
+        onDiscard={discardChanges}
+      />
     </>
   );
 }
