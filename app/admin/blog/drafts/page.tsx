@@ -44,7 +44,7 @@ export default async function Drafts({ searchParams }: any) {
   const totalResults = filteredDrafts.length;
 
   return (
-    <div className="mt-8">
+    <div className="mx-10 mt-8">
       <AdminPageHeading title={'Drafts'} />
       <SearchInput
         name="query"

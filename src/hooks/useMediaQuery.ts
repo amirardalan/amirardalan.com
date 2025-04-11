@@ -1,6 +1,8 @@
 import { useState, useEffect, useCallback } from 'react';
 
-export const useMediaQuery = (width: number) => {
+type MediaQueryType = 'width' | 'height';
+
+export const useMediaQuery = (size: number, type: MediaQueryType = 'width') => {
   const [targetReached, setTargetReached] = useState<boolean>(false);
 
   const updateTarget = useCallback((e: MediaQueryListEvent) => {
@@ -12,15 +14,19 @@ export const useMediaQuery = (width: number) => {
   }, []);
 
   useEffect(() => {
-    const media = window.matchMedia(`(max-width: ${width}px)`);
-    media.addEventListener('change', updateTarget);
+    if (typeof window !== 'undefined') {
+      const media = window.matchMedia(`(max-${type}: ${size}px)`);
+      media.addEventListener('change', updateTarget);
 
-    if (media.matches) {
-      setTargetReached(true);
+      if (media.matches) {
+        setTargetReached(true);
+      }
+
+      return () => media.removeEventListener('change', updateTarget);
     }
 
-    return () => media.removeEventListener('change', updateTarget);
-  }, [updateTarget, width]);
+    return () => {};
+  }, [updateTarget, size, type]);
 
   return targetReached;
 };

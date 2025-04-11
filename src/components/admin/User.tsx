@@ -11,7 +11,7 @@ export default function User() {
       {session && (
         <div className="min-w-40 text-right text-xs uppercase text-dark dark:text-light">
           <span className="mr-1 text-zinc-500 dark:text-zinc-400">
-            Welcome,
+            Editing as
           </span>
           <Link href="/admin/account" className="text-primary">
             {session?.user?.name?.split(' ')[0]}

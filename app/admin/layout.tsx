@@ -18,12 +18,10 @@ export default async function AdminLayout({
 
   return (
     <ToastProvider>
-      <Container>
-        <div className="mb-6">
-          <AdminMenu />
-        </div>
+      <div className="mb-6 flex w-full flex-col">
+        <AdminMenu />
         <div>{children}</div>
-      </Container>
+      </div>
     </ToastProvider>
   );
 }

@@ -21,9 +21,9 @@ export default async function Account() {
   }
 
   return (
-    <div className="mt-8">
+    <div className="mx-10 mt-8">
       <AdminPageHeading title={'Account'} />
-      <div className="flex w-full flex-row items-center justify-between">
+      <div className="flex flex-col">
         <div className="flex">
           <div className="h-6 w-6">
             <Avatar />
@@ -32,10 +32,13 @@ export default async function Account() {
             {session.user?.name}
           </p>
         </div>
-        <div className="ml-2 flex flex-row items-center justify-between">
-          {session.user?.email && (
-            <ObfuscatedEmail email={session.user.email} />
-          )}
+        <div className="mt-1 flex flex-row items-center text-dark dark:text-light">
+          <span>Email:</span>
+          <span>
+            {session.user?.email && (
+              <ObfuscatedEmail email={session.user.email} />
+            )}
+          </span>
         </div>
       </div>
     </div>

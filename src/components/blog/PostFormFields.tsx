@@ -1,4 +1,5 @@
 import { generateSlug } from '@/utils/generate-slug';
+import ResponsiveTextarea from '@/components/blog/ResponsiveTextarea';
 
 interface PostFormFieldsProps {
   title: string;
@@ -62,64 +63,87 @@ export default function PostFormFields({
 
   return (
     <>
-      <div>
-        <label htmlFor="title" className="block text-xs">
-          Title
-        </label>
+      <div className="relative">
+        {title && (
+          <label
+            htmlFor="title"
+            className="absolute left-10 top-1 pt-0.5 text-xxs uppercase text-zinc-500 dark:text-zinc-400"
+          >
+            Title
+          </label>
+        )}
         <input
           type="text"
           id="title"
+          placeholder="Title"
           value={title}
           onChange={handleTitleChange}
           required
-          className="mt-1 block w-full rounded-md border border-zinc-300 bg-zinc-100 px-3 py-2 text-zinc-950 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary dark:border-zinc-500 dark:bg-zinc-800 dark:text-light"
+          className={`block h-14 w-full bg-zinc-100 px-10 ${title ? 'pb-1 pt-5' : 'py-2'} text-zinc-950 focus:outline-none dark:bg-zinc-800 dark:text-light`}
         />
       </div>
 
-      <div>
-        <label htmlFor="slug" className="block text-xs">
-          Slug
-        </label>
+      <div className="relative">
+        {slug && (
+          <label
+            htmlFor="slug"
+            className="absolute left-10 top-1 pt-0.5 text-xxs uppercase text-zinc-500 dark:text-zinc-400"
+          >
+            Slug
+          </label>
+        )}
         <input
           type="text"
           id="slug"
+          placeholder="Slug"
           value={slug}
           onChange={(e) => setSlug(e.target.value)}
           required
-          className="mt-1 block w-full rounded-md border border-zinc-300 bg-zinc-100 px-3 py-2 text-zinc-950 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary dark:border-zinc-500 dark:bg-zinc-800 dark:text-light"
+          className={`block h-14 w-full bg-zinc-100 px-10 ${slug ? 'pb-1 pt-5' : 'py-2'} text-zinc-950 focus:outline-none dark:bg-zinc-800 dark:text-light`}
         />
       </div>
 
-      <div>
-        <label htmlFor="excerpt" className="block text-xs">
-          Excerpt
-        </label>
+      <div className="relative">
+        {excerpt && (
+          <label
+            htmlFor="excerpt"
+            className="absolute left-10 top-1 pt-0.5 text-xxs uppercase text-zinc-500 dark:text-zinc-400"
+          >
+            Excerpt
+          </label>
+        )}
         <input
           type="text"
           id="excerpt"
+          placeholder="Excerpt"
           value={excerpt}
           onChange={(e) => setExcerpt(e.target.value)}
           required
-          className="mt-1 block w-full rounded-md border border-zinc-300 bg-zinc-100 px-3 py-2 text-zinc-950 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary dark:border-zinc-500 dark:bg-zinc-800 dark:text-light"
+          className={`block h-14 w-full border-b-[1px] border-zinc-300 bg-zinc-100 px-10 ${excerpt ? 'pb-1 pt-5' : 'py-2'} text-zinc-950 focus:outline-none dark:border-zinc-700 dark:bg-zinc-800 dark:text-light`}
         />
       </div>
 
-      <div>
-        <label htmlFor="content" className="block text-xs">
-          Content (Markdown)
+      <div className="relative">
+        <label
+          htmlFor="content"
+          className={`absolute left-10 top-1 pt-0.5 text-xxs uppercase ${content ? 'text-zinc-500 dark:text-zinc-400' : 'text-transparent'}`}
+        >
+          Content (MDX)
         </label>
-        <textarea
+        <ResponsiveTextarea
           id="content"
+          placeholder={content ? '' : 'Content (MDX)'}
           value={content}
-          onChange={(e) => setContent(e.target.value)}
+          onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
+            setContent(e.target.value)
+          }
           required
-          rows={15}
-          className="mt-1 block w-full rounded-md border border-zinc-300 bg-zinc-100 px-3 py-2 text-zinc-950 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary dark:border-zinc-500 dark:bg-zinc-800 dark:text-light"
+          className="block min-h-[3.5rem] w-full bg-zinc-100 px-10 pb-1 pt-5 text-zinc-950 focus:outline-none dark:bg-zinc-800 dark:text-light"
         />
       </div>
 
-      <div className="flex flex-row items-center">
-        <div className="mr-6 flex items-center text-xxs">
+      <div className="mt-2 flex flex-col space-y-4 md:flex-row md:items-center md:space-y-0">
+        <div className="mx-4 flex flex-wrap items-center py-2 text-xxs md:mx-10">
           <label htmlFor="category" className="mr-2">
             Category:
           </label>
@@ -128,7 +152,7 @@ export default function PostFormFields({
             value={category}
             onChange={(e) => setCategory(e.target.value)}
             required
-            className="focus:zinc-500 mr-4 block appearance-none rounded-md border border-zinc-300 bg-zinc-100 px-3 py-2 text-zinc-950 focus:bg-zinc-800 focus:outline-primary focus:ring-1 focus:ring-primary dark:border-zinc-500 dark:bg-zinc-800 dark:text-light"
+            className="mr-4 block appearance-none rounded-md border border-zinc-300 bg-zinc-100 px-3 py-2 text-zinc-950 dark:border-zinc-500 dark:bg-zinc-800 dark:text-light"
           >
             <option value="" disabled className="text-light">
               Category
@@ -146,21 +170,21 @@ export default function PostFormFields({
           <button
             type="button"
             onClick={() => setShowGallery(true)}
-            className="mr-4 rounded-md bg-zinc-700 px-4 py-2 text-xxs uppercase text-light"
+            className="mr-4 mt-2 rounded-md bg-zinc-700 px-4 py-2 text-xxs uppercase text-light md:mt-0"
           >
             Add Image
           </button>
         </div>
 
-        <div className="flex items-center">
+        <div className="mx-4 flex flex-wrap items-center gap-4 md:mx-0">
           {setShowUpdated && (
-            <div className="mr-6 flex items-center">
+            <div className="flex items-center">
               <input
                 type="checkbox"
                 id="show_updated"
                 checked={showUpdated}
                 onChange={(e) => setShowUpdated?.(e.target.checked)}
-                className="h-4 w-4 cursor-pointer rounded-md border-zinc-300 text-zinc-400 focus:ring-zinc-400"
+                className="h-4 w-4 cursor-pointer border-zinc-300 text-zinc-400 focus:ring-zinc-400"
               />
               <label htmlFor="show_updated" className="ml-2 block text-xs">
                 Show Updated Date
@@ -173,7 +197,7 @@ export default function PostFormFields({
               id="published"
               checked={published}
               onChange={(e) => setPublished(e.target.checked)}
-              className="zinc-400 h-4 w-4 cursor-pointer rounded-md border-zinc-300 focus:ring-zinc-400"
+              className="zinc-400 h-4 w-4 cursor-pointer border-zinc-300 focus:ring-zinc-400"
             />
             <label htmlFor="published" className="ml-2 block text-xs">
               Publish
