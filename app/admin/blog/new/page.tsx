@@ -20,7 +20,9 @@ export default async function NewBlogPost() {
 
   return (
     <div className="mt-8">
-      <AdminPageHeading title={'New Post'} />
+      <div className="mx-10">
+        <AdminPageHeading title={'New Post'} />
+      </div>
       <CreatePostForm userId={userId} />
     </div>
   );

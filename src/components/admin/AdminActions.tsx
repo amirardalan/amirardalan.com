@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export default function AdminActions() {
   return (
-    <div className="mx-10 mb-6 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+    <div className="mb-6 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
       <div className="rounded-lg border border-zinc-200 p-6 dark:border-zinc-700">
         <h3 className="mb-3 text-lg font-medium text-dark dark:text-light">
           Compose New
