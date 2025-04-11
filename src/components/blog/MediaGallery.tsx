@@ -10,13 +10,18 @@ import {
 } from '@/services/image-service';
 
 interface MediaGalleryProps {
-  onSelect: (url: string) => void;
+  onSelect: (
+    url: string,
+    cursorPosition?: { start: number; end: number }
+  ) => void;
   fileInputRef: React.RefObject<HTMLInputElement>;
+  cursorPosition?: { start: number; end: number };
 }
 
 export default function MediaGallery({
   onSelect,
   fileInputRef,
+  cursorPosition,
 }: MediaGalleryProps) {
   const [images, setImages] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
@@ -104,7 +109,7 @@ export default function MediaGallery({
           <div
             key={url}
             className="group relative aspect-square cursor-pointer overflow-hidden"
-            onClick={() => onSelect(url)}
+            onClick={() => onSelect(url, cursorPosition)}
             onContextMenu={(e) => {
               e.preventDefault();
               const publicId = url.split('/').slice(-2).join('/').split('.')[0]; // Extract publicId

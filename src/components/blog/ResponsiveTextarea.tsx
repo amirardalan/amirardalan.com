@@ -1,6 +1,7 @@
 'use client';
 
 import { useMediaQuery } from '@/hooks/useMediaQuery';
+import { useRef } from 'react';
 
 interface ResponsiveTextareaProps {
   id: string;
@@ -9,6 +10,10 @@ interface ResponsiveTextareaProps {
   onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
   required?: boolean;
   className?: string;
+  onFocus?: (e: React.FocusEvent<HTMLTextAreaElement>) => void;
+  onBlur?: (e: React.FocusEvent<HTMLTextAreaElement>) => void;
+  onSelect?: (e: React.SyntheticEvent<HTMLTextAreaElement>) => void;
+  textareaRef?: React.RefObject<HTMLTextAreaElement>;
 }
 
 export default function ResponsiveTextarea({
@@ -18,6 +23,10 @@ export default function ResponsiveTextarea({
   onChange,
   required,
   className,
+  onFocus,
+  onBlur,
+  onSelect,
+  textareaRef,
 }: ResponsiveTextareaProps) {
   // Using height-based media queries with the enhanced hook
   const isBelow768Height = useMediaQuery(768, 'height');
@@ -38,6 +47,9 @@ export default function ResponsiveTextarea({
     rows = 45; // 4K screens
   }
 
+  const internalRef = useRef<HTMLTextAreaElement>(null);
+  const textareaReference = textareaRef || internalRef;
+
   return (
     <div className="bg-zinc-100 pt-1 dark:bg-zinc-800">
       <textarea
@@ -49,6 +61,10 @@ export default function ResponsiveTextarea({
         rows={rows}
         className={className}
         style={{ resize: 'none' }}
+        ref={textareaReference}
+        onFocus={onFocus}
+        onBlur={onBlur}
+        onSelect={onSelect}
       />
     </div>
   );

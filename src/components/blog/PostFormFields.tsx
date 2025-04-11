@@ -18,6 +18,8 @@ interface PostFormFieldsProps {
   setShowGallery: (value: boolean) => void;
   showUpdated?: boolean;
   setShowUpdated?: (value: boolean) => void;
+  textareaRef?: React.RefObject<HTMLTextAreaElement>;
+  onTextAreaSelect?: (e: React.SyntheticEvent<HTMLTextAreaElement>) => void;
 }
 
 export default function PostFormFields({
@@ -36,6 +38,8 @@ export default function PostFormFields({
   setShowGallery,
   showUpdated,
   setShowUpdated,
+  textareaRef,
+  onTextAreaSelect,
 }: PostFormFieldsProps) {
   const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newTitle = e.target.value;
@@ -139,6 +143,8 @@ export default function PostFormFields({
           }
           required
           className="block min-h-[3.5rem] w-full bg-zinc-100 px-10 pb-1 pt-5 text-zinc-950 focus:outline-none dark:bg-zinc-800 dark:text-light"
+          textareaRef={textareaRef}
+          onSelect={onTextAreaSelect}
         />
       </div>
 

@@ -39,6 +39,12 @@ export default function EditPostForm({ post }: EditPostFormProps) {
   const fileInputRef = useRef<HTMLInputElement>(null!);
   const csrfToken = generateCsrfToken();
 
+  // Add a ref to the textarea and track cursor position
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const [cursorPosition, setCursorPosition] = useState<
+    { start: number; end: number } | undefined
+  >(undefined);
+
   // Track form changes to detect unsaved changes
   useEffect(() => {
     const formChanged =
@@ -57,6 +63,18 @@ export default function EditPostForm({ post }: EditPostFormProps) {
   const handleFormChange = useCallback(() => {
     setHasUnsavedChanges(true);
   }, []);
+
+  // Track textarea selection/cursor position
+  const handleTextAreaSelect = useCallback(
+    (e: React.SyntheticEvent<HTMLTextAreaElement>) => {
+      const target = e.target as HTMLTextAreaElement;
+      setCursorPosition({
+        start: target.selectionStart,
+        end: target.selectionEnd,
+      });
+    },
+    []
+  );
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -122,6 +140,37 @@ export default function EditPostForm({ post }: EditPostFormProps) {
     setHasUnsavedChanges(false);
   }, []);
 
+  // Insert image at cursor position
+  const insertImageAtCursor = useCallback(
+    (url: string, position?: { start: number; end: number }) => {
+      const imageCode = formatImage(url);
+
+      if (position && position.start >= 0) {
+        const newContent =
+          content.substring(0, position.start) +
+          imageCode +
+          content.substring(position.end);
+
+        setContent(newContent);
+
+        // Set cursor after the inserted image code
+        setTimeout(() => {
+          if (textareaRef.current) {
+            const newPosition = position.start + imageCode.length;
+            textareaRef.current.focus();
+            textareaRef.current.setSelectionRange(newPosition, newPosition);
+          }
+        }, 0);
+      } else {
+        // Fallback to appending at the end
+        setContent(`${content}\n${imageCode}`);
+      }
+
+      setShowGallery(false);
+    },
+    [content, setContent]
+  );
+
   return (
     <>
       <form
@@ -151,6 +200,8 @@ export default function EditPostForm({ post }: EditPostFormProps) {
           setShowGallery={setShowGallery}
           showUpdated={showUpdated}
           setShowUpdated={setShowUpdated}
+          textareaRef={textareaRef}
+          onTextAreaSelect={handleTextAreaSelect}
         />
         <PostFormControls
           isSubmitting={isSubmitting}
@@ -198,11 +249,9 @@ export default function EditPostForm({ post }: EditPostFormProps) {
           className="hidden"
         />
         <MediaGallery
-          onSelect={(url) => {
-            setContent(`${content}\n${formatImage(url)}`);
-            setShowGallery(false);
-          }}
+          onSelect={insertImageAtCursor}
           fileInputRef={fileInputRef}
+          cursorPosition={cursorPosition}
         />
       </Modal>
 
