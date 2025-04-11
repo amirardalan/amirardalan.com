@@ -20,6 +20,15 @@ const nextConfig: NextConfig = {
     mdxRs: true,
   },
   transpilePackages: ['next-mdx-remote'],
+  async redirects() {
+    return [
+      {
+        source: '/admin/blog',
+        destination: '/admin',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 const withMDX = createMDX({});
