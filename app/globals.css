@@ -110,6 +110,17 @@
   pre > code > div {
     display: block;
   }
+
+  /* MDX Styles */
+  .mdx-content p {
+    font-family: 'Lora', serif;
+    font-size: 1.125rem;
+    color: var(--color-dynamic);
+  }
+  .note p {
+    font-size: 0.875rem; /* text-sm */
+    font-family: 'Jura', sans-serif;
+  }
 }
 
 @layer utilities {

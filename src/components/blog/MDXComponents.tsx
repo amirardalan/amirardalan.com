@@ -1,9 +1,10 @@
-import { ComponentPropsWithoutRef } from 'react';
+import { ComponentPropsWithoutRef, ReactNode } from 'react';
 import { highlight } from 'sugar-high';
 import Link from 'next/link';
 import Image from 'next/image';
 import { generateSlug } from '@/utils/generate-slug';
 import CopyButton from '@/components/icons/IconCopy';
+import Note from '@/components/blog/Note';
 
 type HeadingProps = ComponentPropsWithoutRef<'h1'>;
 type ParagraphProps = ComponentPropsWithoutRef<'p'>;
@@ -60,10 +61,7 @@ export const components = {
   },
   h4: (props: HeadingProps) => <h4 className="" {...props} />,
   p: (props: ParagraphProps) => (
-    <p
-      className="my-6 font-serif text-lg leading-normal text-dark dark:text-light"
-      {...props}
-    />
+    <p className="my-6 text-lg leading-normal" {...props} />
   ),
   ol: (props: ListProps) => (
     <ol
@@ -275,6 +273,7 @@ export const components = {
       )}
     </figure>
   ),
+  Note,
 };
 
 declare global {
