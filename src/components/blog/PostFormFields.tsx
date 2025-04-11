@@ -63,10 +63,15 @@ export default function PostFormFields({
 
   return (
     <>
-      <div>
-        <label htmlFor="title" className="hidden text-xs">
-          Title
-        </label>
+      <div className="relative">
+        {title && (
+          <label
+            htmlFor="title"
+            className="absolute left-10 top-1 pt-0.5 text-xxs uppercase text-zinc-500 dark:text-zinc-400"
+          >
+            Title
+          </label>
+        )}
         <input
           type="text"
           id="title"
@@ -74,14 +79,19 @@ export default function PostFormFields({
           value={title}
           onChange={handleTitleChange}
           required
-          className="block w-full bg-zinc-100 px-10 pb-2 pt-4 text-zinc-950 focus:outline-none dark:bg-zinc-800 dark:text-light"
+          className={`block h-14 w-full bg-zinc-100 px-10 ${title ? 'pb-1 pt-5' : 'py-2'} text-zinc-950 focus:outline-none dark:bg-zinc-800 dark:text-light`}
         />
       </div>
 
-      <div>
-        <label htmlFor="slug" className="hidden text-xs">
-          Slug
-        </label>
+      <div className="relative">
+        {slug && (
+          <label
+            htmlFor="slug"
+            className="absolute left-10 top-1 pt-0.5 text-xxs uppercase text-zinc-500 dark:text-zinc-400"
+          >
+            Slug
+          </label>
+        )}
         <input
           type="text"
           id="slug"
@@ -89,38 +99,46 @@ export default function PostFormFields({
           value={slug}
           onChange={(e) => setSlug(e.target.value)}
           required
-          className="block w-full bg-zinc-100 px-10 py-2 text-zinc-950 focus:outline-none dark:bg-zinc-800 dark:text-light"
+          className={`block h-14 w-full bg-zinc-100 px-10 ${slug ? 'pb-1 pt-5' : 'py-2'} text-zinc-950 focus:outline-none dark:bg-zinc-800 dark:text-light`}
         />
       </div>
 
-      <div>
-        <label htmlFor="excerpt" className="hidden text-xs">
-          Excerpt
-        </label>
+      <div className="relative">
+        {excerpt && (
+          <label
+            htmlFor="excerpt"
+            className="absolute left-10 top-1 pt-0.5 text-xxs uppercase text-zinc-500 dark:text-zinc-400"
+          >
+            Excerpt
+          </label>
+        )}
         <input
           type="text"
           id="excerpt"
-          value={excerpt}
           placeholder="Excerpt"
+          value={excerpt}
           onChange={(e) => setExcerpt(e.target.value)}
           required
-          className="block w-full border-b-[1px] border-zinc-300 bg-zinc-100 px-10 pb-4 pt-2 text-zinc-950 focus:outline-none dark:border-zinc-700 dark:bg-zinc-800 dark:text-light"
+          className={`block h-14 w-full border-b-[1px] border-zinc-300 bg-zinc-100 px-10 ${excerpt ? 'pb-1 pt-5' : 'py-2'} text-zinc-950 focus:outline-none dark:border-zinc-700 dark:bg-zinc-800 dark:text-light`}
         />
       </div>
 
-      <div>
-        <label htmlFor="content" className="hidden text-xs">
+      <div className="relative">
+        <label
+          htmlFor="content"
+          className={`absolute left-10 top-1 pt-0.5 text-xxs uppercase ${content ? 'text-zinc-500 dark:text-zinc-400' : 'text-transparent'}`}
+        >
           Content (MDX)
         </label>
         <ResponsiveTextarea
           id="content"
+          placeholder={content ? '' : 'Content (MDX)'}
           value={content}
-          placeholder="Content (MDX)"
           onChange={(e: { target: { value: string } }) =>
             setContent(e?.target?.value)
           }
           required
-          className="block w-full bg-zinc-100 px-10 pb-2 pt-4 text-zinc-950 focus:outline-none dark:bg-zinc-800 dark:text-light"
+          className="block min-h-[3.5rem] w-full bg-zinc-100 px-10 pb-1 pt-5 text-zinc-950 focus:outline-none dark:bg-zinc-800 dark:text-light"
         />
       </div>
 

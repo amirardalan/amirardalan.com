@@ -39,14 +39,17 @@ export default function ResponsiveTextarea({
   }
 
   return (
-    <textarea
-      id={id}
-      value={value}
-      placeholder={placeholder}
-      onChange={onChange}
-      required={required}
-      rows={rows}
-      className={className}
-    />
+    <div className="bg-zinc-100 pt-1 dark:bg-zinc-800">
+      <textarea
+        id={id}
+        value={value}
+        placeholder={placeholder}
+        onChange={onChange}
+        required={required}
+        rows={rows}
+        className={className}
+        style={{ resize: 'none' }}
+      />
+    </div>
   );
 }
