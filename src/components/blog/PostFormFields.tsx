@@ -124,8 +124,8 @@ export default function PostFormFields({
         />
       </div>
 
-      <div className="flex flex-row items-center">
-        <div className="mx-10 flex items-center py-4 text-xxs">
+      <div className="mt-2 flex flex-col space-y-4 md:flex-row md:items-center md:space-y-0">
+        <div className="mx-4 flex flex-wrap items-center py-2 text-xxs md:mx-10">
           <label htmlFor="category" className="mr-2">
             Category:
           </label>
@@ -152,15 +152,15 @@ export default function PostFormFields({
           <button
             type="button"
             onClick={() => setShowGallery(true)}
-            className="mr-4 rounded-md bg-zinc-700 px-4 py-2 text-xxs uppercase text-light"
+            className="mr-4 mt-2 rounded-md bg-zinc-700 px-4 py-2 text-xxs uppercase text-light md:mt-0"
           >
             Add Image
           </button>
         </div>
 
-        <div className="flex items-center">
+        <div className="mx-4 flex flex-wrap items-center gap-4 md:mx-0">
           {setShowUpdated && (
-            <div className="mr-6 flex items-center">
+            <div className="flex items-center">
               <input
                 type="checkbox"
                 id="show_updated"
