@@ -39,12 +39,6 @@ export default function EditPostForm({ post }: EditPostFormProps) {
   const fileInputRef = useRef<HTMLInputElement>(null!);
   const csrfToken = generateCsrfToken();
 
-  // Add a ref to the textarea and track cursor position
-  const textareaRef = useRef<HTMLTextAreaElement>(null);
-  const [cursorPosition, setCursorPosition] = useState<
-    { start: number; end: number } | undefined
-  >(undefined);
-
   // Track form changes to detect unsaved changes
   useEffect(() => {
     const formChanged =
@@ -59,12 +53,16 @@ export default function EditPostForm({ post }: EditPostFormProps) {
     setHasUnsavedChanges(formChanged);
   }, [title, slug, excerpt, content, category, published, showUpdated, post]);
 
-  // Wrap with useCallback to avoid unnecessary re-creation
   const handleFormChange = useCallback(() => {
     setHasUnsavedChanges(true);
   }, []);
 
-  // Track textarea selection/cursor position
+  // Track textarea selection/cursor position for inserting images
+  const textareaRef = useRef<HTMLTextAreaElement>(null!);
+  const [cursorPosition, setCursorPosition] = useState<
+    { start: number; end: number } | undefined
+  >(undefined);
+
   const handleTextAreaSelect = useCallback(
     (e: React.SyntheticEvent<HTMLTextAreaElement>) => {
       const target = e.target as HTMLTextAreaElement;
@@ -75,7 +73,6 @@ export default function EditPostForm({ post }: EditPostFormProps) {
     },
     []
   );
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);

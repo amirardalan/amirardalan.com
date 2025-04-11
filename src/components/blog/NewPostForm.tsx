@@ -36,12 +36,6 @@ export default function NewPostForm({ userId }: NewPostFormProps) {
     null!
   ) as React.RefObject<HTMLInputElement>;
 
-  // Add a ref to the textarea and track cursor position
-  const textareaRef = useRef<HTMLTextAreaElement>(null);
-  const [cursorPosition, setCursorPosition] = useState<
-    { start: number; end: number } | undefined
-  >(undefined);
-
   // Track form changes
   useEffect(() => {
     const formChanged =
@@ -55,12 +49,16 @@ export default function NewPostForm({ userId }: NewPostFormProps) {
     setHasUnsavedChanges(formChanged);
   }, [title, slug, excerpt, content, category, published]);
 
-  // Wrap with useCallback to avoid unnecessary re-creation
   const handleFormChange = useCallback(() => {
     setHasUnsavedChanges(true);
   }, []);
 
-  // Track textarea selection/cursor position
+  // Track textarea selection/cursor position for inserting images
+  const textareaRef = useRef<HTMLTextAreaElement>(null!);
+  const [cursorPosition, setCursorPosition] = useState<
+    { start: number; end: number } | undefined
+  >(undefined);
+
   const handleTextAreaSelect = useCallback(
     (e: React.SyntheticEvent<HTMLTextAreaElement>) => {
       const target = e.target as HTMLTextAreaElement;
