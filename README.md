@@ -107,7 +107,7 @@ Blog posts are written in Markdown. Markdown images will utilize the Next Image 
 ![Alt text](https://example.com/image.png 'priority')
 ```
 
-Or you can use an image wrapped in a `<figure>` tag with a caption (this also works with an optional priority prop for images above the fold):
+Or you can use an image wrapped in a custom MDX `<Figure>` component to add a caption (this also works with an optional priority prop for images above the fold):
 
 ```markdown
 <Figure src="your-image-src.png" alt="Your Image Alt" caption="Your Image Caption" priority />
