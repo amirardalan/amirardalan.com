@@ -76,7 +76,7 @@ export default function EditPostForm({ post }: EditPostFormProps) {
 
     try {
       const csrfTokenValue = await csrfToken;
-      const result = await updatePost(
+      await updatePost(
         post.id,
         {
           title,
@@ -88,9 +88,9 @@ export default function EditPostForm({ post }: EditPostFormProps) {
           featured,
           show_updated: showUpdated,
           user_id: post.user_id,
-          csrfToken: csrfTokenValue, // Include this in the request data
+          csrfToken: csrfTokenValue,
         },
-        csrfTokenValue // Also pass this as the separate parameter for headers
+        csrfTokenValue
       );
 
       showToast('Post updated successfully!', 'success');

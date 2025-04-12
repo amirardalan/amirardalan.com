@@ -6,6 +6,7 @@ import AdminPageHeading from '@/components/admin/AdminPageHeading';
 import SearchInput from '@/components/admin/AdminSearch';
 import Pagination from '@/components/ui/Pagination';
 import Link from 'next/link';
+import { formatDate } from '@/src/utils/format-date';
 
 export function generateMetadata() {
   return {
@@ -60,13 +61,37 @@ export default async function Published({ searchParams }: any) {
                 key={post.id}
                 className="my-4 flex items-center justify-between"
               >
-                <div>
-                  <Link href={`/blog/${post.slug}`} className="hover:underline">
-                    {post.title}
-                  </Link>
-                  <span className="ml-2 text-sm text-zinc-500">
-                    [Published by {post.user_name}]
-                  </span>
+                <div className="flex flex-col">
+                  <div>
+                    <Link
+                      href={`/blog/${post.slug}`}
+                      className="hover:underline"
+                    >
+                      {post.title}
+                      {post.featured && (
+                        <span className="ml-2 text-xs uppercase text-primary">
+                          Featured
+                        </span>
+                      )}
+                    </Link>
+                  </div>
+                  <div>
+                    <span className="text-sm text-zinc-500 dark:text-zinc-400">
+                      {formatDate(post.created_at)}
+                    </span>
+                    <span className="px-2 text-zinc-500 dark:text-zinc-400">
+                      &bull;
+                    </span>
+                    <span className="text-sm text-zinc-500 dark:text-zinc-400">
+                      {post.category}
+                    </span>
+                    <span className="px-2 text-zinc-500 dark:text-zinc-400">
+                      &bull;
+                    </span>
+                    <span className="text-sm text-zinc-500 dark:text-zinc-400">
+                      {post.user_name}
+                    </span>
+                  </div>
                 </div>
                 <Link
                   href={`/admin/blog/edit/${post.slug}`}

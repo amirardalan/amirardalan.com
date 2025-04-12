@@ -12,4 +12,6 @@ export type BlogPost = {
   author_name?: string | null;
   show_updated?: boolean | null;
   featured: boolean;
+  isDraft?: boolean;
+  user_name?: string | null;
 };

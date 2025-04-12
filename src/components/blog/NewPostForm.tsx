@@ -122,8 +122,8 @@ export default function NewPostForm({ userId }: NewPostFormProps) {
         className="font-mono text-dark dark:text-light"
       >
         {error && (
-          <div className="rounded-md bg-red-50 p-4 text-red-700 dark:bg-red-900 dark:text-red-100">
-            {error}
+          <div className="bg-red-50 p-4 px-10 font-sans text-red-700 dark:bg-red-900 dark:text-red-100">
+            Error: {error}
           </div>
         )}
         <PostFormFields
