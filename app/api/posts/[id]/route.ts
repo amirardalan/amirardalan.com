@@ -2,14 +2,15 @@ import { dbUpdatePost, dbDeletePost } from '@/db/queries/posts';
 import { auth } from '@/lib/auth';
 import { validateCsrfToken } from '@/lib/csrf';
 
-import { NextResponse } from 'next/server';
-import { NextRequest } from 'next/server';
+// Import NextRequest again
+import { NextRequest, NextResponse } from 'next/server';
 import { revalidatePath, revalidateTag } from 'next/cache';
 
+// Update PUT handler signature to expect params as a Promise
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
-) {
+  { params }: { params: Promise<{ id: string }> } // Revert params type to Promise
+): Promise<NextResponse> {
   try {
     const session = await auth();
 
@@ -18,7 +19,9 @@ export async function PUT(
       return NextResponse.json({ error: 'Not authenticated' }, { status: 401 });
     }
 
-    const postId = parseInt(params.id);
+    // Await the params promise to get the id
+    const { id } = await params;
+    const postId = parseInt(id);
     if (isNaN(postId)) {
       return NextResponse.json({ error: 'Invalid post ID' }, { status: 400 });
     }
@@ -65,17 +68,18 @@ export async function PUT(
     return NextResponse.json({ success: true, data: result });
   } catch (error) {
     console.error('Error in PUT /api/posts/[id]:', error);
-    return NextResponse.json(
-      { error: (error as Error).message },
-      { status: 500 }
-    );
+    // Ensure the error response also matches NextResponse
+    const errorMessage =
+      error instanceof Error ? error.message : 'An unknown error occurred';
+    return NextResponse.json({ error: errorMessage }, { status: 500 });
   }
 }
 
+// Update DELETE handler signature to expect params as a Promise
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
-) {
+  { params }: { params: Promise<{ id: string }> } // Revert params type to Promise
+): Promise<NextResponse> {
   try {
     const session = await auth();
 
@@ -84,7 +88,9 @@ export async function DELETE(
       return NextResponse.json({ error: 'Not authenticated' }, { status: 401 });
     }
 
-    const postId = parseInt(params.id);
+    // Await the params promise to get the id
+    const { id } = await params;
+    const postId = parseInt(id);
     if (isNaN(postId)) {
       return NextResponse.json({ error: 'Invalid post ID' }, { status: 400 });
     }
@@ -103,9 +109,9 @@ export async function DELETE(
     return NextResponse.json({ success: true, data: result });
   } catch (error) {
     console.error('Error in DELETE /api/posts/[id]:', error);
-    return NextResponse.json(
-      { error: (error as Error).message },
-      { status: 500 }
-    );
+    // Ensure the error response also matches NextResponse
+    const errorMessage =
+      error instanceof Error ? error.message : 'An unknown error occurred';
+    return NextResponse.json({ error: errorMessage }, { status: 500 });
   }
 }
