@@ -29,8 +29,9 @@ export default async function Image() {
             <div tw="flex w-132 ml-6">
               <h3 tw="text-4xl text-zinc-500 leading-10">
                 <span>
-                  A Next.js App Router starter project with TypeScript,
-                  Tailwind, NextAuth, Prettier, and Dark Mode.
+                  A Markdown blog and CMS written in TypeScript using Next.js
+                  App Router. Publish and edit blog posts without a build using
+                  On-demand Revalidation.
                 </span>
               </h3>
             </div>
