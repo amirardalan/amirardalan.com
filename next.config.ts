@@ -7,10 +7,12 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
+        // Account Avatars
         protocol: 'https',
         hostname: 'avatars.githubusercontent.com',
       },
       {
+        // CMS Media Gallery
         protocol: 'https',
         hostname: 'res.cloudinary.com',
       },
