@@ -28,6 +28,7 @@ export default function NewPostForm({ userId }: NewPostFormProps) {
   const [content, setContent] = useState('');
   const [category, setCategory] = useState('');
   const [published, setPublished] = useState(false);
+  const [featured, setFeatured] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [showGallery, setShowGallery] = useState(false);
@@ -45,10 +46,11 @@ export default function NewPostForm({ userId }: NewPostFormProps) {
       excerpt !== '' ||
       content !== '' ||
       category !== '' ||
+      featured !== false ||
       published !== false;
 
     setHasUnsavedChanges(formChanged);
-  }, [title, slug, excerpt, content, category, published]);
+  }, [title, slug, excerpt, content, category, featured, published]);
 
   const handleFormChange = useCallback(() => {
     setHasUnsavedChanges(true);
@@ -69,6 +71,7 @@ export default function NewPostForm({ userId }: NewPostFormProps) {
         category,
         user_id: userId,
         published,
+        featured,
         created_at: new Date().toISOString(),
         updated_at: new Date().toISOString(),
         csrfToken,
@@ -94,6 +97,7 @@ export default function NewPostForm({ userId }: NewPostFormProps) {
     setExcerpt('');
     setContent('');
     setCategory('');
+    setFeatured(false);
     setPublished(false);
     setHasUnsavedChanges(false);
   }, []);
@@ -118,8 +122,8 @@ export default function NewPostForm({ userId }: NewPostFormProps) {
         className="font-mono text-dark dark:text-light"
       >
         {error && (
-          <div className="rounded-md bg-red-50 p-4 text-red-700 dark:bg-red-900 dark:text-red-100">
-            {error}
+          <div className="bg-red-50 p-4 px-10 font-sans text-red-700 dark:bg-red-900 dark:text-red-100">
+            Error: {error}
           </div>
         )}
         <PostFormFields
@@ -135,6 +139,8 @@ export default function NewPostForm({ userId }: NewPostFormProps) {
           setCategory={setCategory}
           published={published}
           setPublished={setPublished}
+          featured={featured}
+          setFeatured={setFeatured}
           showGallery={showGallery}
           setShowGallery={setShowGallery}
           textareaRef={textareaRef}

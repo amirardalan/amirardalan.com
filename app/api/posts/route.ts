@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { createPost, updatePost } from '@/src/db/queries/posts';
+import { dbCreatePost, dbUpdatePost } from '@/db/queries/posts';
 import { generateCsrfToken, validateCsrfToken } from '@/lib/csrf';
 
 export async function POST(req: Request) {
@@ -23,7 +23,7 @@ export async function POST(req: Request) {
       created_at: new Date(),
     };
 
-    const postId = await createPost(postData);
+    const postId = await dbCreatePost(postData);
     return NextResponse.json({ id: postId }, { status: 201 });
   } catch (error) {
     return NextResponse.json(
@@ -55,7 +55,7 @@ export async function PUT(req: Request) {
       );
     }
 
-    const result = await updatePost(parseInt(id, 10), data);
+    const result = await dbUpdatePost(parseInt(id, 10), data);
 
     return NextResponse.json(result, { status: 200 });
   } catch (error) {

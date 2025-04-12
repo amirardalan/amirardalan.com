@@ -49,7 +49,13 @@ export default async function EditBlogPost({
       <div className="mx-10">
         <AdminPageHeading title={'Edit Post'} />
       </div>
-      <EditPostForm post={{ ...post, show_updated: post.show_updated }} />
+      <EditPostForm
+        post={{
+          ...post,
+          show_updated: post.show_updated,
+          featured: !!post.featured,
+        }}
+      />
     </div>
   );
 }

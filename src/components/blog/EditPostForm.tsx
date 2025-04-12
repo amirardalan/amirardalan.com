@@ -4,7 +4,6 @@ import { useState, useRef, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import { updatePost, deletePost } from '@/services/post-service';
 import { useToast } from '@/components/ui/ToastContext';
-import { formatImage } from '@/utils/format-image';
 import { generateCsrfToken } from '@/lib/csrf';
 import { useImageInsertion } from '@/hooks/useImageInsertion';
 
@@ -30,6 +29,7 @@ export default function EditPostForm({ post }: EditPostFormProps) {
   const [content, setContent] = useState(post.content || '');
   const [category, setCategory] = useState(post.category || '');
   const [published, setPublished] = useState(post.published || false);
+  const [featured, setFeatured] = useState(post.featured || false);
   const [showUpdated, setShowUpdated] = useState(post.show_updated || false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -48,11 +48,22 @@ export default function EditPostForm({ post }: EditPostFormProps) {
       excerpt !== (post.excerpt || '') ||
       content !== (post.content || '') ||
       category !== (post.category || '') ||
+      featured !== (post.featured || false) ||
       published !== (post.published || false) ||
       showUpdated !== (post.show_updated || false);
 
     setHasUnsavedChanges(formChanged);
-  }, [title, slug, excerpt, content, category, published, showUpdated, post]);
+  }, [
+    title,
+    slug,
+    excerpt,
+    content,
+    category,
+    featured,
+    published,
+    showUpdated,
+    post,
+  ]);
 
   const handleFormChange = useCallback(() => {
     setHasUnsavedChanges(true);
@@ -64,6 +75,7 @@ export default function EditPostForm({ post }: EditPostFormProps) {
     setError(null);
 
     try {
+      const csrfTokenValue = await csrfToken;
       await updatePost(
         post.id,
         {
@@ -73,15 +85,18 @@ export default function EditPostForm({ post }: EditPostFormProps) {
           content,
           category,
           published,
+          featured,
           show_updated: showUpdated,
           user_id: post.user_id,
+          csrfToken: csrfTokenValue,
         },
-        await csrfToken
+        csrfTokenValue
       );
 
       showToast('Post updated successfully!', 'success');
       setHasUnsavedChanges(false); // Mark changes as saved
-      router.push(published ? `/blog/${slug}` : '/admin/blog/drafts');
+      // Always redirect to the post page after saving, whether draft or published
+      router.push(`/blog/${slug}`);
     } catch (err) {
       setError((err as Error).message);
       showToast((err as Error).message, 'error');
@@ -107,6 +122,7 @@ export default function EditPostForm({ post }: EditPostFormProps) {
 
       showToast('Post deleted successfully!', 'success');
       setHasUnsavedChanges(false); // No need to prompt about unsaved changes
+      // Keep existing redirect logic for delete: published go to published list, drafts go to drafts list
       router.push(
         post.published ? '/admin/blog/published' : '/admin/blog/drafts'
       );
@@ -155,6 +171,8 @@ export default function EditPostForm({ post }: EditPostFormProps) {
           setCategory={setCategory}
           published={published}
           setPublished={setPublished}
+          featured={featured}
+          setFeatured={setFeatured}
           showGallery={showGallery}
           setShowGallery={setShowGallery}
           showUpdated={showUpdated}

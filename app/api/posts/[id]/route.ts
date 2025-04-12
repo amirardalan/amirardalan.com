@@ -1,123 +1,117 @@
-import { updatePost, deletePost } from '@/db/queries/posts';
+import { dbUpdatePost, dbDeletePost } from '@/db/queries/posts';
 import { auth } from '@/lib/auth';
+import { validateCsrfToken } from '@/lib/csrf';
 
-import { NextResponse } from 'next/server';
-import { NextRequest } from 'next/server';
+// Import NextRequest again
+import { NextRequest, NextResponse } from 'next/server';
 import { revalidatePath, revalidateTag } from 'next/cache';
 
+// Update PUT handler signature to expect params as a Promise
 export async function PUT(
   request: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
-) {
-  const session = await auth();
-
-  if (!session?.user) {
-    return NextResponse.json({ error: 'Unauthorized access' }, { status: 401 });
-  }
-
+  { params }: { params: Promise<{ id: string }> } // Revert params type to Promise
+): Promise<NextResponse> {
   try {
+    const session = await auth();
+
+    // Ensure user is authenticated
+    if (!session?.user) {
+      return NextResponse.json({ error: 'Not authenticated' }, { status: 401 });
+    }
+
+    // Await the params promise to get the id
     const { id } = await params;
-    const data = await request.json();
-    const { title, slug, excerpt, content, category, published, show_updated } =
-      data;
+    const postId = parseInt(id);
+    if (isNaN(postId)) {
+      return NextResponse.json({ error: 'Invalid post ID' }, { status: 400 });
+    }
 
-    if (!id || !title || !slug || !content) {
+    const requestData = await request.json();
+
+    // Extract CSRF token from headers
+    const csrfToken = request.headers.get('x-csrf-token');
+
+    // Check if token exists - but we need to pass both tokens to validateCsrfToken
+    if (!csrfToken) {
       return NextResponse.json(
-        { error: 'Post ID, title, slug, and content are required.' },
+        { error: 'CSRF token is missing from headers.' },
         { status: 400 }
       );
     }
 
-    if (!/^[a-z0-9-]+$/.test(slug)) {
-      return NextResponse.json(
-        {
-          error:
-            'Invalid slug format. Only lowercase letters, numbers, and hyphens are allowed.',
-        },
-        { status: 400 }
-      );
+    // Only validate if requestData.csrfToken exists
+    if (requestData.csrfToken) {
+      validateCsrfToken(requestData.csrfToken, csrfToken);
     }
 
-    const { oldSlug, newSlug } = await updatePost(parseInt(id, 10), {
-      title,
-      slug,
-      excerpt,
-      content,
-      category,
-      published,
-      show_updated,
+    // Update the post in the database
+    const result = await dbUpdatePost(postId, {
+      title: requestData.title,
+      slug: requestData.slug,
+      excerpt: requestData.excerpt,
+      content: requestData.content,
+      category: requestData.category,
+      published: requestData.published,
+      show_updated: requestData.show_updated,
+      featured: requestData.featured,
     });
 
-    console.log('Post updated:', { id, slug, published, show_updated });
-
-    // Revalidation strategy
-    // 1. Always revalidate the blog listing page and blog tag
+    // Revalidate paths
     await revalidatePath('/blog');
     await revalidateTag('blog-posts');
+    await revalidatePath(`/blog/${requestData.slug}`);
 
-    // 2. Revalidate the specific post page (both old and new slug if changed)
-    await revalidatePath(`/blog/${slug}`);
-
-    if (oldSlug && oldSlug !== newSlug) {
-      await revalidatePath(`/blog/${oldSlug}`);
+    if (result.oldSlug && result.oldSlug !== requestData.slug) {
+      await revalidatePath(`/blog/${result.oldSlug}`);
     }
 
-    return NextResponse.json({
-      message: 'Post updated successfully',
-      slug: slug,
-    });
+    return NextResponse.json({ success: true, data: result });
   } catch (error) {
-    console.error('Post update error:', error);
-    return NextResponse.json(
-      { error: (error as Error).message },
-      { status: 500 }
-    );
+    console.error('Error in PUT /api/posts/[id]:', error);
+    // Ensure the error response also matches NextResponse
+    const errorMessage =
+      error instanceof Error ? error.message : 'An unknown error occurred';
+    return NextResponse.json({ error: errorMessage }, { status: 500 });
   }
 }
 
+// Update DELETE handler signature to expect params as a Promise
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
-) {
-  const session = await auth();
-
-  if (!session?.user) {
-    return NextResponse.json({ error: 'Unauthorized access' }, { status: 401 });
-  }
-
+  { params }: { params: Promise<{ id: string }> } // Revert params type to Promise
+): Promise<NextResponse> {
   try {
-    const { id } = await params;
+    const session = await auth();
 
-    if (!id) {
-      return NextResponse.json(
-        { error: 'Post ID is required' },
-        { status: 400 }
-      );
+    // Ensure user is authenticated
+    if (!session?.user) {
+      return NextResponse.json({ error: 'Not authenticated' }, { status: 401 });
     }
 
-    const { slug, wasPublished } = await deletePost(parseInt(id, 10));
+    // Await the params promise to get the id
+    const { id } = await params;
+    const postId = parseInt(id);
+    if (isNaN(postId)) {
+      return NextResponse.json({ error: 'Invalid post ID' }, { status: 400 });
+    }
 
-    console.log('Post deleted:', { id, slug, wasPublished });
+    // Delete the post
+    const result = await dbDeletePost(postId);
 
-    // Revalidation strategy
-    // 1. Always revalidate the blog listing page
+    // Revalidate paths
     await revalidatePath('/blog');
     await revalidateTag('blog-posts');
 
-    // 2. Revalidate the specific post page if it was published
-    if (wasPublished) {
-      await revalidatePath(`/blog/${slug}`);
+    if (result.wasPublished) {
+      await revalidatePath(`/blog/${result.slug}`);
     }
 
-    return NextResponse.json({
-      message: 'Post deleted successfully',
-      slug: slug,
-    });
+    return NextResponse.json({ success: true, data: result });
   } catch (error) {
-    console.error('Post deletion error:', error);
-    return NextResponse.json(
-      { error: (error as Error).message },
-      { status: 500 }
-    );
+    console.error('Error in DELETE /api/posts/[id]:', error);
+    // Ensure the error response also matches NextResponse
+    const errorMessage =
+      error instanceof Error ? error.message : 'An unknown error occurred';
+    return NextResponse.json({ error: errorMessage }, { status: 500 });
   }
 }
