@@ -1,6 +1,7 @@
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { ImageResponse } from 'next/og';
+import Logo from '@/components/ui/Logo';
 
 export interface OgImageProps {
   title: string;
@@ -28,24 +29,27 @@ export async function generateOgImage({
   return new ImageResponse(
     (
       <div tw="flex h-full w-full bg-zinc-900">
-        <div tw="flex p-8">
-          <div tw="flex flex-col w-full items-center justify-start p-8">
-            {/* Site branding */}
-            <div tw="flex w-full items-center justify-between">
-              <span tw="text-3xl text-zinc-400">amir.sh</span>
-              {tag && (
-                <span tw="text-3xl text-zinc-500 text-[#00FBFF]">#{tag}</span>
-              )}
-            </div>
+        <div tw="flex flex-1 flex-col p-12 relative">
+          {/* Site branding */}
+          <div tw="flex w-full items-center justify-between">
+            <span tw="text-3xl text-zinc-400">amir.sh</span>
+            {tag && (
+              <span tw="text-3xl text-zinc-500 text-[#00FBFF]">#{tag}</span>
+            )}
+          </div>
 
-            <div tw="flex flex-col mt-12">
-              <h2 tw="flex flex-col text-7xl text-white text-left font-bold mt-4 w-full leading-none">
-                <span>{title}</span>
-              </h2>
-              <h3 tw="w-full text-5xl text-zinc-500 leading-none">
-                <span>{description}</span>
-              </h3>
-            </div>
+          <div tw="flex flex-col mt-12">
+            <h2 tw="flex flex-col text-7xl text-white text-left font-bold mt-4 w-full leading-none">
+              <span>{title}</span>
+            </h2>
+            <h3 tw="w-full text-5xl text-zinc-500 leading-none">
+              <span>{description}</span>
+            </h3>
+          </div>
+
+          {/* Position the logo in the bottom right corner */}
+          <div tw="absolute bottom-12 right-12">
+            <Logo size={80} />
           </div>
         </div>
       </div>
