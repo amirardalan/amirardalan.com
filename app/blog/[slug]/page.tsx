@@ -124,7 +124,9 @@ export default async function BlogPost({
           )}
           {!post.published && (
             <div className="ml-4 inline-block rounded bg-yellow-200 px-2 py-1 text-sm text-yellow-800 dark:bg-yellow-800 dark:text-yellow-200">
-              Draft
+              <Link href={`/admin/blog/drafts`} title="View all drafts">
+                Draft
+              </Link>
             </div>
           )}
         </div>

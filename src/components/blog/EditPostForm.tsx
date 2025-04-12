@@ -95,7 +95,8 @@ export default function EditPostForm({ post }: EditPostFormProps) {
 
       showToast('Post updated successfully!', 'success');
       setHasUnsavedChanges(false); // Mark changes as saved
-      router.push(published ? `/blog/${slug}` : '/admin/blog/drafts');
+      // Always redirect to the post page after saving, whether draft or published
+      router.push(`/blog/${slug}`);
     } catch (err) {
       setError((err as Error).message);
       showToast((err as Error).message, 'error');
@@ -121,6 +122,7 @@ export default function EditPostForm({ post }: EditPostFormProps) {
 
       showToast('Post deleted successfully!', 'success');
       setHasUnsavedChanges(false); // No need to prompt about unsaved changes
+      // Keep existing redirect logic for delete: published go to published list, drafts go to drafts list
       router.push(
         post.published ? '/admin/blog/published' : '/admin/blog/drafts'
       );
