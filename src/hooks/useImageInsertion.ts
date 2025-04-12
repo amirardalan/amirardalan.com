@@ -9,7 +9,7 @@ interface CursorPosition {
 export function useImageInsertion(
   content: string,
   setContent: (content: string) => void,
-  closeGallery?: () => void // Add optional callback to close the gallery modal
+  closeGallery?: () => void
 ) {
   const textareaRef = useRef<HTMLTextAreaElement>(null!);
   const [cursorPosition, setCursorPosition] = useState<
@@ -37,18 +37,24 @@ export function useImageInsertion(
           imageCode +
           content.substring(position.end);
 
+        // Store the desired cursor position before updating content
+        const newCursorPosition = position.start + imageCode.length;
+
+        // Update content
         setContent(newContent);
 
-        // Set cursor after the inserted image code
+        // Set cursor position after React has updated the DOM
         setTimeout(() => {
           if (textareaRef.current) {
-            const newPosition = position.start + imageCode.length;
             textareaRef.current.focus();
-            textareaRef.current.setSelectionRange(newPosition, newPosition);
+            textareaRef.current.setSelectionRange(
+              newCursorPosition,
+              newCursorPosition
+            );
           }
         }, 0);
       } else {
-        // Fallback to appending at the end
+        // Fallback to appending image to end of content
         setContent(`${content}\n${imageCode}`);
       }
 
@@ -57,7 +63,7 @@ export function useImageInsertion(
         closeGallery();
       }
 
-      return true; // Return true to indicate successful insertion
+      return true;
     },
     [content, setContent, closeGallery]
   );
