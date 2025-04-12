@@ -53,7 +53,13 @@ export default function BlogPosts({ posts }: { posts: BlogPost[] }) {
   const categoryFilter = searchParams.get('category');
   const postsPerPage = 8;
 
-  const filteredPosts = posts.filter((post) => {
+  // Find the featured post, if any
+  const featuredPost = posts.find((post) => post.featured);
+
+  // Filter the remaining posts
+  const regularPosts = posts.filter((post) => !post.featured);
+
+  const filteredPosts = regularPosts.filter((post) => {
     const matchesSearch = post.title
       .toLowerCase()
       .includes(searchTerm.toLowerCase());
@@ -62,6 +68,15 @@ export default function BlogPosts({ posts }: { posts: BlogPost[] }) {
       : true;
     return matchesSearch && matchesCategory;
   });
+
+  // Filter the featured post as well (if it exists)
+  const showFeaturedPost =
+    featuredPost &&
+    (!searchTerm ||
+      featuredPost.title.toLowerCase().includes(searchTerm.toLowerCase())) &&
+    (!categoryFilter ||
+      (featuredPost.category ?? '').toLowerCase() ===
+        categoryFilter.toLowerCase());
 
   const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
   const paginatedPosts = filteredPosts.slice(
@@ -116,8 +131,10 @@ export default function BlogPosts({ posts }: { posts: BlogPost[] }) {
         <div>
           {searchTerm && (
             <p className="text-sm text-dark dark:text-light">
-              {filteredPosts.length} result
-              {filteredPosts.length !== 1 ? 's' : ''}
+              {filteredPosts.length + (showFeaturedPost ? 1 : 0)} result
+              {filteredPosts.length + (showFeaturedPost ? 1 : 0) !== 1
+                ? 's'
+                : ''}
             </p>
           )}
         </div>
@@ -136,8 +153,41 @@ export default function BlogPosts({ posts }: { posts: BlogPost[] }) {
           )}
         </div>
       </div>
-      {paginatedPosts.length > 0 ? (
+      {paginatedPosts.length > 0 || showFeaturedPost ? (
         <ul className={clsx('pt-6', searchTerm && 'pt-2')}>
+          {/* Featured post at the top */}
+          {showFeaturedPost && (
+            <li
+              key={featuredPost.id}
+              className="lg:hover:before:animate-cursor-blink relative mb-10 flex w-full justify-between border-l-4 border-primary pl-4 text-xl last:mb-0 lg:hover:before:absolute lg:hover:before:-left-4 lg:hover:before:top-[6px] lg:hover:before:h-4 lg:hover:before:w-2 lg:hover:before:rounded-sm lg:hover:before:bg-primary lg:hover:before:content-['']"
+            >
+              <a className="w-full" href={`/blog/${featuredPost.slug}`}>
+                <div className="flex items-center space-x-2">
+                  <span className="text-xs uppercase text-primary">
+                    Featured
+                  </span>
+                  <h2 className="relative pr-12">{featuredPost.title}</h2>
+                </div>
+                <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">
+                  {featuredPost.excerpt}
+                </p>
+              </a>
+              <div className="flex min-w-fit flex-col items-end text-xs">
+                <time className="text-zinc-500 dark:text-zinc-400">
+                  {formatDate(
+                    featuredPost.show_updated
+                      ? featuredPost.updated_at ?? featuredPost.created_at
+                      : featuredPost.created_at
+                  )}
+                </time>
+                <span className="text-zinc-400 dark:text-zinc-500">
+                  {calculateReadTime(featuredPost.content)}
+                </span>
+              </div>
+            </li>
+          )}
+
+          {/* Regular posts */}
           {paginatedPosts.map((post) => (
             <li
               key={post.id}

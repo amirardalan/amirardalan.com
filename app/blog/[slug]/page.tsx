@@ -131,6 +131,11 @@ export default async function BlogPost({
 
         <div className="flex items-center justify-between">
           <span className="flex flex-row text-xxs uppercase">
+            {post.featured && (
+              <p className="text-dynamic pr-2 text-xxs uppercase italic">
+                Featured
+              </p>
+            )}
             <p className="pr-2 text-xxs uppercase text-primary">
               <Link
                 href={`/blog?category=${encodeURIComponent(post.category ?? 'uncategorized')}`}

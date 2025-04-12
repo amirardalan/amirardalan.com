@@ -20,6 +20,7 @@ export const getPublishedPosts = async () => {
       show_updated: posts.show_updated,
       user_id: posts.user_id,
       user_name: users.name,
+      featured: posts.featured, // Add featured flag
     })
     .from(posts)
     .leftJoin(users, eq(posts.user_id, users.id))
@@ -59,6 +60,7 @@ export async function getPostBySlug(slug: string) {
       show_updated: posts.show_updated,
       user_id: posts.user_id,
       author_name: users.name,
+      featured: posts.featured, // Add the featured field
     })
     .from(posts)
     .leftJoin(users, eq(posts.user_id, users.id))
@@ -92,6 +94,7 @@ export async function createPost(postData: Omit<BlogPost, 'id'>) {
       category: postData.category || null,
       user_id: postData.user_id,
       published: postData.published || false,
+      featured: postData.featured || false, // Ensure featured is included in creation
       created_at: new Date(),
       updated_at: new Date(),
     })
@@ -112,6 +115,14 @@ export async function updatePost(id: number, postData: Partial<BlogPost>) {
   const wasPublished = originalPost[0]?.published;
   const oldSlug = originalPost[0]?.slug;
 
+  // If this post is being featured, unfeatured all other posts first
+  if (postData.featured === true) {
+    await db
+      .update(posts)
+      .set({ featured: false })
+      .where(eq(posts.featured, true));
+  }
+
   await db
     .update(posts)
     .set({
@@ -123,6 +134,7 @@ export async function updatePost(id: number, postData: Partial<BlogPost>) {
       published: postData.published,
       show_updated: postData.show_updated ?? false, // Ensure this is updated
       updated_at: new Date(),
+      featured: postData.featured, // Ensure featured is updated
     })
     .where(eq(posts.id, id));
 

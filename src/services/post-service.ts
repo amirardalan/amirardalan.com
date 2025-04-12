@@ -5,19 +5,26 @@ interface PostData {
   content: string;
   category: string;
   published: boolean;
+  featured?: boolean;
   user_id: number;
   show_updated?: boolean;
-  csrfToken: string;
+  // Remove csrfToken from the interface as it's passed separately
 }
 
 export async function createPost(postData: PostData, csrfToken: string) {
+  // Ensure the featured property is explicitly included
+  const dataToSend = {
+    ...postData,
+    featured: postData.featured === true, // Make it explicit boolean
+  };
+
   const response = await fetch('/api/posts', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
       'x-csrf-token': csrfToken,
     },
-    body: JSON.stringify(postData),
+    body: JSON.stringify(dataToSend),
   });
 
   if (!response.ok) {
@@ -29,16 +36,22 @@ export async function createPost(postData: PostData, csrfToken: string) {
 
 export async function updatePost(
   postId: number,
-  postData: Partial<PostData>,
+  postData: Partial<Omit<PostData, 'csrfToken'>>,
   csrfToken: string
 ) {
+  // Ensure the featured property is explicitly included
+  const dataToSend = {
+    ...postData,
+    featured: postData.featured === true, // Make it explicit boolean
+  };
+
   const response = await fetch(`/api/posts/${postId}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
       'x-csrf-token': csrfToken,
     },
-    body: JSON.stringify(postData),
+    body: JSON.stringify(dataToSend),
   });
 
   if (!response.ok) {

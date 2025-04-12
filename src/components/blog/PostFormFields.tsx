@@ -14,6 +14,8 @@ interface PostFormFieldsProps {
   setCategory: (value: string) => void;
   published: boolean;
   setPublished: (value: boolean) => void;
+  featured?: boolean;
+  setFeatured?: (value: boolean) => void;
   showGallery: boolean;
   setShowGallery: (value: boolean) => void;
   showUpdated?: boolean;
@@ -35,6 +37,8 @@ export default function PostFormFields({
   setCategory,
   published,
   setPublished,
+  featured,
+  setFeatured,
   setShowGallery,
   showUpdated,
   setShowUpdated,
@@ -194,6 +198,20 @@ export default function PostFormFields({
               />
               <label htmlFor="show_updated" className="ml-2 block text-xs">
                 Show Updated Date
+              </label>
+            </div>
+          )}
+          {setFeatured && (
+            <div className="flex items-center">
+              <input
+                type="checkbox"
+                id="featured"
+                checked={featured}
+                onChange={(e) => setFeatured?.(e.target.checked)}
+                className="h-4 w-4 cursor-pointer border-zinc-300 text-zinc-400 focus:ring-zinc-400"
+              />
+              <label htmlFor="featured" className="ml-2 block text-xs">
+                Featured Post
               </label>
             </div>
           )}
