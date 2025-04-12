@@ -6,6 +6,7 @@ import { updatePost, deletePost } from '@/services/post-service';
 import { useToast } from '@/components/ui/ToastContext';
 import { generateCsrfToken } from '@/lib/csrf';
 import { useImageInsertion } from '@/hooks/useImageInsertion';
+import { useEditPostStore } from '@/src/store/edit';
 
 import PostFormFields from '@/components/blog/PostFormFields';
 import Button from '@/components/ui/Button';
@@ -23,6 +24,7 @@ interface EditPostFormProps {
 export default function EditPostForm({ post }: EditPostFormProps) {
   const router = useRouter();
   const { showToast } = useToast();
+  const { setCurrentPostPublished } = useEditPostStore();
   const [title, setTitle] = useState(post.title || '');
   const [slug, setSlug] = useState(post.slug || '');
   const [excerpt, setExcerpt] = useState(post.excerpt || '');
@@ -145,6 +147,15 @@ export default function EditPostForm({ post }: EditPostFormProps) {
     handleTextAreaSelect,
     insertImageAtCursor,
   } = useImageInsertion(content, setContent, () => setShowGallery(false));
+
+  // Set the current post published status in the "edit" store
+  useEffect(() => {
+    setCurrentPostPublished(post.published || false);
+    return () => {
+      // Clean up when component unmounts
+      setCurrentPostPublished(null);
+    };
+  }, [post.published, setCurrentPostPublished]);
 
   return (
     <>
