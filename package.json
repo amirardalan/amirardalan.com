@@ -35,7 +35,7 @@
     "@types/js-cookie": "^3.0.6",
     "@types/mdx": "^2.0.13",
     "@types/node": "^20.17.30",
-    "@types/pg": "^8.11.11",
+    "@types/pg": "^8.11.12",
     "@types/react": "19.0.7",
     "@types/react-dom": "19.0.3",
     "drizzle-kit": "^0.30.6",
