@@ -1,15 +1,11 @@
 import { ImageResponse } from 'next/og';
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
+import { size, contentType } from '@/src/components/og/OgImageTemplate';
 
 // Image metadata
 export const alt = 'Amir Ardalan';
-export const size = {
-  width: 1200,
-  height: 630,
-};
-
-export const contentType = 'image/png';
+export { size, contentType };
 
 // Image generation
 export default async function Image() {
@@ -41,8 +37,6 @@ export default async function Image() {
     ),
     // ImageResponse options
     {
-      // For convenience, we can re-use the exported opengraph-image
-      // size config to also set the ImageResponse's width and height.
       ...size,
       fonts: [
         {

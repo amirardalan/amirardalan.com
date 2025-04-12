@@ -1,12 +1,12 @@
-import { generateOgImage } from '@/src/components/og/OgImageTemplate';
+import {
+  generateOgImage,
+  size,
+  contentType,
+} from '@/src/components/og/OgImageTemplate';
 
 // Image metadata
 export const alt = 'Amir Ardalan Uses';
-export const size = {
-  width: 1200,
-  height: 630,
-};
-export const contentType = 'image/png';
+export { size, contentType };
 
 // Generate OG image for Uses page
 export default async function Image() {

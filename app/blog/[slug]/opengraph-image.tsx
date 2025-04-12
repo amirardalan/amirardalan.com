@@ -1,13 +1,13 @@
 import { getPostBySlug } from '@/src/db/queries/posts';
-import { generateOgImage } from '@/src/components/og/OgImageTemplate';
+import {
+  generateOgImage,
+  size,
+  contentType,
+} from '@/src/components/og/OgImageTemplate';
 
 // Image metadata
 export const alt = 'Blog post';
-export const size = {
-  width: 1200,
-  height: 630,
-};
-export const contentType = 'image/png';
+export { size, contentType };
 
 // Generate dynamic OG images for blog posts
 export default async function Image({ params }: { params: { slug: string } }) {
