@@ -1,7 +1,6 @@
 import { auth } from '@/lib/auth';
 import { ToastProvider } from '@/components/ui/ToastContext';
 
-import Container from '@/components/content/Container';
 import SignedOut from '@/components/auth/SignedOut';
 import AdminMenu from '@/components/admin/AdminMenu';
 
