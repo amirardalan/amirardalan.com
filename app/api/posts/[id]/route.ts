@@ -1,4 +1,4 @@
-import { updatePost, deletePost } from '@/db/queries/posts';
+import { dbUpdatePost, dbDeletePost } from '@/db/queries/posts';
 import { auth } from '@/lib/auth';
 import { validateCsrfToken } from '@/lib/csrf';
 
@@ -23,13 +23,26 @@ export async function PUT(
       return NextResponse.json({ error: 'Invalid post ID' }, { status: 400 });
     }
 
-    // Get CSRF token (validation commented out but kept for future use)
-    const csrfToken = request.headers.get('x-csrf-token');
-    // validateCsrfToken(csrfToken, session.csrfToken);
-
-    // Get the request body and update the post
     const requestData = await request.json();
-    const result = await updatePost(postId, {
+
+    // Extract CSRF token from headers
+    const csrfToken = request.headers.get('x-csrf-token');
+
+    // Check if token exists - but we need to pass both tokens to validateCsrfToken
+    if (!csrfToken) {
+      return NextResponse.json(
+        { error: 'CSRF token is missing from headers.' },
+        { status: 400 }
+      );
+    }
+
+    // Only validate if requestData.csrfToken exists
+    if (requestData.csrfToken) {
+      validateCsrfToken(requestData.csrfToken, csrfToken);
+    }
+
+    // Update the post in the database
+    const result = await dbUpdatePost(postId, {
       title: requestData.title,
       slug: requestData.slug,
       excerpt: requestData.excerpt,
@@ -77,7 +90,7 @@ export async function DELETE(
     }
 
     // Delete the post
-    const result = await deletePost(postId);
+    const result = await dbDeletePost(postId);
 
     // Revalidate paths
     await revalidatePath('/blog');

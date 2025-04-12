@@ -88,8 +88,9 @@ export default function EditPostForm({ post }: EditPostFormProps) {
           featured,
           show_updated: showUpdated,
           user_id: post.user_id,
+          csrfToken: csrfTokenValue, // Include this in the request data
         },
-        csrfTokenValue
+        csrfTokenValue // Also pass this as the separate parameter for headers
       );
 
       showToast('Post updated successfully!', 'success');

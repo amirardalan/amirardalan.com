@@ -60,7 +60,7 @@ export async function getPostBySlug(slug: string) {
       show_updated: posts.show_updated,
       user_id: posts.user_id,
       author_name: users.name,
-      featured: posts.featured, // Add the featured field
+      featured: posts.featured,
     })
     .from(posts)
     .leftJoin(users, eq(posts.user_id, users.id))
@@ -80,95 +80,6 @@ export async function getAllPublishedSlugs() {
   return publishedPosts.map((post) => ({
     slug: post.slug,
   }));
-}
-
-// Create a new post
-export async function createPost(postData: Omit<BlogPost, 'id'>) {
-  const result = await db
-    .insert(posts)
-    .values({
-      title: postData.title,
-      slug: postData.slug,
-      excerpt: postData.excerpt,
-      content: postData.content,
-      category: postData.category || null,
-      user_id: postData.user_id,
-      published: postData.published || false,
-      featured: postData.featured || false, // Ensure featured is included in creation
-      created_at: new Date(),
-      updated_at: new Date(),
-    })
-    .returning({ id: posts.id });
-
-  return result[0]?.id;
-}
-
-// Update an existing post
-export async function updatePost(id: number, postData: Partial<BlogPost>) {
-  // Get the original post to check if publish status changed
-  const originalPost = await db
-    .select({ published: posts.published, slug: posts.slug })
-    .from(posts)
-    .where(eq(posts.id, id))
-    .limit(1);
-
-  const wasPublished = originalPost[0]?.published;
-  const oldSlug = originalPost[0]?.slug;
-
-  // If this post is being featured, unfeatured all other posts first
-  if (postData.featured === true) {
-    await db
-      .update(posts)
-      .set({ featured: false })
-      .where(eq(posts.featured, true));
-  }
-
-  await db
-    .update(posts)
-    .set({
-      title: postData.title,
-      slug: postData.slug,
-      excerpt: postData.excerpt,
-      content: postData.content,
-      category: postData.category,
-      published: postData.published,
-      show_updated: postData.show_updated ?? false, // Ensure this is updated
-      updated_at: new Date(),
-      featured: postData.featured, // Ensure featured is updated
-    })
-    .where(eq(posts.id, id));
-
-  return {
-    wasPublished,
-    oldSlug,
-    newSlug: postData.slug,
-    publishStatusChanged: wasPublished !== postData.published,
-  };
-}
-
-// Delete a post
-export async function deletePost(id: number) {
-  // Get the post slug before deletion for revalidation
-  const post = await db
-    .select({ slug: posts.slug, published: posts.published })
-    .from(posts)
-    .where(eq(posts.id, id))
-    .limit(1);
-
-  if (!post.length) {
-    throw new Error('Post not found');
-  }
-
-  const slug = post[0].slug;
-  const wasPublished = post[0].published;
-
-  // Delete the post
-  await db.delete(posts).where(eq(posts.id, id));
-
-  return {
-    slug,
-    wasPublished,
-  };
 }
 
 // Get adjacent posts (previous and next)
@@ -210,5 +121,94 @@ export async function getAdjacentPosts(slug: string) {
   return {
     previous: previousPost.length ? previousPost[0] : null,
     next: nextPost.length ? nextPost[0] : null,
+  };
+}
+
+// Database operation to create a new post
+export async function dbCreatePost(postData: Omit<BlogPost, 'id'>) {
+  const result = await db
+    .insert(posts)
+    .values({
+      title: postData.title,
+      slug: postData.slug,
+      excerpt: postData.excerpt,
+      content: postData.content,
+      category: postData.category || null,
+      user_id: postData.user_id,
+      published: postData.published || false,
+      featured: postData.featured || false, // Ensure featured is included in creation
+      created_at: new Date(),
+      updated_at: new Date(),
+    })
+    .returning({ id: posts.id });
+
+  return result[0]?.id;
+}
+
+// Database operation to update an existing post
+export async function dbUpdatePost(id: number, postData: Partial<BlogPost>) {
+  // Get the original post to check if publish status changed
+  const originalPost = await db
+    .select({ published: posts.published, slug: posts.slug })
+    .from(posts)
+    .where(eq(posts.id, id))
+    .limit(1);
+
+  const wasPublished = originalPost[0]?.published;
+  const oldSlug = originalPost[0]?.slug;
+
+  // If this post is being featured, unfeatured all other posts first
+  if (postData.featured === true) {
+    await db
+      .update(posts)
+      .set({ featured: false })
+      .where(eq(posts.featured, true));
+  }
+
+  await db
+    .update(posts)
+    .set({
+      title: postData.title,
+      slug: postData.slug,
+      excerpt: postData.excerpt,
+      content: postData.content,
+      category: postData.category,
+      published: postData.published,
+      show_updated: postData.show_updated ?? false, // Ensure this is updated
+      updated_at: new Date(),
+      featured: postData.featured, // Ensure featured is updated
+    })
+    .where(eq(posts.id, id));
+
+  return {
+    wasPublished,
+    oldSlug,
+    newSlug: postData.slug,
+    publishStatusChanged: wasPublished !== postData.published,
+  };
+}
+
+// Database operation to delete a post
+export async function dbDeletePost(id: number) {
+  // Get the post slug before deletion for revalidation
+  const post = await db
+    .select({ slug: posts.slug, published: posts.published })
+    .from(posts)
+    .where(eq(posts.id, id))
+    .limit(1);
+
+  if (!post.length) {
+    throw new Error('Post not found');
+  }
+
+  const slug = post[0].slug;
+  const wasPublished = post[0].published;
+
+  // Delete the post
+  await db.delete(posts).where(eq(posts.id, id));
+
+  return {
+    slug,
+    wasPublished,
   };
 }

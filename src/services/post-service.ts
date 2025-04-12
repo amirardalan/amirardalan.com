@@ -8,14 +8,14 @@ interface PostData {
   featured?: boolean;
   user_id: number;
   show_updated?: boolean;
-  // Remove csrfToken from the interface as it's passed separately
+  csrfToken?: string;
 }
 
+// Client-side API calls to interact with posts
 export async function createPost(postData: PostData, csrfToken: string) {
-  // Ensure the featured property is explicitly included
   const dataToSend = {
     ...postData,
-    featured: postData.featured === true, // Make it explicit boolean
+    featured: postData.featured === true, // Explicit boolean
   };
 
   const response = await fetch('/api/posts', {
@@ -36,13 +36,14 @@ export async function createPost(postData: PostData, csrfToken: string) {
 
 export async function updatePost(
   postId: number,
-  postData: Partial<Omit<PostData, 'csrfToken'>>,
+  postData: Partial<PostData>,
   csrfToken: string
 ) {
   // Ensure the featured property is explicitly included
   const dataToSend = {
     ...postData,
-    featured: postData.featured === true, // Make it explicit boolean
+    featured: postData.featured === true, // Explicit boolean
+    csrfToken: postData.csrfToken || csrfToken,
   };
 
   const response = await fetch(`/api/posts/${postId}`, {
