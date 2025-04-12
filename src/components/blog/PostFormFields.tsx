@@ -87,7 +87,7 @@ export default function PostFormFields({
           value={title}
           onChange={handleTitleChange}
           required
-          className={`block h-14 w-full bg-zinc-100 px-10 ${title ? 'pb-1 pt-5' : 'py-2'} text-zinc-950 focus:outline-none dark:bg-zinc-800 dark:text-light`}
+          className={`block h-14 w-full bg-zinc-100 px-10 ${title ? 'pb-1 pt-5' : 'py-2'} text-zinc-950 focus:outline-none dark:bg-zinc-900 dark:text-light`}
         />
       </div>
 
@@ -107,7 +107,7 @@ export default function PostFormFields({
           value={slug}
           onChange={(e) => setSlug(e.target.value)}
           required
-          className={`block h-14 w-full bg-zinc-100 px-10 ${slug ? 'pb-1 pt-5' : 'py-2'} text-zinc-950 focus:outline-none dark:bg-zinc-800 dark:text-light`}
+          className={`block h-14 w-full bg-zinc-100 px-10 ${slug ? 'pb-1 pt-5' : 'py-2'} text-zinc-950 focus:outline-none dark:bg-zinc-900 dark:text-light`}
         />
       </div>
 
@@ -127,7 +127,7 @@ export default function PostFormFields({
           value={excerpt}
           onChange={(e) => setExcerpt(e.target.value)}
           required
-          className={`block h-14 w-full border-b-[1px] border-zinc-300 bg-zinc-100 px-10 ${excerpt ? 'pb-1 pt-5' : 'py-2'} text-zinc-950 focus:outline-none dark:border-zinc-700 dark:bg-zinc-800 dark:text-light`}
+          className={`block h-14 w-full border-b-2 border-dotted border-zinc-300 bg-zinc-100 px-10 ${excerpt ? 'pb-1 pt-5' : 'py-2'} text-zinc-950 focus:outline-none dark:border-zinc-800 dark:bg-zinc-900 dark:text-light`}
         />
       </div>
 
@@ -146,7 +146,7 @@ export default function PostFormFields({
             setContent(e.target.value)
           }
           required
-          className="block min-h-[3.5rem] w-full bg-zinc-100 px-10 pb-1 pt-5 text-zinc-950 focus:outline-none dark:bg-zinc-800 dark:text-light"
+          className="block min-h-[3.5rem] w-full bg-zinc-100 px-10 pb-1 pt-5 text-zinc-950 focus:outline-none dark:bg-zinc-900 dark:text-light"
           textareaRef={textareaRef}
           onSelect={onTextAreaSelect}
         />
@@ -162,7 +162,7 @@ export default function PostFormFields({
             value={category}
             onChange={(e) => setCategory(e.target.value)}
             required
-            className="mr-4 block appearance-none rounded-md border border-zinc-300 bg-zinc-100 px-3 py-2 text-zinc-950 dark:border-zinc-500 dark:bg-zinc-800 dark:text-light"
+            className="mr-4 block appearance-none rounded-md border border-zinc-300 bg-zinc-100 px-3 py-2 text-zinc-950 dark:border-zinc-500 dark:bg-zinc-900 dark:text-light"
           >
             <option value="" disabled className="text-light">
               Category
@@ -180,7 +180,7 @@ export default function PostFormFields({
           <button
             type="button"
             onClick={() => setShowGallery(true)}
-            className="mr-4 mt-2 rounded-md bg-zinc-700 px-4 py-2 text-xxs uppercase text-light md:mt-0"
+            className="mt-2 rounded-md bg-zinc-700 px-4 py-2 text-xxs uppercase text-light md:mt-0"
           >
             Add Image
           </button>
@@ -197,7 +197,7 @@ export default function PostFormFields({
                 className="h-4 w-4 cursor-pointer border-zinc-300 text-zinc-400 focus:ring-zinc-400"
               />
               <label htmlFor="show_updated" className="ml-2 block text-xs">
-                Show Updated Date
+                Update Date
               </label>
             </div>
           )}
@@ -211,7 +211,7 @@ export default function PostFormFields({
                 className="h-4 w-4 cursor-pointer border-zinc-300 text-zinc-400 focus:ring-zinc-400"
               />
               <label htmlFor="featured" className="ml-2 block text-xs">
-                Featured Post
+                Featured
               </label>
             </div>
           )}
