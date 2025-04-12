@@ -12,7 +12,6 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "types": ["@mdx-js/loader"],
     "plugins": [
       {
         "name": "next"
