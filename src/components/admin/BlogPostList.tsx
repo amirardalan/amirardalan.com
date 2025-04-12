@@ -22,7 +22,6 @@ export default function BlogPostList({
   searchPlaceholder,
   query,
   totalResults,
-  currentPage,
   totalPages,
   isDrafts = false,
 }: BlogPostListProps) {
