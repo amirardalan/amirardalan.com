@@ -26,7 +26,6 @@
     "react-dom": "19.0.0",
     "simplex-noise": "^4.0.3",
     "sugar-high": "^0.9.3",
-    "swr": "^2.3.3",
     "three": "^0.174.0",
     "typed.js": "^2.1.0",
     "zustand": "^4.5.6"
