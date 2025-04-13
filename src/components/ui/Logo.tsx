@@ -11,7 +11,7 @@ export default function Logo({
   focusable = false,
   inverted = false,
 }: LogoProps) {
-  const fillColor = inverted ? 'var(--color-dark)' : 'var(--color-dynamic)';
+  const fillColor = inverted ? 'var(--color-light)' : 'var(--color-dynamic)';
 
   return (
     <div role="img" aria-label={title}>
