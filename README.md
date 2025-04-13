@@ -52,6 +52,9 @@ NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=<Cloudinary Cloud Name>
 CLOUDINARY_URL=<Cloudinary URL>
 CLOUDINARY_API_KEY=<Cloudinary API Key>
 CLOUDINARY_API_SECRET=<Cloudinary API Secret>
+
+NEXT_PUBLIC_POSTHOG_KEY=<Your PostHog Key>
+NEXT_PUBLIC_POSTHOG_HOST=<Your PostHog Host>
 ```
 
 And finally, generate a Next Auth secret which will automatically overwrite the placeholder in the `.env.local` file:
