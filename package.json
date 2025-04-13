@@ -21,6 +21,8 @@
     "next-cloudinary": "^6.16.0",
     "next-mdx-remote": "^5.0.0",
     "pg": "^8.14.1",
+    "posthog-js": "^1.235.6",
+    "posthog-node": "^4.11.3",
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "simplex-noise": "^4.0.3",

@@ -1,3 +1,4 @@
+// File: app/layout.tsx
 import { Metadata } from 'next';
 import { headers } from 'next/headers';
 import { auth } from '@/lib/auth';
@@ -14,6 +15,7 @@ import Header from '@/components/ui/Header';
 import Footer from '@/components/ui/Footer';
 import { AuthProvider } from '@/components/auth/AuthProvider';
 import MobileNavigation from '@/components/ui/MobileNavigation';
+import { PostHogProvider } from '@/components/PostHogProvider';
 
 const sans = Jura({
   subsets: ['latin'],
@@ -69,9 +71,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   const theme = await getTheme();
   const session = await auth();
 
@@ -87,12 +87,14 @@ export default async function RootLayout({
             'dark:bg-dark': theme === 'dark',
           })}
         >
-          <div className="flex min-h-screen flex-col">
-            <Header />
-            <main className="flex flex-1 flex-grow">{children}</main>
-            <Footer />
-          </div>
-          <MobileNavigation />
+          <PostHogProvider>
+            <div className="flex min-h-screen flex-col">
+              <Header />
+              <main className="flex flex-1 flex-grow">{children}</main>
+              <Footer />
+            </div>
+            <MobileNavigation />
+          </PostHogProvider>
         </body>
       </html>
     </AuthProvider>
