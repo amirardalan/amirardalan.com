@@ -2,7 +2,7 @@ import {
   generateOgImage,
   size,
   contentType,
-} from '@/src/components/og/OgImageTemplate';
+} from '@/components/og/OgImageTemplate';
 
 // Image metadata
 export const alt = 'About Amir Ardalan';

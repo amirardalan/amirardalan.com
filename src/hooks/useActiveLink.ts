@@ -1,7 +1,7 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
-import { useEditPostStore } from '@/src/store/edit';
+import { useEditPostStore } from '@/store/edit';
 
 export function useActiveLink() {
   const pathname = usePathname();

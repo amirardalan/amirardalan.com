@@ -1,6 +1,6 @@
-import { getPostBySlug } from '@/src/db/queries/posts';
-import { generateTwitterImage } from '@/src/components/og/TwitterImageTemplate';
-import { size, contentType } from '@/src/components/og/OgImageTemplate';
+import { getPostBySlug } from '@/db/queries/posts';
+import { generateTwitterImage } from '@/components/og/TwitterImageTemplate';
+import { size, contentType } from '@/components/og/OgImageTemplate';
 
 // Image metadata
 export const alt = 'Blog post';

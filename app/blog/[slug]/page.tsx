@@ -13,10 +13,11 @@ import { components } from '@/components/blog/MDXComponents';
 import Container from '@/components/content/Container';
 import Link from 'next/link';
 
-import { formatDate } from '@/utils/format-date';
-import ClientLikeCount from '@/src/components/blog/ClientLikeCount';
+import ClientLikeCount from '@/components/blog/ClientLikeCount';
 import BlogSupport from '@/components/blog/BlogSupport';
-import SocialActions from '@/src/components/blog/SocialActions';
+import SocialActions from '@/components/blog/SocialActions';
+
+import { formatDate } from '@/utils/format-date';
 import calculateReadTime from '@/utils/calculate-readtime';
 
 export const revalidate = false;

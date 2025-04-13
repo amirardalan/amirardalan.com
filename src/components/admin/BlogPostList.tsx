@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { formatDate } from '@/src/utils/format-date';
+import { formatDate } from '@/utils/format-date';
 import { BlogPost } from '@/types/blog';
 import AdminPageHeading from '@/components/admin/AdminPageHeading';
 import SearchInput from '@/components/admin/AdminSearch';

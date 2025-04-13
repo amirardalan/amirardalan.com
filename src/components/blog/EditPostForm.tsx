@@ -6,7 +6,7 @@ import { updatePost, deletePost } from '@/services/post-service';
 import { useToast } from '@/components/ui/ToastContext';
 import { generateCsrfToken } from '@/lib/csrf';
 import { useImageInsertion } from '@/hooks/useImageInsertion';
-import { useEditPostStore } from '@/src/store/edit';
+import { useEditPostStore } from '@/store/edit';
 
 import PostFormFields from '@/components/blog/PostFormFields';
 import Button from '@/components/ui/Button';

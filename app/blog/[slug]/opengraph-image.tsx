@@ -1,9 +1,9 @@
-import { getPostBySlug } from '@/src/db/queries/posts';
+import { getPostBySlug } from '@/db/queries/posts';
 import {
   generateOgImage,
   size,
   contentType,
-} from '@/src/components/og/OgImageTemplate';
+} from '@/components/og/OgImageTemplate';
 
 // Image metadata
 export const alt = 'Blog post';

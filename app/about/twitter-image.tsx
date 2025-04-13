@@ -1,5 +1,5 @@
-import { generateTwitterImage } from '@/src/components/og/TwitterImageTemplate';
-import { size, contentType } from '@/src/components/og/OgImageTemplate';
+import { generateTwitterImage } from '@/components/og/TwitterImageTemplate';
+import { size, contentType } from '@/components/og/OgImageTemplate';
 
 // Image metadata
 export const alt = 'About Amir Ardalan';
