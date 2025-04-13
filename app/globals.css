@@ -27,6 +27,7 @@
 
   /* Dynamic Colors */
   --color-dynamic: var(--color-dark);
+  --color-dynamic-inverse: var(--color-light);
 
   /* Syntax Highlighting */
   --sh-class: oklch(0.62 0.18 39.22);
@@ -54,6 +55,7 @@
     .dark & {
       background-color: var(--color-dark);
       --color-dynamic: var(--color-light);
+      --color-dynamic-inverse: var(--color-dark);
       --color-primary: var(--color-primary-dark);
       --color-selection-text: oklch(0.141 0.005 285.823);
       --color-gradient: linear-gradient(
