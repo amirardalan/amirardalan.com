@@ -1,7 +1,7 @@
 # [amirardalan.com](https://amirardalan.com)
 
 > [!IMPORTANT]
-> The current version (v1.1.1) uses Next.js Pages Router. See the [v1.1.1 release](<link-to-release>) for the codebase.
+> The current version (v1.1.1) uses Next.js Pages Router. See the [v1.1.1 release](https://github.com/amirardalan/amirardalan.com/releases/tag/v1.1.1) for the codebase.
 > Version 2.0.0, a rewrite with Next.js App Router, will replace this codebase soon. Stay tuned for updates!
 
 ---
