@@ -4,7 +4,6 @@ import { useState, useRef, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import { updatePost, deletePost } from '@/services/post-service';
 import { useToast } from '@/components/ui/ToastContext';
-import { generateCsrfToken } from '@/lib/csrf';
 import { useImageInsertion } from '@/hooks/useImageInsertion';
 import { useEditPostStore } from '@/store/edit';
 
@@ -40,7 +39,6 @@ export default function EditPostForm({ post }: EditPostFormProps) {
   const [showGallery, setShowGallery] = useState(false);
   const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null!);
-  const csrfToken = generateCsrfToken();
 
   // Track form changes to detect unsaved changes
   useEffect(() => {
@@ -77,23 +75,17 @@ export default function EditPostForm({ post }: EditPostFormProps) {
     setError(null);
 
     try {
-      const csrfTokenValue = await csrfToken;
-      await updatePost(
-        post.id,
-        {
-          title,
-          slug,
-          excerpt,
-          content,
-          category,
-          published,
-          featured,
-          show_updated: showUpdated,
-          user_id: post.user_id,
-          csrfToken: csrfTokenValue,
-        },
-        csrfTokenValue
-      );
+      await updatePost(post.id, {
+        title,
+        slug,
+        excerpt,
+        content,
+        category,
+        published,
+        featured,
+        show_updated: showUpdated,
+        user_id: post.user_id,
+      });
 
       showToast('Post updated successfully!', 'success');
       setHasUnsavedChanges(false); // Mark changes as saved

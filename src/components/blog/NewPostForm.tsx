@@ -5,7 +5,6 @@ import { useRouter } from 'next/navigation';
 import { createPost } from '@/services/post-service';
 import { useToast } from '@/components/ui/ToastContext';
 import { formatImage } from '@/utils/format-image';
-import { generateCsrfToken } from '@/lib/csrf';
 import { useImageInsertion } from '@/hooks/useImageInsertion';
 
 import PostFormFields from '@/components/blog/PostFormFields';
@@ -62,7 +61,6 @@ export default function NewPostForm({ userId }: NewPostFormProps) {
     setError(null);
 
     try {
-      const csrfToken = await generateCsrfToken();
       const payload = {
         title,
         slug,
@@ -74,10 +72,9 @@ export default function NewPostForm({ userId }: NewPostFormProps) {
         featured,
         created_at: new Date().toISOString(),
         updated_at: new Date().toISOString(),
-        csrfToken,
       };
 
-      await createPost(payload, csrfToken);
+      await createPost(payload);
 
       showToast('Post created successfully!', 'success');
       setHasUnsavedChanges(false); // Mark changes as saved before navigation

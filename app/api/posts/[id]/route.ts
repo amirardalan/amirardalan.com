@@ -1,6 +1,5 @@
 import { dbUpdatePost, dbDeletePost } from '@/db/queries/posts';
 import { auth } from '@/lib/auth';
-import { validateCsrfToken } from '@/lib/csrf';
 
 // Import NextRequest again
 import { NextRequest, NextResponse } from 'next/server';
@@ -27,22 +26,6 @@ export async function PUT(
     }
 
     const requestData = await request.json();
-
-    // Extract CSRF token from headers
-    const csrfToken = request.headers.get('x-csrf-token');
-
-    // Check if token exists - but we need to pass both tokens to validateCsrfToken
-    if (!csrfToken) {
-      return NextResponse.json(
-        { error: 'CSRF token is missing from headers.' },
-        { status: 400 }
-      );
-    }
-
-    // Only validate if requestData.csrfToken exists
-    if (requestData.csrfToken) {
-      validateCsrfToken(requestData.csrfToken, csrfToken);
-    }
 
     // Update the post in the database
     const result = await dbUpdatePost(postId, {
