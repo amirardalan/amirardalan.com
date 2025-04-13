@@ -1,3 +1,7 @@
+'use client';
+
+import { useTheme } from '@/store/theme';
+
 interface LogoProps {
   size: number;
   inverted?: boolean;
@@ -11,7 +15,16 @@ export default function Logo({
   focusable = false,
   inverted = false,
 }: LogoProps) {
-  const fillColor = inverted ? 'var(--color-dark)' : 'var(--color-dynamic)';
+  const { effectiveTheme } = useTheme();
+
+  // Pass the inverted prop to invert the logo color
+  const fillColor = inverted
+    ? effectiveTheme === 'dark'
+      ? 'var(--color-dark)'
+      : 'var(--color-light)'
+    : effectiveTheme === 'dark'
+      ? 'var(--color-light)'
+      : 'var(--color-dark)';
 
   return (
     <div role="img" aria-label={title}>
