@@ -10,6 +10,7 @@ export default function Logo({
   title,
   focusable = false,
   inverted = false,
+}: LogoProps) {
   const fillColor = inverted ? 'var(--color-dark)' : 'var(--color-dynamic)';
 
   return (
