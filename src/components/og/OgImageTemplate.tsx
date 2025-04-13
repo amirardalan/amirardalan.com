@@ -27,9 +27,15 @@ export async function generateOgImage({
 
   return new ImageResponse(
     (
-      <div tw="flex h-full w-full bg-zinc-900">
+      <div
+        tw="flex h-full w-full"
+        style={{
+          background:
+            'linear-gradient(125deg, #2F2F2F 0%, #262626 25%, #1F1F1F 50%, #1A1A1A 75%, #171717 100%)',
+          backgroundSize: '100% 100%',
+        }}
+      >
         <div tw="flex flex-col w-full h-full p-20 relative justify-between">
-          {/* Site branding */}
           <div tw="flex w-full items-center justify-between">
             <span tw="text-3xl text-[#00FBFF]">amir.sh</span>
             {tag && <span tw="text-3xl text-zinc-500">#{tag}</span>}
@@ -44,7 +50,6 @@ export async function generateOgImage({
             </h3>
           </div>
 
-          {/* Position the logo in the bottom right corner */}
           <div tw="flex items-center justify-end">
             <svg
               width={100}
