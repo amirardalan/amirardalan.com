@@ -1,4 +1,3 @@
-// File: app/layout.tsx
 import { Metadata } from 'next';
 import { headers } from 'next/headers';
 import { auth } from '@/lib/auth';
