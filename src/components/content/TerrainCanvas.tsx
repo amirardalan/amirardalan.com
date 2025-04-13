@@ -42,7 +42,7 @@ type GenerateTerrainFn = (
 const MIN_DETAIL = 10;
 const MAX_DETAIL = 200;
 const MIN_HEIGHT = 0.05;
-const MAX_HEIGHT = 0.15;
+const MAX_HEIGHT = 0.25;
 const MIN_TEXTURE = 1;
 const MAX_TEXTURE = 3;
 
@@ -213,7 +213,7 @@ export default function TerrainCanvas() {
           gl={{ antialias: true }}
           dpr={pixelRatio}
           onCreated={({ camera }) => camera.lookAt(0, 0, 0)}
-          camera={{ position: [0.4, 0.4, 0.4] }}
+          camera={{ position: [0.1, 1, 0.8] }}
         >
           <Terrain {...terrainProps} />
         </Canvas>
