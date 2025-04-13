@@ -1,6 +1,3 @@
-'use client';
-import { useTheme } from '@/store/theme';
-
 interface LogoProps {
   size: number;
   inverted?: boolean;
@@ -10,15 +7,10 @@ interface LogoProps {
 
 export default function Logo({
   size,
-  inverted = false,
   title,
   focusable = false,
-}: LogoProps) {
-  const { effectiveTheme } = useTheme();
-  const fill =
-    effectiveTheme === 'dark' ? 'var(--color-light)' : 'var(--color-dark)';
-  const invertedFill =
-    effectiveTheme === 'dark' ? 'var(--color-dark)' : 'var(--color-light)';
+  inverted = false,
+  const fillColor = inverted ? 'var(--color-dark)' : 'var(--color-dynamic)';
 
   return (
     <div role="img" aria-label={title}>
@@ -27,7 +19,7 @@ export default function Logo({
         height={size}
         viewBox="0 0 286 286"
         xmlns="http://www.w3.org/2000/svg"
-        fill={inverted ? invertedFill : fill}
+        fill={fillColor}
         role="img"
         aria-labelledby="logoTitle"
         focusable={focusable ? 'true' : 'false'}
