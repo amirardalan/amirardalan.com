@@ -10,8 +10,20 @@ export function PostHogProvider({ children }: { children: React.ReactNode }) {
     posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY!, {
       api_host: '/ingest',
       ui_host: 'https://us.posthog.com',
-      capture_pageview: false, // We capture pageviews manually
-      capture_pageleave: true, // Enable pageleave capture
+      capture_pageview: false,
+      capture_pageleave: true,
+      loaded: function (ph) {
+        if (
+          process.env.NODE_ENV === 'development' ||
+          process.env.NEXT_PUBLIC_VERCEL_ENV === 'preview'
+        ) {
+          ph.opt_out_capturing();
+          ph.set_config({ disable_session_recording: true });
+          console.log(
+            'PostHog tracking disabled in development/preview environment'
+          );
+        }
+      },
     });
   }, []);
 
