@@ -1,6 +1,6 @@
 'use client';
 
-import { useAuth } from '@/components/auth/AuthProvider';
+import { useAuth } from '@/src/context/AuthProvider';
 import Link from 'next/link';
 
 export default function User() {

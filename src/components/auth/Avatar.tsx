@@ -1,6 +1,6 @@
 'use client';
 
-import { useAuth } from '@/components/auth/AuthProvider';
+import { useAuth } from '@/context/AuthProvider';
 import Image from 'next/image';
 
 export default function Avatar() {

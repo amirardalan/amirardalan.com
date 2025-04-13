@@ -1,6 +1,6 @@
 'use client';
 
-import { useAuth } from '@/components/auth/AuthProvider';
+import { useAuth } from '@/context/AuthProvider';
 import Button from '@/components/ui/Button';
 
 export default function AuthMenu() {

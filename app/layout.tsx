@@ -1,6 +1,8 @@
 import { Metadata } from 'next';
 import { headers } from 'next/headers';
 import { auth } from '@/lib/auth';
+import { AuthProvider } from '@/context/AuthProvider';
+import { PostHogProvider } from '@/context/PostHogProvider';
 
 import { getTheme } from '@/utils/get-theme';
 import '@/app/globals.css';
@@ -12,9 +14,7 @@ import LightIcon from '@/public/images/favicon-light.png';
 
 import Header from '@/components/ui/Header';
 import Footer from '@/components/ui/Footer';
-import { AuthProvider } from '@/components/auth/AuthProvider';
 import MobileNavigation from '@/components/ui/MobileNavigation';
-import { PostHogProvider } from '@/components/PostHogProvider';
 
 const sans = Jura({
   subsets: ['latin'],
