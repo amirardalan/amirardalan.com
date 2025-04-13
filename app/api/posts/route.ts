@@ -1,14 +1,9 @@
 import { NextResponse } from 'next/server';
 import { dbCreatePost, dbUpdatePost } from '@/db/queries/posts';
-import { generateCsrfToken, validateCsrfToken } from '@/lib/csrf';
 
 export async function POST(req: Request) {
   try {
-    const body = await req.json();
-    const { csrfToken, ...data } = body;
-
-    const serverToken = req.headers.get('x-csrf-token');
-    validateCsrfToken(csrfToken, serverToken);
+    const data = await req.json();
 
     if (!data.title || !data.slug || !data.content || !data.user_id) {
       return NextResponse.json(
@@ -35,11 +30,8 @@ export async function POST(req: Request) {
 
 export async function PUT(req: Request) {
   try {
-    const body = await req.json();
-    const { csrfToken, id, ...data } = body;
-
-    const serverToken = req.headers.get('x-csrf-token');
-    validateCsrfToken(csrfToken, serverToken);
+    const data = await req.json();
+    const { id, ...postData } = data;
 
     if (!id) {
       return NextResponse.json(
@@ -48,14 +40,19 @@ export async function PUT(req: Request) {
       );
     }
 
-    if (!data.title || !data.slug || !data.content || !data.user_id) {
+    if (
+      !postData.title ||
+      !postData.slug ||
+      !postData.content ||
+      !postData.user_id
+    ) {
       return NextResponse.json(
         { error: 'Title, slug, content, and user_id are required.' },
         { status: 400 }
       );
     }
 
-    const result = await dbUpdatePost(parseInt(id, 10), data);
+    const result = await dbUpdatePost(parseInt(id, 10), postData);
 
     return NextResponse.json(result, { status: 200 });
   } catch (error) {

@@ -8,11 +8,10 @@ interface PostData {
   featured?: boolean;
   user_id: number;
   show_updated?: boolean;
-  csrfToken?: string;
 }
 
 // Client-side API calls to interact with posts
-export async function createPost(postData: PostData, csrfToken: string) {
+export async function createPost(postData: PostData) {
   const dataToSend = {
     ...postData,
     featured: postData.featured === true, // Explicit boolean
@@ -22,7 +21,6 @@ export async function createPost(postData: PostData, csrfToken: string) {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'x-csrf-token': csrfToken,
     },
     body: JSON.stringify(dataToSend),
   });
@@ -84,23 +82,17 @@ export async function getSuggestedSlugs(baseSlug: string): Promise<string[]> {
   return data.suggestions;
 }
 
-export async function updatePost(
-  postId: number,
-  postData: Partial<PostData>,
-  csrfToken: string
-) {
+export async function updatePost(postId: number, postData: Partial<PostData>) {
   // Ensure the featured property is explicitly included
   const dataToSend = {
     ...postData,
     featured: postData.featured === true, // Explicit boolean
-    csrfToken: postData.csrfToken || csrfToken,
   };
 
   const response = await fetch(`/api/posts/${postId}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
-      'x-csrf-token': csrfToken,
     },
     body: JSON.stringify(dataToSend),
   });
