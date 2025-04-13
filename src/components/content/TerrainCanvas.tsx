@@ -1,4 +1,11 @@
-import { useState, useEffect, useLayoutEffect, useRef } from 'react';
+import {
+  useState,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useCallback,
+  useMemo,
+} from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { MeshDistortMaterial } from '@react-three/drei';
 import {
@@ -105,9 +112,11 @@ function Terrain({
   rotation,
 }: TerrainProps) {
   const theme = useTheme();
-  const lightColor = '#acacac';
-  const darkColor = '#1f1f1f';
-  const canvasColor = theme.effectiveTheme === 'dark' ? darkColor : lightColor;
+  const canvasColor = useMemo(() => {
+    const lightColor = '#acacac';
+    const darkColor = '#1f1f1f';
+    return theme.effectiveTheme === 'dark' ? darkColor : lightColor;
+  }, [theme.effectiveTheme]);
 
   interface PlaneGeometryRef extends PlaneGeometry {
     elementsNeedUpdate: boolean;
@@ -168,24 +177,37 @@ export default function TerrainCanvas() {
 
   const scale = 3;
   const rotation = 0.5;
-  const offset = { x: 0, z: 0 };
+  const offset = useMemo(() => ({ x: 0, z: 0 }), []);
 
   useEffect(() => {
     setPixelRatio(window.devicePixelRatio);
   }, []);
 
-  const randomizeTerrain = () => {
+  const randomizeTerrain = useCallback(() => {
     setDetail(getRandomInt(MIN_DETAIL, MAX_DETAIL));
     setHeight(getRandomArbitrary(MIN_HEIGHT, MAX_HEIGHT));
     setTexture(getRandomInt(MIN_TEXTURE, MAX_TEXTURE));
-  };
+  }, []);
+
+  // Memoize the terrain props to prevent unnecessary re-renders
+  const terrainProps = useMemo(
+    () => ({
+      detail,
+      height,
+      texture,
+      scale,
+      rotation,
+      offset,
+    }),
+    [detail, height, texture, scale, rotation, offset]
+  );
 
   return (
     <TooltipCursor text="Randomize terrain">
       <button
         id="three-canvas"
         onClick={randomizeTerrain}
-        className="animate-fade-in-bottom absolute z-0 m-0 block h-screen w-screen cursor-pointer overflow-hidden border-none bg-transparent p-0 outline-none"
+        className="animate-fade-in-bottom absolute z-0 m-0 block h-screen w-screen cursor-pointer overflow-hidden border-none bg-transparent p-0 outline-none md:bottom-0"
       >
         <Canvas
           gl={{ antialias: true }}
@@ -193,14 +215,7 @@ export default function TerrainCanvas() {
           onCreated={({ camera }) => camera.lookAt(0, 0, 0)}
           camera={{ position: [0.4, 0.4, 0.4] }}
         >
-          <Terrain
-            detail={detail}
-            height={height}
-            texture={texture}
-            scale={scale}
-            rotation={rotation}
-            offset={offset}
-          />
+          <Terrain {...terrainProps} />
         </Canvas>
       </button>
     </TooltipCursor>
