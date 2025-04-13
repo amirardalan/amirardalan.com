@@ -47,11 +47,29 @@ function PostHogPageView() {
       if (search) {
         url += '?' + search;
       }
-      posthog.capture('$pageview', { $current_url: url });
+
+      // Enhanced pageview with additional properties
+      posthog.capture('$pageview', {
+        $current_url: url,
+        path: pathname,
+        route_pattern: getRoutePattern(pathname),
+        search_params: Object.fromEntries(searchParams.entries()),
+        referrer: document.referrer || null,
+      });
     }
   }, [pathname, searchParams, posthog]);
 
   return null;
+}
+
+// Helper to normalize route patterns (e.g., converts /blog/[slug] to /blog/:slug)
+function getRoutePattern(pathname: string): string {
+  // Handle common dynamic routes
+  if (pathname.startsWith('/blog/') && pathname !== '/blog') {
+    return '/blog/:slug';
+  }
+  // Add more route pattern normalizations as needed
+  return pathname;
 }
 
 function SuspendedPostHogPageView() {
