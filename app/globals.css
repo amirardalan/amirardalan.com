@@ -217,18 +217,4 @@
   .animate-fade-in-bottom {
     animation: fade-in-bottom 0.5s ease-out;
   }
-
-  @keyframes cursor-blink {
-    0%,
-    100% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0;
-    }
-  }
-
-  .animate-cursor-blink {
-    animation: cursor-blink 1s step-end infinite;
-  }
 }

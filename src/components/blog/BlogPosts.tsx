@@ -164,13 +164,13 @@ export default function BlogPosts({ posts }: { posts: BlogPost[] }) {
               <a className="w-full" href={`/blog/${featuredPost.slug}`}>
                 <div className="flex items-center space-x-2">
                   <div className="flex flex-col">
-                    <span className="mb-1 text-xs uppercase leading-none text-primary">
+                    <span className="mb-1 text-xxs uppercase leading-none text-primary">
                       Featured
                     </span>
-                    <h2 className="pr-12">{featuredPost.title}</h2>
+                    <h2 className="pr-12 text-2xl">{featuredPost.title}</h2>
                   </div>
                 </div>
-                <p className="mt-2 text-sm leading-none text-zinc-500 dark:text-zinc-400">
+                <p className="mt-2 font-serif text-sm italic leading-none text-zinc-500 dark:text-zinc-400">
                   {featuredPost.excerpt}
                 </p>
               </a>
@@ -193,11 +193,11 @@ export default function BlogPosts({ posts }: { posts: BlogPost[] }) {
           {paginatedPosts.map((post) => (
             <li
               key={post.id}
-              className="lg:hover:before:animate-cursor-blink relative mb-10 flex w-full justify-between text-xl last:mb-0 lg:hover:before:absolute lg:hover:before:-left-4 lg:hover:before:top-[6px] lg:hover:before:h-4 lg:hover:before:w-2 lg:hover:before:rounded-sm lg:hover:before:bg-primary lg:hover:before:content-['']"
+              className="relative mb-10 flex w-full justify-between text-xl last:mb-0"
             >
               <a className="w-full" href={`/blog/${post.slug}`}>
-                <h2 className="relative pr-12">{post.title}</h2>
-                <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">
+                <h2 className="relative pr-12 text-2xl">{post.title}</h2>
+                <p className="mt-2 font-serif text-sm italic text-zinc-500 dark:text-zinc-400">
                   {post.excerpt}
                 </p>
               </a>
