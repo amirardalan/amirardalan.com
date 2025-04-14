@@ -21,6 +21,7 @@ const config: Config = {
         gradient: 'var(--color-gradient)',
       },
       fontSize: {
+        md: '1rem',
         xs: '.85rem',
         xxs: '.75rem',
         xxl: '1.7rem',

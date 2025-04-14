@@ -13,15 +13,15 @@ export default function About() {
           <PageHeading title={'About'} />
         </div>
         <section className="mb-4 max-w-7xl font-serif text-xl leading-relaxed md:text-2xl md:leading-relaxed lg:mb-10 lg:text-3xl lg:leading-relaxed">
-          <p className="mb-6 text-dark dark:text-light">
-            Based in Portland, OR.
+          <p className="mb-4 text-dark md:mb-6 dark:text-light">
+            Fullstack Engineer based in Portland, OR.
           </p>
-          <p className="mb-6 text-dark dark:text-light">
+          <p className="mb-4 text-dark md:mb-6 dark:text-light">
             I&apos;ve shaped digital solutions blending code and design for
             Nike&apos;s LeBron James Innovation Center, Columbia Sportswear, and
             KEEN Footwear with BASIC/DEPT®.
           </p>
-          <p className="mb-6 text-dark dark:text-light">
+          <p className="mb-4 text-dark md:mb-6 dark:text-light">
             I craft intuitive, innovative products that elevate user experiences
             and drive results.
           </p>
