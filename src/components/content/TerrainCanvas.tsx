@@ -42,7 +42,7 @@ type GenerateTerrainFn = (
 const MIN_DETAIL = 10;
 const MAX_DETAIL = 200;
 const MIN_HEIGHT = 0.05;
-const MAX_HEIGHT = 0.25;
+const MAX_HEIGHT = 0.2;
 const MIN_TEXTURE = 1;
 const MAX_TEXTURE = 3;
 
@@ -203,7 +203,7 @@ export default function TerrainCanvas() {
   );
 
   return (
-    <TooltipCursor text="Randomize terrain">
+    <TooltipCursor text="Randomize">
       <button
         id="three-canvas"
         onClick={randomizeTerrain}
@@ -212,8 +212,8 @@ export default function TerrainCanvas() {
         <Canvas
           gl={{ antialias: true }}
           dpr={pixelRatio}
-          onCreated={({ camera }) => camera.lookAt(0.4, 0.4, 0.4)}
-          camera={{ position: [0.4, 0.4, 0.4] }}
+          onCreated={({ camera }) => camera.lookAt(0.2, 0.2, 0.1)}
+          camera={{ position: [0.15, 0.4, 0.4] }}
         >
           <Terrain {...terrainProps} />
         </Canvas>
