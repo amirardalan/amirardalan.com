@@ -72,7 +72,7 @@ export default function AdminSearch({
             title="Clear Search"
             className="flex items-center"
           >
-            <IconClose />
+            <IconClose size={2} />
             <span className="pl-1 text-sm text-dark dark:text-light">
               Clear Search
             </span>

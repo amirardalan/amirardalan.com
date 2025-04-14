@@ -143,7 +143,7 @@ export default function BlogPosts({ posts }: { posts: BlogPost[] }) {
               title="Clear Search"
               className="flex items-center"
             >
-              <IconClose />
+              <IconClose size={20} color="var(--color-primary)" />
               <span className="pl-1 text-sm text-dark dark:text-light">
                 Clear Search
               </span>

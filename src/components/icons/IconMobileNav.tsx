@@ -39,7 +39,7 @@ export default function IconMobileNav({
           />
         </svg>
       ) : (
-        <IconClose />
+        <IconClose size={30} />
       )}
     </button>
   );
