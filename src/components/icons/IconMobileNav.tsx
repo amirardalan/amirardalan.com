@@ -1,5 +1,7 @@
 'use client';
 
+import IconClose from '@/components/icons/IconClose';
+
 type IconMobileNavProps = {
   isOpen?: boolean;
   onClick: () => void;
@@ -14,7 +16,7 @@ export default function IconMobileNav({
   return (
     <button
       onClick={onClick}
-      className={`fixed right-6 top-3 z-50 flex items-center py-2 text-dark md:top-1.5 md:hidden dark:text-light ${className}`}
+      className={`fixed right-6 top-6 z-50 flex items-center py-2 text-dark md:top-1.5 md:hidden dark:text-light ${className}`}
       aria-label={isOpen ? 'Close menu' : 'Open menu'}
       aria-expanded={isOpen}
     >
@@ -37,28 +39,7 @@ export default function IconMobileNav({
           />
         </svg>
       ) : (
-        <svg
-          width={33}
-          height={33}
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M18 6L6 18"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M6 6L18 18"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
+        <IconClose />
       )}
     </button>
   );
