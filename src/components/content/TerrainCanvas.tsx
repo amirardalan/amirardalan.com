@@ -212,8 +212,8 @@ export default function TerrainCanvas() {
         <Canvas
           gl={{ antialias: true }}
           dpr={pixelRatio}
-          onCreated={({ camera }) => camera.lookAt(0, 0, 0)}
-          camera={{ position: [0.1, 1, 0.8] }}
+          onCreated={({ camera }) => camera.lookAt(0.4, 0.4, 0.4)}
+          camera={{ position: [0.4, 0.4, 0.4] }}
         >
           <Terrain {...terrainProps} />
         </Canvas>
