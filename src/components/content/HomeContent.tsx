@@ -23,7 +23,7 @@ export default function HomeContent() {
           Amir Ardalan
         </h1>
         <h2
-          className="sm:text-md my-2 text-sm font-medium uppercase tracking-widest text-zinc-600 md:text-xl lg:my-5 lg:text-2xl dark:text-zinc-400"
+          className="my-2 text-sm font-medium uppercase tracking-widest text-zinc-600 sm:text-md md:text-xl lg:my-5 lg:text-2xl dark:text-zinc-400"
           id="page-subtitle"
         >
           Fullstack Engineer & UI/UX Designer

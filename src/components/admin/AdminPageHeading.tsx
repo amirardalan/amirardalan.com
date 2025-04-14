@@ -12,7 +12,7 @@ export default function PageHeading({ title }: PageHeadingProps) {
   const pathname = usePathname();
   const isAdminDashboard = pathname === '/admin';
   return (
-    <div className="text-md flex pb-4 text-dark text-zinc-500 dark:text-zinc-400">
+    <div className="flex pb-4 text-md text-dark text-zinc-500 dark:text-zinc-400">
       <div className="flex w-full items-center justify-between">
         <div className="flex items-center gap-2">
           {isAdminDashboard ? (
