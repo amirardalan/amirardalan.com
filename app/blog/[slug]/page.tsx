@@ -16,6 +16,7 @@ import Link from 'next/link';
 import ClientLikeCount from '@/components/blog/ClientLikeCount';
 import BlogSupport from '@/components/blog/BlogSupport';
 import SocialActions from '@/components/blog/SocialActions';
+import AdjacentPostNavigation from '@/components/blog/AdjacentPostNavigation';
 
 import { formatDate } from '@/utils/format-date';
 import calculateReadTime from '@/utils/calculate-readtime';
@@ -109,6 +110,13 @@ export default async function BlogPost({
 
   const isAdminView = session?.user && !post.published;
 
+  // Helper function to truncate text
+  const truncateText = (text: string, maxLength: number = 30) => {
+    return text.length > maxLength
+      ? `${text.substring(0, maxLength)}...`
+      : text;
+  };
+
   return (
     <Container>
       <article className="mt-16 text-dark md:mt-24 dark:text-light">
@@ -197,47 +205,10 @@ export default async function BlogPost({
         {!isAdminView &&
           post.published &&
           (adjacentPosts.previous || adjacentPosts.next) && (
-            <nav className="mt-10 border-t border-zinc-300 pt-6 dark:border-zinc-700">
-              <div className="mb-4 grid grid-cols-2 gap-6">
-                <div className="col-span-1 text-xxs lg:text-sm">
-                  {adjacentPosts.previous && (
-                    <Link
-                      href={`/blog/${adjacentPosts.previous.slug}`}
-                      className="group flex items-center space-x-1 md:hover:text-primary"
-                    >
-                      <span aria-hidden="true" className="flex-shrink-0">
-                        &larr;
-                      </span>
-                      <span
-                        className="break-words"
-                        title={adjacentPosts.previous.title}
-                      >
-                        {adjacentPosts.previous.title}
-                      </span>
-                    </Link>
-                  )}
-                </div>
-
-                <div className="col-span-1 text-right text-xxs lg:text-sm">
-                  {adjacentPosts.next && (
-                    <Link
-                      href={`/blog/${adjacentPosts.next.slug}`}
-                      className="group flex items-center justify-end space-x-1 md:hover:text-primary"
-                    >
-                      <span
-                        className="break-words text-right"
-                        title={adjacentPosts.next.title}
-                      >
-                        {adjacentPosts.next.title}
-                      </span>
-                      <span aria-hidden="true" className="flex-shrink-0">
-                        &rarr;
-                      </span>
-                    </Link>
-                  )}
-                </div>
-              </div>
-            </nav>
+            <AdjacentPostNavigation
+              previous={adjacentPosts.previous}
+              next={adjacentPosts.next}
+            />
           )}
       </article>
     </Container>
