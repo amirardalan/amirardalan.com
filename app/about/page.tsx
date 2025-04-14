@@ -15,7 +15,7 @@ export default function About() {
         <div id="about-heading">
           <PageHeading title={'About'} />
         </div>
-        <section className="mb-4 max-w-7xl font-serif text-xl font-normal italic md:text-2xl lg:mb-10 lg:text-4xl">
+        <section className="mb-4 max-w-7xl font-serif text-xl font-light italic md:text-2xl lg:mb-10 lg:text-4xl lg:leading-normal">
           <p className="mb-4 text-dark md:mb-6 dark:text-light">
             Fullstack Engineer based in Portland, OR.
           </p>
