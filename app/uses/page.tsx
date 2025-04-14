@@ -122,7 +122,7 @@ export default function Uses() {
       <div className="mt-8">
         <PageHeading title={'Uses'} />
 
-        <div className="mb-14 max-w-7xl font-serif text-3xl leading-relaxed">
+        <div className="mb-10 max-w-7xl font-serif text-2xl leading-relaxed md:mb-14 md:text-3xl">
           <p className="mb-6 text-dark dark:text-light">
             Things I use to make things...
           </p>
