@@ -193,14 +193,19 @@ export const components = {
     }
 
     return (
-      <div className="relative">
+      <div className="group relative">
         <pre
           className="overflow-y-none line-highlight-enabled my-8 overflow-x-auto rounded-lg bg-zinc-100 p-6 font-mono text-sm scrollbar scrollbar-track-zinc-600 scrollbar-thumb-zinc-500 dark:bg-zinc-900"
           {...props}
         >
           {children}
         </pre>
-        {codeText && <CopyButton text={codeText} />}
+        {codeText && (
+          <CopyButton
+            text={codeText}
+            className="md:opacity-0 md:transition-opacity md:duration-200 md:group-hover:opacity-100"
+          />
+        )}
         {language && (
           <span className="absolute bottom-2 right-2 rounded px-1.5 py-0.5 text-xxs text-zinc-500 dark:text-zinc-400">
             {language}
