@@ -43,7 +43,7 @@ export default function Button({
       [`bg-${color} text-light`]: !!color,
       // Variant-specific colors
       'bg-red-600 text-light': variant === 'danger' && !color,
-      'bg-zinc-50/70 dark:bg-zinc-950/70 border border-dark dark:border-light text-dark dark:text-light hover:border-primary hover:text-primary':
+      'bg-zinc-50/50 dark:bg-zinc-950/50 border border-dark dark:border-light text-dark dark:text-light hover:border-primary hover:text-primary':
         variant === 'secondary' && !color,
       'bg-dark dark:bg-light text-light dark:text-dark hover:bg-primary':
         variant === 'primary' && !color,
