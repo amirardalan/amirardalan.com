@@ -1,11 +1,14 @@
 'use client';
 
+import { useState } from 'react';
 import PageHeading from '@/components/ui/PageHeading';
 import Container from '@/components/content/Container';
 import Tooltip from '@/components/ui/Tooltip';
 import { CldImage } from 'next-cloudinary';
 
 export default function About() {
+  const [imageLoading, setImageLoading] = useState(true);
+
   return (
     <Container>
       <main className="mt-12" aria-labelledby="about-heading">
@@ -32,14 +35,18 @@ export default function About() {
           aria-label="Contact links"
         >
           <div className="mb-6 flex lg:mb-0 lg:mr-8" aria-hidden="true">
+            {imageLoading && (
+              <div className="bg-skeleton-light dark:bg-skeleton-dark h-[125px] w-[125px] animate-pulse rounded-full" />
+            )}
             <CldImage
               src="About/amir-avatar_e6puqu"
               alt="Amir Ardalan Avatar"
               width={125}
               height={125}
-              className="rounded-full"
+              className={`rounded-full ${imageLoading ? 'hidden' : 'block'}`}
               autoColor
               priority
+              onLoad={() => setImageLoading(false)}
             />
           </div>
           <div className="flex flex-col justify-center">
