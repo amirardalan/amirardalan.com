@@ -131,7 +131,7 @@ export default function PostFormFields({
         />
       </div>
 
-      <div className="relative">
+      <div className="relative bg-zinc-200 pt-6 dark:bg-zinc-900">
         <label
           htmlFor="content"
           className={`absolute left-10 top-1 pt-0.5 text-xxs uppercase ${content ? 'text-zinc-500 dark:text-zinc-400' : 'text-transparent'}`}
