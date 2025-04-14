@@ -8,30 +8,28 @@ import UsesItemCard from '@/components/content/UsesItemCard';
 export default function Uses() {
   const computers = [
     {
-      title: 'Laptop',
-      items: [
-        { value: '14" MacBook Pro' },
-        { value: 'Silver' },
-        { value: 'M3 Pro' },
-        { value: '12-core CPU' },
-        { value: '18-core GPU' },
-        { value: '36GB RAM' },
-        { value: '1TB SSD' },
-        { value: 'tomtoc 14" Sleeve' },
-      ],
-    },
-    {
       title: 'Desktop',
       items: [
         { value: 'Intel i7-14700KF 5.6GHz' },
-        { value: 'Deepcool LT720 AIO' },
         { value: 'MSI PRO Z790-A MAX Wifi' },
         { value: 'Gigabyte RTX 4090 AERO OC 24GB' },
         { value: 'Corsair Vengeance DDR5-6400 CL32 64GB' },
         { value: 'Corsair RM1000x SHIFT 1000W' },
         { value: 'WD Black SN850X 4TB NVME' },
-        { value: 'NZXT H7 Flow' },
-        { value: 'ARCTIC P14 PST 72.8 CFM 140mm' },
+        { value: 'Deepcool LT720' },
+        { value: 'NZXT H7 Flow w/ ARCTIC P14' },
+      ],
+    },
+    {
+      title: 'Laptop',
+      items: [
+        { value: '14" Apple MacBook Pro' },
+        { value: 'M3 Pro' },
+        { value: '12-core CPU' },
+        { value: '18-core GPU' },
+        { value: '36GB RAM' },
+        { value: '1TB SSD' },
+        { value: 'Silver' },
       ],
     },
   ];
