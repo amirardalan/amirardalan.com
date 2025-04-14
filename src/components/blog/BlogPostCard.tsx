@@ -41,14 +41,14 @@ export default function BlogPostCard({
         <a className="group w-full" href={`/blog/${post.slug}`}>
           {/* Desktop featured tag */}
           {featured && (
-            <span className="mb-1 hidden text-xxs uppercase leading-none text-primary md:block">
+            <span className="mb-2 hidden text-xxs uppercase leading-none text-primary md:block">
               Featured
             </span>
           )}
-          <h2 className="relative mt-1 py-1 pr-12 text-lg font-medium leading-tight group-hover:underline md:text-2xl">
+          <h2 className="relative pr-12 text-lg font-medium leading-tight group-hover:underline md:text-2xl">
             {post.title}
           </h2>
-          <p className="font-serif text-sm italic text-zinc-500 md:text-lg dark:text-zinc-400">
+          <p className="mt-1 font-serif text-sm italic text-zinc-500 md:text-lg dark:text-zinc-400">
             {post.excerpt}
           </p>
         </a>
