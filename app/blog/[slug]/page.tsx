@@ -168,7 +168,7 @@ export default async function BlogPost({
         <div className="mt-8 flex w-full items-center justify-between text-sm text-zinc-500 dark:text-zinc-400">
           <div className="flex items-center">
             <time
-              className="text-xs text-zinc-500 dark:text-zinc-400"
+              className="text-xs uppercase"
               title={formatDate(post.created_at)}
               aria-label={`Posted on ${formatDate(post.created_at)}`}
             >
@@ -179,18 +179,18 @@ export default async function BlogPost({
             <div className="mx-2 text-sm" aria-hidden="true">
               •
             </div>
-            <span aria-label={`Author: ${post.author_name || 'Anonymous'}`}>
-              {post.author_name || 'Anonymous'}
+            <span
+              aria-label={`Author: ${post.author_name || 'Anonymous'}`}
+              className="uppercase"
+            >
+              By {post.author_name || 'Anonymous'}
             </span>
           </div>
           <span className="flex justify-end">
             <SocialActions postId={post.id} />
           </span>
         </div>
-        <div
-          className="mdx-content text-md mt-10 text-dark dark:text-light"
-          aria-labelledby="post-title"
-        >
+        <div className="mdx-content mt-10" aria-labelledby="post-title">
           {content}
         </div>
         <BlogSupport postId={post.id} />

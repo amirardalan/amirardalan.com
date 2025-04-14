@@ -25,7 +25,7 @@ export default function BlogPostCard({
       )}
 
       {/* Mobile metadata (above md:) */}
-      <div className="mb-1 flex text-xxs uppercase leading-none md:hidden md:leading-tight">
+      <div className="mb-1 flex text-xxs uppercase leading-none md:hidden">
         {featured && (
           <span className="mb-1 pr-2 text-xxs uppercase italic leading-none text-primary md:pr-0">
             Featured
@@ -45,10 +45,10 @@ export default function BlogPostCard({
               Featured
             </span>
           )}
-          <h2 className="relative pr-12 text-lg font-medium leading-tight group-hover:underline md:text-2xl">
+          <h2 className="relative mt-1 py-1 pr-12 text-lg font-medium leading-tight group-hover:underline md:text-2xl">
             {post.title}
           </h2>
-          <p className="md:text-md mt-2 font-serif text-sm italic text-zinc-500 dark:text-zinc-400">
+          <p className="font-serif text-sm italic text-zinc-500 md:text-lg dark:text-zinc-400">
             {post.excerpt}
           </p>
         </a>

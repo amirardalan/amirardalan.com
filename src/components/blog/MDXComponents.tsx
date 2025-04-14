@@ -23,7 +23,10 @@ export const components = {
   h3: ({ children, ...props }: HeadingProps) => {
     if (typeof children !== 'string' && !Array.isArray(children)) {
       return (
-        <h3 className="mb-4 mt-8 text-2xl text-dark dark:text-light" {...props}>
+        <h3
+          className="mb-4 mt-8 text-2xl font-medium text-dark dark:text-light"
+          {...props}
+        >
           {children}
         </h3>
       );
@@ -64,7 +67,10 @@ export const components = {
   },
   h4: (props: HeadingProps) => <h4 className="" {...props} />,
   p: (props: ParagraphProps) => (
-    <p className="my-6 text-lg leading-normal" {...props} />
+    <p
+      className="my-6 font-serif text-lg font-medium leading-normal"
+      {...props}
+    />
   ),
   ol: (props: ListProps) => (
     <ol

@@ -5,7 +5,7 @@
 :root {
   /* Typopgrahy */
   --font-sans: 'Jura', sans-serif;
-  --font-serif: 'Wittgenstein', serif;
+  --font-serif: 'Manuale', serif;
   --font-mono: 'JetBrains Mono', monospace;
 
   /* Colors */
@@ -114,11 +114,6 @@
   }
 
   /* MDX Styles */
-  .mdx-content p {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.125rem;
-    color: var(--color-dynamic);
-  }
   .note p {
     font-size: 0.875rem; /* text-sm */
     font-family: 'Jura', sans-serif;
