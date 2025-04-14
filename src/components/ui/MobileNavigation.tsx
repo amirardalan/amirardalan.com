@@ -9,6 +9,7 @@ import AuthMenu from '@/components/auth/AuthMenu';
 export default function MobileNavigation() {
   const [isOpen, setIsOpen] = useState(false);
   const isMobile = useMediaQuery(768);
+  const isLandscape = useMediaQuery(500, 'height'); // Detect landscape mode when height is limited
 
   // Close menu when pressing escape
   useEffect(() => {
@@ -58,7 +59,9 @@ export default function MobileNavigation() {
           transition: 'transform 300ms ease-in-out',
         }}
       >
-        <div className="mb-20 flex items-center justify-between">
+        <div
+          className={`${isLandscape ? 'mb-4' : 'mb-20'} flex items-center justify-between`}
+        >
           <IconMobileNav
             isOpen={true}
             onClick={() => setIsOpen(false)}
