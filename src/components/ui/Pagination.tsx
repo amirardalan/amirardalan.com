@@ -33,7 +33,7 @@ export default function Pagination({
           key={index}
           href={createPageURL(index + 1)}
           className={clsx(
-            'rounded px-3 py-1 font-mono text-xs',
+            'rounded px-3 font-mono text-xs',
             currentPage === index + 1
               ? 'bg-zinc-400 text-light dark:text-dark'
               : 'bg-zinc-200 text-dark dark:bg-zinc-700 dark:text-light'

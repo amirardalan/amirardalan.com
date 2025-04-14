@@ -154,7 +154,7 @@ export default function BlogPosts({ posts }: { posts: BlogPost[] }) {
         </div>
       </div>
       {paginatedPosts.length > 0 || showFeaturedPost ? (
-        <ul className={clsx('pt-6', searchTerm && 'pt-2')}>
+        <ul className={clsx('pb-8 pt-6', searchTerm && 'pt-2')}>
           {/* Featured post at the top */}
           {showFeaturedPost && (
             <li
