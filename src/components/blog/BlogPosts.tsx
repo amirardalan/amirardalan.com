@@ -5,9 +5,7 @@ import clsx from 'clsx';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import IconClose from '@/components/icons/IconClose';
-
-import { formatDate } from '@/utils/format-date';
-import calculateReadTime from '@/utils/calculate-readtime';
+import BlogPostCard from '@/components/blog/BlogPostCard';
 
 import { BlogPost } from '@/types/blog';
 
@@ -155,65 +153,11 @@ export default function BlogPosts({ posts }: { posts: BlogPost[] }) {
       </div>
       {paginatedPosts.length > 0 || showFeaturedPost ? (
         <ul className={clsx('pb-8 pt-6', searchTerm && 'pt-2')}>
-          {/* Featured post at the top */}
           {showFeaturedPost && (
-            <li
-              key={featuredPost.id}
-              className="mb-10 flex w-full justify-between border-l-4 border-primary pl-4 text-xl last:mb-0"
-            >
-              <a className="w-full" href={`/blog/${featuredPost.slug}`}>
-                <div className="flex items-center space-x-2">
-                  <div className="flex flex-col">
-                    <span className="mb-1 text-xxs uppercase leading-none text-primary">
-                      Featured
-                    </span>
-                    <h2 className="pr-12 text-2xl">{featuredPost.title}</h2>
-                  </div>
-                </div>
-                <p className="mt-2 font-serif text-sm italic leading-none text-zinc-500 dark:text-zinc-400">
-                  {featuredPost.excerpt}
-                </p>
-              </a>
-              <div className="flex min-w-fit flex-col items-end text-xs">
-                <time className="text-zinc-500 dark:text-zinc-400">
-                  {formatDate(
-                    featuredPost.show_updated
-                      ? featuredPost.updated_at ?? featuredPost.created_at
-                      : featuredPost.created_at
-                  )}
-                </time>
-                <span className="text-zinc-400 dark:text-zinc-500">
-                  {calculateReadTime(featuredPost.content)}
-                </span>
-              </div>
-            </li>
+            <BlogPostCard post={featuredPost} featured={true} />
           )}
-
-          {/* Regular posts */}
           {paginatedPosts.map((post) => (
-            <li
-              key={post.id}
-              className="relative mb-10 flex w-full justify-between text-xl last:mb-0"
-            >
-              <a className="w-full" href={`/blog/${post.slug}`}>
-                <h2 className="relative pr-12 text-2xl">{post.title}</h2>
-                <p className="mt-2 font-serif text-sm italic text-zinc-500 dark:text-zinc-400">
-                  {post.excerpt}
-                </p>
-              </a>
-              <div className="flex min-w-fit flex-col items-end text-xs">
-                <time className="text-zinc-500 dark:text-zinc-400">
-                  {formatDate(
-                    post.show_updated
-                      ? post.updated_at ?? post.created_at
-                      : post.created_at
-                  )}
-                </time>
-                <span className="text-zinc-400 dark:text-zinc-500">
-                  {calculateReadTime(post.content)}
-                </span>
-              </div>
-            </li>
+            <BlogPostCard key={post.id} post={post} />
           ))}
         </ul>
       ) : (
