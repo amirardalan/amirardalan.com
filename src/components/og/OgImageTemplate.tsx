@@ -42,7 +42,7 @@ export async function generateOgImage({
           </div>
 
           <div tw="flex flex-col mt-12">
-            <h2 tw="text-7xl text-white text-left font-bold mt-4 w-full leading-none">
+            <h2 tw="text-7xl text-white text-left font-medium mt-4 w-full leading-none">
               {title}
             </h2>
             <h3 tw="w-full text-5xl text-zinc-500 leading-none">

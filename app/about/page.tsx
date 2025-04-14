@@ -1,27 +1,30 @@
 'use client';
 
+import { useState } from 'react';
 import PageHeading from '@/components/ui/PageHeading';
 import Container from '@/components/content/Container';
 import Tooltip from '@/components/ui/Tooltip';
 import { CldImage } from 'next-cloudinary';
 
 export default function About() {
+  const [imageLoading, setImageLoading] = useState(true);
+
   return (
     <Container>
       <main className="mt-12" aria-labelledby="about-heading">
         <div id="about-heading">
           <PageHeading title={'About'} />
         </div>
-        <section className="mb-4 max-w-7xl font-serif text-xl leading-relaxed md:text-2xl md:leading-relaxed lg:mb-10 lg:text-3xl lg:leading-relaxed">
-          <p className="mb-6 text-dark dark:text-light">
-            Based in Portland, OR.
+        <section className="mb-4 max-w-7xl font-serif text-xl font-normal italic md:text-2xl lg:mb-10 lg:text-4xl">
+          <p className="mb-4 text-dark md:mb-6 dark:text-light">
+            Fullstack Engineer based in Portland, OR.
           </p>
-          <p className="mb-6 text-dark dark:text-light">
+          <p className="mb-4 text-dark md:mb-6 dark:text-light">
             I&apos;ve shaped digital solutions blending code and design for
             Nike&apos;s LeBron James Innovation Center, Columbia Sportswear, and
             KEEN Footwear with BASIC/DEPT®.
           </p>
-          <p className="mb-6 text-dark dark:text-light">
+          <p className="mb-4 text-dark md:mb-6 dark:text-light">
             I craft intuitive, innovative products that elevate user experiences
             and drive results.
           </p>
@@ -32,13 +35,18 @@ export default function About() {
           aria-label="Contact links"
         >
           <div className="mb-6 flex lg:mb-0 lg:mr-8" aria-hidden="true">
+            {imageLoading && (
+              <div className="bg-skeleton-light dark:bg-skeleton-dark h-[125px] w-[125px] animate-pulse rounded-full" />
+            )}
             <CldImage
               src="About/amir-avatar_e6puqu"
               alt="Amir Ardalan Avatar"
               width={125}
               height={125}
-              className="rounded-full"
+              className={`rounded-full ${imageLoading ? 'hidden' : 'block'}`}
+              autoColor
               priority
+              onLoad={() => setImageLoading(false)}
             />
           </div>
           <div className="flex flex-col justify-center">

@@ -9,6 +9,7 @@ import AuthMenu from '@/components/auth/AuthMenu';
 export default function MobileNavigation() {
   const [isOpen, setIsOpen] = useState(false);
   const isMobile = useMediaQuery(768);
+  const isLandscape = useMediaQuery(500, 'height'); // Detect landscape mode when height is limited
 
   // Close menu when pressing escape
   useEffect(() => {
@@ -52,11 +53,15 @@ export default function MobileNavigation() {
       />
 
       <div
-        className={`fixed inset-y-0 right-0 z-50 flex h-screen w-[300px] transform flex-col bg-light bg-opacity-90 p-6 shadow-lg transition-transform duration-300 ease-in-out dark:bg-dark dark:bg-opacity-90 ${
-          isOpen ? 'translate-x-0' : 'translate-x-full'
-        }`}
+        className={`fixed inset-y-0 right-0 z-50 flex h-screen w-[300px] flex-col bg-light bg-opacity-90 p-6 shadow-lg dark:bg-dark dark:bg-opacity-90`}
+        style={{
+          transform: isOpen ? 'translateX(0)' : 'translateX(100vw)',
+          transition: 'transform 300ms ease-in-out',
+        }}
       >
-        <div className="mb-20 flex items-center justify-between">
+        <div
+          className={`${isLandscape ? 'mb-4' : 'mb-20'} flex items-center justify-between`}
+        >
           <IconMobileNav
             isOpen={true}
             onClick={() => setIsOpen(false)}

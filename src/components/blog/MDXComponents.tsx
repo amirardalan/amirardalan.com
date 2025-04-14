@@ -23,7 +23,10 @@ export const components = {
   h3: ({ children, ...props }: HeadingProps) => {
     if (typeof children !== 'string' && !Array.isArray(children)) {
       return (
-        <h3 className="mb-4 mt-8 text-2xl text-dark dark:text-light" {...props}>
+        <h3
+          className="mb-4 mt-8 text-2xl font-medium text-dark dark:text-light"
+          {...props}
+        >
           {children}
         </h3>
       );
@@ -64,7 +67,10 @@ export const components = {
   },
   h4: (props: HeadingProps) => <h4 className="" {...props} />,
   p: (props: ParagraphProps) => (
-    <p className="my-6 text-lg leading-normal" {...props} />
+    <p
+      className="my-6 font-serif text-lg font-medium leading-normal"
+      {...props}
+    />
   ),
   ol: (props: ListProps) => (
     <ol
@@ -193,14 +199,19 @@ export const components = {
     }
 
     return (
-      <div className="relative">
+      <div className="group relative">
         <pre
           className="overflow-y-none line-highlight-enabled my-8 overflow-x-auto rounded-lg bg-zinc-100 p-6 font-mono text-sm scrollbar scrollbar-track-zinc-600 scrollbar-thumb-zinc-500 dark:bg-zinc-900"
           {...props}
         >
           {children}
         </pre>
-        {codeText && <CopyButton text={codeText} />}
+        {codeText && (
+          <CopyButton
+            text={codeText}
+            className="md:opacity-0 md:transition-opacity md:duration-200 md:group-hover:opacity-100"
+          />
+        )}
         {language && (
           <span className="absolute bottom-2 right-2 rounded px-1.5 py-0.5 text-xxs text-zinc-500 dark:text-zinc-400">
             {language}

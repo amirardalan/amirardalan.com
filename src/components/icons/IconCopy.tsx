@@ -2,7 +2,12 @@
 
 import { useState } from 'react';
 
-export default function IconCopy({ text }: { text: string }) {
+interface IconCopyProps {
+  text: string;
+  className?: string;
+}
+
+export default function IconCopy({ text, className = '' }: IconCopyProps) {
   const [copied, setCopied] = useState(false);
 
   const copyToClipboard = () => {
@@ -23,7 +28,7 @@ export default function IconCopy({ text }: { text: string }) {
     <button
       onClick={copyToClipboard}
       aria-label="Copy code to clipboard"
-      className="absolute right-2 top-2 rounded p-1 text-zinc-500 transition-colors hover:bg-zinc-200 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-200"
+      className={`absolute right-2 top-2 rounded p-1 text-zinc-500 transition-colors hover:bg-zinc-200 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-200 ${className}`}
     >
       {copied ? (
         <svg

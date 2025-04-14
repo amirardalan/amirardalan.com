@@ -8,7 +8,7 @@ const config: Config = {
   theme: {
     fontFamily: {
       sans: ['Jura', 'system-ui'],
-      serif: ['Playfair Display', 'serif'],
+      serif: ['Manuale', 'serif'],
       mono: ['JetBrains Mono', 'monospace'],
     },
     extend: {
@@ -21,6 +21,7 @@ const config: Config = {
         gradient: 'var(--color-gradient)',
       },
       fontSize: {
+        md: '1rem',
         xs: '.85rem',
         xxs: '.75rem',
         xxl: '1.7rem',

@@ -7,17 +7,30 @@ import { NavLinks } from '@/components/ui/Navigation';
 import HeaderControls from '@/components/ui/HeaderControls';
 import AuthMenu from '@/components/auth/AuthMenu';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
+import { useState, useEffect } from 'react';
 
 export default function Header() {
   const isTablet = useMediaQuery(1024);
   const pathname = usePathname();
   const isHomePage = pathname === '/';
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   const headerBaseClasses =
-    'animate-fade-in-top fixed top-0 z-30 w-full px-6 py-4 lg:px-10 lg:py-8';
+    'animate-fade-in-top fixed top-0 z-30 w-full px-6 py-4 lg:px-10 lg:py-8 transition-shadow duration-200';
   const headerBgClasses = isHomePage
-    ? 'bg-transparent dark:bg-transparent'
-    : 'bg-zinc-50/50 dark:bg-zinc-950/50 backdrop-blur-lg';
+    ? `bg-transparent dark:bg-transparent ${isScrolled ? 'shadow-sm dark:shadow-zinc-800/20' : ''}`
+    : `bg-zinc-50/50 dark:bg-zinc-950/50 backdrop-blur-lg ${isScrolled ? 'shadow-sm dark:shadow-zinc-800/20' : ''}`;
 
   return (
     <header className={`${headerBaseClasses} ${headerBgClasses}`} role="banner">

@@ -5,7 +5,7 @@
 :root {
   /* Typopgrahy */
   --font-sans: 'Jura', sans-serif;
-  --font-serif: 'Playfair Display', serif;
+  --font-serif: 'Manuale', serif;
   --font-mono: 'JetBrains Mono', monospace;
 
   /* Colors */
@@ -89,9 +89,9 @@
     .highlight-line {
       background-color: oklch(0.92 0.004 286.32);
       border-left: 2px solid var(--color-primary);
-      padding-left: 16px;
-      margin-left: -16px;
-      margin-right: -16px;
+      padding-left: 24px;
+      margin-left: -24px;
+      margin-right: -24px;
     }
   }
 
@@ -114,11 +114,6 @@
   }
 
   /* MDX Styles */
-  .mdx-content p {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.125rem;
-    color: var(--color-dynamic);
-  }
   .note p {
     font-size: 0.875rem; /* text-sm */
     font-family: 'Jura', sans-serif;
@@ -216,19 +211,5 @@
 
   .animate-fade-in-bottom {
     animation: fade-in-bottom 0.5s ease-out;
-  }
-
-  @keyframes cursor-blink {
-    0%,
-    100% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0;
-    }
-  }
-
-  .animate-cursor-blink {
-    animation: cursor-blink 1s step-end infinite;
   }
 }

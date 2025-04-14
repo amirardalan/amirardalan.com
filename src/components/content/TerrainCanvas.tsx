@@ -103,8 +103,8 @@ function Terrain({
 }: TerrainProps) {
   const theme = useTheme();
   const canvasColor = useMemo(() => {
-    const lightColor = '#acacac';
-    const darkColor = '#1f1f1f';
+    const lightColor = '#C9C1C1';
+    const darkColor = '#1F1D1D';
     return theme.effectiveTheme === 'dark' ? darkColor : lightColor;
   }, [theme.effectiveTheme]);
 

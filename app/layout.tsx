@@ -8,7 +8,7 @@ import { getTheme } from '@/utils/get-theme';
 import '@/app/globals.css';
 import clsx from 'clsx';
 
-import { Jura, Playfair_Display, JetBrains_Mono } from 'next/font/google';
+import { Jura, Manuale, JetBrains_Mono } from 'next/font/google';
 import DarkIcon from '@/public/images/favicon-dark.png';
 import LightIcon from '@/public/images/favicon-light.png';
 
@@ -21,9 +21,9 @@ const sans = Jura({
   weight: ['400', '500', '600'],
   display: 'swap',
 });
-const serif = Playfair_Display({
+const serif = Manuale({
   subsets: ['latin'],
-  weight: ['400'],
+  weight: ['400', '500'],
   style: ['normal', 'italic'],
   display: 'swap',
 });

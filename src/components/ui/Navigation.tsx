@@ -11,7 +11,7 @@ type NavVariant = 'header' | 'footer' | 'mobile';
 
 export default function Navigation({ header = false }: NavigationProps) {
   return (
-    <nav className="hidden text-light sm:flex sm:items-center">
+    <nav className="hidden font-medium text-light sm:flex sm:items-center">
       <div className={clsx('flex flex-row items-center')}>
         <NavLinks variant={header ? 'header' : 'footer'} />
       </div>
