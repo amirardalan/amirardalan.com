@@ -2,8 +2,9 @@ import { ReactNode } from 'react';
 import IconNote from '@/components/icons/IconNote';
 import IconTip from '@/components/icons/IconTip';
 import IconWarn from '@/components/icons/IconWarn';
+import IconImportant from '@/components/icons/IconImportant';
 
-type NoteType = 'note' | 'tip' | 'warn';
+type NoteType = 'note' | 'tip' | 'warn' | 'important';
 
 interface NoteProps {
   children: ReactNode;
@@ -28,6 +29,12 @@ export default function Note({ children, noteType = 'note' }: NoteProps) {
       icon: <IconWarn />,
       label: 'Warning',
       color: 'text-red-500 fill-red-500 dark:text-red-400 dark:fill-red-400',
+    },
+    important: {
+      icon: <IconImportant />,
+      label: 'Important',
+      color:
+        'text-purple-500 fill-purple-500 dark:text-purple-400 dark:fill-purple-400',
     },
   };
 
