@@ -38,23 +38,13 @@ type GenerateTerrainFn = (
   offset: Offset
 ) => Float32Array;
 
-// Randomizer
+// Constants
 const MIN_DETAIL = 10;
 const MAX_DETAIL = 200;
 const MIN_HEIGHT = 0.05;
 const MAX_HEIGHT = 0.2;
 const MIN_TEXTURE = 1;
 const MAX_TEXTURE = 3;
-
-const getRandomInt = (min: number, max: number) => {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min) + min);
-};
-
-const getRandomArbitrary = (min: number, max: number) => {
-  return Math.random() * (max - min) + min;
-};
 
 // Generator
 const generateTerrain: GenerateTerrainFn = (
@@ -164,6 +154,16 @@ function Terrain({
   );
 }
 
+const getRandomInt = (min: number, max: number) => {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min) + min);
+};
+
+const getRandomArbitrary = (min: number, max: number) => {
+  return Math.random() * (max - min) + min;
+};
+
 // Canvas
 export default function TerrainCanvas() {
   const [pixelRatio, setPixelRatio] = useState(1);
@@ -189,7 +189,6 @@ export default function TerrainCanvas() {
     setTexture(getRandomInt(MIN_TEXTURE, MAX_TEXTURE));
   }, []);
 
-  // Memoize the terrain props to prevent unnecessary re-renders
   const terrainProps = useMemo(
     () => ({
       detail,
