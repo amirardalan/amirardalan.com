@@ -8,7 +8,7 @@ const config: Config = {
   theme: {
     fontFamily: {
       sans: ['Jura', 'system-ui'],
-      serif: ['Lora', 'serif'],
+      serif: ['Playfair Display', 'serif'],
       mono: ['JetBrains Mono', 'monospace'],
     },
     extend: {

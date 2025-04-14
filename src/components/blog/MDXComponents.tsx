@@ -50,7 +50,10 @@ export const components = {
               typeof child === 'string' ? (
                 child
               ) : (
-                <code key={index} className="font-sans text-primary">
+                <code
+                  key={index}
+                  className="font-sans before:content-['`'] after:content-['`']"
+                >
                   {child.props.children}
                 </code>
               )

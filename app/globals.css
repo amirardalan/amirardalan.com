@@ -5,7 +5,7 @@
 :root {
   /* Typopgrahy */
   --font-sans: 'Jura', sans-serif;
-  --font-serif: 'Lora', serif;
+  --font-serif: 'Playfair Display', serif;
   --font-mono: 'JetBrains Mono', monospace;
 
   /* Colors */
@@ -115,7 +115,7 @@
 
   /* MDX Styles */
   .mdx-content p {
-    font-family: 'Lora', serif;
+    font-family: 'Playfair Display', serif;
     font-size: 1.125rem;
     color: var(--color-dynamic);
   }
