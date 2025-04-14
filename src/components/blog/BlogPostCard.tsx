@@ -45,7 +45,7 @@ export default function BlogPostCard({
               Featured
             </span>
           )}
-          <h2 className="relative pr-12 text-lg leading-tight group-hover:underline md:text-2xl">
+          <h2 className="relative pr-12 text-lg font-medium leading-tight group-hover:underline md:text-2xl">
             {post.title}
           </h2>
           <p className="md:text-md mt-2 font-serif text-sm italic text-zinc-500 dark:text-zinc-400">

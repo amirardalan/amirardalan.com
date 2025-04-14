@@ -17,13 +17,13 @@ export default function HomeContent() {
       </div>
       <div className="pointer-events-auto mt-8 flex flex-col">
         <h1
-          className="text-5xl tracking-wide text-dark sm:text-6xl md:text-7xl lg:text-8xl 2xl:text-9xl dark:text-light"
+          className="text-5xl font-medium tracking-wide text-dark sm:text-6xl md:text-7xl lg:text-8xl 2xl:text-9xl dark:text-light"
           id="page-title"
         >
           Amir Ardalan
         </h1>
         <h2
-          className="sm:text-md my-2 text-sm uppercase tracking-widest text-zinc-600 md:text-xl lg:my-5 lg:text-2xl dark:text-zinc-400"
+          className="sm:text-md my-2 text-sm font-medium uppercase tracking-widest text-zinc-600 md:text-xl lg:my-5 lg:text-2xl dark:text-zinc-400"
           id="page-subtitle"
         >
           Fullstack Engineer & UI/UX Designer

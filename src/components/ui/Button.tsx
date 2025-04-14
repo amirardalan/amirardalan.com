@@ -25,7 +25,7 @@ export default function Button({
 }: ButtonProps) {
   const buttonClasses = clsx(
     // Base
-    'rounded-3xl text-sm uppercase focus:outline-none disabled:opacity-50 flex items-center justify-center',
+    'font-medium rounded-3xl text-sm uppercase focus:outline-none disabled:opacity-50 flex items-center justify-center',
     // Size-specific
     size === 'default' ? 'h-[35px] text-xxs' : 'min-w-[120px] text-lg',
     // Spacing

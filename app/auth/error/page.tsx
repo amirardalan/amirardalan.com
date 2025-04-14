@@ -9,7 +9,7 @@ export default function AuthError() {
 
   return (
     <div className="flex h-[80vh] flex-col items-center justify-center text-dark dark:text-light">
-      <h1 className="mb-4 text-xl font-bold">Authentication Error</h1>
+      <h1 className="mb-4 text-xl font-medium">Authentication Error</h1>
 
       {error === 'AccessDenied' && (
         <div className="text-center">
