@@ -20,9 +20,9 @@
   /* Gradients */
   --color-gradient: linear-gradient(
     to bottom,
-    oklch(0.43 0.17 35.76) 0%,
-    oklch(0.25 0.19 300.22) 50%,
-    oklch(0.28 0.15 248.05) 100%
+    oklch(0.57 0.22 30.71) 0%,
+    oklch(0.31 0.17 297.28) 50%,
+    oklch(0.34 0.12 257.28) 100%
   );
 
   /* Dynamic Colors */
@@ -60,9 +60,9 @@
       --color-selection-text: oklch(0.141 0.005 285.823);
       --color-gradient: linear-gradient(
         to bottom,
-        oklch(0.4 0.16 250.13) 0%,
-        oklch(0.25 0.19 300.22) 50%,
-        oklch(0.37 0.19 36.04) 100%
+        oklch(0.58 0.29 314.11) 0%,
+        oklch(0.35 0.17 267.13) 50%,
+        oklch(0.63 0.12 223.89) 100%
       );
     }
   }
