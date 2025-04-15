@@ -41,7 +41,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
       return true;
     },
-    async redirect({ url, baseUrl }) {
+    async redirect({ baseUrl }) {
       // Always redirect to /admin after sign-in
       return `${baseUrl}/admin`;
     },
