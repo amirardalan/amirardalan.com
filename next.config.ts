@@ -4,6 +4,15 @@ import createMDX from '@next/mdx';
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   pageExtensions: ['mdx', 'ts', 'tsx'],
+  async redirects() {
+    return [
+      {
+        source: '/resume',
+        destination: process.env.RESUME_URL!,
+        permanent: true,
+      },
+    ];
+  },
   images: {
     remotePatterns: [
       {
