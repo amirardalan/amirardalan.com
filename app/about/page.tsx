@@ -1,14 +1,11 @@
 'use client';
 
-import { useState } from 'react';
 import PageHeading from '@/components/ui/PageHeading';
 import Container from '@/components/content/Container';
 import Tooltip from '@/components/ui/Tooltip';
 import { CldImage } from 'next-cloudinary';
 
 export default function About() {
-  const [imageLoading, setImageLoading] = useState(true);
-
   return (
     <Container>
       <main className="mt-12" aria-labelledby="about-heading">
@@ -31,24 +28,9 @@ export default function About() {
         </section>
 
         <section
-          className="flex flex-col pt-12 lg:flex-row lg:pt-16"
+          className="mt-8 flex flex-col justify-between border-t-2 border-zinc-200 pt-8 lg:mt-16 lg:flex-row lg:pt-12 dark:border-zinc-800"
           aria-label="Contact links"
         >
-          <div className="mb-6 flex lg:mb-0 lg:mr-8" aria-hidden="true">
-            {imageLoading && (
-              <div className="bg-skeleton-light dark:bg-skeleton-dark h-[125px] w-[125px] animate-pulse rounded-full" />
-            )}
-            <CldImage
-              src="About/amir-avatar_e6puqu"
-              alt="Amir Ardalan Avatar"
-              width={125}
-              height={125}
-              className={`rounded-full ${imageLoading ? 'hidden' : 'block'}`}
-              autoColor
-              priority
-              onLoad={() => setImageLoading(false)}
-            />
-          </div>
           <div className="flex flex-col justify-center">
             <div className="mb-2 flex flex-row items-center">
               <p className="text-zinc-600 dark:text-zinc-500" id="x-link">
@@ -117,6 +99,17 @@ export default function About() {
                 </a>
               </Tooltip>
             </div>
+          </div>
+          <div className="mt-6 flex lg:mt-0" aria-hidden="true">
+            <CldImage
+              src="About/amir-avatar_e6puqu"
+              alt="Amir Ardalan Avatar"
+              width={125}
+              height={125}
+              className="rounded-full"
+              autoColor
+              priority
+            />
           </div>
         </section>
       </main>
