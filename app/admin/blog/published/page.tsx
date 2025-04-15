@@ -1,7 +1,7 @@
 import { auth } from '@/lib/auth';
 import { redirect } from 'next/navigation';
 import { getPublishedPosts } from '@/db/queries/posts';
-import BlogPostList from '@/components/admin/BlogPostList';
+import AdminPostList from '@/components/admin/AdminPostList';
 
 export function generateMetadata() {
   return {
@@ -40,7 +40,7 @@ export default async function Published({ searchParams }: any) {
   const totalResults = filteredPosts.length;
 
   return (
-    <BlogPostList
+    <AdminPostList
       title="Published Posts"
       posts={paginatedPosts}
       searchPlaceholder="Search published posts..."

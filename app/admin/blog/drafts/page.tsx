@@ -1,7 +1,7 @@
 import { auth } from '@/lib/auth';
 import { redirect } from 'next/navigation';
 import { getDraftPosts } from '@/db/queries/posts';
-import BlogPostList from '@/components/admin/BlogPostList';
+import AdminPostList from '@/components/admin/AdminPostList';
 
 export function generateMetadata() {
   return {
@@ -40,7 +40,7 @@ export default async function Drafts({ searchParams }: any) {
   const totalResults = filteredDrafts.length;
 
   return (
-    <BlogPostList
+    <AdminPostList
       title="Drafts"
       posts={paginatedDrafts}
       searchPlaceholder="Search drafts..."

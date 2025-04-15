@@ -5,7 +5,7 @@ import AdminPageHeading from '@/components/admin/AdminPageHeading';
 import SearchInput from '@/components/admin/AdminSearch';
 import Pagination from '@/components/ui/Pagination';
 
-interface BlogPostListProps {
+interface AdminPostListProps {
   title: string;
   posts: BlogPost[];
   searchPlaceholder: string;
@@ -16,7 +16,7 @@ interface BlogPostListProps {
   isDrafts?: boolean;
 }
 
-export default function BlogPostList({
+export default function AdminPostList({
   title,
   posts,
   searchPlaceholder,
@@ -24,7 +24,7 @@ export default function BlogPostList({
   totalResults,
   totalPages,
   isDrafts = false,
-}: BlogPostListProps) {
+}: AdminPostListProps) {
   return (
     <div className="mx-10 mt-8">
       <AdminPageHeading title={title} />
