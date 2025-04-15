@@ -40,10 +40,10 @@ export default function AdminPostList({
             {posts.map((post) => (
               <li
                 key={post.id}
-                className="my-4 flex items-center justify-between"
+                className="my-4 flex w-full items-center justify-between rounded-lg border border-zinc-200 px-6 py-3 dark:border-zinc-700"
               >
                 <div className="flex flex-col">
-                  <div>
+                  <div className="">
                     <Link
                       href={`/blog/${post.slug}`}
                       className="hover:underline"
