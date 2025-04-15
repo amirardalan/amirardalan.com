@@ -40,7 +40,7 @@ export default function AdminPostList({
             {posts.map((post) => (
               <li
                 key={post.id}
-                className="my-4 flex w-full items-center justify-between rounded-lg border border-zinc-200 px-6 py-3 dark:border-zinc-700"
+                className="flex w-full items-center justify-between border-b border-zinc-200 px-6 py-3 hover:bg-zinc-100 dark:border-zinc-700 dark:hover:bg-zinc-900"
               >
                 <div className="flex flex-col">
                   <div className="">

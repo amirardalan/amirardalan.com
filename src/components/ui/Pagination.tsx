@@ -33,10 +33,10 @@ export default function Pagination({
           key={index}
           href={createPageURL(index + 1)}
           className={clsx(
-            'rounded px-3 font-mono text-xs',
+            'rounded border border-zinc-300 px-3 py-0.5 font-mono text-xs hover:bg-zinc-200 dark:border-zinc-500 dark:hover:bg-zinc-800',
             currentPage === index + 1
-              ? 'bg-zinc-400 text-light dark:text-dark'
-              : 'bg-zinc-200 text-dark dark:bg-zinc-700 dark:text-light'
+              ? 'bg-zinc-200 text-dark dark:bg-zinc-800 dark:text-light'
+              : 'text-zinc-400 dark:text-zinc-500'
           )}
         >
           {index + 1}
