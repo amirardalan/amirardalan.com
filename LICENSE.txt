@@ -1,0 +1,6 @@
+This project (amirardalan.com) is licensed under the following terms:
+1. You may use, modify, and distribute this software, provided the source code remains publicly available.
+2. Derivatives must include attribution to Amir Ardalan as the original author.
+3. Derivatives must substantially modify the content, visual theme, and branding to avoid resemblance to the original work.
+4. Derivatives must be licensed under these same terms.
+5. Any use must comply with applicable laws and not misrepresent the original authorship.
