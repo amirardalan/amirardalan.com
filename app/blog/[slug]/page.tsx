@@ -168,7 +168,7 @@ export default async function BlogPost({
           {post.title}
         </h1>
         <h2
-          className="mt-1 font-serif text-xl italic text-zinc-500 dark:text-zinc-400"
+          className="mt-2 font-serif text-xl italic text-zinc-500 dark:text-zinc-400"
           id="post-excerpt"
         >
           {post.excerpt ?? ''}
