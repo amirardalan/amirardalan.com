@@ -1,4 +1,4 @@
-import { getPostBySlug } from '@/db/queries/posts';
+import { getAllPublishedSlugs, getPostBySlug } from '@/db/queries/posts';
 import {
   generateOgImage,
   size,
@@ -9,14 +9,40 @@ import {
 export const alt = 'Blog post';
 export { size, contentType };
 
+// Generate static params for all published posts
+export async function generateStaticParams() {
+  const posts = await getAllPublishedSlugs();
+  return posts;
+}
+
 // Generate dynamic OG images for blog posts
 export default async function Image({ params }: { params: { slug: string } }) {
-  // Get the post data using the slug
-  const post = await getPostBySlug(params.slug);
+  try {
+    // Get the post data using the slug
+    const post = await getPostBySlug(params.slug);
 
-  return generateOgImage({
-    title: post?.title || 'Blog Post',
-    description: post?.excerpt || 'Read this post on amir.sh',
-    tag: post?.category || undefined,
-  });
+    if (!post) {
+      // Fallback for missing post data
+      return generateOgImage({
+        title: 'Blog Post',
+        description: 'Read this post on amir.sh',
+        tag: undefined,
+      });
+    }
+
+    return generateOgImage({
+      title: post.title,
+      description: post.excerpt || 'Read this post on amir.sh',
+      tag: post.category || undefined,
+    });
+  } catch (error) {
+    console.error('Error generating OG image:', error);
+
+    // Provide a fallback image in case of errors
+    return generateOgImage({
+      title: 'Blog Post',
+      description: 'Read this post on amir.sh',
+      tag: undefined,
+    });
+  }
 }
