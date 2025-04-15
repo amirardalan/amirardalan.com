@@ -16,7 +16,7 @@ export default function BlogSupport({ postId }: BlogSupportProps) {
   const isLoading = initialLoadingStates[postId] !== false;
 
   return (
-    <div className="mb-8 mt-16 flex w-full items-center gap-2 rounded-xl border-[1px] border-zinc-300 p-5 sm:p-8 dark:border-zinc-700">
+    <div className="mb-8 mt-16 flex w-full items-center gap-2 rounded-xl border border-zinc-300 p-5 sm:p-8 dark:border-zinc-700">
       <div className="flex w-full flex-col items-center justify-between sm:flex-row">
         <div className="flex items-center">
           <p className="mb-4 text-sm text-zinc-500 sm:mb-0 sm:text-lg dark:text-zinc-400">

@@ -57,7 +57,7 @@ export default function AdminSearch({
         placeholder={placeholder}
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
-        className="w-full rounded-lg border-[1px] border-zinc-300 bg-zinc-100 p-2 text-dark outline-none dark:border-zinc-700 dark:bg-zinc-900 dark:text-light"
+        className="w-full rounded-lg border border-zinc-300 bg-zinc-100 p-2 text-dark outline-none dark:border-zinc-700 dark:bg-zinc-900 dark:text-light"
       />
       {searchExecuted && (
         <div className="mt-2 flex items-center justify-between">
