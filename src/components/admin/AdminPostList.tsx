@@ -40,27 +40,22 @@ export default function AdminPostList({
             {posts.map((post) => (
               <li
                 key={post.id}
-                className="flex w-full items-center justify-between border-b border-zinc-200 px-6 py-3 hover:bg-zinc-100 dark:border-zinc-700 dark:hover:bg-zinc-900"
+                className="flex w-full cursor-pointer items-center justify-between border-b border-zinc-200 px-6 py-3 hover:bg-zinc-100 dark:border-zinc-700 dark:hover:bg-zinc-900"
               >
-                <div className="flex flex-col">
-                  <div className="">
-                    <Link
-                      href={`/blog/${post.slug}`}
-                      className="hover:underline"
-                    >
-                      {post.title}
-                      {post.featured && (
-                        <span className="ml-2 text-xs text-primary">
-                          [Featured]
-                        </span>
-                      )}
-                      {isDrafts && (
-                        <span className="ml-2 text-sm text-amber-500 dark:text-amber-400">
-                          [Draft]
-                        </span>
-                      )}
-                    </Link>
-                  </div>
+                <div className="flex w-full flex-col">
+                  <Link href={`/blog/${post.slug}`}>
+                    {post.title}
+                    {post.featured && (
+                      <span className="ml-2 text-xs text-primary">
+                        [Featured]
+                      </span>
+                    )}
+                    {isDrafts && (
+                      <span className="ml-2 text-sm text-amber-500 dark:text-amber-400">
+                        [Draft]
+                      </span>
+                    )}
+                  </Link>
                   <div>
                     <span className="text-sm text-zinc-500 dark:text-zinc-400">
                       {formatDate(post.created_at)}
