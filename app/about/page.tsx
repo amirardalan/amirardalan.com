@@ -15,23 +15,23 @@ export default function About() {
         <div id="about-heading">
           <PageHeading title={'About'} />
         </div>
-        <section className="mb-4 max-w-7xl font-serif text-xl font-light italic md:text-2xl lg:mb-10 lg:text-4xl lg:leading-normal">
-          <p className="mb-4 text-dark md:mb-6 dark:text-light">
+        <section className="mb-4 max-w-7xl font-serif text-xl font-light italic leading-normal md:text-3xl md:leading-normal lg:mb-6 lg:text-4xl lg:leading-normal">
+          <p className="mb-4 text-dark md:mb-6 lg:mb-8 dark:text-light">
             Fullstack Engineer based in Portland, OR.
           </p>
-          <p className="mb-4 text-dark md:mb-6 dark:text-light">
+          <p className="mb-4 text-dark md:mb-6 lg:mb-8 dark:text-light">
             I&apos;ve shaped digital solutions blending code and design for
             Nike&apos;s LeBron James Innovation Center, Columbia Sportswear, and
             KEEN Footwear with BASIC/DEPT®.
           </p>
-          <p className="mb-4 text-dark md:mb-6 dark:text-light">
+          <p className="mb-4 text-dark dark:text-light">
             I craft intuitive, innovative products that elevate user experiences
             and drive results.
           </p>
         </section>
 
         <section
-          className="flex flex-col pt-10 lg:flex-row"
+          className="flex flex-col pt-12 lg:flex-row lg:pt-16"
           aria-label="Contact links"
         >
           <div className="mb-6 flex lg:mb-0 lg:mr-8" aria-hidden="true">
