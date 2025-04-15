@@ -5,10 +5,9 @@ import { BlogPost } from '@/types/blog';
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const { NEXT_PUBLIC_URL } = process.env;
 
-  // Fetch all published blog posts using your database query
   const posts = await getPublishedPosts();
 
-  // Create base sitemap entries
+  // App pages
   const baseEntries: MetadataRoute.Sitemap = [
     {
       url: `${NEXT_PUBLIC_URL}`,
