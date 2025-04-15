@@ -115,3 +115,11 @@ Or you can use an image wrapped in a custom MDX `<Figure>` component to add a ca
 ```markdown
 <Figure src="your-image-src.png" alt="Your Image Alt" caption="Your Image Caption" priority />
 ```
+
+#### Code
+
+Highlight individual lines or blocks of code (line 2 and lines 3-5):
+
+````
+```typescript{2,3-5}
+````
