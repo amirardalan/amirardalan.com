@@ -20,7 +20,9 @@ export const generateMetadata = () => {
 export default async function Blog() {
   let posts: BlogPost[] = [];
   try {
-    posts = await getPublishedPosts();
+    posts = await getPublishedPosts({
+      next: { tags: ['blog-list'] }, // Tag for on-demand revalidation
+    });
   } catch (error) {
     console.error('Error fetching published posts:', error);
   }
