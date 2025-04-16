@@ -4,7 +4,6 @@ import { useState, useRef, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import { createPost } from '@/services/post-service';
 import { useToast } from '@/components/ui/ToastContext';
-import { formatImage } from '@/utils/format-image';
 import { useImageInsertion } from '@/hooks/useImageInsertion';
 
 import PostFormFields from '@/components/blog/PostFormFields';

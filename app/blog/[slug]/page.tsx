@@ -1,4 +1,3 @@
-import { auth } from '@/lib/auth';
 import { notFound } from 'next/navigation';
 
 import {
@@ -20,6 +19,10 @@ import AdjacentPostNavigation from '@/components/blog/AdjacentPostNavigation';
 
 import { formatDate } from '@/utils/format-date';
 import calculateReadTime from '@/utils/calculate-readtime';
+
+import AdminPostControls from '@/components/admin/AdminPostControls';
+
+import { auth, isAuthorizedEmail } from '@/lib/auth';
 
 export const dynamicParams = true;
 
@@ -73,7 +76,6 @@ export default async function BlogPost({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await paramsPromise;
-  const session = await auth();
 
   if (!/^[a-z0-9-]+$/.test(slug)) {
     notFound();
@@ -93,8 +95,13 @@ export default async function BlogPost({
     notFound();
   }
 
-  if (!post.published && !session?.user) {
-    notFound();
+  // Only check session for unpublished posts (drafts)
+  if (!post.published) {
+    const session = await auth();
+    const isAdmin = !!session?.user && isAuthorizedEmail(session.user.email);
+    if (!isAdmin) {
+      notFound();
+    }
   }
 
   let content;
@@ -109,8 +116,6 @@ export default async function BlogPost({
     ? await getAdjacentPosts(slug)
     : { previous: null, next: null };
 
-  const isAdminView = session?.user && !post.published;
-
   // Helper function to truncate text
   const truncateText = (text: string, maxLength: number = 30) => {
     return text.length > maxLength
@@ -122,22 +127,12 @@ export default async function BlogPost({
     <Container>
       <article className="mt-16 text-dark md:mt-24 dark:text-light">
         <div className="mb-8 flex items-center justify-between">
-          {session?.user && (
-            <div className="text-right">
-              <Link
-                href={`/admin/blog/edit/${post.slug}`}
-                className="inline-block rounded bg-zinc-800 px-2 py-1 text-sm text-light dark:bg-zinc-50 dark:text-dark"
-              >
-                Edit Post
-              </Link>
-            </div>
-          )}
-          {!post.published && (
-            <div className="ml-4 inline-block rounded bg-yellow-200 px-2 py-1 text-sm text-yellow-800 dark:bg-yellow-800 dark:text-yellow-200">
-              <Link href={`/admin/blog/drafts`} title="View all drafts">
-                Draft
-              </Link>
-            </div>
+          {/* Render admin controls as a client component for published posts */}
+          {post.published && (
+            <AdminPostControls
+              slug={post.slug}
+              published={post.published ?? false}
+            />
           )}
         </div>
 
@@ -203,14 +198,12 @@ export default async function BlogPost({
           {content}
         </div>
         <BlogSupport postId={post.id} />
-        {!isAdminView &&
-          post.published &&
-          (adjacentPosts.previous || adjacentPosts.next) && (
-            <AdjacentPostNavigation
-              previous={adjacentPosts.previous}
-              next={adjacentPosts.next}
-            />
-          )}
+        {post.published && (adjacentPosts.previous || adjacentPosts.next) && (
+          <AdjacentPostNavigation
+            previous={adjacentPosts.previous}
+            next={adjacentPosts.next}
+          />
+        )}
       </article>
     </Container>
   );
