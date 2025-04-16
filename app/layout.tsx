@@ -4,7 +4,6 @@ import { auth } from '@/lib/auth';
 import { AuthProvider } from '@/context/AuthProvider';
 import { PostHogProvider } from '@/context/PostHogProvider';
 
-import { getTheme } from '@/utils/get-theme';
 import '@/app/globals.css';
 import clsx from 'clsx';
 
@@ -74,7 +73,6 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
-  const theme = await getTheme();
   const session = await auth();
 
   return (
@@ -82,6 +80,7 @@ export default async function RootLayout({
       <html
         lang="en"
         className={clsx(sans.className, serif.className, mono.className)}
+        suppressHydrationWarning
       >
         <head>
           <script
@@ -89,12 +88,7 @@ export default async function RootLayout({
             suppressHydrationWarning
           />
         </head>
-        <body
-          className={clsx('font-sans font-medium', {
-            'bg-light': theme === 'light',
-            'dark:bg-dark': theme === 'dark',
-          })}
-        >
+        <body className="font-sans font-medium">
           <PostHogProvider>
             <div className="flex min-h-screen flex-col">
               <Header />
