@@ -22,6 +22,8 @@ import calculateReadTime from '@/utils/calculate-readtime';
 
 import BlogPostAdminControlsWrapper from '@/components/blog/BlogPostAdminControlsWrapper';
 
+import { auth, isAuthorizedEmail } from '@/lib/auth';
+
 export const dynamicParams = true;
 
 export async function generateStaticParams() {
@@ -93,9 +95,15 @@ export default async function BlogPost({
     notFound();
   }
 
-  if (!post.published) {
+  // --- Add server-side admin check ---
+  const session = await auth();
+  const isAdmin = !!session?.user && isAuthorizedEmail(session.user.email);
+
+  // Only allow non-admins to see published posts
+  if (!post.published && !isAdmin) {
     notFound();
   }
+  // --- end admin check ---
 
   let content;
   try {
@@ -109,7 +117,8 @@ export default async function BlogPost({
     ? await getAdjacentPosts(slug)
     : { previous: null, next: null };
 
-  const isAdminView = false;
+  // Use isAdmin for admin controls
+  const isAdminView = isAdmin;
 
   // Helper function to truncate text
   const truncateText = (text: string, maxLength: number = 30) => {
@@ -122,14 +131,10 @@ export default async function BlogPost({
     <Container>
       <article className="mt-16 text-dark md:mt-24 dark:text-light">
         <div className="mb-8 flex items-center justify-between">
-          <BlogPostAdminControlsWrapper slug={post.slug} />
-          {!post.published && (
-            <div className="ml-4 inline-block rounded bg-yellow-200 px-2 py-1 text-sm text-yellow-800 dark:bg-yellow-800 dark:text-yellow-200">
-              <Link href={`/admin/blog/drafts`} title="View all drafts">
-                Draft
-              </Link>
-            </div>
-          )}
+          <BlogPostAdminControlsWrapper
+            slug={post.slug}
+            published={post.published ?? false}
+          />
         </div>
 
         <div className="flex items-center justify-between">

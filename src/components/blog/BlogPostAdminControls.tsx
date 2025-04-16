@@ -3,7 +3,13 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 
-export default function BlogPostAdminControls({ slug }: { slug: string }) {
+export default function BlogPostAdminControls({
+  slug,
+  published,
+}: {
+  slug: string;
+  published: boolean;
+}) {
   const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
@@ -19,13 +25,22 @@ export default function BlogPostAdminControls({ slug }: { slug: string }) {
   if (!isAdmin) return null;
 
   return (
-    <div className="text-right">
+    <div className="flex w-full justify-between space-x-2">
       <Link
         href={`/admin/blog/edit/${slug}`}
-        className="inline-block rounded bg-zinc-800 px-2 py-1 text-sm text-light dark:bg-zinc-50 dark:text-dark"
+        className="rounded bg-zinc-800 px-2 py-1 text-sm text-light dark:bg-zinc-50 dark:text-dark"
       >
         Edit Post
       </Link>
+      {!published && (
+        <Link
+          href="/admin/blog/drafts"
+          className="rounded bg-yellow-200 px-2 py-1 text-sm text-yellow-800 dark:bg-yellow-800 dark:text-yellow-200"
+          title="View all drafts"
+        >
+          Draft
+        </Link>
+      )}
     </div>
   );
 }
