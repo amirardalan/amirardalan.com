@@ -6,8 +6,6 @@ import BlogPosts from '@/components/blog/BlogPosts';
 
 import { BlogPost } from '@/types/blog';
 
-export const revalidate = false;
-
 export const generateMetadata = () => {
   return {
     metadataBase: new URL(`${process.env.NEXT_PUBLIC_URL}`),

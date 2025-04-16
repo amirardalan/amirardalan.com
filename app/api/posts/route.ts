@@ -2,7 +2,6 @@ import { NextResponse } from 'next/server';
 import { dbCreatePost, dbUpdatePost } from '@/db/queries/posts';
 import { auth } from '@/lib/auth';
 import { getUserIdByEmail } from '@/db/queries/users';
-import { revalidatePath, revalidateTag } from 'next/cache'; // Import revalidation functions
 
 export async function POST(req: Request) {
   try {
@@ -37,15 +36,6 @@ export async function POST(req: Request) {
     };
 
     const postId = await dbCreatePost(postData);
-
-    if (postData.published) {
-      console.log(
-        `Revalidating paths for new published post: ${postData.slug}`
-      );
-      await revalidatePath('/blog'); // Revalidate the main blog listing page
-      await revalidateTag('blog-posts'); // Revalidate data tagged with 'blog-posts'
-      await revalidatePath(`/blog/${postData.slug}`); // Revalidate the new post's page
-    }
 
     return NextResponse.json({ id: postId }, { status: 201 });
   } catch (error) {

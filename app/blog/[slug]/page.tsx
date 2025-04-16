@@ -21,7 +21,6 @@ import AdjacentPostNavigation from '@/components/blog/AdjacentPostNavigation';
 import { formatDate } from '@/utils/format-date';
 import calculateReadTime from '@/utils/calculate-readtime';
 
-export const revalidate = false;
 export const dynamicParams = true;
 
 export async function generateStaticParams() {
