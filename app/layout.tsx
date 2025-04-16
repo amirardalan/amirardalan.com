@@ -15,6 +15,7 @@ import LightIcon from '@/public/images/favicon-light.png';
 import Header from '@/components/ui/Header';
 import Footer from '@/components/ui/Footer';
 import MobileNavigation from '@/components/ui/MobileNavigation';
+import { getInitialTheme } from '@/utils/get-theme';
 
 const sans = Jura({
   subsets: ['latin'],
@@ -80,8 +81,14 @@ export default async function RootLayout({
     <AuthProvider session={session}>
       <html
         lang="en"
-        className={clsx(sans.className, serif.className, mono.className, theme)}
+        className={clsx(sans.className, serif.className, mono.className)}
       >
+        <head>
+          <script
+            dangerouslySetInnerHTML={{ __html: getInitialTheme() }}
+            suppressHydrationWarning
+          />
+        </head>
         <body
           className={clsx('font-sans font-medium', {
             'bg-light': theme === 'light',
