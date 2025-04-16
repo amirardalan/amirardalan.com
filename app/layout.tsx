@@ -4,6 +4,7 @@ import { auth } from '@/lib/auth';
 import { AuthProvider } from '@/context/AuthProvider';
 import { PostHogProvider } from '@/context/PostHogProvider';
 
+import { getTheme } from '@/utils/get-theme';
 import '@/app/globals.css';
 import clsx from 'clsx';
 
@@ -14,7 +15,6 @@ import LightIcon from '@/public/images/favicon-light.png';
 import Header from '@/components/ui/Header';
 import Footer from '@/components/ui/Footer';
 import MobileNavigation from '@/components/ui/MobileNavigation';
-import { getInitialTheme } from '@/utils/get-theme';
 
 const sans = Jura({
   subsets: ['latin'],
@@ -73,22 +73,21 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  const theme = await getTheme();
   const session = await auth();
 
   return (
     <AuthProvider session={session}>
       <html
         lang="en"
-        className={clsx(sans.className, serif.className, mono.className)}
-        suppressHydrationWarning
+        className={clsx(sans.className, serif.className, mono.className, theme)}
       >
-        <head>
-          <script
-            dangerouslySetInnerHTML={{ __html: getInitialTheme() }}
-            suppressHydrationWarning
-          />
-        </head>
-        <body className="font-sans font-medium">
+        <body
+          className={clsx('font-sans font-medium', {
+            'bg-light': theme === 'light',
+            'dark:bg-dark': theme === 'dark',
+          })}
+        >
           <PostHogProvider>
             <div className="flex min-h-screen flex-col">
               <Header />
