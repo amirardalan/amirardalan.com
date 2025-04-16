@@ -40,11 +40,13 @@ export async function generateMetadata(): Promise<Metadata> {
   let title = '';
   if (pathname === '/') {
     title = 'Amir Ardalan — Fullstack Engineer & UI/UX Designer';
-  } else if (pathname.startsWith('/blog/')) {
+  } else if (pathname && pathname.startsWith('/blog/')) {
     const slug = pathname.split('/blog/')[1];
     title = `${slug.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase())} — Amir Ardalan`;
-  } else {
+  } else if (pathname && pathname.length > 1) {
     title = `${pathname.slice(1).charAt(0).toUpperCase()}${pathname.slice(2)} — Amir Ardalan`;
+  } else {
+    title = 'Amir Ardalan — Fullstack Engineer & UI/UX Designer';
   }
 
   return {
