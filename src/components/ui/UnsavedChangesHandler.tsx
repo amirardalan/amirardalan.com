@@ -22,7 +22,7 @@ export default function UnsavedChangesHandler({
     null
   );
 
-  // Handle browser back/forward buttons and page refresh
+  // Handle browser back/forward/refresh
   useEffect(() => {
     beforeUnloadHandlerRef.current = (e: BeforeUnloadEvent) => {
       e.preventDefault();
