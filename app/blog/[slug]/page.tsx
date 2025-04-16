@@ -82,6 +82,7 @@ export default async function BlogPost({
   }
 
   let post;
+  let isAdmin = false;
   try {
     post = await getPostBySlug(slug, {
       next: { tags: [`blog-post:${slug}`] }, // Tag for on-demand revalidation
@@ -98,10 +99,14 @@ export default async function BlogPost({
   // Only check session for unpublished posts (drafts)
   if (!post.published) {
     const session = await auth();
-    const isAdmin = !!session?.user && isAuthorizedEmail(session.user.email);
+    isAdmin = !!session?.user && isAuthorizedEmail(session.user.email);
     if (!isAdmin) {
       notFound();
     }
+  } else {
+    // For published posts, optionally check admin for controls (if needed)
+    const session = await auth();
+    isAdmin = !!session?.user && isAuthorizedEmail(session.user.email);
   }
 
   let content;
@@ -127,8 +132,8 @@ export default async function BlogPost({
     <Container>
       <article className="mt-16 text-dark md:mt-24 dark:text-light">
         <div className="mb-8 flex items-center justify-between">
-          {/* Render admin controls as a client component for published posts */}
-          {post.published && (
+          {/* Render admin controls as a client component for admins */}
+          {isAdmin && (
             <AdminPostControls
               slug={post.slug}
               published={post.published ?? false}
