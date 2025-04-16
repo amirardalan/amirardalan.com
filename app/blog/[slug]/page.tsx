@@ -20,7 +20,7 @@ import AdjacentPostNavigation from '@/components/blog/AdjacentPostNavigation';
 import { formatDate } from '@/utils/format-date';
 import calculateReadTime from '@/utils/calculate-readtime';
 
-import BlogPostAdminControlsWrapper from '@/components/blog/BlogPostAdminControlsWrapper';
+import AdminPostControls from '@/src/components/admin/AdminPostControls';
 
 import { auth, isAuthorizedEmail } from '@/lib/auth';
 
@@ -95,15 +95,14 @@ export default async function BlogPost({
     notFound();
   }
 
-  // --- Add server-side admin check ---
-  const session = await auth();
-  const isAdmin = !!session?.user && isAuthorizedEmail(session.user.email);
-
-  // Only allow non-admins to see published posts
-  if (!post.published && !isAdmin) {
-    notFound();
+  // Only check session for unpublished posts (drafts)
+  if (!post.published) {
+    const session = await auth();
+    const isAdmin = !!session?.user && isAuthorizedEmail(session.user.email);
+    if (!isAdmin) {
+      notFound();
+    }
   }
-  // --- end admin check ---
 
   let content;
   try {
@@ -117,9 +116,6 @@ export default async function BlogPost({
     ? await getAdjacentPosts(slug)
     : { previous: null, next: null };
 
-  // Use isAdmin for admin controls
-  const isAdminView = isAdmin;
-
   // Helper function to truncate text
   const truncateText = (text: string, maxLength: number = 30) => {
     return text.length > maxLength
@@ -131,10 +127,13 @@ export default async function BlogPost({
     <Container>
       <article className="mt-16 text-dark md:mt-24 dark:text-light">
         <div className="mb-8 flex items-center justify-between">
-          <BlogPostAdminControlsWrapper
-            slug={post.slug}
-            published={post.published ?? false}
-          />
+          {/* Render admin controls as a client component for published posts */}
+          {post.published && (
+            <AdminPostControls
+              slug={post.slug}
+              published={post.published ?? false}
+            />
+          )}
         </div>
 
         <div className="flex items-center justify-between">
@@ -199,14 +198,12 @@ export default async function BlogPost({
           {content}
         </div>
         <BlogSupport postId={post.id} />
-        {!isAdminView &&
-          post.published &&
-          (adjacentPosts.previous || adjacentPosts.next) && (
-            <AdjacentPostNavigation
-              previous={adjacentPosts.previous}
-              next={adjacentPosts.next}
-            />
-          )}
+        {post.published && (adjacentPosts.previous || adjacentPosts.next) && (
+          <AdjacentPostNavigation
+            previous={adjacentPosts.previous}
+            next={adjacentPosts.next}
+          />
+        )}
       </article>
     </Container>
   );

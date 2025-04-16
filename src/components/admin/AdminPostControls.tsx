@@ -3,17 +3,18 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 
-export default function BlogPostAdminControls({
-  slug,
-  published,
-}: {
+interface AdminPostControlsProps {
   slug: string;
   published: boolean;
-}) {
+}
+
+export default function AdminPostControls({
+  slug,
+  published,
+}: AdminPostControlsProps) {
   const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
-    // Fetch session info from an API route or use a client-side auth library
     fetch('/api/auth/session')
       .then((res) => res.json())
       .then((data) => {
