@@ -80,12 +80,17 @@ export default async function RootLayout({
     <AuthProvider session={session}>
       <html
         lang="en"
-        className={clsx(sans.className, serif.className, mono.className, theme)}
+        className={clsx(
+          sans.className,
+          serif.className,
+          mono.className,
+          theme || 'dark'
+        )}
       >
         <body
           className={clsx('font-sans font-medium', {
             'bg-light': theme === 'light',
-            'dark:bg-dark': theme === 'dark',
+            'dark:bg-dark': theme === 'dark' || !theme,
           })}
         >
           <PostHogProvider>
