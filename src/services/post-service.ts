@@ -14,7 +14,7 @@ interface PostData {
 export async function createPost(postData: PostData) {
   const dataToSend = {
     ...postData,
-    featured: postData.featured === true, // Explicit boolean
+    featured: postData.featured === true,
   };
 
   const response = await fetch('/api/posts', {
@@ -86,7 +86,7 @@ export async function updatePost(postId: number, postData: Partial<PostData>) {
   // Ensure the featured property is explicitly included
   const dataToSend = {
     ...postData,
-    featured: postData.featured === true, // Explicit boolean
+    featured: postData.featured === true,
   };
 
   const response = await fetch(`/api/posts/${postId}`, {

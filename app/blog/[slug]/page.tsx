@@ -21,7 +21,6 @@ import AdjacentPostNavigation from '@/components/blog/AdjacentPostNavigation';
 import { formatDate } from '@/utils/format-date';
 import calculateReadTime from '@/utils/calculate-readtime';
 
-export const revalidate = false;
 export const dynamicParams = true;
 
 export async function generateStaticParams() {
@@ -82,7 +81,9 @@ export default async function BlogPost({
 
   let post;
   try {
-    post = await getPostBySlug(slug);
+    post = await getPostBySlug(slug, {
+      next: { tags: [`blog-post:${slug}`] }, // Tag for on-demand revalidation
+    });
   } catch (error) {
     console.error('Error fetching post by slug:', error);
     notFound();

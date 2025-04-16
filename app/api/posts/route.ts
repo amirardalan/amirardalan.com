@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server';
-import { dbCreatePost, dbUpdatePost } from '@/db/queries/posts';
+import { dbCreatePost, dbUpdatePost, dbDeletePost } from '@/db/queries/posts';
 import { auth } from '@/lib/auth';
 import { getUserIdByEmail } from '@/db/queries/users';
-import { revalidatePath, revalidateTag } from 'next/cache'; // Import revalidation functions
+import { revalidateTag } from 'next/cache';
 
 export async function POST(req: Request) {
   try {
@@ -38,13 +38,10 @@ export async function POST(req: Request) {
 
     const postId = await dbCreatePost(postData);
 
+    // If published, revalidate blog-list and blog-post:{slug}
     if (postData.published) {
-      console.log(
-        `Revalidating paths for new published post: ${postData.slug}`
-      );
-      await revalidatePath('/blog'); // Revalidate the main blog listing page
-      await revalidateTag('blog-posts'); // Revalidate data tagged with 'blog-posts'
-      await revalidatePath(`/blog/${postData.slug}`); // Revalidate the new post's page
+      await revalidateTag('blog-list');
+      await revalidateTag(`blog-post:${postData.slug}`);
     }
 
     return NextResponse.json({ id: postId }, { status: 201 });
@@ -105,6 +102,15 @@ export async function PUT(req: Request) {
 
     const result = await dbUpdatePost(parseInt(id, 10), updateData);
 
+    // If the post was published or is now published, revalidate
+    if (result.wasPublished || updateData.published) {
+      await revalidateTag('blog-list');
+      await revalidateTag(`blog-post:${result.oldSlug}`);
+      if (result.newSlug && result.newSlug !== result.oldSlug) {
+        await revalidateTag(`blog-post:${result.newSlug}`);
+      }
+    }
+
     return NextResponse.json(result, { status: 200 });
   } catch (error) {
     if (error instanceof Error && error.message.includes('posts_slug_unique')) {
@@ -118,6 +124,42 @@ export async function PUT(req: Request) {
     console.error('Failed to update post:', error);
     return NextResponse.json(
       { error: 'Failed to update post.' },
+      { status: 500 }
+    );
+  }
+}
+
+// Add DELETE handler for completeness
+export async function DELETE(req: Request) {
+  try {
+    const session = await auth();
+    if (!session?.user?.email) {
+      return NextResponse.json({ error: 'Not authenticated' }, { status: 401 });
+    }
+
+    const data = await req.json();
+    const { id } = data;
+
+    if (!id) {
+      return NextResponse.json(
+        { error: 'Post ID is required.' },
+        { status: 400 }
+      );
+    }
+
+    const result = await dbDeletePost(parseInt(id, 10));
+
+    // If the post was published, revalidate
+    if (result.wasPublished) {
+      await revalidateTag('blog-list');
+      await revalidateTag(`blog-post:${result.slug}`);
+    }
+
+    return NextResponse.json(result, { status: 200 });
+  } catch (error) {
+    console.error('Failed to delete post:', error);
+    return NextResponse.json(
+      { error: 'Failed to delete post.' },
       { status: 500 }
     );
   }

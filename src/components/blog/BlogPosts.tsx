@@ -48,7 +48,7 @@ export default function BlogPosts({ posts }: { posts: BlogPost[] }) {
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const searchParams = useSearchParams();
-  const categoryFilter = searchParams.get('category');
+  const categoryFilter = searchParams?.get('category');
   const postsPerPage = 8;
 
   // Find the featured post, if any

@@ -3,7 +3,6 @@ import { auth } from '@/lib/auth';
 
 // Import NextRequest again
 import { NextRequest, NextResponse } from 'next/server';
-import { revalidatePath, revalidateTag } from 'next/cache';
 
 // Update PUT handler signature to expect params as a Promise
 export async function PUT(
@@ -39,15 +38,6 @@ export async function PUT(
       featured: requestData.featured,
     });
 
-    // Revalidate paths
-    await revalidatePath('/blog');
-    await revalidateTag('blog-posts');
-    await revalidatePath(`/blog/${requestData.slug}`);
-
-    if (result.oldSlug && result.oldSlug !== requestData.slug) {
-      await revalidatePath(`/blog/${result.oldSlug}`);
-    }
-
     return NextResponse.json({ success: true, data: result });
   } catch (error) {
     console.error('Error in PUT /api/posts/[id]:', error);
@@ -80,14 +70,6 @@ export async function DELETE(
 
     // Delete the post
     const result = await dbDeletePost(postId);
-
-    // Revalidate paths
-    await revalidatePath('/blog');
-    await revalidateTag('blog-posts');
-
-    if (result.wasPublished) {
-      await revalidatePath(`/blog/${result.slug}`);
-    }
 
     return NextResponse.json({ success: true, data: result });
   } catch (error) {

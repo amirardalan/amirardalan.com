@@ -5,7 +5,9 @@ import { eq, desc, lt, gt, and } from 'drizzle-orm';
 import { BlogPost } from '@/types/blog';
 
 // Get all published posts (for blog page)
-export const getPublishedPosts = async () => {
+export const getPublishedPosts = async (options?: {
+  next?: { tags: string[] };
+}) => {
   return db
     .select({
       id: posts.id,
@@ -20,12 +22,13 @@ export const getPublishedPosts = async () => {
       show_updated: posts.show_updated,
       user_id: posts.user_id,
       user_name: users.name,
-      featured: posts.featured, // Add featured flag
+      featured: posts.featured,
     })
     .from(posts)
     .leftJoin(users, eq(posts.user_id, users.id))
     .where(eq(posts.published, true))
-    .orderBy(desc(posts.created_at));
+    .orderBy(desc(posts.created_at))
+    .execute(options);
 };
 
 // Get draft posts (for admin drafts page)
@@ -53,7 +56,10 @@ export async function getDraftPosts() {
 }
 
 // Get a post by slug (for blog/[slug] page)
-export async function getPostBySlug(slug: string) {
+export async function getPostBySlug(
+  slug: string,
+  options?: { next?: { tags: string[] } }
+) {
   const post = await db
     .select({
       id: posts.id,
@@ -73,7 +79,8 @@ export async function getPostBySlug(slug: string) {
     .from(posts)
     .leftJoin(users, eq(posts.user_id, users.id))
     .where(eq(posts.slug, slug))
-    .limit(1);
+    .limit(1)
+    .execute(options);
 
   return post.length ? post[0] : null;
 }
