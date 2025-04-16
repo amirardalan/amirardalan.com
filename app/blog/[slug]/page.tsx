@@ -20,7 +20,7 @@ import AdjacentPostNavigation from '@/components/blog/AdjacentPostNavigation';
 import { formatDate } from '@/utils/format-date';
 import calculateReadTime from '@/utils/calculate-readtime';
 
-import AdminPostControls from '@/src/components/admin/AdminPostControls';
+import AdminPostControls from '@/components/admin/AdminPostControls';
 
 import { auth, isAuthorizedEmail } from '@/lib/auth';
 
