@@ -6,7 +6,7 @@ export async function getTheme() {
 
   if (!theme || theme === 'system') {
     const systemTheme = cookieStore.get('x-system-theme')?.value;
-    theme = systemTheme === 'dark' ? 'dark' : 'light';
+    theme = systemTheme === 'dark' ? 'dark' : 'dark';
   } else if (theme !== 'dark') {
     theme = 'light';
   }

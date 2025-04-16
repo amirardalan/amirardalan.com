@@ -12,7 +12,7 @@ type ThemeStore = {
 
 export const useTheme = create<ThemeStore>((set) => ({
   theme: 'system',
-  effectiveTheme: 'light',
+  effectiveTheme: 'dark',
   setTheme: (theme) => {
     Cookies.set('x-theme', theme);
     const systemTheme = window.matchMedia('(prefers-color-scheme: dark)')
