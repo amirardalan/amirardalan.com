@@ -20,7 +20,9 @@ export default function AdminPostControls({
       .then((data) => {
         if (data?.user) setIsAdmin(true);
       })
-      .catch(() => {});
+      .catch((error) => {
+        console.error('Failed to fetch session:', error);
+      });
   }, []);
 
   if (!isAdmin) return null;
