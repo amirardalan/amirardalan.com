@@ -89,7 +89,7 @@ export default function About() {
               </p>
               <Tooltip text="Download my resume" pos="r">
                 <a
-                  href="https://amir.sh/resume"
+                  href="/resume"
                   rel="noopener noreferrer"
                   target="_blank"
                   className="ml-1 text-primary"
