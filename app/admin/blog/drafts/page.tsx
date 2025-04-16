@@ -3,6 +3,8 @@ import { redirect } from 'next/navigation';
 import { getDraftPosts } from '@/db/queries/posts';
 import AdminPostList from '@/components/admin/AdminPostList';
 
+export const dynamic = 'force-dynamic';
+
 export function generateMetadata() {
   return {
     metadataBase: new URL(`${process.env.NEXT_PUBLIC_URL}`),
@@ -11,10 +13,12 @@ export function generateMetadata() {
   };
 }
 
+type SearchParams = { [key: string]: string | string[] | undefined };
+
 export default async function Drafts({
   searchParams,
 }: {
-  searchParams: Record<string, string | undefined>;
+  searchParams: Promise<SearchParams>;
 }) {
   const session = await auth();
 
@@ -22,7 +26,7 @@ export default async function Drafts({
     redirect('/api/auth/signin?callbackUrl=/admin/blog/drafts');
   }
 
-  const params = await Promise.resolve(searchParams || {});
+  const params = (await searchParams) ?? {};
   const query = typeof params.query === 'string' ? params.query : '';
   const currentPage = Number(
     typeof params.page === 'string' ? params.page : '1'
