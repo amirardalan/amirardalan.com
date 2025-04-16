@@ -4,7 +4,7 @@ export async function fetchImages(): Promise<string[]> {
     const data = await res.json();
 
     if (data.resources && Array.isArray(data.resources)) {
-      return data.resources.map((img: any) => img.secure_url);
+      return data.resources.map((img: { secure_url: any }) => img.secure_url);
     } else {
       console.error('Invalid response format:', data);
       return [];

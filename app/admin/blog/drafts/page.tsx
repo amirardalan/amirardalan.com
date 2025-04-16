@@ -11,7 +11,11 @@ export function generateMetadata() {
   };
 }
 
-export default async function Drafts({ searchParams }: any) {
+export default async function Drafts({
+  searchParams,
+}: {
+  searchParams: Record<string, string | undefined>;
+}) {
   const session = await auth();
 
   if (!session?.user) {
