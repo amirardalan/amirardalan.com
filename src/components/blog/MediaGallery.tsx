@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { CldImage } from 'next-cloudinary';
 import { useToast } from '@/components/ui/ToastContext';
 import {
@@ -130,7 +130,7 @@ export default function MediaGallery({
                   .split('/')
                   .slice(-2)
                   .join('/')
-                  .split('.')[0]; // Extract publicId
+                  .split('.')[0];
                 if (publicId) handleDelete(publicId);
               }}
               className="absolute right-0 top-0 hidden bg-zinc-500 px-1.5 py-0.5 text-xl leading-none text-light hover:bg-red-600 group-hover:block"

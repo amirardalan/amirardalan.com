@@ -11,7 +11,7 @@ export type BlogPost = {
   user_id: number;
   author_name?: string | null;
   show_updated?: boolean | null;
-  featured: boolean | null; // Change from boolean to boolean | null
+  featured: boolean | null;
   isDraft?: boolean;
   user_name?: string | null;
 };

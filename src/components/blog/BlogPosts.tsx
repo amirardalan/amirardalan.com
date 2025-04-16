@@ -51,10 +51,7 @@ export default function BlogPosts({ posts }: { posts: BlogPost[] }) {
   const categoryFilter = searchParams?.get('category');
   const postsPerPage = 8;
 
-  // Find the featured post, if any
   const featuredPost = posts.find((post) => post.featured);
-
-  // Filter the remaining posts
   const regularPosts = posts.filter((post) => !post.featured);
 
   const filteredPosts = regularPosts.filter((post) => {
@@ -67,7 +64,6 @@ export default function BlogPosts({ posts }: { posts: BlogPost[] }) {
     return matchesSearch && matchesCategory;
   });
 
-  // Filter the featured post as well (if it exists)
   const showFeaturedPost =
     featuredPost &&
     (!searchTerm ||

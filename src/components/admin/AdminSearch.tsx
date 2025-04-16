@@ -22,10 +22,10 @@ export default function AdminSearch({
   const formRef = useRef<HTMLFormElement>(null);
 
   const handleClearFilters = () => {
-    setSearchTerm(''); // Clear the input first
+    setSearchTerm('');
     setSearchExecuted(false);
     setTimeout(() => {
-      formRef.current?.submit(); // Submit the form after clearing
+      formRef.current?.submit();
     }, 0);
   };
 
@@ -47,7 +47,7 @@ export default function AdminSearch({
       onSubmit={(e) => {
         setSearchTerm(searchTerm);
         handleSubmit(e);
-        setTimeout(() => setIsLoading(false), 500); // Simulate loading completion
+        setTimeout(() => setIsLoading(false), 500);
       }}
       ref={formRef}
     >

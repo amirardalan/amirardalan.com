@@ -8,11 +8,12 @@ export interface OgImageProps {
   tag?: string;
 }
 
-// Export common metadata for OG images
+// Size
 export const size = {
   width: 1200,
   height: 630,
 };
+
 export const contentType = 'image/png';
 
 export async function generateOgImage({
@@ -20,7 +21,7 @@ export async function generateOgImage({
   description,
   tag,
 }: OgImageProps) {
-  // Load self-hosted font
+  // Self-hosted font
   const fontData = await readFile(
     join(process.cwd(), 'public/fonts/jura-v31-latin-regular.ttf')
   );

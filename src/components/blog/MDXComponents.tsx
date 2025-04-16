@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef, ReactNode } from 'react';
+import { ComponentPropsWithoutRef } from 'react';
 import { highlight } from 'sugar-high';
 import Link from 'next/link';
 import Image from 'next/image';

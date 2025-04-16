@@ -76,7 +76,7 @@ export default function NewPostForm({ userId }: NewPostFormProps) {
       await createPost(payload);
 
       showToast('Post created successfully!', 'success');
-      setHasUnsavedChanges(false); // Mark changes as saved before navigation
+      setHasUnsavedChanges(false);
       router.push(published ? `/blog/${slug}` : '/admin/blog/drafts');
     } catch (err) {
       setError((err as Error).message);
@@ -86,7 +86,6 @@ export default function NewPostForm({ userId }: NewPostFormProps) {
     }
   };
 
-  // Also optimize the clear form functionality
   const clearForm = useCallback(() => {
     setTitle('');
     setSlug('');
@@ -102,7 +101,6 @@ export default function NewPostForm({ userId }: NewPostFormProps) {
     clearForm();
   }, [clearForm]);
 
-  // Use custom hook for image insertion
   const {
     textareaRef,
     cursorPosition,
@@ -194,7 +192,6 @@ export default function NewPostForm({ userId }: NewPostFormProps) {
         confirmText="Discard"
       />
 
-      {/* Handle navigation away from the page */}
       <UnsavedChangesHandler
         hasUnsavedChanges={hasUnsavedChanges}
         onDiscard={discardChanges}

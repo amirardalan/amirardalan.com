@@ -12,7 +12,7 @@ interface ModalProps {
   confirmDisabled?: boolean;
   children?: React.ReactNode;
   buttons?: 'both' | 'cancel' | 'confirm';
-  leftButton?: React.ReactNode; // New prop for custom left button
+  leftButton?: React.ReactNode;
 }
 
 export default function Modal({

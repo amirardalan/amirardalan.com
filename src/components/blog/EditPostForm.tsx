@@ -88,8 +88,7 @@ export default function EditPostForm({ post }: EditPostFormProps) {
       });
 
       showToast('Post updated successfully!', 'success');
-      setHasUnsavedChanges(false); // Mark changes as saved
-      // Always redirect to the post page after saving, whether draft or published
+      setHasUnsavedChanges(false);
       router.push(`/blog/${slug}`);
     } catch (err) {
       setError((err as Error).message);
@@ -115,8 +114,7 @@ export default function EditPostForm({ post }: EditPostFormProps) {
       await deletePost(post.id);
 
       showToast('Post deleted successfully!', 'success');
-      setHasUnsavedChanges(false); // No need to prompt about unsaved changes
-      // Keep existing redirect logic for delete: published go to published list, drafts go to drafts list
+      setHasUnsavedChanges(false);
       router.push(
         post.published ? '/admin/blog/published' : '/admin/blog/drafts'
       );
@@ -132,7 +130,6 @@ export default function EditPostForm({ post }: EditPostFormProps) {
     setHasUnsavedChanges(false);
   }, []);
 
-  // Use custom hook for image insertion
   const {
     textareaRef,
     cursorPosition,
@@ -140,11 +137,9 @@ export default function EditPostForm({ post }: EditPostFormProps) {
     insertImageAtCursor,
   } = useImageInsertion(content, setContent, () => setShowGallery(false));
 
-  // Set the current post published status in the "edit" store
   useEffect(() => {
     setCurrentPostPublished(post.published || false);
     return () => {
-      // Clean up when component unmounts
       setCurrentPostPublished(null);
     };
   }, [post.published, setCurrentPostPublished]);
@@ -235,7 +230,6 @@ export default function EditPostForm({ post }: EditPostFormProps) {
         />
       </Modal>
 
-      {/* Handle navigation away from the page */}
       <UnsavedChangesHandler
         hasUnsavedChanges={hasUnsavedChanges}
         onDiscard={discardChanges}

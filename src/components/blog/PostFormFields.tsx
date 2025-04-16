@@ -53,7 +53,7 @@ export default function PostFormFields({
     }
   };
 
-  // Hardcoded categories for now
+  // TODO: Manage categories in CMS
   const categories = [
     {
       id: 'code',
