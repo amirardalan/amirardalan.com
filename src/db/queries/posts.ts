@@ -8,31 +8,27 @@ import { BlogPost } from '@/types/blog';
 export const getPublishedPosts = async (options?: {
   next?: { tags: string[] };
 }) => {
-  return (
-    db
-      .select({
-        id: posts.id,
-        title: posts.title,
-        slug: posts.slug,
-        content: posts.content,
-        excerpt: posts.excerpt,
-        category: posts.category,
-        published: posts.published,
-        created_at: posts.created_at,
-        updated_at: posts.updated_at,
-        show_updated: posts.show_updated,
-        user_id: posts.user_id,
-        user_name: users.name,
-        featured: posts.featured, // Add featured flag
-      })
-      .from(posts)
-      .leftJoin(users, eq(posts.user_id, users.id))
-      .where(eq(posts.published, true))
-      .orderBy(desc(posts.created_at))
-      // Pass options for fetch caching/tags
-      //@ts-ignore
-      .execute(options)
-  );
+  return db
+    .select({
+      id: posts.id,
+      title: posts.title,
+      slug: posts.slug,
+      content: posts.content,
+      excerpt: posts.excerpt,
+      category: posts.category,
+      published: posts.published,
+      created_at: posts.created_at,
+      updated_at: posts.updated_at,
+      show_updated: posts.show_updated,
+      user_id: posts.user_id,
+      user_name: users.name,
+      featured: posts.featured,
+    })
+    .from(posts)
+    .leftJoin(users, eq(posts.user_id, users.id))
+    .where(eq(posts.published, true))
+    .orderBy(desc(posts.created_at))
+    .execute(options);
 };
 
 // Get draft posts (for admin drafts page)
@@ -84,7 +80,6 @@ export async function getPostBySlug(
     .leftJoin(users, eq(posts.user_id, users.id))
     .where(eq(posts.slug, slug))
     .limit(1)
-    //@ts-ignore
     .execute(options);
 
   return post.length ? post[0] : null;
