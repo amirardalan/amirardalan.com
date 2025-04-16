@@ -15,13 +15,13 @@ export default function Pagination({
 }: PaginationProps) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const currentPage = Number(searchParams.get('page') || '1');
+  const currentPage = Number(searchParams?.get('page') || '1');
 
   if (totalPages <= 1) return null;
 
   // Create new URLSearchParams instance to manipulate
   function createPageURL(pageNumber: number): string {
-    const params = new URLSearchParams(searchParams.toString());
+    const params = new URLSearchParams(searchParams?.toString());
     params.set('page', pageNumber.toString());
     return `${pathname}?${params.toString()}`;
   }

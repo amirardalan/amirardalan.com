@@ -43,7 +43,7 @@ function PostHogPageView() {
   useEffect(() => {
     if (pathname && posthog) {
       let url = window.origin + pathname;
-      const search = searchParams.toString();
+      const search = searchParams?.toString();
       if (search) {
         url += '?' + search;
       }
@@ -53,7 +53,7 @@ function PostHogPageView() {
         $current_url: url,
         path: pathname,
         route_pattern: getRoutePattern(pathname),
-        search_params: Object.fromEntries(searchParams.entries()),
+        search_params: Object.fromEntries(searchParams?.entries() || []),
         referrer: document.referrer || null,
       });
     }
