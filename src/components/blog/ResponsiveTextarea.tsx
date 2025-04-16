@@ -28,23 +28,21 @@ export default function ResponsiveTextarea({
   onSelect,
   textareaRef,
 }: ResponsiveTextareaProps) {
-  // Using height-based media queries with the enhanced hook
   const isBelow768Height = useMediaQuery(768, 'height');
   const isBelow1080Height = useMediaQuery(1080, 'height');
   const isBelow1440Height = useMediaQuery(1440, 'height');
   const isBelow2160Height = useMediaQuery(2160, 'height');
 
-  // Determine rows based on screen height
-  let rows = 30; // Default for 1440p height
+  let rows = 30; // 1440p
 
   if (isBelow768Height) {
     rows = 15; // Small screens
   } else if (isBelow1080Height) {
-    rows = 20; // Tablets or medium screens
+    rows = 20; // Tablets
   } else if (isBelow1440Height) {
-    rows = 30; // 1080p screens
+    rows = 30; // 1080p
   } else if (!isBelow2160Height) {
-    rows = 45; // 4K screens
+    rows = 45; // 4K
   }
 
   const internalRef = useRef<HTMLTextAreaElement>(null);

@@ -24,7 +24,6 @@ const getNavLinkStyles = (
   isActive: boolean,
   isLast?: boolean
 ) => {
-  // Variant-specific styles
   const variantStyles = {
     header: clsx({
       'mr-12 text-xxs uppercase': true,

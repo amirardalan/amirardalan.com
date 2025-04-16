@@ -29,10 +29,9 @@ export function ToastProvider({ children }: ToastProviderProps) {
     const id = Date.now();
     setToasts((prevToasts) => [...prevToasts, { id, message, type }]);
 
-    // Auto-remove toast after 3 seconds
     setTimeout(() => {
       hideToast(id);
-    }, 3000);
+    }, 3000); // 3 seconds
 
     return id;
   };

@@ -1,4 +1,5 @@
 // Reduce Redis requests during local development
+
 class DevCache {
   private cache: Record<string, any> = {};
   private expiry: Record<string, number> = {};

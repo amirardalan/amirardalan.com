@@ -37,13 +37,13 @@ export function useImageInsertion(
           imageCode +
           content.substring(position.end);
 
-        // Store the desired cursor position before updating content
+        // Store cursor position before updating content
         const newCursorPosition = position.start + imageCode.length;
 
         // Update content
         setContent(newContent);
 
-        // Set cursor position after React has updated the DOM
+        // Set cursor position after DOM update
         setTimeout(() => {
           if (textareaRef.current) {
             textareaRef.current.focus();

@@ -189,9 +189,9 @@ export async function dbUpdatePost(id: number, postData: Partial<BlogPost>) {
       content: postData.content,
       category: postData.category,
       published: postData.published,
-      show_updated: postData.show_updated ?? false, // Ensure this is updated
+      show_updated: postData.show_updated ?? false,
       updated_at: new Date(),
-      featured: postData.featured, // Ensure featured is updated
+      featured: postData.featured,
     })
     .where(eq(posts.id, id));
 

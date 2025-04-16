@@ -17,7 +17,7 @@ export default function Logo({
 }: LogoProps) {
   const { effectiveTheme } = useTheme();
 
-  // Pass the inverted prop to invert the logo color
+  // Invert logo color
   const fillColor = inverted
     ? effectiveTheme === 'dark'
       ? 'var(--color-dark)'

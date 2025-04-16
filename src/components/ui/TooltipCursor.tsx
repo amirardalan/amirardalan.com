@@ -6,7 +6,6 @@ type TooltipProps = {
   children: ReactNode;
 };
 
-// Define position states for the cursor tooltip
 type TooltipPosition = 'bottom' | 'top' | 'left' | 'right' | 'default';
 
 export default function TooltipCursor({ text, children }: TooltipProps) {
@@ -18,7 +17,7 @@ export default function TooltipCursor({ text, children }: TooltipProps) {
   const throttleTimerRef = useRef<number | null>(null);
   const pathname = usePathname(); // Get the current pathname
 
-  // Throttle mouse move updates
+  // Throttle mouse position updates
   const throttledSetMousePosition = useCallback((x: number, y: number) => {
     if (throttleTimerRef.current !== null) return;
 
@@ -68,7 +67,7 @@ export default function TooltipCursor({ text, children }: TooltipProps) {
     };
   }, [throttledSetMousePosition]);
 
-  // Reset state when the pathname changes to the homepage
+  // Reset tooltip position when the pathname changes
   useEffect(() => {
     if (pathname === '/') {
       setMousePosition({ x: 0, y: 0 });

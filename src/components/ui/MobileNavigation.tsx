@@ -9,9 +9,9 @@ import AuthMenu from '@/components/auth/AuthMenu';
 export default function MobileNavigation() {
   const [isOpen, setIsOpen] = useState(false);
   const isMobile = useMediaQuery(768);
-  const isLandscape = useMediaQuery(500, 'height'); // Detect landscape mode when height is limited
+  const isLandscape = useMediaQuery(500, 'height');
 
-  // Close menu when pressing escape
+  // Close on 'ESC'
   useEffect(() => {
     const handleEsc = (event: KeyboardEvent) => {
       if (event.key === 'Escape') setIsOpen(false);
@@ -21,7 +21,7 @@ export default function MobileNavigation() {
     return () => window.removeEventListener('keydown', handleEsc);
   }, []);
 
-  // Close menu when screen size exceeds mobile breakpoint
+  // Close on resize
   useEffect(() => {
     if (!isMobile && isOpen) {
       setIsOpen(false);
