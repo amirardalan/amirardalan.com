@@ -147,17 +147,25 @@ export default function PostFormFields({
             onChange={(e) =>
               setCategoryId(e.target.value ? Number(e.target.value) : null)
             }
-            required
+            required={categories.length > 0} // Only require if categories exist
             className="mr-4 block appearance-none rounded-md border border-zinc-300 bg-zinc-100 px-3 py-2 text-zinc-950 dark:border-zinc-500 dark:bg-zinc-900 dark:text-light"
           >
-            <option value="" disabled>
-              Uncategorized
-            </option>
-            {categories.map((cat) => (
-              <option key={cat.id} value={cat.id}>
-                {cat.name}
+            {categories.length === 0 ? (
+              <option value="" disabled>
+                No categories available
               </option>
-            ))}
+            ) : (
+              <>
+                <option value="" disabled>
+                  Uncategorized
+                </option>
+                {categories.map((cat) => (
+                  <option key={cat.id} value={cat.id}>
+                    {cat.name}
+                  </option>
+                ))}
+              </>
+            )}
           </select>
           <button
             type="button"
