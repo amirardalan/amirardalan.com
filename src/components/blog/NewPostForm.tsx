@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { createPost } from '@/services/post-service';
 import { useToast } from '@/components/ui/ToastContext';
 import { useImageInsertion } from '@/hooks/useImageInsertion';
+import { Category } from '@/types/blog';
 
 import PostFormFields from '@/components/blog/PostFormFields';
 import Button from '@/components/ui/Button';
@@ -15,16 +16,20 @@ import UnsavedChangesHandler from '@/components/ui/UnsavedChangesHandler';
 
 interface NewPostFormProps {
   userId: number;
+  categories?: Category[]; // Make optional
 }
 
-export default function NewPostForm({ userId }: NewPostFormProps) {
+export default function NewPostForm({
+  userId,
+  categories = [],
+}: NewPostFormProps) {
   const router = useRouter();
   const { showToast } = useToast();
   const [title, setTitle] = useState('');
   const [slug, setSlug] = useState('');
   const [excerpt, setExcerpt] = useState('');
   const [content, setContent] = useState('');
-  const [category, setCategory] = useState('');
+  const [categoryId, setCategoryId] = useState<number | null>(null);
   const [published, setPublished] = useState(false);
   const [featured, setFeatured] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -43,12 +48,12 @@ export default function NewPostForm({ userId }: NewPostFormProps) {
       slug !== '' ||
       excerpt !== '' ||
       content !== '' ||
-      category !== '' ||
+      categoryId !== null ||
       featured !== false ||
       published !== false;
 
     setHasUnsavedChanges(formChanged);
-  }, [title, slug, excerpt, content, category, featured, published]);
+  }, [title, slug, excerpt, content, categoryId, featured, published]);
 
   const handleFormChange = useCallback(() => {
     setHasUnsavedChanges(true);
@@ -65,7 +70,7 @@ export default function NewPostForm({ userId }: NewPostFormProps) {
         slug,
         excerpt,
         content,
-        category,
+        category_id: categoryId,
         user_id: userId,
         published,
         featured,
@@ -91,7 +96,7 @@ export default function NewPostForm({ userId }: NewPostFormProps) {
     setSlug('');
     setExcerpt('');
     setContent('');
-    setCategory('');
+    setCategoryId(null);
     setFeatured(false);
     setPublished(false);
     setHasUnsavedChanges(false);
@@ -129,8 +134,6 @@ export default function NewPostForm({ userId }: NewPostFormProps) {
           setExcerpt={setExcerpt}
           content={content}
           setContent={setContent}
-          category={category}
-          setCategory={setCategory}
           published={published}
           setPublished={setPublished}
           featured={featured}
@@ -139,6 +142,9 @@ export default function NewPostForm({ userId }: NewPostFormProps) {
           setShowGallery={setShowGallery}
           textareaRef={textareaRef}
           onTextAreaSelect={handleTextAreaSelect}
+          categories={categories}
+          categoryId={categoryId}
+          setCategoryId={setCategoryId}
         />
         <PostFormControls
           isSubmitting={isSubmitting}

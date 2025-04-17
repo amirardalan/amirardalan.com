@@ -67,7 +67,7 @@ export default function AdminPostList({
                       &bull;
                     </span>
                     <span className="text-sm text-zinc-500 dark:text-zinc-400">
-                      {post.category || 'Uncategorized'}
+                      {post.category?.name || 'Uncategorized'}
                     </span>
                     <span className="px-2 text-zinc-500 dark:text-zinc-400">
                       &bull;

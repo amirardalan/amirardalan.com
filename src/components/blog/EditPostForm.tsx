@@ -14,13 +14,14 @@ import MediaGallery from '@/components/blog/MediaGallery';
 import PostFormControls from '@/components/blog/PostFormControls';
 import UnsavedChangesHandler from '@/components/ui/UnsavedChangesHandler';
 
-import { BlogPost } from '@/types/blog';
+import { BlogPost, Category } from '@/types/blog';
 
 interface EditPostFormProps {
   post: BlogPost;
+  categories: Category[];
 }
 
-export default function EditPostForm({ post }: EditPostFormProps) {
+export default function EditPostForm({ post, categories }: EditPostFormProps) {
   const router = useRouter();
   const { showToast } = useToast();
   const { setCurrentPostPublished } = useEditPostStore();
@@ -28,7 +29,9 @@ export default function EditPostForm({ post }: EditPostFormProps) {
   const [slug, setSlug] = useState(post.slug || '');
   const [excerpt, setExcerpt] = useState(post.excerpt || '');
   const [content, setContent] = useState(post.content || '');
-  const [category, setCategory] = useState(post.category || '');
+  const [categoryId, setCategoryId] = useState<number | null>(
+    post.category_id ?? null
+  );
   const [published, setPublished] = useState(post.published || false);
   const [featured, setFeatured] = useState(post.featured || false);
   const [showUpdated, setShowUpdated] = useState(post.show_updated || false);
@@ -47,7 +50,7 @@ export default function EditPostForm({ post }: EditPostFormProps) {
       slug !== (post.slug || '') ||
       excerpt !== (post.excerpt || '') ||
       content !== (post.content || '') ||
-      category !== (post.category || '') ||
+      categoryId !== (post.category_id ?? null) ||
       featured !== (post.featured || false) ||
       published !== (post.published || false) ||
       showUpdated !== (post.show_updated || false);
@@ -58,7 +61,7 @@ export default function EditPostForm({ post }: EditPostFormProps) {
     slug,
     excerpt,
     content,
-    category,
+    categoryId,
     featured,
     published,
     showUpdated,
@@ -80,7 +83,7 @@ export default function EditPostForm({ post }: EditPostFormProps) {
         slug,
         excerpt,
         content,
-        category,
+        category_id: categoryId,
         published,
         featured,
         show_updated: showUpdated,
@@ -165,8 +168,6 @@ export default function EditPostForm({ post }: EditPostFormProps) {
           setExcerpt={setExcerpt}
           content={content}
           setContent={setContent}
-          category={category}
-          setCategory={setCategory}
           published={published}
           setPublished={setPublished}
           featured={featured}
@@ -177,6 +178,9 @@ export default function EditPostForm({ post }: EditPostFormProps) {
           setShowUpdated={setShowUpdated}
           textareaRef={textareaRef}
           onTextAreaSelect={handleTextAreaSelect}
+          categories={categories}
+          categoryId={categoryId}
+          setCategoryId={setCategoryId}
         />
         <PostFormControls
           isSubmitting={isSubmitting}

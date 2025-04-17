@@ -14,6 +14,6 @@ export default async function Image({ params }: { params: { slug: string } }) {
   return generateTwitterImage({
     title: post?.title || 'Blog Post',
     description: post?.excerpt || 'Read this post on amir.sh',
-    tag: post?.category || undefined,
+    tag: post?.category?.name || undefined,
   });
 }

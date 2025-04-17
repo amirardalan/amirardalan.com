@@ -42,6 +42,12 @@ export default function AdminMenu() {
         >
           Published
         </Link>
+        <Link
+          href="/admin/blog/categories"
+          className={getLinkClass('/admin/blog/categories')}
+        >
+          Categories
+        </Link>
       </div>
       <div className="flex flex-wrap space-x-4">
         <IconAccount />
