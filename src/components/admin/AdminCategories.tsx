@@ -1,6 +1,7 @@
 import { Category } from '@/types/blog';
 import { getCategories } from '@/db/queries/categories';
 import { createCategory } from '@/services/category-service';
+import { generateSlug } from '@/utils/generate-slug';
 
 export default async function AdminCategories() {
   const categories: Category[] = await getCategories();
@@ -8,8 +9,8 @@ export default async function AdminCategories() {
   async function addCategory(formData: FormData) {
     'use server';
     const name = formData.get('name') as string;
-    const slug = formData.get('slug') as string;
-    if (!name || !slug) return;
+    if (!name) return;
+    const slug = generateSlug(name);
     await createCategory({ name, slug });
   }
 
@@ -21,13 +22,6 @@ export default async function AdminCategories() {
           type="text"
           name="name"
           placeholder="Category name"
-          required
-          className="rounded border px-2 py-1"
-        />
-        <input
-          type="text"
-          name="slug"
-          placeholder="Slug"
           required
           className="rounded border px-2 py-1"
         />

@@ -5,17 +5,26 @@ interface CategoryData {
 
 // Create a new category
 export async function createCategory(categoryData: CategoryData) {
-  const response = await fetch('/api/categories', {
+  const isServer = typeof window === 'undefined';
+  const baseUrl = isServer ? process.env.NEXT_PUBLIC_URL! : '';
+  const url = `${baseUrl}/api/categories`;
+
+  const response = await fetch(url, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(categoryData),
   });
 
   if (!response.ok) {
-    const errorData = await response.json().catch(() => null);
-    throw new Error(
-      errorData?.error || (await response.text()) || 'Failed to create category'
-    );
+    const contentType = response.headers.get('content-type');
+    let errorMessage = 'Failed to create category';
+    if (contentType && contentType.includes('application/json')) {
+      const errorData = await response.json();
+      errorMessage = errorData?.error || errorMessage;
+    } else {
+      errorMessage = (await response.text()) || errorMessage;
+    }
+    throw new Error(errorMessage);
   }
 
   return response.json();
