@@ -25,6 +25,9 @@ export default function AdminPostList({
   totalPages,
   isDrafts = false,
 }: AdminPostListProps) {
+  // Determine if there are no posts at all (not just no search results)
+  const noPostsExist = totalResults === 0 && (!query || query.trim() === '');
+
   return (
     <div className="mx-10 mt-8">
       <AdminPageHeading title={title} />
@@ -83,6 +86,14 @@ export default function AdminPostList({
               </li>
             ))}
           </ul>
+        ) : noPostsExist ? (
+          <p>
+            It looks like there are no {isDrafts ? 'drafts' : 'posts'} yet. Try{' '}
+            <Link href="/admin/blog/new" className="text-primary underline">
+              writing one
+            </Link>
+            .
+          </p>
         ) : (
           <p>No {isDrafts ? 'drafts' : 'posts'} match your search.</p>
         )}
