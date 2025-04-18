@@ -59,7 +59,7 @@ export function useToast() {
 function getToastClass(type: ToastType): string {
   switch (type) {
     case 'success':
-      return 'bg-green-500 text-light';
+      return 'bg-primary text-light dark:text-dark';
     case 'error':
       return 'bg-red-500 text-light';
     case 'warning':

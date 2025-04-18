@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useRef } from 'react';
 import { Category } from '@/types/blog';
 import {
   getCategories,
@@ -34,6 +34,8 @@ export default function AdminCategories() {
   const [newCategoryName, setNewCategoryName] = useState('');
   // Add a data version key to prevent unnecessary re-fetches
   const [dataVersion, setDataVersion] = useState(1);
+  // Add a ref for the editing form container
+  const editFormRef = useRef<HTMLDivElement>(null);
 
   // Fetch categories on component mount or when dataVersion changes
   useEffect(() => {
@@ -71,6 +73,29 @@ export default function AdminCategories() {
       isMounted = false;
     };
   }, [dataVersion, showToast]);
+
+  // Add click outside handler
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        editingId !== null &&
+        editFormRef.current &&
+        !editFormRef.current.contains(event.target as Node)
+      ) {
+        setEditingId(null);
+      }
+    }
+
+    // Add event listener when in edit mode
+    if (editingId !== null) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    // Cleanup
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [editingId]);
 
   async function handleAddCategory(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -215,7 +240,10 @@ export default function AdminCategories() {
             className="hover:bg:zinc-200 flex items-center gap-2 border-b border-zinc-200 py-2 dark:border-zinc-800 hover:dark:bg-zinc-900"
           >
             {editingId === cat.id ? (
-              <>
+              <div
+                ref={editFormRef}
+                className="flex flex-grow items-center gap-2"
+              >
                 <input
                   type="text"
                   value={editName}
@@ -239,11 +267,11 @@ export default function AdminCategories() {
                 >
                   Cancel
                 </button>
-              </>
+              </div>
             ) : (
               <>
                 <div
-                  className="flex flex-grow cursor-pointer items-center gap-2"
+                  className="flex cursor-pointer items-center gap-2"
                   onClick={() => startEditing(cat)}
                 >
                   <span>{cat.name}</span>
