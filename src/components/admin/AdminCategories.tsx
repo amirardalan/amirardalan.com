@@ -220,26 +220,35 @@ export default function AdminCategories() {
                   type="text"
                   value={editName}
                   onChange={(e) => setEditName(e.target.value)}
-                  className="rounded border px-2 py-1 text-dark dark:text-light"
+                  className="m-0 box-border h-[24px] min-w-[180px] flex-grow rounded border-none bg-transparent px-0 py-0 leading-normal text-dark outline-none dark:text-light"
                   autoFocus
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') handleUpdateCategory(cat.id);
+                    if (e.key === 'Escape') setEditingId(null);
+                  }}
                 />
                 <button
                   onClick={() => handleUpdateCategory(cat.id)}
-                  className="rounded bg-green-600 px-2 py-1 text-xs text-white"
+                  className="rounded bg-primary px-2 text-xxs uppercase text-dark"
                 >
-                  Save
+                  Update
                 </button>
                 <button
                   onClick={() => setEditingId(null)}
-                  className="rounded bg-zinc-300 px-2 py-1 text-xs"
+                  className="rounded bg-zinc-300 px-2 text-xxs uppercase dark:bg-zinc-600"
                 >
                   Cancel
                 </button>
               </>
             ) : (
               <>
-                <span className="font-mono">{cat.name}</span>
-                <span className="text-xs text-zinc-500">({cat.slug})</span>
+                <div
+                  className="flex flex-grow cursor-pointer items-center gap-2"
+                  onClick={() => startEditing(cat)}
+                >
+                  <span>{cat.name}</span>
+                  <span className="text-xs text-zinc-500">({cat.slug})</span>
+                </div>
                 <div className="ml-auto flex gap-2">
                   <button
                     onClick={() => startEditing(cat)}
@@ -267,6 +276,7 @@ export default function AdminCategories() {
     categories,
     editingId,
     editName,
+    loading,
     handleUpdateCategory,
     startEditing,
     startDeleteConfirmation,
@@ -287,7 +297,7 @@ export default function AdminCategories() {
             onChange={(e) => setNewCategoryName(e.target.value)}
             placeholder="Category name"
             required
-            className="rounded border border-zinc-300 bg-zinc-100 px-2 py-1 text-dark dark:border-zinc-500 dark:bg-zinc-700 dark:text-light"
+            className="rounded border border-zinc-300 bg-zinc-100 px-2 text-dark dark:border-zinc-500 dark:bg-zinc-700 dark:text-light"
             disabled={loading}
             autoFocus
             onBlur={() => {
