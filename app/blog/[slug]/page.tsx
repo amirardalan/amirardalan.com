@@ -121,13 +121,6 @@ export default async function BlogPost({
     ? await getAdjacentPosts(slug)
     : { previous: null, next: null };
 
-  // Helper function to truncate text
-  const truncateText = (text: string, maxLength: number = 30) => {
-    return text.length > maxLength
-      ? `${text.substring(0, maxLength)}...`
-      : text;
-  };
-
   return (
     <Container>
       <article className="mt-16 text-dark md:mt-24 dark:text-light">
@@ -150,9 +143,9 @@ export default async function BlogPost({
             )}
             <p className="pr-2 text-xxs uppercase text-primary">
               <Link
-                href={`/blog?category=${encodeURIComponent(post.category?.name ?? 'Uncategorized')}`}
+                href={`/blog?category=${encodeURIComponent(post.category?.name ?? 'uncategorized')}`}
               >
-                #{post.category?.name ?? 'Uncategorized'}
+                #{post.category?.name ?? 'uncategorized'}
               </Link>
             </p>
             <span className="mr-2 text-zinc-500 dark:text-zinc-400">•</span>
