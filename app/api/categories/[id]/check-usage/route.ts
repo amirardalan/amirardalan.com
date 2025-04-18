@@ -6,15 +6,18 @@ export async function GET(
   { params }: { params: { id: string } }
 ) {
   try {
-    const id = parseInt(await params.id);
-    if (isNaN(id)) {
+    // Await params before accessing its properties
+    const { id } = await params;
+    const categoryId = parseInt(id);
+
+    if (isNaN(categoryId)) {
       return NextResponse.json(
         { error: 'Invalid category ID' },
         { status: 400 }
       );
     }
 
-    const inUse = await isCategoryUsedByPosts(id);
+    const inUse = await isCategoryUsedByPosts(categoryId);
 
     return NextResponse.json({ inUse });
   } catch (error: any) {

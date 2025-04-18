@@ -13,15 +13,18 @@ export async function GET(
   { params }: { params: { id: string } }
 ) {
   try {
-    const id = parseInt(await params.id);
-    if (isNaN(id)) {
+    // Await params before accessing its properties
+    const { id } = await params;
+    const categoryId = parseInt(id);
+
+    if (isNaN(categoryId)) {
       return NextResponse.json(
         { error: 'Invalid category ID' },
         { status: 400 }
       );
     }
 
-    const result = await getCategoryById(id);
+    const result = await getCategoryById(categoryId);
 
     if (!result) {
       return NextResponse.json(
@@ -45,8 +48,11 @@ export async function PUT(
   { params }: { params: { id: string } }
 ) {
   try {
-    const id = parseInt(params.id);
-    if (isNaN(id)) {
+    // Await params before accessing its properties
+    const { id } = await params;
+    const categoryId = parseInt(id);
+
+    if (isNaN(categoryId)) {
       return NextResponse.json(
         { error: 'Invalid category ID' },
         { status: 400 }
@@ -69,7 +75,7 @@ export async function PUT(
         slug,
         updated_at: new Date(),
       })
-      .where(eq(categories.id, id))
+      .where(eq(categories.id, categoryId))
       .returning();
 
     if (!result) {
@@ -104,8 +110,11 @@ export async function DELETE(
   { params }: { params: { id: string } }
 ) {
   try {
-    const id = parseInt(params.id);
-    if (isNaN(id)) {
+    // Await params before accessing its properties
+    const { id } = await params;
+    const categoryId = parseInt(id);
+
+    if (isNaN(categoryId)) {
       return NextResponse.json(
         { error: 'Invalid category ID' },
         { status: 400 }
@@ -113,7 +122,7 @@ export async function DELETE(
     }
 
     // Check if category exists
-    const category = await getCategoryById(id);
+    const category = await getCategoryById(categoryId);
     if (!category) {
       return NextResponse.json(
         { error: 'Category not found' },
@@ -122,7 +131,7 @@ export async function DELETE(
     }
 
     // Check if the category is used by any posts
-    const isUsed = await isCategoryUsedByPosts(id);
+    const isUsed = await isCategoryUsedByPosts(categoryId);
     if (isUsed) {
       return NextResponse.json(
         {
@@ -137,7 +146,7 @@ export async function DELETE(
     // Delete the category
     const [result] = await db
       .delete(categories)
-      .where(eq(categories.id, id))
+      .where(eq(categories.id, categoryId))
       .returning();
 
     return NextResponse.json({ success: true });
