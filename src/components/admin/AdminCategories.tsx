@@ -193,7 +193,7 @@ export default function AdminCategories() {
 
   // Memoize the categories list to prevent re-rendering when theme changes
   const categoriesList = useMemo(() => {
-    if (loading) {
+    if (loading && categories.length === 0) {
       return <p className="text-zinc-500">Loading...</p>;
     }
 
@@ -261,7 +261,15 @@ export default function AdminCategories() {
         ))}
       </ul>
     );
-  }, [categories, editingId, editName, loading, checkingCategory]);
+  }, [
+    categories,
+    editingId,
+    editName,
+    handleUpdateCategory,
+    startEditing,
+    startDeleteConfirmation,
+    checkingCategory,
+  ]);
 
   return (
     <section className="p-8">
