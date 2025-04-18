@@ -10,7 +10,7 @@ import {
 // Get category by ID
 export async function GET(
   _request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     // Await params before accessing its properties
@@ -45,7 +45,7 @@ export async function GET(
 // Update a category
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     // Await params before accessing its properties
@@ -107,7 +107,7 @@ export async function PUT(
 // Delete a category
 export async function DELETE(
   _request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     // Await params before accessing its properties
