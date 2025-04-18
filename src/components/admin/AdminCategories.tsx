@@ -212,7 +212,7 @@ export default function AdminCategories() {
         {categories.map((cat) => (
           <li
             key={cat.id}
-            className="flex items-center gap-2 border-b border-zinc-200 py-2 dark:border-zinc-800"
+            className="hover:bg:zinc-200 flex items-center gap-2 border-b border-zinc-200 py-2 dark:border-zinc-800 hover:dark:bg-zinc-900"
           >
             {editingId === cat.id ? (
               <>
@@ -246,7 +246,7 @@ export default function AdminCategories() {
                     className="h-6 w-6"
                     title="Edit category"
                   >
-                    <IconEdit color="var(--color-accent)" />
+                    <IconEdit className="text-zinc-600 duration-200 hover:text-primary" />
                   </button>
                   <button
                     onClick={() => startDeleteConfirmation(cat)}
@@ -254,7 +254,7 @@ export default function AdminCategories() {
                     title="Delete category"
                     disabled={checkingCategory}
                   >
-                    <IconDelete color="var(--color-accent)" />
+                    <IconDelete className="text-zinc-600 duration-200 hover:text-red-500" />
                   </button>
                 </div>
               </>
