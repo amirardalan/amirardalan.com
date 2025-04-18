@@ -1,12 +1,10 @@
 import { MetadataRoute } from 'next';
 import { getPublishedPosts } from '@/db/queries/posts';
-import { getCategories } from '@/db/queries/categories';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const { NEXT_PUBLIC_URL } = process.env;
 
   const posts = await getPublishedPosts();
-  const categories = await getCategories();
 
   // App pages
   const baseEntries: MetadataRoute.Sitemap = [
