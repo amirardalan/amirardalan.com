@@ -121,13 +121,6 @@ export default async function BlogPost({
     ? await getAdjacentPosts(slug)
     : { previous: null, next: null };
 
-  // Helper function to truncate text
-  const truncateText = (text: string, maxLength: number = 30) => {
-    return text.length > maxLength
-      ? `${text.substring(0, maxLength)}...`
-      : text;
-  };
-
   return (
     <Container>
       <article className="mt-16 text-dark md:mt-24 dark:text-light">
