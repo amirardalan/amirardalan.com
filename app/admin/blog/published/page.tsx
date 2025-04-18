@@ -2,6 +2,7 @@ import { auth } from '@/lib/auth';
 import { redirect } from 'next/navigation';
 import { getPublishedPosts } from '@/db/queries/posts';
 import AdminPostList from '@/components/admin/AdminPostList';
+import Container from '@/components/content/Container';
 
 export const dynamic = 'force-dynamic';
 
@@ -48,15 +49,17 @@ export default async function Published({
   const totalResults = filteredPosts.length;
 
   return (
-    <AdminPostList
-      title="Published Posts"
-      posts={paginatedPosts}
-      searchPlaceholder="Search published posts..."
-      query={query}
-      totalResults={totalResults}
-      currentPage={currentPage}
-      totalPages={totalPages}
-      isDrafts={false}
-    />
+    <Container>
+      <AdminPostList
+        title="Published Posts"
+        posts={paginatedPosts}
+        searchPlaceholder="Search published posts..."
+        query={query}
+        totalResults={totalResults}
+        currentPage={currentPage}
+        totalPages={totalPages}
+        isDrafts={false}
+      />
+    </Container>
   );
 }

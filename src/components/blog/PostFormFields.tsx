@@ -142,7 +142,7 @@ export default function PostFormFields({
       </div>
 
       <div className="mt-2 flex flex-col space-y-4 md:flex-row md:items-center md:space-y-0">
-        <div className="mx-4 flex flex-wrap items-center py-2 text-xxs md:mx-10">
+        <div className="mx-4 flex flex-wrap items-center py-2 text-xxs">
           <select
             id="category"
             value={categoryId ?? ''}

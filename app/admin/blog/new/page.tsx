@@ -19,7 +19,7 @@ export default async function NewBlogPost() {
   }
 
   return (
-    <div className="mt-8">
+    <div>
       <div className="mx-10">
         <AdminPageHeading title={'New Post'} />
       </div>

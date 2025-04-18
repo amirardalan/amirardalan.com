@@ -51,9 +51,7 @@ export default function EditPostForm({
   const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null!);
 
-  // Fetch categories only once when needed - fix the loading issue
   useEffect(() => {
-    // Only fetch if we don't have categories from props and we haven't started loading yet
     if (!propCategories && categoriesLoading) {
       const fetchCategoriesOnce = async () => {
         try {

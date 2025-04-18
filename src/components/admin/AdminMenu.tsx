@@ -3,9 +3,7 @@
 import { useActiveLink } from '@/hooks/useActiveLink';
 import Link from 'next/link';
 import clsx from 'clsx';
-
-import IconBlogControls from '@/components/icons/IconBlogControls';
-import IconAccount from '@/components/icons/IconAccount';
+import Container from '@/components/content/Container';
 
 export default function AdminMenu() {
   const { isActive } = useActiveLink();
@@ -18,49 +16,46 @@ export default function AdminMenu() {
   };
 
   return (
-    <nav className="mt-24 flex items-center justify-between px-10 py-3 text-xs uppercase text-zinc-500 dark:text-zinc-400">
-      <div className="flex flex-wrap space-x-4">
-        <IconBlogControls />
-        <Link href="/admin" className={getLinkClass('/admin')}>
-          Dashboard
-        </Link>
-        <Link
-          href="/admin/blog/new"
-          className={getLinkClass('/admin/blog/new')}
-        >
-          New Post
-        </Link>
-        <Link
-          href="/admin/blog/drafts"
-          className={getLinkClass('/admin/blog/drafts')}
-        >
-          Drafts
-        </Link>
-        <Link
-          href="/admin/blog/published"
-          className={getLinkClass('/admin/blog/published')}
-        >
-          Published
-        </Link>
-        <Link
-          href="/admin/blog/categories"
-          className={getLinkClass('/admin/blog/categories')}
-        >
-          Categories
-        </Link>
-      </div>
-      <div className="flex flex-wrap space-x-4">
-        <IconAccount />
-        <Link href="/admin/account" className={getLinkClass('/admin/account')}>
-          Account
-        </Link>
-        <Link
-          href="/api/auth/signout?callbackUrl=/&redirect=false"
-          className="text-zinc-400 dark:text-zinc-500"
-        >
-          Sign Out
-        </Link>
-      </div>
-    </nav>
+    <Container>
+      <nav className="mt-24 flex justify-between">
+        <div className="flex flex-wrap space-x-4">
+          <Link href="/admin" className={getLinkClass('/admin')}>
+            Dashboard
+          </Link>
+          <Link
+            href="/admin/blog/new"
+            className={getLinkClass('/admin/blog/new')}
+          >
+            New Post
+          </Link>
+          <Link
+            href="/admin/blog/drafts"
+            className={getLinkClass('/admin/blog/drafts')}
+          >
+            Drafts
+          </Link>
+          <Link
+            href="/admin/blog/published"
+            className={getLinkClass('/admin/blog/published')}
+          >
+            Published
+          </Link>
+          <Link
+            href="/admin/blog/categories"
+            className={getLinkClass('/admin/blog/categories')}
+          >
+            Categories
+          </Link>
+        </div>
+        <div className="flex flex-wrap space-x-4">
+          <Link
+            href="/admin/account"
+            className={getLinkClass('/admin/account')}
+          >
+            Account
+          </Link>
+        </div>
+      </nav>
+    </Container>
   );
 }

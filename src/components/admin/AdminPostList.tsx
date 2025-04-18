@@ -25,11 +25,10 @@ export default function AdminPostList({
   totalPages,
   isDrafts = false,
 }: AdminPostListProps) {
-  // Determine if there are no posts at all (not just no search results)
   const noPostsExist = totalResults === 0 && (!query || query.trim() === '');
 
   return (
-    <div className="mx-10 mt-8">
+    <div>
       <AdminPageHeading title={title} />
       <SearchInput
         name="query"
@@ -43,7 +42,7 @@ export default function AdminPostList({
             {posts.map((post) => (
               <li
                 key={post.id}
-                className="flex w-full cursor-pointer items-center justify-between border-b border-zinc-200 px-6 py-3 hover:bg-zinc-100 dark:border-zinc-700 dark:hover:bg-zinc-900"
+                className="flex w-full cursor-pointer items-center justify-between border-b border-zinc-200 py-3 hover:bg-zinc-100 dark:border-zinc-700 dark:hover:bg-zinc-900"
               >
                 <div className="flex w-full flex-col">
                   <Link href={`/blog/${post.slug}`}>

@@ -46,9 +46,7 @@ export default function NewPostForm({
     null!
   ) as React.RefObject<HTMLInputElement>;
 
-  // Fetch categories only once when needed - fix the loading issue
   useEffect(() => {
-    // Only fetch if we don't have categories from props and we haven't started loading yet
     if (!propCategories.length && categoriesLoading) {
       const fetchCategoriesOnce = async () => {
         try {

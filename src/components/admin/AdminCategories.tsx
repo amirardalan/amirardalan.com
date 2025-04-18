@@ -341,7 +341,7 @@ export default function AdminCategories() {
   ]);
 
   return (
-    <section className="mx-2 p-8">
+    <section className="mt-8">
       {error && (
         <div className="mb-4 rounded bg-red-100 p-2 text-red-700">{error}</div>
       )}

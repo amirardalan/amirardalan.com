@@ -1,14 +1,13 @@
 import AdminCategories from '@/src/components/admin/AdminCategories';
 import AdminPageHeading from '@/components/admin/AdminPageHeading';
+import Container from '@/components/content/Container';
 
 export default function CategoriesPage() {
   return (
-    <main className="min-h-screen">
-      <div className="mx-10 mt-8">
-        <AdminPageHeading title="Category Manager" />
-      </div>
+    <Container>
+      <AdminPageHeading title="Category Manager" />
       <AdminCategories />
-    </main>
+    </Container>
   );
 }
 
@@ -19,6 +18,3 @@ export function generateMetadata() {
     description: 'Manage blog categories in the admin panel.',
   };
 }
-
-// Add revalidation to prevent unnecessary refetching
-export const revalidate = 3600; // Revalidate at most once per hour
