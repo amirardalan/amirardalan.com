@@ -1,18 +1,24 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { isCategoryUsedByPosts } from '@/db/queries/categories';
 
-export async function GET({ params }: { params: { id: string } }) {
+export async function GET(
+  _request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
+) {
   try {
-    const id = parseInt(params.id, 10);
+    // Await params before accessing its properties
+    const { id } = await params;
+    const categoryId = parseInt(id);
 
-    if (isNaN(id)) {
+    if (isNaN(categoryId)) {
       return NextResponse.json(
         { error: 'Invalid category ID' },
         { status: 400 }
       );
     }
 
-    const inUse = await isCategoryUsedByPosts(id);
+    const inUse = await isCategoryUsedByPosts(categoryId);
+
     return NextResponse.json({ inUse });
   } catch (error: any) {
     console.error('Error checking category usage:', error);
