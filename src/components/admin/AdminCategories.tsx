@@ -12,6 +12,8 @@ import {
 import { generateSlug } from '@/utils/generate-slug';
 import { useToast } from '@/components/ui/ToastContext';
 import Modal from '@/components/ui/Modal';
+import IconEdit from '@/components/icons/IconEdit';
+import IconDelete from '@/components/icons/IconDelete';
 
 export default function AdminCategories() {
   const [categories, setCategories] = useState<Category[]>([]);
@@ -218,7 +220,7 @@ export default function AdminCategories() {
                   type="text"
                   value={editName}
                   onChange={(e) => setEditName(e.target.value)}
-                  className="rounded border px-2 py-1"
+                  className="rounded border px-2 py-1 text-dark dark:text-light"
                   autoFocus
                 />
                 <button
@@ -238,21 +240,21 @@ export default function AdminCategories() {
               <>
                 <span className="font-mono">{cat.name}</span>
                 <span className="text-xs text-zinc-500">({cat.slug})</span>
-                <div className="ml-auto flex gap-1">
+                <div className="ml-auto flex gap-2">
                   <button
                     onClick={() => startEditing(cat)}
-                    className="rounded bg-amber-500 px-2 py-1 text-xs text-white"
+                    className="h-6 w-6"
                     title="Edit category"
                   >
-                    Edit
+                    <IconEdit />
                   </button>
                   <button
                     onClick={() => startDeleteConfirmation(cat)}
-                    className="rounded bg-red-600 px-2 py-1 text-xs text-white"
+                    className="h-6 w-6"
                     title="Delete category"
                     disabled={checkingCategory}
                   >
-                    {'Delete'}
+                    <IconDelete />
                   </button>
                 </div>
               </>
@@ -272,7 +274,7 @@ export default function AdminCategories() {
   ]);
 
   return (
-    <section className="p-8">
+    <section className="mx-2 p-8">
       {error && (
         <div className="mb-4 rounded bg-red-100 p-2 text-red-700">{error}</div>
       )}
@@ -285,7 +287,7 @@ export default function AdminCategories() {
             onChange={(e) => setNewCategoryName(e.target.value)}
             placeholder="Category name"
             required
-            className="rounded border border-zinc-300 bg-zinc-100 px-2 py-1 dark:border-zinc-500 dark:bg-zinc-700"
+            className="rounded border border-zinc-300 bg-zinc-100 px-2 py-1 text-dark dark:border-zinc-500 dark:bg-zinc-700 dark:text-light"
             disabled={loading}
             autoFocus
             onBlur={() => {
