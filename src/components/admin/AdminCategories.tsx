@@ -206,9 +206,12 @@ export default function AdminCategories() {
           No categories have been created yet. Try adding one.
         </p>
       ) : (
-        <ul className="space-y-3 text-dark dark:text-light">
+        <ul className="text-dark dark:text-light">
           {categories.map((cat) => (
-            <li key={cat.id} className="flex items-center gap-2">
+            <li
+              key={cat.id}
+              className="flex items-center gap-2 border-b border-zinc-200 py-2 dark:border-zinc-800"
+            >
               {editingId === cat.id ? (
                 <>
                   <input
