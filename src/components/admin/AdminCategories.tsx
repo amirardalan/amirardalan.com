@@ -30,10 +30,9 @@ export default function AdminCategories() {
   const [checkingCategory, setCheckingCategory] = useState(false);
   const [showErrorModal, setShowErrorModal] = useState(false);
   const [errorModalMessage, setErrorModalMessage] = useState('');
-  const [showAddForm, setShowAddForm] = useState(false);
-  const [newCategoryName, setNewCategoryName] = useState('');
   const [dataVersion, setDataVersion] = useState(1);
   const editFormRef = useRef<HTMLDivElement>(null);
+  const [isNewCategory, setIsNewCategory] = useState(false);
 
   useEffect(() => {
     let isMounted = true;
@@ -91,19 +90,16 @@ export default function AdminCategories() {
   }, [editingId]);
 
   const handleAddCategory = useCallback(
-    async (e: React.FormEvent<HTMLFormElement>) => {
-      e.preventDefault();
-      const name = newCategoryName.trim();
-
-      if (!name) return;
+    async (id: number) => {
+      if (!editName) return;
 
       setLoading(true);
       try {
-        const slug = generateSlug(name);
-        const newCategory = await createCategory({ name, slug });
+        const slug = generateSlug(editName);
+        const newCategory = await createCategory({ name: editName, slug });
         setCategories((prev) => [newCategory, ...prev]);
-        setNewCategoryName('');
-        setShowAddForm(false);
+        setEditingId(null);
+        setIsNewCategory(false);
         showToast('Category added successfully', 'success');
       } catch (err) {
         const errorMessage = (err as Error).message || 'Failed to add category';
@@ -114,20 +110,17 @@ export default function AdminCategories() {
         setLoading(false);
       }
     },
-    [
-      newCategoryName,
-      setCategories,
-      setNewCategoryName,
-      setShowAddForm,
-      setError,
-      setLoading,
-      showToast,
-    ]
+    [editName, setCategories, setError, setLoading, showToast]
   );
 
   const handleUpdateCategory = useCallback(
     async (id: number) => {
       if (!editName) return;
+
+      if (isNewCategory) {
+        await handleAddCategory(id);
+        return;
+      }
 
       setLoading(true);
       try {
@@ -159,7 +152,16 @@ export default function AdminCategories() {
         setLoading(false);
       }
     },
-    [editName, setCategories, setEditingId, setError, setLoading, showToast]
+    [
+      editName,
+      setCategories,
+      setEditingId,
+      setError,
+      setLoading,
+      showToast,
+      isNewCategory,
+      handleAddCategory,
+    ]
   );
 
   const handleDeleteCategory = useCallback(
@@ -236,6 +238,14 @@ export default function AdminCategories() {
   const startEditing = useCallback((category: Category) => {
     setEditingId(category.id);
     setEditName(category.name);
+    setIsNewCategory(false);
+  }, []);
+
+  const startNewCategory = useCallback(() => {
+    const tempId = -1;
+    setEditingId(tempId);
+    setEditName('');
+    setIsNewCategory(true);
   }, []);
 
   const closeErrorModal = useCallback(() => {
@@ -253,16 +263,52 @@ export default function AdminCategories() {
       return <p className="text-zinc-500">Loading...</p>;
     }
 
-    if (categories.length === 0) {
-      return (
-        <p className="text-zinc-500">
-          No categories have been created yet. Try adding one.
-        </p>
-      );
-    }
+    let items = [...categories];
 
-    return (
+    const renderedItems = (
       <ul className="text-dark dark:text-light">
+        {isNewCategory && (
+          <li
+            key="new-category"
+            className="flex items-center gap-2 border-b border-zinc-200 py-2 dark:border-zinc-800 hover:dark:bg-zinc-900"
+          >
+            <div
+              ref={editFormRef}
+              className="flex flex-grow items-center gap-2"
+            >
+              <input
+                type="text"
+                value={editName}
+                onChange={(e) => setEditName(e.target.value)}
+                className="m-0 box-border h-[24px] min-w-[180px] flex-grow rounded border-none bg-transparent px-0 py-0 leading-normal text-dark outline-none dark:text-light"
+                placeholder="New category name"
+                autoFocus
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') handleAddCategory(-1);
+                  if (e.key === 'Escape') {
+                    setEditingId(null);
+                    setIsNewCategory(false);
+                  }
+                }}
+              />
+              <button
+                onClick={() => handleAddCategory(-1)}
+                className="rounded bg-primary px-2 text-xxs uppercase text-light dark:text-dark"
+              >
+                Add
+              </button>
+              <button
+                onClick={() => {
+                  setEditingId(null);
+                  setIsNewCategory(false);
+                }}
+                className="rounded bg-zinc-300 px-2 text-xxs uppercase dark:bg-zinc-600"
+              >
+                Cancel
+              </button>
+            </div>
+          </li>
+        )}
         {categories.map((cat) => (
           <li
             key={cat.id}
@@ -329,6 +375,16 @@ export default function AdminCategories() {
         ))}
       </ul>
     );
+
+    if (items.length === 0 && !isNewCategory) {
+      return (
+        <p className="text-zinc-500">
+          No categories have been created yet. Try adding one.
+        </p>
+      );
+    }
+
+    return renderedItems;
   }, [
     categories,
     editingId,
@@ -338,6 +394,8 @@ export default function AdminCategories() {
     startEditing,
     startDeleteConfirmation,
     checkingCategory,
+    isNewCategory,
+    handleAddCategory,
   ]);
 
   return (
@@ -346,57 +404,15 @@ export default function AdminCategories() {
         <div className="mb-4 rounded bg-red-100 p-2 text-red-700">{error}</div>
       )}
 
-      {showAddForm ? (
-        <form onSubmit={handleAddCategory} className="mb-4 flex gap-2">
-          <input
-            type="text"
-            value={newCategoryName}
-            onChange={(e) => setNewCategoryName(e.target.value)}
-            placeholder="Category name"
-            required
-            className="rounded border border-none bg-transparent px-2 text-dark outline-none dark:text-light"
-            disabled={loading}
-            autoFocus
-            onBlur={() => {
-              if (!newCategoryName.trim()) {
-                setShowAddForm(false);
-              }
-            }}
-            onKeyDown={(e) => {
-              if (e.key === 'Escape') {
-                setShowAddForm(false);
-                setNewCategoryName('');
-              }
-            }}
-          />
-          <button
-            type="submit"
-            className="rounded bg-primary px-3 py-1 text-light disabled:bg-blue-300 dark:text-dark"
-            disabled={loading}
-          >
-            Add
-          </button>
-          <button
-            type="button"
-            className="rounded bg-zinc-300 px-3 py-1 dark:bg-zinc-700"
-            onClick={() => {
-              setShowAddForm(false);
-              setNewCategoryName('');
-            }}
-          >
-            Cancel
-          </button>
-        </form>
-      ) : (
-        <div className="mb-4">
-          <button
-            onClick={() => setShowAddForm(true)}
-            className="cursor-pointer border-b border-primary text-xs font-medium uppercase text-primary"
-          >
-            Create New Category +
-          </button>
-        </div>
-      )}
+      <div className="mb-4">
+        <button
+          onClick={startNewCategory}
+          className="cursor-pointer border-b border-primary text-xs font-medium uppercase text-primary"
+          disabled={isNewCategory}
+        >
+          Create New Category +
+        </button>
+      </div>
       <div className="min-fit-content">{categoriesList}</div>
 
       <Modal
