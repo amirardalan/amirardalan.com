@@ -323,7 +323,7 @@ export default function AdminCategories() {
                   type="text"
                   value={editName}
                   onChange={(e) => setEditName(e.target.value)}
-                  className="m-0 box-border h-[24px] min-w-[180px] flex-grow rounded border-none bg-transparent px-0 py-0 leading-normal text-dark outline-none dark:text-light"
+                  className="m-0 box-border h-[24px] min-w-[180px] flex-grow rounded border-none bg-transparent px-0 py-0 leading-normal text-zinc-500 outline-none dark:text-zinc-400"
                   autoFocus
                   onKeyDown={(e) => {
                     if (e.key === 'Enter') handleUpdateCategory(cat.id);
@@ -332,7 +332,7 @@ export default function AdminCategories() {
                 />
                 <button
                   onClick={() => handleUpdateCategory(cat.id)}
-                  className="rounded bg-primary px-2 text-xxs uppercase text-dark"
+                  className="rounded bg-primary px-2 text-xxs uppercase text-light dark:text-dark"
                 >
                   Update
                 </button>
@@ -358,7 +358,7 @@ export default function AdminCategories() {
                     className="h-6 w-6"
                     title="Edit category"
                   >
-                    <IconEdit className="text-zinc-600 duration-200 hover:text-primary" />
+                    <IconEdit className="fill-zinc-400 duration-200 hover:fill-primary dark:fill-zinc-600" />
                   </button>
                   <button
                     onClick={() => startDeleteConfirmation(cat)}
@@ -366,7 +366,7 @@ export default function AdminCategories() {
                     title="Delete category"
                     disabled={checkingCategory}
                   >
-                    <IconDelete className="text-zinc-600 duration-200 hover:text-red-500" />
+                    <IconDelete className="fill-zinc-400 duration-200 hover:fill-red-500 dark:fill-zinc-600" />
                   </button>
                 </div>
               </>
