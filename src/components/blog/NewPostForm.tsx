@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import { createPost } from '@/services/post-service';
+import { getCategories } from '@/services/category-service';
 import { useToast } from '@/components/ui/ToastContext';
 import { useImageInsertion } from '@/hooks/useImageInsertion';
 import { Category } from '@/types/blog';
@@ -21,7 +22,7 @@ interface NewPostFormProps {
 
 export default function NewPostForm({
   userId,
-  categories = [],
+  categories: propCategories = [],
 }: NewPostFormProps) {
   const router = useRouter();
   const { showToast } = useToast();
@@ -30,6 +31,10 @@ export default function NewPostForm({
   const [excerpt, setExcerpt] = useState('');
   const [content, setContent] = useState('');
   const [categoryId, setCategoryId] = useState<number | null>(null);
+  const [categories, setCategories] = useState<Category[]>(propCategories);
+  const [categoriesLoading, setCategoriesLoading] = useState(
+    !propCategories.length
+  );
   const [published, setPublished] = useState(false);
   const [featured, setFeatured] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -40,6 +45,25 @@ export default function NewPostForm({
   const fileInputRef = useRef<HTMLInputElement>(
     null!
   ) as React.RefObject<HTMLInputElement>;
+
+  // Fetch categories only once when needed - fix the loading issue
+  useEffect(() => {
+    // Only fetch if we don't have categories from props and we haven't started loading yet
+    if (!propCategories.length && categoriesLoading) {
+      const fetchCategoriesOnce = async () => {
+        try {
+          const data = await getCategories();
+          setCategories(data);
+        } catch (err) {
+          console.error('Failed to fetch categories:', err);
+        } finally {
+          setCategoriesLoading(false);
+        }
+      };
+
+      fetchCategoriesOnce();
+    }
+  }, [propCategories, categoriesLoading]);
 
   // Track form changes
   useEffect(() => {
@@ -145,6 +169,7 @@ export default function NewPostForm({
           categories={categories}
           categoryId={categoryId}
           setCategoryId={setCategoryId}
+          categoriesLoading={categoriesLoading}
         />
         <PostFormControls
           isSubmitting={isSubmitting}

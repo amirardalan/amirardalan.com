@@ -24,6 +24,7 @@ interface PostFormFieldsProps {
   categories: Category[];
   categoryId: number | null;
   setCategoryId: (value: number | null) => void;
+  categoriesLoading?: boolean;
 }
 
 export default function PostFormFields({
@@ -47,6 +48,7 @@ export default function PostFormFields({
   categories = [],
   categoryId,
   setCategoryId,
+  categoriesLoading = false,
 }: PostFormFieldsProps) {
   const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newTitle = e.target.value;
@@ -147,25 +149,20 @@ export default function PostFormFields({
             onChange={(e) =>
               setCategoryId(e.target.value ? Number(e.target.value) : null)
             }
-            required={categories.length > 0} // Only require if categories exist
-            className="mr-4 block appearance-none rounded-md border border-zinc-300 bg-zinc-100 px-3 py-2 text-zinc-950 dark:border-zinc-500 dark:bg-zinc-900 dark:text-light"
+            className="mr-4 block appearance-none rounded-md border border-zinc-300 bg-zinc-100 px-3 py-2 text-zinc-950 disabled:cursor-not-allowed disabled:opacity-70 dark:border-zinc-500 dark:bg-zinc-900 dark:text-light"
           >
-            {categories.length === 0 ? (
-              <option value="" disabled>
-                No categories available
+            <option value="" disabled>
+              {categoriesLoading
+                ? 'Loading categories...'
+                : categories.length === 0
+                  ? 'No categories available'
+                  : 'Select category'}
+            </option>
+            {categories.map((cat) => (
+              <option key={cat.id} value={cat.id}>
+                {cat.name}
               </option>
-            ) : (
-              <>
-                <option value="" disabled>
-                  Uncategorized
-                </option>
-                {categories.map((cat) => (
-                  <option key={cat.id} value={cat.id}>
-                    {cat.name}
-                  </option>
-                ))}
-              </>
-            )}
+            ))}
           </select>
           <button
             type="button"

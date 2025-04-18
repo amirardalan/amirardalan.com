@@ -6,6 +6,7 @@ import { updatePost, deletePost } from '@/services/post-service';
 import { useToast } from '@/components/ui/ToastContext';
 import { useImageInsertion } from '@/hooks/useImageInsertion';
 import { useEditPostStore } from '@/store/edit';
+import { getCategories } from '@/services/category-service';
 
 import PostFormFields from '@/components/blog/PostFormFields';
 import Button from '@/components/ui/Button';
@@ -18,10 +19,13 @@ import { BlogPost, Category } from '@/types/blog';
 
 interface EditPostFormProps {
   post: BlogPost;
-  categories: Category[];
+  categories?: Category[];
 }
 
-export default function EditPostForm({ post, categories }: EditPostFormProps) {
+export default function EditPostForm({
+  post,
+  categories: propCategories,
+}: EditPostFormProps) {
   const router = useRouter();
   const { showToast } = useToast();
   const { setCurrentPostPublished } = useEditPostStore();
@@ -32,6 +36,10 @@ export default function EditPostForm({ post, categories }: EditPostFormProps) {
   const [categoryId, setCategoryId] = useState<number | null>(
     post.category_id ?? null
   );
+  const [categories, setCategories] = useState<Category[]>(
+    propCategories || []
+  );
+  const [categoriesLoading, setCategoriesLoading] = useState(!propCategories);
   const [published, setPublished] = useState(post.published || false);
   const [featured, setFeatured] = useState(post.featured || false);
   const [showUpdated, setShowUpdated] = useState(post.show_updated || false);
@@ -42,6 +50,25 @@ export default function EditPostForm({ post, categories }: EditPostFormProps) {
   const [showGallery, setShowGallery] = useState(false);
   const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null!);
+
+  // Fetch categories only once when needed - fix the loading issue
+  useEffect(() => {
+    // Only fetch if we don't have categories from props and we haven't started loading yet
+    if (!propCategories && categoriesLoading) {
+      const fetchCategoriesOnce = async () => {
+        try {
+          const data = await getCategories();
+          setCategories(data);
+        } catch (err) {
+          console.error('Failed to fetch categories:', err);
+        } finally {
+          setCategoriesLoading(false);
+        }
+      };
+
+      fetchCategoriesOnce();
+    }
+  }, [propCategories, categoriesLoading]);
 
   // Track form changes to detect unsaved changes
   useEffect(() => {
@@ -181,6 +208,7 @@ export default function EditPostForm({ post, categories }: EditPostFormProps) {
           categories={categories}
           categoryId={categoryId}
           setCategoryId={setCategoryId}
+          categoriesLoading={categoriesLoading}
         />
         <PostFormControls
           isSubmitting={isSubmitting}
