@@ -150,9 +150,9 @@ export default async function BlogPost({
             )}
             <p className="pr-2 text-xxs uppercase text-primary">
               <Link
-                href={`/blog?category=${encodeURIComponent(post.category?.name ?? 'Uncategorized')}`}
+                href={`/blog?category=${encodeURIComponent(post.category?.name ?? 'uncategorized')}`}
               >
-                #{post.category?.name ?? 'Uncategorized'}
+                #{post.category?.name ?? 'uncategorized'}
               </Link>
             </p>
             <span className="mr-2 text-zinc-500 dark:text-zinc-400">•</span>
