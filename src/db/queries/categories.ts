@@ -4,7 +4,6 @@ import { categories, posts } from '@/db/schema';
 import { eq, desc } from 'drizzle-orm';
 import { Category } from '@/types/blog';
 
-// Get all categories
 export async function getCategories(): Promise<Category[]> {
   try {
     return await db
@@ -23,7 +22,6 @@ export async function getCategories(): Promise<Category[]> {
   }
 }
 
-// Get category by slug
 export async function getCategoryBySlug(
   slug: string
 ): Promise<Category | null> {
@@ -47,7 +45,6 @@ export async function getCategoryBySlug(
   }
 }
 
-// Get category by ID
 export async function getCategoryById(id: number): Promise<Category | null> {
   try {
     const result = await db
@@ -69,7 +66,6 @@ export async function getCategoryById(id: number): Promise<Category | null> {
   }
 }
 
-// Check if a category is used by any posts
 export async function isCategoryUsedByPosts(id: number): Promise<boolean> {
   try {
     const result = await db

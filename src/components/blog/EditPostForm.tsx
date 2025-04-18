@@ -68,7 +68,6 @@ export default function EditPostForm({
     }
   }, [propCategories, categoriesLoading]);
 
-  // Track form changes to detect unsaved changes
   useEffect(() => {
     const formChanged =
       title !== (post.title || '') ||
