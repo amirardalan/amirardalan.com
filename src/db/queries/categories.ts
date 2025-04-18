@@ -1,6 +1,6 @@
 import 'server-only'; // Mark this file as server-only
 import { db } from '@/db/connector';
-import { categories } from '@/db/schema';
+import { categories, posts } from '@/db/schema';
 import { eq, desc } from 'drizzle-orm';
 import { Category } from '@/types/blog';
 
@@ -65,6 +65,22 @@ export async function getCategoryById(id: number): Promise<Category | null> {
     return result.length ? result[0] : null;
   } catch (error) {
     console.error('Database error in getCategoryById:', error);
+    throw error;
+  }
+}
+
+// Check if a category is used by any posts
+export async function isCategoryUsedByPosts(id: number): Promise<boolean> {
+  try {
+    const result = await db
+      .select({ id: posts.id })
+      .from(posts)
+      .where(eq(posts.category_id, id))
+      .limit(1);
+
+    return result.length > 0;
+  } catch (error) {
+    console.error('Database error in isCategoryUsedByPosts:', error);
     throw error;
   }
 }

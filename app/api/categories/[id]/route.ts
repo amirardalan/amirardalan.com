@@ -2,7 +2,10 @@ import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/db/connector';
 import { categories } from '@/db/schema';
 import { eq } from 'drizzle-orm';
-import { getCategoryById } from '@/db/queries/categories';
+import {
+  getCategoryById,
+  isCategoryUsedByPosts,
+} from '@/db/queries/categories';
 
 // Get category by ID
 export async function GET(
@@ -10,7 +13,7 @@ export async function GET(
   { params }: { params: { id: string } }
 ) {
   try {
-    const id = parseInt(params.id);
+    const id = parseInt(await params.id);
     if (isNaN(id)) {
       return NextResponse.json(
         { error: 'Invalid category ID' },
@@ -109,18 +112,33 @@ export async function DELETE(
       );
     }
 
-    // Delete the category
-    const [result] = await db
-      .delete(categories)
-      .where(eq(categories.id, id))
-      .returning();
-
-    if (!result) {
+    // Check if category exists
+    const category = await getCategoryById(id);
+    if (!category) {
       return NextResponse.json(
         { error: 'Category not found' },
         { status: 404 }
       );
     }
+
+    // Check if the category is used by any posts
+    const isUsed = await isCategoryUsedByPosts(id);
+    if (isUsed) {
+      return NextResponse.json(
+        {
+          error:
+            'Cannot delete this category because it is assigned to one or more posts',
+          code: 'CATEGORY_IN_USE',
+        },
+        { status: 409 } // Conflict status code
+      );
+    }
+
+    // Delete the category
+    const [result] = await db
+      .delete(categories)
+      .where(eq(categories.id, id))
+      .returning();
 
     return NextResponse.json({ success: true });
   } catch (error: any) {

@@ -68,10 +68,32 @@ export async function deleteCategory(categoryId: number) {
 
   if (!response.ok) {
     const errorData = await response.json().catch(() => null);
-    throw new Error(
-      errorData?.error || (await response.text()) || 'Failed to delete category'
-    );
+
+    // Pass along the specific error message from the server
+    if (errorData?.error) {
+      throw new Error(errorData.error);
+    }
+
+    throw new Error('Failed to delete category');
   }
 
   return response.json();
+}
+
+// Check if a category is used by posts
+export async function isCategoryInUse(categoryId: number): Promise<boolean> {
+  try {
+    const response = await fetch(`/api/categories/${categoryId}/check-usage`);
+
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => null);
+      throw new Error(errorData?.error || 'Failed to check category usage');
+    }
+
+    const data = await response.json();
+    return data.inUse;
+  } catch (error) {
+    console.error('Error checking category usage:', error);
+    throw error;
+  }
 }

@@ -7,6 +7,7 @@ import {
   createCategory,
   updateCategory,
   deleteCategory,
+  isCategoryInUse,
 } from '@/services/category-service';
 import { generateSlug } from '@/utils/generate-slug';
 import { useToast } from '@/components/ui/ToastContext';
@@ -24,6 +25,9 @@ export default function AdminCategories() {
     null
   );
   const [isDeleting, setIsDeleting] = useState(false);
+  const [checkingCategory, setCheckingCategory] = useState(false);
+  const [showErrorModal, setShowErrorModal] = useState(false);
+  const [errorModalMessage, setErrorModalMessage] = useState('');
 
   // Fetch categories on component mount
   useEffect(() => {
@@ -109,8 +113,14 @@ export default function AdminCategories() {
       setCategories((prev) => prev.filter((cat) => cat.id !== id));
       showToast('Category deleted successfully', 'success');
     } catch (err) {
-      const errorMessage =
-        (err as Error).message || 'Failed to delete category';
+      const error = err as Error;
+      let errorMessage = error.message || 'Failed to delete category';
+
+      // Check for specific error about category being in use
+      if (errorMessage.includes('assigned to one or more posts')) {
+        errorMessage = `This category can't be deleted because it's currently being used by one or more posts. Please update those posts first.`;
+      }
+
       setError(errorMessage);
       showToast(errorMessage, 'error');
       console.error(err);
@@ -121,9 +131,36 @@ export default function AdminCategories() {
     }
   }
 
-  function startDeleteConfirmation(category: Category) {
-    setCategoryToDelete(category);
-    setShowDeleteModal(true);
+  async function startDeleteConfirmation(category: Category) {
+    setCheckingCategory(true);
+    setError(null);
+
+    try {
+      const inUse = await isCategoryInUse(category.id);
+
+      if (inUse) {
+        // Show error in a modal instead of a toast
+        const errorMessage = `The category "${category.name}" cannot be deleted because it is assigned to one or more posts. Please update those posts first.`;
+        setErrorModalMessage(errorMessage);
+        setShowErrorModal(true);
+      } else {
+        setCategoryToDelete(category);
+        setShowDeleteModal(true);
+      }
+    } catch (err) {
+      const errorMessage =
+        (err as Error).message || 'Failed to check category usage';
+      setError(errorMessage);
+      showToast(errorMessage, 'error');
+      console.error(err);
+    } finally {
+      setCheckingCategory(false);
+    }
+  }
+
+  function closeErrorModal() {
+    setShowErrorModal(false);
+    setErrorModalMessage('');
   }
 
   function cancelDelete() {
@@ -169,7 +206,7 @@ export default function AdminCategories() {
           No categories have been created yet. Try adding one.
         </p>
       ) : (
-        <ul className="space-y-3">
+        <ul className="space-y-3 text-dark dark:text-light">
           {categories.map((cat) => (
             <li key={cat.id} className="flex items-center gap-2">
               {editingId === cat.id ? (
@@ -210,8 +247,9 @@ export default function AdminCategories() {
                       onClick={() => startDeleteConfirmation(cat)}
                       className="rounded bg-red-600 px-2 py-1 text-xs text-white"
                       title="Delete category"
+                      disabled={checkingCategory}
                     >
-                      Delete
+                      {checkingCategory ? 'Checking...' : 'Delete'}
                     </button>
                   </div>
                 </>
@@ -231,6 +269,16 @@ export default function AdminCategories() {
         }
         confirmText={isDeleting ? 'Deleting...' : 'Delete Category'}
         confirmDisabled={isDeleting}
+      />
+
+      <Modal
+        isOpen={showErrorModal}
+        title="Cannot Delete Category"
+        message={errorModalMessage}
+        onCancel={closeErrorModal}
+        confirmText="Close"
+        buttons={'confirm'}
+        onConfirm={closeErrorModal}
       />
     </section>
   );
