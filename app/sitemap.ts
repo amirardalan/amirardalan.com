@@ -1,6 +1,5 @@
 import { MetadataRoute } from 'next';
 import { getPublishedPosts } from '@/db/queries/posts';
-import { BlogPost } from '@/types/blog';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const { NEXT_PUBLIC_URL } = process.env;
@@ -36,7 +35,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ];
 
   // Generate blog post entries
-  const blogPostEntries = posts.map((post: BlogPost) => ({
+  const blogPostEntries = posts.map((post) => ({
     url: `${NEXT_PUBLIC_URL}/blog/${post.slug}`,
     lastModified: new Date(post.updated_at || post.created_at),
     changeFrequency: 'monthly' as const,

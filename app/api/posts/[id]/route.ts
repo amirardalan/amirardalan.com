@@ -7,7 +7,7 @@ import { NextRequest, NextResponse } from 'next/server';
 // Update PUT handler signature to expect params as a Promise
 export async function PUT(
   request: NextRequest,
-  { params }: { params: Promise<{ id: string }> } // Revert params type to Promise
+  { params }: { params: Promise<{ id: string }> }
 ): Promise<NextResponse> {
   try {
     const session = await auth();

@@ -1,5 +1,6 @@
 import { generateSlug } from '@/utils/generate-slug';
 import ResponsiveTextarea from '@/components/blog/ResponsiveTextarea';
+import { Category } from '@/types/blog';
 
 interface PostFormFieldsProps {
   title: string;
@@ -10,8 +11,6 @@ interface PostFormFieldsProps {
   setExcerpt: (value: string) => void;
   content: string;
   setContent: (value: string) => void;
-  category: string;
-  setCategory: (value: string) => void;
   published: boolean;
   setPublished: (value: boolean) => void;
   featured?: boolean;
@@ -22,6 +21,10 @@ interface PostFormFieldsProps {
   setShowUpdated?: (value: boolean) => void;
   textareaRef?: React.RefObject<HTMLTextAreaElement>;
   onTextAreaSelect?: (e: React.SyntheticEvent<HTMLTextAreaElement>) => void;
+  categories: Category[];
+  categoryId: number | null;
+  setCategoryId: (value: number | null) => void;
+  categoriesLoading?: boolean;
 }
 
 export default function PostFormFields({
@@ -33,8 +36,6 @@ export default function PostFormFields({
   setExcerpt,
   content,
   setContent,
-  category,
-  setCategory,
   published,
   setPublished,
   featured,
@@ -44,6 +45,10 @@ export default function PostFormFields({
   setShowUpdated,
   textareaRef,
   onTextAreaSelect,
+  categories = [],
+  categoryId,
+  setCategoryId,
+  categoriesLoading = false,
 }: PostFormFieldsProps) {
   const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newTitle = e.target.value;
@@ -52,22 +57,6 @@ export default function PostFormFields({
       setSlug(generateSlug(newTitle));
     }
   };
-
-  // TODO: Manage categories in CMS
-  const categories = [
-    {
-      id: 'code',
-      name: 'Code',
-    },
-    {
-      id: 'personal',
-      name: 'Personal',
-    },
-    {
-      id: 'tools',
-      name: 'Tools',
-    },
-  ];
 
   return (
     <>
@@ -153,26 +142,24 @@ export default function PostFormFields({
       </div>
 
       <div className="mt-2 flex flex-col space-y-4 md:flex-row md:items-center md:space-y-0">
-        <div className="mx-4 flex flex-wrap items-center py-2 text-xxs md:mx-10">
-          <label htmlFor="category" className="mr-2">
-            Category:
-          </label>
+        <div className="mx-4 flex flex-wrap items-center py-2 text-xxs">
           <select
             id="category"
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
-            required
-            className="mr-4 block appearance-none rounded-md border border-zinc-300 bg-zinc-100 px-3 py-2 text-zinc-950 dark:border-zinc-500 dark:bg-zinc-900 dark:text-light"
+            value={categoryId ?? ''}
+            onChange={(e) =>
+              setCategoryId(e.target.value ? Number(e.target.value) : null)
+            }
+            className="mr-4 block appearance-none rounded-md border border-zinc-300 bg-zinc-100 px-3 py-2 text-zinc-950 disabled:cursor-not-allowed disabled:opacity-70 dark:border-zinc-500 dark:bg-zinc-900 dark:text-light"
           >
-            <option value="" disabled className="text-light">
-              Category
+            <option value="" disabled>
+              {categoriesLoading
+                ? 'Loading categories...'
+                : categories.length === 0
+                  ? 'No categories available'
+                  : 'Select category'}
             </option>
             {categories.map((cat) => (
-              <option
-                key={cat.id}
-                value={cat.id}
-                className="hover:bg-primary hover:text-light"
-              >
+              <option key={cat.id} value={cat.id}>
                 {cat.name}
               </option>
             ))}

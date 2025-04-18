@@ -1,6 +1,14 @@
 import { PostHog } from 'posthog-node';
 import posthogJs from 'posthog-js';
 
+// Helper to determine if we're in admin section
+function isInAdminSection(): boolean {
+  if (typeof window !== 'undefined') {
+    return window.location.pathname.startsWith('/admin');
+  }
+  return false;
+}
+
 // Server-side PostHog client
 export default function PostHogClient() {
   const posthogClient = new PostHog(process.env.NEXT_PUBLIC_POSTHOG_KEY!, {
@@ -18,7 +26,7 @@ type EventProperties = Record<string, any>;
  * Track a custom event (client-side)
  */
 export function trackEvent(eventName: string, properties?: EventProperties) {
-  if (typeof window !== 'undefined') {
+  if (typeof window !== 'undefined' && !isInAdminSection()) {
     posthogJs.capture(eventName, properties);
   }
 }
@@ -27,7 +35,7 @@ export function trackEvent(eventName: string, properties?: EventProperties) {
  * Identify a user (client-side)
  */
 export function identifyUser(userId: string, properties?: Record<string, any>) {
-  if (typeof window !== 'undefined') {
+  if (typeof window !== 'undefined' && !isInAdminSection()) {
     posthogJs.identify(userId, properties);
   }
 }
@@ -48,10 +56,12 @@ export function trackButtonClick(
   buttonName: string,
   properties?: EventProperties
 ) {
-  trackEvent('button_clicked', {
-    button_name: buttonName,
-    ...properties,
-  });
+  if (!isInAdminSection()) {
+    trackEvent('button_clicked', {
+      button_name: buttonName,
+      ...properties,
+    });
+  }
 }
 
 /**
@@ -61,10 +71,12 @@ export function trackFormSubmission(
   formName: string,
   properties?: EventProperties
 ) {
-  trackEvent('form_submitted', {
-    form_name: formName,
-    ...properties,
-  });
+  if (!isInAdminSection()) {
+    trackEvent('form_submitted', {
+      form_name: formName,
+      ...properties,
+    });
+  }
 }
 
 /**

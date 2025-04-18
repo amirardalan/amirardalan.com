@@ -1,5 +1,5 @@
 import { db } from '@/db/connector';
-import { posts, users } from '@/db/schema';
+import { posts, users, categories } from '@/db/schema';
 import { eq, desc, lt, gt, and } from 'drizzle-orm';
 
 import { BlogPost } from '@/types/blog';
@@ -15,7 +15,12 @@ export const getPublishedPosts = async (options?: {
       slug: posts.slug,
       content: posts.content,
       excerpt: posts.excerpt,
-      category: posts.category,
+      category_id: posts.category_id,
+      category: {
+        id: categories.id,
+        name: categories.name,
+        slug: categories.slug,
+      },
       published: posts.published,
       created_at: posts.created_at,
       updated_at: posts.updated_at,
@@ -26,6 +31,7 @@ export const getPublishedPosts = async (options?: {
     })
     .from(posts)
     .leftJoin(users, eq(posts.user_id, users.id))
+    .leftJoin(categories, eq(posts.category_id, categories.id))
     .where(eq(posts.published, true))
     .orderBy(desc(posts.created_at))
     .execute(options);
@@ -40,7 +46,12 @@ export async function getDraftPosts() {
       slug: posts.slug,
       content: posts.content,
       excerpt: posts.excerpt,
-      category: posts.category,
+      category_id: posts.category_id,
+      category: {
+        id: categories.id,
+        name: categories.name,
+        slug: categories.slug,
+      },
       published: posts.published,
       created_at: posts.created_at,
       updated_at: posts.updated_at,
@@ -51,6 +62,7 @@ export async function getDraftPosts() {
     })
     .from(posts)
     .leftJoin(users, eq(posts.user_id, users.id))
+    .leftJoin(categories, eq(posts.category_id, categories.id))
     .where(eq(posts.published, false))
     .orderBy(desc(posts.updated_at));
 }
@@ -67,7 +79,12 @@ export async function getPostBySlug(
       content: posts.content,
       excerpt: posts.excerpt,
       slug: posts.slug,
-      category: posts.category,
+      category_id: posts.category_id,
+      category: {
+        id: categories.id,
+        name: categories.name,
+        slug: categories.slug,
+      },
       published: posts.published,
       created_at: posts.created_at,
       updated_at: posts.updated_at,
@@ -78,6 +95,7 @@ export async function getPostBySlug(
     })
     .from(posts)
     .leftJoin(users, eq(posts.user_id, users.id))
+    .leftJoin(categories, eq(posts.category_id, categories.id))
     .where(eq(posts.slug, slug))
     .limit(1)
     .execute(options);
@@ -148,10 +166,10 @@ export async function dbCreatePost(postData: Omit<BlogPost, 'id'>) {
       slug: postData.slug,
       excerpt: postData.excerpt,
       content: postData.content,
-      category: postData.category || null,
+      category_id: postData.category_id ?? null, // <-- use category_id
       user_id: postData.user_id,
       published: postData.published || false,
-      featured: postData.featured || false, // Ensure featured is included in creation
+      featured: postData.featured || false,
       created_at: new Date(),
       updated_at: new Date(),
     })
@@ -187,7 +205,7 @@ export async function dbUpdatePost(id: number, postData: Partial<BlogPost>) {
       slug: postData.slug,
       excerpt: postData.excerpt,
       content: postData.content,
-      category: postData.category,
+      category_id: postData.category_id ?? null, // <-- use category_id
       published: postData.published,
       show_updated: postData.show_updated ?? false,
       updated_at: new Date(),

@@ -4,6 +4,8 @@ import AdminPageHeading from '@/components/admin/AdminPageHeading';
 import Avatar from '@/components/auth/Avatar';
 import SignedOut from '@/components/auth/SignedOut';
 import { ObfuscatedEmail } from '@/components/ui/ObfuscatedEmail';
+import Container from '@/components/content/Container';
+import Link from 'next/link';
 
 export function generateMetadata() {
   return {
@@ -21,26 +23,34 @@ export default async function Account() {
   }
 
   return (
-    <div className="mx-10 mt-8">
-      <AdminPageHeading title={'Account'} />
-      <div className="flex flex-col">
-        <div className="flex">
-          <div className="h-6 w-6">
-            <Avatar />
+    <Container>
+      <div>
+        <AdminPageHeading title={'Account'} />
+        <div className="flex flex-col">
+          <div className="flex items-center">
+            <div className="h-6 w-6">
+              <Avatar />
+            </div>
+            <p className="text-s ml-2 text-dark dark:text-light">
+              {session.user?.name}
+            </p>
+            <Link
+              href="/api/auth/signout?callbackUrl=/&redirect=false"
+              className="ml-2 text-xxs uppercase text-primary"
+            >
+              Sign Out
+            </Link>
           </div>
-          <p className="text-s ml-2 text-dark dark:text-light">
-            {session.user?.name}
-          </p>
-        </div>
-        <div className="mt-1 flex flex-row items-center text-dark dark:text-light">
-          <span>Email:</span>
-          <span>
-            {session.user?.email && (
-              <ObfuscatedEmail email={session.user.email} />
-            )}
-          </span>
+          <div className="mt-1 flex flex-row items-center text-dark dark:text-light">
+            <span>Email:</span>
+            <span>
+              {session.user?.email && (
+                <ObfuscatedEmail email={session.user.email} />
+              )}
+            </span>
+          </div>
         </div>
       </div>
-    </div>
+    </Container>
   );
 }

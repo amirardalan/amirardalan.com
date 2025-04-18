@@ -2,6 +2,7 @@ import { auth } from '@/lib/auth';
 import { redirect } from 'next/navigation';
 import { getDraftPosts } from '@/db/queries/posts';
 import AdminPostList from '@/components/admin/AdminPostList';
+import Container from '@/components/content/Container';
 
 export const dynamic = 'force-dynamic';
 
@@ -48,15 +49,17 @@ export default async function Drafts({
   const totalResults = filteredDrafts.length;
 
   return (
-    <AdminPostList
-      title="Drafts"
-      posts={paginatedDrafts}
-      searchPlaceholder="Search drafts..."
-      query={query}
-      totalResults={totalResults}
-      currentPage={currentPage}
-      totalPages={totalPages}
-      isDrafts={true}
-    />
+    <Container>
+      <AdminPostList
+        title="Drafts"
+        posts={paginatedDrafts}
+        searchPlaceholder="Search drafts..."
+        query={query}
+        totalResults={totalResults}
+        currentPage={currentPage}
+        totalPages={totalPages}
+        isDrafts={true}
+      />
+    </Container>
   );
 }

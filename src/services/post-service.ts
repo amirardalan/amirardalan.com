@@ -3,7 +3,7 @@ interface PostData {
   slug: string;
   excerpt: string;
   content: string;
-  category: string;
+  category_id: number | null;
   published: boolean;
   featured?: boolean;
   user_id: number;

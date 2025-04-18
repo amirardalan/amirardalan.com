@@ -59,7 +59,8 @@ export default function BlogPosts({ posts }: { posts: BlogPost[] }) {
       .toLowerCase()
       .includes(searchTerm.toLowerCase());
     const matchesCategory = categoryFilter
-      ? (post.category ?? '').toLowerCase() === categoryFilter.toLowerCase()
+      ? (post.category?.name ?? 'Uncategorized').toLowerCase() ===
+        categoryFilter.toLowerCase()
       : true;
     return matchesSearch && matchesCategory;
   });
@@ -69,7 +70,7 @@ export default function BlogPosts({ posts }: { posts: BlogPost[] }) {
     (!searchTerm ||
       featuredPost.title.toLowerCase().includes(searchTerm.toLowerCase())) &&
     (!categoryFilter ||
-      (featuredPost.category ?? '').toLowerCase() ===
+      (featuredPost.category?.name ?? 'Uncategorized').toLowerCase() ===
         categoryFilter.toLowerCase());
 
   const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
@@ -88,7 +89,7 @@ export default function BlogPosts({ posts }: { posts: BlogPost[] }) {
   };
 
   const categories = Array.from(
-    new Set(posts.map((post) => post.category ?? 'uncategorized'))
+    new Set(posts.map((post) => post.category?.name ?? 'Uncategorized'))
   );
   const allCategories = ['all', ...categories.sort()];
 

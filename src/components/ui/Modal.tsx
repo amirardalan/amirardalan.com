@@ -62,7 +62,7 @@ export default function Modal({
                 onClick={onConfirm}
                 text={confirmText}
                 disabled={confirmDisabled}
-                variant="danger"
+                variant={buttons === 'both' ? 'danger' : 'primary'}
               />
             )}
           </div>

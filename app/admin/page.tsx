@@ -1,13 +1,14 @@
 import AdminPageHeading from '@/components/admin/AdminPageHeading';
-import AdminActions from '@/components/admin/AdminActions';
+import AdminDashboard from '@/components/admin/AdminDashboard';
 import AdminStats from '@/components/admin/AdminStats';
+import Container from '@/components/content/Container';
 
-export default function AdminDashboard() {
+export default function AdminPage() {
   return (
-    <div className="mx-10 mt-8">
+    <Container>
       <AdminPageHeading title={'Dashboard'} />
-      <AdminActions />
+      <AdminDashboard />
       <AdminStats />
-    </div>
+    </Container>
   );
 }

@@ -25,8 +25,10 @@ export default function AdminPostList({
   totalPages,
   isDrafts = false,
 }: AdminPostListProps) {
+  const noPostsExist = totalResults === 0 && (!query || query.trim() === '');
+
   return (
-    <div className="mx-10 mt-8">
+    <div>
       <AdminPageHeading title={title} />
       <SearchInput
         name="query"
@@ -40,7 +42,7 @@ export default function AdminPostList({
             {posts.map((post) => (
               <li
                 key={post.id}
-                className="flex w-full cursor-pointer items-center justify-between border-b border-zinc-200 px-6 py-3 hover:bg-zinc-100 dark:border-zinc-700 dark:hover:bg-zinc-900"
+                className="flex w-full cursor-pointer items-center justify-between border-b border-zinc-200 py-3 hover:bg-zinc-100 dark:border-zinc-700 dark:hover:bg-zinc-900"
               >
                 <div className="flex w-full flex-col">
                   <Link href={`/blog/${post.slug}`}>
@@ -64,7 +66,7 @@ export default function AdminPostList({
                       &bull;
                     </span>
                     <span className="text-sm text-zinc-500 dark:text-zinc-400">
-                      {post.category || 'Uncategorized'}
+                      {post.category?.name || 'Uncategorized'}
                     </span>
                     <span className="px-2 text-zinc-500 dark:text-zinc-400">
                       &bull;
@@ -83,6 +85,14 @@ export default function AdminPostList({
               </li>
             ))}
           </ul>
+        ) : noPostsExist ? (
+          <p>
+            It looks like there are no {isDrafts ? 'drafts' : 'posts'} yet. Try{' '}
+            <Link href="/admin/blog/new" className="text-primary underline">
+              writing one
+            </Link>
+            .
+          </p>
         ) : (
           <p>No {isDrafts ? 'drafts' : 'posts'} match your search.</p>
         )}

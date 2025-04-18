@@ -15,28 +15,6 @@ const redis = new Redis({
 const isDev = process.env.NODE_ENV === 'development';
 const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
 
-// Helper function to check if dev-cache should be disabled
-function shouldDisableCache(req: NextRequest): boolean {
-  // Only applicable in development mode
-  if (!isDev) return false;
-
-  // Check for URL parameter
-  const { searchParams } = new URL(req.url);
-  if (
-    searchParams.has('nocache') ||
-    searchParams.get('disableCache') === 'true'
-  ) {
-    return true;
-  }
-
-  // Check for environment variable (only in dev)
-  if (process.env.DISABLE_DEV_CACHE === 'true') {
-    return true;
-  }
-
-  return false;
-}
-
 // Helper function to check if dev-cache should be enabled
 function shouldEnableCache(req: NextRequest): boolean {
   // Only applicable in development mode
