@@ -28,6 +28,8 @@ export default function AdminCategories() {
   const [checkingCategory, setCheckingCategory] = useState(false);
   const [showErrorModal, setShowErrorModal] = useState(false);
   const [errorModalMessage, setErrorModalMessage] = useState('');
+  const [showAddForm, setShowAddForm] = useState(false);
+  const [newCategoryName, setNewCategoryName] = useState('');
   // Add a data version key to prevent unnecessary re-fetches
   const [dataVersion, setDataVersion] = useState(1);
 
@@ -70,9 +72,7 @@ export default function AdminCategories() {
 
   async function handleAddCategory(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const form = e.currentTarget;
-    const formData = new FormData(form);
-    const name = formData.get('name') as string;
+    const name = newCategoryName.trim();
 
     if (!name) return;
 
@@ -81,7 +81,8 @@ export default function AdminCategories() {
       const slug = generateSlug(name);
       const newCategory = await createCategory({ name, slug });
       setCategories((prev) => [newCategory, ...prev]);
-      form.reset();
+      setNewCategoryName('');
+      setShowAddForm(false);
       showToast('Category added successfully', 'success');
     } catch (err) {
       const errorMessage = (err as Error).message || 'Failed to add category';
@@ -268,23 +269,57 @@ export default function AdminCategories() {
         <div className="mb-4 rounded bg-red-100 p-2 text-red-700">{error}</div>
       )}
 
-      <form onSubmit={handleAddCategory} className="mb-4 flex gap-2">
-        <input
-          type="text"
-          name="name"
-          placeholder="Category name"
-          required
-          className="rounded border border-zinc-300 bg-zinc-100 px-2 py-1 dark:border-zinc-500 dark:bg-zinc-700"
-          disabled={loading}
-        />
-        <button
-          type="submit"
-          className="rounded bg-blue-600 px-3 py-1 text-white disabled:bg-blue-300"
-          disabled={loading}
-        >
-          Add
-        </button>
-      </form>
+      {showAddForm ? (
+        <form onSubmit={handleAddCategory} className="mb-4 flex gap-2">
+          <input
+            type="text"
+            value={newCategoryName}
+            onChange={(e) => setNewCategoryName(e.target.value)}
+            placeholder="Category name"
+            required
+            className="rounded border border-zinc-300 bg-zinc-100 px-2 py-1 dark:border-zinc-500 dark:bg-zinc-700"
+            disabled={loading}
+            autoFocus
+            onBlur={() => {
+              if (!newCategoryName.trim()) {
+                setShowAddForm(false);
+              }
+            }}
+            onKeyDown={(e) => {
+              if (e.key === 'Escape') {
+                setShowAddForm(false);
+                setNewCategoryName('');
+              }
+            }}
+          />
+          <button
+            type="submit"
+            className="rounded bg-primary px-3 py-1 text-light disabled:bg-blue-300 dark:text-dark"
+            disabled={loading}
+          >
+            Add
+          </button>
+          <button
+            type="button"
+            className="rounded bg-zinc-300 px-3 py-1 dark:bg-zinc-700"
+            onClick={() => {
+              setShowAddForm(false);
+              setNewCategoryName('');
+            }}
+          >
+            Cancel
+          </button>
+        </form>
+      ) : (
+        <div className="mb-4">
+          <button
+            onClick={() => setShowAddForm(true)}
+            className="cursor-pointer border-b border-primary text-xs font-medium uppercase text-primary"
+          >
+            Create New Category +
+          </button>
+        </div>
+      )}
 
       {/* Use a min-height container to prevent layout shifts */}
       <div className="min-h-[200px]">{categoriesList}</div>
