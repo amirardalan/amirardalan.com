@@ -1,11 +1,12 @@
 import { MetadataRoute } from 'next';
 import { getPublishedPosts } from '@/db/queries/posts';
-import { BlogPost } from '@/types/blog';
+import { getCategories } from '@/db/queries/categories';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const { NEXT_PUBLIC_URL } = process.env;
 
   const posts = await getPublishedPosts();
+  const categories = await getCategories();
 
   // App pages
   const baseEntries: MetadataRoute.Sitemap = [
@@ -36,13 +37,21 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ];
 
   // Generate blog post entries
-  const blogPostEntries = posts.map((post: BlogPost) => ({
+  const blogPostEntries = posts.map((post) => ({
     url: `${NEXT_PUBLIC_URL}/blog/${post.slug}`,
     lastModified: new Date(post.updated_at || post.created_at),
     changeFrequency: 'monthly' as const,
     priority: 0.7,
   }));
 
+  // Generate category page entries
+  const categoryEntries = categories.map((category) => ({
+    url: `${NEXT_PUBLIC_URL}/blog/category/${category.slug}`,
+    lastModified: new Date(category.updated_at || category.created_at),
+    changeFrequency: 'monthly' as const,
+    priority: 0.6,
+  }));
+
   // Return combined sitemap
-  return [...baseEntries, ...blogPostEntries];
+  return [...baseEntries, ...blogPostEntries, ...categoryEntries];
 }
