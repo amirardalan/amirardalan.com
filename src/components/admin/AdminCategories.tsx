@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useMemo, useRef } from 'react';
+import { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import { Category } from '@/types/blog';
 import {
   getCategories,
@@ -32,12 +32,9 @@ export default function AdminCategories() {
   const [errorModalMessage, setErrorModalMessage] = useState('');
   const [showAddForm, setShowAddForm] = useState(false);
   const [newCategoryName, setNewCategoryName] = useState('');
-  // Add a data version key to prevent unnecessary re-fetches
   const [dataVersion, setDataVersion] = useState(1);
-  // Add a ref for the editing form container
   const editFormRef = useRef<HTMLDivElement>(null);
 
-  // Fetch categories on component mount or when dataVersion changes
   useEffect(() => {
     let isMounted = true;
 
@@ -68,13 +65,11 @@ export default function AdminCategories() {
 
     fetchCategories();
 
-    // Cleanup function to handle component unmounting
     return () => {
       isMounted = false;
     };
   }, [dataVersion, showToast]);
 
-  // Add click outside handler
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (
@@ -86,139 +81,173 @@ export default function AdminCategories() {
       }
     }
 
-    // Add event listener when in edit mode
     if (editingId !== null) {
       document.addEventListener('mousedown', handleClickOutside);
     }
 
-    // Cleanup
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [editingId]);
 
-  async function handleAddCategory(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    const name = newCategoryName.trim();
+  const handleAddCategory = useCallback(
+    async (e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      const name = newCategoryName.trim();
 
-    if (!name) return;
+      if (!name) return;
 
-    setLoading(true);
-    try {
-      const slug = generateSlug(name);
-      const newCategory = await createCategory({ name, slug });
-      setCategories((prev) => [newCategory, ...prev]);
-      setNewCategoryName('');
-      setShowAddForm(false);
-      showToast('Category added successfully', 'success');
-    } catch (err) {
-      const errorMessage = (err as Error).message || 'Failed to add category';
-      setError(errorMessage);
-      showToast(errorMessage, 'error');
-      console.error(err);
-    } finally {
-      setLoading(false);
-    }
-  }
-
-  async function handleUpdateCategory(id: number) {
-    if (!editName) return;
-
-    setLoading(true);
-    try {
-      const slug = generateSlug(editName);
-      const updatedCategory = await updateCategory(id, {
-        name: editName,
-        slug,
-      });
-      setCategories((prev) =>
-        prev.map((cat) =>
-          cat.id === id
-            ? { ...cat, name: updatedCategory.name, slug: updatedCategory.slug }
-            : cat
-        )
-      );
-      setEditingId(null);
-      showToast('Category updated successfully', 'success');
-    } catch (err) {
-      const errorMessage =
-        (err as Error).message || 'Failed to update category';
-      setError(errorMessage);
-      showToast(errorMessage, 'error');
-      console.error(err);
-    } finally {
-      setLoading(false);
-    }
-  }
-
-  async function handleDeleteCategory(id: number) {
-    setIsDeleting(true);
-    try {
-      await deleteCategory(id);
-      setCategories((prev) => prev.filter((cat) => cat.id !== id));
-      showToast('Category deleted successfully', 'success');
-    } catch (err) {
-      const error = err as Error;
-      let errorMessage = error.message || 'Failed to delete category';
-
-      // Check for specific error about category being in use
-      if (errorMessage.includes('assigned to one or more posts')) {
-        errorMessage = `This category can't be deleted because it's currently being used by one or more posts. Please update those posts first.`;
+      setLoading(true);
+      try {
+        const slug = generateSlug(name);
+        const newCategory = await createCategory({ name, slug });
+        setCategories((prev) => [newCategory, ...prev]);
+        setNewCategoryName('');
+        setShowAddForm(false);
+        showToast('Category added successfully', 'success');
+      } catch (err) {
+        const errorMessage = (err as Error).message || 'Failed to add category';
+        setError(errorMessage);
+        showToast(errorMessage, 'error');
+        console.error(err);
+      } finally {
+        setLoading(false);
       }
+    },
+    [
+      newCategoryName,
+      setCategories,
+      setNewCategoryName,
+      setShowAddForm,
+      setError,
+      setLoading,
+      showToast,
+    ]
+  );
 
-      setError(errorMessage);
-      showToast(errorMessage, 'error');
-      console.error(err);
-    } finally {
-      setIsDeleting(false);
-      setShowDeleteModal(false);
-      setCategoryToDelete(null);
-    }
-  }
+  const handleUpdateCategory = useCallback(
+    async (id: number) => {
+      if (!editName) return;
 
-  async function startDeleteConfirmation(category: Category) {
-    setCheckingCategory(true);
-    setError(null);
-
-    try {
-      const inUse = await isCategoryInUse(category.id);
-
-      if (inUse) {
-        // Show error in a modal instead of a toast
-        const errorMessage = `The category "${category.name}" cannot be deleted because it is assigned to one or more posts. Please update those posts first.`;
-        setErrorModalMessage(errorMessage);
-        setShowErrorModal(true);
-      } else {
-        setCategoryToDelete(category);
-        setShowDeleteModal(true);
+      setLoading(true);
+      try {
+        const slug = generateSlug(editName);
+        const updatedCategory = await updateCategory(id, {
+          name: editName,
+          slug,
+        });
+        setCategories((prev) =>
+          prev.map((cat) =>
+            cat.id === id
+              ? {
+                  ...cat,
+                  name: updatedCategory.name,
+                  slug: updatedCategory.slug,
+                }
+              : cat
+          )
+        );
+        setEditingId(null);
+        showToast('Category updated successfully', 'success');
+      } catch (err) {
+        const errorMessage =
+          (err as Error).message || 'Failed to update category';
+        setError(errorMessage);
+        showToast(errorMessage, 'error');
+        console.error(err);
+      } finally {
+        setLoading(false);
       }
-    } catch (err) {
-      const errorMessage =
-        (err as Error).message || 'Failed to check category usage';
-      setError(errorMessage);
-      showToast(errorMessage, 'error');
-      console.error(err);
-    } finally {
-      setCheckingCategory(false);
-    }
-  }
+    },
+    [editName, setCategories, setEditingId, setError, setLoading, showToast]
+  );
 
-  function closeErrorModal() {
-    setShowErrorModal(false);
-    setErrorModalMessage('');
-  }
+  const handleDeleteCategory = useCallback(
+    async (id: number) => {
+      setIsDeleting(true);
+      try {
+        await deleteCategory(id);
+        setCategories((prev) => prev.filter((cat) => cat.id !== id));
+        showToast('Category deleted successfully', 'success');
+      } catch (err) {
+        const error = err as Error;
+        let errorMessage = error.message || 'Failed to delete category';
 
-  function cancelDelete() {
-    setShowDeleteModal(false);
-    setCategoryToDelete(null);
-  }
+        if (errorMessage.includes('assigned to one or more posts')) {
+          errorMessage = `This category can't be deleted because it's currently being used by one or more posts. Please update those posts first.`;
+        }
 
-  function startEditing(category: Category) {
+        setError(errorMessage);
+        showToast(errorMessage, 'error');
+        console.error(err);
+      } finally {
+        setIsDeleting(false);
+        setShowDeleteModal(false);
+        setCategoryToDelete(null);
+      }
+    },
+    [
+      setCategories,
+      setError,
+      setIsDeleting,
+      setShowDeleteModal,
+      setCategoryToDelete,
+      showToast,
+    ]
+  );
+
+  const startDeleteConfirmation = useCallback(
+    async (category: Category) => {
+      setCheckingCategory(true);
+      setError(null);
+
+      try {
+        const inUse = await isCategoryInUse(category.id);
+
+        if (inUse) {
+          const errorMessage = `The category "${category.name}" cannot be deleted because it is assigned to one or more posts. Please update those posts first.`;
+          setErrorModalMessage(errorMessage);
+          setShowErrorModal(true);
+        } else {
+          setCategoryToDelete(category);
+          setShowDeleteModal(true);
+        }
+      } catch (err) {
+        const errorMessage =
+          (err as Error).message || 'Failed to check category usage';
+        setError(errorMessage);
+        showToast(errorMessage, 'error');
+        console.error(err);
+      } finally {
+        setCheckingCategory(false);
+      }
+    },
+    [
+      setCheckingCategory,
+      setError,
+      setErrorModalMessage,
+      setShowErrorModal,
+      setCategoryToDelete,
+      setShowDeleteModal,
+      showToast,
+    ]
+  );
+
+  const startEditing = useCallback((category: Category) => {
     setEditingId(category.id);
     setEditName(category.name);
-  }
+  }, []);
 
-  // Memoize the categories list to prevent re-rendering when theme changes
+  const closeErrorModal = useCallback(() => {
+    setShowErrorModal(false);
+    setErrorModalMessage('');
+  }, []);
+
+  const cancelDelete = useCallback(() => {
+    setShowDeleteModal(false);
+    setCategoryToDelete(null);
+  }, []);
+
   const categoriesList = useMemo(() => {
     if (loading && categories.length === 0) {
       return <p className="text-zinc-500">Loading...</p>;
@@ -368,9 +397,7 @@ export default function AdminCategories() {
           </button>
         </div>
       )}
-
-      {/* Use a min-height container to prevent layout shifts */}
-      <div className="min-h-[200px]">{categoriesList}</div>
+      <div className="min-fit-content">{categoriesList}</div>
 
       <Modal
         isOpen={showDeleteModal}
