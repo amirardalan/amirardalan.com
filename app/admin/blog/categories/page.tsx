@@ -5,7 +5,7 @@ export default function CategoriesPage() {
   return (
     <main className="min-h-screen">
       <div className="mx-10 mt-8">
-        <AdminPageHeading title="Categories" />
+        <AdminPageHeading title="Category Manager" />
       </div>
       <AdminCategories />
     </main>

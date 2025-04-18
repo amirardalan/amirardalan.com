@@ -264,8 +264,6 @@ export default function AdminCategories() {
 
   return (
     <section className="p-8">
-      <h2 className="mb-4 text-xl font-bold">Manage Categories</h2>
-
       {error && (
         <div className="mb-4 rounded bg-red-100 p-2 text-red-700">{error}</div>
       )}
