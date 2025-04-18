@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { Category } from '@/types/blog';
 import {
   getCategories,
@@ -28,28 +28,45 @@ export default function AdminCategories() {
   const [checkingCategory, setCheckingCategory] = useState(false);
   const [showErrorModal, setShowErrorModal] = useState(false);
   const [errorModalMessage, setErrorModalMessage] = useState('');
+  // Add a data version key to prevent unnecessary re-fetches
+  const [dataVersion, setDataVersion] = useState(1);
 
-  // Fetch categories on component mount
+  // Fetch categories on component mount or when dataVersion changes
   useEffect(() => {
+    let isMounted = true;
+
     async function fetchCategories() {
+      if (!isMounted) return;
+
       try {
         setLoading(true);
         const data = await getCategories();
-        setCategories(data);
-        setError(null);
+        if (isMounted) {
+          setCategories(data);
+          setError(null);
+        }
       } catch (err) {
+        if (!isMounted) return;
+
         const errorMessage =
           (err as Error).message || 'Error loading categories';
         setError(errorMessage);
         showToast(errorMessage, 'error');
         console.error(err);
       } finally {
-        setLoading(false);
+        if (isMounted) {
+          setLoading(false);
+        }
       }
     }
 
     fetchCategories();
-  }, [showToast]);
+
+    // Cleanup function to handle component unmounting
+    return () => {
+      isMounted = false;
+    };
+  }, [dataVersion, showToast]);
 
   async function handleAddCategory(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -173,6 +190,78 @@ export default function AdminCategories() {
     setEditName(category.name);
   }
 
+  // Memoize the categories list to prevent re-rendering when theme changes
+  const categoriesList = useMemo(() => {
+    if (loading) {
+      return <p className="text-zinc-500">Loading...</p>;
+    }
+
+    if (categories.length === 0) {
+      return (
+        <p className="text-zinc-500">
+          No categories have been created yet. Try adding one.
+        </p>
+      );
+    }
+
+    return (
+      <ul className="text-dark dark:text-light">
+        {categories.map((cat) => (
+          <li
+            key={cat.id}
+            className="flex items-center gap-2 border-b border-zinc-200 py-2 dark:border-zinc-800"
+          >
+            {editingId === cat.id ? (
+              <>
+                <input
+                  type="text"
+                  value={editName}
+                  onChange={(e) => setEditName(e.target.value)}
+                  className="rounded border px-2 py-1"
+                  autoFocus
+                />
+                <button
+                  onClick={() => handleUpdateCategory(cat.id)}
+                  className="rounded bg-green-600 px-2 py-1 text-xs text-white"
+                >
+                  Save
+                </button>
+                <button
+                  onClick={() => setEditingId(null)}
+                  className="rounded bg-zinc-300 px-2 py-1 text-xs"
+                >
+                  Cancel
+                </button>
+              </>
+            ) : (
+              <>
+                <span className="font-mono">{cat.name}</span>
+                <span className="text-xs text-zinc-500">({cat.slug})</span>
+                <div className="ml-auto flex gap-1">
+                  <button
+                    onClick={() => startEditing(cat)}
+                    className="rounded bg-amber-500 px-2 py-1 text-xs text-white"
+                    title="Edit category"
+                  >
+                    Edit
+                  </button>
+                  <button
+                    onClick={() => startDeleteConfirmation(cat)}
+                    className="rounded bg-red-600 px-2 py-1 text-xs text-white"
+                    title="Delete category"
+                    disabled={checkingCategory}
+                  >
+                    {'Delete'}
+                  </button>
+                </div>
+              </>
+            )}
+          </li>
+        ))}
+      </ul>
+    );
+  }, [categories, editingId, editName, loading, checkingCategory]);
+
   return (
     <section className="p-8">
       <h2 className="mb-4 text-xl font-bold">Manage Categories</h2>
@@ -187,7 +276,7 @@ export default function AdminCategories() {
           name="name"
           placeholder="Category name"
           required
-          className="rounded border px-2 py-1"
+          className="rounded border border-zinc-300 bg-zinc-100 px-2 py-1 dark:border-zinc-500 dark:bg-zinc-700"
           disabled={loading}
         />
         <button
@@ -199,68 +288,8 @@ export default function AdminCategories() {
         </button>
       </form>
 
-      {loading && <p className="text-zinc-500">Loading...</p>}
-
-      {!loading && categories.length === 0 ? (
-        <p className="text-zinc-500">
-          No categories have been created yet. Try adding one.
-        </p>
-      ) : (
-        <ul className="text-dark dark:text-light">
-          {categories.map((cat) => (
-            <li
-              key={cat.id}
-              className="flex items-center gap-2 border-b border-zinc-200 py-2 dark:border-zinc-800"
-            >
-              {editingId === cat.id ? (
-                <>
-                  <input
-                    type="text"
-                    value={editName}
-                    onChange={(e) => setEditName(e.target.value)}
-                    className="rounded border px-2 py-1"
-                    autoFocus
-                  />
-                  <button
-                    onClick={() => handleUpdateCategory(cat.id)}
-                    className="rounded bg-green-600 px-2 py-1 text-xs text-white"
-                  >
-                    Save
-                  </button>
-                  <button
-                    onClick={() => setEditingId(null)}
-                    className="rounded bg-zinc-300 px-2 py-1 text-xs"
-                  >
-                    Cancel
-                  </button>
-                </>
-              ) : (
-                <>
-                  <span className="font-mono">{cat.name}</span>
-                  <span className="text-xs text-zinc-500">({cat.slug})</span>
-                  <div className="ml-auto flex gap-1">
-                    <button
-                      onClick={() => startEditing(cat)}
-                      className="rounded bg-amber-500 px-2 py-1 text-xs text-white"
-                      title="Edit category"
-                    >
-                      Edit
-                    </button>
-                    <button
-                      onClick={() => startDeleteConfirmation(cat)}
-                      className="rounded bg-red-600 px-2 py-1 text-xs text-white"
-                      title="Delete category"
-                      disabled={checkingCategory}
-                    >
-                      {'Delete'}
-                    </button>
-                  </div>
-                </>
-              )}
-            </li>
-          ))}
-        </ul>
-      )}
+      {/* Use a min-height container to prevent layout shifts */}
+      <div className="min-h-[200px]">{categoriesList}</div>
 
       <Modal
         isOpen={showDeleteModal}
