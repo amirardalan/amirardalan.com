@@ -354,7 +354,7 @@ export default function AdminCategories() {
             onChange={(e) => setNewCategoryName(e.target.value)}
             placeholder="Category name"
             required
-            className="rounded border border-zinc-300 bg-zinc-100 px-2 text-dark dark:border-zinc-500 dark:bg-zinc-700 dark:text-light"
+            className="rounded border border-none bg-transparent px-2 text-dark outline-none dark:text-light"
             disabled={loading}
             autoFocus
             onBlur={() => {
