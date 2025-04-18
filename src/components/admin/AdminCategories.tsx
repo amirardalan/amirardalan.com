@@ -246,7 +246,7 @@ export default function AdminCategories() {
                     className="h-6 w-6"
                     title="Edit category"
                   >
-                    <IconEdit />
+                    <IconEdit color="var(--color-accent)" />
                   </button>
                   <button
                     onClick={() => startDeleteConfirmation(cat)}
@@ -254,7 +254,7 @@ export default function AdminCategories() {
                     title="Delete category"
                     disabled={checkingCategory}
                   >
-                    <IconDelete />
+                    <IconDelete color="var(--color-accent)" />
                   </button>
                 </div>
               </>

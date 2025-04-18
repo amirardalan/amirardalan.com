@@ -11,6 +11,7 @@
   /* Colors */
   --color-light: oklch(0.985 0 0);
   --color-dark: oklch(0.141 0.005 285.823);
+  --color-accent: oklch(0.442 0.017 285.786);
   --color-primary: oklch(56.13% 0.2417 261.86);
   --color-primary-dark: oklch(89.6% 0.152531 196.844);
   --color-selection-text: var(--color-light);
@@ -56,6 +57,7 @@
       background-color: var(--color-dark);
       --color-dynamic: var(--color-light);
       --color-dynamic-inverse: var(--color-dark);
+      --color-accent: oklch(0.37 0.013 285.805);
       --color-primary: var(--color-primary-dark);
       --color-selection-text: oklch(0.141 0.005 285.823);
       --color-gradient: linear-gradient(
