@@ -38,10 +38,11 @@ export async function POST(req: Request) {
 
     const postId = await dbCreatePost(postData);
 
-    // If published, revalidate blog-list and blog-post:{slug}
+    // If published, revalidate blog-list, blog-post:{slug}, and sitemap
     if (postData.published) {
       await revalidateTag('blog-list');
       await revalidateTag(`blog-post:${postData.slug}`);
+      await revalidateTag('sitemap');
     }
 
     return NextResponse.json({ id: postId }, { status: 201 });
@@ -92,12 +93,15 @@ export async function PUT(req: Request) {
       );
     }
 
-    // Ensure boolean values are handled correctly
+    // Ensure boolean values are handled correctly and category_id is properly processed
     const updateData = {
       ...postData,
       published: postData.published === true,
       featured: postData.featured === true,
       show_updated: postData.show_updated === true,
+      // Explicitly handle category_id to make sure null is sent as null, not undefined
+      category_id:
+        postData.category_id !== undefined ? postData.category_id : null,
     };
 
     const result = await dbUpdatePost(parseInt(id, 10), updateData);
@@ -109,6 +113,7 @@ export async function PUT(req: Request) {
       if (result.newSlug && result.newSlug !== result.oldSlug) {
         await revalidateTag(`blog-post:${result.newSlug}`);
       }
+      await revalidateTag('sitemap');
     }
 
     return NextResponse.json(result, { status: 200 });
@@ -153,6 +158,7 @@ export async function DELETE(req: Request) {
     if (result.wasPublished) {
       await revalidateTag('blog-list');
       await revalidateTag(`blog-post:${result.slug}`);
+      await revalidateTag('sitemap');
     }
 
     return NextResponse.json(result, { status: 200 });

@@ -5,7 +5,6 @@ interface CategoryData {
   slug: string;
 }
 
-// Client-side API calls to interact with categories
 export async function getCategories(): Promise<Category[]> {
   try {
     const response = await fetch('/api/categories');
@@ -17,11 +16,10 @@ export async function getCategories(): Promise<Category[]> {
     return response.json();
   } catch (error) {
     console.error('Error fetching categories:', error);
-    throw error; // Re-throw to let the component handle the error
+    throw error;
   }
 }
 
-// Create a new category
 export async function createCategory(categoryData: CategoryData) {
   const response = await fetch('/api/categories', {
     method: 'POST',
@@ -39,7 +37,6 @@ export async function createCategory(categoryData: CategoryData) {
   return response.json();
 }
 
-// Update an existing category
 export async function updateCategory(
   categoryId: number,
   categoryData: Partial<CategoryData>
@@ -60,7 +57,6 @@ export async function updateCategory(
   return response.json();
 }
 
-// Delete a category
 export async function deleteCategory(categoryId: number) {
   const response = await fetch(`/api/categories/${categoryId}`, {
     method: 'DELETE',
@@ -69,7 +65,6 @@ export async function deleteCategory(categoryId: number) {
   if (!response.ok) {
     const errorData = await response.json().catch(() => null);
 
-    // Pass along the specific error message from the server
     if (errorData?.error) {
       throw new Error(errorData.error);
     }
@@ -80,7 +75,6 @@ export async function deleteCategory(categoryId: number) {
   return response.json();
 }
 
-// Check if a category is used by posts
 export async function isCategoryInUse(categoryId: number): Promise<boolean> {
   try {
     const response = await fetch(`/api/categories/${categoryId}/check-usage`);

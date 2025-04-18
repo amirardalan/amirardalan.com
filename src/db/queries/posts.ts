@@ -157,6 +157,18 @@ export async function getAdjacentPosts(slug: string) {
   };
 }
 
+// Get posts by category ID
+export async function getPostsByCategoryId(categoryId: number) {
+  return db
+    .select({
+      id: posts.id,
+      slug: posts.slug,
+      published: posts.published,
+    })
+    .from(posts)
+    .where(eq(posts.category_id, categoryId));
+}
+
 // Database operation to create a new post
 export async function dbCreatePost(postData: Omit<BlogPost, 'id'>) {
   const result = await db
@@ -198,20 +210,25 @@ export async function dbUpdatePost(id: number, postData: Partial<BlogPost>) {
       .where(eq(posts.featured, true));
   }
 
-  await db
-    .update(posts)
-    .set({
-      title: postData.title,
-      slug: postData.slug,
-      excerpt: postData.excerpt,
-      content: postData.content,
-      category_id: postData.category_id ?? null, // <-- use category_id
-      published: postData.published,
-      show_updated: postData.show_updated ?? false,
-      updated_at: new Date(),
-      featured: postData.featured,
-    })
-    .where(eq(posts.id, id));
+  // Prepare the update object with proper handling of category_id
+  const updateObject: any = {
+    title: postData.title,
+    slug: postData.slug,
+    excerpt: postData.excerpt,
+    content: postData.content,
+    published: postData.published,
+    show_updated: postData.show_updated ?? false,
+    updated_at: new Date(),
+    featured: postData.featured,
+  };
+
+  // Only include category_id if it's part of the update data
+  // This ensures we don't overwrite it with null unless that's the intent
+  if ('category_id' in postData) {
+    updateObject.category_id = postData.category_id;
+  }
+
+  await db.update(posts).set(updateObject).where(eq(posts.id, id));
 
   return {
     wasPublished,
