@@ -249,7 +249,7 @@ export default function AdminCategories() {
                       title="Delete category"
                       disabled={checkingCategory}
                     >
-                      {checkingCategory ? 'Checking...' : 'Delete'}
+                      {'Delete'}
                     </button>
                   </div>
                 </>
