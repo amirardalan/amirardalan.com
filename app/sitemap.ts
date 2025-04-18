@@ -44,14 +44,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }));
 
-  // Generate category page entries
-  const categoryEntries = categories.map((category) => ({
-    url: `${NEXT_PUBLIC_URL}/blog/category/${category.slug}`,
-    lastModified: new Date(category.updated_at || category.created_at),
-    changeFrequency: 'monthly' as const,
-    priority: 0.6,
-  }));
-
   // Return combined sitemap
-  return [...baseEntries, ...blogPostEntries, ...categoryEntries];
+  return [...baseEntries, ...blogPostEntries];
 }

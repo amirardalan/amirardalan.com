@@ -2,8 +2,8 @@ export type Category = {
   id: number;
   name: string;
   slug: string;
-  created_at: Date;
-  updated_at: Date;
+  created_at?: Date;
+  updated_at?: Date;
 };
 
 export type BlogPost = {
