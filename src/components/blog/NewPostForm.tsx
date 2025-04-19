@@ -6,6 +6,7 @@ import { createPost } from '@/services/post-service';
 import { getCategories } from '@/services/category-service';
 import { useToast } from '@/components/ui/ToastContext';
 import { useImageInsertion } from '@/hooks/useImageInsertion';
+import { useUnsavedChanges } from '@/hooks/useUnsavedChanges';
 import { Category } from '@/types/blog';
 
 import PostFormFields from '@/components/blog/PostFormFields';
@@ -13,7 +14,6 @@ import Button from '@/components/ui/Button';
 import Modal from '@/components/ui/Modal';
 import MediaGallery from '@/components/blog/MediaGallery';
 import PostFormControls from '@/components/blog/PostFormControls';
-import UnsavedChangesHandler from '@/components/ui/UnsavedChangesHandler';
 
 interface NewPostFormProps {
   userId: number;
@@ -129,6 +129,15 @@ export default function NewPostForm({
   }, [clearForm]);
 
   const {
+    showUnsavedChangesModal,
+    handleConfirmNavigation,
+    handleCancelNavigation,
+  } = useUnsavedChanges({
+    hasUnsavedChanges,
+    onDiscard: discardChanges,
+  });
+
+  const {
     textareaRef,
     cursorPosition,
     handleTextAreaSelect,
@@ -221,9 +230,13 @@ export default function NewPostForm({
         confirmText="Discard"
       />
 
-      <UnsavedChangesHandler
-        hasUnsavedChanges={hasUnsavedChanges}
-        onDiscard={discardChanges}
+      <Modal
+        isOpen={showUnsavedChangesModal}
+        title="Unsaved Changes"
+        message="You have unsaved changes. Are you sure you want to leave this page?"
+        onCancel={handleCancelNavigation}
+        onConfirm={handleConfirmNavigation}
+        confirmText="Leave Page"
       />
     </>
   );
