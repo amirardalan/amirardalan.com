@@ -13,6 +13,7 @@ import Container from '@/components/content/Container';
 import Link from 'next/link';
 
 import ClientLikeCount from '@/components/blog/ClientLikeCount';
+import ClientViewCount from '@/components/blog/ClientViewCount';
 import BlogSupport from '@/components/blog/BlogSupport';
 import SocialActions from '@/components/blog/SocialActions';
 import AdjacentPostNavigation from '@/components/blog/AdjacentPostNavigation';
@@ -154,7 +155,9 @@ export default async function BlogPost({
             </p>
           </span>
           <span className="mx-4 w-full border-t-[1px] border-zinc-300 dark:border-zinc-700"></span>
-          <span className="whitespace-nowrap text-xxs uppercase">
+          <span className="flex items-center whitespace-nowrap text-xxs uppercase">
+            <ClientViewCount route={`/blog/${post.slug}`} />
+            <span className="mx-2 text-zinc-500 dark:text-zinc-400">•</span>
             <ClientLikeCount postId={post.id} />
           </span>
         </div>
