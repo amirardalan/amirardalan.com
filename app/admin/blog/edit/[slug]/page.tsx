@@ -45,7 +45,7 @@ export default async function EditBlogPost({
   }
 
   return (
-    <div className="mt-8">
+    <>
       <div className="mx-10">
         <AdminPageHeading title={'Edit Post'} />
       </div>
@@ -56,7 +56,7 @@ export default async function EditBlogPost({
           featured: !!post.featured,
         }}
       />
-    </div>
+    </>
   );
 }
 
