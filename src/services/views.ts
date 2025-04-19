@@ -6,7 +6,8 @@ const POSTHOG_API_HOST =
   process.env.POSTHOG_API_HOST || 'https://app.posthog.com';
 
 function buildPostHogUrl(route: string) {
-  return `${POSTHOG_API_HOST}/api/projects/${POSTHOG_PROJECT_ID}/query/`;
+  const encodedRoute = encodeURIComponent(route);
+  return `${POSTHOG_API_HOST}/api/projects/${POSTHOG_PROJECT_ID}/query/?route=${encodedRoute}`;
 }
 
 async function fetchPageviewsFromPostHog(route: string): Promise<number> {
