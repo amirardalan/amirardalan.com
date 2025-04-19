@@ -32,29 +32,51 @@ Then, set up your [GitHub oAuth App](https://authjs.dev/getting-started/provider
 
 ```
 // .env.local
-NEXT_PUBLIC_URL=http://localhost:3000
-NEXT_PUBLIC_TIMEZONE=America/Los_Angeles
 
-AUTH_SECRET=<Next Auth Secret>
-AUTH_TRUST_HOST=NEXT_PUBLIC_URL
-AUTH_GITHUB_ID=<GitHub Client ID>
-AUTH_GITHUB_SECRET=<GitHub Client Secret>
-ALLOWED_EMAILS=you@example.com,team@example.com
-ALLOWED_EMAIL_DOMAINS=example.com,test.com
+# Set for each environment
+NEXT_PUBLIC_URL="http://localhost:3000"
 
-DB_URL=<Supabase Transaction Pooler URL>
-DB_API_KEY=<Supabase API Key>
-KV_REST_API_TOKEN=<Upstash KV API Token>
-KV_REST_API_URL=<Upstash KV REST API URL>
-ENABLE_DEV_CACHE=true //cache redis for dev
+# Set your timezone
+NEXT_PUBLIC_TIMEZONE="America/Los_Angeles"
 
-NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=<Cloudinary Cloud Name>
-CLOUDINARY_URL=<Cloudinary URL>
-CLOUDINARY_API_KEY=<Cloudinary API Key>
-CLOUDINARY_API_SECRET=<Cloudinary API Secret>
+# Resume Link (redirect in next.config.ts)
+RESUME_URL=<your-resume-url>
 
-NEXT_PUBLIC_POSTHOG_KEY=<Your PostHog Key>
-NEXT_PUBLIC_POSTHOG_HOST=<Your PostHog Host>
+# Auth.js
+AUTH_SECRET=<your-auth-secret>
+AUTH_TRUST_HOST="NEXT_PUBLIC_URL"
+
+# GitHub OAuth
+AUTH_GITHUB_ID=<your-github-client-id>
+AUTH_GITHUB_SECRET=<your-github-client-secret>
+
+# Email verification (CMS Users)
+ALLOWED_EMAILS=<you@email.com, other@email.com>
+ALLOWED_EMAIL_DOMAINS=<gmail.com, your-domain.com>
+
+# Supabase (CMS Database)
+DB_URL=<your-supabase-transaction-pooler-url>
+DB_API_KEY=<your-supabase-api-key>
+
+# Cloudinary (CMS Media Gallery)
+NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=<your-cloudinary-cloud-name>
+CLOUDINARY_URL=<your-cloudinary-url>
+CLOUDINARY_API_KEY=<your-cloudinary-api-key>
+CLOUDINARY_API_SECRET=<your-cloudinary-api-secret>
+
+# PostHog (Analytics)
+NEXT_PUBLIC_POSTHOG_KEY=<your-posthog-key>
+NEXT_PUBLIC_POSTHOG_HOST=<your-posthog-host>
+POSTHOG_API_KEY=<your-posthog-api-key>
+POSTHOG_PROJECT_ID=<your-posthog-project-id>
+
+# Upstash/Redis (Blog Likes)
+ENABLE_DEV_CACHE="true"
+KV_URL=<your-upstash-kv-url>
+KV_REST_API_READ_ONLY_TOKEN=<your-kv-rest-api-read-only-token>
+REDIS_URL=<your-redis-url>
+KV_REST_API_TOKEN=<your-kv-rest-api-token>
+KV_REST_API_URL=<your-kv-rest-api-url>
 ```
 
 And finally, generate a Next Auth secret which will automatically overwrite the placeholder in the `.env.local` file:
