@@ -3,6 +3,8 @@ import Logo from '@/components/ui/Logo';
 import { getCachedPageviews } from '@/services/views';
 import { formatCount } from '@/utils/format-count';
 
+export const dynamic = 'force-dynamic';
+
 export default async function Footer() {
   const views = await getCachedPageviews('/');
   const formattedViews = formatCount(views);

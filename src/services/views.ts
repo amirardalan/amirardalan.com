@@ -29,9 +29,6 @@ async function fetchPageviewsFromPostHog(route: string): Promise<number> {
   };
 
   const url = buildPostHogUrl(route);
-  console.log(
-    `Fetching PostHog pageviews for route: ${route} from URL: ${url}`
-  );
 
   try {
     const res = await fetch(url, {
@@ -45,7 +42,6 @@ async function fetchPageviewsFromPostHog(route: string): Promise<number> {
     });
 
     const responseText = await res.text();
-    console.log(`PostHog response status for ${route}: ${res.status}`);
 
     if (!res.ok) {
       console.error(
@@ -55,15 +51,11 @@ async function fetchPageviewsFromPostHog(route: string): Promise<number> {
       return 0;
     }
 
-    console.log(`PostHog response body for ${route}:`, responseText);
-
-    const data = JSON.parse(responseText); // Parse the text
+    const data = JSON.parse(responseText);
     if (!data?.results) {
       console.warn(`PostHog API returned no results for ${route}:`, data);
       return 0;
     }
-
-    console.log(`PostHog results for ${route}:`, data.results);
 
     const resultRow = data.results[0];
     let views = 0;
@@ -73,7 +65,6 @@ async function fetchPageviewsFromPostHog(route: string): Promise<number> {
       views = resultRow.views ?? 0;
     }
 
-    console.log(`Parsed views for ${route}: ${views}`);
     return views;
   } catch (err) {
     console.error(`Error fetching PostHog pageviews for ${route}:`, err);

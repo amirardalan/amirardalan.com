@@ -13,15 +13,12 @@ export async function GET(req: NextRequest) {
   }
 
   try {
-    console.log(`API route fetching views for: ${route}`);
     const views = await getCachedPageviews(route);
-    console.log(`API route successfully fetched views for ${route}: ${views}`);
 
     return NextResponse.json({ route, views });
   } catch (error) {
     console.error(`API route error fetching pageviews for ${route}:`, error);
     if (isLocalDev) {
-      console.warn(`API route fallback for ${route} in local dev.`);
       return NextResponse.json({ route: route, views: 0 });
     }
     return NextResponse.json(
