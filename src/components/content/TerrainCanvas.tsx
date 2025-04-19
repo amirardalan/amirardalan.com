@@ -207,6 +207,7 @@ export default function TerrainCanvas() {
         id="three-canvas"
         onClick={randomizeTerrain}
         className="animate-fade-in-bottom absolute z-0 m-0 block h-screen w-screen cursor-pointer overflow-hidden border-none bg-transparent p-0 outline-none md:bottom-0"
+        aria-label="Randomize terrain"
       >
         <Canvas
           gl={{ antialias: true }}
