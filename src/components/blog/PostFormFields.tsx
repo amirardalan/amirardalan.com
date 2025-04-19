@@ -156,7 +156,7 @@ export default function PostFormFields({
                 ? 'Loading categories...'
                 : categories.length === 0
                   ? 'No categories available'
-                  : 'Select category'}
+                  : 'uncategorized'}
             </option>
             {categories.map((cat) => (
               <option key={cat.id} value={cat.id}>
