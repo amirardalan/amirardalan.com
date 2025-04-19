@@ -28,36 +28,53 @@ async function fetchPageviewsFromPostHog(route: string): Promise<number> {
     },
   };
 
+  const url = buildPostHogUrl(route);
+  console.log(
+    `Fetching PostHog pageviews for route: ${route} from URL: ${url}`
+  );
+
   try {
-    const res = await fetch(buildPostHogUrl(route), {
+    const res = await fetch(url, {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${POSTHOG_API_KEY}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(query),
-      next: { revalidate: 3600 }, // Revalidate fetch every 1 hour
+      next: { revalidate: 3600 },
     });
 
+    const responseText = await res.text();
+    console.log(`PostHog response status for ${route}: ${res.status}`);
+
     if (!res.ok) {
-      const text = await res.text();
-      console.error('PostHog API error:', res.status, text);
+      console.error(
+        `PostHog API error for ${route}: ${res.status}`,
+        responseText
+      );
       return 0;
     }
 
-    const data = await res.json();
+    console.log(`PostHog response body for ${route}:`, responseText);
+
+    const data = JSON.parse(responseText); // Parse the text
     if (!data?.results) {
       console.warn(`PostHog API returned no results for ${route}:`, data);
       return 0;
     }
 
+    console.log(`PostHog results for ${route}:`, data.results);
+
     const resultRow = data.results[0];
+    let views = 0;
     if (Array.isArray(resultRow)) {
-      return resultRow[0] ?? 0;
+      views = resultRow[0] ?? 0;
     } else if (typeof resultRow === 'object' && resultRow !== null) {
-      return resultRow.views ?? 0;
+      views = resultRow.views ?? 0;
     }
-    return 0;
+
+    console.log(`Parsed views for ${route}: ${views}`);
+    return views;
   } catch (err) {
     console.error(`Error fetching PostHog pageviews for ${route}:`, err);
     return 0;
