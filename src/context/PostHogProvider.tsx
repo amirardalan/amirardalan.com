@@ -5,20 +5,24 @@ import { PostHogProvider as PHProvider } from 'posthog-js/react';
 import { useEffect } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
 
-// Only initialize PostHog on the client side
 if (typeof window !== 'undefined') {
   posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY!, {
     api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST,
-    capture_pageview: false, // We'll handle this manually
+    capture_pageview: false,
     capture_pageleave: true,
-    disable_session_recording: process.env.NODE_ENV === 'development',
+    // Disable in dev/preview environments
+    disable_session_recording:
+      process.env.NODE_ENV === 'development' ||
+      process.env.NEXT_PUBLIC_VERCEL_ENV === 'preview',
     loaded: (posthog) => {
-      // Disable capturing in development
-      if (process.env.NODE_ENV === 'development') {
+      if (
+        process.env.NODE_ENV === 'development' ||
+        process.env.NEXT_PUBLIC_VERCEL_ENV === 'preview'
+      ) {
         posthog.opt_out_capturing();
       }
 
-      // Disable capturing in admin routes
+      // Disable in admin routes
       if (window.location.pathname.startsWith('/admin')) {
         posthog.opt_out_capturing();
       }
@@ -29,15 +33,16 @@ if (typeof window !== 'undefined') {
 export function PostHogProvider({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
 
-  // Opt out of tracking when in admin section
+  // Disable in admin routes
   useEffect(() => {
     if (pathname?.startsWith('/admin')) {
       posthog.opt_out_capturing();
-    } else {
-      // Only opt in if we're not in development
-      if (process.env.NODE_ENV !== 'development') {
-        posthog.opt_in_capturing();
-      }
+    } else if (
+      process.env.NODE_ENV !== 'development' &&
+      process.env.NEXT_PUBLIC_VERCEL_ENV !== 'preview'
+    ) {
+      // Enable in Prod
+      posthog.opt_in_capturing();
     }
   }, [pathname]);
 

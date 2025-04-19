@@ -16,6 +16,14 @@ export function createServerPostHogClient() {
     return null;
   }
 
+  // Don't track in development or preview environments
+  if (
+    process.env.NODE_ENV === 'development' ||
+    process.env.NEXT_PUBLIC_VERCEL_ENV === 'preview'
+  ) {
+    return null;
+  }
+
   return new PostHog(process.env.NEXT_PUBLIC_POSTHOG_KEY, {
     host: process.env.NEXT_PUBLIC_POSTHOG_HOST,
     flushAt: 1,
