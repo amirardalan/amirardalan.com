@@ -5,15 +5,16 @@ import { PostHogProvider as PHProvider } from 'posthog-js/react';
 import { useEffect } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
 
+const disableSessionRecording =
+  process.env.NODE_ENV === 'development' ||
+  process.env.NEXT_PUBLIC_VERCEL_ENV === 'preview';
+
 if (typeof window !== 'undefined') {
   posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY!, {
     api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST,
     capture_pageview: false,
     capture_pageleave: true,
-    // Disable in dev/preview environments
-    disable_session_recording:
-      process.env.NODE_ENV === 'development' ||
-      process.env.NEXT_PUBLIC_VERCEL_ENV === 'preview',
+    disable_session_recording: disableSessionRecording,
     loaded: (posthog) => {
       if (
         process.env.NODE_ENV === 'development' ||
@@ -21,8 +22,6 @@ if (typeof window !== 'undefined') {
       ) {
         posthog.opt_out_capturing();
       }
-
-      // Disable in admin routes
       if (window.location.pathname.startsWith('/admin')) {
         posthog.opt_out_capturing();
       }
