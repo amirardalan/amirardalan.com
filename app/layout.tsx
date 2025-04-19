@@ -75,10 +75,6 @@ export default async function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   const theme = await getTheme();
   const session = await auth();
-  const pathname = (await headers()).get('x-next-pathname') as string;
-
-  // Determine if this is an admin route
-  const isAdminRoute = pathname?.startsWith('/admin') || false;
 
   return (
     <AuthProvider session={session}>
@@ -97,21 +93,13 @@ export default async function RootLayout({
             'dark:bg-dark': theme === 'dark' || !theme,
           })}
         >
-          {isAdminRoute ? (
+          <PostHogProvider>
             <div className="flex min-h-screen flex-col">
               <Header />
               <main className="flex flex-1 flex-grow">{children}</main>
               <Footer />
             </div>
-          ) : (
-            <PostHogProvider>
-              <div className="flex min-h-screen flex-col">
-                <Header />
-                <main className="flex flex-1 flex-grow">{children}</main>
-                <Footer />
-              </div>
-            </PostHogProvider>
-          )}
+          </PostHogProvider>
           <MobileNavigation />
         </body>
       </html>

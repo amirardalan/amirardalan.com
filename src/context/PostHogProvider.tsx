@@ -1,68 +1,83 @@
 'use client';
 
 import posthog from 'posthog-js';
-import { PostHogProvider as PHProvider, usePostHog } from 'posthog-js/react';
-import { useEffect, Suspense } from 'react';
+import { PostHogProvider as PHProvider } from 'posthog-js/react';
+import { useEffect } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
 
+// Only initialize PostHog on the client side
+if (typeof window !== 'undefined') {
+  posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY!, {
+    api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST,
+    capture_pageview: false, // We'll handle this manually
+    capture_pageleave: true,
+    disable_session_recording: process.env.NODE_ENV === 'development',
+    loaded: (posthog) => {
+      // Disable capturing in development
+      if (process.env.NODE_ENV === 'development') {
+        posthog.opt_out_capturing();
+      }
+
+      // Disable capturing in admin routes
+      if (window.location.pathname.startsWith('/admin')) {
+        posthog.opt_out_capturing();
+      }
+    },
+  });
+}
+
 export function PostHogProvider({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
+
+  // Opt out of tracking when in admin section
   useEffect(() => {
-    posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY!, {
-      api_host: '/ingest',
-      ui_host: process.env.NEXT_PUBLIC_POSTHOG_HOST!,
-      capture_pageview: false,
-      capture_pageleave: true,
-      loaded: function (ph) {
-        if (
-          process.env.NODE_ENV === 'development' ||
-          process.env.NEXT_PUBLIC_VERCEL_ENV === 'preview'
-        ) {
-          ph.opt_out_capturing();
-          ph.set_config({ disable_session_recording: true });
-          console.log(
-            'PostHog tracking disabled in development/preview environment'
-          );
-        }
-      },
-    });
-  }, []);
+    if (pathname?.startsWith('/admin')) {
+      posthog.opt_out_capturing();
+    } else {
+      // Only opt in if we're not in development
+      if (process.env.NODE_ENV !== 'development') {
+        posthog.opt_in_capturing();
+      }
+    }
+  }, [pathname]);
 
   return (
     <PHProvider client={posthog}>
-      <SuspendedPostHogPageView />
+      <PostHogPageViewTracker />
       {children}
     </PHProvider>
   );
 }
 
-function PostHogPageView() {
+function PostHogPageViewTracker() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const posthog = usePostHog();
 
   useEffect(() => {
-    if (pathname && posthog) {
-      let url = window.origin + pathname;
-      const search = searchParams?.toString();
-      if (search) {
-        url += '?' + search;
+    if (pathname) {
+      // Check if we're in admin section
+      if (pathname.startsWith('/admin')) {
+        return;
       }
 
-      // Enhanced pageview with additional properties
+      let url = window.origin + pathname;
+      if (searchParams?.toString()) {
+        url += `?${searchParams.toString()}`;
+      }
+
+      // Send pageview
       posthog.capture('$pageview', {
         $current_url: url,
         path: pathname,
         route_pattern: getRoutePattern(pathname),
-        search_params: Object.fromEntries(searchParams?.entries() || []),
-        referrer: document.referrer || null,
       });
     }
-  }, [pathname, searchParams, posthog]);
+  }, [pathname, searchParams]);
 
   return null;
 }
 
-// Helper to normalize route patterns (e.g., converts /blog/[slug] to /blog/:slug)
+// Helper to normalize route patterns
 function getRoutePattern(pathname: string): string {
   // Handle common dynamic routes
   if (pathname.startsWith('/blog/') && pathname !== '/blog') {
@@ -70,12 +85,4 @@ function getRoutePattern(pathname: string): string {
   }
   // Add more route pattern normalizations as needed
   return pathname;
-}
-
-function SuspendedPostHogPageView() {
-  return (
-    <Suspense fallback={null}>
-      <PostHogPageView />
-    </Suspense>
-  );
 }

@@ -1,5 +1,5 @@
 import { PostHog } from 'posthog-node';
-import posthogJs from 'posthog-js';
+import posthog from 'posthog-js';
 
 // Helper to determine if we're in admin section
 function isInAdminSection(): boolean {
@@ -10,13 +10,17 @@ function isInAdminSection(): boolean {
 }
 
 // Server-side PostHog client
-export default function PostHogClient() {
-  const posthogClient = new PostHog(process.env.NEXT_PUBLIC_POSTHOG_KEY!, {
+export function createServerPostHogClient() {
+  if (!process.env.NEXT_PUBLIC_POSTHOG_KEY) {
+    console.warn('PostHog API key not found');
+    return null;
+  }
+
+  return new PostHog(process.env.NEXT_PUBLIC_POSTHOG_KEY, {
     host: process.env.NEXT_PUBLIC_POSTHOG_HOST,
     flushAt: 1,
     flushInterval: 0,
   });
-  return posthogClient;
 }
 
 // Types for better intellisense and type checking
@@ -27,7 +31,7 @@ type EventProperties = Record<string, any>;
  */
 export function trackEvent(eventName: string, properties?: EventProperties) {
   if (typeof window !== 'undefined' && !isInAdminSection()) {
-    posthogJs.capture(eventName, properties);
+    posthog.capture(eventName, properties);
   }
 }
 
@@ -36,7 +40,7 @@ export function trackEvent(eventName: string, properties?: EventProperties) {
  */
 export function identifyUser(userId: string, properties?: Record<string, any>) {
   if (typeof window !== 'undefined' && !isInAdminSection()) {
-    posthogJs.identify(userId, properties);
+    posthog.identify(userId, properties);
   }
 }
 
@@ -45,7 +49,7 @@ export function identifyUser(userId: string, properties?: Record<string, any>) {
  */
 export function resetUserIdentity() {
   if (typeof window !== 'undefined') {
-    posthogJs.reset();
+    posthog.reset();
   }
 }
 
@@ -85,9 +89,9 @@ export function trackFormSubmission(
 export function setTrackingEnabled(enabled: boolean) {
   if (typeof window !== 'undefined') {
     if (enabled) {
-      posthogJs.opt_in_capturing();
+      posthog.opt_in_capturing();
     } else {
-      posthogJs.opt_out_capturing();
+      posthog.opt_out_capturing();
     }
   }
 }
