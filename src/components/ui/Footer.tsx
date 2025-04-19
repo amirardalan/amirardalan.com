@@ -4,7 +4,6 @@ import { getPageviews } from '@/src/services/views';
 
 export default async function Footer() {
   const views = await getPageviews('/');
-  console.log('Views received in Footer:', views); // Add this log
 
   return (
     <footer
@@ -18,9 +17,9 @@ export default async function Footer() {
         <Logo size={20} inverted />
         <span className="ml-4">amir.sh</span>
         <span
-          className="ml-4 text-xs text-zinc-200 dark:text-zinc-700"
-          title="Total site pageviews"
-          aria-label="Total site pageviews"
+          className="ml-4 text-xs font-bold text-zinc-200 dark:text-zinc-700"
+          title="Views since April 2025"
+          aria-label="Views since April 2025"
         >
           {views.toLocaleString()} views
         </span>

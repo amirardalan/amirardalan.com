@@ -51,7 +51,6 @@ export async function getPageviews(route: string): Promise<number> {
     }
 
     const data = await res.json();
-    console.log(`PostHog views for ${route}:`, data); // Log specific query result
     if (!data?.results) {
       console.warn(`PostHog API returned no results for ${route}:`, data);
       return 0;

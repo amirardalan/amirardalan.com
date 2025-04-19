@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import { formatCount } from '@/utils/format-count';
 
 interface LikeCountProps {
   count: number;
@@ -9,16 +10,7 @@ export default function LikeCount({
   count,
   isLoading = false,
 }: LikeCountProps) {
-  const formatLikesCount = (count: number): string => {
-    if (count >= 1000000) {
-      return `${(count / 1000000).toFixed(count >= 10000000 ? 0 : 1)}M`;
-    } else if (count >= 1000) {
-      return `${(count / 1000).toFixed(count >= 10000 ? 0 : 1)}K`;
-    }
-    return count.toString();
-  };
-
-  const formattedCount = formatLikesCount(count);
+  const formattedCount = formatCount(count);
   const likesText = count === 1 ? 'Like' : 'Likes';
 
   // Dynamic loading skeleton widths
