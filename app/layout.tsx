@@ -37,17 +37,21 @@ const mono = JetBrains_Mono({
 export async function generateMetadata(): Promise<Metadata> {
   const pathname = (await headers()).get('x-next-pathname') as string;
 
-  let title = '';
-  if (pathname === '/') {
-    title = 'Amir Ardalan — Fullstack Engineer & UI/UX Designer';
-  } else if (pathname && pathname.startsWith('/blog/')) {
-    const slug = pathname.split('/blog/')[1];
-    title = `${slug.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase())} — Amir Ardalan`;
-  } else if (pathname && pathname.length > 1) {
-    title = `${pathname.slice(1).charAt(0).toUpperCase()}${pathname.slice(2)} — Amir Ardalan`;
-  } else {
-    title = 'Amir Ardalan — Fullstack Engineer & UI/UX Designer';
-  }
+  const getPageTitle = (path: string): string => {
+    if (path === '/') {
+      return 'Amir Ardalan — Fullstack Engineer & UI/UX Designer';
+    }
+    if (path.startsWith('/blog/')) {
+      const slug = path.split('/blog/')[1];
+      return `${slug.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase())} — Amir Ardalan`;
+    }
+    if (path.length > 1) {
+      return `${path.slice(1).charAt(0).toUpperCase()}${path.slice(2)} — Amir Ardalan`;
+    }
+    return 'Amir Ardalan — Fullstack Engineer & UI/UX Designer';
+  };
+
+  const title = getPageTitle(pathname);
 
   return {
     metadataBase: new URL(`${process.env.NEXT_PUBLIC_URL}`),
