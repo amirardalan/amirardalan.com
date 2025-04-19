@@ -1,9 +1,11 @@
 import { NavLinks } from '@/components/ui/Navigation';
 import Logo from '@/components/ui/Logo';
-import { getPageviews } from '@/src/services/views';
+import { getCachedPageviews } from '@/services/views';
+import { formatCount } from '@/utils/format-count';
 
 export default async function Footer() {
-  const views = await getPageviews('/');
+  const views = await getCachedPageviews('/');
+  const formattedViews = formatCount(views);
 
   return (
     <footer
@@ -18,10 +20,10 @@ export default async function Footer() {
         <span className="ml-4">amir.sh</span>
         <span
           className="ml-4 text-xs font-bold text-zinc-200 dark:text-zinc-700"
-          title="Views since April 2025"
-          aria-label="Views since April 2025"
+          title="Total site pageviews"
+          aria-label="Total site pageviews"
         >
-          {views.toLocaleString()} views
+          {formattedViews} views
         </span>
       </div>
       <div className="hidden md:flex">
