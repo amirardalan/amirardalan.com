@@ -38,7 +38,19 @@ export default function AdminStats() {
     <div className="mb-4">
       <div className="rounded-lg border border-zinc-200 p-6 text-dark dark:border-zinc-700 dark:text-light">
         <h3 className="mb-3 text-lg font-medium">Blog Stats</h3>
-        {loading && <p className="text-sm text-zinc-500">Loading stats...</p>}
+        {loading && (
+          <div className="grid grid-cols-1 gap-4 text-sm md:grid-cols-3">
+            {[...Array(3)].map((_, index) => (
+              <div
+                key={index}
+                className="animate-pulse rounded border border-zinc-200 bg-zinc-100 p-3 dark:border-zinc-700 dark:bg-zinc-800"
+              >
+                <div className="mb-2 h-4 w-3/4 rounded bg-zinc-200 dark:bg-zinc-700"></div>
+                <div className="h-8 w-1/2 rounded bg-zinc-200 dark:bg-zinc-700"></div>
+              </div>
+            ))}
+          </div>
+        )}
         {error && (
           <p className="text-sm text-red-500">Error loading stats: {error}</p>
         )}
