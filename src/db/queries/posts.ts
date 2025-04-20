@@ -187,6 +187,32 @@ export async function getDraftPostsCount() {
   return result[0]?.count ?? 0;
 }
 
+// Get Post Title and Slug by ID
+export async function getPostTitleSlugById(id: number) {
+  const result = await db
+    .select({
+      title: posts.title,
+      slug: posts.slug,
+    })
+    .from(posts)
+    .where(eq(posts.id, id))
+    .limit(1);
+  return result.length ? result[0] : null;
+}
+
+// Get Post Title and Slug by Slug
+export async function getPostTitleSlugBySlug(slug: string) {
+  const result = await db
+    .select({
+      title: posts.title,
+      slug: posts.slug, // Include slug for consistency, though we already have it
+    })
+    .from(posts)
+    .where(eq(posts.slug, slug))
+    .limit(1);
+  return result.length ? result[0] : null;
+}
+
 // Database operation to create a new post
 export async function dbCreatePost(postData: Omit<BlogPost, 'id'>) {
   const result = await db

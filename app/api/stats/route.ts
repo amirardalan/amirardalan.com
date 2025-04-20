@@ -1,6 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Redis } from '@upstash/redis';
-import { getPublishedPostsCount, getDraftPostsCount } from '@/db/queries/posts';
+import {
+  getPublishedPostsCount,
+  getDraftPostsCount,
+  getPostTitleSlugById,
+} from '@/db/queries/posts';
+import { getCachedMostViewedPost } from '@/services/views'; // Import the new cached function
 import { auth } from '@/lib/auth';
 import { redirect } from 'next/navigation';
 
@@ -13,26 +18,78 @@ const redis = new Redis({
   token: process.env.KV_REST_API_TOKEN,
 });
 
+// Helper function to find the most liked post from Redis
+async function findMostLikedPost(
+  redis: Redis
+): Promise<{ title: string; slug: string; likes: number } | null> {
+  try {
+    let cursor = 0;
+    let maxLikes = -1;
+    let mostLikedPostId: number | null = null;
+
+    do {
+      const [nextCursor, keys] = await redis.scan(cursor, {
+        match: 'likes:post:*',
+        count: 100, // Adjust count as needed
+      });
+      cursor = parseInt(nextCursor, 10);
+
+      if (keys.length > 0) {
+        const values = await redis.mget<number[]>(...keys);
+        keys.forEach((key, index) => {
+          const currentLikes = values[index] ?? 0;
+          if (currentLikes > maxLikes) {
+            maxLikes = currentLikes;
+            const postIdStr = key.split(':').pop();
+            if (postIdStr) {
+              mostLikedPostId = parseInt(postIdStr, 10);
+            }
+          }
+        });
+      }
+    } while (cursor !== 0);
+
+    if (mostLikedPostId !== null && maxLikes > 0) {
+      const postDetails = await getPostTitleSlugById(mostLikedPostId);
+      if (postDetails) {
+        return { ...postDetails, likes: maxLikes };
+      }
+    }
+    return null;
+  } catch (redisError) {
+    console.error('Error in findMostLikedPost:', redisError);
+    return null; // Don't fail the whole request
+  }
+}
+
 export async function GET(req: NextRequest) {
   const session = await auth();
   if (!session?.user) {
-    // Or return an error response if preferred
     redirect('/api/auth/signin?callbackUrl=/admin');
   }
 
   try {
-    // Fetch counts from the database
-    const publishedCount = await getPublishedPostsCount();
-    const draftCount = await getDraftPostsCount();
-    const totalCount = publishedCount + draftCount;
+    // Fetch counts and stats in parallel
+    const [
+      publishedCount,
+      draftCount,
+      mostLikedPost,
+      mostViewedPost, // Use the cached function
+    ] = await Promise.all([
+      getPublishedPostsCount(),
+      getDraftPostsCount(),
+      findMostLikedPost(redis),
+      getCachedMostViewedPost(), // Fetch most viewed post data
+    ]);
 
-    // Potentially fetch most liked/viewed post info here in the future
+    const totalCount = publishedCount + draftCount;
 
     return NextResponse.json({
       publishedCount,
       draftCount,
       totalCount,
-      // likes: postId ? (await redis.get(`likes:post:${postId}`)) || 0 : null, // Keep or remove based on future needs
+      mostLikedPost,
+      mostViewedPost, // Include the fetched data
     });
   } catch (error) {
     console.error('Error fetching blog stats:', error);
