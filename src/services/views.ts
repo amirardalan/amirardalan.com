@@ -114,7 +114,7 @@ export async function fetchMostViewedPost(): Promise<{
     },
   };
 
-  const url = `${POSTHOG_API_HOST}/api/projects/${POSTHOG_PROJECT_ID}/query/`; // Use base query endpoint
+  const url = `${POSTHOG_API_HOST}/api/projects/${POSTHOG_PROJECT_ID}/query/`;
 
   try {
     const res = await fetch(url, {
@@ -124,8 +124,7 @@ export async function fetchMostViewedPost(): Promise<{
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(query),
-      // Use a shorter revalidation for stats if desired, or keep it longer
-      next: { revalidate: 3600 }, // Revalidate every hour
+      next: { revalidate: 3600 }, // 1 hour
     });
 
     const responseText = await res.text();
@@ -144,7 +143,6 @@ export async function fetchMostViewedPost(): Promise<{
       return null;
     }
 
-    // Results might be [slug_path, views]
     const [slugPath, views] = data.results[0];
 
     if (!slugPath || typeof views !== 'number') {
@@ -155,15 +153,13 @@ export async function fetchMostViewedPost(): Promise<{
       return null;
     }
 
-    // Extract slug from path like "/blog/my-post-slug"
     const slug = slugPath.split('/').pop();
 
     if (!slug) {
       return null;
     }
 
-    // Get title from DB using the slug
-    const postDetails = await getPostTitleSlugBySlug(slug); // Need this DB query function
+    const postDetails = await getPostTitleSlugBySlug(slug);
     if (!postDetails) {
       console.warn(
         `Could not find post details in DB for most viewed slug: ${slug}`
@@ -182,14 +178,13 @@ export async function fetchMostViewedPost(): Promise<{
   }
 }
 
-// Add a cached version if needed, similar to getCachedPageviews
 export const getCachedMostViewedPost = unstable_cache(
   async () => {
     return fetchMostViewedPost();
   },
   ['posthog-most-viewed'],
   {
-    revalidate: 3600, // Revalidate every hour
-    tags: ['pageviews', 'stats'], // Add relevant tags
+    revalidate: 3600, // 1 hour
+    tags: ['pageviews', 'stats'],
   }
 );
