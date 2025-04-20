@@ -10,7 +10,7 @@ function buildPostHogUrl(route: string) {
   return `${POSTHOG_API_HOST}/api/projects/${POSTHOG_PROJECT_ID}/query/?route=${encodedRoute}`;
 }
 
-async function fetchPageviewsFromPostHog(route: string): Promise<number> {
+async function fetchPageviews(route: string): Promise<number> {
   if (!POSTHOG_API_KEY || !POSTHOG_PROJECT_ID) {
     console.warn('PostHog API key or project ID missing');
     return 0;
@@ -74,7 +74,7 @@ async function fetchPageviewsFromPostHog(route: string): Promise<number> {
 
 export const getCachedPageviews = unstable_cache(
   async (route: string) => {
-    return fetchPageviewsFromPostHog(route);
+    return fetchPageviews(route);
   },
   ['posthog-pageviews'],
   {
