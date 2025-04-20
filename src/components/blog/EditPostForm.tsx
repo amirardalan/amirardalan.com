@@ -45,7 +45,6 @@ export default function EditPostForm({
   const [showUpdated, setShowUpdated] = useState(post.show_updated || false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
-  const [error, setError] = useState<string | null>(null);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [showGallery, setShowGallery] = useState(false);
   const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
@@ -99,7 +98,6 @@ export default function EditPostForm({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setError(null);
 
     try {
       await updatePost(post.id, {
@@ -118,7 +116,6 @@ export default function EditPostForm({
       setHasUnsavedChanges(false);
       router.push(`/blog/${slug}`);
     } catch (err) {
-      setError((err as Error).message);
       showToast((err as Error).message, 'error');
     } finally {
       setIsSubmitting(false);
@@ -135,7 +132,6 @@ export default function EditPostForm({
 
   const handleConfirmDelete = async () => {
     setIsDeleting(true);
-    setError(null);
 
     try {
       await deletePost(post.id);
@@ -146,7 +142,6 @@ export default function EditPostForm({
         post.published ? '/admin/blog/published' : '/admin/blog/drafts'
       );
     } catch (err) {
-      setError((err as Error).message);
       showToast((err as Error).message, 'error');
     } finally {
       setIsDeleting(false);
@@ -187,11 +182,6 @@ export default function EditPostForm({
         onChange={handleFormChange}
         className="font-mono text-dark dark:text-light"
       >
-        {error && (
-          <div className="rounded-md bg-red-50 p-4 text-red-700 dark:bg-red-900 dark:text-red-100">
-            {error}
-          </div>
-        )}
         <PostFormFields
           title={title}
           setTitle={setTitle}

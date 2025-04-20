@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { getPostCounts } from '@/services/stats';
+import { useToast } from '@/components/ui/ToastContext';
 
 interface BlogCountStats {
   publishedCount: number;
@@ -12,17 +13,18 @@ interface BlogCountStats {
 export default function AdminStats() {
   const [stats, setStats] = useState<BlogCountStats | null>(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const { showToast } = useToast();
 
   useEffect(() => {
     const fetchCounts = async () => {
       setLoading(true);
-      setError(null);
       try {
         const data = await getPostCounts();
         setStats(data);
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'Failed to load stats');
+        const errorMessage =
+          err instanceof Error ? err.message : 'Failed to load stats';
+        showToast(errorMessage, 'error');
         console.error(err);
       } finally {
         setLoading(false);
@@ -30,7 +32,7 @@ export default function AdminStats() {
     };
 
     fetchCounts();
-  }, []);
+  }, [showToast]);
 
   const totalCount = stats ? stats.publishedCount + stats.draftCount : 0;
 
@@ -51,11 +53,8 @@ export default function AdminStats() {
             ))}
           </div>
         )}
-        {error && (
-          <p className="text-sm text-red-500">Error loading stats: {error}</p>
-        )}
 
-        {stats && !loading && !error && (
+        {stats && !loading && (
           <div className="grid grid-cols-1 gap-4 text-sm md:grid-cols-3">
             <div className="rounded border border-zinc-200 p-3 dark:border-zinc-600">
               <p className="text-zinc-500 dark:text-zinc-400">Published</p>
