@@ -6,6 +6,7 @@ import {
   getAdjacentPosts,
 } from '@/db/queries/posts';
 
+import { auth, isAuthorizedEmail } from '@/lib/auth';
 import { compileMDX } from 'next-mdx-remote/rsc';
 import { components } from '@/components/blog/MDXComponents';
 
@@ -16,12 +17,11 @@ import ClientLikeCount from '@/components/blog/ClientLikeCount';
 import ClientViewCount from '@/components/blog/ClientViewCount';
 import BlogSupport from '@/components/blog/BlogSupport';
 import AdjacentPostNavigation from '@/components/blog/AdjacentPostNavigation';
-
-import calculateReadTime from '@/utils/calculate-readtime';
-
 import AdminPostControls from '@/components/admin/AdminPostControls';
+import SocialActions from '@/components/blog/SocialActions';
 
-import { auth, isAuthorizedEmail } from '@/lib/auth';
+import { formatDate } from '@/utils/format-date';
+import calculateReadTime from '@/utils/calculate-readtime';
 
 export const dynamicParams = true;
 
@@ -151,6 +151,31 @@ export default async function BlogPost({
         <h1 className="mt-8 text-3xl lg:text-4xl" id="post-title">
           {post.title}
         </h1>
+        <div className="mt-8 flex w-full items-center justify-between text-sm text-zinc-500 dark:text-zinc-400">
+          <div className="flex items-center">
+            <time
+              className="text-xs uppercase"
+              title={formatDate(post.created_at)}
+              aria-label={`Posted on ${formatDate(post.created_at)}`}
+            >
+              {post.show_updated
+                ? `Updated: ${formatDate(post.updated_at)}`
+                : formatDate(post.created_at)}
+            </time>
+            <div className="mx-2 text-sm" aria-hidden="true">
+              •
+            </div>
+            <span
+              aria-label={`Author: ${post.author_name || 'Anonymous'}`}
+              className="uppercase"
+            >
+              By {post.author_name || 'Anonymous'}
+            </span>
+          </div>
+          <span className="flex justify-end">
+            <SocialActions postId={post.id} />
+          </span>
+        </div>
         <div className="mdx-content mt-10" aria-labelledby="post-title">
           {content}
         </div>
