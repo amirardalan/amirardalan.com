@@ -1,6 +1,5 @@
 import { NavLinks } from '@/components/ui/Navigation';
 import Logo from '@/components/ui/Logo';
-import ClientViewCount from '@/components/blog/ClientViewCount';
 
 export default async function Footer() {
   return (
@@ -24,5 +23,3 @@ export default async function Footer() {
     </footer>
   );
 }
-
-// Remove ClientViewCountLoader helper component
