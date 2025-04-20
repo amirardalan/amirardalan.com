@@ -14,12 +14,6 @@ export default async function Footer() {
         </span>
         <Logo size={20} inverted />
         <span className="ml-4">amir.sh</span>
-        <span className="ml-3">
-          <ClientViewCount
-            route="/" // Pass route prop
-            textColor="text-light dark:text-dark"
-          />
-        </span>
       </div>
       <div className="hidden md:flex">
         <span aria-hidden="true">•</span>
