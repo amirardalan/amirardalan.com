@@ -1,6 +1,6 @@
 import { db } from '@/db/connector';
 import { posts, users, categories } from '@/db/schema';
-import { eq, desc, lt, gt, and } from 'drizzle-orm';
+import { eq, desc, lt, gt, and, count } from 'drizzle-orm'; // Import count
 
 import { BlogPost } from '@/types/blog';
 
@@ -167,6 +167,24 @@ export async function getPostsByCategoryId(categoryId: number) {
     })
     .from(posts)
     .where(eq(posts.category_id, categoryId));
+}
+
+// Get count of published posts
+export async function getPublishedPostsCount() {
+  const result = await db
+    .select({ count: count() })
+    .from(posts)
+    .where(eq(posts.published, true));
+  return result[0]?.count ?? 0;
+}
+
+// Get count of draft posts
+export async function getDraftPostsCount() {
+  const result = await db
+    .select({ count: count() })
+    .from(posts)
+    .where(eq(posts.published, false));
+  return result[0]?.count ?? 0;
 }
 
 // Database operation to create a new post
