@@ -140,7 +140,10 @@ export default async function BlogPost({
           </span>
           <span className="mx-4 w-full border-t-[1px] border-zinc-300 dark:border-zinc-700"></span>
           <span className="flex items-center whitespace-nowrap text-xxs uppercase">
-            <ClientViewCount route={`/blog/${post.slug}`} />
+            <ClientViewCount
+              route={`/blog/${post.slug}`}
+              textColor="text-zinc-500 dark:text-zinc-400"
+            />
             <span className="mx-2 text-zinc-500 dark:text-zinc-400">•</span>
             <ClientLikeCount postId={post.id} />
           </span>

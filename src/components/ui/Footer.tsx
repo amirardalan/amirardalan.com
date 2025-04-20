@@ -1,14 +1,8 @@
 import { NavLinks } from '@/components/ui/Navigation';
 import Logo from '@/components/ui/Logo';
-import { getCachedPageviews } from '@/services/views';
-import { formatCount } from '@/utils/format-count';
-
-export const dynamic = 'force-dynamic';
+import ClientViewCount from '@/components/blog/ClientViewCount';
 
 export default async function Footer() {
-  const views = await getCachedPageviews('/');
-  const formattedViews = formatCount(views);
-
   return (
     <footer
       className="z-10 flex flex-row bg-primary px-6 py-4 pt-4 text-sm text-light lg:px-10 lg:py-8 lg:pt-8 dark:text-dark"
@@ -20,12 +14,11 @@ export default async function Footer() {
         </span>
         <Logo size={20} inverted />
         <span className="ml-4">amir.sh</span>
-        <span
-          className="ml-4 text-xs font-bold text-zinc-200 dark:text-zinc-700"
-          title="Total site pageviews"
-          aria-label="Total site pageviews"
-        >
-          {formattedViews} views
+        <span className="ml-3">
+          <ClientViewCount
+            route="/" // Pass route prop
+            textColor="text-light dark:text-dark"
+          />
         </span>
       </div>
       <div className="hidden md:flex">
@@ -37,3 +30,5 @@ export default async function Footer() {
     </footer>
   );
 }
+
+// Remove ClientViewCountLoader helper component
