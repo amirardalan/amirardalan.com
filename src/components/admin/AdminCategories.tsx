@@ -20,7 +20,6 @@ export default function AdminCategories() {
   const [loading, setLoading] = useState(true);
   const [editingId, setEditingId] = useState<number | null>(null);
   const [editName, setEditName] = useState('');
-  const [error, setError] = useState<string | null>(null);
   const { showToast } = useToast();
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [categoryToDelete, setCategoryToDelete] = useState<Category | null>(
@@ -45,14 +44,12 @@ export default function AdminCategories() {
         const data = await getCategories();
         if (isMounted) {
           setCategories(data);
-          setError(null);
         }
       } catch (err) {
         if (!isMounted) return;
 
         const errorMessage =
           (err as Error).message || 'Error loading categories';
-        setError(errorMessage);
         showToast(errorMessage, 'error');
         console.error(err);
       } finally {
@@ -103,14 +100,13 @@ export default function AdminCategories() {
         showToast('Category added successfully', 'success');
       } catch (err) {
         const errorMessage = (err as Error).message || 'Failed to add category';
-        setError(errorMessage);
         showToast(errorMessage, 'error');
         console.error(err);
       } finally {
         setLoading(false);
       }
     },
-    [editName, setCategories, setError, setLoading, showToast]
+    [editName, setCategories, setLoading, showToast]
   );
 
   const handleUpdateCategory = useCallback(
@@ -145,7 +141,6 @@ export default function AdminCategories() {
       } catch (err) {
         const errorMessage =
           (err as Error).message || 'Failed to update category';
-        setError(errorMessage);
         showToast(errorMessage, 'error');
         console.error(err);
       } finally {
@@ -156,7 +151,6 @@ export default function AdminCategories() {
       editName,
       setCategories,
       setEditingId,
-      setError,
       setLoading,
       showToast,
       isNewCategory,
@@ -179,7 +173,6 @@ export default function AdminCategories() {
           errorMessage = `This category can't be deleted because it's currently being used by one or more posts. Please update those posts first.`;
         }
 
-        setError(errorMessage);
         showToast(errorMessage, 'error');
         console.error(err);
       } finally {
@@ -190,7 +183,6 @@ export default function AdminCategories() {
     },
     [
       setCategories,
-      setError,
       setIsDeleting,
       setShowDeleteModal,
       setCategoryToDelete,
@@ -201,7 +193,6 @@ export default function AdminCategories() {
   const startDeleteConfirmation = useCallback(
     async (category: Category) => {
       setCheckingCategory(true);
-      setError(null);
 
       try {
         const inUse = await isCategoryInUse(category.id);
@@ -217,7 +208,6 @@ export default function AdminCategories() {
       } catch (err) {
         const errorMessage =
           (err as Error).message || 'Failed to check category usage';
-        setError(errorMessage);
         showToast(errorMessage, 'error');
         console.error(err);
       } finally {
@@ -226,7 +216,6 @@ export default function AdminCategories() {
     },
     [
       setCheckingCategory,
-      setError,
       setErrorModalMessage,
       setShowErrorModal,
       setCategoryToDelete,
@@ -400,10 +389,6 @@ export default function AdminCategories() {
 
   return (
     <section className="mt-8">
-      {error && (
-        <div className="mb-4 rounded bg-red-100 p-2 text-red-700">{error}</div>
-      )}
-
       <div className="mb-4">
         <button
           onClick={startNewCategory}
