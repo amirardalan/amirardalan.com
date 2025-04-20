@@ -19,17 +19,22 @@ export const useViewsStore = create<ViewsState>((set, get) => ({
   fetchViews: async (route: string, force: boolean = false) => {
     const { lastFetchTime, fetchDebounceTime, initialLoadingStates } = get();
     const now = Date.now();
+    const initialLoadCompleted = initialLoadingStates[route] === false;
 
-    if (
+    const shouldSkipFetch =
       !force &&
-      initialLoadingStates[route] === false &&
+      initialLoadCompleted &&
       lastFetchTime[route] &&
-      now - lastFetchTime[route] < fetchDebounceTime
-    ) {
+      now - lastFetchTime[route] < fetchDebounceTime;
+
+    if (shouldSkipFetch) {
+      set((state) => ({
+        error: { ...state.error, [route]: null },
+      }));
       return;
     }
 
-    if (initialLoadingStates[route] === undefined || force) {
+    if (initialLoadingStates[route] !== false || force) {
       set((state) => ({
         initialLoadingStates: { ...state.initialLoadingStates, [route]: true },
         error: { ...state.error, [route]: null },
@@ -56,7 +61,7 @@ export const useViewsStore = create<ViewsState>((set, get) => ({
       console.error(`Error fetching views for ${route}:`, err);
       set((state) => ({
         error: { ...state.error, [route]: errorMessage },
-        initialLoadingStates: { ...state.initialLoadingStates, [route]: false }, // Ensure loading stops on error
+        initialLoadingStates: { ...state.initialLoadingStates, [route]: false },
       }));
     }
   },

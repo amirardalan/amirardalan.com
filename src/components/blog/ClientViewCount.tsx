@@ -21,7 +21,7 @@ export default function ClientViewCount({
   }, [fetchViews, route]);
 
   const routeError = error[route];
-  const isLoading = initialLoadingStates[route] !== false;
+  const isLoading = initialLoadingStates[route] ?? true;
   const currentViews = views[route];
 
   if (routeError) {
@@ -49,7 +49,7 @@ export default function ClientViewCount({
           </div>
         </span>
       ) : (
-        <>{formattedViews} Views</>
+        <>{formattedViews} views</>
       )}
     </span>
   );
