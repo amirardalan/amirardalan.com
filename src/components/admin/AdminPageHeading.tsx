@@ -1,4 +1,4 @@
-import User from '@/components/admin/User';
+import User from '@/components/account/User';
 
 type PageHeadingProps = {
   title: string;

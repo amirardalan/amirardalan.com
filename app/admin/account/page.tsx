@@ -1,7 +1,7 @@
 import { auth } from '@/lib/auth';
 
 import AdminPageHeading from '@/components/admin/AdminPageHeading';
-import Avatar from '@/components/auth/Avatar';
+import Avatar from '@/components/account/Avatar';
 import SignedOut from '@/components/auth/SignedOut';
 import { ObfuscatedEmail } from '@/components/ui/ObfuscatedEmail';
 import Container from '@/components/content/Container';
