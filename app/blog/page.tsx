@@ -21,7 +21,7 @@ export default async function Blog() {
   let posts: BlogPost[] = [];
   try {
     posts = await getPublishedPosts({
-      next: { tags: ['blog-list'] }, // Tag for on-demand revalidation
+      next: { tags: ['published-posts', 'blog-list'] },
     });
   } catch (error) {
     console.error('Error fetching published posts:', error);

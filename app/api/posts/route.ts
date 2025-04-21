@@ -1,10 +1,11 @@
-import { NextResponse } from 'next/server';
-import { dbCreatePost, dbUpdatePost, dbDeletePost } from '@/db/queries/posts';
+import { NextRequest, NextResponse } from 'next/server';
+import { revalidateTag, revalidatePath } from 'next/cache';
 import { auth } from '@/lib/auth';
+import { dbCreatePost, dbUpdatePost } from '@/db/queries/posts';
 import { getUserIdByEmail } from '@/db/queries/users';
-import { revalidateTag } from 'next/cache';
+import { BlogPost } from '@/types/blog';
 
-export async function POST(req: Request) {
+export async function POST(req: NextRequest) {
   try {
     const session = await auth();
     if (!session?.user?.email) {
@@ -18,7 +19,6 @@ export async function POST(req: Request) {
 
     const data = await req.json();
 
-    // Validate required fields
     if (!data.title || !data.slug || !data.content) {
       return NextResponse.json(
         { error: 'Title, slug, and content are required.' },
@@ -30,6 +30,7 @@ export async function POST(req: Request) {
       ...data,
       user_id: userId,
       excerpt: data.excerpt || null,
+      category_id: data.category_id !== undefined ? data.category_id : null,
       created_at: new Date(),
       published: data.published === true,
       featured: data.featured === true,
@@ -38,135 +39,74 @@ export async function POST(req: Request) {
 
     const postId = await dbCreatePost(postData);
 
-    // If published, revalidate blog-list, blog-post:{slug}, and sitemap
+    revalidateTag('posts');
     if (postData.published) {
-      await revalidateTag('blog-list');
-      await revalidateTag(`blog-post:${postData.slug}`);
-      await revalidateTag('sitemap');
+      revalidateTag('published-posts');
+      revalidateTag('blog-list');
+      revalidateTag(`blog-post:${postData.slug}`);
+      revalidateTag('sitemap');
     }
 
     return NextResponse.json({ id: postId }, { status: 201 });
   } catch (error) {
-    // Check for specific database errors like unique constraint violation
+    console.error('POST /api/posts Error:', error);
     if (error instanceof Error && error.message.includes('posts_slug_unique')) {
+      const reqBody = await req.clone().json();
       return NextResponse.json(
         {
-          error: `A post with the slug "${(await req.clone().json()).slug}" already exists.`,
+          error: `A post with the slug "${reqBody.slug}" already exists. posts_slug_unique`,
         },
         { status: 409 }
       );
     }
-    console.error('Failed to create post:', error);
-    return NextResponse.json(
-      { error: 'Failed to create post.' },
-      { status: 500 }
-    );
+    const errorMessage =
+      error instanceof Error ? error.message : 'Failed to create post';
+    return NextResponse.json({ error: errorMessage }, { status: 500 });
   }
 }
 
-export async function PUT(req: Request) {
+export async function PUT(req: NextRequest) {
+  const session = await auth();
+  if (!session?.user?.email) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+
   try {
-    const session = await auth();
-    if (!session?.user?.email) {
-      return NextResponse.json({ error: 'Not authenticated' }, { status: 401 });
-    }
+    const updateData: Partial<BlogPost> & { id: number } = await req.json();
 
-    const data = await req.json();
-    const { id, ...postData } = data;
+    const { id, ...postUpdatePayload } = updateData;
 
-    if (!id) {
-      return NextResponse.json(
-        { error: 'Post ID is required.' },
-        { status: 400 }
-      );
-    }
+    const result = await dbUpdatePost(id, postUpdatePayload);
 
-    // Basic validation for core fields during update
-    if (
-      postData.title === '' ||
-      postData.slug === '' ||
-      postData.content === ''
-    ) {
-      return NextResponse.json(
-        { error: 'Title, slug, and content cannot be empty.' },
-        { status: 400 }
-      );
-    }
+    revalidatePath(`/blog/${result.newSlug || result.oldSlug}`);
 
-    // Ensure boolean values are handled correctly and category_id is properly processed
-    const updateData = {
-      ...postData,
-      published: postData.published === true,
-      featured: postData.featured === true,
-      show_updated: postData.show_updated === true,
-      // Explicitly handle category_id to make sure null is sent as null, not undefined
-      category_id:
-        postData.category_id !== undefined ? postData.category_id : null,
-    };
-
-    const result = await dbUpdatePost(parseInt(id, 10), updateData);
-
-    // If the post was published or is now published, revalidate
     if (result.wasPublished || updateData.published) {
-      await revalidateTag('blog-list');
-      await revalidateTag(`blog-post:${result.oldSlug}`);
-      if (result.newSlug && result.newSlug !== result.oldSlug) {
-        await revalidateTag(`blog-post:${result.newSlug}`);
-      }
-      await revalidateTag('sitemap');
+      console.log('PUT /api/posts - Revalidating blog-list and sitemap tags.'); // Add log here
+      revalidateTag('blog-list');
+
+      revalidateTag(`blog-post:${result.newSlug || result.oldSlug}`);
+
+      revalidateTag('sitemap');
+    } else {
+      console.log(
+        'PUT /api/posts - Post was not published and is not being published. Skipping blog-list/sitemap revalidation.'
+      );
     }
 
-    return NextResponse.json(result, { status: 200 });
+    return NextResponse.json(result);
   } catch (error) {
+    console.error('PUT /api/posts Error:', error);
     if (error instanceof Error && error.message.includes('posts_slug_unique')) {
+      const reqBody = await req.clone().json();
       return NextResponse.json(
         {
-          error: `A post with the slug "${(await req.clone().json()).slug}" already exists.`,
+          error: `A post with the slug "${reqBody.slug}" already exists. posts_slug_unique`,
         },
         { status: 409 }
       );
     }
-    console.error('Failed to update post:', error);
-    return NextResponse.json(
-      { error: 'Failed to update post.' },
-      { status: 500 }
-    );
-  }
-}
-
-// Add DELETE handler for completeness
-export async function DELETE(req: Request) {
-  try {
-    const session = await auth();
-    if (!session?.user?.email) {
-      return NextResponse.json({ error: 'Not authenticated' }, { status: 401 });
-    }
-
-    const data = await req.json();
-    const { id } = data;
-
-    if (!id) {
-      return NextResponse.json(
-        { error: 'Post ID is required.' },
-        { status: 400 }
-      );
-    }
-
-    const result = await dbDeletePost(parseInt(id, 10));
-
-    // If the post was published, revalidate
-    if (result.wasPublished) {
-      await revalidateTag('blog-list');
-      await revalidateTag(`blog-post:${result.slug}`);
-      await revalidateTag('sitemap');
-    }
-
-    return NextResponse.json(result, { status: 200 });
-  } catch (error) {
-    console.error('Failed to delete post:', error);
-    return NextResponse.json(
-      { error: 'Failed to delete post.' },
-      { status: 500 }
-    );
+    const errorMessage =
+      error instanceof Error ? error.message : 'Failed to update post';
+    return NextResponse.json({ error: errorMessage }, { status: 500 });
   }
 }
