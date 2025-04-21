@@ -1,6 +1,7 @@
 import { db } from '@/db/connector';
 import { posts, users, categories } from '@/db/schema';
 import { eq, desc, lt, gt, and, count } from 'drizzle-orm'; // Import count
+import { revalidateTag } from 'next/cache'; // Import revalidateTag
 
 import { BlogPost } from '@/types/blog';
 
@@ -216,6 +217,7 @@ export async function getPostTitleSlugBySlug(slug: string) {
 
 // Database operation to create a new post
 export async function dbCreatePost(postData: Omit<BlogPost, 'id'>) {
+  const isPublished = postData.published || false;
   const result = await db
     .insert(posts)
     .values({
@@ -223,14 +225,19 @@ export async function dbCreatePost(postData: Omit<BlogPost, 'id'>) {
       slug: postData.slug,
       excerpt: postData.excerpt,
       content: postData.content,
-      category_id: postData.category_id ?? null, // <-- use category_id
+      category_id: postData.category_id ?? null,
       user_id: postData.user_id,
-      published: postData.published || false,
+      published: isPublished,
       featured: postData.featured || false,
       created_at: new Date(),
       updated_at: new Date(),
     })
     .returning({ id: posts.id });
+
+  // Revalidate sitemap if a new post is published
+  if (isPublished) {
+    revalidateTag('sitemap');
+  }
 
   return result[0]?.id;
 }
@@ -246,6 +253,9 @@ export async function dbUpdatePost(id: number, postData: Partial<BlogPost>) {
 
   const wasPublished = originalPost[0]?.published;
   const oldSlug = originalPost[0]?.slug;
+  const isNowPublished = postData.published;
+  const slugChanged = postData.slug !== oldSlug;
+  const publishStatusChanged = wasPublished !== isNowPublished;
 
   // If this post is being featured, unfeatured all other posts first
   if (postData.featured === true) {
@@ -267,25 +277,26 @@ export async function dbUpdatePost(id: number, postData: Partial<BlogPost>) {
     featured: postData.featured,
   };
 
-  // Only include category_id if it's part of the update data
-  // This ensures we don't overwrite it with null unless that's the intent
   if ('category_id' in postData) {
     updateObject.category_id = postData.category_id;
   }
 
   await db.update(posts).set(updateObject).where(eq(posts.id, id));
 
+  if (publishStatusChanged || (wasPublished && slugChanged)) {
+    revalidateTag('sitemap');
+  }
+
   return {
     wasPublished,
     oldSlug,
     newSlug: postData.slug,
-    publishStatusChanged: wasPublished !== postData.published,
+    publishStatusChanged,
   };
 }
 
 // Database operation to delete a post
 export async function dbDeletePost(id: number) {
-  // Get the post slug before deletion for revalidation
   const post = await db
     .select({ slug: posts.slug, published: posts.published })
     .from(posts)
@@ -301,6 +312,11 @@ export async function dbDeletePost(id: number) {
 
   // Delete the post
   await db.delete(posts).where(eq(posts.id, id));
+
+  // Revalidate sitemap if the deleted post was published
+  if (wasPublished) {
+    revalidateTag('sitemap');
+  }
 
   return {
     slug,

@@ -11,22 +11,17 @@ const redis = new Redis({
   token: process.env.KV_REST_API_TOKEN,
 });
 
-// Check if we're in development mode
 const isDev = process.env.NODE_ENV === 'development';
 const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
 
-// Helper function to check if dev-cache should be enabled
 function shouldEnableCache(req: NextRequest): boolean {
-  // Only applicable in development mode
   if (!isDev) return false;
 
-  // Check for URL parameter
   const { searchParams } = new URL(req.url);
   if (searchParams.get('enableCache') === 'true') {
     return true;
   }
 
-  // Check for environment variable (only in dev)
   if (process.env.ENABLE_DEV_CACHE === 'true') {
     return true;
   }

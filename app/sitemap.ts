@@ -1,11 +1,13 @@
 import { MetadataRoute } from 'next';
 import { getPublishedPosts } from '@/db/queries/posts';
 
+export const dynamic = 'force-dynamic';
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const { NEXT_PUBLIC_URL } = process.env;
 
   const posts = await getPublishedPosts({
-    next: { tags: ['published-posts', 'sitemap'] },
+    next: { tags: ['sitemap'] },
   });
 
   const baseEntries: MetadataRoute.Sitemap = [

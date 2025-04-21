@@ -66,48 +66,31 @@ export async function POST(req: NextRequest) {
 }
 
 export async function PUT(req: NextRequest) {
+  const session = await auth();
+  if (!session?.user?.email) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+
   try {
-    const session = await auth();
-    if (!session?.user?.email) {
-      return NextResponse.json({ error: 'Not authenticated' }, { status: 401 });
-    }
+    const updateData: Partial<BlogPost> & { id: number } = await req.json();
 
-    const postData = await req.json();
-    const id = postData.id;
+    const { id, ...postUpdatePayload } = updateData;
 
-    if (!id) {
-      return NextResponse.json(
-        { error: 'Post ID is required' },
-        { status: 400 }
-      );
-    }
+    const result = await dbUpdatePost(id, postUpdatePayload);
 
-    const updateData: Partial<BlogPost> = {
-      title: postData.title,
-      slug: postData.slug,
-      excerpt: postData.excerpt,
-      content: postData.content,
-      published: postData.published,
-      featured: postData.featured,
-      show_updated: postData.show_updated,
-      category_id:
-        postData.category_id !== undefined ? postData.category_id : null,
-    };
-
-    const result = await dbUpdatePost(parseInt(id, 10), updateData);
-
-    revalidateTag('posts');
-    revalidateTag('published-posts');
-    revalidateTag('sitemap');
     revalidatePath(`/blog/${result.newSlug || result.oldSlug}`);
-    revalidatePath('/admin/blog/edit/[slug]', 'page');
 
     if (result.wasPublished || updateData.published) {
+      console.log('PUT /api/posts - Revalidating blog-list and sitemap tags.'); // Add log here
       revalidateTag('blog-list');
-      revalidateTag(`blog-post:${result.oldSlug}`);
-      if (result.newSlug && result.newSlug !== result.oldSlug) {
-        revalidateTag(`blog-post:${result.newSlug}`);
-      }
+
+      revalidateTag(`blog-post:${result.newSlug || result.oldSlug}`);
+
+      revalidateTag('sitemap');
+    } else {
+      console.log(
+        'PUT /api/posts - Post was not published and is not being published. Skipping blog-list/sitemap revalidation.'
+      );
     }
 
     return NextResponse.json(result);
