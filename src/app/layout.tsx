@@ -5,7 +5,7 @@ import { AuthProvider } from '@/context/AuthProvider';
 import { PostHogProvider } from '@/context/PostHogProvider';
 
 import { getTheme } from '@/utils/get-theme';
-import '@/app/globals.css';
+import '@/src/globals.css';
 import clsx from 'clsx';
 
 import { Jura, Manuale, JetBrains_Mono } from 'next/font/google';
