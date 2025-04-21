@@ -1,24 +1,37 @@
 # amirardalan.com
 
-Amir Ardalan's personal website built with [Startup](https://github.com/amirardalan/startup). This is a Markdown Blog and CMS written in TypeScript. Publish and edit blog posts in Next.js App Router using Supabase, Drizzle, MDX, and On-demand Revalidation.
+Amir Ardalan's personal website built with [Startup](https://github.com/amirardalan/startup). This is a Markdown Blog and CMS written in TypeScript. Create, edit, and manage blog posts and categories inside a custom CMS. Update static posts without a build leveraging the power of on-demand revalidation.
+
+### Stack
+
+- TypeScript
+- [Next.js](https://nextjs.org/docs/getting-started) App Router
+- [Auth.js](https://authjs.dev/) auth
+- [Tailwind CSS](https://tailwindcss.com/docs/installation) styles
+- [Supabase](https://supabase.com/docs/guides/database/overview) Postgres database
+- [Drizzle ORM](https://orm.drizzle.team/) for Postgres
+- [MDX](https://mdxjs.com/) Markdown
+- [Sugar High](https://github.com/huozhi/sugar-high) syntax highlighting
+- [Zustand](https://github.com/pmndrs/zustand) state management
+- [CLSX](https://github.com/lukeed/clsx) `className` logic
 
 ### Features
 
-- Autentication with [Auth.js](https://authjs.dev/getting-started/installation?framework=next-js)
-- Postgres database with [Supabase](https://supabase.com/docs/guides/database/overview)
-- State management with [Zustand](https://github.com/pmndrs/zustand)
-- Light, Dark, and System Theme toggle
-- Prettier code formatting with [Tailwind plugin](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier)
-- [CLSX](https://github.com/lukeed/clsx) for improved logic within `className`
-- Next.js [optimized fonts](https://nextjs.org/learn/dashboard-app/optimizing-fonts-images)
-- Dynamic theme-based favicon
+- Custom CMS (Publish, Edit, Manage Drafts and Categories)
+- Light/Dark/System Theme toggle
+- Dynamic (theme-based) favicon
 - Dynamic Metadata and Page Titles
 - Route-based active navigation highlighting
 - Dynamic footer copyright date
-- Tooltip component
+- Custom Tooltip, Modal, and Toast components
+- Next.js [optimized fonts](https://nextjs.org/learn/dashboard-app/optimizing-fonts-images)
 - [OG Image](https://vercel.com/docs/functions/og-image-generation) metadata
 - Dynamically-generated [sitemap.xml](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap)
 - Custom [Cloudinary](https://cloudinary.com/) CMS Media Gallery
+- [PostHog](https://posthog.com/) analytics and blog post view count
+- Blog likes with [Upstash](https://upstash.com/) Redis
+- Accessibility, perfomance, and SEO best-practices
+- 100% Lighthouse score
 
 ## Getting Started
 
