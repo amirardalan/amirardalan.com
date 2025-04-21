@@ -1,4 +1,4 @@
-import AdminCategories from '@/src/components/admin/AdminCategories';
+import AdminCategories from '@/components/admin/AdminCategories';
 import AdminPageHeading from '@/components/admin/AdminPageHeading';
 import Container from '@/components/content/Container';
 
