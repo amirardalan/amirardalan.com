@@ -38,7 +38,7 @@ export const getPublishedPosts = async (options?: {
 };
 
 // Get draft posts (for admin drafts page)
-export async function getDraftPosts() {
+export async function getDraftPosts(options?: { next?: { tags: string[] } }) {
   return db
     .select({
       id: posts.id,
@@ -64,7 +64,8 @@ export async function getDraftPosts() {
     .leftJoin(users, eq(posts.user_id, users.id))
     .leftJoin(categories, eq(posts.category_id, categories.id))
     .where(eq(posts.published, false))
-    .orderBy(desc(posts.updated_at));
+    .orderBy(desc(posts.updated_at))
+    .execute(options);
 }
 
 // Get a post by slug (for blog/[slug] page)

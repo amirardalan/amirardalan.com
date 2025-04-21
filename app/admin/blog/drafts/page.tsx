@@ -34,7 +34,7 @@ export default async function Drafts({
   );
   const postsPerPage = 10;
 
-  const drafts = await getDraftPosts();
+  const drafts = await getDraftPosts({ next: { tags: ['posts'] } });
 
   const filteredDrafts = drafts.filter((draft) =>
     draft.title.toLowerCase().includes(query.toLowerCase())

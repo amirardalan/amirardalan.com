@@ -4,7 +4,9 @@ import { getPublishedPosts } from '@/db/queries/posts';
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const { NEXT_PUBLIC_URL } = process.env;
 
-  const posts = await getPublishedPosts({ next: { tags: ['sitemap'] } });
+  const posts = await getPublishedPosts({
+    next: { tags: ['published-posts', 'sitemap'] },
+  });
 
   const baseEntries: MetadataRoute.Sitemap = [
     {
