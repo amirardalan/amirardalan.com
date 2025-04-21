@@ -30,7 +30,9 @@ export default async function EditBlogPost({
     throw new Error('An error occurred while fetching user details.');
   }
 
-  const post = await getPostBySlug(slug);
+  const post = await getPostBySlug(slug, {
+    next: { tags: ['posts', `blog-post:${slug}`] },
+  });
 
   if (!post) {
     return (

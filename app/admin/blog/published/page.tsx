@@ -34,7 +34,7 @@ export default async function Published({
   );
   const postsPerPage = 10;
 
-  const posts = await getPublishedPosts();
+  const posts = await getPublishedPosts({ next: { tags: ['posts'] } });
 
   const filteredPosts = posts.filter((post) =>
     post.title.toLowerCase().includes(query.toLowerCase())
