@@ -1,15 +1,13 @@
 import { generateTwitterImage } from '@/components/og/TwitterImageTemplate';
 import { size, contentType } from '@/components/og/OgImageTemplate';
 
-// Image metadata
 export const alt = 'Amir Ardalan Uses';
 export { size, contentType };
 
-// Generate Twitter image for Uses page
 export default async function Image() {
   return generateTwitterImage({
-    title: 'Uses',
+    title: 'Uses — Amir Ardalan',
     description:
-      'Software, hardware, and tools I use for development and design',
+      'Things I use to make things... hardware, software, and other tools.',
   });
 }
