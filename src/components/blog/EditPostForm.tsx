@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useEffect, useCallback } from 'react';
+import { useState, useRef, useEffect, useCallback, useReducer } from 'react';
 import { useRouter } from 'next/navigation';
 import { updatePost, deletePost } from '@/services/post-service';
 import { useToast } from '@/components/ui/ToastContext';
@@ -17,6 +17,42 @@ import PostFormControls from '@/components/blog/PostFormControls';
 
 import { BlogPost, Category } from '@/types/blog';
 
+interface FormState {
+  title: string;
+  slug: string;
+  excerpt: string;
+  content: string;
+  categoryId: number | null;
+  published: boolean;
+  featured: boolean;
+  showUpdated: boolean;
+}
+
+type UpdateFieldAction<K extends keyof FormState> = {
+  type: 'UPDATE_FIELD';
+  field: K;
+  value: FormState[K];
+};
+
+type FormUpdateActions = {
+  [K in keyof FormState]: UpdateFieldAction<K>;
+}[keyof FormState];
+
+type FormAction =
+  | FormUpdateActions
+  | { type: 'SET_INITIAL_STATE'; payload: FormState };
+
+function formReducer(state: FormState, action: FormAction): FormState {
+  switch (action.type) {
+    case 'UPDATE_FIELD':
+      return { ...state, [action.field]: action.value };
+    case 'SET_INITIAL_STATE':
+      return action.payload;
+    default:
+      return state;
+  }
+}
+
 interface EditPostFormProps {
   post: BlogPost;
   categories?: Category[];
@@ -29,20 +65,39 @@ export default function EditPostForm({
   const router = useRouter();
   const { showToast } = useToast();
   const { setCurrentPostPublished } = useEditPostStore();
-  const [title, setTitle] = useState(post.title || '');
-  const [slug, setSlug] = useState(post.slug || '');
-  const [excerpt, setExcerpt] = useState(post.excerpt || '');
-  const [content, setContent] = useState(post.content || '');
-  const [categoryId, setCategoryId] = useState<number | null>(
-    post.category_id ?? null
+
+  const getInitialState = useCallback(
+    (initialPost: BlogPost): FormState => ({
+      title: initialPost.title || '',
+      slug: initialPost.slug || '',
+      excerpt: initialPost.excerpt || '',
+      content: initialPost.content || '',
+      categoryId: initialPost.category_id ?? null,
+      published: initialPost.published || false,
+      featured: initialPost.featured || false,
+      showUpdated: initialPost.show_updated || false,
+    }),
+    []
   );
+
+  const initialFormState = getInitialState(post);
+
+  const [state, dispatch] = useReducer(formReducer, initialFormState);
+  const {
+    title,
+    slug,
+    excerpt,
+    content,
+    categoryId,
+    published,
+    featured,
+    showUpdated,
+  } = state;
+
   const [categories, setCategories] = useState<Category[]>(
     propCategories || []
   );
   const [categoriesLoading, setCategoriesLoading] = useState(!propCategories);
-  const [published, setPublished] = useState(post.published || false);
-  const [featured, setFeatured] = useState(post.featured || false);
-  const [showUpdated, setShowUpdated] = useState(post.show_updated || false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -68,32 +123,19 @@ export default function EditPostForm({
   }, [propCategories, categoriesLoading]);
 
   useEffect(() => {
+    const initialCheckState = getInitialState(post);
     const formChanged =
-      title !== (post.title || '') ||
-      slug !== (post.slug || '') ||
-      excerpt !== (post.excerpt || '') ||
-      content !== (post.content || '') ||
-      categoryId !== (post.category_id ?? null) ||
-      featured !== (post.featured || false) ||
-      published !== (post.published || false) ||
-      showUpdated !== (post.show_updated || false);
+      state.title !== initialCheckState.title ||
+      state.slug !== initialCheckState.slug ||
+      state.excerpt !== initialCheckState.excerpt ||
+      state.content !== initialCheckState.content ||
+      state.categoryId !== initialCheckState.categoryId ||
+      state.featured !== initialCheckState.featured ||
+      state.published !== initialCheckState.published ||
+      state.showUpdated !== initialCheckState.showUpdated;
 
     setHasUnsavedChanges(formChanged);
-  }, [
-    title,
-    slug,
-    excerpt,
-    content,
-    categoryId,
-    featured,
-    published,
-    showUpdated,
-    post,
-  ]);
-
-  const handleFormChange = useCallback(() => {
-    setHasUnsavedChanges(true);
-  }, []);
+  }, [state, post, getInitialState]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -101,20 +143,14 @@ export default function EditPostForm({
 
     try {
       await updatePost(post.id, {
-        title,
-        slug,
-        excerpt,
-        content,
-        category_id: categoryId,
-        published,
-        featured,
-        show_updated: showUpdated,
+        ...state,
+        category_id: state.categoryId,
         user_id: post.user_id,
       });
 
       showToast('Post updated successfully!', 'success');
       setHasUnsavedChanges(false);
-      router.push(`/blog/${slug}`);
+      router.push(`/blog/${state.slug}`);
     } catch (err) {
       showToast((err as Error).message, 'error');
     } finally {
@@ -166,7 +202,12 @@ export default function EditPostForm({
     cursorPosition,
     handleTextAreaSelect,
     insertImageAtCursor,
-  } = useImageInsertion(content, setContent, () => setShowGallery(false));
+  } = useImageInsertion(
+    content,
+    (newContent: string) =>
+      dispatch({ type: 'UPDATE_FIELD', field: 'content', value: newContent }),
+    () => setShowGallery(false)
+  );
 
   useEffect(() => {
     setCurrentPostPublished(post.published || false);
@@ -175,35 +216,42 @@ export default function EditPostForm({
     };
   }, [post.published, setCurrentPostPublished]);
 
+  const createFieldDispatcher = useCallback(
+    <K extends keyof FormState>(field: K) =>
+      (value: FormState[K]) => {
+        dispatch({ type: 'UPDATE_FIELD', field, value } as FormAction);
+      },
+    []
+  );
+
   return (
     <>
       <form
         onSubmit={handleSubmit}
-        onChange={handleFormChange}
         className="font-mono text-dark dark:text-light"
       >
         <PostFormFields
           title={title}
-          setTitle={setTitle}
+          setTitle={createFieldDispatcher('title')}
           slug={slug}
-          setSlug={setSlug}
+          setSlug={createFieldDispatcher('slug')}
           excerpt={excerpt}
-          setExcerpt={setExcerpt}
+          setExcerpt={createFieldDispatcher('excerpt')}
           content={content}
-          setContent={setContent}
+          setContent={createFieldDispatcher('content')}
           published={published}
-          setPublished={setPublished}
+          setPublished={createFieldDispatcher('published')}
           featured={featured}
-          setFeatured={setFeatured}
+          setFeatured={createFieldDispatcher('featured')}
           showGallery={showGallery}
           setShowGallery={setShowGallery}
           showUpdated={showUpdated}
-          setShowUpdated={setShowUpdated}
+          setShowUpdated={createFieldDispatcher('showUpdated')}
           textareaRef={textareaRef}
           onTextAreaSelect={handleTextAreaSelect}
           categories={categories}
           categoryId={categoryId}
-          setCategoryId={setCategoryId}
+          setCategoryId={createFieldDispatcher('categoryId')}
           categoriesLoading={categoriesLoading}
         />
         <PostFormControls
