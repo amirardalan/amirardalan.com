@@ -1,5 +1,3 @@
-'use client';
-
 import HomeContent from '@/components/content/HomeContent';
 import TerrainCanvas from '@/components/content/TerrainCanvas';
 

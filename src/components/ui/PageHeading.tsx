@@ -1,5 +1,3 @@
-'use client';
-
 type PageHeadingProps = {
   title: string;
 };

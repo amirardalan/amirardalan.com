@@ -1,5 +1,3 @@
-'use client';
-
 import IconGithub from '@/components/icons/IconGithub';
 import Tooltip from '@/components/ui/Tooltip';
 import ThemeMenu from '@/components/ui/ThemeMenu';

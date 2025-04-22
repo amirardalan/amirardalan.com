@@ -1,5 +1,3 @@
-'use client';
-
 import Container from '@/components/content/Container';
 import PageHeading from '@/components/ui/PageHeading';
 import UsesItemGrid from '@/components/content/UsesItemGrid';
