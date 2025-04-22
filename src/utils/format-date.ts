@@ -1,6 +1,9 @@
-export function formatDate(date: Date | string): string {
+export function formatDate(
+  date: Date | string,
+  length: 'long' | 'short' = 'long'
+): string {
   return new Date(date).toLocaleDateString('en-US', {
-    month: 'long',
+    month: length,
     day: 'numeric',
     year: 'numeric',
   });
