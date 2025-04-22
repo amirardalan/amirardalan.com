@@ -15,7 +15,6 @@ import Modal from '@/components/ui/Modal';
 import MediaGallery from '@/components/blog/MediaGallery';
 import PostFormControls from '@/components/blog/PostFormControls';
 
-// Define state shape for the form fields
 interface FormState {
   title: string;
   slug: string;
@@ -26,12 +25,10 @@ interface FormState {
   featured: boolean;
 }
 
-// Define action types for the reducer
 type FormAction =
   | { type: 'UPDATE_FIELD'; field: keyof FormState; value: any }
   | { type: 'CLEAR_FORM' };
 
-// Initial state for the form
 const initialState: FormState = {
   title: '',
   slug: '',
@@ -42,7 +39,6 @@ const initialState: FormState = {
   featured: false,
 };
 
-// Reducer function to manage form state
 function formReducer(state: FormState, action: FormAction): FormState {
   switch (action.type) {
     case 'UPDATE_FIELD':
@@ -98,7 +94,6 @@ export default function NewPostForm({
     }
   }, [propCategories, categoriesLoading]);
 
-  // Track form changes using reducer state
   useEffect(() => {
     const formChanged =
       state.title !== initialState.title ||
@@ -156,7 +151,6 @@ export default function NewPostForm({
     onDiscard: discardChanges,
   });
 
-  // Update useImageInsertion to use dispatch
   const {
     textareaRef,
     cursorPosition,
@@ -169,7 +163,6 @@ export default function NewPostForm({
     () => setShowGallery(false)
   );
 
-  // Helper function to create dispatchers for specific fields
   const createFieldDispatcher = useCallback(
     (field: keyof FormState) => (value: any) => {
       dispatch({ type: 'UPDATE_FIELD', field, value });

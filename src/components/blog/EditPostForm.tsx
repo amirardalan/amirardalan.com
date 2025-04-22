@@ -119,9 +119,8 @@ export default function EditPostForm({
     }
   }, [propCategories, categoriesLoading]);
 
-  // Track form changes using reducer state compared to initial state derived from post
   useEffect(() => {
-    const initialCheckState = getInitialState(post); // Get potentially updated initial state if post prop changes (though unlikely here)
+    const initialCheckState = getInitialState(post);
     const formChanged =
       state.title !== initialCheckState.title ||
       state.slug !== initialCheckState.slug ||
@@ -134,8 +133,6 @@ export default function EditPostForm({
 
     setHasUnsavedChanges(formChanged);
   }, [state, post, getInitialState]);
-
-  // No longer need handleFormChange
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -184,7 +181,6 @@ export default function EditPostForm({
     }
   };
 
-  // Discard just needs to reset the flag, navigation handles the rest
   const discardChanges = useCallback(() => {
     setHasUnsavedChanges(false);
   }, []);
@@ -198,7 +194,6 @@ export default function EditPostForm({
     onDiscard: discardChanges,
   });
 
-  // Update useImageInsertion to use dispatch
   const {
     textareaRef,
     cursorPosition,
@@ -218,7 +213,6 @@ export default function EditPostForm({
     };
   }, [post.published, setCurrentPostPublished]);
 
-  // Helper function to create dispatchers for specific fields
   const createFieldDispatcher = useCallback(
     (field: keyof FormState) => (value: any) => {
       dispatch({ type: 'UPDATE_FIELD', field, value });
