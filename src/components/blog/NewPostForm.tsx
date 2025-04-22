@@ -25,9 +25,17 @@ interface FormState {
   featured: boolean;
 }
 
-type FormAction =
-  | { type: 'UPDATE_FIELD'; field: keyof FormState; value: any }
-  | { type: 'CLEAR_FORM' };
+type UpdateFieldAction<K extends keyof FormState> = {
+  type: 'UPDATE_FIELD';
+  field: K;
+  value: FormState[K];
+};
+
+type FormUpdateActions = {
+  [K in keyof FormState]: UpdateFieldAction<K>;
+}[keyof FormState];
+
+type FormAction = FormUpdateActions | { type: 'CLEAR_FORM' };
 
 const initialState: FormState = {
   title: '',
@@ -158,15 +166,16 @@ export default function NewPostForm({
     insertImageAtCursor,
   } = useImageInsertion(
     content,
-    (newContent) =>
+    (newContent: string) =>
       dispatch({ type: 'UPDATE_FIELD', field: 'content', value: newContent }),
     () => setShowGallery(false)
   );
 
   const createFieldDispatcher = useCallback(
-    (field: keyof FormState) => (value: any) => {
-      dispatch({ type: 'UPDATE_FIELD', field, value });
-    },
+    <K extends keyof FormState>(field: K) =>
+      (value: FormState[K]) => {
+        dispatch({ type: 'UPDATE_FIELD', field, value } as FormAction);
+      },
     []
   );
 

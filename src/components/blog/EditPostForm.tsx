@@ -17,7 +17,6 @@ import PostFormControls from '@/components/blog/PostFormControls';
 
 import { BlogPost, Category } from '@/types/blog';
 
-// Define state shape for the form fields
 interface FormState {
   title: string;
   slug: string;
@@ -29,13 +28,20 @@ interface FormState {
   showUpdated: boolean;
 }
 
-// Define action types for the reducer
-type FormAction =
-  | { type: 'UPDATE_FIELD'; field: keyof FormState; value: any }
-  | { type: 'SET_INITIAL_STATE'; payload: FormState }
-  | { type: 'RESET_TO_INITIAL' };
+type UpdateFieldAction<K extends keyof FormState> = {
+  type: 'UPDATE_FIELD';
+  field: K;
+  value: FormState[K];
+};
 
-// Reducer function to manage form state
+type FormUpdateActions = {
+  [K in keyof FormState]: UpdateFieldAction<K>;
+}[keyof FormState];
+
+type FormAction =
+  | FormUpdateActions
+  | { type: 'SET_INITIAL_STATE'; payload: FormState };
+
 function formReducer(state: FormState, action: FormAction): FormState {
   switch (action.type) {
     case 'UPDATE_FIELD':
@@ -60,7 +66,6 @@ export default function EditPostForm({
   const { showToast } = useToast();
   const { setCurrentPostPublished } = useEditPostStore();
 
-  // Derive initial state from the post prop
   const getInitialState = useCallback(
     (initialPost: BlogPost): FormState => ({
       title: initialPost.title || '',
@@ -77,7 +82,6 @@ export default function EditPostForm({
 
   const initialFormState = getInitialState(post);
 
-  // Use reducer for form state, initialized with post data
   const [state, dispatch] = useReducer(formReducer, initialFormState);
   const {
     title,
@@ -90,7 +94,6 @@ export default function EditPostForm({
     showUpdated,
   } = state;
 
-  // Keep other states managed by useState
   const [categories, setCategories] = useState<Category[]>(
     propCategories || []
   );
@@ -201,7 +204,7 @@ export default function EditPostForm({
     insertImageAtCursor,
   } = useImageInsertion(
     content,
-    (newContent) =>
+    (newContent: string) =>
       dispatch({ type: 'UPDATE_FIELD', field: 'content', value: newContent }),
     () => setShowGallery(false)
   );
@@ -214,9 +217,10 @@ export default function EditPostForm({
   }, [post.published, setCurrentPostPublished]);
 
   const createFieldDispatcher = useCallback(
-    (field: keyof FormState) => (value: any) => {
-      dispatch({ type: 'UPDATE_FIELD', field, value });
-    },
+    <K extends keyof FormState>(field: K) =>
+      (value: FormState[K]) => {
+        dispatch({ type: 'UPDATE_FIELD', field, value } as FormAction);
+      },
     []
   );
 
