@@ -12,7 +12,8 @@ export default function BlogPostCard({
   featured = false,
 }: BlogPostCardProps) {
   const dateFormatted = formatDate(
-    post.show_updated ? post.updated_at ?? post.created_at : post.created_at
+    post.show_updated ? post.updated_at ?? post.created_at : post.created_at,
+    'short'
   );
   const readTime = calculateReadTime(post.content);
 
