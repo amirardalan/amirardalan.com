@@ -12,7 +12,7 @@
   --color-light: oklch(0.985 0 0);
   --color-dark: oklch(0.141 0.005 285.823);
   --color-primary: oklch(56.13% 0.2417 261.86);
-  --color-primary-dark: oklch(89.6% 0.152531 196.844);
+  --color-primary-dark: oklch(0.89 0.17 173.24);
   --color-selection-text: var(--color-light);
   --color-skeleton-light: oklch(0.95 0.01 240);
   --color-skeleton-dark: oklch(0.3 0.01 240);
