@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useEffect, useCallback } from 'react';
+import { useState, useRef, useEffect, useCallback, useReducer } from 'react';
 import { useRouter } from 'next/navigation';
 import { createPost } from '@/services/post-service';
 import { getCategories } from '@/services/category-service';
@@ -15,9 +15,48 @@ import Modal from '@/components/ui/Modal';
 import MediaGallery from '@/components/blog/MediaGallery';
 import PostFormControls from '@/components/blog/PostFormControls';
 
+// Define state shape for the form fields
+interface FormState {
+  title: string;
+  slug: string;
+  excerpt: string;
+  content: string;
+  categoryId: number | null;
+  published: boolean;
+  featured: boolean;
+}
+
+// Define action types for the reducer
+type FormAction =
+  | { type: 'UPDATE_FIELD'; field: keyof FormState; value: any }
+  | { type: 'CLEAR_FORM' };
+
+// Initial state for the form
+const initialState: FormState = {
+  title: '',
+  slug: '',
+  excerpt: '',
+  content: '',
+  categoryId: null,
+  published: false,
+  featured: false,
+};
+
+// Reducer function to manage form state
+function formReducer(state: FormState, action: FormAction): FormState {
+  switch (action.type) {
+    case 'UPDATE_FIELD':
+      return { ...state, [action.field]: action.value };
+    case 'CLEAR_FORM':
+      return initialState;
+    default:
+      return state;
+  }
+}
+
 interface NewPostFormProps {
   userId: number;
-  categories?: Category[]; // Make optional
+  categories?: Category[];
 }
 
 export default function NewPostForm({
@@ -26,19 +65,15 @@ export default function NewPostForm({
 }: NewPostFormProps) {
   const router = useRouter();
   const { showToast } = useToast();
-  const [title, setTitle] = useState('');
-  const [slug, setSlug] = useState('');
-  const [excerpt, setExcerpt] = useState('');
-  const [content, setContent] = useState('');
-  const [categoryId, setCategoryId] = useState<number | null>(null);
+  const [state, dispatch] = useReducer(formReducer, initialState);
+  const { title, slug, excerpt, content, categoryId, published, featured } =
+    state;
+
   const [categories, setCategories] = useState<Category[]>(propCategories);
   const [categoriesLoading, setCategoriesLoading] = useState(
     !propCategories.length
   );
-  const [published, setPublished] = useState(false);
-  const [featured, setFeatured] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [error, setError] = useState<string | null>(null);
   const [showGallery, setShowGallery] = useState(false);
   const [showCancelModal, setShowCancelModal] = useState(false);
   const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
@@ -63,39 +98,29 @@ export default function NewPostForm({
     }
   }, [propCategories, categoriesLoading]);
 
-  // Track form changes
+  // Track form changes using reducer state
   useEffect(() => {
     const formChanged =
-      title !== '' ||
-      slug !== '' ||
-      excerpt !== '' ||
-      content !== '' ||
-      categoryId !== null ||
-      featured !== false ||
-      published !== false;
+      state.title !== initialState.title ||
+      state.slug !== initialState.slug ||
+      state.excerpt !== initialState.excerpt ||
+      state.content !== initialState.content ||
+      state.categoryId !== initialState.categoryId ||
+      state.featured !== initialState.featured ||
+      state.published !== initialState.published;
 
     setHasUnsavedChanges(formChanged);
-  }, [title, slug, excerpt, content, categoryId, featured, published]);
-
-  const handleFormChange = useCallback(() => {
-    setHasUnsavedChanges(true);
-  }, []);
+  }, [state]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setError(null);
 
     try {
       const payload = {
-        title,
-        slug,
-        excerpt,
-        content,
-        category_id: categoryId,
+        ...state,
+        category_id: state.categoryId,
         user_id: userId,
-        published,
-        featured,
         created_at: new Date().toISOString(),
         updated_at: new Date().toISOString(),
       };
@@ -104,9 +129,10 @@ export default function NewPostForm({
 
       showToast('Post created successfully!', 'success');
       setHasUnsavedChanges(false);
-      router.push(published ? `/blog/${slug}` : '/admin/blog/drafts');
+      router.push(
+        state.published ? `/blog/${state.slug}` : '/admin/blog/drafts'
+      );
     } catch (err) {
-      setError((err as Error).message);
       showToast((err as Error).message, 'error');
     } finally {
       setIsSubmitting(false);
@@ -114,14 +140,7 @@ export default function NewPostForm({
   };
 
   const clearForm = useCallback(() => {
-    setTitle('');
-    setSlug('');
-    setExcerpt('');
-    setContent('');
-    setCategoryId(null);
-    setFeatured(false);
-    setPublished(false);
-    setHasUnsavedChanges(false);
+    dispatch({ type: 'CLEAR_FORM' });
   }, []);
 
   const discardChanges = useCallback(() => {
@@ -137,45 +156,53 @@ export default function NewPostForm({
     onDiscard: discardChanges,
   });
 
+  // Update useImageInsertion to use dispatch
   const {
     textareaRef,
     cursorPosition,
     handleTextAreaSelect,
     insertImageAtCursor,
-  } = useImageInsertion(content, setContent, () => setShowGallery(false));
+  } = useImageInsertion(
+    content,
+    (newContent) =>
+      dispatch({ type: 'UPDATE_FIELD', field: 'content', value: newContent }),
+    () => setShowGallery(false)
+  );
+
+  // Helper function to create dispatchers for specific fields
+  const createFieldDispatcher = useCallback(
+    (field: keyof FormState) => (value: any) => {
+      dispatch({ type: 'UPDATE_FIELD', field, value });
+    },
+    []
+  );
 
   return (
     <>
       <form
         onSubmit={handleSubmit}
-        onChange={handleFormChange}
         className="font-mono text-dark dark:text-light"
       >
-        {error && (
-          <div className="bg-red-50 p-4 px-10 font-sans text-red-700 dark:bg-red-900 dark:text-red-100">
-            Error: {error}
-          </div>
-        )}
         <PostFormFields
           title={title}
-          setTitle={setTitle}
+          setTitle={createFieldDispatcher('title')}
           slug={slug}
-          setSlug={setSlug}
+          setSlug={createFieldDispatcher('slug')}
           excerpt={excerpt}
-          setExcerpt={setExcerpt}
+          setExcerpt={createFieldDispatcher('excerpt')}
           content={content}
-          setContent={setContent}
+          setContent={createFieldDispatcher('content')}
           published={published}
-          setPublished={setPublished}
+          setPublished={createFieldDispatcher('published')}
           featured={featured}
-          setFeatured={setFeatured}
+          setFeatured={createFieldDispatcher('featured')}
           showGallery={showGallery}
           setShowGallery={setShowGallery}
           textareaRef={textareaRef}
           onTextAreaSelect={handleTextAreaSelect}
           categories={categories}
           categoryId={categoryId}
-          setCategoryId={setCategoryId}
+          setCategoryId={createFieldDispatcher('categoryId')}
           categoriesLoading={categoriesLoading}
         />
         <PostFormControls
