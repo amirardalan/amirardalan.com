@@ -1,5 +1,3 @@
-'use client';
-
 import { useAuth } from '@/context/AuthProvider';
 import Button from '@/components/ui/Button';
 

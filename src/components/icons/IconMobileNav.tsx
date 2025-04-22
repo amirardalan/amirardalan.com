@@ -1,5 +1,3 @@
-'use client';
-
 import IconClose from '@/components/icons/IconClose';
 
 type IconMobileNavProps = {

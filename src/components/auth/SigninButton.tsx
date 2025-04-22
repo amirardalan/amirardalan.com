@@ -1,5 +1,3 @@
-'use client';
-
 import { signIn } from '@/lib/auth';
 import Button from '@/components/ui/Button';
 
