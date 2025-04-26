@@ -149,7 +149,9 @@ export default function BlogPosts({ posts }: { posts: BlogPost[] }) {
         </div>
       </div>
       {paginatedPosts.length > 0 || showFeaturedPost ? (
-        <ul className={clsx('pb-8 pt-6', searchTerm && 'pt-2')}>
+        <ul
+          className={clsx('pb-8 pt-6 last-of-type:mb-12', searchTerm && 'pt-2')}
+        >
           {showFeaturedPost && (
             <BlogPostCard post={featuredPost} featured={true} />
           )}
@@ -166,7 +168,7 @@ export default function BlogPosts({ posts }: { posts: BlogPost[] }) {
         currentPage={currentPage}
         totalPages={totalPages}
         onPageChange={handlePageChange}
-        className="my-16"
+        className="mb-16"
       />
     </div>
   );
