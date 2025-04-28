@@ -169,7 +169,7 @@ export default async function BlogPost({
               aria-label={`Author: ${post.author_name || 'Anonymous'}`}
               className="uppercase"
             >
-              By {post.author_name || 'Anonymous'}
+              {post.author_name || 'Anonymous'}
             </span>
           </div>
           <span className="flex justify-end">
