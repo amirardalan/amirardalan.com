@@ -6,6 +6,18 @@ import UsesItemCard from '@/components/content/UsesItemCard';
 export default function Uses() {
   const computers = [
     {
+      title: 'Laptop',
+      items: [
+        { value: '14" Apple MacBook Pro' },
+        { value: 'M3 Pro' },
+        { value: '12-core CPU' },
+        { value: '18-core GPU' },
+        { value: '36GB RAM' },
+        { value: '1TB SSD' },
+        { value: 'Silver' },
+      ],
+    },
+    {
       title: 'Desktop',
       items: [
         { value: 'Intel i7-14700KF 5.6GHz' },
@@ -19,15 +31,10 @@ export default function Uses() {
       ],
     },
     {
-      title: 'Laptop',
+      title: 'Phone',
       items: [
-        { value: '14" Apple MacBook Pro' },
-        { value: 'M3 Pro' },
-        { value: '12-core CPU' },
-        { value: '18-core GPU' },
-        { value: '36GB RAM' },
-        { value: '1TB SSD' },
-        { value: 'Silver' },
+        { value: 'Apple iPhone 15 Pro 256GB' },
+        { value: 'White Titanium' },
       ],
     },
   ];
