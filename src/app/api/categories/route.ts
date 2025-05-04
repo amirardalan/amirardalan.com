@@ -172,7 +172,6 @@ async function revalidateAffectedContent(
   categoryId: number,
   posts: Array<{ slug: string; published: boolean | null }> | null = null
 ) {
-  // If posts weren't provided, fetch them
   if (!posts) {
     posts = await getPostsByCategoryId(categoryId);
   }

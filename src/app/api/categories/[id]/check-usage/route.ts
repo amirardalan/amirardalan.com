@@ -6,7 +6,6 @@ export async function GET(
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    // Await params before accessing its properties
     const { id } = await params;
     const categoryId = parseInt(id);
 

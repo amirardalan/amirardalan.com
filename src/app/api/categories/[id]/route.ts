@@ -13,7 +13,6 @@ export async function GET(
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    // Await params before accessing its properties
     const { id } = await params;
     const categoryId = parseInt(id);
 
@@ -48,7 +47,6 @@ export async function PUT(
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    // Await params before accessing its properties
     const { id } = await params;
     const categoryId = parseInt(id);
 
@@ -110,7 +108,6 @@ export async function DELETE(
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    // Await params before accessing its properties
     const { id } = await params;
     const categoryId = parseInt(id);
 
@@ -144,10 +141,7 @@ export async function DELETE(
     }
 
     // Delete the category
-    const [result] = await db
-      .delete(categories)
-      .where(eq(categories.id, categoryId))
-      .returning();
+    await db.delete(categories).where(eq(categories.id, categoryId));
 
     return NextResponse.json({ success: true });
   } catch (error: any) {
