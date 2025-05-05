@@ -42,7 +42,7 @@ export default function AdminPostList({
             {posts.map((post) => (
               <li
                 key={post.id}
-                className="flex w-full cursor-pointer items-center justify-between border-b border-zinc-200 py-3 hover:bg-zinc-100 dark:border-zinc-700 dark:hover:bg-zinc-900"
+                className="group flex w-full cursor-pointer items-center justify-between border-b border-zinc-200 py-3 transition-all duration-150 ease-in-out hover:bg-zinc-100 hover:px-2 dark:border-zinc-700 dark:hover:bg-zinc-900"
               >
                 <div className="flex w-full flex-col">
                   <Link href={`/blog/${post.slug}`}>
@@ -78,7 +78,7 @@ export default function AdminPostList({
                 </div>
                 <Link
                   href={`/admin/blog/edit/${post.slug}`}
-                  className="rounded bg-primary px-3 py-1 text-sm font-medium uppercase text-light dark:text-dark"
+                  className="rounded bg-primary px-3 py-1 text-sm font-medium uppercase text-light opacity-0 transition-opacity duration-150 group-hover:opacity-100 dark:text-dark"
                 >
                   Edit
                 </Link>
