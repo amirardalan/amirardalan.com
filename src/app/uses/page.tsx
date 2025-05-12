@@ -6,7 +6,7 @@ import UsesItemCard from '@/components/content/UsesItemCard';
 export default function Uses() {
   const computers = [
     {
-      title: 'Laptop',
+      title: 'Laptop - MacOS',
       items: [
         { value: '14" Apple MacBook Pro' },
         { value: 'M3 Pro' },
@@ -18,7 +18,7 @@ export default function Uses() {
       ],
     },
     {
-      title: 'Desktop',
+      title: 'Desktop - Windows',
       items: [
         { value: 'Intel i7-14700KF 5.6GHz' },
         { value: 'MSI PRO Z790-A MAX Wifi' },
@@ -31,7 +31,11 @@ export default function Uses() {
       ],
     },
     {
-      title: 'Phone',
+      title: 'Laptop - Arch Linux',
+      items: [{ value: 'Coming 🔴 soon' }],
+    },
+    {
+      title: 'Phone - iOS',
       items: [
         { value: 'Apple iPhone 15 Pro 256GB' },
         { value: 'White Titanium' },
