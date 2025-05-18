@@ -5,7 +5,7 @@ export default function AdminDashboard() {
     <div className="mb-6 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-2">
       <div className="rounded-lg border border-zinc-200 p-6 dark:border-zinc-700">
         <h3 className="mb-3 text-lg font-medium text-dark dark:text-light">
-          Compose New
+          New Post
         </h3>
         <p className="mb-4 text-xs text-zinc-600 dark:text-zinc-300">
           Compose a new blog post
@@ -14,13 +14,13 @@ export default function AdminDashboard() {
           href="/admin/blog/new"
           className="inline-block rounded-md bg-dark px-4 py-2 text-xs uppercase text-light dark:bg-light dark:text-dark"
         >
-          Create Post
+          Create
         </Link>
       </div>
 
       <div className="rounded-lg border border-zinc-200 p-6 dark:border-zinc-700">
         <h3 className="mb-3 text-lg font-medium text-dark dark:text-light">
-          Manage Drafts
+          Drafts
         </h3>
         <p className="mb-4 text-xs text-zinc-600 dark:text-zinc-300">
           Manage unpublished draft posts
@@ -29,13 +29,13 @@ export default function AdminDashboard() {
           href="/admin/blog/drafts"
           className="inline-block rounded-md bg-dark px-4 py-2 text-xs uppercase text-light dark:bg-light dark:text-dark"
         >
-          View Drafts
+          Edit
         </Link>
       </div>
 
       <div className="rounded-lg border border-zinc-200 p-6 dark:border-zinc-700">
         <h3 className="mb-3 text-lg font-medium text-dark dark:text-light">
-          View Published
+          Published
         </h3>
         <p className="mb-4 text-xs text-zinc-600 dark:text-zinc-300">
           Manage published blog posts
@@ -44,13 +44,13 @@ export default function AdminDashboard() {
           href="/admin/blog/published"
           className="inline-block rounded-md bg-dark px-4 py-2 text-xs uppercase text-light dark:bg-light dark:text-dark"
         >
-          View Posts
+          Edit
         </Link>
       </div>
 
       <div className="rounded-lg border border-zinc-200 p-6 dark:border-zinc-700">
         <h3 className="mb-3 text-lg font-medium text-dark dark:text-light">
-          Manage Categories
+          Categories
         </h3>
         <p className="mb-4 text-xs text-zinc-600 dark:text-zinc-300">
           Manage blog categories
@@ -59,7 +59,7 @@ export default function AdminDashboard() {
           href="/admin/blog/categories"
           className="inline-block rounded-md bg-dark px-4 py-2 text-xs uppercase text-light dark:bg-light dark:text-dark"
         >
-          Edit Categories
+          Edit
         </Link>
       </div>
     </div>
