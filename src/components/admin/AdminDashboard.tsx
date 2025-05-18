@@ -14,7 +14,7 @@ export default function AdminDashboard() {
           href="/admin/blog/new"
           className="inline-block rounded-md bg-dark px-4 py-2 text-xs uppercase text-light dark:bg-light dark:text-dark"
         >
-          Create
+          Compose New
         </Link>
       </div>
 
@@ -29,7 +29,7 @@ export default function AdminDashboard() {
           href="/admin/blog/drafts"
           className="inline-block rounded-md bg-dark px-4 py-2 text-xs uppercase text-light dark:bg-light dark:text-dark"
         >
-          Edit
+          View Drafts
         </Link>
       </div>
 
@@ -44,7 +44,7 @@ export default function AdminDashboard() {
           href="/admin/blog/published"
           className="inline-block rounded-md bg-dark px-4 py-2 text-xs uppercase text-light dark:bg-light dark:text-dark"
         >
-          Edit
+          View Posts
         </Link>
       </div>
 
@@ -59,7 +59,7 @@ export default function AdminDashboard() {
           href="/admin/blog/categories"
           className="inline-block rounded-md bg-dark px-4 py-2 text-xs uppercase text-light dark:bg-light dark:text-dark"
         >
-          Edit
+          Edit Categories
         </Link>
       </div>
     </div>
