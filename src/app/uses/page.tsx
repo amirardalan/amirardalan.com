@@ -34,7 +34,7 @@ export default function Uses() {
       title: 'Arch Btw',
       items: [
         { value: 'Lenovo ThinkPad T440s (Modded)' },
-        { value: 'Intel Core i5-4200U 2,6GHz' },
+        { value: 'Intel Core i5-4200U 2.6GHz' },
         { value: '12GB DDR3L' },
         { value: 'Samsung EVO 850 500GB' },
       ],
