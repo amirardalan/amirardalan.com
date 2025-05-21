@@ -6,7 +6,7 @@ import UsesItemCard from '@/components/content/UsesItemCard';
 export default function Uses() {
   const computers = [
     {
-      title: 'Laptop',
+      title: 'MacOS',
       items: [
         { value: '14" Apple MacBook Pro' },
         { value: 'M3 Pro' },
@@ -18,8 +18,9 @@ export default function Uses() {
       ],
     },
     {
-      title: 'Desktop',
+      title: 'Windows 11',
       items: [
+        { value: 'NZXT H7 Flow w/ ARCTIC P14' },
         { value: 'Intel i7-14700KF 5.6GHz' },
         { value: 'MSI PRO Z790-A MAX Wifi' },
         { value: 'Gigabyte RTX 4090 AERO OC 24GB' },
@@ -27,7 +28,15 @@ export default function Uses() {
         { value: 'Corsair RM1000x SHIFT 1000W' },
         { value: 'WD Black SN850X 4TB NVME' },
         { value: 'Deepcool LT720' },
-        { value: 'NZXT H7 Flow w/ ARCTIC P14' },
+      ],
+    },
+    {
+      title: 'Arch Btw',
+      items: [
+        { value: 'Lenovo ThinkPad T440s (Modded)' },
+        { value: 'Intel Core i5-4200U 2,6GHz' },
+        { value: '12GB DDR3L' },
+        { value: 'Samsung EVO 850 500GB' },
       ],
     },
     {
