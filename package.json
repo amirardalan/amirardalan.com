@@ -21,7 +21,7 @@
     "next-cloudinary": "^6.16.0",
     "next-mdx-remote": "^5.0.0",
     "pg": "^8.16.0",
-    "posthog-js": "^1.242.2",
+    "posthog-js": "^1.245.1",
     "posthog-node": "^4.17.1",
     "react": "19.0.0",
     "react-dom": "19.0.0",
@@ -34,7 +34,7 @@
   "devDependencies": {
     "@types/js-cookie": "^3.0.6",
     "@types/mdx": "^2.0.13",
-    "@types/node": "^20.17.48",
+    "@types/node": "^20.17.50",
     "@types/pg": "^8.15.2",
     "@types/react": "19.0.7",
     "@types/react-dom": "19.0.3",
