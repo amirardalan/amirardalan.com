@@ -38,7 +38,7 @@ Amir Ardalan's personal website built with [Startup](https://github.com/amirarda
 ### Setup
 
 ```bash
-bun install
+npm install
 ```
 
 Then, set up your [GitHub oAuth App](https://authjs.dev/getting-started/providers/github?framework=next-js) and add your GitHub Client ID and Secret in a `.env.local` file:
@@ -110,7 +110,7 @@ npx drizzle-kit push
 ### Run
 
 ```bash
-bun dev
+npm run dev
 ```
 
 ### Preview
@@ -118,7 +118,7 @@ bun dev
 To test On-demand Revalidation of blog posts and to ensure the app is in good shape to run on production it is recommended to compile a preview build.
 
 ```bash
-bun preview
+npm preview
 ```
 
 > [!NOTE]

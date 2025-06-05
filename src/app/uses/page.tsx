@@ -119,7 +119,7 @@ export default function Uses() {
       title: 'Shell',
       items: [
         { value: 'Ghostty' },
-        { value: 'Bun' },
+        { value: 'Node' },
         { value: 'Powerlevel10k' },
         { value: 'GitHub CLI' },
         { value: 'Vercel CLI' },
