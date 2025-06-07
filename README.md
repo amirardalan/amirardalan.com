@@ -118,7 +118,7 @@ npm run dev
 To test On-demand Revalidation of blog posts and to ensure the app is in good shape to run on production it is recommended to compile a preview build.
 
 ```bash
-npm preview
+npm run preview
 ```
 
 > [!NOTE]
