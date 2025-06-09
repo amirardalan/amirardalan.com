@@ -6,9 +6,10 @@ import UsesItemCard from '@/components/content/UsesItemCard';
 export default function Uses() {
   const computers = [
     {
-      title: 'MacOS',
+      title: 'MacBook Pro',
       items: [
-        { value: '14" Apple MacBook Pro' },
+        { value: 'macOS Sequoia' },
+        { value: '14" M3 Pro' },
         { value: 'M3 Pro' },
         { value: '12-core CPU' },
         { value: '18-core GPU' },
@@ -18,8 +19,9 @@ export default function Uses() {
       ],
     },
     {
-      title: 'Windows 11',
+      title: 'Desktop PC',
       items: [
+        { value: 'Windows 11' },
         { value: 'NZXT H7 Flow w/ ARCTIC P14' },
         { value: 'Intel i7-14700KF 5.6GHz' },
         { value: 'MSI PRO Z790-A MAX Wifi' },
@@ -31,19 +33,23 @@ export default function Uses() {
       ],
     },
     {
-      title: 'Arch Btw',
+      title: 'ThinkPad T440s',
       items: [
-        { value: 'Lenovo ThinkPad T440s (Modded)' },
+        { value: 'Arch Linux' },
+        { value: '14"' },
         { value: 'Intel Core i5-4200U 2.6GHz' },
         { value: '12GB DDR3L' },
         { value: 'Samsung EVO 850 500GB' },
       ],
     },
     {
-      title: 'Phone',
+      title: 'ThinkPad X13 Gen 5',
       items: [
-        { value: 'Apple iPhone 15 Pro 256GB' },
-        { value: 'White Titanium' },
+        { value: 'Windows 11 Pro' },
+        { value: '13"' },
+        { value: 'Intel® Core™ Ultra 7 165U' },
+        { value: '32GB LPDDR5X 6400MHz' },
+        { value: '512GB SSD' },
       ],
     },
   ];
@@ -119,6 +125,8 @@ export default function Uses() {
       title: 'Shell',
       items: [
         { value: 'Ghostty' },
+        { value: 'Yazi' },
+        { value: 'Neovim' },
         { value: 'Node' },
         { value: 'Powerlevel10k' },
         { value: 'GitHub CLI' },
