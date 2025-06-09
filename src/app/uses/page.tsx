@@ -130,8 +130,6 @@ export default function Uses() {
         { value: 'Node' },
         { value: 'Powerlevel10k' },
         { value: 'GitHub CLI' },
-        { value: 'Vercel CLI' },
-        { value: 'Supabase CLI' },
         { value: 'GitHub Copilot' },
       ],
     },
