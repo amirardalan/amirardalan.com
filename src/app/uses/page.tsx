@@ -104,7 +104,7 @@ export default function Uses() {
     },
     {
       title: 'Listening',
-      items: [{ value: 'Apple Music' }, { value: 'Apple Podcasts' }],
+      items: [{ value: 'YouTube Music' }, { value: 'Apple Podcasts' }],
     },
   ];
 
