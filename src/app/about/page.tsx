@@ -32,6 +32,9 @@ export default function About() {
           aria-label="Contact links"
         >
           <div className="flex flex-col justify-center">
+            <p className="mb-4 font-serif text-dark dark:text-light">
+              Want to work together? Get in touch.
+            </p>
             <div className="mb-2 flex flex-row items-center">
               <p className="text-zinc-600 dark:text-zinc-500" id="x-link">
                 X:
@@ -100,7 +103,7 @@ export default function About() {
               </Tooltip>
             </div>
           </div>
-          <div className="mt-6 flex lg:mt-0" aria-hidden="true">
+          <div className="mt-6 lg:mt-0" aria-hidden="true">
             <CldImage
               src="About/amir-avatar_e6puqu"
               alt="Amir Ardalan Avatar"
