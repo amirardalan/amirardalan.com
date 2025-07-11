@@ -92,7 +92,7 @@ export default function Uses() {
     },
     {
       title: 'Code',
-      items: [{ value: 'VS Code' }, { value: 'Zed' }],
+      items: [{ value: 'VS Code' }, { value: 'Zed' }, { value: 'Neovim' }],
     },
     {
       title: 'Design',
