@@ -5,7 +5,7 @@ import ThemeMenu from '@/components/ui/ThemeMenu';
 export default function HeaderExternalLinks() {
   const handleClick = () => {
     window.open(
-      'https://github.com/amirardalan/site',
+      'https://github.com/amirardalan/amirardalan.com',
       '_blank',
       'noopener,noreferrer'
     );
