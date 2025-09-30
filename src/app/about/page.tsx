@@ -107,10 +107,10 @@ export default function About() {
             <CldImage
               src="About/amir-avatar_e6puqu"
               alt="Amir Ardalan Avatar"
-              width={125}
-              height={125}
+              width={150}
+              height={150}
               className="rounded-full"
-              autoColor
+              grayscale
               priority
             />
           </div>
