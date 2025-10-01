@@ -8,7 +8,7 @@ export default function Uses() {
     {
       title: 'MacBook Pro',
       items: [
-        { value: 'macOS Sequoia' },
+        { value: 'macOS Tahoe' },
         { value: '14" M3 Pro' },
         { value: 'M3 Pro' },
         { value: '12-core CPU' },
