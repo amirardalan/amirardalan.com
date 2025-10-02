@@ -41,7 +41,7 @@ export default async function Account() {
               Sign Out
             </Link>
           </div>
-          <div className="mt-1 flex flex-row items-center text-dark dark:text-light">
+          <div className="border-1 mt-4 flex flex-row items-center rounded-lg border border-zinc-300 p-4 text-dark dark:border-zinc-700 dark:text-light">
             <span>Email:</span>
             <span>
               {session.user?.email && (
