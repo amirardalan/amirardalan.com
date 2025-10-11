@@ -78,7 +78,7 @@ export default function AdminPostList({
                 </div>
                 <Link
                   href={`/admin/blog/edit/${post.slug}`}
-                  className="rounded bg-primary px-3 py-1 text-sm font-medium uppercase text-light opacity-0 transition-opacity duration-150 group-hover:opacity-100 dark:text-dark"
+                  className="rounded bg-dark px-3 py-1 text-sm font-medium uppercase text-light opacity-0 transition-opacity duration-150 group-hover:opacity-100 dark:bg-light dark:text-dark"
                 >
                   Edit
                 </Link>
