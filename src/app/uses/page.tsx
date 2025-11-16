@@ -35,7 +35,7 @@ export default function Uses() {
     {
       title: 'ThinkPad T440s',
       items: [
-        { value: 'Arch Linux' },
+        { value: 'Omarchy' },
         { value: '14"' },
         { value: 'Intel Core i5-4200U 2.6GHz' },
         { value: '12GB DDR3L' },
