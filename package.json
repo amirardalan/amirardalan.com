@@ -1,6 +1,6 @@
 {
   "name": "amir.sh",
-  "version": "2.2.2",
+  "version": "2.2.12",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
