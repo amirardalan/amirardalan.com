@@ -19,7 +19,7 @@
     "next": "^15.3.8",
     "next-auth": "^5.0.0-beta.28",
     "next-cloudinary": "^6.16.0",
-    "next-mdx-remote": "^5.0.0",
+    "next-mdx-remote": "^6.0.0",
     "pg": "^8.16.0",
     "posthog-js": "^1.248.1",
     "posthog-node": "^4.18.0",
